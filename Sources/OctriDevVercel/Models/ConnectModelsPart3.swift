@@ -3,23 +3,23 @@
 
 import Foundation
 
-// Connect domain models
+/// Connect domain models
 extension ConnectCreateConnectorRequestTriggerDestination {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
         if let value = try? container.decode(
             ConnectCreateConnectorRequestTriggerDestinationVariant0.self
         ) {
-            return             .connectCreateConnectorRequestTriggerDestinationVariant0(value)
+            return .connectCreateConnectorRequestTriggerDestinationVariant0(value)
         }
         if let value = try? container.decode(
             ConnectCreateConnectorRequestTriggerDestinationVariant1.self
         ) {
-            return             .connectCreateConnectorRequestTriggerDestinationVariant1(value)
+            return .connectCreateConnectorRequestTriggerDestinationVariant1(value)
         }
         if let value = try? container.decode(
             ConnectCreateConnectorRequestTriggerDestinationVariant2.self
         ) {
-            return             .connectCreateConnectorRequestTriggerDestinationVariant2(value)
+            return .connectCreateConnectorRequestTriggerDestinationVariant2(value)
         }
         return nil
     }
@@ -29,9 +29,12 @@ extension ConnectCreateConnectorRequestTriggerDestination {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .connectCreateConnectorRequestTriggerDestinationVariant0(value): try container.encode(value); return true
-        case let .connectCreateConnectorRequestTriggerDestinationVariant1(value): try container.encode(value); return true
-        case let .connectCreateConnectorRequestTriggerDestinationVariant2(value): try container.encode(value); return true
+        case let .connectCreateConnectorRequestTriggerDestinationVariant0(value): try container
+            .encode(value); return true
+        case let .connectCreateConnectorRequestTriggerDestinationVariant1(value): try container
+            .encode(value); return true
+        case let .connectCreateConnectorRequestTriggerDestinationVariant2(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -42,22 +45,32 @@ public indirect enum ConnectEnvironment {
 }
 
 extension ConnectEnvironment: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectEnvironment")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ConnectEnvironment"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ConnectEnvironment {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue1(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue1(value)
+        }
         return nil
     }
 }
@@ -79,30 +92,47 @@ public indirect enum ConnectTriggerDestinationInput {
 }
 
 extension ConnectTriggerDestinationInput: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectTriggerDestinationInput")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ConnectTriggerDestinationInput"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ConnectTriggerDestinationInput {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ConnectTriggerDestinationInputVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectTriggerDestinationInputVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectTriggerDestinationInputVariant0(value)
         }
-        if let value = try? container.decode(ConnectTriggerDestinationInputVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectTriggerDestinationInputVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectTriggerDestinationInputVariant1(value)
         }
-        if let value = try? container.decode(ConnectTriggerDestinationInputVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectTriggerDestinationInputVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectTriggerDestinationInputVariant2(value)
         }
         return nil
@@ -114,17 +144,17 @@ extension ConnectTriggerDestinationInput {
         if let value = try? container.decode(
             ConnectTriggerDestinationInputVariant0.self
         ) {
-            return             .connectTriggerDestinationInputVariant0(value)
+            return .connectTriggerDestinationInputVariant0(value)
         }
         if let value = try? container.decode(
             ConnectTriggerDestinationInputVariant1.self
         ) {
-            return             .connectTriggerDestinationInputVariant1(value)
+            return .connectTriggerDestinationInputVariant1(value)
         }
         if let value = try? container.decode(
             ConnectTriggerDestinationInputVariant2.self
         ) {
-            return             .connectTriggerDestinationInputVariant2(value)
+            return .connectTriggerDestinationInputVariant2(value)
         }
         return nil
     }
@@ -142,26 +172,44 @@ extension ConnectTriggerDestinationInput {
 }
 
 public indirect enum CreateConnectorAuthorizationRequestRequestSubject {
-    case createConnectorAuthorizationRequestRequestSubjectVariant0(CreateConnectorAuthorizationRequestRequestSubjectVariant0)
-    case createConnectorAuthorizationRequestRequestSubjectVariant1(CreateConnectorAuthorizationRequestRequestSubjectVariant1)
-    case createConnectorAuthorizationRequestRequestSubjectVariant2(CreateConnectorAuthorizationRequestRequestSubjectVariant2)
-    case createConnectorAuthorizationRequestRequestSubjectVariant3(CreateConnectorAuthorizationRequestRequestSubjectVariant3)
-    case createConnectorAuthorizationRequestRequestSubjectVariant4(CreateConnectorAuthorizationRequestRequestSubjectVariant4)
+    case createConnectorAuthorizationRequestRequestSubjectVariant0(
+        CreateConnectorAuthorizationRequestRequestSubjectVariant0
+    )
+    case createConnectorAuthorizationRequestRequestSubjectVariant1(
+        CreateConnectorAuthorizationRequestRequestSubjectVariant1
+    )
+    case createConnectorAuthorizationRequestRequestSubjectVariant2(
+        CreateConnectorAuthorizationRequestRequestSubjectVariant2
+    )
+    case createConnectorAuthorizationRequestRequestSubjectVariant3(
+        CreateConnectorAuthorizationRequestRequestSubjectVariant3
+    )
+    case createConnectorAuthorizationRequestRequestSubjectVariant4(
+        CreateConnectorAuthorizationRequestRequestSubjectVariant4
+    )
 }
 
 extension CreateConnectorAuthorizationRequestRequestSubject: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateConnectorAuthorizationRequestRequestSubject")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateConnectorAuthorizationRequestRequestSubject"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -196,27 +244,27 @@ extension CreateConnectorAuthorizationRequestRequestSubject {
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant0.self
         ) {
-            return             .createConnectorAuthorizationRequestRequestSubjectVariant0(value)
+            return .createConnectorAuthorizationRequestRequestSubjectVariant0(value)
         }
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant1.self
         ) {
-            return             .createConnectorAuthorizationRequestRequestSubjectVariant1(value)
+            return .createConnectorAuthorizationRequestRequestSubjectVariant1(value)
         }
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant2.self
         ) {
-            return             .createConnectorAuthorizationRequestRequestSubjectVariant2(value)
+            return .createConnectorAuthorizationRequestRequestSubjectVariant2(value)
         }
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant3.self
         ) {
-            return             .createConnectorAuthorizationRequestRequestSubjectVariant3(value)
+            return .createConnectorAuthorizationRequestRequestSubjectVariant3(value)
         }
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant4.self
         ) {
-            return             .createConnectorAuthorizationRequestRequestSubjectVariant4(value)
+            return .createConnectorAuthorizationRequestRequestSubjectVariant4(value)
         }
         return nil
     }
@@ -226,11 +274,16 @@ extension CreateConnectorAuthorizationRequestRequestSubject {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant0(value): try container.encode(value); return true
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant1(value): try container.encode(value); return true
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant2(value): try container.encode(value); return true
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant3(value): try container.encode(value); return true
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant4(value): try container.encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant0(value): try container
+            .encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant1(value): try container
+            .encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant2(value): try container
+            .encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant3(value): try container
+            .encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant4(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -244,36 +297,59 @@ public indirect enum GetConnectorTokenRequestSubject {
 }
 
 extension GetConnectorTokenRequestSubject: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConnectorTokenRequestSubject")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetConnectorTokenRequestSubject"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetConnectorTokenRequestSubject {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getConnectorTokenRequestSubjectVariant0(value)
         }
-        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getConnectorTokenRequestSubjectVariant1(value)
         }
-        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getConnectorTokenRequestSubjectVariant2(value)
         }
-        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getConnectorTokenRequestSubjectVariant3(value)
         }
-        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant4.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetConnectorTokenRequestSubjectVariant4.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getConnectorTokenRequestSubjectVariant4(value)
         }
         return nil
@@ -285,27 +361,27 @@ extension GetConnectorTokenRequestSubject {
         if let value = try? container.decode(
             GetConnectorTokenRequestSubjectVariant0.self
         ) {
-            return             .getConnectorTokenRequestSubjectVariant0(value)
+            return .getConnectorTokenRequestSubjectVariant0(value)
         }
         if let value = try? container.decode(
             GetConnectorTokenRequestSubjectVariant1.self
         ) {
-            return             .getConnectorTokenRequestSubjectVariant1(value)
+            return .getConnectorTokenRequestSubjectVariant1(value)
         }
         if let value = try? container.decode(
             GetConnectorTokenRequestSubjectVariant2.self
         ) {
-            return             .getConnectorTokenRequestSubjectVariant2(value)
+            return .getConnectorTokenRequestSubjectVariant2(value)
         }
         if let value = try? container.decode(
             GetConnectorTokenRequestSubjectVariant3.self
         ) {
-            return             .getConnectorTokenRequestSubjectVariant3(value)
+            return .getConnectorTokenRequestSubjectVariant3(value)
         }
         if let value = try? container.decode(
             GetConnectorTokenRequestSubjectVariant4.self
         ) {
-            return             .getConnectorTokenRequestSubjectVariant4(value)
+            return .getConnectorTokenRequestSubjectVariant4(value)
         }
         return nil
     }
@@ -341,33 +417,51 @@ public struct ConnectConnectorUpdatedByVariant1: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectConnectorUpdatedByVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.environment) else {
-            throw SdkValidationError(field: "environment", code: "required", message: "Validation failed for 'environment': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.environment = try container.sdkDecodeRequired(.environment)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, ConnectConnectorUpdatedByVariant1Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectConnectorUpdatedByVariant1 {
-    public init(environment: ConnectConnectorUpdatedByVariant1Environment, id: String, type: ConnectConnectorUpdatedByVariant1Type) throws {
+public extension ConnectConnectorUpdatedByVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.environment) else {
+            throw SdkValidationError(
+                field: "environment",
+                code: "required",
+                message: "Validation failed for 'environment': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        environment = try container.sdkDecodeRequired(.environment)
+        id = try container.sdkDecodeRequired(.id)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum("type", type, ConnectConnectorUpdatedByVariant1Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension ConnectConnectorUpdatedByVariant1 {
+    init(
+        environment: ConnectConnectorUpdatedByVariant1Environment,
+        id: String,
+        type: ConnectConnectorUpdatedByVariant1Type
+    ) throws {
         (self.environment, self.id) = (environment, id)
         self.type = type
-            try sdkValidateRawEnum("type", self.type, ConnectConnectorUpdatedByVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, ConnectConnectorUpdatedByVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -380,21 +474,27 @@ public struct ConnectConnectorUpdateDataVariant0RefreshTokens: Codable {
         case enabled
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectConnectorUpdateDataVariant0RefreshTokens {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.enabled) else {
-            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
-        }
-        self.enabled = try container.sdkDecodeRequired(.enabled)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectConnectorUpdateDataVariant0RefreshTokens {
-    public init(enabled: Bool) {
+public extension ConnectConnectorUpdateDataVariant0RefreshTokens {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.enabled) else {
+            throw SdkValidationError(
+                field: "enabled",
+                code: "required",
+                message: "Validation failed for 'enabled': value is required"
+            )
+        }
+        enabled = try container.sdkDecodeRequired(.enabled)
+    }
+}
+
+public extension ConnectConnectorUpdateDataVariant0RefreshTokens {
+    init(enabled: Bool) {
         self.enabled = enabled
     }
 }
@@ -413,32 +513,42 @@ public struct ConnectErrorError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension ConnectErrorError {
-    public init(from decoder: Decoder) throws {
+public extension ConnectErrorError {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
         }
-        self.code = try container.sdkDecodeRequired(.code)
-        self.message = try container.sdkDecodeRequired(.message)
+        code = try container.sdkDecodeRequired(.code)
+        message = try container.sdkDecodeRequired(.message)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-extension ConnectErrorError {
-    public init(code: String, message: String) {
+public extension ConnectErrorError {
+    init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
 
-extension ConnectErrorError {
-    public func encode(to encoder: Encoder) throws {
+public extension ConnectErrorError {
+    func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(code, forKey: .code)

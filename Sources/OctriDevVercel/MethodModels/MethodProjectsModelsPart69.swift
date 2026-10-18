@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
+/// Canonical projects operation model declarations
 /// Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses
 /// contain a broader, non-authoritative permission summary.
 public struct UpdateMicrofrontendsResponsePermissions: Codable {

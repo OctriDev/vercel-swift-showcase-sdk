@@ -6,38 +6,71 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension UserMethods {
-    /// Lists user-facing event types and their descriptions, along with the event categories. Use `teamId` or `slug` to select the team context for the request. Refer to the returned types and categories when filtering or presenting user events.
+public extension UserMethods {
+    /// Lists user-facing event types and their descriptions, along with the event categories. Use `teamId` or `slug` to
+    /// select the team context for the request. Refer to the returned types and categories when filtering or presenting
+    /// user events.
     ///
     /// Returns the list of user-facing event types with descriptions.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listEventTypes(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListEventTypesResponse {
-        return try (await sdkRequest("GET", "/v1/events/types", config: config, query: [
+    static func listEventTypes(
+        config: ClientConfig,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListEventTypesResponse {
+        try await (sdkRequest("GET", "/v1/events/types", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "listEventTypes", options: requestOptions)).data
     }
 
-    /// Retrieves information about the authenticated user. Use this endpoint to obtain the user information associated with the request's authentication context.
+    /// Retrieves information about the authenticated user. Use this endpoint to obtain the user information associated
+    /// with the request's authentication context.
     ///
     /// Retrieves information related to the currently authenticated User.
-    public static func getAuthUser(config: ClientConfig, requestOptions: RequestOptions? = nil) async throws -> GetAuthUserResponse {
-        return try (await sdkRequest("GET", "/v2/user", config: config, decoder: .json, operationId: "getAuthUser", options: requestOptions)).data
+    static func getAuthUser(
+        config: ClientConfig,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetAuthUserResponse {
+        try await (sdkRequest(
+            "GET",
+            "/v2/user",
+            config: config,
+            decoder: .json,
+            operationId: "getAuthUser",
+            options: requestOptions
+        )).data
     }
 
-    /// Starts the authenticated user's account deletion process by sending a confirmation email. You must follow the link in that email to proceed with deletion; you can optionally include `reasons` to describe why the account is being deleted.
+    /// Starts the authenticated user's account deletion process by sending a confirmation email. You must follow the
+    /// link in that email to proceed with deletion; you can optionally include `reasons` to describe why the account is
+    /// being deleted.
     ///
-    /// Initiates the deletion process for the currently authenticated User, by sending a deletion confirmation email. The email contains a link that the user needs to visit in order to proceed with the deletion process.
+    /// Initiates the deletion process for the currently authenticated User, by sending a deletion confirmation email.
+    /// The email contains a link that the user needs to visit in order to proceed with the deletion process.
     ///
     /// - Parameters:
     /// - reasons: Optional array of objects that describe the reason why the User
     ///   account is being deleted.
-    public static func requestDelete(config: ClientConfig, reasons: [RequestDeleteRequestBodyReasonsItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> RequestDeleteResponse {
+    static func requestDelete(
+        config: ClientConfig,
+        reasons: [RequestDeleteRequestBodyReasonsItem]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RequestDeleteResponse {
         let requestBody = RequestDeleteRequestBody(reasons: reasons)
 
-        return try (await sdkRequest("DELETE", "/v1/user", config: config, body: requestBody, decoder: .json, operationId: "requestDelete", options: requestOptions)).data
+        return try await (sdkRequest(
+            "DELETE",
+            "/v1/user",
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "requestDelete",
+            options: requestOptions
+        )).data
     }
 }

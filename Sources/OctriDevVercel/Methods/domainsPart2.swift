@@ -6,20 +6,45 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsMethods {
-    /// Replaces the DNS records associated with a domain. Use this operation when you need to stage a replacement set of records rather than update one record individually. The response returns the identifiers of the records involved.
+public extension DomainsMethods {
+    /// Replaces the DNS records associated with a domain. Use this operation when you need to stage a replacement set
+    /// of records rather than update one record individually. The response returns the identifiers of the records
+    /// involved.
     ///
     /// - Parameters:
     /// - domain: The domain name
-    public static func replaceDomainsByDomainRecords(config: ClientConfig, domain: String, requestOptions: RequestOptions? = nil) async throws -> ReplaceDomainsByDomainRecordsResponse {
-        return try (await sdkRequest("PUT", ["/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/records"].joined(), config: config, decoder: .json, operationId: "replaceDomainsByDomainRecords", options: requestOptions)).data
+    static func replaceDomainsByDomainRecords(
+        config: ClientConfig,
+        domain: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ReplaceDomainsByDomainRecordsResponse {
+        try await (sdkRequest(
+            "PUT",
+            ["/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/records"].joined(),
+            config: config,
+            decoder: .json,
+            operationId: "replaceDomainsByDomainRecords",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves a DNS record by its unique identifier. Use this operation to inspect the record's domain, name, type, value, and other available properties. The response contains the requested record.
+    /// Retrieves a DNS record by its unique identifier. Use this operation to inspect the record's domain, name, type,
+    /// value, and other available properties. The response contains the requested record.
     ///
     /// - Parameters:
     /// - recordId: The unique ID of the DNS record
-    public static func getDomainsRecordsByRecordId(config: ClientConfig, recordId: String, requestOptions: RequestOptions? = nil) async throws -> GetDomainsRecordsByRecordIdResponse {
-        return try (await sdkRequest("GET", ["/domains/records/", sdkEncodePathSegment(sdkWireString(recordId))].joined(), config: config, decoder: .json, operationId: "getDomainsRecordsByRecordId", options: requestOptions)).data
+    static func getDomainsRecordsByRecordId(
+        config: ClientConfig,
+        recordId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainsRecordsByRecordIdResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/domains/records/", sdkEncodePathSegment(sdkWireString(recordId))].joined(),
+            config: config,
+            decoder: .json,
+            operationId: "getDomainsRecordsByRecordId",
+            options: requestOptions
+        )).data
     }
 }

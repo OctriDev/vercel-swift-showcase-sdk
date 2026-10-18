@@ -3,25 +3,33 @@
 
 import Foundation
 
-// Marketplace domain models
+/// Marketplace domain models
 public indirect enum CreateEventRequestEvent {
     case createEventRequestEventVariant0(CreateEventRequestEventVariant0)
     case createEventRequestEventVariant1(CreateEventRequestEventVariant1)
 }
 
 extension CreateEventRequestEvent: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateEventRequestEvent")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateEventRequestEvent"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -39,8 +47,14 @@ extension CreateEventRequestEvent {
 
 extension CreateEventRequestEvent {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(CreateEventRequestEventVariant0.self) { return .createEventRequestEventVariant0(value) }
-        if let value = try? container.decode(CreateEventRequestEventVariant1.self) { return .createEventRequestEventVariant1(value) }
+        if let value = try? container
+            .decode(CreateEventRequestEventVariant0.self) {
+            return .createEventRequestEventVariant0(value)
+        }
+        if let value = try? container
+            .decode(CreateEventRequestEventVariant1.self) {
+            return .createEventRequestEventVariant1(value)
+        }
         return nil
     }
 }
@@ -61,15 +75,21 @@ public indirect enum UpdateInstallationRequestNotification {
 }
 
 extension UpdateInstallationRequestNotification: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateInstallationRequestNotification")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateInstallationRequestNotification"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -78,9 +98,11 @@ extension UpdateInstallationRequestNotification {
         if let value = try? container.decode(
             UpdateInstallationRequestNotificationVariant0.self
         ) {
-            return             .updateInstallationRequestNotificationVariant0(value)
+            return .updateInstallationRequestNotificationVariant0(value)
         }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -101,15 +123,21 @@ public indirect enum UpdateResourceRequestNotification {
 }
 
 extension UpdateResourceRequestNotification: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateResourceRequestNotification")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateResourceRequestNotification"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -118,9 +146,11 @@ extension UpdateResourceRequestNotification {
         if let value = try? container.decode(
             UpdateResourceRequestNotificationVariant0.self
         ) {
-            return             .updateResourceRequestNotificationVariant0(value)
+            return .updateResourceRequestNotificationVariant0(value)
         }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -148,31 +178,46 @@ public struct UpdateInstallationRequestNotificationVariant0: Codable {
         case href
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension UpdateInstallationRequestNotificationVariant0 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateInstallationRequestNotificationVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.level) else {
-            throw SdkValidationError(field: "level", code: "required", message: "Validation failed for 'level': value is required")
+            throw SdkValidationError(
+                field: "level",
+                code: "required",
+                message: "Validation failed for 'level': value is required"
+            )
         }
         guard container.contains(.title) else {
-            throw SdkValidationError(field: "title", code: "required", message: "Validation failed for 'title': value is required")
+            throw SdkValidationError(
+                field: "title",
+                code: "required",
+                message: "Validation failed for 'title': value is required"
+            )
         }
-        self.level = try container.sdkDecodeRequired(.level)
-        self.title = try container.sdkDecodeRequired(.title)
-        self.message = try container.sdkDecodeIfPresent(.message)
-        self.href = try container.sdkDecodeIfPresent(.href)
-        if let value = self.href {
+        level = try container.sdkDecodeRequired(.level)
+        title = try container.sdkDecodeRequired(.title)
+        message = try container.sdkDecodeIfPresent(.message)
+        href = try container.sdkDecodeIfPresent(.href)
+        if let value = href {
             try sdkValidatePattern("href", value, sdkPattern72c75bbf2232)
             try sdkValidateUri("href", value)
         }
     }
 }
 
-extension UpdateInstallationRequestNotificationVariant0 {
-    public init(level: UpdateInstallationRequestNotificationVariant0Level, title: String, message: String? = nil, href: String? = nil) throws {
+public extension UpdateInstallationRequestNotificationVariant0 {
+    init(
+        level: UpdateInstallationRequestNotificationVariant0Level,
+        title: String,
+        message: String? = nil,
+        href: String? = nil
+    ) throws {
         (self.level, self.title) = (level, title)
         (self.message, self.href) = (message, href)
         if let value = self.href {
@@ -195,31 +240,46 @@ public struct UpdateResourceRequestNotificationVariant0: Codable {
         case href
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension UpdateResourceRequestNotificationVariant0 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateResourceRequestNotificationVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.level) else {
-            throw SdkValidationError(field: "level", code: "required", message: "Validation failed for 'level': value is required")
+            throw SdkValidationError(
+                field: "level",
+                code: "required",
+                message: "Validation failed for 'level': value is required"
+            )
         }
         guard container.contains(.title) else {
-            throw SdkValidationError(field: "title", code: "required", message: "Validation failed for 'title': value is required")
+            throw SdkValidationError(
+                field: "title",
+                code: "required",
+                message: "Validation failed for 'title': value is required"
+            )
         }
-        self.level = try container.sdkDecodeRequired(.level)
-        self.title = try container.sdkDecodeRequired(.title)
-        self.message = try container.sdkDecodeIfPresent(.message)
-        self.href = try container.sdkDecodeIfPresent(.href)
-        if let value = self.href {
+        level = try container.sdkDecodeRequired(.level)
+        title = try container.sdkDecodeRequired(.title)
+        message = try container.sdkDecodeIfPresent(.message)
+        href = try container.sdkDecodeIfPresent(.href)
+        if let value = href {
             try sdkValidatePattern("href", value, sdkPattern72c75bbf2232)
             try sdkValidateUri("href", value)
         }
     }
 }
 
-extension UpdateResourceRequestNotificationVariant0 {
-    public init(level: UpdateResourceRequestNotificationVariant0Level, title: String, message: String? = nil, href: String? = nil) throws {
+public extension UpdateResourceRequestNotificationVariant0 {
+    init(
+        level: UpdateResourceRequestNotificationVariant0Level,
+        title: String,
+        message: String? = nil,
+        href: String? = nil
+    ) throws {
         (self.level, self.title) = (level, title)
         (self.message, self.href) = (message, href)
         if let value = self.href {
@@ -242,30 +302,40 @@ public struct CreateEventRequestEventVariant1: Codable {
         case productId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateEventRequestEventVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.resourceId) else {
-            throw SdkValidationError(field: "resourceId", code: "required", message: "Validation failed for 'resourceId': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.resourceId = try container.sdkDecodeRequired(.resourceId)
-        self.productId = try container.sdkDecodeIfPresent(.productId)
-            try sdkValidateRawEnum("type", self.type, CreateEventRequestEventVariant1Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateEventRequestEventVariant1 {
-    public init(type: CreateEventRequestEventVariant1Type, resourceId: String, productId: String? = nil) throws {
+public extension CreateEventRequestEventVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.resourceId) else {
+            throw SdkValidationError(
+                field: "resourceId",
+                code: "required",
+                message: "Validation failed for 'resourceId': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        resourceId = try container.sdkDecodeRequired(.resourceId)
+        productId = try container.sdkDecodeIfPresent(.productId)
+        try sdkValidateRawEnum("type", type, CreateEventRequestEventVariant1Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension CreateEventRequestEventVariant1 {
+    init(type: CreateEventRequestEventVariant1Type, resourceId: String, productId: String? = nil) throws {
         (self.type, self.resourceId) = (type, resourceId)
         self.productId = productId
-            try sdkValidateRawEnum("type", self.type, CreateEventRequestEventVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, CreateEventRequestEventVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -279,25 +349,31 @@ public struct CreateEventRequestEventVariant0: Codable {
         case billingPlanId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateEventRequestEventVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.billingPlanId = try container.sdkDecodeIfPresent(.billingPlanId)
-            try sdkValidateRawEnum("type", self.type, CreateEventRequestEventVariant0Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateEventRequestEventVariant0 {
-    public init(type: CreateEventRequestEventVariant0Type, billingPlanId: String? = nil) throws {
+public extension CreateEventRequestEventVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        billingPlanId = try container.sdkDecodeIfPresent(.billingPlanId)
+        try sdkValidateRawEnum("type", type, CreateEventRequestEventVariant0Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension CreateEventRequestEventVariant0 {
+    init(type: CreateEventRequestEventVariant0Type, billingPlanId: String? = nil) throws {
         (self.type, self.billingPlanId) = (type, billingPlanId)
-            try sdkValidateRawEnum("type", self.type, CreateEventRequestEventVariant0Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, CreateEventRequestEventVariant0Type.allCases.map(\.rawValue))
     }
 }
 
@@ -318,17 +394,21 @@ public enum CreateEventRequestEventVariant0Type: String, CaseIterable, Codable {
     }
 }
 
-public struct UpdateResourceRequestNotificationVariant0Level: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateResourceRequestNotificationVariant0Level: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let info = UpdateResourceRequestNotificationVariant0Level(rawValue: "info")
     public static let warn = UpdateResourceRequestNotificationVariant0Level(rawValue: "warn")
     public static let error = UpdateResourceRequestNotificationVariant0Level(rawValue: "error")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -354,17 +434,21 @@ public enum CreateEventRequestEventVariant1Type: String, CaseIterable, Codable {
     }
 }
 
-public struct UpdateInstallationRequestNotificationVariant0Level: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateInstallationRequestNotificationVariant0Level: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let info = UpdateInstallationRequestNotificationVariant0Level(rawValue: "info")
     public static let warn = UpdateInstallationRequestNotificationVariant0Level(rawValue: "warn")
     public static let error = UpdateInstallationRequestNotificationVariant0Level(rawValue: "error")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -3,25 +3,33 @@
 
 import Foundation
 
-// WebAnalytics domain models
+/// WebAnalytics domain models
 public indirect enum CountEventsResponseData {
     case countEventsResponseDataVariant0(CountEventsResponseDataVariant0)
     case countEventsResponseDataVariant1(CountEventsResponseDataVariant1)
 }
 
 extension CountEventsResponseData: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CountEventsResponseData")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CountEventsResponseData"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -39,8 +47,14 @@ extension CountEventsResponseData {
 
 extension CountEventsResponseData {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(CountEventsResponseDataVariant0.self) { return .countEventsResponseDataVariant0(value) }
-        if let value = try? container.decode(CountEventsResponseDataVariant1.self) { return .countEventsResponseDataVariant1(value) }
+        if let value = try? container
+            .decode(CountEventsResponseDataVariant0.self) {
+            return .countEventsResponseDataVariant0(value)
+        }
+        if let value = try? container
+            .decode(CountEventsResponseDataVariant1.self) {
+            return .countEventsResponseDataVariant1(value)
+        }
         return nil
     }
 }
@@ -61,27 +75,37 @@ public indirect enum CountPageviewsResponseData {
 }
 
 extension CountPageviewsResponseData: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CountPageviewsResponseData")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CountPageviewsResponseData"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CountPageviewsResponseData {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CountPageviewsResponseDataVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CountPageviewsResponseDataVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .countPageviewsResponseDataVariant0(value)
         }
-        if let value = try? container.decode(CountPageviewsResponseDataVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CountPageviewsResponseDataVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .countPageviewsResponseDataVariant1(value)
         }
         return nil
@@ -90,8 +114,14 @@ extension CountPageviewsResponseData {
 
 extension CountPageviewsResponseData {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(CountPageviewsResponseDataVariant0.self) { return .countPageviewsResponseDataVariant0(value) }
-        if let value = try? container.decode(CountPageviewsResponseDataVariant1.self) { return .countPageviewsResponseDataVariant1(value) }
+        if let value = try? container
+            .decode(CountPageviewsResponseDataVariant0.self) {
+            return .countPageviewsResponseDataVariant0(value)
+        }
+        if let value = try? container
+            .decode(CountPageviewsResponseDataVariant1.self) {
+            return .countPageviewsResponseDataVariant1(value)
+        }
         return nil
     }
 }
@@ -115,25 +145,35 @@ public struct CountPageviewsResponseDataVariant1: Codable {
         case visitors
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CountPageviewsResponseDataVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pageviews) else {
-            throw SdkValidationError(field: "pageviews", code: "required", message: "Validation failed for 'pageviews': value is required")
-        }
-        guard container.contains(.visitors) else {
-            throw SdkValidationError(field: "visitors", code: "required", message: "Validation failed for 'visitors': value is required")
-        }
-        self.pageviews = try container.sdkDecodeRequired(.pageviews)
-        self.visitors = try container.sdkDecodeRequired(.visitors)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CountPageviewsResponseDataVariant1 {
-    public init(pageviews: Double, visitors: Double) {
+public extension CountPageviewsResponseDataVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pageviews) else {
+            throw SdkValidationError(
+                field: "pageviews",
+                code: "required",
+                message: "Validation failed for 'pageviews': value is required"
+            )
+        }
+        guard container.contains(.visitors) else {
+            throw SdkValidationError(
+                field: "visitors",
+                code: "required",
+                message: "Validation failed for 'visitors': value is required"
+            )
+        }
+        pageviews = try container.sdkDecodeRequired(.pageviews)
+        visitors = try container.sdkDecodeRequired(.visitors)
+    }
+}
+
+public extension CountPageviewsResponseDataVariant1 {
+    init(pageviews: Double, visitors: Double) {
         (self.pageviews, self.visitors) = (pageviews, visitors)
     }
 }
@@ -147,25 +187,35 @@ public struct CountEventsResponseDataVariant1: Codable {
         case visitors
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CountEventsResponseDataVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.count) else {
-            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
-        }
-        guard container.contains(.visitors) else {
-            throw SdkValidationError(field: "visitors", code: "required", message: "Validation failed for 'visitors': value is required")
-        }
-        self.count = try container.sdkDecodeRequired(.count)
-        self.visitors = try container.sdkDecodeRequired(.visitors)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CountEventsResponseDataVariant1 {
-    public init(count: Double, visitors: Double) {
+public extension CountEventsResponseDataVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.count) else {
+            throw SdkValidationError(
+                field: "count",
+                code: "required",
+                message: "Validation failed for 'count': value is required"
+            )
+        }
+        guard container.contains(.visitors) else {
+            throw SdkValidationError(
+                field: "visitors",
+                code: "required",
+                message: "Validation failed for 'visitors': value is required"
+            )
+        }
+        count = try container.sdkDecodeRequired(.count)
+        visitors = try container.sdkDecodeRequired(.visitors)
+    }
+}
+
+public extension CountEventsResponseDataVariant1 {
+    init(count: Double, visitors: Double) {
         (self.count, self.visitors) = (count, visitors)
     }
 }
@@ -213,36 +263,57 @@ public struct CountPageviewsResponseDataVariant0: Codable {
         case visitorId
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension CountPageviewsResponseDataVariant0 {
-    public init(from decoder: Decoder) throws {
+public extension CountPageviewsResponseDataVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.browserName = try container.sdkDecodeRequired(.browserName)
-        self.country = try container.sdkDecodeRequired(.country)
-        self.deviceType = try container.sdkDecodeRequired(.deviceType)
-        self.environment = try container.sdkDecodeRequired(.environment)
-        self.flags = try container.sdkDecodeRequired(.flags)
-        self.osName = try container.sdkDecodeRequired(.osName)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.projectName = try container.sdkDecodeRequired(.projectName)
-        self.referrerHostname = try container.sdkDecodeRequired(.referrerHostname)
-        self.requestHostname = try container.sdkDecodeRequired(.requestHostname)
-        self.requestPath = try container.sdkDecodeRequired(.requestPath)
-        self.route = try container.sdkDecodeRequired(.route)
-        self.utmCampaign = try container.sdkDecodeRequired(.utmCampaign)
-        self.utmContent = try container.sdkDecodeRequired(.utmContent)
-        self.utmMedium = try container.sdkDecodeRequired(.utmMedium)
-        self.utmSource = try container.sdkDecodeRequired(.utmSource)
-        self.utmTerm = try container.sdkDecodeRequired(.utmTerm)
-        self.visitorId = try container.sdkDecodeRequired(.visitorId)
+        browserName = try container.sdkDecodeRequired(.browserName)
+        country = try container.sdkDecodeRequired(.country)
+        deviceType = try container.sdkDecodeRequired(.deviceType)
+        environment = try container.sdkDecodeRequired(.environment)
+        flags = try container.sdkDecodeRequired(.flags)
+        osName = try container.sdkDecodeRequired(.osName)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        projectName = try container.sdkDecodeRequired(.projectName)
+        referrerHostname = try container.sdkDecodeRequired(.referrerHostname)
+        requestHostname = try container.sdkDecodeRequired(.requestHostname)
+        requestPath = try container.sdkDecodeRequired(.requestPath)
+        route = try container.sdkDecodeRequired(.route)
+        utmCampaign = try container.sdkDecodeRequired(.utmCampaign)
+        utmContent = try container.sdkDecodeRequired(.utmContent)
+        utmMedium = try container.sdkDecodeRequired(.utmMedium)
+        utmSource = try container.sdkDecodeRequired(.utmSource)
+        utmTerm = try container.sdkDecodeRequired(.utmTerm)
+        visitorId = try container.sdkDecodeRequired(.visitorId)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-extension CountPageviewsResponseDataVariant0 {
-    public init(browserName: String, country: String, deviceType: String, environment: String, flags: String, osName: String, projectId: String, projectName: String, referrerHostname: String, requestHostname: String, requestPath: String, route: String, utmCampaign: String, utmContent: String, utmMedium: String, utmSource: String, utmTerm: String, visitorId: String) {
+public extension CountPageviewsResponseDataVariant0 {
+    init(
+        browserName: String,
+        country: String,
+        deviceType: String,
+        environment: String,
+        flags: String,
+        osName: String,
+        projectId: String,
+        projectName: String,
+        referrerHostname: String,
+        requestHostname: String,
+        requestPath: String,
+        route: String,
+        utmCampaign: String,
+        utmContent: String,
+        utmMedium: String,
+        utmSource: String,
+        utmTerm: String,
+        visitorId: String
+    ) {
         (self.browserName, self.country) = (browserName, country)
         (self.deviceType, self.environment) = (deviceType, environment)
         (self.flags, self.osName) = (flags, osName)
@@ -255,8 +326,8 @@ extension CountPageviewsResponseDataVariant0 {
     }
 }
 
-extension CountPageviewsResponseDataVariant0 {
-    public func encode(to encoder: Encoder) throws {
+public extension CountPageviewsResponseDataVariant0 {
+    func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(browserName, forKey: .browserName)
@@ -327,38 +398,61 @@ public struct CountEventsResponseDataVariant0: Codable {
         case visitorId
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension CountEventsResponseDataVariant0 {
-    public init(from decoder: Decoder) throws {
+public extension CountEventsResponseDataVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.browserName = try container.sdkDecodeRequired(.browserName)
-        self.country = try container.sdkDecodeRequired(.country)
-        self.deviceType = try container.sdkDecodeRequired(.deviceType)
-        self.environment = try container.sdkDecodeRequired(.environment)
-        self.eventData = try container.sdkDecodeRequired(.eventData)
-        self.eventName = try container.sdkDecodeRequired(.eventName)
-        self.flags = try container.sdkDecodeRequired(.flags)
-        self.osName = try container.sdkDecodeRequired(.osName)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.projectName = try container.sdkDecodeRequired(.projectName)
-        self.referrerHostname = try container.sdkDecodeRequired(.referrerHostname)
-        self.requestHostname = try container.sdkDecodeRequired(.requestHostname)
-        self.requestPath = try container.sdkDecodeRequired(.requestPath)
-        self.route = try container.sdkDecodeRequired(.route)
-        self.utmCampaign = try container.sdkDecodeRequired(.utmCampaign)
-        self.utmContent = try container.sdkDecodeRequired(.utmContent)
-        self.utmMedium = try container.sdkDecodeRequired(.utmMedium)
-        self.utmSource = try container.sdkDecodeRequired(.utmSource)
-        self.utmTerm = try container.sdkDecodeRequired(.utmTerm)
-        self.visitorId = try container.sdkDecodeRequired(.visitorId)
+        browserName = try container.sdkDecodeRequired(.browserName)
+        country = try container.sdkDecodeRequired(.country)
+        deviceType = try container.sdkDecodeRequired(.deviceType)
+        environment = try container.sdkDecodeRequired(.environment)
+        eventData = try container.sdkDecodeRequired(.eventData)
+        eventName = try container.sdkDecodeRequired(.eventName)
+        flags = try container.sdkDecodeRequired(.flags)
+        osName = try container.sdkDecodeRequired(.osName)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        projectName = try container.sdkDecodeRequired(.projectName)
+        referrerHostname = try container.sdkDecodeRequired(.referrerHostname)
+        requestHostname = try container.sdkDecodeRequired(.requestHostname)
+        requestPath = try container.sdkDecodeRequired(.requestPath)
+        route = try container.sdkDecodeRequired(.route)
+        utmCampaign = try container.sdkDecodeRequired(.utmCampaign)
+        utmContent = try container.sdkDecodeRequired(.utmContent)
+        utmMedium = try container.sdkDecodeRequired(.utmMedium)
+        utmSource = try container.sdkDecodeRequired(.utmSource)
+        utmTerm = try container.sdkDecodeRequired(.utmTerm)
+        visitorId = try container.sdkDecodeRequired(.visitorId)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-extension CountEventsResponseDataVariant0 {
-    public init(browserName: String, country: String, deviceType: String, environment: String, eventData: String, eventName: String, flags: String, osName: String, projectId: String, projectName: String, referrerHostname: String, requestHostname: String, requestPath: String, route: String, utmCampaign: String, utmContent: String, utmMedium: String, utmSource: String, utmTerm: String, visitorId: String) {
+public extension CountEventsResponseDataVariant0 {
+    init(
+        browserName: String,
+        country: String,
+        deviceType: String,
+        environment: String,
+        eventData: String,
+        eventName: String,
+        flags: String,
+        osName: String,
+        projectId: String,
+        projectName: String,
+        referrerHostname: String,
+        requestHostname: String,
+        requestPath: String,
+        route: String,
+        utmCampaign: String,
+        utmContent: String,
+        utmMedium: String,
+        utmSource: String,
+        utmTerm: String,
+        visitorId: String
+    ) {
         (self.browserName, self.country) = (browserName, country)
         (self.deviceType, self.environment) = (deviceType, environment)
         (self.eventData, self.eventName) = (eventData, eventName)
@@ -372,8 +466,8 @@ extension CountEventsResponseDataVariant0 {
     }
 }
 
-extension CountEventsResponseDataVariant0 {
-    public func encode(to encoder: Encoder) throws {
+public extension CountEventsResponseDataVariant0 {
+    func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(browserName, forKey: .browserName)

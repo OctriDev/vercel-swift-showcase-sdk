@@ -3,68 +3,68 @@
 
 import Foundation
 
-// ProjectsDelete domain models
+/// ProjectsDelete domain models
 extension DeleteProjectAvatarResponseEnvItemContentHint {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant0.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant0(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant0(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant1.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant1(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant1(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant2.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant2(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant2(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant3.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant3(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant3(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant4.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant4(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant4(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant5.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant5(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant5(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant6.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant6(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant6(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant7.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant7(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant7(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant8.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant8(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant8(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant9.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant9(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant9(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant10.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant10(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant10(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant11.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant11(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant11(value)
         }
         return nil
     }
@@ -75,27 +75,27 @@ extension DeleteProjectAvatarResponseEnvItemContentHint {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant12.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant12(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant12(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant13.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant13(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant13(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant14.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant14(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant14(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant15.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant15(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant15(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseEnvItemContentHintVariant16.self
         ) {
-            return             .deleteProjectAvatarResponseEnvItemContentHintVariant16(value)
+            return .deleteProjectAvatarResponseEnvItemContentHintVariant16(value)
         }
         return nil
     }
@@ -115,8 +115,10 @@ extension DeleteProjectAvatarResponseEnvItemContentHint {
         case let .deleteProjectAvatarResponseEnvItemContentHintVariant7(value): try container.encode(value); return true
         case let .deleteProjectAvatarResponseEnvItemContentHintVariant8(value): try container.encode(value); return true
         case let .deleteProjectAvatarResponseEnvItemContentHintVariant9(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseEnvItemContentHintVariant10(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseEnvItemContentHintVariant11(value): try container.encode(value); return true
+        case let .deleteProjectAvatarResponseEnvItemContentHintVariant10(value): try container
+            .encode(value); return true
+        case let .deleteProjectAvatarResponseEnvItemContentHintVariant11(value): try container
+            .encode(value); return true
         default: return false
         }
     }
@@ -126,11 +128,16 @@ extension DeleteProjectAvatarResponseEnvItemContentHint {
     func encodeGroup2(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .deleteProjectAvatarResponseEnvItemContentHintVariant12(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseEnvItemContentHintVariant13(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseEnvItemContentHintVariant14(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseEnvItemContentHintVariant15(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseEnvItemContentHintVariant16(value): try container.encode(value); return true
+        case let .deleteProjectAvatarResponseEnvItemContentHintVariant12(value): try container
+            .encode(value); return true
+        case let .deleteProjectAvatarResponseEnvItemContentHintVariant13(value): try container
+            .encode(value); return true
+        case let .deleteProjectAvatarResponseEnvItemContentHintVariant14(value): try container
+            .encode(value); return true
+        case let .deleteProjectAvatarResponseEnvItemContentHintVariant15(value): try container
+            .encode(value); return true
+        case let .deleteProjectAvatarResponseEnvItemContentHintVariant16(value): try container
+            .encode(value); return true
         default: return false
         }
     }
@@ -142,27 +149,41 @@ public indirect enum DeleteProjectAvatarResponseExpiration {
 }
 
 extension DeleteProjectAvatarResponseExpiration: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseExpiration")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseExpiration"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseExpiration {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseExpirationVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseExpirationVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseExpirationVariant0(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseExpirationVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseExpirationVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseExpirationVariant1(value)
         }
         return nil
@@ -174,12 +195,12 @@ extension DeleteProjectAvatarResponseExpiration {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseExpirationVariant0.self
         ) {
-            return             .deleteProjectAvatarResponseExpirationVariant0(value)
+            return .deleteProjectAvatarResponseExpirationVariant0(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseExpirationVariant1.self
         ) {
-            return             .deleteProjectAvatarResponseExpirationVariant1(value)
+            return .deleteProjectAvatarResponseExpirationVariant1(value)
         }
         return nil
     }
@@ -201,27 +222,43 @@ public indirect enum DeleteProjectAvatarResponseInternalRoutesItem {
 }
 
 extension DeleteProjectAvatarResponseInternalRoutesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseInternalRoutesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseInternalRoutesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseInternalRoutesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseInternalRoutesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseInternalRoutesItemVariant0.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseInternalRoutesItemVariant0(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseInternalRoutesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseInternalRoutesItemVariant1.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseInternalRoutesItemVariant1(value)
         }
         return nil
@@ -233,12 +270,12 @@ extension DeleteProjectAvatarResponseInternalRoutesItem {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseInternalRoutesItemVariant0.self
         ) {
-            return             .deleteProjectAvatarResponseInternalRoutesItemVariant0(value)
+            return .deleteProjectAvatarResponseInternalRoutesItemVariant0(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseInternalRoutesItemVariant1.self
         ) {
-            return             .deleteProjectAvatarResponseInternalRoutesItemVariant1(value)
+            return .deleteProjectAvatarResponseInternalRoutesItemVariant1(value)
         }
         return nil
     }
@@ -266,45 +303,77 @@ public indirect enum DeleteProjectAvatarResponseLink {
 }
 
 extension DeleteProjectAvatarResponseLink: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseLink")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseLink"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseLink {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseLinkVariant0(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseLinkVariant1(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseLinkVariant2(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseLinkVariant3(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant4.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant4.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseLinkVariant4(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant5.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant5.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseLinkVariant5(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant6.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant6.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseLinkVariant6(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant7.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseLinkVariant7.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseLinkVariant7(value)
         }
         return nil
@@ -316,42 +385,42 @@ extension DeleteProjectAvatarResponseLink {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseLinkVariant0.self
         ) {
-            return             .deleteProjectAvatarResponseLinkVariant0(value)
+            return .deleteProjectAvatarResponseLinkVariant0(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseLinkVariant1.self
         ) {
-            return             .deleteProjectAvatarResponseLinkVariant1(value)
+            return .deleteProjectAvatarResponseLinkVariant1(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseLinkVariant2.self
         ) {
-            return             .deleteProjectAvatarResponseLinkVariant2(value)
+            return .deleteProjectAvatarResponseLinkVariant2(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseLinkVariant3.self
         ) {
-            return             .deleteProjectAvatarResponseLinkVariant3(value)
+            return .deleteProjectAvatarResponseLinkVariant3(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseLinkVariant4.self
         ) {
-            return             .deleteProjectAvatarResponseLinkVariant4(value)
+            return .deleteProjectAvatarResponseLinkVariant4(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseLinkVariant5.self
         ) {
-            return             .deleteProjectAvatarResponseLinkVariant5(value)
+            return .deleteProjectAvatarResponseLinkVariant5(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseLinkVariant6.self
         ) {
-            return             .deleteProjectAvatarResponseLinkVariant6(value)
+            return .deleteProjectAvatarResponseLinkVariant6(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseLinkVariant7.self
         ) {
-            return             .deleteProjectAvatarResponseLinkVariant7(value)
+            return .deleteProjectAvatarResponseLinkVariant7(value)
         }
         return nil
     }
@@ -380,30 +449,47 @@ public indirect enum DeleteProjectAvatarResponseMicrofrontends {
 }
 
 extension DeleteProjectAvatarResponseMicrofrontends: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseMicrofrontends")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseMicrofrontends"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseMicrofrontends {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseMicrofrontendsVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseMicrofrontendsVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseMicrofrontendsVariant0(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseMicrofrontendsVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseMicrofrontendsVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseMicrofrontendsVariant1(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseMicrofrontendsVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseMicrofrontendsVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseMicrofrontendsVariant2(value)
         }
         return nil
@@ -415,17 +501,17 @@ extension DeleteProjectAvatarResponseMicrofrontends {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseMicrofrontendsVariant0.self
         ) {
-            return             .deleteProjectAvatarResponseMicrofrontendsVariant0(value)
+            return .deleteProjectAvatarResponseMicrofrontendsVariant0(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseMicrofrontendsVariant1.self
         ) {
-            return             .deleteProjectAvatarResponseMicrofrontendsVariant1(value)
+            return .deleteProjectAvatarResponseMicrofrontendsVariant1(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseMicrofrontendsVariant2.self
         ) {
-            return             .deleteProjectAvatarResponseMicrofrontendsVariant2(value)
+            return .deleteProjectAvatarResponseMicrofrontendsVariant2(value)
         }
         return nil
     }
@@ -448,27 +534,41 @@ public indirect enum DeleteProjectAvatarResponseTrustedIps {
 }
 
 extension DeleteProjectAvatarResponseTrustedIps: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseTrustedIps")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseTrustedIps"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseTrustedIps {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseTrustedIpsVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseTrustedIpsVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseTrustedIpsVariant0(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseTrustedIpsVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseTrustedIpsVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseTrustedIpsVariant1(value)
         }
         return nil
@@ -480,12 +580,12 @@ extension DeleteProjectAvatarResponseTrustedIps {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseTrustedIpsVariant0.self
         ) {
-            return             .deleteProjectAvatarResponseTrustedIpsVariant0(value)
+            return .deleteProjectAvatarResponseTrustedIpsVariant0(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseTrustedIpsVariant1.self
         ) {
-            return             .deleteProjectAvatarResponseTrustedIpsVariant1(value)
+            return .deleteProjectAvatarResponseTrustedIpsVariant1(value)
         }
         return nil
     }

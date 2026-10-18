@@ -6,17 +6,27 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VcrMethods {
-    /// Deletes an in-progress blob upload from a Docker repository and discards its session. Use this operation to cancel an upload; it also aborts the underlying multipart upload if one was started. Supply the repository components and upload session `uuid`.
+public extension VcrMethods {
+    /// Deletes an in-progress blob upload from a Docker repository and discards its session. Use this operation to
+    /// cancel an upload; it also aborts the underlying multipart upload if one was started. Supply the repository
+    /// components and upload session `uuid`.
     ///
-    /// DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts the underlying S3 multipart upload (if one was started) and discards the session.
+    /// DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Cancel an in-flight blob upload. Aborts
+    /// the underlying S3 multipart upload (if one was started) and discards the session.
     ///
     /// - Parameters:
     /// - teamSlug: Single Docker repository team slug component.
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - uuid: Blob upload session identifier.
-    public static func deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, uuid: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+        config: ClientConfig,
+        teamSlug: String,
+        projectSlug: String,
+        repositoryName: String,
+        uuid: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -29,6 +39,22 @@ extension VcrMethods {
         try validateLength("uuid", uuid, max: 40)
         try sdkValidatePattern("uuid", uuid, sdkPatternbc5c1977eda6)
 
-        return try (await sdkRequest("DELETE", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/blobs/uploads/", sdkEncodePathSegment(sdkWireString(uuid))].joined(), config: config, decoder: .empty, operationId: "deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid", options: requestOptions)).data
+        return try await (sdkRequest(
+            "DELETE",
+            [
+                "/v2/",
+                sdkEncodePathSegment(sdkWireString(teamSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(projectSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(repositoryName)),
+                "/blobs/uploads/",
+                sdkEncodePathSegment(sdkWireString(uuid)),
+            ].joined(),
+            config: config,
+            decoder: .empty,
+            operationId: "deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
+            options: requestOptions
+        )).data
     }
 }

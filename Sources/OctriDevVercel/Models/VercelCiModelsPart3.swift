@@ -3,15 +3,19 @@
 
 import Foundation
 
-// VercelCi domain models
+/// VercelCi domain models
 extension SearchVercelCiLogsResponseInvocationsItemTasksItemConclusion {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .searchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant0(value): try container.encode(value); return true
-        case let .searchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant1(value): try container.encode(value); return true
-        case let .searchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant2(value): try container.encode(value); return true
-        case let .searchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant3(value): try container.encode(value); return true
+        case let .searchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant0(value): try container
+            .encode(value); return true
+        case let .searchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant1(value): try container
+            .encode(value); return true
+        case let .searchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant2(value): try container
+            .encode(value); return true
+        case let .searchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant3(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -25,28 +29,46 @@ public struct GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779
         case reason
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.result) else {
-            throw SdkValidationError(field: "result", code: "required", message: "Validation failed for 'result': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        self.result = try container.sdkDecodeRequired(.result)
-        self.reason = try container.sdkDecodeRequired(.reason)
-            try sdkValidateRawEnum("result", self.result, GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX4db801c2c6.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0 {
-    public init(result: GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX4db801c2c6, reason: String) throws {
+public extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.result) else {
+            throw SdkValidationError(
+                field: "result",
+                code: "required",
+                message: "Validation failed for 'result': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        result = try container.sdkDecodeRequired(.result)
+        reason = try container.sdkDecodeRequired(.reason)
+        try sdkValidateRawEnum(
+            "result",
+            result,
+            GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX4db801c2c6.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0 {
+    init(result: GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX4db801c2c6, reason: String) throws {
         (self.result, self.reason) = (result, reason)
-            try sdkValidateRawEnum("result", self.result, GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX4db801c2c6.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "result",
+            self.result,
+            GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX4db801c2c6.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -59,28 +81,46 @@ public struct SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVarian
         case reason
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.result) else {
-            throw SdkValidationError(field: "result", code: "required", message: "Validation failed for 'result': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        self.result = try container.sdkDecodeRequired(.result)
-        self.reason = try container.sdkDecodeRequired(.reason)
-            try sdkValidateRawEnum("result", self.result, SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX945e0a9fc2.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant3 {
-    public init(result: SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX945e0a9fc2, reason: String) throws {
+public extension SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.result) else {
+            throw SdkValidationError(
+                field: "result",
+                code: "required",
+                message: "Validation failed for 'result': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        result = try container.sdkDecodeRequired(.result)
+        reason = try container.sdkDecodeRequired(.reason)
+        try sdkValidateRawEnum(
+            "result",
+            result,
+            SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX945e0a9fc2.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant3 {
+    init(result: SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX945e0a9fc2, reason: String) throws {
         (self.result, self.reason) = (result, reason)
-            try sdkValidateRawEnum("result", self.result, SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX945e0a9fc2.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "result",
+            self.result,
+            SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX945e0a9fc2.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -91,24 +131,38 @@ public struct GetVercelCiInvocationResponseInvocationSourceVariant0: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiInvocationResponseInvocationSourceVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, GetVercelCiInvocationResponseInvocationSourceVariant0Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiInvocationResponseInvocationSourceVariant0 {
-    public init(type: GetVercelCiInvocationResponseInvocationSourceVariant0Type) throws {
+public extension GetVercelCiInvocationResponseInvocationSourceVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            GetVercelCiInvocationResponseInvocationSourceVariant0Type.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetVercelCiInvocationResponseInvocationSourceVariant0 {
+    init(type: GetVercelCiInvocationResponseInvocationSourceVariant0Type) throws {
         self.type = type
-            try sdkValidateRawEnum("type", self.type, GetVercelCiInvocationResponseInvocationSourceVariant0Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            GetVercelCiInvocationResponseInvocationSourceVariant0Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -121,28 +175,46 @@ public struct ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1:
         case reason
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.result) else {
-            throw SdkValidationError(field: "result", code: "required", message: "Validation failed for 'result': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        self.result = try container.sdkDecodeRequired(.result)
-        self.reason = try container.sdkDecodeRequired(.reason)
-            try sdkValidateRawEnum("result", self.result, ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1Result.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1 {
-    public init(result: ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1Result, reason: String) throws {
+public extension ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.result) else {
+            throw SdkValidationError(
+                field: "result",
+                code: "required",
+                message: "Validation failed for 'result': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        result = try container.sdkDecodeRequired(.result)
+        reason = try container.sdkDecodeRequired(.reason)
+        try sdkValidateRawEnum(
+            "result",
+            result,
+            ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1Result.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1 {
+    init(result: ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1Result, reason: String) throws {
         (self.result, self.reason) = (result, reason)
-            try sdkValidateRawEnum("result", self.result, ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1Result.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "result",
+            self.result,
+            ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant1Result.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -155,28 +227,46 @@ public struct SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVarian
         case reason
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.result) else {
-            throw SdkValidationError(field: "result", code: "required", message: "Validation failed for 'result': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        self.result = try container.sdkDecodeRequired(.result)
-        self.reason = try container.sdkDecodeRequired(.reason)
-            try sdkValidateRawEnum("result", self.result, SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX123e944116.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant2 {
-    public init(result: SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX123e944116, reason: String) throws {
+public extension SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.result) else {
+            throw SdkValidationError(
+                field: "result",
+                code: "required",
+                message: "Validation failed for 'result': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        result = try container.sdkDecodeRequired(.result)
+        reason = try container.sdkDecodeRequired(.reason)
+        try sdkValidateRawEnum(
+            "result",
+            result,
+            SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX123e944116.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVariant2 {
+    init(result: SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX123e944116, reason: String) throws {
         (self.result, self.reason) = (result, reason)
-            try sdkValidateRawEnum("result", self.result, SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX123e944116.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "result",
+            self.result,
+            SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVX123e944116.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -193,37 +283,68 @@ public struct ListVercelCiInvocationsResponseInvocationsItemSourceVariant1: Coda
         case deploymentTargetSlug
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.deploymentId) else {
-            throw SdkValidationError(field: "deploymentId", code: "required", message: "Validation failed for 'deploymentId': value is required")
-        }
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        guard container.contains(.deploymentTargetSlug) else {
-            throw SdkValidationError(field: "deploymentTargetSlug", code: "required", message: "Validation failed for 'deploymentTargetSlug': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.deploymentId = try container.sdkDecodeRequired(.deploymentId)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.deploymentTargetSlug = try container.sdkDecodeRequired(.deploymentTargetSlug)
-            try sdkValidateRawEnum("type", self.type, ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant1 {
-    public init(type: ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type, deploymentId: String, projectId: String, deploymentTargetSlug: String) throws {
+public extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.deploymentId) else {
+            throw SdkValidationError(
+                field: "deploymentId",
+                code: "required",
+                message: "Validation failed for 'deploymentId': value is required"
+            )
+        }
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
+        }
+        guard container.contains(.deploymentTargetSlug) else {
+            throw SdkValidationError(
+                field: "deploymentTargetSlug",
+                code: "required",
+                message: "Validation failed for 'deploymentTargetSlug': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        deploymentId = try container.sdkDecodeRequired(.deploymentId)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        deploymentTargetSlug = try container.sdkDecodeRequired(.deploymentTargetSlug)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant1 {
+    init(
+        type: ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type,
+        deploymentId: String,
+        projectId: String,
+        deploymentTargetSlug: String
+    ) throws {
         (self.type, self.deploymentId) = (type, deploymentId)
         (self.projectId, self.deploymentTargetSlug) = (projectId, deploymentTargetSlug)
-            try sdkValidateRawEnum("type", self.type, ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -240,37 +361,68 @@ public struct GetVercelCiInvocationResponseInvocationSourceVariant1: Codable {
         case deploymentTargetSlug
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiInvocationResponseInvocationSourceVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.deploymentId) else {
-            throw SdkValidationError(field: "deploymentId", code: "required", message: "Validation failed for 'deploymentId': value is required")
-        }
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        guard container.contains(.deploymentTargetSlug) else {
-            throw SdkValidationError(field: "deploymentTargetSlug", code: "required", message: "Validation failed for 'deploymentTargetSlug': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.deploymentId = try container.sdkDecodeRequired(.deploymentId)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.deploymentTargetSlug = try container.sdkDecodeRequired(.deploymentTargetSlug)
-            try sdkValidateRawEnum("type", self.type, GetVercelCiInvocationResponseInvocationSourceVariant1Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiInvocationResponseInvocationSourceVariant1 {
-    public init(type: GetVercelCiInvocationResponseInvocationSourceVariant1Type, deploymentId: String, projectId: String, deploymentTargetSlug: String) throws {
+public extension GetVercelCiInvocationResponseInvocationSourceVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.deploymentId) else {
+            throw SdkValidationError(
+                field: "deploymentId",
+                code: "required",
+                message: "Validation failed for 'deploymentId': value is required"
+            )
+        }
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
+        }
+        guard container.contains(.deploymentTargetSlug) else {
+            throw SdkValidationError(
+                field: "deploymentTargetSlug",
+                code: "required",
+                message: "Validation failed for 'deploymentTargetSlug': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        deploymentId = try container.sdkDecodeRequired(.deploymentId)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        deploymentTargetSlug = try container.sdkDecodeRequired(.deploymentTargetSlug)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            GetVercelCiInvocationResponseInvocationSourceVariant1Type.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetVercelCiInvocationResponseInvocationSourceVariant1 {
+    init(
+        type: GetVercelCiInvocationResponseInvocationSourceVariant1Type,
+        deploymentId: String,
+        projectId: String,
+        deploymentTargetSlug: String
+    ) throws {
         (self.type, self.deploymentId) = (type, deploymentId)
         (self.projectId, self.deploymentTargetSlug) = (projectId, deploymentTargetSlug)
-            try sdkValidateRawEnum("type", self.type, GetVercelCiInvocationResponseInvocationSourceVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            GetVercelCiInvocationResponseInvocationSourceVariant1Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -281,24 +433,38 @@ public struct GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3eb
         case result
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.result) else {
-            throw SdkValidationError(field: "result", code: "required", message: "Validation failed for 'result': value is required")
-        }
-        self.result = try container.sdkDecodeRequired(.result)
-            try sdkValidateRawEnum("result", self.result, GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa8725236b7.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2 {
-    public init(result: GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa8725236b7) throws {
+public extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.result) else {
+            throw SdkValidationError(
+                field: "result",
+                code: "required",
+                message: "Validation failed for 'result': value is required"
+            )
+        }
+        result = try container.sdkDecodeRequired(.result)
+        try sdkValidateRawEnum(
+            "result",
+            result,
+            GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa8725236b7.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2 {
+    init(result: GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa8725236b7) throws {
         self.result = result
-            try sdkValidateRawEnum("result", self.result, GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa8725236b7.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "result",
+            self.result,
+            GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa8725236b7.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -309,24 +475,38 @@ public struct ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0:
         case result
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.result) else {
-            throw SdkValidationError(field: "result", code: "required", message: "Validation failed for 'result': value is required")
-        }
-        self.result = try container.sdkDecodeRequired(.result)
-            try sdkValidateRawEnum("result", self.result, ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0Result.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0 {
-    public init(result: ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0Result) throws {
+public extension ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.result) else {
+            throw SdkValidationError(
+                field: "result",
+                code: "required",
+                message: "Validation failed for 'result': value is required"
+            )
+        }
+        result = try container.sdkDecodeRequired(.result)
+        try sdkValidateRawEnum(
+            "result",
+            result,
+            ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0Result.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0 {
+    init(result: ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0Result) throws {
         self.result = result
-            try sdkValidateRawEnum("result", self.result, ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0Result.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "result",
+            self.result,
+            ListVercelCiJobRunsResponseJobRunsItemCompletedConclusionVariant0Result.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -337,24 +517,38 @@ public struct ListVercelCiInvocationsResponseInvocationsItemSourceVariant0: Coda
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant0 {
-    public init(type: ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type) throws {
+public extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant0 {
+    init(type: ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type) throws {
         self.type = type
-            try sdkValidateRawEnum("type", self.type, ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -367,28 +561,46 @@ public struct GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX62af
         case command
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX62afcd517d {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
-        }
-        guard container.contains(.command) else {
-            throw SdkValidationError(field: "command", code: "required", message: "Validation failed for 'command': value is required")
-        }
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.command = try container.sdkDecodeRequired(.command)
-            try sdkValidateRawEnum("kind", self.kind, GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX0044a5ef65.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX62afcd517d {
-    public init(kind: GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX0044a5ef65, command: String) throws {
+public extension GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX62afcd517d {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.kind) else {
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
+        }
+        guard container.contains(.command) else {
+            throw SdkValidationError(
+                field: "command",
+                code: "required",
+                message: "Validation failed for 'command': value is required"
+            )
+        }
+        kind = try container.sdkDecodeRequired(.kind)
+        command = try container.sdkDecodeRequired(.command)
+        try sdkValidateRawEnum(
+            "kind",
+            kind,
+            GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX0044a5ef65.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX62afcd517d {
+    init(kind: GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX0044a5ef65, command: String) throws {
         (self.kind, self.command) = (kind, command)
-            try sdkValidateRawEnum("kind", self.kind, GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX0044a5ef65.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "kind",
+            self.kind,
+            GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX0044a5ef65.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -399,5 +611,7 @@ public struct SearchVercelCiLogsResponseInvocationsItemTasksItemConclusionVarian
         case result
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

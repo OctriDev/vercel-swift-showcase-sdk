@@ -7,18 +7,18 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical microfrontends operation model declarations
+/// Canonical microfrontends operation model declarations
 extension GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX9fff3a1d39.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX3be9939fdd.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(value)
         }
         return nil
     }
@@ -28,8 +28,10 @@ extension GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(value): try container.encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -65,30 +67,46 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenC
         case plan
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.aud = try container.sdkDecodeRequired(.aud)
-        self.environment = try container.sdkDecodeRequired(.environment)
-        self.iss = try container.sdkDecodeRequired(.iss)
-        self.owner = try container.sdkDecodeRequired(.owner)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.project = try container.sdkDecodeRequired(.project)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.scope = try container.sdkDecodeRequired(.scope)
-        self.sub = try container.sdkDecodeRequired(.sub)
-        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        self.deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
-        self.mfeGroupIds = try container.sdkDecodeIfPresent(.mfeGroupIds)
-        self.plan = try container.sdkDecodeIfPresent(.plan)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims {
-    public init(aud: String, environment: String, iss: String, owner: String, ownerId: String, project: String, projectId: String, scope: String, sub: String, customEnvironmentId: String? = nil, deploymentId: String? = nil, mfeGroupIds: [String]? = nil, plan: String? = nil) {
+public extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        aud = try container.sdkDecodeRequired(.aud)
+        environment = try container.sdkDecodeRequired(.environment)
+        iss = try container.sdkDecodeRequired(.iss)
+        owner = try container.sdkDecodeRequired(.owner)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        project = try container.sdkDecodeRequired(.project)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        scope = try container.sdkDecodeRequired(.scope)
+        sub = try container.sdkDecodeRequired(.sub)
+        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
+        mfeGroupIds = try container.sdkDecodeIfPresent(.mfeGroupIds)
+        plan = try container.sdkDecodeIfPresent(.plan)
+    }
+}
+
+public extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims {
+    init(
+        aud: String,
+        environment: String,
+        iss: String,
+        owner: String,
+        ownerId: String,
+        project: String,
+        projectId: String,
+        scope: String,
+        sub: String,
+        customEnvironmentId: String? = nil,
+        deploymentId: String? = nil,
+        mfeGroupIds: [String]? = nil,
+        plan: String? = nil
+    ) {
         (self.aud, self.environment) = (aud, environment)
         (self.iss, self.owner) = (iss, owner)
         (self.ownerId, self.project) = (ownerId, project)
@@ -110,26 +128,40 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX3087
         case label
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX30872d17ed {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.to) else {
-            throw SdkValidationError(field: "to", code: "required", message: "Validation failed for 'to': value is required")
-        }
-        guard container.contains(.claims) else {
-            throw SdkValidationError(field: "claims", code: "required", message: "Validation failed for 'claims': value is required")
-        }
-        self.to = try container.sdkDecodeRequired(.to)
-        self.claims = try container.sdkDecodeRequired(.claims)
-        self.label = try container.sdkDecodeIfPresent(.label)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX30872d17ed {
-    public init(to: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX27fa38aaaa, claims: [String: [String]], label: String? = nil) {
+public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX30872d17ed {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.to) else {
+            throw SdkValidationError(
+                field: "to",
+                code: "required",
+                message: "Validation failed for 'to': value is required"
+            )
+        }
+        guard container.contains(.claims) else {
+            throw SdkValidationError(
+                field: "claims",
+                code: "required",
+                message: "Validation failed for 'claims': value is required"
+            )
+        }
+        to = try container.sdkDecodeRequired(.to)
+        claims = try container.sdkDecodeRequired(.claims)
+        label = try container.sdkDecodeIfPresent(.label)
+    }
+}
+
+public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX30872d17ed {
+    init(
+        to: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX27fa38aaaa,
+        claims: [String: [String]],
+        label: String? = nil
+    ) {
         (self.to, self.claims) = (to, claims)
         self.label = label
     }
@@ -173,35 +205,63 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemSecurity: Codable {
     }
 
     init() {
-        (self.attackModeActiveUntil, self.attackModeEnabled, self.attackModeUpdatedAt, self.botIdEnabled, self.firewallBypassIps) = (nil, nil, nil, nil, nil)
-        (self.firewallConfigVersion, self.firewallEnabled, self.firewallSeawallEnabled, self.firewallUpdatedAt, self.ja3Enabled) = (nil, nil, nil, nil, nil)
-        (self.ja4Enabled, self.logHeaders, self.managedRules, self.pageIntegrityEnabled, self.rulesets) = (nil, nil, nil, nil, nil)
+        (attackModeActiveUntil, attackModeEnabled, attackModeUpdatedAt, botIdEnabled, firewallBypassIps) = (
+            nil,
+            nil,
+            nil,
+            nil,
+            nil
+        )
+        (firewallConfigVersion, firewallEnabled, firewallSeawallEnabled, firewallUpdatedAt, ja3Enabled) = (
+            nil,
+            nil,
+            nil,
+            nil,
+            nil
+        )
+        (ja4Enabled, logHeaders, managedRules, pageIntegrityEnabled, rulesets) = (nil, nil, nil, nil, nil)
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemSecurity {
-    public init(from decoder: Decoder) throws {
+public extension GetMicrofrontendsInGroupResponseProjectsItemSecurity {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.attackModeActiveUntil = try container.sdkDecodeIfPresent(.attackModeActiveUntil)
-        self.attackModeEnabled = try container.sdkDecodeIfPresent(.attackModeEnabled)
-        self.attackModeUpdatedAt = try container.sdkDecodeIfPresent(.attackModeUpdatedAt)
-        self.botIdEnabled = try container.sdkDecodeIfPresent(.botIdEnabled)
-        self.firewallBypassIps = try container.sdkDecodeIfPresent(.firewallBypassIps)
-        self.firewallConfigVersion = try container.sdkDecodeIfPresent(.firewallConfigVersion)
-        self.firewallEnabled = try container.sdkDecodeIfPresent(.firewallEnabled)
-        self.firewallSeawallEnabled = try container.sdkDecodeIfPresent(.firewallSeawallEnabled)
-        self.firewallUpdatedAt = try container.sdkDecodeIfPresent(.firewallUpdatedAt)
-        self.ja3Enabled = try container.sdkDecodeIfPresent(.ja3Enabled)
-        self.ja4Enabled = try container.sdkDecodeIfPresent(.ja4Enabled)
-        self.logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
-        self.managedRules = try container.sdkDecodeIfPresent(.managedRules)
-        self.pageIntegrityEnabled = try container.sdkDecodeIfPresent(.pageIntegrityEnabled)
-        self.rulesets = try container.sdkDecodeIfPresent(.rulesets)
+        attackModeActiveUntil = try container.sdkDecodeIfPresent(.attackModeActiveUntil)
+        attackModeEnabled = try container.sdkDecodeIfPresent(.attackModeEnabled)
+        attackModeUpdatedAt = try container.sdkDecodeIfPresent(.attackModeUpdatedAt)
+        botIdEnabled = try container.sdkDecodeIfPresent(.botIdEnabled)
+        firewallBypassIps = try container.sdkDecodeIfPresent(.firewallBypassIps)
+        firewallConfigVersion = try container.sdkDecodeIfPresent(.firewallConfigVersion)
+        firewallEnabled = try container.sdkDecodeIfPresent(.firewallEnabled)
+        firewallSeawallEnabled = try container.sdkDecodeIfPresent(.firewallSeawallEnabled)
+        firewallUpdatedAt = try container.sdkDecodeIfPresent(.firewallUpdatedAt)
+        ja3Enabled = try container.sdkDecodeIfPresent(.ja3Enabled)
+        ja4Enabled = try container.sdkDecodeIfPresent(.ja4Enabled)
+        logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
+        managedRules = try container.sdkDecodeIfPresent(.managedRules)
+        pageIntegrityEnabled = try container.sdkDecodeIfPresent(.pageIntegrityEnabled)
+        rulesets = try container.sdkDecodeIfPresent(.rulesets)
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemSecurity {
-    public init(attackModeActiveUntil: Double? = nil, attackModeEnabled: Bool? = nil, attackModeUpdatedAt: Double? = nil, botIdEnabled: Bool? = nil, firewallBypassIps: [String]? = nil, firewallConfigVersion: Double? = nil, firewallEnabled: Bool? = nil, firewallSeawallEnabled: Bool? = nil, firewallUpdatedAt: Double? = nil, ja3Enabled: Bool? = nil, ja4Enabled: Bool? = nil, logHeaders: GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeaders? = nil, managedRules: GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRules? = nil, pageIntegrityEnabled: Bool? = nil, rulesets: [String: GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValue]? = nil) {
+public extension GetMicrofrontendsInGroupResponseProjectsItemSecurity {
+    init(
+        attackModeActiveUntil: Double? = nil,
+        attackModeEnabled: Bool? = nil,
+        attackModeUpdatedAt: Double? = nil,
+        botIdEnabled: Bool? = nil,
+        firewallBypassIps: [String]? = nil,
+        firewallConfigVersion: Double? = nil,
+        firewallEnabled: Bool? = nil,
+        firewallSeawallEnabled: Bool? = nil,
+        firewallUpdatedAt: Double? = nil,
+        ja3Enabled: Bool? = nil,
+        ja4Enabled: Bool? = nil,
+        logHeaders: GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeaders? = nil,
+        managedRules: GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRules? = nil,
+        pageIntegrityEnabled: Bool? = nil,
+        rulesets: [String: GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValue]? = nil
+    ) {
         self.init()
         (self.attackModeActiveUntil, self.attackModeEnabled) = (attackModeActiveUntil, attackModeEnabled)
         (self.attackModeUpdatedAt, self.botIdEnabled) = (attackModeUpdatedAt, botIdEnabled)
@@ -222,21 +282,27 @@ public struct GetMicrofrontendsConfigResponse: Codable {
         case config
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsConfigResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.config) else {
-            throw SdkValidationError(field: "config", code: "required", message: "Validation failed for 'config': value is required")
-        }
-        self.config = try container.sdkDecodeNullable(.config)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsConfigResponse {
-    public init(config: GetMicrofrontendsConfigResponseConfig?) {
+public extension GetMicrofrontendsConfigResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.config) else {
+            throw SdkValidationError(
+                field: "config",
+                code: "required",
+                message: "Validation failed for 'config': value is required"
+            )
+        }
+        config = try container.sdkDecodeNullable(.config)
+    }
+}
+
+public extension GetMicrofrontendsConfigResponse {
+    init(config: GetMicrofrontendsConfigResponseConfig?) {
         self.config = config
     }
 }
@@ -258,24 +324,35 @@ public struct GetMicrofrontendsConfigResponseConfig: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsConfigResponseConfig {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.applications) else {
-            throw SdkValidationError(field: "applications", code: "required", message: "Validation failed for 'applications': value is required")
-        }
-        self.applications = try container.sdkDecodeRequired(.applications)
-        self.schema = try container.sdkDecodeIfPresent(.schema)
-        self.options = try container.sdkDecodeIfPresent(.options)
-        self.version = try container.sdkDecodeIfPresent(.version)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsConfigResponseConfig {
-    public init(applications: [String: GetMicrofrontendsConfigResponseConfigApplicationsValue], schema: String? = nil, options: GetMicrofrontendsConfigResponseConfigOptions? = nil, version: GetMicrofrontendsConfigResponseConfigVersion? = nil) {
+public extension GetMicrofrontendsConfigResponseConfig {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.applications) else {
+            throw SdkValidationError(
+                field: "applications",
+                code: "required",
+                message: "Validation failed for 'applications': value is required"
+            )
+        }
+        applications = try container.sdkDecodeRequired(.applications)
+        schema = try container.sdkDecodeIfPresent(.schema)
+        options = try container.sdkDecodeIfPresent(.options)
+        version = try container.sdkDecodeIfPresent(.version)
+    }
+}
+
+public extension GetMicrofrontendsConfigResponseConfig {
+    init(
+        applications: [String: GetMicrofrontendsConfigResponseConfigApplicationsValue],
+        schema: String? = nil,
+        options: GetMicrofrontendsConfigResponseConfigOptions? = nil,
+        version: GetMicrofrontendsConfigResponseConfigVersion? = nil
+    ) {
         (self.applications, self.schema) = (applications, schema)
         (self.options, self.version) = (options, version)
     }
@@ -287,22 +364,32 @@ public indirect enum GetMicrofrontendsConfigForProjectResponseConfigApplications
 }
 
 extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         return nil
     }
 }
@@ -327,23 +414,35 @@ extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681ad
 }
 
 public indirect enum GetMicrofrontendsConfigResponseConfigApplicationsValue {
-    case getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(GetMicrofrontendsConfigResponseConfigApplicationsValueVariant0)
-    case getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(GetMicrofrontendsConfigResponseConfigApplicationsValueVariant1)
+    case getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(
+        GetMicrofrontendsConfigResponseConfigApplicationsValueVariant0
+    )
+    case getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(
+        GetMicrofrontendsConfigResponseConfigApplicationsValueVariant1
+    )
 }
 
 extension GetMicrofrontendsConfigResponseConfigApplicationsValue: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsConfigResponseConfigApplicationsValue")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetMicrofrontendsConfigResponseConfigApplicationsValue"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -366,12 +465,12 @@ extension GetMicrofrontendsConfigResponseConfigApplicationsValue {
         if let value = try? container.decode(
             GetMicrofrontendsConfigResponseConfigApplicationsValueVariant0.self
         ) {
-            return             .getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(value)
+            return .getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsConfigResponseConfigApplicationsValueVariant1.self
         ) {
-            return             .getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(value)
+            return .getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(value)
         }
         return nil
     }
@@ -381,8 +480,10 @@ extension GetMicrofrontendsConfigResponseConfigApplicationsValue {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(value): try container.encode(value); return true
-        case let .getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(value): try container.encode(value); return true
+        case let .getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -402,26 +503,27 @@ public struct GetMicrofrontendsConfigForProjectResponseConfigOptions: Codable {
     }
 
     init() {
-        (self.disableOverrides, self.localProxyPort) = (nil, nil)
+        (disableOverrides, localProxyPort) = (nil, nil)
     }
 }
 
-extension GetMicrofrontendsConfigForProjectResponseConfigOptions {
-    public init(from decoder: Decoder) throws {
+public extension GetMicrofrontendsConfigForProjectResponseConfigOptions {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.disableOverrides = try container.sdkDecodeIfPresent(.disableOverrides)
-        self.localProxyPort = try container.sdkDecodeIfPresent(.localProxyPort)
+        disableOverrides = try container.sdkDecodeIfPresent(.disableOverrides)
+        localProxyPort = try container.sdkDecodeIfPresent(.localProxyPort)
     }
 }
 
-extension GetMicrofrontendsConfigForProjectResponseConfigOptions {
-    public init(disableOverrides: Bool? = nil, localProxyPort: Double? = nil) {
+public extension GetMicrofrontendsConfigForProjectResponseConfigOptions {
+    init(disableOverrides: Bool? = nil, localProxyPort: Double? = nil) {
         self.init()
         (self.disableOverrides, self.localProxyPort) = (disableOverrides, localProxyPort)
     }
 }
 
-public typealias GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesList = [GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesItem]
+public typealias GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesList =
+    [GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesItem]
 
 public struct GetMicrofrontendsInGroupResponseProjectsItemTracing: Codable {
     public var domains: String?
@@ -435,21 +537,25 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTracing: Codable {
     }
 
     init() {
-        (self.domains, self.ignorePaths, self.samplingRules) = (nil, nil, nil)
+        (domains, ignorePaths, samplingRules) = (nil, nil, nil)
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemTracing {
-    public init(from decoder: Decoder) throws {
+public extension GetMicrofrontendsInGroupResponseProjectsItemTracing {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.domains = try container.sdkDecodeIfPresent(.domains)
-        self.ignorePaths = try container.sdkDecodeIfPresent(.ignorePaths)
-        self.samplingRules = try container.sdkDecodeIfPresent(.samplingRules)
+        domains = try container.sdkDecodeIfPresent(.domains)
+        ignorePaths = try container.sdkDecodeIfPresent(.ignorePaths)
+        samplingRules = try container.sdkDecodeIfPresent(.samplingRules)
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemTracing {
-    public init(domains: String? = nil, ignorePaths: [String]? = nil, samplingRules: GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesList? = nil) {
+public extension GetMicrofrontendsInGroupResponseProjectsItemTracing {
+    init(
+        domains: String? = nil,
+        ignorePaths: [String]? = nil,
+        samplingRules: GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesList? = nil
+    ) {
         self.init()
         (self.domains, self.ignorePaths) = (domains, ignorePaths)
         self.samplingRules = samplingRules
@@ -477,5 +583,7 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsI
         case dc
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

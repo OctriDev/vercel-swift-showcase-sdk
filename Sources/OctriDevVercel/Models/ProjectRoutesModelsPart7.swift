@@ -3,18 +3,24 @@
 
 import Foundation
 
-// ProjectRoutes domain models
-public struct EditRouteResponseRouteRouteTransformsItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+/// ProjectRoutes domain models
+public struct EditRouteResponseRouteRouteTransformsItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let requestHeaders = EditRouteResponseRouteRouteTransformsItemVariant0Type(rawValue: "request.headers")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let requestHeaders =
+        EditRouteResponseRouteRouteTransformsItemVariant0Type(rawValue: "request.headers")
     public static let requestQuery = EditRouteResponseRouteRouteTransformsItemVariant0Type(rawValue: "request.query")
-    public static let responseHeaders = EditRouteResponseRouteRouteTransformsItemVariant0Type(rawValue: "response.headers")
+    public static let responseHeaders =
+        EditRouteResponseRouteRouteTransformsItemVariant0Type(rawValue: "response.headers")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

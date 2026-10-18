@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ApiKeys domain models
+/// ApiKeys domain models
 /// Information about the newly created API key.
 public struct APIKey: Codable {
     /// The unique identifier of the API key.
@@ -68,32 +68,50 @@ public struct APIKey: Codable {
         case metadata
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension APIKey {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.partialKey = try container.sdkDecodeRequired(.partialKey)
-        self.teamId = try container.sdkDecodeRequired(.teamId)
-        self.purpose = try container.sdkDecodeRequired(.purpose)
-        self.projectId = try container.sdkDecodeNullable(.projectId)
-        self.expiresAt = try container.sdkDecodeNullable(.expiresAt)
-        self.activeAt = try container.sdkDecodeRequired(.activeAt)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.createdBy = try container.sdkDecodeRequired(.createdBy)
-        self.leakedAt = try container.sdkDecodeNullable(.leakedAt)
-        self.leakedUrl = try container.sdkDecodeNullable(.leakedUrl)
-        self.createdByAppId = try container.sdkDecodeNullable(.createdByAppId)
-        self.quota = try container.sdkDecodeIfPresent(.quota)
-        self.metadata = try container.sdkDecodeIfPresent(.metadata)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension APIKey {
-    public init(id: String, name: String, partialKey: String, teamId: String, purpose: String, projectId: String?, expiresAt: Double?, activeAt: Double, createdAt: Double, createdBy: String, leakedAt: Double?, leakedUrl: String?, createdByAppId: String?, quota: APIKeyQuota? = nil, metadata: [String: JSONValue]? = nil) {
+public extension APIKey {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        partialKey = try container.sdkDecodeRequired(.partialKey)
+        teamId = try container.sdkDecodeRequired(.teamId)
+        purpose = try container.sdkDecodeRequired(.purpose)
+        projectId = try container.sdkDecodeNullable(.projectId)
+        expiresAt = try container.sdkDecodeNullable(.expiresAt)
+        activeAt = try container.sdkDecodeRequired(.activeAt)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        createdBy = try container.sdkDecodeRequired(.createdBy)
+        leakedAt = try container.sdkDecodeNullable(.leakedAt)
+        leakedUrl = try container.sdkDecodeNullable(.leakedUrl)
+        createdByAppId = try container.sdkDecodeNullable(.createdByAppId)
+        quota = try container.sdkDecodeIfPresent(.quota)
+        metadata = try container.sdkDecodeIfPresent(.metadata)
+    }
+}
+
+public extension APIKey {
+    init(
+        id: String,
+        name: String,
+        partialKey: String,
+        teamId: String,
+        purpose: String,
+        projectId: String?,
+        expiresAt: Double?,
+        activeAt: Double,
+        createdAt: Double,
+        createdBy: String,
+        leakedAt: Double?,
+        leakedUrl: String?,
+        createdByAppId: String?,
+        quota: APIKeyQuota? = nil,
+        metadata: [String: JSONValue]? = nil
+    ) {
         (self.id, self.name) = (id, name)
         (self.partialKey, self.teamId) = (partialKey, teamId)
         (self.purpose, self.projectId) = (purpose, projectId)
@@ -145,28 +163,42 @@ public struct APIKeyQuota: Codable {
         case alertThresholds
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension APIKeyQuota {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.quotaEntityId = try container.sdkDecodeRequired(.quotaEntityId)
-        self.limitAmount = try container.sdkDecodeRequired(.limitAmount)
-        self.currentSpend = try container.sdkDecodeRequired(.currentSpend)
-        self.currentByokSpend = try container.sdkDecodeRequired(.currentByokSpend)
-        self.includeByokInQuota = try container.sdkDecodeRequired(.includeByokInQuota)
-        self.refreshPeriod = try container.sdkDecodeRequired(.refreshPeriod)
-        self.active = try container.sdkDecodeRequired(.active)
-        self.archived = try container.sdkDecodeRequired(.archived)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.alertThresholds = try container.sdkDecodeIfPresent(.alertThresholds)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension APIKeyQuota {
-    public init(quotaEntityId: String, limitAmount: Double, currentSpend: Double, currentByokSpend: Double, includeByokInQuota: Bool, refreshPeriod: String, active: Bool, archived: Bool, createdAt: Double, updatedAt: Double, alertThresholds: [Double]? = nil) {
+public extension APIKeyQuota {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        quotaEntityId = try container.sdkDecodeRequired(.quotaEntityId)
+        limitAmount = try container.sdkDecodeRequired(.limitAmount)
+        currentSpend = try container.sdkDecodeRequired(.currentSpend)
+        currentByokSpend = try container.sdkDecodeRequired(.currentByokSpend)
+        includeByokInQuota = try container.sdkDecodeRequired(.includeByokInQuota)
+        refreshPeriod = try container.sdkDecodeRequired(.refreshPeriod)
+        active = try container.sdkDecodeRequired(.active)
+        archived = try container.sdkDecodeRequired(.archived)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        alertThresholds = try container.sdkDecodeIfPresent(.alertThresholds)
+    }
+}
+
+public extension APIKeyQuota {
+    init(
+        quotaEntityId: String,
+        limitAmount: Double,
+        currentSpend: Double,
+        currentByokSpend: Double,
+        includeByokInQuota: Bool,
+        refreshPeriod: String,
+        active: Bool,
+        archived: Bool,
+        createdAt: Double,
+        updatedAt: Double,
+        alertThresholds: [Double]? = nil
+    ) {
         (self.quotaEntityId, self.limitAmount) = (quotaEntityId, limitAmount)
         (self.currentSpend, self.currentByokSpend) = (currentSpend, currentByokSpend)
         (self.includeByokInQuota, self.refreshPeriod) = (includeByokInQuota, refreshPeriod)

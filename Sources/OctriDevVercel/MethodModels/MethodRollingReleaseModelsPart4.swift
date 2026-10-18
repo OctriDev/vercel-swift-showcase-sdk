@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical rollingRelease operation model declarations
+/// Canonical rollingRelease operation model declarations
 /// Project-level rolling release configuration that defines how deployments should be gradually rolled out
 public struct GetRollingReleaseConfigResponseRollingRelease: Codable {
     /// The environment that the release targets, currently only supports production. Adding in case we want to
@@ -31,24 +31,35 @@ public struct GetRollingReleaseConfigResponseRollingRelease: Codable {
         case stages
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRollingReleaseConfigResponseRollingRelease {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.target) else {
-            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
-        }
-        self.target = try container.sdkDecodeRequired(.target)
-        self.canaryResponseHeader = try container.sdkDecodeIfPresent(.canaryResponseHeader)
-        self.gate = try container.sdkDecodeIfPresent(.gate)
-        self.stages = try container.sdkDecodeIfPresent(.stages)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRollingReleaseConfigResponseRollingRelease {
-    public init(target: String, canaryResponseHeader: Bool? = nil, gate: GetRollingReleaseConfigResponseRollingReleaseGate? = nil, stages: [GetRollingReleaseConfigResponseRollingReleaseStagesItem]? = nil) {
+public extension GetRollingReleaseConfigResponseRollingRelease {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.target) else {
+            throw SdkValidationError(
+                field: "target",
+                code: "required",
+                message: "Validation failed for 'target': value is required"
+            )
+        }
+        target = try container.sdkDecodeRequired(.target)
+        canaryResponseHeader = try container.sdkDecodeIfPresent(.canaryResponseHeader)
+        gate = try container.sdkDecodeIfPresent(.gate)
+        stages = try container.sdkDecodeIfPresent(.stages)
+    }
+}
+
+public extension GetRollingReleaseConfigResponseRollingRelease {
+    init(
+        target: String,
+        canaryResponseHeader: Bool? = nil,
+        gate: GetRollingReleaseConfigResponseRollingReleaseGate? = nil,
+        stages: [GetRollingReleaseConfigResponseRollingReleaseStagesItem]? = nil
+    ) {
         (self.target, self.canaryResponseHeader) = (target, canaryResponseHeader)
         (self.gate, self.stages) = (gate, stages)
     }
@@ -79,38 +90,67 @@ public struct StartRollingReleaseResponseRollingReleaseActiveStage: Codable {
         case linearShift
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension StartRollingReleaseResponseRollingReleaseActiveStage {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.duration) else {
-            throw SdkValidationError(field: "duration", code: "required", message: "Validation failed for 'duration': value is required")
-        }
-        guard container.contains(.index) else {
-            throw SdkValidationError(field: "index", code: "required", message: "Validation failed for 'index': value is required")
-        }
-        guard container.contains(.isFinalStage) else {
-            throw SdkValidationError(field: "isFinalStage", code: "required", message: "Validation failed for 'isFinalStage': value is required")
-        }
-        guard container.contains(.requireApproval) else {
-            throw SdkValidationError(field: "requireApproval", code: "required", message: "Validation failed for 'requireApproval': value is required")
-        }
-        guard container.contains(.targetPercentage) else {
-            throw SdkValidationError(field: "targetPercentage", code: "required", message: "Validation failed for 'targetPercentage': value is required")
-        }
-        self.duration = try container.sdkDecodeNullable(.duration)
-        self.index = try container.sdkDecodeRequired(.index)
-        self.isFinalStage = try container.sdkDecodeRequired(.isFinalStage)
-        self.requireApproval = try container.sdkDecodeRequired(.requireApproval)
-        self.targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
-        self.linearShift = try container.sdkDecodeIfPresent(.linearShift)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension StartRollingReleaseResponseRollingReleaseActiveStage {
-    public init(duration: Double?, index: Double, isFinalStage: Bool, requireApproval: Bool, targetPercentage: Double, linearShift: Bool? = nil) {
+public extension StartRollingReleaseResponseRollingReleaseActiveStage {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.duration) else {
+            throw SdkValidationError(
+                field: "duration",
+                code: "required",
+                message: "Validation failed for 'duration': value is required"
+            )
+        }
+        guard container.contains(.index) else {
+            throw SdkValidationError(
+                field: "index",
+                code: "required",
+                message: "Validation failed for 'index': value is required"
+            )
+        }
+        guard container.contains(.isFinalStage) else {
+            throw SdkValidationError(
+                field: "isFinalStage",
+                code: "required",
+                message: "Validation failed for 'isFinalStage': value is required"
+            )
+        }
+        guard container.contains(.requireApproval) else {
+            throw SdkValidationError(
+                field: "requireApproval",
+                code: "required",
+                message: "Validation failed for 'requireApproval': value is required"
+            )
+        }
+        guard container.contains(.targetPercentage) else {
+            throw SdkValidationError(
+                field: "targetPercentage",
+                code: "required",
+                message: "Validation failed for 'targetPercentage': value is required"
+            )
+        }
+        duration = try container.sdkDecodeNullable(.duration)
+        index = try container.sdkDecodeRequired(.index)
+        isFinalStage = try container.sdkDecodeRequired(.isFinalStage)
+        requireApproval = try container.sdkDecodeRequired(.requireApproval)
+        targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
+        linearShift = try container.sdkDecodeIfPresent(.linearShift)
+    }
+}
+
+public extension StartRollingReleaseResponseRollingReleaseActiveStage {
+    init(
+        duration: Double?,
+        index: Double,
+        isFinalStage: Bool,
+        requireApproval: Bool,
+        targetPercentage: Double,
+        linearShift: Bool? = nil
+    ) {
         (self.duration, self.index) = (duration, index)
         (self.isFinalStage, self.requireApproval) = (isFinalStage, requireApproval)
         (self.targetPercentage, self.linearShift) = (targetPercentage, linearShift)
@@ -127,21 +167,27 @@ public struct StartRollingReleaseResponse: Codable {
         case rollingRelease
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension StartRollingReleaseResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.rollingRelease) else {
-            throw SdkValidationError(field: "rollingRelease", code: "required", message: "Validation failed for 'rollingRelease': value is required")
-        }
-        self.rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension StartRollingReleaseResponse {
-    public init(rollingRelease: StartRollingReleaseResponseRollingRelease?) {
+public extension StartRollingReleaseResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.rollingRelease) else {
+            throw SdkValidationError(
+                field: "rollingRelease",
+                code: "required",
+                message: "Validation failed for 'rollingRelease': value is required"
+            )
+        }
+        rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+    }
+}
+
+public extension StartRollingReleaseResponse {
+    init(rollingRelease: StartRollingReleaseResponseRollingRelease?) {
         self.rollingRelease = rollingRelease
     }
 }
@@ -174,35 +220,60 @@ public struct GetRollingReleaseConfigResponseRollingReleaseGate: Codable {
         case windowSize
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRollingReleaseConfigResponseRollingReleaseGate {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.action) else {
-            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
-        }
-        guard container.contains(.checks) else {
-            throw SdkValidationError(field: "checks", code: "required", message: "Validation failed for 'checks': value is required")
-        }
-        guard container.contains(.dryRun) else {
-            throw SdkValidationError(field: "dryRun", code: "required", message: "Validation failed for 'dryRun': value is required")
-        }
-        guard container.contains(.enabled) else {
-            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
-        }
-        self.action = try container.sdkDecodeRequired(.action)
-        self.checks = try container.sdkDecodeRequired(.checks)
-        self.dryRun = try container.sdkDecodeRequired(.dryRun)
-        self.enabled = try container.sdkDecodeRequired(.enabled)
-        self.failureThreshold = try container.sdkDecodeIfPresent(.failureThreshold)
-        self.windowSize = try container.sdkDecodeIfPresent(.windowSize)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRollingReleaseConfigResponseRollingReleaseGate {
-    public init(action: GetRollingReleaseConfigResponseRollingReleaseGateAction, checks: [GetRollingReleaseConfigResponseRollingReleaseGateChecksItem], dryRun: Bool, enabled: Bool, failureThreshold: Double? = nil, windowSize: Double? = nil) {
+public extension GetRollingReleaseConfigResponseRollingReleaseGate {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.action) else {
+            throw SdkValidationError(
+                field: "action",
+                code: "required",
+                message: "Validation failed for 'action': value is required"
+            )
+        }
+        guard container.contains(.checks) else {
+            throw SdkValidationError(
+                field: "checks",
+                code: "required",
+                message: "Validation failed for 'checks': value is required"
+            )
+        }
+        guard container.contains(.dryRun) else {
+            throw SdkValidationError(
+                field: "dryRun",
+                code: "required",
+                message: "Validation failed for 'dryRun': value is required"
+            )
+        }
+        guard container.contains(.enabled) else {
+            throw SdkValidationError(
+                field: "enabled",
+                code: "required",
+                message: "Validation failed for 'enabled': value is required"
+            )
+        }
+        action = try container.sdkDecodeRequired(.action)
+        checks = try container.sdkDecodeRequired(.checks)
+        dryRun = try container.sdkDecodeRequired(.dryRun)
+        enabled = try container.sdkDecodeRequired(.enabled)
+        failureThreshold = try container.sdkDecodeIfPresent(.failureThreshold)
+        windowSize = try container.sdkDecodeIfPresent(.windowSize)
+    }
+}
+
+public extension GetRollingReleaseConfigResponseRollingReleaseGate {
+    init(
+        action: GetRollingReleaseConfigResponseRollingReleaseGateAction,
+        checks: [GetRollingReleaseConfigResponseRollingReleaseGateChecksItem],
+        dryRun: Bool,
+        enabled: Bool,
+        failureThreshold: Double? = nil,
+        windowSize: Double? = nil
+    ) {
         (self.action, self.checks) = (action, checks)
         (self.dryRun, self.enabled) = (dryRun, enabled)
         (self.failureThreshold, self.windowSize) = (failureThreshold, windowSize)
@@ -234,38 +305,67 @@ public struct ApproveRollingReleaseStageResponseRollingReleaseStagesItem: Codabl
         case linearShift
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ApproveRollingReleaseStageResponseRollingReleaseStagesItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.duration) else {
-            throw SdkValidationError(field: "duration", code: "required", message: "Validation failed for 'duration': value is required")
-        }
-        guard container.contains(.index) else {
-            throw SdkValidationError(field: "index", code: "required", message: "Validation failed for 'index': value is required")
-        }
-        guard container.contains(.isFinalStage) else {
-            throw SdkValidationError(field: "isFinalStage", code: "required", message: "Validation failed for 'isFinalStage': value is required")
-        }
-        guard container.contains(.requireApproval) else {
-            throw SdkValidationError(field: "requireApproval", code: "required", message: "Validation failed for 'requireApproval': value is required")
-        }
-        guard container.contains(.targetPercentage) else {
-            throw SdkValidationError(field: "targetPercentage", code: "required", message: "Validation failed for 'targetPercentage': value is required")
-        }
-        self.duration = try container.sdkDecodeNullable(.duration)
-        self.index = try container.sdkDecodeRequired(.index)
-        self.isFinalStage = try container.sdkDecodeRequired(.isFinalStage)
-        self.requireApproval = try container.sdkDecodeRequired(.requireApproval)
-        self.targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
-        self.linearShift = try container.sdkDecodeIfPresent(.linearShift)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ApproveRollingReleaseStageResponseRollingReleaseStagesItem {
-    public init(duration: Double?, index: Double, isFinalStage: Bool, requireApproval: Bool, targetPercentage: Double, linearShift: Bool? = nil) {
+public extension ApproveRollingReleaseStageResponseRollingReleaseStagesItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.duration) else {
+            throw SdkValidationError(
+                field: "duration",
+                code: "required",
+                message: "Validation failed for 'duration': value is required"
+            )
+        }
+        guard container.contains(.index) else {
+            throw SdkValidationError(
+                field: "index",
+                code: "required",
+                message: "Validation failed for 'index': value is required"
+            )
+        }
+        guard container.contains(.isFinalStage) else {
+            throw SdkValidationError(
+                field: "isFinalStage",
+                code: "required",
+                message: "Validation failed for 'isFinalStage': value is required"
+            )
+        }
+        guard container.contains(.requireApproval) else {
+            throw SdkValidationError(
+                field: "requireApproval",
+                code: "required",
+                message: "Validation failed for 'requireApproval': value is required"
+            )
+        }
+        guard container.contains(.targetPercentage) else {
+            throw SdkValidationError(
+                field: "targetPercentage",
+                code: "required",
+                message: "Validation failed for 'targetPercentage': value is required"
+            )
+        }
+        duration = try container.sdkDecodeNullable(.duration)
+        index = try container.sdkDecodeRequired(.index)
+        isFinalStage = try container.sdkDecodeRequired(.isFinalStage)
+        requireApproval = try container.sdkDecodeRequired(.requireApproval)
+        targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
+        linearShift = try container.sdkDecodeIfPresent(.linearShift)
+    }
+}
+
+public extension ApproveRollingReleaseStageResponseRollingReleaseStagesItem {
+    init(
+        duration: Double?,
+        index: Double,
+        isFinalStage: Bool,
+        requireApproval: Bool,
+        targetPercentage: Double,
+        linearShift: Bool? = nil
+    ) {
         (self.duration, self.index) = (duration, index)
         (self.isFinalStage, self.requireApproval) = (isFinalStage, requireApproval)
         (self.targetPercentage, self.linearShift) = (targetPercentage, linearShift)
@@ -310,40 +410,71 @@ public struct CompleteRollingReleaseResponseRollingReleaseCurrentDeployment: Cod
         case target
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CompleteRollingReleaseResponseRollingReleaseCurrentDeployment {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.readyState) else {
-            throw SdkValidationError(field: "readyState", code: "required", message: "Validation failed for 'readyState': value is required")
-        }
-        guard container.contains(.url) else {
-            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.readyState = try container.sdkDecodeRequired(.readyState)
-        self.url = try container.sdkDecodeRequired(.url)
-        self.readyStateAt = try container.sdkDecodeIfPresent(.readyStateAt)
-        self.source = try container.sdkDecodeIfPresent(.source)
-        self.target = try container.sdkDecodeIfPresent(.target)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CompleteRollingReleaseResponseRollingReleaseCurrentDeployment {
-    public init(createdAt: Double, id: String, name: String, readyState: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState, url: String, readyStateAt: Double? = nil, source: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentSource? = nil, target: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentTarget? = nil) {
+public extension CompleteRollingReleaseResponseRollingReleaseCurrentDeployment {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.readyState) else {
+            throw SdkValidationError(
+                field: "readyState",
+                code: "required",
+                message: "Validation failed for 'readyState': value is required"
+            )
+        }
+        guard container.contains(.url) else {
+            throw SdkValidationError(
+                field: "url",
+                code: "required",
+                message: "Validation failed for 'url': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        readyState = try container.sdkDecodeRequired(.readyState)
+        url = try container.sdkDecodeRequired(.url)
+        readyStateAt = try container.sdkDecodeIfPresent(.readyStateAt)
+        source = try container.sdkDecodeIfPresent(.source)
+        target = try container.sdkDecodeIfPresent(.target)
+    }
+}
+
+public extension CompleteRollingReleaseResponseRollingReleaseCurrentDeployment {
+    init(
+        createdAt: Double,
+        id: String,
+        name: String,
+        readyState: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState,
+        url: String,
+        readyStateAt: Double? = nil,
+        source: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentSource? = nil,
+        target: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentTarget? = nil
+    ) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.name, self.readyState) = (name, readyState)
         (self.url, self.readyStateAt) = (url, readyStateAt)
@@ -412,29 +543,44 @@ public struct CompleteRollingReleaseResponseRollingRelease: Codable {
         case currentCanaryPercentage
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CompleteRollingReleaseResponseRollingRelease {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.activeStage = try container.sdkDecodeNullable(.activeStage)
-        self.advancementType = try container.sdkDecodeRequired(.advancementType)
-        self.canaryDeployment = try container.sdkDecodeNullable(.canaryDeployment)
-        self.currentDeployment = try container.sdkDecodeNullable(.currentDeployment)
-        self.nextStage = try container.sdkDecodeNullable(.nextStage)
-        self.queuedDeploymentId = try container.sdkDecodeNullable(.queuedDeploymentId)
-        self.stages = try container.sdkDecodeRequired(.stages)
-        self.startedAt = try container.sdkDecodeRequired(.startedAt)
-        self.state = try container.sdkDecodeRequired(.state)
-        self.substate = try container.sdkDecodeNullable(.substate)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.currentCanaryPercentage = try container.sdkDecodeIfPresent(.currentCanaryPercentage)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CompleteRollingReleaseResponseRollingRelease {
-    public init(activeStage: CompleteRollingReleaseResponseRollingReleaseActiveStage?, advancementType: CompleteRollingReleaseResponseRollingReleaseAdvancementType, canaryDeployment: CompleteRollingReleaseResponseRollingReleaseCanaryDeployment?, currentDeployment: CompleteRollingReleaseResponseRollingReleaseCurrentDeployment?, nextStage: CompleteRollingReleaseResponseRollingReleaseNextStage?, queuedDeploymentId: String?, stages: [CompleteRollingReleaseResponseRollingReleaseStagesItem], startedAt: Double, state: CompleteRollingReleaseResponseRollingReleaseState, substate: CompleteRollingReleaseResponseRollingReleaseSubstate?, updatedAt: Double, currentCanaryPercentage: Double? = nil) {
+public extension CompleteRollingReleaseResponseRollingRelease {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        activeStage = try container.sdkDecodeNullable(.activeStage)
+        advancementType = try container.sdkDecodeRequired(.advancementType)
+        canaryDeployment = try container.sdkDecodeNullable(.canaryDeployment)
+        currentDeployment = try container.sdkDecodeNullable(.currentDeployment)
+        nextStage = try container.sdkDecodeNullable(.nextStage)
+        queuedDeploymentId = try container.sdkDecodeNullable(.queuedDeploymentId)
+        stages = try container.sdkDecodeRequired(.stages)
+        startedAt = try container.sdkDecodeRequired(.startedAt)
+        state = try container.sdkDecodeRequired(.state)
+        substate = try container.sdkDecodeNullable(.substate)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        currentCanaryPercentage = try container.sdkDecodeIfPresent(.currentCanaryPercentage)
+    }
+}
+
+public extension CompleteRollingReleaseResponseRollingRelease {
+    init(
+        activeStage: CompleteRollingReleaseResponseRollingReleaseActiveStage?,
+        advancementType: CompleteRollingReleaseResponseRollingReleaseAdvancementType,
+        canaryDeployment: CompleteRollingReleaseResponseRollingReleaseCanaryDeployment?,
+        currentDeployment: CompleteRollingReleaseResponseRollingReleaseCurrentDeployment?,
+        nextStage: CompleteRollingReleaseResponseRollingReleaseNextStage?,
+        queuedDeploymentId: String?,
+        stages: [CompleteRollingReleaseResponseRollingReleaseStagesItem],
+        startedAt: Double,
+        state: CompleteRollingReleaseResponseRollingReleaseState,
+        substate: CompleteRollingReleaseResponseRollingReleaseSubstate?,
+        updatedAt: Double,
+        currentCanaryPercentage: Double? = nil
+    ) {
         (self.activeStage, self.advancementType) = (activeStage, advancementType)
         (self.canaryDeployment, self.currentDeployment) = (canaryDeployment, currentDeployment)
         (self.nextStage, self.queuedDeploymentId) = (nextStage, queuedDeploymentId)
@@ -454,21 +600,27 @@ public struct ApproveRollingReleaseStageResponse: Codable {
         case rollingRelease
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ApproveRollingReleaseStageResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.rollingRelease) else {
-            throw SdkValidationError(field: "rollingRelease", code: "required", message: "Validation failed for 'rollingRelease': value is required")
-        }
-        self.rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ApproveRollingReleaseStageResponse {
-    public init(rollingRelease: ApproveRollingReleaseStageResponseRollingRelease?) {
+public extension ApproveRollingReleaseStageResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.rollingRelease) else {
+            throw SdkValidationError(
+                field: "rollingRelease",
+                code: "required",
+                message: "Validation failed for 'rollingRelease': value is required"
+            )
+        }
+        rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+    }
+}
+
+public extension ApproveRollingReleaseStageResponse {
+    init(rollingRelease: ApproveRollingReleaseStageResponseRollingRelease?) {
         self.rollingRelease = rollingRelease
     }
 }

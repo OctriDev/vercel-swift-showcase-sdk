@@ -7,20 +7,28 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical sandboxes operation model declarations
+/// Canonical sandboxes operation model declarations
 extension RunSessionCommandResponseX26a0914c: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RunSessionCommandResponseX26a0914c")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for RunSessionCommandResponseX26a0914c"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -44,10 +52,22 @@ extension RunSessionCommandResponseX26a0914c {
 
 extension RunSessionCommandResponseX26a0914c {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(RunSessionCommandResponseVariant0.self) { return .runSessionCommandResponseVariant0(value) }
-        if let value = try? container.decode(RunSessionCommandResponseVariant1.self) { return .runSessionCommandResponseVariant1(value) }
-        if let value = try? container.decode(RunSessionCommandResponseVariant2.self) { return .runSessionCommandResponseVariant2(value) }
-        if let value = try? container.decode(RunSessionCommandResponseVariant3.self) { return .runSessionCommandResponseVariant3(value) }
+        if let value = try? container
+            .decode(RunSessionCommandResponseVariant0.self) {
+            return .runSessionCommandResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(RunSessionCommandResponseVariant1.self) {
+            return .runSessionCommandResponseVariant1(value)
+        }
+        if let value = try? container
+            .decode(RunSessionCommandResponseVariant2.self) {
+            return .runSessionCommandResponseVariant2(value)
+        }
+        if let value = try? container
+            .decode(RunSessionCommandResponseVariant3.self) {
+            return .runSessionCommandResponseVariant3(value)
+        }
         return nil
     }
 }
@@ -70,22 +90,32 @@ public indirect enum CreateSandboxesV3RequestBodySnapshotExpiration {
 }
 
 extension CreateSandboxesV3RequestBodySnapshotExpiration: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesV3RequestBodySnapshotExpiration")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateSandboxesV3RequestBodySnapshotExpiration"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateSandboxesV3RequestBodySnapshotExpiration {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(JSONValue.self) { return .jsonValue(value) }
-        if let value = try? container.decode(Int.self) { return .intValue(value) }
+        if let value = try? container.decode(JSONValue.self) {
+            return .jsonValue(value)
+        }
+        if let value = try? container.decode(Int.self) {
+            return .intValue(value)
+        }
         return nil
     }
 }
@@ -121,20 +151,23 @@ public struct UpdateSessionNetworkPolicyRequestBodyVariant0InjectionRulesItX66b6
     }
 
     init() {
-        (self.key, self.value) = (nil, nil)
+        (key, value) = (nil, nil)
     }
 }
 
-extension UpdateSessionNetworkPolicyRequestBodyVariant0InjectionRulesItX66b61fc967 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSessionNetworkPolicyRequestBodyVariant0InjectionRulesItX66b61fc967 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.key = try container.sdkDecodeIfPresent(.key)
-        self.value = try container.sdkDecodeIfPresent(.value)
+        key = try container.sdkDecodeIfPresent(.key)
+        value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-extension UpdateSessionNetworkPolicyRequestBodyVariant0InjectionRulesItX66b61fc967 {
-    public init(key: UpdateSessionNetworkPolicyRequestBodyVariant0InjectionRulesItX48d4868333? = nil, value: UpdateSessionNetworkPolicyRequestBodyVariant0InjectionRulesItXd9fc44e155? = nil) {
+public extension UpdateSessionNetworkPolicyRequestBodyVariant0InjectionRulesItX66b61fc967 {
+    init(
+        key: UpdateSessionNetworkPolicyRequestBodyVariant0InjectionRulesItX48d4868333? = nil,
+        value: UpdateSessionNetworkPolicyRequestBodyVariant0InjectionRulesItXd9fc44e155? = nil
+    ) {
         self.init()
         (self.key, self.value) = (key, value)
     }
@@ -146,22 +179,32 @@ public indirect enum ListNamedSandboxesParameterX9cfadc29 {
 }
 
 extension ListNamedSandboxesParameterX9cfadc29: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListNamedSandboxesParameterX9cfadc29")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ListNamedSandboxesParameterX9cfadc29"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ListNamedSandboxesParameterX9cfadc29 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode([String].self) { return .stringList(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode([String].self) {
+            return .stringList(value)
+        }
         return nil
     }
 }
@@ -182,22 +225,32 @@ public indirect enum CreateSandboxesV2RequestBodyKeepLastSnapshotsExpiration {
 }
 
 extension CreateSandboxesV2RequestBodyKeepLastSnapshotsExpiration: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesV2RequestBodyKeepLastSnapshotsExpiration")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateSandboxesV2RequestBodyKeepLastSnapshotsExpiration"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateSandboxesV2RequestBodyKeepLastSnapshotsExpiration {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(JSONValue.self) { return .jsonValue(value) }
-        if let value = try? container.decode(Int.self) { return .intValue(value) }
+        if let value = try? container.decode(JSONValue.self) {
+            return .jsonValue(value)
+        }
+        if let value = try? container.decode(Int.self) {
+            return .intValue(value)
+        }
         return nil
     }
 }
@@ -229,21 +282,27 @@ public struct GetOrCreateDriveResponseX216d3506: Codable {
         case drive
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetOrCreateDriveResponseX216d3506 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.drive) else {
-            throw SdkValidationError(field: "drive", code: "required", message: "Validation failed for 'drive': value is required")
-        }
-        self.drive = try container.sdkDecodeRequired(.drive)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetOrCreateDriveResponseX216d3506 {
-    public init(drive: Drive) {
+public extension GetOrCreateDriveResponseX216d3506 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.drive) else {
+            throw SdkValidationError(
+                field: "drive",
+                code: "required",
+                message: "Validation failed for 'drive': value is required"
+            )
+        }
+        drive = try container.sdkDecodeRequired(.drive)
+    }
+}
+
+public extension GetOrCreateDriveResponseX216d3506 {
+    init(drive: Drive) {
         self.drive = drive
     }
 }
@@ -259,27 +318,33 @@ public struct CreateSandboxesByNameForkV3RequestBodyMountsValue: Codable {
         case mode
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateSandboxesByNameForkV3RequestBodyMountsValue {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.drive) else {
-            throw SdkValidationError(field: "drive", code: "required", message: "Validation failed for 'drive': value is required")
-        }
-        self.drive = try container.sdkDecodeRequired(.drive)
-        self.mode = try container.sdkDecodeIfPresent(.mode)
-            try validateLength("drive", self.drive, min: nil, max: 64)
-            try sdkValidatePattern("drive", self.drive, sdkPatterna828669d9fe5)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateSandboxesByNameForkV3RequestBodyMountsValue {
-    public init(drive: String, mode: CreateSandboxesByNameForkV3RequestBodyMountsValueMode? = nil) throws {
+public extension CreateSandboxesByNameForkV3RequestBodyMountsValue {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.drive) else {
+            throw SdkValidationError(
+                field: "drive",
+                code: "required",
+                message: "Validation failed for 'drive': value is required"
+            )
+        }
+        drive = try container.sdkDecodeRequired(.drive)
+        mode = try container.sdkDecodeIfPresent(.mode)
+        try validateLength("drive", drive, min: nil, max: 64)
+        try sdkValidatePattern("drive", drive, sdkPatterna828669d9fe5)
+    }
+}
+
+public extension CreateSandboxesByNameForkV3RequestBodyMountsValue {
+    init(drive: String, mode: CreateSandboxesByNameForkV3RequestBodyMountsValueMode? = nil) throws {
         (self.drive, self.mode) = (drive, mode)
-            try validateLength("drive", self.drive, min: nil, max: 64)
-            try sdkValidatePattern("drive", self.drive, sdkPatterna828669d9fe5)
+        try validateLength("drive", self.drive, min: nil, max: 64)
+        try sdkValidatePattern("drive", self.drive, sdkPatterna828669d9fe5)
     }
 }
 
@@ -289,22 +354,32 @@ public indirect enum UpdateSandboxRequestBodySnapshotExpiration {
 }
 
 extension UpdateSandboxRequestBodySnapshotExpiration: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateSandboxRequestBodySnapshotExpiration")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateSandboxRequestBodySnapshotExpiration"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateSandboxRequestBodySnapshotExpiration {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(JSONValue.self) { return .jsonValue(value) }
-        if let value = try? container.decode(Int.self) { return .intValue(value) }
+        if let value = try? container.decode(JSONValue.self) {
+            return .jsonValue(value)
+        }
+        if let value = try? container.decode(Int.self) {
+            return .intValue(value)
+        }
         return nil
     }
 }
@@ -336,21 +411,27 @@ public struct KillSessionCommandResponse: Codable {
         case command
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension KillSessionCommandResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.command) else {
-            throw SdkValidationError(field: "command", code: "required", message: "Validation failed for 'command': value is required")
-        }
-        self.command = try container.sdkDecodeRequired(.command)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension KillSessionCommandResponse {
-    public init(command: SessionCommand) {
+public extension KillSessionCommandResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.command) else {
+            throw SdkValidationError(
+                field: "command",
+                code: "required",
+                message: "Validation failed for 'command': value is required"
+            )
+        }
+        command = try container.sdkDecodeRequired(.command)
+    }
+}
+
+public extension KillSessionCommandResponse {
+    init(command: SessionCommand) {
         self.command = command
     }
 }
@@ -364,25 +445,35 @@ public struct RunSessionCommandResponseVariant2: Codable {
         case stream
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RunSessionCommandResponseVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.data) else {
-            throw SdkValidationError(field: "data", code: "required", message: "Validation failed for 'data': value is required")
-        }
-        guard container.contains(.stream) else {
-            throw SdkValidationError(field: "stream", code: "required", message: "Validation failed for 'stream': value is required")
-        }
-        self.data = try container.sdkDecodeRequired(.data)
-        self.stream = try container.sdkDecodeRequired(.stream)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RunSessionCommandResponseVariant2 {
-    public init(data: RunSessionCommandResponseVariant2Data, stream: String) {
+public extension RunSessionCommandResponseVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.data) else {
+            throw SdkValidationError(
+                field: "data",
+                code: "required",
+                message: "Validation failed for 'data': value is required"
+            )
+        }
+        guard container.contains(.stream) else {
+            throw SdkValidationError(
+                field: "stream",
+                code: "required",
+                message: "Validation failed for 'stream': value is required"
+            )
+        }
+        data = try container.sdkDecodeRequired(.data)
+        stream = try container.sdkDecodeRequired(.stream)
+    }
+}
+
+public extension RunSessionCommandResponseVariant2 {
+    init(data: RunSessionCommandResponseVariant2Data, stream: String) {
         (self.data, self.stream) = (data, stream)
     }
 }
@@ -402,38 +493,71 @@ public struct CreateSandboxesByNameForkV2RequestBodyResources: Codable {
     }
 
     init() {
-        (self.vcpus, self.memory) = (nil, nil)
+        (vcpus, memory) = (nil, nil)
     }
 }
 
-extension CreateSandboxesByNameForkV2RequestBodyResources {
-    public init(from decoder: Decoder) throws {
+public extension CreateSandboxesByNameForkV2RequestBodyResources {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.vcpus = try container.sdkDecodeIfPresent(.vcpus)
-        self.memory = try container.sdkDecodeIfPresent(.memory)
-        if let value = self.vcpus {
-            try validateRange("vcpus", Double(value), min: 1, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        vcpus = try container.sdkDecodeIfPresent(.vcpus)
+        memory = try container.sdkDecodeIfPresent(.memory)
+        if let value = vcpus {
+            try validateRange(
+                "vcpus",
+                Double(value),
+                min: 1,
+                max: nil,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
-        if let value = self.memory {
-            try validateRange("memory", Double(value), min: 2048, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        if let value = memory {
+            try validateRange(
+                "memory",
+                Double(value),
+                min: 2048,
+                max: nil,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
     }
 }
 
-extension CreateSandboxesByNameForkV2RequestBodyResources {
-    public init(vcpus: Int? = nil, memory: Int? = nil) throws {
+public extension CreateSandboxesByNameForkV2RequestBodyResources {
+    init(vcpus: Int? = nil, memory: Int? = nil) throws {
         self.init()
         (self.vcpus, self.memory) = (vcpus, memory)
         if let value = self.vcpus {
-            try validateRange("vcpus", Double(value), min: 1, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+            try validateRange(
+                "vcpus",
+                Double(value),
+                min: 1,
+                max: nil,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
         if let value = self.memory {
-            try validateRange("memory", Double(value), min: 2048, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+            try validateRange(
+                "memory",
+                Double(value),
+                min: 2048,
+                max: nil,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
     }
 }
 
-public typealias UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX2a8d22e0b8 = [UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX15713e9ece]
+public typealias UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX2a8d22e0b8 =
+    [UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX15713e9ece]
 
 public struct UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItem: Codable {
     /// Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified
@@ -455,22 +579,27 @@ public struct UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueIte
     }
 
     init() {
-        (self.match, self.transform, self.forwardUrl, self.response) = (nil, nil, nil, nil)
+        (match, transform, forwardUrl, response) = (nil, nil, nil, nil)
     }
 }
 
-extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItem {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.match = try container.sdkDecodeIfPresent(.match)
-        self.transform = try container.sdkDecodeIfPresent(.transform)
-        self.forwardUrl = try container.sdkDecodeIfPresent(.forwardUrl)
-        self.response = try container.sdkDecodeIfPresent(.response)
+        match = try container.sdkDecodeIfPresent(.match)
+        transform = try container.sdkDecodeIfPresent(.transform)
+        forwardUrl = try container.sdkDecodeIfPresent(.forwardUrl)
+        response = try container.sdkDecodeIfPresent(.response)
     }
 }
 
-extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItem {
-    public init(match: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItemMatch? = nil, transform: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX2a8d22e0b8? = nil, forwardUrl: String? = nil, response: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX2fe42cccb5? = nil) {
+public extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItem {
+    init(
+        match: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItemMatch? = nil,
+        transform: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX2a8d22e0b8? = nil,
+        forwardUrl: String? = nil,
+        response: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX2fe42cccb5? = nil
+    ) {
         self.init()
         (self.match, self.transform) = (match, transform)
         (self.forwardUrl, self.response) = (forwardUrl, response)

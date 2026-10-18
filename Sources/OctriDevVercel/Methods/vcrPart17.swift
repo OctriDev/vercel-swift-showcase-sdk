@@ -6,17 +6,27 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VcrMethods {
-    /// Retrieves the status of an in-progress blob upload in a Docker repository. Use this operation to check an upload session before resuming a partial upload after an interruption. Supply the repository components and the session's `uuid`.
+public extension VcrMethods {
+    /// Retrieves the status of an in-progress blob upload in a Docker repository. Use this operation to check an upload
+    /// session before resuming a partial upload after an interruption. Supply the repository components and the
+    /// session's `uuid`.
     ///
-    /// GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob upload. Used by clients to resume a partial upload after an interruption.
+    /// GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Query the status of an in-progress blob
+    /// upload. Used by clients to resume a partial upload after an interruption.
     ///
     /// - Parameters:
     /// - teamSlug: Single Docker repository team slug component.
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - uuid: Blob upload session identifier.
-    public static func getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, uuid: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+        config: ClientConfig,
+        teamSlug: String,
+        projectSlug: String,
+        repositoryName: String,
+        uuid: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -29,6 +39,22 @@ extension VcrMethods {
         try validateLength("uuid", uuid, max: 40)
         try sdkValidatePattern("uuid", uuid, sdkPatternbc5c1977eda6)
 
-        return try (await sdkRequest("GET", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/blobs/uploads/", sdkEncodePathSegment(sdkWireString(uuid))].joined(), config: config, decoder: .empty, operationId: "getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            [
+                "/v2/",
+                sdkEncodePathSegment(sdkWireString(teamSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(projectSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(repositoryName)),
+                "/blobs/uploads/",
+                sdkEncodePathSegment(sdkWireString(uuid)),
+            ].joined(),
+            config: config,
+            decoder: .empty,
+            operationId: "getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
+            options: requestOptions
+        )).data
     }
 }

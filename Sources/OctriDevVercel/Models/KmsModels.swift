@@ -3,34 +3,48 @@
 
 import Foundation
 
-// Kms domain models
+/// Kms domain models
 public indirect enum CreateKmsIssuerPolicyResponse {
     case createKmsIssuerPolicyResponseVariant0(CreateKmsIssuerPolicyResponseVariant0)
     case createKmsIssuerPolicyResponseVariant1(CreateKmsIssuerPolicyResponseVariant1)
 }
 
 extension CreateKmsIssuerPolicyResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateKmsIssuerPolicyResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateKmsIssuerPolicyResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateKmsIssuerPolicyResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateKmsIssuerPolicyResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateKmsIssuerPolicyResponseVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createKmsIssuerPolicyResponseVariant0(value)
         }
-        if let value = try? container.decode(CreateKmsIssuerPolicyResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateKmsIssuerPolicyResponseVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createKmsIssuerPolicyResponseVariant1(value)
         }
         return nil
@@ -42,12 +56,12 @@ extension CreateKmsIssuerPolicyResponse {
         if let value = try? container.decode(
             CreateKmsIssuerPolicyResponseVariant0.self
         ) {
-            return             .createKmsIssuerPolicyResponseVariant0(value)
+            return .createKmsIssuerPolicyResponseVariant0(value)
         }
         if let value = try? container.decode(
             CreateKmsIssuerPolicyResponseVariant1.self
         ) {
-            return             .createKmsIssuerPolicyResponseVariant1(value)
+            return .createKmsIssuerPolicyResponseVariant1(value)
         }
         return nil
     }
@@ -69,27 +83,41 @@ public indirect enum CreateKmsIssuerRequestPolicy {
 }
 
 extension CreateKmsIssuerRequestPolicy: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateKmsIssuerRequestPolicy")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateKmsIssuerRequestPolicy"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateKmsIssuerRequestPolicy {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateKmsIssuerRequestPolicyVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateKmsIssuerRequestPolicyVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createKmsIssuerRequestPolicyVariant0(value)
         }
-        if let value = try? container.decode(CreateKmsIssuerRequestPolicyVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateKmsIssuerRequestPolicyVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createKmsIssuerRequestPolicyVariant1(value)
         }
         return nil
@@ -101,12 +129,12 @@ extension CreateKmsIssuerRequestPolicy {
         if let value = try? container.decode(
             CreateKmsIssuerRequestPolicyVariant0.self
         ) {
-            return             .createKmsIssuerRequestPolicyVariant0(value)
+            return .createKmsIssuerRequestPolicyVariant0(value)
         }
         if let value = try? container.decode(
             CreateKmsIssuerRequestPolicyVariant1.self
         ) {
-            return             .createKmsIssuerRequestPolicyVariant1(value)
+            return .createKmsIssuerRequestPolicyVariant1(value)
         }
         return nil
     }
@@ -128,27 +156,41 @@ public indirect enum CreateKmsIssuerResponsePoliciesItem {
 }
 
 extension CreateKmsIssuerResponsePoliciesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateKmsIssuerResponsePoliciesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateKmsIssuerResponsePoliciesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateKmsIssuerResponsePoliciesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateKmsIssuerResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateKmsIssuerResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createKmsIssuerResponsePoliciesItemVariant0(value)
         }
-        if let value = try? container.decode(CreateKmsIssuerResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateKmsIssuerResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createKmsIssuerResponsePoliciesItemVariant1(value)
         }
         return nil
@@ -160,12 +202,12 @@ extension CreateKmsIssuerResponsePoliciesItem {
         if let value = try? container.decode(
             CreateKmsIssuerResponsePoliciesItemVariant0.self
         ) {
-            return             .createKmsIssuerResponsePoliciesItemVariant0(value)
+            return .createKmsIssuerResponsePoliciesItemVariant0(value)
         }
         if let value = try? container.decode(
             CreateKmsIssuerResponsePoliciesItemVariant1.self
         ) {
-            return             .createKmsIssuerResponsePoliciesItemVariant1(value)
+            return .createKmsIssuerResponsePoliciesItemVariant1(value)
         }
         return nil
     }
@@ -187,27 +229,41 @@ public indirect enum GetKmsIssuerResponsePoliciesItem {
 }
 
 extension GetKmsIssuerResponsePoliciesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetKmsIssuerResponsePoliciesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetKmsIssuerResponsePoliciesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetKmsIssuerResponsePoliciesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetKmsIssuerResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetKmsIssuerResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getKmsIssuerResponsePoliciesItemVariant0(value)
         }
-        if let value = try? container.decode(GetKmsIssuerResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetKmsIssuerResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getKmsIssuerResponsePoliciesItemVariant1(value)
         }
         return nil
@@ -219,12 +275,12 @@ extension GetKmsIssuerResponsePoliciesItem {
         if let value = try? container.decode(
             GetKmsIssuerResponsePoliciesItemVariant0.self
         ) {
-            return             .getKmsIssuerResponsePoliciesItemVariant0(value)
+            return .getKmsIssuerResponsePoliciesItemVariant0(value)
         }
         if let value = try? container.decode(
             GetKmsIssuerResponsePoliciesItemVariant1.self
         ) {
-            return             .getKmsIssuerResponsePoliciesItemVariant1(value)
+            return .getKmsIssuerResponsePoliciesItemVariant1(value)
         }
         return nil
     }
@@ -246,27 +302,43 @@ public indirect enum ListKmsIssuersResponseIssuersItemPoliciesItem {
 }
 
 extension ListKmsIssuersResponseIssuersItemPoliciesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListKmsIssuersResponseIssuersItemPoliciesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ListKmsIssuersResponseIssuersItemPoliciesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ListKmsIssuersResponseIssuersItemPoliciesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ListKmsIssuersResponseIssuersItemPoliciesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ListKmsIssuersResponseIssuersItemPoliciesItemVariant0.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .listKmsIssuersResponseIssuersItemPoliciesItemVariant0(value)
         }
-        if let value = try? container.decode(ListKmsIssuersResponseIssuersItemPoliciesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ListKmsIssuersResponseIssuersItemPoliciesItemVariant1.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .listKmsIssuersResponseIssuersItemPoliciesItemVariant1(value)
         }
         return nil
@@ -278,12 +350,12 @@ extension ListKmsIssuersResponseIssuersItemPoliciesItem {
         if let value = try? container.decode(
             ListKmsIssuersResponseIssuersItemPoliciesItemVariant0.self
         ) {
-            return             .listKmsIssuersResponseIssuersItemPoliciesItemVariant0(value)
+            return .listKmsIssuersResponseIssuersItemPoliciesItemVariant0(value)
         }
         if let value = try? container.decode(
             ListKmsIssuersResponseIssuersItemPoliciesItemVariant1.self
         ) {
-            return             .listKmsIssuersResponseIssuersItemPoliciesItemVariant1(value)
+            return .listKmsIssuersResponseIssuersItemPoliciesItemVariant1(value)
         }
         return nil
     }
@@ -305,27 +377,41 @@ public indirect enum RevokeKmsSigningKeyResponsePoliciesItem {
 }
 
 extension RevokeKmsSigningKeyResponsePoliciesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RevokeKmsSigningKeyResponsePoliciesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for RevokeKmsSigningKeyResponsePoliciesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension RevokeKmsSigningKeyResponsePoliciesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(RevokeKmsSigningKeyResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(RevokeKmsSigningKeyResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .revokeKmsSigningKeyResponsePoliciesItemVariant0(value)
         }
-        if let value = try? container.decode(RevokeKmsSigningKeyResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(RevokeKmsSigningKeyResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .revokeKmsSigningKeyResponsePoliciesItemVariant1(value)
         }
         return nil
@@ -337,12 +423,12 @@ extension RevokeKmsSigningKeyResponsePoliciesItem {
         if let value = try? container.decode(
             RevokeKmsSigningKeyResponsePoliciesItemVariant0.self
         ) {
-            return             .revokeKmsSigningKeyResponsePoliciesItemVariant0(value)
+            return .revokeKmsSigningKeyResponsePoliciesItemVariant0(value)
         }
         if let value = try? container.decode(
             RevokeKmsSigningKeyResponsePoliciesItemVariant1.self
         ) {
-            return             .revokeKmsSigningKeyResponsePoliciesItemVariant1(value)
+            return .revokeKmsSigningKeyResponsePoliciesItemVariant1(value)
         }
         return nil
     }
@@ -364,27 +450,41 @@ public indirect enum UpdateKmsIssuerPolicyResponse {
 }
 
 extension UpdateKmsIssuerPolicyResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateKmsIssuerPolicyResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateKmsIssuerPolicyResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateKmsIssuerPolicyResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateKmsIssuerPolicyResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateKmsIssuerPolicyResponseVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateKmsIssuerPolicyResponseVariant0(value)
         }
-        if let value = try? container.decode(UpdateKmsIssuerPolicyResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateKmsIssuerPolicyResponseVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateKmsIssuerPolicyResponseVariant1(value)
         }
         return nil
@@ -396,12 +496,12 @@ extension UpdateKmsIssuerPolicyResponse {
         if let value = try? container.decode(
             UpdateKmsIssuerPolicyResponseVariant0.self
         ) {
-            return             .updateKmsIssuerPolicyResponseVariant0(value)
+            return .updateKmsIssuerPolicyResponseVariant0(value)
         }
         if let value = try? container.decode(
             UpdateKmsIssuerPolicyResponseVariant1.self
         ) {
-            return             .updateKmsIssuerPolicyResponseVariant1(value)
+            return .updateKmsIssuerPolicyResponseVariant1(value)
         }
         return nil
     }
@@ -423,27 +523,41 @@ public indirect enum UpdateKmsIssuerResponsePoliciesItem {
 }
 
 extension UpdateKmsIssuerResponsePoliciesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateKmsIssuerResponsePoliciesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateKmsIssuerResponsePoliciesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateKmsIssuerResponsePoliciesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateKmsIssuerResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateKmsIssuerResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateKmsIssuerResponsePoliciesItemVariant0(value)
         }
-        if let value = try? container.decode(UpdateKmsIssuerResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateKmsIssuerResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateKmsIssuerResponsePoliciesItemVariant1(value)
         }
         return nil
@@ -455,12 +569,12 @@ extension UpdateKmsIssuerResponsePoliciesItem {
         if let value = try? container.decode(
             UpdateKmsIssuerResponsePoliciesItemVariant0.self
         ) {
-            return             .updateKmsIssuerResponsePoliciesItemVariant0(value)
+            return .updateKmsIssuerResponsePoliciesItemVariant0(value)
         }
         if let value = try? container.decode(
             UpdateKmsIssuerResponsePoliciesItemVariant1.self
         ) {
-            return             .updateKmsIssuerResponsePoliciesItemVariant1(value)
+            return .updateKmsIssuerResponsePoliciesItemVariant1(value)
         }
         return nil
     }

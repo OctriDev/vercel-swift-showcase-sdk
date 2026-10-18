@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsDelete domain models
+/// ProjectsDelete domain models
 public enum DeleteProjectAvatarResponseLinkVariant2Type: String, CaseIterable, Codable {
     case githubCustomHost = "github-custom-host"
     public init(from decoder: Decoder) throws {
@@ -72,19 +72,26 @@ public enum DeleteProjectAvatarResponseEnvItemContentHintVariant10Type: String, 
     }
 }
 
-public struct DeleteProjectAvatarResponseTrustedIpsVariant0DeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct DeleteProjectAvatarResponseTrustedIpsVariant0DeploymentType: RawRepresentable, Hashable, Codable,
+    Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let all = DeleteProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "all")
-    public static let allExceptCustomDomains = DeleteProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "all_except_custom_domains")
+    public static let allExceptCustomDomains =
+        DeleteProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "all_except_custom_domains")
     public static let preview = DeleteProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews = DeleteProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let prodDeploymentUrlsAndAllPreviews =
+        DeleteProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
     public static let production = DeleteProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -127,16 +134,22 @@ public enum DeleteProjectAvatarResponseCreatorVariant1Type: String, CaseIterable
     }
 }
 
-public struct DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX4df9257bbf: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX4df9257bbf: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let bitbucket = DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX4df9257bbf(rawValue: "bitbucket")
-    public static let github = DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX4df9257bbf(rawValue: "github")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let bitbucket =
+        DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX4df9257bbf(rawValue: "bitbucket")
+    public static let github =
+        DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX4df9257bbf(rawValue: "github")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -179,16 +192,22 @@ public enum DeleteProjectAvatarResponseEnvItemContentHintVariant0Type: String, C
     }
 }
 
-public struct DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIXb4fe1d1612: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIXb4fe1d1612: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let preview = DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIXb4fe1d1612(rawValue: "preview")
-    public static let production = DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIXb4fe1d1612(rawValue: "production")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let preview =
+        DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIXb4fe1d1612(rawValue: "preview")
+    public static let production =
+        DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIXb4fe1d1612(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

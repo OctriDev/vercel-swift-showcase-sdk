@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical deployments operation model declarations
+/// Canonical deployments operation model declarations
 /// Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the
 /// `enable-deployment-attribution` flag is enabled.
 public struct CancelDeploymentResponseAttribution: Codable {
@@ -25,21 +25,25 @@ public struct CancelDeploymentResponseAttribution: Codable {
     }
 
     init() {
-        (self.commitMeta, self.gitUser, self.vercelUser) = (nil, nil, nil)
+        (commitMeta, gitUser, vercelUser) = (nil, nil, nil)
     }
 }
 
-extension CancelDeploymentResponseAttribution {
-    public init(from decoder: Decoder) throws {
+public extension CancelDeploymentResponseAttribution {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.commitMeta = try container.sdkDecodeIfPresent(.commitMeta)
-        self.gitUser = try container.sdkDecodeIfPresent(.gitUser)
-        self.vercelUser = try container.sdkDecodeIfPresent(.vercelUser)
+        commitMeta = try container.sdkDecodeIfPresent(.commitMeta)
+        gitUser = try container.sdkDecodeIfPresent(.gitUser)
+        vercelUser = try container.sdkDecodeIfPresent(.vercelUser)
     }
 }
 
-extension CancelDeploymentResponseAttribution {
-    public init(commitMeta: CancelDeploymentResponseAttributionCommitMeta? = nil, gitUser: CancelDeploymentResponseAttributionGitUser? = nil, vercelUser: CancelDeploymentResponseAttributionVercelUser? = nil) {
+public extension CancelDeploymentResponseAttribution {
+    init(
+        commitMeta: CancelDeploymentResponseAttributionCommitMeta? = nil,
+        gitUser: CancelDeploymentResponseAttributionGitUser? = nil,
+        vercelUser: CancelDeploymentResponseAttributionVercelUser? = nil
+    ) {
         self.init()
         (self.commitMeta, self.gitUser) = (commitMeta, gitUser)
         self.vercelUser = vercelUser
@@ -68,27 +72,41 @@ public struct GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights:
         case paidAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.canceledAt = try container.sdkDecodeIfPresent(.canceledAt)
-        self.dataReceivedAt = try container.sdkDecodeIfPresent(.dataReceivedAt)
-        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        self.enabledAt = try container.sdkDecodeIfPresent(.enabledAt)
-        self.hasData = try container.sdkDecodeIfPresent(.hasData)
-        self.paidAt = try container.sdkDecodeIfPresent(.paidAt)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights {
-    public init(id: String, canceledAt: Double? = nil, dataReceivedAt: Double? = nil, disabledAt: Double? = nil, enabledAt: Double? = nil, hasData: Bool? = nil, paidAt: Double? = nil) {
+public extension GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        canceledAt = try container.sdkDecodeIfPresent(.canceledAt)
+        dataReceivedAt = try container.sdkDecodeIfPresent(.dataReceivedAt)
+        disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
+        enabledAt = try container.sdkDecodeIfPresent(.enabledAt)
+        hasData = try container.sdkDecodeIfPresent(.hasData)
+        paidAt = try container.sdkDecodeIfPresent(.paidAt)
+    }
+}
+
+public extension GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights {
+    init(
+        id: String,
+        canceledAt: Double? = nil,
+        dataReceivedAt: Double? = nil,
+        disabledAt: Double? = nil,
+        enabledAt: Double? = nil,
+        hasData: Bool? = nil,
+        paidAt: Double? = nil
+    ) {
         (self.id, self.canceledAt) = (id, canceledAt)
         (self.dataReceivedAt, self.disabledAt) = (dataReceivedAt, disabledAt)
         (self.enabledAt, self.hasData) = (enabledAt, hasData)
@@ -108,25 +126,35 @@ public struct GetDeploymentsResponseDeploymentsItemPlatformOrigin: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetDeploymentsResponseDeploymentsItemPlatformOrigin {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.value = try container.sdkDecodeRequired(.value)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItemPlatformOrigin {
-    public init(type: GetDeploymentsResponseDeploymentsItemPlatformOriginType, value: String) {
+public extension GetDeploymentsResponseDeploymentsItemPlatformOrigin {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        value = try container.sdkDecodeRequired(.value)
+    }
+}
+
+public extension GetDeploymentsResponseDeploymentsItemPlatformOrigin {
+    init(type: GetDeploymentsResponseDeploymentsItemPlatformOriginType, value: String) {
         (self.type, self.value) = (type, value)
     }
 }
@@ -149,36 +177,54 @@ public struct CancelDeploymentResponseLambdasItem: Codable {
         case readyStateAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CancelDeploymentResponseLambdasItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.output) else {
-            throw SdkValidationError(field: "output", code: "required", message: "Validation failed for 'output': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.output = try container.sdkDecodeRequired(.output)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.entrypoint = try container.sdkDecodeIfPresent(.entrypoint)
-        self.readyState = try container.sdkDecodeIfPresent(.readyState)
-        self.readyStateAt = try container.sdkDecodeIfPresent(.readyStateAt)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CancelDeploymentResponseLambdasItem {
-    public init(id: String, output: [CancelDeploymentResponseLambdasItemOutputItem], createdAt: Double? = nil, entrypoint: String? = nil, readyState: CancelDeploymentResponseLambdasItemReadyState? = nil, readyStateAt: Double? = nil) {
+public extension CancelDeploymentResponseLambdasItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.output) else {
+            throw SdkValidationError(
+                field: "output",
+                code: "required",
+                message: "Validation failed for 'output': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        output = try container.sdkDecodeRequired(.output)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        entrypoint = try container.sdkDecodeIfPresent(.entrypoint)
+        readyState = try container.sdkDecodeIfPresent(.readyState)
+        readyStateAt = try container.sdkDecodeIfPresent(.readyStateAt)
+    }
+}
+
+public extension CancelDeploymentResponseLambdasItem {
+    init(
+        id: String,
+        output: [CancelDeploymentResponseLambdasItemOutputItem],
+        createdAt: Double? = nil,
+        entrypoint: String? = nil,
+        readyState: CancelDeploymentResponseLambdasItemReadyState? = nil,
+        readyStateAt: Double? = nil
+    ) {
         (self.id, self.output) = (id, output)
         (self.createdAt, self.entrypoint) = (createdAt, entrypoint)
         (self.readyState, self.readyStateAt) = (readyState, readyStateAt)
     }
 }
 
-public typealias CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsList = [CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsItem]
+public typealias CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsList =
+    [CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsItem]
 
 public struct CancelDeploymentResponseFlagsVariant0DefinitionsValue: Codable {
     public var description: String?
@@ -192,21 +238,25 @@ public struct CancelDeploymentResponseFlagsVariant0DefinitionsValue: Codable {
     }
 
     init() {
-        (self.description, self.options, self.url) = (nil, nil, nil)
+        (description, options, url) = (nil, nil, nil)
     }
 }
 
-extension CancelDeploymentResponseFlagsVariant0DefinitionsValue {
-    public init(from decoder: Decoder) throws {
+public extension CancelDeploymentResponseFlagsVariant0DefinitionsValue {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.options = try container.sdkDecodeIfPresent(.options)
-        self.url = try container.sdkDecodeIfPresent(.url)
+        description = try container.sdkDecodeIfPresent(.description)
+        options = try container.sdkDecodeIfPresent(.options)
+        url = try container.sdkDecodeIfPresent(.url)
     }
 }
 
-extension CancelDeploymentResponseFlagsVariant0DefinitionsValue {
-    public init(description: String? = nil, options: CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsList? = nil, url: String? = nil) {
+public extension CancelDeploymentResponseFlagsVariant0DefinitionsValue {
+    init(
+        description: String? = nil,
+        options: CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsList? = nil,
+        url: String? = nil
+    ) {
         self.init()
         (self.description, self.options) = (description, options)
         self.url = url
@@ -223,22 +273,28 @@ public struct GetDeploymentsResponseDeploymentsItemCustomEnvironment: Codable {
         case slug
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetDeploymentsResponseDeploymentsItemCustomEnvironment {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.slug = try container.sdkDecodeIfPresent(.slug)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItemCustomEnvironment {
-    public init(id: String, slug: String? = nil) {
+public extension GetDeploymentsResponseDeploymentsItemCustomEnvironment {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        slug = try container.sdkDecodeIfPresent(.slug)
+    }
+}
+
+public extension GetDeploymentsResponseDeploymentsItemCustomEnvironment {
+    init(id: String, slug: String? = nil) {
         (self.id, self.slug) = (id, slug)
     }
 }
@@ -252,25 +308,35 @@ public struct CancelDeploymentResponseLambdasItemOutputItem: Codable {
         case path
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CancelDeploymentResponseLambdasItemOutputItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.functionName) else {
-            throw SdkValidationError(field: "functionName", code: "required", message: "Validation failed for 'functionName': value is required")
-        }
-        guard container.contains(.path) else {
-            throw SdkValidationError(field: "path", code: "required", message: "Validation failed for 'path': value is required")
-        }
-        self.functionName = try container.sdkDecodeRequired(.functionName)
-        self.path = try container.sdkDecodeRequired(.path)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CancelDeploymentResponseLambdasItemOutputItem {
-    public init(functionName: String, path: String) {
+public extension CancelDeploymentResponseLambdasItemOutputItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.functionName) else {
+            throw SdkValidationError(
+                field: "functionName",
+                code: "required",
+                message: "Validation failed for 'functionName': value is required"
+            )
+        }
+        guard container.contains(.path) else {
+            throw SdkValidationError(
+                field: "path",
+                code: "required",
+                message: "Validation failed for 'path': value is required"
+            )
+        }
+        functionName = try container.sdkDecodeRequired(.functionName)
+        path = try container.sdkDecodeRequired(.path)
+    }
+}
+
+public extension CancelDeploymentResponseLambdasItemOutputItem {
+    init(functionName: String, path: String) {
         (self.functionName, self.path) = (functionName, path)
     }
 }
@@ -304,25 +370,32 @@ public struct CancelDeploymentResponseResourceConfigBuildMachine: Codable {
     }
 
     init() {
-        (self.cores, self.defaultPurchaseType, self.machineSelectionType, self.memory, self.purchaseType) = (nil, nil, nil, nil, nil)
-        self.selectionSource = nil
+        (cores, defaultPurchaseType, machineSelectionType, memory, purchaseType) = (nil, nil, nil, nil, nil)
+        selectionSource = nil
     }
 }
 
-extension CancelDeploymentResponseResourceConfigBuildMachine {
-    public init(from decoder: Decoder) throws {
+public extension CancelDeploymentResponseResourceConfigBuildMachine {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.cores = try container.sdkDecodeIfPresent(.cores)
-        self.defaultPurchaseType = try container.sdkDecodeIfPresent(.defaultPurchaseType)
-        self.machineSelectionType = try container.sdkDecodeIfPresent(.machineSelectionType)
-        self.memory = try container.sdkDecodeIfPresent(.memory)
-        self.purchaseType = try container.sdkDecodeIfPresent(.purchaseType)
-        self.selectionSource = try container.sdkDecodeIfPresent(.selectionSource)
+        cores = try container.sdkDecodeIfPresent(.cores)
+        defaultPurchaseType = try container.sdkDecodeIfPresent(.defaultPurchaseType)
+        machineSelectionType = try container.sdkDecodeIfPresent(.machineSelectionType)
+        memory = try container.sdkDecodeIfPresent(.memory)
+        purchaseType = try container.sdkDecodeIfPresent(.purchaseType)
+        selectionSource = try container.sdkDecodeIfPresent(.selectionSource)
     }
 }
 
-extension CancelDeploymentResponseResourceConfigBuildMachine {
-    public init(cores: Double? = nil, defaultPurchaseType: CancelDeploymentResponseResourceConfigBuildMachineDefaultPurchaseType? = nil, machineSelectionType: CancelDeploymentResponseResourceConfigBuildMachineMachineSelectionType? = nil, memory: Double? = nil, purchaseType: CancelDeploymentResponseResourceConfigBuildMachinePurchaseType? = nil, selectionSource: CancelDeploymentResponseResourceConfigBuildMachineSelectionSource? = nil) {
+public extension CancelDeploymentResponseResourceConfigBuildMachine {
+    init(
+        cores: Double? = nil,
+        defaultPurchaseType: CancelDeploymentResponseResourceConfigBuildMachineDefaultPurchaseType? = nil,
+        machineSelectionType: CancelDeploymentResponseResourceConfigBuildMachineMachineSelectionType? = nil,
+        memory: Double? = nil,
+        purchaseType: CancelDeploymentResponseResourceConfigBuildMachinePurchaseType? = nil,
+        selectionSource: CancelDeploymentResponseResourceConfigBuildMachineSelectionSource? = nil
+    ) {
         self.init()
         (self.cores, self.defaultPurchaseType) = (cores, defaultPurchaseType)
         (self.machineSelectionType, self.memory) = (machineSelectionType, memory)
@@ -336,22 +409,32 @@ public indirect enum GetDeploymentEventsParameterXa98a750a {
 }
 
 extension GetDeploymentEventsParameterXa98a750a: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDeploymentEventsParameterXa98a750a")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetDeploymentEventsParameterXa98a750a"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetDeploymentEventsParameterXa98a750a {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -417,38 +500,68 @@ public struct GetDeploymentsResponseDeploymentsItemProjectSettings: Codable {
     }
 
     init() {
-        (self.buildCommand, self.commandForIgnoringBuildStep, self.createdAt, self.customerSupportCodeVisibility, self.devCommand) = (nil, nil, nil, nil, nil)
-        (self.framework, self.gitComments, self.gitForkProtection, self.gitLfs, self.installCommand) = (nil, nil, nil, nil, nil)
-        (self.nodeVersion, self.outputDirectory, self.rootDirectory, self.skipGitConnectDuringLink, self.sourceFilesOutsideRootDirectory) = (nil, nil, nil, nil, nil)
-        (self.speedInsights, self.webAnalytics) = (nil, nil)
+        (buildCommand, commandForIgnoringBuildStep, createdAt, customerSupportCodeVisibility, devCommand) = (
+            nil,
+            nil,
+            nil,
+            nil,
+            nil
+        )
+        (framework, gitComments, gitForkProtection, gitLfs, installCommand) = (nil, nil, nil, nil, nil)
+        (nodeVersion, outputDirectory, rootDirectory, skipGitConnectDuringLink, sourceFilesOutsideRootDirectory) = (
+            nil,
+            nil,
+            nil,
+            nil,
+            nil
+        )
+        (speedInsights, webAnalytics) = (nil, nil)
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItemProjectSettings {
-    public init(from decoder: Decoder) throws {
+public extension GetDeploymentsResponseDeploymentsItemProjectSettings {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
-        self.commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
-        self.devCommand = try container.sdkDecodeIfPresent(.devCommand)
-        self.framework = try container.sdkDecodeIfPresent(.framework)
-        self.gitComments = try container.sdkDecodeIfPresent(.gitComments)
-        self.gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
-        self.gitLfs = try container.sdkDecodeIfPresent(.gitLfs)
-        self.installCommand = try container.sdkDecodeIfPresent(.installCommand)
-        self.nodeVersion = try container.sdkDecodeIfPresent(.nodeVersion)
-        self.outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
-        self.rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
-        self.skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
-        self.sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
-        self.speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
-        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
+        buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
+        commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
+        devCommand = try container.sdkDecodeIfPresent(.devCommand)
+        framework = try container.sdkDecodeIfPresent(.framework)
+        gitComments = try container.sdkDecodeIfPresent(.gitComments)
+        gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
+        gitLfs = try container.sdkDecodeIfPresent(.gitLfs)
+        installCommand = try container.sdkDecodeIfPresent(.installCommand)
+        nodeVersion = try container.sdkDecodeIfPresent(.nodeVersion)
+        outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
+        rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
+        skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
+        sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
+        speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
+        webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItemProjectSettings {
-    public init(buildCommand: String? = nil, commandForIgnoringBuildStep: String? = nil, createdAt: Double? = nil, customerSupportCodeVisibility: Bool? = nil, devCommand: String? = nil, framework: GetDeploymentsResponseDeploymentsItemProjectSettingsFramework? = nil, gitComments: GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments? = nil, gitForkProtection: Bool? = nil, gitLfs: Bool? = nil, installCommand: String? = nil, nodeVersion: GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion? = nil, outputDirectory: String? = nil, rootDirectory: String? = nil, skipGitConnectDuringLink: Bool? = nil, sourceFilesOutsideRootDirectory: Bool? = nil, speedInsights: GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights? = nil, webAnalytics: GetDeploymentsResponseDeploymentsItemProjectSettingsWebAnalytics? = nil) {
+public extension GetDeploymentsResponseDeploymentsItemProjectSettings {
+    init(
+        buildCommand: String? = nil,
+        commandForIgnoringBuildStep: String? = nil,
+        createdAt: Double? = nil,
+        customerSupportCodeVisibility: Bool? = nil,
+        devCommand: String? = nil,
+        framework: GetDeploymentsResponseDeploymentsItemProjectSettingsFramework? = nil,
+        gitComments: GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments? = nil,
+        gitForkProtection: Bool? = nil,
+        gitLfs: Bool? = nil,
+        installCommand: String? = nil,
+        nodeVersion: GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion? = nil,
+        outputDirectory: String? = nil,
+        rootDirectory: String? = nil,
+        skipGitConnectDuringLink: Bool? = nil,
+        sourceFilesOutsideRootDirectory: Bool? = nil,
+        speedInsights: GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights? = nil,
+        webAnalytics: GetDeploymentsResponseDeploymentsItemProjectSettingsWebAnalytics? = nil
+    ) {
         self.init()
         (self.buildCommand, self.commandForIgnoringBuildStep) = (buildCommand, commandForIgnoringBuildStep)
         (self.createdAt, self.customerSupportCodeVisibility) = (createdAt, customerSupportCodeVisibility)
@@ -478,15 +591,15 @@ public struct CancelDeploymentResponseAttributionCommitMeta: Codable {
     }
 
     init() {
-        (self.email, self.isVerified, self.name) = (nil, nil, nil)
+        (email, isVerified, name) = (nil, nil, nil)
     }
 }
 
-extension CancelDeploymentResponseAttributionCommitMeta {
-    public init(from decoder: Decoder) throws {
+public extension CancelDeploymentResponseAttributionCommitMeta {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.email = try container.sdkDecodeIfPresent(.email)
-        self.isVerified = try container.sdkDecodeIfPresent(.isVerified)
-        self.name = try container.sdkDecodeIfPresent(.name)
+        email = try container.sdkDecodeIfPresent(.email)
+        isVerified = try container.sdkDecodeIfPresent(.isVerified)
+        name = try container.sdkDecodeIfPresent(.name)
     }
 }

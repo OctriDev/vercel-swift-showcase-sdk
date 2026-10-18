@@ -3,101 +3,287 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 extension UserEventPayload {
     static func decodeGroup37(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UserEventPayloadVariant432.self) { return .userEventPayloadVariant432(value) }
-        if let value = try? container.decode(UserEventPayloadVariant433.self) { return .userEventPayloadVariant433(value) }
-        if let value = try? container.decode(UserEventPayloadVariant434.self) { return .userEventPayloadVariant434(value) }
-        if let value = try? container.decode(UserEventPayloadVariant435.self) { return .userEventPayloadVariant435(value) }
-        if let value = try? container.decode(UserEventPayloadVariant436.self) { return .userEventPayloadVariant436(value) }
-        if let value = try? container.decode(UserEventPayloadVariant437.self) { return .userEventPayloadVariant437(value) }
-        if let value = try? container.decode(UserEventPayloadVariant438.self) { return .userEventPayloadVariant438(value) }
-        if let value = try? container.decode(UserEventPayloadVariant439.self) { return .userEventPayloadVariant439(value) }
-        if let value = try? container.decode(UserEventPayloadVariant440.self) { return .userEventPayloadVariant440(value) }
-        if let value = try? container.decode(UserEventPayloadVariant441.self) { return .userEventPayloadVariant441(value) }
-        if let value = try? container.decode(UserEventPayloadVariant442.self) { return .userEventPayloadVariant442(value) }
-        if let value = try? container.decode(UserEventPayloadVariant443.self) { return .userEventPayloadVariant443(value) }
+        if let value = try? container
+            .decode(UserEventPayloadVariant432.self) {
+            return .userEventPayloadVariant432(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant433.self) {
+            return .userEventPayloadVariant433(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant434.self) {
+            return .userEventPayloadVariant434(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant435.self) {
+            return .userEventPayloadVariant435(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant436.self) {
+            return .userEventPayloadVariant436(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant437.self) {
+            return .userEventPayloadVariant437(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant438.self) {
+            return .userEventPayloadVariant438(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant439.self) {
+            return .userEventPayloadVariant439(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant440.self) {
+            return .userEventPayloadVariant440(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant441.self) {
+            return .userEventPayloadVariant441(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant442.self) {
+            return .userEventPayloadVariant442(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant443.self) {
+            return .userEventPayloadVariant443(value)
+        }
         return nil
     }
 }
 
 extension UserEventPayload {
     static func decodeGroup38(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UserEventPayloadVariant444.self) { return .userEventPayloadVariant444(value) }
-        if let value = try? container.decode(UserEventPayloadVariant445.self) { return .userEventPayloadVariant445(value) }
-        if let value = try? container.decode(UserEventPayloadVariant446.self) { return .userEventPayloadVariant446(value) }
-        if let value = try? container.decode(UserEventPayloadVariant447.self) { return .userEventPayloadVariant447(value) }
-        if let value = try? container.decode(UserEventPayloadVariant448.self) { return .userEventPayloadVariant448(value) }
-        if let value = try? container.decode(UserEventPayloadVariant449.self) { return .userEventPayloadVariant449(value) }
-        if let value = try? container.decode(UserEventPayloadVariant450.self) { return .userEventPayloadVariant450(value) }
-        if let value = try? container.decode(UserEventPayloadVariant451.self) { return .userEventPayloadVariant451(value) }
-        if let value = try? container.decode(UserEventPayloadVariant452.self) { return .userEventPayloadVariant452(value) }
-        if let value = try? container.decode(UserEventPayloadVariant453.self) { return .userEventPayloadVariant453(value) }
-        if let value = try? container.decode(UserEventPayloadVariant454.self) { return .userEventPayloadVariant454(value) }
-        if let value = try? container.decode(UserEventPayloadVariant455.self) { return .userEventPayloadVariant455(value) }
+        if let value = try? container
+            .decode(UserEventPayloadVariant444.self) {
+            return .userEventPayloadVariant444(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant445.self) {
+            return .userEventPayloadVariant445(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant446.self) {
+            return .userEventPayloadVariant446(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant447.self) {
+            return .userEventPayloadVariant447(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant448.self) {
+            return .userEventPayloadVariant448(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant449.self) {
+            return .userEventPayloadVariant449(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant450.self) {
+            return .userEventPayloadVariant450(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant451.self) {
+            return .userEventPayloadVariant451(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant452.self) {
+            return .userEventPayloadVariant452(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant453.self) {
+            return .userEventPayloadVariant453(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant454.self) {
+            return .userEventPayloadVariant454(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant455.self) {
+            return .userEventPayloadVariant455(value)
+        }
         return nil
     }
 }
 
 extension UserEventPayload {
     static func decodeGroup39(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UserEventPayloadVariant456.self) { return .userEventPayloadVariant456(value) }
-        if let value = try? container.decode(UserEventPayloadVariant457.self) { return .userEventPayloadVariant457(value) }
-        if let value = try? container.decode(UserEventPayloadVariant458.self) { return .userEventPayloadVariant458(value) }
-        if let value = try? container.decode(UserEventPayloadVariant459.self) { return .userEventPayloadVariant459(value) }
-        if let value = try? container.decode(UserEventPayloadVariant460.self) { return .userEventPayloadVariant460(value) }
-        if let value = try? container.decode(UserEventPayloadVariant461.self) { return .userEventPayloadVariant461(value) }
-        if let value = try? container.decode(UserEventPayloadVariant462.self) { return .userEventPayloadVariant462(value) }
-        if let value = try? container.decode(UserEventPayloadVariant463.self) { return .userEventPayloadVariant463(value) }
-        if let value = try? container.decode(UserEventPayloadVariant464.self) { return .userEventPayloadVariant464(value) }
-        if let value = try? container.decode(UserEventPayloadVariant465.self) { return .userEventPayloadVariant465(value) }
-        if let value = try? container.decode(UserEventPayloadVariant466.self) { return .userEventPayloadVariant466(value) }
-        if let value = try? container.decode(UserEventPayloadVariant467.self) { return .userEventPayloadVariant467(value) }
+        if let value = try? container
+            .decode(UserEventPayloadVariant456.self) {
+            return .userEventPayloadVariant456(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant457.self) {
+            return .userEventPayloadVariant457(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant458.self) {
+            return .userEventPayloadVariant458(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant459.self) {
+            return .userEventPayloadVariant459(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant460.self) {
+            return .userEventPayloadVariant460(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant461.self) {
+            return .userEventPayloadVariant461(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant462.self) {
+            return .userEventPayloadVariant462(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant463.self) {
+            return .userEventPayloadVariant463(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant464.self) {
+            return .userEventPayloadVariant464(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant465.self) {
+            return .userEventPayloadVariant465(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant466.self) {
+            return .userEventPayloadVariant466(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant467.self) {
+            return .userEventPayloadVariant467(value)
+        }
         return nil
     }
 }
 
 extension UserEventPayload {
     static func decodeGroup40(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UserEventPayloadVariant468.self) { return .userEventPayloadVariant468(value) }
-        if let value = try? container.decode(UserEventPayloadVariant469.self) { return .userEventPayloadVariant469(value) }
-        if let value = try? container.decode(UserEventPayloadVariant470.self) { return .userEventPayloadVariant470(value) }
-        if let value = try? container.decode(UserEventPayloadVariant471.self) { return .userEventPayloadVariant471(value) }
-        if let value = try? container.decode(UserEventPayloadVariant472.self) { return .userEventPayloadVariant472(value) }
-        if let value = try? container.decode(UserEventPayloadVariant473.self) { return .userEventPayloadVariant473(value) }
-        if let value = try? container.decode(UserEventPayloadVariant474.self) { return .userEventPayloadVariant474(value) }
-        if let value = try? container.decode(UserEventPayloadVariant475.self) { return .userEventPayloadVariant475(value) }
-        if let value = try? container.decode(UserEventPayloadVariant476.self) { return .userEventPayloadVariant476(value) }
-        if let value = try? container.decode(UserEventPayloadVariant477.self) { return .userEventPayloadVariant477(value) }
-        if let value = try? container.decode(UserEventPayloadVariant478.self) { return .userEventPayloadVariant478(value) }
-        if let value = try? container.decode(UserEventPayloadVariant479.self) { return .userEventPayloadVariant479(value) }
+        if let value = try? container
+            .decode(UserEventPayloadVariant468.self) {
+            return .userEventPayloadVariant468(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant469.self) {
+            return .userEventPayloadVariant469(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant470.self) {
+            return .userEventPayloadVariant470(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant471.self) {
+            return .userEventPayloadVariant471(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant472.self) {
+            return .userEventPayloadVariant472(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant473.self) {
+            return .userEventPayloadVariant473(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant474.self) {
+            return .userEventPayloadVariant474(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant475.self) {
+            return .userEventPayloadVariant475(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant476.self) {
+            return .userEventPayloadVariant476(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant477.self) {
+            return .userEventPayloadVariant477(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant478.self) {
+            return .userEventPayloadVariant478(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant479.self) {
+            return .userEventPayloadVariant479(value)
+        }
         return nil
     }
 }
 
 extension UserEventPayload {
     static func decodeGroup41(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UserEventPayloadVariant480.self) { return .userEventPayloadVariant480(value) }
-        if let value = try? container.decode(UserEventPayloadVariant481.self) { return .userEventPayloadVariant481(value) }
-        if let value = try? container.decode(UserEventPayloadVariant482.self) { return .userEventPayloadVariant482(value) }
-        if let value = try? container.decode(UserEventPayloadVariant483.self) { return .userEventPayloadVariant483(value) }
-        if let value = try? container.decode(UserEventPayloadVariant484.self) { return .userEventPayloadVariant484(value) }
-        if let value = try? container.decode(UserEventPayloadVariant485.self) { return .userEventPayloadVariant485(value) }
-        if let value = try? container.decode(UserEventPayloadVariant486.self) { return .userEventPayloadVariant486(value) }
-        if let value = try? container.decode(UserEventPayloadVariant487.self) { return .userEventPayloadVariant487(value) }
-        if let value = try? container.decode(UserEventPayloadVariant488.self) { return .userEventPayloadVariant488(value) }
-        if let value = try? container.decode(UserEventPayloadVariant489.self) { return .userEventPayloadVariant489(value) }
-        if let value = try? container.decode(UserEventPayloadVariant490.self) { return .userEventPayloadVariant490(value) }
-        if let value = try? container.decode(UserEventPayloadVariant491.self) { return .userEventPayloadVariant491(value) }
+        if let value = try? container
+            .decode(UserEventPayloadVariant480.self) {
+            return .userEventPayloadVariant480(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant481.self) {
+            return .userEventPayloadVariant481(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant482.self) {
+            return .userEventPayloadVariant482(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant483.self) {
+            return .userEventPayloadVariant483(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant484.self) {
+            return .userEventPayloadVariant484(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant485.self) {
+            return .userEventPayloadVariant485(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant486.self) {
+            return .userEventPayloadVariant486(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant487.self) {
+            return .userEventPayloadVariant487(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant488.self) {
+            return .userEventPayloadVariant488(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant489.self) {
+            return .userEventPayloadVariant489(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant490.self) {
+            return .userEventPayloadVariant490(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant491.self) {
+            return .userEventPayloadVariant491(value)
+        }
         return nil
     }
 }
 
 extension UserEventPayload {
     static func decodeGroup42(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UserEventPayloadVariant492.self) { return .userEventPayloadVariant492(value) }
-        if let value = try? container.decode(UserEventPayloadVariant493.self) { return .userEventPayloadVariant493(value) }
+        if let value = try? container
+            .decode(UserEventPayloadVariant492.self) {
+            return .userEventPayloadVariant492(value)
+        }
+        if let value = try? container
+            .decode(UserEventPayloadVariant493.self) {
+            return .userEventPayloadVariant493(value)
+        }
         return nil
     }
 }

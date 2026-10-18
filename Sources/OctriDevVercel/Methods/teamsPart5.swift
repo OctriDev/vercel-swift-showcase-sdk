@@ -6,30 +6,67 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension TeamsMethods {
-    /// Removes a member from a team, dismisses a user's access request, or lets a member leave the team. Use `newDefaultTeamId` to set a replacement default team for the user. Directory Sync members can be removed when their directory email is absent or does not match a primary or verified secondary email.
+public extension TeamsMethods {
+    /// Removes a member from a team, dismisses a user's access request, or lets a member leave the team. Use
+    /// `newDefaultTeamId` to set a replacement default team for the user. Directory Sync members can be removed when
+    /// their directory email is absent or does not match a primary or verified secondary email.
     ///
-    /// Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails.
+    /// Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync
+    /// members can be removed when their directory email is absent or does not match the user's primary or verified
+    /// secondary emails.
     ///
     /// - Parameters:
     /// - uid: The user ID of the member.
     /// - newDefaultTeamId: The ID of the team to set as the new default team for
     ///   the Northstar user.
-    public static func removeTeamMember(config: ClientConfig, uid: String, teamId: String, newDefaultTeamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RemoveTeamMemberResponse {
-        return try (await sdkRequest("DELETE", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/members/", sdkEncodePathSegment(sdkWireString(uid))].joined(), config: config, query: [
-            SdkQueryParameter("newDefaultTeamId", value: newDefaultTeamId),
-        ], decoder: .json, operationId: "removeTeamMember", options: requestOptions)).data
+    static func removeTeamMember(
+        config: ClientConfig,
+        uid: String,
+        teamId: String,
+        newDefaultTeamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RemoveTeamMemberResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/teams/",
+                sdkEncodePathSegment(sdkWireString(teamId)),
+                "/members/",
+                sdkEncodePathSegment(sdkWireString(uid)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("newDefaultTeamId", value: newDefaultTeamId),
+            ],
+            decoder: .json,
+            operationId: "removeTeamMember",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves information about the specified team, including its billing plan, creation details, and team configuration. Use the team identifier to select the team; you can also supply its slug as request context.
+    /// Retrieves information about the specified team, including its billing plan, creation details, and team
+    /// configuration. Use the team identifier to select the team; you can also supply its slug as request context.
     ///
     /// Get information for the Team specified by the `teamId` parameter.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
-    public static func getTeams(config: ClientConfig, teamId: String, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> Team {
-        return try (await sdkRequest("GET", ["/v2/teams/", sdkEncodePathSegment(sdkWireString(teamId))].joined(), config: config, query: [
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getTeams", options: requestOptions)).data
+    static func getTeams(
+        config: ClientConfig,
+        teamId: String,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> Team {
+        try await (sdkRequest(
+            "GET",
+            ["/v2/teams/", sdkEncodePathSegment(sdkWireString(teamId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getTeams",
+            options: requestOptions
+        )).data
     }
 }

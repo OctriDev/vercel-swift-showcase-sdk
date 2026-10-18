@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical checks operation model declarations
+/// Canonical checks operation model declarations
 public struct UpdateCheckRequestBodyOutputMetricsVirtualExperienceScore: Codable {
     /// The calculated Virtual Experience Score value, between 0 and 100
     /// - Example: 30
@@ -23,39 +23,85 @@ public struct UpdateCheckRequestBodyOutputMetricsVirtualExperienceScore: Codable
         case previousValue
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension UpdateCheckRequestBodyOutputMetricsVirtualExperienceScore {
-    public init(from decoder: Decoder) throws {
+public extension UpdateCheckRequestBodyOutputMetricsVirtualExperienceScore {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
         }
         guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
         }
-        self.value = try container.sdkDecodeNullable(.value)
-        self.source = try container.sdkDecodeRequired(.source)
-        self.previousValue = try container.sdkDecodeIfPresent(.previousValue)
-        if let value = self.value {
-            try validateRange("value", Double(value), min: 0, max: 100, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        value = try container.sdkDecodeNullable(.value)
+        source = try container.sdkDecodeRequired(.source)
+        previousValue = try container.sdkDecodeIfPresent(.previousValue)
+        if let value {
+            try validateRange(
+                "value",
+                Double(value),
+                min: 0,
+                max: 100,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
-        if let value = self.previousValue {
-            try validateRange("previousValue", Double(value), min: 0, max: 100, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        if let value = previousValue {
+            try validateRange(
+                "previousValue",
+                Double(value),
+                min: 0,
+                max: 100,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
     }
 }
 
-extension UpdateCheckRequestBodyOutputMetricsVirtualExperienceScore {
-    public init(value: Int?, source: UpdateCheckRequestBodyOutputMetricsVirtualExperienceScoreSource, previousValue: Int? = nil) throws {
+public extension UpdateCheckRequestBodyOutputMetricsVirtualExperienceScore {
+    init(
+        value: Int?,
+        source: UpdateCheckRequestBodyOutputMetricsVirtualExperienceScoreSource,
+        previousValue: Int? = nil
+    ) throws {
         (self.value, self.source) = (value, source)
         self.previousValue = previousValue
         if let value = self.value {
-            try validateRange("value", Double(value), min: 0, max: 100, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+            try validateRange(
+                "value",
+                Double(value),
+                min: 0,
+                max: 100,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
         if let value = self.previousValue {
-            try validateRange("previousValue", Double(value), min: 0, max: 100, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+            try validateRange(
+                "previousValue",
+                Double(value),
+                min: 0,
+                max: 100,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
     }
 }
@@ -71,26 +117,36 @@ public struct CreateCheckResponseOutputMetricsLCP: Codable {
         case previousValue
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateCheckResponseOutputMetricsLCP {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.source = try container.sdkDecodeRequired(.source)
-        self.value = try container.sdkDecodeNullable(.value)
-        self.previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateCheckResponseOutputMetricsLCP {
-    public init(source: CreateCheckResponseOutputMetricsLCPSource, value: Double?, previousValue: Double? = nil) {
+public extension CreateCheckResponseOutputMetricsLCP {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        source = try container.sdkDecodeRequired(.source)
+        value = try container.sdkDecodeNullable(.value)
+        previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    }
+}
+
+public extension CreateCheckResponseOutputMetricsLCP {
+    init(source: CreateCheckResponseOutputMetricsLCPSource, value: Double?, previousValue: Double? = nil) {
         (self.source, self.value) = (source, value)
         self.previousValue = previousValue
     }
@@ -111,26 +167,36 @@ public struct UpdateCheckRequestBodyOutputMetricsLCP: Codable {
         case previousValue
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateCheckRequestBodyOutputMetricsLCP {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        self.value = try container.sdkDecodeNullable(.value)
-        self.source = try container.sdkDecodeRequired(.source)
-        self.previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateCheckRequestBodyOutputMetricsLCP {
-    public init(value: Double?, source: UpdateCheckRequestBodyOutputMetricsLCPSource, previousValue: Double? = nil) {
+public extension UpdateCheckRequestBodyOutputMetricsLCP {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        value = try container.sdkDecodeNullable(.value)
+        source = try container.sdkDecodeRequired(.source)
+        previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    }
+}
+
+public extension UpdateCheckRequestBodyOutputMetricsLCP {
+    init(value: Double?, source: UpdateCheckRequestBodyOutputMetricsLCPSource, previousValue: Double? = nil) {
         (self.value, self.source) = (value, source)
         self.previousValue = previousValue
     }
@@ -151,34 +217,58 @@ public struct GetCheckResponseOutputMetrics: Codable {
         case virtualExperienceScore
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetCheckResponseOutputMetrics {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.cls) else {
-            throw SdkValidationError(field: "CLS", code: "required", message: "Validation failed for 'CLS': value is required")
-        }
-        guard container.contains(.fcp) else {
-            throw SdkValidationError(field: "FCP", code: "required", message: "Validation failed for 'FCP': value is required")
-        }
-        guard container.contains(.lcp) else {
-            throw SdkValidationError(field: "LCP", code: "required", message: "Validation failed for 'LCP': value is required")
-        }
-        guard container.contains(.tbt) else {
-            throw SdkValidationError(field: "TBT", code: "required", message: "Validation failed for 'TBT': value is required")
-        }
-        self.cls = try container.sdkDecodeRequired(.cls)
-        self.fcp = try container.sdkDecodeRequired(.fcp)
-        self.lcp = try container.sdkDecodeRequired(.lcp)
-        self.tbt = try container.sdkDecodeRequired(.tbt)
-        self.virtualExperienceScore = try container.sdkDecodeIfPresent(.virtualExperienceScore)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetCheckResponseOutputMetrics {
-    public init(cls: GetCheckResponseOutputMetricsCLS, fcp: GetCheckResponseOutputMetricsFCP, lcp: GetCheckResponseOutputMetricsLCP, tbt: GetCheckResponseOutputMetricsTBT, virtualExperienceScore: GetCheckResponseOutputMetricsVirtualExperienceScore? = nil) {
+public extension GetCheckResponseOutputMetrics {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.cls) else {
+            throw SdkValidationError(
+                field: "CLS",
+                code: "required",
+                message: "Validation failed for 'CLS': value is required"
+            )
+        }
+        guard container.contains(.fcp) else {
+            throw SdkValidationError(
+                field: "FCP",
+                code: "required",
+                message: "Validation failed for 'FCP': value is required"
+            )
+        }
+        guard container.contains(.lcp) else {
+            throw SdkValidationError(
+                field: "LCP",
+                code: "required",
+                message: "Validation failed for 'LCP': value is required"
+            )
+        }
+        guard container.contains(.tbt) else {
+            throw SdkValidationError(
+                field: "TBT",
+                code: "required",
+                message: "Validation failed for 'TBT': value is required"
+            )
+        }
+        cls = try container.sdkDecodeRequired(.cls)
+        fcp = try container.sdkDecodeRequired(.fcp)
+        lcp = try container.sdkDecodeRequired(.lcp)
+        tbt = try container.sdkDecodeRequired(.tbt)
+        virtualExperienceScore = try container.sdkDecodeIfPresent(.virtualExperienceScore)
+    }
+}
+
+public extension GetCheckResponseOutputMetrics {
+    init(
+        cls: GetCheckResponseOutputMetricsCLS,
+        fcp: GetCheckResponseOutputMetricsFCP,
+        lcp: GetCheckResponseOutputMetricsLCP,
+        tbt: GetCheckResponseOutputMetricsTBT,
+        virtualExperienceScore: GetCheckResponseOutputMetricsVirtualExperienceScore? = nil
+    ) {
         (self.cls, self.fcp) = (cls, fcp)
         (self.lcp, self.tbt) = (lcp, tbt)
         self.virtualExperienceScore = virtualExperienceScore
@@ -193,19 +283,19 @@ public struct ListChecksResponseChecksItemOutput: Codable {
     }
 
     init() {
-        self.metrics = nil
+        metrics = nil
     }
 }
 
-extension ListChecksResponseChecksItemOutput {
-    public init(from decoder: Decoder) throws {
+public extension ListChecksResponseChecksItemOutput {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.metrics = try container.sdkDecodeIfPresent(.metrics)
+        metrics = try container.sdkDecodeIfPresent(.metrics)
     }
 }
 
-extension ListChecksResponseChecksItemOutput {
-    public init(metrics: ListChecksResponseChecksItemOutputMetrics? = nil) {
+public extension ListChecksResponseChecksItemOutput {
+    init(metrics: ListChecksResponseChecksItemOutputMetrics? = nil) {
         self.init()
         self.metrics = metrics
     }
@@ -219,19 +309,19 @@ public struct GetCheckResponseOutput: Codable {
     }
 
     init() {
-        self.metrics = nil
+        metrics = nil
     }
 }
 
-extension GetCheckResponseOutput {
-    public init(from decoder: Decoder) throws {
+public extension GetCheckResponseOutput {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.metrics = try container.sdkDecodeIfPresent(.metrics)
+        metrics = try container.sdkDecodeIfPresent(.metrics)
     }
 }
 
-extension GetCheckResponseOutput {
-    public init(metrics: GetCheckResponseOutputMetrics? = nil) {
+public extension GetCheckResponseOutput {
+    init(metrics: GetCheckResponseOutputMetrics? = nil) {
         self.init()
         self.metrics = metrics
     }
@@ -279,33 +369,52 @@ public struct CreateCheckResponse: Codable {
         case startedAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateCheckResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.blocking = try container.sdkDecodeRequired(.blocking)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.deploymentId = try container.sdkDecodeRequired(.deploymentId)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.integrationId = try container.sdkDecodeRequired(.integrationId)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.status = try container.sdkDecodeRequired(.status)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.completedAt = try container.sdkDecodeIfPresent(.completedAt)
-        self.conclusion = try container.sdkDecodeIfPresent(.conclusion)
-        self.detailsUrl = try container.sdkDecodeIfPresent(.detailsUrl)
-        self.externalId = try container.sdkDecodeIfPresent(.externalId)
-        self.output = try container.sdkDecodeIfPresent(.output)
-        self.path = try container.sdkDecodeIfPresent(.path)
-        self.rerequestable = try container.sdkDecodeIfPresent(.rerequestable)
-        self.startedAt = try container.sdkDecodeIfPresent(.startedAt)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateCheckResponse {
-    public init(blocking: Bool, createdAt: Double, deploymentId: String, id: String, integrationId: String, name: String, status: CreateCheckResponseStatus, updatedAt: Double, completedAt: Double? = nil, conclusion: CreateCheckResponseConclusion? = nil, detailsUrl: String? = nil, externalId: String? = nil, output: CreateCheckResponseOutput? = nil, path: String? = nil, rerequestable: Bool? = nil, startedAt: Double? = nil) {
+public extension CreateCheckResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        blocking = try container.sdkDecodeRequired(.blocking)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        deploymentId = try container.sdkDecodeRequired(.deploymentId)
+        id = try container.sdkDecodeRequired(.id)
+        integrationId = try container.sdkDecodeRequired(.integrationId)
+        name = try container.sdkDecodeRequired(.name)
+        status = try container.sdkDecodeRequired(.status)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        completedAt = try container.sdkDecodeIfPresent(.completedAt)
+        conclusion = try container.sdkDecodeIfPresent(.conclusion)
+        detailsUrl = try container.sdkDecodeIfPresent(.detailsUrl)
+        externalId = try container.sdkDecodeIfPresent(.externalId)
+        output = try container.sdkDecodeIfPresent(.output)
+        path = try container.sdkDecodeIfPresent(.path)
+        rerequestable = try container.sdkDecodeIfPresent(.rerequestable)
+        startedAt = try container.sdkDecodeIfPresent(.startedAt)
+    }
+}
+
+public extension CreateCheckResponse {
+    init(
+        blocking: Bool,
+        createdAt: Double,
+        deploymentId: String,
+        id: String,
+        integrationId: String,
+        name: String,
+        status: CreateCheckResponseStatus,
+        updatedAt: Double,
+        completedAt: Double? = nil,
+        conclusion: CreateCheckResponseConclusion? = nil,
+        detailsUrl: String? = nil,
+        externalId: String? = nil,
+        output: CreateCheckResponseOutput? = nil,
+        path: String? = nil,
+        rerequestable: Bool? = nil,
+        startedAt: Double? = nil
+    ) {
         (self.blocking, self.createdAt) = (blocking, createdAt)
         (self.deploymentId, self.id) = (deploymentId, id)
         (self.integrationId, self.name) = (integrationId, name)
@@ -328,26 +437,36 @@ public struct GetCheckResponseOutputMetricsCLS: Codable {
         case previousValue
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetCheckResponseOutputMetricsCLS {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.source = try container.sdkDecodeRequired(.source)
-        self.value = try container.sdkDecodeNullable(.value)
-        self.previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetCheckResponseOutputMetricsCLS {
-    public init(source: GetCheckResponseOutputMetricsCLSSource, value: Double?, previousValue: Double? = nil) {
+public extension GetCheckResponseOutputMetricsCLS {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        source = try container.sdkDecodeRequired(.source)
+        value = try container.sdkDecodeNullable(.value)
+        previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    }
+}
+
+public extension GetCheckResponseOutputMetricsCLS {
+    init(source: GetCheckResponseOutputMetricsCLSSource, value: Double?, previousValue: Double? = nil) {
         (self.source, self.value) = (source, value)
         self.previousValue = previousValue
     }
@@ -364,26 +483,36 @@ public struct UpdateCheckResponseOutputMetricsCLS: Codable {
         case previousValue
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateCheckResponseOutputMetricsCLS {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.source = try container.sdkDecodeRequired(.source)
-        self.value = try container.sdkDecodeNullable(.value)
-        self.previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateCheckResponseOutputMetricsCLS {
-    public init(source: UpdateCheckResponseOutputMetricsCLSSource, value: Double?, previousValue: Double? = nil) {
+public extension UpdateCheckResponseOutputMetricsCLS {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        source = try container.sdkDecodeRequired(.source)
+        value = try container.sdkDecodeNullable(.value)
+        previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    }
+}
+
+public extension UpdateCheckResponseOutputMetricsCLS {
+    init(source: UpdateCheckResponseOutputMetricsCLSSource, value: Double?, previousValue: Double? = nil) {
         (self.source, self.value) = (source, value)
         self.previousValue = previousValue
     }
@@ -400,26 +529,36 @@ public struct ListChecksResponseChecksItemOutputMetricsLCP: Codable {
         case previousValue
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListChecksResponseChecksItemOutputMetricsLCP {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.source = try container.sdkDecodeRequired(.source)
-        self.value = try container.sdkDecodeNullable(.value)
-        self.previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListChecksResponseChecksItemOutputMetricsLCP {
-    public init(source: ListChecksResponseChecksItemOutputMetricsLCPSource, value: Double?, previousValue: Double? = nil) {
+public extension ListChecksResponseChecksItemOutputMetricsLCP {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        source = try container.sdkDecodeRequired(.source)
+        value = try container.sdkDecodeNullable(.value)
+        previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    }
+}
+
+public extension ListChecksResponseChecksItemOutputMetricsLCP {
+    init(source: ListChecksResponseChecksItemOutputMetricsLCPSource, value: Double?, previousValue: Double? = nil) {
         (self.source, self.value) = (source, value)
         self.previousValue = previousValue
     }
@@ -436,26 +575,40 @@ public struct ListChecksResponseChecksItemOutputMetricsVirtualExperienceScore: C
         case previousValue
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListChecksResponseChecksItemOutputMetricsVirtualExperienceScore {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.source = try container.sdkDecodeRequired(.source)
-        self.value = try container.sdkDecodeNullable(.value)
-        self.previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListChecksResponseChecksItemOutputMetricsVirtualExperienceScore {
-    public init(source: ListChecksResponseChecksItemOutputMetricsVirtualExperienceScoreSource, value: Double?, previousValue: Double? = nil) {
+public extension ListChecksResponseChecksItemOutputMetricsVirtualExperienceScore {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        source = try container.sdkDecodeRequired(.source)
+        value = try container.sdkDecodeNullable(.value)
+        previousValue = try container.sdkDecodeIfPresent(.previousValue)
+    }
+}
+
+public extension ListChecksResponseChecksItemOutputMetricsVirtualExperienceScore {
+    init(
+        source: ListChecksResponseChecksItemOutputMetricsVirtualExperienceScoreSource,
+        value: Double?,
+        previousValue: Double? = nil
+    ) {
         (self.source, self.value) = (source, value)
         self.previousValue = previousValue
     }
@@ -471,19 +624,19 @@ public struct UpdateCheckRequestBodyOutput: Codable {
     }
 
     init() {
-        self.metrics = nil
+        metrics = nil
     }
 }
 
-extension UpdateCheckRequestBodyOutput {
-    public init(from decoder: Decoder) throws {
+public extension UpdateCheckRequestBodyOutput {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.metrics = try container.sdkDecodeIfPresent(.metrics)
+        metrics = try container.sdkDecodeIfPresent(.metrics)
     }
 }
 
-extension UpdateCheckRequestBodyOutput {
-    public init(metrics: UpdateCheckRequestBodyOutputMetrics? = nil) {
+public extension UpdateCheckRequestBodyOutput {
+    init(metrics: UpdateCheckRequestBodyOutputMetrics? = nil) {
         self.init()
         self.metrics = metrics
     }

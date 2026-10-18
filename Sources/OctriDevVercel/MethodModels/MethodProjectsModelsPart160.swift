@@ -7,9 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
-extension UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX54fbe4d9ee {
-    public init(preset: UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX44764ddd7a, slugs: [String]? = nil) {
+/// Canonical projects operation model declarations
+public extension UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX54fbe4d9ee {
+    init(preset: UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX44764ddd7a, slugs: [String]? = nil) {
         (self.preset, self.slugs) = (preset, slugs)
     }
 }
@@ -46,39 +46,61 @@ public struct CreateProjectEnvRequestBodyVariant1Item: Codable {
         case customEnvironmentIds
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension CreateProjectEnvRequestBodyVariant1Item {
-    public init(from decoder: Decoder) throws {
+public extension CreateProjectEnvRequestBodyVariant1Item {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.key) else {
-            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
-        self.key = try container.sdkDecodeRequired(.key)
-        self.value = try container.sdkDecodeRequired(.value)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.target = try container.sdkDecodeIfPresent(.target)
-        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        self.comment = try container.sdkDecodeIfPresent(.comment)
-        self.customEnvironmentIds = try container.sdkDecodeIfPresent(.customEnvironmentIds)
-        if let value = self.gitBranch {
+        key = try container.sdkDecodeRequired(.key)
+        value = try container.sdkDecodeRequired(.value)
+        type = try container.sdkDecodeRequired(.type)
+        target = try container.sdkDecodeIfPresent(.target)
+        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        comment = try container.sdkDecodeIfPresent(.comment)
+        customEnvironmentIds = try container.sdkDecodeIfPresent(.customEnvironmentIds)
+        if let value = gitBranch {
             try validateLength("gitBranch", value, min: nil, max: 250)
         }
-        if let value = self.comment {
+        if let value = comment {
             try validateLength("comment", value, min: nil, max: 500)
         }
     }
 }
 
-extension CreateProjectEnvRequestBodyVariant1Item {
-    public init(key: String, value: String, type: CreateProjectEnvRequestBodyVariant1ItemType, target: [CreateProjectEnvRequestBodyVariant1ItemTargetItem]? = nil, gitBranch: String? = nil, comment: String? = nil, customEnvironmentIds: [String]? = nil) throws {
+public extension CreateProjectEnvRequestBodyVariant1Item {
+    init(
+        key: String,
+        value: String,
+        type: CreateProjectEnvRequestBodyVariant1ItemType,
+        target: [CreateProjectEnvRequestBodyVariant1ItemTargetItem]? = nil,
+        gitBranch: String? = nil,
+        comment: String? = nil,
+        customEnvironmentIds: [String]? = nil
+    ) throws {
         (self.key, self.value) = (key, value)
         (self.type, self.target) = (type, target)
         (self.gitBranch, self.comment) = (gitBranch, comment)
@@ -103,25 +125,35 @@ public struct CreateProjectResponseGitComments: Codable {
         case onPullRequest
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateProjectResponseGitComments {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.onCommit) else {
-            throw SdkValidationError(field: "onCommit", code: "required", message: "Validation failed for 'onCommit': value is required")
-        }
-        guard container.contains(.onPullRequest) else {
-            throw SdkValidationError(field: "onPullRequest", code: "required", message: "Validation failed for 'onPullRequest': value is required")
-        }
-        self.onCommit = try container.sdkDecodeRequired(.onCommit)
-        self.onPullRequest = try container.sdkDecodeRequired(.onPullRequest)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateProjectResponseGitComments {
-    public init(onCommit: Bool, onPullRequest: Bool) {
+public extension CreateProjectResponseGitComments {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.onCommit) else {
+            throw SdkValidationError(
+                field: "onCommit",
+                code: "required",
+                message: "Validation failed for 'onCommit': value is required"
+            )
+        }
+        guard container.contains(.onPullRequest) else {
+            throw SdkValidationError(
+                field: "onPullRequest",
+                code: "required",
+                message: "Validation failed for 'onPullRequest': value is required"
+            )
+        }
+        onCommit = try container.sdkDecodeRequired(.onCommit)
+        onPullRequest = try container.sdkDecodeRequired(.onPullRequest)
+    }
+}
+
+public extension CreateProjectResponseGitComments {
+    init(onCommit: Bool, onPullRequest: Bool) {
         (self.onCommit, self.onPullRequest) = (onCommit, onPullRequest)
     }
 }
@@ -181,22 +213,38 @@ public indirect enum ListProjectsResponseVariant2ProjectsItemEnvItemContentHint 
 }
 
 extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless3(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless2(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless3(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        if let value = Self.decodeGroup2(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant2ProjectsItemEnvItemContentHint")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        if let value = Self.decodeGroup2(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ListProjectsResponseVariant2ProjectsItemEnvItemContentHint"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-        if try encodeGroup2(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
+        if try encodeGroup2(to: encoder) {
+            return
+        }
     }
 }
 
@@ -291,62 +339,62 @@ extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11(value)
         }
         return nil
     }
@@ -357,27 +405,27 @@ extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16(value)
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16(value)
         }
         return nil
     }
@@ -387,18 +435,30 @@ extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11(value): try container.encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11(value): try container
+            .encode(value); return true
         default: return false
         }
     }
@@ -408,11 +468,16 @@ extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
     func encodeGroup2(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16(value): try container.encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16(value): try container
+            .encode(value); return true
         default: return false
         }
     }
@@ -426,21 +491,27 @@ public struct UploadProjectAvatarResponsePasswordProtection: Codable {
         case deploymentType
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UploadProjectAvatarResponsePasswordProtection {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.deploymentType) else {
-            throw SdkValidationError(field: "deploymentType", code: "required", message: "Validation failed for 'deploymentType': value is required")
-        }
-        self.deploymentType = try container.sdkDecodeRequired(.deploymentType)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UploadProjectAvatarResponsePasswordProtection {
-    public init(deploymentType: UploadProjectAvatarResponsePasswordProtectionDeploymentType) {
+public extension UploadProjectAvatarResponsePasswordProtection {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.deploymentType) else {
+            throw SdkValidationError(
+                field: "deploymentType",
+                code: "required",
+                message: "Validation failed for 'deploymentType': value is required"
+            )
+        }
+        deploymentType = try container.sdkDecodeRequired(.deploymentType)
+    }
+}
+
+public extension UploadProjectAvatarResponsePasswordProtection {
+    init(deploymentType: UploadProjectAvatarResponsePasswordProtectionDeploymentType) {
         self.deploymentType = deploymentType
     }
 }
@@ -462,26 +533,39 @@ public struct UploadProjectAvatarResponseSecurityRulesetsValue: Codable {
         case redirect
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UploadProjectAvatarResponseSecurityRulesetsValue {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.action) else {
-            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
-        }
-        self.action = try container.sdkDecodeRequired(.action)
-        self.actionDuration = try container.sdkDecodeIfPresent(.actionDuration)
-        self.bypassSystem = try container.sdkDecodeIfPresent(.bypassSystem)
-        self.logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
-        self.rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
-        self.redirect = try container.sdkDecodeIfPresent(.redirect)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UploadProjectAvatarResponseSecurityRulesetsValue {
-    public init(action: UploadProjectAvatarResponseSecurityRulesetsValueAction, actionDuration: String? = nil, bypassSystem: Bool? = nil, logHeaders: UploadProjectAvatarResponseSecurityRulesetsValueLogHeaders? = nil, rateLimit: UploadProjectAvatarResponseSecurityRulesetsValueRateLimit? = nil, redirect: UploadProjectAvatarResponseSecurityRulesetsValueRedirect? = nil) {
+public extension UploadProjectAvatarResponseSecurityRulesetsValue {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.action) else {
+            throw SdkValidationError(
+                field: "action",
+                code: "required",
+                message: "Validation failed for 'action': value is required"
+            )
+        }
+        action = try container.sdkDecodeRequired(.action)
+        actionDuration = try container.sdkDecodeIfPresent(.actionDuration)
+        bypassSystem = try container.sdkDecodeIfPresent(.bypassSystem)
+        logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
+        rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
+        redirect = try container.sdkDecodeIfPresent(.redirect)
+    }
+}
+
+public extension UploadProjectAvatarResponseSecurityRulesetsValue {
+    init(
+        action: UploadProjectAvatarResponseSecurityRulesetsValueAction,
+        actionDuration: String? = nil,
+        bypassSystem: Bool? = nil,
+        logHeaders: UploadProjectAvatarResponseSecurityRulesetsValueLogHeaders? = nil,
+        rateLimit: UploadProjectAvatarResponseSecurityRulesetsValueRateLimit? = nil,
+        redirect: UploadProjectAvatarResponseSecurityRulesetsValueRedirect? = nil
+    ) {
         (self.action, self.actionDuration) = (action, actionDuration)
         (self.bypassSystem, self.logHeaders) = (bypassSystem, logHeaders)
         (self.rateLimit, self.redirect) = (rateLimit, redirect)
@@ -494,14 +578,20 @@ public indirect enum UploadProjectAvatarResponseTargetsValueAliasAssigned {
 }
 
 extension UploadProjectAvatarResponseTargetsValueAliasAssigned: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UploadProjectAvatarResponseTargetsValueAliasAssigned")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UploadProjectAvatarResponseTargetsValueAliasAssigned"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }

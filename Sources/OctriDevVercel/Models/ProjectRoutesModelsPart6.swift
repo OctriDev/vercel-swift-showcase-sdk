@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectRoutes domain models
+/// ProjectRoutes domain models
 public struct AddRouteResponseRouteRouteHasItemVariant1: Codable {
     public var key: String
     public var type: AddRouteResponseRouteRouteHasItemVariant1Type
@@ -15,26 +15,40 @@ public struct AddRouteResponseRouteRouteHasItemVariant1: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AddRouteResponseRouteRouteHasItemVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.key) else {
-            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.key = try container.sdkDecodeRequired(.key)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.value = try container.sdkDecodeIfPresent(.value)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AddRouteResponseRouteRouteHasItemVariant1 {
-    public init(key: String, type: AddRouteResponseRouteRouteHasItemVariant1Type, value: AddRouteResponseRouteRouteHasItemVariant1Value? = nil) {
+public extension AddRouteResponseRouteRouteHasItemVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.key) else {
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        key = try container.sdkDecodeRequired(.key)
+        type = try container.sdkDecodeRequired(.type)
+        value = try container.sdkDecodeIfPresent(.value)
+    }
+}
+
+public extension AddRouteResponseRouteRouteHasItemVariant1 {
+    init(
+        key: String,
+        type: AddRouteResponseRouteRouteHasItemVariant1Type,
+        value: AddRouteResponseRouteRouteHasItemVariant1Value? = nil
+    ) {
         (self.key, self.type) = (key, type)
         self.value = value
     }
@@ -68,31 +82,43 @@ public struct EditRouteResponseRouteRouteHasItemVariant0ValueVariant1: Codable {
     }
 
     init() {
-        (self.eq, self.gt, self.gte, self.inc, self.lt) = (nil, nil, nil, nil, nil)
-        (self.lte, self.neq, self.ninc, self.pre, self.re) = (nil, nil, nil, nil, nil)
-        self.suf = nil
+        (eq, gt, gte, inc, lt) = (nil, nil, nil, nil, nil)
+        (lte, neq, ninc, pre, re) = (nil, nil, nil, nil, nil)
+        suf = nil
     }
 }
 
-extension EditRouteResponseRouteRouteHasItemVariant0ValueVariant1 {
-    public init(from decoder: Decoder) throws {
+public extension EditRouteResponseRouteRouteHasItemVariant0ValueVariant1 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.eq = try container.sdkDecodeIfPresent(.eq)
-        self.gt = try container.sdkDecodeIfPresent(.gt)
-        self.gte = try container.sdkDecodeIfPresent(.gte)
-        self.inc = try container.sdkDecodeIfPresent(.inc)
-        self.lt = try container.sdkDecodeIfPresent(.lt)
-        self.lte = try container.sdkDecodeIfPresent(.lte)
-        self.neq = try container.sdkDecodeIfPresent(.neq)
-        self.ninc = try container.sdkDecodeIfPresent(.ninc)
-        self.pre = try container.sdkDecodeIfPresent(.pre)
-        self.re = try container.sdkDecodeIfPresent(.re)
-        self.suf = try container.sdkDecodeIfPresent(.suf)
+        eq = try container.sdkDecodeIfPresent(.eq)
+        gt = try container.sdkDecodeIfPresent(.gt)
+        gte = try container.sdkDecodeIfPresent(.gte)
+        inc = try container.sdkDecodeIfPresent(.inc)
+        lt = try container.sdkDecodeIfPresent(.lt)
+        lte = try container.sdkDecodeIfPresent(.lte)
+        neq = try container.sdkDecodeIfPresent(.neq)
+        ninc = try container.sdkDecodeIfPresent(.ninc)
+        pre = try container.sdkDecodeIfPresent(.pre)
+        re = try container.sdkDecodeIfPresent(.re)
+        suf = try container.sdkDecodeIfPresent(.suf)
     }
 }
 
-extension EditRouteResponseRouteRouteHasItemVariant0ValueVariant1 {
-    public init(eq: EditRouteResponseRouteRouteHasItemVariant0ValueVariant1Eq? = nil, gt: Double? = nil, gte: Double? = nil, inc: [String]? = nil, lt: Double? = nil, lte: Double? = nil, neq: String? = nil, ninc: [String]? = nil, pre: String? = nil, re: String? = nil, suf: String? = nil) {
+public extension EditRouteResponseRouteRouteHasItemVariant0ValueVariant1 {
+    init(
+        eq: EditRouteResponseRouteRouteHasItemVariant0ValueVariant1Eq? = nil,
+        gt: Double? = nil,
+        gte: Double? = nil,
+        inc: [String]? = nil,
+        lt: Double? = nil,
+        lte: Double? = nil,
+        neq: String? = nil,
+        ninc: [String]? = nil,
+        pre: String? = nil,
+        re: String? = nil,
+        suf: String? = nil
+    ) {
         self.init()
         (self.eq, self.gt) = (eq, gt)
         (self.gte, self.inc) = (gte, inc)
@@ -109,22 +135,32 @@ public indirect enum AddRouteResponseRouteRouteMissingItemVariant1ValueVariant1E
 }
 
 extension AddRouteResponseRouteRouteMissingItemVariant1ValueVariant1Eq: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AddRouteResponseRouteRouteMissingItemVariant1ValueVariant1Eq")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AddRouteResponseRouteRouteMissingItemVariant1ValueVariant1Eq"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension AddRouteResponseRouteRouteMissingItemVariant1ValueVariant1Eq {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         return nil
     }
 }
@@ -148,17 +184,21 @@ extension AddRouteResponseRouteRouteMissingItemVariant1ValueVariant1Eq: SdkNumer
     }
 }
 
-public struct AddRouteResponseRouteRouteMissingItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddRouteResponseRouteRouteMissingItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let cookie = AddRouteResponseRouteRouteMissingItemVariant1Type(rawValue: "cookie")
     public static let header = AddRouteResponseRouteRouteMissingItemVariant1Type(rawValue: "header")
     public static let query = AddRouteResponseRouteRouteMissingItemVariant1Type(rawValue: "query")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -167,15 +207,19 @@ public struct AddRouteResponseRouteRouteMissingItemVariant1Type: RawRepresentabl
     }
 }
 
-public struct AddRouteResponseRouteRouteMissingItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddRouteResponseRouteRouteMissingItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let host = AddRouteResponseRouteRouteMissingItemVariant0Type(rawValue: "host")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -184,15 +228,19 @@ public struct AddRouteResponseRouteRouteMissingItemVariant0Type: RawRepresentabl
     }
 }
 
-public struct EditRouteResponseRouteRouteMissingItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct EditRouteResponseRouteRouteMissingItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let host = EditRouteResponseRouteRouteMissingItemVariant0Type(rawValue: "host")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -203,15 +251,19 @@ public struct EditRouteResponseRouteRouteMissingItemVariant0Type: RawRepresentab
 
 /// Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no
 /// longer required.
-public struct AddRouteResponseRouteRouteDestinationVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddRouteResponseRouteRouteDestinationVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let service = AddRouteResponseRouteRouteDestinationVariant1Type(rawValue: "service")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -220,15 +272,19 @@ public struct AddRouteResponseRouteRouteDestinationVariant1Type: RawRepresentabl
     }
 }
 
-public struct EditRouteResponseRouteRouteTransformsItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct EditRouteResponseRouteRouteTransformsItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let requestPath = EditRouteResponseRouteRouteTransformsItemVariant1Type(rawValue: "request.path")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -237,15 +293,19 @@ public struct EditRouteResponseRouteRouteTransformsItemVariant1Type: RawRepresen
     }
 }
 
-public struct AddRouteResponseRouteRouteTransformsItemVariant1Op: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddRouteResponseRouteRouteTransformsItemVariant1Op: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let set = AddRouteResponseRouteRouteTransformsItemVariant1Op(rawValue: "set")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -254,17 +314,21 @@ public struct AddRouteResponseRouteRouteTransformsItemVariant1Op: RawRepresentab
     }
 }
 
-public struct AddRouteResponseRouteRouteTransformsItemVariant0Op: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddRouteResponseRouteRouteTransformsItemVariant0Op: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let append = AddRouteResponseRouteRouteTransformsItemVariant0Op(rawValue: "append")
     public static let delete = AddRouteResponseRouteRouteTransformsItemVariant0Op(rawValue: "delete")
     public static let set = AddRouteResponseRouteRouteTransformsItemVariant0Op(rawValue: "set")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -273,17 +337,21 @@ public struct AddRouteResponseRouteRouteTransformsItemVariant0Op: RawRepresentab
     }
 }
 
-public struct EditRouteResponseRouteRouteTransformsItemVariant0Op: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct EditRouteResponseRouteRouteTransformsItemVariant0Op: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let append = EditRouteResponseRouteRouteTransformsItemVariant0Op(rawValue: "append")
     public static let delete = EditRouteResponseRouteRouteTransformsItemVariant0Op(rawValue: "delete")
     public static let set = EditRouteResponseRouteRouteTransformsItemVariant0Op(rawValue: "set")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -292,17 +360,22 @@ public struct EditRouteResponseRouteRouteTransformsItemVariant0Op: RawRepresenta
     }
 }
 
-public struct AddRouteResponseRouteRouteTransformsItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddRouteResponseRouteRouteTransformsItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let requestHeaders = AddRouteResponseRouteRouteTransformsItemVariant0Type(rawValue: "request.headers")
     public static let requestQuery = AddRouteResponseRouteRouteTransformsItemVariant0Type(rawValue: "request.query")
-    public static let responseHeaders = AddRouteResponseRouteRouteTransformsItemVariant0Type(rawValue: "response.headers")
+    public static let responseHeaders =
+        AddRouteResponseRouteRouteTransformsItemVariant0Type(rawValue: "response.headers")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -311,15 +384,19 @@ public struct AddRouteResponseRouteRouteTransformsItemVariant0Type: RawRepresent
     }
 }
 
-public struct EditRouteResponseRouteRouteHasItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct EditRouteResponseRouteRouteHasItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let host = EditRouteResponseRouteRouteHasItemVariant0Type(rawValue: "host")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -328,15 +405,19 @@ public struct EditRouteResponseRouteRouteHasItemVariant0Type: RawRepresentable, 
     }
 }
 
-public struct AddRouteResponseRouteRouteHasItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddRouteResponseRouteRouteHasItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let host = AddRouteResponseRouteRouteHasItemVariant0Type(rawValue: "host")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -345,15 +426,19 @@ public struct AddRouteResponseRouteRouteHasItemVariant0Type: RawRepresentable, H
     }
 }
 
-public struct EditRouteResponseRouteRouteTransformsItemVariant1Op: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct EditRouteResponseRouteRouteTransformsItemVariant1Op: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let set = EditRouteResponseRouteRouteTransformsItemVariant1Op(rawValue: "set")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -362,17 +447,21 @@ public struct EditRouteResponseRouteRouteTransformsItemVariant1Op: RawRepresenta
     }
 }
 
-public struct EditRouteResponseRouteRouteHasItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct EditRouteResponseRouteRouteHasItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let cookie = EditRouteResponseRouteRouteHasItemVariant1Type(rawValue: "cookie")
     public static let header = EditRouteResponseRouteRouteHasItemVariant1Type(rawValue: "header")
     public static let query = EditRouteResponseRouteRouteHasItemVariant1Type(rawValue: "query")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -381,15 +470,19 @@ public struct EditRouteResponseRouteRouteHasItemVariant1Type: RawRepresentable, 
     }
 }
 
-public struct AddRouteResponseRouteRouteTransformsItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddRouteResponseRouteRouteTransformsItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let requestPath = AddRouteResponseRouteRouteTransformsItemVariant1Type(rawValue: "request.path")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -398,17 +491,21 @@ public struct AddRouteResponseRouteRouteTransformsItemVariant1Type: RawRepresent
     }
 }
 
-public struct AddRouteResponseRouteRouteHasItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddRouteResponseRouteRouteHasItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let cookie = AddRouteResponseRouteRouteHasItemVariant1Type(rawValue: "cookie")
     public static let header = AddRouteResponseRouteRouteHasItemVariant1Type(rawValue: "header")
     public static let query = AddRouteResponseRouteRouteHasItemVariant1Type(rawValue: "query")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -419,15 +516,19 @@ public struct AddRouteResponseRouteRouteHasItemVariant1Type: RawRepresentable, H
 
 /// Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no
 /// longer required.
-public struct EditRouteResponseRouteRouteDestinationVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct EditRouteResponseRouteRouteDestinationVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let service = EditRouteResponseRouteRouteDestinationVariant1Type(rawValue: "service")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -436,17 +537,21 @@ public struct EditRouteResponseRouteRouteDestinationVariant1Type: RawRepresentab
     }
 }
 
-public struct EditRouteResponseRouteRouteMissingItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct EditRouteResponseRouteRouteMissingItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let cookie = EditRouteResponseRouteRouteMissingItemVariant1Type(rawValue: "cookie")
     public static let header = EditRouteResponseRouteRouteMissingItemVariant1Type(rawValue: "header")
     public static let query = EditRouteResponseRouteRouteMissingItemVariant1Type(rawValue: "query")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
