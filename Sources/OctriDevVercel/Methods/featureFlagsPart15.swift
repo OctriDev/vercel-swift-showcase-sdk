@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    public struct UpdateFlagSegmentOptions: Codable {
+public extension FeatureFlagsMethods {
+    struct UpdateFlagSegmentOptions: Codable {
         public var projectIdOrName: String
         public var segmentIdOrSlug: String
         public var withMetadata: Bool?
@@ -25,7 +25,9 @@ extension FeatureFlagsMethods {
         }
     }
 
-    /// Updates an existing feature flag segment in a project. Use `projectIdOrName` and `segmentIdOrSlug` to identify the project and segment, and send only the segment properties you want to change. The `operations` entries can add or remove values from the segment's include or exclude fields.
+    /// Updates an existing feature flag segment in a project. Use `projectIdOrName` and `segmentIdOrSlug` to identify
+    /// the project and segment, and send only the segment properties you want to change. The `operations` entries can
+    /// add or remove values from the segment's include or exclude fields.
     ///
     /// Update an existing feature flag segment.
     ///
@@ -36,27 +38,60 @@ extension FeatureFlagsMethods {
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - data: The data of the segment
-    public static func updateFlagSegment(config: ClientConfig, options: UpdateFlagSegmentOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateFlagSegmentResponse {
+    static func updateFlagSegment(
+        config: ClientConfig,
+        options: UpdateFlagSegmentOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateFlagSegmentResponse {
         let requestBody = UpdateFlagSegmentRequestBody(options: options)
 
-        return try (await sdkRequest("PATCH", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/segments/", sdkEncodePathSegment(sdkWireString(options.segmentIdOrSlug))].joined(), config: config, query: [
-            SdkQueryParameter("withMetadata", value: options.withMetadata),
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], body: requestBody, decoder: .json, operationId: "updateFlagSegment", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(options.projectIdOrName)),
+                "/feature-flags/segments/",
+                sdkEncodePathSegment(sdkWireString(options.segmentIdOrSlug)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("withMetadata", value: options.withMetadata),
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "updateFlagSegment",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves the feature flags associated with a deployment. Use `deploymentId` to identify the deployment whose flags you need. The response includes the flags and status information for the deployment.
+    /// Retrieves the feature flags associated with a deployment. Use `deploymentId` to identify the deployment whose
+    /// flags you need. The response includes the flags and status information for the deployment.
     ///
     /// Retrieve the feature flags of a deployment.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getDeploymentFeatureFlags(config: ClientConfig, deploymentId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDeploymentFeatureFlagsResponse {
-        return try (await sdkRequest("GET", ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/feature-flags"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getDeploymentFeatureFlags", options: requestOptions)).data
+    static func getDeploymentFeatureFlags(
+        config: ClientConfig,
+        deploymentId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDeploymentFeatureFlagsResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/feature-flags"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getDeploymentFeatureFlags",
+            options: requestOptions
+        )).data
     }
 }

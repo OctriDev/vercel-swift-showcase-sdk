@@ -7,9 +7,20 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical accessGroups operation model declarations
-extension UpdateAccessGroupResponse {
-    public init(accessGroupId: String, createdAt: String, entitlements: [UpdateAccessGroupResponseEntitlementsItem], membersCount: Double, name: String, projectsCount: Double, teamId: String, updatedAt: String, teamPermissions: [String]? = nil, teamRoles: [String]? = nil) {
+/// Canonical accessGroups operation model declarations
+public extension UpdateAccessGroupResponse {
+    init(
+        accessGroupId: String,
+        createdAt: String,
+        entitlements: [UpdateAccessGroupResponseEntitlementsItem],
+        membersCount: Double,
+        name: String,
+        projectsCount: Double,
+        teamId: String,
+        updatedAt: String,
+        teamPermissions: [String]? = nil,
+        teamRoles: [String]? = nil
+    ) {
         (self.accessGroupId, self.createdAt) = (accessGroupId, createdAt)
         (self.entitlements, self.membersCount) = (entitlements, membersCount)
         (self.name, self.projectsCount) = (name, projectsCount)
@@ -65,30 +76,46 @@ public struct ListAccessGroupsResponseVariant1AccessGroupsItem: Codable {
         case teamRoles
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListAccessGroupsResponseVariant1AccessGroupsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.isDsyncManaged = try container.sdkDecodeRequired(.isDsyncManaged)
-        self.membersCount = try container.sdkDecodeRequired(.membersCount)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.projectsCount = try container.sdkDecodeRequired(.projectsCount)
-        self.teamId = try container.sdkDecodeRequired(.teamId)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.entitlements = try container.sdkDecodeIfPresent(.entitlements)
-        self.members = try container.sdkDecodeIfPresent(.members)
-        self.projects = try container.sdkDecodeIfPresent(.projects)
-        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListAccessGroupsResponseVariant1AccessGroupsItem {
-    public init(accessGroupId: String, createdAt: String, isDsyncManaged: Bool, membersCount: Double, name: String, projectsCount: Double, teamId: String, updatedAt: String, entitlements: [String]? = nil, members: [String]? = nil, projects: [String]? = nil, teamPermissions: [String]? = nil, teamRoles: [String]? = nil) {
+public extension ListAccessGroupsResponseVariant1AccessGroupsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        isDsyncManaged = try container.sdkDecodeRequired(.isDsyncManaged)
+        membersCount = try container.sdkDecodeRequired(.membersCount)
+        name = try container.sdkDecodeRequired(.name)
+        projectsCount = try container.sdkDecodeRequired(.projectsCount)
+        teamId = try container.sdkDecodeRequired(.teamId)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        entitlements = try container.sdkDecodeIfPresent(.entitlements)
+        members = try container.sdkDecodeIfPresent(.members)
+        projects = try container.sdkDecodeIfPresent(.projects)
+        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    }
+}
+
+public extension ListAccessGroupsResponseVariant1AccessGroupsItem {
+    init(
+        accessGroupId: String,
+        createdAt: String,
+        isDsyncManaged: Bool,
+        membersCount: Double,
+        name: String,
+        projectsCount: Double,
+        teamId: String,
+        updatedAt: String,
+        entitlements: [String]? = nil,
+        members: [String]? = nil,
+        projects: [String]? = nil,
+        teamPermissions: [String]? = nil,
+        teamRoles: [String]? = nil
+    ) {
         (self.accessGroupId, self.createdAt) = (accessGroupId, createdAt)
         (self.isDsyncManaged, self.membersCount) = (isDsyncManaged, membersCount)
         (self.name, self.projectsCount) = (name, projectsCount)
@@ -142,28 +169,42 @@ public struct ReadAccessGroupResponse: Codable {
         case teamRoles
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ReadAccessGroupResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.isDsyncManaged = try container.sdkDecodeRequired(.isDsyncManaged)
-        self.membersCount = try container.sdkDecodeRequired(.membersCount)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.projectsCount = try container.sdkDecodeRequired(.projectsCount)
-        self.teamId = try container.sdkDecodeRequired(.teamId)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.entitlements = try container.sdkDecodeIfPresent(.entitlements)
-        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ReadAccessGroupResponse {
-    public init(accessGroupId: String, createdAt: String, isDsyncManaged: Bool, membersCount: Double, name: String, projectsCount: Double, teamId: String, updatedAt: String, entitlements: [ReadAccessGroupResponseEntitlementsItem]? = nil, teamPermissions: [ReadAccessGroupResponseTeamPermissionsItem]? = nil, teamRoles: [String]? = nil) {
+public extension ReadAccessGroupResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        isDsyncManaged = try container.sdkDecodeRequired(.isDsyncManaged)
+        membersCount = try container.sdkDecodeRequired(.membersCount)
+        name = try container.sdkDecodeRequired(.name)
+        projectsCount = try container.sdkDecodeRequired(.projectsCount)
+        teamId = try container.sdkDecodeRequired(.teamId)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        entitlements = try container.sdkDecodeIfPresent(.entitlements)
+        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    }
+}
+
+public extension ReadAccessGroupResponse {
+    init(
+        accessGroupId: String,
+        createdAt: String,
+        isDsyncManaged: Bool,
+        membersCount: Double,
+        name: String,
+        projectsCount: Double,
+        teamId: String,
+        updatedAt: String,
+        entitlements: [ReadAccessGroupResponseEntitlementsItem]? = nil,
+        teamPermissions: [ReadAccessGroupResponseTeamPermissionsItem]? = nil,
+        teamRoles: [String]? = nil
+    ) {
         (self.accessGroupId, self.createdAt) = (accessGroupId, createdAt)
         (self.isDsyncManaged, self.membersCount) = (isDsyncManaged, membersCount)
         (self.name, self.projectsCount) = (name, projectsCount)
@@ -179,22 +220,33 @@ public indirect enum ListAccessGroupsResponse {
 }
 
 extension ListAccessGroupsResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListAccessGroupsResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ListAccessGroupsResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ListAccessGroupsResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String: JSONValue].self) { return .jsonValue(value) }
-        if let value = try? container.decode(ListAccessGroupsResponseVariant1.self) { return .listAccessGroupsResponseVariant1(value) }
+        if let value = try? container.decode([String: JSONValue].self) {
+            return .jsonValue(value)
+        }
+        if let value = try? container
+            .decode(ListAccessGroupsResponseVariant1.self) {
+            return .listAccessGroupsResponseVariant1(value)
+        }
         return nil
     }
 }
@@ -218,25 +270,38 @@ public struct ListAccessGroupProjectsResponse: Codable {
         case projects
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListAccessGroupProjectsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        guard container.contains(.projects) else {
-            throw SdkValidationError(field: "projects", code: "required", message: "Validation failed for 'projects': value is required")
-        }
-        self.pagination = try container.sdkDecodeRequired(.pagination)
-        self.projects = try container.sdkDecodeRequired(.projects)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListAccessGroupProjectsResponse {
-    public init(pagination: ListAccessGroupProjectsResponsePagination, projects: [ListAccessGroupProjectsResponseProjectsItem]) {
+public extension ListAccessGroupProjectsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        guard container.contains(.projects) else {
+            throw SdkValidationError(
+                field: "projects",
+                code: "required",
+                message: "Validation failed for 'projects': value is required"
+            )
+        }
+        pagination = try container.sdkDecodeRequired(.pagination)
+        projects = try container.sdkDecodeRequired(.projects)
+    }
+}
+
+public extension ListAccessGroupProjectsResponse {
+    init(
+        pagination: ListAccessGroupProjectsResponsePagination,
+        projects: [ListAccessGroupProjectsResponseProjectsItem]
+    ) {
         (self.pagination, self.projects) = (pagination, projects)
     }
 }
@@ -250,25 +315,35 @@ public struct ListAccessGroupMembersResponsePagination: Codable {
         case next
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListAccessGroupMembersResponsePagination {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.count) else {
-            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
-        }
-        guard container.contains(.next) else {
-            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
-        }
-        self.count = try container.sdkDecodeRequired(.count)
-        self.next = try container.sdkDecodeNullable(.next)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListAccessGroupMembersResponsePagination {
-    public init(count: Double, next: String?) {
+public extension ListAccessGroupMembersResponsePagination {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.count) else {
+            throw SdkValidationError(
+                field: "count",
+                code: "required",
+                message: "Validation failed for 'count': value is required"
+            )
+        }
+        guard container.contains(.next) else {
+            throw SdkValidationError(
+                field: "next",
+                code: "required",
+                message: "Validation failed for 'next': value is required"
+            )
+        }
+        count = try container.sdkDecodeRequired(.count)
+        next = try container.sdkDecodeNullable(.next)
+    }
+}
+
+public extension ListAccessGroupMembersResponsePagination {
+    init(count: Double, next: String?) {
         (self.count, self.next) = (count, next)
     }
 }
@@ -286,28 +361,38 @@ public struct UpdateAccessGroupRequestBodyProjectsItem: Codable {
         case role
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateAccessGroupRequestBodyProjectsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        guard container.contains(.role) else {
-            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
-        }
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.role = try container.sdkDecodeNullable(.role)
-            try validateLength("projectId", self.projectId, min: nil, max: 256)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateAccessGroupRequestBodyProjectsItem {
-    public init(projectId: String, role: UpdateAccessGroupRequestBodyProjectsItemRole?) throws {
+public extension UpdateAccessGroupRequestBodyProjectsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
+        }
+        guard container.contains(.role) else {
+            throw SdkValidationError(
+                field: "role",
+                code: "required",
+                message: "Validation failed for 'role': value is required"
+            )
+        }
+        projectId = try container.sdkDecodeRequired(.projectId)
+        role = try container.sdkDecodeNullable(.role)
+        try validateLength("projectId", projectId, min: nil, max: 256)
+    }
+}
+
+public extension UpdateAccessGroupRequestBodyProjectsItem {
+    init(projectId: String, role: UpdateAccessGroupRequestBodyProjectsItemRole?) throws {
         (self.projectId, self.role) = (projectId, role)
-            try validateLength("projectId", self.projectId, min: nil, max: 256)
+        try validateLength("projectId", self.projectId, min: nil, max: 256)
     }
 }
 
@@ -323,21 +408,21 @@ public struct ListAccessGroupProjectsResponseProjectsItemProject: Codable {
     }
 
     init() {
-        (self.framework, self.latestDeploymentId, self.name) = (nil, nil, nil)
+        (framework, latestDeploymentId, name) = (nil, nil, nil)
     }
 }
 
-extension ListAccessGroupProjectsResponseProjectsItemProject {
-    public init(from decoder: Decoder) throws {
+public extension ListAccessGroupProjectsResponseProjectsItemProject {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.framework = try container.sdkDecodeIfPresent(.framework)
-        self.latestDeploymentId = try container.sdkDecodeIfPresent(.latestDeploymentId)
-        self.name = try container.sdkDecodeIfPresent(.name)
+        framework = try container.sdkDecodeIfPresent(.framework)
+        latestDeploymentId = try container.sdkDecodeIfPresent(.latestDeploymentId)
+        name = try container.sdkDecodeIfPresent(.name)
     }
 }
 
-extension ListAccessGroupProjectsResponseProjectsItemProject {
-    public init(framework: String? = nil, latestDeploymentId: String? = nil, name: String? = nil) {
+public extension ListAccessGroupProjectsResponseProjectsItemProject {
+    init(framework: String? = nil, latestDeploymentId: String? = nil, name: String? = nil) {
         self.init()
         (self.framework, self.latestDeploymentId) = (framework, latestDeploymentId)
         self.name = name
@@ -353,25 +438,35 @@ public struct ListAccessGroupProjectsResponsePagination: Codable {
         case next
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListAccessGroupProjectsResponsePagination {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.count) else {
-            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
-        }
-        guard container.contains(.next) else {
-            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
-        }
-        self.count = try container.sdkDecodeRequired(.count)
-        self.next = try container.sdkDecodeNullable(.next)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListAccessGroupProjectsResponsePagination {
-    public init(count: Double, next: String?) {
+public extension ListAccessGroupProjectsResponsePagination {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.count) else {
+            throw SdkValidationError(
+                field: "count",
+                code: "required",
+                message: "Validation failed for 'count': value is required"
+            )
+        }
+        guard container.contains(.next) else {
+            throw SdkValidationError(
+                field: "next",
+                code: "required",
+                message: "Validation failed for 'next': value is required"
+            )
+        }
+        count = try container.sdkDecodeRequired(.count)
+        next = try container.sdkDecodeNullable(.next)
+    }
+}
+
+public extension ListAccessGroupProjectsResponsePagination {
+    init(count: Double, next: String?) {
         (self.count, self.next) = (count, next)
     }
 }
@@ -389,28 +484,38 @@ public struct CreateAccessGroupRequestBodyProjectsItem: Codable {
         case role
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateAccessGroupRequestBodyProjectsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        guard container.contains(.role) else {
-            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
-        }
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.role = try container.sdkDecodeNullable(.role)
-            try validateLength("projectId", self.projectId, min: nil, max: 256)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateAccessGroupRequestBodyProjectsItem {
-    public init(projectId: String, role: CreateAccessGroupRequestBodyProjectsItemRole?) throws {
+public extension CreateAccessGroupRequestBodyProjectsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
+        }
+        guard container.contains(.role) else {
+            throw SdkValidationError(
+                field: "role",
+                code: "required",
+                message: "Validation failed for 'role': value is required"
+            )
+        }
+        projectId = try container.sdkDecodeRequired(.projectId)
+        role = try container.sdkDecodeNullable(.role)
+        try validateLength("projectId", projectId, min: nil, max: 256)
+    }
+}
+
+public extension CreateAccessGroupRequestBodyProjectsItem {
+    init(projectId: String, role: CreateAccessGroupRequestBodyProjectsItemRole?) throws {
         (self.projectId, self.role) = (projectId, role)
-            try validateLength("projectId", self.projectId, min: nil, max: 256)
+        try validateLength("projectId", self.projectId, min: nil, max: 256)
     }
 }
 
@@ -453,27 +558,40 @@ public struct CreateAccessGroupResponse: Codable {
         case teamRoles
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateAccessGroupResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.entitlements = try container.sdkDecodeRequired(.entitlements)
-        self.membersCount = try container.sdkDecodeRequired(.membersCount)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.projectsCount = try container.sdkDecodeRequired(.projectsCount)
-        self.teamId = try container.sdkDecodeRequired(.teamId)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateAccessGroupResponse {
-    public init(accessGroupId: String, createdAt: String, entitlements: [CreateAccessGroupResponseEntitlementsItem], membersCount: Double, name: String, projectsCount: Double, teamId: String, updatedAt: String, teamPermissions: [String]? = nil, teamRoles: [String]? = nil) {
+public extension CreateAccessGroupResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        entitlements = try container.sdkDecodeRequired(.entitlements)
+        membersCount = try container.sdkDecodeRequired(.membersCount)
+        name = try container.sdkDecodeRequired(.name)
+        projectsCount = try container.sdkDecodeRequired(.projectsCount)
+        teamId = try container.sdkDecodeRequired(.teamId)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    }
+}
+
+public extension CreateAccessGroupResponse {
+    init(
+        accessGroupId: String,
+        createdAt: String,
+        entitlements: [CreateAccessGroupResponseEntitlementsItem],
+        membersCount: Double,
+        name: String,
+        projectsCount: Double,
+        teamId: String,
+        updatedAt: String,
+        teamPermissions: [String]? = nil,
+        teamRoles: [String]? = nil
+    ) {
         (self.accessGroupId, self.createdAt) = (accessGroupId, createdAt)
         (self.entitlements, self.membersCount) = (entitlements, membersCount)
         (self.name, self.projectsCount) = (name, projectsCount)

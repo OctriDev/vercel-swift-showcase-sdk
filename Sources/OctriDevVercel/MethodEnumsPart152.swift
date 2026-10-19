@@ -7,47 +7,82 @@ import Foundation
     import FoundationNetworking
 #endif
 /// Parameter from the incoming traffic.
-public struct PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let host = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "host")
     public static let path = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "path")
-    public static let method = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "method")
-    public static let header = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "header")
-    public static let query = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "query")
-    public static let cookie = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "cookie")
-    public static let targetPath = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "target_path")
-    public static let route = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "route")
-    public static let rawPath = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "raw_path")
-    public static let ipAddress = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "ip_address")
-    public static let region = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "region")
-    public static let `protocol` = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "protocol")
-    public static let scheme = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "scheme")
-    public static let environment = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "environment")
-    public static let domainEnvironment = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "domain_environment")
-    public static let userAgent = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "user_agent")
-    public static let geoContinent = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_continent")
-    public static let geoCountry = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_country")
-    public static let geoCountryRegion = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_country_region")
-    public static let geoCity = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_city")
-    public static let geoAsNumber = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_as_number")
-    public static let ja4Digest = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "ja4_digest")
-    public static let ja3Digest = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "ja3_digest")
-    public static let rateLimitApiId = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "rate_limit_api_id")
-    public static let serverAction = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "server_action")
-    public static let botName = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "bot_name")
-    public static let botCategory = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "bot_category")
-    public static let botStatus = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "bot_status")
-    public static let botProtection = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "bot_protection")
-    public static let sharedCondition = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "shared_condition")
-    public static let trafficSource = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "traffic_source")
-    public static let ruleset = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "ruleset")
-    public static let responseCode = PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "response_code")
+    public static let method =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "method")
+    public static let header =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "header")
+    public static let query =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "query")
+    public static let cookie =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "cookie")
+    public static let targetPath =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "target_path")
+    public static let route =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "route")
+    public static let rawPath =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "raw_path")
+    public static let ipAddress =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "ip_address")
+    public static let region =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "region")
+    public static let `protocol` =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "protocol")
+    public static let scheme =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "scheme")
+    public static let environment =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "environment")
+    public static let domainEnvironment =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "domain_environment")
+    public static let userAgent =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "user_agent")
+    public static let geoContinent =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_continent")
+    public static let geoCountry =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_country")
+    public static let geoCountryRegion =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_country_region")
+    public static let geoCity =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_city")
+    public static let geoAsNumber =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "geo_as_number")
+    public static let ja4Digest =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "ja4_digest")
+    public static let ja3Digest =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "ja3_digest")
+    public static let rateLimitApiId =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "rate_limit_api_id")
+    public static let serverAction =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "server_action")
+    public static let botName =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "bot_name")
+    public static let botCategory =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "bot_category")
+    public static let botStatus =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "bot_status")
+    public static let botProtection =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "bot_protection")
+    public static let sharedCondition =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "shared_condition")
+    public static let trafficSource =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "traffic_source")
+    public static let ruleset =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "ruleset")
+    public static let responseCode =
+        PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9(rawValue: "response_code")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -56,18 +91,26 @@ public struct PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9
     }
 }
 
-public struct ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let performance = ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType(rawValue: "performance")
-    public static let performanceXl = ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType(rawValue: "performance_xl")
-    public static let standard = ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType(rawValue: "standard")
-    public static let standardLegacy = ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType(rawValue: "standard_legacy")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let performance =
+        ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType(rawValue: "performance")
+    public static let performanceXl =
+        ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType(rawValue: "performance_xl")
+    public static let standard =
+        ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType(rawValue: "standard")
+    public static let standardLegacy =
+        ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType(rawValue: "standard_legacy")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -79,16 +122,22 @@ public struct ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemor
 /// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon
 /// creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview"
 /// deployment.
-public struct ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let production = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget(rawValue: "production")
-    public static let staging = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget(rawValue: "staging")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let production =
+        ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget(rawValue: "production")
+    public static let staging =
+        ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget(rawValue: "staging")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -114,15 +163,20 @@ public enum ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallX25511f
     }
 }
 
-public struct ListProjectsResponseVariant0ItemTrustedSourcesProjectsValueCuX5395edcf0b: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemTrustedSourcesProjectsValueCuX5395edcf0b: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let allCustom = ListProjectsResponseVariant0ItemTrustedSourcesProjectsValueCuX5395edcf0b(rawValue: "all-custom")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let allCustom =
+        ListProjectsResponseVariant0ItemTrustedSourcesProjectsValueCuX5395edcf0b(rawValue: "all-custom")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -131,88 +185,141 @@ public struct ListProjectsResponseVariant0ItemTrustedSourcesProjectsValueCuX5395
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let actixWeb = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "actix-web")
-    public static let angular = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "angular")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let actixWeb =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "actix-web")
+    public static let angular =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "angular")
     public static let ash = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "ash")
     public static let astro = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "astro")
     public static let axum = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "axum")
-    public static let blitzjs = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "blitzjs")
-    public static let brunch = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "brunch")
+    public static let blitzjs =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "blitzjs")
+    public static let brunch =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "brunch")
     public static let bun = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "bun")
-    public static let container = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "container")
-    public static let createReactApp = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "create-react-app")
-    public static let django = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "django")
-    public static let docusaurus = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "docusaurus")
-    public static let docusaurus2 = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "docusaurus-2")
+    public static let container =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "container")
+    public static let createReactApp =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "create-react-app")
+    public static let django =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "django")
+    public static let docusaurus =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "docusaurus")
+    public static let docusaurus2 =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "docusaurus-2")
     public static let dojo = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "dojo")
-    public static let eleventy = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "eleventy")
-    public static let elysia = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "elysia")
+    public static let eleventy =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "eleventy")
+    public static let elysia =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "elysia")
     public static let ember = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "ember")
     public static let eve = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "eve")
-    public static let express = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "express")
-    public static let factoryEve = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "factory-eve")
-    public static let fastapi = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "fastapi")
-    public static let fasthtml = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "fasthtml")
-    public static let fastify = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "fastify")
+    public static let express =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "express")
+    public static let factoryEve =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "factory-eve")
+    public static let fastapi =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "fastapi")
+    public static let fasthtml =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "fasthtml")
+    public static let fastify =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "fastify")
     public static let flask = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "flask")
-    public static let gatsby = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "gatsby")
+    public static let gatsby =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "gatsby")
     public static let go = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "go")
-    public static let gridsome = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "gridsome")
+    public static let gridsome =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "gridsome")
     public static let h3 = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "h3")
     public static let hexo = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "hexo")
     public static let hono = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "hono")
     public static let hugo = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "hugo")
-    public static let hydrogen = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "hydrogen")
-    public static let ionicAngular = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "ionic-angular")
-    public static let ionicReact = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "ionic-react")
-    public static let jekyll = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "jekyll")
+    public static let hydrogen =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "hydrogen")
+    public static let ionicAngular =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "ionic-angular")
+    public static let ionicReact =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "ionic-react")
+    public static let jekyll =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "jekyll")
     public static let koa = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "koa")
-    public static let mastra = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "mastra")
-    public static let middleman = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "middleman")
-    public static let nestjs = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "nestjs")
-    public static let nextjs = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "nextjs")
+    public static let mastra =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "mastra")
+    public static let middleman =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "middleman")
+    public static let nestjs =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "nestjs")
+    public static let nextjs =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "nextjs")
     public static let nitro = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "nitro")
     public static let node = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "node")
-    public static let nuxtjs = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "nuxtjs")
-    public static let parcel = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "parcel")
-    public static let polymer = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "polymer")
-    public static let preact = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "preact")
-    public static let python = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "python")
-    public static let reactRouter = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "react-router")
-    public static let redwoodjs = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "redwoodjs")
+    public static let nuxtjs =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "nuxtjs")
+    public static let parcel =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "parcel")
+    public static let polymer =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "polymer")
+    public static let preact =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "preact")
+    public static let python =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "python")
+    public static let reactRouter =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "react-router")
+    public static let redwoodjs =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "redwoodjs")
     public static let remix = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "remix")
     public static let ruby = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "ruby")
     public static let rust = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "rust")
     public static let saber = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "saber")
-    public static let sanity = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sanity")
-    public static let sanityV2 = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sanity-v2")
-    public static let sapper = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sapper")
-    public static let scully = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "scully")
-    public static let services = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "services")
-    public static let solidstart = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "solidstart")
-    public static let solidstart1 = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "solidstart-1")
-    public static let stencil = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "stencil")
-    public static let storybook = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "storybook")
-    public static let svelte = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "svelte")
-    public static let sveltekit = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sveltekit")
-    public static let sveltekit1 = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sveltekit-1")
-    public static let tanstackStart = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "tanstack-start-lovable")
+    public static let sanity =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sanity")
+    public static let sanityV2 =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sanity-v2")
+    public static let sapper =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sapper")
+    public static let scully =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "scully")
+    public static let services =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "services")
+    public static let solidstart =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "solidstart")
+    public static let solidstart1 =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "solidstart-1")
+    public static let stencil =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "stencil")
+    public static let storybook =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "storybook")
+    public static let svelte =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "svelte")
+    public static let sveltekit =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sveltekit")
+    public static let sveltekit1 =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "sveltekit-1")
+    public static let tanstackStart =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "tanstack-start")
+    public static let tanstackStartLovable =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "umijs")
     public static let vite = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "vite")
-    public static let vitepress = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "vitepress")
+    public static let vitepress =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "vitepress")
     public static let vue = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "vue")
-    public static let vuepress = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "vuepress")
+    public static let vuepress =
+        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "vuepress")
     public static let xmcp = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "xmcp")
     public static let zola = CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework(rawValue: "zola")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -7,17 +7,23 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical integrations operation model declarations
+/// Canonical integrations operation model declarations
 extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXeb0b91bc71: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXeb0b91bc71")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXeb0b91bc71"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -26,10 +32,14 @@ extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXeb0b91bc
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX61525efa85.self
         ) {
-            return             .createIntegrationStoreDirectResponseStoreProductMetadataSchemX61525efa85(value)
+            return .createIntegrationStoreDirectResponseStoreProductMetadataSchemX61525efa85(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -38,7 +48,8 @@ extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXeb0b91bc
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemX61525efa85(value): try container.encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemX61525efa85(value): try container
+            .encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }
@@ -54,15 +65,21 @@ public indirect enum GetConfigurationProductsResponseProductsItemMetadataSchemaP
 }
 
 extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4762a6c921: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProX4762a6c921")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProX4762a6c921"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -71,10 +88,14 @@ extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4762a6c9
         if let value = try? container.decode(
             GetConfigurationProductsResponseProductsItemMetadataSchemaProX32ae88da64.self
         ) {
-            return             .getConfigurationProductsResponseProductsItemMetadataSchemaProX32ae88da64(value)
+            return .getConfigurationProductsResponseProductsItemMetadataSchemaProX32ae88da64(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -83,7 +104,8 @@ extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4762a6c9
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProX32ae88da64(value): try container.encode(value); return true
+        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProX32ae88da64(value): try container
+            .encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }

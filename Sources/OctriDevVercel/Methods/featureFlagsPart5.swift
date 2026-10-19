@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    /// Retrieves a feature flag by its ID or slug within a project. Use `ifMatch` to send an ETag condition and `withMetadata` to include metadata in the response. The result contains the flag configuration, including its environments, variants, and current state.
+public extension FeatureFlagsMethods {
+    /// Retrieves a feature flag by its ID or slug within a project. Use `ifMatch` to send an ETag condition and
+    /// `withMetadata` to include metadata in the response. The result contains the flag configuration, including its
+    /// environments, variants, and current state.
     ///
     /// Retrieve a specific feature flag by its ID or slug.
     ///
@@ -19,12 +21,34 @@ extension FeatureFlagsMethods {
     /// - withMetadata: Whether to include metadata in the response
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getFlag(config: ClientConfig, projectIdOrName: String, flagIdOrSlug: String, ifMatch: String? = nil, withMetadata: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> Flag {
-        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/flags/", sdkEncodePathSegment(sdkWireString(flagIdOrSlug))].joined(), config: config, query: [
-            SdkQueryParameter("ifMatch", value: ifMatch),
-            SdkQueryParameter("withMetadata", value: withMetadata),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getFlag", options: requestOptions)).data
+    static func getFlag(
+        config: ClientConfig,
+        projectIdOrName: String,
+        flagIdOrSlug: String,
+        ifMatch: String? = nil,
+        withMetadata: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> Flag {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(projectIdOrName)),
+                "/feature-flags/flags/",
+                sdkEncodePathSegment(sdkWireString(flagIdOrSlug)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("ifMatch", value: ifMatch),
+                SdkQueryParameter("withMetadata", value: withMetadata),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getFlag",
+            options: requestOptions
+        )).data
     }
 }

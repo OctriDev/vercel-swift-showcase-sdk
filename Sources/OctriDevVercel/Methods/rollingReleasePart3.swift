@@ -6,34 +6,75 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension RollingReleaseMethods {
-    /// Deletes a project's rolling release configuration and disables rolling releases for future deployments. Disabling the configuration does not change a rollout that is already in progress. To stop an active rollout as well, use the completion or abort operation after disabling rolling releases.
+public extension RollingReleaseMethods {
+    /// Deletes a project's rolling release configuration and disables rolling releases for future deployments.
+    /// Disabling the configuration does not change a rollout that is already in progress. To stop an active rollout as
+    /// well, use the completion or abort operation after disabling rolling releases.
     ///
-    /// Disable Rolling Releases for a project means that future deployments will not undergo a rolling release. Changing the config never alters a rollout that's already in-flight—it only affects the next production deployment. If you want to also stop the current rollout, call this endpoint to disable the feature, and then call either the /complete or /abort endpoint.
+    /// Disable Rolling Releases for a project means that future deployments will not undergo a rolling release.
+    /// Changing the config never alters a rollout that's already in-flight—it only affects the next production
+    /// deployment. If you want to also stop the current rollout, call this endpoint to disable the feature, and then
+    /// call either the /complete or /abort endpoint.
     ///
     /// - Parameters:
     /// - idOrName: Project ID or project name (URL-encoded)
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteRollingReleaseConfig(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteRollingReleaseConfigResponse {
-        return try (await sdkRequest("DELETE", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/config"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "deleteRollingReleaseConfig", options: requestOptions)).data
+    static func deleteRollingReleaseConfig(
+        config: ClientConfig,
+        idOrName: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteRollingReleaseConfigResponse {
+        try await (sdkRequest(
+            "DELETE",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/config"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "deleteRollingReleaseConfig",
+            options: requestOptions
+        )).data
     }
 
-    /// Updates a project's rolling release configuration, including enabling or disabling rolling releases. When disabling, `disableRolloutAction` controls how an active rollout is resolved if the resolve-on-disable feature is enabled; enabling or updating configuration affects the next production deployment, not an in-flight rollout. Enabling rolling releases also enables skew protection with its default value if it was not already configured.
+    /// Updates a project's rolling release configuration, including enabling or disabling rolling releases. When
+    /// disabling, `disableRolloutAction` controls how an active rollout is resolved if the resolve-on-disable feature
+    /// is enabled; enabling or updating configuration affects the next production deployment, not an in-flight rollout.
+    /// Enabling rolling releases also enables skew protection with its default value if it was not already configured.
     ///
-    /// Update (or disable) Rolling Releases for a project. When disabling with the resolve-on-disable feature flag enabled, any active rolling release document is resolved using the disableRolloutAction parameter: "abort" to roll back (default), or "complete" to promote the canary to production. When enabling or updating config, changes only affect the next production deployment and do not alter a rollout that's already in-flight. Note: Enabling Rolling Releases automatically enables skew protection on the project with the default value if it wasn't configured already.
+    /// Update (or disable) Rolling Releases for a project. When disabling with the resolve-on-disable feature flag
+    /// enabled, any active rolling release document is resolved using the disableRolloutAction parameter: "abort" to
+    /// roll back (default), or "complete" to promote the canary to production. When enabling or updating config,
+    /// changes only affect the next production deployment and do not alter a rollout that's already in-flight. Note:
+    /// Enabling Rolling Releases automatically enables skew protection on the project with the default value if it
+    /// wasn't configured already.
     ///
     /// - Parameters:
     /// - idOrName: Project ID or project name (URL-encoded)
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func updateRollingReleaseConfig(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateRollingReleaseConfigResponse {
-        return try (await sdkRequest("PATCH", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/config"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "updateRollingReleaseConfig", options: requestOptions)).data
+    static func updateRollingReleaseConfig(
+        config: ClientConfig,
+        idOrName: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateRollingReleaseConfigResponse {
+        try await (sdkRequest(
+            "PATCH",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/config"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "updateRollingReleaseConfig",
+            options: requestOptions
+        )).data
     }
 }

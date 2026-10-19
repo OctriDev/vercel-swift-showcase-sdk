@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsRegistrarMethods {
-    /// Purchases a domain using the supplied registration term, renewal preference, expected price, and contact information. Provide `contactInformation` with the required registrant details and use the TLD contact schema to determine whether additional fields are needed. For a punycode domain, include `languageCode`.
+public extension DomainsRegistrarMethods {
+    /// Purchases a domain using the supplied registration term, renewal preference, expected price, and contact
+    /// information. Provide `contactInformation` with the required registrant details and use the TLD contact schema to
+    /// determine whether additional fields are needed. For a punycode domain, include `languageCode`.
     ///
     /// Buy a domain
     ///
@@ -27,13 +29,39 @@ extension DomainsRegistrarMethods {
     ///   retrieved from the [Get
     ///   TLD](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/
     ///   get-tld) endpoint.
-    public static func buySingleDomain(config: ClientConfig, domain: DomainName, autoRenew: Bool, years: Double, expectedPrice: Double, contactInformation: BuySingleDomainRequestBodyContactInformation, teamId: String? = nil, languageCode: String? = nil, requestOptions: RequestOptions? = nil) async throws -> BuySingleDomainResponse {
+    static func buySingleDomain(
+        config: ClientConfig,
+        domain: DomainName,
+        autoRenew: Bool,
+        years: Double,
+        expectedPrice: Double,
+        contactInformation: BuySingleDomainRequestBodyContactInformation,
+        teamId: String? = nil,
+        languageCode: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> BuySingleDomainResponse {
         try validateRange("expectedPrice", Double(expectedPrice), min: 0.01)
 
-        let requestBody = BuySingleDomainRequestBody(autoRenew: autoRenew, years: years, expectedPrice: expectedPrice, contactInformation: contactInformation, languageCode: languageCode)
+        let requestBody = BuySingleDomainRequestBody(
+            autoRenew: autoRenew,
+            years: years,
+            expectedPrice: expectedPrice,
+            contactInformation: contactInformation,
+            languageCode: languageCode
+        )
 
-        return try (await sdkRequest("POST", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/buy"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-        ], body: requestBody, decoder: .json, operationId: "buySingleDomain", options: requestOptions, errors: ["401": Unauthorized.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/buy"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "buySingleDomain",
+            options: requestOptions,
+            errors: ["401": Unauthorized.self, "429": TooManyRequests.self, "500": InternalServerError.self]
+        )).data
     }
 }

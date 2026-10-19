@@ -6,7 +6,8 @@ import Foundation
 import XCTest
 
 extension SdkMethodTests {
-    func testGetAiGatewayVirtualModelConfigBySlugGetAiGatewayVirtualModelConfigBySlugReachesMockAndDecodesResponse() async throws {
+    func testGetAiGatewayVirtualModelConfigBySlugGetAiGatewayVirtualModelConfigBySlugReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -139,9 +140,9 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getBulkAvailability(
-            domains: decoded("[\"domains\"]"),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domains: decoded("[\"domains\"]"),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -188,10 +189,10 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getBulkPrice(
-            domains: decoded("[\"domains\"]"),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-            years: decoded("1")
-        )
+                domains: decoded("[\"domains\"]"),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+                years: decoded("1")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -233,7 +234,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testGetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidGXa072c0aa60ReachesMockAndDecodesResponse() async throws {
+    func testGetByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidGXa072c0aa60ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -247,7 +249,8 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testGetByTeamSlugByProjectSlugByRepositoryNameTagsListGetByTeamSlXf4354f2cd1ReachesMockAndDecodesResponse() async throws {
+    func testGetByTeamSlugByProjectSlugByRepositoryNameTagsListGetByTeamSlXf4354f2cd1ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -465,10 +468,10 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.getConnector(
-            connector: decoded("\"connector\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-            slug: decoded("\"my-team-url-slug\"")
-        )
+                connector: decoded("\"connector\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+                slug: decoded("\"my-team-url-slug\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -516,11 +519,11 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.getConnectorProjectConnection(
-            connector: decoded("\"connector\""),
-            projectId: decoded("\"project-1\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-            slug: decoded("\"my-team-url-slug\"")
-        )
+                connector: decoded("\"connector\""),
+                projectId: decoded("\"project-1\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+                slug: decoded("\"my-team-url-slug\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)

@@ -3,38 +3,59 @@
 
 import Foundation
 
-// Misc domain models
-extension RegistrantFieldVariant0 {
-    public init(from decoder: Decoder) throws {
+/// Misc domain models
+public extension RegistrantFieldVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
+            throw SdkValidationError(
+                field: "description",
+                code: "required",
+                message: "Validation failed for 'description': value is required"
+            )
         }
         guard container.contains(.required) else {
-            throw SdkValidationError(field: "required", code: "required", message: "Validation failed for 'required': value is required")
+            throw SdkValidationError(
+                field: "required",
+                code: "required",
+                message: "Validation failed for 'required': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
-        self.description = try container.sdkDecodeRequired(.description)
-        self.required = try container.sdkDecodeRequired(.required)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.label = try container.sdkDecodeIfPresent(.label)
-        self.validation = try container.sdkDecodeIfPresent(.validation)
-        self.requiredWhen = try container.sdkDecodeIfPresent(.requiredWhen)
-        self.options = try container.sdkDecodeIfPresent(.options)
-        self.fields = try container.sdkDecodeIfPresent(.fields)
-            try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant0Type.allCases.map(\.rawValue))
+        description = try container.sdkDecodeRequired(.description)
+        required = try container.sdkDecodeRequired(.required)
+        type = try container.sdkDecodeRequired(.type)
+        label = try container.sdkDecodeIfPresent(.label)
+        validation = try container.sdkDecodeIfPresent(.validation)
+        requiredWhen = try container.sdkDecodeIfPresent(.requiredWhen)
+        options = try container.sdkDecodeIfPresent(.options)
+        fields = try container.sdkDecodeIfPresent(.fields)
+        try sdkValidateRawEnum("type", type, RegistrantFieldVariant0Type.allCases.map(\.rawValue))
     }
 }
 
-extension RegistrantFieldVariant0 {
-    public init(description: String, required: Bool, type: RegistrantFieldVariant0Type, label: String? = nil, validation: String? = nil, requiredWhen: RegistrantFieldVariant0RequiredWhen? = nil, options: [RegistrantFieldVariant0OptionsItem]? = nil, fields: [String: JSONValue]? = nil) throws {
+public extension RegistrantFieldVariant0 {
+    init(
+        description: String,
+        required: Bool,
+        type: RegistrantFieldVariant0Type,
+        label: String? = nil,
+        validation: String? = nil,
+        requiredWhen: RegistrantFieldVariant0RequiredWhen? = nil,
+        options: [RegistrantFieldVariant0OptionsItem]? = nil,
+        fields: [String: JSONValue]? = nil
+    ) throws {
         (self.description, self.required) = (description, required)
         (self.type, self.label) = (type, label)
         (self.validation, self.requiredWhen) = (validation, requiredWhen)
         (self.options, self.fields) = (options, fields)
-            try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant0Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant0Type.allCases.map(\.rawValue))
     }
 }
 
@@ -49,26 +70,36 @@ public struct RegistrantFieldVariant0OptionsItem: Codable {
         case fields
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RegistrantFieldVariant0OptionsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        guard container.contains(.label) else {
-            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
-        }
-        self.value = try container.sdkDecodeRequired(.value)
-        self.label = try container.sdkDecodeRequired(.label)
-        self.fields = try container.sdkDecodeIfPresent(.fields)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RegistrantFieldVariant0OptionsItem {
-    public init(value: String, label: String, fields: [String: JSONValue]? = nil) {
+public extension RegistrantFieldVariant0OptionsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        guard container.contains(.label) else {
+            throw SdkValidationError(
+                field: "label",
+                code: "required",
+                message: "Validation failed for 'label': value is required"
+            )
+        }
+        value = try container.sdkDecodeRequired(.value)
+        label = try container.sdkDecodeRequired(.label)
+        fields = try container.sdkDecodeIfPresent(.fields)
+    }
+}
+
+public extension RegistrantFieldVariant0OptionsItem {
+    init(value: String, label: String, fields: [String: JSONValue]? = nil) {
         (self.value, self.label) = (value, label)
         self.fields = fields
     }
@@ -80,25 +111,33 @@ public indirect enum RegistrantFieldVariant0RequiredWhen {
 }
 
 extension RegistrantFieldVariant0RequiredWhen: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RegistrantFieldVariant0RequiredWhen")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for RegistrantFieldVariant0RequiredWhen"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension RegistrantFieldVariant0RequiredWhen {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         if let value = try? container.decode(
             RegistrantFieldVariant0RequiredWhenVariant1.self
         ) {
-            return             .registrantFieldVariant0RequiredWhenVariant1(value)
+            return .registrantFieldVariant0RequiredWhenVariant1(value)
         }
         return nil
     }
@@ -132,43 +171,125 @@ public struct RateLimitNotice: Codable {
         case total
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RateLimitNotice {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.remaining) else {
-            throw SdkValidationError(field: "remaining", code: "required", message: "Validation failed for 'remaining': value is required")
-        }
-        guard container.contains(.reset) else {
-            throw SdkValidationError(field: "reset", code: "required", message: "Validation failed for 'reset': value is required")
-        }
-        guard container.contains(.resetMs) else {
-            throw SdkValidationError(field: "resetMs", code: "required", message: "Validation failed for 'resetMs': value is required")
-        }
-        guard container.contains(.total) else {
-            throw SdkValidationError(field: "total", code: "required", message: "Validation failed for 'total': value is required")
-        }
-        self.remaining = try container.sdkDecodeRequired(.remaining)
-        self.reset = try container.sdkDecodeRequired(.reset)
-        self.resetMs = try container.sdkDecodeRequired(.resetMs)
-        self.total = try container.sdkDecodeRequired(.total)
-            try validateRange("remaining", Double(self.remaining), min: 0, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
-            try validateRange("reset", Double(self.reset), min: 0, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
-            try validateRange("resetMs", Double(self.resetMs), min: 0, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
-            try validateRange("total", Double(self.total), min: 0, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RateLimitNotice {
-    public init(remaining: Int, reset: Int, resetMs: Int, total: Int) throws {
+public extension RateLimitNotice {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.remaining) else {
+            throw SdkValidationError(
+                field: "remaining",
+                code: "required",
+                message: "Validation failed for 'remaining': value is required"
+            )
+        }
+        guard container.contains(.reset) else {
+            throw SdkValidationError(
+                field: "reset",
+                code: "required",
+                message: "Validation failed for 'reset': value is required"
+            )
+        }
+        guard container.contains(.resetMs) else {
+            throw SdkValidationError(
+                field: "resetMs",
+                code: "required",
+                message: "Validation failed for 'resetMs': value is required"
+            )
+        }
+        guard container.contains(.total) else {
+            throw SdkValidationError(
+                field: "total",
+                code: "required",
+                message: "Validation failed for 'total': value is required"
+            )
+        }
+        remaining = try container.sdkDecodeRequired(.remaining)
+        reset = try container.sdkDecodeRequired(.reset)
+        resetMs = try container.sdkDecodeRequired(.resetMs)
+        total = try container.sdkDecodeRequired(.total)
+        try validateRange(
+            "remaining",
+            Double(remaining),
+            min: 0,
+            max: nil,
+            exclusiveMin: nil,
+            exclusiveMax: nil,
+            multipleOf: nil
+        )
+        try validateRange(
+            "reset",
+            Double(reset),
+            min: 0,
+            max: nil,
+            exclusiveMin: nil,
+            exclusiveMax: nil,
+            multipleOf: nil
+        )
+        try validateRange(
+            "resetMs",
+            Double(resetMs),
+            min: 0,
+            max: nil,
+            exclusiveMin: nil,
+            exclusiveMax: nil,
+            multipleOf: nil
+        )
+        try validateRange(
+            "total",
+            Double(total),
+            min: 0,
+            max: nil,
+            exclusiveMin: nil,
+            exclusiveMax: nil,
+            multipleOf: nil
+        )
+    }
+}
+
+public extension RateLimitNotice {
+    init(remaining: Int, reset: Int, resetMs: Int, total: Int) throws {
         (self.remaining, self.reset) = (remaining, reset)
         (self.resetMs, self.total) = (resetMs, total)
-            try validateRange("remaining", Double(self.remaining), min: 0, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
-            try validateRange("reset", Double(self.reset), min: 0, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
-            try validateRange("resetMs", Double(self.resetMs), min: 0, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
-            try validateRange("total", Double(self.total), min: 0, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        try validateRange(
+            "remaining",
+            Double(self.remaining),
+            min: 0,
+            max: nil,
+            exclusiveMin: nil,
+            exclusiveMax: nil,
+            multipleOf: nil
+        )
+        try validateRange(
+            "reset",
+            Double(self.reset),
+            min: 0,
+            max: nil,
+            exclusiveMin: nil,
+            exclusiveMax: nil,
+            multipleOf: nil
+        )
+        try validateRange(
+            "resetMs",
+            Double(self.resetMs),
+            min: 0,
+            max: nil,
+            exclusiveMin: nil,
+            exclusiveMax: nil,
+            multipleOf: nil
+        )
+        try validateRange(
+            "total",
+            Double(self.total),
+            min: 0,
+            max: nil,
+            exclusiveMin: nil,
+            exclusiveMax: nil,
+            multipleOf: nil
+        )
     }
 }
 
@@ -178,25 +299,33 @@ public indirect enum RegistrantFieldVariant2RequiredWhen {
 }
 
 extension RegistrantFieldVariant2RequiredWhen: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RegistrantFieldVariant2RequiredWhen")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for RegistrantFieldVariant2RequiredWhen"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension RegistrantFieldVariant2RequiredWhen {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         if let value = try? container.decode(
             RegistrantFieldVariant2RequiredWhenVariant1.self
         ) {
-            return             .registrantFieldVariant2RequiredWhenVariant1(value)
+            return .registrantFieldVariant2RequiredWhenVariant1(value)
         }
         return nil
     }
@@ -264,7 +393,7 @@ public enum RegistrantFieldVariant3Type: String, CaseIterable, Codable {
 }
 
 public enum RegistrantFieldVariant1Type: String, CaseIterable, Codable {
-    case `enum` = "enum"
+    case `enum`
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawValue = try container.decode(String.self)

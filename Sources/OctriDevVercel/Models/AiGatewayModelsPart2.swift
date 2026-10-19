@@ -3,7 +3,7 @@
 
 import Foundation
 
-// AiGateway domain models
+/// AiGateway domain models
 /// Typed representation of the `AiGatewayBudgetList` API schema.
 public struct AiGatewayBudgetList: Codable {
     /// Required array value serialized in the `budgets` wire field.
@@ -21,23 +21,33 @@ public struct AiGatewayBudgetList: Codable {
         case nextCursor
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayBudgetList {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.budgets) else {
-            throw SdkValidationError(field: "budgets", code: "required", message: "Validation failed for 'budgets': value is required")
-        }
-        self.budgets = try container.sdkDecodeRequired(.budgets)
-        self.defaultCoveredCounts = try container.sdkDecodeIfPresent(.defaultCoveredCounts)
-        self.nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayBudgetList {
-    public init(budgets: [AiGatewayBudget], defaultCoveredCounts: AiGatewayBudgetListDefaultCoveredCounts? = nil, nextCursor: String? = nil) {
+public extension AiGatewayBudgetList {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.budgets) else {
+            throw SdkValidationError(
+                field: "budgets",
+                code: "required",
+                message: "Validation failed for 'budgets': value is required"
+            )
+        }
+        budgets = try container.sdkDecodeRequired(.budgets)
+        defaultCoveredCounts = try container.sdkDecodeIfPresent(.defaultCoveredCounts)
+        nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+    }
+}
+
+public extension AiGatewayBudgetList {
+    init(
+        budgets: [AiGatewayBudget],
+        defaultCoveredCounts: AiGatewayBudgetListDefaultCoveredCounts? = nil,
+        nextCursor: String? = nil
+    ) {
         (self.budgets, self.defaultCoveredCounts) = (budgets, defaultCoveredCounts)
         self.nextCursor = nextCursor
     }
@@ -52,21 +62,27 @@ public struct AiGatewayEvaluationFallbackConditionVariant3: Codable {
         case all
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayEvaluationFallbackConditionVariant3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.all) else {
-            throw SdkValidationError(field: "all", code: "required", message: "Validation failed for 'all': value is required")
-        }
-        self.all = try container.sdkDecodeRequired(.all)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayEvaluationFallbackConditionVariant3 {
-    public init(all: [AiGatewayEvaluationFallbackCondition]) {
+public extension AiGatewayEvaluationFallbackConditionVariant3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.all) else {
+            throw SdkValidationError(
+                field: "all",
+                code: "required",
+                message: "Validation failed for 'all': value is required"
+            )
+        }
+        all = try container.sdkDecodeRequired(.all)
+    }
+}
+
+public extension AiGatewayEvaluationFallbackConditionVariant3 {
+    init(all: [AiGatewayEvaluationFallbackCondition]) {
         self.all = all
     }
 }
@@ -80,21 +96,27 @@ public struct AiGatewayRouterList: Codable {
         case routers
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayRouterList {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.routers) else {
-            throw SdkValidationError(field: "routers", code: "required", message: "Validation failed for 'routers': value is required")
-        }
-        self.routers = try container.sdkDecodeRequired(.routers)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayRouterList {
-    public init(routers: [AiGatewayVirtualModelConfig]) {
+public extension AiGatewayRouterList {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.routers) else {
+            throw SdkValidationError(
+                field: "routers",
+                code: "required",
+                message: "Validation failed for 'routers': value is required"
+            )
+        }
+        routers = try container.sdkDecodeRequired(.routers)
+    }
+}
+
+public extension AiGatewayRouterList {
+    init(routers: [AiGatewayVirtualModelConfig]) {
         self.routers = routers
     }
 }
@@ -115,21 +137,25 @@ public struct AiGatewayVirtualModelConfigSelectorOptions: Codable {
     }
 
     init() {
-        (self.cost, self.tps, self.ttft) = (nil, nil, nil)
+        (cost, tps, ttft) = (nil, nil, nil)
     }
 }
 
-extension AiGatewayVirtualModelConfigSelectorOptions {
-    public init(from decoder: Decoder) throws {
+public extension AiGatewayVirtualModelConfigSelectorOptions {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.cost = try container.sdkDecodeIfPresent(.cost)
-        self.tps = try container.sdkDecodeIfPresent(.tps)
-        self.ttft = try container.sdkDecodeIfPresent(.ttft)
+        cost = try container.sdkDecodeIfPresent(.cost)
+        tps = try container.sdkDecodeIfPresent(.tps)
+        ttft = try container.sdkDecodeIfPresent(.ttft)
     }
 }
 
-extension AiGatewayVirtualModelConfigSelectorOptions {
-    public init(cost: AiGatewayRouterSelectorOptionBag? = nil, tps: AiGatewayRouterSelectorOptionBag? = nil, ttft: AiGatewayRouterSelectorOptionBag? = nil) {
+public extension AiGatewayVirtualModelConfigSelectorOptions {
+    init(
+        cost: AiGatewayRouterSelectorOptionBag? = nil,
+        tps: AiGatewayRouterSelectorOptionBag? = nil,
+        ttft: AiGatewayRouterSelectorOptionBag? = nil
+    ) {
         self.init()
         (self.cost, self.tps) = (cost, tps)
         self.ttft = ttft
@@ -163,42 +189,76 @@ public struct AiGatewayBudgetDefault: Codable {
         case alertThresholds
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayBudgetDefault {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.active) else {
-            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
-        }
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.limitAmount) else {
-            throw SdkValidationError(field: "limitAmount", code: "required", message: "Validation failed for 'limitAmount': value is required")
-        }
-        guard container.contains(.refreshPeriod) else {
-            throw SdkValidationError(field: "refreshPeriod", code: "required", message: "Validation failed for 'refreshPeriod': value is required")
-        }
-        guard container.contains(.scopeType) else {
-            throw SdkValidationError(field: "scopeType", code: "required", message: "Validation failed for 'scopeType': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.active = try container.sdkDecodeRequired(.active)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.limitAmount = try container.sdkDecodeRequired(.limitAmount)
-        self.refreshPeriod = try container.sdkDecodeRequired(.refreshPeriod)
-        self.scopeType = try container.sdkDecodeRequired(.scopeType)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.alertThresholds = try container.sdkDecodeIfPresent(.alertThresholds)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayBudgetDefault {
-    public init(active: Bool, createdAt: Double, limitAmount: Double, refreshPeriod: AiGatewayBudgetDefaultRefreshPeriod, scopeType: AiGatewayBudgetDefaultScopeType, updatedAt: Double, alertThresholds: [Double]? = nil) {
+public extension AiGatewayBudgetDefault {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.active) else {
+            throw SdkValidationError(
+                field: "active",
+                code: "required",
+                message: "Validation failed for 'active': value is required"
+            )
+        }
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.limitAmount) else {
+            throw SdkValidationError(
+                field: "limitAmount",
+                code: "required",
+                message: "Validation failed for 'limitAmount': value is required"
+            )
+        }
+        guard container.contains(.refreshPeriod) else {
+            throw SdkValidationError(
+                field: "refreshPeriod",
+                code: "required",
+                message: "Validation failed for 'refreshPeriod': value is required"
+            )
+        }
+        guard container.contains(.scopeType) else {
+            throw SdkValidationError(
+                field: "scopeType",
+                code: "required",
+                message: "Validation failed for 'scopeType': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        active = try container.sdkDecodeRequired(.active)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        limitAmount = try container.sdkDecodeRequired(.limitAmount)
+        refreshPeriod = try container.sdkDecodeRequired(.refreshPeriod)
+        scopeType = try container.sdkDecodeRequired(.scopeType)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        alertThresholds = try container.sdkDecodeIfPresent(.alertThresholds)
+    }
+}
+
+public extension AiGatewayBudgetDefault {
+    init(
+        active: Bool,
+        createdAt: Double,
+        limitAmount: Double,
+        refreshPeriod: AiGatewayBudgetDefaultRefreshPeriod,
+        scopeType: AiGatewayBudgetDefaultScopeType,
+        updatedAt: Double,
+        alertThresholds: [Double]? = nil
+    ) {
         (self.active, self.createdAt) = (active, createdAt)
         (self.limitAmount, self.refreshPeriod) = (limitAmount, refreshPeriod)
         (self.scopeType, self.updatedAt) = (scopeType, updatedAt)
@@ -218,25 +278,31 @@ public struct AiGatewayEvaluationFallbackConditionVariant1: Codable {
         case question
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayEvaluationFallbackConditionVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.probabilityBetween) else {
-            throw SdkValidationError(field: "probabilityBetween", code: "required", message: "Validation failed for 'probabilityBetween': value is required")
-        }
-        self.probabilityBetween = try container.sdkDecodeRequired(.probabilityBetween)
-        self.question = try container.sdkDecodeIfPresent(.question)
-            try validateItems("probabilityBetween", self.probabilityBetween, min: 2, max: 2)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayEvaluationFallbackConditionVariant1 {
-    public init(probabilityBetween: [Double], question: String? = nil) throws {
+public extension AiGatewayEvaluationFallbackConditionVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.probabilityBetween) else {
+            throw SdkValidationError(
+                field: "probabilityBetween",
+                code: "required",
+                message: "Validation failed for 'probabilityBetween': value is required"
+            )
+        }
+        probabilityBetween = try container.sdkDecodeRequired(.probabilityBetween)
+        question = try container.sdkDecodeIfPresent(.question)
+        try validateItems("probabilityBetween", probabilityBetween, min: 2, max: 2)
+    }
+}
+
+public extension AiGatewayEvaluationFallbackConditionVariant1 {
+    init(probabilityBetween: [Double], question: String? = nil) throws {
         (self.probabilityBetween, self.question) = (probabilityBetween, question)
-            try validateItems("probabilityBetween", self.probabilityBetween, min: 2, max: 2)
+        try validateItems("probabilityBetween", self.probabilityBetween, min: 2, max: 2)
     }
 }
 
@@ -283,47 +349,86 @@ public struct AiGatewayRule: Codable {
         case updatedBy
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayRule {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.enabled) else {
-            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
-        }
-        guard container.contains(.ownerId) else {
-            throw SdkValidationError(field: "ownerId", code: "required", message: "Validation failed for 'ownerId': value is required")
-        }
-        guard container.contains(.ruleId) else {
-            throw SdkValidationError(field: "ruleId", code: "required", message: "Validation failed for 'ruleId': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.enabled = try container.sdkDecodeRequired(.enabled)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.ruleId = try container.sdkDecodeRequired(.ruleId)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.action = try container.sdkDecodeIfPresent(.action)
-        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
-        self.deleted = try container.sdkDecodeIfPresent(.deleted)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.match = try container.sdkDecodeIfPresent(.match)
-        self.updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayRule {
-    public init(createdAt: Double, enabled: Bool, ownerId: String, ruleId: String, type: AiGatewayRuleType, updatedAt: Double, action: AiGatewayRuleAction? = nil, createdBy: String? = nil, deleted: Bool? = nil, description: String? = nil, match: AiGatewayRuleMatch? = nil, updatedBy: String? = nil) {
+public extension AiGatewayRule {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.enabled) else {
+            throw SdkValidationError(
+                field: "enabled",
+                code: "required",
+                message: "Validation failed for 'enabled': value is required"
+            )
+        }
+        guard container.contains(.ownerId) else {
+            throw SdkValidationError(
+                field: "ownerId",
+                code: "required",
+                message: "Validation failed for 'ownerId': value is required"
+            )
+        }
+        guard container.contains(.ruleId) else {
+            throw SdkValidationError(
+                field: "ruleId",
+                code: "required",
+                message: "Validation failed for 'ruleId': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        enabled = try container.sdkDecodeRequired(.enabled)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        ruleId = try container.sdkDecodeRequired(.ruleId)
+        type = try container.sdkDecodeRequired(.type)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        action = try container.sdkDecodeIfPresent(.action)
+        createdBy = try container.sdkDecodeIfPresent(.createdBy)
+        deleted = try container.sdkDecodeIfPresent(.deleted)
+        description = try container.sdkDecodeIfPresent(.description)
+        match = try container.sdkDecodeIfPresent(.match)
+        updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
+    }
+}
+
+public extension AiGatewayRule {
+    init(
+        createdAt: Double,
+        enabled: Bool,
+        ownerId: String,
+        ruleId: String,
+        type: AiGatewayRuleType,
+        updatedAt: Double,
+        action: AiGatewayRuleAction? = nil,
+        createdBy: String? = nil,
+        deleted: Bool? = nil,
+        description: String? = nil,
+        match: AiGatewayRuleMatch? = nil,
+        updatedBy: String? = nil
+    ) {
         (self.createdAt, self.enabled) = (createdAt, enabled)
         (self.ownerId, self.ruleId) = (ownerId, ruleId)
         (self.type, self.updatedAt) = (type, updatedAt)
@@ -342,21 +447,27 @@ public struct AiGatewayEvaluationFallbackConditionVariant4: Codable {
         case atLeast
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayEvaluationFallbackConditionVariant4 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.atLeast) else {
-            throw SdkValidationError(field: "atLeast", code: "required", message: "Validation failed for 'atLeast': value is required")
-        }
-        self.atLeast = try container.sdkDecodeRequired(.atLeast)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayEvaluationFallbackConditionVariant4 {
-    public init(atLeast: AiGatewayEvaluationFallbackConditionVariant4AtLeast) {
+public extension AiGatewayEvaluationFallbackConditionVariant4 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.atLeast) else {
+            throw SdkValidationError(
+                field: "atLeast",
+                code: "required",
+                message: "Validation failed for 'atLeast': value is required"
+            )
+        }
+        atLeast = try container.sdkDecodeRequired(.atLeast)
+    }
+}
+
+public extension AiGatewayEvaluationFallbackConditionVariant4 {
+    init(atLeast: AiGatewayEvaluationFallbackConditionVariant4AtLeast) {
         self.atLeast = atLeast
     }
 }
@@ -370,21 +481,27 @@ public struct AiGatewayBudgetDefaultList: Codable {
         case defaults
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayBudgetDefaultList {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.defaults) else {
-            throw SdkValidationError(field: "defaults", code: "required", message: "Validation failed for 'defaults': value is required")
-        }
-        self.defaults = try container.sdkDecodeRequired(.defaults)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayBudgetDefaultList {
-    public init(defaults: [AiGatewayBudgetDefault]) {
+public extension AiGatewayBudgetDefaultList {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.defaults) else {
+            throw SdkValidationError(
+                field: "defaults",
+                code: "required",
+                message: "Validation failed for 'defaults': value is required"
+            )
+        }
+        defaults = try container.sdkDecodeRequired(.defaults)
+    }
+}
+
+public extension AiGatewayBudgetDefaultList {
+    init(defaults: [AiGatewayBudgetDefault]) {
         self.defaults = defaults
     }
 }
@@ -401,25 +518,35 @@ public struct AiGatewayRuleList: Codable {
         case rules
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayRuleList {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.nextCursor) else {
-            throw SdkValidationError(field: "nextCursor", code: "required", message: "Validation failed for 'nextCursor': value is required")
-        }
-        guard container.contains(.rules) else {
-            throw SdkValidationError(field: "rules", code: "required", message: "Validation failed for 'rules': value is required")
-        }
-        self.nextCursor = try container.sdkDecodeNullable(.nextCursor)
-        self.rules = try container.sdkDecodeRequired(.rules)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayRuleList {
-    public init(nextCursor: String?, rules: [AiGatewayRule]) {
+public extension AiGatewayRuleList {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.nextCursor) else {
+            throw SdkValidationError(
+                field: "nextCursor",
+                code: "required",
+                message: "Validation failed for 'nextCursor': value is required"
+            )
+        }
+        guard container.contains(.rules) else {
+            throw SdkValidationError(
+                field: "rules",
+                code: "required",
+                message: "Validation failed for 'rules': value is required"
+            )
+        }
+        nextCursor = try container.sdkDecodeNullable(.nextCursor)
+        rules = try container.sdkDecodeRequired(.rules)
+    }
+}
+
+public extension AiGatewayRuleList {
+    init(nextCursor: String?, rules: [AiGatewayRule]) {
         (self.nextCursor, self.rules) = (nextCursor, rules)
     }
 }
@@ -434,19 +561,19 @@ public struct AiGatewayRuleMatch: Codable {
     }
 
     init() {
-        self.model = nil
+        model = nil
     }
 }
 
-extension AiGatewayRuleMatch {
-    public init(from decoder: Decoder) throws {
+public extension AiGatewayRuleMatch {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.model = try container.sdkDecodeIfPresent(.model)
+        model = try container.sdkDecodeIfPresent(.model)
     }
 }
 
-extension AiGatewayRuleMatch {
-    public init(model: String? = nil) {
+public extension AiGatewayRuleMatch {
+    init(model: String? = nil) {
         self.init()
         self.model = model
     }
@@ -466,22 +593,28 @@ public struct AiGatewayVirtualModelConfigModelsItemVariant1: Codable {
         case intelligence
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayVirtualModelConfigModelsItemVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.slug) else {
-            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
-        }
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.intelligence = try container.sdkDecodeIfPresent(.intelligence)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayVirtualModelConfigModelsItemVariant1 {
-    public init(slug: String, intelligence: Double? = nil) {
+public extension AiGatewayVirtualModelConfigModelsItemVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.slug) else {
+            throw SdkValidationError(
+                field: "slug",
+                code: "required",
+                message: "Validation failed for 'slug': value is required"
+            )
+        }
+        slug = try container.sdkDecodeRequired(.slug)
+        intelligence = try container.sdkDecodeIfPresent(.intelligence)
+    }
+}
+
+public extension AiGatewayVirtualModelConfigModelsItemVariant1 {
+    init(slug: String, intelligence: Double? = nil) {
         (self.slug, self.intelligence) = (slug, intelligence)
     }
 }

@@ -3,7 +3,7 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 extension ListEventTypeReplacedByItem {
     static let allCasesPart6: [ListEventTypeReplacedByItem] = [
         .previewDeploymentSuffixUpdate,
@@ -357,15 +357,15 @@ extension ListEventTypeReplacedByItem {
 extension ListEventTypeReplacedByItem: CaseIterable {
     public static var allCases: [ListEventTypeReplacedByItem] {
         allCasesPart1
-        +         allCasesPart2
-        +         allCasesPart3
-        +         allCasesPart4
-        +         allCasesPart5
-        +         allCasesPart6
-        +         allCasesPart7
-        +         allCasesPart8
-        +         allCasesPart9
-        +         allCasesPart10
+            + allCasesPart2
+            + allCasesPart3
+            + allCasesPart4
+            + allCasesPart5
+            + allCasesPart6
+            + allCasesPart7
+            + allCasesPart8
+            + allCasesPart9
+            + allCasesPart10
     }
 }
 
@@ -373,19 +373,28 @@ extension ListEventTypeReplacedByItem: CaseIterable {
 /// permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from
 /// `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity
 /// log.
-public struct UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let earlyIgnoreStep = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "EARLY_IGNORE_STEP")
-    public static let ignoreStep = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "IGNORE_STEP")
-    public static let namespacePruned = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "NAMESPACE_PRUNED")
-    public static let unaffectedProject = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "UNAFFECTED_PROJECT")
-    public static let unverifiedCommit = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "UNVERIFIED_COMMIT")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let earlyIgnoreStep =
+        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "EARLY_IGNORE_STEP")
+    public static let ignoreStep =
+        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "IGNORE_STEP")
+    public static let namespacePruned =
+        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "NAMESPACE_PRUNED")
+    public static let unaffectedProject =
+        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "UNAFFECTED_PROJECT")
+    public static let unverifiedCommit =
+        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "UNVERIFIED_COMMIT")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -398,13 +407,16 @@ public struct UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInte
 public struct UserEventPayloadVariant107SubjectType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let app = UserEventPayloadVariant107SubjectType(rawValue: "app")
     public static let user = UserEventPayloadVariant107SubjectType(rawValue: "user")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -417,12 +429,15 @@ public struct UserEventPayloadVariant107SubjectType: RawRepresentable, Hashable,
 public struct UserEventPayloadVariant259Scope: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let project = UserEventPayloadVariant259Scope(rawValue: "project")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -450,16 +465,20 @@ public enum UserEventPayloadVariant120JobVariant3Type: String, CaseIterable, Cod
 }
 
 /// Required enumerated value serialized in the `createDeployments` wire field.
-public struct UserEventPayloadVariant302CreateDeployments: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UserEventPayloadVariant302CreateDeployments: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let disabled = UserEventPayloadVariant302CreateDeployments(rawValue: "disabled")
     public static let enabled = UserEventPayloadVariant302CreateDeployments(rawValue: "enabled")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -472,14 +491,17 @@ public struct UserEventPayloadVariant302CreateDeployments: RawRepresentable, Has
 public struct UserEventPayloadVariant429Enabled: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let `default` = UserEventPayloadVariant429Enabled(rawValue: "default")
     public static let off = UserEventPayloadVariant429Enabled(rawValue: "off")
     public static let on = UserEventPayloadVariant429Enabled(rawValue: "on")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -492,12 +514,15 @@ public struct UserEventPayloadVariant429Enabled: RawRepresentable, Hashable, Cod
 public struct UserEventPayloadVariant253ActorType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let admin = UserEventPayloadVariant253ActorType(rawValue: "admin")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -510,12 +535,15 @@ public struct UserEventPayloadVariant253ActorType: RawRepresentable, Hashable, C
 public struct UserEventPayloadVariant380BudgetType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let fixed = UserEventPayloadVariant380BudgetType(rawValue: "fixed")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -525,15 +553,19 @@ public struct UserEventPayloadVariant380BudgetType: RawRepresentable, Hashable, 
 }
 
 /// Optional enumerated value serialized in the `projectIds` wire field.
-public struct UserEventPayloadVariant195ProjectIdsVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UserEventPayloadVariant195ProjectIdsVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let all = UserEventPayloadVariant195ProjectIdsVariant1(rawValue: "all")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

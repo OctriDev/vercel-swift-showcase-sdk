@@ -6,20 +6,31 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AiGatewayMethods {
-    /// Lists virtual model configurations for a team or across teams. Use `limit` and `cursor` to retrieve a page; team results are ordered by `virtualModelSlug`, while cross-team results are ordered newest first.
+public extension AiGatewayMethods {
+    /// Lists virtual model configurations for a team or across teams. Use `limit` and `cursor` to retrieve a page; team
+    /// results are ordered by `virtualModelSlug`, while cross-team results are ordered newest first.
     ///
-    /// List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
+    /// List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by
+    /// `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listAiGatewayVirtualModelConfigs(config: ClientConfig, ownerId: String? = nil, limit: Int? = nil, cursor: String? = nil, includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayVirtualModelConfigList {
-        if let limit = limit {
+    static func listAiGatewayVirtualModelConfigs(
+        config: ClientConfig,
+        ownerId: String? = nil,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayVirtualModelConfigList {
+        if let limit {
             try validateRange("limit", Double(limit), min: 1)
         }
 
-        return try (await sdkRequest("GET", "/ai-gateway/virtual-model-configs/list", config: config, query: [
+        return try await (sdkRequest("GET", "/ai-gateway/virtual-model-configs/list", config: config, query: [
             SdkQueryParameter("ownerId", value: ownerId),
             SdkQueryParameter("limit", value: limit),
             SdkQueryParameter("cursor", value: cursor),
@@ -29,24 +40,53 @@ extension AiGatewayMethods {
         ], decoder: .json, operationId: "listAiGatewayVirtualModelConfigs", options: requestOptions)).data
     }
 
-    /// Lists virtual model configurations for a team or across teams. Use `limit` and `cursor` to retrieve a page; team results are ordered by `virtualModelSlug`, while cross-team results are ordered newest first.
+    /// Lists virtual model configurations for a team or across teams. Use `limit` and `cursor` to retrieve a page; team
+    /// results are ordered by `virtualModelSlug`, while cross-team results are ordered newest first.
     ///
-    /// List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
+    /// List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by
+    /// `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listAiGatewayVirtualModelConfigsPaginated(config: ClientConfig, ownerId: String? = nil, limit: Int? = nil, cursor: String? = nil, includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<AiGatewayVirtualModelConfig, Swift.Error> {
-        return AsyncThrowingStream<AiGatewayVirtualModelConfig, Swift.Error> { (continuation: AsyncThrowingStream<AiGatewayVirtualModelConfig, Swift.Error>.Continuation) in
+    static func listAiGatewayVirtualModelConfigsPaginated(
+        config: ClientConfig,
+        ownerId: String? = nil,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) -> AsyncThrowingStream<AiGatewayVirtualModelConfig, Swift.Error> {
+        AsyncThrowingStream<AiGatewayVirtualModelConfig, Swift.Error> { (continuation: AsyncThrowingStream<
+            AiGatewayVirtualModelConfig,
+            Swift.Error
+        >.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listAiGatewayVirtualModelConfigs(config: config, ownerId: ownerId, limit: limit, cursor: pageCursor, includeArchived: includeArchived, teamId: teamId, slug: slug, requestOptions: requestOptions)
+                        let pageResponse = try await listAiGatewayVirtualModelConfigs(
+                            config: config,
+                            ownerId: ownerId,
+                            limit: limit,
+                            cursor: pageCursor,
+                            includeArchived: includeArchived,
+                            teamId: teamId,
+                            slug: slug,
+                            requestOptions: requestOptions
+                        )
                         let pageItems = pageResponse.virtualModelConfigs
-                        if pageItems.isEmpty { break }
-                        for item in pageItems { continuation.yield(item) }
-                        guard let nextCursor = pageResponse.cursor else { break }
+                        if pageItems.isEmpty {
+                            break
+                        }
+                        for item in pageItems {
+                            continuation.yield(item)
+                        }
+                        guard let nextCursor = pageResponse.cursor else {
+                            break
+                        }
                         pageCursor = nextCursor
                     }
                 } catch {
@@ -59,25 +99,56 @@ extension AiGatewayMethods {
         }
     }
 
-    public struct ListAiGatewayVirtualModelConfigsPage {
+    struct ListAiGatewayVirtualModelConfigsPage {
         public let data: AiGatewayVirtualModelConfigList
         public let items: [AiGatewayVirtualModelConfig]
         public let hasMore: Bool
     }
 
-    public static func listAiGatewayVirtualModelConfigsPages(config: ClientConfig, ownerId: String? = nil, limit: Int? = nil, cursor: String? = nil, includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<ListAiGatewayVirtualModelConfigsPage, Swift.Error> {
-        return AsyncThrowingStream<ListAiGatewayVirtualModelConfigsPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<ListAiGatewayVirtualModelConfigsPage, Swift.Error>.Continuation) in
+    static func listAiGatewayVirtualModelConfigsPages(
+        config: ClientConfig,
+        ownerId: String? = nil,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) -> AsyncThrowingStream<ListAiGatewayVirtualModelConfigsPage, Swift.Error> {
+        AsyncThrowingStream<ListAiGatewayVirtualModelConfigsPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<
+            ListAiGatewayVirtualModelConfigsPage,
+            Swift.Error
+        >.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listAiGatewayVirtualModelConfigs(config: config, ownerId: ownerId, limit: limit, cursor: pageCursor, includeArchived: includeArchived, teamId: teamId, slug: slug, requestOptions: requestOptions)
+                        let pageResponse = try await listAiGatewayVirtualModelConfigs(
+                            config: config,
+                            ownerId: ownerId,
+                            limit: limit,
+                            cursor: pageCursor,
+                            includeArchived: includeArchived,
+                            teamId: teamId,
+                            slug: slug,
+                            requestOptions: requestOptions
+                        )
                         let pageItems = pageResponse.virtualModelConfigs
-                        if pageItems.isEmpty { break }
+                        if pageItems.isEmpty {
+                            break
+                        }
                         let hasMore = pageResponse.cursor != nil
-                        pageContinuation.yield(ListAiGatewayVirtualModelConfigsPage(data: pageResponse, items: pageItems, hasMore: hasMore))
-                        if !hasMore { break }
-                        guard let nextCursor = pageResponse.cursor else { break }
+                        pageContinuation.yield(ListAiGatewayVirtualModelConfigsPage(
+                            data: pageResponse,
+                            items: pageItems,
+                            hasMore: hasMore
+                        ))
+                        if !hasMore {
+                            break
+                        }
+                        guard let nextCursor = pageResponse.cursor else {
+                            break
+                        }
                         pageCursor = nextCursor
                     }
                 } catch {

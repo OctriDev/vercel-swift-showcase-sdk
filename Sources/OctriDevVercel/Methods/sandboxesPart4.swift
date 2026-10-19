@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    public struct ListDrivesOptions: Codable {
+public extension SandboxesMethods {
+    struct ListDrivesOptions: Codable {
         public var projectId: String?
         public var limit: Double?
         public var cursor: String?
@@ -20,7 +20,9 @@ extension SandboxesMethods {
         public init() {}
     }
 
-    /// Lists drives associated with a project in a paginated response. Use `projectId` to select the project unless the request uses a Vercel OIDC token scoped to one, and use `namePrefix` to filter by name when sorting by name. Continue through the results with the pagination cursor returned in the response.
+    /// Lists drives associated with a project in a paginated response. Use `projectId` to select the project unless the
+    /// request uses a Vercel OIDC token scoped to one, and use `namePrefix` to filter by name when sorting by name.
+    /// Continue through the results with the pagination cursor returned in the response.
     ///
     /// Retrieves a paginated list of drives belonging to a specific project.
     ///
@@ -36,12 +38,16 @@ extension SandboxesMethods {
     /// - sortOrder: Sort direction for results.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listDrives(config: ClientConfig, options: ListDrivesOptions, requestOptions: RequestOptions? = nil) async throws -> ListDrivesResponse {
+    static func listDrives(
+        config: ClientConfig,
+        options: ListDrivesOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListDrivesResponse {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 50)
         }
 
-        return try (await sdkRequest("GET", "/v2/sandboxes/drives", config: config, query: [
+        return try await (sdkRequest("GET", "/v2/sandboxes/drives", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("limit", value: options.limit),
             SdkQueryParameter("cursor", value: options.cursor),

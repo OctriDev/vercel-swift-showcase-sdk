@@ -3,31 +3,47 @@
 
 import Foundation
 
-// FeatureFlags domain models
-extension MarketplaceFlag {
-    public init(from decoder: Decoder) throws {
+/// FeatureFlags domain models
+public extension MarketplaceFlag {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.externalId = try container.sdkDecodeRequired(.externalId)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
-        self.origin = try container.sdkDecodeRequired(.origin)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.resourceId = try container.sdkDecodeRequired(.resourceId)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.state = try container.sdkDecodeRequired(.state)
-        self.typeName = try container.sdkDecodeRequired(.typeName)
-        self.category = try container.sdkDecodeIfPresent(.category)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.name = try container.sdkDecodeIfPresent(.name)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-            try sdkValidateRawEnum("typeName", self.typeName, MarketplaceFlagTypeName.allCases.map(\.rawValue))
+        externalId = try container.sdkDecodeRequired(.externalId)
+        id = try container.sdkDecodeRequired(.id)
+        integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
+        origin = try container.sdkDecodeRequired(.origin)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        resourceId = try container.sdkDecodeRequired(.resourceId)
+        slug = try container.sdkDecodeRequired(.slug)
+        state = try container.sdkDecodeRequired(.state)
+        typeName = try container.sdkDecodeRequired(.typeName)
+        category = try container.sdkDecodeIfPresent(.category)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        description = try container.sdkDecodeIfPresent(.description)
+        name = try container.sdkDecodeIfPresent(.name)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        try sdkValidateRawEnum("typeName", typeName, MarketplaceFlagTypeName.allCases.map(\.rawValue))
     }
 }
 
-extension MarketplaceFlag {
-    public init(externalId: String, id: String, integrationConfigurationId: String, origin: String, ownerId: String, projectId: String, resourceId: String, slug: String, state: MarketplaceFlagState, typeName: MarketplaceFlagTypeName, category: MarketplaceFlagCategory? = nil, createdAt: Double? = nil, description: String? = nil, name: String? = nil, updatedAt: Double? = nil) throws {
+public extension MarketplaceFlag {
+    init(
+        externalId: String,
+        id: String,
+        integrationConfigurationId: String,
+        origin: String,
+        ownerId: String,
+        projectId: String,
+        resourceId: String,
+        slug: String,
+        state: MarketplaceFlagState,
+        typeName: MarketplaceFlagTypeName,
+        category: MarketplaceFlagCategory? = nil,
+        createdAt: Double? = nil,
+        description: String? = nil,
+        name: String? = nil,
+        updatedAt: Double? = nil
+    ) throws {
         (self.externalId, self.id) = (externalId, id)
         (self.integrationConfigurationId, self.origin) = (integrationConfigurationId, origin)
         (self.ownerId, self.projectId) = (ownerId, projectId)
@@ -36,7 +52,7 @@ extension MarketplaceFlag {
         (self.category, self.createdAt) = (category, createdAt)
         (self.description, self.name) = (description, name)
         self.updatedAt = updatedAt
-            try sdkValidateRawEnum("typeName", self.typeName, MarketplaceFlagTypeName.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("typeName", self.typeName, MarketplaceFlagTypeName.allCases.map(\.rawValue))
     }
 }
 
@@ -51,29 +67,47 @@ public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVar
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.flags) else {
-            throw SdkValidationError(field: "flags", code: "required", message: "Validation failed for 'flags': value is required")
-        }
-        guard container.contains(.pattern) else {
-            throw SdkValidationError(field: "pattern", code: "required", message: "Validation failed for 'pattern': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.flags = try container.sdkDecodeRequired(.flags)
-        self.pattern = try container.sdkDecodeRequired(.pattern)
-        self.type = try container.sdkDecodeRequired(.type)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3 {
-    public init(flags: String, pattern: String, type: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRXe2a6119c3d) {
+public extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.flags) else {
+            throw SdkValidationError(
+                field: "flags",
+                code: "required",
+                message: "Validation failed for 'flags': value is required"
+            )
+        }
+        guard container.contains(.pattern) else {
+            throw SdkValidationError(
+                field: "pattern",
+                code: "required",
+                message: "Validation failed for 'pattern': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        flags = try container.sdkDecodeRequired(.flags)
+        pattern = try container.sdkDecodeRequired(.pattern)
+        type = try container.sdkDecodeRequired(.type)
+    }
+}
+
+public extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3 {
+    init(
+        flags: String,
+        pattern: String,
+        type: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRXe2a6119c3d
+    ) {
         (self.flags, self.pattern) = (flags, pattern)
         self.type = type
     }
@@ -90,29 +124,43 @@ public struct UpdateFlagSegmentRequestDataRulesItemOutcomeVariant1Base: Codable 
         case attribute
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateFlagSegmentRequestDataRulesItemOutcomeVariant1Base {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
-        }
-        guard container.contains(.attribute) else {
-            throw SdkValidationError(field: "attribute", code: "required", message: "Validation failed for 'attribute': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.attribute = try container.sdkDecodeRequired(.attribute)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateFlagSegmentRequestDataRulesItemOutcomeVariant1Base {
-    public init(type: JSONValue, kind: String, attribute: String) {
+public extension UpdateFlagSegmentRequestDataRulesItemOutcomeVariant1Base {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.kind) else {
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
+        }
+        guard container.contains(.attribute) else {
+            throw SdkValidationError(
+                field: "attribute",
+                code: "required",
+                message: "Validation failed for 'attribute': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        kind = try container.sdkDecodeRequired(.kind)
+        attribute = try container.sdkDecodeRequired(.attribute)
+    }
+}
+
+public extension UpdateFlagSegmentRequestDataRulesItemOutcomeVariant1Base {
+    init(type: JSONValue, kind: String, attribute: String) {
         (self.type, self.kind) = (type, kind)
         self.attribute = attribute
     }
@@ -129,23 +177,29 @@ public struct CreateFlagSegmentResponseDataRulesItemConditionsItemRhsVarianX3173
         case note
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateFlagSegmentResponseDataRulesItemConditionsItemRhsVarianX3173f7e6c6 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.value = try container.sdkDecodeRequired(.value)
-        self.label = try container.sdkDecodeIfPresent(.label)
-        self.note = try container.sdkDecodeIfPresent(.note)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateFlagSegmentResponseDataRulesItemConditionsItemRhsVarianX3173f7e6c6 {
-    public init(value: Double, label: String? = nil, note: String? = nil) {
+public extension CreateFlagSegmentResponseDataRulesItemConditionsItemRhsVarianX3173f7e6c6 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        value = try container.sdkDecodeRequired(.value)
+        label = try container.sdkDecodeIfPresent(.label)
+        note = try container.sdkDecodeIfPresent(.note)
+    }
+}
+
+public extension CreateFlagSegmentResponseDataRulesItemConditionsItemRhsVarianX3173f7e6c6 {
+    init(value: Double, label: String? = nil, note: String? = nil) {
         (self.value, self.label) = (value, label)
         self.note = note
     }
@@ -160,30 +214,41 @@ public struct FlagEnvironmentsValuePausedOutcome: Codable {
         case variantId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension FlagEnvironmentsValuePausedOutcome {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.variantId) else {
-            throw SdkValidationError(field: "variantId", code: "required", message: "Validation failed for 'variantId': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.variantId = try container.sdkDecodeRequired(.variantId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension FlagEnvironmentsValuePausedOutcome {
-    public init(type: FlagEnvironmentsValuePausedOutcomeType, variantId: String) {
+public extension FlagEnvironmentsValuePausedOutcome {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.variantId) else {
+            throw SdkValidationError(
+                field: "variantId",
+                code: "required",
+                message: "Validation failed for 'variantId': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        variantId = try container.sdkDecodeRequired(.variantId)
+    }
+}
+
+public extension FlagEnvironmentsValuePausedOutcome {
+    init(type: FlagEnvironmentsValuePausedOutcomeType, variantId: String) {
         (self.type, self.variantId) = (type, variantId)
     }
 }
 
-public typealias UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0ItemsList = [UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0ItemsItem]
+public typealias UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0ItemsList =
+    [UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0ItemsItem]
 
 public struct UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0: Codable {
     public var type: UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0Type
@@ -194,28 +259,41 @@ public struct UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0: Co
         case items
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.items) else {
-            throw SdkValidationError(field: "items", code: "required", message: "Validation failed for 'items': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.items = try container.sdkDecodeRequired(.items)
-            try validateItems("items", self.items, min: nil, max: 10000)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0 {
-    public init(type: UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0Type, items: UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0ItemsList) throws {
+public extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.items) else {
+            throw SdkValidationError(
+                field: "items",
+                code: "required",
+                message: "Validation failed for 'items': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        items = try container.sdkDecodeRequired(.items)
+        try validateItems("items", items, min: nil, max: 10000)
+    }
+}
+
+public extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0 {
+    init(
+        type: UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0Type,
+        items: UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0ItemsList
+    ) throws {
         (self.type, self.items) = (type, items)
-            try validateItems("items", self.items, min: nil, max: 10000)
+        try validateItems("items", self.items, min: nil, max: 10000)
     }
 }
 
@@ -240,52 +318,95 @@ public struct FlagEnvironmentsValueRulesItemOutcomeVariant2: Codable {
         case finalPromille
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension FlagEnvironmentsValueRulesItemOutcomeVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.base) else {
-            throw SdkValidationError(field: "base", code: "required", message: "Validation failed for 'base': value is required")
-        }
-        guard container.contains(.defaultVariantId) else {
-            throw SdkValidationError(field: "defaultVariantId", code: "required", message: "Validation failed for 'defaultVariantId': value is required")
-        }
-        guard container.contains(.rollFromVariantId) else {
-            throw SdkValidationError(field: "rollFromVariantId", code: "required", message: "Validation failed for 'rollFromVariantId': value is required")
-        }
-        guard container.contains(.rollToVariantId) else {
-            throw SdkValidationError(field: "rollToVariantId", code: "required", message: "Validation failed for 'rollToVariantId': value is required")
-        }
-        guard container.contains(.slots) else {
-            throw SdkValidationError(field: "slots", code: "required", message: "Validation failed for 'slots': value is required")
-        }
-        guard container.contains(.startTimestamp) else {
-            throw SdkValidationError(field: "startTimestamp", code: "required", message: "Validation failed for 'startTimestamp': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.base = try container.sdkDecodeRequired(.base)
-        self.defaultVariantId = try container.sdkDecodeRequired(.defaultVariantId)
-        self.rollFromVariantId = try container.sdkDecodeRequired(.rollFromVariantId)
-        self.rollToVariantId = try container.sdkDecodeRequired(.rollToVariantId)
-        self.slots = try container.sdkDecodeRequired(.slots)
-        self.startTimestamp = try container.sdkDecodeRequired(.startTimestamp)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.finalPromille = try container.sdkDecodeIfPresent(.finalPromille)
-            try sdkValidateRawEnum("type", self.type, FlagEnvironmentsValueRulesItemOutcomeVariant2Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension FlagEnvironmentsValueRulesItemOutcomeVariant2 {
-    public init(base: FlagEnvironmentsValueRulesItemOutcomeVariant2Base, defaultVariantId: String, rollFromVariantId: String, rollToVariantId: String, slots: [FlagEnvironmentsValueRulesItemOutcomeVariant2SlotsItem], startTimestamp: Double, type: FlagEnvironmentsValueRulesItemOutcomeVariant2Type, finalPromille: Double? = nil) throws {
+public extension FlagEnvironmentsValueRulesItemOutcomeVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.base) else {
+            throw SdkValidationError(
+                field: "base",
+                code: "required",
+                message: "Validation failed for 'base': value is required"
+            )
+        }
+        guard container.contains(.defaultVariantId) else {
+            throw SdkValidationError(
+                field: "defaultVariantId",
+                code: "required",
+                message: "Validation failed for 'defaultVariantId': value is required"
+            )
+        }
+        guard container.contains(.rollFromVariantId) else {
+            throw SdkValidationError(
+                field: "rollFromVariantId",
+                code: "required",
+                message: "Validation failed for 'rollFromVariantId': value is required"
+            )
+        }
+        guard container.contains(.rollToVariantId) else {
+            throw SdkValidationError(
+                field: "rollToVariantId",
+                code: "required",
+                message: "Validation failed for 'rollToVariantId': value is required"
+            )
+        }
+        guard container.contains(.slots) else {
+            throw SdkValidationError(
+                field: "slots",
+                code: "required",
+                message: "Validation failed for 'slots': value is required"
+            )
+        }
+        guard container.contains(.startTimestamp) else {
+            throw SdkValidationError(
+                field: "startTimestamp",
+                code: "required",
+                message: "Validation failed for 'startTimestamp': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        base = try container.sdkDecodeRequired(.base)
+        defaultVariantId = try container.sdkDecodeRequired(.defaultVariantId)
+        rollFromVariantId = try container.sdkDecodeRequired(.rollFromVariantId)
+        rollToVariantId = try container.sdkDecodeRequired(.rollToVariantId)
+        slots = try container.sdkDecodeRequired(.slots)
+        startTimestamp = try container.sdkDecodeRequired(.startTimestamp)
+        type = try container.sdkDecodeRequired(.type)
+        finalPromille = try container.sdkDecodeIfPresent(.finalPromille)
+        try sdkValidateRawEnum("type", type, FlagEnvironmentsValueRulesItemOutcomeVariant2Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension FlagEnvironmentsValueRulesItemOutcomeVariant2 {
+    init(
+        base: FlagEnvironmentsValueRulesItemOutcomeVariant2Base,
+        defaultVariantId: String,
+        rollFromVariantId: String,
+        rollToVariantId: String,
+        slots: [FlagEnvironmentsValueRulesItemOutcomeVariant2SlotsItem],
+        startTimestamp: Double,
+        type: FlagEnvironmentsValueRulesItemOutcomeVariant2Type,
+        finalPromille: Double? = nil
+    ) throws {
         (self.base, self.defaultVariantId) = (base, defaultVariantId)
         (self.rollFromVariantId, self.rollToVariantId) = (rollFromVariantId, rollToVariantId)
         (self.slots, self.startTimestamp) = (slots, startTimestamp)
         (self.type, self.finalPromille) = (type, finalPromille)
-            try sdkValidateRawEnum("type", self.type, FlagEnvironmentsValueRulesItemOutcomeVariant2Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            FlagEnvironmentsValueRulesItemOutcomeVariant2Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -298,25 +419,35 @@ public struct FlagEnvironmentsValueRulesItemOutcomeVariant2SlotsItem: Codable {
         case promille
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension FlagEnvironmentsValueRulesItemOutcomeVariant2SlotsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.durationMs) else {
-            throw SdkValidationError(field: "durationMs", code: "required", message: "Validation failed for 'durationMs': value is required")
-        }
-        guard container.contains(.promille) else {
-            throw SdkValidationError(field: "promille", code: "required", message: "Validation failed for 'promille': value is required")
-        }
-        self.durationMs = try container.sdkDecodeRequired(.durationMs)
-        self.promille = try container.sdkDecodeRequired(.promille)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension FlagEnvironmentsValueRulesItemOutcomeVariant2SlotsItem {
-    public init(durationMs: Double, promille: Double) {
+public extension FlagEnvironmentsValueRulesItemOutcomeVariant2SlotsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.durationMs) else {
+            throw SdkValidationError(
+                field: "durationMs",
+                code: "required",
+                message: "Validation failed for 'durationMs': value is required"
+            )
+        }
+        guard container.contains(.promille) else {
+            throw SdkValidationError(
+                field: "promille",
+                code: "required",
+                message: "Validation failed for 'promille': value is required"
+            )
+        }
+        durationMs = try container.sdkDecodeRequired(.durationMs)
+        promille = try container.sdkDecodeRequired(.promille)
+    }
+}
+
+public extension FlagEnvironmentsValueRulesItemOutcomeVariant2SlotsItem {
+    init(durationMs: Double, promille: Double) {
         (self.durationMs, self.promille) = (durationMs, promille)
     }
 }
@@ -330,24 +461,34 @@ public struct SegmentDataRulesItemConditionsItemLhsVariant0: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SegmentDataRulesItemConditionsItemLhsVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, SegmentDataRulesItemConditionsItemLhsVariant0Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SegmentDataRulesItemConditionsItemLhsVariant0 {
-    public init(type: SegmentDataRulesItemConditionsItemLhsVariant0Type) throws {
+public extension SegmentDataRulesItemConditionsItemLhsVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum("type", type, SegmentDataRulesItemConditionsItemLhsVariant0Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension SegmentDataRulesItemConditionsItemLhsVariant0 {
+    init(type: SegmentDataRulesItemConditionsItemLhsVariant0Type) throws {
         self.type = type
-            try sdkValidateRawEnum("type", self.type, SegmentDataRulesItemConditionsItemLhsVariant0Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            SegmentDataRulesItemConditionsItemLhsVariant0Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -361,19 +502,19 @@ public struct SegmentDataRulesItemConditionsItemCmpOptions: Codable {
     }
 
     init() {
-        self.ignoreCase = nil
+        ignoreCase = nil
     }
 }
 
-extension SegmentDataRulesItemConditionsItemCmpOptions {
-    public init(from decoder: Decoder) throws {
+public extension SegmentDataRulesItemConditionsItemCmpOptions {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.ignoreCase = try container.sdkDecodeIfPresent(.ignoreCase)
+        ignoreCase = try container.sdkDecodeIfPresent(.ignoreCase)
     }
 }
 
-extension SegmentDataRulesItemConditionsItemCmpOptions {
-    public init(ignoreCase: Bool? = nil) {
+public extension SegmentDataRulesItemConditionsItemCmpOptions {
+    init(ignoreCase: Bool? = nil) {
         self.init()
         self.ignoreCase = ignoreCase
     }
@@ -390,29 +531,43 @@ public struct CreateFlagSegmentRequestDataRulesItemOutcomeVariant1: Codable {
         case passPromille
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateFlagSegmentRequestDataRulesItemOutcomeVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.base) else {
-            throw SdkValidationError(field: "base", code: "required", message: "Validation failed for 'base': value is required")
-        }
-        guard container.contains(.passPromille) else {
-            throw SdkValidationError(field: "passPromille", code: "required", message: "Validation failed for 'passPromille': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.base = try container.sdkDecodeRequired(.base)
-        self.passPromille = try container.sdkDecodeRequired(.passPromille)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateFlagSegmentRequestDataRulesItemOutcomeVariant1 {
-    public init(type: JSONValue, base: CreateFlagSegmentRequestDataRulesItemOutcomeVariant1Base, passPromille: Double) {
+public extension CreateFlagSegmentRequestDataRulesItemOutcomeVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.base) else {
+            throw SdkValidationError(
+                field: "base",
+                code: "required",
+                message: "Validation failed for 'base': value is required"
+            )
+        }
+        guard container.contains(.passPromille) else {
+            throw SdkValidationError(
+                field: "passPromille",
+                code: "required",
+                message: "Validation failed for 'passPromille': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        base = try container.sdkDecodeRequired(.base)
+        passPromille = try container.sdkDecodeRequired(.passPromille)
+    }
+}
+
+public extension CreateFlagSegmentRequestDataRulesItemOutcomeVariant1 {
+    init(type: JSONValue, base: CreateFlagSegmentRequestDataRulesItemOutcomeVariant1Base, passPromille: Double) {
         (self.type, self.base) = (type, base)
         self.passPromille = passPromille
     }
@@ -429,23 +584,29 @@ public struct CreateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantXf66b
         case note
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantXf66be3bd8a {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.value = try container.sdkDecodeRequired(.value)
-        self.label = try container.sdkDecodeIfPresent(.label)
-        self.note = try container.sdkDecodeIfPresent(.note)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantXf66be3bd8a {
-    public init(value: Double, label: String? = nil, note: String? = nil) {
+public extension CreateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantXf66be3bd8a {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        value = try container.sdkDecodeRequired(.value)
+        label = try container.sdkDecodeIfPresent(.label)
+        note = try container.sdkDecodeIfPresent(.note)
+    }
+}
+
+public extension CreateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantXf66be3bd8a {
+    init(value: Double, label: String? = nil, note: String? = nil) {
         (self.value, self.label) = (value, label)
         self.note = note
     }

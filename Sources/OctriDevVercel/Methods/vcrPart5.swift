@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VcrMethods {
-    /// Lists images and their tags for a container registry repository. Supply `projectId` and `idOrName` to identify the repository, and use `untagged` to filter for images without tags. Use `cursor` to continue through paginated results.
+public extension VcrMethods {
+    /// Lists images and their tags for a container registry repository. Supply `projectId` and `idOrName` to identify
+    /// the repository, and use `untagged` to filter for images without tags. Use `cursor` to continue through paginated
+    /// results.
     ///
     /// List images for a container registry repository, including their tags.
     ///
@@ -17,28 +19,48 @@ extension VcrMethods {
     /// - cursor: Opaque pagination cursor returned by a previous list response.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listRepositoryImages(config: ClientConfig, idOrName: String, projectId: String, limit: Int? = nil, cursor: String? = nil, untagged: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> VcrImageList {
+    static func listRepositoryImages(
+        config: ClientConfig,
+        idOrName: String,
+        projectId: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        untagged: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> VcrImageList {
         try validateLength("idOrName", idOrName, max: 255)
 
-        if let limit = limit {
+        if let limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        if let cursor = cursor {
+        if let cursor {
             try validateLength("cursor", cursor, max: 1024)
         }
 
-        return try (await sdkRequest("GET", ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/images"].joined(), config: config, query: [
-            SdkQueryParameter("projectId", value: projectId),
-            SdkQueryParameter("limit", value: limit),
-            SdkQueryParameter("cursor", value: cursor),
-            SdkQueryParameter("untagged", value: untagged),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listRepositoryImages", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/images"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: projectId),
+                SdkQueryParameter("limit", value: limit),
+                SdkQueryParameter("cursor", value: cursor),
+                SdkQueryParameter("untagged", value: untagged),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listRepositoryImages",
+            options: requestOptions
+        )).data
     }
 
-    /// Lists images and their tags for a container registry repository. Supply `projectId` and `idOrName` to identify the repository, and use `untagged` to filter for images without tags. Use `cursor` to continue through paginated results.
+    /// Lists images and their tags for a container registry repository. Supply `projectId` and `idOrName` to identify
+    /// the repository, and use `untagged` to filter for images without tags. Use `cursor` to continue through paginated
+    /// results.
     ///
     /// List images for a container registry repository, including their tags.
     ///
@@ -48,17 +70,46 @@ extension VcrMethods {
     /// - cursor: Opaque pagination cursor returned by a previous list response.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listRepositoryImagesPaginated(config: ClientConfig, idOrName: String, projectId: String, limit: Int? = nil, cursor: String? = nil, untagged: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<VcrImageListItem, Swift.Error> {
-        return AsyncThrowingStream<VcrImageListItem, Swift.Error> { (continuation: AsyncThrowingStream<VcrImageListItem, Swift.Error>.Continuation) in
+    static func listRepositoryImagesPaginated(
+        config: ClientConfig,
+        idOrName: String,
+        projectId: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        untagged: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) -> AsyncThrowingStream<VcrImageListItem, Swift.Error> {
+        AsyncThrowingStream<VcrImageListItem, Swift.Error> { (continuation: AsyncThrowingStream<
+            VcrImageListItem,
+            Swift.Error
+        >.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listRepositoryImages(config: config, idOrName: idOrName, projectId: projectId, limit: limit, cursor: pageCursor, untagged: untagged, teamId: teamId, slug: slug, requestOptions: requestOptions)
+                        let pageResponse = try await listRepositoryImages(
+                            config: config,
+                            idOrName: idOrName,
+                            projectId: projectId,
+                            limit: limit,
+                            cursor: pageCursor,
+                            untagged: untagged,
+                            teamId: teamId,
+                            slug: slug,
+                            requestOptions: requestOptions
+                        )
                         let pageItems = pageResponse.images
-                        if pageItems.isEmpty { break }
-                        for item in pageItems { continuation.yield(item) }
-                        guard let nextCursor = pageResponse.nextCursor else { break }
+                        if pageItems.isEmpty {
+                            break
+                        }
+                        for item in pageItems {
+                            continuation.yield(item)
+                        }
+                        guard let nextCursor = pageResponse.nextCursor else {
+                            break
+                        }
                         pageCursor = nextCursor
                     }
                 } catch {
@@ -71,25 +122,58 @@ extension VcrMethods {
         }
     }
 
-    public struct ListRepositoryImagesPage {
+    struct ListRepositoryImagesPage {
         public let data: VcrImageList
         public let items: [VcrImageListItem]
         public let hasMore: Bool
     }
 
-    public static func listRepositoryImagesPages(config: ClientConfig, idOrName: String, projectId: String, limit: Int? = nil, cursor: String? = nil, untagged: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<ListRepositoryImagesPage, Swift.Error> {
-        return AsyncThrowingStream<ListRepositoryImagesPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<ListRepositoryImagesPage, Swift.Error>.Continuation) in
+    static func listRepositoryImagesPages(
+        config: ClientConfig,
+        idOrName: String,
+        projectId: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        untagged: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) -> AsyncThrowingStream<ListRepositoryImagesPage, Swift.Error> {
+        AsyncThrowingStream<ListRepositoryImagesPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<
+            ListRepositoryImagesPage,
+            Swift.Error
+        >.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listRepositoryImages(config: config, idOrName: idOrName, projectId: projectId, limit: limit, cursor: pageCursor, untagged: untagged, teamId: teamId, slug: slug, requestOptions: requestOptions)
+                        let pageResponse = try await listRepositoryImages(
+                            config: config,
+                            idOrName: idOrName,
+                            projectId: projectId,
+                            limit: limit,
+                            cursor: pageCursor,
+                            untagged: untagged,
+                            teamId: teamId,
+                            slug: slug,
+                            requestOptions: requestOptions
+                        )
                         let pageItems = pageResponse.images
-                        if pageItems.isEmpty { break }
+                        if pageItems.isEmpty {
+                            break
+                        }
                         let hasMore = pageResponse.nextCursor != nil
-                        pageContinuation.yield(ListRepositoryImagesPage(data: pageResponse, items: pageItems, hasMore: hasMore))
-                        if !hasMore { break }
-                        guard let nextCursor = pageResponse.nextCursor else { break }
+                        pageContinuation.yield(ListRepositoryImagesPage(
+                            data: pageResponse,
+                            items: pageItems,
+                            hasMore: hasMore
+                        ))
+                        if !hasMore {
+                            break
+                        }
+                        guard let nextCursor = pageResponse.nextCursor else {
+                            break
+                        }
                         pageCursor = nextCursor
                     }
                 } catch {

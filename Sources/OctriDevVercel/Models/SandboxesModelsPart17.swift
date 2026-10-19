@@ -3,22 +3,29 @@
 
 import Foundation
 
-// Sandboxes domain models
+/// Sandboxes domain models
 /// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block
 /// all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-public struct CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable,
+    Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let allowAll = CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode(rawValue: "allow-all")
     public static let denyAll = CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode(rawValue: "deny-all")
     public static let custom = CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode(rawValue: "custom")
-    public static let defaultAllow = CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode(rawValue: "default-allow")
-    public static let defaultDeny = CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode(rawValue: "default-deny")
+    public static let defaultAllow =
+        CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode(rawValue: "default-allow")
+    public static let defaultDeny =
+        CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode(rawValue: "default-deny")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -29,10 +36,14 @@ public struct CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0Mode: RawRe
 
 /// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block
 /// all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-public struct CreateSandboxesV2RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateSandboxesV2RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let allowAll = CreateSandboxesV2RequestNetworkPolicyVariant0Mode(rawValue: "allow-all")
     public static let denyAll = CreateSandboxesV2RequestNetworkPolicyVariant0Mode(rawValue: "deny-all")
     public static let custom = CreateSandboxesV2RequestNetworkPolicyVariant0Mode(rawValue: "custom")
@@ -41,7 +52,7 @@ public struct CreateSandboxesV2RequestNetworkPolicyVariant0Mode: RawRepresentabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -53,14 +64,17 @@ public struct CreateSandboxesV2RequestNetworkPolicyVariant0Mode: RawRepresentabl
 public struct NamedSandboxMountsValueMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let readOnly = NamedSandboxMountsValueMode(rawValue: "read-only")
     public static let readWrite = NamedSandboxMountsValueMode(rawValue: "read-write")
     public static let snapshot = NamedSandboxMountsValueMode(rawValue: "snapshot")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

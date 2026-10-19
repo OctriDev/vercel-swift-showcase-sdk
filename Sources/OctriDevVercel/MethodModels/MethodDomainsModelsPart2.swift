@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical domains operation model declarations
+/// Canonical domains operation model declarations
 public struct CreateOrTransferDomainResponseDomain: Codable {
     /// If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
     /// - Example: 1613602938882
@@ -79,34 +79,54 @@ public struct CreateOrTransferDomainResponseDomain: Codable {
         case transferStartedAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateOrTransferDomainResponseDomain {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.boughtAt = try container.sdkDecodeNullable(.boughtAt)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.creator = try container.sdkDecodeRequired(.creator)
-        self.echMode = try container.sdkDecodeRequired(.echMode)
-        self.expiresAt = try container.sdkDecodeNullable(.expiresAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.intendedNameservers = try container.sdkDecodeRequired(.intendedNameservers)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.nameservers = try container.sdkDecodeRequired(.nameservers)
-        self.serviceType = try container.sdkDecodeRequired(.serviceType)
-        self.teamId = try container.sdkDecodeNullable(.teamId)
-        self.userId = try container.sdkDecodeRequired(.userId)
-        self.verified = try container.sdkDecodeRequired(.verified)
-        self.customNameservers = try container.sdkDecodeIfPresent(.customNameservers)
-        self.renew = try container.sdkDecodeIfPresent(.renew)
-        self.transferredAt = try container.sdkDecodeIfPresent(.transferredAt)
-        self.transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateOrTransferDomainResponseDomain {
-    public init(boughtAt: Double?, createdAt: Double, creator: CreateOrTransferDomainResponseDomainCreator, echMode: CreateOrTransferDomainResponseDomainEchMode, expiresAt: Double?, id: String, intendedNameservers: [String], name: String, nameservers: [String], serviceType: CreateOrTransferDomainResponseDomainServiceType, teamId: String?, userId: String, verified: Bool, customNameservers: [String]? = nil, renew: Bool? = nil, transferredAt: Double? = nil, transferStartedAt: Double? = nil) {
+public extension CreateOrTransferDomainResponseDomain {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        boughtAt = try container.sdkDecodeNullable(.boughtAt)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        creator = try container.sdkDecodeRequired(.creator)
+        echMode = try container.sdkDecodeRequired(.echMode)
+        expiresAt = try container.sdkDecodeNullable(.expiresAt)
+        id = try container.sdkDecodeRequired(.id)
+        intendedNameservers = try container.sdkDecodeRequired(.intendedNameservers)
+        name = try container.sdkDecodeRequired(.name)
+        nameservers = try container.sdkDecodeRequired(.nameservers)
+        serviceType = try container.sdkDecodeRequired(.serviceType)
+        teamId = try container.sdkDecodeNullable(.teamId)
+        userId = try container.sdkDecodeRequired(.userId)
+        verified = try container.sdkDecodeRequired(.verified)
+        customNameservers = try container.sdkDecodeIfPresent(.customNameservers)
+        renew = try container.sdkDecodeIfPresent(.renew)
+        transferredAt = try container.sdkDecodeIfPresent(.transferredAt)
+        transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
+    }
+}
+
+public extension CreateOrTransferDomainResponseDomain {
+    init(
+        boughtAt: Double?,
+        createdAt: Double,
+        creator: CreateOrTransferDomainResponseDomainCreator,
+        echMode: CreateOrTransferDomainResponseDomainEchMode,
+        expiresAt: Double?,
+        id: String,
+        intendedNameservers: [String],
+        name: String,
+        nameservers: [String],
+        serviceType: CreateOrTransferDomainResponseDomainServiceType,
+        teamId: String?,
+        userId: String,
+        verified: Bool,
+        customNameservers: [String]? = nil,
+        renew: Bool? = nil,
+        transferredAt: Double? = nil,
+        transferStartedAt: Double? = nil
+    ) {
         (self.boughtAt, self.createdAt) = (boughtAt, createdAt)
         (self.creator, self.echMode) = (creator, echMode)
         (self.expiresAt, self.id) = (expiresAt, id)
@@ -190,34 +210,54 @@ public struct ListDomainsResponseDomainsItem: Codable {
         case transferStartedAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListDomainsResponseDomainsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.boughtAt = try container.sdkDecodeNullable(.boughtAt)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.creator = try container.sdkDecodeRequired(.creator)
-        self.echMode = try container.sdkDecodeRequired(.echMode)
-        self.expiresAt = try container.sdkDecodeNullable(.expiresAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.intendedNameservers = try container.sdkDecodeRequired(.intendedNameservers)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.nameservers = try container.sdkDecodeRequired(.nameservers)
-        self.serviceType = try container.sdkDecodeRequired(.serviceType)
-        self.teamId = try container.sdkDecodeNullable(.teamId)
-        self.userId = try container.sdkDecodeRequired(.userId)
-        self.verified = try container.sdkDecodeRequired(.verified)
-        self.customNameservers = try container.sdkDecodeIfPresent(.customNameservers)
-        self.renew = try container.sdkDecodeIfPresent(.renew)
-        self.transferredAt = try container.sdkDecodeIfPresent(.transferredAt)
-        self.transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListDomainsResponseDomainsItem {
-    public init(boughtAt: Double?, createdAt: Double, creator: ListDomainsResponseDomainsItemCreator, echMode: ListDomainsResponseDomainsItemEchMode, expiresAt: Double?, id: String, intendedNameservers: [String], name: String, nameservers: [String], serviceType: ListDomainsResponseDomainsItemServiceType, teamId: String?, userId: String, verified: Bool, customNameservers: [String]? = nil, renew: Bool? = nil, transferredAt: Double? = nil, transferStartedAt: Double? = nil) {
+public extension ListDomainsResponseDomainsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        boughtAt = try container.sdkDecodeNullable(.boughtAt)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        creator = try container.sdkDecodeRequired(.creator)
+        echMode = try container.sdkDecodeRequired(.echMode)
+        expiresAt = try container.sdkDecodeNullable(.expiresAt)
+        id = try container.sdkDecodeRequired(.id)
+        intendedNameservers = try container.sdkDecodeRequired(.intendedNameservers)
+        name = try container.sdkDecodeRequired(.name)
+        nameservers = try container.sdkDecodeRequired(.nameservers)
+        serviceType = try container.sdkDecodeRequired(.serviceType)
+        teamId = try container.sdkDecodeNullable(.teamId)
+        userId = try container.sdkDecodeRequired(.userId)
+        verified = try container.sdkDecodeRequired(.verified)
+        customNameservers = try container.sdkDecodeIfPresent(.customNameservers)
+        renew = try container.sdkDecodeIfPresent(.renew)
+        transferredAt = try container.sdkDecodeIfPresent(.transferredAt)
+        transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
+    }
+}
+
+public extension ListDomainsResponseDomainsItem {
+    init(
+        boughtAt: Double?,
+        createdAt: Double,
+        creator: ListDomainsResponseDomainsItemCreator,
+        echMode: ListDomainsResponseDomainsItemEchMode,
+        expiresAt: Double?,
+        id: String,
+        intendedNameservers: [String],
+        name: String,
+        nameservers: [String],
+        serviceType: ListDomainsResponseDomainsItemServiceType,
+        teamId: String?,
+        userId: String,
+        verified: Bool,
+        customNameservers: [String]? = nil,
+        renew: Bool? = nil,
+        transferredAt: Double? = nil,
+        transferStartedAt: Double? = nil
+    ) {
         (self.boughtAt, self.createdAt) = (boughtAt, createdAt)
         (self.creator, self.echMode) = (creator, echMode)
         (self.expiresAt, self.id) = (expiresAt, id)
@@ -230,7 +270,8 @@ extension ListDomainsResponseDomainsItem {
     }
 }
 
-public typealias GetDomainProjectDomainsResponseProjectDomainsItemVerificationList = [GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem]
+public typealias GetDomainProjectDomainsResponseProjectDomainsItemVerificationList =
+    [GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem]
 
 public struct GetDomainProjectDomainsResponseProjectDomainsItem: Codable {
     public var apexName: String
@@ -265,40 +306,70 @@ public struct GetDomainProjectDomainsResponseProjectDomainsItem: Codable {
         case verification
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetDomainProjectDomainsResponseProjectDomainsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.apexName) else {
-            throw SdkValidationError(field: "apexName", code: "required", message: "Validation failed for 'apexName': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        guard container.contains(.verified) else {
-            throw SdkValidationError(field: "verified", code: "required", message: "Validation failed for 'verified': value is required")
-        }
-        self.apexName = try container.sdkDecodeRequired(.apexName)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.verified = try container.sdkDecodeRequired(.verified)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        self.redirect = try container.sdkDecodeIfPresent(.redirect)
-        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        self.verification = try container.sdkDecodeIfPresent(.verification)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetDomainProjectDomainsResponseProjectDomainsItem {
-    public init(apexName: String, name: String, projectId: String, verified: Bool, createdAt: Double? = nil, customEnvironmentId: String? = nil, gitBranch: String? = nil, redirect: String? = nil, redirectStatusCode: Double? = nil, updatedAt: Double? = nil, verification: GetDomainProjectDomainsResponseProjectDomainsItemVerificationList? = nil) {
+public extension GetDomainProjectDomainsResponseProjectDomainsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.apexName) else {
+            throw SdkValidationError(
+                field: "apexName",
+                code: "required",
+                message: "Validation failed for 'apexName': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
+        }
+        guard container.contains(.verified) else {
+            throw SdkValidationError(
+                field: "verified",
+                code: "required",
+                message: "Validation failed for 'verified': value is required"
+            )
+        }
+        apexName = try container.sdkDecodeRequired(.apexName)
+        name = try container.sdkDecodeRequired(.name)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        verified = try container.sdkDecodeRequired(.verified)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        redirect = try container.sdkDecodeIfPresent(.redirect)
+        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        verification = try container.sdkDecodeIfPresent(.verification)
+    }
+}
+
+public extension GetDomainProjectDomainsResponseProjectDomainsItem {
+    init(
+        apexName: String,
+        name: String,
+        projectId: String,
+        verified: Bool,
+        createdAt: Double? = nil,
+        customEnvironmentId: String? = nil,
+        gitBranch: String? = nil,
+        redirect: String? = nil,
+        redirectStatusCode: Double? = nil,
+        updatedAt: Double? = nil,
+        verification: GetDomainProjectDomainsResponseProjectDomainsItemVerificationList? = nil
+    ) {
         (self.apexName, self.name) = (apexName, name)
         (self.projectId, self.verified) = (projectId, verified)
         (self.createdAt, self.customEnvironmentId) = (createdAt, customEnvironmentId)
@@ -315,21 +386,27 @@ public struct ReplaceDomainsByDomainRecordsResponse: Codable {
         case recordIds
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ReplaceDomainsByDomainRecordsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.recordIds) else {
-            throw SdkValidationError(field: "recordIds", code: "required", message: "Validation failed for 'recordIds': value is required")
-        }
-        self.recordIds = try container.sdkDecodeRequired(.recordIds)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ReplaceDomainsByDomainRecordsResponse {
-    public init(recordIds: [String]) {
+public extension ReplaceDomainsByDomainRecordsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.recordIds) else {
+            throw SdkValidationError(
+                field: "recordIds",
+                code: "required",
+                message: "Validation failed for 'recordIds': value is required"
+            )
+        }
+        recordIds = try container.sdkDecodeRequired(.recordIds)
+    }
+}
+
+public extension ReplaceDomainsByDomainRecordsResponse {
+    init(recordIds: [String]) {
         self.recordIds = recordIds
     }
 }
@@ -340,18 +417,26 @@ public indirect enum UpdateDomainsRequestBody {
 }
 
 extension UpdateDomainsRequestBody: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateDomainsRequestBody")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateDomainsRequestBody"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -369,8 +454,14 @@ extension UpdateDomainsRequestBody {
 
 extension UpdateDomainsRequestBody {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UpdateDomainsRequestBodyVariant0.self) { return .updateDomainsRequestBodyVariant0(value) }
-        if let value = try? container.decode(UpdateDomainsRequestBodyVariant1.self) { return .updateDomainsRequestBodyVariant1(value) }
+        if let value = try? container
+            .decode(UpdateDomainsRequestBodyVariant0.self) {
+            return .updateDomainsRequestBodyVariant0(value)
+        }
+        if let value = try? container
+            .decode(UpdateDomainsRequestBodyVariant1.self) {
+            return .updateDomainsRequestBodyVariant1(value)
+        }
         return nil
     }
 }
@@ -396,25 +487,35 @@ public struct GetDomainProjectDomainsResponse: Codable {
         case projectDomains
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetDomainProjectDomainsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        guard container.contains(.projectDomains) else {
-            throw SdkValidationError(field: "projectDomains", code: "required", message: "Validation failed for 'projectDomains': value is required")
-        }
-        self.pagination = try container.sdkDecodeRequired(.pagination)
-        self.projectDomains = try container.sdkDecodeRequired(.projectDomains)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetDomainProjectDomainsResponse {
-    public init(pagination: Pagination, projectDomains: [GetDomainProjectDomainsResponseProjectDomainsItem]) {
+public extension GetDomainProjectDomainsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        guard container.contains(.projectDomains) else {
+            throw SdkValidationError(
+                field: "projectDomains",
+                code: "required",
+                message: "Validation failed for 'projectDomains': value is required"
+            )
+        }
+        pagination = try container.sdkDecodeRequired(.pagination)
+        projectDomains = try container.sdkDecodeRequired(.projectDomains)
+    }
+}
+
+public extension GetDomainProjectDomainsResponse {
+    init(pagination: Pagination, projectDomains: [GetDomainProjectDomainsResponseProjectDomainsItem]) {
         (self.pagination, self.projectDomains) = (pagination, projectDomains)
     }
 }
@@ -426,21 +527,27 @@ public struct CreateOrTransferDomainResponse: Codable {
         case domain
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateOrTransferDomainResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.domain) else {
-            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
-        }
-        self.domain = try container.sdkDecodeRequired(.domain)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateOrTransferDomainResponse {
-    public init(domain: CreateOrTransferDomainResponseDomain) {
+public extension CreateOrTransferDomainResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.domain) else {
+            throw SdkValidationError(
+                field: "domain",
+                code: "required",
+                message: "Validation failed for 'domain': value is required"
+            )
+        }
+        domain = try container.sdkDecodeRequired(.domain)
+    }
+}
+
+public extension CreateOrTransferDomainResponse {
+    init(domain: CreateOrTransferDomainResponseDomain) {
         self.domain = domain
     }
 }
@@ -461,31 +568,45 @@ public struct ClaimDomainOwnershipResponseDomainCreator: Codable {
         case isDomainReseller
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ClaimDomainOwnershipResponseDomainCreator {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.email) else {
-            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.username) else {
-            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
-        }
-        self.email = try container.sdkDecodeRequired(.email)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.username = try container.sdkDecodeRequired(.username)
-        self.customerId = try container.sdkDecodeIfPresent(.customerId)
-        self.isDomainReseller = try container.sdkDecodeIfPresent(.isDomainReseller)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ClaimDomainOwnershipResponseDomainCreator {
-    public init(email: String, id: String, username: String, customerId: String? = nil, isDomainReseller: Bool? = nil) {
+public extension ClaimDomainOwnershipResponseDomainCreator {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.email) else {
+            throw SdkValidationError(
+                field: "email",
+                code: "required",
+                message: "Validation failed for 'email': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.username) else {
+            throw SdkValidationError(
+                field: "username",
+                code: "required",
+                message: "Validation failed for 'username': value is required"
+            )
+        }
+        email = try container.sdkDecodeRequired(.email)
+        id = try container.sdkDecodeRequired(.id)
+        username = try container.sdkDecodeRequired(.username)
+        customerId = try container.sdkDecodeIfPresent(.customerId)
+        isDomainReseller = try container.sdkDecodeIfPresent(.isDomainReseller)
+    }
+}
+
+public extension ClaimDomainOwnershipResponseDomainCreator {
+    init(email: String, id: String, username: String, customerId: String? = nil, isDomainReseller: Bool? = nil) {
         (self.email, self.id) = (email, id)
         (self.username, self.customerId) = (username, customerId)
         self.isDomainReseller = isDomainReseller
@@ -502,5 +623,7 @@ public struct GetDomainConfigResponseRecommendedCNAMEItem: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

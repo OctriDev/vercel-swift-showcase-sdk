@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsCreate domain models
+/// ProjectsCreate domain models
 public indirect enum CreateProjectEnvResponseCreatedItemContentHint {
     case createProjectEnvResponseCreatedItemContentHintVariant0(CreateProjectEnvResponseCreatedItemContentHintVariant0)
     case createProjectEnvResponseCreatedItemContentHintVariant1(CreateProjectEnvResponseCreatedItemContentHintVariant1)
@@ -15,32 +15,62 @@ public indirect enum CreateProjectEnvResponseCreatedItemContentHint {
     case createProjectEnvResponseCreatedItemContentHintVariant7(CreateProjectEnvResponseCreatedItemContentHintVariant7)
     case createProjectEnvResponseCreatedItemContentHintVariant8(CreateProjectEnvResponseCreatedItemContentHintVariant8)
     case createProjectEnvResponseCreatedItemContentHintVariant9(CreateProjectEnvResponseCreatedItemContentHintVariant9)
-    case createProjectEnvResponseCreatedItemContentHintVariant10(CreateProjectEnvResponseCreatedItemContentHintVariant10)
-    case createProjectEnvResponseCreatedItemContentHintVariant11(CreateProjectEnvResponseCreatedItemContentHintVariant11)
-    case createProjectEnvResponseCreatedItemContentHintVariant12(CreateProjectEnvResponseCreatedItemContentHintVariant12)
-    case createProjectEnvResponseCreatedItemContentHintVariant13(CreateProjectEnvResponseCreatedItemContentHintVariant13)
-    case createProjectEnvResponseCreatedItemContentHintVariant14(CreateProjectEnvResponseCreatedItemContentHintVariant14)
-    case createProjectEnvResponseCreatedItemContentHintVariant15(CreateProjectEnvResponseCreatedItemContentHintVariant15)
-    case createProjectEnvResponseCreatedItemContentHintVariant16(CreateProjectEnvResponseCreatedItemContentHintVariant16)
+    case createProjectEnvResponseCreatedItemContentHintVariant10(
+        CreateProjectEnvResponseCreatedItemContentHintVariant10
+    )
+    case createProjectEnvResponseCreatedItemContentHintVariant11(
+        CreateProjectEnvResponseCreatedItemContentHintVariant11
+    )
+    case createProjectEnvResponseCreatedItemContentHintVariant12(
+        CreateProjectEnvResponseCreatedItemContentHintVariant12
+    )
+    case createProjectEnvResponseCreatedItemContentHintVariant13(
+        CreateProjectEnvResponseCreatedItemContentHintVariant13
+    )
+    case createProjectEnvResponseCreatedItemContentHintVariant14(
+        CreateProjectEnvResponseCreatedItemContentHintVariant14
+    )
+    case createProjectEnvResponseCreatedItemContentHintVariant15(
+        CreateProjectEnvResponseCreatedItemContentHintVariant15
+    )
+    case createProjectEnvResponseCreatedItemContentHintVariant16(
+        CreateProjectEnvResponseCreatedItemContentHintVariant16
+    )
 }
 
 extension CreateProjectEnvResponseCreatedItemContentHint: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless3(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless2(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless3(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        if let value = Self.decodeGroup2(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateProjectEnvResponseCreatedItemContentHint")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        if let value = Self.decodeGroup2(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateProjectEnvResponseCreatedItemContentHint"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-        if try encodeGroup2(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
+        if try encodeGroup2(to: encoder) {
+            return
+        }
     }
 }
 
@@ -135,62 +165,62 @@ extension CreateProjectEnvResponseCreatedItemContentHint {
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant0.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant0(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant0(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant1.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant1(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant1(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant2.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant2(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant2(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant3.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant3(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant3(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant4.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant4(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant4(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant5.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant5(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant5(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant6.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant6(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant6(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant7.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant7(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant7(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant8.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant8(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant8(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant9.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant9(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant9(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant10.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant10(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant10(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant11.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant11(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant11(value)
         }
         return nil
     }
@@ -201,27 +231,27 @@ extension CreateProjectEnvResponseCreatedItemContentHint {
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant12.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant12(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant12(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant13.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant13(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant13(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant14.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant14(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant14(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant15.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant15(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant15(value)
         }
         if let value = try? container.decode(
             CreateProjectEnvResponseCreatedItemContentHintVariant16.self
         ) {
-            return             .createProjectEnvResponseCreatedItemContentHintVariant16(value)
+            return .createProjectEnvResponseCreatedItemContentHintVariant16(value)
         }
         return nil
     }
@@ -231,18 +261,30 @@ extension CreateProjectEnvResponseCreatedItemContentHint {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createProjectEnvResponseCreatedItemContentHintVariant0(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant1(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant2(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant3(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant4(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant5(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant6(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant7(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant8(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant9(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant10(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant11(value): try container.encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant0(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant1(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant2(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant3(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant4(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant5(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant6(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant7(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant8(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant9(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant10(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant11(value): try container
+            .encode(value); return true
         default: return false
         }
     }
@@ -252,11 +294,16 @@ extension CreateProjectEnvResponseCreatedItemContentHint {
     func encodeGroup2(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createProjectEnvResponseCreatedItemContentHintVariant12(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant13(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant14(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant15(value): try container.encode(value); return true
-        case let .createProjectEnvResponseCreatedItemContentHintVariant16(value): try container.encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant12(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant13(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant14(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant15(value): try container
+            .encode(value); return true
+        case let .createProjectEnvResponseCreatedItemContentHintVariant16(value): try container
+            .encode(value); return true
         default: return false
         }
     }
@@ -270,33 +317,53 @@ public indirect enum CreateProjectResponseCreator {
 }
 
 extension CreateProjectResponseCreator: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateProjectResponseCreator")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateProjectResponseCreator"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateProjectResponseCreator {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateProjectResponseCreatorVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateProjectResponseCreatorVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createProjectResponseCreatorVariant0(value)
         }
-        if let value = try? container.decode(CreateProjectResponseCreatorVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateProjectResponseCreatorVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createProjectResponseCreatorVariant1(value)
         }
-        if let value = try? container.decode(CreateProjectResponseCreatorVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateProjectResponseCreatorVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createProjectResponseCreatorVariant2(value)
         }
-        if let value = try? container.decode(CreateProjectResponseCreatorVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateProjectResponseCreatorVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createProjectResponseCreatorVariant3(value)
         }
         return nil
@@ -308,22 +375,22 @@ extension CreateProjectResponseCreator {
         if let value = try? container.decode(
             CreateProjectResponseCreatorVariant0.self
         ) {
-            return             .createProjectResponseCreatorVariant0(value)
+            return .createProjectResponseCreatorVariant0(value)
         }
         if let value = try? container.decode(
             CreateProjectResponseCreatorVariant1.self
         ) {
-            return             .createProjectResponseCreatorVariant1(value)
+            return .createProjectResponseCreatorVariant1(value)
         }
         if let value = try? container.decode(
             CreateProjectResponseCreatorVariant2.self
         ) {
-            return             .createProjectResponseCreatorVariant2(value)
+            return .createProjectResponseCreatorVariant2(value)
         }
         if let value = try? container.decode(
             CreateProjectResponseCreatorVariant3.self
         ) {
-            return             .createProjectResponseCreatorVariant3(value)
+            return .createProjectResponseCreatorVariant3(value)
         }
         return nil
     }
@@ -351,29 +418,39 @@ public indirect enum CreateProjectResponseDeploymentPolicyDeploymentSourcesItemE
 }
 
 extension CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX64ecdbd80f: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX64ecdbd80f")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX64ecdbd80f"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX64ecdbd80f {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX61b345a610.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX61b345a610.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX61b345a610(value)
         }
-        if let value = try? container.decode(CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX52388b1417.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX52388b1417.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX52388b1417(value)
         }
         return nil
@@ -385,12 +462,12 @@ extension CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX64ecdbd8
         if let value = try? container.decode(
             CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX61b345a610.self
         ) {
-            return             .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX61b345a610(value)
+            return .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX61b345a610(value)
         }
         if let value = try? container.decode(
             CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX52388b1417.self
         ) {
-            return             .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX52388b1417(value)
+            return .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX52388b1417(value)
         }
         return nil
     }
@@ -400,8 +477,10 @@ extension CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX64ecdbd8
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX61b345a610(value): try container.encode(value); return true
-        case let .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX52388b1417(value): try container.encode(value); return true
+        case let .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX61b345a610(value): try container
+            .encode(value); return true
+        case let .createProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX52388b1417(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -416,29 +495,39 @@ public indirect enum CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironm
 }
 
 extension CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX66819732c1.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX66819732c1.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX66819732c1(value)
         }
-        if let value = try? container.decode(CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX300152445c.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX300152445c.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX300152445c(value)
         }
         return nil
@@ -450,12 +539,12 @@ extension CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItem {
         if let value = try? container.decode(
             CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX66819732c1.self
         ) {
-            return             .createProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX66819732c1(value)
+            return .createProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX66819732c1(value)
         }
         if let value = try? container.decode(
             CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX300152445c.self
         ) {
-            return             .createProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX300152445c(value)
+            return .createProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX300152445c(value)
         }
         return nil
     }

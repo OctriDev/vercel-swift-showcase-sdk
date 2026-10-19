@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Misc domain models
+/// Misc domain models
 public indirect enum RegistrantField {
     case registrantFieldVariant0(RegistrantFieldVariant0)
     case registrantFieldVariant1(RegistrantFieldVariant1)
@@ -12,18 +12,26 @@ public indirect enum RegistrantField {
 }
 
 extension RegistrantField: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RegistrantField")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for RegistrantField"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -47,10 +55,18 @@ extension RegistrantField {
 
 extension RegistrantField {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(RegistrantFieldVariant0.self) { return .registrantFieldVariant0(value) }
-        if let value = try? container.decode(RegistrantFieldVariant1.self) { return .registrantFieldVariant1(value) }
-        if let value = try? container.decode(RegistrantFieldVariant2.self) { return .registrantFieldVariant2(value) }
-        if let value = try? container.decode(RegistrantFieldVariant3.self) { return .registrantFieldVariant3(value) }
+        if let value = try? container.decode(RegistrantFieldVariant0.self) {
+            return .registrantFieldVariant0(value)
+        }
+        if let value = try? container.decode(RegistrantFieldVariant1.self) {
+            return .registrantFieldVariant1(value)
+        }
+        if let value = try? container.decode(RegistrantFieldVariant2.self) {
+            return .registrantFieldVariant2(value)
+        }
+        if let value = try? container.decode(RegistrantFieldVariant3.self) {
+            return .registrantFieldVariant3(value)
+        }
         return nil
     }
 }
@@ -78,26 +94,36 @@ public struct RegistrantFieldVariant1OptionsItem: Codable {
         case fields
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RegistrantFieldVariant1OptionsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        guard container.contains(.label) else {
-            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
-        }
-        self.value = try container.sdkDecodeRequired(.value)
-        self.label = try container.sdkDecodeRequired(.label)
-        self.fields = try container.sdkDecodeIfPresent(.fields)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RegistrantFieldVariant1OptionsItem {
-    public init(value: String, label: String, fields: [String: JSONValue]? = nil) {
+public extension RegistrantFieldVariant1OptionsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        guard container.contains(.label) else {
+            throw SdkValidationError(
+                field: "label",
+                code: "required",
+                message: "Validation failed for 'label': value is required"
+            )
+        }
+        value = try container.sdkDecodeRequired(.value)
+        label = try container.sdkDecodeRequired(.label)
+        fields = try container.sdkDecodeIfPresent(.fields)
+    }
+}
+
+public extension RegistrantFieldVariant1OptionsItem {
+    init(value: String, label: String, fields: [String: JSONValue]? = nil) {
         (self.value, self.label) = (value, label)
         self.fields = fields
     }
@@ -109,25 +135,33 @@ public indirect enum RegistrantFieldVariant1RequiredWhen {
 }
 
 extension RegistrantFieldVariant1RequiredWhen: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RegistrantFieldVariant1RequiredWhen")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for RegistrantFieldVariant1RequiredWhen"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension RegistrantFieldVariant1RequiredWhen {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         if let value = try? container.decode(
             RegistrantFieldVariant1RequiredWhenVariant1.self
         ) {
-            return             .registrantFieldVariant1RequiredWhenVariant1(value)
+            return .registrantFieldVariant1RequiredWhenVariant1(value)
         }
         return nil
     }
@@ -160,37 +194,58 @@ public struct RegistrantFieldVariant3: Codable {
         case requiredWhen = "required_when"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RegistrantFieldVariant3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
-        }
-        guard container.contains(.required) else {
-            throw SdkValidationError(field: "required", code: "required", message: "Validation failed for 'required': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.description = try container.sdkDecodeRequired(.description)
-        self.required = try container.sdkDecodeRequired(.required)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.label = try container.sdkDecodeIfPresent(.label)
-        self.validation = try container.sdkDecodeIfPresent(.validation)
-        self.requiredWhen = try container.sdkDecodeIfPresent(.requiredWhen)
-            try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant3Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RegistrantFieldVariant3 {
-    public init(description: String, required: Bool, type: RegistrantFieldVariant3Type, label: String? = nil, validation: String? = nil, requiredWhen: RegistrantFieldVariant3RequiredWhen? = nil) throws {
+public extension RegistrantFieldVariant3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.description) else {
+            throw SdkValidationError(
+                field: "description",
+                code: "required",
+                message: "Validation failed for 'description': value is required"
+            )
+        }
+        guard container.contains(.required) else {
+            throw SdkValidationError(
+                field: "required",
+                code: "required",
+                message: "Validation failed for 'required': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        description = try container.sdkDecodeRequired(.description)
+        required = try container.sdkDecodeRequired(.required)
+        type = try container.sdkDecodeRequired(.type)
+        label = try container.sdkDecodeIfPresent(.label)
+        validation = try container.sdkDecodeIfPresent(.validation)
+        requiredWhen = try container.sdkDecodeIfPresent(.requiredWhen)
+        try sdkValidateRawEnum("type", type, RegistrantFieldVariant3Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension RegistrantFieldVariant3 {
+    init(
+        description: String,
+        required: Bool,
+        type: RegistrantFieldVariant3Type,
+        label: String? = nil,
+        validation: String? = nil,
+        requiredWhen: RegistrantFieldVariant3RequiredWhen? = nil
+    ) throws {
         (self.description, self.required) = (description, required)
         (self.type, self.label) = (type, label)
         (self.validation, self.requiredWhen) = (validation, requiredWhen)
-            try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant3Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant3Type.allCases.map(\.rawValue))
     }
 }
 
@@ -213,39 +268,61 @@ public struct RegistrantFieldVariant2: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RegistrantFieldVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
-        }
-        guard container.contains(.required) else {
-            throw SdkValidationError(field: "required", code: "required", message: "Validation failed for 'required': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.description = try container.sdkDecodeRequired(.description)
-        self.required = try container.sdkDecodeRequired(.required)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.label = try container.sdkDecodeIfPresent(.label)
-        self.validation = try container.sdkDecodeIfPresent(.validation)
-        self.requiredWhen = try container.sdkDecodeIfPresent(.requiredWhen)
-        self.value = try container.sdkDecodeIfPresent(.value)
-            try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant2Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RegistrantFieldVariant2 {
-    public init(description: String, required: Bool, type: RegistrantFieldVariant2Type, label: String? = nil, validation: String? = nil, requiredWhen: RegistrantFieldVariant2RequiredWhen? = nil, value: String? = nil) throws {
+public extension RegistrantFieldVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.description) else {
+            throw SdkValidationError(
+                field: "description",
+                code: "required",
+                message: "Validation failed for 'description': value is required"
+            )
+        }
+        guard container.contains(.required) else {
+            throw SdkValidationError(
+                field: "required",
+                code: "required",
+                message: "Validation failed for 'required': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        description = try container.sdkDecodeRequired(.description)
+        required = try container.sdkDecodeRequired(.required)
+        type = try container.sdkDecodeRequired(.type)
+        label = try container.sdkDecodeIfPresent(.label)
+        validation = try container.sdkDecodeIfPresent(.validation)
+        requiredWhen = try container.sdkDecodeIfPresent(.requiredWhen)
+        value = try container.sdkDecodeIfPresent(.value)
+        try sdkValidateRawEnum("type", type, RegistrantFieldVariant2Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension RegistrantFieldVariant2 {
+    init(
+        description: String,
+        required: Bool,
+        type: RegistrantFieldVariant2Type,
+        label: String? = nil,
+        validation: String? = nil,
+        requiredWhen: RegistrantFieldVariant2RequiredWhen? = nil,
+        value: String? = nil
+    ) throws {
         (self.description, self.required) = (description, required)
         (self.type, self.label) = (type, label)
         (self.validation, self.requiredWhen) = (validation, requiredWhen)
         self.value = value
-            try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant2Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant2Type.allCases.map(\.rawValue))
     }
 }
 
@@ -256,21 +333,27 @@ public struct RegistrantFieldVariant0RequiredWhenVariant1: Codable {
         case valueIn = "value_in"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RegistrantFieldVariant0RequiredWhenVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.valueIn) else {
-            throw SdkValidationError(field: "value_in", code: "required", message: "Validation failed for 'value_in': value is required")
-        }
-        self.valueIn = try container.sdkDecodeRequired(.valueIn)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RegistrantFieldVariant0RequiredWhenVariant1 {
-    public init(valueIn: [String]) {
+public extension RegistrantFieldVariant0RequiredWhenVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.valueIn) else {
+            throw SdkValidationError(
+                field: "value_in",
+                code: "required",
+                message: "Validation failed for 'value_in': value is required"
+            )
+        }
+        valueIn = try container.sdkDecodeRequired(.valueIn)
+    }
+}
+
+public extension RegistrantFieldVariant0RequiredWhenVariant1 {
+    init(valueIn: [String]) {
         self.valueIn = valueIn
     }
 }
@@ -282,21 +365,27 @@ public struct RegistrantFieldVariant3RequiredWhenVariant1: Codable {
         case valueIn = "value_in"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RegistrantFieldVariant3RequiredWhenVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.valueIn) else {
-            throw SdkValidationError(field: "value_in", code: "required", message: "Validation failed for 'value_in': value is required")
-        }
-        self.valueIn = try container.sdkDecodeRequired(.valueIn)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RegistrantFieldVariant3RequiredWhenVariant1 {
-    public init(valueIn: [String]) {
+public extension RegistrantFieldVariant3RequiredWhenVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.valueIn) else {
+            throw SdkValidationError(
+                field: "value_in",
+                code: "required",
+                message: "Validation failed for 'value_in': value is required"
+            )
+        }
+        valueIn = try container.sdkDecodeRequired(.valueIn)
+    }
+}
+
+public extension RegistrantFieldVariant3RequiredWhenVariant1 {
+    init(valueIn: [String]) {
         self.valueIn = valueIn
     }
 }
@@ -308,21 +397,27 @@ public struct RegistrantFieldVariant2RequiredWhenVariant1: Codable {
         case valueIn = "value_in"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RegistrantFieldVariant2RequiredWhenVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.valueIn) else {
-            throw SdkValidationError(field: "value_in", code: "required", message: "Validation failed for 'value_in': value is required")
-        }
-        self.valueIn = try container.sdkDecodeRequired(.valueIn)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RegistrantFieldVariant2RequiredWhenVariant1 {
-    public init(valueIn: [String]) {
+public extension RegistrantFieldVariant2RequiredWhenVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.valueIn) else {
+            throw SdkValidationError(
+                field: "value_in",
+                code: "required",
+                message: "Validation failed for 'value_in': value is required"
+            )
+        }
+        valueIn = try container.sdkDecodeRequired(.valueIn)
+    }
+}
+
+public extension RegistrantFieldVariant2RequiredWhenVariant1 {
+    init(valueIn: [String]) {
         self.valueIn = valueIn
     }
 }
@@ -333,25 +428,33 @@ public indirect enum RegistrantFieldVariant3RequiredWhen {
 }
 
 extension RegistrantFieldVariant3RequiredWhen: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RegistrantFieldVariant3RequiredWhen")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for RegistrantFieldVariant3RequiredWhen"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension RegistrantFieldVariant3RequiredWhen {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         if let value = try? container.decode(
             RegistrantFieldVariant3RequiredWhenVariant1.self
         ) {
-            return             .registrantFieldVariant3RequiredWhenVariant1(value)
+            return .registrantFieldVariant3RequiredWhenVariant1(value)
         }
         return nil
     }
@@ -374,21 +477,27 @@ public struct RegistrantFieldVariant1RequiredWhenVariant1: Codable {
         case valueIn = "value_in"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RegistrantFieldVariant1RequiredWhenVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.valueIn) else {
-            throw SdkValidationError(field: "value_in", code: "required", message: "Validation failed for 'value_in': value is required")
-        }
-        self.valueIn = try container.sdkDecodeRequired(.valueIn)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RegistrantFieldVariant1RequiredWhenVariant1 {
-    public init(valueIn: [String]) {
+public extension RegistrantFieldVariant1RequiredWhenVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.valueIn) else {
+            throw SdkValidationError(
+                field: "value_in",
+                code: "required",
+                message: "Validation failed for 'value_in': value is required"
+            )
+        }
+        valueIn = try container.sdkDecodeRequired(.valueIn)
+    }
+}
+
+public extension RegistrantFieldVariant1RequiredWhenVariant1 {
+    init(valueIn: [String]) {
         self.valueIn = valueIn
     }
 }
@@ -414,43 +523,70 @@ public struct RegistrantFieldVariant1: Codable {
         case fields
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RegistrantFieldVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
-        }
-        guard container.contains(.required) else {
-            throw SdkValidationError(field: "required", code: "required", message: "Validation failed for 'required': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.options) else {
-            throw SdkValidationError(field: "options", code: "required", message: "Validation failed for 'options': value is required")
-        }
-        self.description = try container.sdkDecodeRequired(.description)
-        self.required = try container.sdkDecodeRequired(.required)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.options = try container.sdkDecodeRequired(.options)
-        self.label = try container.sdkDecodeIfPresent(.label)
-        self.validation = try container.sdkDecodeIfPresent(.validation)
-        self.requiredWhen = try container.sdkDecodeIfPresent(.requiredWhen)
-        self.fields = try container.sdkDecodeIfPresent(.fields)
-            try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant1Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RegistrantFieldVariant1 {
-    public init(description: String, required: Bool, type: RegistrantFieldVariant1Type, options: [RegistrantFieldVariant1OptionsItem], label: String? = nil, validation: String? = nil, requiredWhen: RegistrantFieldVariant1RequiredWhen? = nil, fields: [String: JSONValue]? = nil) throws {
+public extension RegistrantFieldVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.description) else {
+            throw SdkValidationError(
+                field: "description",
+                code: "required",
+                message: "Validation failed for 'description': value is required"
+            )
+        }
+        guard container.contains(.required) else {
+            throw SdkValidationError(
+                field: "required",
+                code: "required",
+                message: "Validation failed for 'required': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.options) else {
+            throw SdkValidationError(
+                field: "options",
+                code: "required",
+                message: "Validation failed for 'options': value is required"
+            )
+        }
+        description = try container.sdkDecodeRequired(.description)
+        required = try container.sdkDecodeRequired(.required)
+        type = try container.sdkDecodeRequired(.type)
+        options = try container.sdkDecodeRequired(.options)
+        label = try container.sdkDecodeIfPresent(.label)
+        validation = try container.sdkDecodeIfPresent(.validation)
+        requiredWhen = try container.sdkDecodeIfPresent(.requiredWhen)
+        fields = try container.sdkDecodeIfPresent(.fields)
+        try sdkValidateRawEnum("type", type, RegistrantFieldVariant1Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension RegistrantFieldVariant1 {
+    init(
+        description: String,
+        required: Bool,
+        type: RegistrantFieldVariant1Type,
+        options: [RegistrantFieldVariant1OptionsItem],
+        label: String? = nil,
+        validation: String? = nil,
+        requiredWhen: RegistrantFieldVariant1RequiredWhen? = nil,
+        fields: [String: JSONValue]? = nil
+    ) throws {
         (self.description, self.required) = (description, required)
         (self.type, self.options) = (type, options)
         (self.label, self.validation) = (label, validation)
         (self.requiredWhen, self.fields) = (requiredWhen, fields)
-            try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, RegistrantFieldVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -475,5 +611,7 @@ public struct RegistrantFieldVariant0: Codable {
         case fields
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

@@ -6,10 +6,14 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VcrMethods {
-    /// Completes a blob upload to a Docker repository. Include the final data chunk in the request body for a monolithic upload, or omit it to finalize a previously uploaded chunked blob. Supply the upload session `uuid` and the blob's `digest`.
+public extension VcrMethods {
+    /// Completes a blob upload to a Docker repository. Include the final data chunk in the request body for a
+    /// monolithic upload, or omit it to finalize a previously uploaded chunked blob. Supply the upload session `uuid`
+    /// and the blob's `digest`.
     ///
-    /// PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload. This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous chunked upload.
+    /// PUT /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid?digest=<digest> Complete the blob upload.
+    /// This may include a final chunk of data in the request body (monolithic upload) or just finalize a previous
+    /// chunked upload.
     ///
     /// - Parameters:
     /// - teamSlug: Single Docker repository team slug component.
@@ -17,7 +21,15 @@ extension VcrMethods {
     /// - repositoryName: Single Docker repository name component.
     /// - uuid: Blob upload session identifier.
     /// - digest: Content-addressable digest (algorithm:hex).
-    public static func replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, uuid: String, digest: String, requestOptions: RequestOptions? = nil) async throws -> JSONValue {
+    static func replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
+        config: ClientConfig,
+        teamSlug: String,
+        projectSlug: String,
+        repositoryName: String,
+        uuid: String,
+        digest: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> JSONValue {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -33,8 +45,25 @@ extension VcrMethods {
         try validateLength("digest", digest, max: 255)
         try sdkValidatePattern("digest", digest, sdkPatternf55d8ca4ed38)
 
-        return try (await sdkRequest("PUT", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/blobs/uploads/", sdkEncodePathSegment(sdkWireString(uuid))].joined(), config: config, query: [
-            SdkQueryParameter("digest", value: digest),
-        ], decoder: .json, operationId: "replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PUT",
+            [
+                "/v2/",
+                sdkEncodePathSegment(sdkWireString(teamSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(projectSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(repositoryName)),
+                "/blobs/uploads/",
+                sdkEncodePathSegment(sdkWireString(uuid)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("digest", value: digest),
+            ],
+            decoder: .json,
+            operationId: "replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
+            options: requestOptions
+        )).data
     }
 }

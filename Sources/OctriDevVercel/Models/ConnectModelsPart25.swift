@@ -3,12 +3,16 @@
 
 import Foundation
 
-// Connect domain models
+/// Connect domain models
 /// GitHub App owner type.
-public struct ConnectConnectorUpdateDataRequestVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdateDataRequestVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let user = ConnectConnectorUpdateDataRequestVariant2OwnerType(rawValue: "user")
     public static let organization = ConnectConnectorUpdateDataRequestVariant2OwnerType(rawValue: "organization")
     public static let user2 = ConnectConnectorUpdateDataRequestVariant2OwnerType(rawValue: "User")
@@ -16,7 +20,7 @@ public struct ConnectConnectorUpdateDataRequestVariant2OwnerType: RawRepresentab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -43,15 +47,19 @@ public enum ConnectConnectorCreatedByVariant1Type: String, CaseIterable, Codable
     }
 }
 
-public struct CreateConnectorAuthorizationRequestRequestSubjectVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateConnectorAuthorizationRequestRequestSubjectVariant0Type: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let app = CreateConnectorAuthorizationRequestRequestSubjectVariant0Type(rawValue: "app")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -83,13 +91,16 @@ public enum ConnectConnectorCreateResultCreatedByVariant1Type: String, CaseItera
 public struct ConnectServiceSyncStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let done = ConnectServiceSyncStatus(rawValue: "done")
     public static let required = ConnectServiceSyncStatus(rawValue: "required")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -98,15 +109,19 @@ public struct ConnectServiceSyncStatus: RawRepresentable, Hashable, Codable, Sen
     }
 }
 
-public struct GetConnectorTokenRequestSubjectVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetConnectorTokenRequestSubjectVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let user = GetConnectorTokenRequestSubjectVariant1Type(rawValue: "user")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -134,16 +149,20 @@ public enum ConnectConnectorCreateResultCreatedByVariant0Type: String, CaseItera
 }
 
 /// Where Slack exposes the shortcut.
-public struct ConnectConnectorCreateDataVariant7ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreateDataVariant7ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let global = ConnectConnectorCreateDataVariant7ShortcutsItemType(rawValue: "global")
     public static let message = ConnectConnectorCreateDataVariant7ShortcutsItemType(rawValue: "message")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -153,10 +172,14 @@ public struct ConnectConnectorCreateDataVariant7ShortcutsItemType: RawRepresenta
 }
 
 /// GitHub App owner type.
-public struct ConnectConnectorCreateDataRequestVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreateDataRequestVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let user = ConnectConnectorCreateDataRequestVariant2OwnerType(rawValue: "user")
     public static let organization = ConnectConnectorCreateDataRequestVariant2OwnerType(rawValue: "organization")
     public static let user2 = ConnectConnectorCreateDataRequestVariant2OwnerType(rawValue: "User")
@@ -164,7 +187,7 @@ public struct ConnectConnectorCreateDataRequestVariant2OwnerType: RawRepresentab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -192,17 +215,21 @@ public enum ConnectConnectorUpdatedByVariant1Type: String, CaseIterable, Codable
 }
 
 /// Required enumerated value serialized in the `environment` wire field.
-public struct ConnectConnectorUpdatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = ConnectConnectorUpdatedByVariant1EnvironmentVariant1(rawValue: "development")
     public static let preview = ConnectConnectorUpdatedByVariant1EnvironmentVariant1(rawValue: "preview")
     public static let production = ConnectConnectorUpdatedByVariant1EnvironmentVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -212,17 +239,21 @@ public struct ConnectConnectorUpdatedByVariant1EnvironmentVariant1: RawRepresent
 }
 
 /// Required enumerated value serialized in the `environment` wire field.
-public struct ConnectConnectorCreatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = ConnectConnectorCreatedByVariant1EnvironmentVariant1(rawValue: "development")
     public static let preview = ConnectConnectorCreatedByVariant1EnvironmentVariant1(rawValue: "preview")
     public static let production = ConnectConnectorCreatedByVariant1EnvironmentVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -249,10 +280,14 @@ public enum ConnectConnectorCreatedByVariant0Type: String, CaseIterable, Codable
     }
 }
 
-public struct GetConnectorTokenRequestSubjectVariant4Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetConnectorTokenRequestSubjectVariant4Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let app = GetConnectorTokenRequestSubjectVariant4Type(rawValue: "app")
     public static let user = GetConnectorTokenRequestSubjectVariant4Type(rawValue: "user")
     public static let jwtBearer = GetConnectorTokenRequestSubjectVariant4Type(rawValue: "jwt-bearer")
@@ -260,7 +295,7 @@ public struct GetConnectorTokenRequestSubjectVariant4Type: RawRepresentable, Has
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -270,16 +305,20 @@ public struct GetConnectorTokenRequestSubjectVariant4Type: RawRepresentable, Has
 }
 
 /// Intended key use: signing or encryption.
-public struct ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let sig = ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse(rawValue: "sig")
     public static let enc = ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse(rawValue: "enc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -288,15 +327,19 @@ public struct ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse: Raw
     }
 }
 
-public struct CreateConnectorAuthorizationRequestRequestSubjectVariant2Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateConnectorAuthorizationRequestRequestSubjectVariant2Type: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let jwtBearer = CreateConnectorAuthorizationRequestRequestSubjectVariant2Type(rawValue: "jwt-bearer")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -309,7 +352,10 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant2Type: Raw
 public struct ConnectConnectorType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let apiKey = ConnectConnectorType(rawValue: "api-key")
     public static let awsAlpha = ConnectConnectorType(rawValue: "aws-alpha")
     public static let custom = ConnectConnectorType(rawValue: "custom")
@@ -330,7 +376,7 @@ public struct ConnectConnectorType: RawRepresentable, Hashable, Codable, Sendabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

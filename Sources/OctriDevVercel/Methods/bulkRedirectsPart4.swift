@@ -6,41 +6,59 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension BulkRedirectsMethods {
-    /// Restores specified staged redirects to their values in the production version, or removes them from staging if no production version exists. Provide the redirect source paths in `redirects`; the response reports which paths were restored and which could not be restored.
+public extension BulkRedirectsMethods {
+    /// Restores specified staged redirects to their values in the production version, or removes them from staging if
+    /// no production version exists. Provide the redirect source paths in `redirects`; the response reports which paths
+    /// were restored and which could not be restored.
     ///
-    /// Restores the provided redirects in the staging version to the value in the production version. If no production version exists, removes the redirects from staging.
+    /// Restores the provided redirects in the staging version to the value in the production version. If no production
+    /// version exists, removes the redirects from staging.
     ///
     /// - Parameters:
     /// - redirects: The redirects to restore. The source of the redirect is used to
     ///   match the redirect to restore.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func restoreRedirects(config: ClientConfig, projectId: String, redirects: [String], teamId: String? = nil, slug: String? = nil, name: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RestoreRedirectsResponse {
+    static func restoreRedirects(
+        config: ClientConfig,
+        projectId: String,
+        redirects: [String],
+        teamId: String? = nil,
+        slug: String? = nil,
+        name: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RestoreRedirectsResponse {
         try validateItems("redirects", redirects, min: 1, max: 100)
 
-        if let name = name {
+        if let name {
             try validateLength("name", name, max: 256)
         }
 
         let requestBody = RestoreRedirectsRequestBody(redirects: redirects, name: name)
 
-        return try (await sdkRequest("POST", "/v1/bulk-redirects/restore", config: config, query: [
+        return try await (sdkRequest("POST", "/v1/bulk-redirects/restore", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "restoreRedirects", options: requestOptions)).data
     }
 
-    /// Lists the version history for a project's bulk redirects. Supply `projectId` to identify the project and use the Team parameters to perform the request on behalf of a Team.
+    /// Lists the version history for a project's bulk redirects. Supply `projectId` to identify the project and use the
+    /// Team parameters to perform the request on behalf of a Team.
     ///
     /// Get the version history for a project's bulk redirects
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getVersions(config: ClientConfig, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVersionsResponse {
-        return try (await sdkRequest("GET", "/v1/bulk-redirects/versions", config: config, query: [
+    static func getVersions(
+        config: ClientConfig,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVersionsResponse {
+        try await (sdkRequest("GET", "/v1/bulk-redirects/versions", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
