@@ -8,328 +8,392 @@ import Foundation
 #endif
 
 // Canonical projects operation model declarations
-extension GetProjectsResponsePermissions {
-    enum CodingKeys: String, CodingKey {
-        case accessGroup
-        case agent
-        case aiGatewayApiKey
-        case aiGatewayApiKeyBypassAll
-        case aiGatewayApiKeyOwnedBySelf
-        case aiGatewayApiKeySpendAttribution
-        case aiGatewayApiKeyZdrExemption
-        case aiGatewayBudget
-        case aiGatewayCredits
-        case aiGatewayGuardrails
-        case aiGatewayPrivateModels
-        case aiGatewayRules
-        case aiGatewaySettings
-        case aiGatewayTranscripts
-        case aiGatewayTranscriptsSettings
-        case aiGatewayUsage
-        case aiGatewayVirtualModelConfigs
-        case alertRules
-        case alerts
-        case aliasGlobal
-        case aliasProject
-        case aliasProtectionBypass
-        case analytics
-        case analyticsSampling
-        case analyticsUsage
-        case apiKey
-        case apiKeyAiGateway
-        case apiKeyOwnedBySelf
-        case auditLog
-        case automation
-        case billingAddress
-        case billingInformation
-        case billingInvoice
-        case billingInvoiceEmailRecipient
-        case billingInvoiceLanguage
-        case billingPlan
-        case billingPurchaseOrder
-        case billingRefund
-        case billingTaxId
-        case blob
-        case blobStoreTokenSet
-        case budget
-        case buildMachine
-        case buildMachineDefault
-        case bulkRedirects
-        case cacheArtifact
-        case cacheArtifactUsageEvent
-        case ciInvocations
-        case ciLogs
-        case codeChecks
-        case codeOwners
-        case concurrentBuilds
-        case connect
-        case connectConfiguration
-        case connectConfigurationLink
-        case connectLogs
-        case connexClient
-        case connexClientProject
-        case connexContact
-        case connexInstallation
-        case connexToken
-        case cursorOriginInstallation
-        case dataCacheBillingSettings
-        case dataCacheNamespace
-        case defaultDeploymentProtection
-        case deployment
-        case deploymentBuildLogs
-        case deploymentCheck
-        case deploymentCheckPreview
-        case deploymentCheckReRunFromProductionBranch
-        case deploymentPolicy
-        case deploymentPreview
-        case deploymentPrivate
-        case deploymentProductionGit
-        case deploymentPromote
-        case deploymentProtectionException
-        case deploymentRollback
-        case deploymentV0
-        case domain
-        case domainAcceptDelegation
-        case domainAuthCodes
-        case domainCertificate
-        case domainCheckConfig
-        case domainMove
-        case domainPurchase
-        case domainRecord
-        case domainTransferIn
-        case drain
-        case edgeCacheNamespace
-        case edgeConfig
-        case edgeConfigItem
-        case edgeConfigSchema
-        case edgeConfigToken
-        case endpointVerification
-        case environments
-        case event
-        case fileUpload
-        case flagsExplorerSubscription
-        case gitCredentialGrant
-        case gitRepository
-        case imageOptimizationNewPrice
-        case integration
-        case integrationAccount
-        case integrationConfiguration
-        case integrationConfigurationProjects
-        case integrationConfigurationRole
-        case integrationConfigurationTransfer
-        case integrationDeploymentAction
-        case integrationEvent
-        case integrationLog
-        case integrationPullRequest
-        case integrationResource
-        case integrationResourceData
-        case integrationResourceReplCommand
-        case integrationResourceSecrets
-        case integrationSsoSession = "integrationSSOSession"
-        case integrationStoreTokenSet
-        case integrationStrict
-        case integrationVercelConfigurationOverride
-        case ipBlocking
-        case job
-        case jobGlobal
-        case kmsIssuer
-        case kmsProjectGrant
-        case logDrain
-        case logs
-        case logsPreset
-        case marketplaceBillingData
-        case marketplaceExperimentationEdgeConfigData
-        case marketplaceExperimentationItem
-        case marketplaceFlexCommit
-        case marketplaceInstallationMember
-        case marketplaceInvoice
-        case marketplaceSettings
-        case messageboard
-        case messageboardSpace
-        case messageboardTask
-        case monitoring = "Monitoring"
-        case monitoringAlert
-        case monitoringChart
-        case monitoringQuery
-        case monitoringSettings
-        case notificationCustomerBudget
-        case notificationDeploymentFailed
-        case notificationDomainConfiguration
-        case notificationDomainExpire
-        case notificationDomainMoved
-        case notificationDomainPurchase
-        case notificationDomainRenewal
-        case notificationDomainTransfer
-        case notificationDomainUnverified
-        case notificationMonitoringAlert = "NotificationMonitoringAlert"
-        case notificationPaymentFailed
-        case notificationPreferences
-        case notificationStatementOfReasons
-        case notificationUsageAlert
-        case oauth2Application
-        case oauth2Connection
-        case observabilityConfiguration
-        case observabilityData
-        case observabilityFunnel
-        case observabilityNotebook
-        case oidcFederationPolicy
-        case onDemandBuild
-        case onDemandConcurrency
-        case openTelemetryEndpoint
-        case optionsAllowlist
-        case organization
-        case organizationDomain
-        case organizationTeam
-        case ownEvent
-        case pageIntegrity
-        case passwordProtection
-        case passwordProtectionInvoiceItem
-        case paymentMethod
-        case permissions
-        case postgres
-        case postgresStoreTokenSet
-        case previewDeploymentSuffix
-        case privateCloudAccount
-        case privateLinkEndpoint
-        case productionAliasProtectionBypass
-        case productionShareableLink
-        case project
-        case projectAccessGroup
-        case projectAnalyticsSampling
-        case projectAnalyticsUsage
-        case projectCheck
-        case projectCheckRun
-        case projectDeploymentExpiration
-        case projectDeploymentHook
-        case projectDeploymentProtectionStrict
-        case projectDomain
-        case projectDomainCheckConfig
-        case projectDomainMove
-        case projectDomainVerify
-        case projectEnvVars
-        case projectEnvVarsProduction
-        case projectEnvVarsUnownedByIntegration
-        case projectEvent
-        case projectFlags
-        case projectFlagsProduction
-        case projectFlagsSdkKey
-        case projectFromV0
-        case projectId
-        case projectIntegrationConfiguration
-        case projectLink
-        case projectMember
-        case projectMonitoring
-        case projectOidcToken = "projectOIDCToken"
-        case projectPermissions
-        case projectProductionBranch
-        case projectProtectionBypass
-        case projectRollingRelease
-        case projectRoutes
-        case projectSetting
-        case projectSupportCase
-        case projectSupportCaseComment
-        case projectTier
-        case projectTransfer
-        case projectTransferIn
-        case projectTransferOut
-        case projectTransferRequest
-        case projectUsage
-        case proTrialOnboarding
-        case rateLimit
-        case redis
-        case redisStoreTokenSet
-        case remoteCaching
-        case repository
-        case samlConfig
-        case schedule
-        case seawallConfig
-        case secret
-        case securityConfig
-        case securityPlusConfiguration
-        case sensitiveEnvironmentVariablePolicy
-        case setting
-        case shareableLink
-        case shareableLinkStrict
-        case sharedEnvVarConnection
-        case sharedEnvVars
-        case sharedEnvVarsProduction
-        case skewProtection
-        case space
-        case spaceRun
-        case storeIsLocked
-        case storeTokenSetSensitive
-        case storeTransfer
-        case supportCase
-        case supportCaseComment
-        case team
-        case teamAccessRequest
-        case teamFellowMembership
-        case teamGitExclusivity
-        case teamInvite
-        case teamInviteCode
-        case teamInviteLink
-        case teamJoin
-        case teamMemberMfaStatus
-        case teamMicrofrontends
-        case teamOwnMembership
-        case teamOwnMembershipDisconnectSaml = "teamOwnMembershipDisconnectSAML"
-        case teamSudo
-        case teamTokenInvalidation
-        case token
-        case toolbarComment
-        case trustedIps
-        case trustedSources
-        case usage
-        case usageCycle
-        case user
-        case userConnection
-        case userMfaConfiguration
-        case userPreference
-        case userSudo
-        case v0Chat
-        case vcrRepository
-        case vercelAppInstallation
-        case vercelAppInstallationRequest
-        case vercelAuth
-        case vercelRun
-        case vpcPeeringConnection
-        case webAnalytics
-        case webAnalyticsPlan
-        case webAuthn
-        case webhook
-        case webhookEvent = "webhook-event"
-        case workflowRunData
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet15(_ deploymentCheckPreview: [ACLAction]?, _ deploymentCheckReRunFromProductionBranch: [ACLAction]?, _ deploymentPolicy: [ACLAction]?) {
+        self.deploymentCheckPreview = deploymentCheckPreview
+        self.deploymentCheckReRunFromProductionBranch = deploymentCheckReRunFromProductionBranch
+        self.deploymentPolicy = deploymentPolicy
     }
 }
 
-extension GetProjectsResponsePermissions {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.init(sdkDefaults: ())
-        try sdkDecodeFieldsPart1(container)
-        try sdkDecodeFieldsPart2(container)
-        try sdkDecodeFieldsPart3(container)
-        try sdkDecodeFieldsPart4(container)
-        try sdkDecodeFieldsPart5(container)
-        try sdkDecodeFieldsPart6(container)
-        try sdkDecodeFieldsPart7(container)
-        try sdkDecodeFieldsPart8(container)
-        try sdkDecodeFieldsPart9(container)
-        try sdkDecodeFieldsPart10(container)
-        try sdkDecodeFieldsPart11(container)
-        try sdkDecodeFieldsPart12(container)
-        try sdkDecodeFieldsPart13(container)
-        try sdkDecodeFieldsPart14(container)
-        try sdkDecodeFieldsPart15(container)
-        try sdkDecodeFieldsPart16(container)
-        try sdkDecodeFieldsPart17(container)
-        try sdkDecodeFieldsPart18(container)
-        try sdkDecodeFieldsPart19(container)
-        try sdkDecodeFieldsPart20(container)
-        try sdkDecodeFieldsPart21(container)
-        try sdkDecodeFieldsPart22(container)
-        try sdkDecodeFieldsPart23(container)
-        try sdkDecodeFieldsPart24(container)
-        try sdkDecodeFieldsPart25(container)
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet16(_ deploymentPreview: [ACLAction]?, _ deploymentPrivate: [ACLAction]?, _ deploymentProductionGit: [ACLAction]?, _ deploymentPromote: [ACLAction]?) {
+        self.deploymentPreview = deploymentPreview
+        self.deploymentPrivate = deploymentPrivate
+        self.deploymentProductionGit = deploymentProductionGit
+        self.deploymentPromote = deploymentPromote
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet17(_ deploymentProtectionException: [ACLAction]?, _ deploymentRollback: [ACLAction]?, _ deploymentV0: [ACLAction]?, _ domain: [ACLAction]?, _ domainAcceptDelegation: [ACLAction]?) {
+        self.deploymentProtectionException = deploymentProtectionException
+        self.deploymentRollback = deploymentRollback
+        self.deploymentV0 = deploymentV0
+        self.domain = domain
+        self.domainAcceptDelegation = domainAcceptDelegation
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet18(_ domainAuthCodes: [ACLAction]?, _ domainCertificate: [ACLAction]?, _ domainCheckConfig: [ACLAction]?, _ domainMove: [ACLAction]?, _ domainPurchase: [ACLAction]?) {
+        self.domainAuthCodes = domainAuthCodes
+        self.domainCertificate = domainCertificate
+        self.domainCheckConfig = domainCheckConfig
+        self.domainMove = domainMove
+        self.domainPurchase = domainPurchase
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet19(_ domainRecord: [ACLAction]?, _ domainTransferIn: [ACLAction]?, _ drain: [ACLAction]?, _ edgeCacheNamespace: [ACLAction]?, _ edgeConfig: [ACLAction]?) {
+        self.domainRecord = domainRecord
+        self.domainTransferIn = domainTransferIn
+        self.drain = drain
+        self.edgeCacheNamespace = edgeCacheNamespace
+        self.edgeConfig = edgeConfig
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet20(_ edgeConfigItem: [ACLAction]?, _ edgeConfigSchema: [ACLAction]?, _ edgeConfigToken: [ACLAction]?, _ endpointVerification: [ACLAction]?, _ environments: [ACLAction]?) {
+        self.edgeConfigItem = edgeConfigItem
+        self.edgeConfigSchema = edgeConfigSchema
+        self.edgeConfigToken = edgeConfigToken
+        self.endpointVerification = endpointVerification
+        self.environments = environments
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet21(_ event: [ACLAction]?, _ fileUpload: [ACLAction]?, _ flagsExplorerSubscription: [ACLAction]?, _ gitCredentialGrant: [ACLAction]?, _ gitRepository: [ACLAction]?) {
+        self.event = event
+        self.fileUpload = fileUpload
+        self.flagsExplorerSubscription = flagsExplorerSubscription
+        self.gitCredentialGrant = gitCredentialGrant
+        self.gitRepository = gitRepository
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet22(_ imageOptimizationNewPrice: [ACLAction]?, _ integration: [ACLAction]?, _ integrationAccount: [ACLAction]?, _ integrationConfiguration: [ACLAction]?) {
+        self.imageOptimizationNewPrice = imageOptimizationNewPrice
+        self.integration = integration
+        self.integrationAccount = integrationAccount
+        self.integrationConfiguration = integrationConfiguration
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet23(_ integrationConfigurationProjects: [ACLAction]?, _ integrationConfigurationRole: [ACLAction]?, _ integrationConfigurationTransfer: [ACLAction]?) {
+        self.integrationConfigurationProjects = integrationConfigurationProjects
+        self.integrationConfigurationRole = integrationConfigurationRole
+        self.integrationConfigurationTransfer = integrationConfigurationTransfer
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet24(_ integrationDeploymentAction: [ACLAction]?, _ integrationEvent: [ACLAction]?, _ integrationLog: [ACLAction]?, _ integrationPullRequest: [ACLAction]?) {
+        self.integrationDeploymentAction = integrationDeploymentAction
+        self.integrationEvent = integrationEvent
+        self.integrationLog = integrationLog
+        self.integrationPullRequest = integrationPullRequest
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet25(_ integrationResource: [ACLAction]?, _ integrationResourceData: [ACLAction]?, _ integrationResourceReplCommand: [ACLAction]?) {
+        self.integrationResource = integrationResource
+        self.integrationResourceData = integrationResourceData
+        self.integrationResourceReplCommand = integrationResourceReplCommand
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet26(_ integrationResourceSecrets: [ACLAction]?, _ integrationSsoSession: [ACLAction]?, _ integrationStoreTokenSet: [ACLAction]?, _ integrationStrict: [ACLAction]?) {
+        self.integrationResourceSecrets = integrationResourceSecrets
+        self.integrationSsoSession = integrationSsoSession
+        self.integrationStoreTokenSet = integrationStoreTokenSet
+        self.integrationStrict = integrationStrict
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet27(_ integrationVercelConfigurationOverride: [ACLAction]?, _ ipBlocking: [ACLAction]?, _ job: [ACLAction]?, _ jobGlobal: [ACLAction]?, _ kmsIssuer: [ACLAction]?) {
+        self.integrationVercelConfigurationOverride = integrationVercelConfigurationOverride
+        self.ipBlocking = ipBlocking
+        self.job = job
+        self.jobGlobal = jobGlobal
+        self.kmsIssuer = kmsIssuer
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet28(_ kmsProjectGrant: [ACLAction]?, _ logDrain: [ACLAction]?, _ logs: [ACLAction]?, _ logsPreset: [ACLAction]?, _ marketplaceBillingData: [ACLAction]?) {
+        self.kmsProjectGrant = kmsProjectGrant
+        self.logDrain = logDrain
+        self.logs = logs
+        self.logsPreset = logsPreset
+        self.marketplaceBillingData = marketplaceBillingData
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet29(_ marketplaceExperimentationEdgeConfigData: [ACLAction]?, _ marketplaceExperimentationItem: [ACLAction]?, _ marketplaceFlexCommit: [ACLAction]?) {
+        self.marketplaceExperimentationEdgeConfigData = marketplaceExperimentationEdgeConfigData
+        self.marketplaceExperimentationItem = marketplaceExperimentationItem
+        self.marketplaceFlexCommit = marketplaceFlexCommit
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet30(_ marketplaceInstallationMember: [ACLAction]?, _ marketplaceInvoice: [ACLAction]?, _ marketplaceSettings: [ACLAction]?, _ messageboard: [ACLAction]?) {
+        self.marketplaceInstallationMember = marketplaceInstallationMember
+        self.marketplaceInvoice = marketplaceInvoice
+        self.marketplaceSettings = marketplaceSettings
+        self.messageboard = messageboard
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet31(_ messageboardSpace: [ACLAction]?, _ messageboardTask: [ACLAction]?, _ monitoring: [ACLAction]?, _ monitoringAlert: [ACLAction]?, _ monitoringChart: [ACLAction]?) {
+        self.messageboardSpace = messageboardSpace
+        self.messageboardTask = messageboardTask
+        self.monitoring = monitoring
+        self.monitoringAlert = monitoringAlert
+        self.monitoringChart = monitoringChart
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet32(_ monitoringQuery: [ACLAction]?, _ monitoringSettings: [ACLAction]?, _ notificationCustomerBudget: [ACLAction]?, _ notificationDeploymentFailed: [ACLAction]?) {
+        self.monitoringQuery = monitoringQuery
+        self.monitoringSettings = monitoringSettings
+        self.notificationCustomerBudget = notificationCustomerBudget
+        self.notificationDeploymentFailed = notificationDeploymentFailed
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet33(_ notificationDomainConfiguration: [ACLAction]?, _ notificationDomainExpire: [ACLAction]?, _ notificationDomainMoved: [ACLAction]?) {
+        self.notificationDomainConfiguration = notificationDomainConfiguration
+        self.notificationDomainExpire = notificationDomainExpire
+        self.notificationDomainMoved = notificationDomainMoved
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet34(_ notificationDomainPurchase: [ACLAction]?, _ notificationDomainRenewal: [ACLAction]?, _ notificationDomainTransfer: [ACLAction]?) {
+        self.notificationDomainPurchase = notificationDomainPurchase
+        self.notificationDomainRenewal = notificationDomainRenewal
+        self.notificationDomainTransfer = notificationDomainTransfer
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet35(_ notificationDomainUnverified: [ACLAction]?, _ notificationMonitoringAlert: [ACLAction]?, _ notificationPaymentFailed: [ACLAction]?) {
+        self.notificationDomainUnverified = notificationDomainUnverified
+        self.notificationMonitoringAlert = notificationMonitoringAlert
+        self.notificationPaymentFailed = notificationPaymentFailed
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet36(_ notificationPreferences: [ACLAction]?, _ notificationStatementOfReasons: [ACLAction]?, _ notificationUsageAlert: [ACLAction]?, _ oauth2Application: [ACLAction]?) {
+        self.notificationPreferences = notificationPreferences
+        self.notificationStatementOfReasons = notificationStatementOfReasons
+        self.notificationUsageAlert = notificationUsageAlert
+        self.oauth2Application = oauth2Application
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet37(_ oauth2Connection: [ACLAction]?, _ observabilityConfiguration: [ACLAction]?, _ observabilityData: [ACLAction]?, _ observabilityFunnel: [ACLAction]?) {
+        self.oauth2Connection = oauth2Connection
+        self.observabilityConfiguration = observabilityConfiguration
+        self.observabilityData = observabilityData
+        self.observabilityFunnel = observabilityFunnel
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet38(_ observabilityNotebook: [ACLAction]?, _ oidcFederationPolicy: [ACLAction]?, _ onDemandBuild: [ACLAction]?, _ onDemandConcurrency: [ACLAction]?) {
+        self.observabilityNotebook = observabilityNotebook
+        self.oidcFederationPolicy = oidcFederationPolicy
+        self.onDemandBuild = onDemandBuild
+        self.onDemandConcurrency = onDemandConcurrency
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet39(_ openTelemetryEndpoint: [ACLAction]?, _ optionsAllowlist: [ACLAction]?, _ organization: [ACLAction]?, _ organizationDomain: [ACLAction]?, _ organizationTeam: [ACLAction]?) {
+        self.openTelemetryEndpoint = openTelemetryEndpoint
+        self.optionsAllowlist = optionsAllowlist
+        self.organization = organization
+        self.organizationDomain = organizationDomain
+        self.organizationTeam = organizationTeam
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet40(_ ownEvent: [ACLAction]?, _ pageIntegrity: [ACLAction]?, _ passwordProtection: [ACLAction]?, _ passwordProtectionInvoiceItem: [ACLAction]?, _ paymentMethod: [ACLAction]?) {
+        self.ownEvent = ownEvent
+        self.pageIntegrity = pageIntegrity
+        self.passwordProtection = passwordProtection
+        self.passwordProtectionInvoiceItem = passwordProtectionInvoiceItem
+        self.paymentMethod = paymentMethod
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet41(_ permissions: [ACLAction]?, _ postgres: [ACLAction]?, _ postgresStoreTokenSet: [ACLAction]?, _ previewDeploymentSuffix: [ACLAction]?, _ privateCloudAccount: [ACLAction]?) {
+        self.permissions = permissions
+        self.postgres = postgres
+        self.postgresStoreTokenSet = postgresStoreTokenSet
+        self.previewDeploymentSuffix = previewDeploymentSuffix
+        self.privateCloudAccount = privateCloudAccount
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet42(_ privateLinkEndpoint: [ACLAction]?, _ productionAliasProtectionBypass: [ACLAction]?, _ productionShareableLink: [ACLAction]?, _ project: [ACLAction]?) {
+        self.privateLinkEndpoint = privateLinkEndpoint
+        self.productionAliasProtectionBypass = productionAliasProtectionBypass
+        self.productionShareableLink = productionShareableLink
+        self.project = project
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet43(_ projectAccessGroup: [ACLAction]?, _ projectAnalyticsSampling: [ACLAction]?, _ projectAnalyticsUsage: [ACLAction]?, _ projectCheck: [ACLAction]?, _ projectCheckRun: [ACLAction]?) {
+        self.projectAccessGroup = projectAccessGroup
+        self.projectAnalyticsSampling = projectAnalyticsSampling
+        self.projectAnalyticsUsage = projectAnalyticsUsage
+        self.projectCheck = projectCheck
+        self.projectCheckRun = projectCheckRun
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet44(_ projectDeploymentExpiration: [ACLAction]?, _ projectDeploymentHook: [ACLAction]?, _ projectDeploymentProtectionStrict: [ACLAction]?, _ projectDomain: [ACLAction]?) {
+        self.projectDeploymentExpiration = projectDeploymentExpiration
+        self.projectDeploymentHook = projectDeploymentHook
+        self.projectDeploymentProtectionStrict = projectDeploymentProtectionStrict
+        self.projectDomain = projectDomain
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet45(_ projectDomainCheckConfig: [ACLAction]?, _ projectDomainMove: [ACLAction]?, _ projectDomainVerify: [ACLAction]?, _ projectEnvVars: [ACLAction]?) {
+        self.projectDomainCheckConfig = projectDomainCheckConfig
+        self.projectDomainMove = projectDomainMove
+        self.projectDomainVerify = projectDomainVerify
+        self.projectEnvVars = projectEnvVars
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet46(_ projectEnvVarsProduction: [ACLAction]?, _ projectEnvVarsUnownedByIntegration: [ACLAction]?, _ projectEvent: [ACLAction]?, _ projectFlags: [ACLAction]?) {
+        self.projectEnvVarsProduction = projectEnvVarsProduction
+        self.projectEnvVarsUnownedByIntegration = projectEnvVarsUnownedByIntegration
+        self.projectEvent = projectEvent
+        self.projectFlags = projectFlags
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet47(_ projectFlagsProduction: [ACLAction]?, _ projectFlagsSdkKey: [ACLAction]?, _ projectFromV0: [ACLAction]?, _ projectId: [ACLAction]?) {
+        self.projectFlagsProduction = projectFlagsProduction
+        self.projectFlagsSdkKey = projectFlagsSdkKey
+        self.projectFromV0 = projectFromV0
+        self.projectId = projectId
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet48(_ projectIntegrationConfiguration: [ACLAction]?, _ projectLink: [ACLAction]?, _ projectMember: [ACLAction]?, _ projectMonitoring: [ACLAction]?, _ projectOidcToken: [ACLAction]?) {
+        self.projectIntegrationConfiguration = projectIntegrationConfiguration
+        self.projectLink = projectLink
+        self.projectMember = projectMember
+        self.projectMonitoring = projectMonitoring
+        self.projectOidcToken = projectOidcToken
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet49(_ projectPermissions: [ACLAction]?, _ projectProductionBranch: [ACLAction]?, _ projectProtectionBypass: [ACLAction]?, _ projectRollingRelease: [ACLAction]?) {
+        self.projectPermissions = projectPermissions
+        self.projectProductionBranch = projectProductionBranch
+        self.projectProtectionBypass = projectProtectionBypass
+        self.projectRollingRelease = projectRollingRelease
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet50(_ projectRoutes: [ACLAction]?, _ projectSetting: [ACLAction]?, _ projectSupportCase: [ACLAction]?, _ projectSupportCaseComment: [ACLAction]?, _ projectTier: [ACLAction]?) {
+        self.projectRoutes = projectRoutes
+        self.projectSetting = projectSetting
+        self.projectSupportCase = projectSupportCase
+        self.projectSupportCaseComment = projectSupportCaseComment
+        self.projectTier = projectTier
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet51(_ projectTransfer: [ACLAction]?, _ projectTransferIn: [ACLAction]?, _ projectTransferOut: [ACLAction]?, _ projectTransferRequest: [ACLAction]?, _ projectUsage: [ACLAction]?) {
+        self.projectTransfer = projectTransfer
+        self.projectTransferIn = projectTransferIn
+        self.projectTransferOut = projectTransferOut
+        self.projectTransferRequest = projectTransferRequest
+        self.projectUsage = projectUsage
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet52(_ proTrialOnboarding: [ACLAction]?, _ rateLimit: [ACLAction]?, _ redis: [ACLAction]?, _ redisStoreTokenSet: [ACLAction]?, _ remoteCaching: [ACLAction]?) {
+        self.proTrialOnboarding = proTrialOnboarding
+        self.rateLimit = rateLimit
+        self.redis = redis
+        self.redisStoreTokenSet = redisStoreTokenSet
+        self.remoteCaching = remoteCaching
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet53(_ repository: [ACLAction]?, _ samlConfig: [ACLAction]?, _ schedule: [ACLAction]?, _ seawallConfig: [ACLAction]?, _ secret: [ACLAction]?) {
+        self.repository = repository
+        self.samlConfig = samlConfig
+        self.schedule = schedule
+        self.seawallConfig = seawallConfig
+        self.secret = secret
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet54(_ securityConfig: [ACLAction]?, _ securityPlusConfiguration: [ACLAction]?, _ sensitiveEnvironmentVariablePolicy: [ACLAction]?, _ setting: [ACLAction]?) {
+        self.securityConfig = securityConfig
+        self.securityPlusConfiguration = securityPlusConfiguration
+        self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
+        self.setting = setting
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet55(_ shareableLink: [ACLAction]?, _ shareableLinkStrict: [ACLAction]?, _ sharedEnvVarConnection: [ACLAction]?, _ sharedEnvVars: [ACLAction]?, _ sharedEnvVarsProduction: [ACLAction]?) {
+        self.shareableLink = shareableLink
+        self.shareableLinkStrict = shareableLinkStrict
+        self.sharedEnvVarConnection = sharedEnvVarConnection
+        self.sharedEnvVars = sharedEnvVars
+        self.sharedEnvVarsProduction = sharedEnvVarsProduction
+    }
+}
+
+extension DeleteProjectAvatarResponsePermissions {
+    mutating func sdkSet56(_ skewProtection: [ACLAction]?, _ space: [ACLAction]?, _ spaceRun: [ACLAction]?, _ storeIsLocked: [ACLAction]?, _ storeTokenSetSensitive: [ACLAction]?) {
+        self.skewProtection = skewProtection
+        self.space = space
+        self.spaceRun = spaceRun
+        self.storeIsLocked = storeIsLocked
+        self.storeTokenSetSensitive = storeTokenSetSensitive
     }
 }

@@ -8,537 +8,290 @@ import Foundation
 #endif
 
 // Canonical microfrontends operation model declarations
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet59(_ teamJoin: [ACLAction]?, _ teamMemberMfaStatus: [ACLAction]?, _ teamMicrofrontends: [ACLAction]?, _ teamOwnMembership: [ACLAction]?) {
-        self.teamJoin = teamJoin
-        self.teamMemberMfaStatus = teamMemberMfaStatus
-        self.teamMicrofrontends = teamMicrofrontends
-        self.teamOwnMembership = teamOwnMembership
+extension GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue {
+    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
+        if let value = try? container.decode(
+            GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX9fff3a1d39.self
+        ) {
+            return             .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(value)
+        }
+        if let value = try? container.decode(
+            GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX3be9939fdd.self
+        ) {
+            return             .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(value)
+        }
+        return nil
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet60(_ teamOwnMembershipDisconnectSaml: [ACLAction]?, _ teamSudo: [ACLAction]?, _ teamTokenInvalidation: [ACLAction]?, _ token: [ACLAction]?, _ toolbarComment: [ACLAction]?) {
-        self.teamOwnMembershipDisconnectSaml = teamOwnMembershipDisconnectSaml
-        self.teamSudo = teamSudo
-        self.teamTokenInvalidation = teamTokenInvalidation
-        self.token = token
-        self.toolbarComment = toolbarComment
+extension GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue {
+    func encodeGroup1(to encoder: Encoder) throws -> Bool {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case let .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(value): try container.encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(value): try container.encode(value); return true
+        }
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet61(_ trustedIps: [ACLAction]?, _ trustedSources: [ACLAction]?, _ usage: [ACLAction]?, _ usageCycle: [ACLAction]?, _ user: [ACLAction]?) {
-        self.trustedIps = trustedIps
-        self.trustedSources = trustedSources
-        self.usage = usage
-        self.usageCycle = usageCycle
-        self.user = user
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet62(_ userConnection: [ACLAction]?, _ userMfaConfiguration: [ACLAction]?, _ userPreference: [ACLAction]?, _ userSudo: [ACLAction]?, _ v0Chat: [ACLAction]?) {
-        self.userConnection = userConnection
-        self.userMfaConfiguration = userMfaConfiguration
-        self.userPreference = userPreference
-        self.userSudo = userSudo
-        self.v0Chat = v0Chat
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet63(_ vcrRepository: [ACLAction]?, _ vercelAppInstallation: [ACLAction]?, _ vercelAppInstallationRequest: [ACLAction]?, _ vercelAuth: [ACLAction]?, _ vercelRun: [ACLAction]?) {
-        self.vcrRepository = vcrRepository
-        self.vercelAppInstallation = vercelAppInstallation
-        self.vercelAppInstallationRequest = vercelAppInstallationRequest
-        self.vercelAuth = vercelAuth
-        self.vercelRun = vercelRun
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet64(_ vpcPeeringConnection: [ACLAction]?, _ webAnalytics: [ACLAction]?, _ webAnalyticsPlan: [ACLAction]?, _ webAuthn: [ACLAction]?, _ webhook: [ACLAction]?) {
-        self.vpcPeeringConnection = vpcPeeringConnection
-        self.webAnalytics = webAnalytics
-        self.webAnalyticsPlan = webAnalyticsPlan
-        self.webAuthn = webAuthn
-        self.webhook = webhook
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet65(_ webhookEvent: [ACLAction]?, _ workflowRunData: [ACLAction]?) {
-        self.webhookEvent = webhookEvent
-        self.workflowRunData = workflowRunData
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.accessGroup = try container.sdkDecodeIfPresent(.accessGroup)
-        self.agent = try container.sdkDecodeIfPresent(.agent)
-        self.aiGatewayApiKey = try container.sdkDecodeIfPresent(.aiGatewayApiKey)
-        self.aiGatewayApiKeyBypassAll = try container.sdkDecodeIfPresent(.aiGatewayApiKeyBypassAll)
-        self.aiGatewayApiKeyOwnedBySelf = try container.sdkDecodeIfPresent(.aiGatewayApiKeyOwnedBySelf)
-        self.aiGatewayApiKeySpendAttribution = try container.sdkDecodeIfPresent(.aiGatewayApiKeySpendAttribution)
-        self.aiGatewayApiKeyZdrExemption = try container.sdkDecodeIfPresent(.aiGatewayApiKeyZdrExemption)
-        self.aiGatewayBudget = try container.sdkDecodeIfPresent(.aiGatewayBudget)
-        self.aiGatewayCredits = try container.sdkDecodeIfPresent(.aiGatewayCredits)
-        self.aiGatewayGuardrails = try container.sdkDecodeIfPresent(.aiGatewayGuardrails)
-        self.aiGatewayPrivateModels = try container.sdkDecodeIfPresent(.aiGatewayPrivateModels)
-        self.aiGatewayRules = try container.sdkDecodeIfPresent(.aiGatewayRules)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.aiGatewaySettings = try container.sdkDecodeIfPresent(.aiGatewaySettings)
-        self.aiGatewayTranscripts = try container.sdkDecodeIfPresent(.aiGatewayTranscripts)
-        self.aiGatewayTranscriptsSettings = try container.sdkDecodeIfPresent(.aiGatewayTranscriptsSettings)
-        self.aiGatewayUsage = try container.sdkDecodeIfPresent(.aiGatewayUsage)
-        self.aiGatewayVirtualModelConfigs = try container.sdkDecodeIfPresent(.aiGatewayVirtualModelConfigs)
-        self.alertRules = try container.sdkDecodeIfPresent(.alertRules)
-        self.alerts = try container.sdkDecodeIfPresent(.alerts)
-        self.aliasGlobal = try container.sdkDecodeIfPresent(.aliasGlobal)
-        self.aliasProject = try container.sdkDecodeIfPresent(.aliasProject)
-        self.aliasProtectionBypass = try container.sdkDecodeIfPresent(.aliasProtectionBypass)
-        self.analytics = try container.sdkDecodeIfPresent(.analytics)
-        self.analyticsSampling = try container.sdkDecodeIfPresent(.analyticsSampling)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.analyticsUsage = try container.sdkDecodeIfPresent(.analyticsUsage)
-        self.apiKey = try container.sdkDecodeIfPresent(.apiKey)
-        self.apiKeyAiGateway = try container.sdkDecodeIfPresent(.apiKeyAiGateway)
-        self.apiKeyOwnedBySelf = try container.sdkDecodeIfPresent(.apiKeyOwnedBySelf)
-        self.auditLog = try container.sdkDecodeIfPresent(.auditLog)
-        self.automation = try container.sdkDecodeIfPresent(.automation)
-        self.billingAddress = try container.sdkDecodeIfPresent(.billingAddress)
-        self.billingInformation = try container.sdkDecodeIfPresent(.billingInformation)
-        self.billingInvoice = try container.sdkDecodeIfPresent(.billingInvoice)
-        self.billingInvoiceEmailRecipient = try container.sdkDecodeIfPresent(.billingInvoiceEmailRecipient)
-        self.billingInvoiceLanguage = try container.sdkDecodeIfPresent(.billingInvoiceLanguage)
-        self.billingPlan = try container.sdkDecodeIfPresent(.billingPlan)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart4(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.billingPurchaseOrder = try container.sdkDecodeIfPresent(.billingPurchaseOrder)
-        self.billingRefund = try container.sdkDecodeIfPresent(.billingRefund)
-        self.billingTaxId = try container.sdkDecodeIfPresent(.billingTaxId)
-        self.blob = try container.sdkDecodeIfPresent(.blob)
-        self.blobStoreTokenSet = try container.sdkDecodeIfPresent(.blobStoreTokenSet)
-        self.budget = try container.sdkDecodeIfPresent(.budget)
-        self.buildMachine = try container.sdkDecodeIfPresent(.buildMachine)
-        self.buildMachineDefault = try container.sdkDecodeIfPresent(.buildMachineDefault)
-        self.bulkRedirects = try container.sdkDecodeIfPresent(.bulkRedirects)
-        self.cacheArtifact = try container.sdkDecodeIfPresent(.cacheArtifact)
-        self.cacheArtifactUsageEvent = try container.sdkDecodeIfPresent(.cacheArtifactUsageEvent)
-        self.ciInvocations = try container.sdkDecodeIfPresent(.ciInvocations)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart5(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.ciLogs = try container.sdkDecodeIfPresent(.ciLogs)
-        self.codeChecks = try container.sdkDecodeIfPresent(.codeChecks)
-        self.codeOwners = try container.sdkDecodeIfPresent(.codeOwners)
-        self.concurrentBuilds = try container.sdkDecodeIfPresent(.concurrentBuilds)
-        self.connect = try container.sdkDecodeIfPresent(.connect)
-        self.connectConfiguration = try container.sdkDecodeIfPresent(.connectConfiguration)
-        self.connectConfigurationLink = try container.sdkDecodeIfPresent(.connectConfigurationLink)
-        self.connectLogs = try container.sdkDecodeIfPresent(.connectLogs)
-        self.connexClient = try container.sdkDecodeIfPresent(.connexClient)
-        self.connexClientProject = try container.sdkDecodeIfPresent(.connexClientProject)
-        self.connexContact = try container.sdkDecodeIfPresent(.connexContact)
-        self.connexInstallation = try container.sdkDecodeIfPresent(.connexInstallation)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart6(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.connexToken = try container.sdkDecodeIfPresent(.connexToken)
-        self.cursorOriginInstallation = try container.sdkDecodeIfPresent(.cursorOriginInstallation)
-        self.dataCacheBillingSettings = try container.sdkDecodeIfPresent(.dataCacheBillingSettings)
-        self.dataCacheNamespace = try container.sdkDecodeIfPresent(.dataCacheNamespace)
-        self.defaultDeploymentProtection = try container.sdkDecodeIfPresent(.defaultDeploymentProtection)
-        self.deployment = try container.sdkDecodeIfPresent(.deployment)
-        self.deploymentBuildLogs = try container.sdkDecodeIfPresent(.deploymentBuildLogs)
-        self.deploymentCheck = try container.sdkDecodeIfPresent(.deploymentCheck)
-        self.deploymentCheckPreview = try container.sdkDecodeIfPresent(.deploymentCheckPreview)
-        self.deploymentCheckReRunFromProductionBranch = try container.sdkDecodeIfPresent(.deploymentCheckReRunFromProductionBranch)
-        self.deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
-        self.deploymentPreview = try container.sdkDecodeIfPresent(.deploymentPreview)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart7(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.deploymentPrivate = try container.sdkDecodeIfPresent(.deploymentPrivate)
-        self.deploymentProductionGit = try container.sdkDecodeIfPresent(.deploymentProductionGit)
-        self.deploymentPromote = try container.sdkDecodeIfPresent(.deploymentPromote)
-        self.deploymentProtectionException = try container.sdkDecodeIfPresent(.deploymentProtectionException)
-        self.deploymentRollback = try container.sdkDecodeIfPresent(.deploymentRollback)
-        self.deploymentV0 = try container.sdkDecodeIfPresent(.deploymentV0)
-        self.domain = try container.sdkDecodeIfPresent(.domain)
-        self.domainAcceptDelegation = try container.sdkDecodeIfPresent(.domainAcceptDelegation)
-        self.domainAuthCodes = try container.sdkDecodeIfPresent(.domainAuthCodes)
-        self.domainCertificate = try container.sdkDecodeIfPresent(.domainCertificate)
-        self.domainCheckConfig = try container.sdkDecodeIfPresent(.domainCheckConfig)
-        self.domainMove = try container.sdkDecodeIfPresent(.domainMove)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart8(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.domainPurchase = try container.sdkDecodeIfPresent(.domainPurchase)
-        self.domainRecord = try container.sdkDecodeIfPresent(.domainRecord)
-        self.domainTransferIn = try container.sdkDecodeIfPresent(.domainTransferIn)
-        self.drain = try container.sdkDecodeIfPresent(.drain)
-        self.edgeCacheNamespace = try container.sdkDecodeIfPresent(.edgeCacheNamespace)
-        self.edgeConfig = try container.sdkDecodeIfPresent(.edgeConfig)
-        self.edgeConfigItem = try container.sdkDecodeIfPresent(.edgeConfigItem)
-        self.edgeConfigSchema = try container.sdkDecodeIfPresent(.edgeConfigSchema)
-        self.edgeConfigToken = try container.sdkDecodeIfPresent(.edgeConfigToken)
-        self.endpointVerification = try container.sdkDecodeIfPresent(.endpointVerification)
-        self.environments = try container.sdkDecodeIfPresent(.environments)
-        self.event = try container.sdkDecodeIfPresent(.event)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart9(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.fileUpload = try container.sdkDecodeIfPresent(.fileUpload)
-        self.flagsExplorerSubscription = try container.sdkDecodeIfPresent(.flagsExplorerSubscription)
-        self.gitCredentialGrant = try container.sdkDecodeIfPresent(.gitCredentialGrant)
-        self.gitRepository = try container.sdkDecodeIfPresent(.gitRepository)
-        self.imageOptimizationNewPrice = try container.sdkDecodeIfPresent(.imageOptimizationNewPrice)
-        self.integration = try container.sdkDecodeIfPresent(.integration)
-        self.integrationAccount = try container.sdkDecodeIfPresent(.integrationAccount)
-        self.integrationConfiguration = try container.sdkDecodeIfPresent(.integrationConfiguration)
-        self.integrationConfigurationProjects = try container.sdkDecodeIfPresent(.integrationConfigurationProjects)
-        self.integrationConfigurationRole = try container.sdkDecodeIfPresent(.integrationConfigurationRole)
-        self.integrationConfigurationTransfer = try container.sdkDecodeIfPresent(.integrationConfigurationTransfer)
-        self.integrationDeploymentAction = try container.sdkDecodeIfPresent(.integrationDeploymentAction)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart10(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.integrationEvent = try container.sdkDecodeIfPresent(.integrationEvent)
-        self.integrationLog = try container.sdkDecodeIfPresent(.integrationLog)
-        self.integrationPullRequest = try container.sdkDecodeIfPresent(.integrationPullRequest)
-        self.integrationResource = try container.sdkDecodeIfPresent(.integrationResource)
-        self.integrationResourceData = try container.sdkDecodeIfPresent(.integrationResourceData)
-        self.integrationResourceReplCommand = try container.sdkDecodeIfPresent(.integrationResourceReplCommand)
-        self.integrationResourceSecrets = try container.sdkDecodeIfPresent(.integrationResourceSecrets)
-        self.integrationSsoSession = try container.sdkDecodeIfPresent(.integrationSsoSession)
-        self.integrationStoreTokenSet = try container.sdkDecodeIfPresent(.integrationStoreTokenSet)
-        self.integrationStrict = try container.sdkDecodeIfPresent(.integrationStrict)
-        self.integrationVercelConfigurationOverride = try container.sdkDecodeIfPresent(.integrationVercelConfigurationOverride)
-        self.ipBlocking = try container.sdkDecodeIfPresent(.ipBlocking)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart11(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.job = try container.sdkDecodeIfPresent(.job)
-        self.jobGlobal = try container.sdkDecodeIfPresent(.jobGlobal)
-        self.kmsIssuer = try container.sdkDecodeIfPresent(.kmsIssuer)
-        self.kmsProjectGrant = try container.sdkDecodeIfPresent(.kmsProjectGrant)
-        self.logDrain = try container.sdkDecodeIfPresent(.logDrain)
-        self.logs = try container.sdkDecodeIfPresent(.logs)
-        self.logsPreset = try container.sdkDecodeIfPresent(.logsPreset)
-        self.marketplaceBillingData = try container.sdkDecodeIfPresent(.marketplaceBillingData)
-        self.marketplaceExperimentationEdgeConfigData = try container.sdkDecodeIfPresent(.marketplaceExperimentationEdgeConfigData)
-        self.marketplaceExperimentationItem = try container.sdkDecodeIfPresent(.marketplaceExperimentationItem)
-        self.marketplaceFlexCommit = try container.sdkDecodeIfPresent(.marketplaceFlexCommit)
-        self.marketplaceInstallationMember = try container.sdkDecodeIfPresent(.marketplaceInstallationMember)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart12(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.marketplaceInvoice = try container.sdkDecodeIfPresent(.marketplaceInvoice)
-        self.marketplaceSettings = try container.sdkDecodeIfPresent(.marketplaceSettings)
-        self.messageboard = try container.sdkDecodeIfPresent(.messageboard)
-        self.messageboardSpace = try container.sdkDecodeIfPresent(.messageboardSpace)
-        self.messageboardTask = try container.sdkDecodeIfPresent(.messageboardTask)
-        self.monitoring = try container.sdkDecodeIfPresent(.monitoring)
-        self.monitoringAlert = try container.sdkDecodeIfPresent(.monitoringAlert)
-        self.monitoringChart = try container.sdkDecodeIfPresent(.monitoringChart)
-        self.monitoringQuery = try container.sdkDecodeIfPresent(.monitoringQuery)
-        self.monitoringSettings = try container.sdkDecodeIfPresent(.monitoringSettings)
-        self.notificationCustomerBudget = try container.sdkDecodeIfPresent(.notificationCustomerBudget)
-        self.notificationDeploymentFailed = try container.sdkDecodeIfPresent(.notificationDeploymentFailed)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart13(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.notificationDomainConfiguration = try container.sdkDecodeIfPresent(.notificationDomainConfiguration)
-        self.notificationDomainExpire = try container.sdkDecodeIfPresent(.notificationDomainExpire)
-        self.notificationDomainMoved = try container.sdkDecodeIfPresent(.notificationDomainMoved)
-        self.notificationDomainPurchase = try container.sdkDecodeIfPresent(.notificationDomainPurchase)
-        self.notificationDomainRenewal = try container.sdkDecodeIfPresent(.notificationDomainRenewal)
-        self.notificationDomainTransfer = try container.sdkDecodeIfPresent(.notificationDomainTransfer)
-        self.notificationDomainUnverified = try container.sdkDecodeIfPresent(.notificationDomainUnverified)
-        self.notificationMonitoringAlert = try container.sdkDecodeIfPresent(.notificationMonitoringAlert)
-        self.notificationPaymentFailed = try container.sdkDecodeIfPresent(.notificationPaymentFailed)
-        self.notificationPreferences = try container.sdkDecodeIfPresent(.notificationPreferences)
-        self.notificationStatementOfReasons = try container.sdkDecodeIfPresent(.notificationStatementOfReasons)
-        self.notificationUsageAlert = try container.sdkDecodeIfPresent(.notificationUsageAlert)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart14(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.oauth2Application = try container.sdkDecodeIfPresent(.oauth2Application)
-        self.oauth2Connection = try container.sdkDecodeIfPresent(.oauth2Connection)
-        self.observabilityConfiguration = try container.sdkDecodeIfPresent(.observabilityConfiguration)
-        self.observabilityData = try container.sdkDecodeIfPresent(.observabilityData)
-        self.observabilityFunnel = try container.sdkDecodeIfPresent(.observabilityFunnel)
-        self.observabilityNotebook = try container.sdkDecodeIfPresent(.observabilityNotebook)
-        self.oidcFederationPolicy = try container.sdkDecodeIfPresent(.oidcFederationPolicy)
-        self.onDemandBuild = try container.sdkDecodeIfPresent(.onDemandBuild)
-        self.onDemandConcurrency = try container.sdkDecodeIfPresent(.onDemandConcurrency)
-        self.openTelemetryEndpoint = try container.sdkDecodeIfPresent(.openTelemetryEndpoint)
-        self.optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
-        self.organization = try container.sdkDecodeIfPresent(.organization)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart15(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.organizationDomain = try container.sdkDecodeIfPresent(.organizationDomain)
-        self.organizationTeam = try container.sdkDecodeIfPresent(.organizationTeam)
-        self.ownEvent = try container.sdkDecodeIfPresent(.ownEvent)
-        self.pageIntegrity = try container.sdkDecodeIfPresent(.pageIntegrity)
-        self.passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
-        self.passwordProtectionInvoiceItem = try container.sdkDecodeIfPresent(.passwordProtectionInvoiceItem)
-        self.paymentMethod = try container.sdkDecodeIfPresent(.paymentMethod)
-        self.permissions = try container.sdkDecodeIfPresent(.permissions)
-        self.postgres = try container.sdkDecodeIfPresent(.postgres)
-        self.postgresStoreTokenSet = try container.sdkDecodeIfPresent(.postgresStoreTokenSet)
-        self.previewDeploymentSuffix = try container.sdkDecodeIfPresent(.previewDeploymentSuffix)
-        self.privateCloudAccount = try container.sdkDecodeIfPresent(.privateCloudAccount)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart16(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.privateLinkEndpoint = try container.sdkDecodeIfPresent(.privateLinkEndpoint)
-        self.productionAliasProtectionBypass = try container.sdkDecodeIfPresent(.productionAliasProtectionBypass)
-        self.productionShareableLink = try container.sdkDecodeIfPresent(.productionShareableLink)
-        self.project = try container.sdkDecodeIfPresent(.project)
-        self.projectAccessGroup = try container.sdkDecodeIfPresent(.projectAccessGroup)
-        self.projectAnalyticsSampling = try container.sdkDecodeIfPresent(.projectAnalyticsSampling)
-        self.projectAnalyticsUsage = try container.sdkDecodeIfPresent(.projectAnalyticsUsage)
-        self.projectCheck = try container.sdkDecodeIfPresent(.projectCheck)
-        self.projectCheckRun = try container.sdkDecodeIfPresent(.projectCheckRun)
-        self.projectDeploymentExpiration = try container.sdkDecodeIfPresent(.projectDeploymentExpiration)
-        self.projectDeploymentHook = try container.sdkDecodeIfPresent(.projectDeploymentHook)
-        self.projectDeploymentProtectionStrict = try container.sdkDecodeIfPresent(.projectDeploymentProtectionStrict)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart17(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.projectDomain = try container.sdkDecodeIfPresent(.projectDomain)
-        self.projectDomainCheckConfig = try container.sdkDecodeIfPresent(.projectDomainCheckConfig)
-        self.projectDomainMove = try container.sdkDecodeIfPresent(.projectDomainMove)
-        self.projectDomainVerify = try container.sdkDecodeIfPresent(.projectDomainVerify)
-        self.projectEnvVars = try container.sdkDecodeIfPresent(.projectEnvVars)
-        self.projectEnvVarsProduction = try container.sdkDecodeIfPresent(.projectEnvVarsProduction)
-        self.projectEnvVarsUnownedByIntegration = try container.sdkDecodeIfPresent(.projectEnvVarsUnownedByIntegration)
-        self.projectEvent = try container.sdkDecodeIfPresent(.projectEvent)
-        self.projectFlags = try container.sdkDecodeIfPresent(.projectFlags)
-        self.projectFlagsProduction = try container.sdkDecodeIfPresent(.projectFlagsProduction)
-        self.projectFlagsSdkKey = try container.sdkDecodeIfPresent(.projectFlagsSdkKey)
-        self.projectFromV0 = try container.sdkDecodeIfPresent(.projectFromV0)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart18(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.projectId = try container.sdkDecodeIfPresent(.projectId)
-        self.projectIntegrationConfiguration = try container.sdkDecodeIfPresent(.projectIntegrationConfiguration)
-        self.projectLink = try container.sdkDecodeIfPresent(.projectLink)
-        self.projectMember = try container.sdkDecodeIfPresent(.projectMember)
-        self.projectMonitoring = try container.sdkDecodeIfPresent(.projectMonitoring)
-        self.projectOidcToken = try container.sdkDecodeIfPresent(.projectOidcToken)
-        self.projectPermissions = try container.sdkDecodeIfPresent(.projectPermissions)
-        self.projectProductionBranch = try container.sdkDecodeIfPresent(.projectProductionBranch)
-        self.projectProtectionBypass = try container.sdkDecodeIfPresent(.projectProtectionBypass)
-        self.projectRollingRelease = try container.sdkDecodeIfPresent(.projectRollingRelease)
-        self.projectRoutes = try container.sdkDecodeIfPresent(.projectRoutes)
-        self.projectSetting = try container.sdkDecodeIfPresent(.projectSetting)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart19(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.projectSupportCase = try container.sdkDecodeIfPresent(.projectSupportCase)
-        self.projectSupportCaseComment = try container.sdkDecodeIfPresent(.projectSupportCaseComment)
-        self.projectTier = try container.sdkDecodeIfPresent(.projectTier)
-        self.projectTransfer = try container.sdkDecodeIfPresent(.projectTransfer)
-        self.projectTransferIn = try container.sdkDecodeIfPresent(.projectTransferIn)
-        self.projectTransferOut = try container.sdkDecodeIfPresent(.projectTransferOut)
-        self.projectTransferRequest = try container.sdkDecodeIfPresent(.projectTransferRequest)
-        self.projectUsage = try container.sdkDecodeIfPresent(.projectUsage)
-        self.proTrialOnboarding = try container.sdkDecodeIfPresent(.proTrialOnboarding)
-        self.rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
-        self.redis = try container.sdkDecodeIfPresent(.redis)
-        self.redisStoreTokenSet = try container.sdkDecodeIfPresent(.redisStoreTokenSet)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart20(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.remoteCaching = try container.sdkDecodeIfPresent(.remoteCaching)
-        self.repository = try container.sdkDecodeIfPresent(.repository)
-        self.samlConfig = try container.sdkDecodeIfPresent(.samlConfig)
-        self.schedule = try container.sdkDecodeIfPresent(.schedule)
-        self.seawallConfig = try container.sdkDecodeIfPresent(.seawallConfig)
-        self.secret = try container.sdkDecodeIfPresent(.secret)
-        self.securityConfig = try container.sdkDecodeIfPresent(.securityConfig)
-        self.securityPlusConfiguration = try container.sdkDecodeIfPresent(.securityPlusConfiguration)
-        self.sensitiveEnvironmentVariablePolicy = try container.sdkDecodeIfPresent(.sensitiveEnvironmentVariablePolicy)
-        self.setting = try container.sdkDecodeIfPresent(.setting)
-        self.shareableLink = try container.sdkDecodeIfPresent(.shareableLink)
-        self.shareableLinkStrict = try container.sdkDecodeIfPresent(.shareableLinkStrict)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart21(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.sharedEnvVarConnection = try container.sdkDecodeIfPresent(.sharedEnvVarConnection)
-        self.sharedEnvVars = try container.sdkDecodeIfPresent(.sharedEnvVars)
-        self.sharedEnvVarsProduction = try container.sdkDecodeIfPresent(.sharedEnvVarsProduction)
-        self.skewProtection = try container.sdkDecodeIfPresent(.skewProtection)
-        self.space = try container.sdkDecodeIfPresent(.space)
-        self.spaceRun = try container.sdkDecodeIfPresent(.spaceRun)
-        self.storeIsLocked = try container.sdkDecodeIfPresent(.storeIsLocked)
-        self.storeTokenSetSensitive = try container.sdkDecodeIfPresent(.storeTokenSetSensitive)
-        self.storeTransfer = try container.sdkDecodeIfPresent(.storeTransfer)
-        self.supportCase = try container.sdkDecodeIfPresent(.supportCase)
-        self.supportCaseComment = try container.sdkDecodeIfPresent(.supportCaseComment)
-        self.team = try container.sdkDecodeIfPresent(.team)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart22(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.teamAccessRequest = try container.sdkDecodeIfPresent(.teamAccessRequest)
-        self.teamFellowMembership = try container.sdkDecodeIfPresent(.teamFellowMembership)
-        self.teamGitExclusivity = try container.sdkDecodeIfPresent(.teamGitExclusivity)
-        self.teamInvite = try container.sdkDecodeIfPresent(.teamInvite)
-        self.teamInviteCode = try container.sdkDecodeIfPresent(.teamInviteCode)
-        self.teamInviteLink = try container.sdkDecodeIfPresent(.teamInviteLink)
-        self.teamJoin = try container.sdkDecodeIfPresent(.teamJoin)
-        self.teamMemberMfaStatus = try container.sdkDecodeIfPresent(.teamMemberMfaStatus)
-        self.teamMicrofrontends = try container.sdkDecodeIfPresent(.teamMicrofrontends)
-        self.teamOwnMembership = try container.sdkDecodeIfPresent(.teamOwnMembership)
-        self.teamOwnMembershipDisconnectSaml = try container.sdkDecodeIfPresent(.teamOwnMembershipDisconnectSaml)
-        self.teamSudo = try container.sdkDecodeIfPresent(.teamSudo)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart23(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.teamTokenInvalidation = try container.sdkDecodeIfPresent(.teamTokenInvalidation)
-        self.token = try container.sdkDecodeIfPresent(.token)
-        self.toolbarComment = try container.sdkDecodeIfPresent(.toolbarComment)
-        self.trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
-        self.trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
-        self.usage = try container.sdkDecodeIfPresent(.usage)
-        self.usageCycle = try container.sdkDecodeIfPresent(.usageCycle)
-        self.user = try container.sdkDecodeIfPresent(.user)
-        self.userConnection = try container.sdkDecodeIfPresent(.userConnection)
-        self.userMfaConfiguration = try container.sdkDecodeIfPresent(.userMfaConfiguration)
-        self.userPreference = try container.sdkDecodeIfPresent(.userPreference)
-        self.userSudo = try container.sdkDecodeIfPresent(.userSudo)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart24(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.v0Chat = try container.sdkDecodeIfPresent(.v0Chat)
-        self.vcrRepository = try container.sdkDecodeIfPresent(.vcrRepository)
-        self.vercelAppInstallation = try container.sdkDecodeIfPresent(.vercelAppInstallation)
-        self.vercelAppInstallationRequest = try container.sdkDecodeIfPresent(.vercelAppInstallationRequest)
-        self.vercelAuth = try container.sdkDecodeIfPresent(.vercelAuth)
-        self.vercelRun = try container.sdkDecodeIfPresent(.vercelRun)
-        self.vpcPeeringConnection = try container.sdkDecodeIfPresent(.vpcPeeringConnection)
-        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
-        self.webAnalyticsPlan = try container.sdkDecodeIfPresent(.webAnalyticsPlan)
-        self.webAuthn = try container.sdkDecodeIfPresent(.webAuthn)
-        self.webhook = try container.sdkDecodeIfPresent(.webhook)
-        self.webhookEvent = try container.sdkDecodeIfPresent(.webhookEvent)
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkDecodeFieldsPart25(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.workflowRunData = try container.sdkDecodeIfPresent(.workflowRunData)
-    }
-}
-
-public struct GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeXf98ca6ac41: Codable {
-    public var use: String
-    public var dest: String?
-    public var src: String?
+public struct GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims: Codable {
+    public var aud: String
+    public var environment: String
+    public var iss: String
+    public var owner: String
+    public var ownerId: String
+    public var project: String
+    public var projectId: String
+    public var scope: String
+    public var sub: String
+    public var customEnvironmentId: String?
+    public var deploymentId: String?
+    public var mfeGroupIds: [String]?
+    public var plan: String?
 
     enum CodingKeys: String, CodingKey {
-        case use
-        case dest
-        case src
+        case aud
+        case environment
+        case iss
+        case owner
+        case ownerId = "owner_id"
+        case project
+        case projectId = "project_id"
+        case scope
+        case sub
+        case customEnvironmentId = "custom_environment_id"
+        case deploymentId = "deployment_id"
+        case mfeGroupIds = "mfe_group_ids"
+        case plan
     }
 
     private init(sdkCopy value: Self) { self = value }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeXf98ca6ac41 {
+extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.use) else {
-            throw SdkValidationError(field: "use", code: "required", message: "Validation failed for 'use': value is required")
+        self.aud = try container.sdkDecodeRequired(.aud)
+        self.environment = try container.sdkDecodeRequired(.environment)
+        self.iss = try container.sdkDecodeRequired(.iss)
+        self.owner = try container.sdkDecodeRequired(.owner)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.project = try container.sdkDecodeRequired(.project)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.scope = try container.sdkDecodeRequired(.scope)
+        self.sub = try container.sdkDecodeRequired(.sub)
+        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        self.deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
+        self.mfeGroupIds = try container.sdkDecodeIfPresent(.mfeGroupIds)
+        self.plan = try container.sdkDecodeIfPresent(.plan)
+    }
+}
+
+extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims {
+    public init(aud: String, environment: String, iss: String, owner: String, ownerId: String, project: String, projectId: String, scope: String, sub: String, customEnvironmentId: String? = nil, deploymentId: String? = nil, mfeGroupIds: [String]? = nil, plan: String? = nil) {
+        (self.aud, self.environment) = (aud, environment)
+        (self.iss, self.owner) = (iss, owner)
+        (self.ownerId, self.project) = (ownerId, project)
+        (self.projectId, self.scope) = (projectId, scope)
+        (self.sub, self.customEnvironmentId) = (sub, customEnvironmentId)
+        (self.deploymentId, self.mfeGroupIds) = (deploymentId, mfeGroupIds)
+        self.plan = plan
+    }
+}
+
+public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX30872d17ed: Codable {
+    public var to: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX27fa38aaaa
+    public var claims: [String: [String]]
+    public var label: String?
+
+    enum CodingKeys: String, CodingKey {
+        case to
+        case claims
+        case label
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX30872d17ed {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.to) else {
+            throw SdkValidationError(field: "to", code: "required", message: "Validation failed for 'to': value is required")
         }
-        self.use = try container.sdkDecodeRequired(.use)
-        self.dest = try container.sdkDecodeIfPresent(.dest)
-        self.src = try container.sdkDecodeIfPresent(.src)
+        guard container.contains(.claims) else {
+            throw SdkValidationError(field: "claims", code: "required", message: "Validation failed for 'claims': value is required")
+        }
+        self.to = try container.sdkDecodeRequired(.to)
+        self.claims = try container.sdkDecodeRequired(.claims)
+        self.label = try container.sdkDecodeIfPresent(.label)
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeXf98ca6ac41 {
-    public init(use: String, dest: String? = nil, src: String? = nil) {
-        (self.use, self.dest) = (use, dest)
-        self.src = src
+extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX30872d17ed {
+    public init(to: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX27fa38aaaa, claims: [String: [String]], label: String? = nil) {
+        (self.to, self.claims) = (to, claims)
+        self.label = label
     }
 }
 
-public indirect enum GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue {
-    case getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(
-        GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX9fff3a1d39
-    )
-    case getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(
-        GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX3be9939fdd
-    )
+public struct GetMicrofrontendsInGroupResponseProjectsItemSecurity: Codable {
+    public var attackModeActiveUntil: Double?
+    public var attackModeEnabled: Bool?
+    public var attackModeUpdatedAt: Double?
+    public var botIdEnabled: Bool?
+    public var firewallBypassIps: [String]?
+    public var firewallConfigVersion: Double?
+    public var firewallEnabled: Bool?
+    public var firewallSeawallEnabled: Bool?
+    public var firewallUpdatedAt: Double?
+    public var ja3Enabled: Bool?
+    public var ja4Enabled: Bool?
+    public var logHeaders: GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeaders?
+    public var managedRules: GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRules?
+    /// Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups
+    /// against the page-integrity-inventory table.
+    public var pageIntegrityEnabled: Bool?
+    public var rulesets: [String: GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValue]?
+
+    enum CodingKeys: String, CodingKey {
+        case attackModeActiveUntil
+        case attackModeEnabled
+        case attackModeUpdatedAt
+        case botIdEnabled
+        case firewallBypassIps
+        case firewallConfigVersion
+        case firewallEnabled
+        case firewallSeawallEnabled
+        case firewallUpdatedAt
+        case ja3Enabled
+        case ja4Enabled
+        case logHeaders = "log_headers"
+        case managedRules
+        case pageIntegrityEnabled
+        case rulesets
+    }
+
+    init() {
+        (self.attackModeActiveUntil, self.attackModeEnabled, self.attackModeUpdatedAt, self.botIdEnabled, self.firewallBypassIps) = (nil, nil, nil, nil, nil)
+        (self.firewallConfigVersion, self.firewallEnabled, self.firewallSeawallEnabled, self.firewallUpdatedAt, self.ja3Enabled) = (nil, nil, nil, nil, nil)
+        (self.ja4Enabled, self.logHeaders, self.managedRules, self.pageIntegrityEnabled, self.rulesets) = (nil, nil, nil, nil, nil)
+    }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue: Codable {
+extension GetMicrofrontendsInGroupResponseProjectsItemSecurity {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.attackModeActiveUntil = try container.sdkDecodeIfPresent(.attackModeActiveUntil)
+        self.attackModeEnabled = try container.sdkDecodeIfPresent(.attackModeEnabled)
+        self.attackModeUpdatedAt = try container.sdkDecodeIfPresent(.attackModeUpdatedAt)
+        self.botIdEnabled = try container.sdkDecodeIfPresent(.botIdEnabled)
+        self.firewallBypassIps = try container.sdkDecodeIfPresent(.firewallBypassIps)
+        self.firewallConfigVersion = try container.sdkDecodeIfPresent(.firewallConfigVersion)
+        self.firewallEnabled = try container.sdkDecodeIfPresent(.firewallEnabled)
+        self.firewallSeawallEnabled = try container.sdkDecodeIfPresent(.firewallSeawallEnabled)
+        self.firewallUpdatedAt = try container.sdkDecodeIfPresent(.firewallUpdatedAt)
+        self.ja3Enabled = try container.sdkDecodeIfPresent(.ja3Enabled)
+        self.ja4Enabled = try container.sdkDecodeIfPresent(.ja4Enabled)
+        self.logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
+        self.managedRules = try container.sdkDecodeIfPresent(.managedRules)
+        self.pageIntegrityEnabled = try container.sdkDecodeIfPresent(.pageIntegrityEnabled)
+        self.rulesets = try container.sdkDecodeIfPresent(.rulesets)
+    }
+}
+
+extension GetMicrofrontendsInGroupResponseProjectsItemSecurity {
+    public init(attackModeActiveUntil: Double? = nil, attackModeEnabled: Bool? = nil, attackModeUpdatedAt: Double? = nil, botIdEnabled: Bool? = nil, firewallBypassIps: [String]? = nil, firewallConfigVersion: Double? = nil, firewallEnabled: Bool? = nil, firewallSeawallEnabled: Bool? = nil, firewallUpdatedAt: Double? = nil, ja3Enabled: Bool? = nil, ja4Enabled: Bool? = nil, logHeaders: GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeaders? = nil, managedRules: GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRules? = nil, pageIntegrityEnabled: Bool? = nil, rulesets: [String: GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValue]? = nil) {
+        self.init()
+        (self.attackModeActiveUntil, self.attackModeEnabled) = (attackModeActiveUntil, attackModeEnabled)
+        (self.attackModeUpdatedAt, self.botIdEnabled) = (attackModeUpdatedAt, botIdEnabled)
+        (self.firewallBypassIps, self.firewallConfigVersion) = (firewallBypassIps, firewallConfigVersion)
+        (self.firewallEnabled, self.firewallSeawallEnabled) = (firewallEnabled, firewallSeawallEnabled)
+        (self.firewallUpdatedAt, self.ja3Enabled) = (firewallUpdatedAt, ja3Enabled)
+        (self.ja4Enabled, self.logHeaders) = (ja4Enabled, logHeaders)
+        (self.managedRules, self.pageIntegrityEnabled) = (managedRules, pageIntegrityEnabled)
+        self.rulesets = rulesets
+    }
+}
+
+public struct GetMicrofrontendsConfigResponse: Codable {
+    /// projectIds are added when the config is uploaded to s3 deployment assets.
+    public var config: GetMicrofrontendsConfigResponseConfig?
+
+    enum CodingKeys: String, CodingKey {
+        case config
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension GetMicrofrontendsConfigResponse {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.config) else {
+            throw SdkValidationError(field: "config", code: "required", message: "Validation failed for 'config': value is required")
+        }
+        self.config = try container.sdkDecodeNullable(.config)
+    }
+}
+
+extension GetMicrofrontendsConfigResponse {
+    public init(config: GetMicrofrontendsConfigResponseConfig?) {
+        self.config = config
+    }
+}
+
+/// projectIds are added when the config is uploaded to s3 deployment assets.
+public struct GetMicrofrontendsConfigResponseConfig: Codable {
+    public var applications: [String: GetMicrofrontendsConfigResponseConfigApplicationsValue]
+    /// See openapi.vercel.sh
+    public var schema: String?
+    /// Optional configuration options for the microfrontend.
+    public var options: GetMicrofrontendsConfigResponseConfigOptions?
+    /// The version of the microfrontends config schema.
+    public var version: GetMicrofrontendsConfigResponseConfigVersion?
+
+    enum CodingKeys: String, CodingKey {
+        case applications
+        case schema = "$schema"
+        case options
+        case version
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension GetMicrofrontendsConfigResponseConfig {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.applications) else {
+            throw SdkValidationError(field: "applications", code: "required", message: "Validation failed for 'applications': value is required")
+        }
+        self.applications = try container.sdkDecodeRequired(.applications)
+        self.schema = try container.sdkDecodeIfPresent(.schema)
+        self.options = try container.sdkDecodeIfPresent(.options)
+        self.version = try container.sdkDecodeIfPresent(.version)
+    }
+}
+
+extension GetMicrofrontendsConfigResponseConfig {
+    public init(applications: [String: GetMicrofrontendsConfigResponseConfigApplicationsValue], schema: String? = nil, options: GetMicrofrontendsConfigResponseConfigOptions? = nil, version: GetMicrofrontendsConfigResponseConfigVersion? = nil) {
+        (self.applications, self.schema) = (applications, schema)
+        (self.options, self.version) = (options, version)
+    }
+}
+
+public indirect enum GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc {
+    case stringValue(String)
+    case doubleValue(Double)
+}
+
+extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-        }
         if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue")
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc")
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -546,16 +299,183 @@ extension GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue: Cod
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue {
-    static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX9fff3a1d39.self),
-           sdkKeepsEveryKey(value, of: raw) {
-            return .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(value)
+extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc {
+    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        return nil
+    }
+}
+
+extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc {
+    func encodeGroup1(to encoder: Encoder) throws -> Bool {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case let .stringValue(value): try container.encode(value); return true
+        case let .doubleValue(value): try container.encode(value); return true
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX3be9939fdd.self),
+    }
+}
+
+extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX5da681adfc: SdkNumericValueConvertible {
+    var sdkNumericValue: Double? {
+        switch self {
+        case let .doubleValue(value): value
+        default: nil
+        }
+    }
+}
+
+public indirect enum GetMicrofrontendsConfigResponseConfigApplicationsValue {
+    case getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(GetMicrofrontendsConfigResponseConfigApplicationsValueVariant0)
+    case getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(GetMicrofrontendsConfigResponseConfigApplicationsValueVariant1)
+}
+
+extension GetMicrofrontendsConfigResponseConfigApplicationsValue: Codable {
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let raw = try? container.decode(JSONValue.self) {
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+        }
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsConfigResponseConfigApplicationsValue")
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        if try encodeGroup1(to: encoder) { return }
+    }
+}
+
+extension GetMicrofrontendsConfigResponseConfigApplicationsValue {
+    static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
+        if let value = try? container.decode(GetMicrofrontendsConfigResponseConfigApplicationsValueVariant0.self),
            sdkKeepsEveryKey(value, of: raw) {
-            return .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(value)
+            return .getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(value)
+        }
+        if let value = try? container.decode(GetMicrofrontendsConfigResponseConfigApplicationsValueVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(value)
         }
         return nil
     }
+}
+
+extension GetMicrofrontendsConfigResponseConfigApplicationsValue {
+    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
+        if let value = try? container.decode(
+            GetMicrofrontendsConfigResponseConfigApplicationsValueVariant0.self
+        ) {
+            return             .getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(value)
+        }
+        if let value = try? container.decode(
+            GetMicrofrontendsConfigResponseConfigApplicationsValueVariant1.self
+        ) {
+            return             .getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(value)
+        }
+        return nil
+    }
+}
+
+extension GetMicrofrontendsConfigResponseConfigApplicationsValue {
+    func encodeGroup1(to encoder: Encoder) throws -> Bool {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case let .getMicrofrontendsConfigResponseConfigApplicationsValueVariant0(value): try container.encode(value); return true
+        case let .getMicrofrontendsConfigResponseConfigApplicationsValueVariant1(value): try container.encode(value); return true
+        }
+    }
+}
+
+/// Optional configuration options for the microfrontend.
+public struct GetMicrofrontendsConfigForProjectResponseConfigOptions: Codable {
+    /// If you want to disable the overrides for the site. For example, if you are managing rewrites between
+    /// applications externally, you may wish to disable the overrides on the toolbar as they will have no effect.
+    /// See vercel.com
+    public var disableOverrides: Bool?
+    /// The port number used by the local proxy server. The default value is 3024. See vercel.com
+    public var localProxyPort: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case disableOverrides
+        case localProxyPort
+    }
+
+    init() {
+        (self.disableOverrides, self.localProxyPort) = (nil, nil)
+    }
+}
+
+extension GetMicrofrontendsConfigForProjectResponseConfigOptions {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.disableOverrides = try container.sdkDecodeIfPresent(.disableOverrides)
+        self.localProxyPort = try container.sdkDecodeIfPresent(.localProxyPort)
+    }
+}
+
+extension GetMicrofrontendsConfigForProjectResponseConfigOptions {
+    public init(disableOverrides: Bool? = nil, localProxyPort: Double? = nil) {
+        self.init()
+        (self.disableOverrides, self.localProxyPort) = (disableOverrides, localProxyPort)
+    }
+}
+
+public typealias GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesList = [GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesItem]
+
+public struct GetMicrofrontendsInGroupResponseProjectsItemTracing: Codable {
+    public var domains: String?
+    public var ignorePaths: [String]?
+    public var samplingRules: GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesList?
+
+    enum CodingKeys: String, CodingKey {
+        case domains
+        case ignorePaths
+        case samplingRules
+    }
+
+    init() {
+        (self.domains, self.ignorePaths, self.samplingRules) = (nil, nil, nil)
+    }
+}
+
+extension GetMicrofrontendsInGroupResponseProjectsItemTracing {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.domains = try container.sdkDecodeIfPresent(.domains)
+        self.ignorePaths = try container.sdkDecodeIfPresent(.ignorePaths)
+        self.samplingRules = try container.sdkDecodeIfPresent(.samplingRules)
+    }
+}
+
+extension GetMicrofrontendsInGroupResponseProjectsItemTracing {
+    public init(domains: String? = nil, ignorePaths: [String]? = nil, samplingRules: GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesList? = nil) {
+        self.init()
+        (self.domains, self.ignorePaths) = (domains, ignorePaths)
+        self.samplingRules = samplingRules
+    }
+}
+
+public struct GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsItem: Codable {
+    public var buildsEnabled: Bool
+    public var connectConfigurationId: String
+    public var createdAt: Double
+    public var envId: GetMicrofrontendsInGroupResponseProjectsItemConnectConfiguratX43673bd12f
+    public var passive: Bool
+    public var updatedAt: Double
+    public var aws: GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsItemAws?
+    public var dc: String?
+
+    enum CodingKeys: String, CodingKey {
+        case buildsEnabled
+        case connectConfigurationId
+        case createdAt
+        case envId
+        case passive
+        case updatedAt
+        case aws
+        case dc
+    }
+
+    private init(sdkCopy value: Self) { self = value }
 }

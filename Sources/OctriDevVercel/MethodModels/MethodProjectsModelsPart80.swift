@@ -8,285 +8,25 @@ import Foundation
 #endif
 
 // Canonical projects operation model declarations
-extension ListProjectsResponseVariant2ProjectsItemJobs {
-    public init(flagDefinitionsPresent: ListProjectsResponseVariant2ProjectsItemJobsFlagDefinitionsPresent? = nil, lint: ListProjectsResponseVariant2ProjectsItemJobsLint? = nil, mfeConfigPresent: ListProjectsResponseVariant2ProjectsItemJobsMfeConfigPresent? = nil, typecheck: ListProjectsResponseVariant2ProjectsItemJobsTypecheck? = nil) {
-        self.init()
-        (self.flagDefinitionsPresent, self.lint) = (flagDefinitionsPresent, lint)
-        (self.mfeConfigPresent, self.typecheck) = (mfeConfigPresent, typecheck)
+extension ListProjectsResponseVariant0ItemResourceConfig {
+    public init(functionDefaultRegions: [String], buildMachineElasticLastUpdated: Double? = nil, buildMachineElasticReason: ListProjectsResponseVariant0ItemResourceConfigBuildMachineElasticReason? = nil, buildMachineElasticTransition: ListProjectsResponseVariant0ItemResourceConfigBuildMachineElaXf3dadc7d66? = nil, buildMachineSelection: ListProjectsResponseVariant0ItemResourceConfigBuildMachineSelection? = nil, buildMachineType: ListProjectsResponseVariant0ItemResourceConfigBuildMachineType? = nil, buildQueue: ListProjectsResponseVariant0ItemResourceConfigBuildQueue? = nil, elasticConcurrencyEnabled: Bool? = nil, enableFunctionsBeta: Bool? = nil, fluid: Bool? = nil, functionDefaultMemoryType: ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType? = nil, functionDefaultTimeout: Double? = nil, functionZeroConfigFailover: Bool? = nil, isNsnbDisabled: Bool? = nil, elasticBuildMachine: ListProjectsResponseVariant0ItemResourceConfigElasticBuildMachine? = nil) {
+        self.functionDefaultRegions = functionDefaultRegions
+        self.buildMachineElasticLastUpdated = buildMachineElasticLastUpdated
+        self.buildMachineElasticReason = buildMachineElasticReason
+        self.buildMachineElasticTransition = buildMachineElasticTransition
+        (self.buildMachineSelection, self.buildMachineType) = (buildMachineSelection, buildMachineType)
+        (self.buildQueue, self.elasticConcurrencyEnabled) = (buildQueue, elasticConcurrencyEnabled)
+        (self.enableFunctionsBeta, self.fluid) = (enableFunctionsBeta, fluid)
+        self.functionDefaultMemoryType = functionDefaultMemoryType
+        self.functionDefaultTimeout = functionDefaultTimeout
+        self.functionZeroConfigFailover = functionZeroConfigFailover
+        (self.isNsnbDisabled, self.elasticBuildMachine) = (isNsnbDisabled, elasticBuildMachine)
     }
 }
 
-public struct UpdateProjectResponseAliasItemDeploymentBuildsItem: Codable {
-    public var use: String
-    public var dest: String?
-    public var src: String?
-
-    enum CodingKeys: String, CodingKey {
-        case use
-        case dest
-        case src
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateProjectResponseAliasItemDeploymentBuildsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.use) else {
-            throw SdkValidationError(field: "use", code: "required", message: "Validation failed for 'use': value is required")
-        }
-        self.use = try container.sdkDecodeRequired(.use)
-        self.dest = try container.sdkDecodeIfPresent(.dest)
-        self.src = try container.sdkDecodeIfPresent(.src)
-    }
-}
-
-extension UpdateProjectResponseAliasItemDeploymentBuildsItem {
-    public init(use: String, dest: String? = nil, src: String? = nil) {
-        (self.use, self.dest) = (use, dest)
-        self.src = src
-    }
-}
-
-public struct DeleteProjectAvatarResponseOptionsAllowlist: Codable {
-    public var paths: [DeleteProjectAvatarResponseOptionsAllowlistPathsItem]
-
-    enum CodingKeys: String, CodingKey {
-        case paths
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteProjectAvatarResponseOptionsAllowlist {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.paths) else {
-            throw SdkValidationError(field: "paths", code: "required", message: "Validation failed for 'paths': value is required")
-        }
-        self.paths = try container.sdkDecodeRequired(.paths)
-    }
-}
-
-extension DeleteProjectAvatarResponseOptionsAllowlist {
-    public init(paths: [DeleteProjectAvatarResponseOptionsAllowlistPathsItem]) {
-        self.paths = paths
-    }
-}
-
-/// The target envs on the current project that may be accessed.
-public struct ListProjectsResponseVariant1ProjectsItemTrustedSourcesOidcProXbed5170211: Codable {
-    public var preset: ListProjectsResponseVariant1ProjectsItemTrustedSourcesOidcProX86a01968de
-    /// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced
-    /// project.
-    public var slugs: [String]?
-
-    enum CodingKeys: String, CodingKey {
-        case preset
-        case slugs
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemTrustedSourcesOidcProXbed5170211 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.preset) else {
-            throw SdkValidationError(field: "preset", code: "required", message: "Validation failed for 'preset': value is required")
-        }
-        self.preset = try container.sdkDecodeRequired(.preset)
-        self.slugs = try container.sdkDecodeIfPresent(.slugs)
-    }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemTrustedSourcesOidcProXbed5170211 {
-    public init(preset: ListProjectsResponseVariant1ProjectsItemTrustedSourcesOidcProX86a01968de, slugs: [String]? = nil) {
-        (self.preset, self.slugs) = (preset, slugs)
-    }
-}
-
-public indirect enum ListProjectsResponseVariant2ProjectsItemSecurityLogHeaders {
-    case stringList([String])
-    case stringValue(String)
-}
-
-extension ListProjectsResponseVariant2ProjectsItemSecurityLogHeaders: Codable {
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant2ProjectsItemSecurityLogHeaders")
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemSecurityLogHeaders {
-    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String].self) { return .stringList(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        return nil
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemSecurityLogHeaders {
-    func encodeGroup1(to encoder: Encoder) throws -> Bool {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case let .stringList(value): try container.encode(value); return true
-        case let .stringValue(value): try container.encode(value); return true
-        }
-    }
-}
-
-public struct ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16: Codable {
-    public var projectId: String
-    public var type: ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16Type
-
-    enum CodingKeys: String, CodingKey {
-        case projectId
-        case type
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16Type.allCases.map(\.rawValue))
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16 {
-    public init(projectId: String, type: ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16Type) throws {
-        (self.projectId, self.type) = (projectId, type)
-            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16Type.allCases.map(\.rawValue))
-    }
-}
-
-public struct UpdateMicrofrontendsResponseJobsLint: Codable {
-    public var targets: [String]
-
-    enum CodingKeys: String, CodingKey {
-        case targets
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateMicrofrontendsResponseJobsLint {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.targets) else {
-            throw SdkValidationError(field: "targets", code: "required", message: "Validation failed for 'targets': value is required")
-        }
-        self.targets = try container.sdkDecodeRequired(.targets)
-    }
-}
-
-extension UpdateMicrofrontendsResponseJobsLint {
-    public init(targets: [String]) {
-        self.targets = targets
-    }
-}
-
-/// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to
-/// details of the rollback.
-public struct ListProjectsResponseVariant2ProjectsItemRollbackDescription: Codable {
-    /// Timestamp of when the rollback was requested.
-    public var createdAt: Double
-    /// User-supplied explanation of why they rolled back the project. Limited to 250 characters.
-    public var description: String
-    /// The user who rolled back the project.
-    public var userId: String
-    /// The username of the user who rolled back the project.
-    public var username: String
-
-    enum CodingKeys: String, CodingKey {
-        case createdAt
-        case description
-        case userId
-        case username
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemRollbackDescription {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
-        }
-        guard container.contains(.userId) else {
-            throw SdkValidationError(field: "userId", code: "required", message: "Validation failed for 'userId': value is required")
-        }
-        guard container.contains(.username) else {
-            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.description = try container.sdkDecodeRequired(.description)
-        self.userId = try container.sdkDecodeRequired(.userId)
-        self.username = try container.sdkDecodeRequired(.username)
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemRollbackDescription {
-    public init(createdAt: Double, description: String, userId: String, username: String) {
-        (self.createdAt, self.description) = (createdAt, description)
-        (self.userId, self.username) = (userId, username)
-    }
-}
-
-/// Passport configuration for the project.
-public struct UpdateProjectRequestBodyPassport: Codable {
-    public var connectorId: String
-    public var deploymentType: UpdateProjectRequestBodyPassportDeploymentType?
-
-    enum CodingKeys: String, CodingKey {
-        case connectorId
-        case deploymentType
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateProjectRequestBodyPassport {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.connectorId) else {
-            throw SdkValidationError(field: "connectorId", code: "required", message: "Validation failed for 'connectorId': value is required")
-        }
-        self.connectorId = try container.sdkDecodeRequired(.connectorId)
-        self.deploymentType = try container.sdkDecodeIfPresent(.deploymentType)
-    }
-}
-
-extension UpdateProjectRequestBodyPassport {
-    public init(connectorId: String, deploymentType: UpdateProjectRequestBodyPassportDeploymentType? = nil) {
-        (self.connectorId, self.deploymentType) = (connectorId, deploymentType)
-    }
-}
-
-public struct ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7: Codable {
+public struct CreateProjectEnvResponseCreatedVariant0ContentHintVariant3: Codable {
     public var storeId: String
-    public var type: ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7Type
+    public var type: CreateProjectEnvResponseCreatedVariant0ContentHintVariant3Type
 
     enum CodingKeys: String, CodingKey {
         case storeId
@@ -296,7 +36,7 @@ public struct ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7
     private init(sdkCopy value: Self) { self = value }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7 {
+extension CreateProjectEnvResponseCreatedVariant0ContentHintVariant3 {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.storeId) else {
@@ -307,32 +47,30 @@ extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7 {
         }
         self.storeId = try container.sdkDecodeRequired(.storeId)
         self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7Type.allCases.map(\.rawValue))
+            try sdkValidateRawEnum("type", self.type, CreateProjectEnvResponseCreatedVariant0ContentHintVariant3Type.allCases.map(\.rawValue))
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7 {
-    public init(storeId: String, type: ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7Type) throws {
+extension CreateProjectEnvResponseCreatedVariant0ContentHintVariant3 {
+    public init(storeId: String, type: CreateProjectEnvResponseCreatedVariant0ContentHintVariant3Type) throws {
         (self.storeId, self.type) = (storeId, type)
-            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7Type.allCases.map(\.rawValue))
+            try sdkValidateRawEnum("type", self.type, CreateProjectEnvResponseCreatedVariant0ContentHintVariant3Type.allCases.map(\.rawValue))
     }
 }
 
-public indirect enum ListProjectsResponseVariant2ProjectsItemDismissedToastsItemValue {
+public indirect enum ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede {
     case stringValue(String)
-    case doubleValue(Double)
-    case listProjectsResponseVariant2ProjectsItemDismissedToastsItemValueVariant2(
-        ListProjectsResponseVariant2ProjectsItemDismissedToastsItemValueVariant2
+    case listProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7(
+        ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7
     )
-    case boolValue(Bool)
 }
 
-extension ListProjectsResponseVariant2ProjectsItemDismissedToastsItemValue: Codable {
+extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant2ProjectsItemDismissedToastsItemValue")
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede")
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -340,140 +78,429 @@ extension ListProjectsResponseVariant2ProjectsItemDismissedToastsItemValue: Coda
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemDismissedToastsItemValue {
+extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
         if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         if let value = try? container.decode(
-            ListProjectsResponseVariant2ProjectsItemDismissedToastsItemValueVariant2.self
+            ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7.self
         ) {
-            return             .listProjectsResponseVariant2ProjectsItemDismissedToastsItemValueVariant2(value)
+            return             .listProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
         return nil
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemDismissedToastsItemValue {
+extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .doubleValue(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemDismissedToastsItemValueVariant2(value): try container.encode(value); return true
-        case let .boolValue(value): try container.encode(value); return true
+        case let .listProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7(value): try container.encode(value); return true
         }
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemDismissedToastsItemValue: SdkNumericValueConvertible {
-    var sdkNumericValue: Double? {
-        switch self {
-        case let .doubleValue(value): value
-        default: nil
-        }
-    }
-}
-
-/// This object contains information related to the pagination of the current request using continuation tokens.
-/// Since CosmosDB doesn't support going to previous pages, only count and next are provided.
-public struct ListProjectsResponseVariant2PaginationVariant0: Codable {
-    /// Amount of items in the current page.
-    /// - Example: 20
-    public var count: Double
-    /// Continuation token that must be used to request the next page. Base32 encoded for safe URL transmission.
-    /// - Example: "JBSWY3DPEHPK3PXP"
-    public var next: String?
+public struct UploadProjectAvatarResponseSecurityManagedRulesBotFilter: Codable {
+    public var active: Bool
+    public var action: UploadProjectAvatarResponseSecurityManagedRulesBotFilterAction?
 
     enum CodingKeys: String, CodingKey {
-        case count
-        case next
+        case active
+        case action
     }
 
     private init(sdkCopy value: Self) { self = value }
 }
 
-extension ListProjectsResponseVariant2PaginationVariant0 {
+extension UploadProjectAvatarResponseSecurityManagedRulesBotFilter {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.count) else {
-            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
+        guard container.contains(.active) else {
+            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
         }
-        guard container.contains(.next) else {
-            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
-        }
-        self.count = try container.sdkDecodeRequired(.count)
-        self.next = try container.sdkDecodeNullable(.next)
+        self.active = try container.sdkDecodeRequired(.active)
+        self.action = try container.sdkDecodeIfPresent(.action)
     }
 }
 
-extension ListProjectsResponseVariant2PaginationVariant0 {
-    public init(count: Double, next: String?) {
-        (self.count, self.next) = (count, next)
+extension UploadProjectAvatarResponseSecurityManagedRulesBotFilter {
+    public init(active: Bool, action: UploadProjectAvatarResponseSecurityManagedRulesBotFilterAction? = nil) {
+        (self.active, self.action) = (active, action)
     }
 }
 
-public indirect enum ListProjectsResponseVariant2ProjectsItemInternalRoutesItem {
-    case listProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant0(
-        ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant0
-    )
-    case listProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant1(
-        ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant1
-    )
+public typealias ListProjectsResponseVariant1ProjectsItemLinkVariant6DeployHooksList = [ListProjectsResponseVariant1ProjectsItemLinkVariant6DeployHooksItem]
+
+public struct ListProjectsResponseVariant1ProjectsItemLinkVariant6: Codable {
+    public var deployHooks: ListProjectsResponseVariant1ProjectsItemLinkVariant6DeployHooksList
+    public var gitCredentialId: String
+    public var org: String
+    public var productionBranch: String
+    public var repo: String
+    public var repoId: String
+    public var type: ListProjectsResponseVariant1ProjectsItemLinkVariant6Type
+    public var createdAt: Double?
+    public var sourceless: Bool?
+    public var updatedAt: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case deployHooks
+        case gitCredentialId
+        case org
+        case productionBranch
+        case repo
+        case repoId
+        case type
+        case createdAt
+        case sourceless
+        case updatedAt
+    }
+
+    private init(sdkCopy value: Self) { self = value }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemInternalRoutesItem: Codable {
-
+extension ListProjectsResponseVariant1ProjectsItemLinkVariant6 {
     public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.deployHooks) else {
+            throw SdkValidationError(field: "deployHooks", code: "required", message: "Validation failed for 'deployHooks': value is required")
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant2ProjectsItemInternalRoutesItem")
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemInternalRoutesItem {
-    static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant0.self),
-           sdkKeepsEveryKey(value, of: raw) {
-            return .listProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant0(value)
+        guard container.contains(.gitCredentialId) else {
+            throw SdkValidationError(field: "gitCredentialId", code: "required", message: "Validation failed for 'gitCredentialId': value is required")
         }
-        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant1.self),
-           sdkKeepsEveryKey(value, of: raw) {
-            return .listProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant1(value)
+        guard container.contains(.org) else {
+            throw SdkValidationError(field: "org", code: "required", message: "Validation failed for 'org': value is required")
         }
-        return nil
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemInternalRoutesItem {
-    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(
-            ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant0.self
-        ) {
-            return             .listProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant0(value)
+        guard container.contains(.productionBranch) else {
+            throw SdkValidationError(field: "productionBranch", code: "required", message: "Validation failed for 'productionBranch': value is required")
         }
-        if let value = try? container.decode(
-            ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant1.self
-        ) {
-            return             .listProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant1(value)
+        guard container.contains(.repo) else {
+            throw SdkValidationError(field: "repo", code: "required", message: "Validation failed for 'repo': value is required")
         }
-        return nil
+        guard container.contains(.repoId) else {
+            throw SdkValidationError(field: "repoId", code: "required", message: "Validation failed for 'repoId': value is required")
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+        }
+        self.deployHooks = try container.sdkDecodeRequired(.deployHooks)
+        self.gitCredentialId = try container.sdkDecodeRequired(.gitCredentialId)
+        self.org = try container.sdkDecodeRequired(.org)
+        self.productionBranch = try container.sdkDecodeRequired(.productionBranch)
+        self.repo = try container.sdkDecodeRequired(.repo)
+        self.repoId = try container.sdkDecodeRequired(.repoId)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.sourceless = try container.sdkDecodeIfPresent(.sourceless)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemLinkVariant6Type.allCases.map(\.rawValue))
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemInternalRoutesItem {
-    func encodeGroup1(to encoder: Encoder) throws -> Bool {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case let .listProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant0(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant2ProjectsItemInternalRoutesItemVariant1(value): try container.encode(value); return true
-        }
+extension ListProjectsResponseVariant1ProjectsItemLinkVariant6 {
+    public init(deployHooks: ListProjectsResponseVariant1ProjectsItemLinkVariant6DeployHooksList, gitCredentialId: String, org: String, productionBranch: String, repo: String, repoId: String, type: ListProjectsResponseVariant1ProjectsItemLinkVariant6Type, createdAt: Double? = nil, sourceless: Bool? = nil, updatedAt: Double? = nil) throws {
+        (self.deployHooks, self.gitCredentialId) = (deployHooks, gitCredentialId)
+        (self.org, self.productionBranch) = (org, productionBranch)
+        (self.repo, self.repoId) = (repo, repoId)
+        (self.type, self.createdAt) = (type, createdAt)
+        (self.sourceless, self.updatedAt) = (sourceless, updatedAt)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemLinkVariant6Type.allCases.map(\.rawValue))
     }
+}
+
+/// Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses
+/// contain a broader, non-authoritative permission summary. Each property: Requested and authorized operations when
+/// `checkPermissions` is used.
+public struct ListProjectsResponseVariant2ProjectsItemPermissions: Codable {
+    public var accessGroup: [ACLAction]? = .none
+    public var agent: [ACLAction]? = .none
+    public var aiGatewayApiKey: [ACLAction]? = .none
+    public var aiGatewayApiKeyBypassAll: [ACLAction]? = .none
+    public var aiGatewayApiKeyOwnedBySelf: [ACLAction]? = .none
+    public var aiGatewayApiKeySpendAttribution: [ACLAction]? = .none
+    public var aiGatewayApiKeyZdrExemption: [ACLAction]? = .none
+    public var aiGatewayBudget: [ACLAction]? = .none
+    public var aiGatewayCredits: [ACLAction]? = .none
+    public var aiGatewayGuardrails: [ACLAction]? = .none
+    public var aiGatewayPrivateModels: [ACLAction]? = .none
+    public var aiGatewayRules: [ACLAction]? = .none
+    public var aiGatewaySettings: [ACLAction]? = .none
+    public var aiGatewayTranscripts: [ACLAction]? = .none
+    public var aiGatewayTranscriptsSettings: [ACLAction]? = .none
+    public var aiGatewayUsage: [ACLAction]? = .none
+    public var aiGatewayVirtualModelConfigs: [ACLAction]? = .none
+    public var alertRules: [ACLAction]? = .none
+    public var alerts: [ACLAction]? = .none
+    public var aliasGlobal: [ACLAction]? = .none
+    public var aliasProject: [ACLAction]? = .none
+    public var aliasProtectionBypass: [ACLAction]? = .none
+    public var analytics: [ACLAction]? = .none
+    public var analyticsSampling: [ACLAction]? = .none
+    public var analyticsUsage: [ACLAction]? = .none
+    public var apiKey: [ACLAction]? = .none
+    public var apiKeyAiGateway: [ACLAction]? = .none
+    public var apiKeyOwnedBySelf: [ACLAction]? = .none
+    public var auditLog: [ACLAction]? = .none
+    public var automation: [ACLAction]? = .none
+    public var billingAddress: [ACLAction]? = .none
+    public var billingInformation: [ACLAction]? = .none
+    public var billingInvoice: [ACLAction]? = .none
+    public var billingInvoiceEmailRecipient: [ACLAction]? = .none
+    public var billingInvoiceLanguage: [ACLAction]? = .none
+    public var billingPlan: [ACLAction]? = .none
+    public var billingPurchaseOrder: [ACLAction]? = .none
+    public var billingRefund: [ACLAction]? = .none
+    public var billingTaxId: [ACLAction]? = .none
+    public var blob: [ACLAction]? = .none
+    public var blobStoreTokenSet: [ACLAction]? = .none
+    public var budget: [ACLAction]? = .none
+    public var buildMachine: [ACLAction]? = .none
+    public var buildMachineDefault: [ACLAction]? = .none
+    public var bulkRedirects: [ACLAction]? = .none
+    public var cacheArtifact: [ACLAction]? = .none
+    public var cacheArtifactUsageEvent: [ACLAction]? = .none
+    public var ciInvocations: [ACLAction]? = .none
+    public var ciLogs: [ACLAction]? = .none
+    public var codeChecks: [ACLAction]? = .none
+    public var codeOwners: [ACLAction]? = .none
+    public var concurrentBuilds: [ACLAction]? = .none
+    public var connect: [ACLAction]? = .none
+    public var connectConfiguration: [ACLAction]? = .none
+    public var connectConfigurationLink: [ACLAction]? = .none
+    public var connectLogs: [ACLAction]? = .none
+    public var connexClient: [ACLAction]? = .none
+    public var connexClientProject: [ACLAction]? = .none
+    public var connexContact: [ACLAction]? = .none
+    public var connexInstallation: [ACLAction]? = .none
+    public var connexToken: [ACLAction]? = .none
+    public var cursorOriginInstallation: [ACLAction]? = .none
+    public var dataCacheBillingSettings: [ACLAction]? = .none
+    public var dataCacheNamespace: [ACLAction]? = .none
+    public var defaultDeploymentProtection: [ACLAction]? = .none
+    public var deployment: [ACLAction]? = .none
+    public var deploymentBuildLogs: [ACLAction]? = .none
+    public var deploymentCheck: [ACLAction]? = .none
+    public var deploymentCheckPreview: [ACLAction]? = .none
+    public var deploymentCheckReRunFromProductionBranch: [ACLAction]? = .none
+    public var deploymentPolicy: [ACLAction]? = .none
+    public var deploymentPreview: [ACLAction]? = .none
+    public var deploymentPrivate: [ACLAction]? = .none
+    public var deploymentProductionGit: [ACLAction]? = .none
+    public var deploymentPromote: [ACLAction]? = .none
+    public var deploymentProtectionException: [ACLAction]? = .none
+    public var deploymentRollback: [ACLAction]? = .none
+    public var deploymentV0: [ACLAction]? = .none
+    public var domain: [ACLAction]? = .none
+    public var domainAcceptDelegation: [ACLAction]? = .none
+    public var domainAuthCodes: [ACLAction]? = .none
+    public var domainCertificate: [ACLAction]? = .none
+    public var domainCheckConfig: [ACLAction]? = .none
+    public var domainMove: [ACLAction]? = .none
+    public var domainPurchase: [ACLAction]? = .none
+    public var domainRecord: [ACLAction]? = .none
+    public var domainTransferIn: [ACLAction]? = .none
+    public var drain: [ACLAction]? = .none
+    public var edgeCacheNamespace: [ACLAction]? = .none
+    public var edgeConfig: [ACLAction]? = .none
+    public var edgeConfigItem: [ACLAction]? = .none
+    public var edgeConfigSchema: [ACLAction]? = .none
+    public var edgeConfigToken: [ACLAction]? = .none
+    public var endpointVerification: [ACLAction]? = .none
+    public var environments: [ACLAction]? = .none
+    public var event: [ACLAction]? = .none
+    public var fileUpload: [ACLAction]? = .none
+    public var flagsExplorerSubscription: [ACLAction]? = .none
+    public var gitCredentialGrant: [ACLAction]? = .none
+    public var gitRepository: [ACLAction]? = .none
+    public var imageOptimizationNewPrice: [ACLAction]? = .none
+    public var integration: [ACLAction]? = .none
+    public var integrationAccount: [ACLAction]? = .none
+    public var integrationConfiguration: [ACLAction]? = .none
+    public var integrationConfigurationProjects: [ACLAction]? = .none
+    public var integrationConfigurationRole: [ACLAction]? = .none
+    public var integrationConfigurationTransfer: [ACLAction]? = .none
+    public var integrationDeploymentAction: [ACLAction]? = .none
+    public var integrationEvent: [ACLAction]? = .none
+    public var integrationLog: [ACLAction]? = .none
+    public var integrationPullRequest: [ACLAction]? = .none
+    public var integrationResource: [ACLAction]? = .none
+    public var integrationResourceData: [ACLAction]? = .none
+    public var integrationResourceReplCommand: [ACLAction]? = .none
+    public var integrationResourceSecrets: [ACLAction]? = .none
+    public var integrationSsoSession: [ACLAction]? = .none
+    public var integrationStoreTokenSet: [ACLAction]? = .none
+    public var integrationStrict: [ACLAction]? = .none
+    public var integrationVercelConfigurationOverride: [ACLAction]? = .none
+    public var ipBlocking: [ACLAction]? = .none
+    public var job: [ACLAction]? = .none
+    public var jobGlobal: [ACLAction]? = .none
+    public var kmsIssuer: [ACLAction]? = .none
+    public var kmsProjectGrant: [ACLAction]? = .none
+    public var logDrain: [ACLAction]? = .none
+    public var logs: [ACLAction]? = .none
+    public var logsPreset: [ACLAction]? = .none
+    public var marketplaceBillingData: [ACLAction]? = .none
+    public var marketplaceExperimentationEdgeConfigData: [ACLAction]? = .none
+    public var marketplaceExperimentationItem: [ACLAction]? = .none
+    public var marketplaceFlexCommit: [ACLAction]? = .none
+    public var marketplaceInstallationMember: [ACLAction]? = .none
+    public var marketplaceInvoice: [ACLAction]? = .none
+    public var marketplaceSettings: [ACLAction]? = .none
+    public var messageboard: [ACLAction]? = .none
+    public var messageboardSpace: [ACLAction]? = .none
+    public var messageboardTask: [ACLAction]? = .none
+    public var monitoring: [ACLAction]? = .none
+    public var monitoringAlert: [ACLAction]? = .none
+    public var monitoringChart: [ACLAction]? = .none
+    public var monitoringQuery: [ACLAction]? = .none
+    public var monitoringSettings: [ACLAction]? = .none
+    public var notificationCustomerBudget: [ACLAction]? = .none
+    public var notificationDeploymentFailed: [ACLAction]? = .none
+    public var notificationDomainConfiguration: [ACLAction]? = .none
+    public var notificationDomainExpire: [ACLAction]? = .none
+    public var notificationDomainMoved: [ACLAction]? = .none
+    public var notificationDomainPurchase: [ACLAction]? = .none
+    public var notificationDomainRenewal: [ACLAction]? = .none
+    public var notificationDomainTransfer: [ACLAction]? = .none
+    public var notificationDomainUnverified: [ACLAction]? = .none
+    public var notificationMonitoringAlert: [ACLAction]? = .none
+    public var notificationPaymentFailed: [ACLAction]? = .none
+    public var notificationPreferences: [ACLAction]? = .none
+    public var notificationStatementOfReasons: [ACLAction]? = .none
+    public var notificationUsageAlert: [ACLAction]? = .none
+    public var oauth2Application: [ACLAction]? = .none
+    public var oauth2Connection: [ACLAction]? = .none
+    public var observabilityConfiguration: [ACLAction]? = .none
+    public var observabilityData: [ACLAction]? = .none
+    public var observabilityFunnel: [ACLAction]? = .none
+    public var observabilityNotebook: [ACLAction]? = .none
+    public var oidcFederationPolicy: [ACLAction]? = .none
+    public var onDemandBuild: [ACLAction]? = .none
+    public var onDemandConcurrency: [ACLAction]? = .none
+    public var openTelemetryEndpoint: [ACLAction]? = .none
+    public var optionsAllowlist: [ACLAction]? = .none
+    public var organization: [ACLAction]? = .none
+    public var organizationDomain: [ACLAction]? = .none
+    public var organizationTeam: [ACLAction]? = .none
+    public var ownEvent: [ACLAction]? = .none
+    public var pageIntegrity: [ACLAction]? = .none
+    public var passwordProtection: [ACLAction]? = .none
+    public var passwordProtectionInvoiceItem: [ACLAction]? = .none
+    public var paymentMethod: [ACLAction]? = .none
+    public var permissions: [ACLAction]? = .none
+    public var postgres: [ACLAction]? = .none
+    public var postgresStoreTokenSet: [ACLAction]? = .none
+    public var previewDeploymentSuffix: [ACLAction]? = .none
+    public var privateCloudAccount: [ACLAction]? = .none
+    public var privateLinkEndpoint: [ACLAction]? = .none
+    public var productionAliasProtectionBypass: [ACLAction]? = .none
+    public var productionShareableLink: [ACLAction]? = .none
+    public var project: [ACLAction]? = .none
+    public var projectAccessGroup: [ACLAction]? = .none
+    public var projectAnalyticsSampling: [ACLAction]? = .none
+    public var projectAnalyticsUsage: [ACLAction]? = .none
+    public var projectCheck: [ACLAction]? = .none
+    public var projectCheckRun: [ACLAction]? = .none
+    public var projectDeploymentExpiration: [ACLAction]? = .none
+    public var projectDeploymentHook: [ACLAction]? = .none
+    public var projectDeploymentProtectionStrict: [ACLAction]? = .none
+    public var projectDomain: [ACLAction]? = .none
+    public var projectDomainCheckConfig: [ACLAction]? = .none
+    public var projectDomainMove: [ACLAction]? = .none
+    public var projectDomainVerify: [ACLAction]? = .none
+    public var projectEnvVars: [ACLAction]? = .none
+    public var projectEnvVarsProduction: [ACLAction]? = .none
+    public var projectEnvVarsUnownedByIntegration: [ACLAction]? = .none
+    public var projectEvent: [ACLAction]? = .none
+    public var projectFlags: [ACLAction]? = .none
+    public var projectFlagsProduction: [ACLAction]? = .none
+    public var projectFlagsSdkKey: [ACLAction]? = .none
+    public var projectFromV0: [ACLAction]? = .none
+    public var projectId: [ACLAction]? = .none
+    public var projectIntegrationConfiguration: [ACLAction]? = .none
+    public var projectLink: [ACLAction]? = .none
+    public var projectMember: [ACLAction]? = .none
+    public var projectMonitoring: [ACLAction]? = .none
+    public var projectOidcToken: [ACLAction]? = .none
+    public var projectPermissions: [ACLAction]? = .none
+    public var projectProductionBranch: [ACLAction]? = .none
+    public var projectProtectionBypass: [ACLAction]? = .none
+    public var projectRollingRelease: [ACLAction]? = .none
+    public var projectRoutes: [ACLAction]? = .none
+    public var projectSetting: [ACLAction]? = .none
+    public var projectSupportCase: [ACLAction]? = .none
+    public var projectSupportCaseComment: [ACLAction]? = .none
+    public var projectTier: [ACLAction]? = .none
+    public var projectTransfer: [ACLAction]? = .none
+    public var projectTransferIn: [ACLAction]? = .none
+    public var projectTransferOut: [ACLAction]? = .none
+    public var projectTransferRequest: [ACLAction]? = .none
+    public var projectUsage: [ACLAction]? = .none
+    public var proTrialOnboarding: [ACLAction]? = .none
+    public var rateLimit: [ACLAction]? = .none
+    public var redis: [ACLAction]? = .none
+    public var redisStoreTokenSet: [ACLAction]? = .none
+    public var remoteCaching: [ACLAction]? = .none
+    public var repository: [ACLAction]? = .none
+    public var samlConfig: [ACLAction]? = .none
+    public var schedule: [ACLAction]? = .none
+    public var seawallConfig: [ACLAction]? = .none
+    public var secret: [ACLAction]? = .none
+    public var securityConfig: [ACLAction]? = .none
+    public var securityPlusConfiguration: [ACLAction]? = .none
+    public var sensitiveEnvironmentVariablePolicy: [ACLAction]? = .none
+    public var setting: [ACLAction]? = .none
+    public var shareableLink: [ACLAction]? = .none
+    public var shareableLinkStrict: [ACLAction]? = .none
+    public var sharedEnvVarConnection: [ACLAction]? = .none
+    public var sharedEnvVars: [ACLAction]? = .none
+    public var sharedEnvVarsProduction: [ACLAction]? = .none
+    public var skewProtection: [ACLAction]? = .none
+    public var space: [ACLAction]? = .none
+    public var spaceRun: [ACLAction]? = .none
+    public var storeIsLocked: [ACLAction]? = .none
+    public var storeTokenSetSensitive: [ACLAction]? = .none
+    public var storeTransfer: [ACLAction]? = .none
+    public var supportCase: [ACLAction]? = .none
+    public var supportCaseComment: [ACLAction]? = .none
+    public var team: [ACLAction]? = .none
+    public var teamAccessRequest: [ACLAction]? = .none
+    public var teamFellowMembership: [ACLAction]? = .none
+    public var teamGitExclusivity: [ACLAction]? = .none
+    public var teamInvite: [ACLAction]? = .none
+    public var teamInviteCode: [ACLAction]? = .none
+    public var teamInviteLink: [ACLAction]? = .none
+    public var teamJoin: [ACLAction]? = .none
+    public var teamMemberMfaStatus: [ACLAction]? = .none
+    public var teamMicrofrontends: [ACLAction]? = .none
+    public var teamOwnMembership: [ACLAction]? = .none
+    public var teamOwnMembershipDisconnectSaml: [ACLAction]? = .none
+    public var teamSudo: [ACLAction]? = .none
+    public var teamTokenInvalidation: [ACLAction]? = .none
+    public var token: [ACLAction]? = .none
+    public var toolbarComment: [ACLAction]? = .none
+    public var trustedIps: [ACLAction]? = .none
+    public var trustedSources: [ACLAction]? = .none
+    public var usage: [ACLAction]? = .none
+    public var usageCycle: [ACLAction]? = .none
+    public var user: [ACLAction]? = .none
+    public var userConnection: [ACLAction]? = .none
+    public var userMfaConfiguration: [ACLAction]? = .none
+    public var userPreference: [ACLAction]? = .none
+    public var userSudo: [ACLAction]? = .none
+    public var v0Chat: [ACLAction]? = .none
+    public var vcrRepository: [ACLAction]? = .none
+    public var vercelAppInstallation: [ACLAction]? = .none
+    public var vercelAppInstallationRequest: [ACLAction]? = .none
+    public var vercelAuth: [ACLAction]? = .none
+    public var vercelRun: [ACLAction]? = .none
+    public var vpcPeeringConnection: [ACLAction]? = .none
+    public var webAnalytics: [ACLAction]? = .none
+    public var webAnalyticsPlan: [ACLAction]? = .none
+    public var webAuthn: [ACLAction]? = .none
+    public var webhook: [ACLAction]? = .none
+    public var webhookEvent: [ACLAction]? = .none
+    public var workflowRunData: [ACLAction]? = .none
+
+    init(sdkDefaults _: Void) {}
 }

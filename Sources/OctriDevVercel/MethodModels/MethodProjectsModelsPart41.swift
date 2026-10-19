@@ -9,227 +9,394 @@ import Foundation
 
 // Canonical projects operation model declarations
 extension UpdateProjectResponsePermissions {
-    public init(accessGroup: [ACLAction]? = nil, agent: [ACLAction]? = nil, aiGatewayApiKey: [ACLAction]? = nil, aiGatewayApiKeyBypassAll: [ACLAction]? = nil, aiGatewayApiKeyOwnedBySelf: [ACLAction]? = nil, aiGatewayApiKeySpendAttribution: [ACLAction]? = nil, aiGatewayApiKeyZdrExemption: [ACLAction]? = nil, aiGatewayBudget: [ACLAction]? = nil, aiGatewayCredits: [ACLAction]? = nil, aiGatewayGuardrails: [ACLAction]? = nil, aiGatewayPrivateModels: [ACLAction]? = nil, aiGatewayRules: [ACLAction]? = nil, aiGatewaySettings: [ACLAction]? = nil, aiGatewayTranscripts: [ACLAction]? = nil, aiGatewayTranscriptsSettings: [ACLAction]? = nil, aiGatewayUsage: [ACLAction]? = nil, aiGatewayVirtualModelConfigs: [ACLAction]? = nil, alertRules: [ACLAction]? = nil, alerts: [ACLAction]? = nil, aliasGlobal: [ACLAction]? = nil, aliasProject: [ACLAction]? = nil, aliasProtectionBypass: [ACLAction]? = nil, analytics: [ACLAction]? = nil, analyticsSampling: [ACLAction]? = nil, analyticsUsage: [ACLAction]? = nil, apiKey: [ACLAction]? = nil, apiKeyAiGateway: [ACLAction]? = nil, apiKeyOwnedBySelf: [ACLAction]? = nil, auditLog: [ACLAction]? = nil, automation: [ACLAction]? = nil, billingAddress: [ACLAction]? = nil, billingInformation: [ACLAction]? = nil, billingInvoice: [ACLAction]? = nil, billingInvoiceEmailRecipient: [ACLAction]? = nil, billingInvoiceLanguage: [ACLAction]? = nil, billingPlan: [ACLAction]? = nil, billingPurchaseOrder: [ACLAction]? = nil, billingRefund: [ACLAction]? = nil, billingTaxId: [ACLAction]? = nil, blob: [ACLAction]? = nil, blobStoreTokenSet: [ACLAction]? = nil, budget: [ACLAction]? = nil, buildMachine: [ACLAction]? = nil, buildMachineDefault: [ACLAction]? = nil, bulkRedirects: [ACLAction]? = nil, cacheArtifact: [ACLAction]? = nil, cacheArtifactUsageEvent: [ACLAction]? = nil, ciInvocations: [ACLAction]? = nil, ciLogs: [ACLAction]? = nil, codeChecks: [ACLAction]? = nil, codeOwners: [ACLAction]? = nil, concurrentBuilds: [ACLAction]? = nil, connect: [ACLAction]? = nil, connectConfiguration: [ACLAction]? = nil, connectConfigurationLink: [ACLAction]? = nil, connectLogs: [ACLAction]? = nil, connexClient: [ACLAction]? = nil, connexClientProject: [ACLAction]? = nil, connexContact: [ACLAction]? = nil, connexInstallation: [ACLAction]? = nil, connexToken: [ACLAction]? = nil, cursorOriginInstallation: [ACLAction]? = nil, dataCacheBillingSettings: [ACLAction]? = nil, dataCacheNamespace: [ACLAction]? = nil, defaultDeploymentProtection: [ACLAction]? = nil, deployment: [ACLAction]? = nil, deploymentBuildLogs: [ACLAction]? = nil, deploymentCheck: [ACLAction]? = nil, deploymentCheckPreview: [ACLAction]? = nil, deploymentCheckReRunFromProductionBranch: [ACLAction]? = nil, deploymentPolicy: [ACLAction]? = nil, deploymentPreview: [ACLAction]? = nil, deploymentPrivate: [ACLAction]? = nil, deploymentProductionGit: [ACLAction]? = nil, deploymentPromote: [ACLAction]? = nil, deploymentProtectionException: [ACLAction]? = nil, deploymentRollback: [ACLAction]? = nil, deploymentV0: [ACLAction]? = nil, domain: [ACLAction]? = nil, domainAcceptDelegation: [ACLAction]? = nil, domainAuthCodes: [ACLAction]? = nil, domainCertificate: [ACLAction]? = nil, domainCheckConfig: [ACLAction]? = nil, domainMove: [ACLAction]? = nil, domainPurchase: [ACLAction]? = nil, domainRecord: [ACLAction]? = nil, domainTransferIn: [ACLAction]? = nil, drain: [ACLAction]? = nil, edgeCacheNamespace: [ACLAction]? = nil, edgeConfig: [ACLAction]? = nil, edgeConfigItem: [ACLAction]? = nil, edgeConfigSchema: [ACLAction]? = nil, edgeConfigToken: [ACLAction]? = nil, endpointVerification: [ACLAction]? = nil, environments: [ACLAction]? = nil, event: [ACLAction]? = nil, fileUpload: [ACLAction]? = nil, flagsExplorerSubscription: [ACLAction]? = nil, gitCredentialGrant: [ACLAction]? = nil, gitRepository: [ACLAction]? = nil, imageOptimizationNewPrice: [ACLAction]? = nil, integration: [ACLAction]? = nil, integrationAccount: [ACLAction]? = nil, integrationConfiguration: [ACLAction]? = nil, integrationConfigurationProjects: [ACLAction]? = nil, integrationConfigurationRole: [ACLAction]? = nil, integrationConfigurationTransfer: [ACLAction]? = nil, integrationDeploymentAction: [ACLAction]? = nil, integrationEvent: [ACLAction]? = nil, integrationLog: [ACLAction]? = nil, integrationPullRequest: [ACLAction]? = nil, integrationResource: [ACLAction]? = nil, integrationResourceData: [ACLAction]? = nil, integrationResourceReplCommand: [ACLAction]? = nil, integrationResourceSecrets: [ACLAction]? = nil, integrationSsoSession: [ACLAction]? = nil, integrationStoreTokenSet: [ACLAction]? = nil, integrationStrict: [ACLAction]? = nil, integrationVercelConfigurationOverride: [ACLAction]? = nil, ipBlocking: [ACLAction]? = nil, job: [ACLAction]? = nil, jobGlobal: [ACLAction]? = nil, kmsIssuer: [ACLAction]? = nil, kmsProjectGrant: [ACLAction]? = nil, logDrain: [ACLAction]? = nil, logs: [ACLAction]? = nil, logsPreset: [ACLAction]? = nil, marketplaceBillingData: [ACLAction]? = nil, marketplaceExperimentationEdgeConfigData: [ACLAction]? = nil, marketplaceExperimentationItem: [ACLAction]? = nil, marketplaceFlexCommit: [ACLAction]? = nil, marketplaceInstallationMember: [ACLAction]? = nil, marketplaceInvoice: [ACLAction]? = nil, marketplaceSettings: [ACLAction]? = nil, messageboard: [ACLAction]? = nil, messageboardSpace: [ACLAction]? = nil, messageboardTask: [ACLAction]? = nil, monitoring: [ACLAction]? = nil, monitoringAlert: [ACLAction]? = nil, monitoringChart: [ACLAction]? = nil, monitoringQuery: [ACLAction]? = nil, monitoringSettings: [ACLAction]? = nil, notificationCustomerBudget: [ACLAction]? = nil, notificationDeploymentFailed: [ACLAction]? = nil, notificationDomainConfiguration: [ACLAction]? = nil, notificationDomainExpire: [ACLAction]? = nil, notificationDomainMoved: [ACLAction]? = nil, notificationDomainPurchase: [ACLAction]? = nil, notificationDomainRenewal: [ACLAction]? = nil, notificationDomainTransfer: [ACLAction]? = nil, notificationDomainUnverified: [ACLAction]? = nil, notificationMonitoringAlert: [ACLAction]? = nil, notificationPaymentFailed: [ACLAction]? = nil, notificationPreferences: [ACLAction]? = nil, notificationStatementOfReasons: [ACLAction]? = nil, notificationUsageAlert: [ACLAction]? = nil, oauth2Application: [ACLAction]? = nil, oauth2Connection: [ACLAction]? = nil, observabilityConfiguration: [ACLAction]? = nil, observabilityData: [ACLAction]? = nil, observabilityFunnel: [ACLAction]? = nil, observabilityNotebook: [ACLAction]? = nil, oidcFederationPolicy: [ACLAction]? = nil, onDemandBuild: [ACLAction]? = nil, onDemandConcurrency: [ACLAction]? = nil, openTelemetryEndpoint: [ACLAction]? = nil, optionsAllowlist: [ACLAction]? = nil, organization: [ACLAction]? = nil, organizationDomain: [ACLAction]? = nil, organizationTeam: [ACLAction]? = nil, ownEvent: [ACLAction]? = nil, pageIntegrity: [ACLAction]? = nil, passwordProtection: [ACLAction]? = nil, passwordProtectionInvoiceItem: [ACLAction]? = nil, paymentMethod: [ACLAction]? = nil, permissions: [ACLAction]? = nil, postgres: [ACLAction]? = nil, postgresStoreTokenSet: [ACLAction]? = nil, previewDeploymentSuffix: [ACLAction]? = nil, privateCloudAccount: [ACLAction]? = nil, privateLinkEndpoint: [ACLAction]? = nil, productionAliasProtectionBypass: [ACLAction]? = nil, productionShareableLink: [ACLAction]? = nil, project: [ACLAction]? = nil, projectAccessGroup: [ACLAction]? = nil, projectAnalyticsSampling: [ACLAction]? = nil, projectAnalyticsUsage: [ACLAction]? = nil, projectCheck: [ACLAction]? = nil, projectCheckRun: [ACLAction]? = nil, projectDeploymentExpiration: [ACLAction]? = nil, projectDeploymentHook: [ACLAction]? = nil, projectDeploymentProtectionStrict: [ACLAction]? = nil, projectDomain: [ACLAction]? = nil, projectDomainCheckConfig: [ACLAction]? = nil, projectDomainMove: [ACLAction]? = nil, projectDomainVerify: [ACLAction]? = nil, projectEnvVars: [ACLAction]? = nil, projectEnvVarsProduction: [ACLAction]? = nil, projectEnvVarsUnownedByIntegration: [ACLAction]? = nil, projectEvent: [ACLAction]? = nil, projectFlags: [ACLAction]? = nil, projectFlagsProduction: [ACLAction]? = nil, projectFlagsSdkKey: [ACLAction]? = nil, projectFromV0: [ACLAction]? = nil, projectId: [ACLAction]? = nil, projectIntegrationConfiguration: [ACLAction]? = nil, projectLink: [ACLAction]? = nil, projectMember: [ACLAction]? = nil, projectMonitoring: [ACLAction]? = nil, projectOidcToken: [ACLAction]? = nil, projectPermissions: [ACLAction]? = nil, projectProductionBranch: [ACLAction]? = nil, projectProtectionBypass: [ACLAction]? = nil, projectRollingRelease: [ACLAction]? = nil, projectRoutes: [ACLAction]? = nil, projectSetting: [ACLAction]? = nil, projectSupportCase: [ACLAction]? = nil, projectSupportCaseComment: [ACLAction]? = nil, projectTier: [ACLAction]? = nil, projectTransfer: [ACLAction]? = nil, projectTransferIn: [ACLAction]? = nil, projectTransferOut: [ACLAction]? = nil, projectTransferRequest: [ACLAction]? = nil, projectUsage: [ACLAction]? = nil, proTrialOnboarding: [ACLAction]? = nil, rateLimit: [ACLAction]? = nil, redis: [ACLAction]? = nil, redisStoreTokenSet: [ACLAction]? = nil, remoteCaching: [ACLAction]? = nil, repository: [ACLAction]? = nil, samlConfig: [ACLAction]? = nil, schedule: [ACLAction]? = nil, seawallConfig: [ACLAction]? = nil, secret: [ACLAction]? = nil, securityConfig: [ACLAction]? = nil, securityPlusConfiguration: [ACLAction]? = nil, sensitiveEnvironmentVariablePolicy: [ACLAction]? = nil, setting: [ACLAction]? = nil, shareableLink: [ACLAction]? = nil, shareableLinkStrict: [ACLAction]? = nil, sharedEnvVarConnection: [ACLAction]? = nil, sharedEnvVars: [ACLAction]? = nil, sharedEnvVarsProduction: [ACLAction]? = nil, skewProtection: [ACLAction]? = nil, space: [ACLAction]? = nil, spaceRun: [ACLAction]? = nil, storeIsLocked: [ACLAction]? = nil, storeTokenSetSensitive: [ACLAction]? = nil, storeTransfer: [ACLAction]? = nil, supportCase: [ACLAction]? = nil, supportCaseComment: [ACLAction]? = nil, team: [ACLAction]? = nil, teamAccessRequest: [ACLAction]? = nil, teamFellowMembership: [ACLAction]? = nil, teamGitExclusivity: [ACLAction]? = nil, teamInvite: [ACLAction]? = nil, teamInviteCode: [ACLAction]? = nil, teamInviteLink: [ACLAction]? = nil, teamJoin: [ACLAction]? = nil, teamMemberMfaStatus: [ACLAction]? = nil, teamMicrofrontends: [ACLAction]? = nil, teamOwnMembership: [ACLAction]? = nil, teamOwnMembershipDisconnectSaml: [ACLAction]? = nil, teamSudo: [ACLAction]? = nil, teamTokenInvalidation: [ACLAction]? = nil, token: [ACLAction]? = nil, toolbarComment: [ACLAction]? = nil, trustedIps: [ACLAction]? = nil, trustedSources: [ACLAction]? = nil, usage: [ACLAction]? = nil, usageCycle: [ACLAction]? = nil, user: [ACLAction]? = nil, userConnection: [ACLAction]? = nil, userMfaConfiguration: [ACLAction]? = nil, userPreference: [ACLAction]? = nil, userSudo: [ACLAction]? = nil, v0Chat: [ACLAction]? = nil, vcrRepository: [ACLAction]? = nil, vercelAppInstallation: [ACLAction]? = nil, vercelAppInstallationRequest: [ACLAction]? = nil, vercelAuth: [ACLAction]? = nil, vercelRun: [ACLAction]? = nil, vpcPeeringConnection: [ACLAction]? = nil, webAnalytics: [ACLAction]? = nil, webAnalyticsPlan: [ACLAction]? = nil, webAuthn: [ACLAction]? = nil, webhook: [ACLAction]? = nil, webhookEvent: [ACLAction]? = nil, workflowRunData: [ACLAction]? = nil) {
-        self.init(sdkDefaults: ())
-        sdkSet1(accessGroup, agent, aiGatewayApiKey, aiGatewayApiKeyBypassAll, aiGatewayApiKeyOwnedBySelf)
-        sdkSet2(aiGatewayApiKeySpendAttribution, aiGatewayApiKeyZdrExemption, aiGatewayBudget, aiGatewayCredits)
-        sdkSet3(aiGatewayGuardrails, aiGatewayPrivateModels, aiGatewayRules, aiGatewaySettings, aiGatewayTranscripts)
-        sdkSet4(aiGatewayTranscriptsSettings, aiGatewayUsage, aiGatewayVirtualModelConfigs, alertRules, alerts)
-        sdkSet5(aliasGlobal, aliasProject, aliasProtectionBypass, analytics, analyticsSampling)
-        sdkSet6(analyticsUsage, apiKey, apiKeyAiGateway, apiKeyOwnedBySelf, auditLog)
-        sdkSet7(automation, billingAddress, billingInformation, billingInvoice, billingInvoiceEmailRecipient)
-        sdkSet8(billingInvoiceLanguage, billingPlan, billingPurchaseOrder, billingRefund, billingTaxId)
-        sdkSet9(blob, blobStoreTokenSet, budget, buildMachine, buildMachineDefault)
-        sdkSet10(bulkRedirects, cacheArtifact, cacheArtifactUsageEvent, ciInvocations, ciLogs)
-        sdkSet11(codeChecks, codeOwners, concurrentBuilds, connect, connectConfiguration)
-        sdkSet12(connectConfigurationLink, connectLogs, connexClient, connexClientProject, connexContact)
-        sdkSet13(connexInstallation, connexToken, cursorOriginInstallation, dataCacheBillingSettings)
-        sdkSet14(dataCacheNamespace, defaultDeploymentProtection, deployment, deploymentBuildLogs, deploymentCheck)
-        sdkSet15(deploymentCheckPreview, deploymentCheckReRunFromProductionBranch, deploymentPolicy)
-        sdkSet16(deploymentPreview, deploymentPrivate, deploymentProductionGit, deploymentPromote)
-        sdkSet17(deploymentProtectionException, deploymentRollback, deploymentV0, domain, domainAcceptDelegation)
-        sdkSet18(domainAuthCodes, domainCertificate, domainCheckConfig, domainMove, domainPurchase)
-        sdkSet19(domainRecord, domainTransferIn, drain, edgeCacheNamespace, edgeConfig)
-        sdkSet20(edgeConfigItem, edgeConfigSchema, edgeConfigToken, endpointVerification, environments)
-        sdkSet21(event, fileUpload, flagsExplorerSubscription, gitCredentialGrant, gitRepository)
-        sdkSet22(imageOptimizationNewPrice, integration, integrationAccount, integrationConfiguration)
-        sdkSet23(integrationConfigurationProjects, integrationConfigurationRole, integrationConfigurationTransfer)
-        sdkSet24(integrationDeploymentAction, integrationEvent, integrationLog, integrationPullRequest)
-        sdkSet25(integrationResource, integrationResourceData, integrationResourceReplCommand)
-        sdkSet26(integrationResourceSecrets, integrationSsoSession, integrationStoreTokenSet, integrationStrict)
-        sdkSet27(integrationVercelConfigurationOverride, ipBlocking, job, jobGlobal, kmsIssuer)
-        sdkSet28(kmsProjectGrant, logDrain, logs, logsPreset, marketplaceBillingData)
-        sdkSet29(marketplaceExperimentationEdgeConfigData, marketplaceExperimentationItem, marketplaceFlexCommit)
-        sdkSet30(marketplaceInstallationMember, marketplaceInvoice, marketplaceSettings, messageboard)
-        sdkSet31(messageboardSpace, messageboardTask, monitoring, monitoringAlert, monitoringChart)
-        sdkSet32(monitoringQuery, monitoringSettings, notificationCustomerBudget, notificationDeploymentFailed)
-        sdkSet33(notificationDomainConfiguration, notificationDomainExpire, notificationDomainMoved)
-        sdkSet34(notificationDomainPurchase, notificationDomainRenewal, notificationDomainTransfer)
-        sdkSet35(notificationDomainUnverified, notificationMonitoringAlert, notificationPaymentFailed)
-        sdkSet36(notificationPreferences, notificationStatementOfReasons, notificationUsageAlert, oauth2Application)
-        sdkSet37(oauth2Connection, observabilityConfiguration, observabilityData, observabilityFunnel)
-        sdkSet38(observabilityNotebook, oidcFederationPolicy, onDemandBuild, onDemandConcurrency)
-        sdkSet39(openTelemetryEndpoint, optionsAllowlist, organization, organizationDomain, organizationTeam)
-        sdkSet40(ownEvent, pageIntegrity, passwordProtection, passwordProtectionInvoiceItem, paymentMethod)
-        sdkSet41(permissions, postgres, postgresStoreTokenSet, previewDeploymentSuffix, privateCloudAccount)
-        sdkSet42(privateLinkEndpoint, productionAliasProtectionBypass, productionShareableLink, project)
-        sdkSet43(projectAccessGroup, projectAnalyticsSampling, projectAnalyticsUsage, projectCheck, projectCheckRun)
-        sdkSet44(projectDeploymentExpiration, projectDeploymentHook, projectDeploymentProtectionStrict, projectDomain)
-        sdkSet45(projectDomainCheckConfig, projectDomainMove, projectDomainVerify, projectEnvVars)
-        sdkSet46(projectEnvVarsProduction, projectEnvVarsUnownedByIntegration, projectEvent, projectFlags)
-        sdkSet47(projectFlagsProduction, projectFlagsSdkKey, projectFromV0, projectId)
-        sdkSet48(projectIntegrationConfiguration, projectLink, projectMember, projectMonitoring, projectOidcToken)
-        sdkSet49(projectPermissions, projectProductionBranch, projectProtectionBypass, projectRollingRelease)
-        sdkSet50(projectRoutes, projectSetting, projectSupportCase, projectSupportCaseComment, projectTier)
-        sdkSet51(projectTransfer, projectTransferIn, projectTransferOut, projectTransferRequest, projectUsage)
-        sdkSet52(proTrialOnboarding, rateLimit, redis, redisStoreTokenSet, remoteCaching)
-        sdkSet53(repository, samlConfig, schedule, seawallConfig, secret)
-        sdkSet54(securityConfig, securityPlusConfiguration, sensitiveEnvironmentVariablePolicy, setting)
-        sdkSet55(shareableLink, shareableLinkStrict, sharedEnvVarConnection, sharedEnvVars, sharedEnvVarsProduction)
-        sdkSet56(skewProtection, space, spaceRun, storeIsLocked, storeTokenSetSensitive)
-        sdkSet57(storeTransfer, supportCase, supportCaseComment, team, teamAccessRequest)
-        sdkSet58(teamFellowMembership, teamGitExclusivity, teamInvite, teamInviteCode, teamInviteLink)
-        sdkSet59(teamJoin, teamMemberMfaStatus, teamMicrofrontends, teamOwnMembership)
-        sdkSet60(teamOwnMembershipDisconnectSaml, teamSudo, teamTokenInvalidation, token, toolbarComment)
-        sdkSet61(trustedIps, trustedSources, usage, usageCycle, user)
-        sdkSet62(userConnection, userMfaConfiguration, userPreference, userSudo, v0Chat)
-        sdkSet63(vcrRepository, vercelAppInstallation, vercelAppInstallationRequest, vercelAuth, vercelRun)
-        sdkSet64(vpcPeeringConnection, webAnalytics, webAnalyticsPlan, webAuthn, webhook)
-        sdkSet65(webhookEvent, workflowRunData)
+    mutating func sdkSet17(_ deploymentProtectionException: [ACLAction]?, _ deploymentRollback: [ACLAction]?, _ deploymentV0: [ACLAction]?, _ domain: [ACLAction]?, _ domainAcceptDelegation: [ACLAction]?) {
+        self.deploymentProtectionException = deploymentProtectionException
+        self.deploymentRollback = deploymentRollback
+        self.deploymentV0 = deploymentV0
+        self.domain = domain
+        self.domainAcceptDelegation = domainAcceptDelegation
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet1(_ accessGroup: [ACLAction]?, _ agent: [ACLAction]?, _ aiGatewayApiKey: [ACLAction]?, _ aiGatewayApiKeyBypassAll: [ACLAction]?, _ aiGatewayApiKeyOwnedBySelf: [ACLAction]?) {
-        self.accessGroup = accessGroup
-        self.agent = agent
-        self.aiGatewayApiKey = aiGatewayApiKey
-        self.aiGatewayApiKeyBypassAll = aiGatewayApiKeyBypassAll
-        self.aiGatewayApiKeyOwnedBySelf = aiGatewayApiKeyOwnedBySelf
+    mutating func sdkSet18(_ domainAuthCodes: [ACLAction]?, _ domainCertificate: [ACLAction]?, _ domainCheckConfig: [ACLAction]?, _ domainMove: [ACLAction]?, _ domainPurchase: [ACLAction]?) {
+        self.domainAuthCodes = domainAuthCodes
+        self.domainCertificate = domainCertificate
+        self.domainCheckConfig = domainCheckConfig
+        self.domainMove = domainMove
+        self.domainPurchase = domainPurchase
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet2(_ aiGatewayApiKeySpendAttribution: [ACLAction]?, _ aiGatewayApiKeyZdrExemption: [ACLAction]?, _ aiGatewayBudget: [ACLAction]?, _ aiGatewayCredits: [ACLAction]?) {
-        self.aiGatewayApiKeySpendAttribution = aiGatewayApiKeySpendAttribution
-        self.aiGatewayApiKeyZdrExemption = aiGatewayApiKeyZdrExemption
-        self.aiGatewayBudget = aiGatewayBudget
-        self.aiGatewayCredits = aiGatewayCredits
+    mutating func sdkSet19(_ domainRecord: [ACLAction]?, _ domainTransferIn: [ACLAction]?, _ drain: [ACLAction]?, _ edgeCacheNamespace: [ACLAction]?, _ edgeConfig: [ACLAction]?) {
+        self.domainRecord = domainRecord
+        self.domainTransferIn = domainTransferIn
+        self.drain = drain
+        self.edgeCacheNamespace = edgeCacheNamespace
+        self.edgeConfig = edgeConfig
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet3(_ aiGatewayGuardrails: [ACLAction]?, _ aiGatewayPrivateModels: [ACLAction]?, _ aiGatewayRules: [ACLAction]?, _ aiGatewaySettings: [ACLAction]?, _ aiGatewayTranscripts: [ACLAction]?) {
-        self.aiGatewayGuardrails = aiGatewayGuardrails
-        self.aiGatewayPrivateModels = aiGatewayPrivateModels
-        self.aiGatewayRules = aiGatewayRules
-        self.aiGatewaySettings = aiGatewaySettings
-        self.aiGatewayTranscripts = aiGatewayTranscripts
+    mutating func sdkSet20(_ edgeConfigItem: [ACLAction]?, _ edgeConfigSchema: [ACLAction]?, _ edgeConfigToken: [ACLAction]?, _ endpointVerification: [ACLAction]?, _ environments: [ACLAction]?) {
+        self.edgeConfigItem = edgeConfigItem
+        self.edgeConfigSchema = edgeConfigSchema
+        self.edgeConfigToken = edgeConfigToken
+        self.endpointVerification = endpointVerification
+        self.environments = environments
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet4(_ aiGatewayTranscriptsSettings: [ACLAction]?, _ aiGatewayUsage: [ACLAction]?, _ aiGatewayVirtualModelConfigs: [ACLAction]?, _ alertRules: [ACLAction]?, _ alerts: [ACLAction]?) {
-        self.aiGatewayTranscriptsSettings = aiGatewayTranscriptsSettings
-        self.aiGatewayUsage = aiGatewayUsage
-        self.aiGatewayVirtualModelConfigs = aiGatewayVirtualModelConfigs
-        self.alertRules = alertRules
-        self.alerts = alerts
+    mutating func sdkSet21(_ event: [ACLAction]?, _ fileUpload: [ACLAction]?, _ flagsExplorerSubscription: [ACLAction]?, _ gitCredentialGrant: [ACLAction]?, _ gitRepository: [ACLAction]?) {
+        self.event = event
+        self.fileUpload = fileUpload
+        self.flagsExplorerSubscription = flagsExplorerSubscription
+        self.gitCredentialGrant = gitCredentialGrant
+        self.gitRepository = gitRepository
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet5(_ aliasGlobal: [ACLAction]?, _ aliasProject: [ACLAction]?, _ aliasProtectionBypass: [ACLAction]?, _ analytics: [ACLAction]?, _ analyticsSampling: [ACLAction]?) {
-        self.aliasGlobal = aliasGlobal
-        self.aliasProject = aliasProject
-        self.aliasProtectionBypass = aliasProtectionBypass
-        self.analytics = analytics
-        self.analyticsSampling = analyticsSampling
+    mutating func sdkSet22(_ imageOptimizationNewPrice: [ACLAction]?, _ integration: [ACLAction]?, _ integrationAccount: [ACLAction]?, _ integrationConfiguration: [ACLAction]?) {
+        self.imageOptimizationNewPrice = imageOptimizationNewPrice
+        self.integration = integration
+        self.integrationAccount = integrationAccount
+        self.integrationConfiguration = integrationConfiguration
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet6(_ analyticsUsage: [ACLAction]?, _ apiKey: [ACLAction]?, _ apiKeyAiGateway: [ACLAction]?, _ apiKeyOwnedBySelf: [ACLAction]?, _ auditLog: [ACLAction]?) {
-        self.analyticsUsage = analyticsUsage
-        self.apiKey = apiKey
-        self.apiKeyAiGateway = apiKeyAiGateway
-        self.apiKeyOwnedBySelf = apiKeyOwnedBySelf
-        self.auditLog = auditLog
+    mutating func sdkSet23(_ integrationConfigurationProjects: [ACLAction]?, _ integrationConfigurationRole: [ACLAction]?, _ integrationConfigurationTransfer: [ACLAction]?) {
+        self.integrationConfigurationProjects = integrationConfigurationProjects
+        self.integrationConfigurationRole = integrationConfigurationRole
+        self.integrationConfigurationTransfer = integrationConfigurationTransfer
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet7(_ automation: [ACLAction]?, _ billingAddress: [ACLAction]?, _ billingInformation: [ACLAction]?, _ billingInvoice: [ACLAction]?, _ billingInvoiceEmailRecipient: [ACLAction]?) {
-        self.automation = automation
-        self.billingAddress = billingAddress
-        self.billingInformation = billingInformation
-        self.billingInvoice = billingInvoice
-        self.billingInvoiceEmailRecipient = billingInvoiceEmailRecipient
+    mutating func sdkSet24(_ integrationDeploymentAction: [ACLAction]?, _ integrationEvent: [ACLAction]?, _ integrationLog: [ACLAction]?, _ integrationPullRequest: [ACLAction]?) {
+        self.integrationDeploymentAction = integrationDeploymentAction
+        self.integrationEvent = integrationEvent
+        self.integrationLog = integrationLog
+        self.integrationPullRequest = integrationPullRequest
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet8(_ billingInvoiceLanguage: [ACLAction]?, _ billingPlan: [ACLAction]?, _ billingPurchaseOrder: [ACLAction]?, _ billingRefund: [ACLAction]?, _ billingTaxId: [ACLAction]?) {
-        self.billingInvoiceLanguage = billingInvoiceLanguage
-        self.billingPlan = billingPlan
-        self.billingPurchaseOrder = billingPurchaseOrder
-        self.billingRefund = billingRefund
-        self.billingTaxId = billingTaxId
+    mutating func sdkSet25(_ integrationResource: [ACLAction]?, _ integrationResourceData: [ACLAction]?, _ integrationResourceReplCommand: [ACLAction]?) {
+        self.integrationResource = integrationResource
+        self.integrationResourceData = integrationResourceData
+        self.integrationResourceReplCommand = integrationResourceReplCommand
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet9(_ blob: [ACLAction]?, _ blobStoreTokenSet: [ACLAction]?, _ budget: [ACLAction]?, _ buildMachine: [ACLAction]?, _ buildMachineDefault: [ACLAction]?) {
-        self.blob = blob
-        self.blobStoreTokenSet = blobStoreTokenSet
-        self.budget = budget
-        self.buildMachine = buildMachine
-        self.buildMachineDefault = buildMachineDefault
+    mutating func sdkSet26(_ integrationResourceSecrets: [ACLAction]?, _ integrationSsoSession: [ACLAction]?, _ integrationStoreTokenSet: [ACLAction]?, _ integrationStrict: [ACLAction]?) {
+        self.integrationResourceSecrets = integrationResourceSecrets
+        self.integrationSsoSession = integrationSsoSession
+        self.integrationStoreTokenSet = integrationStoreTokenSet
+        self.integrationStrict = integrationStrict
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet10(_ bulkRedirects: [ACLAction]?, _ cacheArtifact: [ACLAction]?, _ cacheArtifactUsageEvent: [ACLAction]?, _ ciInvocations: [ACLAction]?, _ ciLogs: [ACLAction]?) {
-        self.bulkRedirects = bulkRedirects
-        self.cacheArtifact = cacheArtifact
-        self.cacheArtifactUsageEvent = cacheArtifactUsageEvent
-        self.ciInvocations = ciInvocations
-        self.ciLogs = ciLogs
+    mutating func sdkSet27(_ integrationVercelConfigurationOverride: [ACLAction]?, _ ipBlocking: [ACLAction]?, _ job: [ACLAction]?, _ jobGlobal: [ACLAction]?, _ kmsIssuer: [ACLAction]?) {
+        self.integrationVercelConfigurationOverride = integrationVercelConfigurationOverride
+        self.ipBlocking = ipBlocking
+        self.job = job
+        self.jobGlobal = jobGlobal
+        self.kmsIssuer = kmsIssuer
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet11(_ codeChecks: [ACLAction]?, _ codeOwners: [ACLAction]?, _ concurrentBuilds: [ACLAction]?, _ connect: [ACLAction]?, _ connectConfiguration: [ACLAction]?) {
-        self.codeChecks = codeChecks
-        self.codeOwners = codeOwners
-        self.concurrentBuilds = concurrentBuilds
-        self.connect = connect
-        self.connectConfiguration = connectConfiguration
+    mutating func sdkSet28(_ kmsProjectGrant: [ACLAction]?, _ logDrain: [ACLAction]?, _ logs: [ACLAction]?, _ logsPreset: [ACLAction]?, _ marketplaceBillingData: [ACLAction]?) {
+        self.kmsProjectGrant = kmsProjectGrant
+        self.logDrain = logDrain
+        self.logs = logs
+        self.logsPreset = logsPreset
+        self.marketplaceBillingData = marketplaceBillingData
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet12(_ connectConfigurationLink: [ACLAction]?, _ connectLogs: [ACLAction]?, _ connexClient: [ACLAction]?, _ connexClientProject: [ACLAction]?, _ connexContact: [ACLAction]?) {
-        self.connectConfigurationLink = connectConfigurationLink
-        self.connectLogs = connectLogs
-        self.connexClient = connexClient
-        self.connexClientProject = connexClientProject
-        self.connexContact = connexContact
+    mutating func sdkSet29(_ marketplaceExperimentationEdgeConfigData: [ACLAction]?, _ marketplaceExperimentationItem: [ACLAction]?, _ marketplaceFlexCommit: [ACLAction]?) {
+        self.marketplaceExperimentationEdgeConfigData = marketplaceExperimentationEdgeConfigData
+        self.marketplaceExperimentationItem = marketplaceExperimentationItem
+        self.marketplaceFlexCommit = marketplaceFlexCommit
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet13(_ connexInstallation: [ACLAction]?, _ connexToken: [ACLAction]?, _ cursorOriginInstallation: [ACLAction]?, _ dataCacheBillingSettings: [ACLAction]?) {
-        self.connexInstallation = connexInstallation
-        self.connexToken = connexToken
-        self.cursorOriginInstallation = cursorOriginInstallation
-        self.dataCacheBillingSettings = dataCacheBillingSettings
+    mutating func sdkSet30(_ marketplaceInstallationMember: [ACLAction]?, _ marketplaceInvoice: [ACLAction]?, _ marketplaceSettings: [ACLAction]?, _ messageboard: [ACLAction]?) {
+        self.marketplaceInstallationMember = marketplaceInstallationMember
+        self.marketplaceInvoice = marketplaceInvoice
+        self.marketplaceSettings = marketplaceSettings
+        self.messageboard = messageboard
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet14(_ dataCacheNamespace: [ACLAction]?, _ defaultDeploymentProtection: [ACLAction]?, _ deployment: [ACLAction]?, _ deploymentBuildLogs: [ACLAction]?, _ deploymentCheck: [ACLAction]?) {
-        self.dataCacheNamespace = dataCacheNamespace
-        self.defaultDeploymentProtection = defaultDeploymentProtection
-        self.deployment = deployment
-        self.deploymentBuildLogs = deploymentBuildLogs
-        self.deploymentCheck = deploymentCheck
+    mutating func sdkSet31(_ messageboardSpace: [ACLAction]?, _ messageboardTask: [ACLAction]?, _ monitoring: [ACLAction]?, _ monitoringAlert: [ACLAction]?, _ monitoringChart: [ACLAction]?) {
+        self.messageboardSpace = messageboardSpace
+        self.messageboardTask = messageboardTask
+        self.monitoring = monitoring
+        self.monitoringAlert = monitoringAlert
+        self.monitoringChart = monitoringChart
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet15(_ deploymentCheckPreview: [ACLAction]?, _ deploymentCheckReRunFromProductionBranch: [ACLAction]?, _ deploymentPolicy: [ACLAction]?) {
-        self.deploymentCheckPreview = deploymentCheckPreview
-        self.deploymentCheckReRunFromProductionBranch = deploymentCheckReRunFromProductionBranch
-        self.deploymentPolicy = deploymentPolicy
+    mutating func sdkSet32(_ monitoringQuery: [ACLAction]?, _ monitoringSettings: [ACLAction]?, _ notificationCustomerBudget: [ACLAction]?, _ notificationDeploymentFailed: [ACLAction]?) {
+        self.monitoringQuery = monitoringQuery
+        self.monitoringSettings = monitoringSettings
+        self.notificationCustomerBudget = notificationCustomerBudget
+        self.notificationDeploymentFailed = notificationDeploymentFailed
     }
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet16(_ deploymentPreview: [ACLAction]?, _ deploymentPrivate: [ACLAction]?, _ deploymentProductionGit: [ACLAction]?, _ deploymentPromote: [ACLAction]?) {
-        self.deploymentPreview = deploymentPreview
-        self.deploymentPrivate = deploymentPrivate
-        self.deploymentProductionGit = deploymentProductionGit
-        self.deploymentPromote = deploymentPromote
+    mutating func sdkSet33(_ notificationDomainConfiguration: [ACLAction]?, _ notificationDomainExpire: [ACLAction]?, _ notificationDomainMoved: [ACLAction]?) {
+        self.notificationDomainConfiguration = notificationDomainConfiguration
+        self.notificationDomainExpire = notificationDomainExpire
+        self.notificationDomainMoved = notificationDomainMoved
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet34(_ notificationDomainPurchase: [ACLAction]?, _ notificationDomainRenewal: [ACLAction]?, _ notificationDomainTransfer: [ACLAction]?) {
+        self.notificationDomainPurchase = notificationDomainPurchase
+        self.notificationDomainRenewal = notificationDomainRenewal
+        self.notificationDomainTransfer = notificationDomainTransfer
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet35(_ notificationDomainUnverified: [ACLAction]?, _ notificationMonitoringAlert: [ACLAction]?, _ notificationPaymentFailed: [ACLAction]?) {
+        self.notificationDomainUnverified = notificationDomainUnverified
+        self.notificationMonitoringAlert = notificationMonitoringAlert
+        self.notificationPaymentFailed = notificationPaymentFailed
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet36(_ notificationPreferences: [ACLAction]?, _ notificationStatementOfReasons: [ACLAction]?, _ notificationUsageAlert: [ACLAction]?, _ oauth2Application: [ACLAction]?) {
+        self.notificationPreferences = notificationPreferences
+        self.notificationStatementOfReasons = notificationStatementOfReasons
+        self.notificationUsageAlert = notificationUsageAlert
+        self.oauth2Application = oauth2Application
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet37(_ oauth2Connection: [ACLAction]?, _ observabilityConfiguration: [ACLAction]?, _ observabilityData: [ACLAction]?, _ observabilityFunnel: [ACLAction]?) {
+        self.oauth2Connection = oauth2Connection
+        self.observabilityConfiguration = observabilityConfiguration
+        self.observabilityData = observabilityData
+        self.observabilityFunnel = observabilityFunnel
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet38(_ observabilityNotebook: [ACLAction]?, _ oidcFederationPolicy: [ACLAction]?, _ onDemandBuild: [ACLAction]?, _ onDemandConcurrency: [ACLAction]?) {
+        self.observabilityNotebook = observabilityNotebook
+        self.oidcFederationPolicy = oidcFederationPolicy
+        self.onDemandBuild = onDemandBuild
+        self.onDemandConcurrency = onDemandConcurrency
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet39(_ openTelemetryEndpoint: [ACLAction]?, _ optionsAllowlist: [ACLAction]?, _ organization: [ACLAction]?, _ organizationDomain: [ACLAction]?, _ organizationTeam: [ACLAction]?) {
+        self.openTelemetryEndpoint = openTelemetryEndpoint
+        self.optionsAllowlist = optionsAllowlist
+        self.organization = organization
+        self.organizationDomain = organizationDomain
+        self.organizationTeam = organizationTeam
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet40(_ ownEvent: [ACLAction]?, _ pageIntegrity: [ACLAction]?, _ passwordProtection: [ACLAction]?, _ passwordProtectionInvoiceItem: [ACLAction]?, _ paymentMethod: [ACLAction]?) {
+        self.ownEvent = ownEvent
+        self.pageIntegrity = pageIntegrity
+        self.passwordProtection = passwordProtection
+        self.passwordProtectionInvoiceItem = passwordProtectionInvoiceItem
+        self.paymentMethod = paymentMethod
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet41(_ permissions: [ACLAction]?, _ postgres: [ACLAction]?, _ postgresStoreTokenSet: [ACLAction]?, _ previewDeploymentSuffix: [ACLAction]?, _ privateCloudAccount: [ACLAction]?) {
+        self.permissions = permissions
+        self.postgres = postgres
+        self.postgresStoreTokenSet = postgresStoreTokenSet
+        self.previewDeploymentSuffix = previewDeploymentSuffix
+        self.privateCloudAccount = privateCloudAccount
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet42(_ privateLinkEndpoint: [ACLAction]?, _ productionAliasProtectionBypass: [ACLAction]?, _ productionShareableLink: [ACLAction]?, _ project: [ACLAction]?) {
+        self.privateLinkEndpoint = privateLinkEndpoint
+        self.productionAliasProtectionBypass = productionAliasProtectionBypass
+        self.productionShareableLink = productionShareableLink
+        self.project = project
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet43(_ projectAccessGroup: [ACLAction]?, _ projectAnalyticsSampling: [ACLAction]?, _ projectAnalyticsUsage: [ACLAction]?, _ projectCheck: [ACLAction]?, _ projectCheckRun: [ACLAction]?) {
+        self.projectAccessGroup = projectAccessGroup
+        self.projectAnalyticsSampling = projectAnalyticsSampling
+        self.projectAnalyticsUsage = projectAnalyticsUsage
+        self.projectCheck = projectCheck
+        self.projectCheckRun = projectCheckRun
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet44(_ projectDeploymentExpiration: [ACLAction]?, _ projectDeploymentHook: [ACLAction]?, _ projectDeploymentProtectionStrict: [ACLAction]?, _ projectDomain: [ACLAction]?) {
+        self.projectDeploymentExpiration = projectDeploymentExpiration
+        self.projectDeploymentHook = projectDeploymentHook
+        self.projectDeploymentProtectionStrict = projectDeploymentProtectionStrict
+        self.projectDomain = projectDomain
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet45(_ projectDomainCheckConfig: [ACLAction]?, _ projectDomainMove: [ACLAction]?, _ projectDomainVerify: [ACLAction]?, _ projectEnvVars: [ACLAction]?) {
+        self.projectDomainCheckConfig = projectDomainCheckConfig
+        self.projectDomainMove = projectDomainMove
+        self.projectDomainVerify = projectDomainVerify
+        self.projectEnvVars = projectEnvVars
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet46(_ projectEnvVarsProduction: [ACLAction]?, _ projectEnvVarsUnownedByIntegration: [ACLAction]?, _ projectEvent: [ACLAction]?, _ projectFlags: [ACLAction]?) {
+        self.projectEnvVarsProduction = projectEnvVarsProduction
+        self.projectEnvVarsUnownedByIntegration = projectEnvVarsUnownedByIntegration
+        self.projectEvent = projectEvent
+        self.projectFlags = projectFlags
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet47(_ projectFlagsProduction: [ACLAction]?, _ projectFlagsSdkKey: [ACLAction]?, _ projectFromV0: [ACLAction]?, _ projectId: [ACLAction]?) {
+        self.projectFlagsProduction = projectFlagsProduction
+        self.projectFlagsSdkKey = projectFlagsSdkKey
+        self.projectFromV0 = projectFromV0
+        self.projectId = projectId
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet48(_ projectIntegrationConfiguration: [ACLAction]?, _ projectLink: [ACLAction]?, _ projectMember: [ACLAction]?, _ projectMonitoring: [ACLAction]?, _ projectOidcToken: [ACLAction]?) {
+        self.projectIntegrationConfiguration = projectIntegrationConfiguration
+        self.projectLink = projectLink
+        self.projectMember = projectMember
+        self.projectMonitoring = projectMonitoring
+        self.projectOidcToken = projectOidcToken
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet49(_ projectPermissions: [ACLAction]?, _ projectProductionBranch: [ACLAction]?, _ projectProtectionBypass: [ACLAction]?, _ projectRollingRelease: [ACLAction]?) {
+        self.projectPermissions = projectPermissions
+        self.projectProductionBranch = projectProductionBranch
+        self.projectProtectionBypass = projectProtectionBypass
+        self.projectRollingRelease = projectRollingRelease
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet50(_ projectRoutes: [ACLAction]?, _ projectSetting: [ACLAction]?, _ projectSupportCase: [ACLAction]?, _ projectSupportCaseComment: [ACLAction]?, _ projectTier: [ACLAction]?) {
+        self.projectRoutes = projectRoutes
+        self.projectSetting = projectSetting
+        self.projectSupportCase = projectSupportCase
+        self.projectSupportCaseComment = projectSupportCaseComment
+        self.projectTier = projectTier
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet51(_ projectTransfer: [ACLAction]?, _ projectTransferIn: [ACLAction]?, _ projectTransferOut: [ACLAction]?, _ projectTransferRequest: [ACLAction]?, _ projectUsage: [ACLAction]?) {
+        self.projectTransfer = projectTransfer
+        self.projectTransferIn = projectTransferIn
+        self.projectTransferOut = projectTransferOut
+        self.projectTransferRequest = projectTransferRequest
+        self.projectUsage = projectUsage
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet52(_ proTrialOnboarding: [ACLAction]?, _ rateLimit: [ACLAction]?, _ redis: [ACLAction]?, _ redisStoreTokenSet: [ACLAction]?, _ remoteCaching: [ACLAction]?) {
+        self.proTrialOnboarding = proTrialOnboarding
+        self.rateLimit = rateLimit
+        self.redis = redis
+        self.redisStoreTokenSet = redisStoreTokenSet
+        self.remoteCaching = remoteCaching
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet53(_ repository: [ACLAction]?, _ samlConfig: [ACLAction]?, _ schedule: [ACLAction]?, _ seawallConfig: [ACLAction]?, _ secret: [ACLAction]?) {
+        self.repository = repository
+        self.samlConfig = samlConfig
+        self.schedule = schedule
+        self.seawallConfig = seawallConfig
+        self.secret = secret
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet54(_ securityConfig: [ACLAction]?, _ securityPlusConfiguration: [ACLAction]?, _ sensitiveEnvironmentVariablePolicy: [ACLAction]?, _ setting: [ACLAction]?) {
+        self.securityConfig = securityConfig
+        self.securityPlusConfiguration = securityPlusConfiguration
+        self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
+        self.setting = setting
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet55(_ shareableLink: [ACLAction]?, _ shareableLinkStrict: [ACLAction]?, _ sharedEnvVarConnection: [ACLAction]?, _ sharedEnvVars: [ACLAction]?, _ sharedEnvVarsProduction: [ACLAction]?) {
+        self.shareableLink = shareableLink
+        self.shareableLinkStrict = shareableLinkStrict
+        self.sharedEnvVarConnection = sharedEnvVarConnection
+        self.sharedEnvVars = sharedEnvVars
+        self.sharedEnvVarsProduction = sharedEnvVarsProduction
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet56(_ skewProtection: [ACLAction]?, _ space: [ACLAction]?, _ spaceRun: [ACLAction]?, _ storeIsLocked: [ACLAction]?, _ storeTokenSetSensitive: [ACLAction]?) {
+        self.skewProtection = skewProtection
+        self.space = space
+        self.spaceRun = spaceRun
+        self.storeIsLocked = storeIsLocked
+        self.storeTokenSetSensitive = storeTokenSetSensitive
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet57(_ storeTransfer: [ACLAction]?, _ supportCase: [ACLAction]?, _ supportCaseComment: [ACLAction]?, _ team: [ACLAction]?, _ teamAccessRequest: [ACLAction]?) {
+        self.storeTransfer = storeTransfer
+        self.supportCase = supportCase
+        self.supportCaseComment = supportCaseComment
+        self.team = team
+        self.teamAccessRequest = teamAccessRequest
+    }
+}
+
+extension UpdateProjectResponsePermissions {
+    mutating func sdkSet58(_ teamFellowMembership: [ACLAction]?, _ teamGitExclusivity: [ACLAction]?, _ teamInvite: [ACLAction]?, _ teamInviteCode: [ACLAction]?, _ teamInviteLink: [ACLAction]?) {
+        self.teamFellowMembership = teamFellowMembership
+        self.teamGitExclusivity = teamGitExclusivity
+        self.teamInvite = teamInvite
+        self.teamInviteCode = teamInviteCode
+        self.teamInviteLink = teamInviteLink
     }
 }

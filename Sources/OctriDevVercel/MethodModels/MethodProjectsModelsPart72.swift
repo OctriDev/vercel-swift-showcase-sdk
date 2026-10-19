@@ -8,395 +8,410 @@ import Foundation
 #endif
 
 // Canonical projects operation model declarations
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet17(_ deploymentProtectionException: [ACLAction]?, _ deploymentRollback: [ACLAction]?, _ deploymentV0: [ACLAction]?, _ domain: [ACLAction]?, _ domainAcceptDelegation: [ACLAction]?) {
-        self.deploymentProtectionException = deploymentProtectionException
-        self.deploymentRollback = deploymentRollback
-        self.deploymentV0 = deploymentV0
-        self.domain = domain
-        self.domainAcceptDelegation = domainAcceptDelegation
+extension CreateProjectResponseEnvItem {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.key) else {
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
+        }
+        self.key = try container.sdkDecodeRequired(.key)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeRequired(.value)
+        self.comment = try container.sdkDecodeIfPresent(.comment)
+        self.configurationId = try container.sdkDecodeIfPresent(.configurationId)
+        self.contentHint = try container.sdkDecodeIfPresent(.contentHint)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
+        self.customEnvironmentIds = try container.sdkDecodeIfPresent(.customEnvironmentIds)
+        self.decrypted = try container.sdkDecodeIfPresent(.decrypted)
+        self.edgeConfigId = try container.sdkDecodeIfPresent(.edgeConfigId)
+        self.edgeConfigTokenId = try container.sdkDecodeIfPresent(.edgeConfigTokenId)
+        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        self.id = try container.sdkDecodeIfPresent(.id)
+        self.internalContentHint = try container.sdkDecodeIfPresent(.internalContentHint)
+        self.legacyValue = try container.sdkDecodeIfPresent(.legacyValue)
+        self.sunsetSecretId = try container.sdkDecodeIfPresent(.sunsetSecretId)
+        self.target = try container.sdkDecodeIfPresent(.target)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
+        self.visibility = try container.sdkDecodeIfPresent(.visibility)
+        self.vsmValue = try container.sdkDecodeIfPresent(.vsmValue)
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet18(_ domainAuthCodes: [ACLAction]?, _ domainCertificate: [ACLAction]?, _ domainCheckConfig: [ACLAction]?, _ domainMove: [ACLAction]?, _ domainPurchase: [ACLAction]?) {
-        self.domainAuthCodes = domainAuthCodes
-        self.domainCertificate = domainCertificate
-        self.domainCheckConfig = domainCheckConfig
-        self.domainMove = domainMove
-        self.domainPurchase = domainPurchase
+extension CreateProjectResponseEnvItem {
+    public init(key: String, type: CreateProjectResponseEnvItemType, value: String, comment: String? = nil, configurationId: String? = nil, contentHint: CreateProjectResponseEnvItemContentHint? = nil, createdAt: Double? = nil, createdBy: String? = nil, customEnvironmentIds: [String]? = nil, decrypted: Bool? = nil, edgeConfigId: String? = nil, edgeConfigTokenId: String? = nil, gitBranch: String? = nil, id: String? = nil, internalContentHint: CreateProjectResponseEnvItemInternalContentHint? = nil, legacyValue: String? = nil, sunsetSecretId: String? = nil, target: CreateProjectResponseEnvItemTarget? = nil, updatedAt: Double? = nil, updatedBy: String? = nil, visibility: CreateProjectResponseEnvItemVisibility? = nil, vsmValue: String? = nil) {
+        (self.key, self.type) = (key, type)
+        (self.value, self.comment) = (value, comment)
+        (self.configurationId, self.contentHint) = (configurationId, contentHint)
+        (self.createdAt, self.createdBy) = (createdAt, createdBy)
+        (self.customEnvironmentIds, self.decrypted) = (customEnvironmentIds, decrypted)
+        (self.edgeConfigId, self.edgeConfigTokenId) = (edgeConfigId, edgeConfigTokenId)
+        (self.gitBranch, self.id) = (gitBranch, id)
+        (self.internalContentHint, self.legacyValue) = (internalContentHint, legacyValue)
+        (self.sunsetSecretId, self.target) = (sunsetSecretId, target)
+        (self.updatedAt, self.updatedBy) = (updatedAt, updatedBy)
+        (self.visibility, self.vsmValue) = (visibility, vsmValue)
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet19(_ domainRecord: [ACLAction]?, _ domainTransferIn: [ACLAction]?, _ drain: [ACLAction]?, _ edgeCacheNamespace: [ACLAction]?, _ edgeConfig: [ACLAction]?) {
-        self.domainRecord = domainRecord
-        self.domainTransferIn = domainTransferIn
-        self.drain = drain
-        self.edgeCacheNamespace = edgeCacheNamespace
-        self.edgeConfig = edgeConfig
+public struct GetProjectsResponseTrustedSourcesOidcProvidersValueItem: Codable {
+    public var to: GetProjectsResponseTrustedSourcesOidcProvidersValueItemTo
+    public var claims: [String: [String]]
+    public var label: String?
+
+    enum CodingKeys: String, CodingKey {
+        case to
+        case claims
+        case label
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension GetProjectsResponseTrustedSourcesOidcProvidersValueItem {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.to) else {
+            throw SdkValidationError(field: "to", code: "required", message: "Validation failed for 'to': value is required")
+        }
+        guard container.contains(.claims) else {
+            throw SdkValidationError(field: "claims", code: "required", message: "Validation failed for 'claims': value is required")
+        }
+        self.to = try container.sdkDecodeRequired(.to)
+        self.claims = try container.sdkDecodeRequired(.claims)
+        self.label = try container.sdkDecodeIfPresent(.label)
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet20(_ edgeConfigItem: [ACLAction]?, _ edgeConfigSchema: [ACLAction]?, _ edgeConfigToken: [ACLAction]?, _ endpointVerification: [ACLAction]?, _ environments: [ACLAction]?) {
-        self.edgeConfigItem = edgeConfigItem
-        self.edgeConfigSchema = edgeConfigSchema
-        self.edgeConfigToken = edgeConfigToken
-        self.endpointVerification = endpointVerification
-        self.environments = environments
+extension GetProjectsResponseTrustedSourcesOidcProvidersValueItem {
+    public init(to: GetProjectsResponseTrustedSourcesOidcProvidersValueItemTo, claims: [String: [String]], label: String? = nil) {
+        (self.to, self.claims) = (to, claims)
+        self.label = label
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet21(_ event: [ACLAction]?, _ fileUpload: [ACLAction]?, _ flagsExplorerSubscription: [ACLAction]?, _ gitCredentialGrant: [ACLAction]?, _ gitRepository: [ACLAction]?) {
-        self.event = event
-        self.fileUpload = fileUpload
-        self.flagsExplorerSubscription = flagsExplorerSubscription
-        self.gitCredentialGrant = gitCredentialGrant
-        self.gitRepository = gitRepository
+public struct ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXf4afe56123: Codable {
+    public var target: ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXfa1615f355
+    public var type: ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploX106d25e8f8
+
+    enum CodingKeys: String, CodingKey {
+        case target
+        case type
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXf4afe56123 {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.target) else {
+            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+        }
+        self.target = try container.sdkDecodeRequired(.target)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploX106d25e8f8.allCases.map(\.rawValue))
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet22(_ imageOptimizationNewPrice: [ACLAction]?, _ integration: [ACLAction]?, _ integrationAccount: [ACLAction]?, _ integrationConfiguration: [ACLAction]?) {
-        self.imageOptimizationNewPrice = imageOptimizationNewPrice
-        self.integration = integration
-        self.integrationAccount = integrationAccount
-        self.integrationConfiguration = integrationConfiguration
+extension ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXf4afe56123 {
+    public init(target: ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXfa1615f355, type: ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploX106d25e8f8) throws {
+        (self.target, self.type) = (target, type)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploX106d25e8f8.allCases.map(\.rawValue))
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet23(_ integrationConfigurationProjects: [ACLAction]?, _ integrationConfigurationRole: [ACLAction]?, _ integrationConfigurationTransfer: [ACLAction]?) {
-        self.integrationConfigurationProjects = integrationConfigurationProjects
-        self.integrationConfigurationRole = integrationConfigurationRole
-        self.integrationConfigurationTransfer = integrationConfigurationTransfer
+public struct ListProjectsResponseVariant0Item: Codable {
+    public var accountId: String
+    public var alias: [ListProjectsResponseVariant0ItemAliasItem]
+    /// Retention policies for deployments. These are enforced at the project level, but we also maintain an
+    /// instance of this at the team level as a default policy that gets applied to new projects.
+    public var deploymentExpiration: ListProjectsResponseVariant0ItemDeploymentExpiration
+    public var directoryListing: Bool
+    public var id: String
+    public var name: String
+    public var nodeVersion: ListProjectsResponseVariant0ItemNodeVersion
+    public var resourceConfig: ListProjectsResponseVariant0ItemResourceConfig
+    public var serverlessFunctionRegion: String
+    public var analytics: ListProjectsResponseVariant0ItemAnalytics? = .none
+    public var appliedCve55182Migration: Bool? = .none
+    public var autoAssignCustomDomains: Bool? = .none
+    public var autoAssignCustomDomainsUpdatedBy: String? = .none
+    public var autoExposeSystemEnvs: Bool? = .none
+    public var buildCommand: String? = .none
+    public var commandForIgnoringBuildStep: String? = .none
+    public var createdAt: Double? = .none
+    /// Typed representation of the `ListProjectsResponseItemCreator` API schema.
+    public var creator: ListProjectsResponseItemCreator? = .none
+    public var customerSupportCodeVisibility: Bool? = .none
+    public var devCommand: String? = .none
+    public var env: [ListProjectsResponseVariant0ItemEnvItem]? = .none
+    public var framework: ListProjectsResponseVariant0ItemFramework? = .none
+    public var gitComments: ListProjectsResponseVariant0ItemGitComments? = .none
+    public var gitForkProtection: Bool? = .none
+    public var gitProviderOptions: ListProjectsResponseVariant0ItemGitProviderOptions? = .none
+    public var hasActiveBranches: Bool? = .none
+    public var installCommand: String? = .none
+    public var internalRoutes: [ListProjectsResponseItemInternalRoutesItem]? = .none
+    public var ipBuckets: [ListProjectsResponseVariant0ItemIpBucketsItem]? = .none
+    public var latestDeployments: [ListProjectsResponseVariant0ItemLatestDeploymentsItem]? = .none
+    /// Typed representation of the `ListProjectsResponseItemLink` API schema.
+    public var link: ListProjectsResponseItemLink? = .none
+    public var live: Bool? = .none
+    public var oidcTokenConfig: ListProjectsResponseVariant0ItemOidcTokenConfig? = .none
+    public var outputDirectory: String? = .none
+    public var passport: ListProjectsResponseVariant0ItemPassport? = .none
+    public var passwordProtection: [String: JSONValue]? = .none
+    public var paused: Bool? = .none
+    /// Project-level rolling release configuration that defines how deployments should be gradually rolled out
+    public var rollingRelease: ListProjectsResponseVariant0ItemRollingRelease? = .none
+    public var rootDirectory: String? = .none
+    public var security: ListProjectsResponseVariant0ItemSecurity? = .none
+    public var serverlessFunctionZeroConfigFailover: Bool? = .none
+    public var skipGitConnectDuringLink: Bool? = .none
+    public var sourceFilesOutsideRootDirectory: Bool? = .none
+    public var speedInsights: ListProjectsResponseVariant0ItemSpeedInsights? = .none
+    public var ssoProtection: ListProjectsResponseVariant0ItemSsoProtection? = .none
+    public var targets: [String: ListProjectsResponseVariant0ItemTargetsValue?]? = .none
+    public var tier: ListProjectsResponseVariant0ItemTier? = .none
+    public var transferCompletedAt: Double? = .none
+    public var transferredFromAccountId: String? = .none
+    public var transferStartedAt: Double? = .none
+    public var transferToAccountId: String? = .none
+    public var trustedSources: ListProjectsResponseVariant0ItemTrustedSources? = .none
+    public var updatedAt: Double? = .none
+    public var webAnalytics: ListProjectsResponseVariant0ItemWebAnalytics? = .none
+
+    init(sdkRequiredFields accountId: String, alias: [ListProjectsResponseVariant0ItemAliasItem], deploymentExpiration: ListProjectsResponseVariant0ItemDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: ListProjectsResponseVariant0ItemNodeVersion, resourceConfig: ListProjectsResponseVariant0ItemResourceConfig, serverlessFunctionRegion: String) {
+        (self.accountId, self.alias) = (accountId, alias)
+        (self.deploymentExpiration, self.directoryListing) = (deploymentExpiration, directoryListing)
+        (self.id, self.name) = (id, name)
+        (self.nodeVersion, self.resourceConfig) = (nodeVersion, resourceConfig)
+        self.serverlessFunctionRegion = serverlessFunctionRegion
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet24(_ integrationDeploymentAction: [ACLAction]?, _ integrationEvent: [ACLAction]?, _ integrationLog: [ACLAction]?, _ integrationPullRequest: [ACLAction]?) {
-        self.integrationDeploymentAction = integrationDeploymentAction
-        self.integrationEvent = integrationEvent
-        self.integrationLog = integrationLog
-        self.integrationPullRequest = integrationPullRequest
+extension ListProjectsResponseVariant0Item {
+    enum CodingKeys: String, CodingKey {
+        case accountId
+        case alias
+        case deploymentExpiration
+        case directoryListing
+        case id
+        case name
+        case nodeVersion
+        case resourceConfig
+        case serverlessFunctionRegion
+        case analytics
+        case appliedCve55182Migration
+        case autoAssignCustomDomains
+        case autoAssignCustomDomainsUpdatedBy
+        case autoExposeSystemEnvs
+        case buildCommand
+        case commandForIgnoringBuildStep
+        case createdAt
+        case creator
+        case customerSupportCodeVisibility
+        case devCommand
+        case env
+        case framework
+        case gitComments
+        case gitForkProtection
+        case gitProviderOptions
+        case hasActiveBranches
+        case installCommand
+        case internalRoutes
+        case ipBuckets
+        case latestDeployments
+        case link
+        case live
+        case oidcTokenConfig
+        case outputDirectory
+        case passport
+        case passwordProtection
+        case paused
+        case rollingRelease
+        case rootDirectory
+        case security
+        case serverlessFunctionZeroConfigFailover
+        case skipGitConnectDuringLink
+        case sourceFilesOutsideRootDirectory
+        case speedInsights
+        case ssoProtection
+        case targets
+        case tier
+        case transferCompletedAt
+        case transferredFromAccountId
+        case transferStartedAt
+        case transferToAccountId
+        case trustedSources
+        case updatedAt
+        case webAnalytics
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet25(_ integrationResource: [ACLAction]?, _ integrationResourceData: [ACLAction]?, _ integrationResourceReplCommand: [ACLAction]?) {
-        self.integrationResource = integrationResource
-        self.integrationResourceData = integrationResourceData
-        self.integrationResourceReplCommand = integrationResourceReplCommand
+extension ListProjectsResponseVariant0Item {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.init(sdkRequiredFields: try container.sdkDecodeRequired(.accountId), alias: try container.sdkDecodeRequired(.alias), deploymentExpiration: try container.sdkDecodeRequired(.deploymentExpiration), directoryListing: try container.sdkDecodeRequired(.directoryListing), id: try container.sdkDecodeRequired(.id), name: try container.sdkDecodeRequired(.name), nodeVersion: try container.sdkDecodeRequired(.nodeVersion), resourceConfig: try container.sdkDecodeRequired(.resourceConfig), serverlessFunctionRegion: try container.sdkDecodeRequired(.serverlessFunctionRegion))
+        try sdkDecodeFieldsPart1(container)
+        try sdkDecodeFieldsPart2(container)
+        try sdkDecodeFieldsPart3(container)
+        try sdkDecodeFieldsPart4(container)
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet26(_ integrationResourceSecrets: [ACLAction]?, _ integrationSsoSession: [ACLAction]?, _ integrationStoreTokenSet: [ACLAction]?, _ integrationStrict: [ACLAction]?) {
-        self.integrationResourceSecrets = integrationResourceSecrets
-        self.integrationSsoSession = integrationSsoSession
-        self.integrationStoreTokenSet = integrationStoreTokenSet
-        self.integrationStrict = integrationStrict
+extension ListProjectsResponseVariant0Item {
+    public init(accountId: String, alias: [ListProjectsResponseVariant0ItemAliasItem], deploymentExpiration: ListProjectsResponseVariant0ItemDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: ListProjectsResponseVariant0ItemNodeVersion, resourceConfig: ListProjectsResponseVariant0ItemResourceConfig, serverlessFunctionRegion: String, analytics: ListProjectsResponseVariant0ItemAnalytics? = nil, appliedCve55182Migration: Bool? = nil, autoAssignCustomDomains: Bool? = nil, autoAssignCustomDomainsUpdatedBy: String? = nil, autoExposeSystemEnvs: Bool? = nil, buildCommand: String? = nil, commandForIgnoringBuildStep: String? = nil, createdAt: Double? = nil, creator: ListProjectsResponseItemCreator? = nil, customerSupportCodeVisibility: Bool? = nil, devCommand: String? = nil, env: [ListProjectsResponseVariant0ItemEnvItem]? = nil, framework: ListProjectsResponseVariant0ItemFramework? = nil, gitComments: ListProjectsResponseVariant0ItemGitComments? = nil, gitForkProtection: Bool? = nil, gitProviderOptions: ListProjectsResponseVariant0ItemGitProviderOptions? = nil, hasActiveBranches: Bool? = nil, installCommand: String? = nil, internalRoutes: [ListProjectsResponseItemInternalRoutesItem]? = nil, ipBuckets: [ListProjectsResponseVariant0ItemIpBucketsItem]? = nil, latestDeployments: [ListProjectsResponseVariant0ItemLatestDeploymentsItem]? = nil, link: ListProjectsResponseItemLink? = nil, live: Bool? = nil, oidcTokenConfig: ListProjectsResponseVariant0ItemOidcTokenConfig? = nil, outputDirectory: String? = nil, passport: ListProjectsResponseVariant0ItemPassport? = nil, passwordProtection: [String: JSONValue]? = nil, paused: Bool? = nil, rollingRelease: ListProjectsResponseVariant0ItemRollingRelease? = nil, rootDirectory: String? = nil, security: ListProjectsResponseVariant0ItemSecurity? = nil, serverlessFunctionZeroConfigFailover: Bool? = nil, skipGitConnectDuringLink: Bool? = nil, sourceFilesOutsideRootDirectory: Bool? = nil, speedInsights: ListProjectsResponseVariant0ItemSpeedInsights? = nil, ssoProtection: ListProjectsResponseVariant0ItemSsoProtection? = nil, targets: [String: ListProjectsResponseVariant0ItemTargetsValue?]? = nil, tier: ListProjectsResponseVariant0ItemTier? = nil, transferCompletedAt: Double? = nil, transferredFromAccountId: String? = nil, transferStartedAt: Double? = nil, transferToAccountId: String? = nil, trustedSources: ListProjectsResponseVariant0ItemTrustedSources? = nil, updatedAt: Double? = nil, webAnalytics: ListProjectsResponseVariant0ItemWebAnalytics? = nil) {
+        self.init(sdkRequiredFields: accountId, alias: alias, deploymentExpiration: deploymentExpiration, directoryListing: directoryListing, id: id, name: name, nodeVersion: nodeVersion, resourceConfig: resourceConfig, serverlessFunctionRegion: serverlessFunctionRegion)
+        sdkSet1(analytics, appliedCve55182Migration, autoAssignCustomDomains, autoAssignCustomDomainsUpdatedBy)
+        sdkSet2(autoExposeSystemEnvs, buildCommand, commandForIgnoringBuildStep, createdAt, creator)
+        sdkSet3(customerSupportCodeVisibility, devCommand, env, framework, gitComments)
+        sdkSet4(gitForkProtection, gitProviderOptions, hasActiveBranches, installCommand, internalRoutes)
+        sdkSet5(ipBuckets, latestDeployments, link, live, oidcTokenConfig)
+        sdkSet6(outputDirectory, passport, passwordProtection, paused, rollingRelease)
+        sdkSet7(rootDirectory, security, serverlessFunctionZeroConfigFailover, skipGitConnectDuringLink)
+        sdkSet8(sourceFilesOutsideRootDirectory, speedInsights, ssoProtection, targets, tier)
+        sdkSet9(transferCompletedAt, transferredFromAccountId, transferStartedAt, transferToAccountId)
+        sdkSet10(trustedSources, updatedAt, webAnalytics)
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet27(_ integrationVercelConfigurationOverride: [ACLAction]?, _ ipBlocking: [ACLAction]?, _ job: [ACLAction]?, _ jobGlobal: [ACLAction]?, _ kmsIssuer: [ACLAction]?) {
-        self.integrationVercelConfigurationOverride = integrationVercelConfigurationOverride
-        self.ipBlocking = ipBlocking
-        self.job = job
-        self.jobGlobal = jobGlobal
-        self.kmsIssuer = kmsIssuer
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet1(_ analytics: ListProjectsResponseVariant0ItemAnalytics?, _ appliedCve55182Migration: Bool?, _ autoAssignCustomDomains: Bool?, _ autoAssignCustomDomainsUpdatedBy: String?) {
+        self.analytics = analytics
+        self.appliedCve55182Migration = appliedCve55182Migration
+        self.autoAssignCustomDomains = autoAssignCustomDomains
+        self.autoAssignCustomDomainsUpdatedBy = autoAssignCustomDomainsUpdatedBy
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet28(_ kmsProjectGrant: [ACLAction]?, _ logDrain: [ACLAction]?, _ logs: [ACLAction]?, _ logsPreset: [ACLAction]?, _ marketplaceBillingData: [ACLAction]?) {
-        self.kmsProjectGrant = kmsProjectGrant
-        self.logDrain = logDrain
-        self.logs = logs
-        self.logsPreset = logsPreset
-        self.marketplaceBillingData = marketplaceBillingData
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet2(_ autoExposeSystemEnvs: Bool?, _ buildCommand: String?, _ commandForIgnoringBuildStep: String?, _ createdAt: Double?, _ creator: ListProjectsResponseItemCreator?) {
+        self.autoExposeSystemEnvs = autoExposeSystemEnvs
+        self.buildCommand = buildCommand
+        self.commandForIgnoringBuildStep = commandForIgnoringBuildStep
+        self.createdAt = createdAt
+        self.creator = creator
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet29(_ marketplaceExperimentationEdgeConfigData: [ACLAction]?, _ marketplaceExperimentationItem: [ACLAction]?, _ marketplaceFlexCommit: [ACLAction]?) {
-        self.marketplaceExperimentationEdgeConfigData = marketplaceExperimentationEdgeConfigData
-        self.marketplaceExperimentationItem = marketplaceExperimentationItem
-        self.marketplaceFlexCommit = marketplaceFlexCommit
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet3(_ customerSupportCodeVisibility: Bool?, _ devCommand: String?, _ env: [ListProjectsResponseVariant0ItemEnvItem]?, _ framework: ListProjectsResponseVariant0ItemFramework?, _ gitComments: ListProjectsResponseVariant0ItemGitComments?) {
+        self.customerSupportCodeVisibility = customerSupportCodeVisibility
+        self.devCommand = devCommand
+        self.env = env
+        self.framework = framework
+        self.gitComments = gitComments
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet30(_ marketplaceInstallationMember: [ACLAction]?, _ marketplaceInvoice: [ACLAction]?, _ marketplaceSettings: [ACLAction]?, _ messageboard: [ACLAction]?) {
-        self.marketplaceInstallationMember = marketplaceInstallationMember
-        self.marketplaceInvoice = marketplaceInvoice
-        self.marketplaceSettings = marketplaceSettings
-        self.messageboard = messageboard
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet4(_ gitForkProtection: Bool?, _ gitProviderOptions: ListProjectsResponseVariant0ItemGitProviderOptions?, _ hasActiveBranches: Bool?, _ installCommand: String?, _ internalRoutes: [ListProjectsResponseItemInternalRoutesItem]?) {
+        self.gitForkProtection = gitForkProtection
+        self.gitProviderOptions = gitProviderOptions
+        self.hasActiveBranches = hasActiveBranches
+        self.installCommand = installCommand
+        self.internalRoutes = internalRoutes
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet31(_ messageboardSpace: [ACLAction]?, _ messageboardTask: [ACLAction]?, _ monitoring: [ACLAction]?, _ monitoringAlert: [ACLAction]?, _ monitoringChart: [ACLAction]?) {
-        self.messageboardSpace = messageboardSpace
-        self.messageboardTask = messageboardTask
-        self.monitoring = monitoring
-        self.monitoringAlert = monitoringAlert
-        self.monitoringChart = monitoringChart
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet5(_ ipBuckets: [ListProjectsResponseVariant0ItemIpBucketsItem]?, _ latestDeployments: [ListProjectsResponseVariant0ItemLatestDeploymentsItem]?, _ link: ListProjectsResponseItemLink?, _ live: Bool?, _ oidcTokenConfig: ListProjectsResponseVariant0ItemOidcTokenConfig?) {
+        self.ipBuckets = ipBuckets
+        self.latestDeployments = latestDeployments
+        self.link = link
+        self.live = live
+        self.oidcTokenConfig = oidcTokenConfig
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet32(_ monitoringQuery: [ACLAction]?, _ monitoringSettings: [ACLAction]?, _ notificationCustomerBudget: [ACLAction]?, _ notificationDeploymentFailed: [ACLAction]?) {
-        self.monitoringQuery = monitoringQuery
-        self.monitoringSettings = monitoringSettings
-        self.notificationCustomerBudget = notificationCustomerBudget
-        self.notificationDeploymentFailed = notificationDeploymentFailed
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet33(_ notificationDomainConfiguration: [ACLAction]?, _ notificationDomainExpire: [ACLAction]?, _ notificationDomainMoved: [ACLAction]?) {
-        self.notificationDomainConfiguration = notificationDomainConfiguration
-        self.notificationDomainExpire = notificationDomainExpire
-        self.notificationDomainMoved = notificationDomainMoved
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet34(_ notificationDomainPurchase: [ACLAction]?, _ notificationDomainRenewal: [ACLAction]?, _ notificationDomainTransfer: [ACLAction]?) {
-        self.notificationDomainPurchase = notificationDomainPurchase
-        self.notificationDomainRenewal = notificationDomainRenewal
-        self.notificationDomainTransfer = notificationDomainTransfer
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet35(_ notificationDomainUnverified: [ACLAction]?, _ notificationMonitoringAlert: [ACLAction]?, _ notificationPaymentFailed: [ACLAction]?) {
-        self.notificationDomainUnverified = notificationDomainUnverified
-        self.notificationMonitoringAlert = notificationMonitoringAlert
-        self.notificationPaymentFailed = notificationPaymentFailed
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet36(_ notificationPreferences: [ACLAction]?, _ notificationStatementOfReasons: [ACLAction]?, _ notificationUsageAlert: [ACLAction]?, _ oauth2Application: [ACLAction]?) {
-        self.notificationPreferences = notificationPreferences
-        self.notificationStatementOfReasons = notificationStatementOfReasons
-        self.notificationUsageAlert = notificationUsageAlert
-        self.oauth2Application = oauth2Application
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet37(_ oauth2Connection: [ACLAction]?, _ observabilityConfiguration: [ACLAction]?, _ observabilityData: [ACLAction]?, _ observabilityFunnel: [ACLAction]?) {
-        self.oauth2Connection = oauth2Connection
-        self.observabilityConfiguration = observabilityConfiguration
-        self.observabilityData = observabilityData
-        self.observabilityFunnel = observabilityFunnel
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet38(_ observabilityNotebook: [ACLAction]?, _ oidcFederationPolicy: [ACLAction]?, _ onDemandBuild: [ACLAction]?, _ onDemandConcurrency: [ACLAction]?) {
-        self.observabilityNotebook = observabilityNotebook
-        self.oidcFederationPolicy = oidcFederationPolicy
-        self.onDemandBuild = onDemandBuild
-        self.onDemandConcurrency = onDemandConcurrency
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet39(_ openTelemetryEndpoint: [ACLAction]?, _ optionsAllowlist: [ACLAction]?, _ organization: [ACLAction]?, _ organizationDomain: [ACLAction]?, _ organizationTeam: [ACLAction]?) {
-        self.openTelemetryEndpoint = openTelemetryEndpoint
-        self.optionsAllowlist = optionsAllowlist
-        self.organization = organization
-        self.organizationDomain = organizationDomain
-        self.organizationTeam = organizationTeam
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet40(_ ownEvent: [ACLAction]?, _ pageIntegrity: [ACLAction]?, _ passwordProtection: [ACLAction]?, _ passwordProtectionInvoiceItem: [ACLAction]?, _ paymentMethod: [ACLAction]?) {
-        self.ownEvent = ownEvent
-        self.pageIntegrity = pageIntegrity
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet6(_ outputDirectory: String?, _ passport: ListProjectsResponseVariant0ItemPassport?, _ passwordProtection: [String: JSONValue]?, _ paused: Bool?, _ rollingRelease: ListProjectsResponseVariant0ItemRollingRelease?) {
+        self.outputDirectory = outputDirectory
+        self.passport = passport
         self.passwordProtection = passwordProtection
-        self.passwordProtectionInvoiceItem = passwordProtectionInvoiceItem
-        self.paymentMethod = paymentMethod
+        self.paused = paused
+        self.rollingRelease = rollingRelease
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet41(_ permissions: [ACLAction]?, _ postgres: [ACLAction]?, _ postgresStoreTokenSet: [ACLAction]?, _ previewDeploymentSuffix: [ACLAction]?, _ privateCloudAccount: [ACLAction]?) {
-        self.permissions = permissions
-        self.postgres = postgres
-        self.postgresStoreTokenSet = postgresStoreTokenSet
-        self.previewDeploymentSuffix = previewDeploymentSuffix
-        self.privateCloudAccount = privateCloudAccount
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet7(_ rootDirectory: String?, _ security: ListProjectsResponseVariant0ItemSecurity?, _ serverlessFunctionZeroConfigFailover: Bool?, _ skipGitConnectDuringLink: Bool?) {
+        self.rootDirectory = rootDirectory
+        self.security = security
+        self.serverlessFunctionZeroConfigFailover = serverlessFunctionZeroConfigFailover
+        self.skipGitConnectDuringLink = skipGitConnectDuringLink
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet42(_ privateLinkEndpoint: [ACLAction]?, _ productionAliasProtectionBypass: [ACLAction]?, _ productionShareableLink: [ACLAction]?, _ project: [ACLAction]?) {
-        self.privateLinkEndpoint = privateLinkEndpoint
-        self.productionAliasProtectionBypass = productionAliasProtectionBypass
-        self.productionShareableLink = productionShareableLink
-        self.project = project
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet8(_ sourceFilesOutsideRootDirectory: Bool?, _ speedInsights: ListProjectsResponseVariant0ItemSpeedInsights?, _ ssoProtection: ListProjectsResponseVariant0ItemSsoProtection?, _ targets: [String: ListProjectsResponseVariant0ItemTargetsValue?]?, _ tier: ListProjectsResponseVariant0ItemTier?) {
+        self.sourceFilesOutsideRootDirectory = sourceFilesOutsideRootDirectory
+        self.speedInsights = speedInsights
+        self.ssoProtection = ssoProtection
+        self.targets = targets
+        self.tier = tier
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet43(_ projectAccessGroup: [ACLAction]?, _ projectAnalyticsSampling: [ACLAction]?, _ projectAnalyticsUsage: [ACLAction]?, _ projectCheck: [ACLAction]?, _ projectCheckRun: [ACLAction]?) {
-        self.projectAccessGroup = projectAccessGroup
-        self.projectAnalyticsSampling = projectAnalyticsSampling
-        self.projectAnalyticsUsage = projectAnalyticsUsage
-        self.projectCheck = projectCheck
-        self.projectCheckRun = projectCheckRun
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet9(_ transferCompletedAt: Double?, _ transferredFromAccountId: String?, _ transferStartedAt: Double?, _ transferToAccountId: String?) {
+        self.transferCompletedAt = transferCompletedAt
+        self.transferredFromAccountId = transferredFromAccountId
+        self.transferStartedAt = transferStartedAt
+        self.transferToAccountId = transferToAccountId
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet44(_ projectDeploymentExpiration: [ACLAction]?, _ projectDeploymentHook: [ACLAction]?, _ projectDeploymentProtectionStrict: [ACLAction]?, _ projectDomain: [ACLAction]?) {
-        self.projectDeploymentExpiration = projectDeploymentExpiration
-        self.projectDeploymentHook = projectDeploymentHook
-        self.projectDeploymentProtectionStrict = projectDeploymentProtectionStrict
-        self.projectDomain = projectDomain
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkSet10(_ trustedSources: ListProjectsResponseVariant0ItemTrustedSources?, _ updatedAt: Double?, _ webAnalytics: ListProjectsResponseVariant0ItemWebAnalytics?) {
+        self.trustedSources = trustedSources
+        self.updatedAt = updatedAt
+        self.webAnalytics = webAnalytics
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet45(_ projectDomainCheckConfig: [ACLAction]?, _ projectDomainMove: [ACLAction]?, _ projectDomainVerify: [ACLAction]?, _ projectEnvVars: [ACLAction]?) {
-        self.projectDomainCheckConfig = projectDomainCheckConfig
-        self.projectDomainMove = projectDomainMove
-        self.projectDomainVerify = projectDomainVerify
-        self.projectEnvVars = projectEnvVars
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        self.analytics = try container.sdkDecodeIfPresent(.analytics)
+        self.appliedCve55182Migration = try container.sdkDecodeIfPresent(.appliedCve55182Migration)
+        self.autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
+        self.autoAssignCustomDomainsUpdatedBy = try container.sdkDecodeIfPresent(.autoAssignCustomDomainsUpdatedBy)
+        self.autoExposeSystemEnvs = try container.sdkDecodeIfPresent(.autoExposeSystemEnvs)
+        self.buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
+        self.commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.creator = try container.sdkDecodeIfPresent(.creator)
+        self.customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
+        self.devCommand = try container.sdkDecodeIfPresent(.devCommand)
+        self.env = try container.sdkDecodeIfPresent(.env)
     }
 }
 
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet46(_ projectEnvVarsProduction: [ACLAction]?, _ projectEnvVarsUnownedByIntegration: [ACLAction]?, _ projectEvent: [ACLAction]?, _ projectFlags: [ACLAction]?) {
-        self.projectEnvVarsProduction = projectEnvVarsProduction
-        self.projectEnvVarsUnownedByIntegration = projectEnvVarsUnownedByIntegration
-        self.projectEvent = projectEvent
-        self.projectFlags = projectFlags
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet47(_ projectFlagsProduction: [ACLAction]?, _ projectFlagsSdkKey: [ACLAction]?, _ projectFromV0: [ACLAction]?, _ projectId: [ACLAction]?) {
-        self.projectFlagsProduction = projectFlagsProduction
-        self.projectFlagsSdkKey = projectFlagsSdkKey
-        self.projectFromV0 = projectFromV0
-        self.projectId = projectId
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet48(_ projectIntegrationConfiguration: [ACLAction]?, _ projectLink: [ACLAction]?, _ projectMember: [ACLAction]?, _ projectMonitoring: [ACLAction]?, _ projectOidcToken: [ACLAction]?) {
-        self.projectIntegrationConfiguration = projectIntegrationConfiguration
-        self.projectLink = projectLink
-        self.projectMember = projectMember
-        self.projectMonitoring = projectMonitoring
-        self.projectOidcToken = projectOidcToken
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet49(_ projectPermissions: [ACLAction]?, _ projectProductionBranch: [ACLAction]?, _ projectProtectionBypass: [ACLAction]?, _ projectRollingRelease: [ACLAction]?) {
-        self.projectPermissions = projectPermissions
-        self.projectProductionBranch = projectProductionBranch
-        self.projectProtectionBypass = projectProtectionBypass
-        self.projectRollingRelease = projectRollingRelease
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet50(_ projectRoutes: [ACLAction]?, _ projectSetting: [ACLAction]?, _ projectSupportCase: [ACLAction]?, _ projectSupportCaseComment: [ACLAction]?, _ projectTier: [ACLAction]?) {
-        self.projectRoutes = projectRoutes
-        self.projectSetting = projectSetting
-        self.projectSupportCase = projectSupportCase
-        self.projectSupportCaseComment = projectSupportCaseComment
-        self.projectTier = projectTier
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet51(_ projectTransfer: [ACLAction]?, _ projectTransferIn: [ACLAction]?, _ projectTransferOut: [ACLAction]?, _ projectTransferRequest: [ACLAction]?, _ projectUsage: [ACLAction]?) {
-        self.projectTransfer = projectTransfer
-        self.projectTransferIn = projectTransferIn
-        self.projectTransferOut = projectTransferOut
-        self.projectTransferRequest = projectTransferRequest
-        self.projectUsage = projectUsage
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet52(_ proTrialOnboarding: [ACLAction]?, _ rateLimit: [ACLAction]?, _ redis: [ACLAction]?, _ redisStoreTokenSet: [ACLAction]?, _ remoteCaching: [ACLAction]?) {
-        self.proTrialOnboarding = proTrialOnboarding
-        self.rateLimit = rateLimit
-        self.redis = redis
-        self.redisStoreTokenSet = redisStoreTokenSet
-        self.remoteCaching = remoteCaching
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet53(_ repository: [ACLAction]?, _ samlConfig: [ACLAction]?, _ schedule: [ACLAction]?, _ seawallConfig: [ACLAction]?, _ secret: [ACLAction]?) {
-        self.repository = repository
-        self.samlConfig = samlConfig
-        self.schedule = schedule
-        self.seawallConfig = seawallConfig
-        self.secret = secret
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet54(_ securityConfig: [ACLAction]?, _ securityPlusConfiguration: [ACLAction]?, _ sensitiveEnvironmentVariablePolicy: [ACLAction]?, _ setting: [ACLAction]?) {
-        self.securityConfig = securityConfig
-        self.securityPlusConfiguration = securityPlusConfiguration
-        self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
-        self.setting = setting
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet55(_ shareableLink: [ACLAction]?, _ shareableLinkStrict: [ACLAction]?, _ sharedEnvVarConnection: [ACLAction]?, _ sharedEnvVars: [ACLAction]?, _ sharedEnvVarsProduction: [ACLAction]?) {
-        self.shareableLink = shareableLink
-        self.shareableLinkStrict = shareableLinkStrict
-        self.sharedEnvVarConnection = sharedEnvVarConnection
-        self.sharedEnvVars = sharedEnvVars
-        self.sharedEnvVarsProduction = sharedEnvVarsProduction
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet56(_ skewProtection: [ACLAction]?, _ space: [ACLAction]?, _ spaceRun: [ACLAction]?, _ storeIsLocked: [ACLAction]?, _ storeTokenSetSensitive: [ACLAction]?) {
-        self.skewProtection = skewProtection
-        self.space = space
-        self.spaceRun = spaceRun
-        self.storeIsLocked = storeIsLocked
-        self.storeTokenSetSensitive = storeTokenSetSensitive
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet57(_ storeTransfer: [ACLAction]?, _ supportCase: [ACLAction]?, _ supportCaseComment: [ACLAction]?, _ team: [ACLAction]?, _ teamAccessRequest: [ACLAction]?) {
-        self.storeTransfer = storeTransfer
-        self.supportCase = supportCase
-        self.supportCaseComment = supportCaseComment
-        self.team = team
-        self.teamAccessRequest = teamAccessRequest
-    }
-}
-
-extension UpdateMicrofrontendsResponsePermissions {
-    mutating func sdkSet58(_ teamFellowMembership: [ACLAction]?, _ teamGitExclusivity: [ACLAction]?, _ teamInvite: [ACLAction]?, _ teamInviteCode: [ACLAction]?, _ teamInviteLink: [ACLAction]?) {
-        self.teamFellowMembership = teamFellowMembership
-        self.teamGitExclusivity = teamGitExclusivity
-        self.teamInvite = teamInvite
-        self.teamInviteCode = teamInviteCode
-        self.teamInviteLink = teamInviteLink
+extension ListProjectsResponseVariant0Item {
+    mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        self.framework = try container.sdkDecodeIfPresent(.framework)
+        self.gitComments = try container.sdkDecodeIfPresent(.gitComments)
+        self.gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
+        self.gitProviderOptions = try container.sdkDecodeIfPresent(.gitProviderOptions)
+        self.hasActiveBranches = try container.sdkDecodeIfPresent(.hasActiveBranches)
+        self.installCommand = try container.sdkDecodeIfPresent(.installCommand)
+        self.internalRoutes = try container.sdkDecodeIfPresent(.internalRoutes)
+        self.ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
+        self.latestDeployments = try container.sdkDecodeIfPresent(.latestDeployments)
+        self.link = try container.sdkDecodeIfPresent(.link)
+        self.live = try container.sdkDecodeIfPresent(.live)
+        self.oidcTokenConfig = try container.sdkDecodeIfPresent(.oidcTokenConfig)
     }
 }

@@ -8,395 +8,448 @@ import Foundation
 #endif
 
 // Canonical projects operation model declarations
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet17(_ deploymentProtectionException: [ACLAction]?, _ deploymentRollback: [ACLAction]?, _ deploymentV0: [ACLAction]?, _ domain: [ACLAction]?, _ domainAcceptDelegation: [ACLAction]?) {
-        self.deploymentProtectionException = deploymentProtectionException
-        self.deploymentRollback = deploymentRollback
-        self.deploymentV0 = deploymentV0
-        self.domain = domain
-        self.domainAcceptDelegation = domainAcceptDelegation
+/// A list of verification challenges, one of which must be completed to verify the domain for use on the project.
+/// After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible
+/// challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching
+/// `verification.value`.
+public struct ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsIteX9935a3c64c: Codable {
+    public var domain: String
+    public var reason: String
+    public var type: String
+    public var value: String
+
+    enum CodingKeys: String, CodingKey {
+        case domain
+        case reason
+        case type
+        case value
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsIteX9935a3c64c {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.domain) else {
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
+        }
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.reason = try container.sdkDecodeRequired(.reason)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet18(_ domainAuthCodes: [ACLAction]?, _ domainCertificate: [ACLAction]?, _ domainCheckConfig: [ACLAction]?, _ domainMove: [ACLAction]?, _ domainPurchase: [ACLAction]?) {
-        self.domainAuthCodes = domainAuthCodes
-        self.domainCertificate = domainCertificate
-        self.domainCheckConfig = domainCheckConfig
-        self.domainMove = domainMove
-        self.domainPurchase = domainPurchase
+extension ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsIteX9935a3c64c {
+    public init(domain: String, reason: String, type: String, value: String) {
+        (self.domain, self.reason) = (domain, reason)
+        (self.type, self.value) = (type, value)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet19(_ domainRecord: [ACLAction]?, _ domainTransferIn: [ACLAction]?, _ drain: [ACLAction]?, _ edgeCacheNamespace: [ACLAction]?, _ edgeConfig: [ACLAction]?) {
-        self.domainRecord = domainRecord
-        self.domainTransferIn = domainTransferIn
-        self.drain = drain
-        self.edgeCacheNamespace = edgeCacheNamespace
-        self.edgeConfig = edgeConfig
+public struct ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant6: Codable {
+    public var storeId: String
+    public var type: ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant6Type
+
+    enum CodingKeys: String, CodingKey {
+        case storeId
+        case type
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant6 {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.storeId) else {
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+        }
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant6Type.allCases.map(\.rawValue))
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet20(_ edgeConfigItem: [ACLAction]?, _ edgeConfigSchema: [ACLAction]?, _ edgeConfigToken: [ACLAction]?, _ endpointVerification: [ACLAction]?, _ environments: [ACLAction]?) {
-        self.edgeConfigItem = edgeConfigItem
-        self.edgeConfigSchema = edgeConfigSchema
-        self.edgeConfigToken = edgeConfigToken
-        self.endpointVerification = endpointVerification
-        self.environments = environments
+extension ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant6 {
+    public init(storeId: String, type: ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant6Type) throws {
+        (self.storeId, self.type) = (storeId, type)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant6Type.allCases.map(\.rawValue))
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet21(_ event: [ACLAction]?, _ fileUpload: [ACLAction]?, _ flagsExplorerSubscription: [ACLAction]?, _ gitCredentialGrant: [ACLAction]?, _ gitRepository: [ACLAction]?) {
-        self.event = event
-        self.fileUpload = fileUpload
-        self.flagsExplorerSubscription = flagsExplorerSubscription
-        self.gitCredentialGrant = gitCredentialGrant
-        self.gitRepository = gitRepository
+public struct GetProjectsResponseJobsMfeConfigPresent: Codable {
+    public var targets: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case targets
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension GetProjectsResponseJobsMfeConfigPresent {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.targets) else {
+            throw SdkValidationError(field: "targets", code: "required", message: "Validation failed for 'targets': value is required")
+        }
+        self.targets = try container.sdkDecodeRequired(.targets)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet22(_ imageOptimizationNewPrice: [ACLAction]?, _ integration: [ACLAction]?, _ integrationAccount: [ACLAction]?, _ integrationConfiguration: [ACLAction]?) {
-        self.imageOptimizationNewPrice = imageOptimizationNewPrice
-        self.integration = integration
-        self.integrationAccount = integrationAccount
-        self.integrationConfiguration = integrationConfiguration
+extension GetProjectsResponseJobsMfeConfigPresent {
+    public init(targets: [String]) {
+        self.targets = targets
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet23(_ integrationConfigurationProjects: [ACLAction]?, _ integrationConfigurationRole: [ACLAction]?, _ integrationConfigurationTransfer: [ACLAction]?) {
-        self.integrationConfigurationProjects = integrationConfigurationProjects
-        self.integrationConfigurationRole = integrationConfigurationRole
-        self.integrationConfigurationTransfer = integrationConfigurationTransfer
+public struct DeleteProjectAvatarResponseCronsDefinitionsItem: Codable {
+    /// The hostname that should be used.
+    /// - Example: "vercel.com"
+    public var host: String
+    /// The path that should be called for the cronjob.
+    /// - Example: "/api/crons/sync-something?hello=world"
+    public var path: String
+    /// The cron expression.
+    /// - Example: "0 0 * * *"
+    public var schedule: String
+    /// A human-readable description of what this cron job does.
+    public var description: String?
+    /// Whether the host was inferred from the production deployment URL rather than explicitly provided.
+    public var hostInferred: Bool?
+    /// The origin of this definition. 'api' means created via the API. Undefined means it originated from a
+    /// deployment (vercel.json).
+    public var source: DeleteProjectAvatarResponseCronsDefinitionsItemSource?
+
+    enum CodingKeys: String, CodingKey {
+        case host
+        case path
+        case schedule
+        case description
+        case hostInferred
+        case source
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension DeleteProjectAvatarResponseCronsDefinitionsItem {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.host) else {
+            throw SdkValidationError(field: "host", code: "required", message: "Validation failed for 'host': value is required")
+        }
+        guard container.contains(.path) else {
+            throw SdkValidationError(field: "path", code: "required", message: "Validation failed for 'path': value is required")
+        }
+        guard container.contains(.schedule) else {
+            throw SdkValidationError(field: "schedule", code: "required", message: "Validation failed for 'schedule': value is required")
+        }
+        self.host = try container.sdkDecodeRequired(.host)
+        self.path = try container.sdkDecodeRequired(.path)
+        self.schedule = try container.sdkDecodeRequired(.schedule)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.hostInferred = try container.sdkDecodeIfPresent(.hostInferred)
+        self.source = try container.sdkDecodeIfPresent(.source)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet24(_ integrationDeploymentAction: [ACLAction]?, _ integrationEvent: [ACLAction]?, _ integrationLog: [ACLAction]?, _ integrationPullRequest: [ACLAction]?) {
-        self.integrationDeploymentAction = integrationDeploymentAction
-        self.integrationEvent = integrationEvent
-        self.integrationLog = integrationLog
-        self.integrationPullRequest = integrationPullRequest
+extension DeleteProjectAvatarResponseCronsDefinitionsItem {
+    public init(host: String, path: String, schedule: String, description: String? = nil, hostInferred: Bool? = nil, source: DeleteProjectAvatarResponseCronsDefinitionsItemSource? = nil) {
+        (self.host, self.path) = (host, path)
+        (self.schedule, self.description) = (schedule, description)
+        (self.hostInferred, self.source) = (hostInferred, source)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet25(_ integrationResource: [ACLAction]?, _ integrationResourceData: [ACLAction]?, _ integrationResourceReplCommand: [ACLAction]?) {
-        self.integrationResource = integrationResource
-        self.integrationResourceData = integrationResourceData
-        self.integrationResourceReplCommand = integrationResourceReplCommand
+public struct ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemBuildsItem: Codable {
+    public var use: String
+    public var dest: String?
+    public var src: String?
+
+    enum CodingKeys: String, CodingKey {
+        case use
+        case dest
+        case src
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemBuildsItem {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.use) else {
+            throw SdkValidationError(field: "use", code: "required", message: "Validation failed for 'use': value is required")
+        }
+        self.use = try container.sdkDecodeRequired(.use)
+        self.dest = try container.sdkDecodeIfPresent(.dest)
+        self.src = try container.sdkDecodeIfPresent(.src)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet26(_ integrationResourceSecrets: [ACLAction]?, _ integrationSsoSession: [ACLAction]?, _ integrationStoreTokenSet: [ACLAction]?, _ integrationStrict: [ACLAction]?) {
-        self.integrationResourceSecrets = integrationResourceSecrets
-        self.integrationSsoSession = integrationSsoSession
-        self.integrationStoreTokenSet = integrationStoreTokenSet
-        self.integrationStrict = integrationStrict
+extension ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemBuildsItem {
+    public init(use: String, dest: String? = nil, src: String? = nil) {
+        (self.use, self.dest) = (use, dest)
+        self.src = src
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet27(_ integrationVercelConfigurationOverride: [ACLAction]?, _ ipBlocking: [ACLAction]?, _ job: [ACLAction]?, _ jobGlobal: [ACLAction]?, _ kmsIssuer: [ACLAction]?) {
-        self.integrationVercelConfigurationOverride = integrationVercelConfigurationOverride
-        self.ipBlocking = ipBlocking
-        self.job = job
-        self.jobGlobal = jobGlobal
-        self.kmsIssuer = kmsIssuer
+public struct UpdateMicrofrontendsResponseStaticIps: Codable {
+    public var builds: Bool
+    public var enabled: Bool
+    public var regions: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case builds
+        case enabled
+        case regions
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension UpdateMicrofrontendsResponseStaticIps {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.builds) else {
+            throw SdkValidationError(field: "builds", code: "required", message: "Validation failed for 'builds': value is required")
+        }
+        guard container.contains(.enabled) else {
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
+        }
+        guard container.contains(.regions) else {
+            throw SdkValidationError(field: "regions", code: "required", message: "Validation failed for 'regions': value is required")
+        }
+        self.builds = try container.sdkDecodeRequired(.builds)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.regions = try container.sdkDecodeRequired(.regions)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet28(_ kmsProjectGrant: [ACLAction]?, _ logDrain: [ACLAction]?, _ logs: [ACLAction]?, _ logsPreset: [ACLAction]?, _ marketplaceBillingData: [ACLAction]?) {
-        self.kmsProjectGrant = kmsProjectGrant
-        self.logDrain = logDrain
-        self.logs = logs
-        self.logsPreset = logsPreset
-        self.marketplaceBillingData = marketplaceBillingData
+extension UpdateMicrofrontendsResponseStaticIps {
+    public init(builds: Bool, enabled: Bool, regions: [String]) {
+        (self.builds, self.enabled) = (builds, enabled)
+        self.regions = regions
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet29(_ marketplaceExperimentationEdgeConfigData: [ACLAction]?, _ marketplaceExperimentationItem: [ACLAction]?, _ marketplaceFlexCommit: [ACLAction]?) {
-        self.marketplaceExperimentationEdgeConfigData = marketplaceExperimentationEdgeConfigData
-        self.marketplaceExperimentationItem = marketplaceExperimentationItem
-        self.marketplaceFlexCommit = marketplaceFlexCommit
+public indirect enum GetProjectsResponseTrustedSourcesOidcProvidersValueItemTo {
+    case getProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant0(
+        GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant0
+    )
+    case getProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1(
+        GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1
+    )
+}
+
+extension GetProjectsResponseTrustedSourcesOidcProvidersValueItemTo: Codable {
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let raw = try? container.decode(JSONValue.self) {
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+        }
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetProjectsResponseTrustedSourcesOidcProvidersValueItemTo")
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet30(_ marketplaceInstallationMember: [ACLAction]?, _ marketplaceInvoice: [ACLAction]?, _ marketplaceSettings: [ACLAction]?, _ messageboard: [ACLAction]?) {
-        self.marketplaceInstallationMember = marketplaceInstallationMember
-        self.marketplaceInvoice = marketplaceInvoice
-        self.marketplaceSettings = marketplaceSettings
-        self.messageboard = messageboard
+extension GetProjectsResponseTrustedSourcesOidcProvidersValueItemTo {
+    static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
+        if let value = try? container.decode(GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .getProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant0(value)
+        }
+        if let value = try? container.decode(GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .getProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1(value)
+        }
+        return nil
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet31(_ messageboardSpace: [ACLAction]?, _ messageboardTask: [ACLAction]?, _ monitoring: [ACLAction]?, _ monitoringAlert: [ACLAction]?, _ monitoringChart: [ACLAction]?) {
-        self.messageboardSpace = messageboardSpace
-        self.messageboardTask = messageboardTask
-        self.monitoring = monitoring
-        self.monitoringAlert = monitoringAlert
-        self.monitoringChart = monitoringChart
+extension GetProjectsResponseTrustedSourcesOidcProvidersValueItemTo {
+    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
+        if let value = try? container.decode(
+            GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant0.self
+        ) {
+            return             .getProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant0(value)
+        }
+        if let value = try? container.decode(
+            GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1.self
+        ) {
+            return             .getProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1(value)
+        }
+        return nil
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet32(_ monitoringQuery: [ACLAction]?, _ monitoringSettings: [ACLAction]?, _ notificationCustomerBudget: [ACLAction]?, _ notificationDeploymentFailed: [ACLAction]?) {
-        self.monitoringQuery = monitoringQuery
-        self.monitoringSettings = monitoringSettings
-        self.notificationCustomerBudget = notificationCustomerBudget
-        self.notificationDeploymentFailed = notificationDeploymentFailed
+extension GetProjectsResponseTrustedSourcesOidcProvidersValueItemTo {
+    func encodeGroup1(to encoder: Encoder) throws -> Bool {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case let .getProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant0(value): try container.encode(value); return true
+        case let .getProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1(value): try container.encode(value); return true
+        }
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet33(_ notificationDomainConfiguration: [ACLAction]?, _ notificationDomainExpire: [ACLAction]?, _ notificationDomainMoved: [ACLAction]?) {
-        self.notificationDomainConfiguration = notificationDomainConfiguration
-        self.notificationDomainExpire = notificationDomainExpire
-        self.notificationDomainMoved = notificationDomainMoved
+public typealias DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesList = [DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesItem]
+
+/// Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for
+/// every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once.
+/// Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by
+/// accident.
+public struct DeleteProjectAvatarResponseDeploymentPolicy: Codable {
+    public var deploymentSources: DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesList?
+    public var gitSources: [DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItem]?
+
+    enum CodingKeys: String, CodingKey {
+        case deploymentSources
+        case gitSources
+    }
+
+    init() {
+        (self.deploymentSources, self.gitSources) = (nil, nil)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet34(_ notificationDomainPurchase: [ACLAction]?, _ notificationDomainRenewal: [ACLAction]?, _ notificationDomainTransfer: [ACLAction]?) {
-        self.notificationDomainPurchase = notificationDomainPurchase
-        self.notificationDomainRenewal = notificationDomainRenewal
-        self.notificationDomainTransfer = notificationDomainTransfer
+extension DeleteProjectAvatarResponseDeploymentPolicy {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.deploymentSources = try container.sdkDecodeIfPresent(.deploymentSources)
+        self.gitSources = try container.sdkDecodeIfPresent(.gitSources)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet35(_ notificationDomainUnverified: [ACLAction]?, _ notificationMonitoringAlert: [ACLAction]?, _ notificationPaymentFailed: [ACLAction]?) {
-        self.notificationDomainUnverified = notificationDomainUnverified
-        self.notificationMonitoringAlert = notificationMonitoringAlert
-        self.notificationPaymentFailed = notificationPaymentFailed
+extension DeleteProjectAvatarResponseDeploymentPolicy {
+    public init(deploymentSources: DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesList? = nil, gitSources: [DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItem]? = nil) {
+        self.init()
+        (self.deploymentSources, self.gitSources) = (deploymentSources, gitSources)
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet36(_ notificationPreferences: [ACLAction]?, _ notificationStatementOfReasons: [ACLAction]?, _ notificationUsageAlert: [ACLAction]?, _ oauth2Application: [ACLAction]?) {
-        self.notificationPreferences = notificationPreferences
-        self.notificationStatementOfReasons = notificationStatementOfReasons
-        self.notificationUsageAlert = notificationUsageAlert
-        self.oauth2Application = oauth2Application
+public struct CreateProjectEnvResponseCreatedVariant0ContentHintVariant0: Codable {
+    public var storeId: String
+    public var type: CreateProjectEnvResponseCreatedVariant0ContentHintVariant0Type
+
+    enum CodingKeys: String, CodingKey {
+        case storeId
+        case type
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension CreateProjectEnvResponseCreatedVariant0ContentHintVariant0 {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.storeId) else {
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+        }
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, CreateProjectEnvResponseCreatedVariant0ContentHintVariant0Type.allCases.map(\.rawValue))
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet37(_ oauth2Connection: [ACLAction]?, _ observabilityConfiguration: [ACLAction]?, _ observabilityData: [ACLAction]?, _ observabilityFunnel: [ACLAction]?) {
-        self.oauth2Connection = oauth2Connection
-        self.observabilityConfiguration = observabilityConfiguration
-        self.observabilityData = observabilityData
-        self.observabilityFunnel = observabilityFunnel
+extension CreateProjectEnvResponseCreatedVariant0ContentHintVariant0 {
+    public init(storeId: String, type: CreateProjectEnvResponseCreatedVariant0ContentHintVariant0Type) throws {
+        (self.storeId, self.type) = (storeId, type)
+            try sdkValidateRawEnum("type", self.type, CreateProjectEnvResponseCreatedVariant0ContentHintVariant0Type.allCases.map(\.rawValue))
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet38(_ observabilityNotebook: [ACLAction]?, _ oidcFederationPolicy: [ACLAction]?, _ onDemandBuild: [ACLAction]?, _ onDemandConcurrency: [ACLAction]?) {
-        self.observabilityNotebook = observabilityNotebook
-        self.oidcFederationPolicy = oidcFederationPolicy
-        self.onDemandBuild = onDemandBuild
-        self.onDemandConcurrency = onDemandConcurrency
+public typealias ListProjectsResponseVariant1ProjectsItemLinkVariant3DeployHooksList = [ListProjectsResponseVariant1ProjectsItemLinkVariant3DeployHooksItem]
+
+public struct ListProjectsResponseVariant1ProjectsItemLinkVariant3: Codable {
+    public var deployHooks: ListProjectsResponseVariant1ProjectsItemLinkVariant3DeployHooksList
+    public var gitCredentialId: String
+    public var productionBranch: String
+    public var projectId: String
+    public var projectName: String
+    public var projectNamespace: String
+    public var projectNameWithNamespace: String
+    public var projectUrl: String
+    public var type: ListProjectsResponseVariant1ProjectsItemLinkVariant3Type
+    public var createdAt: Double?
+    /// A new field, should be included in all new project links, is being added just in time when a deployment is
+    /// created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace
+    /// belongs to. Gitlab supports group nesting (up to 20 levels).
+    public var projectOwnerId: Double?
+    public var sourceless: Bool?
+    public var updatedAt: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case deployHooks
+        case gitCredentialId
+        case productionBranch
+        case projectId
+        case projectName
+        case projectNamespace
+        case projectNameWithNamespace
+        case projectUrl
+        case type
+        case createdAt
+        case projectOwnerId
+        case sourceless
+        case updatedAt
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension ListProjectsResponseVariant1ProjectsItemLinkVariant3 {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.deployHooks = try container.sdkDecodeRequired(.deployHooks)
+        self.gitCredentialId = try container.sdkDecodeRequired(.gitCredentialId)
+        self.productionBranch = try container.sdkDecodeRequired(.productionBranch)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.projectName = try container.sdkDecodeRequired(.projectName)
+        self.projectNamespace = try container.sdkDecodeRequired(.projectNamespace)
+        self.projectNameWithNamespace = try container.sdkDecodeRequired(.projectNameWithNamespace)
+        self.projectUrl = try container.sdkDecodeRequired(.projectUrl)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.projectOwnerId = try container.sdkDecodeIfPresent(.projectOwnerId)
+        self.sourceless = try container.sdkDecodeIfPresent(.sourceless)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemLinkVariant3Type.allCases.map(\.rawValue))
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet39(_ openTelemetryEndpoint: [ACLAction]?, _ optionsAllowlist: [ACLAction]?, _ organization: [ACLAction]?, _ organizationDomain: [ACLAction]?, _ organizationTeam: [ACLAction]?) {
-        self.openTelemetryEndpoint = openTelemetryEndpoint
-        self.optionsAllowlist = optionsAllowlist
-        self.organization = organization
-        self.organizationDomain = organizationDomain
-        self.organizationTeam = organizationTeam
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet40(_ ownEvent: [ACLAction]?, _ pageIntegrity: [ACLAction]?, _ passwordProtection: [ACLAction]?, _ passwordProtectionInvoiceItem: [ACLAction]?, _ paymentMethod: [ACLAction]?) {
-        self.ownEvent = ownEvent
-        self.pageIntegrity = pageIntegrity
-        self.passwordProtection = passwordProtection
-        self.passwordProtectionInvoiceItem = passwordProtectionInvoiceItem
-        self.paymentMethod = paymentMethod
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet41(_ permissions: [ACLAction]?, _ postgres: [ACLAction]?, _ postgresStoreTokenSet: [ACLAction]?, _ previewDeploymentSuffix: [ACLAction]?, _ privateCloudAccount: [ACLAction]?) {
-        self.permissions = permissions
-        self.postgres = postgres
-        self.postgresStoreTokenSet = postgresStoreTokenSet
-        self.previewDeploymentSuffix = previewDeploymentSuffix
-        self.privateCloudAccount = privateCloudAccount
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet42(_ privateLinkEndpoint: [ACLAction]?, _ productionAliasProtectionBypass: [ACLAction]?, _ productionShareableLink: [ACLAction]?, _ project: [ACLAction]?) {
-        self.privateLinkEndpoint = privateLinkEndpoint
-        self.productionAliasProtectionBypass = productionAliasProtectionBypass
-        self.productionShareableLink = productionShareableLink
-        self.project = project
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet43(_ projectAccessGroup: [ACLAction]?, _ projectAnalyticsSampling: [ACLAction]?, _ projectAnalyticsUsage: [ACLAction]?, _ projectCheck: [ACLAction]?, _ projectCheckRun: [ACLAction]?) {
-        self.projectAccessGroup = projectAccessGroup
-        self.projectAnalyticsSampling = projectAnalyticsSampling
-        self.projectAnalyticsUsage = projectAnalyticsUsage
-        self.projectCheck = projectCheck
-        self.projectCheckRun = projectCheckRun
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet44(_ projectDeploymentExpiration: [ACLAction]?, _ projectDeploymentHook: [ACLAction]?, _ projectDeploymentProtectionStrict: [ACLAction]?, _ projectDomain: [ACLAction]?) {
-        self.projectDeploymentExpiration = projectDeploymentExpiration
-        self.projectDeploymentHook = projectDeploymentHook
-        self.projectDeploymentProtectionStrict = projectDeploymentProtectionStrict
-        self.projectDomain = projectDomain
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet45(_ projectDomainCheckConfig: [ACLAction]?, _ projectDomainMove: [ACLAction]?, _ projectDomainVerify: [ACLAction]?, _ projectEnvVars: [ACLAction]?) {
-        self.projectDomainCheckConfig = projectDomainCheckConfig
-        self.projectDomainMove = projectDomainMove
-        self.projectDomainVerify = projectDomainVerify
-        self.projectEnvVars = projectEnvVars
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet46(_ projectEnvVarsProduction: [ACLAction]?, _ projectEnvVarsUnownedByIntegration: [ACLAction]?, _ projectEvent: [ACLAction]?, _ projectFlags: [ACLAction]?) {
-        self.projectEnvVarsProduction = projectEnvVarsProduction
-        self.projectEnvVarsUnownedByIntegration = projectEnvVarsUnownedByIntegration
-        self.projectEvent = projectEvent
-        self.projectFlags = projectFlags
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet47(_ projectFlagsProduction: [ACLAction]?, _ projectFlagsSdkKey: [ACLAction]?, _ projectFromV0: [ACLAction]?, _ projectId: [ACLAction]?) {
-        self.projectFlagsProduction = projectFlagsProduction
-        self.projectFlagsSdkKey = projectFlagsSdkKey
-        self.projectFromV0 = projectFromV0
-        self.projectId = projectId
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet48(_ projectIntegrationConfiguration: [ACLAction]?, _ projectLink: [ACLAction]?, _ projectMember: [ACLAction]?, _ projectMonitoring: [ACLAction]?, _ projectOidcToken: [ACLAction]?) {
-        self.projectIntegrationConfiguration = projectIntegrationConfiguration
-        self.projectLink = projectLink
-        self.projectMember = projectMember
-        self.projectMonitoring = projectMonitoring
-        self.projectOidcToken = projectOidcToken
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet49(_ projectPermissions: [ACLAction]?, _ projectProductionBranch: [ACLAction]?, _ projectProtectionBypass: [ACLAction]?, _ projectRollingRelease: [ACLAction]?) {
-        self.projectPermissions = projectPermissions
-        self.projectProductionBranch = projectProductionBranch
-        self.projectProtectionBypass = projectProtectionBypass
-        self.projectRollingRelease = projectRollingRelease
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet50(_ projectRoutes: [ACLAction]?, _ projectSetting: [ACLAction]?, _ projectSupportCase: [ACLAction]?, _ projectSupportCaseComment: [ACLAction]?, _ projectTier: [ACLAction]?) {
-        self.projectRoutes = projectRoutes
-        self.projectSetting = projectSetting
-        self.projectSupportCase = projectSupportCase
-        self.projectSupportCaseComment = projectSupportCaseComment
-        self.projectTier = projectTier
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet51(_ projectTransfer: [ACLAction]?, _ projectTransferIn: [ACLAction]?, _ projectTransferOut: [ACLAction]?, _ projectTransferRequest: [ACLAction]?, _ projectUsage: [ACLAction]?) {
-        self.projectTransfer = projectTransfer
-        self.projectTransferIn = projectTransferIn
-        self.projectTransferOut = projectTransferOut
-        self.projectTransferRequest = projectTransferRequest
-        self.projectUsage = projectUsage
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet52(_ proTrialOnboarding: [ACLAction]?, _ rateLimit: [ACLAction]?, _ redis: [ACLAction]?, _ redisStoreTokenSet: [ACLAction]?, _ remoteCaching: [ACLAction]?) {
-        self.proTrialOnboarding = proTrialOnboarding
-        self.rateLimit = rateLimit
-        self.redis = redis
-        self.redisStoreTokenSet = redisStoreTokenSet
-        self.remoteCaching = remoteCaching
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet53(_ repository: [ACLAction]?, _ samlConfig: [ACLAction]?, _ schedule: [ACLAction]?, _ seawallConfig: [ACLAction]?, _ secret: [ACLAction]?) {
-        self.repository = repository
-        self.samlConfig = samlConfig
-        self.schedule = schedule
-        self.seawallConfig = seawallConfig
-        self.secret = secret
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet54(_ securityConfig: [ACLAction]?, _ securityPlusConfiguration: [ACLAction]?, _ sensitiveEnvironmentVariablePolicy: [ACLAction]?, _ setting: [ACLAction]?) {
-        self.securityConfig = securityConfig
-        self.securityPlusConfiguration = securityPlusConfiguration
-        self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
-        self.setting = setting
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet55(_ shareableLink: [ACLAction]?, _ shareableLinkStrict: [ACLAction]?, _ sharedEnvVarConnection: [ACLAction]?, _ sharedEnvVars: [ACLAction]?, _ sharedEnvVarsProduction: [ACLAction]?) {
-        self.shareableLink = shareableLink
-        self.shareableLinkStrict = shareableLinkStrict
-        self.sharedEnvVarConnection = sharedEnvVarConnection
-        self.sharedEnvVars = sharedEnvVars
-        self.sharedEnvVarsProduction = sharedEnvVarsProduction
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet56(_ skewProtection: [ACLAction]?, _ space: [ACLAction]?, _ spaceRun: [ACLAction]?, _ storeIsLocked: [ACLAction]?, _ storeTokenSetSensitive: [ACLAction]?) {
-        self.skewProtection = skewProtection
-        self.space = space
-        self.spaceRun = spaceRun
-        self.storeIsLocked = storeIsLocked
-        self.storeTokenSetSensitive = storeTokenSetSensitive
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet57(_ storeTransfer: [ACLAction]?, _ supportCase: [ACLAction]?, _ supportCaseComment: [ACLAction]?, _ team: [ACLAction]?, _ teamAccessRequest: [ACLAction]?) {
-        self.storeTransfer = storeTransfer
-        self.supportCase = supportCase
-        self.supportCaseComment = supportCaseComment
-        self.team = team
-        self.teamAccessRequest = teamAccessRequest
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemPermissions {
-    mutating func sdkSet58(_ teamFellowMembership: [ACLAction]?, _ teamGitExclusivity: [ACLAction]?, _ teamInvite: [ACLAction]?, _ teamInviteCode: [ACLAction]?, _ teamInviteLink: [ACLAction]?) {
-        self.teamFellowMembership = teamFellowMembership
-        self.teamGitExclusivity = teamGitExclusivity
-        self.teamInvite = teamInvite
-        self.teamInviteCode = teamInviteCode
-        self.teamInviteLink = teamInviteLink
+extension ListProjectsResponseVariant1ProjectsItemLinkVariant3 {
+    public init(deployHooks: ListProjectsResponseVariant1ProjectsItemLinkVariant3DeployHooksList, gitCredentialId: String, productionBranch: String, projectId: String, projectName: String, projectNamespace: String, projectNameWithNamespace: String, projectUrl: String, type: ListProjectsResponseVariant1ProjectsItemLinkVariant3Type, createdAt: Double? = nil, projectOwnerId: Double? = nil, sourceless: Bool? = nil, updatedAt: Double? = nil) throws {
+        (self.deployHooks, self.gitCredentialId) = (deployHooks, gitCredentialId)
+        (self.productionBranch, self.projectId) = (productionBranch, projectId)
+        (self.projectName, self.projectNamespace) = (projectName, projectNamespace)
+        (self.projectNameWithNamespace, self.projectUrl) = (projectNameWithNamespace, projectUrl)
+        (self.type, self.createdAt) = (type, createdAt)
+        (self.projectOwnerId, self.sourceless) = (projectOwnerId, sourceless)
+        self.updatedAt = updatedAt
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemLinkVariant3Type.allCases.map(\.rawValue))
     }
 }

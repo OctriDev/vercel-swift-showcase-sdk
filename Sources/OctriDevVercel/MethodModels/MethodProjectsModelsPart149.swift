@@ -8,242 +8,593 @@ import Foundation
 #endif
 
 // Canonical projects operation model declarations
-/// An array of all the stages required during a deployment release. Each stage defines a target percentage and
-/// advancement rules. The final stage must always have targetPercentage: 100.
-public struct UploadProjectAvatarResponseRollingReleaseStagesItem: Codable {
-    /// The percentage of traffic to serve to the canary deployment (0-100)
-    /// - Example: 25
-    public var targetPercentage: Double
-    /// Duration in minutes for automatic advancement to the next stage
-    /// - Example: 600
-    public var duration: Double?
-    /// Whether to linearly shift traffic over the duration of this stage
-    public var linearShift: Bool?
-    /// Whether or not this stage requires manual approval to proceed
-    public var requireApproval: Bool?
+/// Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses
+/// contain a broader, non-authoritative permission summary. Each property: Requested and authorized operations when
+/// `checkPermissions` is used.
+public struct DeleteProjectAvatarResponsePermissions: Codable {
+    public var accessGroup: [ACLAction]? = .none
+    public var agent: [ACLAction]? = .none
+    public var aiGatewayApiKey: [ACLAction]? = .none
+    public var aiGatewayApiKeyBypassAll: [ACLAction]? = .none
+    public var aiGatewayApiKeyOwnedBySelf: [ACLAction]? = .none
+    public var aiGatewayApiKeySpendAttribution: [ACLAction]? = .none
+    public var aiGatewayApiKeyZdrExemption: [ACLAction]? = .none
+    public var aiGatewayBudget: [ACLAction]? = .none
+    public var aiGatewayCredits: [ACLAction]? = .none
+    public var aiGatewayGuardrails: [ACLAction]? = .none
+    public var aiGatewayPrivateModels: [ACLAction]? = .none
+    public var aiGatewayRules: [ACLAction]? = .none
+    public var aiGatewaySettings: [ACLAction]? = .none
+    public var aiGatewayTranscripts: [ACLAction]? = .none
+    public var aiGatewayTranscriptsSettings: [ACLAction]? = .none
+    public var aiGatewayUsage: [ACLAction]? = .none
+    public var aiGatewayVirtualModelConfigs: [ACLAction]? = .none
+    public var alertRules: [ACLAction]? = .none
+    public var alerts: [ACLAction]? = .none
+    public var aliasGlobal: [ACLAction]? = .none
+    public var aliasProject: [ACLAction]? = .none
+    public var aliasProtectionBypass: [ACLAction]? = .none
+    public var analytics: [ACLAction]? = .none
+    public var analyticsSampling: [ACLAction]? = .none
+    public var analyticsUsage: [ACLAction]? = .none
+    public var apiKey: [ACLAction]? = .none
+    public var apiKeyAiGateway: [ACLAction]? = .none
+    public var apiKeyOwnedBySelf: [ACLAction]? = .none
+    public var auditLog: [ACLAction]? = .none
+    public var automation: [ACLAction]? = .none
+    public var billingAddress: [ACLAction]? = .none
+    public var billingInformation: [ACLAction]? = .none
+    public var billingInvoice: [ACLAction]? = .none
+    public var billingInvoiceEmailRecipient: [ACLAction]? = .none
+    public var billingInvoiceLanguage: [ACLAction]? = .none
+    public var billingPlan: [ACLAction]? = .none
+    public var billingPurchaseOrder: [ACLAction]? = .none
+    public var billingRefund: [ACLAction]? = .none
+    public var billingTaxId: [ACLAction]? = .none
+    public var blob: [ACLAction]? = .none
+    public var blobStoreTokenSet: [ACLAction]? = .none
+    public var budget: [ACLAction]? = .none
+    public var buildMachine: [ACLAction]? = .none
+    public var buildMachineDefault: [ACLAction]? = .none
+    public var bulkRedirects: [ACLAction]? = .none
+    public var cacheArtifact: [ACLAction]? = .none
+    public var cacheArtifactUsageEvent: [ACLAction]? = .none
+    public var ciInvocations: [ACLAction]? = .none
+    public var ciLogs: [ACLAction]? = .none
+    public var codeChecks: [ACLAction]? = .none
+    public var codeOwners: [ACLAction]? = .none
+    public var concurrentBuilds: [ACLAction]? = .none
+    public var connect: [ACLAction]? = .none
+    public var connectConfiguration: [ACLAction]? = .none
+    public var connectConfigurationLink: [ACLAction]? = .none
+    public var connectLogs: [ACLAction]? = .none
+    public var connexClient: [ACLAction]? = .none
+    public var connexClientProject: [ACLAction]? = .none
+    public var connexContact: [ACLAction]? = .none
+    public var connexInstallation: [ACLAction]? = .none
+    public var connexToken: [ACLAction]? = .none
+    public var cursorOriginInstallation: [ACLAction]? = .none
+    public var dataCacheBillingSettings: [ACLAction]? = .none
+    public var dataCacheNamespace: [ACLAction]? = .none
+    public var defaultDeploymentProtection: [ACLAction]? = .none
+    public var deployment: [ACLAction]? = .none
+    public var deploymentBuildLogs: [ACLAction]? = .none
+    public var deploymentCheck: [ACLAction]? = .none
+    public var deploymentCheckPreview: [ACLAction]? = .none
+    public var deploymentCheckReRunFromProductionBranch: [ACLAction]? = .none
+    public var deploymentPolicy: [ACLAction]? = .none
+    public var deploymentPreview: [ACLAction]? = .none
+    public var deploymentPrivate: [ACLAction]? = .none
+    public var deploymentProductionGit: [ACLAction]? = .none
+    public var deploymentPromote: [ACLAction]? = .none
+    public var deploymentProtectionException: [ACLAction]? = .none
+    public var deploymentRollback: [ACLAction]? = .none
+    public var deploymentV0: [ACLAction]? = .none
+    public var domain: [ACLAction]? = .none
+    public var domainAcceptDelegation: [ACLAction]? = .none
+    public var domainAuthCodes: [ACLAction]? = .none
+    public var domainCertificate: [ACLAction]? = .none
+    public var domainCheckConfig: [ACLAction]? = .none
+    public var domainMove: [ACLAction]? = .none
+    public var domainPurchase: [ACLAction]? = .none
+    public var domainRecord: [ACLAction]? = .none
+    public var domainTransferIn: [ACLAction]? = .none
+    public var drain: [ACLAction]? = .none
+    public var edgeCacheNamespace: [ACLAction]? = .none
+    public var edgeConfig: [ACLAction]? = .none
+    public var edgeConfigItem: [ACLAction]? = .none
+    public var edgeConfigSchema: [ACLAction]? = .none
+    public var edgeConfigToken: [ACLAction]? = .none
+    public var endpointVerification: [ACLAction]? = .none
+    public var environments: [ACLAction]? = .none
+    public var event: [ACLAction]? = .none
+    public var fileUpload: [ACLAction]? = .none
+    public var flagsExplorerSubscription: [ACLAction]? = .none
+    public var gitCredentialGrant: [ACLAction]? = .none
+    public var gitRepository: [ACLAction]? = .none
+    public var imageOptimizationNewPrice: [ACLAction]? = .none
+    public var integration: [ACLAction]? = .none
+    public var integrationAccount: [ACLAction]? = .none
+    public var integrationConfiguration: [ACLAction]? = .none
+    public var integrationConfigurationProjects: [ACLAction]? = .none
+    public var integrationConfigurationRole: [ACLAction]? = .none
+    public var integrationConfigurationTransfer: [ACLAction]? = .none
+    public var integrationDeploymentAction: [ACLAction]? = .none
+    public var integrationEvent: [ACLAction]? = .none
+    public var integrationLog: [ACLAction]? = .none
+    public var integrationPullRequest: [ACLAction]? = .none
+    public var integrationResource: [ACLAction]? = .none
+    public var integrationResourceData: [ACLAction]? = .none
+    public var integrationResourceReplCommand: [ACLAction]? = .none
+    public var integrationResourceSecrets: [ACLAction]? = .none
+    public var integrationSsoSession: [ACLAction]? = .none
+    public var integrationStoreTokenSet: [ACLAction]? = .none
+    public var integrationStrict: [ACLAction]? = .none
+    public var integrationVercelConfigurationOverride: [ACLAction]? = .none
+    public var ipBlocking: [ACLAction]? = .none
+    public var job: [ACLAction]? = .none
+    public var jobGlobal: [ACLAction]? = .none
+    public var kmsIssuer: [ACLAction]? = .none
+    public var kmsProjectGrant: [ACLAction]? = .none
+    public var logDrain: [ACLAction]? = .none
+    public var logs: [ACLAction]? = .none
+    public var logsPreset: [ACLAction]? = .none
+    public var marketplaceBillingData: [ACLAction]? = .none
+    public var marketplaceExperimentationEdgeConfigData: [ACLAction]? = .none
+    public var marketplaceExperimentationItem: [ACLAction]? = .none
+    public var marketplaceFlexCommit: [ACLAction]? = .none
+    public var marketplaceInstallationMember: [ACLAction]? = .none
+    public var marketplaceInvoice: [ACLAction]? = .none
+    public var marketplaceSettings: [ACLAction]? = .none
+    public var messageboard: [ACLAction]? = .none
+    public var messageboardSpace: [ACLAction]? = .none
+    public var messageboardTask: [ACLAction]? = .none
+    public var monitoring: [ACLAction]? = .none
+    public var monitoringAlert: [ACLAction]? = .none
+    public var monitoringChart: [ACLAction]? = .none
+    public var monitoringQuery: [ACLAction]? = .none
+    public var monitoringSettings: [ACLAction]? = .none
+    public var notificationCustomerBudget: [ACLAction]? = .none
+    public var notificationDeploymentFailed: [ACLAction]? = .none
+    public var notificationDomainConfiguration: [ACLAction]? = .none
+    public var notificationDomainExpire: [ACLAction]? = .none
+    public var notificationDomainMoved: [ACLAction]? = .none
+    public var notificationDomainPurchase: [ACLAction]? = .none
+    public var notificationDomainRenewal: [ACLAction]? = .none
+    public var notificationDomainTransfer: [ACLAction]? = .none
+    public var notificationDomainUnverified: [ACLAction]? = .none
+    public var notificationMonitoringAlert: [ACLAction]? = .none
+    public var notificationPaymentFailed: [ACLAction]? = .none
+    public var notificationPreferences: [ACLAction]? = .none
+    public var notificationStatementOfReasons: [ACLAction]? = .none
+    public var notificationUsageAlert: [ACLAction]? = .none
+    public var oauth2Application: [ACLAction]? = .none
+    public var oauth2Connection: [ACLAction]? = .none
+    public var observabilityConfiguration: [ACLAction]? = .none
+    public var observabilityData: [ACLAction]? = .none
+    public var observabilityFunnel: [ACLAction]? = .none
+    public var observabilityNotebook: [ACLAction]? = .none
+    public var oidcFederationPolicy: [ACLAction]? = .none
+    public var onDemandBuild: [ACLAction]? = .none
+    public var onDemandConcurrency: [ACLAction]? = .none
+    public var openTelemetryEndpoint: [ACLAction]? = .none
+    public var optionsAllowlist: [ACLAction]? = .none
+    public var organization: [ACLAction]? = .none
+    public var organizationDomain: [ACLAction]? = .none
+    public var organizationTeam: [ACLAction]? = .none
+    public var ownEvent: [ACLAction]? = .none
+    public var pageIntegrity: [ACLAction]? = .none
+    public var passwordProtection: [ACLAction]? = .none
+    public var passwordProtectionInvoiceItem: [ACLAction]? = .none
+    public var paymentMethod: [ACLAction]? = .none
+    public var permissions: [ACLAction]? = .none
+    public var postgres: [ACLAction]? = .none
+    public var postgresStoreTokenSet: [ACLAction]? = .none
+    public var previewDeploymentSuffix: [ACLAction]? = .none
+    public var privateCloudAccount: [ACLAction]? = .none
+    public var privateLinkEndpoint: [ACLAction]? = .none
+    public var productionAliasProtectionBypass: [ACLAction]? = .none
+    public var productionShareableLink: [ACLAction]? = .none
+    public var project: [ACLAction]? = .none
+    public var projectAccessGroup: [ACLAction]? = .none
+    public var projectAnalyticsSampling: [ACLAction]? = .none
+    public var projectAnalyticsUsage: [ACLAction]? = .none
+    public var projectCheck: [ACLAction]? = .none
+    public var projectCheckRun: [ACLAction]? = .none
+    public var projectDeploymentExpiration: [ACLAction]? = .none
+    public var projectDeploymentHook: [ACLAction]? = .none
+    public var projectDeploymentProtectionStrict: [ACLAction]? = .none
+    public var projectDomain: [ACLAction]? = .none
+    public var projectDomainCheckConfig: [ACLAction]? = .none
+    public var projectDomainMove: [ACLAction]? = .none
+    public var projectDomainVerify: [ACLAction]? = .none
+    public var projectEnvVars: [ACLAction]? = .none
+    public var projectEnvVarsProduction: [ACLAction]? = .none
+    public var projectEnvVarsUnownedByIntegration: [ACLAction]? = .none
+    public var projectEvent: [ACLAction]? = .none
+    public var projectFlags: [ACLAction]? = .none
+    public var projectFlagsProduction: [ACLAction]? = .none
+    public var projectFlagsSdkKey: [ACLAction]? = .none
+    public var projectFromV0: [ACLAction]? = .none
+    public var projectId: [ACLAction]? = .none
+    public var projectIntegrationConfiguration: [ACLAction]? = .none
+    public var projectLink: [ACLAction]? = .none
+    public var projectMember: [ACLAction]? = .none
+    public var projectMonitoring: [ACLAction]? = .none
+    public var projectOidcToken: [ACLAction]? = .none
+    public var projectPermissions: [ACLAction]? = .none
+    public var projectProductionBranch: [ACLAction]? = .none
+    public var projectProtectionBypass: [ACLAction]? = .none
+    public var projectRollingRelease: [ACLAction]? = .none
+    public var projectRoutes: [ACLAction]? = .none
+    public var projectSetting: [ACLAction]? = .none
+    public var projectSupportCase: [ACLAction]? = .none
+    public var projectSupportCaseComment: [ACLAction]? = .none
+    public var projectTier: [ACLAction]? = .none
+    public var projectTransfer: [ACLAction]? = .none
+    public var projectTransferIn: [ACLAction]? = .none
+    public var projectTransferOut: [ACLAction]? = .none
+    public var projectTransferRequest: [ACLAction]? = .none
+    public var projectUsage: [ACLAction]? = .none
+    public var proTrialOnboarding: [ACLAction]? = .none
+    public var rateLimit: [ACLAction]? = .none
+    public var redis: [ACLAction]? = .none
+    public var redisStoreTokenSet: [ACLAction]? = .none
+    public var remoteCaching: [ACLAction]? = .none
+    public var repository: [ACLAction]? = .none
+    public var samlConfig: [ACLAction]? = .none
+    public var schedule: [ACLAction]? = .none
+    public var seawallConfig: [ACLAction]? = .none
+    public var secret: [ACLAction]? = .none
+    public var securityConfig: [ACLAction]? = .none
+    public var securityPlusConfiguration: [ACLAction]? = .none
+    public var sensitiveEnvironmentVariablePolicy: [ACLAction]? = .none
+    public var setting: [ACLAction]? = .none
+    public var shareableLink: [ACLAction]? = .none
+    public var shareableLinkStrict: [ACLAction]? = .none
+    public var sharedEnvVarConnection: [ACLAction]? = .none
+    public var sharedEnvVars: [ACLAction]? = .none
+    public var sharedEnvVarsProduction: [ACLAction]? = .none
+    public var skewProtection: [ACLAction]? = .none
+    public var space: [ACLAction]? = .none
+    public var spaceRun: [ACLAction]? = .none
+    public var storeIsLocked: [ACLAction]? = .none
+    public var storeTokenSetSensitive: [ACLAction]? = .none
+    public var storeTransfer: [ACLAction]? = .none
+    public var supportCase: [ACLAction]? = .none
+    public var supportCaseComment: [ACLAction]? = .none
+    public var team: [ACLAction]? = .none
+    public var teamAccessRequest: [ACLAction]? = .none
+    public var teamFellowMembership: [ACLAction]? = .none
+    public var teamGitExclusivity: [ACLAction]? = .none
+    public var teamInvite: [ACLAction]? = .none
+    public var teamInviteCode: [ACLAction]? = .none
+    public var teamInviteLink: [ACLAction]? = .none
+    public var teamJoin: [ACLAction]? = .none
+    public var teamMemberMfaStatus: [ACLAction]? = .none
+    public var teamMicrofrontends: [ACLAction]? = .none
+    public var teamOwnMembership: [ACLAction]? = .none
+    public var teamOwnMembershipDisconnectSaml: [ACLAction]? = .none
+    public var teamSudo: [ACLAction]? = .none
+    public var teamTokenInvalidation: [ACLAction]? = .none
+    public var token: [ACLAction]? = .none
+    public var toolbarComment: [ACLAction]? = .none
+    public var trustedIps: [ACLAction]? = .none
+    public var trustedSources: [ACLAction]? = .none
+    public var usage: [ACLAction]? = .none
+    public var usageCycle: [ACLAction]? = .none
+    public var user: [ACLAction]? = .none
+    public var userConnection: [ACLAction]? = .none
+    public var userMfaConfiguration: [ACLAction]? = .none
+    public var userPreference: [ACLAction]? = .none
+    public var userSudo: [ACLAction]? = .none
+    public var v0Chat: [ACLAction]? = .none
+    public var vcrRepository: [ACLAction]? = .none
+    public var vercelAppInstallation: [ACLAction]? = .none
+    public var vercelAppInstallationRequest: [ACLAction]? = .none
+    public var vercelAuth: [ACLAction]? = .none
+    public var vercelRun: [ACLAction]? = .none
+    public var vpcPeeringConnection: [ACLAction]? = .none
+    public var webAnalytics: [ACLAction]? = .none
+    public var webAnalyticsPlan: [ACLAction]? = .none
+    public var webAuthn: [ACLAction]? = .none
+    public var webhook: [ACLAction]? = .none
+    public var webhookEvent: [ACLAction]? = .none
+    public var workflowRunData: [ACLAction]? = .none
 
+    init(sdkDefaults _: Void) {}
+}
+
+extension DeleteProjectAvatarResponsePermissions {
     enum CodingKeys: String, CodingKey {
-        case targetPercentage
-        case duration
-        case linearShift
-        case requireApproval
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UploadProjectAvatarResponseRollingReleaseStagesItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.targetPercentage) else {
-            throw SdkValidationError(field: "targetPercentage", code: "required", message: "Validation failed for 'targetPercentage': value is required")
-        }
-        self.targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
-        self.duration = try container.sdkDecodeIfPresent(.duration)
-        self.linearShift = try container.sdkDecodeIfPresent(.linearShift)
-        self.requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
-    }
-}
-
-extension UploadProjectAvatarResponseRollingReleaseStagesItem {
-    public init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
-        (self.targetPercentage, self.duration) = (targetPercentage, duration)
-        (self.linearShift, self.requireApproval) = (linearShift, requireApproval)
-    }
-}
-
-public struct ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValue: Codable {
-    public var action: ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValueAction
-    public var actionDuration: String?
-    public var bypassSystem: Bool?
-    public var logHeaders: ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValueLogHeaders?
-    public var rateLimit: ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValueRateLimit?
-    public var redirect: ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValueRedirect?
-
-    enum CodingKeys: String, CodingKey {
-        case action
-        case actionDuration
-        case bypassSystem
-        case logHeaders
+        case accessGroup
+        case agent
+        case aiGatewayApiKey
+        case aiGatewayApiKeyBypassAll
+        case aiGatewayApiKeyOwnedBySelf
+        case aiGatewayApiKeySpendAttribution
+        case aiGatewayApiKeyZdrExemption
+        case aiGatewayBudget
+        case aiGatewayCredits
+        case aiGatewayGuardrails
+        case aiGatewayPrivateModels
+        case aiGatewayRules
+        case aiGatewaySettings
+        case aiGatewayTranscripts
+        case aiGatewayTranscriptsSettings
+        case aiGatewayUsage
+        case aiGatewayVirtualModelConfigs
+        case alertRules
+        case alerts
+        case aliasGlobal
+        case aliasProject
+        case aliasProtectionBypass
+        case analytics
+        case analyticsSampling
+        case analyticsUsage
+        case apiKey
+        case apiKeyAiGateway
+        case apiKeyOwnedBySelf
+        case auditLog
+        case automation
+        case billingAddress
+        case billingInformation
+        case billingInvoice
+        case billingInvoiceEmailRecipient
+        case billingInvoiceLanguage
+        case billingPlan
+        case billingPurchaseOrder
+        case billingRefund
+        case billingTaxId
+        case blob
+        case blobStoreTokenSet
+        case budget
+        case buildMachine
+        case buildMachineDefault
+        case bulkRedirects
+        case cacheArtifact
+        case cacheArtifactUsageEvent
+        case ciInvocations
+        case ciLogs
+        case codeChecks
+        case codeOwners
+        case concurrentBuilds
+        case connect
+        case connectConfiguration
+        case connectConfigurationLink
+        case connectLogs
+        case connexClient
+        case connexClientProject
+        case connexContact
+        case connexInstallation
+        case connexToken
+        case cursorOriginInstallation
+        case dataCacheBillingSettings
+        case dataCacheNamespace
+        case defaultDeploymentProtection
+        case deployment
+        case deploymentBuildLogs
+        case deploymentCheck
+        case deploymentCheckPreview
+        case deploymentCheckReRunFromProductionBranch
+        case deploymentPolicy
+        case deploymentPreview
+        case deploymentPrivate
+        case deploymentProductionGit
+        case deploymentPromote
+        case deploymentProtectionException
+        case deploymentRollback
+        case deploymentV0
+        case domain
+        case domainAcceptDelegation
+        case domainAuthCodes
+        case domainCertificate
+        case domainCheckConfig
+        case domainMove
+        case domainPurchase
+        case domainRecord
+        case domainTransferIn
+        case drain
+        case edgeCacheNamespace
+        case edgeConfig
+        case edgeConfigItem
+        case edgeConfigSchema
+        case edgeConfigToken
+        case endpointVerification
+        case environments
+        case event
+        case fileUpload
+        case flagsExplorerSubscription
+        case gitCredentialGrant
+        case gitRepository
+        case imageOptimizationNewPrice
+        case integration
+        case integrationAccount
+        case integrationConfiguration
+        case integrationConfigurationProjects
+        case integrationConfigurationRole
+        case integrationConfigurationTransfer
+        case integrationDeploymentAction
+        case integrationEvent
+        case integrationLog
+        case integrationPullRequest
+        case integrationResource
+        case integrationResourceData
+        case integrationResourceReplCommand
+        case integrationResourceSecrets
+        case integrationSsoSession = "integrationSSOSession"
+        case integrationStoreTokenSet
+        case integrationStrict
+        case integrationVercelConfigurationOverride
+        case ipBlocking
+        case job
+        case jobGlobal
+        case kmsIssuer
+        case kmsProjectGrant
+        case logDrain
+        case logs
+        case logsPreset
+        case marketplaceBillingData
+        case marketplaceExperimentationEdgeConfigData
+        case marketplaceExperimentationItem
+        case marketplaceFlexCommit
+        case marketplaceInstallationMember
+        case marketplaceInvoice
+        case marketplaceSettings
+        case messageboard
+        case messageboardSpace
+        case messageboardTask
+        case monitoring = "Monitoring"
+        case monitoringAlert
+        case monitoringChart
+        case monitoringQuery
+        case monitoringSettings
+        case notificationCustomerBudget
+        case notificationDeploymentFailed
+        case notificationDomainConfiguration
+        case notificationDomainExpire
+        case notificationDomainMoved
+        case notificationDomainPurchase
+        case notificationDomainRenewal
+        case notificationDomainTransfer
+        case notificationDomainUnverified
+        case notificationMonitoringAlert = "NotificationMonitoringAlert"
+        case notificationPaymentFailed
+        case notificationPreferences
+        case notificationStatementOfReasons
+        case notificationUsageAlert
+        case oauth2Application
+        case oauth2Connection
+        case observabilityConfiguration
+        case observabilityData
+        case observabilityFunnel
+        case observabilityNotebook
+        case oidcFederationPolicy
+        case onDemandBuild
+        case onDemandConcurrency
+        case openTelemetryEndpoint
+        case optionsAllowlist
+        case organization
+        case organizationDomain
+        case organizationTeam
+        case ownEvent
+        case pageIntegrity
+        case passwordProtection
+        case passwordProtectionInvoiceItem
+        case paymentMethod
+        case permissions
+        case postgres
+        case postgresStoreTokenSet
+        case previewDeploymentSuffix
+        case privateCloudAccount
+        case privateLinkEndpoint
+        case productionAliasProtectionBypass
+        case productionShareableLink
+        case project
+        case projectAccessGroup
+        case projectAnalyticsSampling
+        case projectAnalyticsUsage
+        case projectCheck
+        case projectCheckRun
+        case projectDeploymentExpiration
+        case projectDeploymentHook
+        case projectDeploymentProtectionStrict
+        case projectDomain
+        case projectDomainCheckConfig
+        case projectDomainMove
+        case projectDomainVerify
+        case projectEnvVars
+        case projectEnvVarsProduction
+        case projectEnvVarsUnownedByIntegration
+        case projectEvent
+        case projectFlags
+        case projectFlagsProduction
+        case projectFlagsSdkKey
+        case projectFromV0
+        case projectId
+        case projectIntegrationConfiguration
+        case projectLink
+        case projectMember
+        case projectMonitoring
+        case projectOidcToken = "projectOIDCToken"
+        case projectPermissions
+        case projectProductionBranch
+        case projectProtectionBypass
+        case projectRollingRelease
+        case projectRoutes
+        case projectSetting
+        case projectSupportCase
+        case projectSupportCaseComment
+        case projectTier
+        case projectTransfer
+        case projectTransferIn
+        case projectTransferOut
+        case projectTransferRequest
+        case projectUsage
+        case proTrialOnboarding
         case rateLimit
-        case redirect
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValue {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.action) else {
-            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
-        }
-        self.action = try container.sdkDecodeRequired(.action)
-        self.actionDuration = try container.sdkDecodeIfPresent(.actionDuration)
-        self.bypassSystem = try container.sdkDecodeIfPresent(.bypassSystem)
-        self.logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
-        self.rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
-        self.redirect = try container.sdkDecodeIfPresent(.redirect)
-    }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValue {
-    public init(action: ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValueAction, actionDuration: String? = nil, bypassSystem: Bool? = nil, logHeaders: ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValueLogHeaders? = nil, rateLimit: ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValueRateLimit? = nil, redirect: ListProjectsResponseVariant1ProjectsItemSecurityRulesetsValueRedirect? = nil) {
-        (self.action, self.actionDuration) = (action, actionDuration)
-        (self.bypassSystem, self.logHeaders) = (bypassSystem, logHeaders)
-        (self.rateLimit, self.redirect) = (rateLimit, redirect)
-    }
-}
-
-/// Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is
-/// measured in MiB.
-public struct ListProjectsResponseVariant1ProjectsItemResourceConfigElasticX6c9fed9f23: Codable {
-    public var cores: Double
-    /// Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but
-    /// Basic is normalized to standard before an elastic decision becomes effective.
-    public var label: ListProjectsResponseVariant1ProjectsItemResourceConfigElasticXc820550939
-    public var memory: Double
-
-    enum CodingKeys: String, CodingKey {
-        case cores
-        case label
-        case memory
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemResourceConfigElasticX6c9fed9f23 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.cores) else {
-            throw SdkValidationError(field: "cores", code: "required", message: "Validation failed for 'cores': value is required")
-        }
-        guard container.contains(.label) else {
-            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
-        }
-        guard container.contains(.memory) else {
-            throw SdkValidationError(field: "memory", code: "required", message: "Validation failed for 'memory': value is required")
-        }
-        self.cores = try container.sdkDecodeRequired(.cores)
-        self.label = try container.sdkDecodeRequired(.label)
-        self.memory = try container.sdkDecodeRequired(.memory)
-    }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemResourceConfigElasticX6c9fed9f23 {
-    public init(cores: Double, label: ListProjectsResponseVariant1ProjectsItemResourceConfigElasticXc820550939, memory: Double) {
-        (self.cores, self.label) = (cores, label)
-        self.memory = memory
-    }
-}
-
-public struct UploadProjectAvatarResponseBlobs: Codable {
-    /// Marks the team-level, Vercel-managed default blob project (`vercel-blob-default-project`) that orphan blob
-    /// stores are scoped to when connected without an explicit project. Set only by internal storage flows and
-    /// immutable after creation — guards rely on it to protect the connected stores from being lost when the
-    /// project is deleted or transferred.
-    public var isDefaultApp: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case isDefaultApp
-    }
-
-    init() {
-        self.isDefaultApp = nil
-    }
-}
-
-extension UploadProjectAvatarResponseBlobs {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.isDefaultApp = try container.sdkDecodeIfPresent(.isDefaultApp)
-    }
-}
-
-extension UploadProjectAvatarResponseBlobs {
-    public init(isDefaultApp: Bool? = nil) {
-        self.init()
-        self.isDefaultApp = isDefaultApp
-    }
-}
-
-public struct ListProjectsResponseVariant2ProjectsItemMicrofrontendsVariant2: Codable {
-    public var enabled: Bool
-    public var groupIds: [JSONValue]
-    public var updatedAt: Double
-    public var freeProjectForLegacyLimits: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case enabled
-        case groupIds
-        case updatedAt
-        case freeProjectForLegacyLimits
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemMicrofrontendsVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.enabled) else {
-            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
-        }
-        guard container.contains(.groupIds) else {
-            throw SdkValidationError(field: "groupIds", code: "required", message: "Validation failed for 'groupIds': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.enabled = try container.sdkDecodeRequired(.enabled)
-        self.groupIds = try container.sdkDecodeRequired(.groupIds)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.freeProjectForLegacyLimits = try container.sdkDecodeIfPresent(.freeProjectForLegacyLimits)
-            try validateItems("groupIds", self.groupIds, min: 0, max: 0)
-    }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemMicrofrontendsVariant2 {
-    public init(enabled: Bool, groupIds: [JSONValue], updatedAt: Double, freeProjectForLegacyLimits: Bool? = nil) throws {
-        (self.enabled, self.groupIds) = (enabled, groupIds)
-        (self.updatedAt, self.freeProjectForLegacyLimits) = (updatedAt, freeProjectForLegacyLimits)
-            try validateItems("groupIds", self.groupIds, min: 0, max: 0)
-    }
-}
-
-public indirect enum ListProjectsResponseVariant0ItemEnvItemTarget {
-    case stringList([String])
-    case stringValue(String)
-}
-
-extension ListProjectsResponseVariant0ItemEnvItemTarget: Codable {
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant0ItemEnvItemTarget")
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-    }
-}
-
-extension ListProjectsResponseVariant0ItemEnvItemTarget {
-    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String].self) { return .stringList(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        return nil
-    }
-}
-
-extension ListProjectsResponseVariant0ItemEnvItemTarget {
-    func encodeGroup1(to encoder: Encoder) throws -> Bool {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case let .stringList(value): try container.encode(value); return true
-        case let .stringValue(value): try container.encode(value); return true
-        }
+        case redis
+        case redisStoreTokenSet
+        case remoteCaching
+        case repository
+        case samlConfig
+        case schedule
+        case seawallConfig
+        case secret
+        case securityConfig
+        case securityPlusConfiguration
+        case sensitiveEnvironmentVariablePolicy
+        case setting
+        case shareableLink
+        case shareableLinkStrict
+        case sharedEnvVarConnection
+        case sharedEnvVars
+        case sharedEnvVarsProduction
+        case skewProtection
+        case space
+        case spaceRun
+        case storeIsLocked
+        case storeTokenSetSensitive
+        case storeTransfer
+        case supportCase
+        case supportCaseComment
+        case team
+        case teamAccessRequest
+        case teamFellowMembership
+        case teamGitExclusivity
+        case teamInvite
+        case teamInviteCode
+        case teamInviteLink
+        case teamJoin
+        case teamMemberMfaStatus
+        case teamMicrofrontends
+        case teamOwnMembership
+        case teamOwnMembershipDisconnectSaml = "teamOwnMembershipDisconnectSAML"
+        case teamSudo
+        case teamTokenInvalidation
+        case token
+        case toolbarComment
+        case trustedIps
+        case trustedSources
+        case usage
+        case usageCycle
+        case user
+        case userConnection
+        case userMfaConfiguration
+        case userPreference
+        case userSudo
+        case v0Chat
+        case vcrRepository
+        case vercelAppInstallation
+        case vercelAppInstallationRequest
+        case vercelAuth
+        case vercelRun
+        case vpcPeeringConnection
+        case webAnalytics
+        case webAnalyticsPlan
+        case webAuthn
+        case webhook
+        case webhookEvent = "webhook-event"
+        case workflowRunData
     }
 }

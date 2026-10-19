@@ -8,469 +8,243 @@ import Foundation
 #endif
 
 // Canonical projects operation model declarations
-public indirect enum ListProjectsResponseVariant1ProjectsItemCreatorVariant0Via {
-    case listProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant0(
-        ListProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant0
-    )
-    case listProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant1(
-        ListProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant1
-    )
-}
-
-extension ListProjectsResponseVariant1ProjectsItemCreatorVariant0Via: Codable {
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-        }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant1ProjectsItemCreatorVariant0Via")
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-    }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemCreatorVariant0Via {
-    static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ListProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant0.self),
-           sdkKeepsEveryKey(value, of: raw) {
-            return .listProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant0(value)
-        }
-        if let value = try? container.decode(ListProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant1.self),
-           sdkKeepsEveryKey(value, of: raw) {
-            return .listProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant1(value)
-        }
-        return nil
-    }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemCreatorVariant0Via {
-    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(
-            ListProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant0.self
-        ) {
-            return             .listProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant0(value)
-        }
-        if let value = try? container.decode(
-            ListProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant1.self
-        ) {
-            return             .listProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant1(value)
-        }
-        return nil
-    }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemCreatorVariant0Via {
-    func encodeGroup1(to encoder: Encoder) throws -> Bool {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case let .listProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant0(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant1ProjectsItemCreatorVariant0ViaVariant1(value): try container.encode(value); return true
-        }
-    }
-}
-
-public struct UploadProjectAvatarResponseGitProviderOptions: Codable {
-    /// Whether the Vercel bot should automatically create GitHub deployments docs.github.com NOTE:
-    /// repository-dispatch events should be used instead
-    public var createDeployments: UploadProjectAvatarResponseGitProviderOptionsCreateDeployments
-    /// Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single
-    /// consolidated commit status instead of individual statuses for each deployment.
-    public var consolidatedGitCommitStatus: UploadProjectAvatarResponseGitProviderOptionsConsolidatedGitCommitStatus?
-    /// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment
-    /// events. vercel.com - `true`: disable repository-dispatch events for this project (explicit override of the
-    /// team setting). - `false`: enable repository-dispatch events for this project (explicit override of the team
-    /// setting). - absent: inherit from `team.disableRepositoryDispatchEvents`.
-    public var disableRepositoryDispatchEvents: Bool?
-    /// Whether Vercel should post commit statuses for this project. When omitted, commit statuses remain enabled.
-    public var gitCommitStatus: Bool?
-    /// Whether the project requires commits to be signed & verified before deployments will be created. - `true`:
-    /// require verified commits for this project (explicit override of the team setting). - `false`: do not require
-    /// verified commits (explicit override of the team setting). - absent: inherit from
-    /// `team.requireVerifiedCommits`.
-    public var requireVerifiedCommits: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case createDeployments
-        case consolidatedGitCommitStatus
-        case disableRepositoryDispatchEvents
-        case gitCommitStatus
-        case requireVerifiedCommits
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UploadProjectAvatarResponseGitProviderOptions {
+extension UploadProjectAvatarResponsePermissions {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createDeployments) else {
-            throw SdkValidationError(field: "createDeployments", code: "required", message: "Validation failed for 'createDeployments': value is required")
-        }
-        self.createDeployments = try container.sdkDecodeRequired(.createDeployments)
-        self.consolidatedGitCommitStatus = try container.sdkDecodeIfPresent(.consolidatedGitCommitStatus)
-        self.disableRepositoryDispatchEvents = try container.sdkDecodeIfPresent(.disableRepositoryDispatchEvents)
-        self.gitCommitStatus = try container.sdkDecodeIfPresent(.gitCommitStatus)
-        self.requireVerifiedCommits = try container.sdkDecodeIfPresent(.requireVerifiedCommits)
+        self.init(sdkDefaults: ())
+        try sdkDecodeFieldsPart1(container)
+        try sdkDecodeFieldsPart2(container)
+        try sdkDecodeFieldsPart3(container)
+        try sdkDecodeFieldsPart4(container)
+        try sdkDecodeFieldsPart5(container)
+        try sdkDecodeFieldsPart6(container)
+        try sdkDecodeFieldsPart7(container)
+        try sdkDecodeFieldsPart8(container)
+        try sdkDecodeFieldsPart9(container)
+        try sdkDecodeFieldsPart10(container)
+        try sdkDecodeFieldsPart11(container)
+        try sdkDecodeFieldsPart12(container)
+        try sdkDecodeFieldsPart13(container)
+        try sdkDecodeFieldsPart14(container)
+        try sdkDecodeFieldsPart15(container)
+        try sdkDecodeFieldsPart16(container)
+        try sdkDecodeFieldsPart17(container)
+        try sdkDecodeFieldsPart18(container)
+        try sdkDecodeFieldsPart19(container)
+        try sdkDecodeFieldsPart20(container)
+        try sdkDecodeFieldsPart21(container)
+        try sdkDecodeFieldsPart22(container)
+        try sdkDecodeFieldsPart23(container)
+        try sdkDecodeFieldsPart24(container)
+        try sdkDecodeFieldsPart25(container)
     }
 }
 
-extension UploadProjectAvatarResponseGitProviderOptions {
-    public init(createDeployments: UploadProjectAvatarResponseGitProviderOptionsCreateDeployments, consolidatedGitCommitStatus: UploadProjectAvatarResponseGitProviderOptionsConsolidatedGitCommitStatus? = nil, disableRepositoryDispatchEvents: Bool? = nil, gitCommitStatus: Bool? = nil, requireVerifiedCommits: Bool? = nil) {
-        self.createDeployments = createDeployments
-        self.consolidatedGitCommitStatus = consolidatedGitCommitStatus
-        self.disableRepositoryDispatchEvents = disableRepositoryDispatchEvents
-        (self.gitCommitStatus, self.requireVerifiedCommits) = (gitCommitStatus, requireVerifiedCommits)
+extension UploadProjectAvatarResponsePermissions {
+    public init(accessGroup: [ACLAction]? = nil, agent: [ACLAction]? = nil, aiGatewayApiKey: [ACLAction]? = nil, aiGatewayApiKeyBypassAll: [ACLAction]? = nil, aiGatewayApiKeyOwnedBySelf: [ACLAction]? = nil, aiGatewayApiKeySpendAttribution: [ACLAction]? = nil, aiGatewayApiKeyZdrExemption: [ACLAction]? = nil, aiGatewayBudget: [ACLAction]? = nil, aiGatewayCredits: [ACLAction]? = nil, aiGatewayGuardrails: [ACLAction]? = nil, aiGatewayPrivateModels: [ACLAction]? = nil, aiGatewayRules: [ACLAction]? = nil, aiGatewaySettings: [ACLAction]? = nil, aiGatewayTranscripts: [ACLAction]? = nil, aiGatewayTranscriptsSettings: [ACLAction]? = nil, aiGatewayUsage: [ACLAction]? = nil, aiGatewayVirtualModelConfigs: [ACLAction]? = nil, alertRules: [ACLAction]? = nil, alerts: [ACLAction]? = nil, aliasGlobal: [ACLAction]? = nil, aliasProject: [ACLAction]? = nil, aliasProtectionBypass: [ACLAction]? = nil, analytics: [ACLAction]? = nil, analyticsSampling: [ACLAction]? = nil, analyticsUsage: [ACLAction]? = nil, apiKey: [ACLAction]? = nil, apiKeyAiGateway: [ACLAction]? = nil, apiKeyOwnedBySelf: [ACLAction]? = nil, auditLog: [ACLAction]? = nil, automation: [ACLAction]? = nil, billingAddress: [ACLAction]? = nil, billingInformation: [ACLAction]? = nil, billingInvoice: [ACLAction]? = nil, billingInvoiceEmailRecipient: [ACLAction]? = nil, billingInvoiceLanguage: [ACLAction]? = nil, billingPlan: [ACLAction]? = nil, billingPurchaseOrder: [ACLAction]? = nil, billingRefund: [ACLAction]? = nil, billingTaxId: [ACLAction]? = nil, blob: [ACLAction]? = nil, blobStoreTokenSet: [ACLAction]? = nil, budget: [ACLAction]? = nil, buildMachine: [ACLAction]? = nil, buildMachineDefault: [ACLAction]? = nil, bulkRedirects: [ACLAction]? = nil, cacheArtifact: [ACLAction]? = nil, cacheArtifactUsageEvent: [ACLAction]? = nil, ciInvocations: [ACLAction]? = nil, ciLogs: [ACLAction]? = nil, codeChecks: [ACLAction]? = nil, codeOwners: [ACLAction]? = nil, concurrentBuilds: [ACLAction]? = nil, connect: [ACLAction]? = nil, connectConfiguration: [ACLAction]? = nil, connectConfigurationLink: [ACLAction]? = nil, connectLogs: [ACLAction]? = nil, connexClient: [ACLAction]? = nil, connexClientProject: [ACLAction]? = nil, connexContact: [ACLAction]? = nil, connexInstallation: [ACLAction]? = nil, connexToken: [ACLAction]? = nil, cursorOriginInstallation: [ACLAction]? = nil, dataCacheBillingSettings: [ACLAction]? = nil, dataCacheNamespace: [ACLAction]? = nil, defaultDeploymentProtection: [ACLAction]? = nil, deployment: [ACLAction]? = nil, deploymentBuildLogs: [ACLAction]? = nil, deploymentCheck: [ACLAction]? = nil, deploymentCheckPreview: [ACLAction]? = nil, deploymentCheckReRunFromProductionBranch: [ACLAction]? = nil, deploymentPolicy: [ACLAction]? = nil, deploymentPreview: [ACLAction]? = nil, deploymentPrivate: [ACLAction]? = nil, deploymentProductionGit: [ACLAction]? = nil, deploymentPromote: [ACLAction]? = nil, deploymentProtectionException: [ACLAction]? = nil, deploymentRollback: [ACLAction]? = nil, deploymentV0: [ACLAction]? = nil, domain: [ACLAction]? = nil, domainAcceptDelegation: [ACLAction]? = nil, domainAuthCodes: [ACLAction]? = nil, domainCertificate: [ACLAction]? = nil, domainCheckConfig: [ACLAction]? = nil, domainMove: [ACLAction]? = nil, domainPurchase: [ACLAction]? = nil, domainRecord: [ACLAction]? = nil, domainTransferIn: [ACLAction]? = nil, drain: [ACLAction]? = nil, edgeCacheNamespace: [ACLAction]? = nil, edgeConfig: [ACLAction]? = nil, edgeConfigItem: [ACLAction]? = nil, edgeConfigSchema: [ACLAction]? = nil, edgeConfigToken: [ACLAction]? = nil, endpointVerification: [ACLAction]? = nil, environments: [ACLAction]? = nil, event: [ACLAction]? = nil, fileUpload: [ACLAction]? = nil, flagsExplorerSubscription: [ACLAction]? = nil, gitCredentialGrant: [ACLAction]? = nil, gitRepository: [ACLAction]? = nil, imageOptimizationNewPrice: [ACLAction]? = nil, integration: [ACLAction]? = nil, integrationAccount: [ACLAction]? = nil, integrationConfiguration: [ACLAction]? = nil, integrationConfigurationProjects: [ACLAction]? = nil, integrationConfigurationRole: [ACLAction]? = nil, integrationConfigurationTransfer: [ACLAction]? = nil, integrationDeploymentAction: [ACLAction]? = nil, integrationEvent: [ACLAction]? = nil, integrationLog: [ACLAction]? = nil, integrationPullRequest: [ACLAction]? = nil, integrationResource: [ACLAction]? = nil, integrationResourceData: [ACLAction]? = nil, integrationResourceReplCommand: [ACLAction]? = nil, integrationResourceSecrets: [ACLAction]? = nil, integrationSsoSession: [ACLAction]? = nil, integrationStoreTokenSet: [ACLAction]? = nil, integrationStrict: [ACLAction]? = nil, integrationVercelConfigurationOverride: [ACLAction]? = nil, ipBlocking: [ACLAction]? = nil, job: [ACLAction]? = nil, jobGlobal: [ACLAction]? = nil, kmsIssuer: [ACLAction]? = nil, kmsProjectGrant: [ACLAction]? = nil, logDrain: [ACLAction]? = nil, logs: [ACLAction]? = nil, logsPreset: [ACLAction]? = nil, marketplaceBillingData: [ACLAction]? = nil, marketplaceExperimentationEdgeConfigData: [ACLAction]? = nil, marketplaceExperimentationItem: [ACLAction]? = nil, marketplaceFlexCommit: [ACLAction]? = nil, marketplaceInstallationMember: [ACLAction]? = nil, marketplaceInvoice: [ACLAction]? = nil, marketplaceSettings: [ACLAction]? = nil, messageboard: [ACLAction]? = nil, messageboardSpace: [ACLAction]? = nil, messageboardTask: [ACLAction]? = nil, monitoring: [ACLAction]? = nil, monitoringAlert: [ACLAction]? = nil, monitoringChart: [ACLAction]? = nil, monitoringQuery: [ACLAction]? = nil, monitoringSettings: [ACLAction]? = nil, notificationCustomerBudget: [ACLAction]? = nil, notificationDeploymentFailed: [ACLAction]? = nil, notificationDomainConfiguration: [ACLAction]? = nil, notificationDomainExpire: [ACLAction]? = nil, notificationDomainMoved: [ACLAction]? = nil, notificationDomainPurchase: [ACLAction]? = nil, notificationDomainRenewal: [ACLAction]? = nil, notificationDomainTransfer: [ACLAction]? = nil, notificationDomainUnverified: [ACLAction]? = nil, notificationMonitoringAlert: [ACLAction]? = nil, notificationPaymentFailed: [ACLAction]? = nil, notificationPreferences: [ACLAction]? = nil, notificationStatementOfReasons: [ACLAction]? = nil, notificationUsageAlert: [ACLAction]? = nil, oauth2Application: [ACLAction]? = nil, oauth2Connection: [ACLAction]? = nil, observabilityConfiguration: [ACLAction]? = nil, observabilityData: [ACLAction]? = nil, observabilityFunnel: [ACLAction]? = nil, observabilityNotebook: [ACLAction]? = nil, oidcFederationPolicy: [ACLAction]? = nil, onDemandBuild: [ACLAction]? = nil, onDemandConcurrency: [ACLAction]? = nil, openTelemetryEndpoint: [ACLAction]? = nil, optionsAllowlist: [ACLAction]? = nil, organization: [ACLAction]? = nil, organizationDomain: [ACLAction]? = nil, organizationTeam: [ACLAction]? = nil, ownEvent: [ACLAction]? = nil, pageIntegrity: [ACLAction]? = nil, passwordProtection: [ACLAction]? = nil, passwordProtectionInvoiceItem: [ACLAction]? = nil, paymentMethod: [ACLAction]? = nil, permissions: [ACLAction]? = nil, postgres: [ACLAction]? = nil, postgresStoreTokenSet: [ACLAction]? = nil, previewDeploymentSuffix: [ACLAction]? = nil, privateCloudAccount: [ACLAction]? = nil, privateLinkEndpoint: [ACLAction]? = nil, productionAliasProtectionBypass: [ACLAction]? = nil, productionShareableLink: [ACLAction]? = nil, project: [ACLAction]? = nil, projectAccessGroup: [ACLAction]? = nil, projectAnalyticsSampling: [ACLAction]? = nil, projectAnalyticsUsage: [ACLAction]? = nil, projectCheck: [ACLAction]? = nil, projectCheckRun: [ACLAction]? = nil, projectDeploymentExpiration: [ACLAction]? = nil, projectDeploymentHook: [ACLAction]? = nil, projectDeploymentProtectionStrict: [ACLAction]? = nil, projectDomain: [ACLAction]? = nil, projectDomainCheckConfig: [ACLAction]? = nil, projectDomainMove: [ACLAction]? = nil, projectDomainVerify: [ACLAction]? = nil, projectEnvVars: [ACLAction]? = nil, projectEnvVarsProduction: [ACLAction]? = nil, projectEnvVarsUnownedByIntegration: [ACLAction]? = nil, projectEvent: [ACLAction]? = nil, projectFlags: [ACLAction]? = nil, projectFlagsProduction: [ACLAction]? = nil, projectFlagsSdkKey: [ACLAction]? = nil, projectFromV0: [ACLAction]? = nil, projectId: [ACLAction]? = nil, projectIntegrationConfiguration: [ACLAction]? = nil, projectLink: [ACLAction]? = nil, projectMember: [ACLAction]? = nil, projectMonitoring: [ACLAction]? = nil, projectOidcToken: [ACLAction]? = nil, projectPermissions: [ACLAction]? = nil, projectProductionBranch: [ACLAction]? = nil, projectProtectionBypass: [ACLAction]? = nil, projectRollingRelease: [ACLAction]? = nil, projectRoutes: [ACLAction]? = nil, projectSetting: [ACLAction]? = nil, projectSupportCase: [ACLAction]? = nil, projectSupportCaseComment: [ACLAction]? = nil, projectTier: [ACLAction]? = nil, projectTransfer: [ACLAction]? = nil, projectTransferIn: [ACLAction]? = nil, projectTransferOut: [ACLAction]? = nil, projectTransferRequest: [ACLAction]? = nil, projectUsage: [ACLAction]? = nil, proTrialOnboarding: [ACLAction]? = nil, rateLimit: [ACLAction]? = nil, redis: [ACLAction]? = nil, redisStoreTokenSet: [ACLAction]? = nil, remoteCaching: [ACLAction]? = nil, repository: [ACLAction]? = nil, samlConfig: [ACLAction]? = nil, schedule: [ACLAction]? = nil, seawallConfig: [ACLAction]? = nil, secret: [ACLAction]? = nil, securityConfig: [ACLAction]? = nil, securityPlusConfiguration: [ACLAction]? = nil, sensitiveEnvironmentVariablePolicy: [ACLAction]? = nil, setting: [ACLAction]? = nil, shareableLink: [ACLAction]? = nil, shareableLinkStrict: [ACLAction]? = nil, sharedEnvVarConnection: [ACLAction]? = nil, sharedEnvVars: [ACLAction]? = nil, sharedEnvVarsProduction: [ACLAction]? = nil, skewProtection: [ACLAction]? = nil, space: [ACLAction]? = nil, spaceRun: [ACLAction]? = nil, storeIsLocked: [ACLAction]? = nil, storeTokenSetSensitive: [ACLAction]? = nil, storeTransfer: [ACLAction]? = nil, supportCase: [ACLAction]? = nil, supportCaseComment: [ACLAction]? = nil, team: [ACLAction]? = nil, teamAccessRequest: [ACLAction]? = nil, teamFellowMembership: [ACLAction]? = nil, teamGitExclusivity: [ACLAction]? = nil, teamInvite: [ACLAction]? = nil, teamInviteCode: [ACLAction]? = nil, teamInviteLink: [ACLAction]? = nil, teamJoin: [ACLAction]? = nil, teamMemberMfaStatus: [ACLAction]? = nil, teamMicrofrontends: [ACLAction]? = nil, teamOwnMembership: [ACLAction]? = nil, teamOwnMembershipDisconnectSaml: [ACLAction]? = nil, teamSudo: [ACLAction]? = nil, teamTokenInvalidation: [ACLAction]? = nil, token: [ACLAction]? = nil, toolbarComment: [ACLAction]? = nil, trustedIps: [ACLAction]? = nil, trustedSources: [ACLAction]? = nil, usage: [ACLAction]? = nil, usageCycle: [ACLAction]? = nil, user: [ACLAction]? = nil, userConnection: [ACLAction]? = nil, userMfaConfiguration: [ACLAction]? = nil, userPreference: [ACLAction]? = nil, userSudo: [ACLAction]? = nil, v0Chat: [ACLAction]? = nil, vcrRepository: [ACLAction]? = nil, vercelAppInstallation: [ACLAction]? = nil, vercelAppInstallationRequest: [ACLAction]? = nil, vercelAuth: [ACLAction]? = nil, vercelRun: [ACLAction]? = nil, vpcPeeringConnection: [ACLAction]? = nil, webAnalytics: [ACLAction]? = nil, webAnalyticsPlan: [ACLAction]? = nil, webAuthn: [ACLAction]? = nil, webhook: [ACLAction]? = nil, webhookEvent: [ACLAction]? = nil, workflowRunData: [ACLAction]? = nil) {
+        self.init(sdkDefaults: ())
+        sdkSet1(accessGroup, agent, aiGatewayApiKey, aiGatewayApiKeyBypassAll, aiGatewayApiKeyOwnedBySelf)
+        sdkSet2(aiGatewayApiKeySpendAttribution, aiGatewayApiKeyZdrExemption, aiGatewayBudget, aiGatewayCredits)
+        sdkSet3(aiGatewayGuardrails, aiGatewayPrivateModels, aiGatewayRules, aiGatewaySettings, aiGatewayTranscripts)
+        sdkSet4(aiGatewayTranscriptsSettings, aiGatewayUsage, aiGatewayVirtualModelConfigs, alertRules, alerts)
+        sdkSet5(aliasGlobal, aliasProject, aliasProtectionBypass, analytics, analyticsSampling)
+        sdkSet6(analyticsUsage, apiKey, apiKeyAiGateway, apiKeyOwnedBySelf, auditLog)
+        sdkSet7(automation, billingAddress, billingInformation, billingInvoice, billingInvoiceEmailRecipient)
+        sdkSet8(billingInvoiceLanguage, billingPlan, billingPurchaseOrder, billingRefund, billingTaxId)
+        sdkSet9(blob, blobStoreTokenSet, budget, buildMachine, buildMachineDefault)
+        sdkSet10(bulkRedirects, cacheArtifact, cacheArtifactUsageEvent, ciInvocations, ciLogs)
+        sdkSet11(codeChecks, codeOwners, concurrentBuilds, connect, connectConfiguration)
+        sdkSet12(connectConfigurationLink, connectLogs, connexClient, connexClientProject, connexContact)
+        sdkSet13(connexInstallation, connexToken, cursorOriginInstallation, dataCacheBillingSettings)
+        sdkSet14(dataCacheNamespace, defaultDeploymentProtection, deployment, deploymentBuildLogs, deploymentCheck)
+        sdkSet15(deploymentCheckPreview, deploymentCheckReRunFromProductionBranch, deploymentPolicy)
+        sdkSet16(deploymentPreview, deploymentPrivate, deploymentProductionGit, deploymentPromote)
+        sdkSet17(deploymentProtectionException, deploymentRollback, deploymentV0, domain, domainAcceptDelegation)
+        sdkSet18(domainAuthCodes, domainCertificate, domainCheckConfig, domainMove, domainPurchase)
+        sdkSet19(domainRecord, domainTransferIn, drain, edgeCacheNamespace, edgeConfig)
+        sdkSet20(edgeConfigItem, edgeConfigSchema, edgeConfigToken, endpointVerification, environments)
+        sdkSet21(event, fileUpload, flagsExplorerSubscription, gitCredentialGrant, gitRepository)
+        sdkSet22(imageOptimizationNewPrice, integration, integrationAccount, integrationConfiguration)
+        sdkSet23(integrationConfigurationProjects, integrationConfigurationRole, integrationConfigurationTransfer)
+        sdkSet24(integrationDeploymentAction, integrationEvent, integrationLog, integrationPullRequest)
+        sdkSet25(integrationResource, integrationResourceData, integrationResourceReplCommand)
+        sdkSet26(integrationResourceSecrets, integrationSsoSession, integrationStoreTokenSet, integrationStrict)
+        sdkSet27(integrationVercelConfigurationOverride, ipBlocking, job, jobGlobal, kmsIssuer)
+        sdkSet28(kmsProjectGrant, logDrain, logs, logsPreset, marketplaceBillingData)
+        sdkSet29(marketplaceExperimentationEdgeConfigData, marketplaceExperimentationItem, marketplaceFlexCommit)
+        sdkSet30(marketplaceInstallationMember, marketplaceInvoice, marketplaceSettings, messageboard)
+        sdkSet31(messageboardSpace, messageboardTask, monitoring, monitoringAlert, monitoringChart)
+        sdkSet32(monitoringQuery, monitoringSettings, notificationCustomerBudget, notificationDeploymentFailed)
+        sdkSet33(notificationDomainConfiguration, notificationDomainExpire, notificationDomainMoved)
+        sdkSet34(notificationDomainPurchase, notificationDomainRenewal, notificationDomainTransfer)
+        sdkSet35(notificationDomainUnverified, notificationMonitoringAlert, notificationPaymentFailed)
+        sdkSet36(notificationPreferences, notificationStatementOfReasons, notificationUsageAlert, oauth2Application)
+        sdkSet37(oauth2Connection, observabilityConfiguration, observabilityData, observabilityFunnel)
+        sdkSet38(observabilityNotebook, oidcFederationPolicy, onDemandBuild, onDemandConcurrency)
+        sdkSet39(openTelemetryEndpoint, optionsAllowlist, organization, organizationDomain, organizationTeam)
+        sdkSet40(ownEvent, pageIntegrity, passwordProtection, passwordProtectionInvoiceItem, paymentMethod)
+        sdkSet41(permissions, postgres, postgresStoreTokenSet, previewDeploymentSuffix, privateCloudAccount)
+        sdkSet42(privateLinkEndpoint, productionAliasProtectionBypass, productionShareableLink, project)
+        sdkSet43(projectAccessGroup, projectAnalyticsSampling, projectAnalyticsUsage, projectCheck, projectCheckRun)
+        sdkSet44(projectDeploymentExpiration, projectDeploymentHook, projectDeploymentProtectionStrict, projectDomain)
+        sdkSet45(projectDomainCheckConfig, projectDomainMove, projectDomainVerify, projectEnvVars)
+        sdkSet46(projectEnvVarsProduction, projectEnvVarsUnownedByIntegration, projectEvent, projectFlags)
+        sdkSet47(projectFlagsProduction, projectFlagsSdkKey, projectFromV0, projectId)
+        sdkSet48(projectIntegrationConfiguration, projectLink, projectMember, projectMonitoring, projectOidcToken)
+        sdkSet49(projectPermissions, projectProductionBranch, projectProtectionBypass, projectRollingRelease)
+        sdkSet50(projectRoutes, projectSetting, projectSupportCase, projectSupportCaseComment, projectTier)
+        sdkSet51(projectTransfer, projectTransferIn, projectTransferOut, projectTransferRequest, projectUsage)
+        sdkSet52(proTrialOnboarding, rateLimit, redis, redisStoreTokenSet, remoteCaching)
+        sdkSet53(repository, samlConfig, schedule, seawallConfig, secret)
+        sdkSet54(securityConfig, securityPlusConfiguration, sensitiveEnvironmentVariablePolicy, setting)
+        sdkSet55(shareableLink, shareableLinkStrict, sharedEnvVarConnection, sharedEnvVars, sharedEnvVarsProduction)
+        sdkSet56(skewProtection, space, spaceRun, storeIsLocked, storeTokenSetSensitive)
+        sdkSet57(storeTransfer, supportCase, supportCaseComment, team, teamAccessRequest)
+        sdkSet58(teamFellowMembership, teamGitExclusivity, teamInvite, teamInviteCode, teamInviteLink)
+        sdkSet59(teamJoin, teamMemberMfaStatus, teamMicrofrontends, teamOwnMembership)
+        sdkSet60(teamOwnMembershipDisconnectSaml, teamSudo, teamTokenInvalidation, token, toolbarComment)
+        sdkSet61(trustedIps, trustedSources, usage, usageCycle, user)
+        sdkSet62(userConnection, userMfaConfiguration, userPreference, userSudo, v0Chat)
+        sdkSet63(vcrRepository, vercelAppInstallation, vercelAppInstallationRequest, vercelAuth, vercelRun)
+        sdkSet64(vpcPeeringConnection, webAnalytics, webAnalyticsPlan, webAuthn, webhook)
+        sdkSet65(webhookEvent, workflowRunData)
     }
 }
 
-public struct ListProjectsResponseVariant0ItemTargetsValueBuildsItem: Codable {
-    public var use: String
-    public var dest: String?
-    public var src: String?
-
-    enum CodingKeys: String, CodingKey {
-        case use
-        case dest
-        case src
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant0ItemTargetsValueBuildsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.use) else {
-            throw SdkValidationError(field: "use", code: "required", message: "Validation failed for 'use': value is required")
-        }
-        self.use = try container.sdkDecodeRequired(.use)
-        self.dest = try container.sdkDecodeIfPresent(.dest)
-        self.src = try container.sdkDecodeIfPresent(.src)
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet1(_ accessGroup: [ACLAction]?, _ agent: [ACLAction]?, _ aiGatewayApiKey: [ACLAction]?, _ aiGatewayApiKeyBypassAll: [ACLAction]?, _ aiGatewayApiKeyOwnedBySelf: [ACLAction]?) {
+        self.accessGroup = accessGroup
+        self.agent = agent
+        self.aiGatewayApiKey = aiGatewayApiKey
+        self.aiGatewayApiKeyBypassAll = aiGatewayApiKeyBypassAll
+        self.aiGatewayApiKeyOwnedBySelf = aiGatewayApiKeyOwnedBySelf
     }
 }
 
-extension ListProjectsResponseVariant0ItemTargetsValueBuildsItem {
-    public init(use: String, dest: String? = nil, src: String? = nil) {
-        (self.use, self.dest) = (use, dest)
-        self.src = src
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet2(_ aiGatewayApiKeySpendAttribution: [ACLAction]?, _ aiGatewayApiKeyZdrExemption: [ACLAction]?, _ aiGatewayBudget: [ACLAction]?, _ aiGatewayCredits: [ACLAction]?) {
+        self.aiGatewayApiKeySpendAttribution = aiGatewayApiKeySpendAttribution
+        self.aiGatewayApiKeyZdrExemption = aiGatewayApiKeyZdrExemption
+        self.aiGatewayBudget = aiGatewayBudget
+        self.aiGatewayCredits = aiGatewayCredits
     }
 }
 
-/// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to
-/// details of the rollback.
-public struct GetProjectsResponseRollbackDescription: Codable {
-    /// Timestamp of when the rollback was requested.
-    public var createdAt: Double
-    /// User-supplied explanation of why they rolled back the project. Limited to 250 characters.
-    public var description: String
-    /// The user who rolled back the project.
-    public var userId: String
-    /// The username of the user who rolled back the project.
-    public var username: String
-
-    enum CodingKeys: String, CodingKey {
-        case createdAt
-        case description
-        case userId
-        case username
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetProjectsResponseRollbackDescription {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
-        }
-        guard container.contains(.userId) else {
-            throw SdkValidationError(field: "userId", code: "required", message: "Validation failed for 'userId': value is required")
-        }
-        guard container.contains(.username) else {
-            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.description = try container.sdkDecodeRequired(.description)
-        self.userId = try container.sdkDecodeRequired(.userId)
-        self.username = try container.sdkDecodeRequired(.username)
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet3(_ aiGatewayGuardrails: [ACLAction]?, _ aiGatewayPrivateModels: [ACLAction]?, _ aiGatewayRules: [ACLAction]?, _ aiGatewaySettings: [ACLAction]?, _ aiGatewayTranscripts: [ACLAction]?) {
+        self.aiGatewayGuardrails = aiGatewayGuardrails
+        self.aiGatewayPrivateModels = aiGatewayPrivateModels
+        self.aiGatewayRules = aiGatewayRules
+        self.aiGatewaySettings = aiGatewaySettings
+        self.aiGatewayTranscripts = aiGatewayTranscripts
     }
 }
 
-extension GetProjectsResponseRollbackDescription {
-    public init(createdAt: Double, description: String, userId: String, username: String) {
-        (self.createdAt, self.description) = (createdAt, description)
-        (self.userId, self.username) = (userId, username)
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet4(_ aiGatewayTranscriptsSettings: [ACLAction]?, _ aiGatewayUsage: [ACLAction]?, _ aiGatewayVirtualModelConfigs: [ACLAction]?, _ alertRules: [ACLAction]?, _ alerts: [ACLAction]?) {
+        self.aiGatewayTranscriptsSettings = aiGatewayTranscriptsSettings
+        self.aiGatewayUsage = aiGatewayUsage
+        self.aiGatewayVirtualModelConfigs = aiGatewayVirtualModelConfigs
+        self.alertRules = alertRules
+        self.alerts = alerts
     }
 }
 
-public indirect enum CreateProjectResponseConnectConfigurationsItemEnvId {
-    case stringValue(String)
-    case stringValue1(String)
-}
-
-extension CreateProjectResponseConnectConfigurationsItemEnvId: Codable {
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateProjectResponseConnectConfigurationsItemEnvId")
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet5(_ aliasGlobal: [ACLAction]?, _ aliasProject: [ACLAction]?, _ aliasProtectionBypass: [ACLAction]?, _ analytics: [ACLAction]?, _ analyticsSampling: [ACLAction]?) {
+        self.aliasGlobal = aliasGlobal
+        self.aliasProject = aliasProject
+        self.aliasProtectionBypass = aliasProtectionBypass
+        self.analytics = analytics
+        self.analyticsSampling = analyticsSampling
     }
 }
 
-extension CreateProjectResponseConnectConfigurationsItemEnvId {
-    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue1(value) }
-        return nil
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet6(_ analyticsUsage: [ACLAction]?, _ apiKey: [ACLAction]?, _ apiKeyAiGateway: [ACLAction]?, _ apiKeyOwnedBySelf: [ACLAction]?, _ auditLog: [ACLAction]?) {
+        self.analyticsUsage = analyticsUsage
+        self.apiKey = apiKey
+        self.apiKeyAiGateway = apiKeyAiGateway
+        self.apiKeyOwnedBySelf = apiKeyOwnedBySelf
+        self.auditLog = auditLog
     }
 }
 
-extension CreateProjectResponseConnectConfigurationsItemEnvId {
-    func encodeGroup1(to encoder: Encoder) throws -> Bool {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case let .stringValue(value): try container.encode(value); return true
-        case let .stringValue1(value): try container.encode(value); return true
-        }
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet7(_ automation: [ACLAction]?, _ billingAddress: [ACLAction]?, _ billingInformation: [ACLAction]?, _ billingInvoice: [ACLAction]?, _ billingInvoiceEmailRecipient: [ACLAction]?) {
+        self.automation = automation
+        self.billingAddress = billingAddress
+        self.billingInformation = billingInformation
+        self.billingInvoice = billingInvoice
+        self.billingInvoiceEmailRecipient = billingInvoiceEmailRecipient
     }
 }
 
-public struct UpdateMicrofrontendsResponseWebAnalytics: Codable {
-    public var id: String
-    public var canceledAt: Double?
-    public var disabledAt: Double?
-    public var enabledAt: Double?
-    public var hasData: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case canceledAt
-        case disabledAt
-        case enabledAt
-        case hasData
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateMicrofrontendsResponseWebAnalytics {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.canceledAt = try container.sdkDecodeIfPresent(.canceledAt)
-        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        self.enabledAt = try container.sdkDecodeIfPresent(.enabledAt)
-        self.hasData = try container.sdkDecodeIfPresent(.hasData)
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet8(_ billingInvoiceLanguage: [ACLAction]?, _ billingPlan: [ACLAction]?, _ billingPurchaseOrder: [ACLAction]?, _ billingRefund: [ACLAction]?, _ billingTaxId: [ACLAction]?) {
+        self.billingInvoiceLanguage = billingInvoiceLanguage
+        self.billingPlan = billingPlan
+        self.billingPurchaseOrder = billingPurchaseOrder
+        self.billingRefund = billingRefund
+        self.billingTaxId = billingTaxId
     }
 }
 
-extension UpdateMicrofrontendsResponseWebAnalytics {
-    public init(id: String, canceledAt: Double? = nil, disabledAt: Double? = nil, enabledAt: Double? = nil, hasData: Bool? = nil) {
-        (self.id, self.canceledAt) = (id, canceledAt)
-        (self.disabledAt, self.enabledAt) = (disabledAt, enabledAt)
-        self.hasData = hasData
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet9(_ blob: [ACLAction]?, _ blobStoreTokenSet: [ACLAction]?, _ budget: [ACLAction]?, _ buildMachine: [ACLAction]?, _ buildMachineDefault: [ACLAction]?) {
+        self.blob = blob
+        self.blobStoreTokenSet = blobStoreTokenSet
+        self.budget = budget
+        self.buildMachine = buildMachine
+        self.buildMachineDefault = buildMachineDefault
     }
 }
 
-/// Internal representation of a custom environment with all required properties
-public struct GetProjectsResponseCustomEnvironmentsItem: Codable {
-    /// Timestamp when the environment was created
-    public var createdAt: Double
-    /// Unique identifier for the custom environment (format: env_*)
-    public var id: String
-    /// URL-friendly name of the environment
-    public var slug: String
-    /// The type of environment (production, preview, or development)
-    public var type: GetProjectsResponseCustomEnvironmentsItemType
-    /// Timestamp when the environment was last updated
-    public var updatedAt: Double
-    /// Configuration for matching git branches to this environment
-    public var branchMatcher: GetProjectsResponseCustomEnvironmentsItemBranchMatcher?
-    /// List of aliases for the current deployment
-    public var currentDeploymentAliases: [String]?
-    /// Optional description of the environment's purpose
-    public var description: String?
-    /// List of domains associated with this environment
-    public var domains: [GetProjectsResponseCustomEnvironmentsItemDomainsItem]?
-
-    enum CodingKeys: String, CodingKey {
-        case createdAt
-        case id
-        case slug
-        case type
-        case updatedAt
-        case branchMatcher
-        case currentDeploymentAliases
-        case description
-        case domains
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetProjectsResponseCustomEnvironmentsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.slug) else {
-            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.branchMatcher = try container.sdkDecodeIfPresent(.branchMatcher)
-        self.currentDeploymentAliases = try container.sdkDecodeIfPresent(.currentDeploymentAliases)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.domains = try container.sdkDecodeIfPresent(.domains)
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet10(_ bulkRedirects: [ACLAction]?, _ cacheArtifact: [ACLAction]?, _ cacheArtifactUsageEvent: [ACLAction]?, _ ciInvocations: [ACLAction]?, _ ciLogs: [ACLAction]?) {
+        self.bulkRedirects = bulkRedirects
+        self.cacheArtifact = cacheArtifact
+        self.cacheArtifactUsageEvent = cacheArtifactUsageEvent
+        self.ciInvocations = ciInvocations
+        self.ciLogs = ciLogs
     }
 }
 
-extension GetProjectsResponseCustomEnvironmentsItem {
-    public init(createdAt: Double, id: String, slug: String, type: GetProjectsResponseCustomEnvironmentsItemType, updatedAt: Double, branchMatcher: GetProjectsResponseCustomEnvironmentsItemBranchMatcher? = nil, currentDeploymentAliases: [String]? = nil, description: String? = nil, domains: [GetProjectsResponseCustomEnvironmentsItemDomainsItem]? = nil) {
-        (self.createdAt, self.id) = (createdAt, id)
-        (self.slug, self.type) = (slug, type)
-        (self.updatedAt, self.branchMatcher) = (updatedAt, branchMatcher)
-        (self.currentDeploymentAliases, self.description) = (currentDeploymentAliases, description)
-        self.domains = domains
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet11(_ codeChecks: [ACLAction]?, _ codeOwners: [ACLAction]?, _ concurrentBuilds: [ACLAction]?, _ connect: [ACLAction]?, _ connectConfiguration: [ACLAction]?) {
+        self.codeChecks = codeChecks
+        self.codeOwners = codeOwners
+        self.concurrentBuilds = concurrentBuilds
+        self.connect = connect
+        self.connectConfiguration = connectConfiguration
     }
 }
 
-public struct DeleteProjectAvatarResponseSecurity: Codable {
-    public var attackModeActiveUntil: Double?
-    public var attackModeEnabled: Bool?
-    public var attackModeUpdatedAt: Double?
-    public var botIdEnabled: Bool?
-    public var firewallBypassIps: [String]?
-    public var firewallConfigVersion: Double?
-    public var firewallEnabled: Bool?
-    public var firewallSeawallEnabled: Bool?
-    public var firewallUpdatedAt: Double?
-    public var ja3Enabled: Bool?
-    public var ja4Enabled: Bool?
-    public var logHeaders: DeleteProjectAvatarResponseSecurityLogHeaders?
-    public var managedRules: DeleteProjectAvatarResponseSecurityManagedRules?
-    /// Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups
-    /// against the page-integrity-inventory table.
-    public var pageIntegrityEnabled: Bool?
-    public var rulesets: [String: DeleteProjectAvatarResponseSecurityRulesetsValue]?
-
-    enum CodingKeys: String, CodingKey {
-        case attackModeActiveUntil
-        case attackModeEnabled
-        case attackModeUpdatedAt
-        case botIdEnabled
-        case firewallBypassIps
-        case firewallConfigVersion
-        case firewallEnabled
-        case firewallSeawallEnabled
-        case firewallUpdatedAt
-        case ja3Enabled
-        case ja4Enabled
-        case logHeaders = "log_headers"
-        case managedRules
-        case pageIntegrityEnabled
-        case rulesets
-    }
-
-    init() {
-        (self.attackModeActiveUntil, self.attackModeEnabled, self.attackModeUpdatedAt, self.botIdEnabled, self.firewallBypassIps) = (nil, nil, nil, nil, nil)
-        (self.firewallConfigVersion, self.firewallEnabled, self.firewallSeawallEnabled, self.firewallUpdatedAt, self.ja3Enabled) = (nil, nil, nil, nil, nil)
-        (self.ja4Enabled, self.logHeaders, self.managedRules, self.pageIntegrityEnabled, self.rulesets) = (nil, nil, nil, nil, nil)
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet12(_ connectConfigurationLink: [ACLAction]?, _ connectLogs: [ACLAction]?, _ connexClient: [ACLAction]?, _ connexClientProject: [ACLAction]?, _ connexContact: [ACLAction]?) {
+        self.connectConfigurationLink = connectConfigurationLink
+        self.connectLogs = connectLogs
+        self.connexClient = connexClient
+        self.connexClientProject = connexClientProject
+        self.connexContact = connexContact
     }
 }
 
-extension DeleteProjectAvatarResponseSecurity {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.attackModeActiveUntil = try container.sdkDecodeIfPresent(.attackModeActiveUntil)
-        self.attackModeEnabled = try container.sdkDecodeIfPresent(.attackModeEnabled)
-        self.attackModeUpdatedAt = try container.sdkDecodeIfPresent(.attackModeUpdatedAt)
-        self.botIdEnabled = try container.sdkDecodeIfPresent(.botIdEnabled)
-        self.firewallBypassIps = try container.sdkDecodeIfPresent(.firewallBypassIps)
-        self.firewallConfigVersion = try container.sdkDecodeIfPresent(.firewallConfigVersion)
-        self.firewallEnabled = try container.sdkDecodeIfPresent(.firewallEnabled)
-        self.firewallSeawallEnabled = try container.sdkDecodeIfPresent(.firewallSeawallEnabled)
-        self.firewallUpdatedAt = try container.sdkDecodeIfPresent(.firewallUpdatedAt)
-        self.ja3Enabled = try container.sdkDecodeIfPresent(.ja3Enabled)
-        self.ja4Enabled = try container.sdkDecodeIfPresent(.ja4Enabled)
-        self.logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
-        self.managedRules = try container.sdkDecodeIfPresent(.managedRules)
-        self.pageIntegrityEnabled = try container.sdkDecodeIfPresent(.pageIntegrityEnabled)
-        self.rulesets = try container.sdkDecodeIfPresent(.rulesets)
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet13(_ connexInstallation: [ACLAction]?, _ connexToken: [ACLAction]?, _ cursorOriginInstallation: [ACLAction]?, _ dataCacheBillingSettings: [ACLAction]?) {
+        self.connexInstallation = connexInstallation
+        self.connexToken = connexToken
+        self.cursorOriginInstallation = cursorOriginInstallation
+        self.dataCacheBillingSettings = dataCacheBillingSettings
     }
 }
 
-extension DeleteProjectAvatarResponseSecurity {
-    public init(attackModeActiveUntil: Double? = nil, attackModeEnabled: Bool? = nil, attackModeUpdatedAt: Double? = nil, botIdEnabled: Bool? = nil, firewallBypassIps: [String]? = nil, firewallConfigVersion: Double? = nil, firewallEnabled: Bool? = nil, firewallSeawallEnabled: Bool? = nil, firewallUpdatedAt: Double? = nil, ja3Enabled: Bool? = nil, ja4Enabled: Bool? = nil, logHeaders: DeleteProjectAvatarResponseSecurityLogHeaders? = nil, managedRules: DeleteProjectAvatarResponseSecurityManagedRules? = nil, pageIntegrityEnabled: Bool? = nil, rulesets: [String: DeleteProjectAvatarResponseSecurityRulesetsValue]? = nil) {
-        self.init()
-        (self.attackModeActiveUntil, self.attackModeEnabled) = (attackModeActiveUntil, attackModeEnabled)
-        (self.attackModeUpdatedAt, self.botIdEnabled) = (attackModeUpdatedAt, botIdEnabled)
-        (self.firewallBypassIps, self.firewallConfigVersion) = (firewallBypassIps, firewallConfigVersion)
-        (self.firewallEnabled, self.firewallSeawallEnabled) = (firewallEnabled, firewallSeawallEnabled)
-        (self.firewallUpdatedAt, self.ja3Enabled) = (firewallUpdatedAt, ja3Enabled)
-        (self.ja4Enabled, self.logHeaders) = (ja4Enabled, logHeaders)
-        (self.managedRules, self.pageIntegrityEnabled) = (managedRules, pageIntegrityEnabled)
-        self.rulesets = rulesets
-    }
-}
-
-public indirect enum ListProjectsDomainsParameter {
-    case stringValue(String)
-}
-
-extension ListProjectsDomainsParameter: Codable {
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsDomainsParameter")
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-    }
-}
-
-extension ListProjectsDomainsParameter {
-    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        return nil
-    }
-}
-
-extension ListProjectsDomainsParameter {
-    func encodeGroup1(to encoder: Encoder) throws -> Bool {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case let .stringValue(value): try container.encode(value); return true
-        }
+extension UploadProjectAvatarResponsePermissions {
+    mutating func sdkSet14(_ dataCacheNamespace: [ACLAction]?, _ defaultDeploymentProtection: [ACLAction]?, _ deployment: [ACLAction]?, _ deploymentBuildLogs: [ACLAction]?, _ deploymentCheck: [ACLAction]?) {
+        self.dataCacheNamespace = dataCacheNamespace
+        self.defaultDeploymentProtection = defaultDeploymentProtection
+        self.deployment = deployment
+        self.deploymentBuildLogs = deploymentBuildLogs
+        self.deploymentCheck = deploymentCheck
     }
 }

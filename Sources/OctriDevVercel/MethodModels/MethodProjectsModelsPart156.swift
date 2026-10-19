@@ -8,328 +8,459 @@ import Foundation
 #endif
 
 // Canonical projects operation model declarations
-extension DeleteProjectAvatarResponsePermissions {
-    enum CodingKeys: String, CodingKey {
-        case accessGroup
-        case agent
-        case aiGatewayApiKey
-        case aiGatewayApiKeyBypassAll
-        case aiGatewayApiKeyOwnedBySelf
-        case aiGatewayApiKeySpendAttribution
-        case aiGatewayApiKeyZdrExemption
-        case aiGatewayBudget
-        case aiGatewayCredits
-        case aiGatewayGuardrails
-        case aiGatewayPrivateModels
-        case aiGatewayRules
-        case aiGatewaySettings
-        case aiGatewayTranscripts
-        case aiGatewayTranscriptsSettings
-        case aiGatewayUsage
-        case aiGatewayVirtualModelConfigs
-        case alertRules
-        case alerts
-        case aliasGlobal
-        case aliasProject
-        case aliasProtectionBypass
-        case analytics
-        case analyticsSampling
-        case analyticsUsage
-        case apiKey
-        case apiKeyAiGateway
-        case apiKeyOwnedBySelf
-        case auditLog
-        case automation
-        case billingAddress
-        case billingInformation
-        case billingInvoice
-        case billingInvoiceEmailRecipient
-        case billingInvoiceLanguage
-        case billingPlan
-        case billingPurchaseOrder
-        case billingRefund
-        case billingTaxId
-        case blob
-        case blobStoreTokenSet
-        case budget
-        case buildMachine
-        case buildMachineDefault
-        case bulkRedirects
-        case cacheArtifact
-        case cacheArtifactUsageEvent
-        case ciInvocations
-        case ciLogs
-        case codeChecks
-        case codeOwners
-        case concurrentBuilds
-        case connect
-        case connectConfiguration
-        case connectConfigurationLink
-        case connectLogs
-        case connexClient
-        case connexClientProject
-        case connexContact
-        case connexInstallation
-        case connexToken
-        case cursorOriginInstallation
-        case dataCacheBillingSettings
-        case dataCacheNamespace
-        case defaultDeploymentProtection
-        case deployment
-        case deploymentBuildLogs
-        case deploymentCheck
-        case deploymentCheckPreview
-        case deploymentCheckReRunFromProductionBranch
-        case deploymentPolicy
-        case deploymentPreview
-        case deploymentPrivate
-        case deploymentProductionGit
-        case deploymentPromote
-        case deploymentProtectionException
-        case deploymentRollback
-        case deploymentV0
-        case domain
-        case domainAcceptDelegation
-        case domainAuthCodes
-        case domainCertificate
-        case domainCheckConfig
-        case domainMove
-        case domainPurchase
-        case domainRecord
-        case domainTransferIn
-        case drain
-        case edgeCacheNamespace
-        case edgeConfig
-        case edgeConfigItem
-        case edgeConfigSchema
-        case edgeConfigToken
-        case endpointVerification
-        case environments
-        case event
-        case fileUpload
-        case flagsExplorerSubscription
-        case gitCredentialGrant
-        case gitRepository
-        case imageOptimizationNewPrice
-        case integration
-        case integrationAccount
-        case integrationConfiguration
-        case integrationConfigurationProjects
-        case integrationConfigurationRole
-        case integrationConfigurationTransfer
-        case integrationDeploymentAction
-        case integrationEvent
-        case integrationLog
-        case integrationPullRequest
-        case integrationResource
-        case integrationResourceData
-        case integrationResourceReplCommand
-        case integrationResourceSecrets
-        case integrationSsoSession = "integrationSSOSession"
-        case integrationStoreTokenSet
-        case integrationStrict
-        case integrationVercelConfigurationOverride
-        case ipBlocking
-        case job
-        case jobGlobal
-        case kmsIssuer
-        case kmsProjectGrant
-        case logDrain
-        case logs
-        case logsPreset
-        case marketplaceBillingData
-        case marketplaceExperimentationEdgeConfigData
-        case marketplaceExperimentationItem
-        case marketplaceFlexCommit
-        case marketplaceInstallationMember
-        case marketplaceInvoice
-        case marketplaceSettings
-        case messageboard
-        case messageboardSpace
-        case messageboardTask
-        case monitoring = "Monitoring"
-        case monitoringAlert
-        case monitoringChart
-        case monitoringQuery
-        case monitoringSettings
-        case notificationCustomerBudget
-        case notificationDeploymentFailed
-        case notificationDomainConfiguration
-        case notificationDomainExpire
-        case notificationDomainMoved
-        case notificationDomainPurchase
-        case notificationDomainRenewal
-        case notificationDomainTransfer
-        case notificationDomainUnverified
-        case notificationMonitoringAlert = "NotificationMonitoringAlert"
-        case notificationPaymentFailed
-        case notificationPreferences
-        case notificationStatementOfReasons
-        case notificationUsageAlert
-        case oauth2Application
-        case oauth2Connection
-        case observabilityConfiguration
-        case observabilityData
-        case observabilityFunnel
-        case observabilityNotebook
-        case oidcFederationPolicy
-        case onDemandBuild
-        case onDemandConcurrency
-        case openTelemetryEndpoint
-        case optionsAllowlist
-        case organization
-        case organizationDomain
-        case organizationTeam
-        case ownEvent
-        case pageIntegrity
-        case passwordProtection
-        case passwordProtectionInvoiceItem
-        case paymentMethod
-        case permissions
-        case postgres
-        case postgresStoreTokenSet
-        case previewDeploymentSuffix
-        case privateCloudAccount
-        case privateLinkEndpoint
-        case productionAliasProtectionBypass
-        case productionShareableLink
-        case project
-        case projectAccessGroup
-        case projectAnalyticsSampling
-        case projectAnalyticsUsage
-        case projectCheck
-        case projectCheckRun
-        case projectDeploymentExpiration
-        case projectDeploymentHook
-        case projectDeploymentProtectionStrict
-        case projectDomain
-        case projectDomainCheckConfig
-        case projectDomainMove
-        case projectDomainVerify
-        case projectEnvVars
-        case projectEnvVarsProduction
-        case projectEnvVarsUnownedByIntegration
-        case projectEvent
-        case projectFlags
-        case projectFlagsProduction
-        case projectFlagsSdkKey
-        case projectFromV0
-        case projectId
-        case projectIntegrationConfiguration
-        case projectLink
-        case projectMember
-        case projectMonitoring
-        case projectOidcToken = "projectOIDCToken"
-        case projectPermissions
-        case projectProductionBranch
-        case projectProtectionBypass
-        case projectRollingRelease
-        case projectRoutes
-        case projectSetting
-        case projectSupportCase
-        case projectSupportCaseComment
-        case projectTier
-        case projectTransfer
-        case projectTransferIn
-        case projectTransferOut
-        case projectTransferRequest
-        case projectUsage
-        case proTrialOnboarding
-        case rateLimit
-        case redis
-        case redisStoreTokenSet
-        case remoteCaching
-        case repository
-        case samlConfig
-        case schedule
-        case seawallConfig
-        case secret
-        case securityConfig
-        case securityPlusConfiguration
-        case sensitiveEnvironmentVariablePolicy
-        case setting
-        case shareableLink
-        case shareableLinkStrict
-        case sharedEnvVarConnection
-        case sharedEnvVars
-        case sharedEnvVarsProduction
-        case skewProtection
-        case space
-        case spaceRun
-        case storeIsLocked
-        case storeTokenSetSensitive
-        case storeTransfer
-        case supportCase
-        case supportCaseComment
-        case team
-        case teamAccessRequest
-        case teamFellowMembership
-        case teamGitExclusivity
-        case teamInvite
-        case teamInviteCode
-        case teamInviteLink
-        case teamJoin
-        case teamMemberMfaStatus
-        case teamMicrofrontends
-        case teamOwnMembership
-        case teamOwnMembershipDisconnectSaml = "teamOwnMembershipDisconnectSAML"
-        case teamSudo
-        case teamTokenInvalidation
-        case token
-        case toolbarComment
-        case trustedIps
-        case trustedSources
-        case usage
-        case usageCycle
-        case user
-        case userConnection
-        case userMfaConfiguration
-        case userPreference
-        case userSudo
-        case v0Chat
-        case vcrRepository
-        case vercelAppInstallation
-        case vercelAppInstallationRequest
-        case vercelAuth
-        case vercelRun
-        case vpcPeeringConnection
-        case webAnalytics
-        case webAnalyticsPlan
-        case webAuthn
-        case webhook
-        case webhookEvent = "webhook-event"
-        case workflowRunData
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkSet2(_ autoExposeSystemEnvs: Bool?, _ buildCommand: String?, _ commandForIgnoringBuildStep: String?, _ createdAt: Double?, _ creator: ListProjectsResponseVariant1ProjectsItemCreator?) {
+        self.autoExposeSystemEnvs = autoExposeSystemEnvs
+        self.buildCommand = buildCommand
+        self.commandForIgnoringBuildStep = commandForIgnoringBuildStep
+        self.createdAt = createdAt
+        self.creator = creator
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkSet3(_ customerSupportCodeVisibility: Bool?, _ devCommand: String?, _ env: [ListProjectsResponseVariant1ProjectsItemEnvItem]?, _ framework: ListProjectsResponseVariant1ProjectsItemFramework?, _ gitComments: ListProjectsResponseVariant1ProjectsItemGitComments?) {
+        self.customerSupportCodeVisibility = customerSupportCodeVisibility
+        self.devCommand = devCommand
+        self.env = env
+        self.framework = framework
+        self.gitComments = gitComments
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkSet4(_ gitForkProtection: Bool?, _ gitProviderOptions: ListProjectsResponseVariant1ProjectsItemGitProviderOptions?, _ hasActiveBranches: Bool?, _ installCommand: String?, _ internalRoutes: [ListProjectsResponseVariant1ProjectsItemInternalRoutesItem]?) {
+        self.gitForkProtection = gitForkProtection
+        self.gitProviderOptions = gitProviderOptions
+        self.hasActiveBranches = hasActiveBranches
+        self.installCommand = installCommand
+        self.internalRoutes = internalRoutes
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkSet5(_ ipBuckets: [ListProjectsResponseVariant1ProjectsItemIpBucketsItem]?, _ latestDeployments: ListProjectsResponseVariant1ProjectsItemLatestDeploymentsList?, _ link: ListProjectsResponseVariant1ProjectsItemLink?, _ live: Bool?, _ oidcTokenConfig: ListProjectsResponseVariant1ProjectsItemOidcTokenConfig?) {
+        self.ipBuckets = ipBuckets
+        self.latestDeployments = latestDeployments
+        self.link = link
+        self.live = live
+        self.oidcTokenConfig = oidcTokenConfig
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkSet6(_ outputDirectory: String?, _ passport: ListProjectsResponseVariant1ProjectsItemPassport?, _ passwordProtection: [String: JSONValue]?, _ paused: Bool?, _ rollingRelease: ListProjectsResponseVariant1ProjectsItemRollingRelease?) {
+        self.outputDirectory = outputDirectory
+        self.passport = passport
+        self.passwordProtection = passwordProtection
+        self.paused = paused
+        self.rollingRelease = rollingRelease
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkSet7(_ rootDirectory: String?, _ security: ListProjectsResponseVariant1ProjectsItemSecurity?, _ serverlessFunctionZeroConfigFailover: Bool?, _ skipGitConnectDuringLink: Bool?) {
+        self.rootDirectory = rootDirectory
+        self.security = security
+        self.serverlessFunctionZeroConfigFailover = serverlessFunctionZeroConfigFailover
+        self.skipGitConnectDuringLink = skipGitConnectDuringLink
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkSet8(_ sourceFilesOutsideRootDirectory: Bool?, _ speedInsights: ListProjectsResponseVariant1ProjectsItemSpeedInsights?, _ ssoProtection: ListProjectsResponseVariant1ProjectsItemSsoProtection?, _ targets: [String: ListProjectsResponseVariant1ProjectsItemTargetsValue?]?, _ tier: ListProjectsResponseVariant1ProjectsItemTier?) {
+        self.sourceFilesOutsideRootDirectory = sourceFilesOutsideRootDirectory
+        self.speedInsights = speedInsights
+        self.ssoProtection = ssoProtection
+        self.targets = targets
+        self.tier = tier
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkSet9(_ transferCompletedAt: Double?, _ transferredFromAccountId: String?, _ transferStartedAt: Double?, _ transferToAccountId: String?) {
+        self.transferCompletedAt = transferCompletedAt
+        self.transferredFromAccountId = transferredFromAccountId
+        self.transferStartedAt = transferStartedAt
+        self.transferToAccountId = transferToAccountId
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkSet10(_ trustedSources: ListProjectsResponseVariant1ProjectsItemTrustedSources?, _ updatedAt: Double?, _ webAnalytics: ListProjectsResponseVariant1ProjectsItemWebAnalytics?) {
+        self.trustedSources = trustedSources
+        self.updatedAt = updatedAt
+        self.webAnalytics = webAnalytics
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        self.analytics = try container.sdkDecodeIfPresent(.analytics)
+        self.appliedCve55182Migration = try container.sdkDecodeIfPresent(.appliedCve55182Migration)
+        self.autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
+        self.autoAssignCustomDomainsUpdatedBy = try container.sdkDecodeIfPresent(.autoAssignCustomDomainsUpdatedBy)
+        self.autoExposeSystemEnvs = try container.sdkDecodeIfPresent(.autoExposeSystemEnvs)
+        self.buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
+        self.commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.creator = try container.sdkDecodeIfPresent(.creator)
+        self.customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
+        self.devCommand = try container.sdkDecodeIfPresent(.devCommand)
+        self.env = try container.sdkDecodeIfPresent(.env)
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        self.framework = try container.sdkDecodeIfPresent(.framework)
+        self.gitComments = try container.sdkDecodeIfPresent(.gitComments)
+        self.gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
+        self.gitProviderOptions = try container.sdkDecodeIfPresent(.gitProviderOptions)
+        self.hasActiveBranches = try container.sdkDecodeIfPresent(.hasActiveBranches)
+        self.installCommand = try container.sdkDecodeIfPresent(.installCommand)
+        self.internalRoutes = try container.sdkDecodeIfPresent(.internalRoutes)
+        self.ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
+        self.latestDeployments = try container.sdkDecodeIfPresent(.latestDeployments)
+        self.link = try container.sdkDecodeIfPresent(.link)
+        self.live = try container.sdkDecodeIfPresent(.live)
+        self.oidcTokenConfig = try container.sdkDecodeIfPresent(.oidcTokenConfig)
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        self.outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
+        self.passport = try container.sdkDecodeIfPresent(.passport)
+        self.passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
+        self.paused = try container.sdkDecodeIfPresent(.paused)
+        self.rollingRelease = try container.sdkDecodeIfPresent(.rollingRelease)
+        self.rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
+        self.security = try container.sdkDecodeIfPresent(.security)
+        self.serverlessFunctionZeroConfigFailover = try container.sdkDecodeIfPresent(.serverlessFunctionZeroConfigFailover)
+        self.skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
+        self.sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
+        self.speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
+        self.ssoProtection = try container.sdkDecodeIfPresent(.ssoProtection)
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItem {
+    mutating func sdkDecodeFieldsPart4(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        self.targets = try container.sdkDecodeIfPresent(.targets)
+        self.tier = try container.sdkDecodeIfPresent(.tier)
+        self.transferCompletedAt = try container.sdkDecodeIfPresent(.transferCompletedAt)
+        self.transferredFromAccountId = try container.sdkDecodeIfPresent(.transferredFromAccountId)
+        self.transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
+        self.transferToAccountId = try container.sdkDecodeIfPresent(.transferToAccountId)
+        self.trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
+    }
+}
+
+public struct ListProjectsResponseVariant2ProjectsItemSecurity: Codable {
+    public var attackModeActiveUntil: Double?
+    public var attackModeEnabled: Bool?
+    public var attackModeUpdatedAt: Double?
+    public var botIdEnabled: Bool?
+    public var firewallBypassIps: [String]?
+    public var firewallConfigVersion: Double?
+    public var firewallEnabled: Bool?
+    public var firewallSeawallEnabled: Bool?
+    public var firewallUpdatedAt: Double?
+    public var ja3Enabled: Bool?
+    public var ja4Enabled: Bool?
+    public var logHeaders: ListProjectsResponseVariant2ProjectsItemSecurityLogHeaders?
+    public var managedRules: ListProjectsResponseVariant2ProjectsItemSecurityManagedRules?
+    /// Whether Page Integrity is enabled for this project. Used by the metadata service to gate DynamoDB lookups
+    /// against the page-integrity-inventory table.
+    public var pageIntegrityEnabled: Bool?
+    public var rulesets: [String: ListProjectsResponseVariant2ProjectsItemSecurityRulesetsValue]?
+
+    enum CodingKeys: String, CodingKey {
+        case attackModeActiveUntil
+        case attackModeEnabled
+        case attackModeUpdatedAt
+        case botIdEnabled
+        case firewallBypassIps
+        case firewallConfigVersion
+        case firewallEnabled
+        case firewallSeawallEnabled
+        case firewallUpdatedAt
+        case ja3Enabled
+        case ja4Enabled
+        case logHeaders = "log_headers"
+        case managedRules
+        case pageIntegrityEnabled
+        case rulesets
+    }
+
+    init() {
+        (self.attackModeActiveUntil, self.attackModeEnabled, self.attackModeUpdatedAt, self.botIdEnabled, self.firewallBypassIps) = (nil, nil, nil, nil, nil)
+        (self.firewallConfigVersion, self.firewallEnabled, self.firewallSeawallEnabled, self.firewallUpdatedAt, self.ja3Enabled) = (nil, nil, nil, nil, nil)
+        (self.ja4Enabled, self.logHeaders, self.managedRules, self.pageIntegrityEnabled, self.rulesets) = (nil, nil, nil, nil, nil)
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemSecurity {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.init(sdkDefaults: ())
-        try sdkDecodeFieldsPart1(container)
-        try sdkDecodeFieldsPart2(container)
-        try sdkDecodeFieldsPart3(container)
-        try sdkDecodeFieldsPart4(container)
-        try sdkDecodeFieldsPart5(container)
-        try sdkDecodeFieldsPart6(container)
-        try sdkDecodeFieldsPart7(container)
-        try sdkDecodeFieldsPart8(container)
-        try sdkDecodeFieldsPart9(container)
-        try sdkDecodeFieldsPart10(container)
-        try sdkDecodeFieldsPart11(container)
-        try sdkDecodeFieldsPart12(container)
-        try sdkDecodeFieldsPart13(container)
-        try sdkDecodeFieldsPart14(container)
-        try sdkDecodeFieldsPart15(container)
-        try sdkDecodeFieldsPart16(container)
-        try sdkDecodeFieldsPart17(container)
-        try sdkDecodeFieldsPart18(container)
-        try sdkDecodeFieldsPart19(container)
-        try sdkDecodeFieldsPart20(container)
-        try sdkDecodeFieldsPart21(container)
-        try sdkDecodeFieldsPart22(container)
-        try sdkDecodeFieldsPart23(container)
-        try sdkDecodeFieldsPart24(container)
-        try sdkDecodeFieldsPart25(container)
+        self.attackModeActiveUntil = try container.sdkDecodeIfPresent(.attackModeActiveUntil)
+        self.attackModeEnabled = try container.sdkDecodeIfPresent(.attackModeEnabled)
+        self.attackModeUpdatedAt = try container.sdkDecodeIfPresent(.attackModeUpdatedAt)
+        self.botIdEnabled = try container.sdkDecodeIfPresent(.botIdEnabled)
+        self.firewallBypassIps = try container.sdkDecodeIfPresent(.firewallBypassIps)
+        self.firewallConfigVersion = try container.sdkDecodeIfPresent(.firewallConfigVersion)
+        self.firewallEnabled = try container.sdkDecodeIfPresent(.firewallEnabled)
+        self.firewallSeawallEnabled = try container.sdkDecodeIfPresent(.firewallSeawallEnabled)
+        self.firewallUpdatedAt = try container.sdkDecodeIfPresent(.firewallUpdatedAt)
+        self.ja3Enabled = try container.sdkDecodeIfPresent(.ja3Enabled)
+        self.ja4Enabled = try container.sdkDecodeIfPresent(.ja4Enabled)
+        self.logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
+        self.managedRules = try container.sdkDecodeIfPresent(.managedRules)
+        self.pageIntegrityEnabled = try container.sdkDecodeIfPresent(.pageIntegrityEnabled)
+        self.rulesets = try container.sdkDecodeIfPresent(.rulesets)
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemSecurity {
+    public init(attackModeActiveUntil: Double? = nil, attackModeEnabled: Bool? = nil, attackModeUpdatedAt: Double? = nil, botIdEnabled: Bool? = nil, firewallBypassIps: [String]? = nil, firewallConfigVersion: Double? = nil, firewallEnabled: Bool? = nil, firewallSeawallEnabled: Bool? = nil, firewallUpdatedAt: Double? = nil, ja3Enabled: Bool? = nil, ja4Enabled: Bool? = nil, logHeaders: ListProjectsResponseVariant2ProjectsItemSecurityLogHeaders? = nil, managedRules: ListProjectsResponseVariant2ProjectsItemSecurityManagedRules? = nil, pageIntegrityEnabled: Bool? = nil, rulesets: [String: ListProjectsResponseVariant2ProjectsItemSecurityRulesetsValue]? = nil) {
+        self.init()
+        (self.attackModeActiveUntil, self.attackModeEnabled) = (attackModeActiveUntil, attackModeEnabled)
+        (self.attackModeUpdatedAt, self.botIdEnabled) = (attackModeUpdatedAt, botIdEnabled)
+        (self.firewallBypassIps, self.firewallConfigVersion) = (firewallBypassIps, firewallConfigVersion)
+        (self.firewallEnabled, self.firewallSeawallEnabled) = (firewallEnabled, firewallSeawallEnabled)
+        (self.firewallUpdatedAt, self.ja3Enabled) = (firewallUpdatedAt, ja3Enabled)
+        (self.ja4Enabled, self.logHeaders) = (ja4Enabled, logHeaders)
+        (self.managedRules, self.pageIntegrityEnabled) = (managedRules, pageIntegrityEnabled)
+        self.rulesets = rulesets
+    }
+}
+
+public indirect enum ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX1d5404577f {
+    case stringValue(String)
+    case listProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXeea12d53e2(
+        ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXeea12d53e2
+    )
+}
+
+extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX1d5404577f: Codable {
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX1d5404577f")
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        if try encodeGroup1(to: encoder) { return }
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX1d5404577f {
+    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXeea12d53e2.self
+        ) {
+            return             .listProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXeea12d53e2(value)
+        }
+        return nil
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX1d5404577f {
+    func encodeGroup1(to encoder: Encoder) throws -> Bool {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case let .stringValue(value): try container.encode(value); return true
+        case let .listProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXeea12d53e2(value): try container.encode(value); return true
+        }
+    }
+}
+
+/// Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access
+/// or presets. An empty array denies all access and is only allowed for the current project.
+public struct ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectXba881b1b9b: Codable {
+    public var from: ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX95057223e5
+    public var to: ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX59c58be66f
+
+    enum CodingKeys: String, CodingKey {
+        case from
+        case to
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectXba881b1b9b {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.from) else {
+            throw SdkValidationError(field: "from", code: "required", message: "Validation failed for 'from': value is required")
+        }
+        guard container.contains(.to) else {
+            throw SdkValidationError(field: "to", code: "required", message: "Validation failed for 'to': value is required")
+        }
+        self.from = try container.sdkDecodeRequired(.from)
+        self.to = try container.sdkDecodeRequired(.to)
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectXba881b1b9b {
+    public init(from: ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX95057223e5, to: ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX59c58be66f) {
+        (self.from, self.to) = (from, to)
+    }
+}
+
+public struct UpdateMicrofrontendsResponseSecurityManagedRulesAiBots: Codable {
+    public var active: Bool
+    public var action: UpdateMicrofrontendsResponseSecurityManagedRulesAiBotsAction?
+
+    enum CodingKeys: String, CodingKey {
+        case active
+        case action
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension UpdateMicrofrontendsResponseSecurityManagedRulesAiBots {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.active) else {
+            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
+        }
+        self.active = try container.sdkDecodeRequired(.active)
+        self.action = try container.sdkDecodeIfPresent(.action)
+    }
+}
+
+extension UpdateMicrofrontendsResponseSecurityManagedRulesAiBots {
+    public init(active: Bool, action: UpdateMicrofrontendsResponseSecurityManagedRulesAiBotsAction? = nil) {
+        (self.active, self.action) = (active, action)
+    }
+}
+
+public struct ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant11: Codable {
+    public var storeId: String
+    public var type: ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant11Type
+
+    enum CodingKeys: String, CodingKey {
+        case storeId
+        case type
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant11 {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.storeId) else {
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+        }
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant11Type.allCases.map(\.rawValue))
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant11 {
+    public init(storeId: String, type: ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant11Type) throws {
+        (self.storeId, self.type) = (storeId, type)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemEnvItemContentHintVariant11Type.allCases.map(\.rawValue))
+    }
+}
+
+public struct ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentBranchMatcher: Codable {
+    /// The pattern to match against branch names
+    public var pattern: String
+    /// The type of matching to perform
+    public var type: ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentBrXe9a0b8a0fe
+
+    enum CodingKeys: String, CodingKey {
+        case pattern
+        case type
+    }
+
+    private init(sdkCopy value: Self) { self = value }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentBranchMatcher {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pattern) else {
+            throw SdkValidationError(field: "pattern", code: "required", message: "Validation failed for 'pattern': value is required")
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+        }
+        self.pattern = try container.sdkDecodeRequired(.pattern)
+        self.type = try container.sdkDecodeRequired(.type)
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentBranchMatcher {
+    public init(pattern: String, type: ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentBrXe9a0b8a0fe) {
+        (self.pattern, self.type) = (pattern, type)
+    }
+}
+
+public struct ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7: Codable {
+    public var eq: String?
+    public var gt: Double?
+    public var gte: Double?
+    public var inc: [String]?
+    public var list: String?
+    public var lt: Double?
+    public var lte: Double?
+    public var neq: String?
+    public var ninc: [String]?
+    public var pre: String?
+    public var re: String?
+    public var suf: String?
+
+    enum CodingKeys: String, CodingKey {
+        case eq
+        case gt
+        case gte
+        case inc
+        case list
+        case lt
+        case lte
+        case neq
+        case ninc
+        case pre
+        case re
+        case suf
+    }
+
+    init() {
+        (self.eq, self.gt, self.gte, self.inc, self.list) = (nil, nil, nil, nil, nil)
+        (self.lt, self.lte, self.neq, self.ninc, self.pre) = (nil, nil, nil, nil, nil)
+        (self.re, self.suf) = (nil, nil)
+    }
+}
+
+extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7 {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.eq = try container.sdkDecodeIfPresent(.eq)
+        self.gt = try container.sdkDecodeIfPresent(.gt)
+        self.gte = try container.sdkDecodeIfPresent(.gte)
+        self.inc = try container.sdkDecodeIfPresent(.inc)
+        self.list = try container.sdkDecodeIfPresent(.list)
+        self.lt = try container.sdkDecodeIfPresent(.lt)
+        self.lte = try container.sdkDecodeIfPresent(.lte)
+        self.neq = try container.sdkDecodeIfPresent(.neq)
+        self.ninc = try container.sdkDecodeIfPresent(.ninc)
+        self.pre = try container.sdkDecodeIfPresent(.pre)
+        self.re = try container.sdkDecodeIfPresent(.re)
+        self.suf = try container.sdkDecodeIfPresent(.suf)
     }
 }
