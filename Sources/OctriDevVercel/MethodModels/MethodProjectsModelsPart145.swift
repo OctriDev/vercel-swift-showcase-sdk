@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
+// Canonical projects operation model declarations
 extension GetProjectsResponsePermissions {
     enum CodingKeys: String, CodingKey {
         case accessGroup
@@ -302,8 +302,8 @@ extension GetProjectsResponsePermissions {
     }
 }
 
-public extension GetProjectsResponsePermissions {
-    init(from decoder: Decoder) throws {
+extension GetProjectsResponsePermissions {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.init(sdkDefaults: ())
         try sdkDecodeFieldsPart1(container)

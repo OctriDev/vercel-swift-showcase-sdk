@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension FeatureFlagsMethods {
-    struct UpdateFlagOptions: Codable {
+extension FeatureFlagsMethods {
+    public struct UpdateFlagOptions: Codable {
         public var projectIdOrName: String
         public var flagIdOrSlug: String
         public var ifMatch: String?
@@ -31,12 +31,9 @@ public extension FeatureFlagsMethods {
         }
     }
 
-    /// Updates selected properties of an existing feature flag without requiring the full configuration. Supply only
-    /// the fields to change, such as `variants`, `environments`, or `state`; any environment configuration you provide
-    /// must include its required settings. Use `ifMatch` when you need to condition the update on an ETag.
+    /// Updates selected properties of an existing feature flag without requiring the full configuration. Supply only the fields to change, such as `variants`, `environments`, or `state`; any environment configuration you provide must include its required settings. Use `ifMatch` when you need to condition the update on an ETag.
     ///
-    /// Update an existing feature flag. This endpoint supports partial updates, allowing you to modify specific
-    /// properties like variants, environments, or state without providing the full flag configuration.
+    /// Update an existing feature flag. This endpoint supports partial updates, allowing you to modify specific properties like variants, environments, or state without providing the full flag configuration.
     ///
     /// - Parameters:
     /// - projectIdOrName: The project id or name
@@ -57,13 +54,9 @@ public extension FeatureFlagsMethods {
     /// - permanent: Whether this flag is marked as permanent, indicating it should
     ///   not be removed
     /// - tags: Tags for categorizing the flag
-    static func updateFlag(
-        config: ClientConfig,
-        options: UpdateFlagOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateFlagResponse {
+    public static func updateFlag(config: ClientConfig, options: UpdateFlagOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateFlagResponse {
         if let seed = options.seed {
-            try validateRange("seed", Double(seed), min: 0, max: 100_000)
+            try validateRange("seed", Double(seed), min: 0, max: 100000)
         }
 
         if let maintainerIds = options.maintainerIds {
@@ -76,25 +69,11 @@ public extension FeatureFlagsMethods {
 
         let requestBody = UpdateFlagRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v1/projects/",
-                sdkEncodePathSegment(sdkWireString(options.projectIdOrName)),
-                "/feature-flags/flags/",
-                sdkEncodePathSegment(sdkWireString(options.flagIdOrSlug)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("ifMatch", value: options.ifMatch),
-                SdkQueryParameter("withMetadata", value: options.withMetadata),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateFlag",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/flags/", sdkEncodePathSegment(sdkWireString(options.flagIdOrSlug))].joined(), config: config, query: [
+            SdkQueryParameter("ifMatch", value: options.ifMatch),
+            SdkQueryParameter("withMetadata", value: options.withMetadata),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "updateFlag", options: requestOptions)).data
     }
 }

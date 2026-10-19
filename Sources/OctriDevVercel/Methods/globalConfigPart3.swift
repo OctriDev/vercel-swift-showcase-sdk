@@ -6,69 +6,37 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension GlobalConfigMethods {
-    /// Retrieves a Global Config by its identifier. Use `teamId` or `slug` to make the request on behalf of a team when
-    /// needed.
+extension GlobalConfigMethods {
+    /// Retrieves a Global Config by its identifier. Use `teamId` or `slug` to make the request on behalf of a team when needed.
     ///
     /// Returns a Global Config.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getEdgeConfig(
-        config: ClientConfig,
-        edgeConfigId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetEdgeConfigResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getEdgeConfig",
-            options: requestOptions
-        )).data
+    public static func getEdgeConfig(config: ClientConfig, edgeConfigId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetEdgeConfigResponse {
+        return try (await sdkRequest("GET", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getEdgeConfig", options: requestOptions)).data
     }
 
-    /// Replaces a Global Config's name. Supply the required `slug` in the request body; use `teamId` or `slug` to make
-    /// the request on behalf of a team when needed.
+    /// Replaces a Global Config's name. Supply the required `slug` in the request body; use `teamId` or `slug` to make the request on behalf of a team when needed.
     ///
     /// Updates a Global Config.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug2: The Team slug to perform the request on behalf of.
-    static func updateEdgeConfig(
-        config: ClientConfig,
-        edgeConfigId: String,
-        slug: String,
-        teamId: String? = nil,
-        slug2: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateEdgeConfigResponse {
+    public static func updateEdgeConfig(config: ClientConfig, edgeConfigId: String, slug: String, teamId: String? = nil, slug2: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateEdgeConfigResponse {
         try validateLength("slug", slug, max: 64)
         try sdkValidatePattern("slug", slug, sdkPattern8b2444202961)
 
         let requestBody = UpdateEdgeConfigRequestBody(slug: slug)
 
-        return try await (sdkRequest(
-            "PUT",
-            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug2),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateEdgeConfig",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PUT", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug2),
+        ], body: requestBody, decoder: .json, operationId: "updateEdgeConfig", options: requestOptions)).data
     }
 }

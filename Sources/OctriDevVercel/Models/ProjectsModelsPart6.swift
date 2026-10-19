@@ -3,15 +3,11 @@
 
 import Foundation
 
-/// Projects domain models
-public extension FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant11 {
-    init(storeId: String, type: FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant11Type) throws {
+// Projects domain models
+extension FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant11 {
+    public init(storeId: String, type: FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant11Type) throws {
         (self.storeId, self.type) = (storeId, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant11Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant11Type.allCases.map(\.rawValue))
     }
 }
 
@@ -24,46 +20,28 @@ public struct FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2: Coda
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2 {
-    init(from decoder: Decoder) throws {
+extension FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.storeId) else {
-            throw SdkValidationError(
-                field: "storeId",
-                code: "required",
-                message: "Validation failed for 'storeId': value is required"
-            )
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        storeId = try container.sdkDecodeRequired(.storeId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2Type.allCases.map(\.rawValue)
-        )
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2Type.allCases.map(\.rawValue))
     }
 }
 
-public extension FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2 {
-    init(storeId: String, type: FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2Type) throws {
+extension FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2 {
+    public init(storeId: String, type: FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2Type) throws {
         (self.storeId, self.type) = (storeId, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2Type.allCases.map(\.rawValue))
     }
 }
 
@@ -76,136 +54,68 @@ public struct FilterProjectEnvsResponseVariant0ContentHintVariant9: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension FilterProjectEnvsResponseVariant0ContentHintVariant9 {
-    init(from decoder: Decoder) throws {
+extension FilterProjectEnvsResponseVariant0ContentHintVariant9 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.storeId) else {
-            throw SdkValidationError(
-                field: "storeId",
-                code: "required",
-                message: "Validation failed for 'storeId': value is required"
-            )
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        storeId = try container.sdkDecodeRequired(.storeId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            FilterProjectEnvsResponseVariant0ContentHintVariant9Type.allCases.map(\.rawValue)
-        )
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, FilterProjectEnvsResponseVariant0ContentHintVariant9Type.allCases.map(\.rawValue))
     }
 }
 
-public extension FilterProjectEnvsResponseVariant0ContentHintVariant9 {
-    init(storeId: String, type: FilterProjectEnvsResponseVariant0ContentHintVariant9Type) throws {
+extension FilterProjectEnvsResponseVariant0ContentHintVariant9 {
+    public init(storeId: String, type: FilterProjectEnvsResponseVariant0ContentHintVariant9Type) throws {
         (self.storeId, self.type) = (storeId, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            FilterProjectEnvsResponseVariant0ContentHintVariant9Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, FilterProjectEnvsResponseVariant0ContentHintVariant9Type.allCases.map(\.rawValue))
     }
 }
 
 public indirect enum FilterProjectEnvsResponseVariant1EnvsItemContentHint {
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant0(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant0
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant1(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant1
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant2(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant3(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant3
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant4(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant4
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant5(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant5
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant6(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant6
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant7(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant7
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant8(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant8
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant9(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant9
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant10(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant10
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant11(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant11
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant12(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant12
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant13(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant13
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant14(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant14
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant15(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant15
-    )
-    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant16(
-        FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant16
-    )
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant0(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant0)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant1(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant1)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant2(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant3(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant3)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant4(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant4)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant5(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant5)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant6(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant6)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant7(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant7)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant8(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant8)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant9(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant9)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant10(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant10)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant11(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant11)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant12(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant12)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant13(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant13)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant14(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant14)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant15(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant15)
+    case filterProjectEnvsResponseVariant1EnvsItemContentHintVariant16(FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant16)
 }
 
 extension FilterProjectEnvsResponseVariant1EnvsItemContentHint: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
-            if let value = Self.decodeLossless2(from: container, raw) {
-                self = value; return
-            }
-            if let value = Self.decodeLossless3(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless3(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        if let value = Self.decodeGroup2(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for FilterProjectEnvsResponseVariant1EnvsItemContentHint"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        if let value = Self.decodeGroup2(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for FilterProjectEnvsResponseVariant1EnvsItemContentHint")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
-        if try encodeGroup2(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup2(to: encoder) { return }
     }
 }
 
@@ -300,62 +210,62 @@ extension FilterProjectEnvsResponseVariant1EnvsItemContentHint {
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant0.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant0(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant0(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant1.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant1(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant1(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant2.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant2(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant2(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant3.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant3(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant3(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant4.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant4(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant4(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant5.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant5(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant5(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant6.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant6(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant6(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant7.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant7(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant7(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant8.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant8(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant8(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant9.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant9(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant9(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant10.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant10(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant10(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant11.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant11(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant11(value)
         }
         return nil
     }
@@ -366,27 +276,27 @@ extension FilterProjectEnvsResponseVariant1EnvsItemContentHint {
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant12.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant12(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant12(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant13.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant13(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant13(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant14.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant14(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant14(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant15.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant15(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant15(value)
         }
         if let value = try? container.decode(
             FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant16.self
         ) {
-            return .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant16(value)
+            return             .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant16(value)
         }
         return nil
     }
@@ -396,30 +306,18 @@ extension FilterProjectEnvsResponseVariant1EnvsItemContentHint {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant0(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant1(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant2(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant3(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant4(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant5(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant6(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant7(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant8(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant9(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant10(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant11(value): try container
-            .encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant0(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant1(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant2(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant3(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant4(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant5(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant6(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant7(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant8(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant9(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant10(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant11(value): try container.encode(value); return true
         default: return false
         }
     }
@@ -429,16 +327,11 @@ extension FilterProjectEnvsResponseVariant1EnvsItemContentHint {
     func encodeGroup2(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant12(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant13(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant14(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant15(value): try container
-            .encode(value); return true
-        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant16(value): try container
-            .encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant12(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant13(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant14(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant15(value): try container.encode(value); return true
+        case let .filterProjectEnvsResponseVariant1EnvsItemContentHintVariant16(value): try container.encode(value); return true
         default: return false
         }
     }
@@ -453,46 +346,28 @@ public struct FilterProjectEnvsResponseVariant0ContentHintVariant16: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension FilterProjectEnvsResponseVariant0ContentHintVariant16 {
-    init(from decoder: Decoder) throws {
+extension FilterProjectEnvsResponseVariant0ContentHintVariant16 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        projectId = try container.sdkDecodeRequired(.projectId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            FilterProjectEnvsResponseVariant0ContentHintVariant16Type.allCases.map(\.rawValue)
-        )
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, FilterProjectEnvsResponseVariant0ContentHintVariant16Type.allCases.map(\.rawValue))
     }
 }
 
-public extension FilterProjectEnvsResponseVariant0ContentHintVariant16 {
-    init(projectId: String, type: FilterProjectEnvsResponseVariant0ContentHintVariant16Type) throws {
+extension FilterProjectEnvsResponseVariant0ContentHintVariant16 {
+    public init(projectId: String, type: FilterProjectEnvsResponseVariant0ContentHintVariant16Type) throws {
         (self.projectId, self.type) = (projectId, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            FilterProjectEnvsResponseVariant0ContentHintVariant16Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, FilterProjectEnvsResponseVariant0ContentHintVariant16Type.allCases.map(\.rawValue))
     }
 }
 
@@ -506,35 +381,25 @@ public struct FilterProjectEnvsResponseVariant2: Codable {
         case hiddenProductionEnvCount
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension FilterProjectEnvsResponseVariant2 {
-    init(from decoder: Decoder) throws {
+extension FilterProjectEnvsResponseVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.envs) else {
-            throw SdkValidationError(
-                field: "envs",
-                code: "required",
-                message: "Validation failed for 'envs': value is required"
-            )
+            throw SdkValidationError(field: "envs", code: "required", message: "Validation failed for 'envs': value is required")
         }
         guard container.contains(.hiddenProductionEnvCount) else {
-            throw SdkValidationError(
-                field: "hiddenProductionEnvCount",
-                code: "required",
-                message: "Validation failed for 'hiddenProductionEnvCount': value is required"
-            )
+            throw SdkValidationError(field: "hiddenProductionEnvCount", code: "required", message: "Validation failed for 'hiddenProductionEnvCount': value is required")
         }
-        envs = try container.sdkDecodeRequired(.envs)
-        hiddenProductionEnvCount = try container.sdkDecodeRequired(.hiddenProductionEnvCount)
+        self.envs = try container.sdkDecodeRequired(.envs)
+        self.hiddenProductionEnvCount = try container.sdkDecodeRequired(.hiddenProductionEnvCount)
     }
 }
 
-public extension FilterProjectEnvsResponseVariant2 {
-    init(envs: [FilterProjectEnvsResponseVariant2EnvsItem], hiddenProductionEnvCount: Double) {
+extension FilterProjectEnvsResponseVariant2 {
+    public init(envs: [FilterProjectEnvsResponseVariant2EnvsItem], hiddenProductionEnvCount: Double) {
         (self.envs, self.hiddenProductionEnvCount) = (envs, hiddenProductionEnvCount)
     }
 }

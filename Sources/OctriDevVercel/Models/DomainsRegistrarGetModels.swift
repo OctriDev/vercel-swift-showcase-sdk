@@ -3,13 +3,14 @@
 
 import Foundation
 
-/// DomainsRegistrarGet domain models
+// DomainsRegistrarGet domain models
 public indirect enum GetDomainContactVerificationResponse {
     case contactVerified(ContactVerified)
     case contactPendingVerification(ContactPendingVerification)
 }
 
 extension GetDomainContactVerificationResponse: Codable {
+
     private enum CodingKeys: String, CodingKey {
         case discriminator = "verified"
     }
@@ -17,29 +18,21 @@ extension GetDomainContactVerificationResponse: Codable {
     public init(from decoder: Decoder) throws {
         let tagged = try decoder.container(keyedBy: CodingKeys.self)
         let discriminator = try tagged.decode(Bool.self, forKey: .discriminator).description
-        if let value = try Self.decodeGroup1(discriminator, from: decoder) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            forKey: .discriminator,
-            in: tagged,
-            debugDescription: "Unknown discriminator for GetDomainContactVerificationResponse"
-        )
+        if let value = try Self.decodeGroup1(discriminator, from: decoder) { self = value; return }
+        throw DecodingError.dataCorruptedError(forKey: .discriminator, in: tagged, debugDescription: "Unknown discriminator for GetDomainContactVerificationResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetDomainContactVerificationResponse {
     static func decodeGroup1(_ discriminator: String, from decoder: Decoder) throws -> Self? {
         switch discriminator {
-        case "true": try .contactVerified(ContactVerified(from: decoder))
-        case "false": try .contactPendingVerification(ContactPendingVerification(from: decoder))
-        default: nil
+        case "true": return .contactVerified(try ContactVerified(from: decoder))
+        case "false": return .contactPendingVerification(try ContactPendingVerification(from: decoder))
+        default: return nil
         }
     }
 }
@@ -61,47 +54,30 @@ public indirect enum GetOrderResponseDomainsItem {
 }
 
 extension GetOrderResponseDomainsItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetOrderResponseDomainsItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetOrderResponseDomainsItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetOrderResponseDomainsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant0(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant2(value)
         }
         return nil
@@ -113,17 +89,17 @@ extension GetOrderResponseDomainsItem {
         if let value = try? container.decode(
             GetOrderResponseDomainsItemVariant0.self
         ) {
-            return .getOrderResponseDomainsItemVariant0(value)
+            return             .getOrderResponseDomainsItemVariant0(value)
         }
         if let value = try? container.decode(
             GetOrderResponseDomainsItemVariant1.self
         ) {
-            return .getOrderResponseDomainsItemVariant1(value)
+            return             .getOrderResponseDomainsItemVariant1(value)
         }
         if let value = try? container.decode(
             GetOrderResponseDomainsItemVariant2.self
         ) {
-            return .getOrderResponseDomainsItemVariant2(value)
+            return             .getOrderResponseDomainsItemVariant2(value)
         }
         return nil
     }
@@ -151,26 +127,18 @@ public indirect enum GetOrderResponseError {
 }
 
 extension GetOrderResponseError: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetOrderResponseError"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetOrderResponseError")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -203,34 +171,13 @@ extension GetOrderResponseError {
 
 extension GetOrderResponseError {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container
-            .decode(GetOrderResponseErrorVariant0.self) {
-            return .getOrderResponseErrorVariant0(value)
-        }
-        if let value = try? container
-            .decode(GetOrderResponseErrorVariant1.self) {
-            return .getOrderResponseErrorVariant1(value)
-        }
-        if let value = try? container
-            .decode(GetOrderResponseErrorVariant2.self) {
-            return .getOrderResponseErrorVariant2(value)
-        }
-        if let value = try? container
-            .decode(GetOrderResponseErrorVariant3.self) {
-            return .getOrderResponseErrorVariant3(value)
-        }
-        if let value = try? container
-            .decode(GetOrderResponseErrorVariant4.self) {
-            return .getOrderResponseErrorVariant4(value)
-        }
-        if let value = try? container
-            .decode(GetOrderResponseErrorVariant5.self) {
-            return .getOrderResponseErrorVariant5(value)
-        }
-        if let value = try? container
-            .decode(GetOrderResponseErrorVariant6.self) {
-            return .getOrderResponseErrorVariant6(value)
-        }
+        if let value = try? container.decode(GetOrderResponseErrorVariant0.self) { return .getOrderResponseErrorVariant0(value) }
+        if let value = try? container.decode(GetOrderResponseErrorVariant1.self) { return .getOrderResponseErrorVariant1(value) }
+        if let value = try? container.decode(GetOrderResponseErrorVariant2.self) { return .getOrderResponseErrorVariant2(value) }
+        if let value = try? container.decode(GetOrderResponseErrorVariant3.self) { return .getOrderResponseErrorVariant3(value) }
+        if let value = try? container.decode(GetOrderResponseErrorVariant4.self) { return .getOrderResponseErrorVariant4(value) }
+        if let value = try? container.decode(GetOrderResponseErrorVariant5.self) { return .getOrderResponseErrorVariant5(value) }
+        if let value = try? container.decode(GetOrderResponseErrorVariant6.self) { return .getOrderResponseErrorVariant6(value) }
         return nil
     }
 }
@@ -260,28 +207,22 @@ public struct GetOrderResponseDomainsItemVariant2ErrorVariant10: Codable {
         case details
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant10 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant10 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        details = try container.sdkDecodeIfPresent(.details)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.details = try container.sdkDecodeIfPresent(.details)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant10 {
-    init(code: String, details: JSONValue? = nil) {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant10 {
+    public init(code: String, details: JSONValue? = nil) {
         (self.code, self.details) = (code, details)
     }
 }
@@ -293,27 +234,21 @@ public struct GetOrderResponseDomainsItemVariant1ErrorVariant6: Codable {
         case code
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant1ErrorVariant6 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant1ErrorVariant6 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
+        self.code = try container.sdkDecodeRequired(.code)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant1ErrorVariant6 {
-    init(code: GetOrderResponseDomainsItemVariant1ErrorVariant6Code) {
+extension GetOrderResponseDomainsItemVariant1ErrorVariant6 {
+    public init(code: GetOrderResponseDomainsItemVariant1ErrorVariant6Code) {
         self.code = code
     }
 }
@@ -325,27 +260,21 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant8: Codable {
         case code
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant8 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant8 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
+        self.code = try container.sdkDecodeRequired(.code)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant8 {
-    init(code: GetOrderResponseDomainsItemVariant0ErrorVariant8Code) {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant8 {
+    public init(code: GetOrderResponseDomainsItemVariant0ErrorVariant8Code) {
         self.code = code
     }
 }
@@ -357,27 +286,21 @@ public struct GetOrderResponseDomainsItemVariant2ErrorVariant6: Codable {
         case code
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant6 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant6 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
+        self.code = try container.sdkDecodeRequired(.code)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant6 {
-    init(code: GetOrderResponseDomainsItemVariant2ErrorVariant6Code) {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant6 {
+    public init(code: GetOrderResponseDomainsItemVariant2ErrorVariant6Code) {
         self.code = code
     }
 }
@@ -391,38 +314,25 @@ public struct GetOrderResponseDomainsItemVariant2ErrorVariant1: Codable {
         case details
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.details) else {
-            throw SdkValidationError(
-                field: "details",
-                code: "required",
-                message: "Validation failed for 'details': value is required"
-            )
+            throw SdkValidationError(field: "details", code: "required", message: "Validation failed for 'details': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        details = try container.sdkDecodeRequired(.details)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.details = try container.sdkDecodeRequired(.details)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant1 {
-    init(
-        code: GetOrderResponseDomainsItemVariant2ErrorVariant1Code,
-        details: GetOrderResponseDomainsItemVariant2ErrorVariant1Details
-    ) {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant1 {
+    public init(code: GetOrderResponseDomainsItemVariant2ErrorVariant1Code, details: GetOrderResponseDomainsItemVariant2ErrorVariant1Details) {
         (self.code, self.details) = (code, details)
     }
 }
@@ -436,35 +346,25 @@ public struct GetOrderResponseErrorVariant1: Codable {
         case details
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseErrorVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseErrorVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.details) else {
-            throw SdkValidationError(
-                field: "details",
-                code: "required",
-                message: "Validation failed for 'details': value is required"
-            )
+            throw SdkValidationError(field: "details", code: "required", message: "Validation failed for 'details': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        details = try container.sdkDecodeRequired(.details)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.details = try container.sdkDecodeRequired(.details)
     }
 }
 
-public extension GetOrderResponseErrorVariant1 {
-    init(code: GetOrderResponseErrorVariant1Code, details: GetOrderResponseErrorVariant1Details) {
+extension GetOrderResponseErrorVariant1 {
+    public init(code: GetOrderResponseErrorVariant1Code, details: GetOrderResponseErrorVariant1Details) {
         (self.code, self.details) = (code, details)
     }
 }
@@ -484,80 +384,46 @@ public indirect enum GetOrderResponseDomainsItemVariant1Error {
 }
 
 extension GetOrderResponseDomainsItemVariant1Error: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
-            if let value = Self.decodeLossless2(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetOrderResponseDomainsItemVariant1Error"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetOrderResponseDomainsItemVariant1Error")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetOrderResponseDomainsItemVariant1Error {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant0(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant1(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant2(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant3.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant3.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant3(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant4.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant4.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant4(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant5.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant5.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant5(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant6.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant6.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant6(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant7.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant7.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant7(value)
         }
         return nil
@@ -566,22 +432,13 @@ extension GetOrderResponseDomainsItemVariant1Error {
 
 extension GetOrderResponseDomainsItemVariant1Error {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant8.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant8.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant8(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant9.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant9.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant9(value)
         }
-        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant10.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetOrderResponseDomainsItemVariant1ErrorVariant10.self), sdkKeepsEveryKey(value, of: raw) {
             return .getOrderResponseDomainsItemVariant1ErrorVariant10(value)
         }
         return nil

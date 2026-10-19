@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VercelCiMethods {
-    struct GetVercelCiTaskRunLogsOptions: Codable {
+extension VercelCiMethods {
+    public struct GetVercelCiTaskRunLogsOptions: Codable {
         public var invocationId: String
         public var attempt: String
         public var jobDefinitionId: String
@@ -20,14 +20,7 @@ public extension VercelCiMethods {
         public var teamId: String?
         public var slug: String?
 
-        public init(
-            invocationId: String,
-            attempt: String,
-            jobDefinitionId: String,
-            runAttempt: String,
-            taskDefinitionId: String,
-            taskRunAttempt: String
-        ) {
+        public init(invocationId: String, attempt: String, jobDefinitionId: String, runAttempt: String, taskDefinitionId: String, taskRunAttempt: String) {
             self.invocationId = invocationId
             self.attempt = attempt
             self.jobDefinitionId = jobDefinitionId
@@ -37,12 +30,9 @@ public extension VercelCiMethods {
         }
     }
 
-    /// Retrieves log lines for a specific task run attempt. Use `level` to filter the returned lines, or provide
-    /// `since` to retrieve lines from a specified point. Set `follow` to 1 to stream newline-delimited JSON log lines
-    /// until the task run finishes or the stream reaches its maximum duration.
+    /// Retrieves log lines for a specific task run attempt. Use `level` to filter the returned lines, or provide `since` to retrieve lines from a specified point. Set `follow` to 1 to stream newline-delimited JSON log lines until the task run finishes or the stream reaches its maximum duration.
     ///
-    /// Get Task Run Logs With `follow=1` the response is a newline-delimited JSON stream of log lines that ends once
-    /// the task run has finished and its logs are flushed, or when the stream reaches its maximum duration.
+    /// Get Task Run Logs With `follow=1` the response is a newline-delimited JSON stream of log lines that ends once the task run has finished and its logs are flushed, or when the stream reaches its maximum duration.
     ///
     /// - Parameters:
     /// - follow: When 1, stream log lines as newline-delimited JSON until the task
@@ -50,43 +40,17 @@ public extension VercelCiMethods {
     /// - level: Only return log lines with one of these levels.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getVercelCiTaskRunLogs(
-        config: ClientConfig,
-        options: GetVercelCiTaskRunLogsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetVercelCiTaskRunLogsResponse {
+    public static func getVercelCiTaskRunLogs(config: ClientConfig, options: GetVercelCiTaskRunLogsOptions, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiTaskRunLogsResponse {
         if let level = options.level {
             try validateItems("level", level, min: 1)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            [
-                "/v1/vercel-ci/invocations/",
-                sdkEncodePathSegment(sdkWireString(options.invocationId)),
-                "/attempts/",
-                sdkEncodePathSegment(sdkWireString(options.attempt)),
-                "/job-definitions/",
-                sdkEncodePathSegment(sdkWireString(options.jobDefinitionId)),
-                "/runs/",
-                sdkEncodePathSegment(sdkWireString(options.runAttempt)),
-                "/task-definitions/",
-                sdkEncodePathSegment(sdkWireString(options.taskDefinitionId)),
-                "/runs/",
-                sdkEncodePathSegment(sdkWireString(options.taskRunAttempt)),
-                "/logs",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("follow", value: options.follow),
-                SdkQueryParameter("since", value: options.since),
-                SdkQueryParameter("level", values: options.level, style: "form", explode: true),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            decoder: .json,
-            operationId: "getVercelCiTaskRunLogs",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(options.invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(options.attempt)), "/job-definitions/", sdkEncodePathSegment(sdkWireString(options.jobDefinitionId)), "/runs/", sdkEncodePathSegment(sdkWireString(options.runAttempt)), "/task-definitions/", sdkEncodePathSegment(sdkWireString(options.taskDefinitionId)), "/runs/", sdkEncodePathSegment(sdkWireString(options.taskRunAttempt)), "/logs"].joined(), config: config, query: [
+            SdkQueryParameter("follow", value: options.follow),
+            SdkQueryParameter("since", value: options.since),
+            SdkQueryParameter("level", values: options.level, style: "form", explode: true),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], decoder: .json, operationId: "getVercelCiTaskRunLogs", options: requestOptions)).data
     }
 }

@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Retrieves a single tag from a VCR repository, including metadata for its backing image and its VHS-readiness
-    /// status. Use the repository and tag identifiers to select the tag you want to inspect. The response contains the
-    /// tag and its associated image details.
+extension VcrMethods {
+    /// Retrieves a single tag from a VCR repository, including metadata for its backing image and its VHS-readiness status. Use the repository and tag identifiers to select the tag you want to inspect. The response contains the tag and its associated image details.
     ///
     /// Fetch a single tag from a repository, including the backing image's metadata and VHS-readiness status.
     ///
@@ -18,36 +16,15 @@ public extension VcrMethods {
     ///   take precedence over names. Missing or empty values return HTTP 400.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getRepositoryTag(
-        config: ClientConfig,
-        idOrName: String,
-        tag: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRepositoryTagResponse {
+    public static func getRepositoryTag(config: ClientConfig, idOrName: String, tag: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRepositoryTagResponse {
         try validateLength("idOrName", idOrName, max: 255)
 
         try validateLength("tag", tag, max: 255)
 
-        return try await (sdkRequest(
-            "GET",
-            [
-                "/v1/vcr/repository/",
-                sdkEncodePathSegment(sdkWireString(idOrName)),
-                "/tags/",
-                sdkEncodePathSegment(sdkWireString(tag)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getRepositoryTag",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/tags/", sdkEncodePathSegment(sdkWireString(tag))].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getRepositoryTag", options: requestOptions)).data
     }
 }

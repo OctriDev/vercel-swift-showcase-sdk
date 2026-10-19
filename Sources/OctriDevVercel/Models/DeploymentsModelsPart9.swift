@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Deployments domain models
+// Deployments domain models
 public indirect enum CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX76ac10d309 {
     case createDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde(
         CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde
@@ -17,44 +17,33 @@ public indirect enum CreateDeploymentResponseVariant1ServicesItemVariant1Functio
 }
 
 extension CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX76ac10d309: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX76ac10d309"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX76ac10d309")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX76ac10d309 {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde(value)
         }
-        if let value = try? container
-            .decode(CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX5f2e3b8171.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX5f2e3b8171.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX5f2e3b8171(value)
         }
-        if let value = try? container
-            .decode(CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsXff9fd7e8b8.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsXff9fd7e8b8.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .createDeploymentResponseVariant1ServicesItemVariant1FunctionsXff9fd7e8b8(value)
         }
         return nil
@@ -66,17 +55,17 @@ extension CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX76ac10d3
         if let value = try? container.decode(
             CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde.self
         ) {
-            return .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde(value)
+            return             .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde(value)
         }
         if let value = try? container.decode(
             CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX5f2e3b8171.self
         ) {
-            return .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX5f2e3b8171(value)
+            return             .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX5f2e3b8171(value)
         }
         if let value = try? container.decode(
             CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsXff9fd7e8b8.self
         ) {
-            return .createDeploymentResponseVariant1ServicesItemVariant1FunctionsXff9fd7e8b8(value)
+            return             .createDeploymentResponseVariant1ServicesItemVariant1FunctionsXff9fd7e8b8(value)
         }
         return nil
     }
@@ -86,12 +75,9 @@ extension CreateDeploymentResponseVariant1ServicesItemVariant1FunctionsX76ac10d3
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde(value): try container
-            .encode(value); return true
-        case let .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX5f2e3b8171(value): try container
-            .encode(value); return true
-        case let .createDeploymentResponseVariant1ServicesItemVariant1FunctionsXff9fd7e8b8(value): try container
-            .encode(value); return true
+        case let .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX8f270aecde(value): try container.encode(value); return true
+        case let .createDeploymentResponseVariant1ServicesItemVariant1FunctionsX5f2e3b8171(value): try container.encode(value); return true
+        case let .createDeploymentResponseVariant1ServicesItemVariant1FunctionsXff9fd7e8b8(value): try container.encode(value); return true
         }
     }
 }
@@ -104,33 +90,25 @@ public indirect enum CreateDeploymentResponseVariant1ServicesItemVariant1Rewrite
 }
 
 extension CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX5bf9af6a92: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX5bf9af6a92"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX5bf9af6a92")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX5bf9af6a92 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIXdf3fff9a6c.self
         ) {
-            return .createDeploymentResponseVariant1ServicesItemVariant1RewritesIXdf3fff9a6c(value)
+            return             .createDeploymentResponseVariant1ServicesItemVariant1RewritesIXdf3fff9a6c(value)
         }
         return nil
     }
@@ -141,8 +119,7 @@ extension CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX5bf9af6a
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .createDeploymentResponseVariant1ServicesItemVariant1RewritesIXdf3fff9a6c(value): try container
-            .encode(value); return true
+        case let .createDeploymentResponseVariant1ServicesItemVariant1RewritesIXdf3fff9a6c(value): try container.encode(value); return true
         }
     }
 }
@@ -155,33 +132,25 @@ public indirect enum GetDeploymentResponseVariant1ServicesItemVariant0Topics {
 }
 
 extension GetDeploymentResponseVariant1ServicesItemVariant0Topics: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetDeploymentResponseVariant1ServicesItemVariant0Topics"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDeploymentResponseVariant1ServicesItemVariant0Topics")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetDeploymentResponseVariant1ServicesItemVariant0Topics {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String].self) {
-            return .stringList(value)
-        }
+        if let value = try? container.decode([String].self) { return .stringList(value) }
         if let value = try? container.decode(
             [GetDeploymentResponseVariant1ServicesItemVariant0TopicsVariant1Item].self
         ) {
-            return .getDeploymentResponseVariant1ServicesItemVariant0TopicsVariant1ItemList(value)
+            return             .getDeploymentResponseVariant1ServicesItemVariant0TopicsVariant1ItemList(value)
         }
         return nil
     }
@@ -192,8 +161,7 @@ extension GetDeploymentResponseVariant1ServicesItemVariant0Topics {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringList(value): try container.encode(value); return true
-        case let .getDeploymentResponseVariant1ServicesItemVariant0TopicsVariant1ItemList(value): try container
-            .encode(value); return true
+        case let .getDeploymentResponseVariant1ServicesItemVariant0TopicsVariant1ItemList(value): try container.encode(value); return true
         }
     }
 }
@@ -212,44 +180,30 @@ public struct CreateDeploymentResponseVariant1Team: Codable {
         case avatar
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateDeploymentResponseVariant1Team {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentResponseVariant1Team {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        slug = try container.sdkDecodeRequired(.slug)
-        avatar = try container.sdkDecodeIfPresent(.avatar)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.avatar = try container.sdkDecodeIfPresent(.avatar)
     }
 }
 
-public extension CreateDeploymentResponseVariant1Team {
-    init(id: String, name: String, slug: String, avatar: String? = nil) {
+extension CreateDeploymentResponseVariant1Team {
+    public init(id: String, name: String, slug: String, avatar: String? = nil) {
         (self.id, self.name) = (id, name)
         (self.slug, self.avatar) = (slug, avatar)
     }
@@ -266,43 +220,29 @@ public struct CreateDeploymentResponseVariant1GitSourceVariant17CommitMetadX929b
         case name
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateDeploymentResponseVariant1GitSourceVariant17CommitMetadX929be7560e {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentResponseVariant1GitSourceVariant17CommitMetadX929be7560e {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.date) else {
-            throw SdkValidationError(
-                field: "date",
-                code: "required",
-                message: "Validation failed for 'date': value is required"
-            )
+            throw SdkValidationError(field: "date", code: "required", message: "Validation failed for 'date': value is required")
         }
         guard container.contains(.email) else {
-            throw SdkValidationError(
-                field: "email",
-                code: "required",
-                message: "Validation failed for 'email': value is required"
-            )
+            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        date = try container.sdkDecodeRequired(.date)
-        email = try container.sdkDecodeRequired(.email)
-        name = try container.sdkDecodeRequired(.name)
+        self.date = try container.sdkDecodeRequired(.date)
+        self.email = try container.sdkDecodeRequired(.email)
+        self.name = try container.sdkDecodeRequired(.name)
     }
 }
 
-public extension CreateDeploymentResponseVariant1GitSourceVariant17CommitMetadX929be7560e {
-    init(date: String, email: String, name: String) {
+extension CreateDeploymentResponseVariant1GitSourceVariant17CommitMetadX929be7560e {
+    public init(date: String, email: String, name: String) {
         (self.date, self.email) = (date, email)
         self.name = name
     }
@@ -319,40 +259,26 @@ public struct CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemVaria
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        key = try container.sdkDecodeRequired(.key)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.key = try container.sdkDecodeRequired(.key)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemVariant1 {
-    init(
-        key: String,
-        type: CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemXe186420861,
-        value: CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemX10b1aac1df? = nil
-    ) {
+extension CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemVariant1 {
+    public init(key: String, type: CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemXe186420861, value: CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemX10b1aac1df? = nil) {
         (self.key, self.type) = (key, type)
         self.value = value
     }
@@ -366,33 +292,25 @@ public indirect enum CreateDeploymentResponseVariant1RoutesItemVariant0MissingIt
 }
 
 extension CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemX60a32c635c: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemX60a32c635c"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemX60a32c635c")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemX60a32c635c {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemX140e6a4a1b.self
         ) {
-            return .createDeploymentResponseVariant1RoutesItemVariant0MissingItemX140e6a4a1b(value)
+            return             .createDeploymentResponseVariant1RoutesItemVariant0MissingItemX140e6a4a1b(value)
         }
         return nil
     }
@@ -403,8 +321,7 @@ extension CreateDeploymentResponseVariant1RoutesItemVariant0MissingItemX60a32c63
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .createDeploymentResponseVariant1RoutesItemVariant0MissingItemX140e6a4a1b(value): try container
-            .encode(value); return true
+        case let .createDeploymentResponseVariant1RoutesItemVariant0MissingItemX140e6a4a1b(value): try container.encode(value); return true
         }
     }
 }
@@ -420,40 +337,29 @@ public struct CreateDeploymentResponseVariant1ServicesItemVariant0Builder: Codab
         case src
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateDeploymentResponseVariant1ServicesItemVariant0Builder {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentResponseVariant1ServicesItemVariant0Builder {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.use) else {
-            throw SdkValidationError(
-                field: "use",
-                code: "required",
-                message: "Validation failed for 'use': value is required"
-            )
+            throw SdkValidationError(field: "use", code: "required", message: "Validation failed for 'use': value is required")
         }
-        use = try container.sdkDecodeRequired(.use)
-        config = try container.sdkDecodeIfPresent(.config)
-        src = try container.sdkDecodeIfPresent(.src)
+        self.use = try container.sdkDecodeRequired(.use)
+        self.config = try container.sdkDecodeIfPresent(.config)
+        self.src = try container.sdkDecodeIfPresent(.src)
     }
 }
 
-public extension CreateDeploymentResponseVariant1ServicesItemVariant0Builder {
-    init(
-        use: String,
-        config: CreateDeploymentResponseVariant1ServicesItemVariant0BuilderConfig? = nil,
-        src: String? = nil
-    ) {
+extension CreateDeploymentResponseVariant1ServicesItemVariant0Builder {
+    public init(use: String, config: CreateDeploymentResponseVariant1ServicesItemVariant0BuilderConfig? = nil, src: String? = nil) {
         (self.use, self.config) = (use, config)
         self.src = src
     }
 }
 
-public typealias CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX4889197cf9 =
-    [CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX948e168781]
+public typealias CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX4889197cf9 = [CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX948e168781]
 
 public struct CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXd79d159a55: Codable {
     public var affinity: CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX244bc2af34?
@@ -485,51 +391,32 @@ public struct CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXd79d
     }
 
     init() {
-        (affinity, architecture, excludeFiles, experimentalTriggers, functionFailoverRegions) = (
-            nil,
-            nil,
-            nil,
-            nil,
-            nil
-        )
-        (includeFiles, maxConcurrency, maxDuration, memory, regions) = (nil, nil, nil, nil, nil)
-        (runtime, supportsCancellation) = (nil, nil)
+        (self.affinity, self.architecture, self.excludeFiles, self.experimentalTriggers, self.functionFailoverRegions) = (nil, nil, nil, nil, nil)
+        (self.includeFiles, self.maxConcurrency, self.maxDuration, self.memory, self.regions) = (nil, nil, nil, nil, nil)
+        (self.runtime, self.supportsCancellation) = (nil, nil)
     }
 }
 
-public extension CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXd79d159a55 {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXd79d159a55 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        affinity = try container.sdkDecodeIfPresent(.affinity)
-        architecture = try container.sdkDecodeIfPresent(.architecture)
-        excludeFiles = try container.sdkDecodeIfPresent(.excludeFiles)
-        experimentalTriggers = try container.sdkDecodeIfPresent(.experimentalTriggers)
-        functionFailoverRegions = try container.sdkDecodeIfPresent(.functionFailoverRegions)
-        includeFiles = try container.sdkDecodeIfPresent(.includeFiles)
-        maxConcurrency = try container.sdkDecodeIfPresent(.maxConcurrency)
-        maxDuration = try container.sdkDecodeIfPresent(.maxDuration)
-        memory = try container.sdkDecodeIfPresent(.memory)
-        regions = try container.sdkDecodeIfPresent(.regions)
-        runtime = try container.sdkDecodeIfPresent(.runtime)
-        supportsCancellation = try container.sdkDecodeIfPresent(.supportsCancellation)
+        self.affinity = try container.sdkDecodeIfPresent(.affinity)
+        self.architecture = try container.sdkDecodeIfPresent(.architecture)
+        self.excludeFiles = try container.sdkDecodeIfPresent(.excludeFiles)
+        self.experimentalTriggers = try container.sdkDecodeIfPresent(.experimentalTriggers)
+        self.functionFailoverRegions = try container.sdkDecodeIfPresent(.functionFailoverRegions)
+        self.includeFiles = try container.sdkDecodeIfPresent(.includeFiles)
+        self.maxConcurrency = try container.sdkDecodeIfPresent(.maxConcurrency)
+        self.maxDuration = try container.sdkDecodeIfPresent(.maxDuration)
+        self.memory = try container.sdkDecodeIfPresent(.memory)
+        self.regions = try container.sdkDecodeIfPresent(.regions)
+        self.runtime = try container.sdkDecodeIfPresent(.runtime)
+        self.supportsCancellation = try container.sdkDecodeIfPresent(.supportsCancellation)
     }
 }
 
-public extension CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXd79d159a55 {
-    init(
-        affinity: CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX244bc2af34? = nil,
-        architecture: CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX427d047c97? = nil,
-        excludeFiles: String? = nil,
-        experimentalTriggers: CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX4889197cf9? = nil,
-        functionFailoverRegions: [String]? = nil,
-        includeFiles: String? = nil,
-        maxConcurrency: Double? = nil,
-        maxDuration: CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXa172b49d93? = nil,
-        memory: Double? = nil,
-        regions: [String]? = nil,
-        runtime: String? = nil,
-        supportsCancellation: Bool? = nil
-    ) {
+extension CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXd79d159a55 {
+    public init(affinity: CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX244bc2af34? = nil, architecture: CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX427d047c97? = nil, excludeFiles: String? = nil, experimentalTriggers: CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX4889197cf9? = nil, functionFailoverRegions: [String]? = nil, includeFiles: String? = nil, maxConcurrency: Double? = nil, maxDuration: CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXa172b49d93? = nil, memory: Double? = nil, regions: [String]? = nil, runtime: String? = nil, supportsCancellation: Bool? = nil) {
         self.init()
         (self.affinity, self.architecture) = (affinity, architecture)
         (self.excludeFiles, self.experimentalTriggers) = (excludeFiles, experimentalTriggers)
@@ -548,33 +435,25 @@ public indirect enum CancelDeploymentResponseServicesItemVariant1RewritesItemMis
 }
 
 extension CancelDeploymentResponseServicesItemVariant1RewritesItemMissiXe3fa9cf729: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant1RewritesItemMissiXe3fa9cf729"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant1RewritesItemMissiXe3fa9cf729")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseServicesItemVariant1RewritesItemMissiXe3fa9cf729 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             CancelDeploymentResponseServicesItemVariant1RewritesItemMissiX048cf6d4cd.self
         ) {
-            return .cancelDeploymentResponseServicesItemVariant1RewritesItemMissiX048cf6d4cd(value)
+            return             .cancelDeploymentResponseServicesItemVariant1RewritesItemMissiX048cf6d4cd(value)
         }
         return nil
     }
@@ -585,8 +464,7 @@ extension CancelDeploymentResponseServicesItemVariant1RewritesItemMissiXe3fa9cf7
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .cancelDeploymentResponseServicesItemVariant1RewritesItemMissiX048cf6d4cd(value): try container
-            .encode(value); return true
+        case let .cancelDeploymentResponseServicesItemVariant1RewritesItemMissiX048cf6d4cd(value): try container.encode(value); return true
         }
     }
 }

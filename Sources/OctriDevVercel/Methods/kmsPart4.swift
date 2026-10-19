@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension KmsMethods {
-    struct CreateKmsIssuerOptions: Codable {
+extension KmsMethods {
+    public struct CreateKmsIssuerOptions: Codable {
         public var name: String
         public var teamId: String?
         public var slug: String?
@@ -22,12 +22,9 @@ public extension KmsMethods {
         }
     }
 
-    /// Creates a KMS issuer for the authenticated user's team to own asymmetric signing keys. Supply `name` and
-    /// optionally configure the signing `algorithm`, claims validation schema, policy, or imported private key. The
-    /// response includes the issuer and its signing keys.
+    /// Creates a KMS issuer for the authenticated user's team to own asymmetric signing keys. Supply `name` and optionally configure the signing `algorithm`, claims validation schema, policy, or imported private key. The response includes the issuer and its signing keys.
     ///
-    /// Create a new KMS issuer for the authenticated team. An issuer owns the asymmetric signing keys that are used to
-    /// sign tokens and messages.
+    /// Create a new KMS issuer for the authenticated team. An issuer owns the asymmetric signing keys that are used to sign tokens and messages.
     ///
     /// - Parameters:
     /// - name: The name of the issuer.
@@ -42,11 +39,7 @@ public extension KmsMethods {
     /// - importKeyId: The key id to use as the imported key's JWT/JWKS `kid`. Only
     ///   allowed when `importKey` is provided. Not required to be unique; the
     ///   addressable key id is the server-minted `keyId` returned in the response.
-    static func createKmsIssuer(
-        config: ClientConfig,
-        options: CreateKmsIssuerOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateKmsIssuerResponse {
+    public static func createKmsIssuer(config: ClientConfig, options: CreateKmsIssuerOptions, requestOptions: RequestOptions? = nil) async throws -> CreateKmsIssuerResponse {
         if let importKeyId = options.importKeyId {
             try validateLength("importKeyId", importKeyId, max: 128)
             try sdkValidatePattern("importKeyId", importKeyId, sdkPattern4f591544cbe4)
@@ -54,7 +47,7 @@ public extension KmsMethods {
 
         let requestBody = CreateKmsIssuerRequestBody(options: options)
 
-        return try await (sdkRequest("POST", "/v1/kms/issuers", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/kms/issuers", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "createKmsIssuer", options: requestOptions)).data

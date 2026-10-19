@@ -2,8 +2,8 @@
 // This file is machine-generated from your OpenAPI spec.
 
 import Foundation
-@testable import OctriDevVercel
 import XCTest
+@testable import OctriDevVercel
 
 private struct ProbeResponse: Codable {
     let ok: Bool
@@ -43,7 +43,7 @@ final class SdkRuntimeTests: XCTestCase {
             "GET",
             "/probe",
             config: config,
-            body: EmptyBody?.none,
+            body: Optional<EmptyBody>.none,
             operationId: "probe"
         )
         XCTAssertTrue(response.data.ok)

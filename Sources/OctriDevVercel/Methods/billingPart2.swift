@@ -6,18 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension BillingMethods {
-    /// Lists billing charges for a Vercel team in FOCUS v1.3 JSONL format. Set `from` and `to` to define the UTC
-    /// date-time range; results use one-day granularity and the range can span at most one year. The response is
-    /// streamed as newline-delimited JSON, and you can request gzip compression with the `Accept-Encoding: gzip`
-    /// header.
+extension BillingMethods {
+    /// Lists billing charges for a Vercel team in FOCUS v1.3 JSONL format. Set `from` and `to` to define the UTC date-time range; results use one-day granularity and the range can span at most one year. The response is streamed as newline-delimited JSON, and you can request gzip compression with the `Accept-Encoding: gzip` header.
     ///
-    /// Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range
-    /// specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year.
-    /// The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the
-    /// `Accept-Encoding: gzip` header is provided. `SkuId` is the stable product ID. For unmapped items, it is derived
-    /// from the item identifier. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise
-    /// Viewer roles for the supplied team.
+    /// Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year. The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the `Accept-Encoding: gzip` header is provided. `SkuId` is the stable product ID. For unmapped items, it is derived from the item identifier. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise Viewer roles for the supplied team.
     ///
     /// - Parameters:
     /// - from: Inclusive start of the date range as an ISO 8601 date-time string in
@@ -26,14 +18,8 @@ public extension BillingMethods {
     ///   UTC.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listBillingCharges(
-        config: ClientConfig,
-        from: String,
-        to: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AsyncThrowingStream<ListBillingChargesResponse, Swift.Error> {
+    public static func listBillingCharges(config: ClientConfig, from: String, to: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AsyncThrowingStream<ListBillingChargesResponse, Swift.Error> {
+
         let upstream = try await sdkStream(
             "GET",
             "/v1/billing/charges",
@@ -58,11 +44,8 @@ public extension BillingMethods {
                             continuation.finish()
                             return
                         }
-                        let payload = try sdkDecodeBody(Data(event.data.utf8)) { try sdkJsonDecoder().decode(
-                            ListBillingChargesResponse.self,
-                            from: Data(event.data.utf8)
-                        ) }
-
+                        let payload = try sdkDecodeBody(Data(event.data.utf8)) { try sdkJsonDecoder().decode(ListBillingChargesResponse.self, from: Data(event.data.utf8)) }
+                        
                         continuation.yield(payload)
                     }
                     continuation.finish()

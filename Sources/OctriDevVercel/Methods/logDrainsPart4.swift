@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension LogDrainsMethods {
-    struct CreateConfigurableLogDrainOptions: Codable {
+extension LogDrainsMethods {
+    public struct CreateConfigurableLogDrainOptions: Codable {
         public var deliveryFormat: CreateConfigurableLogDrainRequestBodyDeliveryFormat
         public var url: String
         public var sources: [CreateConfigurableLogDrainRequestBodySourcesItem]
@@ -20,23 +20,16 @@ public extension LogDrainsMethods {
         public var samplingRate: Double?
         public var name: String?
 
-        public init(
-            deliveryFormat: CreateConfigurableLogDrainRequestBodyDeliveryFormat,
-            url: String,
-            sources: [CreateConfigurableLogDrainRequestBodySourcesItem]
-        ) {
+        public init(deliveryFormat: CreateConfigurableLogDrainRequestBodyDeliveryFormat, url: String, sources: [CreateConfigurableLogDrainRequestBodySourcesItem]) {
             self.deliveryFormat = deliveryFormat
             self.url = url
             self.sources = sources
         }
     }
 
-    /// Creates a configurable log drain for the authenticated team. Supply `deliveryFormat`, `url`, and `sources`; use
-    /// the remaining fields to select projects, environments, headers, and sampling behavior. Call this deprecated
-    /// operation with a team AccessToken, not an integration OAuth2 client.
+    /// Creates a configurable log drain for the authenticated team. Supply `deliveryFormat`, `url`, and `sources`; use the remaining fields to select projects, environments, headers, and sampling behavior. Call this deprecated operation with a team AccessToken, not an integration OAuth2 client.
     ///
-    /// Creates a configurable log drain. This endpoint must be called with a team AccessToken (integration OAuth2
-    /// clients are not allowed)
+    /// Creates a configurable log drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed)
     ///
     /// - Parameters:
     /// - deliveryFormat: The delivery log format
@@ -48,11 +41,7 @@ public extension LogDrainsMethods {
     /// - samplingRate: The sampling rate for this log drain. It should be a
     ///   percentage rate between 0 and 100. With max 2 decimal points
     /// - name: The custom name of this log drain.
-    static func createConfigurableLogDrain(
-        config: ClientConfig,
-        options: CreateConfigurableLogDrainOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
+    public static func createConfigurableLogDrain(config: ClientConfig, options: CreateConfigurableLogDrainOptions, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
         try sdkValidatePattern("url", options.url, sdkPatternba8b63d162a8)
         try sdkValidateUri("url", options.url)
 
@@ -72,7 +61,7 @@ public extension LogDrainsMethods {
 
         let requestBody = CreateConfigurableLogDrainRequestBody(options: options)
 
-        return try await (sdkRequest("POST", "/v1/log-drains", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/log-drains", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "createConfigurableLogDrain", options: requestOptions)).data

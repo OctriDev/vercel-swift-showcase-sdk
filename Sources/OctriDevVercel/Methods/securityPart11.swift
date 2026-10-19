@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SecurityMethods {
-    struct GetSecurityFirewallEventsSummaryOptions: Codable {
+extension SecurityMethods {
+    public struct GetSecurityFirewallEventsSummaryOptions: Codable {
         public var projectId: String
         public var startTimestamp: Double?
         public var endTimestamp: Double?
@@ -26,21 +26,14 @@ public extension SecurityMethods {
         }
     }
 
-    /// Returns aggregate counts for firewall actions matching the specified project and filters, without returning
-    /// individual action rows. The counts represent policies, including policies that matched no requests. Use the same
-    /// filter parameters as the firewall actions listing to scope the summary.
+    /// Returns aggregate counts for firewall actions matching the specified project and filters, without returning individual action rows. The counts represent policies, including policies that matched no requests. Use the same filter parameters as the firewall actions listing to scope the summary.
     ///
-    /// Aggregate counts over the firewall actions matched by the same filters as `GET /v1/security/firewall/events`,
-    /// without fetching any rows. Counts are of policies (mitigations), including ones that matched no requests.
+    /// Aggregate counts over the firewall actions matched by the same filters as `GET /v1/security/firewall/events`, without fetching any rows. Counts are of policies (mitigations), including ones that matched no requests.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getSecurityFirewallEventsSummary(
-        config: ClientConfig,
-        options: GetSecurityFirewallEventsSummaryOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetSecurityFirewallEventsSummaryResponse {
+    public static func getSecurityFirewallEventsSummary(config: ClientConfig, options: GetSecurityFirewallEventsSummaryOptions, requestOptions: RequestOptions? = nil) async throws -> GetSecurityFirewallEventsSummaryResponse {
         if let hosts = options.hosts {
             try validateLength("hosts", hosts, max: 10000)
         }
@@ -61,7 +54,7 @@ public extension SecurityMethods {
             try validateItems("ruleId", ruleId, max: 100)
         }
 
-        return try await (sdkRequest("GET", "/v1/security/firewall/events/summary", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/security/firewall/events/summary", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("startTimestamp", value: options.startTimestamp),
             SdkQueryParameter("endTimestamp", value: options.endTimestamp),
@@ -77,22 +70,15 @@ public extension SecurityMethods {
         ], decoder: .json, operationId: "getSecurityFirewallEventsSummary", options: requestOptions)).data
     }
 
-    /// Generates a firewall rule from a natural-language description for the selected project or team context. Use
-    /// `projectId`, `teamId`, or `slug` to scope the request, then inspect the returned `rule` or `error`.
+    /// Generates a firewall rule from a natural-language description for the selected project or team context. Use `projectId`, `teamId`, or `slug` to scope the request, then inspect the returned `rule` or `error`.
     ///
     /// Generate a firewall rule from a natural language description.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func generateFirewallRule(
-        config: ClientConfig,
-        projectId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GenerateFirewallRuleResponse {
-        try await (sdkRequest("POST", "/v1/security/firewall/config/generate-rule", config: config, query: [
+    public static func generateFirewallRule(config: ClientConfig, projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GenerateFirewallRuleResponse {
+        return try (await sdkRequest("POST", "/v1/security/firewall/config/generate-rule", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),

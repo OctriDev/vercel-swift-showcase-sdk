@@ -6,86 +6,33 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension TeamsMethods {
-    /// Invites one or more users to join the specified team by email. Each invitation requires an `email`; you can also
-    /// assign a team role and project-specific roles. The authenticated user must be an `OWNER` to invite members.
+extension TeamsMethods {
+    /// Invites one or more users to join the specified team by email. Each invitation requires an `email`; you can also assign a team role and project-specific roles. The authenticated user must be an `OWNER` to invite members.
     ///
-    /// Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to
-    /// successfully invoke this endpoint. The user to be invited must be specified by email.
+    /// Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user to be invited must be specified by email.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func inviteUserToTeam(
-        config: ClientConfig,
-        teamId: String,
-        slug: String? = nil,
-        body: [InviteUserToTeamRequestBodyItem]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> InvitedTeamMember {
-        try await (sdkRequest(
-            "POST",
-            ["/v2/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/members"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("slug", value: slug),
-            ],
-            rawBody: (body.map { try sdkEncodeBody($0, contentType: "application/json") }),
-            decoder: .json,
-            operationId: "inviteUserToTeam",
-            options: requestOptions
-        )).data
+    public static func inviteUserToTeam(config: ClientConfig, teamId: String, slug: String? = nil, body: [InviteUserToTeamRequestBodyItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> InvitedTeamMember {
+        return try (await sdkRequest("POST", ["/v2/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/members"].joined(), config: config, query: [
+            SdkQueryParameter("slug", value: slug),
+        ], rawBody: (try body.map { try sdkEncodeBody($0, contentType: "application/json") }), decoder: .json, operationId: "inviteUserToTeam", options: requestOptions)).data
     }
 
-    /// Submits a request for the authenticated user to join the specified team. Include `joinedFrom.origin` to identify
-    /// where the request originated, and provide the relevant repository or Git account details when applicable. A team
-    /// owner must approve the request, and no more than 100 users can have pending access requests at the same time.
+    /// Submits a request for the authenticated user to join the specified team. Include `joinedFrom.origin` to identify where the request originated, and provide the relevant repository or Git account details when applicable. A team owner must approve the request, and no more than 100 users can have pending access requests at the same time.
     ///
-    /// Request access to a team as a member. An owner has to approve the request. Only 100 users can request access to
-    /// a team at the same time.
-    static func requestAccessToTeam(
-        config: ClientConfig,
-        teamId: String,
-        joinedFrom: RequestAccessToTeamRequestBodyJoinedFrom,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RequestAccessToTeamResponse {
+    /// Request access to a team as a member. An owner has to approve the request. Only 100 users can request access to a team at the same time.
+    public static func requestAccessToTeam(config: ClientConfig, teamId: String, joinedFrom: RequestAccessToTeamRequestBodyJoinedFrom, requestOptions: RequestOptions? = nil) async throws -> RequestAccessToTeamResponse {
         let requestBody = RequestAccessToTeamRequestBody(joinedFrom: joinedFrom)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/request"].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .json,
-            operationId: "requestAccessToTeam",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/request"].joined(), config: config, body: requestBody, decoder: .json, operationId: "requestAccessToTeam", options: requestOptions)).data
     }
 
-    /// Retrieves the status of a user's request to join a team. Use `userId` to identify whose request to check; the
-    /// endpoint returns the authenticated user's status when that path segment is not provided. A declined request is
-    /// reported as not found.
+    /// Retrieves the status of a user's request to join a team. Use `userId` to identify whose request to check; the endpoint returns the authenticated user's status when that path segment is not provided. A declined request is reported as not found.
     ///
-    /// Check the status of a join request. It'll respond with a 404 if the request has been declined. If no `userId`
-    /// path segment was provided, this endpoint will instead return the status of the authenticated user.
-    static func getTeamAccessRequest(
-        config: ClientConfig,
-        userId: String,
-        teamId: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetTeamAccessRequestResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/teams/",
-                sdkEncodePathSegment(sdkWireString(teamId)),
-                "/request/",
-                sdkEncodePathSegment(sdkWireString(userId)),
-            ].joined(),
-            config: config,
-            decoder: .json,
-            operationId: "getTeamAccessRequest",
-            options: requestOptions
-        )).data
+    /// Check the status of a join request. It'll respond with a 404 if the request has been declined. If no `userId` path segment was provided, this endpoint will instead return the status of the authenticated user.
+    public static func getTeamAccessRequest(config: ClientConfig, userId: String, teamId: String, requestOptions: RequestOptions? = nil) async throws -> GetTeamAccessRequestResponse {
+        return try (await sdkRequest("GET", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/request/", sdkEncodePathSegment(sdkWireString(userId))].joined(), config: config, decoder: .json, operationId: "getTeamAccessRequest", options: requestOptions)).data
     }
 }

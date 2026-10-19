@@ -6,14 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AiGatewayMethods {
-    /// Lists the authenticated team's AI Gateway routing rules, ordered from oldest to newest. Use `includeDisabled` to
-    /// control whether disabled rules are included, and use `limit` and `cursor` to retrieve a page of results. Paged
-    /// responses include `nextCursor` for the next request; it is null on the last page.
+extension AiGatewayMethods {
+    /// Lists the authenticated team's AI Gateway routing rules, ordered from oldest to newest. Use `includeDisabled` to control whether disabled rules are included, and use `limit` and `cursor` to retrieve a page of results. Paged responses include `nextCursor` for the next request; it is null on the last page.
     ///
-    /// List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With
-    /// either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts
-    /// the team's rules server-side, which is fine at current rule counts.
+    /// List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts the team's rules server-side, which is fine at current rule counts.
     ///
     /// - Parameters:
     /// - limit: Maximum number of rules to return (capped at 200). Enables
@@ -21,20 +17,12 @@ public extension AiGatewayMethods {
     /// - cursor: Opaque cursor returned by a prior call as nextCursor.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listAiGatewayRules(
-        config: ClientConfig,
-        includeDisabled: ListAiGatewayRulesParameter? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayRuleList {
-        if let limit {
+    public static func listAiGatewayRules(config: ClientConfig, includeDisabled: ListAiGatewayRulesParameter? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayRuleList {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1)
         }
 
-        return try await (sdkRequest("GET", "/ai-gateway/rules", config: config, query: [
+        return try (await sdkRequest("GET", "/ai-gateway/rules", config: config, query: [
             SdkQueryParameter("includeDisabled", value: includeDisabled),
             SdkQueryParameter("limit", value: limit),
             SdkQueryParameter("cursor", value: cursor),
@@ -43,13 +31,9 @@ public extension AiGatewayMethods {
         ], decoder: .json, operationId: "listAiGatewayRules", options: requestOptions)).data
     }
 
-    /// Lists the authenticated team's AI Gateway routing rules, ordered from oldest to newest. Use `includeDisabled` to
-    /// control whether disabled rules are included, and use `limit` and `cursor` to retrieve a page of results. Paged
-    /// responses include `nextCursor` for the next request; it is null on the last page.
+    /// Lists the authenticated team's AI Gateway routing rules, ordered from oldest to newest. Use `includeDisabled` to control whether disabled rules are included, and use `limit` and `cursor` to retrieve a page of results. Paged responses include `nextCursor` for the next request; it is null on the last page.
     ///
-    /// List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With
-    /// either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts
-    /// the team's rules server-side, which is fine at current rule counts.
+    /// List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts the team's rules server-side, which is fine at current rule counts.
     ///
     /// - Parameters:
     /// - limit: Maximum number of rules to return (capped at 200). Enables
@@ -57,42 +41,17 @@ public extension AiGatewayMethods {
     /// - cursor: Opaque cursor returned by a prior call as nextCursor.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listAiGatewayRulesPaginated(
-        config: ClientConfig,
-        includeDisabled: ListAiGatewayRulesParameter? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<AiGatewayRule, Swift.Error> {
-        AsyncThrowingStream<AiGatewayRule, Swift.Error> { (continuation: AsyncThrowingStream<
-            AiGatewayRule,
-            Swift.Error
-        >.Continuation) in
+    public static func listAiGatewayRulesPaginated(config: ClientConfig, includeDisabled: ListAiGatewayRulesParameter? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<AiGatewayRule, Swift.Error> {
+        return AsyncThrowingStream<AiGatewayRule, Swift.Error> { (continuation: AsyncThrowingStream<AiGatewayRule, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listAiGatewayRules(
-                            config: config,
-                            includeDisabled: includeDisabled,
-                            limit: limit,
-                            cursor: pageCursor,
-                            teamId: teamId,
-                            slug: slug,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listAiGatewayRules(config: config, includeDisabled: includeDisabled, limit: limit, cursor: pageCursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
                         let pageItems = pageResponse.rules
-                        if pageItems.isEmpty {
-                            break
-                        }
-                        for item in pageItems {
-                            continuation.yield(item)
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
+                        for item in pageItems { continuation.yield(item) }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {
@@ -105,54 +64,25 @@ public extension AiGatewayMethods {
         }
     }
 
-    struct ListAiGatewayRulesPage {
+    public struct ListAiGatewayRulesPage {
         public let data: AiGatewayRuleList
         public let items: [AiGatewayRule]
         public let hasMore: Bool
     }
 
-    static func listAiGatewayRulesPages(
-        config: ClientConfig,
-        includeDisabled: ListAiGatewayRulesParameter? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<ListAiGatewayRulesPage, Swift.Error> {
-        AsyncThrowingStream<ListAiGatewayRulesPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<
-            ListAiGatewayRulesPage,
-            Swift.Error
-        >.Continuation) in
+    public static func listAiGatewayRulesPages(config: ClientConfig, includeDisabled: ListAiGatewayRulesParameter? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<ListAiGatewayRulesPage, Swift.Error> {
+        return AsyncThrowingStream<ListAiGatewayRulesPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<ListAiGatewayRulesPage, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listAiGatewayRules(
-                            config: config,
-                            includeDisabled: includeDisabled,
-                            limit: limit,
-                            cursor: pageCursor,
-                            teamId: teamId,
-                            slug: slug,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listAiGatewayRules(config: config, includeDisabled: includeDisabled, limit: limit, cursor: pageCursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
                         let pageItems = pageResponse.rules
-                        if pageItems.isEmpty {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
                         let hasMore = pageResponse.nextCursor != nil
-                        pageContinuation.yield(ListAiGatewayRulesPage(
-                            data: pageResponse,
-                            items: pageItems,
-                            hasMore: hasMore
-                        ))
-                        if !hasMore {
-                            break
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        pageContinuation.yield(ListAiGatewayRulesPage(data: pageResponse, items: pageItems, hasMore: hasMore))
+                        if !hasMore { break }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {

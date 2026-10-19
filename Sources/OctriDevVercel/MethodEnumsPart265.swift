@@ -12,8 +12,8 @@ struct CreateVercelCiTaskAnalysisRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(owner, forKey: SdkCodingKey("owner"))
-        try keyedContainer.encode(repo, forKey: SdkCodingKey("repo"))
+        try keyedContainer.encode(self.owner, forKey: SdkCodingKey("owner"))
+        try keyedContainer.encode(self.repo, forKey: SdkCodingKey("repo"))
     }
 }
 
@@ -22,7 +22,7 @@ struct CreateVercelCiTaskConfigurationPullRequestRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(tasks, forKey: SdkCodingKey("tasks"))
+        try keyedContainer.encode(self.tasks, forKey: SdkCodingKey("tasks"))
     }
 }
 
@@ -31,7 +31,7 @@ struct CreateWebInsightsToggleRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(value, forKey: SdkCodingKey("value"))
+        try keyedContainer.encode(self.value, forKey: SdkCodingKey("value"))
     }
 }
 
@@ -42,9 +42,9 @@ struct CreateWebhookRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(url, forKey: SdkCodingKey("url"))
-        try keyedContainer.encode(events, forKey: SdkCodingKey("events"))
-        try keyedContainer.encodeIfPresent(projectIds, forKey: SdkCodingKey("projectIds"))
+        try keyedContainer.encode(self.url, forKey: SdkCodingKey("url"))
+        try keyedContainer.encode(self.events, forKey: SdkCodingKey("events"))
+        try keyedContainer.encodeIfPresent(self.projectIds, forKey: SdkCodingKey("projectIds"))
     }
 }
 
@@ -54,8 +54,8 @@ struct AssignAliasRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(alias, forKey: SdkCodingKey("alias"))
-        try keyedContainer.encodeIfPresent(redirect, forKey: SdkCodingKey("redirect"))
+        try keyedContainer.encodeIfPresent(self.alias, forKey: SdkCodingKey("alias"))
+        try keyedContainer.encodeIfPresent(self.redirect, forKey: SdkCodingKey("redirect"))
     }
 }
 
@@ -64,7 +64,7 @@ struct IssueCertRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(cns, forKey: SdkCodingKey("cns"))
+        try keyedContainer.encodeIfPresent(self.cns, forKey: SdkCodingKey("cns"))
     }
 }
 
@@ -76,9 +76,9 @@ struct UploadCertRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(ca, forKey: SdkCodingKey("ca"))
-        try keyedContainer.encode(key, forKey: SdkCodingKey("key"))
-        try keyedContainer.encode(cert, forKey: SdkCodingKey("cert"))
-        try keyedContainer.encodeIfPresent(skipValidation, forKey: SdkCodingKey("skipValidation"))
+        try keyedContainer.encode(self.ca, forKey: SdkCodingKey("ca"))
+        try keyedContainer.encode(self.key, forKey: SdkCodingKey("key"))
+        try keyedContainer.encode(self.cert, forKey: SdkCodingKey("cert"))
+        try keyedContainer.encodeIfPresent(self.skipValidation, forKey: SdkCodingKey("skipValidation"))
     }
 }

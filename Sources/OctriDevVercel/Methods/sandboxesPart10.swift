@@ -6,74 +6,40 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    /// Retrieves details for a specific sandbox snapshot, including its creation time, size, expiration, and source
-    /// session. Use `snapshotId` to identify the snapshot whose details you need. The response contains the snapshot
-    /// object.
+extension SandboxesMethods {
+    /// Retrieves details for a specific sandbox snapshot, including its creation time, size, expiration, and source session. Use `snapshotId` to identify the snapshot whose details you need. The response contains the snapshot object.
     ///
-    /// Retrieves detailed information about a specific snapshot, including its creation time, size, expiration date,
-    /// and the source session it was created from.
+    /// Retrieves detailed information about a specific snapshot, including its creation time, size, expiration date, and the source session it was created from.
     ///
     /// - Parameters:
     /// - snapshotId: The unique identifier of the snapshot to retrieve.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getSessionSnapshot(
-        config: ClientConfig,
-        snapshotId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetSessionSnapshotResponse {
+    public static func getSessionSnapshot(config: ClientConfig, snapshotId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetSessionSnapshotResponse {
         try validateLength("snapshotId", snapshotId, max: 33)
         try sdkValidatePattern("snapshotId", snapshotId, sdkPattern6d0098da5bca)
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v2/sandboxes/snapshots/", sdkEncodePathSegment(sdkWireString(snapshotId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getSessionSnapshot",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v2/sandboxes/snapshots/", sdkEncodePathSegment(sdkWireString(snapshotId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getSessionSnapshot", options: requestOptions)).data
     }
 
-    /// Deletes a sandbox snapshot and frees its associated storage. Use `snapshotId` to select the snapshot to remove;
-    /// a deleted snapshot cannot be used to create new sessions. <Callout type="warning">Deletion is permanent and
-    /// cannot be undone.</Callout>
+    /// Deletes a sandbox snapshot and frees its associated storage. Use `snapshotId` to select the snapshot to remove; a deleted snapshot cannot be used to create new sessions. <Callout type="warning">Deletion is permanent and cannot be undone.</Callout>
     ///
-    /// Permanently deletes a snapshot and frees its associated storage. This action cannot be undone. After deletion,
-    /// the snapshot can no longer be used to create new sessions.
+    /// Permanently deletes a snapshot and frees its associated storage. This action cannot be undone. After deletion, the snapshot can no longer be used to create new sessions.
     ///
     /// - Parameters:
     /// - snapshotId: The unique identifier of the snapshot to delete.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteSessionSnapshot(
-        config: ClientConfig,
-        snapshotId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteSessionSnapshotResponse {
+    public static func deleteSessionSnapshot(config: ClientConfig, snapshotId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteSessionSnapshotResponse {
         try validateLength("snapshotId", snapshotId, max: 33)
         try sdkValidatePattern("snapshotId", snapshotId, sdkPattern6d0098da5bca)
 
-        return try await (sdkRequest(
-            "DELETE",
-            ["/v2/sandboxes/snapshots/", sdkEncodePathSegment(sdkWireString(snapshotId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "deleteSessionSnapshot",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v2/sandboxes/snapshots/", sdkEncodePathSegment(sdkWireString(snapshotId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "deleteSessionSnapshot", options: requestOptions)).data
     }
 }

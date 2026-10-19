@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical sandboxes operation model declarations
+// Canonical sandboxes operation model declarations
 public struct UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX5737bba7ee: Codable {
     /// Matcher for the entry key (header name or query key).
     public var key: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX49e911363e?
@@ -20,23 +20,20 @@ public struct UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX5737
     }
 
     init() {
-        (key, value) = (nil, nil)
+        (self.key, self.value) = (nil, nil)
     }
 }
 
-public extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX5737bba7ee {
-    init(from decoder: Decoder) throws {
+extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX5737bba7ee {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        key = try container.sdkDecodeIfPresent(.key)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.key = try container.sdkDecodeIfPresent(.key)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX5737bba7ee {
-    init(
-        key: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX49e911363e? = nil,
-        value: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX4c922d8f21? = nil
-    ) {
+extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX5737bba7ee {
+    public init(key: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX49e911363e? = nil, value: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX4c922d8f21? = nil) {
         self.init()
         (self.key, self.value) = (key, value)
     }
@@ -51,35 +48,25 @@ public struct RunSessionCommandResponseVariant2Data: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RunSessionCommandResponseVariant2Data {
-    init(from decoder: Decoder) throws {
+extension RunSessionCommandResponseVariant2Data {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension RunSessionCommandResponseVariant2Data {
-    init(code: RunSessionCommandResponseVariant2DataCode, message: RunSessionCommandResponseVariant2DataMessage) {
+extension RunSessionCommandResponseVariant2Data {
+    public init(code: RunSessionCommandResponseVariant2DataCode, message: RunSessionCommandResponseVariant2DataMessage) {
         (self.code, self.message) = (code, message)
     }
 }

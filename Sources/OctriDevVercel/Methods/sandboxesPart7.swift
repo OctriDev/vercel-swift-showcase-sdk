@@ -6,13 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    /// Deletes a drive identified by its name and project. Use this operation to remove a drive that is no longer
-    /// needed; a drive attached to a session cannot be deleted, so stop or replace the session using it before
-    /// retrying. A successful response includes the deleted drive object.
+extension SandboxesMethods {
+    /// Deletes a drive identified by its name and project. Use this operation to remove a drive that is no longer needed; a drive attached to a session cannot be deleted, so stop or replace the session using it before retrying. A successful response includes the deleted drive object.
     ///
-    /// Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently
-    /// using the drive before retrying deletion.
+    /// Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
     ///
     /// - Parameters:
     /// - name: Name for the drive. Must be unique per project and URL-safe
@@ -21,29 +18,14 @@ public extension SandboxesMethods {
     ///   unless using a Vercel OIDC token scoped to a project.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteDrive(
-        config: ClientConfig,
-        name: String,
-        projectId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteDriveResponse {
+    public static func deleteDrive(config: ClientConfig, name: String, projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteDriveResponse {
         try validateLength("name", name, max: 64)
         try sdkValidatePattern("name", name, sdkPatterna828669d9fe5)
 
-        return try await (sdkRequest(
-            "DELETE",
-            ["/v2/sandboxes/drives/", sdkEncodePathSegment(sdkWireString(name))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "deleteDrive",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v2/sandboxes/drives/", sdkEncodePathSegment(sdkWireString(name))].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "deleteDrive", options: requestOptions)).data
     }
 }

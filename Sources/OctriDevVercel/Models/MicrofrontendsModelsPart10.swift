@@ -3,13 +3,9 @@
 
 import Foundation
 
-/// Microfrontends domain models
-public extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX931b67c444 {
-    init(
-        org: String,
-        provider: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXe8dfb85265,
-        repo: String? = nil
-    ) {
+// Microfrontends domain models
+extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX931b67c444 {
+    public init(org: String, provider: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXe8dfb85265, repo: String? = nil) {
         (self.org, self.provider) = (org, provider)
         self.repo = repo
     }
@@ -30,52 +26,34 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemLinkVariant4DeployHook
         case createdAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant4DeployHooksItem {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant4DeployHooksItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.ref) else {
-            throw SdkValidationError(
-                field: "ref",
-                code: "required",
-                message: "Validation failed for 'ref': value is required"
-            )
+            throw SdkValidationError(field: "ref", code: "required", message: "Validation failed for 'ref': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        ref = try container.sdkDecodeRequired(.ref)
-        url = try container.sdkDecodeRequired(.url)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.ref = try container.sdkDecodeRequired(.ref)
+        self.url = try container.sdkDecodeRequired(.url)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant4DeployHooksItem {
-    init(id: String, name: String, ref: String, url: String, createdAt: Double? = nil) {
+extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant4DeployHooksItem {
+    public init(id: String, name: String, ref: String, url: String, createdAt: Double? = nil) {
         (self.id, self.name) = (id, name)
         (self.ref, self.url) = (ref, url)
         self.createdAt = createdAt
@@ -89,35 +67,23 @@ public indirect enum GetMicrofrontendsInGroupResponseProjectsItemDismissedToasts
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItX2839bde837: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItX2839bde837"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItX2839bde837")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItX2839bde837 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
         return nil
     }
 }
@@ -149,27 +115,21 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant1: Co
         case deploymentType
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.deploymentType) else {
-            throw SdkValidationError(
-                field: "deploymentType",
-                code: "required",
-                message: "Validation failed for 'deploymentType': value is required"
-            )
+            throw SdkValidationError(field: "deploymentType", code: "required", message: "Validation failed for 'deploymentType': value is required")
         }
-        deploymentType = try container.sdkDecodeRequired(.deploymentType)
+        self.deploymentType = try container.sdkDecodeRequired(.deploymentType)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant1 {
-    init(deploymentType: GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7) {
+extension GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant1 {
+    public init(deploymentType: GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7) {
         self.deploymentType = deploymentType
     }
 }
@@ -183,35 +143,25 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant2Integra
         case integrationId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant2Integration {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant2Integration {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.configurationId) else {
-            throw SdkValidationError(
-                field: "configurationId",
-                code: "required",
-                message: "Validation failed for 'configurationId': value is required"
-            )
+            throw SdkValidationError(field: "configurationId", code: "required", message: "Validation failed for 'configurationId': value is required")
         }
         guard container.contains(.integrationId) else {
-            throw SdkValidationError(
-                field: "integrationId",
-                code: "required",
-                message: "Validation failed for 'integrationId': value is required"
-            )
+            throw SdkValidationError(field: "integrationId", code: "required", message: "Validation failed for 'integrationId': value is required")
         }
-        configurationId = try container.sdkDecodeRequired(.configurationId)
-        integrationId = try container.sdkDecodeRequired(.integrationId)
+        self.configurationId = try container.sdkDecodeRequired(.configurationId)
+        self.integrationId = try container.sdkDecodeRequired(.integrationId)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant2Integration {
-    init(configurationId: String, integrationId: String) {
+extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant2Integration {
+    public init(configurationId: String, integrationId: String) {
         (self.configurationId, self.integrationId) = (configurationId, integrationId)
     }
 }
@@ -267,20 +217,15 @@ public enum GetMicrofrontendsInGroupResponseProjectsItemLinkVariant5Type: String
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXab9b6d69a8: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXab9b6d69a8: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let gitlab =
-        GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXab9b6d69a8(rawValue: "gitlab")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let gitlab = GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXab9b6d69a8(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -289,20 +234,15 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXab9b
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXf27e63fa6f: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXf27e63fa6f: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let blockLegalCwc =
-        GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXf27e63fa6f(rawValue: "block_legal_cwc")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let blockLegalCwc = GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXf27e63fa6f(rawValue: "block_legal_cwc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -328,22 +268,16 @@ public enum GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHinX0b42b3
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDXf0c51595e6: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDXf0c51595e6: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let preview =
-        GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDXf0c51595e6(rawValue: "preview")
-    public static let production =
-        GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDXf0c51595e6(rawValue: "production")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let preview = GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDXf0c51595e6(rawValue: "preview")
+    public static let production = GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDXf0c51595e6(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -488,29 +422,19 @@ public enum GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant3Type: Str
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let all = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21(rawValue: "all")
-    public static let allExceptCustomDomains =
-        GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21(rawValue: "all_except_custom_domains")
-    public static let preview =
-        GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews =
-        GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21(
-            rawValue: "prod_deployment_urls_and_all_previews"
-        )
-    public static let production =
-        GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21(rawValue: "production")
+    public static let allExceptCustomDomains = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21(rawValue: "all_except_custom_domains")
+    public static let preview = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21(rawValue: "preview")
+    public static let prodDeploymentUrlsAndAllPreviews = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let production = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -519,29 +443,19 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9a
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let all = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7(rawValue: "all")
-    public static let allExceptCustomDomains =
-        GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7(rawValue: "all_except_custom_domains")
-    public static let preview =
-        GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews =
-        GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7(
-            rawValue: "prod_deployment_urls_and_all_previews"
-        )
-    public static let production =
-        GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7(rawValue: "production")
+    public static let allExceptCustomDomains = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7(rawValue: "all_except_custom_domains")
+    public static let preview = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7(rawValue: "preview")
+    public static let prodDeploymentUrlsAndAllPreviews = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let production = GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX19acf844b7(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

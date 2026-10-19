@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    struct ListRepositoryTagsOptions: Codable {
+extension VcrMethods {
+    public struct ListRepositoryTagsOptions: Codable {
         public var idOrName: String
         public var projectId: String
         public var limit: Int?
@@ -23,9 +23,7 @@ public extension VcrMethods {
         }
     }
 
-    /// Lists tags in a VCR repository, with optional pagination and sorting for non-pinned tags. Use `cursor` to
-    /// continue from a previous page and the sort parameters to control tag ordering. The response includes a
-    /// `nextCursor` when another page is available.
+    /// Lists tags in a VCR repository, with optional pagination and sorting for non-pinned tags. Use `cursor` to continue from a previous page and the sort parameters to control tag ordering. The response includes a `nextCursor` when another page is available.
     ///
     /// List a repository's tags.
     ///
@@ -36,39 +34,25 @@ public extension VcrMethods {
     /// - sortOrder: Sort direction. Defaults to desc.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listRepositoryTags(
-        config: ClientConfig,
-        options: ListRepositoryTagsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListRepositoryTagsResponse {
+    public static func listRepositoryTags(config: ClientConfig, options: ListRepositoryTagsOptions, requestOptions: RequestOptions? = nil) async throws -> ListRepositoryTagsResponse {
         try validateLength("idOrName", options.idOrName, max: 255)
 
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/tags"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: options.projectId),
-                SdkQueryParameter("limit", value: options.limit),
-                SdkQueryParameter("cursor", value: options.cursor),
-                SdkQueryParameter("sortBy", value: options.sortBy),
-                SdkQueryParameter("sortOrder", value: options.sortOrder),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            decoder: .json,
-            operationId: "listRepositoryTags",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/tags"].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: options.projectId),
+            SdkQueryParameter("limit", value: options.limit),
+            SdkQueryParameter("cursor", value: options.cursor),
+            SdkQueryParameter("sortBy", value: options.sortBy),
+            SdkQueryParameter("sortOrder", value: options.sortOrder),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], decoder: .json, operationId: "listRepositoryTags", options: requestOptions)).data
     }
 
-    /// Lists tags in a VCR repository, with optional pagination and sorting for non-pinned tags. Use `cursor` to
-    /// continue from a previous page and the sort parameters to control tag ordering. The response includes a
-    /// `nextCursor` when another page is available.
+    /// Lists tags in a VCR repository, with optional pagination and sorting for non-pinned tags. Use `cursor` to continue from a previous page and the sort parameters to control tag ordering. The response includes a `nextCursor` when another page is available.
     ///
     /// List a repository's tags.
     ///
@@ -79,40 +63,20 @@ public extension VcrMethods {
     /// - sortOrder: Sort direction. Defaults to desc.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listRepositoryTagsPaginated(
-        config: ClientConfig,
-        options: ListRepositoryTagsOptions,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<ListRepositoryTagsResponseTagsItem, Swift.Error> {
+    public static func listRepositoryTagsPaginated(config: ClientConfig, options: ListRepositoryTagsOptions, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<ListRepositoryTagsResponseTagsItem, Swift.Error> {
         let cursor = options.cursor
-        return AsyncThrowingStream<
-            ListRepositoryTagsResponseTagsItem,
-            Swift.Error
-        > { (continuation: AsyncThrowingStream<
-            ListRepositoryTagsResponseTagsItem,
-            Swift.Error
-        >.Continuation) in
+        return AsyncThrowingStream<ListRepositoryTagsResponseTagsItem, Swift.Error> { (continuation: AsyncThrowingStream<ListRepositoryTagsResponseTagsItem, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
                         var nextOptions = options
                         nextOptions.cursor = pageCursor
-                        let pageResponse = try await listRepositoryTags(
-                            config: config,
-                            options: nextOptions,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listRepositoryTags(config: config, options: nextOptions, requestOptions: requestOptions)
                         let pageItems = pageResponse.tags
-                        if pageItems.isEmpty {
-                            break
-                        }
-                        for item in pageItems {
-                            continuation.yield(item)
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
+                        for item in pageItems { continuation.yield(item) }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {
@@ -125,49 +89,28 @@ public extension VcrMethods {
         }
     }
 
-    struct ListRepositoryTagsPage {
+    public struct ListRepositoryTagsPage {
         public let data: ListRepositoryTagsResponse
         public let items: [ListRepositoryTagsResponseTagsItem]
         public let hasMore: Bool
     }
 
-    static func listRepositoryTagsPages(
-        config: ClientConfig,
-        options: ListRepositoryTagsOptions,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<ListRepositoryTagsPage, Swift.Error> {
+    public static func listRepositoryTagsPages(config: ClientConfig, options: ListRepositoryTagsOptions, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<ListRepositoryTagsPage, Swift.Error> {
         let cursor = options.cursor
-        return AsyncThrowingStream<ListRepositoryTagsPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<
-            ListRepositoryTagsPage,
-            Swift.Error
-        >.Continuation) in
+        return AsyncThrowingStream<ListRepositoryTagsPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<ListRepositoryTagsPage, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
                         var nextOptions = options
                         nextOptions.cursor = pageCursor
-                        let pageResponse = try await listRepositoryTags(
-                            config: config,
-                            options: nextOptions,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listRepositoryTags(config: config, options: nextOptions, requestOptions: requestOptions)
                         let pageItems = pageResponse.tags
-                        if pageItems.isEmpty {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
                         let hasMore = pageResponse.nextCursor != nil
-                        pageContinuation.yield(ListRepositoryTagsPage(
-                            data: pageResponse,
-                            items: pageItems,
-                            hasMore: hasMore
-                        ))
-                        if !hasMore {
-                            break
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        pageContinuation.yield(ListRepositoryTagsPage(data: pageResponse, items: pageItems, hasMore: hasMore))
+                        if !hasMore { break }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {

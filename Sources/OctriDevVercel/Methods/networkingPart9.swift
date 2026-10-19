@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension NetworkingMethods {
-    /// Configures Static IP settings for a project identified by its ID or name. Set `builds` to control Static IP
-    /// usage for builds, or provide `regions` to select up to three regions. Include at least one of these fields to
-    /// submit a configuration update.
+extension NetworkingMethods {
+    /// Configures Static IP settings for a project identified by its ID or name. Set `builds` to control Static IP usage for builds, or provide `regions` to select up to three regions. Include at least one of these fields to submit a configuration update.
     ///
     /// Allows configuring Static IPs for a project
     ///
@@ -18,33 +16,16 @@ public extension NetworkingMethods {
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - builds: Whether to use Static IPs for builds.
-    static func updateStaticIps(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        builds: Bool? = nil,
-        regions: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [UpdateStaticIpsResponseItem] {
-        if let regions {
+    public static func updateStaticIps(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, builds: Bool? = nil, regions: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> [UpdateStaticIpsResponseItem] {
+        if let regions = regions {
             try validateItems("regions", regions, min: 0, max: 3)
         }
 
         let requestBody = UpdateStaticIpsRequestBody(builds: builds, regions: regions)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/shared-connect-links"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateStaticIps",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/shared-connect-links"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateStaticIps", options: requestOptions)).data
     }
 }

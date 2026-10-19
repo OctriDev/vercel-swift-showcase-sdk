@@ -6,66 +6,34 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension RollingReleaseMethods {
-    /// Retrieves the rolling release billing status used to determine whether a project can be configured for rolling
-    /// releases. The response includes available-slot and status information for the team's billing.
+extension RollingReleaseMethods {
+    /// Retrieves the rolling release billing status used to determine whether a project can be configured for rolling releases. The response includes available-slot and status information for the team's billing.
     ///
-    /// Get the Rolling Releases billing status for a project. The team level billing status is used to determine if the
-    /// project can be configured for rolling releases.
+    /// Get the Rolling Releases billing status for a project. The team level billing status is used to determine if the project can be configured for rolling releases.
     ///
     /// - Parameters:
     /// - idOrName: Project ID or project name (URL-encoded)
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getRollingReleaseBillingStatus(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRollingReleaseBillingStatusResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/billing"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getRollingReleaseBillingStatus",
-            options: requestOptions
-        )).data
+    public static func getRollingReleaseBillingStatus(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRollingReleaseBillingStatusResponse {
+        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/billing"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getRollingReleaseBillingStatus", options: requestOptions)).data
     }
 
-    /// Retrieves the project-level rolling release configuration template. Use this configuration to inspect the
-    /// settings that will apply to future rolling releases; it does not describe an active rolling release.
+    /// Retrieves the project-level rolling release configuration template. Use this configuration to inspect the settings that will apply to future rolling releases; it does not describe an active rolling release.
     ///
-    /// Get the Rolling Releases configuration for a project. The project-level config is simply a template that will be
-    /// used for any future rolling release, and not the configuration for any active rolling release.
+    /// Get the Rolling Releases configuration for a project. The project-level config is simply a template that will be used for any future rolling release, and not the configuration for any active rolling release.
     ///
     /// - Parameters:
     /// - idOrName: Project ID or project name (URL-encoded)
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getRollingReleaseConfig(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRollingReleaseConfigResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/config"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getRollingReleaseConfig",
-            options: requestOptions
-        )).data
+    public static func getRollingReleaseConfig(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRollingReleaseConfigResponse {
+        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/config"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getRollingReleaseConfig", options: requestOptions)).data
     }
 }

@@ -9,383 +9,134 @@ public class GlobalConfigNamespace {
         self.config = config
     }
 
-    /// Lists all Global Configs available to the authenticated user. Use `teamId` or `slug` to perform the request on
-    /// behalf of a team. Each result includes its identifier, name, digest, item count, size, and timestamps.
+/// Lists all Global Configs available to the authenticated user. Use `teamId` or `slug` to perform the request on behalf of a team. Each result includes its identifier, name, digest, item count, size, and timestamps.
     ///
     /// Returns all Global Configs.
-    public func getEdgeConfigs(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [GetEdgeConfigsResponseItem] {
-        try await GlobalConfigMethods.getEdgeConfigs(
-            config: config,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getEdgeConfigs(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [GetEdgeConfigsResponseItem] {
+        return try await GlobalConfigMethods.getEdgeConfigs(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates a Global Config for the authenticated user or specified team. Supply a `slug` that is at most 64
-    /// characters and contains only letters, numbers, underscores, or hyphens; you can also provide initial `items`.
+/// Creates a Global Config for the authenticated user or specified team. Supply a `slug` that is at most 64 characters and contains only letters, numbers, underscores, or hyphens; you can also provide initial `items`.
     ///
     /// Creates a Global Config.
-    public func createEdgeConfig(
-        slug: String,
-        teamId: String? = nil,
-        slug2: String? = nil,
-        items: [String: JSONValue]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateEdgeConfigResponse {
-        try await GlobalConfigMethods.createEdgeConfig(
-            config: config,
-            slug: slug,
-            teamId: teamId,
-            slug2: slug2,
-            items: items,
-            requestOptions: requestOptions
-        )
+    public func createEdgeConfig(slug: String, teamId: String? = nil, slug2: String? = nil, items: [String: JSONValue]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateEdgeConfigResponse {
+        return try await GlobalConfigMethods.createEdgeConfig(config: config, slug: slug, teamId: teamId, slug2: slug2, items: items, requestOptions: requestOptions)
     }
 
-    /// Retrieves a Global Config by its identifier. Use `teamId` or `slug` to make the request on behalf of a team when
-    /// needed.
+/// Retrieves a Global Config by its identifier. Use `teamId` or `slug` to make the request on behalf of a team when needed.
     ///
     /// Returns a Global Config.
-    public func getEdgeConfig(
-        edgeConfigId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetEdgeConfigResponse {
-        try await GlobalConfigMethods.getEdgeConfig(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getEdgeConfig(edgeConfigId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetEdgeConfigResponse {
+        return try await GlobalConfigMethods.getEdgeConfig(config: config, edgeConfigId: edgeConfigId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Replaces a Global Config's name. Supply the required `slug` in the request body; use `teamId` or `slug` to make
-    /// the request on behalf of a team when needed.
+/// Replaces a Global Config's name. Supply the required `slug` in the request body; use `teamId` or `slug` to make the request on behalf of a team when needed.
     ///
     /// Updates a Global Config.
-    public func updateEdgeConfig(
-        edgeConfigId: String,
-        slug: String,
-        teamId: String? = nil,
-        slug2: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateEdgeConfigResponse {
-        try await GlobalConfigMethods.updateEdgeConfig(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            slug: slug,
-            teamId: teamId,
-            slug2: slug2,
-            requestOptions: requestOptions
-        )
+    public func updateEdgeConfig(edgeConfigId: String, slug: String, teamId: String? = nil, slug2: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateEdgeConfigResponse {
+        return try await GlobalConfigMethods.updateEdgeConfig(config: config, edgeConfigId: edgeConfigId, slug: slug, teamId: teamId, slug2: slug2, requestOptions: requestOptions)
     }
 
-    /// Deletes a Global Config by its identifier. Use `teamId` or `slug` to make the request on behalf of a team when
-    /// needed; deletion removes the specified Global Config.
+/// Deletes a Global Config by its identifier. Use `teamId` or `slug` to make the request on behalf of a team when needed; deletion removes the specified Global Config.
     ///
     /// Delete a Global Config by id.
-    public func deleteEdgeConfig(
-        edgeConfigId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await GlobalConfigMethods.deleteEdgeConfig(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func deleteEdgeConfig(edgeConfigId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await GlobalConfigMethods.deleteEdgeConfig(config: config, edgeConfigId: edgeConfigId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists all items in a Global Config. Use the `edgeConfigId` path parameter to select the config; it must begin
-    /// with the `ecfg_` prefix.
+/// Lists all items in a Global Config. Use the `edgeConfigId` path parameter to select the config; it must begin with the `ecfg_` prefix.
     ///
     /// Returns all items of a Global Config.
-    public func getEdgeConfigItems(
-        edgeConfigId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [GlobalConfigItem] {
-        try await GlobalConfigMethods.getEdgeConfigItems(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getEdgeConfigItems(edgeConfigId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [GlobalConfigItem] {
+        return try await GlobalConfigMethods.getEdgeConfigItems(config: config, edgeConfigId: edgeConfigId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates multiple items in a Global Config in one request. Supply the required `items` array with the item
-    /// operations to apply; the `edgeConfigId` must begin with the `ecfg_` prefix.
+/// Updates multiple items in a Global Config in one request. Supply the required `items` array with the item operations to apply; the `edgeConfigId` must begin with the `ecfg_` prefix.
     ///
     /// Update multiple Global Config Items in batch.
-    public func patchEdgeConfigItems(
-        edgeConfigId: String,
-        items: [PatchEdgeConfigItemsRequestItemsItem],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> PatchEdgeConfigItemsResponse {
-        try await GlobalConfigMethods.patchEdgeConfigItems(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            items: items,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func patchEdgeConfigItems(edgeConfigId: String, items: [PatchEdgeConfigItemsRequestItemsItem], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> PatchEdgeConfigItemsResponse {
+        return try await GlobalConfigMethods.patchEdgeConfigItems(config: config, edgeConfigId: edgeConfigId, items: items, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves the schema associated with a Global Config. Use `edgeConfigId` to select the config and `teamId` or
-    /// `slug` to make the request on behalf of a team when needed.
+/// Retrieves the schema associated with a Global Config. Use `edgeConfigId` to select the config and `teamId` or `slug` to make the request on behalf of a team when needed.
     ///
     /// Returns the schema of a Global Config.
-    public func getEdgeConfigSchema(
-        edgeConfigId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await GlobalConfigMethods.getEdgeConfigSchema(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getEdgeConfigSchema(edgeConfigId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try await GlobalConfigMethods.getEdgeConfigSchema(config: config, edgeConfigId: edgeConfigId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
-public extension GlobalConfigNamespace {
-    /// Updates the schema for a Global Config. Supply the required `definition` object; use `dryRun` to request a
-    /// schema update without applying it, if supported by the API.
+extension GlobalConfigNamespace {
+/// Updates the schema for a Global Config. Supply the required `definition` object; use `dryRun` to request a schema update without applying it, if supported by the API.
     ///
     /// Update a Global Config's schema.
-    func patchEdgeConfigSchema(
-        edgeConfigId: String,
-        definition: JSONValue,
-        dryRun: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await GlobalConfigMethods.patchEdgeConfigSchema(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            definition: definition,
-            dryRun: dryRun,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func patchEdgeConfigSchema(edgeConfigId: String, definition: JSONValue, dryRun: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try await GlobalConfigMethods.patchEdgeConfigSchema(config: config, edgeConfigId: edgeConfigId, definition: definition, dryRun: dryRun, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes the schema associated with a Global Config. Use `edgeConfigId` to select the config and `teamId` or
-    /// `slug` to make the request on behalf of a team when needed.
+/// Deletes the schema associated with a Global Config. Use `edgeConfigId` to select the config and `teamId` or `slug` to make the request on behalf of a team when needed.
     ///
     /// Deletes the schema of existing Global Config.
-    func deleteEdgeConfigSchema(
-        edgeConfigId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await GlobalConfigMethods.deleteEdgeConfigSchema(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func deleteEdgeConfigSchema(edgeConfigId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await GlobalConfigMethods.deleteEdgeConfigSchema(config: config, edgeConfigId: edgeConfigId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves a specific item from a Global Config. Supply the config identifier and item key to select the item;
-    /// the config identifier must begin with the `ecfg_` prefix.
+/// Retrieves a specific item from a Global Config. Supply the config identifier and item key to select the item; the config identifier must begin with the `ecfg_` prefix.
     ///
     /// Returns a specific Global Config Item.
-    func getEdgeConfigItem(
-        edgeConfigId: String,
-        edgeConfigItemKey: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GlobalConfigItem {
-        try await GlobalConfigMethods.getEdgeConfigItem(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            edgeConfigItemKey: edgeConfigItemKey,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getEdgeConfigItem(edgeConfigId: String, edgeConfigItemKey: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GlobalConfigItem {
+        return try await GlobalConfigMethods.getEdgeConfigItem(config: config, edgeConfigId: edgeConfigId, edgeConfigItemKey: edgeConfigItemKey, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists the tokens associated with a Global Config. Use `edgeConfigId` to select the Global Config and optionally
-    /// `teamId` or `slug` to make the request on behalf of a team. The response includes token metadata and a masked
-    /// token representation.
+/// Lists the tokens associated with a Global Config. Use `edgeConfigId` to select the Global Config and optionally `teamId` or `slug` to make the request on behalf of a team. The response includes token metadata and a masked token representation.
     ///
     /// Returns all tokens of a Global Config.
-    func getEdgeConfigTokens(
-        edgeConfigId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [GlobalConfigToken] {
-        try await GlobalConfigMethods.getEdgeConfigTokens(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getEdgeConfigTokens(edgeConfigId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [GlobalConfigToken] {
+        return try await GlobalConfigMethods.getEdgeConfigTokens(config: config, edgeConfigId: edgeConfigId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes one or more tokens from an existing Global Config. Provide token values or token IDs in the request body
-    /// to choose which tokens to delete. Each supplied list must contain at least one item.
+/// Deletes one or more tokens from an existing Global Config. Provide token values or token IDs in the request body to choose which tokens to delete. Each supplied list must contain at least one item.
     ///
     /// Deletes one or more tokens of an existing Global Config.
-    func deleteEdgeConfigTokens(
-        edgeConfigId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        tokens: [String]? = nil,
-        ids: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await GlobalConfigMethods.deleteEdgeConfigTokens(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            teamId: teamId,
-            slug: slug,
-            tokens: tokens,
-            ids: ids,
-            requestOptions: requestOptions
-        )
+    public func deleteEdgeConfigTokens(edgeConfigId: String, teamId: String? = nil, slug: String? = nil, tokens: [String]? = nil, ids: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await GlobalConfigMethods.deleteEdgeConfigTokens(config: config, edgeConfigId: edgeConfigId, teamId: teamId, slug: slug, tokens: tokens, ids: ids, requestOptions: requestOptions)
     }
 
-    /// Retrieves metadata for a specific Global Config token. Use `edgeConfigId` and `token` to identify the token
-    /// whose metadata you need. The response includes a partially masked token representation and may include the full
-    /// token for backwards compatibility.
+/// Retrieves metadata for a specific Global Config token. Use `edgeConfigId` and `token` to identify the token whose metadata you need. The response includes a partially masked token representation and may include the full token for backwards compatibility.
     ///
     /// Return meta data about a Global Config token.
-    func getEdgeConfigToken(
-        edgeConfigId: String,
-        token: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GlobalConfigToken {
-        try await GlobalConfigMethods.getEdgeConfigToken(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            token: token,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getEdgeConfigToken(edgeConfigId: String, token: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GlobalConfigToken {
+        return try await GlobalConfigMethods.getEdgeConfigToken(config: config, edgeConfigId: edgeConfigId, token: token, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates a token for an existing Global Config. Provide a `label` to identify the token, with a maximum length of
-    /// 52 characters. The 201 response includes the new token and its ID.
+/// Creates a token for an existing Global Config. Provide a `label` to identify the token, with a maximum length of 52 characters. The 201 response includes the new token and its ID.
     ///
     /// Adds a token to an existing Global Config.
-    func createEdgeConfigToken(
-        edgeConfigId: String,
-        label: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateEdgeConfigTokenResponse {
-        try await GlobalConfigMethods.createEdgeConfigToken(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            label: label,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func createEdgeConfigToken(edgeConfigId: String, label: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateEdgeConfigTokenResponse {
+        return try await GlobalConfigMethods.createEdgeConfigToken(config: config, edgeConfigId: edgeConfigId, label: label, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves a specific version of a Global Config from backup storage. Use `edgeConfigId` and
-    /// `edgeConfigBackupVersionId` to select the Global Config and backup version. The response contains the backup
-    /// data and its associated metadata.
+/// Retrieves a specific version of a Global Config from backup storage. Use `edgeConfigId` and `edgeConfigBackupVersionId` to select the Global Config and backup version. The response contains the backup data and its associated metadata.
     ///
     /// Retrieves a specific version of a Global Config from backup storage.
-    func getEdgeConfigBackup(
-        edgeConfigId: String,
-        edgeConfigBackupVersionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetEdgeConfigBackupResponse {
-        try await GlobalConfigMethods.getEdgeConfigBackup(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            edgeConfigBackupVersionId: edgeConfigBackupVersionId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getEdgeConfigBackup(edgeConfigId: String, edgeConfigBackupVersionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetEdgeConfigBackupResponse {
+        return try await GlobalConfigMethods.getEdgeConfigBackup(config: config, edgeConfigId: edgeConfigId, edgeConfigBackupVersionId: edgeConfigBackupVersionId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
-public extension GlobalConfigNamespace {
-    /// Restores a specific backup version of a Global Config. Use `edgeConfigId` and `edgeConfigBackupVersionId` to
-    /// select the Global Config and the version to restore. The response reports the resulting digest, previous digest,
-    /// restored backup version, and status.
+extension GlobalConfigNamespace {
+/// Restores a specific backup version of a Global Config. Use `edgeConfigId` and `edgeConfigBackupVersionId` to select the Global Config and the version to restore. The response reports the resulting digest, previous digest, restored backup version, and status.
     ///
     /// Restores a Global Config backup.
-    func restoreEdgeConfigBackup(
-        edgeConfigId: String,
-        edgeConfigBackupVersionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RestoreEdgeConfigBackupResponse {
-        try await GlobalConfigMethods.restoreEdgeConfigBackup(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            edgeConfigBackupVersionId: edgeConfigBackupVersionId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func restoreEdgeConfigBackup(edgeConfigId: String, edgeConfigBackupVersionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RestoreEdgeConfigBackupResponse {
+        return try await GlobalConfigMethods.restoreEdgeConfigBackup(config: config, edgeConfigId: edgeConfigId, edgeConfigBackupVersionId: edgeConfigBackupVersionId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists backups of a Global Config. Use `next` to continue from a pagination cursor, `limit` to control the number
-    /// of results, and `metadata` to filter the backups. The response includes backup records and pagination
-    /// information.
+/// Lists backups of a Global Config. Use `next` to continue from a pagination cursor, `limit` to control the number of results, and `metadata` to filter the backups. The response includes backup records and pagination information.
     ///
     /// Returns backups of a Global Config.
-    func getEdgeConfigBackups(
-        edgeConfigId: String,
-        next: String? = nil,
-        limit: Double? = nil,
-        metadata: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetEdgeConfigBackupsResponse {
-        try await GlobalConfigMethods.getEdgeConfigBackups(
-            config: config,
-            edgeConfigId: edgeConfigId,
-            next: next,
-            limit: limit,
-            metadata: metadata,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getEdgeConfigBackups(edgeConfigId: String, next: String? = nil, limit: Double? = nil, metadata: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetEdgeConfigBackupsResponse {
+        return try await GlobalConfigMethods.getEdgeConfigBackups(config: config, edgeConfigId: edgeConfigId, next: next, limit: limit, metadata: metadata, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -395,176 +146,59 @@ public class EnvironmentNamespace {
         self.config = config
     }
 
-    /// Creates one or more shared environment variables for a team. Provide between 1 and 50 entries in `evs`, each
-    /// with a `key` and `value`, and specify at least one target or custom-environment scope. A 201 response reports
-    /// which entries were created and which failed.
+/// Creates one or more shared environment variables for a team. Provide between 1 and 50 entries in `evs`, each with a `key` and `value`, and specify at least one target or custom-environment scope. A 201 response reports which entries were created and which failed.
     ///
     /// Creates shared environment variable(s) for a team.
-    public func createSharedEnvVariable(
-        evs: [CreateSharedEnvVariableRequestBodyEvsItem],
-        teamId: String? = nil,
-        slug: String? = nil,
-        type: CreateSharedEnvVariableRequestBodyType? = nil,
-        target: [CreateSharedEnvVariableRequestBodyTargetItem]? = nil,
-        projectId: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateSharedEnvVariableResponse {
-        try await EnvironmentMethods.createSharedEnvVariable(
-            config: config,
-            evs: evs,
-            teamId: teamId,
-            slug: slug,
-            type: type,
-            target: target,
-            projectId: projectId,
-            requestOptions: requestOptions
-        )
+    public func createSharedEnvVariable(evs: [CreateSharedEnvVariableRequestBodyEvsItem], teamId: String? = nil, slug: String? = nil, type: CreateSharedEnvVariableRequestBodyType? = nil, target: [CreateSharedEnvVariableRequestBodyTargetItem]? = nil, projectId: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateSharedEnvVariableResponse {
+        return try await EnvironmentMethods.createSharedEnvVariable(config: config, evs: evs, teamId: teamId, slug: slug, type: type, target: target, projectId: projectId, requestOptions: requestOptions)
     }
 
-    /// Lists shared environment variables for a team, with optional filters for search terms, projects, and variable
-    /// IDs. Use the exclusion filters to omit specified IDs or project associations from the results. The response
-    /// includes variable records and pagination information.
+/// Lists shared environment variables for a team, with optional filters for search terms, projects, and variable IDs. Use the exclusion filters to omit specified IDs or project associations from the results. The response includes variable records and pagination information.
     ///
     /// Lists all Shared Environment Variables for a team, taking into account optional filters.
-    public func listSharedEnvVariable(
-        options: EnvironmentMethods.ListSharedEnvVariableOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListSharedEnvVariableResponse {
-        try await EnvironmentMethods.listSharedEnvVariable(
-            config: config,
-            options: options,
-            requestOptions: requestOptions
-        )
+    public func listSharedEnvVariable(options: EnvironmentMethods.ListSharedEnvVariableOptions, requestOptions: RequestOptions? = nil) async throws -> ListSharedEnvVariableResponse {
+        return try await EnvironmentMethods.listSharedEnvVariable(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Updates one or more shared environment variables for a team. Provide an `updates` object keyed by environment
-    /// variable IDs, with each value containing the changes to apply. The response separates updated variables from
-    /// entries that failed.
+/// Updates one or more shared environment variables for a team. Provide an `updates` object keyed by environment variable IDs, with each value containing the changes to apply. The response separates updated variables from entries that failed.
     ///
     /// Updates a given Shared Environment Variable for a Team.
-    public func updateSharedEnvVariable(
-        updates: [String: UpdateSharedEnvVariableRequestBodyUpdatesValue],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateSharedEnvVariableResponse {
-        try await EnvironmentMethods.updateSharedEnvVariable(
-            config: config,
-            updates: updates,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func updateSharedEnvVariable(updates: [String: UpdateSharedEnvVariableRequestBodyUpdatesValue], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateSharedEnvVariableResponse {
+        return try await EnvironmentMethods.updateSharedEnvVariable(config: config, updates: updates, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes one or more shared environment variables for a team. Supply their identifiers in the `ids` array and use
-    /// `teamId` or `slug` to select the team context. The response reports which identifiers were deleted and which
-    /// failed.
+/// Deletes one or more shared environment variables for a team. Supply their identifiers in the `ids` array and use `teamId` or `slug` to select the team context. The response reports which identifiers were deleted and which failed.
     ///
     /// Deletes one or many Shared Environment Variables for a given team.
-    public func deleteSharedEnvVariable(
-        ids: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteSharedEnvVariableResponse {
-        try await EnvironmentMethods.deleteSharedEnvVariable(
-            config: config,
-            ids: ids,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func deleteSharedEnvVariable(ids: [String], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteSharedEnvVariableResponse {
+        return try await EnvironmentMethods.deleteSharedEnvVariable(config: config, ids: ids, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves the decrypted value and metadata for a shared environment variable. Supply its `id` and, when needed,
-    /// `teamId` or `slug` to select the team context. The response includes whether the value is decrypted and the
-    /// projects and custom environments associated with it.
+/// Retrieves the decrypted value and metadata for a shared environment variable. Supply its `id` and, when needed, `teamId` or `slug` to select the team context. The response includes whether the value is decrypted and the projects and custom environments associated with it.
     ///
     /// Retrieve the decrypted value of a Shared Environment Variable by id.
-    public func getSharedEnvVar(
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetSharedEnvVarResponse {
-        try await EnvironmentMethods.getSharedEnvVar(
-            config: config,
-            id: id,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getSharedEnvVar(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetSharedEnvVarResponse {
+        return try await EnvironmentMethods.getSharedEnvVar(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Disconnects a shared environment variable from a project without deleting the variable. Supply the variable's
-    /// `id` and the target `projectId`, and use `teamId` or `slug` to select the team context. The response identifies
-    /// the shared environment variable that was unlinked.
+/// Disconnects a shared environment variable from a project without deleting the variable. Supply the variable's `id` and the target `projectId`, and use `teamId` or `slug` to select the team context. The response identifies the shared environment variable that was unlinked.
     ///
     /// Disconnects a shared environment variable for a given project
-    public func unlinkSharedEnvVariable(
-        id: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UnlinkSharedEnvVariableResponse {
-        try await EnvironmentMethods.unlinkSharedEnvVariable(
-            config: config,
-            id: id,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func unlinkSharedEnvVariable(id: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UnlinkSharedEnvVariableResponse {
+        return try await EnvironmentMethods.unlinkSharedEnvVariable(config: config, id: id, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates a custom environment for a project. Provide a `slug` and, if needed, a `description`, branch-matching
-    /// configuration, or source for copied environment variables. The environment cannot be named Production or
-    /// Preview.
+/// Creates a custom environment for a project. Provide a `slug` and, if needed, a `description`, branch-matching configuration, or source for copied environment variables. The environment cannot be named Production or Preview.
     ///
     /// Creates a custom environment for the current project. Cannot be named 'Production' or 'Preview'.
-    public func createCustom(
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        slug2: String? = nil,
-        description: String? = nil,
-        branchMatcher: CreateCustomEnvironmentRequestBodyBranchMatcher? = nil,
-        copyEnvVarsFrom: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateCustomEnvironmentResponse {
-        try await EnvironmentMethods.createCustomEnvironment(
-            config: config,
-            idOrName: idOrName,
-            teamId: teamId,
-            slug: slug,
-            slug2: slug2,
-            description: description,
-            branchMatcher: branchMatcher,
-            copyEnvVarsFrom: copyEnvVarsFrom,
-            requestOptions: requestOptions
-        )
+    public func createCustom(idOrName: String, teamId: String? = nil, slug: String? = nil, slug2: String? = nil, description: String? = nil, branchMatcher: CreateCustomEnvironmentRequestBodyBranchMatcher? = nil, copyEnvVarsFrom: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateCustomEnvironmentResponse {
+        return try await EnvironmentMethods.createCustomEnvironment(config: config, idOrName: idOrName, teamId: teamId, slug: slug, slug2: slug2, description: description, branchMatcher: branchMatcher, copyEnvVarsFrom: copyEnvVarsFrom, requestOptions: requestOptions)
     }
 
-    /// Lists custom environments configured for a project. Use `gitBranch` to filter the results to environments
-    /// associated with a specific Git branch.
+/// Lists custom environments configured for a project. Use `gitBranch` to filter the results to environments associated with a specific Git branch.
     ///
     /// Retrieve custom environments for the project. Must not be named 'Production' or 'Preview'.
-    public func listCustom(
-        idOrName: String,
-        gitBranch: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListEnvironmentCustomResponse {
-        try await EnvironmentMethods.listEnvironmentCustom(
-            config: config,
-            idOrName: idOrName,
-            gitBranch: gitBranch,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func listCustom(idOrName: String, gitBranch: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListEnvironmentCustomResponse {
+        return try await EnvironmentMethods.listEnvironmentCustom(config: config, idOrName: idOrName, gitBranch: gitBranch, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }

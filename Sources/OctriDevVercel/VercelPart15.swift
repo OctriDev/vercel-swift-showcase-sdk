@@ -9,527 +9,175 @@ public class SandboxesNamespace {
         self.config = config
     }
 
-    /// Lists named sandboxes for a project in a paginated response. Filter by name prefix, status, or tag, and choose a
-    /// sort field and direction; `namePrefix` is only valid with `sortBy=name`, while `status` is only valid with
-    /// `sortBy=createdAt`. Continue through results using the pagination cursor returned in the response.
+/// Lists named sandboxes for a project in a paginated response. Filter by name prefix, status, or tag, and choose a sort field and direction; `namePrefix` is only valid with `sortBy=name`, while `status` is only valid with `sortBy=createdAt`. Continue through results using the pagination cursor returned in the response.
     ///
-    /// Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation
-    /// time or name, and optionally filtered by name prefix or status.
-    public func listNamed(
-        options: SandboxesMethods.ListNamedSandboxesOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListNamedSandboxesResponse {
-        try await SandboxesMethods.listNamedSandboxes(config: config, options: options, requestOptions: requestOptions)
+    /// Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix or status.
+    public func listNamed(options: SandboxesMethods.ListNamedSandboxesOptions, requestOptions: RequestOptions? = nil) async throws -> ListNamedSandboxesResponse {
+        return try await SandboxesMethods.listNamedSandboxes(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Creates a named sandbox with an initialized filesystem and runtime configuration. Supply `name` and `projectId`
-    /// to assign it to a project, and optionally configure its source, resources, network policy, ports, or mounted
-    /// drives. A 200 response includes the sandbox, session, and exposed routes.
+/// Creates a named sandbox with an initialized filesystem and runtime configuration. Supply `name` and `projectId` to assign it to a project, and optionally configure its source, resources, network policy, ports, or mounted drives. A 200 response includes the sandbox, session, and exposed routes.
     ///
-    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic
-    /// snapshotting on shutdown.
-    public func createV2(
-        options: SandboxesMethods.CreateSandboxesV2Options,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateSandboxesV2Response {
-        try await SandboxesMethods.createSandboxesV2(config: config, options: options, requestOptions: requestOptions)
+    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic snapshotting on shutdown.
+    public func createV2(options: SandboxesMethods.CreateSandboxesV2Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesV2Response {
+        return try await SandboxesMethods.createSandboxesV2(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Lists drives associated with a project in a paginated response. Use `projectId` to select the project unless the
-    /// request uses a Vercel OIDC token scoped to one, and use `namePrefix` to filter by name when sorting by name.
-    /// Continue through the results with the pagination cursor returned in the response.
+/// Lists drives associated with a project in a paginated response. Use `projectId` to select the project unless the request uses a Vercel OIDC token scoped to one, and use `namePrefix` to filter by name when sorting by name. Continue through the results with the pagination cursor returned in the response.
     ///
     /// Retrieves a paginated list of drives belonging to a specific project.
-    public func listDrives(
-        options: SandboxesMethods.ListDrivesOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListDrivesResponse {
-        try await SandboxesMethods.listDrives(config: config, options: options, requestOptions: requestOptions)
+    public func listDrives(options: SandboxesMethods.ListDrivesOptions, requestOptions: RequestOptions? = nil) async throws -> ListDrivesResponse {
+        return try await SandboxesMethods.listDrives(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Retrieves a drive by its name or ID within a project. Supply `projectId` unless the request uses a Vercel OIDC
-    /// token scoped to a project. The drive name or ID must use only letters, digits, hyphens, or underscores and be no
-    /// longer than 64 characters.
+/// Retrieves a drive by its name or ID within a project. Supply `projectId` unless the request uses a Vercel OIDC token scoped to a project. The drive name or ID must use only letters, digits, hyphens, or underscores and be no longer than 64 characters.
     ///
     /// Gets an existing drive by project and name or drive ID. Returns 404 if doesn't exist.
-    public func getDrive(
-        nameOrId: String,
-        projectId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetDriveResponse {
-        try await SandboxesMethods.getDrive(
-            config: config,
-            nameOrId: nameOrId,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getDrive(nameOrId: String, projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDriveResponse {
+        return try await SandboxesMethods.getDrive(config: config, nameOrId: nameOrId, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates a drive with the specified name or retrieves the existing drive with that name in the project. Use
-    /// `projectId` to associate the drive with a project unless your Vercel OIDC token is scoped to one; configure its
-    /// size with `maxSizeBytes` and storage location with `region`. The response includes the drive object and its
-    /// identifier.
+/// Creates a drive with the specified name or retrieves the existing drive with that name in the project. Use `projectId` to associate the drive with a project unless your Vercel OIDC token is scoped to one; configure its size with `maxSizeBytes` and storage location with `region`. The response includes the drive object and its identifier.
     ///
     /// Gets an existing drive by project and name, or creates it when it does not exist.
-    public func getOrCreateDrive(
-        name: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        projectId: String? = nil,
-        maxSizeBytes: Int? = nil,
-        region: GetOrCreateDriveRequestBodyRegion? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetOrCreateDriveResponse {
-        try await SandboxesMethods.getOrCreateDrive(
-            config: config,
-            name: name,
-            teamId: teamId,
-            slug: slug,
-            projectId: projectId,
-            maxSizeBytes: maxSizeBytes,
-            region: region,
-            requestOptions: requestOptions
-        )
+    public func getOrCreateDrive(name: String, teamId: String? = nil, slug: String? = nil, projectId: String? = nil, maxSizeBytes: Int? = nil, region: GetOrCreateDriveRequestBodyRegion? = nil, requestOptions: RequestOptions? = nil) async throws -> GetOrCreateDriveResponse {
+        return try await SandboxesMethods.getOrCreateDrive(config: config, name: name, teamId: teamId, slug: slug, projectId: projectId, maxSizeBytes: maxSizeBytes, region: region, requestOptions: requestOptions)
     }
 
-    /// Deletes a drive identified by its name and project. Use this operation to remove a drive that is no longer
-    /// needed; a drive attached to a session cannot be deleted, so stop or replace the session using it before
-    /// retrying. A successful response includes the deleted drive object.
+/// Deletes a drive identified by its name and project. Use this operation to remove a drive that is no longer needed; a drive attached to a session cannot be deleted, so stop or replace the session using it before retrying. A successful response includes the deleted drive object.
     ///
-    /// Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently
-    /// using the drive before retrying deletion.
-    public func deleteDrive(
-        name: String,
-        projectId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteDriveResponse {
-        try await SandboxesMethods.deleteDrive(
-            config: config,
-            name: name,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
+    public func deleteDrive(name: String, projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteDriveResponse {
+        return try await SandboxesMethods.deleteDrive(config: config, name: name, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Forks a source drive into a new drive that inherits the source drive's region and maximum size. Provide the new
-    /// drive's name in the request body and identify the project unless your Vercel OIDC token is scoped to one. The
-    /// response contains the created drive object.
+/// Forks a source drive into a new drive that inherits the source drive's region and maximum size. Provide the new drive's name in the request body and identify the project unless your Vercel OIDC token is scoped to one. The response contains the created drive object.
     ///
     /// Fork the provided drive into a new one with the provided name, inheriting the region and max size.
-    public func forkDrive(
-        name: String,
-        name2: String,
-        projectId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ForkDriveResponse {
-        try await SandboxesMethods.forkDrive(
-            config: config,
-            name: name,
-            name2: name2,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func forkDrive(name: String, name2: String, projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ForkDriveResponse {
+        return try await SandboxesMethods.forkDrive(config: config, name: name, name2: name2, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists snapshots for a project, with results paginated by an opaque cursor. Filter by project and sandbox name,
-    /// and use `limit` and `cursor` to control pagination. Results are sorted by creation time in the selected
-    /// direction.
+/// Lists snapshots for a project, with results paginated by an opaque cursor. Filter by project and sandbox name, and use `limit` and `cursor` to control pagination. Results are sorted by creation time in the selected direction.
     ///
     /// Retrieves a paginated list of snapshots for a specific project.
-    public func listSessionSnapshots(
-        project: String? = nil,
-        name: String? = nil,
-        limit: Double? = nil,
-        cursor: String? = nil,
-        sortOrder: ListSessionSnapshotsParameter? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListSessionSnapshotsResponse {
-        try await SandboxesMethods.listSessionSnapshots(
-            config: config,
-            project: project,
-            name: name,
-            limit: limit,
-            cursor: cursor,
-            sortOrder: sortOrder,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func listSessionSnapshots(project: String? = nil, name: String? = nil, limit: Double? = nil, cursor: String? = nil, sortOrder: ListSessionSnapshotsParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListSessionSnapshotsResponse {
+        return try await SandboxesMethods.listSessionSnapshots(config: config, project: project, name: name, limit: limit, cursor: cursor, sortOrder: sortOrder, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
-public extension SandboxesNamespace {
-    /// Retrieves details for a specific sandbox snapshot, including its creation time, size, expiration, and source
-    /// session. Use `snapshotId` to identify the snapshot whose details you need. The response contains the snapshot
-    /// object.
+extension SandboxesNamespace {
+/// Retrieves details for a specific sandbox snapshot, including its creation time, size, expiration, and source session. Use `snapshotId` to identify the snapshot whose details you need. The response contains the snapshot object.
     ///
-    /// Retrieves detailed information about a specific snapshot, including its creation time, size, expiration date,
-    /// and the source session it was created from.
-    func getSessionSnapshot(
-        snapshotId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetSessionSnapshotResponse {
-        try await SandboxesMethods.getSessionSnapshot(
-            config: config,
-            snapshotId: snapshotId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Retrieves detailed information about a specific snapshot, including its creation time, size, expiration date, and the source session it was created from.
+    public func getSessionSnapshot(snapshotId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetSessionSnapshotResponse {
+        return try await SandboxesMethods.getSessionSnapshot(config: config, snapshotId: snapshotId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes a sandbox snapshot and frees its associated storage. Use `snapshotId` to select the snapshot to remove;
-    /// a deleted snapshot cannot be used to create new sessions. <Callout type="warning">Deletion is permanent and
-    /// cannot be undone.</Callout>
+/// Deletes a sandbox snapshot and frees its associated storage. Use `snapshotId` to select the snapshot to remove; a deleted snapshot cannot be used to create new sessions. <Callout type="warning">Deletion is permanent and cannot be undone.</Callout>
     ///
-    /// Permanently deletes a snapshot and frees its associated storage. This action cannot be undone. After deletion,
-    /// the snapshot can no longer be used to create new sessions.
-    func deleteSessionSnapshot(
-        snapshotId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteSessionSnapshotResponse {
-        try await SandboxesMethods.deleteSessionSnapshot(
-            config: config,
-            snapshotId: snapshotId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Permanently deletes a snapshot and frees its associated storage. This action cannot be undone. After deletion, the snapshot can no longer be used to create new sessions.
+    public func deleteSessionSnapshot(snapshotId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteSessionSnapshotResponse {
+        return try await SandboxesMethods.deleteSessionSnapshot(config: config, snapshotId: snapshotId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists sessions for a sandbox, with results paginated by an opaque cursor and sorted by creation time. Filter by
-    /// project and sandbox name, and use `limit`, `cursor`, and `sortOrder` to shape the results. The response includes
-    /// session records and pagination metadata.
+/// Lists sessions for a sandbox, with results paginated by an opaque cursor and sorted by creation time. Filter by project and sandbox name, and use `limit`, `cursor`, and `sortOrder` to shape the results. The response includes session records and pagination metadata.
     ///
-    /// Retrieves a paginated list of sessions belonging to a specific sandbox. Results are sorted by creation time and
-    /// paginated using an opaque cursor.
-    func listSessions(
-        project: String? = nil,
-        name: String? = nil,
-        limit: Double? = nil,
-        cursor: String? = nil,
-        sortOrder: ListSessionsParameter? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListSessionsResponse {
-        try await SandboxesMethods.listSessions(
-            config: config,
-            project: project,
-            name: name,
-            limit: limit,
-            cursor: cursor,
-            sortOrder: sortOrder,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Retrieves a paginated list of sessions belonging to a specific sandbox. Results are sorted by creation time and paginated using an opaque cursor.
+    public func listSessions(project: String? = nil, name: String? = nil, limit: Double? = nil, cursor: String? = nil, sortOrder: ListSessionsParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListSessionsResponse {
+        return try await SandboxesMethods.listSessions(config: config, project: project, name: name, limit: limit, cursor: cursor, sortOrder: sortOrder, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves details for a specific sandbox session, including its status, resource configuration, and exposed
-    /// routes. Use `sessionId` to identify the session to inspect. The response includes the session object and its
-    /// routes.
+/// Retrieves details for a specific sandbox session, including its status, resource configuration, and exposed routes. Use `sessionId` to identify the session to inspect. The response includes the session object and its routes.
     ///
-    /// Retrieves detailed information about a specific session, including its current status, resource configuration,
-    /// and exposed routes.
-    func getSession(
-        sessionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetSessionResponse {
-        try await SandboxesMethods.getSession(
-            config: config,
-            sessionId: sessionId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Retrieves detailed information about a specific session, including its current status, resource configuration, and exposed routes.
+    public func getSession(sessionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetSessionResponse {
+        return try await SandboxesMethods.getSession(config: config, sessionId: sessionId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves a named sandbox, its current session, and its exposed routes. Set `resume` to true to create a new
-    /// sandbox instance from the most recent snapshot when the named sandbox is stopped; it defaults to false. The
-    /// response indicates whether the sandbox resumed and includes sandbox and session details.
+/// Retrieves a named sandbox, its current session, and its exposed routes. Set `resume` to true to create a new sandbox instance from the most recent snapshot when the named sandbox is stopped; it defaults to false. The response indicates whether the sandbox resumed and includes sandbox and session details.
     ///
-    /// Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and
-    /// resume is true, a new sandbox will be created from the most recent snapshot. Returns 404 if the named sandbox or
-    /// its configuration no longer exists.
-    func getNamed(
-        name: String,
-        projectId: String? = nil,
-        resume: Bool? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetNamedSandboxResponse {
-        try await SandboxesMethods.getNamedSandbox(
-            config: config,
-            name: name,
-            projectId: projectId,
-            resume: resume,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and resume is true, a new sandbox will be created from the most recent snapshot. Returns 404 if the named sandbox or its configuration no longer exists.
+    public func getNamed(name: String, projectId: String? = nil, resume: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetNamedSandboxResponse {
+        return try await SandboxesMethods.getNamedSandbox(config: config, name: name, projectId: projectId, resume: resume, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates the configuration of a named sandbox, changing only the fields you provide. Use the request body to
-    /// adjust its resources, runtime, networking, storage mounts, environment, or other settings; omitted fields remain
-    /// unchanged. Set `resume` to true to resume a stopped sandbox from its snapshot.
+/// Updates the configuration of a named sandbox, changing only the fields you provide. Use the request body to adjust its resources, runtime, networking, storage mounts, environment, or other settings; omitted fields remain unchanged. Set `resume` to true to resume a stopped sandbox from its snapshot.
     ///
-    /// Updates the configuration of a sandbox. Only the provided fields will be modified; omitted fields remain
-    /// unchanged.
-    func update(
-        options: SandboxesMethods.UpdateSandboxOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateSandboxResponse {
-        try await SandboxesMethods.updateSandbox(config: config, options: options, requestOptions: requestOptions)
+    /// Updates the configuration of a sandbox. Only the provided fields will be modified; omitted fields remain unchanged.
+    public func update(options: SandboxesMethods.UpdateSandboxOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateSandboxResponse {
+        return try await SandboxesMethods.updateSandbox(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Deletes a named sandbox and its metadata, stopping any running sandbox processes first. Use
-    /// `deleteOrphanSnapshots` to request asynchronous deletion of snapshots that are not referenced by another
-    /// sandbox; when the config item is missing, returned sandbox fields may be stale.
+/// Deletes a named sandbox and its metadata, stopping any running sandbox processes first. Use `deleteOrphanSnapshots` to request asynchronous deletion of snapshots that are not referenced by another sandbox; when the config item is missing, returned sandbox fields may be stale.
     ///
-    /// Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation
-    /// deletes all sandbox entities with the given name and the named sandbox metadata. When the config item is already
-    /// missing, the returned sandbox uses stored metadata and defaults; config fields may be stale.
-    func delete(
-        name: String,
-        projectId: String? = nil,
-        deleteOrphanSnapshots: Bool? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteSandboxResponse {
-        try await SandboxesMethods.deleteSandbox(
-            config: config,
-            name: name,
-            projectId: projectId,
-            deleteOrphanSnapshots: deleteOrphanSnapshots,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata. When the config item is already missing, the returned sandbox uses stored metadata and defaults; config fields may be stale.
+    public func delete(name: String, projectId: String? = nil, deleteOrphanSnapshots: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteSandboxResponse {
+        return try await SandboxesMethods.deleteSandbox(config: config, name: name, projectId: projectId, deleteOrphanSnapshots: deleteOrphanSnapshots, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists commands executed in a session, including their current status, exit codes, and execution times. Use
-    /// `sessionId` to select the session; results are ordered from most recent to oldest.
+/// Lists commands executed in a session, including their current status, exit codes, and execution times. Use `sessionId` to select the session; results are ordered from most recent to oldest.
     ///
-    /// Retrieves a list of all commands that have been executed in a session, including their current status, exit
-    /// codes, and execution times, ordered from the most recent to the oldest.
-    func listSessionCommands(
-        sessionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListSessionCommandsResponse {
-        try await SandboxesMethods.listSessionCommands(
-            config: config,
-            sessionId: sessionId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Retrieves a list of all commands that have been executed in a session, including their current status, exit codes, and execution times, ordered from the most recent to the oldest.
+    public func listSessionCommands(sessionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListSessionCommandsResponse {
+        return try await SandboxesMethods.listSessionCommands(config: config, sessionId: sessionId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
-public extension SandboxesNamespace {
-    /// Submits a shell command for execution in a session and returns a command ID for tracking its progress. Use
-    /// `wait` to stream status updates until the command finishes; set `logs` as well to stream execution output in
-    /// real time.
+extension SandboxesNamespace {
+/// Submits a shell command for execution in a session and returns a command ID for tracking its progress. Use `wait` to stream status updates until the command finishes; set `logs` as well to stream execution output in real time.
     ///
-    /// Executes a shell command inside a running session. The command runs asynchronously and returns immediately with
-    /// a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait`
-    /// parameter to stream the command status until completion.
-    func runSessionCommand(
-        options: SandboxesMethods.RunSessionCommandOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RunSessionCommandResponse {
-        try await SandboxesMethods.runSessionCommand(config: config, options: options, requestOptions: requestOptions)
+    /// Executes a shell command inside a running session. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.
+    public func runSessionCommand(options: SandboxesMethods.RunSessionCommandOptions, requestOptions: RequestOptions? = nil) async throws -> RunSessionCommandResponse {
+        return try await SandboxesMethods.runSessionCommand(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Submits a shell command for execution in a session and returns a command ID for tracking its progress. Use
-    /// `wait` to stream status updates until the command finishes; set `logs` as well to stream execution output in
-    /// real time.
+/// Submits a shell command for execution in a session and returns a command ID for tracking its progress. Use `wait` to stream status updates until the command finishes; set `logs` as well to stream execution output in real time.
     ///
-    /// Executes a shell command inside a running session. The command runs asynchronously and returns immediately with
-    /// a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait`
-    /// parameter to stream the command status until completion.
-    func runSessionCommandStream(
-        options: SandboxesMethods.RunSessionCommandStreamOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AsyncThrowingStream<RunSessionCommandResponseX26a0914c, Swift.Error> {
-        try await SandboxesMethods.runSessionCommandStream(
-            config: config,
-            options: options,
-            requestOptions: requestOptions
-        )
+    /// Executes a shell command inside a running session. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.
+    public func runSessionCommandStream(options: SandboxesMethods.RunSessionCommandStreamOptions, requestOptions: RequestOptions? = nil) async throws -> AsyncThrowingStream<RunSessionCommandResponseX26a0914c, Swift.Error> {
+        return try await SandboxesMethods.runSessionCommandStream(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Retrieves the status and details of a command executed in a session, including its exit code if it has finished.
-    /// Set `wait` to true to block the request until the command finishes.
+/// Retrieves the status and details of a command executed in a session, including its exit code if it has finished. Set `wait` to true to block the request until the command finishes.
     ///
-    /// Retrieves the current status and details of a command executed in a session. Use the `wait` parameter to block
-    /// until the command finishes execution.
-    func getSessionCommand(
-        sessionId: String,
-        cmdId: String,
-        wait: GetSessionCommandParameter? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetSessionCommandResponse {
-        try await SandboxesMethods.getSessionCommand(
-            config: config,
-            sessionId: sessionId,
-            cmdId: cmdId,
-            wait: wait,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Retrieves the current status and details of a command executed in a session. Use the `wait` parameter to block until the command finishes execution.
+    public func getSessionCommand(sessionId: String, cmdId: String, wait: GetSessionCommandParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetSessionCommandResponse {
+        return try await SandboxesMethods.getSessionCommand(config: config, sessionId: sessionId, cmdId: cmdId, wait: wait, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Triggers termination of a running command in a session by sending it a signal. Use signal 15 (SIGTERM) for
-    /// graceful termination or signal 9 (SIGKILL) to forcefully stop the process; the command must still be running.
+/// Triggers termination of a running command in a session by sending it a signal. Use signal 15 (SIGTERM) for graceful termination or signal 9 (SIGKILL) to forcefully stop the process; the command must still be running.
     ///
-    /// Sends a signal to terminate a running command in a session. The signal can be used to gracefully stop (SIGTERM)
-    /// or forcefully kill (SIGKILL) the process. The command must still be running for this operation to succeed.
-    func killSessionCommand(
-        cmdId: String,
-        sessionId: String,
-        signal: Double,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> KillSessionCommandResponse {
-        try await SandboxesMethods.killSessionCommand(
-            config: config,
-            cmdId: cmdId,
-            sessionId: sessionId,
-            signal: signal,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Sends a signal to terminate a running command in a session. The signal can be used to gracefully stop (SIGTERM) or forcefully kill (SIGKILL) the process. The command must still be running for this operation to succeed.
+    public func killSessionCommand(cmdId: String, sessionId: String, signal: Double, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> KillSessionCommandResponse {
+        return try await SandboxesMethods.killSessionCommand(config: config, cmdId: cmdId, sessionId: sessionId, signal: signal, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Writes data to a running command's stdin and can close stdin after the write. The command must have started with
-    /// `attachStdin` enabled; send writes one at a time to preserve order, and use `offset` to make retries safe when
-    /// the response includes `bytesWritten`.
+/// Writes data to a running command's stdin and can close stdin after the write. The command must have started with `attachStdin` enabled; send writes one at a time to preserve order, and use `offset` to make retries safe when the response includes `bytesWritten`.
     ///
-    /// Writes data to the stdin of a running command, and optionally closes it. The command must have been started with
-    /// `attachStdin` set to true. Writes are applied in the order they are received. Send them one at a time to keep
-    /// the data in order. A write returns once the command has accepted the data, and fails with a 504 after 30 seconds
-    /// if the command is not reading stdin. Each write counts against the sandbox control plane rate limit, so batch
-    /// small writes where possible. Set `offset` to the position in stdin where `data` starts to make a request safe to
-    /// resend, for example after a 502 or 504: bytes the command has already received are skipped, and an offset past
-    /// them fails with a 409. The response returns `bytesWritten`, the total written so far, and a 504 includes it in
-    /// the error when the sandbox reports it. A request with no `data` and no `close` writes nothing and returns it. If
-    /// a request with an `offset` gets a response without `bytesWritten`, the sandbox predates offsets and ignored it,
-    /// so resending that request is not safe.
-    func writeSessionCommandStdin(
-        cmdId: String,
-        sessionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        data: String? = nil,
-        offset: Int? = nil,
-        close: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> WriteSessionCommandStdinResponse {
-        try await SandboxesMethods.writeSessionCommandStdin(
-            config: config,
-            cmdId: cmdId,
-            sessionId: sessionId,
-            teamId: teamId,
-            slug: slug,
-            data: data,
-            offset: offset,
-            close: close,
-            requestOptions: requestOptions
-        )
+    /// Writes data to the stdin of a running command, and optionally closes it. The command must have been started with `attachStdin` set to true. Writes are applied in the order they are received. Send them one at a time to keep the data in order. A write returns once the command has accepted the data, and fails with a 504 after 30 seconds if the command is not reading stdin. Each write counts against the sandbox control plane rate limit, so batch small writes where possible. Set `offset` to the position in stdin where `data` starts to make a request safe to resend, for example after a 502 or 504: bytes the command has already received are skipped, and an offset past them fails with a 409. The response returns `bytesWritten`, the total written so far, and a 504 includes it in the error when the sandbox reports it. A request with no `data` and no `close` writes nothing and returns it. If a request with an `offset` gets a response without `bytesWritten`, the sandbox predates offsets and ignored it, so resending that request is not safe.
+    public func writeSessionCommandStdin(cmdId: String, sessionId: String, teamId: String? = nil, slug: String? = nil, data: String? = nil, offset: Int? = nil, close: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> WriteSessionCommandStdinResponse {
+        return try await SandboxesMethods.writeSessionCommandStdin(config: config, cmdId: cmdId, sessionId: sessionId, teamId: teamId, slug: slug, data: data, offset: offset, close: close, requestOptions: requestOptions)
     }
 
-    /// Streams command output in real time as newline-delimited JSON (ND-JSON). Each stream entry includes output data
-    /// and a stream type such as `stdout`, `stderr`, or `error`.
+/// Streams command output in real time as newline-delimited JSON (ND-JSON). Each stream entry includes output data and a stream type such as `stdout`, `stderr`, or `error`.
     ///
-    /// Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the
-    /// output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures).
-    func getSessionCommandLogs(
-        sessionId: String,
-        cmdId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AsyncThrowingStream<GetSessionCommandLogsResponse, Swift.Error> {
-        try await SandboxesMethods.getSessionCommandLogs(
-            config: config,
-            sessionId: sessionId,
-            cmdId: cmdId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures).
+    public func getSessionCommandLogs(sessionId: String, cmdId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AsyncThrowingStream<GetSessionCommandLogsResponse, Swift.Error> {
+        return try await SandboxesMethods.getSessionCommandLogs(config: config, sessionId: sessionId, cmdId: cmdId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Stops a running session and releases its allocated resources, terminating all processes within it. This action
-    /// cannot be undone, and the stopped session cannot be restarted.
+/// Stops a running session and releases its allocated resources, terminating all processes within it. This action cannot be undone, and the stopped session cannot be restarted.
     ///
-    /// Stops a running session and releases its allocated resources. All running processes within the session will be
-    /// terminated. This action cannot be undone. A stopped session cannot be restarted.
-    func stopSession(
-        sessionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> StopSessionResponse {
-        try await SandboxesMethods.stopSession(
-            config: config,
-            sessionId: sessionId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Stops a running session and releases its allocated resources. All running processes within the session will be terminated. This action cannot be undone. A stopped session cannot be restarted.
+    public func stopSession(sessionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> StopSessionResponse {
+        return try await SandboxesMethods.stopSession(config: config, sessionId: sessionId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Extends the maximum execution time of a running session. Supply the additional duration in milliseconds; the
-    /// session must be active, and the resulting timeout cannot exceed your account's maximum allowed limit.
+/// Extends the maximum execution time of a running session. Supply the additional duration in milliseconds; the session must be active, and the resulting timeout cannot exceed your account's maximum allowed limit.
     ///
-    /// Extends the maximum execution time of a running session. The session must be active and able to accept commands.
-    /// The total timeout cannot exceed the maximum allowed limit for your account.
-    func extendSessionTimeout(
-        sessionId: String,
-        duration: Double,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ExtendSessionTimeoutResponse {
-        try await SandboxesMethods.extendSessionTimeout(
-            config: config,
-            sessionId: sessionId,
-            duration: duration,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Extends the maximum execution time of a running session. The session must be active and able to accept commands. The total timeout cannot exceed the maximum allowed limit for your account.
+    public func extendSessionTimeout(sessionId: String, duration: Double, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ExtendSessionTimeoutResponse {
+        return try await SandboxesMethods.extendSessionTimeout(config: config, sessionId: sessionId, duration: duration, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }

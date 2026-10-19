@@ -6,32 +6,24 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VercelCiMethods {
-    /// Lists Vercel CI branch suggestions for a team. Use `query` to filter the suggestions and `limit` to control how
-    /// many results are returned. The response contains branch names and their counts.
+extension VercelCiMethods {
+    /// Lists Vercel CI branch suggestions for a team. Use `query` to filter the suggestions and `limit` to control how many results are returned. The response contains branch names and their counts.
     ///
     /// List branches
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listVercelCiBranches(
-        config: ClientConfig,
-        query: String? = nil,
-        limit: Double? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListVercelCiBranchesResponse {
-        if let query {
+    public static func listVercelCiBranches(config: ClientConfig, query: String? = nil, limit: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiBranchesResponse {
+        if let query = query {
             try validateLength("query", query, max: 100)
         }
 
-        if let limit {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1, max: 50)
         }
 
-        return try await (sdkRequest("GET", "/v2/vercel-ci/branches", config: config, query: [
+        return try (await sdkRequest("GET", "/v2/vercel-ci/branches", config: config, query: [
             SdkQueryParameter("query", value: query),
             SdkQueryParameter("limit", value: limit),
             SdkQueryParameter("teamId", value: teamId),
@@ -39,30 +31,21 @@ public extension VercelCiMethods {
         ], decoder: .json, operationId: "listVercelCiBranches", options: requestOptions)).data
     }
 
-    /// Starts an asynchronous Vercel CI task analysis for a repository. Supply the repository `owner` and `repo` in the
-    /// request body, and use `teamId` or `slug` to perform the request on behalf of a team. A 202 response confirms
-    /// acceptance and provides an `analysisId` to check the analysis status.
+    /// Starts an asynchronous Vercel CI task analysis for a repository. Supply the repository `owner` and `repo` in the request body, and use `teamId` or `slug` to perform the request on behalf of a team. A 202 response confirms acceptance and provides an `analysisId` to check the analysis status.
     ///
     /// Create task analysis
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func createVercelCiTaskAnalysis(
-        config: ClientConfig,
-        owner: String,
-        repo: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateVercelCiTaskAnalysisResponse {
+    public static func createVercelCiTaskAnalysis(config: ClientConfig, owner: String, repo: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateVercelCiTaskAnalysisResponse {
         try validateLength("owner", owner, max: 100)
 
         try validateLength("repo", repo, max: 100)
 
         let requestBody = CreateVercelCiTaskAnalysisRequestBody(owner: owner, repo: repo)
 
-        return try await (sdkRequest("POST", "/v1/vercel-ci/task-analyses", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/vercel-ci/task-analyses", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createVercelCiTaskAnalysis", options: requestOptions)).data

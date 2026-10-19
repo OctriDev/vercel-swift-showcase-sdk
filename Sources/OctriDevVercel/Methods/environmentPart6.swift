@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension EnvironmentMethods {
-    /// Creates a custom environment for a project. Provide a `slug` and, if needed, a `description`, branch-matching
-    /// configuration, or source for copied environment variables. The environment cannot be named Production or
-    /// Preview.
+extension EnvironmentMethods {
+    /// Creates a custom environment for a project. Provide a `slug` and, if needed, a `description`, branch-matching configuration, or source for copied environment variables. The environment cannot be named Production or Preview.
     ///
     /// Creates a custom environment for the current project. Cannot be named 'Production' or 'Preview'.
     ///
@@ -23,44 +21,20 @@ public extension EnvironmentMethods {
     ///   optional.
     /// - copyEnvVarsFrom: Where to copy environment variables from. This is
     ///   optional.
-    static func createCustomEnvironment(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        slug2: String? = nil,
-        description: String? = nil,
-        branchMatcher: CreateCustomEnvironmentRequestBodyBranchMatcher? = nil,
-        copyEnvVarsFrom: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateCustomEnvironmentResponse {
-        if let slug2 {
+    public static func createCustomEnvironment(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, slug2: String? = nil, description: String? = nil, branchMatcher: CreateCustomEnvironmentRequestBodyBranchMatcher? = nil, copyEnvVarsFrom: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateCustomEnvironmentResponse {
+        if let slug2 = slug2 {
             try validateLength("slug", slug2, max: 32)
         }
 
-        if let description {
+        if let description = description {
             try validateLength("description", description, max: 256)
         }
 
-        let requestBody = CreateCustomEnvironmentRequestBody(
-            slug2: slug2,
-            description: description,
-            branchMatcher: branchMatcher,
-            copyEnvVarsFrom: copyEnvVarsFrom
-        )
+        let requestBody = CreateCustomEnvironmentRequestBody(slug2: slug2, description: description, branchMatcher: branchMatcher, copyEnvVarsFrom: copyEnvVarsFrom)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/custom-environments"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "createCustomEnvironment",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/custom-environments"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "createCustomEnvironment", options: requestOptions)).data
     }
 }

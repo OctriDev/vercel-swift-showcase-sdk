@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    struct CreateSandboxesV4Options: Codable {
+extension SandboxesMethods {
+    public struct CreateSandboxesV4Options: Codable {
         public var teamId: String?
         public var slug: String?
         public var networkPolicy: CreateSandboxesV4RequestNetworkPolicy?
@@ -32,16 +32,9 @@ public extension SandboxesMethods {
         public init() {}
     }
 
-    /// Creates a named sandbox environment with automatic snapshotting on shutdown. Configure its resources, source,
-    /// networking, and other settings in the request body; when `image` and a snapshot source are both absent, the
-    /// sandbox uses the default universal image. Persistent sandboxes keep only their most recent snapshot by default,
-    /// and snapshots expire after seven days unless configured otherwise.
+    /// Creates a named sandbox environment with automatic snapshotting on shutdown. Configure its resources, source, networking, and other settings in the request body; when `image` and a snapshot source are both absent, the sandbox uses the default universal image. Persistent sandboxes keep only their most recent snapshot by default, and snapshots expire after seven days unless configured otherwise.
     ///
-    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic
-    /// snapshotting on shutdown. When no `image` is provided (and the sandbox is not restored from a snapshot), the
-    /// sandbox is created from the default universal image. Unlike v3, snapshots expire after 7 days by default and
-    /// persistent sandboxes keep only their most recent snapshot unless `keepLastSnapshots` is configured otherwise (or
-    /// set to `null` to disable the limit).
+    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic snapshotting on shutdown. When no `image` is provided (and the sandbox is not restored from a snapshot), the sandbox is created from the default universal image. Unlike v3, snapshots expire after 7 days by default and persistent sandboxes keep only their most recent snapshot unless `keepLastSnapshots` is configured otherwise (or set to `null` to disable the limit).
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
@@ -82,11 +75,7 @@ public extension SandboxesMethods {
     ///   the last snapshot (evicted snapshots are deleted). Set to null to disable
     ///   the limit.
     /// - tags: Key-value tags to associate with the sandbox. Maximum 5 tags.
-    static func createSandboxesV4(
-        config: ClientConfig,
-        options: CreateSandboxesV4Options,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateSandboxesV4Response {
+    public static func createSandboxesV4(config: ClientConfig, options: CreateSandboxesV4Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesV4Response {
         if let ports = options.ports {
             try validateItems("ports", ports, max: 15)
         }
@@ -114,7 +103,7 @@ public extension SandboxesMethods {
 
         let requestBody = CreateSandboxesV4RequestBody(options: options)
 
-        return try await (sdkRequest("POST", "/v4/sandboxes", config: config, query: [
+        return try (await sdkRequest("POST", "/v4/sandboxes", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "createSandboxesV4", options: requestOptions)).data

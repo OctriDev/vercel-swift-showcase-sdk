@@ -6,12 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DomainsMethods {
-    /// Lists domains registered to the authenticated user or team. Use `since` and `until` to filter by creation time,
-    /// and `limit` to control the number of domains returned; the response includes pagination metadata.
+extension DomainsMethods {
+    /// Lists domains registered to the authenticated user or team. Use `since` and `until` to filter by creation time, and `limit` to control the number of domains returned; the response includes pagination metadata.
     ///
-    /// Retrieves a list of domains registered for the authenticated user or team. By default it returns the last 20
-    /// domains if no limit is provided.
+    /// Retrieves a list of domains registered for the authenticated user or team. By default it returns the last 20 domains if no limit is provided.
     ///
     /// - Parameters:
     /// - limit: Maximum number of domains to list from a request.
@@ -19,16 +17,8 @@ public extension DomainsMethods {
     /// - until: Get domains created before this JavaScript timestamp.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listDomains(
-        config: ClientConfig,
-        limit: Double? = nil,
-        since: Double? = nil,
-        until: Double? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListDomainsResponse {
-        try await (sdkRequest("GET", "/v5/domains", config: config, query: [
+    public static func listDomains(config: ClientConfig, limit: Double? = nil, since: Double? = nil, until: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListDomainsResponse {
+        return try (await sdkRequest("GET", "/v5/domains", config: config, query: [
             SdkQueryParameter("limit", value: limit),
             SdkQueryParameter("since", value: since),
             SdkQueryParameter("until", value: until),
@@ -37,30 +27,19 @@ public extension DomainsMethods {
         ], decoder: .json, operationId: "listDomains", options: requestOptions)).data
     }
 
-    /// Adds an apex domain to the authenticated user's account or team. Supply `name` and use the `method` field to
-    /// select the add or move-in operation; a move-in request can also include its transfer token. Use the transfer-in
-    /// endpoint for transfers from external registrars.
+    /// Adds an apex domain to the authenticated user's account or team. Supply `name` and use the `method` field to select the add or move-in operation; a move-in request can also include its transfer token. Use the transfer-in endpoint for transfers from external registrars.
     ///
-    /// This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Note: This
-    /// endpoint is no longer used for initiating domain transfers from external registrars to Vercel. For this, please
-    /// use the endpoint [Transfer-in a
-    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/transfer-in-a-domain).
+    /// This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Note: This endpoint is no longer used for initiating domain transfers from external registrars to Vercel. For this, please use the endpoint [Transfer-in a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/transfer-in-a-domain).
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - method: The domain operation to perform. It can be either `add` or
     ///   `move-in`.
-    static func createOrTransferDomain(
-        config: ClientConfig,
-        teamId: String? = nil,
-        slug: String? = nil,
-        method: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateOrTransferDomainResponse {
+    public static func createOrTransferDomain(config: ClientConfig, teamId: String? = nil, slug: String? = nil, method: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateOrTransferDomainResponse {
         let requestBody = CreateOrTransferDomainRequestBody(method: method)
 
-        return try await (sdkRequest("POST", "/v7/domains", config: config, query: [
+        return try (await sdkRequest("POST", "/v7/domains", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createOrTransferDomain", options: requestOptions)).data

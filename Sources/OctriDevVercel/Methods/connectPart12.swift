@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ConnectMethods {
-    /// Deletes the connection between a connector and a project. Supply the connector identifier or URL-encoded
-    /// team-scoped UID in `connector` and the Vercel project ID in `projectId`. Use `teamId` or `slug` to select a team
-    /// when the token or authenticated user's default team should not be used.
+extension ConnectMethods {
+    /// Deletes the connection between a connector and a project. Supply the connector identifier or URL-encoded team-scoped UID in `connector` and the Vercel project ID in `projectId`. Use `teamId` or `slug` to select a team when the token or authenticated user's default team should not be used.
     ///
     /// Disconnect a connector from a project.
     ///
@@ -25,38 +23,10 @@ public extension ConnectMethods {
     ///   If both are omitted, Vercel uses the team associated with the token or the
     ///   authenticated user's default team. The request returns 401 if no team can be
     ///   selected.
-    static func deleteConnectorProjectConnection(
-        config: ClientConfig,
-        connector: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await (sdkRequest(
-            "DELETE",
-            [
-                "/v1/connect/connectors/",
-                sdkEncodePathSegment(sdkWireString(connector)),
-                "/projects/",
-                sdkEncodePathSegment(sdkWireString(projectId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .empty,
-            operationId: "deleteConnectorProjectConnection",
-            options: requestOptions,
-            errors: [
-                "400": ConnectError.self,
-                "401": ConnectError.self,
-                "403": ConnectError.self,
-                "404": ConnectError.self,
-                "409": ConnectError.self,
-                "410": ConnectError.self,
-            ]
-        )).data
+    public static func deleteConnectorProjectConnection(config: ClientConfig, connector: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try (await sdkRequest("DELETE", ["/v1/connect/connectors/", sdkEncodePathSegment(sdkWireString(connector)), "/projects/", sdkEncodePathSegment(sdkWireString(projectId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .empty, operationId: "deleteConnectorProjectConnection", options: requestOptions, errors: ["400": ConnectError.self, "401": ConnectError.self, "403": ConnectError.self, "404": ConnectError.self, "409": ConnectError.self, "410": ConnectError.self])).data
     }
 }

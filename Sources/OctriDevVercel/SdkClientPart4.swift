@@ -13,7 +13,7 @@ import Foundation
     import Crypto
 #endif
 
-func sdkNdjsonStream(
+internal func sdkNdjsonStream(
     _ byteStream: AsyncThrowingStream<Data, Swift.Error>
 ) -> AsyncThrowingStream<SdkStreamEvent, Swift.Error> {
     AsyncThrowingStream { continuation in
@@ -46,19 +46,17 @@ func sdkNdjsonStream(
     }
 }
 
-func splitSseLine(_ line: String) -> (String, String) {
+internal func splitSseLine(_ line: String) -> (String, String) {
     if let colon = line.firstIndex(of: ":") {
         let field = String(line[line.startIndex ..< colon])
         var value = String(line[line.index(after: colon)...])
-        if value.hasPrefix(" ") {
-            value.removeFirst()
-        }
+        if value.hasPrefix(" ") { value.removeFirst() }
         return (field, value)
     }
     return (line, "")
 }
 
-func decodeStreamLine(_ bytes: [UInt8]) throws -> String {
+internal func decodeStreamLine(_ bytes: [UInt8]) throws -> String {
     guard let line = String(bytes: bytes, encoding: .utf8) else {
         throw SdkNetworkError(cause: NSError(
             domain: "SdkStream",

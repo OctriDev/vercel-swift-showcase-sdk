@@ -3,33 +3,24 @@
 
 import Foundation
 
-/// GlobalConfig domain models
-public extension GetEdgeConfigBackupResponseVariant1Backup {
-    init(
-        digest: String,
-        items: [String: GetEdgeConfigBackupResponseVariant1BackupItemsValue],
-        slug: String,
-        updatedAt: Double
-    ) {
+// GlobalConfig domain models
+extension GetEdgeConfigBackupResponseVariant1Backup {
+    public init(digest: String, items: [String: GetEdgeConfigBackupResponseVariant1BackupItemsValue], slug: String, updatedAt: Double) {
         (self.digest, self.items) = (digest, items)
         (self.slug, self.updatedAt) = (slug, updatedAt)
     }
 }
 
-public struct PatchEdgeConfigItemsRequestItemsItemVariant1Operation: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct PatchEdgeConfigItemsRequestItemsItemVariant1Operation: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let update = PatchEdgeConfigItemsRequestItemsItemVariant1Operation(rawValue: "update")
     public static let upsert = PatchEdgeConfigItemsRequestItemsItemVariant1Operation(rawValue: "upsert")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -38,20 +29,16 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant1Operation: RawRepresen
     }
 }
 
-public struct PatchEdgeConfigItemsRequestItemsItemVariant2Operation: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct PatchEdgeConfigItemsRequestItemsItemVariant2Operation: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let update = PatchEdgeConfigItemsRequestItemsItemVariant2Operation(rawValue: "update")
     public static let upsert = PatchEdgeConfigItemsRequestItemsItemVariant2Operation(rawValue: "upsert")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -60,19 +47,15 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant2Operation: RawRepresen
     }
 }
 
-public struct PatchEdgeConfigItemsRequestItemsItemVariant3Operation: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct PatchEdgeConfigItemsRequestItemsItemVariant3Operation: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let delete = PatchEdgeConfigItemsRequestItemsItemVariant3Operation(rawValue: "delete")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -81,19 +64,15 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant3Operation: RawRepresen
     }
 }
 
-public struct PatchEdgeConfigItemsRequestItemsItemVariant0Operation: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct PatchEdgeConfigItemsRequestItemsItemVariant0Operation: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let create = PatchEdgeConfigItemsRequestItemsItemVariant0Operation(rawValue: "create")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

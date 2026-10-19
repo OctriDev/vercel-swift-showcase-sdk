@@ -198,11 +198,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ProjectsMethods.MoveProjectDomainOptions(
-            idOrName: decoded("\"Example Name\""),
-            domain: decoded("\"www.example.com\""),
-            projectId: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\"")
-        )
+        var options = try ProjectsMethods.MoveProjectDomainOptions(idOrName: decoded("\"Example Name\""), domain: decoded("\"www.example.com\""), projectId: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\""))
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.gitBranch = try decoded("null")
@@ -323,10 +319,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try SecurityMethods.PutFirewallConfigOptions(
-            projectId: decoded("\"project-1\""),
-            firewallEnabled: decoded("false")
-        )
+        var options = try SecurityMethods.PutFirewallConfigOptions(projectId: decoded("\"project-1\""), firewallEnabled: decoded("false"))
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.managedRules = try decoded("{}")

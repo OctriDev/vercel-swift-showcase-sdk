@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    struct UpdateSandboxOptions: Codable {
+extension SandboxesMethods {
+    public struct UpdateSandboxOptions: Codable {
         public var name: String
         public var projectId: String?
         public var resume: Bool?
@@ -34,12 +34,9 @@ public extension SandboxesMethods {
         }
     }
 
-    /// Updates the configuration of a named sandbox, changing only the fields you provide. Use the request body to
-    /// adjust its resources, runtime, networking, storage mounts, environment, or other settings; omitted fields remain
-    /// unchanged. Set `resume` to true to resume a stopped sandbox from its snapshot.
+    /// Updates the configuration of a named sandbox, changing only the fields you provide. Use the request body to adjust its resources, runtime, networking, storage mounts, environment, or other settings; omitted fields remain unchanged. Set `resume` to true to resume a stopped sandbox from its snapshot.
     ///
-    /// Updates the configuration of a sandbox. Only the provided fields will be modified; omitted fields remain
-    /// unchanged.
+    /// Updates the configuration of a sandbox. Only the provided fields will be modified; omitted fields remain unchanged.
     ///
     /// - Parameters:
     /// - name: The sandbox to update.
@@ -79,11 +76,7 @@ public extension SandboxesMethods {
     ///   active and belong to the same project.
     /// - tags: Key-value tags to associate with the sandbox. Replaces existing
     ///   tags. Set to empty object to clear. Maximum 5 tags.
-    static func updateSandbox(
-        config: ClientConfig,
-        options: UpdateSandboxOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateSandboxResponse {
+    public static func updateSandbox(config: ClientConfig, options: UpdateSandboxOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateSandboxResponse {
         try validateLength("name", options.name, max: 128)
         try sdkValidatePattern("name", options.name, sdkPatterna828669d9fe5)
 
@@ -109,20 +102,11 @@ public extension SandboxesMethods {
 
         let requestBody = UpdateSandboxRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v2/sandboxes/", sdkEncodePathSegment(sdkWireString(options.name))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: options.projectId),
-                SdkQueryParameter("resume", value: options.resume),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateSandbox",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v2/sandboxes/", sdkEncodePathSegment(sdkWireString(options.name))].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: options.projectId),
+            SdkQueryParameter("resume", value: options.resume),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "updateSandbox", options: requestOptions)).data
     }
 }

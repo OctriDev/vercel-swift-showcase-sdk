@@ -6,12 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DnsMethods {
-    /// Lists DNS records created for a domain. Use `limit` to control the number of records returned and `since` or
-    /// `until` to filter by JavaScript timestamps. The default limit is 20 records.
+extension DnsMethods {
+    /// Lists DNS records created for a domain. Use `limit` to control the number of records returned and `since` or `until` to filter by JavaScript timestamps. The default limit is 20 records.
     ///
-    /// Retrieves a list of DNS records created for a domain name. By default it returns 20 records if no limit is
-    /// provided. The rest can be retrieved using the pagination options.
+    /// Retrieves a list of DNS records created for a domain name. By default it returns 20 records if no limit is provided. The rest can be retrieved using the pagination options.
     ///
     /// - Parameters:
     /// - limit: Maximum number of records to list from a request.
@@ -19,35 +17,17 @@ public extension DnsMethods {
     /// - until: Get records created before this JavaScript timestamp.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getRecords(
-        config: ClientConfig,
-        domain: String,
-        limit: String? = nil,
-        since: String? = nil,
-        until: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRecordsResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v5/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/records"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("limit", value: limit),
-                SdkQueryParameter("since", value: since),
-                SdkQueryParameter("until", value: until),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getRecords",
-            options: requestOptions
-        )).data
+    public static func getRecords(config: ClientConfig, domain: String, limit: String? = nil, since: String? = nil, until: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRecordsResponse {
+        return try (await sdkRequest("GET", ["/v5/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/records"].joined(), config: config, query: [
+            SdkQueryParameter("limit", value: limit),
+            SdkQueryParameter("since", value: since),
+            SdkQueryParameter("until", value: until),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getRecords", options: requestOptions)).data
     }
 
-    /// Creates a DNS record for a domain. Provide the record `type`, `name`, and `value`; the accepted fields and value
-    /// format depend on the record type. The response includes the identifier of the newly created record.
+    /// Creates a DNS record for a domain. Provide the record `type`, `name`, and `value`; the accepted fields and value format depend on the record type. The response includes the identifier of the newly created record.
     ///
     /// Creates a DNS record for a domain.
     ///
@@ -56,28 +36,12 @@ public extension DnsMethods {
     /// - type: The type of record, it could be one of the valid DNS records.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func createRecord(
-        config: ClientConfig,
-        domain: String,
-        type: CreateRecordRequestBodyType,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateRecordResponse {
+    public static func createRecord(config: ClientConfig, domain: String, type: CreateRecordRequestBodyType, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateRecordResponse {
         let requestBody = CreateRecordRequestBody(type: type)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v2/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/records"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "createRecord",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v2/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/records"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "createRecord", options: requestOptions)).data
     }
 }

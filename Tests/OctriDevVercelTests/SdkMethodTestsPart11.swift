@@ -55,8 +55,7 @@ extension SdkMethodTests {
         )
     }
 
-    func testGetSecurityFirewallEventsSummaryGetSecurityFirewallEventsSummaryReachesMockAndDecodesResponse(
-    ) async throws {
+    func testGetSecurityFirewallEventsSummaryGetSecurityFirewallEventsSummaryReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -243,8 +242,8 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getSupportedTlds(
-                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-            )
+            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+        )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -355,9 +354,9 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getTld(
-                tld: decoded("\"tld\""),
-                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-            )
+            tld: decoded("\"tld\""),
+            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+        )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -404,10 +403,10 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getTldPrice(
-                tld: decoded("\"tld\""),
-                years: decoded("\"years\""),
-                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-            )
+            tld: decoded("\"tld\""),
+            years: decoded("\"years\""),
+            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+        )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -538,12 +537,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try VercelCiMethods.GetVercelCiJobRunLogsOptions(
-            invocationId: decoded("\"invocation-1\""),
-            attempt: decoded("\"attempt\""),
-            jobDefinitionId: decoded("\"jobDefinition-1\""),
-            runAttempt: decoded("\"runAttempt\"")
-        )
+        var options = try VercelCiMethods.GetVercelCiJobRunLogsOptions(invocationId: decoded("\"invocation-1\""), attempt: decoded("\"attempt\""), jobDefinitionId: decoded("\"jobDefinition-1\""), runAttempt: decoded("\"runAttempt\""))
         options.follow = try decoded("0")
         options.since = try decoded("1")
         options.level = try decoded("[\"trace\"]")

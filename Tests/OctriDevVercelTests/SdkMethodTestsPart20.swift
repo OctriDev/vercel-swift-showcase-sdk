@@ -55,8 +55,7 @@ extension SdkMethodTests {
         )
     }
 
-    func testUpdateVercelCiRepositorySettingsUpdateVercelCiRepositorySettingsReachesMockAndDecodesResponse(
-    ) async throws {
+    func testUpdateVercelCiRepositorySettingsUpdateVercelCiRepositorySettingsReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -107,10 +106,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ArtifactsMethods.UploadArtifactOptions(
-            hash: decoded("\"12HKQaOmR5t5Uy6vdcQsNIiZgHGB\""),
-            body: XCTUnwrap(Data(base64Encoded: "ZXhhbXBsZQ=="))
-        )
+        var options = try ArtifactsMethods.UploadArtifactOptions(hash: decoded("\"12HKQaOmR5t5Uy6vdcQsNIiZgHGB\""), body: Data(base64Encoded: "ZXhhbXBsZQ==")!)
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.xArtifactDuration = try decoded("400")
@@ -166,7 +162,7 @@ extension SdkMethodTests {
             xVercelDigest: decoded("\"x-vercel-digest\""),
             xNowDigest: decoded("\"x-now-digest\""),
             xNowSize: decoded("1"),
-            body: XCTUnwrap(Data(base64Encoded: "ZXhhbXBsZQ=="))
+            body: Data(base64Encoded: "ZXhhbXBsZQ==")!
         )
         let expected = try JSONSerialization.jsonObject(
             with: Data(sdkMethodFixture477Expected.utf8),
@@ -187,7 +183,7 @@ extension SdkMethodTests {
             idOrName: decoded("\"Example Name\""),
             teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
             slug: decoded("\"my-team-url-slug\""),
-            body: XCTUnwrap(Data(base64Encoded: "ZXhhbXBsZQ=="))
+            body: Data(base64Encoded: "ZXhhbXBsZQ==")!
         )
         let expected = try JSONSerialization.jsonObject(
             with: Data(sdkMethodFixture478Expected.utf8),
@@ -204,10 +200,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try AiGatewayMethods.UpsertAiGatewayBudgetOptions(
-            scopeType: decoded("\"team\""),
-            limitAmount: decoded("1")
-        )
+        var options = try AiGatewayMethods.UpsertAiGatewayBudgetOptions(scopeType: decoded("\"team\""), limitAmount: decoded("1"))
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.projectId = try decoded("\"project-1\"")
@@ -251,8 +244,7 @@ extension SdkMethodTests {
         )
     }
 
-    func testUpsertConnectorProjectConnectionUpsertConnectorProjectConnectionReachesMockAndDecodesResponse(
-    ) async throws {
+    func testUpsertConnectorProjectConnectionUpsertConnectorProjectConnectionReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -274,8 +266,7 @@ extension SdkMethodTests {
         )
     }
 
-    func testUpsertConnectorProjectConnectionUpsertConnectorProjectConnection400ReachesMockAndDecodesResponse(
-    ) async throws {
+    func testUpsertConnectorProjectConnectionUpsertConnectorProjectConnection400ReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient(statusPrefix: "/__mockStatus/400") else {
             return
         }
@@ -286,12 +277,12 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.upsertConnectorProjectConnection(
-                connector: decoded("\"connector\""),
-                projectId: decoded("\"project-1\""),
-                environments: decoded("[\"env_\"]"),
-                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-                slug: decoded("\"my-team-url-slug\"")
-            )
+            connector: decoded("\"connector\""),
+            projectId: decoded("\"project-1\""),
+            environments: decoded("[\"env_\"]"),
+            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+            slug: decoded("\"my-team-url-slug\"")
+        )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)

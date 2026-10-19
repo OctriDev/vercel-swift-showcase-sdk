@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
+// Canonical projects operation model declarations
 public struct ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesVX870c4381b8: Codable {
     public var active: Bool
     public var action: ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesVXf7d7156ba2?
@@ -17,28 +17,22 @@ public struct ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesVX870c
         case action
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesVX870c4381b8 {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesVX870c4381b8 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.active) else {
-            throw SdkValidationError(
-                field: "active",
-                code: "required",
-                message: "Validation failed for 'active': value is required"
-            )
+            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
         }
-        active = try container.sdkDecodeRequired(.active)
-        action = try container.sdkDecodeIfPresent(.action)
+        self.active = try container.sdkDecodeRequired(.active)
+        self.action = try container.sdkDecodeIfPresent(.action)
     }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesVX870c4381b8 {
-    init(active: Bool, action: ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesVXf7d7156ba2? = nil) {
+extension ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesVX870c4381b8 {
+    public init(active: Bool, action: ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesVXf7d7156ba2? = nil) {
         (self.active, self.action) = (active, action)
     }
 }
@@ -70,67 +64,43 @@ public struct ListProjectsResponseVariant2ProjectsItemCronsDefinitionsItem: Coda
         case source
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItemCronsDefinitionsItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseVariant2ProjectsItemCronsDefinitionsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.host) else {
-            throw SdkValidationError(
-                field: "host",
-                code: "required",
-                message: "Validation failed for 'host': value is required"
-            )
+            throw SdkValidationError(field: "host", code: "required", message: "Validation failed for 'host': value is required")
         }
         guard container.contains(.path) else {
-            throw SdkValidationError(
-                field: "path",
-                code: "required",
-                message: "Validation failed for 'path': value is required"
-            )
+            throw SdkValidationError(field: "path", code: "required", message: "Validation failed for 'path': value is required")
         }
         guard container.contains(.schedule) else {
-            throw SdkValidationError(
-                field: "schedule",
-                code: "required",
-                message: "Validation failed for 'schedule': value is required"
-            )
+            throw SdkValidationError(field: "schedule", code: "required", message: "Validation failed for 'schedule': value is required")
         }
-        host = try container.sdkDecodeRequired(.host)
-        path = try container.sdkDecodeRequired(.path)
-        schedule = try container.sdkDecodeRequired(.schedule)
-        description = try container.sdkDecodeIfPresent(.description)
-        hostInferred = try container.sdkDecodeIfPresent(.hostInferred)
-        source = try container.sdkDecodeIfPresent(.source)
+        self.host = try container.sdkDecodeRequired(.host)
+        self.path = try container.sdkDecodeRequired(.path)
+        self.schedule = try container.sdkDecodeRequired(.schedule)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.hostInferred = try container.sdkDecodeIfPresent(.hostInferred)
+        self.source = try container.sdkDecodeIfPresent(.source)
     }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItemCronsDefinitionsItem {
-    init(
-        host: String,
-        path: String,
-        schedule: String,
-        description: String? = nil,
-        hostInferred: Bool? = nil,
-        source: ListProjectsResponseVariant2ProjectsItemCronsDefinitionsItemSource? = nil
-    ) {
+extension ListProjectsResponseVariant2ProjectsItemCronsDefinitionsItem {
+    public init(host: String, path: String, schedule: String, description: String? = nil, hostInferred: Bool? = nil, source: ListProjectsResponseVariant2ProjectsItemCronsDefinitionsItemSource? = nil) {
         (self.host, self.path) = (host, path)
         (self.schedule, self.description) = (schedule, description)
         (self.hostInferred, self.source) = (hostInferred, source)
     }
 }
 
-public typealias ListProjectsResponseVariant2ProjectsItemConnectConfigurationsList =
-    [ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItem]
+public typealias ListProjectsResponseVariant2ProjectsItemConnectConfigurationsList = [ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItem]
 
-public typealias ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsList =
-    [ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsItem]
+public typealias ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsList = [ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsItem]
 
-public typealias ListProjectsResponseVariant2ProjectsItemLatestDeploymentsList =
-    [ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItem]
+public typealias ListProjectsResponseVariant2ProjectsItemLatestDeploymentsList = [ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItem]
 
 public struct ListProjectsResponseVariant2ProjectsItem: Codable {
     public var accountId: String
@@ -243,17 +213,7 @@ public struct ListProjectsResponseVariant2ProjectsItem: Codable {
     public var v0Created: Bool? = .none
     public var webAnalytics: ListProjectsResponseVariant2ProjectsItemWebAnalytics? = .none
 
-    init(
-        sdkRequiredFields accountId: String,
-        alias: [ListProjectsResponseVariant2ProjectsItemAliasItem],
-        defaultResourceConfig: ListProjectsResponseVariant2ProjectsItemDefaultResourceConfig,
-        deploymentExpiration: ListProjectsResponseVariant2ProjectsItemDeploymentExpiration,
-        directoryListing: Bool,
-        id: String,
-        name: String,
-        nodeVersion: ListProjectsResponseVariant2ProjectsItemNodeVersion,
-        resourceConfig: ListProjectsResponseVariant2ProjectsItemResourceConfig
-    ) {
+    init(sdkRequiredFields accountId: String, alias: [ListProjectsResponseVariant2ProjectsItemAliasItem], defaultResourceConfig: ListProjectsResponseVariant2ProjectsItemDefaultResourceConfig, deploymentExpiration: ListProjectsResponseVariant2ProjectsItemDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: ListProjectsResponseVariant2ProjectsItemNodeVersion, resourceConfig: ListProjectsResponseVariant2ProjectsItemResourceConfig) {
         (self.accountId, self.alias) = (accountId, alias)
         self.defaultResourceConfig = defaultResourceConfig
         (self.deploymentExpiration, self.directoryListing) = (deploymentExpiration, directoryListing)
@@ -364,20 +324,10 @@ extension ListProjectsResponseVariant2ProjectsItem {
     }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseVariant2ProjectsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        try self.init(
-            sdkRequiredFields: container.sdkDecodeRequired(.accountId),
-            alias: container.sdkDecodeRequired(.alias),
-            defaultResourceConfig: container.sdkDecodeRequired(.defaultResourceConfig),
-            deploymentExpiration: container.sdkDecodeRequired(.deploymentExpiration),
-            directoryListing: container.sdkDecodeRequired(.directoryListing),
-            id: container.sdkDecodeRequired(.id),
-            name: container.sdkDecodeRequired(.name),
-            nodeVersion: container.sdkDecodeRequired(.nodeVersion),
-            resourceConfig: container.sdkDecodeRequired(.resourceConfig)
-        )
+        self.init(sdkRequiredFields: try container.sdkDecodeRequired(.accountId), alias: try container.sdkDecodeRequired(.alias), defaultResourceConfig: try container.sdkDecodeRequired(.defaultResourceConfig), deploymentExpiration: try container.sdkDecodeRequired(.deploymentExpiration), directoryListing: try container.sdkDecodeRequired(.directoryListing), id: try container.sdkDecodeRequired(.id), name: try container.sdkDecodeRequired(.name), nodeVersion: try container.sdkDecodeRequired(.nodeVersion), resourceConfig: try container.sdkDecodeRequired(.resourceConfig))
         try sdkDecodeFieldsPart1(container)
         try sdkDecodeFieldsPart2(container)
         try sdkDecodeFieldsPart3(container)
@@ -389,117 +339,9 @@ public extension ListProjectsResponseVariant2ProjectsItem {
     }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItem {
-    init(
-        accountId: String,
-        alias: [ListProjectsResponseVariant2ProjectsItemAliasItem],
-        defaultResourceConfig: ListProjectsResponseVariant2ProjectsItemDefaultResourceConfig,
-        deploymentExpiration: ListProjectsResponseVariant2ProjectsItemDeploymentExpiration,
-        directoryListing: Bool,
-        id: String,
-        name: String,
-        nodeVersion: ListProjectsResponseVariant2ProjectsItemNodeVersion,
-        resourceConfig: ListProjectsResponseVariant2ProjectsItemResourceConfig,
-        analytics: ListProjectsResponseVariant2ProjectsItemAnalytics? = nil,
-        appliedCve55182Migration: Bool? = nil,
-        autoAssignCustomDomains: Bool? = nil,
-        autoAssignCustomDomainsUpdatedBy: String? = nil,
-        autoExposeSystemEnvs: Bool? = nil,
-        avatar: String? = nil,
-        avatarDarkMode: String? = nil,
-        blobs: ListProjectsResponseVariant2ProjectsItemBlobs? = nil,
-        buildCommand: String? = nil,
-        commandForIgnoringBuildStep: String? = nil,
-        concurrencyBucketName: String? = nil,
-        connectBuildsEnabled: Bool? = nil,
-        connectConfigurationId: String? = nil,
-        connectConfigurations: ListProjectsResponseVariant2ProjectsItemConnectConfigurationsList? = nil,
-        createdAt: Double? = nil,
-        creator: ListProjectsResponseVariant2ProjectsItemCreator? = nil,
-        crons: ListProjectsResponseVariant2ProjectsItemCrons? = nil,
-        customEnvironments: ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsList? = nil,
-        customerSupportCodeVisibility: Bool? = nil,
-        dataCache: ListProjectsResponseVariant2ProjectsItemDataCache? = nil,
-        deploymentPolicy: ListProjectsResponseVariant2ProjectsItemDeploymentPolicy? = nil,
-        devCommand: String? = nil,
-        dismissedToasts: [ListProjectsResponseVariant2ProjectsItemDismissedToastsItem]? = nil,
-        enableAffectedProjectsDeployments: Bool? = nil,
-        enableExternalRewriteCaching: Bool? = nil,
-        enablePreviewFeedback: Bool? = nil,
-        enableProductionFeedback: Bool? = nil,
-        env: [ListProjectsResponseVariant2ProjectsItemEnvItem]? = nil,
-        expiration: ListProjectsResponseVariant2ProjectsItemExpiration? = nil,
-        features: ListProjectsResponseVariant2ProjectsItemFeatures? = nil,
-        framework: ListProjectsResponseVariant2ProjectsItemFramework? = nil,
-        gitComments: ListProjectsResponseVariant2ProjectsItemGitComments? = nil,
-        gitForkProtection: Bool? = nil,
-        gitLfs: Bool? = nil,
-        gitProviderOptions: ListProjectsResponseVariant2ProjectsItemGitProviderOptions? = nil,
-        hasActiveBranches: Bool? = nil,
-        hasDeployments: Bool? = nil,
-        installCommand: String? = nil,
-        internalRoutes: [ListProjectsResponseVariant2ProjectsItemInternalRoutesItem]? = nil,
-        ipBuckets: [ListProjectsResponseVariant2ProjectsItemIpBucketsItem]? = nil,
-        jobs: ListProjectsResponseVariant2ProjectsItemJobs? = nil,
-        lastAliasRequest: ListProjectsResponseVariant2ProjectsItemLastAliasRequest? = nil,
-        lastRollbackTarget: [String: JSONValue]? = nil,
-        latestDeployments: ListProjectsResponseVariant2ProjectsItemLatestDeploymentsList? = nil,
-        link: ListProjectsResponseVariant2ProjectsItemLink? = nil,
-        live: Bool? = nil,
-        microfrontends: ListProjectsResponseVariant2ProjectsItemMicrofrontends? = nil,
-        oidcTokenConfig: ListProjectsResponseVariant2ProjectsItemOidcTokenConfig? = nil,
-        optionsAllowlist: ListProjectsResponseVariant2ProjectsItemOptionsAllowlist? = nil,
-        outputDirectory: String? = nil,
-        passiveConnectConfigurationId: String? = nil,
-        passport: ListProjectsResponseVariant2ProjectsItemPassport? = nil,
-        passwordProtection: ListProjectsResponseVariant2ProjectsItemPasswordProtection? = nil,
-        paused: Bool? = nil,
-        permissions: ListProjectsResponseVariant2ProjectsItemPermissions? = nil,
-        productionDeploymentsFastLane: Bool? = nil,
-        protectedSourcemaps: Bool? = nil,
-        protectionBypass: [String: ListProjectsResponseVariant2ProjectsItemProtectionBypassValue]? = nil,
-        protectionConfig: ListProjectsResponseVariant2ProjectsItemProtectionConfig? = nil,
-        rollbackDescription: ListProjectsResponseVariant2ProjectsItemRollbackDescription? = nil,
-        rollingRelease: ListProjectsResponseVariant2ProjectsItemRollingRelease? = nil,
-        rootDirectory: String? = nil,
-        sandbox: ListProjectsResponseVariant2ProjectsItemSandbox? = nil,
-        security: ListProjectsResponseVariant2ProjectsItemSecurity? = nil,
-        serverlessFunctionZeroConfigFailover: Bool? = nil,
-        services: [ListProjectsResponseVariant2ProjectsItemServicesItem]? = nil,
-        skewProtectionAllowedDomains: [String]? = nil,
-        skewProtectionBoundaryAt: Double? = nil,
-        skewProtectionMaxAge: Double? = nil,
-        skipGitConnectDuringLink: Bool? = nil,
-        sourceFilesOutsideRootDirectory: Bool? = nil,
-        speedInsights: ListProjectsResponseVariant2ProjectsItemSpeedInsights? = nil,
-        ssoProtection: ListProjectsResponseVariant2ProjectsItemSsoProtection? = nil,
-        staticIps: ListProjectsResponseVariant2ProjectsItemStaticIps? = nil,
-        targets: [String: ListProjectsResponseVariant2ProjectsItemTargetsValue?]? = nil,
-        tier: ListProjectsResponseVariant2ProjectsItemTier? = nil,
-        tracing: ListProjectsResponseVariant2ProjectsItemTracing? = nil,
-        transferCompletedAt: Double? = nil,
-        transferredFromAccountId: String? = nil,
-        transferStartedAt: Double? = nil,
-        transferToAccountId: String? = nil,
-        trustedIps: ListProjectsResponseVariant2ProjectsItemTrustedIps? = nil,
-        trustedSources: ListProjectsResponseVariant2ProjectsItemTrustedSources? = nil,
-        updatedAt: Double? = nil,
-        usageStatus: ListProjectsResponseVariant2ProjectsItemUsageStatus? = nil,
-        v0: Bool? = nil,
-        v0Created: Bool? = nil,
-        webAnalytics: ListProjectsResponseVariant2ProjectsItemWebAnalytics? = nil
-    ) {
-        self.init(
-            sdkRequiredFields: accountId,
-            alias: alias,
-            defaultResourceConfig: defaultResourceConfig,
-            deploymentExpiration: deploymentExpiration,
-            directoryListing: directoryListing,
-            id: id,
-            name: name,
-            nodeVersion: nodeVersion,
-            resourceConfig: resourceConfig
-        )
+extension ListProjectsResponseVariant2ProjectsItem {
+    public init(accountId: String, alias: [ListProjectsResponseVariant2ProjectsItemAliasItem], defaultResourceConfig: ListProjectsResponseVariant2ProjectsItemDefaultResourceConfig, deploymentExpiration: ListProjectsResponseVariant2ProjectsItemDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: ListProjectsResponseVariant2ProjectsItemNodeVersion, resourceConfig: ListProjectsResponseVariant2ProjectsItemResourceConfig, analytics: ListProjectsResponseVariant2ProjectsItemAnalytics? = nil, appliedCve55182Migration: Bool? = nil, autoAssignCustomDomains: Bool? = nil, autoAssignCustomDomainsUpdatedBy: String? = nil, autoExposeSystemEnvs: Bool? = nil, avatar: String? = nil, avatarDarkMode: String? = nil, blobs: ListProjectsResponseVariant2ProjectsItemBlobs? = nil, buildCommand: String? = nil, commandForIgnoringBuildStep: String? = nil, concurrencyBucketName: String? = nil, connectBuildsEnabled: Bool? = nil, connectConfigurationId: String? = nil, connectConfigurations: ListProjectsResponseVariant2ProjectsItemConnectConfigurationsList? = nil, createdAt: Double? = nil, creator: ListProjectsResponseVariant2ProjectsItemCreator? = nil, crons: ListProjectsResponseVariant2ProjectsItemCrons? = nil, customEnvironments: ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsList? = nil, customerSupportCodeVisibility: Bool? = nil, dataCache: ListProjectsResponseVariant2ProjectsItemDataCache? = nil, deploymentPolicy: ListProjectsResponseVariant2ProjectsItemDeploymentPolicy? = nil, devCommand: String? = nil, dismissedToasts: [ListProjectsResponseVariant2ProjectsItemDismissedToastsItem]? = nil, enableAffectedProjectsDeployments: Bool? = nil, enableExternalRewriteCaching: Bool? = nil, enablePreviewFeedback: Bool? = nil, enableProductionFeedback: Bool? = nil, env: [ListProjectsResponseVariant2ProjectsItemEnvItem]? = nil, expiration: ListProjectsResponseVariant2ProjectsItemExpiration? = nil, features: ListProjectsResponseVariant2ProjectsItemFeatures? = nil, framework: ListProjectsResponseVariant2ProjectsItemFramework? = nil, gitComments: ListProjectsResponseVariant2ProjectsItemGitComments? = nil, gitForkProtection: Bool? = nil, gitLfs: Bool? = nil, gitProviderOptions: ListProjectsResponseVariant2ProjectsItemGitProviderOptions? = nil, hasActiveBranches: Bool? = nil, hasDeployments: Bool? = nil, installCommand: String? = nil, internalRoutes: [ListProjectsResponseVariant2ProjectsItemInternalRoutesItem]? = nil, ipBuckets: [ListProjectsResponseVariant2ProjectsItemIpBucketsItem]? = nil, jobs: ListProjectsResponseVariant2ProjectsItemJobs? = nil, lastAliasRequest: ListProjectsResponseVariant2ProjectsItemLastAliasRequest? = nil, lastRollbackTarget: [String: JSONValue]? = nil, latestDeployments: ListProjectsResponseVariant2ProjectsItemLatestDeploymentsList? = nil, link: ListProjectsResponseVariant2ProjectsItemLink? = nil, live: Bool? = nil, microfrontends: ListProjectsResponseVariant2ProjectsItemMicrofrontends? = nil, oidcTokenConfig: ListProjectsResponseVariant2ProjectsItemOidcTokenConfig? = nil, optionsAllowlist: ListProjectsResponseVariant2ProjectsItemOptionsAllowlist? = nil, outputDirectory: String? = nil, passiveConnectConfigurationId: String? = nil, passport: ListProjectsResponseVariant2ProjectsItemPassport? = nil, passwordProtection: ListProjectsResponseVariant2ProjectsItemPasswordProtection? = nil, paused: Bool? = nil, permissions: ListProjectsResponseVariant2ProjectsItemPermissions? = nil, productionDeploymentsFastLane: Bool? = nil, protectedSourcemaps: Bool? = nil, protectionBypass: [String: ListProjectsResponseVariant2ProjectsItemProtectionBypassValue]? = nil, protectionConfig: ListProjectsResponseVariant2ProjectsItemProtectionConfig? = nil, rollbackDescription: ListProjectsResponseVariant2ProjectsItemRollbackDescription? = nil, rollingRelease: ListProjectsResponseVariant2ProjectsItemRollingRelease? = nil, rootDirectory: String? = nil, sandbox: ListProjectsResponseVariant2ProjectsItemSandbox? = nil, security: ListProjectsResponseVariant2ProjectsItemSecurity? = nil, serverlessFunctionZeroConfigFailover: Bool? = nil, services: [ListProjectsResponseVariant2ProjectsItemServicesItem]? = nil, skewProtectionAllowedDomains: [String]? = nil, skewProtectionBoundaryAt: Double? = nil, skewProtectionMaxAge: Double? = nil, skipGitConnectDuringLink: Bool? = nil, sourceFilesOutsideRootDirectory: Bool? = nil, speedInsights: ListProjectsResponseVariant2ProjectsItemSpeedInsights? = nil, ssoProtection: ListProjectsResponseVariant2ProjectsItemSsoProtection? = nil, staticIps: ListProjectsResponseVariant2ProjectsItemStaticIps? = nil, targets: [String: ListProjectsResponseVariant2ProjectsItemTargetsValue?]? = nil, tier: ListProjectsResponseVariant2ProjectsItemTier? = nil, tracing: ListProjectsResponseVariant2ProjectsItemTracing? = nil, transferCompletedAt: Double? = nil, transferredFromAccountId: String? = nil, transferStartedAt: Double? = nil, transferToAccountId: String? = nil, trustedIps: ListProjectsResponseVariant2ProjectsItemTrustedIps? = nil, trustedSources: ListProjectsResponseVariant2ProjectsItemTrustedSources? = nil, updatedAt: Double? = nil, usageStatus: ListProjectsResponseVariant2ProjectsItemUsageStatus? = nil, v0: Bool? = nil, v0Created: Bool? = nil, webAnalytics: ListProjectsResponseVariant2ProjectsItemWebAnalytics? = nil) {
+        self.init(sdkRequiredFields: accountId, alias: alias, defaultResourceConfig: defaultResourceConfig, deploymentExpiration: deploymentExpiration, directoryListing: directoryListing, id: id, name: name, nodeVersion: nodeVersion, resourceConfig: resourceConfig)
         sdkSet1(analytics, appliedCve55182Migration, autoAssignCustomDomains, autoAssignCustomDomainsUpdatedBy)
         sdkSet2(autoExposeSystemEnvs, avatar, avatarDarkMode, blobs, buildCommand)
         sdkSet3(commandForIgnoringBuildStep, concurrencyBucketName, connectBuildsEnabled, connectConfigurationId)
@@ -523,12 +365,7 @@ public extension ListProjectsResponseVariant2ProjectsItem {
 }
 
 extension ListProjectsResponseVariant2ProjectsItem {
-    mutating func sdkSet1(
-        _ analytics: ListProjectsResponseVariant2ProjectsItemAnalytics?,
-        _ appliedCve55182Migration: Bool?,
-        _ autoAssignCustomDomains: Bool?,
-        _ autoAssignCustomDomainsUpdatedBy: String?
-    ) {
+    mutating func sdkSet1(_ analytics: ListProjectsResponseVariant2ProjectsItemAnalytics?, _ appliedCve55182Migration: Bool?, _ autoAssignCustomDomains: Bool?, _ autoAssignCustomDomainsUpdatedBy: String?) {
         self.analytics = analytics
         self.appliedCve55182Migration = appliedCve55182Migration
         self.autoAssignCustomDomains = autoAssignCustomDomains
@@ -537,13 +374,7 @@ extension ListProjectsResponseVariant2ProjectsItem {
 }
 
 extension ListProjectsResponseVariant2ProjectsItem {
-    mutating func sdkSet2(
-        _ autoExposeSystemEnvs: Bool?,
-        _ avatar: String?,
-        _ avatarDarkMode: String?,
-        _ blobs: ListProjectsResponseVariant2ProjectsItemBlobs?,
-        _ buildCommand: String?
-    ) {
+    mutating func sdkSet2(_ autoExposeSystemEnvs: Bool?, _ avatar: String?, _ avatarDarkMode: String?, _ blobs: ListProjectsResponseVariant2ProjectsItemBlobs?, _ buildCommand: String?) {
         self.autoExposeSystemEnvs = autoExposeSystemEnvs
         self.avatar = avatar
         self.avatarDarkMode = avatarDarkMode
@@ -553,12 +384,7 @@ extension ListProjectsResponseVariant2ProjectsItem {
 }
 
 extension ListProjectsResponseVariant2ProjectsItem {
-    mutating func sdkSet3(
-        _ commandForIgnoringBuildStep: String?,
-        _ concurrencyBucketName: String?,
-        _ connectBuildsEnabled: Bool?,
-        _ connectConfigurationId: String?
-    ) {
+    mutating func sdkSet3(_ commandForIgnoringBuildStep: String?, _ concurrencyBucketName: String?, _ connectBuildsEnabled: Bool?, _ connectConfigurationId: String?) {
         self.commandForIgnoringBuildStep = commandForIgnoringBuildStep
         self.concurrencyBucketName = concurrencyBucketName
         self.connectBuildsEnabled = connectBuildsEnabled
@@ -567,13 +393,7 @@ extension ListProjectsResponseVariant2ProjectsItem {
 }
 
 extension ListProjectsResponseVariant2ProjectsItem {
-    mutating func sdkSet4(
-        _ connectConfigurations: ListProjectsResponseVariant2ProjectsItemConnectConfigurationsList?,
-        _ createdAt: Double?,
-        _ creator: ListProjectsResponseVariant2ProjectsItemCreator?,
-        _ crons: ListProjectsResponseVariant2ProjectsItemCrons?,
-        _ customEnvironments: ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsList?
-    ) {
+    mutating func sdkSet4(_ connectConfigurations: ListProjectsResponseVariant2ProjectsItemConnectConfigurationsList?, _ createdAt: Double?, _ creator: ListProjectsResponseVariant2ProjectsItemCreator?, _ crons: ListProjectsResponseVariant2ProjectsItemCrons?, _ customEnvironments: ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsList?) {
         self.connectConfigurations = connectConfigurations
         self.createdAt = createdAt
         self.creator = creator
@@ -583,13 +403,7 @@ extension ListProjectsResponseVariant2ProjectsItem {
 }
 
 extension ListProjectsResponseVariant2ProjectsItem {
-    mutating func sdkSet5(
-        _ customerSupportCodeVisibility: Bool?,
-        _ dataCache: ListProjectsResponseVariant2ProjectsItemDataCache?,
-        _ deploymentPolicy: ListProjectsResponseVariant2ProjectsItemDeploymentPolicy?,
-        _ devCommand: String?,
-        _ dismissedToasts: [ListProjectsResponseVariant2ProjectsItemDismissedToastsItem]?
-    ) {
+    mutating func sdkSet5(_ customerSupportCodeVisibility: Bool?, _ dataCache: ListProjectsResponseVariant2ProjectsItemDataCache?, _ deploymentPolicy: ListProjectsResponseVariant2ProjectsItemDeploymentPolicy?, _ devCommand: String?, _ dismissedToasts: [ListProjectsResponseVariant2ProjectsItemDismissedToastsItem]?) {
         self.customerSupportCodeVisibility = customerSupportCodeVisibility
         self.dataCache = dataCache
         self.deploymentPolicy = deploymentPolicy
@@ -599,11 +413,7 @@ extension ListProjectsResponseVariant2ProjectsItem {
 }
 
 extension ListProjectsResponseVariant2ProjectsItem {
-    mutating func sdkSet6(
-        _ enableAffectedProjectsDeployments: Bool?,
-        _ enableExternalRewriteCaching: Bool?,
-        _ enablePreviewFeedback: Bool?
-    ) {
+    mutating func sdkSet6(_ enableAffectedProjectsDeployments: Bool?, _ enableExternalRewriteCaching: Bool?, _ enablePreviewFeedback: Bool?) {
         self.enableAffectedProjectsDeployments = enableAffectedProjectsDeployments
         self.enableExternalRewriteCaching = enableExternalRewriteCaching
         self.enablePreviewFeedback = enablePreviewFeedback
@@ -611,13 +421,7 @@ extension ListProjectsResponseVariant2ProjectsItem {
 }
 
 extension ListProjectsResponseVariant2ProjectsItem {
-    mutating func sdkSet7(
-        _ enableProductionFeedback: Bool?,
-        _ env: [ListProjectsResponseVariant2ProjectsItemEnvItem]?,
-        _ expiration: ListProjectsResponseVariant2ProjectsItemExpiration?,
-        _ features: ListProjectsResponseVariant2ProjectsItemFeatures?,
-        _ framework: ListProjectsResponseVariant2ProjectsItemFramework?
-    ) {
+    mutating func sdkSet7(_ enableProductionFeedback: Bool?, _ env: [ListProjectsResponseVariant2ProjectsItemEnvItem]?, _ expiration: ListProjectsResponseVariant2ProjectsItemExpiration?, _ features: ListProjectsResponseVariant2ProjectsItemFeatures?, _ framework: ListProjectsResponseVariant2ProjectsItemFramework?) {
         self.enableProductionFeedback = enableProductionFeedback
         self.env = env
         self.expiration = expiration

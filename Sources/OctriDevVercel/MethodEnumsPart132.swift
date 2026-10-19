@@ -7,24 +7,18 @@ import Foundation
     import FoundationNetworking
 #endif
 /// Machine type that was used for the build.
-public struct CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let basic = CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType(rawValue: "basic")
-    public static let enhanced =
-        CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType(rawValue: "enhanced")
-    public static let standard =
-        CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType(rawValue: "standard")
+    public static let enhanced = CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType(rawValue: "enhanced")
+    public static let standard = CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType(rawValue: "standard")
     public static let turbo = CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType(rawValue: "turbo")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -33,31 +27,23 @@ public struct CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseTy
     }
 }
 
-public struct CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let contains = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!contains")
     public static let endsWith = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!endsWith")
     public static let eq = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!eq")
     public static let ex = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!ex")
     public static let oneOf = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!oneOf")
     public static let regex = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!regex")
-    public static let startsWith =
-        CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!startsWith")
+    public static let startsWith = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!startsWith")
     public static let after = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "after")
     public static let before = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "before")
     public static let contains2 = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "contains")
-    public static let containsAllOf =
-        CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "containsAllOf")
-    public static let containsAnyOf =
-        CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "containsAnyOf")
-    public static let containsNoneOf =
-        CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "containsNoneOf")
+    public static let containsAllOf = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "containsAllOf")
+    public static let containsAnyOf = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "containsAnyOf")
+    public static let containsNoneOf = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "containsNoneOf")
     public static let endsWith2 = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "endsWith")
     public static let eq2 = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "eq")
     public static let ex2 = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "ex")
@@ -67,12 +53,11 @@ public struct CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp: Raw
     public static let lte = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "lte")
     public static let oneOf2 = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "oneOf")
     public static let regex2 = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "regex")
-    public static let startsWith2 =
-        CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "startsWith")
+    public static let startsWith2 = CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "startsWith")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -81,19 +66,15 @@ public struct CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp: Raw
     }
 }
 
-public struct CreateFlagResponseEnvironmentsValueRulesItemOutcomeVariant1BaseType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateFlagResponseEnvironmentsValueRulesItemOutcomeVariant1BaseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let entity = CreateFlagResponseEnvironmentsValueRulesItemOutcomeVariant1BaseType(rawValue: "entity")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -119,20 +100,16 @@ public enum ListProjectsResponseVariant2ProjectsItemLinkVariant6Type: String, Ca
     }
 }
 
-public struct GetFirewallConfigResponseCrsSqliAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetFirewallConfigResponseCrsSqliAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let deny = GetFirewallConfigResponseCrsSqliAction(rawValue: "deny")
     public static let log = GetFirewallConfigResponseCrsSqliAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -141,21 +118,16 @@ public struct GetFirewallConfigResponseCrsSqliAction: RawRepresentable, Hashable
     }
 }
 
-public struct GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let disabled =
-        GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus(rawValue: "disabled")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let disabled = GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus(rawValue: "disabled")
     public static let enabled = GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus(rawValue: "enabled")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -181,22 +153,16 @@ public enum CreateFlagResponseEnvironmentsValueRulesItemOutcomeVariant1Type: Str
     }
 }
 
-public struct GetProjectsResponseResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetProjectsResponseResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let skipNamespaceQueue =
-        GetProjectsResponseResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
-    public static let waitForNamespaceQueue =
-        GetProjectsResponseResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let skipNamespaceQueue = GetProjectsResponseResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
+    public static let waitForNamespaceQueue = GetProjectsResponseResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -205,14 +171,10 @@ public struct GetProjectsResponseResourceConfigBuildQueueConfiguration: RawRepre
     }
 }
 
-public struct UpdateMicrofrontendsResponseAliasItemConfiguredBy: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseAliasItemConfiguredBy: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let a = UpdateMicrofrontendsResponseAliasItemConfiguredBy(rawValue: "A")
     public static let cname = UpdateMicrofrontendsResponseAliasItemConfiguredBy(rawValue: "CNAME")
     public static let dns01 = UpdateMicrofrontendsResponseAliasItemConfiguredBy(rawValue: "dns-01")
@@ -220,7 +182,7 @@ public struct UpdateMicrofrontendsResponseAliasItemConfiguredBy: RawRepresentabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -230,14 +192,10 @@ public struct UpdateMicrofrontendsResponseAliasItemConfiguredBy: RawRepresentabl
 }
 
 /// Service kind (Service.type). Omitted for schemas that do not define one.
-public struct UpdateMicrofrontendsResponseServicesItemServiceType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseServicesItemServiceType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let cron = UpdateMicrofrontendsResponseServicesItemServiceType(rawValue: "cron")
     public static let job = UpdateMicrofrontendsResponseServicesItemServiceType(rawValue: "job")
     public static let web = UpdateMicrofrontendsResponseServicesItemServiceType(rawValue: "web")
@@ -245,7 +203,7 @@ public struct UpdateMicrofrontendsResponseServicesItemServiceType: RawRepresenta
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Deletes an image manifest from a Docker repository by its content-addressable digest. Use this operation to
-    /// remove a manifest by digest rather than by tag. Supply the repository components and a digest-form `reference`.
+extension VcrMethods {
+    /// Deletes an image manifest from a Docker repository by its content-addressable digest. Use this operation to remove a manifest by digest rather than by tag. Supply the repository components and a digest-form `reference`.
     ///
     /// DELETE /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Reference must be a digest.
     ///
@@ -17,14 +16,7 @@ public extension VcrMethods {
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - reference: Content-addressable digest (algorithm:hex).
-    static func deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-        config: ClientConfig,
-        teamSlug: String,
-        projectSlug: String,
-        repositoryName: String,
-        reference: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> JSONValue {
+    public static func deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, reference: String, requestOptions: RequestOptions? = nil) async throws -> JSONValue {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -37,22 +29,6 @@ public extension VcrMethods {
         try validateLength("reference", reference, max: 255)
         try sdkValidatePattern("reference", reference, sdkPatternf55d8ca4ed38)
 
-        return try await (sdkRequest(
-            "DELETE",
-            [
-                "/v2/",
-                sdkEncodePathSegment(sdkWireString(teamSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(projectSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(repositoryName)),
-                "/manifests/",
-                sdkEncodePathSegment(sdkWireString(reference)),
-            ].joined(),
-            config: config,
-            decoder: .json,
-            operationId: "deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/manifests/", sdkEncodePathSegment(sdkWireString(reference))].joined(), config: config, decoder: .json, operationId: "deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference", options: requestOptions)).data
     }
 }

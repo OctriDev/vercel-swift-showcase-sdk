@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DrainsMethods {
-    /// Validates a Drain delivery configuration by sending sample events. Provide `schemas` and `delivery` to check the
-    /// configuration without creating or updating a Drain. The response reports the validation result.
+extension DrainsMethods {
+    /// Validates a Drain delivery configuration by sending sample events. Provide `schemas` and `delivery` to check the configuration without creating or updating a Drain. The response reports the validation result.
     ///
     /// Validate the delivery configuration of a Drain using sample events.
     ///
@@ -17,17 +16,10 @@ public extension DrainsMethods {
     ///   schema.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func testDrain(
-        config: ClientConfig,
-        schemas: [String: TestDrainRequestBodySchemasValue],
-        delivery: TestDrainRequestDelivery,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> TestDrainResponse {
+    public static func testDrain(config: ClientConfig, schemas: [String: TestDrainRequestBodySchemasValue], delivery: TestDrainRequestDelivery, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> TestDrainResponse {
         let requestBody = TestDrainRequestBody(schemas: schemas, delivery: delivery)
 
-        return try await (sdkRequest("POST", "/v1/drains/test", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/drains/test", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "testDrain", options: requestOptions)).data

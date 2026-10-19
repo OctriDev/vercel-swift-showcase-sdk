@@ -6,28 +6,17 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Uploads a chunk of blob data to an in-progress Docker repository upload. The chunk is streamed to storage and
-    /// hashed incrementally, so you can call this operation multiple times for a chunked upload. Supply the repository
-    /// components and upload session `uuid`.
+extension VcrMethods {
+    /// Uploads a chunk of blob data to an in-progress Docker repository upload. The chunk is streamed to storage and hashed incrementally, so you can call this operation multiple times for a chunked upload. Supply the repository components and upload session `uuid`.
     ///
-    /// PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request
-    /// body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this
-    /// multiple times for chunked uploads.
+    /// PATCH /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/:uuid Upload a chunk of blob data. The request body is streamed directly to S3 as a multipart upload part while hashing incrementally. The client may call this multiple times for chunked uploads.
     ///
     /// - Parameters:
     /// - teamSlug: Single Docker repository team slug component.
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - uuid: Blob upload session identifier.
-    static func updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(
-        config: ClientConfig,
-        teamSlug: String,
-        projectSlug: String,
-        repositoryName: String,
-        uuid: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> JSONValue {
+    public static func updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, uuid: String, requestOptions: RequestOptions? = nil) async throws -> JSONValue {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -40,22 +29,6 @@ public extension VcrMethods {
         try validateLength("uuid", uuid, max: 40)
         try sdkValidatePattern("uuid", uuid, sdkPatternbc5c1977eda6)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v2/",
-                sdkEncodePathSegment(sdkWireString(teamSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(projectSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(repositoryName)),
-                "/blobs/uploads/",
-                sdkEncodePathSegment(sdkWireString(uuid)),
-            ].joined(),
-            config: config,
-            decoder: .json,
-            operationId: "updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/blobs/uploads/", sdkEncodePathSegment(sdkWireString(uuid))].joined(), config: config, decoder: .json, operationId: "updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid", options: requestOptions)).data
     }
 }

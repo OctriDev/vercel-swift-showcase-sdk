@@ -6,39 +6,18 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DnsMethods {
-    /// Deletes an existing DNS record from a domain. Supply the domain and record identifiers to select the record to
-    /// remove. The response confirms removal of the specified record.
+extension DnsMethods {
+    /// Deletes an existing DNS record from a domain. Supply the domain and record identifiers to select the record to remove. The response confirms removal of the specified record.
     ///
     /// Removes an existing DNS record from a domain name.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func removeRecord(
-        config: ClientConfig,
-        domain: String,
-        recordId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await (sdkRequest(
-            "DELETE",
-            [
-                "/v2/domains/",
-                sdkEncodePathSegment(sdkWireString(domain)),
-                "/records/",
-                sdkEncodePathSegment(sdkWireString(recordId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "removeRecord",
-            options: requestOptions
-        )).data
+    public static func removeRecord(config: ClientConfig, domain: String, recordId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try (await sdkRequest("DELETE", ["/v2/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/records/", sdkEncodePathSegment(sdkWireString(recordId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "removeRecord", options: requestOptions)).data
     }
 }

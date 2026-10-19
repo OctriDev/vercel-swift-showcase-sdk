@@ -7,23 +7,19 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical vercelCi operation model declarations
-public extension ListVercelCiBranchesResponse {
-    init(from decoder: Decoder) throws {
+// Canonical vercelCi operation model declarations
+extension ListVercelCiBranchesResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.branches) else {
-            throw SdkValidationError(
-                field: "branches",
-                code: "required",
-                message: "Validation failed for 'branches': value is required"
-            )
+            throw SdkValidationError(field: "branches", code: "required", message: "Validation failed for 'branches': value is required")
         }
-        branches = try container.sdkDecodeRequired(.branches)
+        self.branches = try container.sdkDecodeRequired(.branches)
     }
 }
 
-public extension ListVercelCiBranchesResponse {
-    init(branches: [ListVercelCiBranchesResponseBranchesItem]) {
+extension ListVercelCiBranchesResponse {
+    public init(branches: [ListVercelCiBranchesResponseBranchesItem]) {
         self.branches = branches
     }
 }
@@ -35,27 +31,21 @@ public struct ListVercelCiTaskAnalysisTasksResponseXa953d622: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListVercelCiTaskAnalysisTasksResponseXa953d622 {
-    init(from decoder: Decoder) throws {
+extension ListVercelCiTaskAnalysisTasksResponseXa953d622 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension ListVercelCiTaskAnalysisTasksResponseXa953d622 {
-    init(error: ListVercelCiTaskAnalysisTasksResponseErrorXce926abe) {
+extension ListVercelCiTaskAnalysisTasksResponseXa953d622 {
+    public init(error: ListVercelCiTaskAnalysisTasksResponseErrorXce926abe) {
         self.error = error
     }
 }
@@ -69,35 +59,25 @@ public struct GetVercelCiTaskAnalysisResponseErrorXa284b21d: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetVercelCiTaskAnalysisResponseErrorXa284b21d {
-    init(from decoder: Decoder) throws {
+extension GetVercelCiTaskAnalysisResponseErrorXa284b21d {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension GetVercelCiTaskAnalysisResponseErrorXa284b21d {
-    init(code: String, message: String) {
+extension GetVercelCiTaskAnalysisResponseErrorXa284b21d {
+    public init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -115,51 +95,33 @@ public struct GetVercelCiRepositorySettingsResponseErrorX643eed07: Codable {
         case limit
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetVercelCiRepositorySettingsResponseErrorX643eed07 {
-    init(from decoder: Decoder) throws {
+extension GetVercelCiRepositorySettingsResponseErrorX643eed07 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
         guard container.contains(.limit) else {
-            throw SdkValidationError(
-                field: "limit",
-                code: "required",
-                message: "Validation failed for 'limit': value is required"
-            )
+            throw SdkValidationError(field: "limit", code: "required", message: "Validation failed for 'limit': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        name = try container.sdkDecodeRequired(.name)
-        message = try container.sdkDecodeRequired(.message)
-        limit = try container.sdkDecodeRequired(.limit)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.message = try container.sdkDecodeRequired(.message)
+        self.limit = try container.sdkDecodeRequired(.limit)
     }
 }
 
-public extension GetVercelCiRepositorySettingsResponseErrorX643eed07 {
-    init(code: String, name: String, message: String, limit: Double) {
+extension GetVercelCiRepositorySettingsResponseErrorX643eed07 {
+    public init(code: String, name: String, message: String, limit: Double) {
         (self.code, self.name) = (code, name)
         (self.message, self.limit) = (message, limit)
     }
@@ -172,27 +134,21 @@ public struct GetVercelCiJobRunLogsResponseX7d07ab6d: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetVercelCiJobRunLogsResponseX7d07ab6d {
-    init(from decoder: Decoder) throws {
+extension GetVercelCiJobRunLogsResponseX7d07ab6d {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension GetVercelCiJobRunLogsResponseX7d07ab6d {
-    init(error: GetVercelCiJobRunLogsResponseErrorXd5f72bcf) {
+extension GetVercelCiJobRunLogsResponseX7d07ab6d {
+    public init(error: GetVercelCiJobRunLogsResponseErrorXd5f72bcf) {
         self.error = error
     }
 }
@@ -208,35 +164,25 @@ public struct GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleted: Co
         case conclusion
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleted {
-    init(from decoder: Decoder) throws {
+extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleted {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.completedAt) else {
-            throw SdkValidationError(
-                field: "completedAt",
-                code: "required",
-                message: "Validation failed for 'completedAt': value is required"
-            )
+            throw SdkValidationError(field: "completedAt", code: "required", message: "Validation failed for 'completedAt': value is required")
         }
         guard container.contains(.conclusion) else {
-            throw SdkValidationError(
-                field: "conclusion",
-                code: "required",
-                message: "Validation failed for 'conclusion': value is required"
-            )
+            throw SdkValidationError(field: "conclusion", code: "required", message: "Validation failed for 'conclusion': value is required")
         }
-        completedAt = try container.sdkDecodeRequired(.completedAt)
-        conclusion = try container.sdkDecodeRequired(.conclusion)
+        self.completedAt = try container.sdkDecodeRequired(.completedAt)
+        self.conclusion = try container.sdkDecodeRequired(.conclusion)
     }
 }
 
-public extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleted {
-    init(completedAt: Double, conclusion: GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompletedConclusion) {
+extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleted {
+    public init(completedAt: Double, conclusion: GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompletedConclusion) {
         (self.completedAt, self.conclusion) = (completedAt, conclusion)
     }
 }
@@ -254,51 +200,33 @@ public struct UpdateVercelCiRepositorySettingsResponseErrorXd00e2ce5: Codable {
         case limit
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateVercelCiRepositorySettingsResponseErrorXd00e2ce5 {
-    init(from decoder: Decoder) throws {
+extension UpdateVercelCiRepositorySettingsResponseErrorXd00e2ce5 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
         guard container.contains(.limit) else {
-            throw SdkValidationError(
-                field: "limit",
-                code: "required",
-                message: "Validation failed for 'limit': value is required"
-            )
+            throw SdkValidationError(field: "limit", code: "required", message: "Validation failed for 'limit': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        name = try container.sdkDecodeRequired(.name)
-        message = try container.sdkDecodeRequired(.message)
-        limit = try container.sdkDecodeRequired(.limit)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.message = try container.sdkDecodeRequired(.message)
+        self.limit = try container.sdkDecodeRequired(.limit)
     }
 }
 
-public extension UpdateVercelCiRepositorySettingsResponseErrorXd00e2ce5 {
-    init(code: String, name: String, message: String, limit: Double) {
+extension UpdateVercelCiRepositorySettingsResponseErrorXd00e2ce5 {
+    public init(code: String, name: String, message: String, limit: Double) {
         (self.code, self.name) = (code, name)
         (self.message, self.limit) = (message, limit)
     }
@@ -311,27 +239,21 @@ public struct GetVercelCiInvocationResponseX4ac593b5: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetVercelCiInvocationResponseX4ac593b5 {
-    init(from decoder: Decoder) throws {
+extension GetVercelCiInvocationResponseX4ac593b5 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension GetVercelCiInvocationResponseX4ac593b5 {
-    init(error: GetVercelCiInvocationResponseError) {
+extension GetVercelCiInvocationResponseX4ac593b5 {
+    public init(error: GetVercelCiInvocationResponseError) {
         self.error = error
     }
 }
@@ -345,35 +267,25 @@ public struct GetVercelCiJobRunResponseErrorX1dfa333e: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetVercelCiJobRunResponseErrorX1dfa333e {
-    init(from decoder: Decoder) throws {
+extension GetVercelCiJobRunResponseErrorX1dfa333e {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension GetVercelCiJobRunResponseErrorX1dfa333e {
-    init(code: String, message: String) {
+extension GetVercelCiJobRunResponseErrorX1dfa333e {
+    public init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -385,27 +297,21 @@ public struct ListVercelCiInvocationsResponseXd5647fb0: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListVercelCiInvocationsResponseXd5647fb0 {
-    init(from decoder: Decoder) throws {
+extension ListVercelCiInvocationsResponseXd5647fb0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension ListVercelCiInvocationsResponseXd5647fb0 {
-    init(error: ListVercelCiInvocationsResponseError) {
+extension ListVercelCiInvocationsResponseXd5647fb0 {
+    public init(error: ListVercelCiInvocationsResponseError) {
         self.error = error
     }
 }
@@ -417,27 +323,21 @@ public struct ListVercelCiJobDefinitionsResponseXd4026d94: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListVercelCiJobDefinitionsResponseXd4026d94 {
-    init(from decoder: Decoder) throws {
+extension ListVercelCiJobDefinitionsResponseXd4026d94 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension ListVercelCiJobDefinitionsResponseXd4026d94 {
-    init(error: ListVercelCiJobDefinitionsResponseErrorXf20cff25) {
+extension ListVercelCiJobDefinitionsResponseXd4026d94 {
+    public init(error: ListVercelCiJobDefinitionsResponseErrorXf20cff25) {
         self.error = error
     }
 }
@@ -455,51 +355,33 @@ public struct SearchVercelCiLogsResponseErrorX222839aa: Codable {
         case limit
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension SearchVercelCiLogsResponseErrorX222839aa {
-    init(from decoder: Decoder) throws {
+extension SearchVercelCiLogsResponseErrorX222839aa {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
         guard container.contains(.limit) else {
-            throw SdkValidationError(
-                field: "limit",
-                code: "required",
-                message: "Validation failed for 'limit': value is required"
-            )
+            throw SdkValidationError(field: "limit", code: "required", message: "Validation failed for 'limit': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        name = try container.sdkDecodeRequired(.name)
-        message = try container.sdkDecodeRequired(.message)
-        limit = try container.sdkDecodeRequired(.limit)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.message = try container.sdkDecodeRequired(.message)
+        self.limit = try container.sdkDecodeRequired(.limit)
     }
 }
 
-public extension SearchVercelCiLogsResponseErrorX222839aa {
-    init(code: String, name: String, message: String, limit: Double) {
+extension SearchVercelCiLogsResponseErrorX222839aa {
+    public init(code: String, name: String, message: String, limit: Double) {
         (self.code, self.name) = (code, name)
         (self.message, self.limit) = (message, limit)
     }
@@ -512,27 +394,21 @@ public struct ListVercelCiJobRunsResponseXc5847e79: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListVercelCiJobRunsResponseXc5847e79 {
-    init(from decoder: Decoder) throws {
+extension ListVercelCiJobRunsResponseXc5847e79 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension ListVercelCiJobRunsResponseXc5847e79 {
-    init(error: ListVercelCiJobRunsResponseErrorXb32740e4) {
+extension ListVercelCiJobRunsResponseXc5847e79 {
+    public init(error: ListVercelCiJobRunsResponseErrorXb32740e4) {
         self.error = error
     }
 }
@@ -556,83 +432,45 @@ public struct GetVercelCiInvocationTreeResponseJobsItemDefinition: Codable {
         case createdAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetVercelCiInvocationTreeResponseJobsItemDefinition {
-    init(from decoder: Decoder) throws {
+extension GetVercelCiInvocationTreeResponseJobsItemDefinition {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.invocationId) else {
-            throw SdkValidationError(
-                field: "invocationId",
-                code: "required",
-                message: "Validation failed for 'invocationId': value is required"
-            )
+            throw SdkValidationError(field: "invocationId", code: "required", message: "Validation failed for 'invocationId': value is required")
         }
         guard container.contains(.invocationAttempt) else {
-            throw SdkValidationError(
-                field: "invocationAttempt",
-                code: "required",
-                message: "Validation failed for 'invocationAttempt': value is required"
-            )
+            throw SdkValidationError(field: "invocationAttempt", code: "required", message: "Validation failed for 'invocationAttempt': value is required")
         }
         guard container.contains(.jobDefinitionId) else {
-            throw SdkValidationError(
-                field: "jobDefinitionId",
-                code: "required",
-                message: "Validation failed for 'jobDefinitionId': value is required"
-            )
+            throw SdkValidationError(field: "jobDefinitionId", code: "required", message: "Validation failed for 'jobDefinitionId': value is required")
         }
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.command) else {
-            throw SdkValidationError(
-                field: "command",
-                code: "required",
-                message: "Validation failed for 'command': value is required"
-            )
+            throw SdkValidationError(field: "command", code: "required", message: "Validation failed for 'command': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
-        invocationId = try container.sdkDecodeRequired(.invocationId)
-        invocationAttempt = try container.sdkDecodeRequired(.invocationAttempt)
-        jobDefinitionId = try container.sdkDecodeRequired(.jobDefinitionId)
-        kind = try container.sdkDecodeRequired(.kind)
-        name = try container.sdkDecodeRequired(.name)
-        command = try container.sdkDecodeRequired(.command)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.invocationId = try container.sdkDecodeRequired(.invocationId)
+        self.invocationAttempt = try container.sdkDecodeRequired(.invocationAttempt)
+        self.jobDefinitionId = try container.sdkDecodeRequired(.jobDefinitionId)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.command = try container.sdkDecodeRequired(.command)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
     }
 }
 
-public extension GetVercelCiInvocationTreeResponseJobsItemDefinition {
-    init(
-        invocationId: String,
-        invocationAttempt: Double,
-        jobDefinitionId: String,
-        kind: GetVercelCiInvocationTreeResponseJobsItemDefinitionKind,
-        name: String,
-        command: String,
-        createdAt: Double
-    ) {
+extension GetVercelCiInvocationTreeResponseJobsItemDefinition {
+    public init(invocationId: String, invocationAttempt: Double, jobDefinitionId: String, kind: GetVercelCiInvocationTreeResponseJobsItemDefinitionKind, name: String, command: String, createdAt: Double) {
         (self.invocationId, self.invocationAttempt) = (invocationId, invocationAttempt)
         (self.jobDefinitionId, self.kind) = (jobDefinitionId, kind)
         (self.name, self.command) = (name, command)
@@ -649,7 +487,5 @@ public struct GetVercelCiInvocationTreeResponseRepositoriesX67b206ab: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

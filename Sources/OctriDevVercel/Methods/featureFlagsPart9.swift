@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension FeatureFlagsMethods {
-    /// Updates feature flag settings for a project, including whether flags are enabled and which environments are
-    /// synchronized. Send only the settings fields you want to change; entity and attribute entries have required
-    /// fields and size limits. The response contains the resulting settings.
+extension FeatureFlagsMethods {
+    /// Updates feature flag settings for a project, including whether flags are enabled and which environments are synchronized. Send only the settings fields you want to change; entity and attribute entries have required fields and size limits. The response contains the resulting settings.
     ///
     /// Update feature flag settings for a project.
     ///
@@ -18,43 +16,20 @@ public extension FeatureFlagsMethods {
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - environments: The environments to sync
-    static func updateFlagSettings(
-        config: ClientConfig,
-        projectIdOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        enabled: Bool? = nil,
-        entities: [UpdateFlagSettingsRequestBodyEntitiesItem]? = nil,
-        environments: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateFlagSettingsResponse {
-        if let entities {
+    public static func updateFlagSettings(config: ClientConfig, projectIdOrName: String, teamId: String? = nil, slug: String? = nil, enabled: Bool? = nil, entities: [UpdateFlagSettingsRequestBodyEntitiesItem]? = nil, environments: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateFlagSettingsResponse {
+        if let entities = entities {
             try validateItems("entities", entities, max: 32)
         }
 
-        let requestBody = UpdateFlagSettingsRequestBody(
-            enabled: enabled,
-            entities: entities,
-            environments: environments
-        )
+        let requestBody = UpdateFlagSettingsRequestBody(enabled: enabled, entities: entities, environments: environments)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/settings"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateFlagSettings",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/settings"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateFlagSettings", options: requestOptions)).data
     }
 
-    /// Lists feature flag settings for projects in a team. Use `limit` to control the maximum number of settings
-    /// returned and `cursor` to continue through the results.
+    /// Lists feature flag settings for projects in a team. Use `limit` to control the maximum number of settings returned and `cursor` to continue through the results.
     ///
     /// Retrieve feature flag settings for projects in a team.
     ///
@@ -63,30 +38,15 @@ public extension FeatureFlagsMethods {
     /// - limit: Maximum number of settings to return.
     /// - cursor: Pagination cursor to continue from.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listTeamFlagSettings(
-        config: ClientConfig,
-        teamId: String,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListTeamFlagSettingsResponse {
-        if let limit {
+    public static func listTeamFlagSettings(config: ClientConfig, teamId: String, limit: Int? = nil, cursor: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListTeamFlagSettingsResponse {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/feature-flags/settings"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("limit", value: limit),
-                SdkQueryParameter("cursor", value: cursor),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listTeamFlagSettings",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/feature-flags/settings"].joined(), config: config, query: [
+            SdkQueryParameter("limit", value: limit),
+            SdkQueryParameter("cursor", value: cursor),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listTeamFlagSettings", options: requestOptions)).data
     }
 }

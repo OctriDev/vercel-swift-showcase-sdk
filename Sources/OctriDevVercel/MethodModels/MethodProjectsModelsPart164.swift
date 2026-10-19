@@ -7,26 +7,22 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
-public extension UploadProjectAvatarResponseIpBucketsItem {
-    init(from decoder: Decoder) throws {
+// Canonical projects operation model declarations
+extension UploadProjectAvatarResponseIpBucketsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.bucket) else {
-            throw SdkValidationError(
-                field: "bucket",
-                code: "required",
-                message: "Validation failed for 'bucket': value is required"
-            )
+            throw SdkValidationError(field: "bucket", code: "required", message: "Validation failed for 'bucket': value is required")
         }
-        bucket = try container.sdkDecodeRequired(.bucket)
-        self.default = try container.sdkDecodeIfPresent(.default)
-        supportUntil = try container.sdkDecodeIfPresent(.supportUntil)
+        self.bucket = try container.sdkDecodeRequired(.bucket)
+        self.`default` = try container.sdkDecodeIfPresent(.`default`)
+        self.supportUntil = try container.sdkDecodeIfPresent(.supportUntil)
     }
 }
 
-public extension UploadProjectAvatarResponseIpBucketsItem {
-    init(bucket: String, default: Bool? = nil, supportUntil: Double? = nil) {
-        (self.bucket, self.default) = (bucket, `default`)
+extension UploadProjectAvatarResponseIpBucketsItem {
+    public init(bucket: String, `default`: Bool? = nil, supportUntil: Double? = nil) {
+        (self.bucket, self.`default`) = (bucket, `default`)
         self.supportUntil = supportUntil
     }
 }
@@ -56,68 +52,39 @@ public struct UpdateMicrofrontendsResponseAliasItem: Codable {
         case redirectStatusCode
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateMicrofrontendsResponseAliasItem {
-    init(from decoder: Decoder) throws {
+extension UpdateMicrofrontendsResponseAliasItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.deployment) else {
-            throw SdkValidationError(
-                field: "deployment",
-                code: "required",
-                message: "Validation failed for 'deployment': value is required"
-            )
+            throw SdkValidationError(field: "deployment", code: "required", message: "Validation failed for 'deployment': value is required")
         }
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
         guard container.contains(.environment) else {
-            throw SdkValidationError(
-                field: "environment",
-                code: "required",
-                message: "Validation failed for 'environment': value is required"
-            )
+            throw SdkValidationError(field: "environment", code: "required", message: "Validation failed for 'environment': value is required")
         }
         guard container.contains(.target) else {
-            throw SdkValidationError(
-                field: "target",
-                code: "required",
-                message: "Validation failed for 'target': value is required"
-            )
+            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
         }
-        deployment = try container.sdkDecodeNullable(.deployment)
-        domain = try container.sdkDecodeRequired(.domain)
-        environment = try container.sdkDecodeRequired(.environment)
-        target = try container.sdkDecodeRequired(.target)
-        configuredBy = try container.sdkDecodeIfPresent(.configuredBy)
-        configuredChangedAt = try container.sdkDecodeIfPresent(.configuredChangedAt)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
-        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        self.deployment = try container.sdkDecodeNullable(.deployment)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.environment = try container.sdkDecodeRequired(.environment)
+        self.target = try container.sdkDecodeRequired(.target)
+        self.configuredBy = try container.sdkDecodeIfPresent(.configuredBy)
+        self.configuredChangedAt = try container.sdkDecodeIfPresent(.configuredChangedAt)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
     }
 }
 
-public extension UpdateMicrofrontendsResponseAliasItem {
-    init(
-        deployment: UpdateMicrofrontendsResponseAliasItemDeployment?,
-        domain: String,
-        environment: UpdateMicrofrontendsResponseAliasItemEnvironment,
-        target: UpdateMicrofrontendsResponseAliasItemTarget,
-        configuredBy: UpdateMicrofrontendsResponseAliasItemConfiguredBy? = nil,
-        configuredChangedAt: Double? = nil,
-        createdAt: Double? = nil,
-        gitBranch: String? = nil,
-        redirect: String? = nil,
-        redirectStatusCode: Double? = nil
-    ) {
+extension UpdateMicrofrontendsResponseAliasItem {
+    public init(deployment: UpdateMicrofrontendsResponseAliasItemDeployment?, domain: String, environment: UpdateMicrofrontendsResponseAliasItemEnvironment, target: UpdateMicrofrontendsResponseAliasItemTarget, configuredBy: UpdateMicrofrontendsResponseAliasItemConfiguredBy? = nil, configuredChangedAt: Double? = nil, createdAt: Double? = nil, gitBranch: String? = nil, redirect: String? = nil, redirectStatusCode: Double? = nil) {
         (self.deployment, self.domain) = (deployment, domain)
         (self.environment, self.target) = (environment, target)
         (self.configuredBy, self.configuredChangedAt) = (configuredBy, configuredChangedAt)
@@ -132,41 +99,27 @@ public indirect enum GetProjectsResponseProtectionBypassValue {
 }
 
 extension GetProjectsResponseProtectionBypassValue: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetProjectsResponseProtectionBypassValue"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetProjectsResponseProtectionBypassValue")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetProjectsResponseProtectionBypassValue {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetProjectsResponseProtectionBypassValueVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetProjectsResponseProtectionBypassValueVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseProtectionBypassValueVariant0(value)
         }
-        if let value = try? container.decode(GetProjectsResponseProtectionBypassValueVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetProjectsResponseProtectionBypassValueVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseProtectionBypassValueVariant1(value)
         }
         return nil
@@ -178,12 +131,12 @@ extension GetProjectsResponseProtectionBypassValue {
         if let value = try? container.decode(
             GetProjectsResponseProtectionBypassValueVariant0.self
         ) {
-            return .getProjectsResponseProtectionBypassValueVariant0(value)
+            return             .getProjectsResponseProtectionBypassValueVariant0(value)
         }
         if let value = try? container.decode(
             GetProjectsResponseProtectionBypassValueVariant1.self
         ) {
-            return .getProjectsResponseProtectionBypassValueVariant1(value)
+            return             .getProjectsResponseProtectionBypassValueVariant1(value)
         }
         return nil
     }
@@ -207,19 +160,19 @@ public struct GetProjectsResponseProtectionConfigSandboxUrls: Codable {
     }
 
     init() {
-        inheritDeploymentProtection = nil
+        self.inheritDeploymentProtection = nil
     }
 }
 
-public extension GetProjectsResponseProtectionConfigSandboxUrls {
-    init(from decoder: Decoder) throws {
+extension GetProjectsResponseProtectionConfigSandboxUrls {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        inheritDeploymentProtection = try container.sdkDecodeIfPresent(.inheritDeploymentProtection)
+        self.inheritDeploymentProtection = try container.sdkDecodeIfPresent(.inheritDeploymentProtection)
     }
 }
 
-public extension GetProjectsResponseProtectionConfigSandboxUrls {
-    init(inheritDeploymentProtection: Bool? = nil) {
+extension GetProjectsResponseProtectionConfigSandboxUrls {
+    public init(inheritDeploymentProtection: Bool? = nil) {
         self.init()
         self.inheritDeploymentProtection = inheritDeploymentProtection
     }
@@ -246,30 +199,24 @@ public struct CreateProjectResponseRollingReleaseStagesItem: Codable {
         case requireApproval
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateProjectResponseRollingReleaseStagesItem {
-    init(from decoder: Decoder) throws {
+extension CreateProjectResponseRollingReleaseStagesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.targetPercentage) else {
-            throw SdkValidationError(
-                field: "targetPercentage",
-                code: "required",
-                message: "Validation failed for 'targetPercentage': value is required"
-            )
+            throw SdkValidationError(field: "targetPercentage", code: "required", message: "Validation failed for 'targetPercentage': value is required")
         }
-        targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
-        duration = try container.sdkDecodeIfPresent(.duration)
-        linearShift = try container.sdkDecodeIfPresent(.linearShift)
-        requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
+        self.targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
+        self.duration = try container.sdkDecodeIfPresent(.duration)
+        self.linearShift = try container.sdkDecodeIfPresent(.linearShift)
+        self.requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
     }
 }
 
-public extension CreateProjectResponseRollingReleaseStagesItem {
-    init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
+extension CreateProjectResponseRollingReleaseStagesItem {
+    public init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
         (self.targetPercentage, self.duration) = (targetPercentage, duration)
         (self.linearShift, self.requireApproval) = (linearShift, requireApproval)
     }

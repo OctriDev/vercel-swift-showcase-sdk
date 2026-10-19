@@ -7,27 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical marketplace operation model declarations
-public extension GetInvoiceResponse {
-    init(
-        created: String,
-        invoiceDate: String,
-        invoiceId: String,
-        items: [GetInvoiceResponseItemsItem],
-        period: GetInvoiceResponsePeriod,
-        state: GetInvoiceResponseState,
-        total: String,
-        updated: String,
-        discounts: [GetInvoiceResponseDiscountsItem]? = nil,
-        externalId: String? = nil,
-        invoiceNumber: String? = nil,
-        memo: String? = nil,
-        paidAt: String? = nil,
-        refundedAt: String? = nil,
-        refundReason: String? = nil,
-        refundTotal: String? = nil,
-        test: Bool? = nil
-    ) {
+// Canonical marketplace operation model declarations
+extension GetInvoiceResponse {
+    public init(created: String, invoiceDate: String, invoiceId: String, items: [GetInvoiceResponseItemsItem], period: GetInvoiceResponsePeriod, state: GetInvoiceResponseState, total: String, updated: String, discounts: [GetInvoiceResponseDiscountsItem]? = nil, externalId: String? = nil, invoiceNumber: String? = nil, memo: String? = nil, paidAt: String? = nil, refundedAt: String? = nil, refundReason: String? = nil, refundTotal: String? = nil, test: Bool? = nil) {
         (self.created, self.invoiceDate) = (created, invoiceDate)
         (self.invoiceId, self.items) = (invoiceId, items)
         (self.period, self.state) = (period, state)
@@ -49,28 +31,22 @@ public struct ImportResourceRequestBodyBillingPlanDetailsItem: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ImportResourceRequestBodyBillingPlanDetailsItem {
-    init(from decoder: Decoder) throws {
+extension ImportResourceRequestBodyBillingPlanDetailsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.label) else {
-            throw SdkValidationError(
-                field: "label",
-                code: "required",
-                message: "Validation failed for 'label': value is required"
-            )
+            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
         }
-        label = try container.sdkDecodeRequired(.label)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.label = try container.sdkDecodeRequired(.label)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension ImportResourceRequestBodyBillingPlanDetailsItem {
-    init(label: String, value: String? = nil) {
+extension ImportResourceRequestBodyBillingPlanDetailsItem {
+    public init(label: String, value: String? = nil) {
         (self.label, self.value) = (label, value)
     }
 }
@@ -84,28 +60,22 @@ public struct UpdateInstallationRequestBodyBillingPlanDetailsItem: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateInstallationRequestBodyBillingPlanDetailsItem {
-    init(from decoder: Decoder) throws {
+extension UpdateInstallationRequestBodyBillingPlanDetailsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.label) else {
-            throw SdkValidationError(
-                field: "label",
-                code: "required",
-                message: "Validation failed for 'label': value is required"
-            )
+            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
         }
-        label = try container.sdkDecodeRequired(.label)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.label = try container.sdkDecodeRequired(.label)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension UpdateInstallationRequestBodyBillingPlanDetailsItem {
-    init(label: String, value: String? = nil) {
+extension UpdateInstallationRequestBodyBillingPlanDetailsItem {
+    public init(label: String, value: String? = nil) {
         (self.label, self.value) = (label, value)
     }
 }

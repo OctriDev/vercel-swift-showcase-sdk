@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 public extension UserEventType {
     static let teamMfaEnforcementUpdated = UserEventType(rawValue: "team-mfa-enforcement-updated")
     static let teamNameUpdate = UserEventType(rawValue: "team-name-update")
@@ -68,14 +68,11 @@ public extension UserEventType {
     static let vcrRepositoryPermissionRemoved = UserEventType(rawValue: "vcr-repository-permission-removed")
     static let vcrRepositoryPermissionsCleared = UserEventType(rawValue: "vcr-repository-permissions-cleared")
     static let vcrRepositoryVisibilityChanged = UserEventType(rawValue: "vcr-repository-visibility-changed")
-    static let vercelAgentElevatedPermissionsApproved =
-        UserEventType(rawValue: "vercel-agent-elevated-permissions-approved")
-    static let vercelAgentElevatedPermissionsRequested =
-        UserEventType(rawValue: "vercel-agent-elevated-permissions-requested")
+    static let vercelAgentElevatedPermissionsApproved = UserEventType(rawValue: "vercel-agent-elevated-permissions-approved")
+    static let vercelAgentElevatedPermissionsRequested = UserEventType(rawValue: "vercel-agent-elevated-permissions-requested")
     static let vercelAgentSessionCreated = UserEventType(rawValue: "vercel-agent-session-created")
     static let vercelAgentTeamTrialCreditsApplied = UserEventType(rawValue: "vercel-agent-team-trial-credits-applied")
-    static let vercelAppInstallationRequestDismissed =
-        UserEventType(rawValue: "vercel-app-installation-request-dismissed")
+    static let vercelAppInstallationRequestDismissed = UserEventType(rawValue: "vercel-app-installation-request-dismissed")
     static let vercelAppInstallationRequested = UserEventType(rawValue: "vercel-app-installation-requested")
     static let vercelAppInstallationUpdated = UserEventType(rawValue: "vercel-app-installation-updated")
     static let vercelAppInstalled = UserEventType(rawValue: "vercel-app-installed")

@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical teams operation model declarations
+// Canonical teams operation model declarations
 public struct UpdateTeamsRequestBodyDefaultExpirationSettings: Codable {
     /// The time period to keep non-production deployments for
     /// - Example: "1y"
@@ -38,38 +38,25 @@ public struct UpdateTeamsRequestBodyDefaultExpirationSettings: Codable {
     }
 
     init() {
-        (expiration, expirationProduction, expirationCanceled, expirationErrored, keepCurrentRetention) = (
-            nil,
-            nil,
-            nil,
-            nil,
-            nil
-        )
-        acknowledgeStorageBilling = nil
+        (self.expiration, self.expirationProduction, self.expirationCanceled, self.expirationErrored, self.keepCurrentRetention) = (nil, nil, nil, nil, nil)
+        self.acknowledgeStorageBilling = nil
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultExpirationSettings {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamsRequestBodyDefaultExpirationSettings {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        expiration = try container.sdkDecodeIfPresent(.expiration)
-        expirationProduction = try container.sdkDecodeIfPresent(.expirationProduction)
-        expirationCanceled = try container.sdkDecodeIfPresent(.expirationCanceled)
-        expirationErrored = try container.sdkDecodeIfPresent(.expirationErrored)
-        keepCurrentRetention = try container.sdkDecodeIfPresent(.keepCurrentRetention)
-        acknowledgeStorageBilling = try container.sdkDecodeIfPresent(.acknowledgeStorageBilling)
+        self.expiration = try container.sdkDecodeIfPresent(.expiration)
+        self.expirationProduction = try container.sdkDecodeIfPresent(.expirationProduction)
+        self.expirationCanceled = try container.sdkDecodeIfPresent(.expirationCanceled)
+        self.expirationErrored = try container.sdkDecodeIfPresent(.expirationErrored)
+        self.keepCurrentRetention = try container.sdkDecodeIfPresent(.keepCurrentRetention)
+        self.acknowledgeStorageBilling = try container.sdkDecodeIfPresent(.acknowledgeStorageBilling)
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultExpirationSettings {
-    init(
-        expiration: UpdateTeamsRequestBodyDefaultExpirationSettingsExpiration? = nil,
-        expirationProduction: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction? = nil,
-        expirationCanceled: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled? = nil,
-        expirationErrored: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored? = nil,
-        keepCurrentRetention: Bool? = nil,
-        acknowledgeStorageBilling: Bool? = nil
-    ) {
+extension UpdateTeamsRequestBodyDefaultExpirationSettings {
+    public init(expiration: UpdateTeamsRequestBodyDefaultExpirationSettingsExpiration? = nil, expirationProduction: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction? = nil, expirationCanceled: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled? = nil, expirationErrored: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored? = nil, keepCurrentRetention: Bool? = nil, acknowledgeStorageBilling: Bool? = nil) {
         self.init()
         (self.expiration, self.expirationProduction) = (expiration, expirationProduction)
         (self.expirationCanceled, self.expirationErrored) = (expirationCanceled, expirationErrored)
@@ -87,19 +74,19 @@ public struct GetTeamAccessRequestResponseBitbucket: Codable {
     }
 
     init() {
-        login = nil
+        self.login = nil
     }
 }
 
-public extension GetTeamAccessRequestResponseBitbucket {
-    init(from decoder: Decoder) throws {
+extension GetTeamAccessRequestResponseBitbucket {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        login = try container.sdkDecodeIfPresent(.login)
+        self.login = try container.sdkDecodeIfPresent(.login)
     }
 }
 
-public extension GetTeamAccessRequestResponseBitbucket {
-    init(login: String? = nil) {
+extension GetTeamAccessRequestResponseBitbucket {
+    public init(login: String? = nil) {
         self.init()
         self.login = login
     }
@@ -134,39 +121,26 @@ public struct RequestAccessToTeamRequestBodyJoinedFrom: Codable {
         case gitUserLogin
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RequestAccessToTeamRequestBodyJoinedFrom {
-    init(from decoder: Decoder) throws {
+extension RequestAccessToTeamRequestBodyJoinedFrom {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.origin) else {
-            throw SdkValidationError(
-                field: "origin",
-                code: "required",
-                message: "Validation failed for 'origin': value is required"
-            )
+            throw SdkValidationError(field: "origin", code: "required", message: "Validation failed for 'origin': value is required")
         }
-        origin = try container.sdkDecodeRequired(.origin)
-        commitId = try container.sdkDecodeIfPresent(.commitId)
-        repoId = try container.sdkDecodeIfPresent(.repoId)
-        repoPath = try container.sdkDecodeIfPresent(.repoPath)
-        gitUserId = try container.sdkDecodeIfPresent(.gitUserId)
-        gitUserLogin = try container.sdkDecodeIfPresent(.gitUserLogin)
+        self.origin = try container.sdkDecodeRequired(.origin)
+        self.commitId = try container.sdkDecodeIfPresent(.commitId)
+        self.repoId = try container.sdkDecodeIfPresent(.repoId)
+        self.repoPath = try container.sdkDecodeIfPresent(.repoPath)
+        self.gitUserId = try container.sdkDecodeIfPresent(.gitUserId)
+        self.gitUserLogin = try container.sdkDecodeIfPresent(.gitUserLogin)
     }
 }
 
-public extension RequestAccessToTeamRequestBodyJoinedFrom {
-    init(
-        origin: RequestAccessToTeamRequestBodyJoinedFromOrigin,
-        commitId: String? = nil,
-        repoId: String? = nil,
-        repoPath: String? = nil,
-        gitUserId: RequestAccessToTeamRequestBodyJoinedFromGitUserId? = nil,
-        gitUserLogin: String? = nil
-    ) {
+extension RequestAccessToTeamRequestBodyJoinedFrom {
+    public init(origin: RequestAccessToTeamRequestBodyJoinedFromOrigin, commitId: String? = nil, repoId: String? = nil, repoPath: String? = nil, gitUserId: RequestAccessToTeamRequestBodyJoinedFromGitUserId? = nil, gitUserLogin: String? = nil) {
         (self.origin, self.commitId) = (origin, commitId)
         (self.repoId, self.repoPath) = (repoId, repoPath)
         (self.gitUserId, self.gitUserLogin) = (gitUserId, gitUserLogin)
@@ -179,32 +153,22 @@ public indirect enum GetTeamMembersResponseMembersItemJoinedFromGitUserId {
 }
 
 extension GetTeamMembersResponseMembersItemJoinedFromGitUserId: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetTeamMembersResponseMembersItemJoinedFromGitUserId"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetTeamMembersResponseMembersItemJoinedFromGitUserId")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetTeamMembersResponseMembersItemJoinedFromGitUserId {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -238,27 +202,21 @@ public struct UpdateTeamsRequestBodyStrictConnectors: Codable {
         case enabled
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateTeamsRequestBodyStrictConnectors {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamsRequestBodyStrictConnectors {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
     }
 }
 
-public extension UpdateTeamsRequestBodyStrictConnectors {
-    init(enabled: Bool) {
+extension UpdateTeamsRequestBodyStrictConnectors {
+    public init(enabled: Bool) {
         self.enabled = enabled
     }
 }
@@ -291,49 +249,31 @@ public struct GetTeamMembersResponseMembersItemJoinedFrom: Codable {
         case ssoUserId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetTeamMembersResponseMembersItemJoinedFrom {
-    init(from decoder: Decoder) throws {
+extension GetTeamMembersResponseMembersItemJoinedFrom {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.origin) else {
-            throw SdkValidationError(
-                field: "origin",
-                code: "required",
-                message: "Validation failed for 'origin': value is required"
-            )
+            throw SdkValidationError(field: "origin", code: "required", message: "Validation failed for 'origin': value is required")
         }
-        origin = try container.sdkDecodeRequired(.origin)
-        commitId = try container.sdkDecodeIfPresent(.commitId)
-        dsyncConnectedAt = try container.sdkDecodeIfPresent(.dsyncConnectedAt)
-        dsyncUserId = try container.sdkDecodeIfPresent(.dsyncUserId)
-        gitUserId = try container.sdkDecodeIfPresent(.gitUserId)
-        gitUserLogin = try container.sdkDecodeIfPresent(.gitUserLogin)
-        idpUserId = try container.sdkDecodeIfPresent(.idpUserId)
-        repoId = try container.sdkDecodeIfPresent(.repoId)
-        repoPath = try container.sdkDecodeIfPresent(.repoPath)
-        ssoConnectedAt = try container.sdkDecodeIfPresent(.ssoConnectedAt)
-        ssoUserId = try container.sdkDecodeIfPresent(.ssoUserId)
+        self.origin = try container.sdkDecodeRequired(.origin)
+        self.commitId = try container.sdkDecodeIfPresent(.commitId)
+        self.dsyncConnectedAt = try container.sdkDecodeIfPresent(.dsyncConnectedAt)
+        self.dsyncUserId = try container.sdkDecodeIfPresent(.dsyncUserId)
+        self.gitUserId = try container.sdkDecodeIfPresent(.gitUserId)
+        self.gitUserLogin = try container.sdkDecodeIfPresent(.gitUserLogin)
+        self.idpUserId = try container.sdkDecodeIfPresent(.idpUserId)
+        self.repoId = try container.sdkDecodeIfPresent(.repoId)
+        self.repoPath = try container.sdkDecodeIfPresent(.repoPath)
+        self.ssoConnectedAt = try container.sdkDecodeIfPresent(.ssoConnectedAt)
+        self.ssoUserId = try container.sdkDecodeIfPresent(.ssoUserId)
     }
 }
 
-public extension GetTeamMembersResponseMembersItemJoinedFrom {
-    init(
-        origin: GetTeamMembersResponseMembersItemJoinedFromOrigin,
-        commitId: String? = nil,
-        dsyncConnectedAt: Double? = nil,
-        dsyncUserId: String? = nil,
-        gitUserId: GetTeamMembersResponseMembersItemJoinedFromGitUserId? = nil,
-        gitUserLogin: String? = nil,
-        idpUserId: String? = nil,
-        repoId: String? = nil,
-        repoPath: String? = nil,
-        ssoConnectedAt: Double? = nil,
-        ssoUserId: String? = nil
-    ) {
+extension GetTeamMembersResponseMembersItemJoinedFrom {
+    public init(origin: GetTeamMembersResponseMembersItemJoinedFromOrigin, commitId: String? = nil, dsyncConnectedAt: Double? = nil, dsyncUserId: String? = nil, gitUserId: GetTeamMembersResponseMembersItemJoinedFromGitUserId? = nil, gitUserLogin: String? = nil, idpUserId: String? = nil, repoId: String? = nil, repoPath: String? = nil, ssoConnectedAt: Double? = nil, ssoUserId: String? = nil) {
         (self.origin, self.commitId) = (origin, commitId)
         (self.dsyncConnectedAt, self.dsyncUserId) = (dsyncConnectedAt, dsyncUserId)
         (self.gitUserId, self.gitUserLogin) = (gitUserId, gitUserLogin)
@@ -352,19 +292,19 @@ public struct GetTeamAccessRequestResponseGitlab: Codable {
     }
 
     init() {
-        login = nil
+        self.login = nil
     }
 }
 
-public extension GetTeamAccessRequestResponseGitlab {
-    init(from decoder: Decoder) throws {
+extension GetTeamAccessRequestResponseGitlab {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        login = try container.sdkDecodeIfPresent(.login)
+        self.login = try container.sdkDecodeIfPresent(.login)
     }
 }
 
-public extension GetTeamAccessRequestResponseGitlab {
-    init(login: String? = nil) {
+extension GetTeamAccessRequestResponseGitlab {
+    public init(login: String? = nil) {
         self.init()
         self.login = login
     }
@@ -391,78 +331,43 @@ public struct RequestAccessToTeamResponse: Codable {
         case joinedFrom
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RequestAccessToTeamResponse {
-    init(from decoder: Decoder) throws {
+extension RequestAccessToTeamResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.bitbucket) else {
-            throw SdkValidationError(
-                field: "bitbucket",
-                code: "required",
-                message: "Validation failed for 'bitbucket': value is required"
-            )
+            throw SdkValidationError(field: "bitbucket", code: "required", message: "Validation failed for 'bitbucket': value is required")
         }
         guard container.contains(.confirmed) else {
-            throw SdkValidationError(
-                field: "confirmed",
-                code: "required",
-                message: "Validation failed for 'confirmed': value is required"
-            )
+            throw SdkValidationError(field: "confirmed", code: "required", message: "Validation failed for 'confirmed': value is required")
         }
         guard container.contains(.github) else {
-            throw SdkValidationError(
-                field: "github",
-                code: "required",
-                message: "Validation failed for 'github': value is required"
-            )
+            throw SdkValidationError(field: "github", code: "required", message: "Validation failed for 'github': value is required")
         }
         guard container.contains(.gitlab) else {
-            throw SdkValidationError(
-                field: "gitlab",
-                code: "required",
-                message: "Validation failed for 'gitlab': value is required"
-            )
+            throw SdkValidationError(field: "gitlab", code: "required", message: "Validation failed for 'gitlab': value is required")
         }
         guard container.contains(.teamName) else {
-            throw SdkValidationError(
-                field: "teamName",
-                code: "required",
-                message: "Validation failed for 'teamName': value is required"
-            )
+            throw SdkValidationError(field: "teamName", code: "required", message: "Validation failed for 'teamName': value is required")
         }
         guard container.contains(.teamSlug) else {
-            throw SdkValidationError(
-                field: "teamSlug",
-                code: "required",
-                message: "Validation failed for 'teamSlug': value is required"
-            )
+            throw SdkValidationError(field: "teamSlug", code: "required", message: "Validation failed for 'teamSlug': value is required")
         }
-        bitbucket = try container.sdkDecodeNullable(.bitbucket)
-        confirmed = try container.sdkDecodeRequired(.confirmed)
-        github = try container.sdkDecodeNullable(.github)
-        gitlab = try container.sdkDecodeNullable(.gitlab)
-        teamName = try container.sdkDecodeRequired(.teamName)
-        teamSlug = try container.sdkDecodeRequired(.teamSlug)
-        accessRequestedAt = try container.sdkDecodeIfPresent(.accessRequestedAt)
-        joinedFrom = try container.sdkDecodeIfPresent(.joinedFrom)
+        self.bitbucket = try container.sdkDecodeNullable(.bitbucket)
+        self.confirmed = try container.sdkDecodeRequired(.confirmed)
+        self.github = try container.sdkDecodeNullable(.github)
+        self.gitlab = try container.sdkDecodeNullable(.gitlab)
+        self.teamName = try container.sdkDecodeRequired(.teamName)
+        self.teamSlug = try container.sdkDecodeRequired(.teamSlug)
+        self.accessRequestedAt = try container.sdkDecodeIfPresent(.accessRequestedAt)
+        self.joinedFrom = try container.sdkDecodeIfPresent(.joinedFrom)
     }
 }
 
-public extension RequestAccessToTeamResponse {
-    init(
-        bitbucket: RequestAccessToTeamResponseBitbucket?,
-        confirmed: Bool,
-        github: RequestAccessToTeamResponseGithub?,
-        gitlab: RequestAccessToTeamResponseGitlab?,
-        teamName: String,
-        teamSlug: String,
-        accessRequestedAt: Double? = nil,
-        joinedFrom: RequestAccessToTeamResponseJoinedFrom? = nil
-    ) {
+extension RequestAccessToTeamResponse {
+    public init(bitbucket: RequestAccessToTeamResponseBitbucket?, confirmed: Bool, github: RequestAccessToTeamResponseGithub?, gitlab: RequestAccessToTeamResponseGitlab?, teamName: String, teamSlug: String, accessRequestedAt: Double? = nil, joinedFrom: RequestAccessToTeamResponseJoinedFrom? = nil) {
         (self.bitbucket, self.confirmed) = (bitbucket, confirmed)
         (self.github, self.gitlab) = (github, gitlab)
         (self.teamName, self.teamSlug) = (teamName, teamSlug)
@@ -483,38 +388,28 @@ public struct UpdateTeamMemberRequestBodyProjectsItem: Codable {
         case role
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateTeamMemberRequestBodyProjectsItem {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamMemberRequestBodyProjectsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(
-                field: "role",
-                code: "required",
-                message: "Validation failed for 'role': value is required"
-            )
+            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
         }
-        projectId = try container.sdkDecodeRequired(.projectId)
-        role = try container.sdkDecodeNullable(.role)
-        try validateLength("projectId", projectId, min: nil, max: 256)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.role = try container.sdkDecodeNullable(.role)
+            try validateLength("projectId", self.projectId, min: nil, max: 256)
     }
 }
 
-public extension UpdateTeamMemberRequestBodyProjectsItem {
-    init(projectId: String, role: UpdateTeamMemberRequestBodyProjectsItemRole?) throws {
+extension UpdateTeamMemberRequestBodyProjectsItem {
+    public init(projectId: String, role: UpdateTeamMemberRequestBodyProjectsItemRole?) throws {
         (self.projectId, self.role) = (projectId, role)
-        try validateLength("projectId", self.projectId, min: nil, max: 256)
+            try validateLength("projectId", self.projectId, min: nil, max: 256)
     }
 }
 
@@ -524,32 +419,22 @@ public indirect enum RequestAccessToTeamResponseJoinedFromGitUserId {
 }
 
 extension RequestAccessToTeamResponseJoinedFromGitUserId: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for RequestAccessToTeamResponseJoinedFromGitUserId"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RequestAccessToTeamResponseJoinedFromGitUserId")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension RequestAccessToTeamResponseJoinedFromGitUserId {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -591,22 +476,22 @@ public struct CreateTeamRequestBodyAttributionUtm: Codable {
     }
 
     init() {
-        (utmSource, utmMedium, utmCampaign, utmTerm) = (nil, nil, nil, nil)
+        (self.utmSource, self.utmMedium, self.utmCampaign, self.utmTerm) = (nil, nil, nil, nil)
     }
 }
 
-public extension CreateTeamRequestBodyAttributionUtm {
-    init(from decoder: Decoder) throws {
+extension CreateTeamRequestBodyAttributionUtm {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        utmSource = try container.sdkDecodeIfPresent(.utmSource)
-        utmMedium = try container.sdkDecodeIfPresent(.utmMedium)
-        utmCampaign = try container.sdkDecodeIfPresent(.utmCampaign)
-        utmTerm = try container.sdkDecodeIfPresent(.utmTerm)
+        self.utmSource = try container.sdkDecodeIfPresent(.utmSource)
+        self.utmMedium = try container.sdkDecodeIfPresent(.utmMedium)
+        self.utmCampaign = try container.sdkDecodeIfPresent(.utmCampaign)
+        self.utmTerm = try container.sdkDecodeIfPresent(.utmTerm)
     }
 }
 
-public extension CreateTeamRequestBodyAttributionUtm {
-    init(utmSource: String? = nil, utmMedium: String? = nil, utmCampaign: String? = nil, utmTerm: String? = nil) {
+extension CreateTeamRequestBodyAttributionUtm {
+    public init(utmSource: String? = nil, utmMedium: String? = nil, utmCampaign: String? = nil, utmTerm: String? = nil) {
         self.init()
         (self.utmSource, self.utmMedium) = (utmSource, utmMedium)
         (self.utmCampaign, self.utmTerm) = (utmCampaign, utmTerm)
@@ -622,6 +507,6 @@ public struct GetTeamAccessRequestResponseGithub: Codable {
     }
 
     init() {
-        login = nil
+        self.login = nil
     }
 }

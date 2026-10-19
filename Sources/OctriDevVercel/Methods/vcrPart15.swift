@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Downloads a blob from a Docker Registry repository by its content-addressable digest. Supply the team, project,
-    /// repository, and digest as path components to identify the blob. The digest must use an algorithm followed by a
-    /// colon and hexadecimal value.
+extension VcrMethods {
+    /// Downloads a blob from a Docker Registry repository by its content-addressable digest. Supply the team, project, repository, and digest as path components to identify the blob. The digest must use an algorithm followed by a colon and hexadecimal value.
     ///
     /// GET /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Fetch a blob by digest.
     ///
@@ -18,14 +16,7 @@ public extension VcrMethods {
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - digest: Content-addressable digest (algorithm:hex).
-    static func getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
-        config: ClientConfig,
-        teamSlug: String,
-        projectSlug: String,
-        repositoryName: String,
-        digest: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, digest: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -38,22 +29,6 @@ public extension VcrMethods {
         try validateLength("digest", digest, max: 255)
         try sdkValidatePattern("digest", digest, sdkPatternf55d8ca4ed38)
 
-        return try await (sdkRequest(
-            "GET",
-            [
-                "/v2/",
-                sdkEncodePathSegment(sdkWireString(teamSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(projectSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(repositoryName)),
-                "/blobs/",
-                sdkEncodePathSegment(sdkWireString(digest)),
-            ].joined(),
-            config: config,
-            decoder: .empty,
-            operationId: "getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/blobs/", sdkEncodePathSegment(sdkWireString(digest))].joined(), config: config, decoder: .empty, operationId: "getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest", options: requestOptions)).data
     }
 }

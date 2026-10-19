@@ -103,60 +103,39 @@ public struct SdkHttpError: SdkError, LocalizedError {
     /// status (`404`), then its range (`4XX`), then `default`.
     static func decodeData(statusCode: Int, body: Data, errors: [String: any Decodable.Type]) -> (any Decodable)? {
         let status = String(statusCode)
-        guard let model = errors[status] ?? errors["\(status.prefix(1))XX"] ?? errors["default"] else {
-            return nil
-        }
+        guard let model = errors[status] ?? errors["\(status.prefix(1))XX"] ?? errors["default"] else { return nil }
         return try? sdkJsonDecoder().decode(model, from: body)
     }
 
     public var errorDescription: String? {
-        let status = "HTTP \(statusCode)" +
-            (statusText.trimmingCharacters(in: .whitespacesAndNewlines)
-                .isEmpty ? "" : " \(statusText.trimmingCharacters(in: .whitespacesAndNewlines))")
-        guard let detail = Self.errorDetail(body: body, headers: headers) else {
-            return status
-        }
+        let status = "HTTP \(statusCode)" + (statusText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "" : " \(statusText.trimmingCharacters(in: .whitespacesAndNewlines))")
+        guard let detail = Self.errorDetail(body: body, headers: headers) else { return status }
         return "\(status): \(detail)"
     }
 
     private static func errorDetail(body: Data, headers: [String: String]) -> String? {
-        guard !body.isEmpty, let text = String(data: body, encoding: .utf8) else {
-            return nil
-        }
+        guard !body.isEmpty, let text = String(data: body, encoding: .utf8) else { return nil }
         if let json = try? JSONSerialization.jsonObject(with: body) {
-            guard let object = json as? [String: Any] else {
-                return nil
-            }
+            guard let object = json as? [String: Any] else { return nil }
             let error = object["error"]
             let nestedError = error as? [String: Any]
             let detail = [object["message"], object["detail"], nestedError?["message"], nestedError?["detail"], error]
                 .compactMap { $0 as? String }
                 .first
-            guard let detail else {
-                return nil
-            }
+            guard let detail else { return nil }
             return normalizeDetail(detail)
         }
 
         let contentType = headers.first { $0.key.caseInsensitiveCompare("content-type") == .orderedSame }?.value ?? ""
-        let mediaType = contentType.split(separator: ";", maxSplits: 1).first
-            .map { $0.trimmingCharacters(in: .whitespaces).lowercased() } ?? ""
-        guard mediaType.isEmpty || mediaType.hasPrefix("text/") else {
-            return nil
-        }
+        let mediaType = contentType.split(separator: ";", maxSplits: 1).first.map { $0.trimmingCharacters(in: .whitespaces).lowercased() } ?? ""
+        guard mediaType.isEmpty || mediaType.hasPrefix("text/") else { return nil }
         return normalizeDetail(text)
     }
 
     private static func normalizeDetail(_ value: String) -> String? {
         let normalized = value.split(whereSeparator: \.isWhitespace).joined(separator: " ")
         guard !normalized.isEmpty,
-              !normalized.unicodeScalars
-              .contains(where: {
-                  $0.properties.generalCategory == .control || $0.properties.generalCategory == .surrogate
-              })
-        else {
-            return nil
-        }
+              !normalized.unicodeScalars.contains(where: { $0.properties.generalCategory == .control || $0.properties.generalCategory == .surrogate }) else { return nil }
         let prefix = String(normalized.unicodeScalars.prefix(512))
         return normalized.unicodeScalars.count > 512 ? prefix + "…" : prefix
     }
@@ -179,15 +158,15 @@ public enum SdkHttpErrorKind {
 public extension SdkHttpError {
     var kind: SdkHttpErrorKind {
         switch statusCode {
-        case 400: .badRequest
-        case 401: .unauthorized
-        case 403: .permissionDenied
-        case 404: .notFound
-        case 409: .conflict
-        case 422: .unprocessableEntity
-        case 429: .rateLimit
-        case 500...: .internalServer
-        default: .other
+        case 400: return .badRequest
+        case 401: return .unauthorized
+        case 403: return .permissionDenied
+        case 404: return .notFound
+        case 409: return .conflict
+        case 422: return .unprocessableEntity
+        case 429: return .rateLimit
+        case 500...: return .internalServer
+        default: return .other
         }
     }
 

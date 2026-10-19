@@ -6,22 +6,16 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfcf8198a90: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfcf8198a90: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let create =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfcf8198a90(rawValue: "create")
-    public static let update =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfcf8198a90(rawValue: "update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfcf8198a90(rawValue: "create")
+    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfcf8198a90(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -30,24 +24,18 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfcf8
     }
 }
 
-public struct PutFirewallConfigResponseActiveRulesetsVariant0ItemActionMitiXc9dbac7218: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct PutFirewallConfigResponseActiveRulesetsVariant0ItemActionMitiXc9dbac7218: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let challenge =
-        PutFirewallConfigResponseActiveRulesetsVariant0ItemActionMitiXc9dbac7218(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let challenge = PutFirewallConfigResponseActiveRulesetsVariant0ItemActionMitiXc9dbac7218(rawValue: "challenge")
     public static let deny = PutFirewallConfigResponseActiveRulesetsVariant0ItemActionMitiXc9dbac7218(rawValue: "deny")
     public static let log = PutFirewallConfigResponseActiveRulesetsVariant0ItemActionMitiXc9dbac7218(rawValue: "log")
-    public static let rateLimit =
-        PutFirewallConfigResponseActiveRulesetsVariant0ItemActionMitiXc9dbac7218(rawValue: "rate_limit")
+    public static let rateLimit = PutFirewallConfigResponseActiveRulesetsVariant0ItemActionMitiXc9dbac7218(rawValue: "rate_limit")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -56,19 +44,15 @@ public struct PutFirewallConfigResponseActiveRulesetsVariant0ItemActionMitiXc9db
     }
 }
 
-public struct ListProjectsResponseVariant1ProjectsItemTargetsValueType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListProjectsResponseVariant1ProjectsItemTargetsValueType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let lambdas = ListProjectsResponseVariant1ProjectsItemTargetsValueType(rawValue: "LAMBDAS")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -78,21 +62,17 @@ public struct ListProjectsResponseVariant1ProjectsItemTargetsValueType: RawRepre
 }
 
 /// environments this env variable targets
-public struct UpdateSharedEnvVariableResponseUpdatedItemTargetItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateSharedEnvVariableResponseUpdatedItemTargetItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = UpdateSharedEnvVariableResponseUpdatedItemTargetItem(rawValue: "development")
     public static let preview = UpdateSharedEnvVariableResponseUpdatedItemTargetItem(rawValue: "preview")
     public static let production = UpdateSharedEnvVariableResponseUpdatedItemTargetItem(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -118,24 +98,18 @@ public enum GetVercelCiInvocationTreeResponseInvocationStatusVariant4: String, C
     }
 }
 
-public struct DeleteProjectAvatarResponseSsoProtectionDeploymentType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct DeleteProjectAvatarResponseSsoProtectionDeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let all = DeleteProjectAvatarResponseSsoProtectionDeploymentType(rawValue: "all")
-    public static let allExceptCustomDomains =
-        DeleteProjectAvatarResponseSsoProtectionDeploymentType(rawValue: "all_except_custom_domains")
+    public static let allExceptCustomDomains = DeleteProjectAvatarResponseSsoProtectionDeploymentType(rawValue: "all_except_custom_domains")
     public static let preview = DeleteProjectAvatarResponseSsoProtectionDeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews =
-        DeleteProjectAvatarResponseSsoProtectionDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let prodDeploymentUrlsAndAllPreviews = DeleteProjectAvatarResponseSsoProtectionDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -145,20 +119,16 @@ public struct DeleteProjectAvatarResponseSsoProtectionDeploymentType: RawReprese
 }
 
 /// What to do when the gate trips: pause the rollout, or roll it back.
-public struct ListProjectsResponseVariant2ProjectsItemRollingReleaseGateAction: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemRollingReleaseGateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let pause = ListProjectsResponseVariant2ProjectsItemRollingReleaseGateAction(rawValue: "pause")
     public static let rollback = ListProjectsResponseVariant2ProjectsItemRollingReleaseGateAction(rawValue: "rollback")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -167,84 +137,48 @@ public struct ListProjectsResponseVariant2ProjectsItemRollingReleaseGateAction: 
     }
 }
 
-public struct GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let botCategory =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "bot_category")
-    public static let botName =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "bot_name")
-    public static let botProtection =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "bot_protection")
-    public static let botStatus =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "bot_status")
-    public static let cookie =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "cookie")
-    public static let domainEnvironment =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "domain_environment")
-    public static let environment =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "environment")
-    public static let geoAsNumber =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_as_number")
-    public static let geoCity =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_city")
-    public static let geoContinent =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_continent")
-    public static let geoCountry =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_country")
-    public static let geoCountryRegion =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_country_region")
-    public static let header =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "header")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let botCategory = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "bot_category")
+    public static let botName = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "bot_name")
+    public static let botProtection = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "bot_protection")
+    public static let botStatus = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "bot_status")
+    public static let cookie = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "cookie")
+    public static let domainEnvironment = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "domain_environment")
+    public static let environment = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "environment")
+    public static let geoAsNumber = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_as_number")
+    public static let geoCity = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_city")
+    public static let geoContinent = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_continent")
+    public static let geoCountry = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_country")
+    public static let geoCountryRegion = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "geo_country_region")
+    public static let header = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "header")
     public static let host = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "host")
-    public static let ipAddress =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "ip_address")
-    public static let ja3Digest =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "ja3_digest")
-    public static let ja4Digest =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "ja4_digest")
-    public static let method =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "method")
+    public static let ipAddress = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "ip_address")
+    public static let ja3Digest = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "ja3_digest")
+    public static let ja4Digest = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "ja4_digest")
+    public static let method = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "method")
     public static let path = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "path")
-    public static let `protocol` =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "protocol")
-    public static let query =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "query")
-    public static let rateLimitApiId =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "rate_limit_api_id")
-    public static let rawPath =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "raw_path")
-    public static let region =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "region")
-    public static let responseCode =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "response_code")
-    public static let route =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "route")
-    public static let ruleset =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "ruleset")
-    public static let scheme =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "scheme")
-    public static let serverAction =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "server_action")
-    public static let sharedCondition =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "shared_condition")
-    public static let targetPath =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "target_path")
-    public static let trafficSource =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "traffic_source")
-    public static let trustedSource =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "trusted_source")
-    public static let userAgent =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "user_agent")
+    public static let `protocol` = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "protocol")
+    public static let query = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "query")
+    public static let rateLimitApiId = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "rate_limit_api_id")
+    public static let rawPath = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "raw_path")
+    public static let region = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "region")
+    public static let responseCode = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "response_code")
+    public static let route = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "route")
+    public static let ruleset = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "ruleset")
+    public static let scheme = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "scheme")
+    public static let serverAction = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "server_action")
+    public static let sharedCondition = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "shared_condition")
+    public static let targetPath = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "target_path")
+    public static let trafficSource = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "traffic_source")
+    public static let trustedSource = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "trusted_source")
+    public static let userAgent = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f50e097f(rawValue: "user_agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -253,21 +187,17 @@ public struct GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0Xc7f5
     }
 }
 
-public struct EditProjectEnvResponseTargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct EditProjectEnvResponseTargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = EditProjectEnvResponseTargetVariant0Item(rawValue: "development")
     public static let preview = EditProjectEnvResponseTargetVariant0Item(rawValue: "preview")
     public static let production = EditProjectEnvResponseTargetVariant0Item(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

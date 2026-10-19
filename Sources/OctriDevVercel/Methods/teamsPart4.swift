@@ -6,41 +6,22 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension TeamsMethods {
-    /// Joins the authenticated user to a team using the team identifier and, when applicable, an invite code. Include
-    /// `inviteCode` in the request body when joining with a code. The response identifies the team the user joined and
-    /// the source of the join.
+extension TeamsMethods {
+    /// Joins the authenticated user to a team using the team identifier and, when applicable, an invite code. Include `inviteCode` in the request body when joining with a code. The response identifies the team the user joined and the source of the join.
     ///
     /// Join a team with a provided invite code or team ID.
     ///
     /// - Parameters:
     /// - inviteCode: The invite code to join the team.
-    static func joinTeam(
-        config: ClientConfig,
-        teamId: String,
-        inviteCode: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> JoinTeamResponse {
+    public static func joinTeam(config: ClientConfig, teamId: String, inviteCode: String? = nil, requestOptions: RequestOptions? = nil) async throws -> JoinTeamResponse {
         let requestBody = JoinTeamRequestBody(inviteCode: inviteCode)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/members/teams/join"].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .json,
-            operationId: "joinTeam",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/members/teams/join"].joined(), config: config, body: requestBody, decoder: .json, operationId: "joinTeam", options: requestOptions)).data
     }
 
-    /// Updates a member's membership on the specified team, including their team role, permissions, or project roles.
-    /// You can also confirm an unconfirmed member by setting `confirmed` to `true`. The authenticated user must be a
-    /// team owner, except when disconnecting their own SAML connection.
+    /// Updates a member's membership on the specified team, including their team role, permissions, or project roles. You can also confirm an unconfirmed member by setting `confirmed` to `true`. The authenticated user must be a team owner, except when disconnecting their own SAML connection.
     ///
-    /// Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the
-    /// member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an
-    /// `OWNER` of the Team.
+    /// Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an `OWNER` of the Team.
     ///
     /// - Parameters:
     /// - uid: The ID of the member.
@@ -48,38 +29,9 @@ public extension TeamsMethods {
     /// - role: The role in the team of the member.
     /// - teamPermissions: The team permissions to set for the member. Permissions
     ///   must be compatible with the team roles assigned to the member.
-    static func updateTeamMember(
-        config: ClientConfig,
-        uid: String,
-        teamId: String,
-        confirmed: Bool? = nil,
-        role: String? = nil,
-        teamPermissions: [UpdateTeamMemberRequestBodyTeamPermissionsItem]? = nil,
-        projects: [UpdateTeamMemberRequestBodyProjectsItem]? = nil,
-        joinedFrom: UpdateTeamMemberRequestBodyJoinedFrom? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateTeamMemberResponse {
-        let requestBody = UpdateTeamMemberRequestBody(
-            confirmed: confirmed,
-            role: role,
-            teamPermissions: teamPermissions,
-            projects: projects,
-            joinedFrom: joinedFrom
-        )
+    public static func updateTeamMember(config: ClientConfig, uid: String, teamId: String, confirmed: Bool? = nil, role: String? = nil, teamPermissions: [UpdateTeamMemberRequestBodyTeamPermissionsItem]? = nil, projects: [UpdateTeamMemberRequestBodyProjectsItem]? = nil, joinedFrom: UpdateTeamMemberRequestBodyJoinedFrom? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateTeamMemberResponse {
+        let requestBody = UpdateTeamMemberRequestBody(confirmed: confirmed, role: role, teamPermissions: teamPermissions, projects: projects, joinedFrom: joinedFrom)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v1/teams/",
-                sdkEncodePathSegment(sdkWireString(teamId)),
-                "/members/",
-                sdkEncodePathSegment(sdkWireString(uid)),
-            ].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateTeamMember",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/members/", sdkEncodePathSegment(sdkWireString(uid))].joined(), config: config, body: requestBody, decoder: .json, operationId: "updateTeamMember", options: requestOptions)).data
     }
 }

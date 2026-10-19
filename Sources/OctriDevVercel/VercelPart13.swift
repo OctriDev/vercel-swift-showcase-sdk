@@ -9,205 +9,60 @@ public class ProjectRoutesNamespace {
         self.config = config
     }
 
-    /// Lists routing rules for a project, with options to search, filter by route type, or compare staged changes with
-    /// production. Use `q` to search by name, ID, or pattern, and `filter` to select a route type. Set `diff` to
-    /// compare changes; the response can include a diff count and version information.
+/// Lists routing rules for a project, with options to search, filter by route type, or compare staged changes with production. Use `q` to search by name, ID, or pattern, and `filter` to select a route type. Set `diff` to compare changes; the response can include a diff count and version information.
     ///
-    /// Get the routing rules for a project. Supports searching by name/ID/pattern, filtering by route type, and diffing
-    /// staged changes against production.
-    public func getRoutes(
-        projectId: String,
-        versionId: String? = nil,
-        q: String? = nil,
-        filter: GetRoutesParameter? = nil,
-        diff: GetRoutesParameterXd810af76? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRoutesResponse {
-        try await ProjectRoutesMethods.getRoutes(
-            config: config,
-            projectId: projectId,
-            versionId: versionId,
-            q: q,
-            filter: filter,
-            diff: diff,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Get the routing rules for a project. Supports searching by name/ID/pattern, filtering by route type, and diffing staged changes against production.
+    public func getRoutes(projectId: String, versionId: String? = nil, q: String? = nil, filter: GetRoutesParameter? = nil, diff: GetRoutesParameterXd810af76? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRoutesResponse {
+        return try await ProjectRoutesMethods.getRoutes(config: config, projectId: projectId, versionId: versionId, q: q, filter: filter, diff: diff, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Stages routing rules for a project and returns the new staged version. Set `overwrite` to replace all existing
-    /// rules; otherwise, submitted rules are merged with existing rules by ID. Each item in `routes` must include an
-    /// `id`, `name`, and route configuration with `src`.
+/// Stages routing rules for a project and returns the new staged version. Set `overwrite` to replace all existing rules; otherwise, submitted rules are merged with existing rules by ID. Each item in `routes` must include an `id`, `name`, and route configuration with `src`.
     ///
-    /// Stage routing rules for a project. Set `overwrite` to true to replace all existing rules, or omit it to merge
-    /// with existing rules by ID. Returns the new staged version.
-    public func stageRoutes(
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        overwrite: Bool? = nil,
-        routes: [StageRoutesRequestBodyRoutesItem]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> StageRoutesResponse {
-        try await ProjectRoutesMethods.stageRoutes(
-            config: config,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            overwrite: overwrite,
-            routes: routes,
-            requestOptions: requestOptions
-        )
+    /// Stage routing rules for a project. Set `overwrite` to true to replace all existing rules, or omit it to merge with existing rules by ID. Returns the new staged version.
+    public func stageRoutes(projectId: String, teamId: String? = nil, slug: String? = nil, overwrite: Bool? = nil, routes: [StageRoutesRequestBodyRoutesItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> StageRoutesResponse {
+        return try await ProjectRoutesMethods.stageRoutes(config: config, projectId: projectId, teamId: teamId, slug: slug, overwrite: overwrite, routes: routes, requestOptions: requestOptions)
     }
 
-    /// Adds a routing rule to a project and stages a new routing-rule version. Supply a `route` with its `name` and
-    /// route configuration; the route configuration must include `src`. Use `position` to choose where to insert the
-    /// rule, or omit it to add the rule at the end.
+/// Adds a routing rule to a project and stages a new routing-rule version. Supply a `route` with its `name` and route configuration; the route configuration must include `src`. Use `position` to choose where to insert the rule, or omit it to add the rule at the end.
     ///
-    /// Add a single routing rule to a project at a specified position. Defaults to the end of the list if no position
-    /// is provided. The route is enabled by default. Stages a new version with the added route.
-    public func addRoute(
-        projectId: String,
-        route: AddRouteRequestBodyRoute,
-        teamId: String? = nil,
-        slug: String? = nil,
-        position: AddRouteRequestBodyPosition? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AddRouteResponse {
-        try await ProjectRoutesMethods.addRoute(
-            config: config,
-            projectId: projectId,
-            route: route,
-            teamId: teamId,
-            slug: slug,
-            position: position,
-            requestOptions: requestOptions
-        )
+    /// Add a single routing rule to a project at a specified position. Defaults to the end of the list if no position is provided. The route is enabled by default. Stages a new version with the added route.
+    public func addRoute(projectId: String, route: AddRouteRequestBodyRoute, teamId: String? = nil, slug: String? = nil, position: AddRouteRequestBodyPosition? = nil, requestOptions: RequestOptions? = nil) async throws -> AddRouteResponse {
+        return try await ProjectRoutesMethods.addRoute(config: config, projectId: projectId, route: route, teamId: teamId, slug: slug, position: position, requestOptions: requestOptions)
     }
 
-    /// Deletes one or more routing rules from a project by ID and stages a new version with those rules removed. Supply
-    /// the IDs in `routeIds`; the array must contain at least one route ID. The response includes the number of deleted
-    /// rules and the staged version.
+/// Deletes one or more routing rules from a project by ID and stages a new version with those rules removed. Supply the IDs in `routeIds`; the array must contain at least one route ID. The response includes the number of deleted rules and the staged version.
     ///
     /// Delete one or more routing rules from a project by ID. Stages a new version with the routes removed.
-    public func deleteRoutes(
-        projectId: String,
-        routeIds: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteRoutesResponse {
-        try await ProjectRoutesMethods.deleteRoutes(
-            config: config,
-            projectId: projectId,
-            routeIds: routeIds,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func deleteRoutes(projectId: String, routeIds: [String], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteRoutesResponse {
+        return try await ProjectRoutesMethods.deleteRoutes(config: config, projectId: projectId, routeIds: routeIds, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates a routing rule in a project by replacing it or restoring its value from the current production version.
-    /// Supply `route` with the complete replacement rule, or set `restore` to restore the production value. The update
-    /// stages a new routing-rule version.
+/// Updates a routing rule in a project by replacing it or restoring its value from the current production version. Supply `route` with the complete replacement rule, or set `restore` to restore the production value. The update stages a new routing-rule version.
     ///
-    /// Replace a routing rule identified by its ID, or restore it from the current production version. Stages a new
-    /// version with the modified route.
-    public func editRoute(
-        projectId: String,
-        routeId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        route: EditRouteRequestBodyRoute? = nil,
-        restore: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> EditRouteResponse {
-        try await ProjectRoutesMethods.editRoute(
-            config: config,
-            projectId: projectId,
-            routeId: routeId,
-            teamId: teamId,
-            slug: slug,
-            route: route,
-            restore: restore,
-            requestOptions: requestOptions
-        )
+    /// Replace a routing rule identified by its ID, or restore it from the current production version. Stages a new version with the modified route.
+    public func editRoute(projectId: String, routeId: String, teamId: String? = nil, slug: String? = nil, route: EditRouteRequestBodyRoute? = nil, restore: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> EditRouteResponse {
+        return try await ProjectRoutesMethods.editRoute(config: config, projectId: projectId, routeId: routeId, teamId: teamId, slug: slug, route: route, restore: restore, requestOptions: requestOptions)
     }
 
-    /// Generates a suggested routing-rule configuration from a natural-language description. Provide the request in
-    /// `prompt`, which can be up to 2000 characters, and optionally include `currentRoute` as context. Review the
-    /// suggested route before saving it with a routing-rule operation.
+/// Generates a suggested routing-rule configuration from a natural-language description. Provide the request in `prompt`, which can be up to 2000 characters, and optionally include `currentRoute` as context. Review the suggested route before saving it with a routing-rule operation.
     ///
-    /// Generate a routing rule configuration from a natural language description. Returns a suggested route
-    /// configuration that can be reviewed and saved.
-    public func generateRoute(
-        projectId: String,
-        prompt: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        currentRoute: GenerateRouteRequestBodyCurrentRoute? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GenerateRouteResponse {
-        try await ProjectRoutesMethods.generateRoute(
-            config: config,
-            projectId: projectId,
-            prompt: prompt,
-            teamId: teamId,
-            slug: slug,
-            currentRoute: currentRoute,
-            requestOptions: requestOptions
-        )
+    /// Generate a routing rule configuration from a natural language description. Returns a suggested route configuration that can be reviewed and saved.
+    public func generateRoute(projectId: String, prompt: String, teamId: String? = nil, slug: String? = nil, currentRoute: GenerateRouteRequestBodyCurrentRoute? = nil, requestOptions: RequestOptions? = nil) async throws -> GenerateRouteResponse {
+        return try await ProjectRoutesMethods.generateRoute(config: config, projectId: projectId, prompt: prompt, teamId: teamId, slug: slug, currentRoute: currentRoute, requestOptions: requestOptions)
     }
 
-    /// Lists the version history for a project's routing rules. The results include the staging version, when one
-    /// exists, followed by production versions in descending recency. Use `isStaging` to identify the staged version
-    /// and `isLive` to identify the current production version.
+/// Lists the version history for a project's routing rules. The results include the staging version, when one exists, followed by production versions in descending recency. Use `isStaging` to identify the staged version and `isLive` to identify the current production version.
     ///
-    /// Get the version history for a project's routing rules. Returns the staging version (if one exists) followed by
-    /// production versions, most recent first. The staging version has `isStaging: true` and the current production
-    /// version has `isLive: true`.
-    public func getRouteVersions(
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRouteVersionsResponse {
-        try await ProjectRoutesMethods.getRouteVersions(
-            config: config,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Get the version history for a project's routing rules. Returns the staging version (if one exists) followed by production versions, most recent first. The staging version has `isStaging: true` and the current production version has `isLive: true`.
+    public func getRouteVersions(projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRouteVersionsResponse {
+        return try await ProjectRoutesMethods.getRouteVersions(config: config, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Promotes staged routing rules to production, restores an earlier production version, or discards staged changes.
-    /// Supply the version `id` and choose an `action` of `promote`, `restore`, or `discard`. The response returns the
-    /// resulting routing-rule version.
+/// Promotes staged routing rules to production, restores an earlier production version, or discards staged changes. Supply the version `id` and choose an `action` of `promote`, `restore`, or `discard`. The response returns the resulting routing-rule version.
     ///
-    /// Promote staged routing rules to production, restore a previous production version, or discard staged changes. -
-    /// `promote`: Publishes the staging version to production. - `restore`: Rolls back to a previous production
-    /// version. - `discard`: Removes the staging version without publishing.
-    public func updateRouteVersions(
-        projectId: String,
-        id: String,
-        action: UpdateRouteVersionsRequestBodyAction,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateRouteVersionsResponse {
-        try await ProjectRoutesMethods.updateRouteVersions(
-            config: config,
-            projectId: projectId,
-            id: id,
-            action: action,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Promote staged routing rules to production, restore a previous production version, or discard staged changes. - `promote`: Publishes the staging version to production. - `restore`: Rolls back to a previous production version. - `discard`: Removes the staging version without publishing.
+    public func updateRouteVersions(projectId: String, id: String, action: UpdateRouteVersionsRequestBodyAction, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateRouteVersionsResponse {
+        return try await ProjectRoutesMethods.updateRouteVersions(config: config, projectId: projectId, id: id, action: action, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -217,307 +72,117 @@ public class ProjectsNamespace {
         self.config = config
     }
 
-    /// Lists projects belonging to the authenticated user or a team, with pagination and filters for project updates,
-    /// repositories, configuration, and build settings. Use `from`, `since`, and `until` to filter by update time, or
-    /// `search` to match project names. The `teamId` or `slug` query parameter scopes the request to a team.
+/// Lists projects belonging to the authenticated user or a team, with pagination and filters for project updates, repositories, configuration, and build settings. Use `from`, `since`, and `until` to filter by update time, or `search` to match project names. The `teamId` or `slug` query parameter scopes the request to a team.
     ///
-    /// Allows to retrieve the list of projects of the authenticated user or team. The list will be paginated and the
-    /// provided query parameters allow filtering the returned projects.
-    public func list(
-        options: ProjectsMethods.ListProjectsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListProjectsResponse {
-        try await ProjectsMethods.listProjects(config: config, options: options, requestOptions: requestOptions)
+    /// Allows to retrieve the list of projects of the authenticated user or team. The list will be paginated and the provided query parameters allow filtering the returned projects.
+    public func list(options: ProjectsMethods.ListProjectsOptions, requestOptions: RequestOptions? = nil) async throws -> ListProjectsResponse {
+        return try await ProjectsMethods.listProjects(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Retrieves the OpenTelemetry trace associated with a Vercel CLI request. Provide the project identifier and
-    /// request identifier to locate the trace. The response includes the trace spans and identifier, and may include
-    /// resource data and a root span identifier.
+/// Retrieves the OpenTelemetry trace associated with a Vercel CLI request. Provide the project identifier and request identifier to locate the trace. The response includes the trace spans and identifier, and may include resource data and a root span identifier.
     ///
     /// Returns the OTEL trace for a given Vercel CLI request.
-    public func getTrace(
-        projectId: String,
-        requestId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetProjectTraceResponse {
-        try await ProjectsMethods.getProjectTrace(
-            config: config,
-            projectId: projectId,
-            requestId: requestId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getTrace(projectId: String, requestId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectTraceResponse {
+        return try await ProjectsMethods.getProjectTrace(config: config, projectId: projectId, requestId: requestId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates a project with a required `name` and optional settings for its framework, build commands, environment
-    /// variables, Git connection, and sandbox regions. Supply only the settings you want to configure; supported build
-    /// and install commands can be detected automatically when set to `null`. A 200 response returns the created
-    /// project object.
+/// Creates a project with a required `name` and optional settings for its framework, build commands, environment variables, Git connection, and sandbox regions. Supply only the settings you want to configure; supported build and install commands can be detected automatically when set to `null`. A 200 response returns the created project object.
     ///
-    /// Allows to create a new project with the provided configuration. It only requires the project `name` but more
-    /// configuration can be provided to override the defaults.
-    public func create(
-        options: ProjectsMethods.CreateProjectOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateProjectResponse {
-        try await ProjectsMethods.createProject(config: config, options: options, requestOptions: requestOptions)
+    /// Allows to create a new project with the provided configuration. It only requires the project `name` but more configuration can be provided to override the defaults.
+    public func create(options: ProjectsMethods.CreateProjectOptions, requestOptions: RequestOptions? = nil) async throws -> CreateProjectResponse {
+        return try await ProjectsMethods.createProject(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Creates an OIDC token for a project identified by its ID or name. Provide the project identifier and optionally
-    /// specify a `source` to identify what is calling the endpoint. The response contains the generated token.
+/// Creates an OIDC token for a project identified by its ID or name. Provide the project identifier and optionally specify a `source` to identify what is calling the endpoint. The response contains the generated token.
     ///
     /// Generates an OIDC token for the project and returns it.
-    public func getToken(
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        source: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetProjectTokenResponse {
-        try await ProjectsMethods.getProjectToken(
-            config: config,
-            idOrName: idOrName,
-            teamId: teamId,
-            slug: slug,
-            source: source,
-            requestOptions: requestOptions
-        )
+    public func getToken(idOrName: String, teamId: String? = nil, slug: String? = nil, source: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectTokenResponse {
+        return try await ProjectsMethods.getProjectToken(config: config, idOrName: idOrName, teamId: teamId, slug: slug, source: source, requestOptions: requestOptions)
     }
 
-    /// Creates a short-lived HS256 JWT scoped to a deployment hostname. Supply the project identifier and deployment
-    /// hostname in the request body to define the token scope. The Vercel CLI presents the token to the proxy with
-    /// requests it wants traced.
+/// Creates a short-lived HS256 JWT scoped to a deployment hostname. Supply the project identifier and deployment hostname in the request body to define the token scope. The Vercel CLI presents the token to the proxy with requests it wants traced.
     ///
-    /// Mints a short-lived HS256 JWT scoped to a deployment hostname. The Vercel CLI presents this JWT to the Vercel
-    /// proxy on requests it wants traced.
-    public func createTraceSession(
-        projectId: String,
-        hostname: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateTraceSessionResponse {
-        try await ProjectsMethods.createTraceSession(
-            config: config,
-            projectId: projectId,
-            hostname: hostname,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Mints a short-lived HS256 JWT scoped to a deployment hostname. The Vercel CLI presents this JWT to the Vercel proxy on requests it wants traced.
+    public func createTraceSession(projectId: String, hostname: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateTraceSessionResponse {
+        return try await ProjectsMethods.createTraceSession(config: config, projectId: projectId, hostname: hostname, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves project information using the project's ID or name. Use the `teamId` or `slug` query parameter to make
-    /// the request on behalf of a team.
+/// Retrieves project information using the project's ID or name. Use the `teamId` or `slug` query parameter to make the request on behalf of a team.
     ///
     /// Get the information for a specific project by passing either the project `id` or `name` in the URL.
-    public func get(
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetProjectsResponse {
-        try await ProjectsMethods.getProjects(
-            config: config,
-            idOrName: idOrName,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func get(idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectsResponse {
+        return try await ProjectsMethods.getProjects(config: config, idOrName: idOrName, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates configuration fields for a project identified by its ID or name. Submit the settings you want to change;
-    /// supported build and install commands can be set to `null` for automatic detection. The response contains the
-    /// updated project object.
+/// Updates configuration fields for a project identified by its ID or name. Submit the settings you want to change; supported build and install commands can be set to `null` for automatic detection. The response contains the updated project object.
     ///
     /// Update the fields of a project using either its `name` or `id`.
-    public func update(
-        options: ProjectsMethods.UpdateProjectOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateProjectResponse {
-        try await ProjectsMethods.updateProject(config: config, options: options, requestOptions: requestOptions)
+    public func update(options: ProjectsMethods.UpdateProjectOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateProjectResponse {
+        return try await ProjectsMethods.updateProject(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Deletes a project identified by its ID or name. Use the `teamId` or `slug` query parameter to make the request
-    /// on behalf of a team. A 204 response confirms the project was removed.
+/// Deletes a project identified by its ID or name. Use the `teamId` or `slug` query parameter to make the request on behalf of a team. A 204 response confirms the project was removed.
     ///
     /// Delete a specific project by passing either the project `id` or `name` in the URL.
-    public func delete(
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await ProjectsMethods.deleteProject(
-            config: config,
-            idOrName: idOrName,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func delete(idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await ProjectsMethods.deleteProject(config: config, idOrName: idOrName, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
-public extension ProjectsNamespace {
-    /// Uploads an image to use as the avatar for a project identified by its ID or name. Send the raw image bytes and
-    /// declare the image type with the `Content-Type` header; accepted formats are JPG, PNG, and SVG. SVG images are
-    /// sanitized and optimized before storage, and the response returns the updated project.
+extension ProjectsNamespace {
+/// Uploads an image to use as the avatar for a project identified by its ID or name. Send the raw image bytes and declare the image type with the `Content-Type` header; accepted formats are JPG, PNG, and SVG. SVG images are sanitized and optimized before storage, and the response returns the updated project.
     ///
-    /// Upload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a
-    /// JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized
-    /// server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value. The actual
-    /// upload pipeline (validation, sanitization, S3 write, conditional `updateProject`, and event emission) lives in
-    /// the shared `@api/project-avatar-upload` helper so it can be reused by background workers.
-    func uploadAvatar(
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        body: Data? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UploadProjectAvatarResponse {
-        try await ProjectsMethods.uploadProjectAvatar(
-            config: config,
-            idOrName: idOrName,
-            teamId: teamId,
-            slug: slug,
-            body: body,
-            requestOptions: requestOptions
-        )
+    /// Upload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value. The actual upload pipeline (validation, sanitization, S3 write, conditional `updateProject`, and event emission) lives in the shared `@api/project-avatar-upload` helper so it can be reused by background workers.
+    public func uploadAvatar(idOrName: String, teamId: String? = nil, slug: String? = nil, body: Data? = nil, requestOptions: RequestOptions? = nil) async throws -> UploadProjectAvatarResponse {
+        return try await ProjectsMethods.uploadProjectAvatar(config: config, idOrName: idOrName, teamId: teamId, slug: slug, body: body, requestOptions: requestOptions)
     }
 
-    /// Removes the avatar assignment from a project identified by its ID or name. This clears the project's avatar
-    /// field so a later production deployment can run avatar auto-detection again, but it does not delete the stored
-    /// image. The response returns the updated project.
+/// Removes the avatar assignment from a project identified by its ID or name. This clears the project's avatar field so a later production deployment can run avatar auto-detection again, but it does not delete the stored image. The response returns the updated project.
     ///
-    /// Remove the avatar of the project identified by `idOrName`. Deletes the chosen avatar field so the next
-    /// production deploy can run auto-detection again. Does not delete the stored image.
-    func deleteAvatar(
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteProjectAvatarResponse {
-        try await ProjectsMethods.deleteProjectAvatar(
-            config: config,
-            idOrName: idOrName,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Remove the avatar of the project identified by `idOrName`. Deletes the chosen avatar field so the next production deploy can run auto-detection again. Does not delete the stored image.
+    public func deleteAvatar(idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteProjectAvatarResponse {
+        return try await ProjectsMethods.deleteProjectAvatar(config: config, idOrName: idOrName, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists domains associated with a project. Use the query parameters to filter by environment, branch, redirect, or
-    /// verification status, and to control the result limit and sort order.
+/// Lists domains associated with a project. Use the query parameters to filter by environment, branch, redirect, or verification status, and to control the result limit and sort order.
     ///
     /// Retrieve the domains associated with a given project by passing either the project `id` or `name` in the URL.
-    func listDomains(
-        options: ProjectsMethods.ListProjectsDomainsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListProjectsDomainsResponse {
-        try await ProjectsMethods.listProjectsDomains(config: config, options: options, requestOptions: requestOptions)
+    public func listDomains(options: ProjectsMethods.ListProjectsDomainsOptions, requestOptions: RequestOptions? = nil) async throws -> ListProjectsDomainsResponse {
+        return try await ProjectsMethods.listProjectsDomains(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Retrieves a domain associated with a project. Use the project identifier or name and the domain name to identify
-    /// the domain and inspect its configuration and verification status.
+/// Retrieves a domain associated with a project. Use the project identifier or name and the domain name to identify the domain and inspect its configuration and verification status.
     ///
     /// Get project domain by project id/name and domain name.
-    func getDomain(
-        idOrName: String,
-        domain: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetProjectDomainResponse {
-        try await ProjectsMethods.getProjectDomain(
-            config: config,
-            idOrName: idOrName,
-            domain: domain,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getDomain(idOrName: String, domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectDomainResponse {
+        return try await ProjectsMethods.getProjectDomain(config: config, idOrName: idOrName, domain: domain, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates a project domain’s configuration, including its Git branch association and redirect settings. Supply
-    /// only the configuration fields you want to change; `redirectStatusCode` accepts 301, 302, 307, 308, or null.
+/// Updates a project domain’s configuration, including its Git branch association and redirect settings. Supply only the configuration fields you want to change; `redirectStatusCode` accepts 301, 302, 307, 308, or null.
     ///
     /// Update a project domain's configuration, including the name, git branch and redirect of the domain.
-    func updateDomain(
-        idOrName: String,
-        domain: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        gitBranch: SdkOptional<String>? = nil,
-        redirect: SdkOptional<String>? = nil,
-        redirectStatusCode: SdkOptional<Int>? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateProjectDomainResponse {
-        try await ProjectsMethods.updateProjectDomain(
-            config: config,
-            idOrName: idOrName,
-            domain: domain,
-            teamId: teamId,
-            slug: slug,
-            gitBranch: gitBranch,
-            redirect: redirect,
-            redirectStatusCode: redirectStatusCode,
-            requestOptions: requestOptions
-        )
+    public func updateDomain(idOrName: String, domain: String, teamId: String? = nil, slug: String? = nil, gitBranch: SdkOptional<String>? = nil, redirect: SdkOptional<String>? = nil, redirectStatusCode: SdkOptional<Int>? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateProjectDomainResponse {
+        return try await ProjectsMethods.updateProjectDomain(config: config, idOrName: idOrName, domain: domain, teamId: teamId, slug: slug, gitBranch: gitBranch, redirect: redirect, redirectStatusCode: redirectStatusCode, requestOptions: requestOptions)
     }
 
-    /// Removes a domain from a project. Set `removeRedirects` to also remove project domains that redirect to the
-    /// domain being deleted.
+/// Removes a domain from a project. Set `removeRedirects` to also remove project domains that redirect to the domain being deleted.
     ///
-    /// Remove a domain from a project by passing the domain name and by specifying the project by either passing the
-    /// project `id` or `name` in the URL.
-    func removeDomain(
-        idOrName: String,
-        domain: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        removeRedirects: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await ProjectsMethods.removeProjectDomain(
-            config: config,
-            idOrName: idOrName,
-            domain: domain,
-            teamId: teamId,
-            slug: slug,
-            removeRedirects: removeRedirects,
-            requestOptions: requestOptions
-        )
+    /// Remove a domain from a project by passing the domain name and by specifying the project by either passing the project `id` or `name` in the URL.
+    public func removeDomain(idOrName: String, domain: String, teamId: String? = nil, slug: String? = nil, removeRedirects: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try await ProjectsMethods.removeProjectDomain(config: config, idOrName: idOrName, domain: domain, teamId: teamId, slug: slug, removeRedirects: removeRedirects, requestOptions: requestOptions)
     }
 
-    /// Creates a project-domain association for a project. Provide the domain name and optionally configure its Git
-    /// branch, custom environment, or redirect; an unverified domain must complete the returned verification challenge
-    /// before it can be used as an alias.
+/// Creates a project-domain association for a project. Provide the domain name and optionally configure its Git branch, custom environment, or redirect; an unverified domain must complete the returned verification challenge before it can be used as an alias.
     ///
-    /// Add a domain to the project by passing its domain name and by specifying the project by either passing the
-    /// project `id` or `name` in the URL. If the domain is not yet verified to be used on this project, the request
-    /// will return `verified = false`, and the domain will need to be verified according to the `verification`
-    /// challenge via `POST /projects/:idOrName/domains/:domain/verify`. If the domain already exists on the project,
-    /// the request will fail with a `400` status code.
-    func addDomain(
-        options: ProjectsMethods.AddProjectDomainOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AddProjectDomainResponse {
-        try await ProjectsMethods.addProjectDomain(config: config, options: options, requestOptions: requestOptions)
+    /// Add a domain to the project by passing its domain name and by specifying the project by either passing the project `id` or `name` in the URL. If the domain is not yet verified to be used on this project, the request will return `verified = false`, and the domain will need to be verified according to the `verification` challenge via `POST /projects/:idOrName/domains/:domain/verify`. If the domain already exists on the project, the request will fail with a `400` status code.
+    public func addDomain(options: ProjectsMethods.AddProjectDomainOptions, requestOptions: RequestOptions? = nil) async throws -> AddProjectDomainResponse {
+        return try await ProjectsMethods.addProjectDomain(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Moves a domain from one project to another and can move the domain's redirects with it. Supply the target
-    /// `projectId`; optionally set `gitBranch`, `redirect`, or `redirectStatusCode` to configure the domain on the
-    /// destination project.
+/// Moves a domain from one project to another and can move the domain's redirects with it. Supply the target `projectId`; optionally set `gitBranch`, `redirect`, or `redirectStatusCode` to configure the domain on the destination project.
     ///
-    /// Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in
-    /// the same project.
-    func moveDomain(
-        options: ProjectsMethods.MoveProjectDomainOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> MoveProjectDomainResponse {
-        try await ProjectsMethods.moveProjectDomain(config: config, options: options, requestOptions: requestOptions)
+    /// Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in the same project.
+    public func moveDomain(options: ProjectsMethods.MoveProjectDomainOptions, requestOptions: RequestOptions? = nil) async throws -> MoveProjectDomainResponse {
+        return try await ProjectsMethods.moveProjectDomain(config: config, options: options, requestOptions: requestOptions)
     }
 }

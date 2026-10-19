@@ -3,138 +3,47 @@
 
 import Foundation
 
-public extension AiGatewayNamespace {
-    /// Lists the authenticated team's AI Gateway budgets as a flat list, with optional filtering by scope. Use
-    /// `scopeType` to filter by team, project, user, or API key, and use `limit` and `cursor` to paginate results.
-    /// Paged responses include `nextCursor` and `defaultCoveredCounts`.
+extension AiGatewayNamespace {
+/// Lists the authenticated team's AI Gateway budgets as a flat list, with optional filtering by scope. Use `scopeType` to filter by team, project, user, or API key, and use `limit` and `cursor` to paginate results. Paged responses include `nextCursor` and `defaultCoveredCounts`.
     ///
-    /// List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat
-    /// list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one
-    /// page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging
-    /// still reads the full merge server-side: the gateway meter list it joins has no cursor.
-    func listBudgetsPaginated(
-        scopeType: ListAiGatewayBudgetsParameter? = nil,
-        includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<AiGatewayBudget, Swift.Error> {
-        AiGatewayMethods.listAiGatewayBudgetsPaginated(
-            config: config,
-            scopeType: scopeType,
-            includeDefaultCovered: includeDefaultCovered,
-            limit: limit,
-            cursor: cursor,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.
+    public func listBudgetsPaginated(scopeType: ListAiGatewayBudgetsParameter? = nil, includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<AiGatewayBudget, Swift.Error> {
+        return AiGatewayMethods.listAiGatewayBudgetsPaginated(config: config, scopeType: scopeType, includeDefaultCovered: includeDefaultCovered, limit: limit, cursor: cursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates or updates an AI Gateway budget for a team, project, or user scope. Supply `scopeType` and
-    /// `limitAmount`, and include `projectId` or `userId` when the selected scope requires it. The response contains
-    /// the saved budget and its current spend and configuration.
+/// Creates or updates an AI Gateway budget for a team, project, or user scope. Supply `scopeType` and `limitAmount`, and include `projectId` or `userId` when the selected scope requires it. The response contains the saved budget and its current spend and configuration.
     ///
     /// Create or update a team-, project-, or user-scope AI Gateway budget.
-    func upsertBudget(
-        options: AiGatewayMethods.UpsertAiGatewayBudgetOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayBudget {
-        try await AiGatewayMethods.upsertAiGatewayBudget(
-            config: config,
-            options: options,
-            requestOptions: requestOptions
-        )
+    public func upsertBudget(options: AiGatewayMethods.UpsertAiGatewayBudgetOptions, requestOptions: RequestOptions? = nil) async throws -> AiGatewayBudget {
+        return try await AiGatewayMethods.upsertAiGatewayBudget(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Archives an AI Gateway budget for a team, project, or user scope. Set `scopeType` and include `projectId` or
-    /// `userId` when the selected scope requires it. The response returns the archived budget and its current
-    /// configuration.
+/// Archives an AI Gateway budget for a team, project, or user scope. Set `scopeType` and include `projectId` or `userId` when the selected scope requires it. The response returns the archived budget and its current configuration.
     ///
     /// Archive a team-, project-, or user-scope AI Gateway budget.
-    func archiveBudget(
-        scopeType: ArchiveAiGatewayBudgetParameter,
-        projectId: String? = nil,
-        userId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayBudget {
-        try await AiGatewayMethods.archiveAiGatewayBudget(
-            config: config,
-            scopeType: scopeType,
-            projectId: projectId,
-            userId: userId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func archiveBudget(scopeType: ArchiveAiGatewayBudgetParameter, projectId: String? = nil, userId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayBudget {
+        return try await AiGatewayMethods.archiveAiGatewayBudget(config: config, scopeType: scopeType, projectId: projectId, userId: userId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists the authenticated team's AI Gateway budget defaults as a flat list, with one entry for each scope that has
-    /// a default. An empty `defaults` array is a normal result when no defaults are configured. Use `teamId` or `slug`
-    /// to select the team context when needed.
+/// Lists the authenticated team's AI Gateway budget defaults as a flat list, with one entry for each scope that has a default. An empty `defaults` array is a normal result when no defaults are configured. Use `teamId` or `slug` to select the team context when needed.
     ///
-    /// List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user scope
-    /// with a default set). An empty list is a normal state for the dashboard.
-    func listBudgetDefaults(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayBudgetDefaultList {
-        try await AiGatewayMethods.listAiGatewayBudgetDefaults(
-            config: config,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user scope with a default set). An empty list is a normal state for the dashboard.
+    public func listBudgetDefaults(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayBudgetDefaultList {
+        return try await AiGatewayMethods.listAiGatewayBudgetDefaults(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates or updates an AI Gateway budget default for one scope. Supply `scopeType` and `limitAmount`; only team
-    /// owners and admins have authority to manage these defaults. The response returns the saved default configuration.
+/// Creates or updates an AI Gateway budget default for one scope. Supply `scopeType` and `limitAmount`; only team owners and admins have authority to manage these defaults. The response returns the saved default configuration.
     ///
     /// Create or update an AI Gateway budget default for one scope. Team-level authority only (owners/admins).
-    func upsertBudgetDefault(
-        scopeType: UpsertAiGatewayBudgetDefaultRequestBodyScopeType,
-        limitAmount: Double,
-        teamId: String? = nil,
-        slug: String? = nil,
-        refreshPeriod: UpsertAiGatewayBudgetDefaultRequestBodyRefreshPeriod? = nil,
-        alertThresholds: [Int]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayBudgetDefault {
-        try await AiGatewayMethods.upsertAiGatewayBudgetDefault(
-            config: config,
-            scopeType: scopeType,
-            limitAmount: limitAmount,
-            teamId: teamId,
-            slug: slug,
-            refreshPeriod: refreshPeriod,
-            alertThresholds: alertThresholds,
-            requestOptions: requestOptions
-        )
+    public func upsertBudgetDefault(scopeType: UpsertAiGatewayBudgetDefaultRequestBodyScopeType, limitAmount: Double, teamId: String? = nil, slug: String? = nil, refreshPeriod: UpsertAiGatewayBudgetDefaultRequestBodyRefreshPeriod? = nil, alertThresholds: [Int]? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayBudgetDefault {
+        return try await AiGatewayMethods.upsertAiGatewayBudgetDefault(config: config, scopeType: scopeType, limitAmount: limitAmount, teamId: teamId, slug: slug, refreshPeriod: refreshPeriod, alertThresholds: alertThresholds, requestOptions: requestOptions)
     }
 
-    /// Deletes an AI Gateway budget default for one scope by archiving it. Set `scopeType` to identify the scope; only
-    /// team owners and admins have authority to manage budget defaults. A 204 response confirms the default was
-    /// archived.
+/// Deletes an AI Gateway budget default for one scope by archiving it. Set `scopeType` to identify the scope; only team owners and admins have authority to manage budget defaults. A 204 response confirms the default was archived.
     ///
     /// Delete an AI Gateway budget default for one scope. Team-level authority only (owners/admins).
-    func archiveBudgetDefault(
-        scopeType: ArchiveAiGatewayBudgetDefaultParameter,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await AiGatewayMethods.archiveAiGatewayBudgetDefault(
-            config: config,
-            scopeType: scopeType,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func archiveBudgetDefault(scopeType: ArchiveAiGatewayBudgetDefaultParameter, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await AiGatewayMethods.archiveAiGatewayBudgetDefault(config: config, scopeType: scopeType, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -144,139 +53,53 @@ public class ArtifactsNamespace {
         self.config = config
     }
 
-    /// Records artifact cache usage events for a team or user. Send an array of events, each with a `sessionId`,
-    /// `source`, `hash`, and `event`; include `duration` for `HIT` events. Use the client headers to identify the CI
-    /// environment and whether the client is interactive.
+/// Records artifact cache usage events for a team or user. Send an array of events, each with a `sessionId`, `source`, `hash`, and `event`; include `duration` for `HIT` events. Use the client headers to identify the CI environment and whether the client is interactive.
     ///
-    /// Records an artifacts cache usage event. The body of this request is an array of cache usage events. The
-    /// supported event types are `HIT` and `MISS`. The source is either `LOCAL` the cache event was on the users
-    /// filesystem cache or `REMOTE` if the cache event is for a remote cache. When the event is a `HIT` the request
-    /// also accepts a number `duration` which is the time taken to generate the artifact in the cache.
-    public func recordEvents(
-        body: [RecordEventsRequestBodyItem],
-        teamId: String? = nil,
-        slug: String? = nil,
-        xArtifactClientCi: String? = nil,
-        xArtifactClientInteractive: Int? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await ArtifactsMethods.recordEvents(
-            config: config,
-            body: body,
-            teamId: teamId,
-            slug: slug,
-            xArtifactClientCi: xArtifactClientCi,
-            xArtifactClientInteractive: xArtifactClientInteractive,
-            requestOptions: requestOptions
-        )
+    /// Records an artifacts cache usage event. The body of this request is an array of cache usage events. The supported event types are `HIT` and `MISS`. The source is either `LOCAL` the cache event was on the users filesystem cache or `REMOTE` if the cache event is for a remote cache. When the event is a `HIT` the request also accepts a number `duration` which is the time taken to generate the artifact in the cache.
+    public func recordEvents(body: [RecordEventsRequestBodyItem], teamId: String? = nil, slug: String? = nil, xArtifactClientCi: String? = nil, xArtifactClientInteractive: Int? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await ArtifactsMethods.recordEvents(config: config, body: body, teamId: teamId, slug: slug, xArtifactClientCi: xArtifactClientCi, xArtifactClientInteractive: xArtifactClientInteractive, requestOptions: requestOptions)
     }
 
-    /// Retrieves the Remote Caching status for a team or user. Use `teamId` or `slug` to make the request on behalf of
-    /// a team; the response indicates whether Remote Caching is enabled, disabled, or disabled due to usage limits.
+/// Retrieves the Remote Caching status for a team or user. Use `teamId` or `slug` to make the request on behalf of a team; the response indicates whether Remote Caching is enabled, disabled, or disabled due to usage limits.
     ///
-    /// Check the status of Remote Caching for this principal. Returns a JSON-encoded status indicating if Remote
-    /// Caching is enabled, disabled, or disabled due to usage limits.
-    public func status(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> StatusResponse {
-        try await ArtifactsMethods.status(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Check the status of Remote Caching for this principal. Returns a JSON-encoded status indicating if Remote Caching is enabled, disabled, or disabled due to usage limits.
+    public func status(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> StatusResponse {
+        return try await ArtifactsMethods.status(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Uploads an artifact to the cache using its hash. Send the artifact as an octet-stream body and provide its size
-    /// in the `Content-Length` header. The uploaded artifact can then be downloaded using the same hash.
+/// Uploads an artifact to the cache using its hash. Send the artifact as an octet-stream body and provide its size in the `Content-Length` header. The uploaded artifact can then be downloaded using the same hash.
     ///
-    /// Uploads a cache artifact identified by the `hash` specified on the path. The cache artifact can then be
-    /// downloaded with the provided `hash`.
-    public func upload(
-        options: ArtifactsMethods.UploadArtifactOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UploadArtifactResponse {
-        try await ArtifactsMethods.uploadArtifact(config: config, options: options, requestOptions: requestOptions)
+    /// Uploads a cache artifact identified by the `hash` specified on the path. The cache artifact can then be downloaded with the provided `hash`.
+    public func upload(options: ArtifactsMethods.UploadArtifactOptions, requestOptions: RequestOptions? = nil) async throws -> UploadArtifactResponse {
+        return try await ArtifactsMethods.uploadArtifact(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Retrieves an artifact from the cache by its hash. Use `hash` to identify the artifact and check the response
-    /// content length and body when downloading the octet-stream data. You can use the client headers to identify the
-    /// CI environment and whether the client is interactive.
+/// Retrieves an artifact from the cache by its hash. Use `hash` to identify the artifact and check the response content length and body when downloading the octet-stream data. You can use the client headers to identify the CI environment and whether the client is interactive.
     ///
-    /// Downloads a cache artifact indentified by its `hash` specified on the request path. The artifact is downloaded
-    /// as an octet-stream. The client should verify the content-length header and response body.
-    public func download(
-        hash: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        xArtifactClientCi: String? = nil,
-        xArtifactClientInteractive: Int? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> Data {
-        try await ArtifactsMethods.downloadArtifact(
-            config: config,
-            hash: hash,
-            teamId: teamId,
-            slug: slug,
-            xArtifactClientCi: xArtifactClientCi,
-            xArtifactClientInteractive: xArtifactClientInteractive,
-            requestOptions: requestOptions
-        )
+    /// Downloads a cache artifact indentified by its `hash` specified on the request path. The artifact is downloaded as an octet-stream. The client should verify the content-length header and response body.
+    public func download(hash: String, teamId: String? = nil, slug: String? = nil, xArtifactClientCi: String? = nil, xArtifactClientInteractive: Int? = nil, requestOptions: RequestOptions? = nil) async throws -> Data {
+        return try await ArtifactsMethods.downloadArtifact(config: config, hash: hash, teamId: teamId, slug: slug, xArtifactClientCi: xArtifactClientCi, xArtifactClientInteractive: xArtifactClientInteractive, requestOptions: requestOptions)
     }
 
-    /// Checks whether an artifact with the specified hash exists in the cache. Use `hash` to identify the artifact; the
-    /// response contains headers only and no body. The request otherwise has the same behavior as a `GET` request to
-    /// the artifact path.
+/// Checks whether an artifact with the specified hash exists in the cache. Use `hash` to identify the artifact; the response contains headers only and no body. The request otherwise has the same behavior as a `GET` request to the artifact path.
     ///
-    /// Check that a cache artifact with the given `hash` exists. This request returns response headers only and is
-    /// equivalent to a `GET` request to this endpoint where the response contains no body.
-    public func exists(
-        hash: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await ArtifactsMethods.artifactExists(
-            config: config,
-            hash: hash,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Check that a cache artifact with the given `hash` exists. This request returns response headers only and is equivalent to a `GET` request to this endpoint where the response contains no body.
+    public func exists(hash: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await ArtifactsMethods.artifactExists(config: config, hash: hash, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves cache information for multiple artifacts. Supply the artifact hashes in the `hashes` array to query
-    /// information about each one. Use `teamId` or `slug` to make the request on behalf of a team.
+/// Retrieves cache information for multiple artifacts. Supply the artifact hashes in the `hashes` array to query information about each one. Use `teamId` or `slug` to make the request on behalf of a team.
     ///
     /// Query information about an array of artifacts.
-    public func query(
-        hashes: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: ArtifactQueryResponseValue?] {
-        try await ArtifactsMethods.artifactQuery(
-            config: config,
-            hashes: hashes,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func query(hashes: [String], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: ArtifactQueryResponseValue?] {
+        return try await ArtifactsMethods.artifactQuery(config: config, hashes: hashes, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes all cache artifacts stored for the authenticated team or user, clearing the Remote Cache. Use `teamId`
-    /// or `slug` to select a team; subsequent builds repopulate the cache.
+/// Deletes all cache artifacts stored for the authenticated team or user, clearing the Remote Cache. Use `teamId` or `slug` to select a team; subsequent builds repopulate the cache.
     ///
-    /// Deletes all cache artifacts stored for the authenticated team or user, clearing the Remote Cache. Subsequent
-    /// builds will re-populate the cache.
-    public func deleteAll(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteAllArtifactsResponse {
-        try await ArtifactsMethods.deleteAllArtifacts(
-            config: config,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Deletes all cache artifacts stored for the authenticated team or user, clearing the Remote Cache. Subsequent builds will re-populate the cache.
+    public func deleteAll(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteAllArtifactsResponse {
+        return try await ArtifactsMethods.deleteAllArtifacts(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -286,78 +109,25 @@ public class BillingNamespace {
         self.config = config
     }
 
-    /// Lists billing charges for a Vercel team in FOCUS v1.3 JSONL format. Set `from` and `to` to define the UTC
-    /// date-time range; results use one-day granularity and the range can span at most one year. The response is
-    /// streamed as newline-delimited JSON, and you can request gzip compression with the `Accept-Encoding: gzip`
-    /// header.
+/// Lists billing charges for a Vercel team in FOCUS v1.3 JSONL format. Set `from` and `to` to define the UTC date-time range; results use one-day granularity and the range can span at most one year. The response is streamed as newline-delimited JSON, and you can request gzip compression with the `Accept-Encoding: gzip` header.
     ///
-    /// Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range
-    /// specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year.
-    /// The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the
-    /// `Accept-Encoding: gzip` header is provided. `SkuId` is the stable product ID. For unmapped items, it is derived
-    /// from the item identifier. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise
-    /// Viewer roles for the supplied team.
-    public func listCharges(
-        from: String,
-        to: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AsyncThrowingStream<ListBillingChargesResponse, Swift.Error> {
-        try await BillingMethods.listBillingCharges(
-            config: config,
-            from: from,
-            to: to,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year. The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the `Accept-Encoding: gzip` header is provided. `SkuId` is the stable product ID. For unmapped items, it is derived from the item identifier. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise Viewer roles for the supplied team.
+    public func listCharges(from: String, to: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AsyncThrowingStream<ListBillingChargesResponse, Swift.Error> {
+        return try await BillingMethods.listBillingCharges(config: config, from: from, to: to, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists a Vercel team's contract commitments in FOCUS v1.3 JSONL format. Use this endpoint for Enterprise contract
-    /// commitment allocations by contract period. Non-Enterprise customers receive an empty response.
+/// Lists a Vercel team's contract commitments in FOCUS v1.3 JSONL format. Use this endpoint for Enterprise contract commitment allocations by contract period. Non-Enterprise customers receive an empty response.
     ///
-    /// Returns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The
-    /// response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel
-    /// customers. An empty response is returned for non-Enterprise (Pro/Flex) customers.
-    public func listContractCommitments(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AsyncThrowingStream<ListContractCommitmentsResponse, Swift.Error> {
-        try await BillingMethods.listContractCommitments(
-            config: config,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Returns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel customers. An empty response is returned for non-Enterprise (Pro/Flex) customers.
+    public func listContractCommitments(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AsyncThrowingStream<ListContractCommitmentsResponse, Swift.Error> {
+        return try await BillingMethods.listContractCommitments(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Submits a credit purchase for a Vercel team using the default payment method on file; the purchase is charged
-    /// immediately through a Stripe invoice. Set `item.creditType` to `v0`, `gateway`, or `agent` and provide a
-    /// positive integer `item.amount`. You can use the `source` query parameter to identify the caller; it defaults to
-    /// `api` when omitted.
+/// Submits a credit purchase for a Vercel team using the default payment method on file; the purchase is charged immediately through a Stripe invoice. Set `item.creditType` to `v0`, `gateway`, or `agent` and provide a positive integer `item.amount`. You can use the `source` query parameter to identify the caller; it defaults to `api` when omitted.
     ///
-    /// Purchases credits for a Vercel team using the default payment method on file. The purchase is charged
-    /// immediately via Stripe invoice. Supported credit types are `v0`, `gateway`, and `agent`. The `amount` field
-    /// specifies the number of credits to purchase and must be a positive integer. An optional `source` query parameter
-    /// can be provided to identify the caller. Defaults to `api` if not specified. This is only available for Owner,
-    /// Member, Developer, Security, and Billing roles for the supplied team.
-    public func buyCredits(
-        item: BuyCreditsRequestBodyItem,
-        source: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> BuyCreditsResponse {
-        try await BillingMethods.buyCredits(
-            config: config,
-            item: item,
-            source: source,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Purchases credits for a Vercel team using the default payment method on file. The purchase is charged immediately via Stripe invoice. Supported credit types are `v0`, `gateway`, and `agent`. The `amount` field specifies the number of credits to purchase and must be a positive integer. An optional `source` query parameter can be provided to identify the caller. Defaults to `api` if not specified. This is only available for Owner, Member, Developer, Security, and Billing roles for the supplied team.
+    public func buyCredits(item: BuyCreditsRequestBodyItem, source: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> BuyCreditsResponse {
+        return try await BillingMethods.buyCredits(config: config, item: item, source: source, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -367,162 +137,52 @@ public class BulkRedirectsNamespace {
         self.config = config
     }
 
-    /// Stages a new version of bulk redirects for a project. Supply `projectId` and `teamId` in the request body;
-    /// `redirects` defaults to an empty array when omitted. A successful response includes the staged version and its
-    /// alias.
+/// Stages a new version of bulk redirects for a project. Supply `projectId` and `teamId` in the request body; `redirects` defaults to an empty array when omitted. A successful response includes the staged version and its alias.
     ///
     /// Stages new redirects for a project and returns the new version.
-    public func stageRedirects(
-        projectId: String,
-        teamId: String,
-        teamId2: String? = nil,
-        slug: String? = nil,
-        overwrite: Bool? = nil,
-        name: String? = nil,
-        redirects: [StageRedirectsRequestBodyRedirectsItem]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> StageRedirectsResponse {
-        try await BulkRedirectsMethods.stageRedirects(
-            config: config,
-            projectId: projectId,
-            teamId: teamId,
-            teamId2: teamId2,
-            slug: slug,
-            overwrite: overwrite,
-            name: name,
-            redirects: redirects,
-            requestOptions: requestOptions
-        )
+    public func stageRedirects(projectId: String, teamId: String, teamId2: String? = nil, slug: String? = nil, overwrite: Bool? = nil, name: String? = nil, redirects: [StageRedirectsRequestBodyRedirectsItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> StageRedirectsResponse {
+        return try await BulkRedirectsMethods.stageRedirects(config: config, projectId: projectId, teamId: teamId, teamId2: teamId2, slug: slug, overwrite: overwrite, name: name, redirects: redirects, requestOptions: requestOptions)
     }
 
-    /// Lists project-level bulk redirects, with optional filtering and sorting. Use `projectId` to identify the
-    /// project, and `page` and `per_page` to paginate the results.
+/// Lists project-level bulk redirects, with optional filtering and sorting. Use `projectId` to identify the project, and `page` and `per_page` to paginate the results.
     ///
     /// Get the version history for a project's bulk redirects
-    public func getRedirects(
-        options: BulkRedirectsMethods.GetRedirectsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRedirectsResponse {
-        try await BulkRedirectsMethods.getRedirects(config: config, options: options, requestOptions: requestOptions)
+    public func getRedirects(options: BulkRedirectsMethods.GetRedirectsOptions, requestOptions: RequestOptions? = nil) async throws -> GetRedirectsResponse {
+        return try await BulkRedirectsMethods.getRedirects(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Deletes specified redirects from the latest staged version for a project and stages the resulting changes.
-    /// Provide the redirect source paths in `redirects`; the response includes the alias for the new version.
+/// Deletes specified redirects from the latest staged version for a project and stages the resulting changes. Provide the redirect source paths in `redirects`; the response includes the alias for the new version.
     ///
-    /// Deletes the provided redirects from the latest version of the projects' bulk redirects. Stages a new change with
-    /// the new redirects and returns the alias for the new version in the response.
-    public func deleteRedirects(
-        projectId: String,
-        redirects: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        name: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteRedirectsResponse {
-        try await BulkRedirectsMethods.deleteRedirects(
-            config: config,
-            projectId: projectId,
-            redirects: redirects,
-            teamId: teamId,
-            slug: slug,
-            name: name,
-            requestOptions: requestOptions
-        )
+    /// Deletes the provided redirects from the latest version of the projects' bulk redirects. Stages a new change with the new redirects and returns the alias for the new version in the response.
+    public func deleteRedirects(projectId: String, redirects: [String], teamId: String? = nil, slug: String? = nil, name: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteRedirectsResponse {
+        return try await BulkRedirectsMethods.deleteRedirects(config: config, projectId: projectId, redirects: redirects, teamId: teamId, slug: slug, name: name, requestOptions: requestOptions)
     }
 
-    /// Updates a single staged project redirect by matching its source path, then stages a new version. Supply the
-    /// redirect's `source` in the body; use `restore` to restore that redirect from the latest production version to
-    /// staging.
+/// Updates a single staged project redirect by matching its source path, then stages a new version. Supply the redirect's `source` in the body; use `restore` to restore that redirect from the latest production version to staging.
     ///
-    /// Edits a single redirect identified by its source path. Stages a new change with the modified redirect and
-    /// returns the alias for the new version in the response.
-    public func editRedirect(
-        projectId: String,
-        redirect: EditRedirectRequestBodyRedirect,
-        teamId: String? = nil,
-        slug: String? = nil,
-        name: String? = nil,
-        restore: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> EditRedirectResponse {
-        try await BulkRedirectsMethods.editRedirect(
-            config: config,
-            projectId: projectId,
-            redirect: redirect,
-            teamId: teamId,
-            slug: slug,
-            name: name,
-            restore: restore,
-            requestOptions: requestOptions
-        )
+    /// Edits a single redirect identified by its source path. Stages a new change with the modified redirect and returns the alias for the new version in the response.
+    public func editRedirect(projectId: String, redirect: EditRedirectRequestBodyRedirect, teamId: String? = nil, slug: String? = nil, name: String? = nil, restore: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> EditRedirectResponse {
+        return try await BulkRedirectsMethods.editRedirect(config: config, projectId: projectId, redirect: redirect, teamId: teamId, slug: slug, name: name, restore: restore, requestOptions: requestOptions)
     }
 
-    /// Restores specified staged redirects to their values in the production version, or removes them from staging if
-    /// no production version exists. Provide the redirect source paths in `redirects`; the response reports which paths
-    /// were restored and which could not be restored.
+/// Restores specified staged redirects to their values in the production version, or removes them from staging if no production version exists. Provide the redirect source paths in `redirects`; the response reports which paths were restored and which could not be restored.
     ///
-    /// Restores the provided redirects in the staging version to the value in the production version. If no production
-    /// version exists, removes the redirects from staging.
-    public func restoreRedirects(
-        projectId: String,
-        redirects: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        name: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RestoreRedirectsResponse {
-        try await BulkRedirectsMethods.restoreRedirects(
-            config: config,
-            projectId: projectId,
-            redirects: redirects,
-            teamId: teamId,
-            slug: slug,
-            name: name,
-            requestOptions: requestOptions
-        )
+    /// Restores the provided redirects in the staging version to the value in the production version. If no production version exists, removes the redirects from staging.
+    public func restoreRedirects(projectId: String, redirects: [String], teamId: String? = nil, slug: String? = nil, name: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RestoreRedirectsResponse {
+        return try await BulkRedirectsMethods.restoreRedirects(config: config, projectId: projectId, redirects: redirects, teamId: teamId, slug: slug, name: name, requestOptions: requestOptions)
     }
 
-    /// Lists the version history for a project's bulk redirects. Supply `projectId` to identify the project and use the
-    /// Team parameters to perform the request on behalf of a Team.
+/// Lists the version history for a project's bulk redirects. Supply `projectId` to identify the project and use the Team parameters to perform the request on behalf of a Team.
     ///
     /// Get the version history for a project's bulk redirects
-    public func getVersions(
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetVersionsResponse {
-        try await BulkRedirectsMethods.getVersions(
-            config: config,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getVersions(projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVersionsResponse {
+        return try await BulkRedirectsMethods.getVersions(config: config, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Changes a bulk redirect version by promoting staging, restoring a previous production version, or discarding a
-    /// version. Supply the version `id` and an `action`; the response contains the updated version details.
+/// Changes a bulk redirect version by promoting staging, restoring a previous production version, or discarding a version. Supply the version `id` and an `action`; the response contains the updated version details.
     ///
     /// Update a version by promoting staging to production or restoring a previous production version
-    public func updateVersion(
-        projectId: String,
-        id: String,
-        action: UpdateVersionRequestBodyAction,
-        teamId: String? = nil,
-        slug: String? = nil,
-        name: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateVersionResponse {
-        try await BulkRedirectsMethods.updateVersion(
-            config: config,
-            projectId: projectId,
-            id: id,
-            action: action,
-            teamId: teamId,
-            slug: slug,
-            name: name,
-            requestOptions: requestOptions
-        )
+    public func updateVersion(projectId: String, id: String, action: UpdateVersionRequestBodyAction, teamId: String? = nil, slug: String? = nil, name: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateVersionResponse {
+        return try await BulkRedirectsMethods.updateVersion(config: config, projectId: projectId, id: id, action: action, teamId: teamId, slug: slug, name: name, requestOptions: requestOptions)
     }
 }

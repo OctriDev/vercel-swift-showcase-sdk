@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    /// Forks a source drive into a new drive that inherits the source drive's region and maximum size. Provide the new
-    /// drive's name in the request body and identify the project unless your Vercel OIDC token is scoped to one. The
-    /// response contains the created drive object.
+extension SandboxesMethods {
+    /// Forks a source drive into a new drive that inherits the source drive's region and maximum size. Provide the new drive's name in the request body and identify the project unless your Vercel OIDC token is scoped to one. The response contains the created drive object.
     ///
     /// Fork the provided drive into a new one with the provided name, inheriting the region and max size.
     ///
@@ -21,15 +19,7 @@ public extension SandboxesMethods {
     ///   unless using a Vercel OIDC token scoped to a project.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func forkDrive(
-        config: ClientConfig,
-        name: String,
-        name2: String,
-        projectId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ForkDriveResponse {
+    public static func forkDrive(config: ClientConfig, name: String, name2: String, projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ForkDriveResponse {
         try validateLength("name", name, max: 64)
         try sdkValidatePattern("name", name, sdkPatterna828669d9fe5)
 
@@ -38,19 +28,10 @@ public extension SandboxesMethods {
 
         let requestBody = ForkDriveRequestBody(name2: name2)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v2/sandboxes/drives/", sdkEncodePathSegment(sdkWireString(name)), "/fork"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "forkDrive",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v2/sandboxes/drives/", sdkEncodePathSegment(sdkWireString(name)), "/fork"].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "forkDrive", options: requestOptions)).data
     }
 }

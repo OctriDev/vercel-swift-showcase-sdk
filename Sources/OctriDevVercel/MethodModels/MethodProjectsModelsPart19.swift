@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
+// Canonical projects operation model declarations
 public struct ListProjectsResponseVariant0ItemEnvItem: Codable {
     public var key: String
     public var type: ListProjectsResponseVariant0ItemEnvItemType
@@ -63,85 +63,48 @@ public struct ListProjectsResponseVariant0ItemEnvItem: Codable {
         case vsmValue
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsResponseVariant0ItemEnvItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseVariant0ItemEnvItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        key = try container.sdkDecodeRequired(.key)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeRequired(.value)
-        comment = try container.sdkDecodeIfPresent(.comment)
-        configurationId = try container.sdkDecodeIfPresent(.configurationId)
-        contentHint = try container.sdkDecodeIfPresent(.contentHint)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        createdBy = try container.sdkDecodeIfPresent(.createdBy)
-        customEnvironmentIds = try container.sdkDecodeIfPresent(.customEnvironmentIds)
-        decrypted = try container.sdkDecodeIfPresent(.decrypted)
-        edgeConfigId = try container.sdkDecodeIfPresent(.edgeConfigId)
-        edgeConfigTokenId = try container.sdkDecodeIfPresent(.edgeConfigTokenId)
-        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        id = try container.sdkDecodeIfPresent(.id)
-        internalContentHint = try container.sdkDecodeIfPresent(.internalContentHint)
-        legacyValue = try container.sdkDecodeIfPresent(.legacyValue)
-        sunsetSecretId = try container.sdkDecodeIfPresent(.sunsetSecretId)
-        target = try container.sdkDecodeIfPresent(.target)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
-        visibility = try container.sdkDecodeIfPresent(.visibility)
-        vsmValue = try container.sdkDecodeIfPresent(.vsmValue)
+        self.key = try container.sdkDecodeRequired(.key)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeRequired(.value)
+        self.comment = try container.sdkDecodeIfPresent(.comment)
+        self.configurationId = try container.sdkDecodeIfPresent(.configurationId)
+        self.contentHint = try container.sdkDecodeIfPresent(.contentHint)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
+        self.customEnvironmentIds = try container.sdkDecodeIfPresent(.customEnvironmentIds)
+        self.decrypted = try container.sdkDecodeIfPresent(.decrypted)
+        self.edgeConfigId = try container.sdkDecodeIfPresent(.edgeConfigId)
+        self.edgeConfigTokenId = try container.sdkDecodeIfPresent(.edgeConfigTokenId)
+        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        self.id = try container.sdkDecodeIfPresent(.id)
+        self.internalContentHint = try container.sdkDecodeIfPresent(.internalContentHint)
+        self.legacyValue = try container.sdkDecodeIfPresent(.legacyValue)
+        self.sunsetSecretId = try container.sdkDecodeIfPresent(.sunsetSecretId)
+        self.target = try container.sdkDecodeIfPresent(.target)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
+        self.visibility = try container.sdkDecodeIfPresent(.visibility)
+        self.vsmValue = try container.sdkDecodeIfPresent(.vsmValue)
     }
 }
 
-public extension ListProjectsResponseVariant0ItemEnvItem {
-    init(
-        key: String,
-        type: ListProjectsResponseVariant0ItemEnvItemType,
-        value: String,
-        comment: String? = nil,
-        configurationId: String? = nil,
-        contentHint: ListProjectsResponseItemEnvItemContentHint? = nil,
-        createdAt: Double? = nil,
-        createdBy: String? = nil,
-        customEnvironmentIds: [String]? = nil,
-        decrypted: Bool? = nil,
-        edgeConfigId: String? = nil,
-        edgeConfigTokenId: String? = nil,
-        gitBranch: String? = nil,
-        id: String? = nil,
-        internalContentHint: ListProjectsResponseVariant0ItemEnvItemInternalContentHint? = nil,
-        legacyValue: String? = nil,
-        sunsetSecretId: String? = nil,
-        target: ListProjectsResponseVariant0ItemEnvItemTarget? = nil,
-        updatedAt: Double? = nil,
-        updatedBy: String? = nil,
-        visibility: ListProjectsResponseVariant0ItemEnvItemVisibility? = nil,
-        vsmValue: String? = nil
-    ) {
+extension ListProjectsResponseVariant0ItemEnvItem {
+    public init(key: String, type: ListProjectsResponseVariant0ItemEnvItemType, value: String, comment: String? = nil, configurationId: String? = nil, contentHint: ListProjectsResponseItemEnvItemContentHint? = nil, createdAt: Double? = nil, createdBy: String? = nil, customEnvironmentIds: [String]? = nil, decrypted: Bool? = nil, edgeConfigId: String? = nil, edgeConfigTokenId: String? = nil, gitBranch: String? = nil, id: String? = nil, internalContentHint: ListProjectsResponseVariant0ItemEnvItemInternalContentHint? = nil, legacyValue: String? = nil, sunsetSecretId: String? = nil, target: ListProjectsResponseVariant0ItemEnvItemTarget? = nil, updatedAt: Double? = nil, updatedBy: String? = nil, visibility: ListProjectsResponseVariant0ItemEnvItemVisibility? = nil, vsmValue: String? = nil) {
         (self.key, self.type) = (key, type)
         (self.value, self.comment) = (value, comment)
         (self.configurationId, self.contentHint) = (configurationId, contentHint)
@@ -171,43 +134,29 @@ public struct ListProjectsResponseVariant0ItemResourceConfigElasticBuildMachine:
         case memory
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsResponseVariant0ItemResourceConfigElasticBuildMachine {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseVariant0ItemResourceConfigElasticBuildMachine {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.cores) else {
-            throw SdkValidationError(
-                field: "cores",
-                code: "required",
-                message: "Validation failed for 'cores': value is required"
-            )
+            throw SdkValidationError(field: "cores", code: "required", message: "Validation failed for 'cores': value is required")
         }
         guard container.contains(.label) else {
-            throw SdkValidationError(
-                field: "label",
-                code: "required",
-                message: "Validation failed for 'label': value is required"
-            )
+            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
         }
         guard container.contains(.memory) else {
-            throw SdkValidationError(
-                field: "memory",
-                code: "required",
-                message: "Validation failed for 'memory': value is required"
-            )
+            throw SdkValidationError(field: "memory", code: "required", message: "Validation failed for 'memory': value is required")
         }
-        cores = try container.sdkDecodeRequired(.cores)
-        label = try container.sdkDecodeRequired(.label)
-        memory = try container.sdkDecodeRequired(.memory)
+        self.cores = try container.sdkDecodeRequired(.cores)
+        self.label = try container.sdkDecodeRequired(.label)
+        self.memory = try container.sdkDecodeRequired(.memory)
     }
 }
 
-public extension ListProjectsResponseVariant0ItemResourceConfigElasticBuildMachine {
-    init(cores: Double, label: ListProjectsResponseVariant0ItemResourceConfigElasticBuildMachineLabel, memory: Double) {
+extension ListProjectsResponseVariant0ItemResourceConfigElasticBuildMachine {
+    public init(cores: Double, label: ListProjectsResponseVariant0ItemResourceConfigElasticBuildMachineLabel, memory: Double) {
         (self.cores, self.label) = (cores, label)
         self.memory = memory
     }
@@ -329,17 +278,7 @@ public struct UpdateMicrofrontendsResponse: Codable {
     public var v0Created: Bool? = .none
     public var webAnalytics: UpdateMicrofrontendsResponseWebAnalytics? = .none
 
-    init(
-        sdkRequiredFields accountId: String,
-        alias: [UpdateMicrofrontendsResponseAliasItem],
-        defaultResourceConfig: UpdateMicrofrontendsResponseDefaultResourceConfig,
-        deploymentExpiration: UpdateMicrofrontendsResponseDeploymentExpiration,
-        directoryListing: Bool,
-        id: String,
-        name: String,
-        nodeVersion: UpdateMicrofrontendsResponseNodeVersion,
-        resourceConfig: UpdateMicrofrontendsResponseResourceConfig
-    ) {
+    init(sdkRequiredFields accountId: String, alias: [UpdateMicrofrontendsResponseAliasItem], defaultResourceConfig: UpdateMicrofrontendsResponseDefaultResourceConfig, deploymentExpiration: UpdateMicrofrontendsResponseDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: UpdateMicrofrontendsResponseNodeVersion, resourceConfig: UpdateMicrofrontendsResponseResourceConfig) {
         (self.accountId, self.alias) = (accountId, alias)
         self.defaultResourceConfig = defaultResourceConfig
         (self.deploymentExpiration, self.directoryListing) = (deploymentExpiration, directoryListing)
@@ -450,20 +389,10 @@ extension UpdateMicrofrontendsResponse {
     }
 }
 
-public extension UpdateMicrofrontendsResponse {
-    init(from decoder: Decoder) throws {
+extension UpdateMicrofrontendsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        try self.init(
-            sdkRequiredFields: container.sdkDecodeRequired(.accountId),
-            alias: container.sdkDecodeRequired(.alias),
-            defaultResourceConfig: container.sdkDecodeRequired(.defaultResourceConfig),
-            deploymentExpiration: container.sdkDecodeRequired(.deploymentExpiration),
-            directoryListing: container.sdkDecodeRequired(.directoryListing),
-            id: container.sdkDecodeRequired(.id),
-            name: container.sdkDecodeRequired(.name),
-            nodeVersion: container.sdkDecodeRequired(.nodeVersion),
-            resourceConfig: container.sdkDecodeRequired(.resourceConfig)
-        )
+        self.init(sdkRequiredFields: try container.sdkDecodeRequired(.accountId), alias: try container.sdkDecodeRequired(.alias), defaultResourceConfig: try container.sdkDecodeRequired(.defaultResourceConfig), deploymentExpiration: try container.sdkDecodeRequired(.deploymentExpiration), directoryListing: try container.sdkDecodeRequired(.directoryListing), id: try container.sdkDecodeRequired(.id), name: try container.sdkDecodeRequired(.name), nodeVersion: try container.sdkDecodeRequired(.nodeVersion), resourceConfig: try container.sdkDecodeRequired(.resourceConfig))
         try sdkDecodeFieldsPart1(container)
         try sdkDecodeFieldsPart2(container)
         try sdkDecodeFieldsPart3(container)
@@ -475,117 +404,9 @@ public extension UpdateMicrofrontendsResponse {
     }
 }
 
-public extension UpdateMicrofrontendsResponse {
-    init(
-        accountId: String,
-        alias: [UpdateMicrofrontendsResponseAliasItem],
-        defaultResourceConfig: UpdateMicrofrontendsResponseDefaultResourceConfig,
-        deploymentExpiration: UpdateMicrofrontendsResponseDeploymentExpiration,
-        directoryListing: Bool,
-        id: String,
-        name: String,
-        nodeVersion: UpdateMicrofrontendsResponseNodeVersion,
-        resourceConfig: UpdateMicrofrontendsResponseResourceConfig,
-        analytics: UpdateMicrofrontendsResponseAnalytics? = nil,
-        appliedCve55182Migration: Bool? = nil,
-        autoAssignCustomDomains: Bool? = nil,
-        autoAssignCustomDomainsUpdatedBy: String? = nil,
-        autoExposeSystemEnvs: Bool? = nil,
-        avatar: String? = nil,
-        avatarDarkMode: String? = nil,
-        blobs: UpdateMicrofrontendsResponseBlobs? = nil,
-        buildCommand: String? = nil,
-        commandForIgnoringBuildStep: String? = nil,
-        concurrencyBucketName: String? = nil,
-        connectBuildsEnabled: Bool? = nil,
-        connectConfigurationId: String? = nil,
-        connectConfigurations: [UpdateMicrofrontendsResponseConnectConfigurationsItem]? = nil,
-        createdAt: Double? = nil,
-        creator: UpdateMicrofrontendsResponseCreator? = nil,
-        crons: UpdateMicrofrontendsResponseCrons? = nil,
-        customEnvironments: [UpdateMicrofrontendsResponseCustomEnvironmentsItem]? = nil,
-        customerSupportCodeVisibility: Bool? = nil,
-        dataCache: UpdateMicrofrontendsResponseDataCache? = nil,
-        deploymentPolicy: UpdateMicrofrontendsResponseDeploymentPolicy? = nil,
-        devCommand: String? = nil,
-        dismissedToasts: [UpdateMicrofrontendsResponseDismissedToastsItem]? = nil,
-        enableAffectedProjectsDeployments: Bool? = nil,
-        enableExternalRewriteCaching: Bool? = nil,
-        enablePreviewFeedback: Bool? = nil,
-        enableProductionFeedback: Bool? = nil,
-        env: [UpdateMicrofrontendsResponseEnvItem]? = nil,
-        expiration: UpdateMicrofrontendsResponseExpiration? = nil,
-        features: UpdateMicrofrontendsResponseFeatures? = nil,
-        framework: UpdateMicrofrontendsResponseFramework? = nil,
-        gitComments: UpdateMicrofrontendsResponseGitComments? = nil,
-        gitForkProtection: Bool? = nil,
-        gitLfs: Bool? = nil,
-        gitProviderOptions: UpdateMicrofrontendsResponseGitProviderOptions? = nil,
-        hasActiveBranches: Bool? = nil,
-        hasDeployments: Bool? = nil,
-        installCommand: String? = nil,
-        internalRoutes: [UpdateMicrofrontendsResponseInternalRoutesItem]? = nil,
-        ipBuckets: [UpdateMicrofrontendsResponseIpBucketsItem]? = nil,
-        jobs: UpdateMicrofrontendsResponseJobs? = nil,
-        lastAliasRequest: UpdateMicrofrontendsResponseLastAliasRequest? = nil,
-        lastRollbackTarget: [String: JSONValue]? = nil,
-        latestDeployments: [UpdateMicrofrontendsResponseLatestDeploymentsItem]? = nil,
-        link: UpdateMicrofrontendsResponseLink? = nil,
-        live: Bool? = nil,
-        microfrontends: UpdateMicrofrontendsResponseMicrofrontends? = nil,
-        oidcTokenConfig: UpdateMicrofrontendsResponseOidcTokenConfig? = nil,
-        optionsAllowlist: UpdateMicrofrontendsResponseOptionsAllowlist? = nil,
-        outputDirectory: String? = nil,
-        passiveConnectConfigurationId: String? = nil,
-        passport: UpdateMicrofrontendsResponsePassport? = nil,
-        passwordProtection: UpdateMicrofrontendsResponsePasswordProtection? = nil,
-        paused: Bool? = nil,
-        permissions: UpdateMicrofrontendsResponsePermissions? = nil,
-        productionDeploymentsFastLane: Bool? = nil,
-        protectedSourcemaps: Bool? = nil,
-        protectionBypass: [String: UpdateMicrofrontendsResponseProtectionBypassValue]? = nil,
-        protectionConfig: UpdateMicrofrontendsResponseProtectionConfig? = nil,
-        rollbackDescription: UpdateMicrofrontendsResponseRollbackDescription? = nil,
-        rollingRelease: UpdateMicrofrontendsResponseRollingRelease? = nil,
-        rootDirectory: String? = nil,
-        sandbox: UpdateMicrofrontendsResponseSandbox? = nil,
-        security: UpdateMicrofrontendsResponseSecurity? = nil,
-        serverlessFunctionZeroConfigFailover: Bool? = nil,
-        services: [UpdateMicrofrontendsResponseServicesItem]? = nil,
-        skewProtectionAllowedDomains: [String]? = nil,
-        skewProtectionBoundaryAt: Double? = nil,
-        skewProtectionMaxAge: Double? = nil,
-        skipGitConnectDuringLink: Bool? = nil,
-        sourceFilesOutsideRootDirectory: Bool? = nil,
-        speedInsights: UpdateMicrofrontendsResponseSpeedInsights? = nil,
-        ssoProtection: UpdateMicrofrontendsResponseSsoProtection? = nil,
-        staticIps: UpdateMicrofrontendsResponseStaticIps? = nil,
-        targets: [String: UpdateMicrofrontendsResponseTargetsValue?]? = nil,
-        tier: UpdateMicrofrontendsResponseTier? = nil,
-        tracing: UpdateMicrofrontendsResponseTracing? = nil,
-        transferCompletedAt: Double? = nil,
-        transferredFromAccountId: String? = nil,
-        transferStartedAt: Double? = nil,
-        transferToAccountId: String? = nil,
-        trustedIps: UpdateMicrofrontendsResponseTrustedIps? = nil,
-        trustedSources: UpdateMicrofrontendsResponseTrustedSources? = nil,
-        updatedAt: Double? = nil,
-        usageStatus: UpdateMicrofrontendsResponseUsageStatus? = nil,
-        v0: Bool? = nil,
-        v0Created: Bool? = nil,
-        webAnalytics: UpdateMicrofrontendsResponseWebAnalytics? = nil
-    ) {
-        self.init(
-            sdkRequiredFields: accountId,
-            alias: alias,
-            defaultResourceConfig: defaultResourceConfig,
-            deploymentExpiration: deploymentExpiration,
-            directoryListing: directoryListing,
-            id: id,
-            name: name,
-            nodeVersion: nodeVersion,
-            resourceConfig: resourceConfig
-        )
+extension UpdateMicrofrontendsResponse {
+    public init(accountId: String, alias: [UpdateMicrofrontendsResponseAliasItem], defaultResourceConfig: UpdateMicrofrontendsResponseDefaultResourceConfig, deploymentExpiration: UpdateMicrofrontendsResponseDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: UpdateMicrofrontendsResponseNodeVersion, resourceConfig: UpdateMicrofrontendsResponseResourceConfig, analytics: UpdateMicrofrontendsResponseAnalytics? = nil, appliedCve55182Migration: Bool? = nil, autoAssignCustomDomains: Bool? = nil, autoAssignCustomDomainsUpdatedBy: String? = nil, autoExposeSystemEnvs: Bool? = nil, avatar: String? = nil, avatarDarkMode: String? = nil, blobs: UpdateMicrofrontendsResponseBlobs? = nil, buildCommand: String? = nil, commandForIgnoringBuildStep: String? = nil, concurrencyBucketName: String? = nil, connectBuildsEnabled: Bool? = nil, connectConfigurationId: String? = nil, connectConfigurations: [UpdateMicrofrontendsResponseConnectConfigurationsItem]? = nil, createdAt: Double? = nil, creator: UpdateMicrofrontendsResponseCreator? = nil, crons: UpdateMicrofrontendsResponseCrons? = nil, customEnvironments: [UpdateMicrofrontendsResponseCustomEnvironmentsItem]? = nil, customerSupportCodeVisibility: Bool? = nil, dataCache: UpdateMicrofrontendsResponseDataCache? = nil, deploymentPolicy: UpdateMicrofrontendsResponseDeploymentPolicy? = nil, devCommand: String? = nil, dismissedToasts: [UpdateMicrofrontendsResponseDismissedToastsItem]? = nil, enableAffectedProjectsDeployments: Bool? = nil, enableExternalRewriteCaching: Bool? = nil, enablePreviewFeedback: Bool? = nil, enableProductionFeedback: Bool? = nil, env: [UpdateMicrofrontendsResponseEnvItem]? = nil, expiration: UpdateMicrofrontendsResponseExpiration? = nil, features: UpdateMicrofrontendsResponseFeatures? = nil, framework: UpdateMicrofrontendsResponseFramework? = nil, gitComments: UpdateMicrofrontendsResponseGitComments? = nil, gitForkProtection: Bool? = nil, gitLfs: Bool? = nil, gitProviderOptions: UpdateMicrofrontendsResponseGitProviderOptions? = nil, hasActiveBranches: Bool? = nil, hasDeployments: Bool? = nil, installCommand: String? = nil, internalRoutes: [UpdateMicrofrontendsResponseInternalRoutesItem]? = nil, ipBuckets: [UpdateMicrofrontendsResponseIpBucketsItem]? = nil, jobs: UpdateMicrofrontendsResponseJobs? = nil, lastAliasRequest: UpdateMicrofrontendsResponseLastAliasRequest? = nil, lastRollbackTarget: [String: JSONValue]? = nil, latestDeployments: [UpdateMicrofrontendsResponseLatestDeploymentsItem]? = nil, link: UpdateMicrofrontendsResponseLink? = nil, live: Bool? = nil, microfrontends: UpdateMicrofrontendsResponseMicrofrontends? = nil, oidcTokenConfig: UpdateMicrofrontendsResponseOidcTokenConfig? = nil, optionsAllowlist: UpdateMicrofrontendsResponseOptionsAllowlist? = nil, outputDirectory: String? = nil, passiveConnectConfigurationId: String? = nil, passport: UpdateMicrofrontendsResponsePassport? = nil, passwordProtection: UpdateMicrofrontendsResponsePasswordProtection? = nil, paused: Bool? = nil, permissions: UpdateMicrofrontendsResponsePermissions? = nil, productionDeploymentsFastLane: Bool? = nil, protectedSourcemaps: Bool? = nil, protectionBypass: [String: UpdateMicrofrontendsResponseProtectionBypassValue]? = nil, protectionConfig: UpdateMicrofrontendsResponseProtectionConfig? = nil, rollbackDescription: UpdateMicrofrontendsResponseRollbackDescription? = nil, rollingRelease: UpdateMicrofrontendsResponseRollingRelease? = nil, rootDirectory: String? = nil, sandbox: UpdateMicrofrontendsResponseSandbox? = nil, security: UpdateMicrofrontendsResponseSecurity? = nil, serverlessFunctionZeroConfigFailover: Bool? = nil, services: [UpdateMicrofrontendsResponseServicesItem]? = nil, skewProtectionAllowedDomains: [String]? = nil, skewProtectionBoundaryAt: Double? = nil, skewProtectionMaxAge: Double? = nil, skipGitConnectDuringLink: Bool? = nil, sourceFilesOutsideRootDirectory: Bool? = nil, speedInsights: UpdateMicrofrontendsResponseSpeedInsights? = nil, ssoProtection: UpdateMicrofrontendsResponseSsoProtection? = nil, staticIps: UpdateMicrofrontendsResponseStaticIps? = nil, targets: [String: UpdateMicrofrontendsResponseTargetsValue?]? = nil, tier: UpdateMicrofrontendsResponseTier? = nil, tracing: UpdateMicrofrontendsResponseTracing? = nil, transferCompletedAt: Double? = nil, transferredFromAccountId: String? = nil, transferStartedAt: Double? = nil, transferToAccountId: String? = nil, trustedIps: UpdateMicrofrontendsResponseTrustedIps? = nil, trustedSources: UpdateMicrofrontendsResponseTrustedSources? = nil, updatedAt: Double? = nil, usageStatus: UpdateMicrofrontendsResponseUsageStatus? = nil, v0: Bool? = nil, v0Created: Bool? = nil, webAnalytics: UpdateMicrofrontendsResponseWebAnalytics? = nil) {
+        self.init(sdkRequiredFields: accountId, alias: alias, defaultResourceConfig: defaultResourceConfig, deploymentExpiration: deploymentExpiration, directoryListing: directoryListing, id: id, name: name, nodeVersion: nodeVersion, resourceConfig: resourceConfig)
         sdkSet1(analytics, appliedCve55182Migration, autoAssignCustomDomains, autoAssignCustomDomainsUpdatedBy)
         sdkSet2(autoExposeSystemEnvs, avatar, avatarDarkMode, blobs, buildCommand)
         sdkSet3(commandForIgnoringBuildStep, concurrencyBucketName, connectBuildsEnabled, connectConfigurationId)
@@ -609,12 +430,7 @@ public extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet1(
-        _ analytics: UpdateMicrofrontendsResponseAnalytics?,
-        _ appliedCve55182Migration: Bool?,
-        _ autoAssignCustomDomains: Bool?,
-        _ autoAssignCustomDomainsUpdatedBy: String?
-    ) {
+    mutating func sdkSet1(_ analytics: UpdateMicrofrontendsResponseAnalytics?, _ appliedCve55182Migration: Bool?, _ autoAssignCustomDomains: Bool?, _ autoAssignCustomDomainsUpdatedBy: String?) {
         self.analytics = analytics
         self.appliedCve55182Migration = appliedCve55182Migration
         self.autoAssignCustomDomains = autoAssignCustomDomains

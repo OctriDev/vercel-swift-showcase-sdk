@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension FeatureFlagsMethods {
-    struct ListFlagsOptions: Codable {
+extension FeatureFlagsMethods {
+    public struct ListFlagsOptions: Codable {
         public var projectIdOrName: String
         public var state: ListFlagsParameter?
         public var withMetadata: Bool?
@@ -23,10 +23,7 @@ public extension FeatureFlagsMethods {
         }
     }
 
-    /// Lists feature flags for a project, with optional filtering by state, slug or description, and tags. Use the
-    /// `cursor` to continue through paginated results, or omit `limit` to retrieve all flags. The `withMetadata`
-    /// parameter is deprecated; resolve creator identity separately or use the single-flag endpoint when you need that
-    /// metadata.
+    /// Lists feature flags for a project, with optional filtering by state, slug or description, and tags. Use the `cursor` to continue through paginated results, or omit `limit` to retrieve all flags. The `withMetadata` parameter is deprecated; resolve creator identity separately or use the single-flag endpoint when you need that metadata.
     ///
     /// Retrieve feature flags for a project. The list can be filtered by state and supports pagination.
     ///
@@ -47,11 +44,7 @@ public extension FeatureFlagsMethods {
     ///   must match).
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listFlags(
-        config: ClientConfig,
-        options: ListFlagsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListFlagsResponse {
+    public static func listFlags(config: ClientConfig, options: ListFlagsOptions, requestOptions: RequestOptions? = nil) async throws -> ListFlagsResponse {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
@@ -60,24 +53,15 @@ public extension FeatureFlagsMethods {
             try validateLength("search", search, max: 256)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/flags"]
-                .joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("state", value: options.state),
-                SdkQueryParameter("withMetadata", value: options.withMetadata),
-                SdkQueryParameter("limit", value: options.limit),
-                SdkQueryParameter("cursor", value: options.cursor),
-                SdkQueryParameter("search", value: options.search),
-                SdkQueryParameter("tags", values: options.tags, style: "form", explode: true),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            decoder: .json,
-            operationId: "listFlags",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/flags"].joined(), config: config, query: [
+            SdkQueryParameter("state", value: options.state),
+            SdkQueryParameter("withMetadata", value: options.withMetadata),
+            SdkQueryParameter("limit", value: options.limit),
+            SdkQueryParameter("cursor", value: options.cursor),
+            SdkQueryParameter("search", value: options.search),
+            SdkQueryParameter("tags", values: options.tags, style: "form", explode: true),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], decoder: .json, operationId: "listFlags", options: requestOptions)).data
     }
 }

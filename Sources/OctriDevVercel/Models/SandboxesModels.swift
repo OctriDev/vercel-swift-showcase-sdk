@@ -3,37 +3,25 @@
 
 import Foundation
 
-/// Sandboxes domain models
+// Sandboxes domain models
 public indirect enum CreateSandboxesByNameForkV2RequestNetworkPolicy {
-    case createSandboxesByNameForkV2RequestNetworkPolicyVariant0(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0
-    )
-    case createSandboxesByNameForkV2RequestNetworkPolicyVariant1(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyVariant1
-    )
+    case createSandboxesByNameForkV2RequestNetworkPolicyVariant0(CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0)
+    case createSandboxesByNameForkV2RequestNetworkPolicyVariant1(CreateSandboxesByNameForkV2RequestNetworkPolicyVariant1)
 }
 
 extension CreateSandboxesByNameForkV2RequestNetworkPolicy: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateSandboxesByNameForkV2RequestNetworkPolicy"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesByNameForkV2RequestNetworkPolicy")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -56,12 +44,12 @@ extension CreateSandboxesByNameForkV2RequestNetworkPolicy {
         if let value = try? container.decode(
             CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0.self
         ) {
-            return .createSandboxesByNameForkV2RequestNetworkPolicyVariant0(value)
+            return             .createSandboxesByNameForkV2RequestNetworkPolicyVariant0(value)
         }
         if let value = try? container.decode(
             CreateSandboxesByNameForkV2RequestNetworkPolicyVariant1.self
         ) {
-            return .createSandboxesByNameForkV2RequestNetworkPolicyVariant1(value)
+            return             .createSandboxesByNameForkV2RequestNetworkPolicyVariant1(value)
         }
         return nil
     }
@@ -71,49 +59,37 @@ extension CreateSandboxesByNameForkV2RequestNetworkPolicy {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createSandboxesByNameForkV2RequestNetworkPolicyVariant0(value): try container
-            .encode(value); return true
-        case let .createSandboxesByNameForkV2RequestNetworkPolicyVariant1(value): try container
-            .encode(value); return true
+        case let .createSandboxesByNameForkV2RequestNetworkPolicyVariant0(value): try container.encode(value); return true
+        case let .createSandboxesByNameForkV2RequestNetworkPolicyVariant1(value): try container.encode(value); return true
         }
     }
 }
 
 public indirect enum CreateSandboxesByNameForkV3RequestKeepLastSnapshots {
     case stringValue(String)
-    case createSandboxesByNameForkV3RequestKeepLastSnapshotsVariant1(
-        CreateSandboxesByNameForkV3RequestKeepLastSnapshotsVariant1
-    )
+    case createSandboxesByNameForkV3RequestKeepLastSnapshotsVariant1(CreateSandboxesByNameForkV3RequestKeepLastSnapshotsVariant1)
 }
 
 extension CreateSandboxesByNameForkV3RequestKeepLastSnapshots: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateSandboxesByNameForkV3RequestKeepLastSnapshots"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesByNameForkV3RequestKeepLastSnapshots")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateSandboxesByNameForkV3RequestKeepLastSnapshots {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             CreateSandboxesByNameForkV3RequestKeepLastSnapshotsVariant1.self
         ) {
-            return .createSandboxesByNameForkV3RequestKeepLastSnapshotsVariant1(value)
+            return             .createSandboxesByNameForkV3RequestKeepLastSnapshotsVariant1(value)
         }
         return nil
     }
@@ -124,42 +100,29 @@ extension CreateSandboxesByNameForkV3RequestKeepLastSnapshots {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .createSandboxesByNameForkV3RequestKeepLastSnapshotsVariant1(value): try container
-            .encode(value); return true
+        case let .createSandboxesByNameForkV3RequestKeepLastSnapshotsVariant1(value): try container.encode(value); return true
         }
     }
 }
 
 public indirect enum CreateSandboxesByNameForkV3RequestNetworkPolicy {
-    case createSandboxesByNameForkV3RequestNetworkPolicyVariant0(
-        CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0
-    )
-    case createSandboxesByNameForkV3RequestNetworkPolicyVariant1(
-        CreateSandboxesByNameForkV3RequestNetworkPolicyVariant1
-    )
+    case createSandboxesByNameForkV3RequestNetworkPolicyVariant0(CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0)
+    case createSandboxesByNameForkV3RequestNetworkPolicyVariant1(CreateSandboxesByNameForkV3RequestNetworkPolicyVariant1)
 }
 
 extension CreateSandboxesByNameForkV3RequestNetworkPolicy: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateSandboxesByNameForkV3RequestNetworkPolicy"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesByNameForkV3RequestNetworkPolicy")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -182,12 +145,12 @@ extension CreateSandboxesByNameForkV3RequestNetworkPolicy {
         if let value = try? container.decode(
             CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0.self
         ) {
-            return .createSandboxesByNameForkV3RequestNetworkPolicyVariant0(value)
+            return             .createSandboxesByNameForkV3RequestNetworkPolicyVariant0(value)
         }
         if let value = try? container.decode(
             CreateSandboxesByNameForkV3RequestNetworkPolicyVariant1.self
         ) {
-            return .createSandboxesByNameForkV3RequestNetworkPolicyVariant1(value)
+            return             .createSandboxesByNameForkV3RequestNetworkPolicyVariant1(value)
         }
         return nil
     }
@@ -197,10 +160,8 @@ extension CreateSandboxesByNameForkV3RequestNetworkPolicy {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createSandboxesByNameForkV3RequestNetworkPolicyVariant0(value): try container
-            .encode(value); return true
-        case let .createSandboxesByNameForkV3RequestNetworkPolicyVariant1(value): try container
-            .encode(value); return true
+        case let .createSandboxesByNameForkV3RequestNetworkPolicyVariant0(value): try container.encode(value); return true
+        case let .createSandboxesByNameForkV3RequestNetworkPolicyVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -211,41 +172,27 @@ public indirect enum CreateSandboxesV2RequestNetworkPolicy {
 }
 
 extension CreateSandboxesV2RequestNetworkPolicy: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateSandboxesV2RequestNetworkPolicy"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesV2RequestNetworkPolicy")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateSandboxesV2RequestNetworkPolicy {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateSandboxesV2RequestNetworkPolicyVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV2RequestNetworkPolicyVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV2RequestNetworkPolicyVariant0(value)
         }
-        if let value = try? container.decode(CreateSandboxesV2RequestNetworkPolicyVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV2RequestNetworkPolicyVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV2RequestNetworkPolicyVariant1(value)
         }
         return nil
@@ -257,12 +204,12 @@ extension CreateSandboxesV2RequestNetworkPolicy {
         if let value = try? container.decode(
             CreateSandboxesV2RequestNetworkPolicyVariant0.self
         ) {
-            return .createSandboxesV2RequestNetworkPolicyVariant0(value)
+            return             .createSandboxesV2RequestNetworkPolicyVariant0(value)
         }
         if let value = try? container.decode(
             CreateSandboxesV2RequestNetworkPolicyVariant1.self
         ) {
-            return .createSandboxesV2RequestNetworkPolicyVariant1(value)
+            return             .createSandboxesV2RequestNetworkPolicyVariant1(value)
         }
         return nil
     }
@@ -285,47 +232,30 @@ public indirect enum CreateSandboxesV2RequestSource {
 }
 
 extension CreateSandboxesV2RequestSource: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateSandboxesV2RequestSource"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesV2RequestSource")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateSandboxesV2RequestSource {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateSandboxesV2RequestSourceVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV2RequestSourceVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV2RequestSourceVariant0(value)
         }
-        if let value = try? container.decode(CreateSandboxesV2RequestSourceVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV2RequestSourceVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV2RequestSourceVariant1(value)
         }
-        if let value = try? container.decode(CreateSandboxesV2RequestSourceVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV2RequestSourceVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV2RequestSourceVariant2(value)
         }
         return nil
@@ -337,17 +267,17 @@ extension CreateSandboxesV2RequestSource {
         if let value = try? container.decode(
             CreateSandboxesV2RequestSourceVariant0.self
         ) {
-            return .createSandboxesV2RequestSourceVariant0(value)
+            return             .createSandboxesV2RequestSourceVariant0(value)
         }
         if let value = try? container.decode(
             CreateSandboxesV2RequestSourceVariant1.self
         ) {
-            return .createSandboxesV2RequestSourceVariant1(value)
+            return             .createSandboxesV2RequestSourceVariant1(value)
         }
         if let value = try? container.decode(
             CreateSandboxesV2RequestSourceVariant2.self
         ) {
-            return .createSandboxesV2RequestSourceVariant2(value)
+            return             .createSandboxesV2RequestSourceVariant2(value)
         }
         return nil
     }
@@ -370,41 +300,27 @@ public indirect enum CreateSandboxesV3RequestNetworkPolicy {
 }
 
 extension CreateSandboxesV3RequestNetworkPolicy: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateSandboxesV3RequestNetworkPolicy"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesV3RequestNetworkPolicy")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateSandboxesV3RequestNetworkPolicy {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateSandboxesV3RequestNetworkPolicyVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV3RequestNetworkPolicyVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV3RequestNetworkPolicyVariant0(value)
         }
-        if let value = try? container.decode(CreateSandboxesV3RequestNetworkPolicyVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV3RequestNetworkPolicyVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV3RequestNetworkPolicyVariant1(value)
         }
         return nil
@@ -416,12 +332,12 @@ extension CreateSandboxesV3RequestNetworkPolicy {
         if let value = try? container.decode(
             CreateSandboxesV3RequestNetworkPolicyVariant0.self
         ) {
-            return .createSandboxesV3RequestNetworkPolicyVariant0(value)
+            return             .createSandboxesV3RequestNetworkPolicyVariant0(value)
         }
         if let value = try? container.decode(
             CreateSandboxesV3RequestNetworkPolicyVariant1.self
         ) {
-            return .createSandboxesV3RequestNetworkPolicyVariant1(value)
+            return             .createSandboxesV3RequestNetworkPolicyVariant1(value)
         }
         return nil
     }
@@ -444,47 +360,30 @@ public indirect enum CreateSandboxesV3RequestSource {
 }
 
 extension CreateSandboxesV3RequestSource: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateSandboxesV3RequestSource"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesV3RequestSource")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateSandboxesV3RequestSource {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateSandboxesV3RequestSourceVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV3RequestSourceVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV3RequestSourceVariant0(value)
         }
-        if let value = try? container.decode(CreateSandboxesV3RequestSourceVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV3RequestSourceVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV3RequestSourceVariant1(value)
         }
-        if let value = try? container.decode(CreateSandboxesV3RequestSourceVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateSandboxesV3RequestSourceVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .createSandboxesV3RequestSourceVariant2(value)
         }
         return nil
@@ -496,17 +395,17 @@ extension CreateSandboxesV3RequestSource {
         if let value = try? container.decode(
             CreateSandboxesV3RequestSourceVariant0.self
         ) {
-            return .createSandboxesV3RequestSourceVariant0(value)
+            return             .createSandboxesV3RequestSourceVariant0(value)
         }
         if let value = try? container.decode(
             CreateSandboxesV3RequestSourceVariant1.self
         ) {
-            return .createSandboxesV3RequestSourceVariant1(value)
+            return             .createSandboxesV3RequestSourceVariant1(value)
         }
         if let value = try? container.decode(
             CreateSandboxesV3RequestSourceVariant2.self
         ) {
-            return .createSandboxesV3RequestSourceVariant2(value)
+            return             .createSandboxesV3RequestSourceVariant2(value)
         }
         return nil
     }
@@ -529,33 +428,25 @@ public indirect enum CreateSandboxesV4RequestKeepLastSnapshots {
 }
 
 extension CreateSandboxesV4RequestKeepLastSnapshots: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateSandboxesV4RequestKeepLastSnapshots"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesV4RequestKeepLastSnapshots")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateSandboxesV4RequestKeepLastSnapshots {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             CreateSandboxesV4RequestKeepLastSnapshotsVariant1.self
         ) {
-            return .createSandboxesV4RequestKeepLastSnapshotsVariant1(value)
+            return             .createSandboxesV4RequestKeepLastSnapshotsVariant1(value)
         }
         return nil
     }

@@ -6,13 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension RollingReleaseMethods {
-    /// Advances a project's active rolling release to a specified stage. Use this operation when the rolling release
-    /// requires manual approval, and identify the canary deployment and target stage in the request body. The response
-    /// includes the updated rolling release information.
+extension RollingReleaseMethods {
+    /// Advances a project's active rolling release to a specified stage. Use this operation when the rolling release requires manual approval, and identify the canary deployment and target stage in the request body. The response includes the updated rolling release information.
     ///
-    /// Advance a rollout to the next stage. This is only needed when rolling releases is configured to require manual
-    /// approval.
+    /// Advance a rollout to the next stage. This is only needed when rolling releases is configured to require manual approval.
     ///
     /// - Parameters:
     /// - idOrName: Project ID or project name (URL-encoded)
@@ -21,32 +18,12 @@ public extension RollingReleaseMethods {
     ///   next stage
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func approveRollingReleaseStage(
-        config: ClientConfig,
-        idOrName: String,
-        nextStageIndex: Double,
-        canaryDeploymentId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ApproveRollingReleaseStageResponse {
-        let requestBody = ApproveRollingReleaseStageRequestBody(
-            nextStageIndex: nextStageIndex,
-            canaryDeploymentId: canaryDeploymentId
-        )
+    public static func approveRollingReleaseStage(config: ClientConfig, idOrName: String, nextStageIndex: Double, canaryDeploymentId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ApproveRollingReleaseStageResponse {
+        let requestBody = ApproveRollingReleaseStageRequestBody(nextStageIndex: nextStageIndex, canaryDeploymentId: canaryDeploymentId)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/approve-stage"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "approveRollingReleaseStage",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/approve-stage"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "approveRollingReleaseStage", options: requestOptions)).data
     }
 }

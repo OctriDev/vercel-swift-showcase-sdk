@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical observability operation model declarations
+// Canonical observability operation model declarations
 public struct GetObservabilitySchemaByMetricIdResponseItem: Codable {
     public var aggregations: [String]
     public var defaultAggregation: String
@@ -25,74 +25,41 @@ public struct GetObservabilitySchemaByMetricIdResponseItem: Codable {
         case unit
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetObservabilitySchemaByMetricIdResponseItem {
-    init(from decoder: Decoder) throws {
+extension GetObservabilitySchemaByMetricIdResponseItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.aggregations) else {
-            throw SdkValidationError(
-                field: "aggregations",
-                code: "required",
-                message: "Validation failed for 'aggregations': value is required"
-            )
+            throw SdkValidationError(field: "aggregations", code: "required", message: "Validation failed for 'aggregations': value is required")
         }
         guard container.contains(.defaultAggregation) else {
-            throw SdkValidationError(
-                field: "defaultAggregation",
-                code: "required",
-                message: "Validation failed for 'defaultAggregation': value is required"
-            )
+            throw SdkValidationError(field: "defaultAggregation", code: "required", message: "Validation failed for 'defaultAggregation': value is required")
         }
         guard container.contains(.description) else {
-            throw SdkValidationError(
-                field: "description",
-                code: "required",
-                message: "Validation failed for 'description': value is required"
-            )
+            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
         }
         guard container.contains(.dimensions) else {
-            throw SdkValidationError(
-                field: "dimensions",
-                code: "required",
-                message: "Validation failed for 'dimensions': value is required"
-            )
+            throw SdkValidationError(field: "dimensions", code: "required", message: "Validation failed for 'dimensions': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.unit) else {
-            throw SdkValidationError(
-                field: "unit",
-                code: "required",
-                message: "Validation failed for 'unit': value is required"
-            )
+            throw SdkValidationError(field: "unit", code: "required", message: "Validation failed for 'unit': value is required")
         }
-        aggregations = try container.sdkDecodeRequired(.aggregations)
-        defaultAggregation = try container.sdkDecodeRequired(.defaultAggregation)
-        description = try container.sdkDecodeRequired(.description)
-        dimensions = try container.sdkDecodeRequired(.dimensions)
-        id = try container.sdkDecodeRequired(.id)
-        unit = try container.sdkDecodeRequired(.unit)
+        self.aggregations = try container.sdkDecodeRequired(.aggregations)
+        self.defaultAggregation = try container.sdkDecodeRequired(.defaultAggregation)
+        self.description = try container.sdkDecodeRequired(.description)
+        self.dimensions = try container.sdkDecodeRequired(.dimensions)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.unit = try container.sdkDecodeRequired(.unit)
     }
 }
 
-public extension GetObservabilitySchemaByMetricIdResponseItem {
-    init(
-        aggregations: [String],
-        defaultAggregation: String,
-        description: String,
-        dimensions: [GetObservabilitySchemaByMetricIdResponseItemDimensionsItem],
-        id: String,
-        unit: String
-    ) {
+extension GetObservabilitySchemaByMetricIdResponseItem {
+    public init(aggregations: [String], defaultAggregation: String, description: String, dimensions: [GetObservabilitySchemaByMetricIdResponseItemDimensionsItem], id: String, unit: String) {
         (self.aggregations, self.defaultAggregation) = (aggregations, defaultAggregation)
         (self.description, self.dimensions) = (description, dimensions)
         (self.id, self.unit) = (id, unit)
@@ -110,36 +77,26 @@ public struct GetObservabilitySchemaByMetricIdResponseItemDimensionsItem: Codabl
         case description
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetObservabilitySchemaByMetricIdResponseItemDimensionsItem {
-    init(from decoder: Decoder) throws {
+extension GetObservabilitySchemaByMetricIdResponseItemDimensionsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.label) else {
-            throw SdkValidationError(
-                field: "label",
-                code: "required",
-                message: "Validation failed for 'label': value is required"
-            )
+            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        label = try container.sdkDecodeRequired(.label)
-        name = try container.sdkDecodeRequired(.name)
-        description = try container.sdkDecodeIfPresent(.description)
+        self.label = try container.sdkDecodeRequired(.label)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.description = try container.sdkDecodeIfPresent(.description)
     }
 }
 
-public extension GetObservabilitySchemaByMetricIdResponseItemDimensionsItem {
-    init(label: String, name: String, description: String? = nil) {
+extension GetObservabilitySchemaByMetricIdResponseItemDimensionsItem {
+    public init(label: String, name: String, description: String? = nil) {
         (self.label, self.name) = (label, name)
         self.description = description
     }
@@ -154,35 +111,25 @@ public struct GetObservabilitySchemaResponseMetricsItem: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetObservabilitySchemaResponseMetricsItem {
-    init(from decoder: Decoder) throws {
+extension GetObservabilitySchemaResponseMetricsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.description) else {
-            throw SdkValidationError(
-                field: "description",
-                code: "required",
-                message: "Validation failed for 'description': value is required"
-            )
+            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
-        description = try container.sdkDecodeRequired(.description)
-        id = try container.sdkDecodeRequired(.id)
+        self.description = try container.sdkDecodeRequired(.description)
+        self.id = try container.sdkDecodeRequired(.id)
     }
 }
 
-public extension GetObservabilitySchemaResponseMetricsItem {
-    init(description: String, id: String) {
+extension GetObservabilitySchemaResponseMetricsItem {
+    public init(description: String, id: String) {
         (self.description, self.id) = (description, id)
     }
 }
@@ -196,28 +143,22 @@ public struct UpdateObservabilityConfigurationProjectResponse: Codable {
         case disabledAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateObservabilityConfigurationProjectResponse {
-    init(from decoder: Decoder) throws {
+extension UpdateObservabilityConfigurationProjectResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
     }
 }
 
-public extension UpdateObservabilityConfigurationProjectResponse {
-    init(id: String, disabledAt: Double? = nil) {
+extension UpdateObservabilityConfigurationProjectResponse {
+    public init(id: String, disabledAt: Double? = nil) {
         (self.id, self.disabledAt) = (id, disabledAt)
     }
 }
@@ -233,36 +174,26 @@ public struct GetObservabilityConfigurationProjectsResponseDisabledProjectsItem:
         case name
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetObservabilityConfigurationProjectsResponseDisabledProjectsItem {
-    init(from decoder: Decoder) throws {
+extension GetObservabilityConfigurationProjectsResponseDisabledProjectsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.disabledAt) else {
-            throw SdkValidationError(
-                field: "disabledAt",
-                code: "required",
-                message: "Validation failed for 'disabledAt': value is required"
-            )
+            throw SdkValidationError(field: "disabledAt", code: "required", message: "Validation failed for 'disabledAt': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
-        disabledAt = try container.sdkDecodeRequired(.disabledAt)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeIfPresent(.name)
+        self.disabledAt = try container.sdkDecodeRequired(.disabledAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeIfPresent(.name)
     }
 }
 
-public extension GetObservabilityConfigurationProjectsResponseDisabledProjectsItem {
-    init(disabledAt: Double, id: String, name: String? = nil) {
+extension GetObservabilityConfigurationProjectsResponseDisabledProjectsItem {
+    public init(disabledAt: Double, id: String, name: String? = nil) {
         (self.disabledAt, self.id) = (disabledAt, id)
         self.name = name
     }
@@ -275,33 +206,26 @@ public struct GetObservabilitySchemaResponse: Codable {
         case metrics
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetObservabilitySchemaResponse {
-    init(from decoder: Decoder) throws {
+extension GetObservabilitySchemaResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.metrics) else {
-            throw SdkValidationError(
-                field: "metrics",
-                code: "required",
-                message: "Validation failed for 'metrics': value is required"
-            )
+            throw SdkValidationError(field: "metrics", code: "required", message: "Validation failed for 'metrics': value is required")
         }
-        metrics = try container.sdkDecodeRequired(.metrics)
+        self.metrics = try container.sdkDecodeRequired(.metrics)
     }
 }
 
-public extension GetObservabilitySchemaResponse {
-    init(metrics: [GetObservabilitySchemaResponseMetricsItem]) {
+extension GetObservabilitySchemaResponse {
+    public init(metrics: [GetObservabilitySchemaResponseMetricsItem]) {
         self.metrics = metrics
     }
 }
 
-public typealias GetObservabilityConfigurationProjectsResponseDisabledProjectsList =
-    [GetObservabilityConfigurationProjectsResponseDisabledProjectsItem]
+public typealias GetObservabilityConfigurationProjectsResponseDisabledProjectsList = [GetObservabilityConfigurationProjectsResponseDisabledProjectsItem]
 
 public struct GetObservabilityConfigurationProjectsResponse: Codable {
     public var disabledProjects: GetObservabilityConfigurationProjectsResponseDisabledProjectsList
@@ -310,27 +234,21 @@ public struct GetObservabilityConfigurationProjectsResponse: Codable {
         case disabledProjects
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetObservabilityConfigurationProjectsResponse {
-    init(from decoder: Decoder) throws {
+extension GetObservabilityConfigurationProjectsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.disabledProjects) else {
-            throw SdkValidationError(
-                field: "disabledProjects",
-                code: "required",
-                message: "Validation failed for 'disabledProjects': value is required"
-            )
+            throw SdkValidationError(field: "disabledProjects", code: "required", message: "Validation failed for 'disabledProjects': value is required")
         }
-        disabledProjects = try container.sdkDecodeRequired(.disabledProjects)
+        self.disabledProjects = try container.sdkDecodeRequired(.disabledProjects)
     }
 }
 
-public extension GetObservabilityConfigurationProjectsResponse {
-    init(disabledProjects: GetObservabilityConfigurationProjectsResponseDisabledProjectsList) {
+extension GetObservabilityConfigurationProjectsResponse {
+    public init(disabledProjects: GetObservabilityConfigurationProjectsResponseDisabledProjectsList) {
         self.disabledProjects = disabledProjects
     }
 }

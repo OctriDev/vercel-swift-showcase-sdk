@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// DomainsRegistrarToo domain models
+// DomainsRegistrarToo domain models
 /// The number of domains in the order is too high.
 public struct TooManyDomains: Codable {
     /// Required enumerated value serialized in the `status` wire field.
@@ -19,43 +19,29 @@ public struct TooManyDomains: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TooManyDomains {
-    init(from decoder: Decoder) throws {
+extension TooManyDomains {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension TooManyDomains {
-    init(status: Int, code: TooManyDomainsCode, message: String) {
+extension TooManyDomains {
+    public init(status: Int, code: TooManyDomainsCode, message: String) {
         (self.status, self.code) = (status, code)
         self.message = message
     }
@@ -82,65 +68,37 @@ public struct TooManyRequests: Codable {
         case limit
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TooManyRequests {
-    init(from decoder: Decoder) throws {
+extension TooManyRequests {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
         guard container.contains(.retryAfter) else {
-            throw SdkValidationError(
-                field: "retryAfter",
-                code: "required",
-                message: "Validation failed for 'retryAfter': value is required"
-            )
+            throw SdkValidationError(field: "retryAfter", code: "required", message: "Validation failed for 'retryAfter': value is required")
         }
         guard container.contains(.limit) else {
-            throw SdkValidationError(
-                field: "limit",
-                code: "required",
-                message: "Validation failed for 'limit': value is required"
-            )
+            throw SdkValidationError(field: "limit", code: "required", message: "Validation failed for 'limit': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
-        retryAfter = try container.sdkDecodeRequired(.retryAfter)
-        limit = try container.sdkDecodeRequired(.limit)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
+        self.retryAfter = try container.sdkDecodeRequired(.retryAfter)
+        self.limit = try container.sdkDecodeRequired(.limit)
     }
 }
 
-public extension TooManyRequests {
-    init(
-        status: Int,
-        code: TooManyRequestsCode,
-        message: String,
-        retryAfter: TooManyRequestsRetryAfter,
-        limit: TooManyRequestsLimit
-    ) {
+extension TooManyRequests {
+    public init(status: Int, code: TooManyRequestsCode, message: String, retryAfter: TooManyRequestsRetryAfter, limit: TooManyRequestsLimit) {
         (self.status, self.code) = (status, code)
         (self.message, self.retryAfter) = (message, retryAfter)
         self.limit = limit
@@ -162,43 +120,29 @@ public struct TooManyRequestsLimit: Codable {
         case reset
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TooManyRequestsLimit {
-    init(from decoder: Decoder) throws {
+extension TooManyRequestsLimit {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.total) else {
-            throw SdkValidationError(
-                field: "total",
-                code: "required",
-                message: "Validation failed for 'total': value is required"
-            )
+            throw SdkValidationError(field: "total", code: "required", message: "Validation failed for 'total': value is required")
         }
         guard container.contains(.remaining) else {
-            throw SdkValidationError(
-                field: "remaining",
-                code: "required",
-                message: "Validation failed for 'remaining': value is required"
-            )
+            throw SdkValidationError(field: "remaining", code: "required", message: "Validation failed for 'remaining': value is required")
         }
         guard container.contains(.reset) else {
-            throw SdkValidationError(
-                field: "reset",
-                code: "required",
-                message: "Validation failed for 'reset': value is required"
-            )
+            throw SdkValidationError(field: "reset", code: "required", message: "Validation failed for 'reset': value is required")
         }
-        total = try container.sdkDecodeRequired(.total)
-        remaining = try container.sdkDecodeRequired(.remaining)
-        reset = try container.sdkDecodeRequired(.reset)
+        self.total = try container.sdkDecodeRequired(.total)
+        self.remaining = try container.sdkDecodeRequired(.remaining)
+        self.reset = try container.sdkDecodeRequired(.reset)
     }
 }
 
-public extension TooManyRequestsLimit {
-    init(total: Double, remaining: Double, reset: Double) {
+extension TooManyRequestsLimit {
+    public init(total: Double, remaining: Double, reset: Double) {
         (self.total, self.remaining) = (total, remaining)
         self.reset = reset
     }
@@ -216,35 +160,25 @@ public struct TooManyRequestsRetryAfter: Codable {
         case str
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TooManyRequestsRetryAfter {
-    init(from decoder: Decoder) throws {
+extension TooManyRequestsRetryAfter {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
         guard container.contains(.str) else {
-            throw SdkValidationError(
-                field: "str",
-                code: "required",
-                message: "Validation failed for 'str': value is required"
-            )
+            throw SdkValidationError(field: "str", code: "required", message: "Validation failed for 'str': value is required")
         }
-        value = try container.sdkDecodeRequired(.value)
-        str = try container.sdkDecodeRequired(.str)
+        self.value = try container.sdkDecodeRequired(.value)
+        self.str = try container.sdkDecodeRequired(.str)
     }
 }
 
-public extension TooManyRequestsRetryAfter {
-    init(value: Double, str: String) {
+extension TooManyRequestsRetryAfter {
+    public init(value: Double, str: String) {
         (self.value, self.str) = (value, str)
     }
 }
@@ -253,15 +187,12 @@ public extension TooManyRequestsRetryAfter {
 public struct TooManyRequestsCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let tooManyRequests = TooManyRequestsCode(rawValue: "too_many_requests")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -274,15 +205,12 @@ public struct TooManyRequestsCode: RawRepresentable, Hashable, Codable, Sendable
 public struct TooManyDomainsCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let tooManyDomains = TooManyDomainsCode(rawValue: "too_many_domains")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

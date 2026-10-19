@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 extension UserEventPayload {
     func encodeGroup40(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
@@ -232,26 +232,18 @@ public indirect enum UserEventPrincipal {
 }
 
 extension UserEventPrincipal: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UserEventPrincipal"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UserEventPrincipal")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -275,22 +267,10 @@ extension UserEventPrincipal {
 
 extension UserEventPrincipal {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container
-            .decode(UserEventPrincipalVariant0.self) {
-            return .userEventPrincipalVariant0(value)
-        }
-        if let value = try? container
-            .decode(UserEventPrincipalVariant1.self) {
-            return .userEventPrincipalVariant1(value)
-        }
-        if let value = try? container
-            .decode(UserEventPrincipalVariant2.self) {
-            return .userEventPrincipalVariant2(value)
-        }
-        if let value = try? container
-            .decode(UserEventPrincipalVariant3.self) {
-            return .userEventPrincipalVariant3(value)
-        }
+        if let value = try? container.decode(UserEventPrincipalVariant0.self) { return .userEventPrincipalVariant0(value) }
+        if let value = try? container.decode(UserEventPrincipalVariant1.self) { return .userEventPrincipalVariant1(value) }
+        if let value = try? container.decode(UserEventPrincipalVariant2.self) { return .userEventPrincipalVariant2(value) }
+        if let value = try? container.decode(UserEventPrincipalVariant3.self) { return .userEventPrincipalVariant3(value) }
         return nil
     }
 }
@@ -315,26 +295,18 @@ public indirect enum UserEventViaItem {
 }
 
 extension UserEventViaItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UserEventViaItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UserEventViaItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -358,18 +330,10 @@ extension UserEventViaItem {
 
 extension UserEventViaItem {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UserEventViaItemVariant0.self) {
-            return .userEventViaItemVariant0(value)
-        }
-        if let value = try? container.decode(UserEventViaItemVariant1.self) {
-            return .userEventViaItemVariant1(value)
-        }
-        if let value = try? container.decode(UserEventViaItemVariant2.self) {
-            return .userEventViaItemVariant2(value)
-        }
-        if let value = try? container.decode(UserEventViaItemVariant3.self) {
-            return .userEventViaItemVariant3(value)
-        }
+        if let value = try? container.decode(UserEventViaItemVariant0.self) { return .userEventViaItemVariant0(value) }
+        if let value = try? container.decode(UserEventViaItemVariant1.self) { return .userEventViaItemVariant1(value) }
+        if let value = try? container.decode(UserEventViaItemVariant2.self) { return .userEventViaItemVariant2(value) }
+        if let value = try? container.decode(UserEventViaItemVariant3.self) { return .userEventViaItemVariant3(value) }
         return nil
     }
 }
@@ -438,54 +402,38 @@ public struct UserEventPayloadVariant373: Codable {
     }
 
     init() {
-        (env, factors, geolocation, os, ssoType) = (nil, nil, nil, nil, nil)
-        (userAgent, username, viaApple, viaBitbucket, viaGithub) = (nil, nil, nil, nil, nil)
-        (viaGitlab, viaGoogle, viaOtp, viaPasskey, viaSamlSso) = (nil, nil, nil, nil, nil)
+        (self.env, self.factors, self.geolocation, self.os, self.ssoType) = (nil, nil, nil, nil, nil)
+        (self.userAgent, self.username, self.viaApple, self.viaBitbucket, self.viaGithub) = (nil, nil, nil, nil, nil)
+        (self.viaGitlab, self.viaGoogle, self.viaOtp, self.viaPasskey, self.viaSamlSso) = (nil, nil, nil, nil, nil)
     }
 }
 
-public extension UserEventPayloadVariant373 {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant373 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        env = try container.sdkDecodeIfPresent(.env)
-        factors = try container.sdkDecodeIfPresent(.factors)
-        geolocation = try container.sdkDecodeIfPresent(.geolocation)
-        os = try container.sdkDecodeIfPresent(.os)
-        ssoType = try container.sdkDecodeIfPresent(.ssoType)
-        userAgent = try container.sdkDecodeIfPresent(.userAgent)
-        username = try container.sdkDecodeIfPresent(.username)
-        viaApple = try container.sdkDecodeIfPresent(.viaApple)
-        viaBitbucket = try container.sdkDecodeIfPresent(.viaBitbucket)
-        viaGithub = try container.sdkDecodeIfPresent(.viaGithub)
-        viaGitlab = try container.sdkDecodeIfPresent(.viaGitlab)
-        viaGoogle = try container.sdkDecodeIfPresent(.viaGoogle)
-        viaOtp = try container.sdkDecodeIfPresent(.viaOtp)
-        viaPasskey = try container.sdkDecodeIfPresent(.viaPasskey)
-        viaSamlSso = try container.sdkDecodeIfPresent(.viaSamlSso)
-        if let value = factors {
+        self.env = try container.sdkDecodeIfPresent(.env)
+        self.factors = try container.sdkDecodeIfPresent(.factors)
+        self.geolocation = try container.sdkDecodeIfPresent(.geolocation)
+        self.os = try container.sdkDecodeIfPresent(.os)
+        self.ssoType = try container.sdkDecodeIfPresent(.ssoType)
+        self.userAgent = try container.sdkDecodeIfPresent(.userAgent)
+        self.username = try container.sdkDecodeIfPresent(.username)
+        self.viaApple = try container.sdkDecodeIfPresent(.viaApple)
+        self.viaBitbucket = try container.sdkDecodeIfPresent(.viaBitbucket)
+        self.viaGithub = try container.sdkDecodeIfPresent(.viaGithub)
+        self.viaGitlab = try container.sdkDecodeIfPresent(.viaGitlab)
+        self.viaGoogle = try container.sdkDecodeIfPresent(.viaGoogle)
+        self.viaOtp = try container.sdkDecodeIfPresent(.viaOtp)
+        self.viaPasskey = try container.sdkDecodeIfPresent(.viaPasskey)
+        self.viaSamlSso = try container.sdkDecodeIfPresent(.viaSamlSso)
+        if let value = self.factors {
             try validateItems("factors", value, min: 1, max: 1)
         }
     }
 }
 
-public extension UserEventPayloadVariant373 {
-    init(
-        env: String? = nil,
-        factors: [UserEventPayloadVariant373FactorsItem]? = nil,
-        geolocation: UserEventPayloadVariant373Geolocation? = nil,
-        os: String? = nil,
-        ssoType: String? = nil,
-        userAgent: String? = nil,
-        username: String? = nil,
-        viaApple: Bool? = nil,
-        viaBitbucket: Bool? = nil,
-        viaGithub: Bool? = nil,
-        viaGitlab: Bool? = nil,
-        viaGoogle: Bool? = nil,
-        viaOtp: Bool? = nil,
-        viaPasskey: Bool? = nil,
-        viaSamlSso: Bool? = nil
-    ) throws {
+extension UserEventPayloadVariant373 {
+    public init(env: String? = nil, factors: [UserEventPayloadVariant373FactorsItem]? = nil, geolocation: UserEventPayloadVariant373Geolocation? = nil, os: String? = nil, ssoType: String? = nil, userAgent: String? = nil, username: String? = nil, viaApple: Bool? = nil, viaBitbucket: Bool? = nil, viaGithub: Bool? = nil, viaGitlab: Bool? = nil, viaGoogle: Bool? = nil, viaOtp: Bool? = nil, viaPasskey: Bool? = nil, viaSamlSso: Bool? = nil) throws {
         self.init()
         (self.env, self.factors) = (env, factors)
         (self.geolocation, self.os) = (geolocation, os)
@@ -547,46 +495,30 @@ public struct UserEventPayloadVariant186: Codable {
         case failureStage
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant186 {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant186 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        actorAccountId = try container.sdkDecodeNullable(.actorAccountId)
-        actorLogin = try container.sdkDecodeNullable(.actorLogin)
-        destinationBranch = try container.sdkDecodeNullable(.destinationBranch)
-        destinationRepo = try container.sdkDecodeRequired(.destinationRepo)
-        installationId = try container.sdkDecodeNullable(.installationId)
-        outcome = try container.sdkDecodeRequired(.outcome)
-        provider = try container.sdkDecodeRequired(.provider)
-        resultCommitSha = try container.sdkDecodeNullable(.resultCommitSha)
-        sourceCommitSha = try container.sdkDecodeNullable(.sourceCommitSha)
-        sourceRepo = try container.sdkDecodeNullable(.sourceRepo)
-        usedAppToken = try container.sdkDecodeRequired(.usedAppToken)
-        failureCode = try container.sdkDecodeIfPresent(.failureCode)
-        failureStage = try container.sdkDecodeIfPresent(.failureStage)
+        self.actorAccountId = try container.sdkDecodeNullable(.actorAccountId)
+        self.actorLogin = try container.sdkDecodeNullable(.actorLogin)
+        self.destinationBranch = try container.sdkDecodeNullable(.destinationBranch)
+        self.destinationRepo = try container.sdkDecodeRequired(.destinationRepo)
+        self.installationId = try container.sdkDecodeNullable(.installationId)
+        self.outcome = try container.sdkDecodeRequired(.outcome)
+        self.provider = try container.sdkDecodeRequired(.provider)
+        self.resultCommitSha = try container.sdkDecodeNullable(.resultCommitSha)
+        self.sourceCommitSha = try container.sdkDecodeNullable(.sourceCommitSha)
+        self.sourceRepo = try container.sdkDecodeNullable(.sourceRepo)
+        self.usedAppToken = try container.sdkDecodeRequired(.usedAppToken)
+        self.failureCode = try container.sdkDecodeIfPresent(.failureCode)
+        self.failureStage = try container.sdkDecodeIfPresent(.failureStage)
     }
 }
 
-public extension UserEventPayloadVariant186 {
-    init(
-        actorAccountId: String?,
-        actorLogin: String?,
-        destinationBranch: String?,
-        destinationRepo: String,
-        installationId: String?,
-        outcome: UserEventPayloadVariant186Outcome,
-        provider: UserEventPayloadVariant186Provider,
-        resultCommitSha: String?,
-        sourceCommitSha: String?,
-        sourceRepo: String?,
-        usedAppToken: Bool,
-        failureCode: String? = nil,
-        failureStage: UserEventPayloadVariant186FailureStage? = nil
-    ) {
+extension UserEventPayloadVariant186 {
+    public init(actorAccountId: String?, actorLogin: String?, destinationBranch: String?, destinationRepo: String, installationId: String?, outcome: UserEventPayloadVariant186Outcome, provider: UserEventPayloadVariant186Provider, resultCommitSha: String?, sourceCommitSha: String?, sourceRepo: String?, usedAppToken: Bool, failureCode: String? = nil, failureStage: UserEventPayloadVariant186FailureStage? = nil) {
         (self.actorAccountId, self.actorLogin) = (actorAccountId, actorLogin)
         (self.destinationBranch, self.destinationRepo) = (destinationBranch, destinationRepo)
         (self.installationId, self.outcome) = (installationId, outcome)

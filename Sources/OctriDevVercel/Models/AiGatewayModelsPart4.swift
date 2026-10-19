@@ -3,23 +3,19 @@
 
 import Foundation
 
-/// AiGateway domain models
+// AiGateway domain models
 /// Pin scope: `specific` (one provider region), `zone` (geo zone), or `global`.
-public struct AiGatewayVirtualModelConfigInferenceRegionScope: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct AiGatewayVirtualModelConfigInferenceRegionScope: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let global = AiGatewayVirtualModelConfigInferenceRegionScope(rawValue: "global")
     public static let specific = AiGatewayVirtualModelConfigInferenceRegionScope(rawValue: "specific")
     public static let zone = AiGatewayVirtualModelConfigInferenceRegionScope(rawValue: "zone")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -29,21 +25,17 @@ public struct AiGatewayVirtualModelConfigInferenceRegionScope: RawRepresentable,
 }
 
 /// Service tier for providers that support it.
-public struct AiGatewayVirtualModelConfigServiceTier: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct AiGatewayVirtualModelConfigServiceTier: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let fast = AiGatewayVirtualModelConfigServiceTier(rawValue: "fast")
     public static let flex = AiGatewayVirtualModelConfigServiceTier(rawValue: "flex")
     public static let priority = AiGatewayVirtualModelConfigServiceTier(rawValue: "priority")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -56,10 +48,7 @@ public struct AiGatewayVirtualModelConfigServiceTier: RawRepresentable, Hashable
 public struct AiGatewayVirtualModelConfigSort: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let cost = AiGatewayVirtualModelConfigSort(rawValue: "cost")
     public static let latency = AiGatewayVirtualModelConfigSort(rawValue: "latency")
     public static let price = AiGatewayVirtualModelConfigSort(rawValue: "price")
@@ -69,7 +58,7 @@ public struct AiGatewayVirtualModelConfigSort: RawRepresentable, Hashable, Codab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -82,10 +71,7 @@ public struct AiGatewayVirtualModelConfigSort: RawRepresentable, Hashable, Codab
 public struct AiGatewayBudgetScopeType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let apiKey = AiGatewayBudgetScopeType(rawValue: "api-key")
     public static let project = AiGatewayBudgetScopeType(rawValue: "project")
     public static let team = AiGatewayBudgetScopeType(rawValue: "team")
@@ -93,7 +79,7 @@ public struct AiGatewayBudgetScopeType: RawRepresentable, Hashable, Codable, Sen
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -106,10 +92,7 @@ public struct AiGatewayBudgetScopeType: RawRepresentable, Hashable, Codable, Sen
 public struct AiGatewayBudgetDefaultRefreshPeriod: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let daily = AiGatewayBudgetDefaultRefreshPeriod(rawValue: "daily")
     public static let monthly = AiGatewayBudgetDefaultRefreshPeriod(rawValue: "monthly")
     public static let none = AiGatewayBudgetDefaultRefreshPeriod(rawValue: "none")
@@ -117,7 +100,7 @@ public struct AiGatewayBudgetDefaultRefreshPeriod: RawRepresentable, Hashable, C
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -130,15 +113,12 @@ public struct AiGatewayBudgetDefaultRefreshPeriod: RawRepresentable, Hashable, C
 public struct AiGatewayVirtualModelConfigCaching: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let auto = AiGatewayVirtualModelConfigCaching(rawValue: "auto")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

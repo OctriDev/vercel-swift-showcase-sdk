@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 /// Required object value serialized in the `newOwner` wire field.
 public struct UserEventPayloadVariant189NewOwner: Codable {
     /// Required `string` value serialized in the `id` wire field.
@@ -16,35 +16,25 @@ public struct UserEventPayloadVariant189NewOwner: Codable {
         case username
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant189NewOwner {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant189NewOwner {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.username) else {
-            throw SdkValidationError(
-                field: "username",
-                code: "required",
-                message: "Validation failed for 'username': value is required"
-            )
+            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        username = try container.sdkDecodeRequired(.username)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.username = try container.sdkDecodeRequired(.username)
     }
 }
 
-public extension UserEventPayloadVariant189NewOwner {
-    init(id: String, username: String) {
+extension UserEventPayloadVariant189NewOwner {
+    public init(id: String, username: String) {
         (self.id, self.username) = (id, username)
     }
 }
@@ -67,44 +57,30 @@ public struct UserEventPayloadVariant217Prev: Codable {
         case enablePolyrepoBranchRouting
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant217Prev {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant217Prev {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.fallbackEnvironment) else {
-            throw SdkValidationError(
-                field: "fallbackEnvironment",
-                code: "required",
-                message: "Validation failed for 'fallbackEnvironment': value is required"
-            )
+            throw SdkValidationError(field: "fallbackEnvironment", code: "required", message: "Validation failed for 'fallbackEnvironment': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
-        fallbackEnvironment = try container.sdkDecodeRequired(.fallbackEnvironment)
-        name = try container.sdkDecodeRequired(.name)
-        slug = try container.sdkDecodeRequired(.slug)
-        enablePolyrepoBranchRouting = try container.sdkDecodeIfPresent(.enablePolyrepoBranchRouting)
+        self.fallbackEnvironment = try container.sdkDecodeRequired(.fallbackEnvironment)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.enablePolyrepoBranchRouting = try container.sdkDecodeIfPresent(.enablePolyrepoBranchRouting)
     }
 }
 
-public extension UserEventPayloadVariant217Prev {
-    init(fallbackEnvironment: String, name: String, slug: String, enablePolyrepoBranchRouting: Bool? = nil) {
+extension UserEventPayloadVariant217Prev {
+    public init(fallbackEnvironment: String, name: String, slug: String, enablePolyrepoBranchRouting: Bool? = nil) {
         (self.fallbackEnvironment, self.name) = (fallbackEnvironment, name)
         (self.slug, self.enablePolyrepoBranchRouting) = (slug, enablePolyrepoBranchRouting)
     }
@@ -122,28 +98,22 @@ public struct UserEventPayloadVariant99Configuration: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant99Configuration {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant99Configuration {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeIfPresent(.name)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeIfPresent(.name)
     }
 }
 
-public extension UserEventPayloadVariant99Configuration {
-    init(id: String, name: String? = nil) {
+extension UserEventPayloadVariant99Configuration {
+    public init(id: String, name: String? = nil) {
         (self.id, self.name) = (id, name)
     }
 }
@@ -163,47 +133,29 @@ public struct UserEventPayloadVariant479: Codable {
         case team
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant479 {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant479 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.configuration) else {
-            throw SdkValidationError(
-                field: "configuration",
-                code: "required",
-                message: "Validation failed for 'configuration': value is required"
-            )
+            throw SdkValidationError(field: "configuration", code: "required", message: "Validation failed for 'configuration': value is required")
         }
         guard container.contains(.peering) else {
-            throw SdkValidationError(
-                field: "peering",
-                code: "required",
-                message: "Validation failed for 'peering': value is required"
-            )
+            throw SdkValidationError(field: "peering", code: "required", message: "Validation failed for 'peering': value is required")
         }
         guard container.contains(.team) else {
-            throw SdkValidationError(
-                field: "team",
-                code: "required",
-                message: "Validation failed for 'team': value is required"
-            )
+            throw SdkValidationError(field: "team", code: "required", message: "Validation failed for 'team': value is required")
         }
-        configuration = try container.sdkDecodeRequired(.configuration)
-        peering = try container.sdkDecodeRequired(.peering)
-        team = try container.sdkDecodeRequired(.team)
+        self.configuration = try container.sdkDecodeRequired(.configuration)
+        self.peering = try container.sdkDecodeRequired(.peering)
+        self.team = try container.sdkDecodeRequired(.team)
     }
 }
 
-public extension UserEventPayloadVariant479 {
-    init(
-        configuration: UserEventPayloadVariant479Configuration,
-        peering: UserEventPayloadVariant479Peering,
-        team: UserEventPayloadVariant479Team
-    ) {
+extension UserEventPayloadVariant479 {
+    public init(configuration: UserEventPayloadVariant479Configuration, peering: UserEventPayloadVariant479Peering, team: UserEventPayloadVariant479Team) {
         (self.configuration, self.peering) = (configuration, peering)
         self.team = team
     }
@@ -221,35 +173,25 @@ public struct UserEventPayloadVariant459Mfa: Codable {
         case totpVerified
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant459Mfa {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant459Mfa {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
         guard container.contains(.totpVerified) else {
-            throw SdkValidationError(
-                field: "totpVerified",
-                code: "required",
-                message: "Validation failed for 'totpVerified': value is required"
-            )
+            throw SdkValidationError(field: "totpVerified", code: "required", message: "Validation failed for 'totpVerified': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
-        totpVerified = try container.sdkDecodeRequired(.totpVerified)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.totpVerified = try container.sdkDecodeRequired(.totpVerified)
     }
 }
 
-public extension UserEventPayloadVariant459Mfa {
-    init(enabled: Bool, totpVerified: Bool) {
+extension UserEventPayloadVariant459Mfa {
+    public init(enabled: Bool, totpVerified: Bool) {
         (self.enabled, self.totpVerified) = (enabled, totpVerified)
     }
 }
@@ -266,35 +208,25 @@ public struct UserEventPayloadVariant218: Codable {
         case project
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant218 {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant218 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.group) else {
-            throw SdkValidationError(
-                field: "group",
-                code: "required",
-                message: "Validation failed for 'group': value is required"
-            )
+            throw SdkValidationError(field: "group", code: "required", message: "Validation failed for 'group': value is required")
         }
         guard container.contains(.project) else {
-            throw SdkValidationError(
-                field: "project",
-                code: "required",
-                message: "Validation failed for 'project': value is required"
-            )
+            throw SdkValidationError(field: "project", code: "required", message: "Validation failed for 'project': value is required")
         }
-        group = try container.sdkDecodeRequired(.group)
-        project = try container.sdkDecodeRequired(.project)
+        self.group = try container.sdkDecodeRequired(.group)
+        self.project = try container.sdkDecodeRequired(.project)
     }
 }
 
-public extension UserEventPayloadVariant218 {
-    init(group: UserEventPayloadVariant218Group, project: UserEventPayloadVariant218Project) {
+extension UserEventPayloadVariant218 {
+    public init(group: UserEventPayloadVariant218Group, project: UserEventPayloadVariant218Project) {
         (self.group, self.project) = (group, project)
     }
 }
@@ -327,61 +259,35 @@ public struct UserEventPayloadVariant51Deployment: Codable {
         case readyState
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant51Deployment {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant51Deployment {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.meta) else {
-            throw SdkValidationError(
-                field: "meta",
-                code: "required",
-                message: "Validation failed for 'meta': value is required"
-            )
+            throw SdkValidationError(field: "meta", code: "required", message: "Validation failed for 'meta': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        meta = try container.sdkDecodeRequired(.meta)
-        name = try container.sdkDecodeRequired(.name)
-        url = try container.sdkDecodeRequired(.url)
-        allowListedReadyStateReasonInternal = try container.sdkDecodeIfPresent(.allowListedReadyStateReasonInternal)
-        readyState = try container.sdkDecodeIfPresent(.readyState)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.meta = try container.sdkDecodeRequired(.meta)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.url = try container.sdkDecodeRequired(.url)
+        self.allowListedReadyStateReasonInternal = try container.sdkDecodeIfPresent(.allowListedReadyStateReasonInternal)
+        self.readyState = try container.sdkDecodeIfPresent(.readyState)
     }
 }
 
-public extension UserEventPayloadVariant51Deployment {
-    init(
-        id: String,
-        meta: [String: String],
-        name: String,
-        url: String,
-        allowListedReadyStateReasonInternal: UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal? =
-            nil,
-        readyState: String? = nil
-    ) {
+extension UserEventPayloadVariant51Deployment {
+    public init(id: String, meta: [String: String], name: String, url: String, allowListedReadyStateReasonInternal: UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal? = nil, readyState: String? = nil) {
         (self.id, self.meta) = (id, meta)
         (self.name, self.url) = (name, url)
         self.allowListedReadyStateReasonInternal = allowListedReadyStateReasonInternal
@@ -407,40 +313,26 @@ public struct UserEventPayloadVariant27Budget: Codable {
         case alertThresholds
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant27Budget {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant27Budget {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.limitAmount) else {
-            throw SdkValidationError(
-                field: "limitAmount",
-                code: "required",
-                message: "Validation failed for 'limitAmount': value is required"
-            )
+            throw SdkValidationError(field: "limitAmount", code: "required", message: "Validation failed for 'limitAmount': value is required")
         }
         guard container.contains(.refreshPeriod) else {
-            throw SdkValidationError(
-                field: "refreshPeriod",
-                code: "required",
-                message: "Validation failed for 'refreshPeriod': value is required"
-            )
+            throw SdkValidationError(field: "refreshPeriod", code: "required", message: "Validation failed for 'refreshPeriod': value is required")
         }
-        limitAmount = try container.sdkDecodeRequired(.limitAmount)
-        refreshPeriod = try container.sdkDecodeRequired(.refreshPeriod)
-        alertThresholds = try container.sdkDecodeIfPresent(.alertThresholds)
+        self.limitAmount = try container.sdkDecodeRequired(.limitAmount)
+        self.refreshPeriod = try container.sdkDecodeRequired(.refreshPeriod)
+        self.alertThresholds = try container.sdkDecodeIfPresent(.alertThresholds)
     }
 }
 
-public extension UserEventPayloadVariant27Budget {
-    init(
-        limitAmount: Double,
-        refreshPeriod: UserEventPayloadVariant27BudgetRefreshPeriod,
-        alertThresholds: [Double]? = nil
-    ) {
+extension UserEventPayloadVariant27Budget {
+    public init(limitAmount: Double, refreshPeriod: UserEventPayloadVariant27BudgetRefreshPeriod, alertThresholds: [Double]? = nil) {
         (self.limitAmount, self.refreshPeriod) = (limitAmount, refreshPeriod)
         self.alertThresholds = alertThresholds
     }
@@ -503,55 +395,35 @@ public struct UserEventPayloadVariant120JobVariant4: Codable {
         case linkedProjectId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant120JobVariant4 {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant120JobVariant4 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        headInfo = try container.sdkDecodeRequired(.headInfo)
-        installationId = try container.sdkDecodeRequired(.installationId)
-        isPrivate = try container.sdkDecodeRequired(.isPrivate)
-        org = try container.sdkDecodeRequired(.org)
-        prId = try container.sdkDecodeRequired(.prId)
-        projectId = try container.sdkDecodeNullable(.projectId)
-        provider = try container.sdkDecodeRequired(.provider)
-        repo = try container.sdkDecodeRequired(.repo)
-        repoId = try container.sdkDecodeRequired(.repoId)
-        type = try container.sdkDecodeRequired(.type)
-        beforeSha = try container.sdkDecodeIfPresent(.beforeSha)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        customEnvId = try container.sdkDecodeIfPresent(.customEnvId)
-        customHost = try container.sdkDecodeIfPresent(.customHost)
-        eventful = try container.sdkDecodeIfPresent(.eventful)
-        gitComments = try container.sdkDecodeIfPresent(.gitComments)
-        linkedProjectId = try container.sdkDecodeIfPresent(.linkedProjectId)
-        try sdkValidateRawEnum("type", type, UserEventPayloadVariant120JobVariant4Type.allCases.map(\.rawValue))
+        self.headInfo = try container.sdkDecodeRequired(.headInfo)
+        self.installationId = try container.sdkDecodeRequired(.installationId)
+        self.isPrivate = try container.sdkDecodeRequired(.isPrivate)
+        self.org = try container.sdkDecodeRequired(.org)
+        self.prId = try container.sdkDecodeRequired(.prId)
+        self.projectId = try container.sdkDecodeNullable(.projectId)
+        self.provider = try container.sdkDecodeRequired(.provider)
+        self.repo = try container.sdkDecodeRequired(.repo)
+        self.repoId = try container.sdkDecodeRequired(.repoId)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.beforeSha = try container.sdkDecodeIfPresent(.beforeSha)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.customEnvId = try container.sdkDecodeIfPresent(.customEnvId)
+        self.customHost = try container.sdkDecodeIfPresent(.customHost)
+        self.eventful = try container.sdkDecodeIfPresent(.eventful)
+        self.gitComments = try container.sdkDecodeIfPresent(.gitComments)
+        self.linkedProjectId = try container.sdkDecodeIfPresent(.linkedProjectId)
+            try sdkValidateRawEnum("type", self.type, UserEventPayloadVariant120JobVariant4Type.allCases.map(\.rawValue))
     }
 }
 
-public extension UserEventPayloadVariant120JobVariant4 {
-    init(
-        headInfo: UserEventPayloadVariant120JobVariant4HeadInfo,
-        installationId: Double,
-        isPrivate: Bool,
-        org: String,
-        prId: Double,
-        projectId: JSONValue?,
-        provider: UserEventPayloadVariant120JobVariant4Provider,
-        repo: String,
-        repoId: Double,
-        type: UserEventPayloadVariant120JobVariant4Type,
-        beforeSha: String? = nil,
-        createdAt: Double? = nil,
-        customEnvId: JSONValue? = nil,
-        customHost: String? = nil,
-        eventful: Bool? = nil,
-        gitComments: UserEventPayloadVariant120JobVariant4GitComments? = nil,
-        linkedProjectId: String? = nil
-    ) throws {
+extension UserEventPayloadVariant120JobVariant4 {
+    public init(headInfo: UserEventPayloadVariant120JobVariant4HeadInfo, installationId: Double, isPrivate: Bool, org: String, prId: Double, projectId: JSONValue?, provider: UserEventPayloadVariant120JobVariant4Provider, repo: String, repoId: Double, type: UserEventPayloadVariant120JobVariant4Type, beforeSha: String? = nil, createdAt: Double? = nil, customEnvId: JSONValue? = nil, customHost: String? = nil, eventful: Bool? = nil, gitComments: UserEventPayloadVariant120JobVariant4GitComments? = nil, linkedProjectId: String? = nil) throws {
         (self.headInfo, self.installationId) = (headInfo, installationId)
         (self.isPrivate, self.org) = (isPrivate, org)
         (self.prId, self.projectId) = (prId, projectId)
@@ -561,7 +433,7 @@ public extension UserEventPayloadVariant120JobVariant4 {
         (self.customEnvId, self.customHost) = (customEnvId, customHost)
         (self.eventful, self.gitComments) = (eventful, gitComments)
         self.linkedProjectId = linkedProjectId
-        try sdkValidateRawEnum("type", self.type, UserEventPayloadVariant120JobVariant4Type.allCases.map(\.rawValue))
+            try sdkValidateRawEnum("type", self.type, UserEventPayloadVariant120JobVariant4Type.allCases.map(\.rawValue))
     }
 }
 
@@ -583,35 +455,24 @@ public struct UserEventPayloadVariant52: Codable {
         case oldTeam
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant52 {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant52 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.alias) else {
-            throw SdkValidationError(
-                field: "alias",
-                code: "required",
-                message: "Validation failed for 'alias': value is required"
-            )
+            throw SdkValidationError(field: "alias", code: "required", message: "Validation failed for 'alias': value is required")
         }
-        alias = try container.sdkDecodeRequired(.alias)
-        name = try container.sdkDecodeIfPresent(.name)
-        newTeam = try container.sdkDecodeIfPresent(.newTeam)
-        oldTeam = try container.sdkDecodeIfPresent(.oldTeam)
+        self.alias = try container.sdkDecodeRequired(.alias)
+        self.name = try container.sdkDecodeIfPresent(.name)
+        self.newTeam = try container.sdkDecodeIfPresent(.newTeam)
+        self.oldTeam = try container.sdkDecodeIfPresent(.oldTeam)
     }
 }
 
-public extension UserEventPayloadVariant52 {
-    init(
-        alias: String,
-        name: String? = nil,
-        newTeam: UserEventPayloadVariant52NewTeam? = nil,
-        oldTeam: UserEventPayloadVariant52OldTeam? = nil
-    ) {
+extension UserEventPayloadVariant52 {
+    public init(alias: String, name: String? = nil, newTeam: UserEventPayloadVariant52NewTeam? = nil, oldTeam: UserEventPayloadVariant52OldTeam? = nil) {
         (self.alias, self.name) = (alias, name)
         (self.newTeam, self.oldTeam) = (newTeam, oldTeam)
     }
@@ -626,7 +487,5 @@ public struct UserEventPayloadVariant211GeolocationCityNames: Codable {
         case en
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

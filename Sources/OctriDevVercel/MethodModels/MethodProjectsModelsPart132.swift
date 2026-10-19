@@ -7,21 +7,11 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
-public extension CreateProjectResponse {
-    init(from decoder: Decoder) throws {
+// Canonical projects operation model declarations
+extension CreateProjectResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        try self.init(
-            sdkRequiredFields: container.sdkDecodeRequired(.accountId),
-            alias: container.sdkDecodeRequired(.alias),
-            defaultResourceConfig: container.sdkDecodeRequired(.defaultResourceConfig),
-            deploymentExpiration: container.sdkDecodeRequired(.deploymentExpiration),
-            directoryListing: container.sdkDecodeRequired(.directoryListing),
-            id: container.sdkDecodeRequired(.id),
-            name: container.sdkDecodeRequired(.name),
-            nodeVersion: container.sdkDecodeRequired(.nodeVersion),
-            resourceConfig: container.sdkDecodeRequired(.resourceConfig)
-        )
+        self.init(sdkRequiredFields: try container.sdkDecodeRequired(.accountId), alias: try container.sdkDecodeRequired(.alias), defaultResourceConfig: try container.sdkDecodeRequired(.defaultResourceConfig), deploymentExpiration: try container.sdkDecodeRequired(.deploymentExpiration), directoryListing: try container.sdkDecodeRequired(.directoryListing), id: try container.sdkDecodeRequired(.id), name: try container.sdkDecodeRequired(.name), nodeVersion: try container.sdkDecodeRequired(.nodeVersion), resourceConfig: try container.sdkDecodeRequired(.resourceConfig))
         try sdkDecodeFieldsPart1(container)
         try sdkDecodeFieldsPart2(container)
         try sdkDecodeFieldsPart3(container)
@@ -33,117 +23,9 @@ public extension CreateProjectResponse {
     }
 }
 
-public extension CreateProjectResponse {
-    init(
-        accountId: String,
-        alias: [CreateProjectResponseAliasItem],
-        defaultResourceConfig: CreateProjectResponseDefaultResourceConfig,
-        deploymentExpiration: CreateProjectResponseDeploymentExpiration,
-        directoryListing: Bool,
-        id: String,
-        name: String,
-        nodeVersion: CreateProjectResponseNodeVersion,
-        resourceConfig: CreateProjectResponseResourceConfig,
-        analytics: CreateProjectResponseAnalytics? = nil,
-        appliedCve55182Migration: Bool? = nil,
-        autoAssignCustomDomains: Bool? = nil,
-        autoAssignCustomDomainsUpdatedBy: String? = nil,
-        autoExposeSystemEnvs: Bool? = nil,
-        avatar: String? = nil,
-        avatarDarkMode: String? = nil,
-        blobs: CreateProjectResponseBlobs? = nil,
-        buildCommand: String? = nil,
-        commandForIgnoringBuildStep: String? = nil,
-        concurrencyBucketName: String? = nil,
-        connectBuildsEnabled: Bool? = nil,
-        connectConfigurationId: String? = nil,
-        connectConfigurations: [CreateProjectResponseConnectConfigurationsItem]? = nil,
-        createdAt: Double? = nil,
-        creator: CreateProjectResponseCreator? = nil,
-        crons: CreateProjectResponseCrons? = nil,
-        customEnvironments: [CreateProjectResponseCustomEnvironmentsItem]? = nil,
-        customerSupportCodeVisibility: Bool? = nil,
-        dataCache: CreateProjectResponseDataCache? = nil,
-        deploymentPolicy: CreateProjectResponseDeploymentPolicy? = nil,
-        devCommand: String? = nil,
-        dismissedToasts: [CreateProjectResponseDismissedToastsItem]? = nil,
-        enableAffectedProjectsDeployments: Bool? = nil,
-        enableExternalRewriteCaching: Bool? = nil,
-        enablePreviewFeedback: Bool? = nil,
-        enableProductionFeedback: Bool? = nil,
-        env: [CreateProjectResponseEnvItem]? = nil,
-        expiration: CreateProjectResponseExpiration? = nil,
-        features: CreateProjectResponseFeatures? = nil,
-        framework: CreateProjectResponseFramework? = nil,
-        gitComments: CreateProjectResponseGitComments? = nil,
-        gitForkProtection: Bool? = nil,
-        gitLfs: Bool? = nil,
-        gitProviderOptions: CreateProjectResponseGitProviderOptions? = nil,
-        hasActiveBranches: Bool? = nil,
-        hasDeployments: Bool? = nil,
-        installCommand: String? = nil,
-        internalRoutes: [CreateProjectResponseInternalRoutesItem]? = nil,
-        ipBuckets: [CreateProjectResponseIpBucketsItem]? = nil,
-        jobs: CreateProjectResponseJobs? = nil,
-        lastAliasRequest: CreateProjectResponseLastAliasRequest? = nil,
-        lastRollbackTarget: [String: JSONValue]? = nil,
-        latestDeployments: [CreateProjectResponseLatestDeploymentsItem]? = nil,
-        link: CreateProjectResponseLink? = nil,
-        live: Bool? = nil,
-        microfrontends: CreateProjectResponseMicrofrontends? = nil,
-        oidcTokenConfig: CreateProjectResponseOidcTokenConfig? = nil,
-        optionsAllowlist: CreateProjectResponseOptionsAllowlist? = nil,
-        outputDirectory: String? = nil,
-        passiveConnectConfigurationId: String? = nil,
-        passport: CreateProjectResponsePassport? = nil,
-        passwordProtection: CreateProjectResponsePasswordProtection? = nil,
-        paused: Bool? = nil,
-        permissions: CreateProjectResponsePermissions? = nil,
-        productionDeploymentsFastLane: Bool? = nil,
-        protectedSourcemaps: Bool? = nil,
-        protectionBypass: [String: CreateProjectResponseProtectionBypassValue]? = nil,
-        protectionConfig: CreateProjectResponseProtectionConfig? = nil,
-        rollbackDescription: CreateProjectResponseRollbackDescription? = nil,
-        rollingRelease: CreateProjectResponseRollingRelease? = nil,
-        rootDirectory: String? = nil,
-        sandbox: CreateProjectResponseSandbox? = nil,
-        security: CreateProjectResponseSecurity? = nil,
-        serverlessFunctionZeroConfigFailover: Bool? = nil,
-        services: [CreateProjectResponseServicesItem]? = nil,
-        skewProtectionAllowedDomains: [String]? = nil,
-        skewProtectionBoundaryAt: Double? = nil,
-        skewProtectionMaxAge: Double? = nil,
-        skipGitConnectDuringLink: Bool? = nil,
-        sourceFilesOutsideRootDirectory: Bool? = nil,
-        speedInsights: CreateProjectResponseSpeedInsights? = nil,
-        ssoProtection: CreateProjectResponseSsoProtection? = nil,
-        staticIps: CreateProjectResponseStaticIps? = nil,
-        targets: [String: CreateProjectResponseTargetsValue?]? = nil,
-        tier: CreateProjectResponseTier? = nil,
-        tracing: CreateProjectResponseTracing? = nil,
-        transferCompletedAt: Double? = nil,
-        transferredFromAccountId: String? = nil,
-        transferStartedAt: Double? = nil,
-        transferToAccountId: String? = nil,
-        trustedIps: CreateProjectResponseTrustedIps? = nil,
-        trustedSources: CreateProjectResponseTrustedSources? = nil,
-        updatedAt: Double? = nil,
-        usageStatus: CreateProjectResponseUsageStatus? = nil,
-        v0: Bool? = nil,
-        v0Created: Bool? = nil,
-        webAnalytics: CreateProjectResponseWebAnalytics? = nil
-    ) {
-        self.init(
-            sdkRequiredFields: accountId,
-            alias: alias,
-            defaultResourceConfig: defaultResourceConfig,
-            deploymentExpiration: deploymentExpiration,
-            directoryListing: directoryListing,
-            id: id,
-            name: name,
-            nodeVersion: nodeVersion,
-            resourceConfig: resourceConfig
-        )
+extension CreateProjectResponse {
+    public init(accountId: String, alias: [CreateProjectResponseAliasItem], defaultResourceConfig: CreateProjectResponseDefaultResourceConfig, deploymentExpiration: CreateProjectResponseDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: CreateProjectResponseNodeVersion, resourceConfig: CreateProjectResponseResourceConfig, analytics: CreateProjectResponseAnalytics? = nil, appliedCve55182Migration: Bool? = nil, autoAssignCustomDomains: Bool? = nil, autoAssignCustomDomainsUpdatedBy: String? = nil, autoExposeSystemEnvs: Bool? = nil, avatar: String? = nil, avatarDarkMode: String? = nil, blobs: CreateProjectResponseBlobs? = nil, buildCommand: String? = nil, commandForIgnoringBuildStep: String? = nil, concurrencyBucketName: String? = nil, connectBuildsEnabled: Bool? = nil, connectConfigurationId: String? = nil, connectConfigurations: [CreateProjectResponseConnectConfigurationsItem]? = nil, createdAt: Double? = nil, creator: CreateProjectResponseCreator? = nil, crons: CreateProjectResponseCrons? = nil, customEnvironments: [CreateProjectResponseCustomEnvironmentsItem]? = nil, customerSupportCodeVisibility: Bool? = nil, dataCache: CreateProjectResponseDataCache? = nil, deploymentPolicy: CreateProjectResponseDeploymentPolicy? = nil, devCommand: String? = nil, dismissedToasts: [CreateProjectResponseDismissedToastsItem]? = nil, enableAffectedProjectsDeployments: Bool? = nil, enableExternalRewriteCaching: Bool? = nil, enablePreviewFeedback: Bool? = nil, enableProductionFeedback: Bool? = nil, env: [CreateProjectResponseEnvItem]? = nil, expiration: CreateProjectResponseExpiration? = nil, features: CreateProjectResponseFeatures? = nil, framework: CreateProjectResponseFramework? = nil, gitComments: CreateProjectResponseGitComments? = nil, gitForkProtection: Bool? = nil, gitLfs: Bool? = nil, gitProviderOptions: CreateProjectResponseGitProviderOptions? = nil, hasActiveBranches: Bool? = nil, hasDeployments: Bool? = nil, installCommand: String? = nil, internalRoutes: [CreateProjectResponseInternalRoutesItem]? = nil, ipBuckets: [CreateProjectResponseIpBucketsItem]? = nil, jobs: CreateProjectResponseJobs? = nil, lastAliasRequest: CreateProjectResponseLastAliasRequest? = nil, lastRollbackTarget: [String: JSONValue]? = nil, latestDeployments: [CreateProjectResponseLatestDeploymentsItem]? = nil, link: CreateProjectResponseLink? = nil, live: Bool? = nil, microfrontends: CreateProjectResponseMicrofrontends? = nil, oidcTokenConfig: CreateProjectResponseOidcTokenConfig? = nil, optionsAllowlist: CreateProjectResponseOptionsAllowlist? = nil, outputDirectory: String? = nil, passiveConnectConfigurationId: String? = nil, passport: CreateProjectResponsePassport? = nil, passwordProtection: CreateProjectResponsePasswordProtection? = nil, paused: Bool? = nil, permissions: CreateProjectResponsePermissions? = nil, productionDeploymentsFastLane: Bool? = nil, protectedSourcemaps: Bool? = nil, protectionBypass: [String: CreateProjectResponseProtectionBypassValue]? = nil, protectionConfig: CreateProjectResponseProtectionConfig? = nil, rollbackDescription: CreateProjectResponseRollbackDescription? = nil, rollingRelease: CreateProjectResponseRollingRelease? = nil, rootDirectory: String? = nil, sandbox: CreateProjectResponseSandbox? = nil, security: CreateProjectResponseSecurity? = nil, serverlessFunctionZeroConfigFailover: Bool? = nil, services: [CreateProjectResponseServicesItem]? = nil, skewProtectionAllowedDomains: [String]? = nil, skewProtectionBoundaryAt: Double? = nil, skewProtectionMaxAge: Double? = nil, skipGitConnectDuringLink: Bool? = nil, sourceFilesOutsideRootDirectory: Bool? = nil, speedInsights: CreateProjectResponseSpeedInsights? = nil, ssoProtection: CreateProjectResponseSsoProtection? = nil, staticIps: CreateProjectResponseStaticIps? = nil, targets: [String: CreateProjectResponseTargetsValue?]? = nil, tier: CreateProjectResponseTier? = nil, tracing: CreateProjectResponseTracing? = nil, transferCompletedAt: Double? = nil, transferredFromAccountId: String? = nil, transferStartedAt: Double? = nil, transferToAccountId: String? = nil, trustedIps: CreateProjectResponseTrustedIps? = nil, trustedSources: CreateProjectResponseTrustedSources? = nil, updatedAt: Double? = nil, usageStatus: CreateProjectResponseUsageStatus? = nil, v0: Bool? = nil, v0Created: Bool? = nil, webAnalytics: CreateProjectResponseWebAnalytics? = nil) {
+        self.init(sdkRequiredFields: accountId, alias: alias, defaultResourceConfig: defaultResourceConfig, deploymentExpiration: deploymentExpiration, directoryListing: directoryListing, id: id, name: name, nodeVersion: nodeVersion, resourceConfig: resourceConfig)
         sdkSet1(analytics, appliedCve55182Migration, autoAssignCustomDomains, autoAssignCustomDomainsUpdatedBy)
         sdkSet2(autoExposeSystemEnvs, avatar, avatarDarkMode, blobs, buildCommand)
         sdkSet3(commandForIgnoringBuildStep, concurrencyBucketName, connectBuildsEnabled, connectConfigurationId)
@@ -167,12 +49,7 @@ public extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet1(
-        _ analytics: CreateProjectResponseAnalytics?,
-        _ appliedCve55182Migration: Bool?,
-        _ autoAssignCustomDomains: Bool?,
-        _ autoAssignCustomDomainsUpdatedBy: String?
-    ) {
+    mutating func sdkSet1(_ analytics: CreateProjectResponseAnalytics?, _ appliedCve55182Migration: Bool?, _ autoAssignCustomDomains: Bool?, _ autoAssignCustomDomainsUpdatedBy: String?) {
         self.analytics = analytics
         self.appliedCve55182Migration = appliedCve55182Migration
         self.autoAssignCustomDomains = autoAssignCustomDomains
@@ -181,13 +58,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet2(
-        _ autoExposeSystemEnvs: Bool?,
-        _ avatar: String?,
-        _ avatarDarkMode: String?,
-        _ blobs: CreateProjectResponseBlobs?,
-        _ buildCommand: String?
-    ) {
+    mutating func sdkSet2(_ autoExposeSystemEnvs: Bool?, _ avatar: String?, _ avatarDarkMode: String?, _ blobs: CreateProjectResponseBlobs?, _ buildCommand: String?) {
         self.autoExposeSystemEnvs = autoExposeSystemEnvs
         self.avatar = avatar
         self.avatarDarkMode = avatarDarkMode
@@ -197,12 +68,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet3(
-        _ commandForIgnoringBuildStep: String?,
-        _ concurrencyBucketName: String?,
-        _ connectBuildsEnabled: Bool?,
-        _ connectConfigurationId: String?
-    ) {
+    mutating func sdkSet3(_ commandForIgnoringBuildStep: String?, _ concurrencyBucketName: String?, _ connectBuildsEnabled: Bool?, _ connectConfigurationId: String?) {
         self.commandForIgnoringBuildStep = commandForIgnoringBuildStep
         self.concurrencyBucketName = concurrencyBucketName
         self.connectBuildsEnabled = connectBuildsEnabled
@@ -211,13 +77,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet4(
-        _ connectConfigurations: [CreateProjectResponseConnectConfigurationsItem]?,
-        _ createdAt: Double?,
-        _ creator: CreateProjectResponseCreator?,
-        _ crons: CreateProjectResponseCrons?,
-        _ customEnvironments: [CreateProjectResponseCustomEnvironmentsItem]?
-    ) {
+    mutating func sdkSet4(_ connectConfigurations: [CreateProjectResponseConnectConfigurationsItem]?, _ createdAt: Double?, _ creator: CreateProjectResponseCreator?, _ crons: CreateProjectResponseCrons?, _ customEnvironments: [CreateProjectResponseCustomEnvironmentsItem]?) {
         self.connectConfigurations = connectConfigurations
         self.createdAt = createdAt
         self.creator = creator
@@ -227,13 +87,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet5(
-        _ customerSupportCodeVisibility: Bool?,
-        _ dataCache: CreateProjectResponseDataCache?,
-        _ deploymentPolicy: CreateProjectResponseDeploymentPolicy?,
-        _ devCommand: String?,
-        _ dismissedToasts: [CreateProjectResponseDismissedToastsItem]?
-    ) {
+    mutating func sdkSet5(_ customerSupportCodeVisibility: Bool?, _ dataCache: CreateProjectResponseDataCache?, _ deploymentPolicy: CreateProjectResponseDeploymentPolicy?, _ devCommand: String?, _ dismissedToasts: [CreateProjectResponseDismissedToastsItem]?) {
         self.customerSupportCodeVisibility = customerSupportCodeVisibility
         self.dataCache = dataCache
         self.deploymentPolicy = deploymentPolicy
@@ -243,11 +97,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet6(
-        _ enableAffectedProjectsDeployments: Bool?,
-        _ enableExternalRewriteCaching: Bool?,
-        _ enablePreviewFeedback: Bool?
-    ) {
+    mutating func sdkSet6(_ enableAffectedProjectsDeployments: Bool?, _ enableExternalRewriteCaching: Bool?, _ enablePreviewFeedback: Bool?) {
         self.enableAffectedProjectsDeployments = enableAffectedProjectsDeployments
         self.enableExternalRewriteCaching = enableExternalRewriteCaching
         self.enablePreviewFeedback = enablePreviewFeedback
@@ -255,13 +105,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet7(
-        _ enableProductionFeedback: Bool?,
-        _ env: [CreateProjectResponseEnvItem]?,
-        _ expiration: CreateProjectResponseExpiration?,
-        _ features: CreateProjectResponseFeatures?,
-        _ framework: CreateProjectResponseFramework?
-    ) {
+    mutating func sdkSet7(_ enableProductionFeedback: Bool?, _ env: [CreateProjectResponseEnvItem]?, _ expiration: CreateProjectResponseExpiration?, _ features: CreateProjectResponseFeatures?, _ framework: CreateProjectResponseFramework?) {
         self.enableProductionFeedback = enableProductionFeedback
         self.env = env
         self.expiration = expiration
@@ -271,13 +115,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet8(
-        _ gitComments: CreateProjectResponseGitComments?,
-        _ gitForkProtection: Bool?,
-        _ gitLfs: Bool?,
-        _ gitProviderOptions: CreateProjectResponseGitProviderOptions?,
-        _ hasActiveBranches: Bool?
-    ) {
+    mutating func sdkSet8(_ gitComments: CreateProjectResponseGitComments?, _ gitForkProtection: Bool?, _ gitLfs: Bool?, _ gitProviderOptions: CreateProjectResponseGitProviderOptions?, _ hasActiveBranches: Bool?) {
         self.gitComments = gitComments
         self.gitForkProtection = gitForkProtection
         self.gitLfs = gitLfs
@@ -287,13 +125,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet9(
-        _ hasDeployments: Bool?,
-        _ installCommand: String?,
-        _ internalRoutes: [CreateProjectResponseInternalRoutesItem]?,
-        _ ipBuckets: [CreateProjectResponseIpBucketsItem]?,
-        _ jobs: CreateProjectResponseJobs?
-    ) {
+    mutating func sdkSet9(_ hasDeployments: Bool?, _ installCommand: String?, _ internalRoutes: [CreateProjectResponseInternalRoutesItem]?, _ ipBuckets: [CreateProjectResponseIpBucketsItem]?, _ jobs: CreateProjectResponseJobs?) {
         self.hasDeployments = hasDeployments
         self.installCommand = installCommand
         self.internalRoutes = internalRoutes
@@ -303,13 +135,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet10(
-        _ lastAliasRequest: CreateProjectResponseLastAliasRequest?,
-        _ lastRollbackTarget: [String: JSONValue]?,
-        _ latestDeployments: [CreateProjectResponseLatestDeploymentsItem]?,
-        _ link: CreateProjectResponseLink?,
-        _ live: Bool?
-    ) {
+    mutating func sdkSet10(_ lastAliasRequest: CreateProjectResponseLastAliasRequest?, _ lastRollbackTarget: [String: JSONValue]?, _ latestDeployments: [CreateProjectResponseLatestDeploymentsItem]?, _ link: CreateProjectResponseLink?, _ live: Bool?) {
         self.lastAliasRequest = lastAliasRequest
         self.lastRollbackTarget = lastRollbackTarget
         self.latestDeployments = latestDeployments
@@ -319,13 +145,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet11(
-        _ microfrontends: CreateProjectResponseMicrofrontends?,
-        _ oidcTokenConfig: CreateProjectResponseOidcTokenConfig?,
-        _ optionsAllowlist: CreateProjectResponseOptionsAllowlist?,
-        _ outputDirectory: String?,
-        _ passiveConnectConfigurationId: String?
-    ) {
+    mutating func sdkSet11(_ microfrontends: CreateProjectResponseMicrofrontends?, _ oidcTokenConfig: CreateProjectResponseOidcTokenConfig?, _ optionsAllowlist: CreateProjectResponseOptionsAllowlist?, _ outputDirectory: String?, _ passiveConnectConfigurationId: String?) {
         self.microfrontends = microfrontends
         self.oidcTokenConfig = oidcTokenConfig
         self.optionsAllowlist = optionsAllowlist
@@ -335,13 +155,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet12(
-        _ passport: CreateProjectResponsePassport?,
-        _ passwordProtection: CreateProjectResponsePasswordProtection?,
-        _ paused: Bool?,
-        _ permissions: CreateProjectResponsePermissions?,
-        _ productionDeploymentsFastLane: Bool?
-    ) {
+    mutating func sdkSet12(_ passport: CreateProjectResponsePassport?, _ passwordProtection: CreateProjectResponsePasswordProtection?, _ paused: Bool?, _ permissions: CreateProjectResponsePermissions?, _ productionDeploymentsFastLane: Bool?) {
         self.passport = passport
         self.passwordProtection = passwordProtection
         self.paused = paused
@@ -351,13 +165,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet13(
-        _ protectedSourcemaps: Bool?,
-        _ protectionBypass: [String: CreateProjectResponseProtectionBypassValue]?,
-        _ protectionConfig: CreateProjectResponseProtectionConfig?,
-        _ rollbackDescription: CreateProjectResponseRollbackDescription?,
-        _ rollingRelease: CreateProjectResponseRollingRelease?
-    ) {
+    mutating func sdkSet13(_ protectedSourcemaps: Bool?, _ protectionBypass: [String: CreateProjectResponseProtectionBypassValue]?, _ protectionConfig: CreateProjectResponseProtectionConfig?, _ rollbackDescription: CreateProjectResponseRollbackDescription?, _ rollingRelease: CreateProjectResponseRollingRelease?) {
         self.protectedSourcemaps = protectedSourcemaps
         self.protectionBypass = protectionBypass
         self.protectionConfig = protectionConfig
@@ -367,13 +175,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet14(
-        _ rootDirectory: String?,
-        _ sandbox: CreateProjectResponseSandbox?,
-        _ security: CreateProjectResponseSecurity?,
-        _ serverlessFunctionZeroConfigFailover: Bool?,
-        _ services: [CreateProjectResponseServicesItem]?
-    ) {
+    mutating func sdkSet14(_ rootDirectory: String?, _ sandbox: CreateProjectResponseSandbox?, _ security: CreateProjectResponseSecurity?, _ serverlessFunctionZeroConfigFailover: Bool?, _ services: [CreateProjectResponseServicesItem]?) {
         self.rootDirectory = rootDirectory
         self.sandbox = sandbox
         self.security = security
@@ -383,11 +185,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet15(
-        _ skewProtectionAllowedDomains: [String]?,
-        _ skewProtectionBoundaryAt: Double?,
-        _ skewProtectionMaxAge: Double?
-    ) {
+    mutating func sdkSet15(_ skewProtectionAllowedDomains: [String]?, _ skewProtectionBoundaryAt: Double?, _ skewProtectionMaxAge: Double?) {
         self.skewProtectionAllowedDomains = skewProtectionAllowedDomains
         self.skewProtectionBoundaryAt = skewProtectionBoundaryAt
         self.skewProtectionMaxAge = skewProtectionMaxAge
@@ -395,13 +193,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet16(
-        _ skipGitConnectDuringLink: Bool?,
-        _ sourceFilesOutsideRootDirectory: Bool?,
-        _ speedInsights: CreateProjectResponseSpeedInsights?,
-        _ ssoProtection: CreateProjectResponseSsoProtection?,
-        _ staticIps: CreateProjectResponseStaticIps?
-    ) {
+    mutating func sdkSet16(_ skipGitConnectDuringLink: Bool?, _ sourceFilesOutsideRootDirectory: Bool?, _ speedInsights: CreateProjectResponseSpeedInsights?, _ ssoProtection: CreateProjectResponseSsoProtection?, _ staticIps: CreateProjectResponseStaticIps?) {
         self.skipGitConnectDuringLink = skipGitConnectDuringLink
         self.sourceFilesOutsideRootDirectory = sourceFilesOutsideRootDirectory
         self.speedInsights = speedInsights
@@ -411,13 +203,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet17(
-        _ targets: [String: CreateProjectResponseTargetsValue?]?,
-        _ tier: CreateProjectResponseTier?,
-        _ tracing: CreateProjectResponseTracing?,
-        _ transferCompletedAt: Double?,
-        _ transferredFromAccountId: String?
-    ) {
+    mutating func sdkSet17(_ targets: [String: CreateProjectResponseTargetsValue?]?, _ tier: CreateProjectResponseTier?, _ tracing: CreateProjectResponseTracing?, _ transferCompletedAt: Double?, _ transferredFromAccountId: String?) {
         self.targets = targets
         self.tier = tier
         self.tracing = tracing
@@ -427,13 +213,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet18(
-        _ transferStartedAt: Double?,
-        _ transferToAccountId: String?,
-        _ trustedIps: CreateProjectResponseTrustedIps?,
-        _ trustedSources: CreateProjectResponseTrustedSources?,
-        _ updatedAt: Double?
-    ) {
+    mutating func sdkSet18(_ transferStartedAt: Double?, _ transferToAccountId: String?, _ trustedIps: CreateProjectResponseTrustedIps?, _ trustedSources: CreateProjectResponseTrustedSources?, _ updatedAt: Double?) {
         self.transferStartedAt = transferStartedAt
         self.transferToAccountId = transferToAccountId
         self.trustedIps = trustedIps
@@ -443,12 +223,7 @@ extension CreateProjectResponse {
 }
 
 extension CreateProjectResponse {
-    mutating func sdkSet19(
-        _ usageStatus: CreateProjectResponseUsageStatus?,
-        _ v0: Bool?,
-        _ v0Created: Bool?,
-        _ webAnalytics: CreateProjectResponseWebAnalytics?
-    ) {
+    mutating func sdkSet19(_ usageStatus: CreateProjectResponseUsageStatus?, _ v0: Bool?, _ v0Created: Bool?, _ webAnalytics: CreateProjectResponseWebAnalytics?) {
         self.usageStatus = usageStatus
         self.v0 = v0
         self.v0Created = v0Created
@@ -458,134 +233,133 @@ extension CreateProjectResponse {
 
 extension CreateProjectResponse {
     mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        analytics = try container.sdkDecodeIfPresent(.analytics)
-        appliedCve55182Migration = try container.sdkDecodeIfPresent(.appliedCve55182Migration)
-        autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
-        autoAssignCustomDomainsUpdatedBy = try container.sdkDecodeIfPresent(.autoAssignCustomDomainsUpdatedBy)
-        autoExposeSystemEnvs = try container.sdkDecodeIfPresent(.autoExposeSystemEnvs)
-        avatar = try container.sdkDecodeIfPresent(.avatar)
-        avatarDarkMode = try container.sdkDecodeIfPresent(.avatarDarkMode)
-        blobs = try container.sdkDecodeIfPresent(.blobs)
-        buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
-        commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
-        concurrencyBucketName = try container.sdkDecodeIfPresent(.concurrencyBucketName)
-        connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
+        self.analytics = try container.sdkDecodeIfPresent(.analytics)
+        self.appliedCve55182Migration = try container.sdkDecodeIfPresent(.appliedCve55182Migration)
+        self.autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
+        self.autoAssignCustomDomainsUpdatedBy = try container.sdkDecodeIfPresent(.autoAssignCustomDomainsUpdatedBy)
+        self.autoExposeSystemEnvs = try container.sdkDecodeIfPresent(.autoExposeSystemEnvs)
+        self.avatar = try container.sdkDecodeIfPresent(.avatar)
+        self.avatarDarkMode = try container.sdkDecodeIfPresent(.avatarDarkMode)
+        self.blobs = try container.sdkDecodeIfPresent(.blobs)
+        self.buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
+        self.commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
+        self.concurrencyBucketName = try container.sdkDecodeIfPresent(.concurrencyBucketName)
+        self.connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
     }
 }
 
 extension CreateProjectResponse {
     mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
-        connectConfigurations = try container.sdkDecodeIfPresent(.connectConfigurations)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        creator = try container.sdkDecodeIfPresent(.creator)
-        crons = try container.sdkDecodeIfPresent(.crons)
-        customEnvironments = try container.sdkDecodeIfPresent(.customEnvironments)
-        customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
-        dataCache = try container.sdkDecodeIfPresent(.dataCache)
-        deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
-        devCommand = try container.sdkDecodeIfPresent(.devCommand)
-        dismissedToasts = try container.sdkDecodeIfPresent(.dismissedToasts)
-        enableAffectedProjectsDeployments = try container.sdkDecodeIfPresent(.enableAffectedProjectsDeployments)
+        self.connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
+        self.connectConfigurations = try container.sdkDecodeIfPresent(.connectConfigurations)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.creator = try container.sdkDecodeIfPresent(.creator)
+        self.crons = try container.sdkDecodeIfPresent(.crons)
+        self.customEnvironments = try container.sdkDecodeIfPresent(.customEnvironments)
+        self.customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
+        self.dataCache = try container.sdkDecodeIfPresent(.dataCache)
+        self.deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
+        self.devCommand = try container.sdkDecodeIfPresent(.devCommand)
+        self.dismissedToasts = try container.sdkDecodeIfPresent(.dismissedToasts)
+        self.enableAffectedProjectsDeployments = try container.sdkDecodeIfPresent(.enableAffectedProjectsDeployments)
     }
 }
 
 extension CreateProjectResponse {
     mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        enableExternalRewriteCaching = try container.sdkDecodeIfPresent(.enableExternalRewriteCaching)
-        enablePreviewFeedback = try container.sdkDecodeIfPresent(.enablePreviewFeedback)
-        enableProductionFeedback = try container.sdkDecodeIfPresent(.enableProductionFeedback)
-        env = try container.sdkDecodeIfPresent(.env)
-        expiration = try container.sdkDecodeIfPresent(.expiration)
-        features = try container.sdkDecodeIfPresent(.features)
-        framework = try container.sdkDecodeIfPresent(.framework)
-        gitComments = try container.sdkDecodeIfPresent(.gitComments)
-        gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
-        gitLfs = try container.sdkDecodeIfPresent(.gitLfs)
-        gitProviderOptions = try container.sdkDecodeIfPresent(.gitProviderOptions)
-        hasActiveBranches = try container.sdkDecodeIfPresent(.hasActiveBranches)
+        self.enableExternalRewriteCaching = try container.sdkDecodeIfPresent(.enableExternalRewriteCaching)
+        self.enablePreviewFeedback = try container.sdkDecodeIfPresent(.enablePreviewFeedback)
+        self.enableProductionFeedback = try container.sdkDecodeIfPresent(.enableProductionFeedback)
+        self.env = try container.sdkDecodeIfPresent(.env)
+        self.expiration = try container.sdkDecodeIfPresent(.expiration)
+        self.features = try container.sdkDecodeIfPresent(.features)
+        self.framework = try container.sdkDecodeIfPresent(.framework)
+        self.gitComments = try container.sdkDecodeIfPresent(.gitComments)
+        self.gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
+        self.gitLfs = try container.sdkDecodeIfPresent(.gitLfs)
+        self.gitProviderOptions = try container.sdkDecodeIfPresent(.gitProviderOptions)
+        self.hasActiveBranches = try container.sdkDecodeIfPresent(.hasActiveBranches)
     }
 }
 
 extension CreateProjectResponse {
     mutating func sdkDecodeFieldsPart4(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        hasDeployments = try container.sdkDecodeIfPresent(.hasDeployments)
-        installCommand = try container.sdkDecodeIfPresent(.installCommand)
-        internalRoutes = try container.sdkDecodeIfPresent(.internalRoutes)
-        ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
-        jobs = try container.sdkDecodeIfPresent(.jobs)
-        lastAliasRequest = try container.sdkDecodeIfPresent(.lastAliasRequest)
-        lastRollbackTarget = try container.sdkDecodeIfPresent(.lastRollbackTarget)
-        latestDeployments = try container.sdkDecodeIfPresent(.latestDeployments)
-        link = try container.sdkDecodeIfPresent(.link)
-        live = try container.sdkDecodeIfPresent(.live)
-        microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
-        oidcTokenConfig = try container.sdkDecodeIfPresent(.oidcTokenConfig)
+        self.hasDeployments = try container.sdkDecodeIfPresent(.hasDeployments)
+        self.installCommand = try container.sdkDecodeIfPresent(.installCommand)
+        self.internalRoutes = try container.sdkDecodeIfPresent(.internalRoutes)
+        self.ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
+        self.jobs = try container.sdkDecodeIfPresent(.jobs)
+        self.lastAliasRequest = try container.sdkDecodeIfPresent(.lastAliasRequest)
+        self.lastRollbackTarget = try container.sdkDecodeIfPresent(.lastRollbackTarget)
+        self.latestDeployments = try container.sdkDecodeIfPresent(.latestDeployments)
+        self.link = try container.sdkDecodeIfPresent(.link)
+        self.live = try container.sdkDecodeIfPresent(.live)
+        self.microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
+        self.oidcTokenConfig = try container.sdkDecodeIfPresent(.oidcTokenConfig)
     }
 }
 
 extension CreateProjectResponse {
     mutating func sdkDecodeFieldsPart5(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
-        outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
-        passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
-        passport = try container.sdkDecodeIfPresent(.passport)
-        passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
-        paused = try container.sdkDecodeIfPresent(.paused)
-        permissions = try container.sdkDecodeIfPresent(.permissions)
-        productionDeploymentsFastLane = try container.sdkDecodeIfPresent(.productionDeploymentsFastLane)
-        protectedSourcemaps = try container.sdkDecodeIfPresent(.protectedSourcemaps)
-        protectionBypass = try container.sdkDecodeIfPresent(.protectionBypass)
-        protectionConfig = try container.sdkDecodeIfPresent(.protectionConfig)
-        rollbackDescription = try container.sdkDecodeIfPresent(.rollbackDescription)
+        self.optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
+        self.outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
+        self.passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
+        self.passport = try container.sdkDecodeIfPresent(.passport)
+        self.passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
+        self.paused = try container.sdkDecodeIfPresent(.paused)
+        self.permissions = try container.sdkDecodeIfPresent(.permissions)
+        self.productionDeploymentsFastLane = try container.sdkDecodeIfPresent(.productionDeploymentsFastLane)
+        self.protectedSourcemaps = try container.sdkDecodeIfPresent(.protectedSourcemaps)
+        self.protectionBypass = try container.sdkDecodeIfPresent(.protectionBypass)
+        self.protectionConfig = try container.sdkDecodeIfPresent(.protectionConfig)
+        self.rollbackDescription = try container.sdkDecodeIfPresent(.rollbackDescription)
     }
 }
 
 extension CreateProjectResponse {
     mutating func sdkDecodeFieldsPart6(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        rollingRelease = try container.sdkDecodeIfPresent(.rollingRelease)
-        rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
-        sandbox = try container.sdkDecodeIfPresent(.sandbox)
-        security = try container.sdkDecodeIfPresent(.security)
-        serverlessFunctionZeroConfigFailover = try container.sdkDecodeIfPresent(.serverlessFunctionZeroConfigFailover)
-        services = try container.sdkDecodeIfPresent(.services)
-        skewProtectionAllowedDomains = try container.sdkDecodeIfPresent(.skewProtectionAllowedDomains)
-        skewProtectionBoundaryAt = try container.sdkDecodeIfPresent(.skewProtectionBoundaryAt)
-        skewProtectionMaxAge = try container.sdkDecodeIfPresent(.skewProtectionMaxAge)
-        skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
-        sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
-        speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
+        self.rollingRelease = try container.sdkDecodeIfPresent(.rollingRelease)
+        self.rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
+        self.sandbox = try container.sdkDecodeIfPresent(.sandbox)
+        self.security = try container.sdkDecodeIfPresent(.security)
+        self.serverlessFunctionZeroConfigFailover = try container.sdkDecodeIfPresent(.serverlessFunctionZeroConfigFailover)
+        self.services = try container.sdkDecodeIfPresent(.services)
+        self.skewProtectionAllowedDomains = try container.sdkDecodeIfPresent(.skewProtectionAllowedDomains)
+        self.skewProtectionBoundaryAt = try container.sdkDecodeIfPresent(.skewProtectionBoundaryAt)
+        self.skewProtectionMaxAge = try container.sdkDecodeIfPresent(.skewProtectionMaxAge)
+        self.skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
+        self.sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
+        self.speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
     }
 }
 
 extension CreateProjectResponse {
     mutating func sdkDecodeFieldsPart7(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        ssoProtection = try container.sdkDecodeIfPresent(.ssoProtection)
-        staticIps = try container.sdkDecodeIfPresent(.staticIps)
-        targets = try container.sdkDecodeIfPresent(.targets)
-        tier = try container.sdkDecodeIfPresent(.tier)
-        tracing = try container.sdkDecodeIfPresent(.tracing)
-        transferCompletedAt = try container.sdkDecodeIfPresent(.transferCompletedAt)
-        transferredFromAccountId = try container.sdkDecodeIfPresent(.transferredFromAccountId)
-        transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
-        transferToAccountId = try container.sdkDecodeIfPresent(.transferToAccountId)
-        trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
-        trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.ssoProtection = try container.sdkDecodeIfPresent(.ssoProtection)
+        self.staticIps = try container.sdkDecodeIfPresent(.staticIps)
+        self.targets = try container.sdkDecodeIfPresent(.targets)
+        self.tier = try container.sdkDecodeIfPresent(.tier)
+        self.tracing = try container.sdkDecodeIfPresent(.tracing)
+        self.transferCompletedAt = try container.sdkDecodeIfPresent(.transferCompletedAt)
+        self.transferredFromAccountId = try container.sdkDecodeIfPresent(.transferredFromAccountId)
+        self.transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
+        self.transferToAccountId = try container.sdkDecodeIfPresent(.transferToAccountId)
+        self.trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
+        self.trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
     }
 }
 
 extension CreateProjectResponse {
     mutating func sdkDecodeFieldsPart8(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        usageStatus = try container.sdkDecodeIfPresent(.usageStatus)
-        v0 = try container.sdkDecodeIfPresent(.v0)
-        v0Created = try container.sdkDecodeIfPresent(.v0Created)
-        webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
+        self.usageStatus = try container.sdkDecodeIfPresent(.usageStatus)
+        self.v0 = try container.sdkDecodeIfPresent(.v0)
+        self.v0Created = try container.sdkDecodeIfPresent(.v0Created)
+        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
     }
 }
 
-public typealias ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectX1d17a1715d =
-    [ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectX74a8668fe9]
+public typealias ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectX1d17a1715d = [ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectX74a8668fe9]
 
 public struct ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectsValue: Codable {
     /// Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env
@@ -599,23 +373,20 @@ public struct ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectsValu
     }
 
     init() {
-        (customAllow, label) = (nil, nil)
+        (self.customAllow, self.label) = (nil, nil)
     }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectsValue {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectsValue {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        customAllow = try container.sdkDecodeIfPresent(.customAllow)
-        label = try container.sdkDecodeIfPresent(.label)
+        self.customAllow = try container.sdkDecodeIfPresent(.customAllow)
+        self.label = try container.sdkDecodeIfPresent(.label)
     }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectsValue {
-    init(
-        customAllow: ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectX1d17a1715d? = nil,
-        label: String? = nil
-    ) {
+extension ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectsValue {
+    public init(customAllow: ListProjectsResponseVariant2ProjectsItemTrustedSourcesProjectX1d17a1715d? = nil, label: String? = nil) {
         self.init()
         (self.customAllow, self.label) = (customAllow, label)
     }

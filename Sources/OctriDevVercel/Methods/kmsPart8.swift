@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension KmsMethods {
-    /// Updates a KMS issuer's name or claims schema. Include one or both fields to change; pass `null` for
-    /// `claimsSchema` to remove the schema. The response contains the updated issuer.
+extension KmsMethods {
+    /// Updates a KMS issuer's name or claims schema. Include one or both fields to change; pass `null` for `claimsSchema` to remove the schema. The response contains the updated issuer.
     ///
     /// Update a KMS issuer's name or claims schema.
     ///
@@ -19,34 +18,16 @@ public extension KmsMethods {
     /// - name: The name of the issuer.
     /// - claimsSchema: A JSON Schema used to validate the resolved token claims
     ///   when signing tokens for this issuer. Pass null to remove it.
-    static func updateKmsIssuer(
-        config: ClientConfig,
-        issuerId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        name: String? = nil,
-        claimsSchema: SdkOptional<[String: JSONValue]>? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateKmsIssuerResponse {
+    public static func updateKmsIssuer(config: ClientConfig, issuerId: String, teamId: String? = nil, slug: String? = nil, name: String? = nil, claimsSchema: SdkOptional<[String: JSONValue]>? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateKmsIssuerResponse {
         let requestBody = UpdateKmsIssuerRequestBody(name: name, claimsSchema: claimsSchema)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateKmsIssuer",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateKmsIssuer", options: requestOptions)).data
     }
 
-    /// Deletes a KMS issuer and its signing keys. Use `issuerId` to identify the issuer and optionally provide `teamId`
-    /// or `slug` to select the team scope. The operation removes the issuer and its associated keys.
+    /// Deletes a KMS issuer and its signing keys. Use `issuerId` to identify the issuer and optionally provide `teamId` or `slug` to select the team scope. The operation removes the issuer and its associated keys.
     ///
     /// Delete a KMS issuer and its signing keys.
     ///
@@ -54,24 +35,10 @@ public extension KmsMethods {
     /// - issuerId: The ID of the issuer.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteKmsIssuer(
-        config: ClientConfig,
-        issuerId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .empty,
-            operationId: "deleteKmsIssuer",
-            options: requestOptions
-        )).data
+    public static func deleteKmsIssuer(config: ClientConfig, issuerId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try (await sdkRequest("DELETE", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .empty, operationId: "deleteKmsIssuer", options: requestOptions)).data
     }
 }

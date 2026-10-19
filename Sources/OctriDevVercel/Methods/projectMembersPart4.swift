@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectMembersMethods {
-    /// Removes a member from a specific project. Use `idOrName` to identify the project and `uid` to identify the
-    /// member to remove. The response includes the project identifier.
+extension ProjectMembersMethods {
+    /// Removes a member from a specific project. Use `idOrName` to identify the project and `uid` to identify the member to remove. The response includes the project identifier.
     ///
     /// Remove a member from a specific project
     ///
@@ -17,30 +16,10 @@ public extension ProjectMembersMethods {
     /// - uid: The user ID of the member.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func removeProjectMember(
-        config: ClientConfig,
-        idOrName: String,
-        uid: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RemoveProjectMemberResponse {
-        try await (sdkRequest(
-            "DELETE",
-            [
-                "/v1/projects/",
-                sdkEncodePathSegment(sdkWireString(idOrName)),
-                "/members/",
-                sdkEncodePathSegment(sdkWireString(uid)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "removeProjectMember",
-            options: requestOptions
-        )).data
+    public static func removeProjectMember(config: ClientConfig, idOrName: String, uid: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RemoveProjectMemberResponse {
+        return try (await sdkRequest("DELETE", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/members/", sdkEncodePathSegment(sdkWireString(uid))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "removeProjectMember", options: requestOptions)).data
     }
 }

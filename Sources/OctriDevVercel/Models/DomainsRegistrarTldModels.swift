@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// DomainsRegistrarTld domain models
+// DomainsRegistrarTld domain models
 public typealias TldName = String
 
 /// The TLD is not currently supported.
@@ -21,43 +21,29 @@ public struct TldNotSupported: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TldNotSupported {
-    init(from decoder: Decoder) throws {
+extension TldNotSupported {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension TldNotSupported {
-    init(status: Int, code: TldNotSupportedCode, message: String) {
+extension TldNotSupported {
+    public init(status: Int, code: TldNotSupportedCode, message: String) {
         (self.status, self.code) = (status, code)
         self.message = message
     }
@@ -67,15 +53,12 @@ public extension TldNotSupported {
 public struct TldNotSupportedCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let tldNotSupported = TldNotSupportedCode(rawValue: "tld_not_supported")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

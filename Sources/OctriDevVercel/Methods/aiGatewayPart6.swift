@@ -6,46 +6,26 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AiGatewayMethods {
-    /// Deletes a virtual model configuration identified by its path slug using a soft delete. Specify `vmcSlug` to
-    /// select the configuration, and optionally use `ownerId`, `teamId`, or `slug` to scope the operation.
+extension AiGatewayMethods {
+    /// Deletes a virtual model configuration identified by its path slug using a soft delete. Specify `vmcSlug` to select the configuration, and optionally use `ownerId`, `teamId`, or `slug` to scope the operation.
     ///
     /// Delete a virtual model config by path slug (soft delete)
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteAiGatewayVirtualModelConfigBySlug(
-        config: ClientConfig,
-        vmcSlug: String,
-        ownerId: String? = nil,
-        updatedBy: String? = nil,
-        actingIp: String? = nil,
-        actingUserAgent: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/ai-gateway/virtual-model-configs/", sdkEncodePathSegment(sdkWireString(vmcSlug))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("ownerId", value: ownerId),
-                SdkQueryParameter("updatedBy", value: updatedBy),
-                SdkQueryParameter("actingIp", value: actingIp),
-                SdkQueryParameter("actingUserAgent", value: actingUserAgent),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .empty,
-            operationId: "deleteAiGatewayVirtualModelConfigBySlug",
-            options: requestOptions
-        )).data
+    public static func deleteAiGatewayVirtualModelConfigBySlug(config: ClientConfig, vmcSlug: String, ownerId: String? = nil, updatedBy: String? = nil, actingIp: String? = nil, actingUserAgent: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try (await sdkRequest("DELETE", ["/ai-gateway/virtual-model-configs/", sdkEncodePathSegment(sdkWireString(vmcSlug))].joined(), config: config, query: [
+            SdkQueryParameter("ownerId", value: ownerId),
+            SdkQueryParameter("updatedBy", value: updatedBy),
+            SdkQueryParameter("actingIp", value: actingIp),
+            SdkQueryParameter("actingUserAgent", value: actingUserAgent),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .empty, operationId: "deleteAiGatewayVirtualModelConfigBySlug", options: requestOptions)).data
     }
 
-    /// Lists the authenticated team's active and archived AI Gateway routers. Public callers select the team with
-    /// `teamId` or `slug`; trusted-origin callers can use `ownerId` to scope the list.
+    /// Lists the authenticated team's active and archived AI Gateway routers. Public callers select the team with `teamId` or `slug`; trusted-origin callers can use `ownerId` to scope the list.
     ///
     /// List the authenticated team's active and archived custom routers.
     ///
@@ -55,14 +35,8 @@ public extension AiGatewayMethods {
     ///   and a supplied ownerId never overrides the authenticated team.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listAiGatewayRouters(
-        config: ClientConfig,
-        ownerId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayRouterList {
-        try await (sdkRequest("GET", "/v1/ai-gateway/routers", config: config, query: [
+    public static func listAiGatewayRouters(config: ClientConfig, ownerId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayRouterList {
+        return try (await sdkRequest("GET", "/v1/ai-gateway/routers", config: config, query: [
             SdkQueryParameter("ownerId", value: ownerId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),

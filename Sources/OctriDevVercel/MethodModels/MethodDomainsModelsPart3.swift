@@ -7,31 +7,23 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical domains operation model declarations
-public extension GetDomainConfigResponseRecommendedCNAMEItem {
-    init(from decoder: Decoder) throws {
+// Canonical domains operation model declarations
+extension GetDomainConfigResponseRecommendedCNAMEItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.rank) else {
-            throw SdkValidationError(
-                field: "rank",
-                code: "required",
-                message: "Validation failed for 'rank': value is required"
-            )
+            throw SdkValidationError(field: "rank", code: "required", message: "Validation failed for 'rank': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        rank = try container.sdkDecodeRequired(.rank)
-        value = try container.sdkDecodeRequired(.value)
+        self.rank = try container.sdkDecodeRequired(.rank)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension GetDomainConfigResponseRecommendedCNAMEItem {
-    init(rank: Double, value: String) {
+extension GetDomainConfigResponseRecommendedCNAMEItem {
+    public init(rank: Double, value: String) {
         (self.rank, self.value) = (rank, value)
     }
 }
@@ -46,35 +38,25 @@ public struct GetDomainConfigResponseRecommendedIPv4Item: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDomainConfigResponseRecommendedIPv4Item {
-    init(from decoder: Decoder) throws {
+extension GetDomainConfigResponseRecommendedIPv4Item {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.rank) else {
-            throw SdkValidationError(
-                field: "rank",
-                code: "required",
-                message: "Validation failed for 'rank': value is required"
-            )
+            throw SdkValidationError(field: "rank", code: "required", message: "Validation failed for 'rank': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        rank = try container.sdkDecodeRequired(.rank)
-        value = try container.sdkDecodeRequired(.value)
+        self.rank = try container.sdkDecodeRequired(.rank)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension GetDomainConfigResponseRecommendedIPv4Item {
-    init(rank: Double, value: [String]) {
+extension GetDomainConfigResponseRecommendedIPv4Item {
+    public init(rank: Double, value: [String]) {
         (self.rank, self.value) = (rank, value)
     }
 }
@@ -95,45 +77,31 @@ public struct GetDomainsResponseDomainCreator: Codable {
         case isDomainReseller
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDomainsResponseDomainCreator {
-    init(from decoder: Decoder) throws {
+extension GetDomainsResponseDomainCreator {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.email) else {
-            throw SdkValidationError(
-                field: "email",
-                code: "required",
-                message: "Validation failed for 'email': value is required"
-            )
+            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.username) else {
-            throw SdkValidationError(
-                field: "username",
-                code: "required",
-                message: "Validation failed for 'username': value is required"
-            )
+            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
         }
-        email = try container.sdkDecodeRequired(.email)
-        id = try container.sdkDecodeRequired(.id)
-        username = try container.sdkDecodeRequired(.username)
-        customerId = try container.sdkDecodeIfPresent(.customerId)
-        isDomainReseller = try container.sdkDecodeIfPresent(.isDomainReseller)
+        self.email = try container.sdkDecodeRequired(.email)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.username = try container.sdkDecodeRequired(.username)
+        self.customerId = try container.sdkDecodeIfPresent(.customerId)
+        self.isDomainReseller = try container.sdkDecodeIfPresent(.isDomainReseller)
     }
 }
 
-public extension GetDomainsResponseDomainCreator {
-    init(email: String, id: String, username: String, customerId: String? = nil, isDomainReseller: Bool? = nil) {
+extension GetDomainsResponseDomainCreator {
+    public init(email: String, id: String, username: String, customerId: String? = nil, isDomainReseller: Bool? = nil) {
         (self.email, self.id) = (email, id)
         (self.username, self.customerId) = (username, customerId)
         self.isDomainReseller = isDomainReseller
@@ -165,89 +133,48 @@ public struct GetDomainsRecordsByRecordIdResponse: Codable {
         case ttl
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDomainsRecordsByRecordIdResponse {
-    init(from decoder: Decoder) throws {
+extension GetDomainsRecordsByRecordIdResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.creator) else {
-            throw SdkValidationError(
-                field: "creator",
-                code: "required",
-                message: "Validation failed for 'creator': value is required"
-            )
+            throw SdkValidationError(field: "creator", code: "required", message: "Validation failed for 'creator': value is required")
         }
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.recordType) else {
-            throw SdkValidationError(
-                field: "recordType",
-                code: "required",
-                message: "Validation failed for 'recordType': value is required"
-            )
+            throw SdkValidationError(field: "recordType", code: "required", message: "Validation failed for 'recordType': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        creator = try container.sdkDecodeRequired(.creator)
-        domain = try container.sdkDecodeRequired(.domain)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        recordType = try container.sdkDecodeRequired(.recordType)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeRequired(.value)
-        comment = try container.sdkDecodeIfPresent(.comment)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        ttl = try container.sdkDecodeIfPresent(.ttl)
+        self.creator = try container.sdkDecodeRequired(.creator)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.recordType = try container.sdkDecodeRequired(.recordType)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeRequired(.value)
+        self.comment = try container.sdkDecodeIfPresent(.comment)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.ttl = try container.sdkDecodeIfPresent(.ttl)
     }
 }
 
-public extension GetDomainsRecordsByRecordIdResponse {
-    init(
-        creator: String,
-        domain: String,
-        id: String,
-        name: String,
-        recordType: GetDomainsRecordsByRecordIdResponseRecordType,
-        type: GetDomainsRecordsByRecordIdResponseType,
-        value: String,
-        comment: String? = nil,
-        createdAt: Double? = nil,
-        ttl: Double? = nil
-    ) {
+extension GetDomainsRecordsByRecordIdResponse {
+    public init(creator: String, domain: String, id: String, name: String, recordType: GetDomainsRecordsByRecordIdResponseRecordType, type: GetDomainsRecordsByRecordIdResponseType, value: String, comment: String? = nil, createdAt: Double? = nil, ttl: Double? = nil) {
         (self.creator, self.domain) = (creator, domain)
         (self.id, self.name) = (id, name)
         (self.recordType, self.type) = (recordType, type)
@@ -272,45 +199,31 @@ public struct CreateOrTransferDomainResponseDomainCreator: Codable {
         case isDomainReseller
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateOrTransferDomainResponseDomainCreator {
-    init(from decoder: Decoder) throws {
+extension CreateOrTransferDomainResponseDomainCreator {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.email) else {
-            throw SdkValidationError(
-                field: "email",
-                code: "required",
-                message: "Validation failed for 'email': value is required"
-            )
+            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.username) else {
-            throw SdkValidationError(
-                field: "username",
-                code: "required",
-                message: "Validation failed for 'username': value is required"
-            )
+            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
         }
-        email = try container.sdkDecodeRequired(.email)
-        id = try container.sdkDecodeRequired(.id)
-        username = try container.sdkDecodeRequired(.username)
-        customerId = try container.sdkDecodeIfPresent(.customerId)
-        isDomainReseller = try container.sdkDecodeIfPresent(.isDomainReseller)
+        self.email = try container.sdkDecodeRequired(.email)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.username = try container.sdkDecodeRequired(.username)
+        self.customerId = try container.sdkDecodeIfPresent(.customerId)
+        self.isDomainReseller = try container.sdkDecodeIfPresent(.isDomainReseller)
     }
 }
 
-public extension CreateOrTransferDomainResponseDomainCreator {
-    init(email: String, id: String, username: String, customerId: String? = nil, isDomainReseller: Bool? = nil) {
+extension CreateOrTransferDomainResponseDomainCreator {
+    public init(email: String, id: String, username: String, customerId: String? = nil, isDomainReseller: Bool? = nil) {
         (self.email, self.id) = (email, id)
         (self.username, self.customerId) = (username, customerId)
         self.isDomainReseller = isDomainReseller
@@ -333,45 +246,31 @@ public struct ListDomainsResponseDomainsItemCreator: Codable {
         case isDomainReseller
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListDomainsResponseDomainsItemCreator {
-    init(from decoder: Decoder) throws {
+extension ListDomainsResponseDomainsItemCreator {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.email) else {
-            throw SdkValidationError(
-                field: "email",
-                code: "required",
-                message: "Validation failed for 'email': value is required"
-            )
+            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.username) else {
-            throw SdkValidationError(
-                field: "username",
-                code: "required",
-                message: "Validation failed for 'username': value is required"
-            )
+            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
         }
-        email = try container.sdkDecodeRequired(.email)
-        id = try container.sdkDecodeRequired(.id)
-        username = try container.sdkDecodeRequired(.username)
-        customerId = try container.sdkDecodeIfPresent(.customerId)
-        isDomainReseller = try container.sdkDecodeIfPresent(.isDomainReseller)
+        self.email = try container.sdkDecodeRequired(.email)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.username = try container.sdkDecodeRequired(.username)
+        self.customerId = try container.sdkDecodeIfPresent(.customerId)
+        self.isDomainReseller = try container.sdkDecodeIfPresent(.isDomainReseller)
     }
 }
 
-public extension ListDomainsResponseDomainsItemCreator {
-    init(email: String, id: String, username: String, customerId: String? = nil, isDomainReseller: Bool? = nil) {
+extension ListDomainsResponseDomainsItemCreator {
+    public init(email: String, id: String, username: String, customerId: String? = nil, isDomainReseller: Bool? = nil) {
         (self.email, self.id) = (email, id)
         (self.username, self.customerId) = (username, customerId)
         self.isDomainReseller = isDomainReseller
@@ -389,35 +288,25 @@ public struct ListDomainsResponse: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListDomainsResponse {
-    init(from decoder: Decoder) throws {
+extension ListDomainsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domains) else {
-            throw SdkValidationError(
-                field: "domains",
-                code: "required",
-                message: "Validation failed for 'domains': value is required"
-            )
+            throw SdkValidationError(field: "domains", code: "required", message: "Validation failed for 'domains': value is required")
         }
         guard container.contains(.pagination) else {
-            throw SdkValidationError(
-                field: "pagination",
-                code: "required",
-                message: "Validation failed for 'pagination': value is required"
-            )
+            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
         }
-        domains = try container.sdkDecodeRequired(.domains)
-        pagination = try container.sdkDecodeRequired(.pagination)
+        self.domains = try container.sdkDecodeRequired(.domains)
+        self.pagination = try container.sdkDecodeRequired(.pagination)
     }
 }
 
-public extension ListDomainsResponse {
-    init(domains: [ListDomainsResponseDomainsItem], pagination: Pagination) {
+extension ListDomainsResponse {
+    public init(domains: [ListDomainsResponseDomainsItem], pagination: Pagination) {
         (self.domains, self.pagination) = (domains, pagination)
     }
 }
@@ -435,20 +324,20 @@ public struct UpdateDomainsRequestBodyVariant1: Codable {
     }
 
     init() {
-        (op, destination) = (nil, nil)
+        (self.op, self.destination) = (nil, nil)
     }
 }
 
-public extension UpdateDomainsRequestBodyVariant1 {
-    init(from decoder: Decoder) throws {
+extension UpdateDomainsRequestBodyVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        op = try container.sdkDecodeIfPresent(.op)
-        destination = try container.sdkDecodeIfPresent(.destination)
+        self.op = try container.sdkDecodeIfPresent(.op)
+        self.destination = try container.sdkDecodeIfPresent(.destination)
     }
 }
 
-public extension UpdateDomainsRequestBodyVariant1 {
-    init(op: String? = nil, destination: String? = nil) {
+extension UpdateDomainsRequestBodyVariant1 {
+    public init(op: String? = nil, destination: String? = nil) {
         self.init()
         (self.op, self.destination) = (op, destination)
     }
@@ -478,65 +367,37 @@ public struct GetDomainConfigResponse: Codable {
         case misconfigured
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDomainConfigResponse {
-    init(from decoder: Decoder) throws {
+extension GetDomainConfigResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.acceptedChallenges) else {
-            throw SdkValidationError(
-                field: "acceptedChallenges",
-                code: "required",
-                message: "Validation failed for 'acceptedChallenges': value is required"
-            )
+            throw SdkValidationError(field: "acceptedChallenges", code: "required", message: "Validation failed for 'acceptedChallenges': value is required")
         }
         guard container.contains(.configuredBy) else {
-            throw SdkValidationError(
-                field: "configuredBy",
-                code: "required",
-                message: "Validation failed for 'configuredBy': value is required"
-            )
+            throw SdkValidationError(field: "configuredBy", code: "required", message: "Validation failed for 'configuredBy': value is required")
         }
         guard container.contains(.recommendedCname) else {
-            throw SdkValidationError(
-                field: "recommendedCNAME",
-                code: "required",
-                message: "Validation failed for 'recommendedCNAME': value is required"
-            )
+            throw SdkValidationError(field: "recommendedCNAME", code: "required", message: "Validation failed for 'recommendedCNAME': value is required")
         }
         guard container.contains(.recommendedIPv4) else {
-            throw SdkValidationError(
-                field: "recommendedIPv4",
-                code: "required",
-                message: "Validation failed for 'recommendedIPv4': value is required"
-            )
+            throw SdkValidationError(field: "recommendedIPv4", code: "required", message: "Validation failed for 'recommendedIPv4': value is required")
         }
         guard container.contains(.misconfigured) else {
-            throw SdkValidationError(
-                field: "misconfigured",
-                code: "required",
-                message: "Validation failed for 'misconfigured': value is required"
-            )
+            throw SdkValidationError(field: "misconfigured", code: "required", message: "Validation failed for 'misconfigured': value is required")
         }
-        acceptedChallenges = try container.sdkDecodeRequired(.acceptedChallenges)
-        configuredBy = try container.sdkDecodeNullable(.configuredBy)
-        recommendedCname = try container.sdkDecodeRequired(.recommendedCname)
-        recommendedIPv4 = try container.sdkDecodeRequired(.recommendedIPv4)
-        misconfigured = try container.sdkDecodeRequired(.misconfigured)
+        self.acceptedChallenges = try container.sdkDecodeRequired(.acceptedChallenges)
+        self.configuredBy = try container.sdkDecodeNullable(.configuredBy)
+        self.recommendedCname = try container.sdkDecodeRequired(.recommendedCname)
+        self.recommendedIPv4 = try container.sdkDecodeRequired(.recommendedIPv4)
+        self.misconfigured = try container.sdkDecodeRequired(.misconfigured)
     }
 }
 
-public extension GetDomainConfigResponse {
-    init(
-        acceptedChallenges: [GetDomainConfigResponseAcceptedChallengesItem],
-        configuredBy: GetDomainConfigResponseConfiguredBy?,
-        recommendedCname: [GetDomainConfigResponseRecommendedCNAMEItem],
-        recommendedIPv4: [GetDomainConfigResponseRecommendedIPv4Item],
-        misconfigured: Bool
-    ) {
+extension GetDomainConfigResponse {
+    public init(acceptedChallenges: [GetDomainConfigResponseAcceptedChallengesItem], configuredBy: GetDomainConfigResponseConfiguredBy?, recommendedCname: [GetDomainConfigResponseRecommendedCNAMEItem], recommendedIPv4: [GetDomainConfigResponseRecommendedIPv4Item], misconfigured: Bool) {
         (self.acceptedChallenges, self.configuredBy) = (acceptedChallenges, configuredBy)
         (self.recommendedCname, self.recommendedIPv4) = (recommendedCname, recommendedIPv4)
         self.misconfigured = misconfigured

@@ -6,13 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ArtifactsMethods {
-    /// Retrieves an artifact from the cache by its hash. Use `hash` to identify the artifact and check the response
-    /// content length and body when downloading the octet-stream data. You can use the client headers to identify the
-    /// CI environment and whether the client is interactive.
+extension ArtifactsMethods {
+    /// Retrieves an artifact from the cache by its hash. Use `hash` to identify the artifact and check the response content length and body when downloading the octet-stream data. You can use the client headers to identify the CI environment and whether the client is interactive.
     ///
-    /// Downloads a cache artifact indentified by its `hash` specified on the request path. The artifact is downloaded
-    /// as an octet-stream. The client should verify the content-length header and response body.
+    /// Downloads a cache artifact indentified by its `hash` specified on the request path. The artifact is downloaded as an octet-stream. The client should verify the content-length header and response body.
     ///
     /// - Parameters:
     /// - hash: The artifact hash
@@ -22,38 +19,21 @@ public extension ArtifactsMethods {
     ///   where this artifact is downloaded.
     /// - xArtifactClientInteractive: 1 if the client is an interactive shell.
     ///   Otherwise 0
-    static func downloadArtifact(
-        config: ClientConfig,
-        hash: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        xArtifactClientCi: String? = nil,
-        xArtifactClientInteractive: Int? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> Data {
-        if let xArtifactClientCi {
+    public static func downloadArtifact(config: ClientConfig, hash: String, teamId: String? = nil, slug: String? = nil, xArtifactClientCi: String? = nil, xArtifactClientInteractive: Int? = nil, requestOptions: RequestOptions? = nil) async throws -> Data {
+        if let xArtifactClientCi = xArtifactClientCi {
             try validateLength("x-artifact-client-ci", xArtifactClientCi, max: 50)
         }
 
-        if let xArtifactClientInteractive {
+        if let xArtifactClientInteractive = xArtifactClientInteractive {
             try validateRange("x-artifact-client-interactive", Double(xArtifactClientInteractive), min: 0, max: 1)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v8/artifacts/", sdkEncodePathSegment(sdkWireString(hash))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .bytes,
-            operationId: "downloadArtifact",
-            extraHeaders: sdkHeaders([
-                ("x-artifact-client-ci", sdkHeaderValue(xArtifactClientCi)),
-                ("x-artifact-client-interactive", sdkHeaderValue(xArtifactClientInteractive)),
-            ]),
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v8/artifacts/", sdkEncodePathSegment(sdkWireString(hash))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .bytes, operationId: "downloadArtifact", extraHeaders: sdkHeaders([
+            ("x-artifact-client-ci", sdkHeaderValue(xArtifactClientCi)),
+            ("x-artifact-client-interactive", sdkHeaderValue(xArtifactClientInteractive)),
+        ]), options: requestOptions)).data
     }
 }

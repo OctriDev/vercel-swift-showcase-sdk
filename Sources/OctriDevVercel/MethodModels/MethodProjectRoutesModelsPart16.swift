@@ -7,18 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projectRoutes operation model declarations
-public extension GetRoutesResponseVariant3Version {
-    init(
-        createdBy: String,
-        id: String,
-        lastModified: Double,
-        s3Key: String,
-        alias: String? = nil,
-        isLive: Bool? = nil,
-        isStaging: Bool? = nil,
-        ruleCount: Double? = nil
-    ) {
+// Canonical projectRoutes operation model declarations
+extension GetRoutesResponseVariant3Version {
+    public init(createdBy: String, id: String, lastModified: Double, s3Key: String, alias: String? = nil, isLive: Bool? = nil, isStaging: Bool? = nil, ruleCount: Double? = nil) {
         (self.createdBy, self.id) = (createdBy, id)
         (self.lastModified, self.s3Key) = (lastModified, s3Key)
         (self.alias, self.isLive) = (alias, isLive)

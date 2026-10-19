@@ -6,20 +6,16 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct UpdateFlagSegmentRequestBodyOperationsItemField: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateFlagSegmentRequestBodyOperationsItemField: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let include = UpdateFlagSegmentRequestBodyOperationsItemField(rawValue: "include")
     public static let exclude = UpdateFlagSegmentRequestBodyOperationsItemField(rawValue: "exclude")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -28,21 +24,17 @@ public struct UpdateFlagSegmentRequestBodyOperationsItemField: RawRepresentable,
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemTargetsValuePlan: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemTargetsValuePlan: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let enterprise = GetMicrofrontendsInGroupResponseProjectsItemTargetsValuePlan(rawValue: "enterprise")
     public static let hobby = GetMicrofrontendsInGroupResponseProjectsItemTargetsValuePlan(rawValue: "hobby")
     public static let pro = GetMicrofrontendsInGroupResponseProjectsItemTargetsValuePlan(rawValue: "pro")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -51,22 +43,17 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTargetsValuePlan: RawR
     }
 }
 
-public struct UploadProjectAvatarResponseSecurityManagedRulesTrafficSourcesAction: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseSecurityManagedRulesTrafficSourcesAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let challenge =
-        UploadProjectAvatarResponseSecurityManagedRulesTrafficSourcesAction(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let challenge = UploadProjectAvatarResponseSecurityManagedRulesTrafficSourcesAction(rawValue: "challenge")
     public static let deny = UploadProjectAvatarResponseSecurityManagedRulesTrafficSourcesAction(rawValue: "deny")
     public static let log = UploadProjectAvatarResponseSecurityManagedRulesTrafficSourcesAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -75,24 +62,17 @@ public struct UploadProjectAvatarResponseSecurityManagedRulesTrafficSourcesActio
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX2b8629f3d7: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX2b8629f3d7: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let promoted =
-        GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX2b8629f3d7(rawValue: "PROMOTED")
-    public static let rolling =
-        GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX2b8629f3d7(rawValue: "ROLLING")
-    public static let staged =
-        GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX2b8629f3d7(rawValue: "STAGED")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let promoted = GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX2b8629f3d7(rawValue: "PROMOTED")
+    public static let rolling = GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX2b8629f3d7(rawValue: "ROLLING")
+    public static let staged = GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX2b8629f3d7(rawValue: "STAGED")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -118,14 +98,10 @@ public enum ListVercelCiInvocationsResponseInvocationsItemStatusVariant4: String
     }
 }
 
-public struct UploadProjectAvatarResponseNodeVersion: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UploadProjectAvatarResponseNodeVersion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let value10X = UploadProjectAvatarResponseNodeVersion(rawValue: "10.x")
     public static let value12X = UploadProjectAvatarResponseNodeVersion(rawValue: "12.x")
     public static let value14X = UploadProjectAvatarResponseNodeVersion(rawValue: "14.x")
@@ -139,7 +115,7 @@ public struct UploadProjectAvatarResponseNodeVersion: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -149,23 +125,17 @@ public struct UploadProjectAvatarResponseNodeVersion: RawRepresentable, Hashable
 }
 
 /// The type of matching to perform
-public struct UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let endsWith =
-        UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "endsWith")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let endsWith = UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "endsWith")
     public static let equals = UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "equals")
-    public static let startsWith =
-        UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "startsWith")
+    public static let startsWith = UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "startsWith")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -174,22 +144,16 @@ public struct UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf028c8ad34: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf028c8ad34: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let create =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf028c8ad34(rawValue: "create")
-    public static let update =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf028c8ad34(rawValue: "update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf028c8ad34(rawValue: "create")
+    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf028c8ad34(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -201,20 +165,16 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf028
 /// Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain
 /// (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery
 /// type when project tracing is computed; absent on configs persisted before this field existed.
-public struct UploadProjectAvatarResponseTracingSamplingRulesItemDestination: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseTracingSamplingRulesItemDestination: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let external = UploadProjectAvatarResponseTracingSamplingRulesItemDestination(rawValue: "external")
     public static let `internal` = UploadProjectAvatarResponseTracingSamplingRulesItemDestination(rawValue: "internal")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -226,17 +186,14 @@ public struct UploadProjectAvatarResponseTracingSamplingRulesItemDestination: Ra
 public struct CreateProjectCheckResponseRequires: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let buildReady = CreateProjectCheckResponseRequires(rawValue: "build-ready")
     public static let deploymentUrl = CreateProjectCheckResponseRequires(rawValue: "deployment-url")
     public static let none = CreateProjectCheckResponseRequires(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

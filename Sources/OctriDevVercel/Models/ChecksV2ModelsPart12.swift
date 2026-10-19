@@ -3,42 +3,26 @@
 
 import Foundation
 
-/// ChecksV2 domain models
-public extension UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectionVariant2 {
-    init(from decoder: Decoder) throws {
+// ChecksV2 domain models
+extension UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectionVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.job) else {
-            throw SdkValidationError(
-                field: "job",
-                code: "required",
-                message: "Validation failed for 'job': value is required"
-            )
+            throw SdkValidationError(field: "job", code: "required", message: "Validation failed for 'job': value is required")
         }
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
-        job = try container.sdkDecodeRequired(.job)
-        kind = try container.sdkDecodeRequired(.kind)
-        try sdkValidateRawEnum(
-            "kind",
-            kind,
-            UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX9dfb165f47.allCases.map(\.rawValue)
-        )
+        self.job = try container.sdkDecodeRequired(.job)
+        self.kind = try container.sdkDecodeRequired(.kind)
+            try sdkValidateRawEnum("kind", self.kind, UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX9dfb165f47.allCases.map(\.rawValue))
     }
 }
 
-public extension UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectionVariant2 {
-    init(job: String, kind: UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX9dfb165f47) throws {
+extension UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectionVariant2 {
+    public init(job: String, kind: UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX9dfb165f47) throws {
         (self.job, self.kind) = (job, kind)
-        try sdkValidateRawEnum(
-            "kind",
-            self.kind,
-            UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX9dfb165f47.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("kind", self.kind, UpdateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX9dfb165f47.allCases.map(\.rawValue))
     }
 }
 
@@ -49,38 +33,24 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X3740
         case kind
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X3740a48ce7 {
-    init(from decoder: Decoder) throws {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X3740a48ce7 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
-        kind = try container.sdkDecodeRequired(.kind)
-        try sdkValidateRawEnum(
-            "kind",
-            kind,
-            ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b.allCases.map(\.rawValue)
-        )
+        self.kind = try container.sdkDecodeRequired(.kind)
+            try sdkValidateRawEnum("kind", self.kind, ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b.allCases.map(\.rawValue))
     }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X3740a48ce7 {
-    init(kind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b) throws {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X3740a48ce7 {
+    public init(kind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b) throws {
         self.kind = kind
-        try sdkValidateRawEnum(
-            "kind",
-            self.kind,
-            ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("kind", self.kind, ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b.allCases.map(\.rawValue))
     }
 }
 
@@ -99,64 +69,36 @@ public struct ListProjectChecksResponseChecksItemSourceVariant0: Codable {
         case resourceId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectChecksResponseChecksItemSourceVariant0 {
-    init(from decoder: Decoder) throws {
+extension ListProjectChecksResponseChecksItemSourceVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.integrationConfigurationId) else {
-            throw SdkValidationError(
-                field: "integrationConfigurationId",
-                code: "required",
-                message: "Validation failed for 'integrationConfigurationId': value is required"
-            )
+            throw SdkValidationError(field: "integrationConfigurationId", code: "required", message: "Validation failed for 'integrationConfigurationId': value is required")
         }
         guard container.contains(.integrationId) else {
-            throw SdkValidationError(
-                field: "integrationId",
-                code: "required",
-                message: "Validation failed for 'integrationId': value is required"
-            )
+            throw SdkValidationError(field: "integrationId", code: "required", message: "Validation failed for 'integrationId': value is required")
         }
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
-        integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
-        integrationId = try container.sdkDecodeRequired(.integrationId)
-        kind = try container.sdkDecodeRequired(.kind)
-        externalResourceId = try container.sdkDecodeIfPresent(.externalResourceId)
-        resourceId = try container.sdkDecodeIfPresent(.resourceId)
-        try sdkValidateRawEnum(
-            "kind",
-            kind,
-            ListProjectChecksResponseChecksItemSourceVariant0Kind.allCases.map(\.rawValue)
-        )
+        self.integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
+        self.integrationId = try container.sdkDecodeRequired(.integrationId)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.externalResourceId = try container.sdkDecodeIfPresent(.externalResourceId)
+        self.resourceId = try container.sdkDecodeIfPresent(.resourceId)
+            try sdkValidateRawEnum("kind", self.kind, ListProjectChecksResponseChecksItemSourceVariant0Kind.allCases.map(\.rawValue))
     }
 }
 
-public extension ListProjectChecksResponseChecksItemSourceVariant0 {
-    init(
-        integrationConfigurationId: String,
-        integrationId: String,
-        kind: ListProjectChecksResponseChecksItemSourceVariant0Kind,
-        externalResourceId: String? = nil,
-        resourceId: String? = nil
-    ) throws {
+extension ListProjectChecksResponseChecksItemSourceVariant0 {
+    public init(integrationConfigurationId: String, integrationId: String, kind: ListProjectChecksResponseChecksItemSourceVariant0Kind, externalResourceId: String? = nil, resourceId: String? = nil) throws {
         (self.integrationConfigurationId, self.integrationId) = (integrationConfigurationId, integrationId)
         (self.kind, self.externalResourceId) = (kind, externalResourceId)
         self.resourceId = resourceId
-        try sdkValidateRawEnum(
-            "kind",
-            self.kind,
-            ListProjectChecksResponseChecksItemSourceVariant0Kind.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("kind", self.kind, ListProjectChecksResponseChecksItemSourceVariant0Kind.allCases.map(\.rawValue))
     }
 }
 
@@ -173,51 +115,33 @@ public struct CreateDeploymentCheckRunResponseVariant0TaskSummary: Codable {
         case total
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateDeploymentCheckRunResponseVariant0TaskSummary {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentCheckRunResponseVariant0TaskSummary {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.failed) else {
-            throw SdkValidationError(
-                field: "failed",
-                code: "required",
-                message: "Validation failed for 'failed': value is required"
-            )
+            throw SdkValidationError(field: "failed", code: "required", message: "Validation failed for 'failed': value is required")
         }
         guard container.contains(.pending) else {
-            throw SdkValidationError(
-                field: "pending",
-                code: "required",
-                message: "Validation failed for 'pending': value is required"
-            )
+            throw SdkValidationError(field: "pending", code: "required", message: "Validation failed for 'pending': value is required")
         }
         guard container.contains(.succeeded) else {
-            throw SdkValidationError(
-                field: "succeeded",
-                code: "required",
-                message: "Validation failed for 'succeeded': value is required"
-            )
+            throw SdkValidationError(field: "succeeded", code: "required", message: "Validation failed for 'succeeded': value is required")
         }
         guard container.contains(.total) else {
-            throw SdkValidationError(
-                field: "total",
-                code: "required",
-                message: "Validation failed for 'total': value is required"
-            )
+            throw SdkValidationError(field: "total", code: "required", message: "Validation failed for 'total': value is required")
         }
-        failed = try container.sdkDecodeRequired(.failed)
-        pending = try container.sdkDecodeRequired(.pending)
-        succeeded = try container.sdkDecodeRequired(.succeeded)
-        total = try container.sdkDecodeRequired(.total)
+        self.failed = try container.sdkDecodeRequired(.failed)
+        self.pending = try container.sdkDecodeRequired(.pending)
+        self.succeeded = try container.sdkDecodeRequired(.succeeded)
+        self.total = try container.sdkDecodeRequired(.total)
     }
 }
 
-public extension CreateDeploymentCheckRunResponseVariant0TaskSummary {
-    init(failed: Double, pending: Double, succeeded: Double, total: Double) {
+extension CreateDeploymentCheckRunResponseVariant0TaskSummary {
+    public init(failed: Double, pending: Double, succeeded: Double, total: Double) {
         (self.failed, self.pending) = (failed, pending)
         (self.succeeded, self.total) = (succeeded, total)
     }
@@ -235,47 +159,29 @@ public struct CreateDeploymentCheckRunResponseVariant0SourceVariant4: Codable {
         case subKind
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateDeploymentCheckRunResponseVariant0SourceVariant4 {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentCheckRunResponseVariant0SourceVariant4 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.origin) else {
-            throw SdkValidationError(
-                field: "origin",
-                code: "required",
-                message: "Validation failed for 'origin': value is required"
-            )
+            throw SdkValidationError(field: "origin", code: "required", message: "Validation failed for 'origin': value is required")
         }
         guard container.contains(.selection) else {
-            throw SdkValidationError(
-                field: "selection",
-                code: "required",
-                message: "Validation failed for 'selection': value is required"
-            )
+            throw SdkValidationError(field: "selection", code: "required", message: "Validation failed for 'selection': value is required")
         }
         guard container.contains(.subKind) else {
-            throw SdkValidationError(
-                field: "subKind",
-                code: "required",
-                message: "Validation failed for 'subKind': value is required"
-            )
+            throw SdkValidationError(field: "subKind", code: "required", message: "Validation failed for 'subKind': value is required")
         }
-        origin = try container.sdkDecodeRequired(.origin)
-        selection = try container.sdkDecodeRequired(.selection)
-        subKind = try container.sdkDecodeRequired(.subKind)
+        self.origin = try container.sdkDecodeRequired(.origin)
+        self.selection = try container.sdkDecodeRequired(.selection)
+        self.subKind = try container.sdkDecodeRequired(.subKind)
     }
 }
 
-public extension CreateDeploymentCheckRunResponseVariant0SourceVariant4 {
-    init(
-        origin: CreateDeploymentCheckRunResponseVariant0SourceVariant4Origin,
-        selection: CreateDeploymentCheckRunResponseVariant0SourceVariant4Selection,
-        subKind: CreateDeploymentCheckRunResponseVariant0SourceVariant4SubKind
-    ) {
+extension CreateDeploymentCheckRunResponseVariant0SourceVariant4 {
+    public init(origin: CreateDeploymentCheckRunResponseVariant0SourceVariant4Origin, selection: CreateDeploymentCheckRunResponseVariant0SourceVariant4Selection, subKind: CreateDeploymentCheckRunResponseVariant0SourceVariant4SubKind) {
         (self.origin, self.selection) = (origin, selection)
         self.subKind = subKind
     }
@@ -334,66 +240,40 @@ public struct ListCheckRunsResponseRunsItemVariant1: Codable {
         case taskSummary
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListCheckRunsResponseRunsItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension ListCheckRunsResponseRunsItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        deploymentId = try container.sdkDecodeRequired(.deploymentId)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        status = try container.sdkDecodeRequired(.status)
-        timeout = try container.sdkDecodeRequired(.timeout)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        source = try container.sdkDecodeRequired(.source)
-        blocks = try container.sdkDecodeIfPresent(.blocks)
-        completedAt = try container.sdkDecodeIfPresent(.completedAt)
-        conclusion = try container.sdkDecodeIfPresent(.conclusion)
-        conclusionText = try container.sdkDecodeIfPresent(.conclusionText)
-        expectationRef = try container.sdkDecodeIfPresent(.expectationRef)
-        expectationRevision = try container.sdkDecodeIfPresent(.expectationRevision)
-        externalId = try container.sdkDecodeIfPresent(.externalId)
-        externalUrl = try container.sdkDecodeIfPresent(.externalUrl)
-        output = try container.sdkDecodeIfPresent(.output)
-        projectId = try container.sdkDecodeIfPresent(.projectId)
-        requires = try container.sdkDecodeIfPresent(.requires)
-        startedAt = try container.sdkDecodeIfPresent(.startedAt)
-        targets = try container.sdkDecodeIfPresent(.targets)
-        taskSummary = try container.sdkDecodeIfPresent(.taskSummary)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.deploymentId = try container.sdkDecodeRequired(.deploymentId)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.timeout = try container.sdkDecodeRequired(.timeout)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.source = try container.sdkDecodeRequired(.source)
+        self.blocks = try container.sdkDecodeIfPresent(.blocks)
+        self.completedAt = try container.sdkDecodeIfPresent(.completedAt)
+        self.conclusion = try container.sdkDecodeIfPresent(.conclusion)
+        self.conclusionText = try container.sdkDecodeIfPresent(.conclusionText)
+        self.expectationRef = try container.sdkDecodeIfPresent(.expectationRef)
+        self.expectationRevision = try container.sdkDecodeIfPresent(.expectationRevision)
+        self.externalId = try container.sdkDecodeIfPresent(.externalId)
+        self.externalUrl = try container.sdkDecodeIfPresent(.externalUrl)
+        self.output = try container.sdkDecodeIfPresent(.output)
+        self.projectId = try container.sdkDecodeIfPresent(.projectId)
+        self.requires = try container.sdkDecodeIfPresent(.requires)
+        self.startedAt = try container.sdkDecodeIfPresent(.startedAt)
+        self.targets = try container.sdkDecodeIfPresent(.targets)
+        self.taskSummary = try container.sdkDecodeIfPresent(.taskSummary)
     }
 }
 
-public extension ListCheckRunsResponseRunsItemVariant1 {
-    init(
-        createdAt: Double,
-        deploymentId: String,
-        id: String,
-        name: String,
-        ownerId: String,
-        status: ListCheckRunsResponseRunsItemVariant1Status,
-        timeout: Double,
-        updatedAt: Double,
-        source: ListCheckRunsResponseRunsItemVariant1Source,
-        blocks: ListCheckRunsResponseRunsItemVariant1Blocks? = nil,
-        completedAt: Double? = nil,
-        conclusion: ListCheckRunsResponseRunsItemVariant1Conclusion? = nil,
-        conclusionText: String? = nil,
-        expectationRef: ListCheckRunsResponseRunsItemVariant1ExpectationRef? = nil,
-        expectationRevision: Double? = nil,
-        externalId: String? = nil,
-        externalUrl: String? = nil,
-        output: [String: JSONValue]? = nil,
-        projectId: String? = nil,
-        requires: ListCheckRunsResponseRunsItemVariant1Requires? = nil,
-        startedAt: Double? = nil,
-        targets: [String]? = nil,
-        taskSummary: ListCheckRunsResponseRunsItemVariant1TaskSummary? = nil
-    ) {
+extension ListCheckRunsResponseRunsItemVariant1 {
+    public init(createdAt: Double, deploymentId: String, id: String, name: String, ownerId: String, status: ListCheckRunsResponseRunsItemVariant1Status, timeout: Double, updatedAt: Double, source: ListCheckRunsResponseRunsItemVariant1Source, blocks: ListCheckRunsResponseRunsItemVariant1Blocks? = nil, completedAt: Double? = nil, conclusion: ListCheckRunsResponseRunsItemVariant1Conclusion? = nil, conclusionText: String? = nil, expectationRef: ListCheckRunsResponseRunsItemVariant1ExpectationRef? = nil, expectationRevision: Double? = nil, externalId: String? = nil, externalUrl: String? = nil, output: [String: JSONValue]? = nil, projectId: String? = nil, requires: ListCheckRunsResponseRunsItemVariant1Requires? = nil, startedAt: Double? = nil, targets: [String]? = nil, taskSummary: ListCheckRunsResponseRunsItemVariant1TaskSummary? = nil) {
         (self.createdAt, self.deploymentId) = (createdAt, deploymentId)
         (self.id, self.name) = (id, name)
         (self.ownerId, self.status) = (ownerId, status)
@@ -415,43 +295,27 @@ public indirect enum GetDeploymentCheckRunResponseVariant1Source {
 }
 
 extension GetDeploymentCheckRunResponseVariant1Source: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetDeploymentCheckRunResponseVariant1Source"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDeploymentCheckRunResponseVariant1Source")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetDeploymentCheckRunResponseVariant1Source {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetDeploymentCheckRunResponseVariant1SourceVariant0.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(GetDeploymentCheckRunResponseVariant1SourceVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .getDeploymentCheckRunResponseVariant1SourceVariant0(value)
         }
-        if let value = try? container.decode(GetDeploymentCheckRunResponseVariant1SourceVariant1.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(GetDeploymentCheckRunResponseVariant1SourceVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .getDeploymentCheckRunResponseVariant1SourceVariant1(value)
         }
         return nil
@@ -463,12 +327,12 @@ extension GetDeploymentCheckRunResponseVariant1Source {
         if let value = try? container.decode(
             GetDeploymentCheckRunResponseVariant1SourceVariant0.self
         ) {
-            return .getDeploymentCheckRunResponseVariant1SourceVariant0(value)
+            return             .getDeploymentCheckRunResponseVariant1SourceVariant0(value)
         }
         if let value = try? container.decode(
             GetDeploymentCheckRunResponseVariant1SourceVariant1.self
         ) {
-            return .getDeploymentCheckRunResponseVariant1SourceVariant1(value)
+            return             .getDeploymentCheckRunResponseVariant1SourceVariant1(value)
         }
         return nil
     }
@@ -539,68 +403,41 @@ public struct CreateDeploymentCheckRunResponseVariant0: Codable {
         case taskSummary
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateDeploymentCheckRunResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentCheckRunResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        deploymentId = try container.sdkDecodeRequired(.deploymentId)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        status = try container.sdkDecodeRequired(.status)
-        timeout = try container.sdkDecodeRequired(.timeout)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        checkId = try container.sdkDecodeRequired(.checkId)
-        source = try container.sdkDecodeRequired(.source)
-        blocks = try container.sdkDecodeIfPresent(.blocks)
-        completedAt = try container.sdkDecodeIfPresent(.completedAt)
-        conclusion = try container.sdkDecodeIfPresent(.conclusion)
-        conclusionText = try container.sdkDecodeIfPresent(.conclusionText)
-        expectationRef = try container.sdkDecodeIfPresent(.expectationRef)
-        expectationRevision = try container.sdkDecodeIfPresent(.expectationRevision)
-        externalId = try container.sdkDecodeIfPresent(.externalId)
-        externalUrl = try container.sdkDecodeIfPresent(.externalUrl)
-        output = try container.sdkDecodeIfPresent(.output)
-        projectId = try container.sdkDecodeIfPresent(.projectId)
-        requires = try container.sdkDecodeIfPresent(.requires)
-        startedAt = try container.sdkDecodeIfPresent(.startedAt)
-        targets = try container.sdkDecodeIfPresent(.targets)
-        taskSummary = try container.sdkDecodeIfPresent(.taskSummary)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.deploymentId = try container.sdkDecodeRequired(.deploymentId)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.timeout = try container.sdkDecodeRequired(.timeout)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.checkId = try container.sdkDecodeRequired(.checkId)
+        self.source = try container.sdkDecodeRequired(.source)
+        self.blocks = try container.sdkDecodeIfPresent(.blocks)
+        self.completedAt = try container.sdkDecodeIfPresent(.completedAt)
+        self.conclusion = try container.sdkDecodeIfPresent(.conclusion)
+        self.conclusionText = try container.sdkDecodeIfPresent(.conclusionText)
+        self.expectationRef = try container.sdkDecodeIfPresent(.expectationRef)
+        self.expectationRevision = try container.sdkDecodeIfPresent(.expectationRevision)
+        self.externalId = try container.sdkDecodeIfPresent(.externalId)
+        self.externalUrl = try container.sdkDecodeIfPresent(.externalUrl)
+        self.output = try container.sdkDecodeIfPresent(.output)
+        self.projectId = try container.sdkDecodeIfPresent(.projectId)
+        self.requires = try container.sdkDecodeIfPresent(.requires)
+        self.startedAt = try container.sdkDecodeIfPresent(.startedAt)
+        self.targets = try container.sdkDecodeIfPresent(.targets)
+        self.taskSummary = try container.sdkDecodeIfPresent(.taskSummary)
     }
 }
 
-public extension CreateDeploymentCheckRunResponseVariant0 {
-    init(
-        createdAt: Double,
-        deploymentId: String,
-        id: String,
-        name: String,
-        ownerId: String,
-        status: CreateDeploymentCheckRunResponseVariant0Status,
-        timeout: Double,
-        updatedAt: Double,
-        checkId: String,
-        source: CreateDeploymentCheckRunResponseVariant0Source,
-        blocks: CreateDeploymentCheckRunResponseVariant0Blocks? = nil,
-        completedAt: Double? = nil,
-        conclusion: CreateDeploymentCheckRunResponseVariant0Conclusion? = nil,
-        conclusionText: String? = nil,
-        expectationRef: CreateDeploymentCheckRunResponseVariant0ExpectationRef? = nil,
-        expectationRevision: Double? = nil,
-        externalId: String? = nil,
-        externalUrl: String? = nil,
-        output: [String: JSONValue]? = nil,
-        projectId: String? = nil,
-        requires: CreateDeploymentCheckRunResponseVariant0Requires? = nil,
-        startedAt: Double? = nil,
-        targets: [String]? = nil,
-        taskSummary: CreateDeploymentCheckRunResponseVariant0TaskSummary? = nil
-    ) {
+extension CreateDeploymentCheckRunResponseVariant0 {
+    public init(createdAt: Double, deploymentId: String, id: String, name: String, ownerId: String, status: CreateDeploymentCheckRunResponseVariant0Status, timeout: Double, updatedAt: Double, checkId: String, source: CreateDeploymentCheckRunResponseVariant0Source, blocks: CreateDeploymentCheckRunResponseVariant0Blocks? = nil, completedAt: Double? = nil, conclusion: CreateDeploymentCheckRunResponseVariant0Conclusion? = nil, conclusionText: String? = nil, expectationRef: CreateDeploymentCheckRunResponseVariant0ExpectationRef? = nil, expectationRevision: Double? = nil, externalId: String? = nil, externalUrl: String? = nil, output: [String: JSONValue]? = nil, projectId: String? = nil, requires: CreateDeploymentCheckRunResponseVariant0Requires? = nil, startedAt: Double? = nil, targets: [String]? = nil, taskSummary: CreateDeploymentCheckRunResponseVariant0TaskSummary? = nil) {
         (self.createdAt, self.deploymentId) = (createdAt, deploymentId)
         (self.id, self.name) = (id, name)
         (self.ownerId, self.status) = (ownerId, status)
@@ -625,7 +462,5 @@ public struct ListCheckRunsResponseRunsItemVariant0SourceVariant4SelectionVarian
         case kind
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

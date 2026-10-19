@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 extension UserEventPayload {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
         if let value = try? container.decode(UserEventPayloadVariant9.self), sdkKeepsEveryKey(value, of: raw) {

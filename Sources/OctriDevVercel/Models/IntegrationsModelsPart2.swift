@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Integrations domain models
+// Integrations domain models
 public struct GetConfigurationResponseVariant0: Codable {
     /// A timestamp that tells you when the configuration was created
     /// - Example: 1558531915505
@@ -106,73 +106,43 @@ public struct GetConfigurationResponseVariant0: Codable {
         case teamId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        integrationId = try container.sdkDecodeRequired(.integrationId)
-        notification = try container.sdkDecodeRequired(.notification)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        projectSelection = try container.sdkDecodeRequired(.projectSelection)
-        scopes = try container.sdkDecodeRequired(.scopes)
-        slug = try container.sdkDecodeRequired(.slug)
-        transferRequest = try container.sdkDecodeRequired(.transferRequest)
-        type = try container.sdkDecodeRequired(.type)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        userId = try container.sdkDecodeRequired(.userId)
-        acceptedPoliciesInheritedFromInstallationId = try container
-            .sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
-        canConfigureOpenTelemetry = try container.sdkDecodeIfPresent(.canConfigureOpenTelemetry)
-        completedAt = try container.sdkDecodeIfPresent(.completedAt)
-        customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
-        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
-        disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
-        externalId = try container.sdkDecodeIfPresent(.externalId)
-        installationType = try container.sdkDecodeIfPresent(.installationType)
-        projects = try container.sdkDecodeIfPresent(.projects)
-        source = try container.sdkDecodeIfPresent(.source)
-        status = try container.sdkDecodeIfPresent(.status)
-        teamId = try container.sdkDecodeIfPresent(.teamId)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.integrationId = try container.sdkDecodeRequired(.integrationId)
+        self.notification = try container.sdkDecodeRequired(.notification)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.projectSelection = try container.sdkDecodeRequired(.projectSelection)
+        self.scopes = try container.sdkDecodeRequired(.scopes)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.transferRequest = try container.sdkDecodeRequired(.transferRequest)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.userId = try container.sdkDecodeRequired(.userId)
+        self.acceptedPoliciesInheritedFromInstallationId = try container.sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
+        self.canConfigureOpenTelemetry = try container.sdkDecodeIfPresent(.canConfigureOpenTelemetry)
+        self.completedAt = try container.sdkDecodeIfPresent(.completedAt)
+        self.customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
+        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        self.deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
+        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
+        self.disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
+        self.externalId = try container.sdkDecodeIfPresent(.externalId)
+        self.installationType = try container.sdkDecodeIfPresent(.installationType)
+        self.projects = try container.sdkDecodeIfPresent(.projects)
+        self.source = try container.sdkDecodeIfPresent(.source)
+        self.status = try container.sdkDecodeIfPresent(.status)
+        self.teamId = try container.sdkDecodeIfPresent(.teamId)
     }
 }
 
-public extension GetConfigurationResponseVariant0 {
-    init(
-        createdAt: Double,
-        id: String,
-        integrationId: String,
-        notification: GetConfigurationResponseVariant0Notification,
-        ownerId: String,
-        projectSelection: GetConfigurationResponseVariant0ProjectSelection,
-        scopes: [String],
-        slug: String,
-        transferRequest: GetConfigurationResponseVariant0TransferRequest,
-        type: GetConfigurationResponseVariant0Type,
-        updatedAt: Double,
-        userId: String,
-        acceptedPoliciesInheritedFromInstallationId: String? = nil,
-        canConfigureOpenTelemetry: Bool? = nil,
-        completedAt: Double? = nil,
-        customerDeleteRequestedAt: Double? = nil,
-        deletedAt: Double? = nil,
-        deleteRequestedAt: Double? = nil,
-        disabledAt: Double? = nil,
-        disabledReason: GetConfigurationResponseVariant0DisabledReason? = nil,
-        externalId: String? = nil,
-        installationType: GetConfigurationResponseVariant0InstallationType? = nil,
-        projects: [String]? = nil,
-        source: GetConfigurationResponseVariant0Source? = nil,
-        status: GetConfigurationResponseVariant0Status? = nil,
-        teamId: String? = nil
-    ) {
+extension GetConfigurationResponseVariant0 {
+    public init(createdAt: Double, id: String, integrationId: String, notification: GetConfigurationResponseVariant0Notification, ownerId: String, projectSelection: GetConfigurationResponseVariant0ProjectSelection, scopes: [String], slug: String, transferRequest: GetConfigurationResponseVariant0TransferRequest, type: GetConfigurationResponseVariant0Type, updatedAt: Double, userId: String, acceptedPoliciesInheritedFromInstallationId: String? = nil, canConfigureOpenTelemetry: Bool? = nil, completedAt: Double? = nil, customerDeleteRequestedAt: Double? = nil, deletedAt: Double? = nil, deleteRequestedAt: Double? = nil, disabledAt: Double? = nil, disabledReason: GetConfigurationResponseVariant0DisabledReason? = nil, externalId: String? = nil, installationType: GetConfigurationResponseVariant0InstallationType? = nil, projects: [String]? = nil, source: GetConfigurationResponseVariant0Source? = nil, status: GetConfigurationResponseVariant0Status? = nil, teamId: String? = nil) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.integrationId, self.notification) = (integrationId, notification)
         (self.ownerId, self.projectSelection) = (ownerId, projectSelection)
@@ -221,93 +191,49 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant0: Codable {
         case metadata
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationResponseVariant0TransferRequestVariant0 {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationResponseVariant0TransferRequestVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.expiresAt) else {
-            throw SdkValidationError(
-                field: "expiresAt",
-                code: "required",
-                message: "Validation failed for 'expiresAt': value is required"
-            )
+            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
         }
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
         guard container.contains(.requester) else {
-            throw SdkValidationError(
-                field: "requester",
-                code: "required",
-                message: "Validation failed for 'requester': value is required"
-            )
+            throw SdkValidationError(field: "requester", code: "required", message: "Validation failed for 'requester': value is required")
         }
         guard container.contains(.requestId) else {
-            throw SdkValidationError(
-                field: "requestId",
-                code: "required",
-                message: "Validation failed for 'requestId': value is required"
-            )
+            throw SdkValidationError(field: "requestId", code: "required", message: "Validation failed for 'requestId': value is required")
         }
         guard container.contains(.transferId) else {
-            throw SdkValidationError(
-                field: "transferId",
-                code: "required",
-                message: "Validation failed for 'transferId': value is required"
-            )
+            throw SdkValidationError(field: "transferId", code: "required", message: "Validation failed for 'transferId': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        kind = try container.sdkDecodeRequired(.kind)
-        requester = try container.sdkDecodeRequired(.requester)
-        requestId = try container.sdkDecodeRequired(.requestId)
-        transferId = try container.sdkDecodeRequired(.transferId)
-        approvedAt = try container.sdkDecodeIfPresent(.approvedAt)
-        approvedBy = try container.sdkDecodeIfPresent(.approvedBy)
-        authorizationId = try container.sdkDecodeIfPresent(.authorizationId)
-        billingPlan = try container.sdkDecodeIfPresent(.billingPlan)
-        discardedAt = try container.sdkDecodeIfPresent(.discardedAt)
-        discardedBy = try container.sdkDecodeIfPresent(.discardedBy)
-        metadata = try container.sdkDecodeIfPresent(.metadata)
-        try sdkValidateRawEnum(
-            "kind",
-            kind,
-            GetConfigurationResponseVariant0TransferRequestVariant0Kind.allCases.map(\.rawValue)
-        )
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.requester = try container.sdkDecodeRequired(.requester)
+        self.requestId = try container.sdkDecodeRequired(.requestId)
+        self.transferId = try container.sdkDecodeRequired(.transferId)
+        self.approvedAt = try container.sdkDecodeIfPresent(.approvedAt)
+        self.approvedBy = try container.sdkDecodeIfPresent(.approvedBy)
+        self.authorizationId = try container.sdkDecodeIfPresent(.authorizationId)
+        self.billingPlan = try container.sdkDecodeIfPresent(.billingPlan)
+        self.discardedAt = try container.sdkDecodeIfPresent(.discardedAt)
+        self.discardedBy = try container.sdkDecodeIfPresent(.discardedBy)
+        self.metadata = try container.sdkDecodeIfPresent(.metadata)
+            try sdkValidateRawEnum("kind", self.kind, GetConfigurationResponseVariant0TransferRequestVariant0Kind.allCases.map(\.rawValue))
     }
 }
 
-public extension GetConfigurationResponseVariant0TransferRequestVariant0 {
-    init(
-        createdAt: Double,
-        expiresAt: Double,
-        kind: GetConfigurationResponseVariant0TransferRequestVariant0Kind,
-        requester: GetConfigurationResponseVariant0TransferRequestVariant0Requester,
-        requestId: String,
-        transferId: String,
-        approvedAt: Double? = nil,
-        approvedBy: String? = nil,
-        authorizationId: String? = nil,
-        billingPlan: GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan? = nil,
-        discardedAt: Double? = nil,
-        discardedBy: String? = nil,
-        metadata: [String: JSONValue]? = nil
-    ) throws {
+extension GetConfigurationResponseVariant0TransferRequestVariant0 {
+    public init(createdAt: Double, expiresAt: Double, kind: GetConfigurationResponseVariant0TransferRequestVariant0Kind, requester: GetConfigurationResponseVariant0TransferRequestVariant0Requester, requestId: String, transferId: String, approvedAt: Double? = nil, approvedBy: String? = nil, authorizationId: String? = nil, billingPlan: GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan? = nil, discardedAt: Double? = nil, discardedBy: String? = nil, metadata: [String: JSONValue]? = nil) throws {
         (self.createdAt, self.expiresAt) = (createdAt, expiresAt)
         (self.kind, self.requester) = (kind, requester)
         (self.requestId, self.transferId) = (requestId, transferId)
@@ -315,11 +241,7 @@ public extension GetConfigurationResponseVariant0TransferRequestVariant0 {
         (self.authorizationId, self.billingPlan) = (authorizationId, billingPlan)
         (self.discardedAt, self.discardedBy) = (discardedAt, discardedBy)
         self.metadata = metadata
-        try sdkValidateRawEnum(
-            "kind",
-            self.kind,
-            GetConfigurationResponseVariant0TransferRequestVariant0Kind.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("kind", self.kind, GetConfigurationResponseVariant0TransferRequestVariant0Kind.allCases.map(\.rawValue))
     }
 }
 
@@ -332,28 +254,22 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant1Requester: 
         case email
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationResponseVariant0TransferRequestVariant1Requester {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationResponseVariant0TransferRequestVariant1Requester {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        name = try container.sdkDecodeRequired(.name)
-        email = try container.sdkDecodeIfPresent(.email)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.email = try container.sdkDecodeIfPresent(.email)
     }
 }
 
-public extension GetConfigurationResponseVariant0TransferRequestVariant1Requester {
-    init(name: String, email: String? = nil) {
+extension GetConfigurationResponseVariant0TransferRequestVariant1Requester {
+    public init(name: String, email: String? = nil) {
         (self.name, self.email) = (name, email)
     }
 }
@@ -451,65 +367,39 @@ public struct GetConfigurationResponseVariant1: Codable {
         case teamId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        integrationId = try container.sdkDecodeRequired(.integrationId)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        scopes = try container.sdkDecodeRequired(.scopes)
-        slug = try container.sdkDecodeRequired(.slug)
-        type = try container.sdkDecodeRequired(.type)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        userId = try container.sdkDecodeRequired(.userId)
-        acceptedPoliciesInheritedFromInstallationId = try container
-            .sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
-        completedAt = try container.sdkDecodeIfPresent(.completedAt)
-        customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
-        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
-        disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
-        externalId = try container.sdkDecodeIfPresent(.externalId)
-        installationType = try container.sdkDecodeIfPresent(.installationType)
-        projects = try container.sdkDecodeIfPresent(.projects)
-        source = try container.sdkDecodeIfPresent(.source)
-        status = try container.sdkDecodeIfPresent(.status)
-        teamId = try container.sdkDecodeIfPresent(.teamId)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.integrationId = try container.sdkDecodeRequired(.integrationId)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.scopes = try container.sdkDecodeRequired(.scopes)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.userId = try container.sdkDecodeRequired(.userId)
+        self.acceptedPoliciesInheritedFromInstallationId = try container.sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
+        self.completedAt = try container.sdkDecodeIfPresent(.completedAt)
+        self.customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
+        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        self.deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
+        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
+        self.disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
+        self.externalId = try container.sdkDecodeIfPresent(.externalId)
+        self.installationType = try container.sdkDecodeIfPresent(.installationType)
+        self.projects = try container.sdkDecodeIfPresent(.projects)
+        self.source = try container.sdkDecodeIfPresent(.source)
+        self.status = try container.sdkDecodeIfPresent(.status)
+        self.teamId = try container.sdkDecodeIfPresent(.teamId)
     }
 }
 
-public extension GetConfigurationResponseVariant1 {
-    init(
-        createdAt: Double,
-        id: String,
-        integrationId: String,
-        ownerId: String,
-        scopes: [String],
-        slug: String,
-        type: GetConfigurationResponseVariant1Type,
-        updatedAt: Double,
-        userId: String,
-        acceptedPoliciesInheritedFromInstallationId: String? = nil,
-        completedAt: Double? = nil,
-        customerDeleteRequestedAt: Double? = nil,
-        deletedAt: Double? = nil,
-        deleteRequestedAt: Double? = nil,
-        disabledAt: Double? = nil,
-        disabledReason: GetConfigurationResponseVariant1DisabledReason? = nil,
-        externalId: String? = nil,
-        installationType: GetConfigurationResponseVariant1InstallationType? = nil,
-        projects: [String]? = nil,
-        source: GetConfigurationResponseVariant1Source? = nil,
-        status: GetConfigurationResponseVariant1Status? = nil,
-        teamId: String? = nil
-    ) {
+extension GetConfigurationResponseVariant1 {
+    public init(createdAt: Double, id: String, integrationId: String, ownerId: String, scopes: [String], slug: String, type: GetConfigurationResponseVariant1Type, updatedAt: Double, userId: String, acceptedPoliciesInheritedFromInstallationId: String? = nil, completedAt: Double? = nil, customerDeleteRequestedAt: Double? = nil, deletedAt: Double? = nil, deleteRequestedAt: Double? = nil, disabledAt: Double? = nil, disabledReason: GetConfigurationResponseVariant1DisabledReason? = nil, externalId: String? = nil, installationType: GetConfigurationResponseVariant1InstallationType? = nil, projects: [String]? = nil, source: GetConfigurationResponseVariant1Source? = nil, status: GetConfigurationResponseVariant1Status? = nil, teamId: String? = nil) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.integrationId, self.ownerId) = (integrationId, ownerId)
         (self.scopes, self.slug) = (scopes, slug)
@@ -534,28 +424,22 @@ public struct CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9
         case customRotationWarning
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6 {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.maxDelayHours) else {
-            throw SdkValidationError(
-                field: "maxDelayHours",
-                code: "required",
-                message: "Validation failed for 'maxDelayHours': value is required"
-            )
+            throw SdkValidationError(field: "maxDelayHours", code: "required", message: "Validation failed for 'maxDelayHours': value is required")
         }
-        maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
-        customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
+        self.maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
+        self.customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6 {
-    init(maxDelayHours: Double, customRotationWarning: String? = nil) {
+extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6 {
+    public init(maxDelayHours: Double, customRotationWarning: String? = nil) {
         (self.maxDelayHours, self.customRotationWarning) = (maxDelayHours, customRotationWarning)
     }
 }
@@ -587,7 +471,5 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant1: Codable {
         case discardedBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

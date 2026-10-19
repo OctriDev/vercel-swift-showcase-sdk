@@ -6,103 +6,38 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DomainsRegistrarMethods {
-    /// Searches for domain registration availability and pricing for a batch of exact domain names. Provide between 1
-    /// and 200 valid domain names in `domains`; results are returned in input order and include registration and
-    /// renewal prices in USD for available domains. This operation does not require authentication.
+extension DomainsRegistrarMethods {
+    /// Searches for domain registration availability and pricing for a batch of exact domain names. Provide between 1 and 200 valid domain names in `domains`; results are returned in input order and include registration and renewal prices in USD for available domains. This operation does not require authentication.
     ///
-    /// Start domain research here. Get registration availability and pricing for 1–200 exact domain names. Returns
-    /// results in input order, with registration and renewal prices in USD for available domains. No authentication
-    /// required.
+    /// Start domain research here. Get registration availability and pricing for 1–200 exact domain names. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required.
     ///
     /// - Parameters:
     /// - domains: an array of at most 200 item(s)
-    static func searchDomains(
-        config: ClientConfig,
-        domains: [DomainName],
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SearchDomainsResponse {
+    public static func searchDomains(config: ClientConfig, domains: [DomainName], teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SearchDomainsResponse {
         try validateItems("domains", domains, min: 1, max: 200)
 
         let requestBody = SearchDomainsRequestBody(domains: domains)
 
-        return try await (sdkRequest(
-            "POST",
-            "/v1/registrar/domains/search",
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "searchDomains",
-            options: requestOptions,
-            errors: [
-                "400": HttpApiDecodeError.self,
-                "401": Unauthorized.self,
-                "403": NotAuthorizedForScope.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+        return try (await sdkRequest("POST", "/v1/registrar/domains/search", config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], body: requestBody, decoder: .json, operationId: "searchDomains", options: requestOptions, errors: ["400": HttpApiDecodeError.self, "401": Unauthorized.self, "403": NotAuthorizedForScope.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 
-    /// Lists the top-level domains supported for domain registration. Use this operation to discover which TLDs are
-    /// available before requesting TLD metadata or checking domain availability. The response is an array of TLD names.
+    /// Lists the top-level domains supported for domain registration. Use this operation to discover which TLDs are available before requesting TLD metadata or checking domain availability. The response is an array of TLD names.
     ///
     /// Get a list of TLDs supported by Vercel
-    static func getSupportedTlds(
-        config: ClientConfig,
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [TldName] {
-        try await (sdkRequest(
-            "GET",
-            "/v1/registrar/tlds/supported",
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            decoder: .json,
-            operationId: "getSupportedTlds",
-            options: requestOptions,
-            errors: [
-                "400": HttpApiDecodeError.self,
-                "401": Unauthorized.self,
-                "403": NotAuthorizedForScope.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+    public static func getSupportedTlds(config: ClientConfig, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [TldName] {
+        return try (await sdkRequest("GET", "/v1/registrar/tlds/supported", config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], decoder: .json, operationId: "getSupportedTlds", options: requestOptions, errors: ["400": HttpApiDecodeError.self, "401": Unauthorized.self, "403": NotAuthorizedForScope.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 
-    /// Retrieves metadata for a specific top-level domain. Use this operation to find the language codes supported for
-    /// the TLD and their corresponding language names. The response contains a map of supported language codes.
+    /// Retrieves metadata for a specific top-level domain. Use this operation to find the language codes supported for the TLD and their corresponding language names. The response contains a map of supported language codes.
     ///
     /// Get the metadata for a specific TLD.
-    static func getTld(
-        config: ClientConfig,
-        tld: TldName,
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetTldResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/registrar/tlds/", sdkEncodePathSegment(sdkWireString(tld))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            decoder: .json,
-            operationId: "getTld",
-            options: requestOptions,
-            errors: [
-                "401": Unauthorized.self,
-                "403": NotAuthorizedForScope.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+    public static func getTld(config: ClientConfig, tld: TldName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetTldResponse {
+        return try (await sdkRequest("GET", ["/v1/registrar/tlds/", sdkEncodePathSegment(sdkWireString(tld))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], decoder: .json, operationId: "getTld", options: requestOptions, errors: ["401": Unauthorized.self, "403": NotAuthorizedForScope.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 }

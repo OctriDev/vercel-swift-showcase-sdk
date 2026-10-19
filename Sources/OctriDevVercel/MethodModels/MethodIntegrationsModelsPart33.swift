@@ -7,24 +7,11 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical integrations operation model declarations
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX5bcd3e410a {
-    init(
-        type: GetConfigurationProductsResponseProductsItemMetadataSchemaProXe513277191,
-        uiControl: GetConfigurationProductsResponseProductsItemMetadataSchemaProXcdfd992510,
-        default: Double? = nil,
-        description: String? = nil,
-        uiDescription: GetConfigurationProductsResponseProductsItemMetadataSchemaProX9c4feffd6b? = nil,
-        uiDisabled: GetConfigurationProductsResponseProductsItemMetadataSchemaProX7feafe3fd2? = nil,
-        uiFormattedValue: GetConfigurationProductsResponseProductsItemMetadataSchemaProX1d8cc567b2? = nil,
-        uiHidden: GetConfigurationProductsResponseProductsItemMetadataSchemaProX88e43d0816? = nil,
-        uiLabel: String? = nil,
-        uiPaidOnly: Bool? = nil,
-        uiPlaceholder: String? = nil,
-        uiReadOnly: GetConfigurationProductsResponseProductsItemMetadataSchemaProX6a05404c8e? = nil
-    ) {
+// Canonical integrations operation model declarations
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX5bcd3e410a {
+    public init(type: GetConfigurationProductsResponseProductsItemMetadataSchemaProXe513277191, uiControl: GetConfigurationProductsResponseProductsItemMetadataSchemaProXcdfd992510, `default`: Double? = nil, description: String? = nil, uiDescription: GetConfigurationProductsResponseProductsItemMetadataSchemaProX9c4feffd6b? = nil, uiDisabled: GetConfigurationProductsResponseProductsItemMetadataSchemaProX7feafe3fd2? = nil, uiFormattedValue: GetConfigurationProductsResponseProductsItemMetadataSchemaProX1d8cc567b2? = nil, uiHidden: GetConfigurationProductsResponseProductsItemMetadataSchemaProX88e43d0816? = nil, uiLabel: String? = nil, uiPaidOnly: Bool? = nil, uiPlaceholder: String? = nil, uiReadOnly: GetConfigurationProductsResponseProductsItemMetadataSchemaProX6a05404c8e? = nil) {
         (self.type, self.uiControl) = (type, uiControl)
-        (self.default, self.description) = (`default`, description)
+        (self.`default`, self.description) = (`default`, description)
         (self.uiDescription, self.uiDisabled) = (uiDescription, uiDisabled)
         (self.uiFormattedValue, self.uiHidden) = (uiFormattedValue, uiHidden)
         (self.uiLabel, self.uiPaidOnly) = (uiLabel, uiPaidOnly)
@@ -59,46 +46,32 @@ public struct SearchRepoResponseVariant2ReposItem: Codable {
         case url
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension SearchRepoResponseVariant2ReposItem {
-    init(from decoder: Decoder) throws {
+extension SearchRepoResponseVariant2ReposItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        defaultBranch = try container.sdkDecodeRequired(.defaultBranch)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        namespace = try container.sdkDecodeRequired(.namespace)
-        owner = try container.sdkDecodeRequired(.owner)
-        ownerType = try container.sdkDecodeRequired(.ownerType)
-        self.private = try container.sdkDecodeRequired(.private)
-        provider = try container.sdkDecodeRequired(.provider)
-        slug = try container.sdkDecodeRequired(.slug)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        url = try container.sdkDecodeRequired(.url)
+        self.defaultBranch = try container.sdkDecodeRequired(.defaultBranch)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.namespace = try container.sdkDecodeRequired(.namespace)
+        self.owner = try container.sdkDecodeRequired(.owner)
+        self.ownerType = try container.sdkDecodeRequired(.ownerType)
+        self.`private` = try container.sdkDecodeRequired(.`private`)
+        self.provider = try container.sdkDecodeRequired(.provider)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.url = try container.sdkDecodeRequired(.url)
     }
 }
 
-public extension SearchRepoResponseVariant2ReposItem {
-    init(
-        defaultBranch: String,
-        id: String,
-        name: String,
-        namespace: String,
-        owner: SearchRepoResponseVariant2ReposItemOwner,
-        ownerType: SearchRepoResponseVariant2ReposItemOwnerType,
-        private: Bool,
-        provider: SearchRepoResponseVariant2ReposItemProvider,
-        slug: String,
-        updatedAt: Double,
-        url: String
-    ) {
+extension SearchRepoResponseVariant2ReposItem {
+    public init(defaultBranch: String, id: String, name: String, namespace: String, owner: SearchRepoResponseVariant2ReposItemOwner, ownerType: SearchRepoResponseVariant2ReposItemOwnerType, `private`: Bool, provider: SearchRepoResponseVariant2ReposItemProvider, slug: String, updatedAt: Double, url: String) {
         (self.defaultBranch, self.id) = (defaultBranch, id)
         (self.name, self.namespace) = (name, namespace)
         (self.owner, self.ownerType) = (owner, ownerType)
-        (self.private, self.provider) = (`private`, provider)
+        (self.`private`, self.provider) = (`private`, provider)
         (self.slug, self.updatedAt) = (slug, updatedAt)
         self.url = url
     }
@@ -111,27 +84,21 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42e4d6f6 {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42e4d6f6 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42e4d6f6 {
-    init(expr: String) {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42e4d6f6 {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -143,27 +110,21 @@ public struct GetConfigurationProductsResponseProductsItemProtocolsWorkflow: Cod
         case status
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationProductsResponseProductsItemProtocolsWorkflow {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationProductsResponseProductsItemProtocolsWorkflow {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
+        self.status = try container.sdkDecodeRequired(.status)
     }
 }
 
-public extension GetConfigurationProductsResponseProductsItemProtocolsWorkflow {
-    init(status: GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus) {
+extension GetConfigurationProductsResponseProductsItemProtocolsWorkflow {
+    public init(status: GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus) {
         self.status = status
     }
 }
@@ -177,21 +138,15 @@ public indirect enum GetConfigurationProductsResponseProductsItemMetadataSchemaP
 }
 
 extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX495a95fc04: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProX495a95fc04"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProX495a95fc04")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -200,14 +155,10 @@ extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX495a95fc
         if let value = try? container.decode(
             GetConfigurationProductsResponseProductsItemMetadataSchemaProXfbfbc45e04.self
         ) {
-            return .getConfigurationProductsResponseProductsItemMetadataSchemaProXfbfbc45e04(value)
+            return             .getConfigurationProductsResponseProductsItemMetadataSchemaProXfbfbc45e04(value)
         }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -216,8 +167,7 @@ extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX495a95fc
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProXfbfbc45e04(value): try container
-            .encode(value); return true
+        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProXfbfbc45e04(value): try container.encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }
@@ -231,27 +181,21 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProXd9ba
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProXd9ba69cb86 {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProXd9ba69cb86 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProXd9ba69cb86 {
-    init(expr: String) {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProXd9ba69cb86 {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -267,39 +211,29 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreProductMetadataSch
 }
 
 extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX21350ce3fc: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX21350ce3fc"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX21350ce3fc")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX21350ce3fc {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXa67dfcf609.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXa67dfcf609.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .createIntegrationStoreDirectResponseStoreProductMetadataSchemXa67dfcf609(value)
         }
-        if let value = try? container
-            .decode(CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2eaa3b89b0.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2eaa3b89b0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .createIntegrationStoreDirectResponseStoreProductMetadataSchemX2eaa3b89b0(value)
         }
         return nil
@@ -311,15 +245,13 @@ extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX21350ce3
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXa67dfcf609.self
         ) {
-            return .createIntegrationStoreDirectResponseStoreProductMetadataSchemXa67dfcf609(value)
+            return             .createIntegrationStoreDirectResponseStoreProductMetadataSchemXa67dfcf609(value)
         }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2eaa3b89b0.self
         ) {
-            return .createIntegrationStoreDirectResponseStoreProductMetadataSchemX2eaa3b89b0(value)
+            return             .createIntegrationStoreDirectResponseStoreProductMetadataSchemX2eaa3b89b0(value)
         }
         return nil
     }
@@ -329,11 +261,9 @@ extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX21350ce3
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemXa67dfcf609(value): try container
-            .encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemXa67dfcf609(value): try container.encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
-        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemX2eaa3b89b0(value): try container
-            .encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemX2eaa3b89b0(value): try container.encode(value); return true
         }
     }
 }
@@ -345,27 +275,21 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX5217
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX52170a9fea {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX52170a9fea {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX52170a9fea {
-    init(expr: String) {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX52170a9fea {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -377,27 +301,21 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX4ba2
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4ba21ed9a3 {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4ba21ed9a3 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4ba21ed9a3 {
-    init(expr: String) {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4ba21ed9a3 {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -411,21 +329,15 @@ public indirect enum GetConfigurationProductsResponseProductsItemMetadataSchemaP
 }
 
 extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX520a11c295: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProX520a11c295"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProX520a11c295")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -434,14 +346,10 @@ extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX520a11c2
         if let value = try? container.decode(
             GetConfigurationProductsResponseProductsItemMetadataSchemaProXc4b32af67e.self
         ) {
-            return .getConfigurationProductsResponseProductsItemMetadataSchemaProXc4b32af67e(value)
+            return             .getConfigurationProductsResponseProductsItemMetadataSchemaProXc4b32af67e(value)
         }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -450,8 +358,7 @@ extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX520a11c2
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProXc4b32af67e(value): try container
-            .encode(value); return true
+        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProXc4b32af67e(value): try container.encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }
@@ -466,33 +373,25 @@ public indirect enum GetConfigurationProductsResponseProductsItemMetadataSchemaP
 }
 
 extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX04d2f022ae: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProX04d2f022ae"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProX04d2f022ae")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX04d2f022ae {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             GetConfigurationProductsResponseProductsItemMetadataSchemaProX8c099688d9.self
         ) {
-            return .getConfigurationProductsResponseProductsItemMetadataSchemaProX8c099688d9(value)
+            return             .getConfigurationProductsResponseProductsItemMetadataSchemaProX8c099688d9(value)
         }
         return nil
     }
@@ -503,8 +402,7 @@ extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX04d2f022
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProX8c099688d9(value): try container
-            .encode(value); return true
+        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProX8c099688d9(value): try container.encode(value); return true
         }
     }
 }
@@ -516,27 +414,21 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX815d
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX815d8a8d40 {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX815d8a8d40 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX815d8a8d40 {
-    init(expr: String) {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX815d8a8d40 {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -548,33 +440,26 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX4bb2
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4bb21ec9a9 {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4bb21ec9a9 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4bb21ec9a9 {
-    init(expr: String) {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX4bb21ec9a9 {
+    public init(expr: String) {
         self.expr = expr
     }
 }
 
-public typealias CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemXec81ec9d89 =
-    [CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemX3cadc7f7f1]
+public typealias CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemXec81ec9d89 = [CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemX3cadc7f7f1]
 
 public struct CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments: Codable {
     public var actions: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemXec81ec9d89
@@ -585,35 +470,25 @@ public struct CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeplo
         case required
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.actions) else {
-            throw SdkValidationError(
-                field: "actions",
-                code: "required",
-                message: "Validation failed for 'actions': value is required"
-            )
+            throw SdkValidationError(field: "actions", code: "required", message: "Validation failed for 'actions': value is required")
         }
         guard container.contains(.required) else {
-            throw SdkValidationError(
-                field: "required",
-                code: "required",
-                message: "Validation failed for 'required': value is required"
-            )
+            throw SdkValidationError(field: "required", code: "required", message: "Validation failed for 'required': value is required")
         }
-        actions = try container.sdkDecodeRequired(.actions)
-        required = try container.sdkDecodeRequired(.required)
+        self.actions = try container.sdkDecodeRequired(.actions)
+        self.required = try container.sdkDecodeRequired(.required)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments {
-    init(actions: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemXec81ec9d89, required: Bool) {
+extension CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments {
+    public init(actions: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemXec81ec9d89, required: Bool) {
         (self.actions, self.required) = (actions, required)
     }
 }

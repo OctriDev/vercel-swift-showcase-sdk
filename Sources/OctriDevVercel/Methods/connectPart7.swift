@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ConnectMethods {
-    /// Replaces the complete set of trigger destinations for a connector. Submit all destinations you want to retain in
-    /// `destinations`; an empty array removes every destination, and the replacement can contain at most three entries.
+extension ConnectMethods {
+    /// Replaces the complete set of trigger destinations for a connector. Submit all destinations you want to retain in `destinations`; an empty array removes every destination, and the replacement can contain at most three entries.
     ///
     /// Replace the full set of destinations that receive trigger requests for a connector.
     ///
@@ -26,40 +25,14 @@ public extension ConnectMethods {
     ///   If both are omitted, Vercel uses the team associated with the token or the
     ///   authenticated user's default team. The request returns 401 if no team can be
     ///   selected.
-    static func replaceConnectorTriggerDestinations(
-        config: ClientConfig,
-        connector: String,
-        destinations: [ConnectTriggerDestinationInput],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ConnectConnector {
+    public static func replaceConnectorTriggerDestinations(config: ClientConfig, connector: String, destinations: [ConnectTriggerDestinationInput], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectConnector {
         try validateItems("destinations", destinations, max: 3)
 
         let requestBody = ReplaceConnectorTriggerDestinationsRequestBody(destinations: destinations)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/connect/connectors/", sdkEncodePathSegment(sdkWireString(connector)), "/trigger-destinations"]
-                .joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "replaceConnectorTriggerDestinations",
-            options: requestOptions,
-            errors: [
-                "400": ConnectError.self,
-                "401": ConnectError.self,
-                "403": ConnectError.self,
-                "404": ConnectError.self,
-                "409": ConnectError.self,
-                "410": ConnectError.self,
-                "422": ConnectError.self,
-            ]
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/connect/connectors/", sdkEncodePathSegment(sdkWireString(connector)), "/trigger-destinations"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "replaceConnectorTriggerDestinations", options: requestOptions, errors: ["400": ConnectError.self, "401": ConnectError.self, "403": ConnectError.self, "404": ConnectError.self, "409": ConnectError.self, "410": ConnectError.self, "422": ConnectError.self])).data
     }
 }

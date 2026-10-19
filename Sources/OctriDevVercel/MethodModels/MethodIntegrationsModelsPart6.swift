@@ -7,9 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical integrations operation model declarations
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProXe8dee9432c {
-    init(expr: String) {
+// Canonical integrations operation model declarations
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProXe8dee9432c {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -39,82 +39,45 @@ public struct CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem: Cod
         case makeEnvVarsSensitive
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.environments) else {
-            throw SdkValidationError(
-                field: "environments",
-                code: "required",
-                message: "Validation failed for 'environments': value is required"
-            )
+            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
         }
         guard container.contains(.environmentVariables) else {
-            throw SdkValidationError(
-                field: "environmentVariables",
-                code: "required",
-                message: "Validation failed for 'environmentVariables': value is required"
-            )
+            throw SdkValidationError(field: "environmentVariables", code: "required", message: "Validation failed for 'environmentVariables': value is required")
         }
         guard container.contains(.envVarPrefix) else {
-            throw SdkValidationError(
-                field: "envVarPrefix",
-                code: "required",
-                message: "Validation failed for 'envVarPrefix': value is required"
-            )
+            throw SdkValidationError(field: "envVarPrefix", code: "required", message: "Validation failed for 'envVarPrefix': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
-        environments = try container.sdkDecodeRequired(.environments)
-        environmentVariables = try container.sdkDecodeRequired(.environmentVariables)
-        envVarPrefix = try container.sdkDecodeNullable(.envVarPrefix)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        deployments = try container.sdkDecodeIfPresent(.deployments)
-        framework = try container.sdkDecodeIfPresent(.framework)
-        latestDeployment = try container.sdkDecodeIfPresent(.latestDeployment)
-        makeEnvVarsSensitive = try container.sdkDecodeIfPresent(.makeEnvVarsSensitive)
+        self.environments = try container.sdkDecodeRequired(.environments)
+        self.environmentVariables = try container.sdkDecodeRequired(.environmentVariables)
+        self.envVarPrefix = try container.sdkDecodeNullable(.envVarPrefix)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.deployments = try container.sdkDecodeIfPresent(.deployments)
+        self.framework = try container.sdkDecodeIfPresent(.framework)
+        self.latestDeployment = try container.sdkDecodeIfPresent(.latestDeployment)
+        self.makeEnvVarsSensitive = try container.sdkDecodeIfPresent(.makeEnvVarsSensitive)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem {
-    init(
-        environments: [String],
-        environmentVariables: [String],
-        envVarPrefix: String?,
-        id: String,
-        name: String,
-        projectId: String,
-        deployments: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments? = nil,
-        framework: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework? = nil,
-        latestDeployment: String? = nil,
-        makeEnvVarsSensitive: Bool? = nil
-    ) {
+extension CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem {
+    public init(environments: [String], environmentVariables: [String], envVarPrefix: String?, id: String, name: String, projectId: String, deployments: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments? = nil, framework: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework? = nil, latestDeployment: String? = nil, makeEnvVarsSensitive: Bool? = nil) {
         (self.environments, self.environmentVariables) = (environments, environmentVariables)
         (self.envVarPrefix, self.id) = (envVarPrefix, id)
         (self.name, self.projectId) = (name, projectId)
@@ -136,44 +99,33 @@ public struct CreateIntegrationStoreDirectResponseStoreSecretsItem: Codable {
         case nonSensitive
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreSecretsItem {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreSecretsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.length) else {
-            throw SdkValidationError(
-                field: "length",
-                code: "required",
-                message: "Validation failed for 'length': value is required"
-            )
+            throw SdkValidationError(field: "length", code: "required", message: "Validation failed for 'length': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        length = try container.sdkDecodeRequired(.length)
-        name = try container.sdkDecodeRequired(.name)
-        frameworkPublishable = try container.sdkDecodeIfPresent(.frameworkPublishable)
-        nonSensitive = try container.sdkDecodeIfPresent(.nonSensitive)
+        self.length = try container.sdkDecodeRequired(.length)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.frameworkPublishable = try container.sdkDecodeIfPresent(.frameworkPublishable)
+        self.nonSensitive = try container.sdkDecodeIfPresent(.nonSensitive)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreSecretsItem {
-    init(length: Double, name: String, frameworkPublishable: Bool? = nil, nonSensitive: Bool? = nil) {
+extension CreateIntegrationStoreDirectResponseStoreSecretsItem {
+    public init(length: Double, name: String, frameworkPublishable: Bool? = nil, nonSensitive: Bool? = nil) {
         (self.length, self.name) = (length, name)
         (self.frameworkPublishable, self.nonSensitive) = (frameworkPublishable, nonSensitive)
     }
 }
 
-public typealias CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX6f4f8d40ff =
-    [CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXa5ed9766aa]
+public typealias CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX6f4f8d40ff = [CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXa5ed9766aa]
 
 public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2471c3d226: Codable {
     public var items: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX38a95d02b9
@@ -214,85 +166,49 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2471
         case uiReadOnly = "ui:read-only"
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2471c3d226 {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2471c3d226 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.items) else {
-            throw SdkValidationError(
-                field: "items",
-                code: "required",
-                message: "Validation failed for 'items': value is required"
-            )
+            throw SdkValidationError(field: "items", code: "required", message: "Validation failed for 'items': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.uiControl) else {
-            throw SdkValidationError(
-                field: "ui:control",
-                code: "required",
-                message: "Validation failed for 'ui:control': value is required"
-            )
+            throw SdkValidationError(field: "ui:control", code: "required", message: "Validation failed for 'ui:control': value is required")
         }
         guard container.contains(.uiOptions) else {
-            throw SdkValidationError(
-                field: "ui:options",
-                code: "required",
-                message: "Validation failed for 'ui:options': value is required"
-            )
+            throw SdkValidationError(field: "ui:options", code: "required", message: "Validation failed for 'ui:options': value is required")
         }
-        items = try container.sdkDecodeRequired(.items)
-        type = try container.sdkDecodeRequired(.type)
-        uiControl = try container.sdkDecodeRequired(.uiControl)
-        uiOptions = try container.sdkDecodeRequired(.uiOptions)
-        self.default = try container.sdkDecodeIfPresent(.default)
-        description = try container.sdkDecodeIfPresent(.description)
-        example = try container.sdkDecodeIfPresent(.example)
-        maxItems = try container.sdkDecodeIfPresent(.maxItems)
-        minItems = try container.sdkDecodeIfPresent(.minItems)
-        uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
-        uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
-        uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
-        uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
-        uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
-        uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
-        uiPlaceholder = try container.sdkDecodeIfPresent(.uiPlaceholder)
-        uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
+        self.items = try container.sdkDecodeRequired(.items)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.uiControl = try container.sdkDecodeRequired(.uiControl)
+        self.uiOptions = try container.sdkDecodeRequired(.uiOptions)
+        self.`default` = try container.sdkDecodeIfPresent(.`default`)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.example = try container.sdkDecodeIfPresent(.example)
+        self.maxItems = try container.sdkDecodeIfPresent(.maxItems)
+        self.minItems = try container.sdkDecodeIfPresent(.minItems)
+        self.uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
+        self.uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
+        self.uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
+        self.uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
+        self.uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
+        self.uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
+        self.uiPlaceholder = try container.sdkDecodeIfPresent(.uiPlaceholder)
+        self.uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2471c3d226 {
-    init(
-        items: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX38a95d02b9,
-        type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX61e59583c6,
-        uiControl: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX467dd14a85,
-        uiOptions: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX6f4f8d40ff,
-        default: [String]? = nil,
-        description: String? = nil,
-        example: [String]? = nil,
-        maxItems: Double? = nil,
-        minItems: Double? = nil,
-        uiDescription: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXa498b30cd3? = nil,
-        uiDisabled: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXea10b15885? = nil,
-        uiFormattedValue: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXaa0a3dfb58? = nil,
-        uiHidden: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX9a5a71b509? = nil,
-        uiLabel: String? = nil,
-        uiPaidOnly: Bool? = nil,
-        uiPlaceholder: String? = nil,
-        uiReadOnly: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX0dd38bc594? = nil
-    ) {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2471c3d226 {
+    public init(items: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX38a95d02b9, type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX61e59583c6, uiControl: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX467dd14a85, uiOptions: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX6f4f8d40ff, `default`: [String]? = nil, description: String? = nil, example: [String]? = nil, maxItems: Double? = nil, minItems: Double? = nil, uiDescription: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXa498b30cd3? = nil, uiDisabled: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXea10b15885? = nil, uiFormattedValue: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXaa0a3dfb58? = nil, uiHidden: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX9a5a71b509? = nil, uiLabel: String? = nil, uiPaidOnly: Bool? = nil, uiPlaceholder: String? = nil, uiReadOnly: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX0dd38bc594? = nil) {
         (self.items, self.type) = (items, type)
         (self.uiControl, self.uiOptions) = (uiControl, uiOptions)
-        (self.default, self.description) = (`default`, description)
+        (self.`default`, self.description) = (`default`, description)
         (self.example, self.maxItems) = (example, maxItems)
         (self.minItems, self.uiDescription) = (minItems, uiDescription)
         (self.uiDisabled, self.uiFormattedValue) = (uiDisabled, uiFormattedValue)
@@ -311,38 +227,25 @@ public struct SearchRepoResponseVariant3GitAccount: Codable {
         case provider
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension SearchRepoResponseVariant3GitAccount {
-    init(from decoder: Decoder) throws {
+extension SearchRepoResponseVariant3GitAccount {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.namespaceId) else {
-            throw SdkValidationError(
-                field: "namespaceId",
-                code: "required",
-                message: "Validation failed for 'namespaceId': value is required"
-            )
+            throw SdkValidationError(field: "namespaceId", code: "required", message: "Validation failed for 'namespaceId': value is required")
         }
         guard container.contains(.provider) else {
-            throw SdkValidationError(
-                field: "provider",
-                code: "required",
-                message: "Validation failed for 'provider': value is required"
-            )
+            throw SdkValidationError(field: "provider", code: "required", message: "Validation failed for 'provider': value is required")
         }
-        namespaceId = try container.sdkDecodeNullable(.namespaceId)
-        provider = try container.sdkDecodeRequired(.provider)
+        self.namespaceId = try container.sdkDecodeNullable(.namespaceId)
+        self.provider = try container.sdkDecodeRequired(.provider)
     }
 }
 
-public extension SearchRepoResponseVariant3GitAccount {
-    init(
-        namespaceId: SearchRepoResponseVariant3GitAccountNamespaceId?,
-        provider: SearchRepoResponseVariant3GitAccountProvider
-    ) {
+extension SearchRepoResponseVariant3GitAccount {
+    public init(namespaceId: SearchRepoResponseVariant3GitAccountNamespaceId?, provider: SearchRepoResponseVariant3GitAccountProvider) {
         (self.namespaceId, self.provider) = (namespaceId, provider)
     }
 }
@@ -354,27 +257,21 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8656
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8656d6a42f {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8656d6a42f {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8656d6a42f {
-    init(expr: String) {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8656d6a42f {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -394,44 +291,28 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8059
         case hidden
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8059fdb79c {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8059fdb79c {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.label) else {
-            throw SdkValidationError(
-                field: "label",
-                code: "required",
-                message: "Validation failed for 'label': value is required"
-            )
+            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        label = try container.sdkDecodeRequired(.label)
-        value = try container.sdkDecodeRequired(.value)
-        description = try container.sdkDecodeIfPresent(.description)
-        disabled = try container.sdkDecodeIfPresent(.disabled)
-        hidden = try container.sdkDecodeIfPresent(.hidden)
+        self.label = try container.sdkDecodeRequired(.label)
+        self.value = try container.sdkDecodeRequired(.value)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.disabled = try container.sdkDecodeIfPresent(.disabled)
+        self.hidden = try container.sdkDecodeIfPresent(.hidden)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8059fdb79c {
-    init(
-        label: String,
-        value: String,
-        description: String? = nil,
-        disabled: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXd4514794bd? = nil,
-        hidden: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX35dbd43159? = nil
-    ) {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8059fdb79c {
+    public init(label: String, value: String, description: String? = nil, disabled: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXd4514794bd? = nil, hidden: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX35dbd43159? = nil) {
         (self.label, self.value) = (label, value)
         (self.description, self.disabled) = (description, disabled)
         self.hidden = hidden
@@ -445,27 +326,21 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX76be
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX76bec61b1b {
-    init(from decoder: Decoder) throws {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX76bec61b1b {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX76bec61b1b {
-    init(expr: String) {
+extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX76bec61b1b {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -477,27 +352,21 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX5f72
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX5f72bc1558 {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX5f72bc1558 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX5f72bc1558 {
-    init(expr: String) {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX5f72bc1558 {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -511,21 +380,15 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreProductMetadataSch
 }
 
 extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX0dd38bc594: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX0dd38bc594"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX0dd38bc594")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -534,14 +397,10 @@ extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX0dd38bc5
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42e4d6f6.self
         ) {
-            return .createIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42e4d6f6(value)
+            return             .createIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42e4d6f6(value)
         }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -550,8 +409,7 @@ extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX0dd38bc5
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42e4d6f6(value): try container
-            .encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemX2d42e4d6f6(value): try container.encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }
@@ -565,27 +423,21 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX6152
         case expr
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX61525efa85 {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX61525efa85 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expr) else {
-            throw SdkValidationError(
-                field: "expr",
-                code: "required",
-                message: "Validation failed for 'expr': value is required"
-            )
+            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
         }
-        expr = try container.sdkDecodeRequired(.expr)
+        self.expr = try container.sdkDecodeRequired(.expr)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX61525efa85 {
-    init(expr: String) {
+extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX61525efa85 {
+    public init(expr: String) {
         self.expr = expr
     }
 }
@@ -599,21 +451,15 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreProductMetadataSch
 }
 
 extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX34d95d1a80: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX34d95d1a80"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX34d95d1a80")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -622,14 +468,10 @@ extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX34d95d1a
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXae7d3ee2ef.self
         ) {
-            return .createIntegrationStoreDirectResponseStoreProductMetadataSchemXae7d3ee2ef(value)
+            return             .createIntegrationStoreDirectResponseStoreProductMetadataSchemXae7d3ee2ef(value)
         }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }

@@ -3,40 +3,28 @@
 
 import Foundation
 
-/// Connect domain models
-public extension ConnectConnectorUpdateDataVariant2Owner {
-    init(from decoder: Decoder) throws {
+// Connect domain models
+extension ConnectConnectorUpdateDataVariant2Owner {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        id = try container.sdkDecodeRequired(.id)
-        slug = try container.sdkDecodeRequired(.slug)
-        name = try container.sdkDecodeIfPresent(.name)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.name = try container.sdkDecodeIfPresent(.name)
     }
 }
 
-public extension ConnectConnectorUpdateDataVariant2Owner {
-    init(type: ConnectConnectorUpdateDataVariant2OwnerType, id: Int, slug: String, name: String? = nil) {
+extension ConnectConnectorUpdateDataVariant2Owner {
+    public init(type: ConnectConnectorUpdateDataVariant2OwnerType, id: Int, slug: String, name: String? = nil) {
         (self.type, self.id) = (type, id)
         (self.slug, self.name) = (slug, name)
     }
@@ -165,139 +153,63 @@ public struct ConnectConnectorUpdateDataRequestVariant0ServerConfig: Codable {
     }
 
     init() {
-        (issuer, authorizationEndpoint, tokenEndpoint, userinfoEndpoint, jwksUri) = (nil, nil, nil, nil, nil)
-        (jwks, revocationEndpoint, introspectionEndpoint, endSessionEndpoint, deviceAuthorizationEndpoint) = (
-            nil,
-            nil,
-            nil,
-            nil,
-            nil
-        )
-        (
-            registrationEndpoint,
-            responseTypesSupported,
-            tokenEndpointAuthMethodsSupported,
-            tokenEndpointAuthSigningAlgValuesSupported,
-            scopesSupported
-        ) = (nil, nil, nil, nil, nil)
-        (
-            grantTypesSupported,
-            authorizationGrantProfilesSupported,
-            identityChainingRequestedTokenTypesSupported,
-            responseModesSupported,
-            subjectTypesSupported
-        ) = (nil, nil, nil, nil, nil)
-        (
-            idTokenSigningAlgValuesSupported,
-            idTokenEncryptionAlgValuesSupported,
-            idTokenEncryptionEncValuesSupported,
-            claimTypesSupported,
-            claimsSupported
-        ) = (nil, nil, nil, nil, nil)
-        (
-            codeChallengeMethodsSupported,
-            promptValuesSupported,
-            claimsParameterSupported,
-            requestParameterSupported,
-            requestUriParameterSupported
-        ) = (nil, nil, nil, nil, nil)
-        (requireRequestUriRegistration, serviceDocumentation, opPolicyUri, opTosUri, logoUri) = (
-            nil,
-            nil,
-            nil,
-            nil,
-            nil
-        )
-        (clientIdMetadataDocumentSupported, authorizationDetailsTypesSupported) = (nil, nil)
+        (self.issuer, self.authorizationEndpoint, self.tokenEndpoint, self.userinfoEndpoint, self.jwksUri) = (nil, nil, nil, nil, nil)
+        (self.jwks, self.revocationEndpoint, self.introspectionEndpoint, self.endSessionEndpoint, self.deviceAuthorizationEndpoint) = (nil, nil, nil, nil, nil)
+        (self.registrationEndpoint, self.responseTypesSupported, self.tokenEndpointAuthMethodsSupported, self.tokenEndpointAuthSigningAlgValuesSupported, self.scopesSupported) = (nil, nil, nil, nil, nil)
+        (self.grantTypesSupported, self.authorizationGrantProfilesSupported, self.identityChainingRequestedTokenTypesSupported, self.responseModesSupported, self.subjectTypesSupported) = (nil, nil, nil, nil, nil)
+        (self.idTokenSigningAlgValuesSupported, self.idTokenEncryptionAlgValuesSupported, self.idTokenEncryptionEncValuesSupported, self.claimTypesSupported, self.claimsSupported) = (nil, nil, nil, nil, nil)
+        (self.codeChallengeMethodsSupported, self.promptValuesSupported, self.claimsParameterSupported, self.requestParameterSupported, self.requestUriParameterSupported) = (nil, nil, nil, nil, nil)
+        (self.requireRequestUriRegistration, self.serviceDocumentation, self.opPolicyUri, self.opTosUri, self.logoUri) = (nil, nil, nil, nil, nil)
+        (self.clientIdMetadataDocumentSupported, self.authorizationDetailsTypesSupported) = (nil, nil)
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant0ServerConfig {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataRequestVariant0ServerConfig {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        issuer = try container.sdkDecodeIfPresent(.issuer)
-        authorizationEndpoint = try container.sdkDecodeIfPresent(.authorizationEndpoint)
-        tokenEndpoint = try container.sdkDecodeIfPresent(.tokenEndpoint)
-        userinfoEndpoint = try container.sdkDecodeIfPresent(.userinfoEndpoint)
-        jwksUri = try container.sdkDecodeIfPresent(.jwksUri)
-        jwks = try container.sdkDecodeIfPresent(.jwks)
-        revocationEndpoint = try container.sdkDecodeIfPresent(.revocationEndpoint)
-        introspectionEndpoint = try container.sdkDecodeIfPresent(.introspectionEndpoint)
-        endSessionEndpoint = try container.sdkDecodeIfPresent(.endSessionEndpoint)
-        deviceAuthorizationEndpoint = try container.sdkDecodeIfPresent(.deviceAuthorizationEndpoint)
-        registrationEndpoint = try container.sdkDecodeIfPresent(.registrationEndpoint)
-        responseTypesSupported = try container.sdkDecodeIfPresent(.responseTypesSupported)
-        tokenEndpointAuthMethodsSupported = try container.sdkDecodeIfPresent(.tokenEndpointAuthMethodsSupported)
-        tokenEndpointAuthSigningAlgValuesSupported = try container
-            .sdkDecodeIfPresent(.tokenEndpointAuthSigningAlgValuesSupported)
-        scopesSupported = try container.sdkDecodeIfPresent(.scopesSupported)
-        grantTypesSupported = try container.sdkDecodeIfPresent(.grantTypesSupported)
-        authorizationGrantProfilesSupported = try container.sdkDecodeIfPresent(.authorizationGrantProfilesSupported)
-        identityChainingRequestedTokenTypesSupported = try container
-            .sdkDecodeIfPresent(.identityChainingRequestedTokenTypesSupported)
-        responseModesSupported = try container.sdkDecodeIfPresent(.responseModesSupported)
-        subjectTypesSupported = try container.sdkDecodeIfPresent(.subjectTypesSupported)
-        idTokenSigningAlgValuesSupported = try container.sdkDecodeIfPresent(.idTokenSigningAlgValuesSupported)
-        idTokenEncryptionAlgValuesSupported = try container.sdkDecodeIfPresent(.idTokenEncryptionAlgValuesSupported)
-        idTokenEncryptionEncValuesSupported = try container.sdkDecodeIfPresent(.idTokenEncryptionEncValuesSupported)
-        claimTypesSupported = try container.sdkDecodeIfPresent(.claimTypesSupported)
-        claimsSupported = try container.sdkDecodeIfPresent(.claimsSupported)
-        codeChallengeMethodsSupported = try container.sdkDecodeIfPresent(.codeChallengeMethodsSupported)
-        promptValuesSupported = try container.sdkDecodeIfPresent(.promptValuesSupported)
-        claimsParameterSupported = try container.sdkDecodeIfPresent(.claimsParameterSupported)
-        requestParameterSupported = try container.sdkDecodeIfPresent(.requestParameterSupported)
-        requestUriParameterSupported = try container.sdkDecodeIfPresent(.requestUriParameterSupported)
-        requireRequestUriRegistration = try container.sdkDecodeIfPresent(.requireRequestUriRegistration)
-        serviceDocumentation = try container.sdkDecodeIfPresent(.serviceDocumentation)
-        opPolicyUri = try container.sdkDecodeIfPresent(.opPolicyUri)
-        opTosUri = try container.sdkDecodeIfPresent(.opTosUri)
-        logoUri = try container.sdkDecodeIfPresent(.logoUri)
-        clientIdMetadataDocumentSupported = try container.sdkDecodeIfPresent(.clientIdMetadataDocumentSupported)
-        authorizationDetailsTypesSupported = try container.sdkDecodeIfPresent(.authorizationDetailsTypesSupported)
+        self.issuer = try container.sdkDecodeIfPresent(.issuer)
+        self.authorizationEndpoint = try container.sdkDecodeIfPresent(.authorizationEndpoint)
+        self.tokenEndpoint = try container.sdkDecodeIfPresent(.tokenEndpoint)
+        self.userinfoEndpoint = try container.sdkDecodeIfPresent(.userinfoEndpoint)
+        self.jwksUri = try container.sdkDecodeIfPresent(.jwksUri)
+        self.jwks = try container.sdkDecodeIfPresent(.jwks)
+        self.revocationEndpoint = try container.sdkDecodeIfPresent(.revocationEndpoint)
+        self.introspectionEndpoint = try container.sdkDecodeIfPresent(.introspectionEndpoint)
+        self.endSessionEndpoint = try container.sdkDecodeIfPresent(.endSessionEndpoint)
+        self.deviceAuthorizationEndpoint = try container.sdkDecodeIfPresent(.deviceAuthorizationEndpoint)
+        self.registrationEndpoint = try container.sdkDecodeIfPresent(.registrationEndpoint)
+        self.responseTypesSupported = try container.sdkDecodeIfPresent(.responseTypesSupported)
+        self.tokenEndpointAuthMethodsSupported = try container.sdkDecodeIfPresent(.tokenEndpointAuthMethodsSupported)
+        self.tokenEndpointAuthSigningAlgValuesSupported = try container.sdkDecodeIfPresent(.tokenEndpointAuthSigningAlgValuesSupported)
+        self.scopesSupported = try container.sdkDecodeIfPresent(.scopesSupported)
+        self.grantTypesSupported = try container.sdkDecodeIfPresent(.grantTypesSupported)
+        self.authorizationGrantProfilesSupported = try container.sdkDecodeIfPresent(.authorizationGrantProfilesSupported)
+        self.identityChainingRequestedTokenTypesSupported = try container.sdkDecodeIfPresent(.identityChainingRequestedTokenTypesSupported)
+        self.responseModesSupported = try container.sdkDecodeIfPresent(.responseModesSupported)
+        self.subjectTypesSupported = try container.sdkDecodeIfPresent(.subjectTypesSupported)
+        self.idTokenSigningAlgValuesSupported = try container.sdkDecodeIfPresent(.idTokenSigningAlgValuesSupported)
+        self.idTokenEncryptionAlgValuesSupported = try container.sdkDecodeIfPresent(.idTokenEncryptionAlgValuesSupported)
+        self.idTokenEncryptionEncValuesSupported = try container.sdkDecodeIfPresent(.idTokenEncryptionEncValuesSupported)
+        self.claimTypesSupported = try container.sdkDecodeIfPresent(.claimTypesSupported)
+        self.claimsSupported = try container.sdkDecodeIfPresent(.claimsSupported)
+        self.codeChallengeMethodsSupported = try container.sdkDecodeIfPresent(.codeChallengeMethodsSupported)
+        self.promptValuesSupported = try container.sdkDecodeIfPresent(.promptValuesSupported)
+        self.claimsParameterSupported = try container.sdkDecodeIfPresent(.claimsParameterSupported)
+        self.requestParameterSupported = try container.sdkDecodeIfPresent(.requestParameterSupported)
+        self.requestUriParameterSupported = try container.sdkDecodeIfPresent(.requestUriParameterSupported)
+        self.requireRequestUriRegistration = try container.sdkDecodeIfPresent(.requireRequestUriRegistration)
+        self.serviceDocumentation = try container.sdkDecodeIfPresent(.serviceDocumentation)
+        self.opPolicyUri = try container.sdkDecodeIfPresent(.opPolicyUri)
+        self.opTosUri = try container.sdkDecodeIfPresent(.opTosUri)
+        self.logoUri = try container.sdkDecodeIfPresent(.logoUri)
+        self.clientIdMetadataDocumentSupported = try container.sdkDecodeIfPresent(.clientIdMetadataDocumentSupported)
+        self.authorizationDetailsTypesSupported = try container.sdkDecodeIfPresent(.authorizationDetailsTypesSupported)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant0ServerConfig {
-    init(
-        issuer: String? = nil,
-        authorizationEndpoint: String? = nil,
-        tokenEndpoint: String? = nil,
-        userinfoEndpoint: String? = nil,
-        jwksUri: String? = nil,
-        jwks: ConnectConnectorUpdateDataRequestVariant0ServerConfigJwks? = nil,
-        revocationEndpoint: String? = nil,
-        introspectionEndpoint: String? = nil,
-        endSessionEndpoint: String? = nil,
-        deviceAuthorizationEndpoint: String? = nil,
-        registrationEndpoint: String? = nil,
-        responseTypesSupported: [String]? = nil,
-        tokenEndpointAuthMethodsSupported: [String]? = nil,
-        tokenEndpointAuthSigningAlgValuesSupported: [String]? = nil,
-        scopesSupported: [String]? = nil,
-        grantTypesSupported: [String]? = nil,
-        authorizationGrantProfilesSupported: [String]? = nil,
-        identityChainingRequestedTokenTypesSupported: [String]? = nil,
-        responseModesSupported: [String]? = nil,
-        subjectTypesSupported: [String]? = nil,
-        idTokenSigningAlgValuesSupported: [String]? = nil,
-        idTokenEncryptionAlgValuesSupported: [String]? = nil,
-        idTokenEncryptionEncValuesSupported: [String]? = nil,
-        claimTypesSupported: [String]? = nil,
-        claimsSupported: [String]? = nil,
-        codeChallengeMethodsSupported: [String]? = nil,
-        promptValuesSupported: [String]? = nil,
-        claimsParameterSupported: Bool? = nil,
-        requestParameterSupported: Bool? = nil,
-        requestUriParameterSupported: Bool? = nil,
-        requireRequestUriRegistration: Bool? = nil,
-        serviceDocumentation: String? = nil,
-        opPolicyUri: String? = nil,
-        opTosUri: String? = nil,
-        logoUri: String? = nil,
-        clientIdMetadataDocumentSupported: Bool? = nil,
-        authorizationDetailsTypesSupported: [String]? = nil
-    ) {
+extension ConnectConnectorUpdateDataRequestVariant0ServerConfig {
+    public init(issuer: String? = nil, authorizationEndpoint: String? = nil, tokenEndpoint: String? = nil, userinfoEndpoint: String? = nil, jwksUri: String? = nil, jwks: ConnectConnectorUpdateDataRequestVariant0ServerConfigJwks? = nil, revocationEndpoint: String? = nil, introspectionEndpoint: String? = nil, endSessionEndpoint: String? = nil, deviceAuthorizationEndpoint: String? = nil, registrationEndpoint: String? = nil, responseTypesSupported: [String]? = nil, tokenEndpointAuthMethodsSupported: [String]? = nil, tokenEndpointAuthSigningAlgValuesSupported: [String]? = nil, scopesSupported: [String]? = nil, grantTypesSupported: [String]? = nil, authorizationGrantProfilesSupported: [String]? = nil, identityChainingRequestedTokenTypesSupported: [String]? = nil, responseModesSupported: [String]? = nil, subjectTypesSupported: [String]? = nil, idTokenSigningAlgValuesSupported: [String]? = nil, idTokenEncryptionAlgValuesSupported: [String]? = nil, idTokenEncryptionEncValuesSupported: [String]? = nil, claimTypesSupported: [String]? = nil, claimsSupported: [String]? = nil, codeChallengeMethodsSupported: [String]? = nil, promptValuesSupported: [String]? = nil, claimsParameterSupported: Bool? = nil, requestParameterSupported: Bool? = nil, requestUriParameterSupported: Bool? = nil, requireRequestUriRegistration: Bool? = nil, serviceDocumentation: String? = nil, opPolicyUri: String? = nil, opTosUri: String? = nil, logoUri: String? = nil, clientIdMetadataDocumentSupported: Bool? = nil, authorizationDetailsTypesSupported: [String]? = nil) {
         self.init()
         (self.issuer, self.authorizationEndpoint) = (issuer, authorizationEndpoint)
         (self.tokenEndpoint, self.userinfoEndpoint) = (tokenEndpoint, userinfoEndpoint)
@@ -331,8 +243,8 @@ public extension ConnectConnectorUpdateDataRequestVariant0ServerConfig {
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant0ServerConfig {
-    func encode(to encoder: Encoder) throws {
+extension ConnectConnectorUpdateDataRequestVariant0ServerConfig {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(issuer, forKey: .issuer)
@@ -348,17 +260,11 @@ public extension ConnectConnectorUpdateDataRequestVariant0ServerConfig {
         try container.encodeIfPresent(registrationEndpoint, forKey: .registrationEndpoint)
         try container.encodeIfPresent(responseTypesSupported, forKey: .responseTypesSupported)
         try container.encodeIfPresent(tokenEndpointAuthMethodsSupported, forKey: .tokenEndpointAuthMethodsSupported)
-        try container.encodeIfPresent(
-            tokenEndpointAuthSigningAlgValuesSupported,
-            forKey: .tokenEndpointAuthSigningAlgValuesSupported
-        )
+        try container.encodeIfPresent(tokenEndpointAuthSigningAlgValuesSupported, forKey: .tokenEndpointAuthSigningAlgValuesSupported)
         try container.encodeIfPresent(scopesSupported, forKey: .scopesSupported)
         try container.encodeIfPresent(grantTypesSupported, forKey: .grantTypesSupported)
         try container.encodeIfPresent(authorizationGrantProfilesSupported, forKey: .authorizationGrantProfilesSupported)
-        try container.encodeIfPresent(
-            identityChainingRequestedTokenTypesSupported,
-            forKey: .identityChainingRequestedTokenTypesSupported
-        )
+        try container.encodeIfPresent(identityChainingRequestedTokenTypesSupported, forKey: .identityChainingRequestedTokenTypesSupported)
         try container.encodeIfPresent(responseModesSupported, forKey: .responseModesSupported)
         try container.encodeIfPresent(subjectTypesSupported, forKey: .subjectTypesSupported)
         try container.encodeIfPresent(idTokenSigningAlgValuesSupported, forKey: .idTokenSigningAlgValuesSupported)
@@ -404,46 +310,34 @@ public struct ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItem: Codabl
         case alg
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItem {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.kty) else {
-            throw SdkValidationError(
-                field: "kty",
-                code: "required",
-                message: "Validation failed for 'kty': value is required"
-            )
+            throw SdkValidationError(field: "kty", code: "required", message: "Validation failed for 'kty': value is required")
         }
-        kty = try container.sdkDecodeRequired(.kty)
-        kid = try container.sdkDecodeIfPresent(.kid)
-        use = try container.sdkDecodeIfPresent(.use)
-        keyOps = try container.sdkDecodeIfPresent(.keyOps)
-        alg = try container.sdkDecodeIfPresent(.alg)
+        self.kty = try container.sdkDecodeRequired(.kty)
+        self.kid = try container.sdkDecodeIfPresent(.kid)
+        self.use = try container.sdkDecodeIfPresent(.use)
+        self.keyOps = try container.sdkDecodeIfPresent(.keyOps)
+        self.alg = try container.sdkDecodeIfPresent(.alg)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-public extension ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItem {
-    init(
-        kty: String,
-        kid: String? = nil,
-        use: ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItemUse? = nil,
-        keyOps: [String]? = nil,
-        alg: String? = nil
-    ) {
+extension ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItem {
+    public init(kty: String, kid: String? = nil, use: ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItemUse? = nil, keyOps: [String]? = nil, alg: String? = nil) {
         (self.kty, self.kid) = (kty, kid)
         (self.use, self.keyOps) = (use, keyOps)
         self.alg = alg
     }
 }
 
-public extension ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItem {
-    func encode(to encoder: Encoder) throws {
+extension ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItem {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(kty, forKey: .kty)
@@ -472,44 +366,30 @@ public struct ConnectConnectorUpdateDataRequestVariant3OwnerOrganization: Codabl
         case logoUrl
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant3OwnerOrganization {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataRequestVariant3OwnerOrganization {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        slug = try container.sdkDecodeRequired(.slug)
-        name = try container.sdkDecodeRequired(.name)
-        logoUrl = try container.sdkDecodeIfPresent(.logoUrl)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.logoUrl = try container.sdkDecodeIfPresent(.logoUrl)
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant3OwnerOrganization {
-    init(id: String, slug: String, name: String, logoUrl: String? = nil) {
+extension ConnectConnectorUpdateDataRequestVariant3OwnerOrganization {
+    public init(id: String, slug: String, name: String, logoUrl: String? = nil) {
         (self.id, self.slug) = (id, slug)
         (self.name, self.logoUrl) = (name, logoUrl)
     }
@@ -560,7 +440,7 @@ public struct ConnectUpdateConnectorRequestRequest: Codable {
     }
 
     init() {
-        (triggers, triggerVerificationInput, triggerRegistrationInput, events, data) = (nil, nil, nil, nil, nil)
-        (icon, backgroundColor, accentColor, uid, name) = (nil, nil, nil, nil, nil)
+        (self.triggers, self.triggerVerificationInput, self.triggerRegistrationInput, self.events, self.data) = (nil, nil, nil, nil, nil)
+        (self.icon, self.backgroundColor, self.accentColor, self.uid, self.name) = (nil, nil, nil, nil, nil)
     }
 }

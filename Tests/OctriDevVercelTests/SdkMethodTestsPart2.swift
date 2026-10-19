@@ -6,8 +6,7 @@ import Foundation
 import XCTest
 
 extension SdkMethodTests {
-    func testConnectIntegrationResourceToProjectConnectIntegrationResourceToProjectReachesMockAndDecodesResponse(
-    ) async throws {
+    func testConnectIntegrationResourceToProjectConnectIntegrationResourceToProjectReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -133,8 +132,7 @@ extension SdkMethodTests {
         )
     }
 
-    func testCreateAiGatewayVirtualModelConfigCreateAiGatewayVirtualModelConfigReachesMockAndDecodesResponse(
-    ) async throws {
+    func testCreateAiGatewayVirtualModelConfigCreateAiGatewayVirtualModelConfigReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -198,8 +196,7 @@ extension SdkMethodTests {
         )
     }
 
-    func testCreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsCreaX376e88c7fcReachesMockAndDecodesResponse(
-    ) async throws {
+    func testCreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsCreaX376e88c7fcReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -226,11 +223,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ChecksMethods.CreateCheckOptions(
-            deploymentId: decoded("\"dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6\""),
-            name: decoded("\"Performance Check\""),
-            blocking: decoded("true")
-        )
+        var options = try ChecksMethods.CreateCheckOptions(deploymentId: decoded("\"dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6\""), name: decoded("\"Performance Check\""), blocking: decoded("true"))
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.path = try decoded("\"/\"")
@@ -278,11 +271,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try LogDrainsMethods.CreateConfigurableLogDrainOptions(
-            deliveryFormat: decoded("\"json\""),
-            url: decoded("\"https://example.com\""),
-            sources: decoded("[\"static\"]")
-        )
+        var options = try LogDrainsMethods.CreateConfigurableLogDrainOptions(deliveryFormat: decoded("\"json\""), url: decoded("\"https://example.com\""), sources: decoded("[\"static\"]"))
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.headers = try decoded("{\"key\":\"key\"}")
@@ -375,8 +364,8 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.createConnector(
-                options: options
-            )
+            options: options
+        )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -392,8 +381,7 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testCreateConnectorAuthorizationRequestCreateConnectorAuthorizationRequestReachesMockAndDecodesResponse(
-    ) async throws {
+    func testCreateConnectorAuthorizationRequestCreateConnectorAuthorizationRequestReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -511,11 +499,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try DrainsMethods.CreateDrainOptions(
-            name: decoded("\"Example Name\""),
-            projects: decoded("\"some\""),
-            schemas: decoded("{\"key\":{\"version\":\"version\"}}")
-        )
+        var options = try DrainsMethods.CreateDrainOptions(name: decoded("\"Example Name\""), projects: decoded("\"some\""), schemas: decoded("{\"key\":{\"version\":\"version\"}}"))
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.projectIds = try decoded("[\"projectIds\"]")

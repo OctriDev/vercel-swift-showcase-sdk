@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DeploymentsMethods {
-    struct GetDeploymentsOptions: Codable {
+extension DeploymentsMethods {
+    public struct GetDeploymentsOptions: Codable {
         public var app: String?
         public var from: Double?
         public var limit: Double?
@@ -28,12 +28,9 @@ public extension DeploymentsMethods {
         public init() {}
     }
 
-    /// Lists deployments for the authenticated user or team. Use filters such as `projectId`, `state`, `branch`, or
-    /// `target` to narrow the results, and use `limit` to set the maximum number returned. Incomplete deployments have
-    /// a `url` value of `null`.
+    /// Lists deployments for the authenticated user or team. Use filters such as `projectId`, `state`, `branch`, or `target` to narrow the results, and use `limit` to set the maximum number returned. Incomplete deployments have a `url` value of `null`.
     ///
-    /// List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is
-    /// incomplete), the `url` property will have a value of `null`.
+    /// List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is incomplete), the `url` property will have a value of `null`.
     ///
     /// - Parameters:
     /// - app: Name of the deployment.
@@ -57,16 +54,12 @@ public extension DeploymentsMethods {
     /// - sha: Filter deployments based on the SHA
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getDeployments(
-        config: ClientConfig,
-        options: GetDeploymentsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetDeploymentsResponse {
+    public static func getDeployments(config: ClientConfig, options: GetDeploymentsOptions, requestOptions: RequestOptions? = nil) async throws -> GetDeploymentsResponse {
         if let projectIds = options.projectIds {
             try validateItems("projectIds", projectIds, min: 1, max: 20)
         }
 
-        return try await (sdkRequest("GET", "/v7/deployments", config: config, query: [
+        return try (await sdkRequest("GET", "/v7/deployments", config: config, query: [
             SdkQueryParameter("app", value: options.app),
             SdkQueryParameter("from", value: options.from),
             SdkQueryParameter("limit", value: options.limit),

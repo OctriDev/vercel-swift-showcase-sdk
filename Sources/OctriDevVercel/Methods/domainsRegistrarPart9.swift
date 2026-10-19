@@ -6,117 +6,42 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DomainsRegistrarMethods {
-    /// Renews a domain registered with Vercel for the specified number of years. Provide `years` and `expectedPrice`,
-    /// and include `contactInformation` when updating the registrant details as part of the renewal. A 200 response
-    /// includes the renewal order's `orderId` and links for related actions.
+extension DomainsRegistrarMethods {
+    /// Renews a domain registered with Vercel for the specified number of years. Provide `years` and `expectedPrice`, and include `contactInformation` when updating the registrant details as part of the renewal. A 200 response includes the renewal order's `orderId` and links for related actions.
     ///
     /// Renew a domain
     ///
     /// - Parameters:
     /// - years: The number of years to renew the domain for.
-    static func renewDomain(
-        config: ClientConfig,
-        domain: DomainName,
-        years: Double,
-        expectedPrice: Double,
-        teamId: String? = nil,
-        contactInformation: RenewDomainRequestBodyContactInformation? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RenewDomainResponse {
+    public static func renewDomain(config: ClientConfig, domain: DomainName, years: Double, expectedPrice: Double, teamId: String? = nil, contactInformation: RenewDomainRequestBodyContactInformation? = nil, requestOptions: RequestOptions? = nil) async throws -> RenewDomainResponse {
         try validateRange("expectedPrice", Double(expectedPrice), min: 0.01)
 
-        let requestBody = RenewDomainRequestBody(
-            years: years,
-            expectedPrice: expectedPrice,
-            contactInformation: contactInformation
-        )
+        let requestBody = RenewDomainRequestBody(years: years, expectedPrice: expectedPrice, contactInformation: contactInformation)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/renew"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "renewDomain",
-            options: requestOptions,
-            errors: [
-                "401": Unauthorized.self,
-                "404": DomainNotFound.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+        return try (await sdkRequest("POST", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/renew"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], body: requestBody, decoder: .json, operationId: "renewDomain", options: requestOptions, errors: ["401": Unauthorized.self, "404": DomainNotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 
-    /// Updates whether a domain is set to renew automatically. Set `autoRenew` to `true` or `false` to enable or
-    /// disable automatic renewal for the specified domain. A 204 response confirms the setting was updated and contains
-    /// no response body.
+    /// Updates whether a domain is set to renew automatically. Set `autoRenew` to `true` or `false` to enable or disable automatic renewal for the specified domain. A 204 response confirms the setting was updated and contains no response body.
     ///
     /// Update the auto-renew setting for a domain
-    static func updateDomainAutoRenew(
-        config: ClientConfig,
-        domain: DomainName,
-        autoRenew: Bool,
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func updateDomainAutoRenew(config: ClientConfig, domain: DomainName, autoRenew: Bool, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         let requestBody = UpdateDomainAutoRenewRequestBody(autoRenew: autoRenew)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/auto-renew"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            body: requestBody,
-            decoder: .empty,
-            operationId: "updateDomainAutoRenew",
-            options: requestOptions,
-            errors: [
-                "401": Unauthorized.self,
-                "404": DomainNotFound.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/auto-renew"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], body: requestBody, decoder: .empty, operationId: "updateDomainAutoRenew", options: requestOptions, errors: ["401": Unauthorized.self, "404": DomainNotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 
-    /// Updates the nameservers assigned to a domain. Provide `nameservers` as an array of valid nameserver values, or
-    /// pass an empty array to use Vercel's default nameservers. A 204 response confirms the change and contains no
-    /// response body.
+    /// Updates the nameservers assigned to a domain. Provide `nameservers` as an array of valid nameserver values, or pass an empty array to use Vercel's default nameservers. A 204 response confirms the change and contains no response body.
     ///
     /// Update the nameservers for a domain. Pass an empty array to use Vercel's default nameservers.
-    static func updateDomainNameservers(
-        config: ClientConfig,
-        domain: DomainName,
-        nameservers: [Nameserver],
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func updateDomainNameservers(config: ClientConfig, domain: DomainName, nameservers: [Nameserver], teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         let requestBody = UpdateDomainNameserversRequestBody(nameservers: nameservers)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/nameservers"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            body: requestBody,
-            decoder: .empty,
-            operationId: "updateDomainNameservers",
-            options: requestOptions,
-            errors: [
-                "401": Unauthorized.self,
-                "404": DomainNotFound.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/nameservers"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], body: requestBody, decoder: .empty, operationId: "updateDomainNameservers", options: requestOptions, errors: ["401": Unauthorized.self, "404": DomainNotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 }

@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projectRoutes operation model declarations
+// Canonical projectRoutes operation model declarations
 /// A version of routing rules stored in S3.
 public struct EditRouteResponseVersion: Codable {
     /// The user who created this version.
@@ -38,64 +38,37 @@ public struct EditRouteResponseVersion: Codable {
         case ruleCount
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension EditRouteResponseVersion {
-    init(from decoder: Decoder) throws {
+extension EditRouteResponseVersion {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdBy) else {
-            throw SdkValidationError(
-                field: "createdBy",
-                code: "required",
-                message: "Validation failed for 'createdBy': value is required"
-            )
+            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.lastModified) else {
-            throw SdkValidationError(
-                field: "lastModified",
-                code: "required",
-                message: "Validation failed for 'lastModified': value is required"
-            )
+            throw SdkValidationError(field: "lastModified", code: "required", message: "Validation failed for 'lastModified': value is required")
         }
         guard container.contains(.s3Key) else {
-            throw SdkValidationError(
-                field: "s3Key",
-                code: "required",
-                message: "Validation failed for 's3Key': value is required"
-            )
+            throw SdkValidationError(field: "s3Key", code: "required", message: "Validation failed for 's3Key': value is required")
         }
-        createdBy = try container.sdkDecodeRequired(.createdBy)
-        id = try container.sdkDecodeRequired(.id)
-        lastModified = try container.sdkDecodeRequired(.lastModified)
-        s3Key = try container.sdkDecodeRequired(.s3Key)
-        alias = try container.sdkDecodeIfPresent(.alias)
-        isLive = try container.sdkDecodeIfPresent(.isLive)
-        isStaging = try container.sdkDecodeIfPresent(.isStaging)
-        ruleCount = try container.sdkDecodeIfPresent(.ruleCount)
+        self.createdBy = try container.sdkDecodeRequired(.createdBy)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.lastModified = try container.sdkDecodeRequired(.lastModified)
+        self.s3Key = try container.sdkDecodeRequired(.s3Key)
+        self.alias = try container.sdkDecodeIfPresent(.alias)
+        self.isLive = try container.sdkDecodeIfPresent(.isLive)
+        self.isStaging = try container.sdkDecodeIfPresent(.isStaging)
+        self.ruleCount = try container.sdkDecodeIfPresent(.ruleCount)
     }
 }
 
-public extension EditRouteResponseVersion {
-    init(
-        createdBy: String,
-        id: String,
-        lastModified: Double,
-        s3Key: String,
-        alias: String? = nil,
-        isLive: Bool? = nil,
-        isStaging: Bool? = nil,
-        ruleCount: Double? = nil
-    ) {
+extension EditRouteResponseVersion {
+    public init(createdBy: String, id: String, lastModified: Double, s3Key: String, alias: String? = nil, isLive: Bool? = nil, isStaging: Bool? = nil, ruleCount: Double? = nil) {
         (self.createdBy, self.id) = (createdBy, id)
         (self.lastModified, self.s3Key) = (lastModified, s3Key)
         (self.alias, self.isLive) = (alias, isLive)
@@ -141,61 +114,36 @@ public struct GetRoutesResponseVariant2RoutesItem: Codable {
         case staged
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetRoutesResponseVariant2RoutesItem {
-    init(from decoder: Decoder) throws {
+extension GetRoutesResponseVariant2RoutesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.route) else {
-            throw SdkValidationError(
-                field: "route",
-                code: "required",
-                message: "Validation failed for 'route': value is required"
-            )
+            throw SdkValidationError(field: "route", code: "required", message: "Validation failed for 'route': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        route = try container.sdkDecodeRequired(.route)
-        description = try container.sdkDecodeIfPresent(.description)
-        enabled = try container.sdkDecodeIfPresent(.enabled)
-        rawDest = try container.sdkDecodeIfPresent(.rawDest)
-        rawSrc = try container.sdkDecodeIfPresent(.rawSrc)
-        routeType = try container.sdkDecodeIfPresent(.routeType)
-        srcSyntax = try container.sdkDecodeIfPresent(.srcSyntax)
-        staged = try container.sdkDecodeIfPresent(.staged)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.route = try container.sdkDecodeRequired(.route)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.enabled = try container.sdkDecodeIfPresent(.enabled)
+        self.rawDest = try container.sdkDecodeIfPresent(.rawDest)
+        self.rawSrc = try container.sdkDecodeIfPresent(.rawSrc)
+        self.routeType = try container.sdkDecodeIfPresent(.routeType)
+        self.srcSyntax = try container.sdkDecodeIfPresent(.srcSyntax)
+        self.staged = try container.sdkDecodeIfPresent(.staged)
     }
 }
 
-public extension GetRoutesResponseVariant2RoutesItem {
-    init(
-        id: String,
-        name: String,
-        route: GetRoutesResponseVariant2RoutesItemRoute,
-        description: String? = nil,
-        enabled: Bool? = nil,
-        rawDest: String? = nil,
-        rawSrc: String? = nil,
-        routeType: GetRoutesResponseVariant2RoutesItemRouteType? = nil,
-        srcSyntax: GetRoutesResponseVariant2RoutesItemSrcSyntax? = nil,
-        staged: Bool? = nil
-    ) {
+extension GetRoutesResponseVariant2RoutesItem {
+    public init(id: String, name: String, route: GetRoutesResponseVariant2RoutesItemRoute, description: String? = nil, enabled: Bool? = nil, rawDest: String? = nil, rawSrc: String? = nil, routeType: GetRoutesResponseVariant2RoutesItemRouteType? = nil, srcSyntax: GetRoutesResponseVariant2RoutesItemSrcSyntax? = nil, staged: Bool? = nil) {
         (self.id, self.name) = (id, name)
         (self.route, self.description) = (route, description)
         (self.enabled, self.rawDest) = (enabled, rawDest)
@@ -210,32 +158,22 @@ public indirect enum GetRoutesResponseVariant3RoutesItemRouteMissingItemVariant0
 }
 
 extension GetRoutesResponseVariant3RoutesItemRouteMissingItemVariant0VaX663e996013: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetRoutesResponseVariant3RoutesItemRouteMissingItemVariant0VaX663e996013"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetRoutesResponseVariant3RoutesItemRouteMissingItemVariant0VaX663e996013")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetRoutesResponseVariant3RoutesItemRouteMissingItemVariant0VaX663e996013 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -271,21 +209,21 @@ public struct EditRouteRequestBodyRouteRouteHasItem: Codable {
     }
 
     init() {
-        (type, key, value) = (nil, nil, nil)
+        (self.type, self.key, self.value) = (nil, nil, nil)
     }
 }
 
-public extension EditRouteRequestBodyRouteRouteHasItem {
-    init(from decoder: Decoder) throws {
+extension EditRouteRequestBodyRouteRouteHasItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        type = try container.sdkDecodeIfPresent(.type)
-        key = try container.sdkDecodeIfPresent(.key)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.type = try container.sdkDecodeIfPresent(.type)
+        self.key = try container.sdkDecodeIfPresent(.key)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension EditRouteRequestBodyRouteRouteHasItem {
-    init(type: EditRouteRequestBodyRouteRouteHasItemType? = nil, key: String? = nil, value: String? = nil) {
+extension EditRouteRequestBodyRouteRouteHasItem {
+    public init(type: EditRouteRequestBodyRouteRouteHasItemType? = nil, key: String? = nil, value: String? = nil) {
         self.init()
         (self.type, self.key) = (type, key)
         self.value = value
@@ -293,35 +231,23 @@ public extension EditRouteRequestBodyRouteRouteHasItem {
 }
 
 public indirect enum GetRoutesResponseVariant1RoutesItemRouteHasItem {
-    case getRoutesResponseVariant1RoutesItemRouteHasItemVariant0(
-        GetRoutesResponseVariant1RoutesItemRouteHasItemVariant0
-    )
-    case getRoutesResponseVariant1RoutesItemRouteHasItemVariant1(
-        GetRoutesResponseVariant1RoutesItemRouteHasItemVariant1
-    )
+    case getRoutesResponseVariant1RoutesItemRouteHasItemVariant0(GetRoutesResponseVariant1RoutesItemRouteHasItemVariant0)
+    case getRoutesResponseVariant1RoutesItemRouteHasItemVariant1(GetRoutesResponseVariant1RoutesItemRouteHasItemVariant1)
 }
 
 extension GetRoutesResponseVariant1RoutesItemRouteHasItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetRoutesResponseVariant1RoutesItemRouteHasItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetRoutesResponseVariant1RoutesItemRouteHasItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -344,12 +270,12 @@ extension GetRoutesResponseVariant1RoutesItemRouteHasItem {
         if let value = try? container.decode(
             GetRoutesResponseVariant1RoutesItemRouteHasItemVariant0.self
         ) {
-            return .getRoutesResponseVariant1RoutesItemRouteHasItemVariant0(value)
+            return             .getRoutesResponseVariant1RoutesItemRouteHasItemVariant0(value)
         }
         if let value = try? container.decode(
             GetRoutesResponseVariant1RoutesItemRouteHasItemVariant1.self
         ) {
-            return .getRoutesResponseVariant1RoutesItemRouteHasItemVariant1(value)
+            return             .getRoutesResponseVariant1RoutesItemRouteHasItemVariant1(value)
         }
         return nil
     }
@@ -359,10 +285,8 @@ extension GetRoutesResponseVariant1RoutesItemRouteHasItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getRoutesResponseVariant1RoutesItemRouteHasItemVariant0(value): try container
-            .encode(value); return true
-        case let .getRoutesResponseVariant1RoutesItemRouteHasItemVariant1(value): try container
-            .encode(value); return true
+        case let .getRoutesResponseVariant1RoutesItemRouteHasItemVariant0(value): try container.encode(value); return true
+        case let .getRoutesResponseVariant1RoutesItemRouteHasItemVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -377,20 +301,20 @@ public struct AddRouteResponseRouteRouteLocale: Codable {
     }
 
     init() {
-        (cookie, redirect) = (nil, nil)
+        (self.cookie, self.redirect) = (nil, nil)
     }
 }
 
-public extension AddRouteResponseRouteRouteLocale {
-    init(from decoder: Decoder) throws {
+extension AddRouteResponseRouteRouteLocale {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        cookie = try container.sdkDecodeIfPresent(.cookie)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.cookie = try container.sdkDecodeIfPresent(.cookie)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
     }
 }
 
-public extension AddRouteResponseRouteRouteLocale {
-    init(cookie: String? = nil, redirect: [String: String]? = nil) {
+extension AddRouteResponseRouteRouteLocale {
+    public init(cookie: String? = nil, redirect: [String: String]? = nil) {
         self.init()
         (self.cookie, self.redirect) = (cookie, redirect)
     }
@@ -404,33 +328,25 @@ public indirect enum GetRoutesResponseVariant3RoutesItemRouteHasItemVariant0Valu
 }
 
 extension GetRoutesResponseVariant3RoutesItemRouteHasItemVariant0Value: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetRoutesResponseVariant3RoutesItemRouteHasItemVariant0Value"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetRoutesResponseVariant3RoutesItemRouteHasItemVariant0Value")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetRoutesResponseVariant3RoutesItemRouteHasItemVariant0Value {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             GetRoutesResponseVariant3RoutesItemRouteHasItemVariant0ValueVariant1.self
         ) {
-            return .getRoutesResponseVariant3RoutesItemRouteHasItemVariant0ValueVariant1(value)
+            return             .getRoutesResponseVariant3RoutesItemRouteHasItemVariant0ValueVariant1(value)
         }
         return nil
     }
@@ -441,8 +357,7 @@ extension GetRoutesResponseVariant3RoutesItemRouteHasItemVariant0Value {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .getRoutesResponseVariant3RoutesItemRouteHasItemVariant0ValueVariant1(value): try container
-            .encode(value); return true
+        case let .getRoutesResponseVariant3RoutesItemRouteHasItemVariant0ValueVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -457,35 +372,25 @@ public struct GetRoutesResponseVariant2: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetRoutesResponseVariant2 {
-    init(from decoder: Decoder) throws {
+extension GetRoutesResponseVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.routes) else {
-            throw SdkValidationError(
-                field: "routes",
-                code: "required",
-                message: "Validation failed for 'routes': value is required"
-            )
+            throw SdkValidationError(field: "routes", code: "required", message: "Validation failed for 'routes': value is required")
         }
         guard container.contains(.version) else {
-            throw SdkValidationError(
-                field: "version",
-                code: "required",
-                message: "Validation failed for 'version': value is required"
-            )
+            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
         }
-        routes = try container.sdkDecodeRequired(.routes)
-        version = try container.sdkDecodeRequired(.version)
+        self.routes = try container.sdkDecodeRequired(.routes)
+        self.version = try container.sdkDecodeRequired(.version)
     }
 }
 
-public extension GetRoutesResponseVariant2 {
-    init(routes: [GetRoutesResponseVariant2RoutesItem], version: GetRoutesResponseVariant2Version) {
+extension GetRoutesResponseVariant2 {
+    public init(routes: [GetRoutesResponseVariant2RoutesItem], version: GetRoutesResponseVariant2Version) {
         (self.routes, self.version) = (routes, version)
     }
 }
@@ -506,29 +411,23 @@ public struct GenerateRouteRequestBodyCurrentRouteActionsItem: Codable {
     }
 
     init() {
-        (type, subType, dest, status, headers) = (nil, nil, nil, nil, nil)
+        (self.type, self.subType, self.dest, self.status, self.headers) = (nil, nil, nil, nil, nil)
     }
 }
 
-public extension GenerateRouteRequestBodyCurrentRouteActionsItem {
-    init(from decoder: Decoder) throws {
+extension GenerateRouteRequestBodyCurrentRouteActionsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        type = try container.sdkDecodeIfPresent(.type)
-        subType = try container.sdkDecodeIfPresent(.subType)
-        dest = try container.sdkDecodeIfPresent(.dest)
-        status = try container.sdkDecodeIfPresent(.status)
-        headers = try container.sdkDecodeIfPresent(.headers)
+        self.type = try container.sdkDecodeIfPresent(.type)
+        self.subType = try container.sdkDecodeIfPresent(.subType)
+        self.dest = try container.sdkDecodeIfPresent(.dest)
+        self.status = try container.sdkDecodeIfPresent(.status)
+        self.headers = try container.sdkDecodeIfPresent(.headers)
     }
 }
 
-public extension GenerateRouteRequestBodyCurrentRouteActionsItem {
-    init(
-        type: String? = nil,
-        subType: String? = nil,
-        dest: String? = nil,
-        status: Int? = nil,
-        headers: [GenerateRouteRequestBodyCurrentRouteActionsItemHeadersItem]? = nil
-    ) {
+extension GenerateRouteRequestBodyCurrentRouteActionsItem {
+    public init(type: String? = nil, subType: String? = nil, dest: String? = nil, status: Int? = nil, headers: [GenerateRouteRequestBodyCurrentRouteActionsItemHeadersItem]? = nil) {
         self.init()
         (self.type, self.subType) = (type, subType)
         (self.dest, self.status) = (dest, status)
@@ -566,49 +465,31 @@ public struct GetRoutesResponseVariant3Version: Codable {
         case ruleCount
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetRoutesResponseVariant3Version {
-    init(from decoder: Decoder) throws {
+extension GetRoutesResponseVariant3Version {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdBy) else {
-            throw SdkValidationError(
-                field: "createdBy",
-                code: "required",
-                message: "Validation failed for 'createdBy': value is required"
-            )
+            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.lastModified) else {
-            throw SdkValidationError(
-                field: "lastModified",
-                code: "required",
-                message: "Validation failed for 'lastModified': value is required"
-            )
+            throw SdkValidationError(field: "lastModified", code: "required", message: "Validation failed for 'lastModified': value is required")
         }
         guard container.contains(.s3Key) else {
-            throw SdkValidationError(
-                field: "s3Key",
-                code: "required",
-                message: "Validation failed for 's3Key': value is required"
-            )
+            throw SdkValidationError(field: "s3Key", code: "required", message: "Validation failed for 's3Key': value is required")
         }
-        createdBy = try container.sdkDecodeRequired(.createdBy)
-        id = try container.sdkDecodeRequired(.id)
-        lastModified = try container.sdkDecodeRequired(.lastModified)
-        s3Key = try container.sdkDecodeRequired(.s3Key)
-        alias = try container.sdkDecodeIfPresent(.alias)
-        isLive = try container.sdkDecodeIfPresent(.isLive)
-        isStaging = try container.sdkDecodeIfPresent(.isStaging)
-        ruleCount = try container.sdkDecodeIfPresent(.ruleCount)
+        self.createdBy = try container.sdkDecodeRequired(.createdBy)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.lastModified = try container.sdkDecodeRequired(.lastModified)
+        self.s3Key = try container.sdkDecodeRequired(.s3Key)
+        self.alias = try container.sdkDecodeIfPresent(.alias)
+        self.isLive = try container.sdkDecodeIfPresent(.isLive)
+        self.isStaging = try container.sdkDecodeIfPresent(.isStaging)
+        self.ruleCount = try container.sdkDecodeIfPresent(.ruleCount)
     }
 }

@@ -14,9 +14,7 @@ import Foundation
 #endif
 
 func resolveOAuth2Token(_ auth: OAuth2Auth, defaultTokenUrl: String) async throws -> String {
-    if let access = auth.accessToken {
-        return access
-    }
+    if let access = auth.accessToken { return access }
     let tokenUrl = auth.tokenUrl ?? defaultTokenUrl
     guard !tokenUrl.isEmpty else {
         throw SdkNetworkError(cause: NSError(
@@ -27,7 +25,8 @@ func resolveOAuth2Token(_ auth: OAuth2Auth, defaultTokenUrl: String) async throw
     let sortedScopes = (auth.scopes ?? []).sorted()
     let cacheKey = "\(auth.clientId ?? "")|\(tokenUrl)|\(sortedScopes.joined(separator: ","))"
     if let cached = await oauth2Cache.get(cacheKey),
-       cached.expiresAt > Date().addingTimeInterval(oauth2ExpirySkew) {
+       cached.expiresAt > Date().addingTimeInterval(oauth2ExpirySkew)
+    {
         return cached.accessToken
     }
     let id = OAuth2FlightKey(owner: ObjectIdentifier(oauth2Cache), key: cacheKey)
@@ -37,7 +36,7 @@ func resolveOAuth2Token(_ auth: OAuth2Auth, defaultTokenUrl: String) async throw
 }
 
 /// Runs the client-credentials grant and caches the issued token.
-func exchangeClientCredentials(_ auth: OAuth2Auth, tokenUrl: String, cacheKey: String) async throws -> String {
+internal func exchangeClientCredentials(_ auth: OAuth2Auth, tokenUrl: String, cacheKey: String) async throws -> String {
     var formItems = [
         URLQueryItem(name: "grant_type", value: "client_credentials"),
         URLQueryItem(name: "client_id", value: auth.clientId ?? ""),
@@ -89,12 +88,12 @@ func postOAuth2Form(_ tokenUrl: String, _ formItems: [URLQueryItem]) async throw
 /// token before it expires and adopts each refresh token the server rotates in,
 /// passing it to `onRefreshTokenRotated` so it can be persisted.
 public actor OAuth2RefreshTokenProvider: OAuth2TokenProvider {
-    let clientId: String?
-    let clientSecret: String?
-    let refreshUrl: String?
-    let onRefreshTokenRotated: (@Sendable (String) -> Void)?
-    var refreshToken: String
-    var token = OAuth2Token(accessToken: "")
+    internal let clientId: String?
+    internal let clientSecret: String?
+    internal let refreshUrl: String?
+    internal let onRefreshTokenRotated: (@Sendable (String) -> Void)?
+    internal var refreshToken: String
+    internal var token = OAuth2Token(accessToken: "")
 
     /// `refreshUrl` overrides the request's `refreshUrl`.
     public init(
@@ -144,9 +143,7 @@ public actor OAuth2RefreshTokenProvider: OAuth2TokenProvider {
 public struct OAuth2PkcePair: Sendable {
     public let verifier: String
     public let challenge: String
-    public var method: String {
-        "S256"
-    }
+    public var method: String { "S256" }
 
     /// Creates a verifier and its S256 challenge. Keep the verifier with the
     /// login attempt until its authorization code is exchanged.
@@ -158,7 +155,7 @@ public struct OAuth2PkcePair: Sendable {
     }
 }
 
-func base64Url(_ data: Data) -> String {
+internal func base64Url(_ data: Data) -> String {
     data.base64EncodedString()
         .replacingOccurrences(of: "+", with: "-")
         .replacingOccurrences(of: "/", with: "_")
@@ -251,19 +248,17 @@ public struct SdkAuthProviderError: SdkError, LocalizedError {
     public let message: String
     public let cause: Swift.Error?
 
-    public var errorDescription: String? {
-        message
-    }
+    public var errorDescription: String? { message }
 }
 
 /// The scopes an operation asks an OAuth 2 token provider for.
-func oauth2OperationScopes(_: String, _: String) -> [String] {
+internal func oauth2OperationScopes(_ operationId: String, _ scheme: String) -> [String] {
     []
 }
 
 /// Obtains the access token `provider` supplies for `operationId`, refreshing
 /// it once when it is empty or about to expire.
-func providerAccessToken(
+internal func providerAccessToken(
     _ provider: any OAuth2TokenProvider,
     operationId: String,
     scheme: String,
@@ -279,21 +274,17 @@ func providerAccessToken(
     let token = try await fetchProviderToken(operationId, request, "could not obtain an access token") {
         try await provider.getAccessToken($0)
     }
-    if isUsableToken(token) {
-        return token.accessToken
-    }
+    if isUsableToken(token) { return token.accessToken }
     let refreshed = try await fetchProviderToken(operationId, request, "could not refresh the expired access token") {
         try await refreshOnce(provider, $0)
     }
-    if isUsableToken(refreshed) {
-        return refreshed.accessToken
-    }
+    if isUsableToken(refreshed) { return refreshed.accessToken }
     throw providerError(operationId, request, "obtained no usable access token")
 }
 
 /// Refreshes through `provider`, sharing one refresh among concurrent requests.
 /// Only a class or actor provider has an identity to share it by.
-func refreshOnce(_ provider: any OAuth2TokenProvider, _ request: OAuth2TokenRequest) async throws -> OAuth2Token {
+internal func refreshOnce(_ provider: any OAuth2TokenProvider, _ request: OAuth2TokenRequest) async throws -> OAuth2Token {
     guard type(of: provider) is AnyObject.Type else {
         return try await provider.refreshAccessToken(request)
     }
@@ -302,7 +293,7 @@ func refreshOnce(_ provider: any OAuth2TokenProvider, _ request: OAuth2TokenRequ
     return try await oauth2TokenFlights.run(id) { try await provider.refreshAccessToken(request) }
 }
 
-func fetchProviderToken(
+internal func fetchProviderToken(
     _ operationId: String,
     _ request: OAuth2TokenRequest,
     _ summary: String,
@@ -317,17 +308,13 @@ func fetchProviderToken(
     }
 }
 
-func isUsableToken(_ token: OAuth2Token) -> Bool {
-    guard !token.accessToken.isEmpty else {
-        return false
-    }
-    guard let expiresAt = token.expiresAt else {
-        return true
-    }
+internal func isUsableToken(_ token: OAuth2Token) -> Bool {
+    guard !token.accessToken.isEmpty else { return false }
+    guard let expiresAt = token.expiresAt else { return true }
     return expiresAt > Date().addingTimeInterval(oauth2ExpirySkew)
 }
 
-func providerError(
+internal func providerError(
     _ operationId: String,
     _ request: OAuth2TokenRequest,
     _ summary: String,
@@ -343,7 +330,7 @@ func providerError(
     )
 }
 
-func flattenHeaders(_ response: HTTPURLResponse) -> [String: String] {
+internal func flattenHeaders(_ response: HTTPURLResponse) -> [String: String] {
     var result: [String: String] = [:]
     for (key, value) in response.allHeaderFields {
         if let k = key as? String {
@@ -355,38 +342,33 @@ func flattenHeaders(_ response: HTTPURLResponse) -> [String: String] {
 
 /// An explicit per-call key always wins and an empty one sends none; otherwise
 /// a key is generated for the methods the idempotency config covers.
-func resolveIdempotencyKey(_ explicitKey: String?, idem: IdempotencyConfig, method: String) -> String? {
+internal func resolveIdempotencyKey(_ explicitKey: String?, idem: IdempotencyConfig, method: String) -> String? {
     if let explicitKey {
         return explicitKey.isEmpty ? nil : explicitKey
     }
     return idem.enabled && idem.methods.contains(method) ? UUID().uuidString : nil
 }
 
-func shouldRetry(method: String, statusCode: Int, retryOn: [Int]) -> Bool {
-    guard retryOn.contains(statusCode) else {
-        return false
-    }
-    if idempotentMethods.contains(method) {
-        return true
-    }
+internal func shouldRetry(method: String, statusCode: Int, retryOn: [Int]) -> Bool {
+    guard retryOn.contains(statusCode) else { return false }
+    if idempotentMethods.contains(method) { return true }
     return alwaysRetryableStatuses.contains(statusCode)
 }
 
 /// An attempt that produced no response may already have been applied, so a
 /// non-idempotent method is repeated only with a key sent to an operation
 /// that declares the server deduplicates on it.
-func mayRepeatRequest(_ method: String, _ operationId: String, _ idempotencyKey: String?) -> Bool {
-    if idempotentMethods.contains(method) {
-        return true
-    }
+internal func mayRepeatRequest(_ method: String, _ operationId: String, _ idempotencyKey: String?) -> Bool {
+    if idempotentMethods.contains(method) { return true }
     return idempotencyKey != nil && idempotencyKeyOperations.contains(operationId)
 }
 
-func sleepBackoff(retry: RetryConfig, attempt: Int, retryAfter: String?) async throws {
+internal func sleepBackoff(retry: RetryConfig, attempt: Int, retryAfter: String?) async throws {
     var delay: TimeInterval
 
     if let retryAfter, let seconds = Double(retryAfter.trimmingCharacters(in: .whitespaces)),
-       seconds > 0 {
+        seconds > 0
+    {
         delay = min(seconds, retry.maxBackoff)
     } else {
         let exp = retry.backoff * pow(2.0, Double(attempt - 1))
@@ -420,12 +402,12 @@ public struct SdkStreamEvent: Sendable {
 /// Opens an SSE connection and returns an AsyncThrowingStream of parsed
 /// events. Bypasses the retry loop and idempotency layer — streaming
 /// connections are long-lived; reconnect is the caller's responsibility.
-public func sdkStream(
+public func sdkStream<B: Encodable>(
     _ method: String,
     _ path: String,
     config: ClientConfig? = nil,
     query: [SdkQueryParameter] = [],
-    body: (some Encodable)? = EmptyBody?.none,
+    body: B? = Optional<EmptyBody>.none,
     rawBody: Data? = nil,
     contentType: String = "application/json",
     operationId: String = "",
@@ -457,15 +439,9 @@ public func sdkStream(
     if let rawBody {
         request.httpBody = try sdkWithStreamSelector(rawBody, operationId: operationId, contentType: contentType)
     } else if let body {
-        request.httpBody = try sdkWithStreamSelector(
-            sdkEncodeBody(body, contentType: contentType),
-            operationId: operationId,
-            contentType: contentType
-        )
+        request.httpBody = try sdkWithStreamSelector(sdkEncodeBody(body, contentType: contentType), operationId: operationId, contentType: contentType)
     }
-    if request.httpBody != nil {
-        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
-    }
+    if request.httpBody != nil { request.setValue(contentType, forHTTPHeaderField: "Content-Type") }
     for (key, value) in Array(extraHeaders) + Array(options?.headers ?? [:]) {
         sdkSetHeader(&request, key, value)
     }
@@ -507,9 +483,7 @@ public func sdkStream(
                 var dataLines: [String] = []
 
                 func flush() {
-                    guard !dataLines.isEmpty else {
-                        eventName = nil; return
-                    }
+                    guard !dataLines.isEmpty else { eventName = nil; return }
                     let ev = SdkStreamEvent(
                         event: eventName ?? "message",
                         data: dataLines.joined(separator: "\n"),
@@ -530,17 +504,11 @@ public func sdkStream(
                     for byte in chunk {
                         if byte == 0x0A { // \n
                             // Strip optional trailing \r (from \r\n).
-                            if lineBuf.last == 0x0D {
-                                lineBuf.removeLast()
-                            }
+                            if lineBuf.last == 0x0D { lineBuf.removeLast() }
                             let line = try decodeStreamLine(lineBuf)
                             lineBuf.removeAll(keepingCapacity: true)
-                            if line.isEmpty {
-                                flush(); continue
-                            }
-                            if line.hasPrefix(":") {
-                                continue
-                            }
+                            if line.isEmpty { flush(); continue }
+                            if line.hasPrefix(":") { continue }
                             let (field, value) = splitSseLine(line)
                             switch field {
                             case "event": eventName = value
@@ -557,11 +525,9 @@ public func sdkStream(
                 // Flush any trailing partial line + the pending event.
                 if !lineBuf.isEmpty {
                     let line = try decodeStreamLine(lineBuf)
-                    if !line.isEmpty, !line.hasPrefix(":") {
+                    if !line.isEmpty && !line.hasPrefix(":") {
                         let (field, value) = splitSseLine(line)
-                        if field == "data" {
-                            dataLines.append(value)
-                        }
+                        if field == "data" { dataLines.append(value) }
                     }
                 }
                 flush()
@@ -576,15 +542,14 @@ public func sdkStream(
 
 /// Fails an event stream answered with plain JSON, as by a server that ignored
 /// the stream flag: its parser would yield no events at all.
-func sdkRefuseJsonAnswer(
+internal func sdkRefuseJsonAnswer(
     _ response: HTTPURLResponse,
     headers: [String: String],
     requestId: String,
     byteStream: AsyncThrowingStream<Data, Swift.Error>
 ) async throws {
     let contentType = headers["content-type"] ?? ""
-    let mediaType = contentType.split(separator: ";").first
-        .map { $0.trimmingCharacters(in: .whitespaces).lowercased() } ?? ""
+    let mediaType = contentType.split(separator: ";").first.map { $0.trimmingCharacters(in: .whitespaces).lowercased() } ?? ""
     guard mediaType == "application/json" || mediaType.hasSuffix("+json") else {
         return
     }
@@ -601,7 +566,7 @@ func sdkRefuseJsonAnswer(
     )
 }
 
-func sdkChunkStream(
+internal func sdkChunkStream(
     _ byteStream: AsyncThrowingStream<Data, Swift.Error>,
     chunkDomain: String
 ) -> AsyncThrowingStream<SdkStreamEvent, Swift.Error> {
@@ -623,4 +588,4 @@ func sdkChunkStream(
 
 /// What surrounds an NDJSON record: whitespace, and the RS a JSON text sequence
 /// record starts with.
-let sdkJsonRecordPadding = CharacterSet.whitespacesAndNewlines.union(CharacterSet(charactersIn: "\u{1E}"))
+internal let sdkJsonRecordPadding = CharacterSet.whitespacesAndNewlines.union(CharacterSet(charactersIn: "\u{1E}"))

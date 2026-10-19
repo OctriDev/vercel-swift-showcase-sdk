@@ -6,57 +6,34 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension IntegrationsMethods {
-    /// Lists Git namespaces for a supported provider. Use `provider` to select a provider, or omit it to let the API
-    /// infer the provider from the authenticated user; provide `host` when using a custom Git host. Set
-    /// `viewerMetadata` to include viewer information for each namespace.
+extension IntegrationsMethods {
+    /// Lists Git namespaces for a supported provider. Use `provider` to select a provider, or omit it to let the API infer the provider from the authenticated user; provide `host` when using a custom Git host. Set `viewerMetadata` to include viewer information for each namespace.
     ///
-    /// Lists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If
-    /// the provider is not provided, it will try to obtain it from the user that authenticated the request.
+    /// Lists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider is not provided, it will try to obtain it from the user that authenticated the request.
     ///
     /// - Parameters:
     /// - host: The custom Git host if using a custom Git provider, like GitHub
     ///   Enterprise Server
     /// - viewerMetadata: When true, includes the viewer object for each namespace.
-    static func gitNamespaces(
-        config: ClientConfig,
-        host: String? = nil,
-        provider: GitNamespacesParameter? = nil,
-        viewerMetadata: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [GitNamespacesResponseItem] {
-        try await (sdkRequest("GET", "/v1/integrations/git-namespaces", config: config, query: [
+    public static func gitNamespaces(config: ClientConfig, host: String? = nil, provider: GitNamespacesParameter? = nil, viewerMetadata: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> [GitNamespacesResponseItem] {
+        return try (await sdkRequest("GET", "/v1/integrations/git-namespaces", config: config, query: [
             SdkQueryParameter("host", value: host),
             SdkQueryParameter("provider", value: provider),
             SdkQueryParameter("viewerMetadata", value: viewerMetadata),
         ], decoder: .json, operationId: "gitNamespaces", options: requestOptions)).data
     }
 
-    /// Searches for Git repositories linked to a namespace for a supported provider. Use `namespaceId` and `provider`
-    /// to narrow the search, or omit them to let the API infer values from the authenticated user; `query` can filter
-    /// the repositories. Supply `host` when using a custom Git host.
+    /// Searches for Git repositories linked to a namespace for a supported provider. Use `namespaceId` and `provider` to narrow the search, or omit them to let the API infer values from the authenticated user; `query` can filter the repositories. Supply `host` when using a custom Git host.
     ///
-    /// Lists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be
-    /// obtained via the `git-namespaces` endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the
-    /// provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.
+    /// Lists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be obtained via the `git-namespaces` endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.
     ///
     /// - Parameters:
     /// - host: The custom Git host if using a custom Git provider, like GitHub
     ///   Enterprise Server
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func searchRepo(
-        config: ClientConfig,
-        query: String? = nil,
-        namespaceId: SearchRepoParameter? = nil,
-        provider: SearchRepoParameterXaa5a111b? = nil,
-        installationId: String? = nil,
-        host: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SearchRepoResponse {
-        try await (sdkRequest("GET", "/v1/integrations/search-repo", config: config, query: [
+    public static func searchRepo(config: ClientConfig, query: String? = nil, namespaceId: SearchRepoParameter? = nil, provider: SearchRepoParameterXaa5a111b? = nil, installationId: String? = nil, host: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SearchRepoResponse {
+        return try (await sdkRequest("GET", "/v1/integrations/search-repo", config: config, query: [
             SdkQueryParameter("query", value: query),
             SdkQueryParameter("namespaceId", value: namespaceId),
             SdkQueryParameter("provider", value: provider),

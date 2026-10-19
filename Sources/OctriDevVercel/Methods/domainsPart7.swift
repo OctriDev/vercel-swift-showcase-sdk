@@ -6,71 +6,33 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DomainsMethods {
-    /// Updates settings for an apex domain or moves the domain to another user or team. Use the update operation for
-    /// domain settings, or the move-out operation to specify a `destination`; use the dedicated registrar endpoints to
-    /// change auto-renew or nameservers.
+extension DomainsMethods {
+    /// Updates settings for an apex domain or moves the domain to another user or team. Use the update operation for domain settings, or the move-out operation to specify a `destination`; use the dedicated registrar endpoints to change auto-renew or nameservers.
     ///
-    /// Update or move apex domain. Note: This endpoint is no longer used for updating auto-renew or nameservers. For
-    /// this, please use the endpoints [Update auto-renew for a
-    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain)
-    /// and [Update nameservers for a
-    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-nameservers-for-a-domain).
+    /// Update or move apex domain. Note: This endpoint is no longer used for updating auto-renew or nameservers. For this, please use the endpoints [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) and [Update nameservers for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-nameservers-for-a-domain).
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func updateDomains(
-        config: ClientConfig,
-        domain: String,
-        body: UpdateDomainsRequestBody,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateDomainsResponse {
-        try await (sdkRequest(
-            "PATCH",
-            ["/v3/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            rawBody: sdkEncodeBody(body, contentType: "application/json"),
-            decoder: .json,
-            operationId: "updateDomains",
-            options: requestOptions
-        )).data
+    public static func updateDomains(config: ClientConfig, domain: String, body: UpdateDomainsRequestBody, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateDomainsResponse {
+        return try (await sdkRequest("PATCH", ["/v3/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], rawBody: (try sdkEncodeBody(body, contentType: "application/json")), decoder: .json, operationId: "updateDomains", options: requestOptions)).data
     }
 
-    /// Deletes a registered domain from Vercel. Use `domain` to identify the domain to remove; deleting it also removes
-    /// any aliases associated with it.
+    /// Deletes a registered domain from Vercel. Use `domain` to identify the domain to remove; deleting it also removes any aliases associated with it.
     ///
-    /// Delete a previously registered domain name from Vercel. Deleting a domain will automatically remove any
-    /// associated aliases.
+    /// Delete a previously registered domain name from Vercel. Deleting a domain will automatically remove any associated aliases.
     ///
     /// - Parameters:
     /// - domain: The name of the domain.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteDomain(
-        config: ClientConfig,
-        domain: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteDomainResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v6/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "deleteDomain",
-            options: requestOptions
-        )).data
+    public static func deleteDomain(config: ClientConfig, domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteDomainResponse {
+        return try (await sdkRequest("DELETE", ["/v6/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "deleteDomain", options: requestOptions)).data
     }
 }

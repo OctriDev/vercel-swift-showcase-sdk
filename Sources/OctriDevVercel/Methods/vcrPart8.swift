@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Lists the teams that a container registry repository is shared with. Supply `projectId` and `idOrName` to
-    /// identify the repository, and use `cursor` to continue through paginated results.
+extension VcrMethods {
+    /// Lists the teams that a container registry repository is shared with. Supply `projectId` and `idOrName` to identify the repository, and use `cursor` to continue through paginated results.
     ///
     /// List the teams a VCR repository is shared with.
     ///
@@ -18,45 +17,27 @@ public extension VcrMethods {
     /// - cursor: Opaque pagination cursor returned by a previous list response.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listRepositoryPermissions(
-        config: ClientConfig,
-        idOrName: String,
-        projectId: String,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> VcrRepositoryPermissionList {
+    public static func listRepositoryPermissions(config: ClientConfig, idOrName: String, projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> VcrRepositoryPermissionList {
         try validateLength("idOrName", idOrName, max: 255)
 
-        if let limit {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        if let cursor {
+        if let cursor = cursor {
             try validateLength("cursor", cursor, max: 1024)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/permissions"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("limit", value: limit),
-                SdkQueryParameter("cursor", value: cursor),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listRepositoryPermissions",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/permissions"].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("limit", value: limit),
+            SdkQueryParameter("cursor", value: cursor),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listRepositoryPermissions", options: requestOptions)).data
     }
 
-    /// Lists the teams that a container registry repository is shared with. Supply `projectId` and `idOrName` to
-    /// identify the repository, and use `cursor` to continue through paginated results.
+    /// Lists the teams that a container registry repository is shared with. Supply `projectId` and `idOrName` to identify the repository, and use `cursor` to continue through paginated results.
     ///
     /// List the teams a VCR repository is shared with.
     ///
@@ -66,44 +47,17 @@ public extension VcrMethods {
     /// - cursor: Opaque pagination cursor returned by a previous list response.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listRepositoryPermissionsPaginated(
-        config: ClientConfig,
-        idOrName: String,
-        projectId: String,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<VcrRepositoryPermission, Swift.Error> {
-        AsyncThrowingStream<VcrRepositoryPermission, Swift.Error> { (continuation: AsyncThrowingStream<
-            VcrRepositoryPermission,
-            Swift.Error
-        >.Continuation) in
+    public static func listRepositoryPermissionsPaginated(config: ClientConfig, idOrName: String, projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<VcrRepositoryPermission, Swift.Error> {
+        return AsyncThrowingStream<VcrRepositoryPermission, Swift.Error> { (continuation: AsyncThrowingStream<VcrRepositoryPermission, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listRepositoryPermissions(
-                            config: config,
-                            idOrName: idOrName,
-                            projectId: projectId,
-                            limit: limit,
-                            cursor: pageCursor,
-                            teamId: teamId,
-                            slug: slug,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listRepositoryPermissions(config: config, idOrName: idOrName, projectId: projectId, limit: limit, cursor: pageCursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
                         let pageItems = pageResponse.permissions
-                        if pageItems.isEmpty {
-                            break
-                        }
-                        for item in pageItems {
-                            continuation.yield(item)
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
+                        for item in pageItems { continuation.yield(item) }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {
@@ -116,56 +70,25 @@ public extension VcrMethods {
         }
     }
 
-    struct ListRepositoryPermissionsPage {
+    public struct ListRepositoryPermissionsPage {
         public let data: VcrRepositoryPermissionList
         public let items: [VcrRepositoryPermission]
         public let hasMore: Bool
     }
 
-    static func listRepositoryPermissionsPages(
-        config: ClientConfig,
-        idOrName: String,
-        projectId: String,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<ListRepositoryPermissionsPage, Swift.Error> {
-        AsyncThrowingStream<ListRepositoryPermissionsPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<
-            ListRepositoryPermissionsPage,
-            Swift.Error
-        >.Continuation) in
+    public static func listRepositoryPermissionsPages(config: ClientConfig, idOrName: String, projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<ListRepositoryPermissionsPage, Swift.Error> {
+        return AsyncThrowingStream<ListRepositoryPermissionsPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<ListRepositoryPermissionsPage, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listRepositoryPermissions(
-                            config: config,
-                            idOrName: idOrName,
-                            projectId: projectId,
-                            limit: limit,
-                            cursor: pageCursor,
-                            teamId: teamId,
-                            slug: slug,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listRepositoryPermissions(config: config, idOrName: idOrName, projectId: projectId, limit: limit, cursor: pageCursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
                         let pageItems = pageResponse.permissions
-                        if pageItems.isEmpty {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
                         let hasMore = pageResponse.nextCursor != nil
-                        pageContinuation.yield(ListRepositoryPermissionsPage(
-                            data: pageResponse,
-                            items: pageItems,
-                            hasMore: hasMore
-                        ))
-                        if !hasMore {
-                            break
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        pageContinuation.yield(ListRepositoryPermissionsPage(data: pageResponse, items: pageItems, hasMore: hasMore))
+                        if !hasMore { break }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {

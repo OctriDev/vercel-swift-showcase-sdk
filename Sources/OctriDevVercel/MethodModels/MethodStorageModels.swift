@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical storage operation model declarations
+// Canonical storage operation model declarations
 public struct CreateStorageStoresBlobResponseStore: Codable {
     public var projectsMetadata: [CreateStorageStoresBlobResponseStoreProjectsMetadataItem]
     public var status: CreateStorageStoresBlobResponseStoreStatus?
@@ -42,93 +42,50 @@ public struct CreateStorageStoresBlobResponseStore: Codable {
         case projectId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateStorageStoresBlobResponseStore {
-    init(from decoder: Decoder) throws {
+extension CreateStorageStoresBlobResponseStore {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectsMetadata) else {
-            throw SdkValidationError(
-                field: "projectsMetadata",
-                code: "required",
-                message: "Validation failed for 'projectsMetadata': value is required"
-            )
+            throw SdkValidationError(field: "projectsMetadata", code: "required", message: "Validation failed for 'projectsMetadata': value is required")
         }
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.usageQuotaExceeded) else {
-            throw SdkValidationError(
-                field: "usageQuotaExceeded",
-                code: "required",
-                message: "Validation failed for 'usageQuotaExceeded': value is required"
-            )
+            throw SdkValidationError(field: "usageQuotaExceeded", code: "required", message: "Validation failed for 'usageQuotaExceeded': value is required")
         }
         guard container.contains(.count) else {
-            throw SdkValidationError(
-                field: "count",
-                code: "required",
-                message: "Validation failed for 'count': value is required"
-            )
+            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
         }
         guard container.contains(.isTokenExpired) else {
-            throw SdkValidationError(
-                field: "isTokenExpired",
-                code: "required",
-                message: "Validation failed for 'isTokenExpired': value is required"
-            )
+            throw SdkValidationError(field: "isTokenExpired", code: "required", message: "Validation failed for 'isTokenExpired': value is required")
         }
         guard container.contains(.region) else {
-            throw SdkValidationError(
-                field: "region",
-                code: "required",
-                message: "Validation failed for 'region': value is required"
-            )
+            throw SdkValidationError(field: "region", code: "required", message: "Validation failed for 'region': value is required")
         }
         guard container.contains(.size) else {
-            throw SdkValidationError(
-                field: "size",
-                code: "required",
-                message: "Validation failed for 'size': value is required"
-            )
+            throw SdkValidationError(field: "size", code: "required", message: "Validation failed for 'size': value is required")
         }
-        projectsMetadata = try container.sdkDecodeRequired(.projectsMetadata)
-        status = try container.sdkDecodeNullable(.status)
-        usageQuotaExceeded = try container.sdkDecodeRequired(.usageQuotaExceeded)
-        count = try container.sdkDecodeRequired(.count)
-        isTokenExpired = try container.sdkDecodeRequired(.isTokenExpired)
-        region = try container.sdkDecodeRequired(.region)
-        size = try container.sdkDecodeRequired(.size)
-        projectFilter = try container.sdkDecodeIfPresent(.projectFilter)
-        totalConnectedProjects = try container.sdkDecodeIfPresent(.totalConnectedProjects)
-        access = try container.sdkDecodeIfPresent(.access)
-        kind = try container.sdkDecodeIfPresent(.kind)
-        projectId = try container.sdkDecodeIfPresent(.projectId)
+        self.projectsMetadata = try container.sdkDecodeRequired(.projectsMetadata)
+        self.status = try container.sdkDecodeNullable(.status)
+        self.usageQuotaExceeded = try container.sdkDecodeRequired(.usageQuotaExceeded)
+        self.count = try container.sdkDecodeRequired(.count)
+        self.isTokenExpired = try container.sdkDecodeRequired(.isTokenExpired)
+        self.region = try container.sdkDecodeRequired(.region)
+        self.size = try container.sdkDecodeRequired(.size)
+        self.projectFilter = try container.sdkDecodeIfPresent(.projectFilter)
+        self.totalConnectedProjects = try container.sdkDecodeIfPresent(.totalConnectedProjects)
+        self.access = try container.sdkDecodeIfPresent(.access)
+        self.kind = try container.sdkDecodeIfPresent(.kind)
+        self.projectId = try container.sdkDecodeIfPresent(.projectId)
     }
 }
 
-public extension CreateStorageStoresBlobResponseStore {
-    init(
-        projectsMetadata: [CreateStorageStoresBlobResponseStoreProjectsMetadataItem],
-        status: CreateStorageStoresBlobResponseStoreStatus?,
-        usageQuotaExceeded: Bool,
-        count: Double,
-        isTokenExpired: Bool,
-        region: CreateStorageStoresBlobResponseStoreRegion,
-        size: Double,
-        projectFilter: CreateStorageStoresBlobResponseStoreProjectFilter? = nil,
-        totalConnectedProjects: Double? = nil,
-        access: CreateStorageStoresBlobResponseStoreAccess? = nil,
-        kind: CreateStorageStoresBlobResponseStoreKind? = nil,
-        projectId: String? = nil
-    ) {
+extension CreateStorageStoresBlobResponseStore {
+    public init(projectsMetadata: [CreateStorageStoresBlobResponseStoreProjectsMetadataItem], status: CreateStorageStoresBlobResponseStoreStatus?, usageQuotaExceeded: Bool, count: Double, isTokenExpired: Bool, region: CreateStorageStoresBlobResponseStoreRegion, size: Double, projectFilter: CreateStorageStoresBlobResponseStoreProjectFilter? = nil, totalConnectedProjects: Double? = nil, access: CreateStorageStoresBlobResponseStoreAccess? = nil, kind: CreateStorageStoresBlobResponseStoreKind? = nil, projectId: String? = nil) {
         (self.projectsMetadata, self.status) = (projectsMetadata, status)
         (self.usageQuotaExceeded, self.count) = (usageQuotaExceeded, count)
         (self.isTokenExpired, self.region) = (isTokenExpired, region)
@@ -145,33 +102,26 @@ public struct CreateStorageStoresBlobResponse: Codable {
         case store
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateStorageStoresBlobResponse {
-    init(from decoder: Decoder) throws {
+extension CreateStorageStoresBlobResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.store) else {
-            throw SdkValidationError(
-                field: "store",
-                code: "required",
-                message: "Validation failed for 'store': value is required"
-            )
+            throw SdkValidationError(field: "store", code: "required", message: "Validation failed for 'store': value is required")
         }
-        store = try container.sdkDecodeNullable(.store)
+        self.store = try container.sdkDecodeNullable(.store)
     }
 }
 
-public extension CreateStorageStoresBlobResponse {
-    init(store: CreateStorageStoresBlobResponseStore?) {
+extension CreateStorageStoresBlobResponse {
+    public init(store: CreateStorageStoresBlobResponseStore?) {
         self.store = store
     }
 }
 
-public typealias GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX97e61d3e8d =
-    [GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX98d533f4c4]
+public typealias GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX97e61d3e8d = [GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX98d533f4c4]
 
 public struct GetStorageStoresByIdResponseStoreProjectsMetadataItemDeployments: Codable {
     public var actions: GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX97e61d3e8d
@@ -182,35 +132,25 @@ public struct GetStorageStoresByIdResponseStoreProjectsMetadataItemDeployments: 
         case required
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetStorageStoresByIdResponseStoreProjectsMetadataItemDeployments {
-    init(from decoder: Decoder) throws {
+extension GetStorageStoresByIdResponseStoreProjectsMetadataItemDeployments {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.actions) else {
-            throw SdkValidationError(
-                field: "actions",
-                code: "required",
-                message: "Validation failed for 'actions': value is required"
-            )
+            throw SdkValidationError(field: "actions", code: "required", message: "Validation failed for 'actions': value is required")
         }
         guard container.contains(.required) else {
-            throw SdkValidationError(
-                field: "required",
-                code: "required",
-                message: "Validation failed for 'required': value is required"
-            )
+            throw SdkValidationError(field: "required", code: "required", message: "Validation failed for 'required': value is required")
         }
-        actions = try container.sdkDecodeRequired(.actions)
-        required = try container.sdkDecodeRequired(.required)
+        self.actions = try container.sdkDecodeRequired(.actions)
+        self.required = try container.sdkDecodeRequired(.required)
     }
 }
 
-public extension GetStorageStoresByIdResponseStoreProjectsMetadataItemDeployments {
-    init(actions: GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX97e61d3e8d, required: Bool) {
+extension GetStorageStoresByIdResponseStoreProjectsMetadataItemDeployments {
+    public init(actions: GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX97e61d3e8d, required: Bool) {
         (self.actions, self.required) = (actions, required)
     }
 }
@@ -230,51 +170,31 @@ public struct GetStorageStoresByIdResponseStore: Codable {
         case totalConnectedProjects
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetStorageStoresByIdResponseStore {
-    init(from decoder: Decoder) throws {
+extension GetStorageStoresByIdResponseStore {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectsMetadata) else {
-            throw SdkValidationError(
-                field: "projectsMetadata",
-                code: "required",
-                message: "Validation failed for 'projectsMetadata': value is required"
-            )
+            throw SdkValidationError(field: "projectsMetadata", code: "required", message: "Validation failed for 'projectsMetadata': value is required")
         }
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.usageQuotaExceeded) else {
-            throw SdkValidationError(
-                field: "usageQuotaExceeded",
-                code: "required",
-                message: "Validation failed for 'usageQuotaExceeded': value is required"
-            )
+            throw SdkValidationError(field: "usageQuotaExceeded", code: "required", message: "Validation failed for 'usageQuotaExceeded': value is required")
         }
-        projectsMetadata = try container.sdkDecodeRequired(.projectsMetadata)
-        status = try container.sdkDecodeNullable(.status)
-        usageQuotaExceeded = try container.sdkDecodeRequired(.usageQuotaExceeded)
-        projectFilter = try container.sdkDecodeIfPresent(.projectFilter)
-        totalConnectedProjects = try container.sdkDecodeIfPresent(.totalConnectedProjects)
+        self.projectsMetadata = try container.sdkDecodeRequired(.projectsMetadata)
+        self.status = try container.sdkDecodeNullable(.status)
+        self.usageQuotaExceeded = try container.sdkDecodeRequired(.usageQuotaExceeded)
+        self.projectFilter = try container.sdkDecodeIfPresent(.projectFilter)
+        self.totalConnectedProjects = try container.sdkDecodeIfPresent(.totalConnectedProjects)
     }
 }
 
-public extension GetStorageStoresByIdResponseStore {
-    init(
-        projectsMetadata: [GetStorageStoresByIdResponseStoreProjectsMetadataItem],
-        status: GetStorageStoresByIdResponseStoreStatus?,
-        usageQuotaExceeded: Bool,
-        projectFilter: GetStorageStoresByIdResponseStoreProjectFilter? = nil,
-        totalConnectedProjects: Double? = nil
-    ) {
+extension GetStorageStoresByIdResponseStore {
+    public init(projectsMetadata: [GetStorageStoresByIdResponseStoreProjectsMetadataItem], status: GetStorageStoresByIdResponseStoreStatus?, usageQuotaExceeded: Bool, projectFilter: GetStorageStoresByIdResponseStoreProjectFilter? = nil, totalConnectedProjects: Double? = nil) {
         (self.projectsMetadata, self.status) = (projectsMetadata, status)
         (self.usageQuotaExceeded, self.projectFilter) = (usageQuotaExceeded, projectFilter)
         self.totalConnectedProjects = totalConnectedProjects
@@ -292,33 +212,23 @@ public struct GetStorageStoresByIdResponseStoreProjectFilterGit: Codable {
         case repos
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetStorageStoresByIdResponseStoreProjectFilterGit {
-    init(from decoder: Decoder) throws {
+extension GetStorageStoresByIdResponseStoreProjectFilterGit {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.providers) else {
-            throw SdkValidationError(
-                field: "providers",
-                code: "required",
-                message: "Validation failed for 'providers': value is required"
-            )
+            throw SdkValidationError(field: "providers", code: "required", message: "Validation failed for 'providers': value is required")
         }
-        providers = try container.sdkDecodeRequired(.providers)
-        owners = try container.sdkDecodeIfPresent(.owners)
-        repos = try container.sdkDecodeIfPresent(.repos)
+        self.providers = try container.sdkDecodeRequired(.providers)
+        self.owners = try container.sdkDecodeIfPresent(.owners)
+        self.repos = try container.sdkDecodeIfPresent(.repos)
     }
 }
 
-public extension GetStorageStoresByIdResponseStoreProjectFilterGit {
-    init(
-        providers: GetStorageStoresByIdResponseStoreProjectFilterGitProviders,
-        owners: [String]? = nil,
-        repos: [String]? = nil
-    ) {
+extension GetStorageStoresByIdResponseStoreProjectFilterGit {
+    public init(providers: GetStorageStoresByIdResponseStoreProjectFilterGitProviders, owners: [String]? = nil, repos: [String]? = nil) {
         (self.providers, self.owners) = (providers, owners)
         self.repos = repos
     }
@@ -332,19 +242,19 @@ public struct CreateStorageStoresBlobResponseStoreProjectFilter: Codable {
     }
 
     init() {
-        git = nil
+        self.git = nil
     }
 }
 
-public extension CreateStorageStoresBlobResponseStoreProjectFilter {
-    init(from decoder: Decoder) throws {
+extension CreateStorageStoresBlobResponseStoreProjectFilter {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        git = try container.sdkDecodeIfPresent(.git)
+        self.git = try container.sdkDecodeIfPresent(.git)
     }
 }
 
-public extension CreateStorageStoresBlobResponseStoreProjectFilter {
-    init(git: CreateStorageStoresBlobResponseStoreProjectFilterGit? = nil) {
+extension CreateStorageStoresBlobResponseStoreProjectFilter {
+    public init(git: CreateStorageStoresBlobResponseStoreProjectFilterGit? = nil) {
         self.init()
         self.git = git
     }
@@ -356,32 +266,22 @@ public indirect enum GetStorageStoresByIdResponseStoreProjectFilterGitProviders 
 }
 
 extension GetStorageStoresByIdResponseStoreProjectFilterGitProviders: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetStorageStoresByIdResponseStoreProjectFilterGitProviders"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetStorageStoresByIdResponseStoreProjectFilterGitProviders")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetStorageStoresByIdResponseStoreProjectFilterGitProviders {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String].self) {
-            return .stringList(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode([String].self) { return .stringList(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -404,19 +304,19 @@ public struct GetStorageStoresByIdResponseStoreProjectFilter: Codable {
     }
 
     init() {
-        git = nil
+        self.git = nil
     }
 }
 
-public extension GetStorageStoresByIdResponseStoreProjectFilter {
-    init(from decoder: Decoder) throws {
+extension GetStorageStoresByIdResponseStoreProjectFilter {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        git = try container.sdkDecodeIfPresent(.git)
+        self.git = try container.sdkDecodeIfPresent(.git)
     }
 }
 
-public extension GetStorageStoresByIdResponseStoreProjectFilter {
-    init(git: GetStorageStoresByIdResponseStoreProjectFilterGit? = nil) {
+extension GetStorageStoresByIdResponseStoreProjectFilter {
+    public init(git: GetStorageStoresByIdResponseStoreProjectFilterGit? = nil) {
         self.init()
         self.git = git
     }
@@ -428,32 +328,22 @@ public indirect enum CreateStorageStoresBlobResponseStoreProjectFilterGitProvide
 }
 
 extension CreateStorageStoresBlobResponseStoreProjectFilterGitProviders: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateStorageStoresBlobResponseStoreProjectFilterGitProviders"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateStorageStoresBlobResponseStoreProjectFilterGitProviders")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateStorageStoresBlobResponseStoreProjectFilterGitProviders {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String].self) {
-            return .stringList(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode([String].self) { return .stringList(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -468,8 +358,7 @@ extension CreateStorageStoresBlobResponseStoreProjectFilterGitProviders {
     }
 }
 
-public typealias CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploX723a0c98a9 =
-    [CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploXdbb4725d02]
+public typealias CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploX723a0c98a9 = [CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploXdbb4725d02]
 
 public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments: Codable {
     public var actions: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploX723a0c98a9
@@ -480,35 +369,25 @@ public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployment
         case required
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments {
-    init(from decoder: Decoder) throws {
+extension CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.actions) else {
-            throw SdkValidationError(
-                field: "actions",
-                code: "required",
-                message: "Validation failed for 'actions': value is required"
-            )
+            throw SdkValidationError(field: "actions", code: "required", message: "Validation failed for 'actions': value is required")
         }
         guard container.contains(.required) else {
-            throw SdkValidationError(
-                field: "required",
-                code: "required",
-                message: "Validation failed for 'required': value is required"
-            )
+            throw SdkValidationError(field: "required", code: "required", message: "Validation failed for 'required': value is required")
         }
-        actions = try container.sdkDecodeRequired(.actions)
-        required = try container.sdkDecodeRequired(.required)
+        self.actions = try container.sdkDecodeRequired(.actions)
+        self.required = try container.sdkDecodeRequired(.required)
     }
 }
 
-public extension CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments {
-    init(actions: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploX723a0c98a9, required: Bool) {
+extension CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments {
+    public init(actions: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploX723a0c98a9, required: Bool) {
         (self.actions, self.required) = (actions, required)
     }
 }
@@ -522,35 +401,25 @@ public struct GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX98d5
         case slug
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX98d533f4c4 {
-    init(from decoder: Decoder) throws {
+extension GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX98d533f4c4 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.environments) else {
-            throw SdkValidationError(
-                field: "environments",
-                code: "required",
-                message: "Validation failed for 'environments': value is required"
-            )
+            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
-        environments = try container.sdkDecodeRequired(.environments)
-        slug = try container.sdkDecodeRequired(.slug)
+        self.environments = try container.sdkDecodeRequired(.environments)
+        self.slug = try container.sdkDecodeRequired(.slug)
     }
 }
 
-public extension GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX98d533f4c4 {
-    init(environments: [String], slug: String) {
+extension GetStorageStoresByIdResponseStoreProjectsMetadataItemDeploymeX98d533f4c4 {
+    public init(environments: [String], slug: String) {
         (self.environments, self.slug) = (environments, slug)
     }
 }
@@ -580,7 +449,5 @@ public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItem: Codable 
         case makeEnvVarsSensitive
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

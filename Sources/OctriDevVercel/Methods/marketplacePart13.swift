@@ -6,100 +6,37 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension MarketplaceMethods {
-    /// Retrieves response metadata for a user-provided Global Config associated with an integration resource. Use this
-    /// endpoint when the user has enabled Global Config syncing and you need to check the configuration without
-    /// requesting its contents.
+extension MarketplaceMethods {
+    /// Retrieves response metadata for a user-provided Global Config associated with an integration resource. Use this endpoint when the user has enabled Global Config syncing and you need to check the configuration without requesting its contents.
     ///
-    /// When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents
-    /// of the Global Config.
-    static func headInstallationsByIntegrationConfigurationIdResourcesByResouX7417c5ad55(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        resourceId: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await (sdkRequest(
-            "HEAD",
-            [
-                "/v1/installations/",
-                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
-                "/resources/",
-                sdkEncodePathSegment(sdkWireString(resourceId)),
-                "/experimentation/global-config",
-            ].joined(),
-            config: config,
-            decoder: .empty,
-            operationId: """
-            headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentatio\
-            nGlobalConfig
-            """,
-            options: requestOptions
-        )).data
+    /// When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents of the Global Config.
+    public static func headInstallationsByIntegrationConfigurationIdResourcesByResouX7417c5ad55(config: ClientConfig, integrationConfigurationId: String, resourceId: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try (await sdkRequest("HEAD", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(resourceId)), "/experimentation/global-config"].joined(), config: config, decoder: .empty, operationId: """
+    headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentatio\
+    nGlobalConfig
+    """, options: requestOptions)).data
     }
 
-    /// Retrieves the contents of a user-provided Global Config for an integration resource. Use this endpoint when the
-    /// user has enabled Global Config syncing; the response includes the configuration items, digest, and update time.
+    /// Retrieves the contents of a user-provided Global Config for an integration resource. Use this endpoint when the user has enabled Global Config syncing; the response includes the configuration items, digest, and update time.
     ///
-    /// When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents
-    /// of the Global Config.
-    static func getInstallationsByIntegrationConfigurationIdResourcesByResourX11b8aa4065(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        resourceId: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetInstallationsByIntegrationConfigurationIdResourcesByResourX5dfbcfa520 {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/installations/",
-                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
-                "/resources/",
-                sdkEncodePathSegment(sdkWireString(resourceId)),
-                "/experimentation/global-config",
-            ].joined(),
-            config: config,
-            decoder: .json,
-            operationId: """
-            getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentation\
-            GlobalConfig
-            """,
-            options: requestOptions
-        )).data
+    /// When the user enabled Global Config syncing, then this endpoint can be used by the partner to fetch the contents of the Global Config.
+    public static func getInstallationsByIntegrationConfigurationIdResourcesByResourX11b8aa4065(config: ClientConfig, integrationConfigurationId: String, resourceId: String, requestOptions: RequestOptions? = nil) async throws -> GetInstallationsByIntegrationConfigurationIdResourcesByResourX5dfbcfa520 {
+        return try (await sdkRequest("GET", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(resourceId)), "/experimentation/global-config"].joined(), config: config, decoder: .json, operationId: """
+    getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentation\
+    GlobalConfig
+    """, options: requestOptions)).data
     }
 
-    /// Replaces the data in a user-provided Global Config for an integration resource. Use this endpoint to push
-    /// configuration data when the user has enabled Global Config syncing, and provide the new value in `data`.
+    /// Replaces the data in a user-provided Global Config for an integration resource. Use this endpoint to push configuration data when the user has enabled Global Config syncing, and provide the new value in `data`.
     ///
-    /// When the user enabled Global Config syncing, then this endpoint can be used by the partner to push their
-    /// configuration data into the relevant Global Config.
-    static func replaceInstallationsByIntegrationConfigurationIdResourcesByReX909b2f5573(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        resourceId: String,
-        data: [String: JSONValue],
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ReplaceInstallationsByIntegrationConfigurationIdResourcesByReXe5b63c03db {
+    /// When the user enabled Global Config syncing, then this endpoint can be used by the partner to push their configuration data into the relevant Global Config.
+    public static func replaceInstallationsByIntegrationConfigurationIdResourcesByReX909b2f5573(config: ClientConfig, integrationConfigurationId: String, resourceId: String, data: [String: JSONValue], requestOptions: RequestOptions? = nil) async throws -> ReplaceInstallationsByIntegrationConfigurationIdResourcesByReXe5b63c03db {
         let requestBody = ReplaceInstallationsByIntegrationConfigurationIdResourcesByReXbcfb2cb934(data: data)
 
-        return try await (sdkRequest(
-            "PUT",
-            [
-                "/v1/installations/",
-                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
-                "/resources/",
-                sdkEncodePathSegment(sdkWireString(resourceId)),
-                "/experimentation/global-config",
-            ].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .json,
-            operationId: """
-            replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimenta\
-            tionGlobalConfig
-            """,
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PUT", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(resourceId)), "/experimentation/global-config"].joined(), config: config, body: requestBody, decoder: .json, operationId: """
+    replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimenta\
+    tionGlobalConfig
+    """, options: requestOptions)).data
     }
 
     private struct ReplaceInstallationsByIntegrationConfigurationIdResourcesByReXbcfb2cb934: Encodable {
@@ -107,7 +44,7 @@ public extension MarketplaceMethods {
 
         func encode(to encoder: Encoder) throws {
             var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-            try keyedContainer.encode(data, forKey: SdkCodingKey("data"))
+            try keyedContainer.encode(self.data, forKey: SdkCodingKey("data"))
         }
     }
 }

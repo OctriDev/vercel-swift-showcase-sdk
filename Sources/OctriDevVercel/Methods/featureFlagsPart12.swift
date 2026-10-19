@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension FeatureFlagsMethods {
-    struct CreateFlagSegmentOptions: Codable {
+extension FeatureFlagsMethods {
+    public struct CreateFlagSegmentOptions: Codable {
         public var projectIdOrName: String
         public var slug: String
         public var label: String
@@ -18,13 +18,7 @@ public extension FeatureFlagsMethods {
         public var createdBy: String?
         public var description: String?
 
-        public init(
-            projectIdOrName: String,
-            slug: String,
-            label: String,
-            data: CreateFlagSegmentRequestBodyData,
-            hint: String
-        ) {
+        public init(projectIdOrName: String, slug: String, label: String, data: CreateFlagSegmentRequestBodyData, hint: String) {
             self.projectIdOrName = projectIdOrName
             self.slug = slug
             self.label = label
@@ -33,9 +27,7 @@ public extension FeatureFlagsMethods {
         }
     }
 
-    /// Creates a feature flag segment for a project. Supply `slug`, `label`, `data`, and `hint`; `data` can define
-    /// segment rules and include or exclude data. A 201 response returns the created segment with its generated
-    /// identifier.
+    /// Creates a feature flag segment for a project. Supply `slug`, `label`, `data`, and `hint`; `data` can define segment rules and include or exclude data. A 201 response returns the created segment with its generated identifier.
     ///
     /// Create a new feature flag segment.
     ///
@@ -45,26 +37,12 @@ public extension FeatureFlagsMethods {
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug2: The Team slug to perform the request on behalf of.
     /// - createdBy: The entity who created the segment
-    static func createFlagSegment(
-        config: ClientConfig,
-        options: CreateFlagSegmentOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateFlagSegmentResponse {
+    public static func createFlagSegment(config: ClientConfig, options: CreateFlagSegmentOptions, requestOptions: RequestOptions? = nil) async throws -> CreateFlagSegmentResponse {
         let requestBody = CreateFlagSegmentRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PUT",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/segments"]
-                .joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug2),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "createFlagSegment",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PUT", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/segments"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug2),
+        ], body: requestBody, decoder: .json, operationId: "createFlagSegment", options: requestOptions)).data
     }
 }

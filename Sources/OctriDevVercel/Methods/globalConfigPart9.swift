@@ -6,77 +6,38 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension GlobalConfigMethods {
-    /// Creates a token for an existing Global Config. Provide a `label` to identify the token, with a maximum length of
-    /// 52 characters. The 201 response includes the new token and its ID.
+extension GlobalConfigMethods {
+    /// Creates a token for an existing Global Config. Provide a `label` to identify the token, with a maximum length of 52 characters. The 201 response includes the new token and its ID.
     ///
     /// Adds a token to an existing Global Config.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func createEdgeConfigToken(
-        config: ClientConfig,
-        edgeConfigId: String,
-        label: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateEdgeConfigTokenResponse {
+    public static func createEdgeConfigToken(config: ClientConfig, edgeConfigId: String, label: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateEdgeConfigTokenResponse {
         try sdkValidatePattern("edgeConfigId", edgeConfigId, sdkPatterncb86996207cb)
 
         try validateLength("label", label, max: 52)
 
         let requestBody = CreateEdgeConfigTokenRequestBody(label: label)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/token"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "createEdgeConfigToken",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/token"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "createEdgeConfigToken", options: requestOptions)).data
     }
 
-    /// Retrieves a specific version of a Global Config from backup storage. Use `edgeConfigId` and
-    /// `edgeConfigBackupVersionId` to select the Global Config and backup version. The response contains the backup
-    /// data and its associated metadata.
+    /// Retrieves a specific version of a Global Config from backup storage. Use `edgeConfigId` and `edgeConfigBackupVersionId` to select the Global Config and backup version. The response contains the backup data and its associated metadata.
     ///
     /// Retrieves a specific version of a Global Config from backup storage.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getEdgeConfigBackup(
-        config: ClientConfig,
-        edgeConfigId: String,
-        edgeConfigBackupVersionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetEdgeConfigBackupResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/global-config/",
-                sdkEncodePathSegment(sdkWireString(edgeConfigId)),
-                "/backups/",
-                sdkEncodePathSegment(sdkWireString(edgeConfigBackupVersionId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getEdgeConfigBackup",
-            options: requestOptions
-        )).data
+    public static func getEdgeConfigBackup(config: ClientConfig, edgeConfigId: String, edgeConfigBackupVersionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetEdgeConfigBackupResponse {
+        return try (await sdkRequest("GET", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/backups/", sdkEncodePathSegment(sdkWireString(edgeConfigBackupVersionId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getEdgeConfigBackup", options: requestOptions)).data
     }
 }

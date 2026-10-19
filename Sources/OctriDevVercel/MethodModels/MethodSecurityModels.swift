@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical security operation model declarations
+// Canonical security operation model declarations
 /// Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
 public struct PutFirewallConfigResponseActiveCrsRce: Codable {
     public var action: PutFirewallConfigResponseActiveCrsRceAction
@@ -18,35 +18,25 @@ public struct PutFirewallConfigResponseActiveCrsRce: Codable {
         case active
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension PutFirewallConfigResponseActiveCrsRce {
-    init(from decoder: Decoder) throws {
+extension PutFirewallConfigResponseActiveCrsRce {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.action) else {
-            throw SdkValidationError(
-                field: "action",
-                code: "required",
-                message: "Validation failed for 'action': value is required"
-            )
+            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
         }
         guard container.contains(.active) else {
-            throw SdkValidationError(
-                field: "active",
-                code: "required",
-                message: "Validation failed for 'active': value is required"
-            )
+            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
         }
-        action = try container.sdkDecodeRequired(.action)
-        active = try container.sdkDecodeRequired(.active)
+        self.action = try container.sdkDecodeRequired(.action)
+        self.active = try container.sdkDecodeRequired(.active)
     }
 }
 
-public extension PutFirewallConfigResponseActiveCrsRce {
-    init(action: PutFirewallConfigResponseActiveCrsRceAction, active: Bool) {
+extension PutFirewallConfigResponseActiveCrsRce {
+    public init(action: PutFirewallConfigResponseActiveCrsRceAction, active: Bool) {
         (self.action, self.active) = (action, active)
     }
 }
@@ -67,44 +57,28 @@ public struct PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditionsI
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditionsItem {
-    init(from decoder: Decoder) throws {
+extension PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditionsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.op) else {
-            throw SdkValidationError(
-                field: "op",
-                code: "required",
-                message: "Validation failed for 'op': value is required"
-            )
+            throw SdkValidationError(field: "op", code: "required", message: "Validation failed for 'op': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        op = try container.sdkDecodeRequired(.op)
-        neg = try container.sdkDecodeIfPresent(.neg)
-        key = try container.sdkDecodeIfPresent(.key)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.op = try container.sdkDecodeRequired(.op)
+        self.neg = try container.sdkDecodeIfPresent(.neg)
+        self.key = try container.sdkDecodeIfPresent(.key)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditionsItem {
-    init(
-        type: PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9,
-        op: PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditionsItemOp,
-        neg: Bool? = nil,
-        key: String? = nil,
-        value: PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditXd548aaee2b? = nil
-    ) {
+extension PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditionsItem {
+    public init(type: PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditX98d9da3ac9, op: PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditionsItemOp, neg: Bool? = nil, key: String? = nil, value: PutFirewallConfigRequestBodyRulesItemConditionGroupItemConditXd548aaee2b? = nil) {
         (self.type, self.op) = (type, op)
         (self.neg, self.key) = (neg, key)
         self.value = value
@@ -120,35 +94,25 @@ public struct GetSecurityFirewallConfigResponseDraftCrsPhp: Codable {
         case active
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetSecurityFirewallConfigResponseDraftCrsPhp {
-    init(from decoder: Decoder) throws {
+extension GetSecurityFirewallConfigResponseDraftCrsPhp {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.action) else {
-            throw SdkValidationError(
-                field: "action",
-                code: "required",
-                message: "Validation failed for 'action': value is required"
-            )
+            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
         }
         guard container.contains(.active) else {
-            throw SdkValidationError(
-                field: "active",
-                code: "required",
-                message: "Validation failed for 'active': value is required"
-            )
+            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
         }
-        action = try container.sdkDecodeRequired(.action)
-        active = try container.sdkDecodeRequired(.active)
+        self.action = try container.sdkDecodeRequired(.action)
+        self.active = try container.sdkDecodeRequired(.active)
     }
 }
 
-public extension GetSecurityFirewallConfigResponseDraftCrsPhp {
-    init(action: GetSecurityFirewallConfigResponseDraftCrsPhpAction, active: Bool) {
+extension GetSecurityFirewallConfigResponseDraftCrsPhp {
+    public init(action: GetSecurityFirewallConfigResponseDraftCrsPhpAction, active: Bool) {
         (self.action, self.active) = (action, active)
     }
 }
@@ -168,59 +132,38 @@ public struct PutFirewallConfigRequestBodyIpsItem: Codable {
         case notes
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension PutFirewallConfigRequestBodyIpsItem {
-    init(from decoder: Decoder) throws {
+extension PutFirewallConfigRequestBodyIpsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.hostname) else {
-            throw SdkValidationError(
-                field: "hostname",
-                code: "required",
-                message: "Validation failed for 'hostname': value is required"
-            )
+            throw SdkValidationError(field: "hostname", code: "required", message: "Validation failed for 'hostname': value is required")
         }
         guard container.contains(.ip) else {
-            throw SdkValidationError(
-                field: "ip",
-                code: "required",
-                message: "Validation failed for 'ip': value is required"
-            )
+            throw SdkValidationError(field: "ip", code: "required", message: "Validation failed for 'ip': value is required")
         }
         guard container.contains(.action) else {
-            throw SdkValidationError(
-                field: "action",
-                code: "required",
-                message: "Validation failed for 'action': value is required"
-            )
+            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
         }
-        hostname = try container.sdkDecodeRequired(.hostname)
-        ip = try container.sdkDecodeRequired(.ip)
-        action = try container.sdkDecodeRequired(.action)
-        id = try container.sdkDecodeIfPresent(.id)
-        notes = try container.sdkDecodeIfPresent(.notes)
+        self.hostname = try container.sdkDecodeRequired(.hostname)
+        self.ip = try container.sdkDecodeRequired(.ip)
+        self.action = try container.sdkDecodeRequired(.action)
+        self.id = try container.sdkDecodeIfPresent(.id)
+        self.notes = try container.sdkDecodeIfPresent(.notes)
     }
 }
 
-public extension PutFirewallConfigRequestBodyIpsItem {
-    init(
-        hostname: String,
-        ip: String,
-        action: PutFirewallConfigRequestBodyIpsItemAction,
-        id: String? = nil,
-        notes: String? = nil
-    ) {
+extension PutFirewallConfigRequestBodyIpsItem {
+    public init(hostname: String, ip: String, action: PutFirewallConfigRequestBodyIpsItemAction, id: String? = nil, notes: String? = nil) {
         (self.hostname, self.ip) = (hostname, ip)
         (self.action, self.id) = (action, id)
         self.notes = notes
     }
 }
 
-public typealias GenerateFirewallRuleResponseRuleConditionGroupItemConditionsList =
-    [GenerateFirewallRuleResponseRuleConditionGroupItemConditionsItem]
+public typealias GenerateFirewallRuleResponseRuleConditionGroupItemConditionsList = [GenerateFirewallRuleResponseRuleConditionGroupItemConditionsItem]
 
 public struct GenerateFirewallRuleResponseRuleConditionGroupItem: Codable {
     public var conditions: GenerateFirewallRuleResponseRuleConditionGroupItemConditionsList
@@ -229,33 +172,26 @@ public struct GenerateFirewallRuleResponseRuleConditionGroupItem: Codable {
         case conditions
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GenerateFirewallRuleResponseRuleConditionGroupItem {
-    init(from decoder: Decoder) throws {
+extension GenerateFirewallRuleResponseRuleConditionGroupItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.conditions) else {
-            throw SdkValidationError(
-                field: "conditions",
-                code: "required",
-                message: "Validation failed for 'conditions': value is required"
-            )
+            throw SdkValidationError(field: "conditions", code: "required", message: "Validation failed for 'conditions': value is required")
         }
-        conditions = try container.sdkDecodeRequired(.conditions)
+        self.conditions = try container.sdkDecodeRequired(.conditions)
     }
 }
 
-public extension GenerateFirewallRuleResponseRuleConditionGroupItem {
-    init(conditions: GenerateFirewallRuleResponseRuleConditionGroupItemConditionsList) {
+extension GenerateFirewallRuleResponseRuleConditionGroupItem {
+    public init(conditions: GenerateFirewallRuleResponseRuleConditionGroupItemConditionsList) {
         self.conditions = conditions
     }
 }
 
-public typealias UpdateFirewallConfigRequestBodyVariant5ValueConditionGroupList =
-    [UpdateFirewallConfigRequestBodyVariant5ValueConditionGroupItem]
+public typealias UpdateFirewallConfigRequestBodyVariant5ValueConditionGroupList = [UpdateFirewallConfigRequestBodyVariant5ValueConditionGroupItem]
 
 public struct UpdateFirewallConfigRequestBodyVariant5Value: Codable {
     public var name: String
@@ -274,63 +210,42 @@ public struct UpdateFirewallConfigRequestBodyVariant5Value: Codable {
         case validationErrors
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateFirewallConfigRequestBodyVariant5Value {
-    init(from decoder: Decoder) throws {
+extension UpdateFirewallConfigRequestBodyVariant5Value {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.active) else {
-            throw SdkValidationError(
-                field: "active",
-                code: "required",
-                message: "Validation failed for 'active': value is required"
-            )
+            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
         }
         guard container.contains(.conditionGroup) else {
-            throw SdkValidationError(
-                field: "conditionGroup",
-                code: "required",
-                message: "Validation failed for 'conditionGroup': value is required"
-            )
+            throw SdkValidationError(field: "conditionGroup", code: "required", message: "Validation failed for 'conditionGroup': value is required")
         }
-        name = try container.sdkDecodeRequired(.name)
-        active = try container.sdkDecodeRequired(.active)
-        conditionGroup = try container.sdkDecodeRequired(.conditionGroup)
-        description = try container.sdkDecodeIfPresent(.description)
-        valid = try container.sdkDecodeIfPresent(.valid)
-        validationErrors = try container.sdkDecodeIfPresent(.validationErrors)
-        try validateLength("name", name, min: nil, max: 160)
-        try validateItems("conditionGroup", conditionGroup, min: nil, max: 25)
-        if let value = description {
+        self.name = try container.sdkDecodeRequired(.name)
+        self.active = try container.sdkDecodeRequired(.active)
+        self.conditionGroup = try container.sdkDecodeRequired(.conditionGroup)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.valid = try container.sdkDecodeIfPresent(.valid)
+        self.validationErrors = try container.sdkDecodeIfPresent(.validationErrors)
+            try validateLength("name", self.name, min: nil, max: 160)
+            try validateItems("conditionGroup", self.conditionGroup, min: nil, max: 25)
+        if let value = self.description {
             try validateLength("description", value, min: nil, max: 256)
         }
     }
 }
 
-public extension UpdateFirewallConfigRequestBodyVariant5Value {
-    init(
-        name: String,
-        active: Bool,
-        conditionGroup: UpdateFirewallConfigRequestBodyVariant5ValueConditionGroupList,
-        description: String? = nil,
-        valid: Bool? = nil,
-        validationErrors: UpdateFirewallConfigRequestBodyVariant5ValueValidationErrors? = nil
-    ) throws {
+extension UpdateFirewallConfigRequestBodyVariant5Value {
+    public init(name: String, active: Bool, conditionGroup: UpdateFirewallConfigRequestBodyVariant5ValueConditionGroupList, description: String? = nil, valid: Bool? = nil, validationErrors: UpdateFirewallConfigRequestBodyVariant5ValueValidationErrors? = nil) throws {
         (self.name, self.active) = (name, active)
         (self.conditionGroup, self.description) = (conditionGroup, description)
         (self.valid, self.validationErrors) = (valid, validationErrors)
-        try validateLength("name", self.name, min: nil, max: 160)
-        try validateItems("conditionGroup", self.conditionGroup, min: nil, max: 25)
+            try validateLength("name", self.name, min: nil, max: 160)
+            try validateItems("conditionGroup", self.conditionGroup, min: nil, max: 25)
         if let value = self.description {
             try validateLength("description", value, min: nil, max: 256)
         }
@@ -354,39 +269,26 @@ public struct GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActionMi
         case redirect
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActionMitigate {
-    init(from decoder: Decoder) throws {
+extension GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActionMitigate {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.action) else {
-            throw SdkValidationError(
-                field: "action",
-                code: "required",
-                message: "Validation failed for 'action': value is required"
-            )
+            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
         }
-        action = try container.sdkDecodeRequired(.action)
-        actionDuration = try container.sdkDecodeIfPresent(.actionDuration)
-        bypassSystem = try container.sdkDecodeIfPresent(.bypassSystem)
-        logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
-        rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.action = try container.sdkDecodeRequired(.action)
+        self.actionDuration = try container.sdkDecodeIfPresent(.actionDuration)
+        self.bypassSystem = try container.sdkDecodeIfPresent(.bypassSystem)
+        self.logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
+        self.rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
     }
 }
 
-public extension GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActionMitigate {
-    init(
-        action: GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e,
-        actionDuration: String? = nil,
-        bypassSystem: Bool? = nil,
-        logHeaders: GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActX87f5287cc7? = nil,
-        rateLimit: GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActX540180217a? = nil,
-        redirect: GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActX07aa27cdb6? = nil
-    ) {
+extension GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActionMitigate {
+    public init(action: GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e, actionDuration: String? = nil, bypassSystem: Bool? = nil, logHeaders: GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActX87f5287cc7? = nil, rateLimit: GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActX540180217a? = nil, redirect: GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActX07aa27cdb6? = nil) {
         (self.action, self.actionDuration) = (action, actionDuration)
         (self.bypassSystem, self.logHeaders) = (bypassSystem, logHeaders)
         (self.rateLimit, self.redirect) = (rateLimit, redirect)
@@ -408,58 +310,34 @@ public struct GetSecurityFirewallConfigResponseActiveIpsItem: Codable {
         case notes
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetSecurityFirewallConfigResponseActiveIpsItem {
-    init(from decoder: Decoder) throws {
+extension GetSecurityFirewallConfigResponseActiveIpsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.action) else {
-            throw SdkValidationError(
-                field: "action",
-                code: "required",
-                message: "Validation failed for 'action': value is required"
-            )
+            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
         }
         guard container.contains(.hostname) else {
-            throw SdkValidationError(
-                field: "hostname",
-                code: "required",
-                message: "Validation failed for 'hostname': value is required"
-            )
+            throw SdkValidationError(field: "hostname", code: "required", message: "Validation failed for 'hostname': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.ip) else {
-            throw SdkValidationError(
-                field: "ip",
-                code: "required",
-                message: "Validation failed for 'ip': value is required"
-            )
+            throw SdkValidationError(field: "ip", code: "required", message: "Validation failed for 'ip': value is required")
         }
-        action = try container.sdkDecodeRequired(.action)
-        hostname = try container.sdkDecodeRequired(.hostname)
-        id = try container.sdkDecodeRequired(.id)
-        ip = try container.sdkDecodeRequired(.ip)
-        notes = try container.sdkDecodeIfPresent(.notes)
+        self.action = try container.sdkDecodeRequired(.action)
+        self.hostname = try container.sdkDecodeRequired(.hostname)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.ip = try container.sdkDecodeRequired(.ip)
+        self.notes = try container.sdkDecodeIfPresent(.notes)
     }
 }
 
-public extension GetSecurityFirewallConfigResponseActiveIpsItem {
-    init(
-        action: GetSecurityFirewallConfigResponseActiveIpsItemAction,
-        hostname: String,
-        id: String,
-        ip: String,
-        notes: String? = nil
-    ) {
+extension GetSecurityFirewallConfigResponseActiveIpsItem {
+    public init(action: GetSecurityFirewallConfigResponseActiveIpsItemAction, hostname: String, id: String, ip: String, notes: String? = nil) {
         (self.action, self.hostname) = (action, hostname)
         (self.id, self.ip) = (id, ip)
         self.notes = notes
@@ -478,47 +356,29 @@ public struct UpdateFirewallConfigRequestBodyVariant5: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateFirewallConfigRequestBodyVariant5 {
-    init(from decoder: Decoder) throws {
+extension UpdateFirewallConfigRequestBodyVariant5 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.action) else {
-            throw SdkValidationError(
-                field: "action",
-                code: "required",
-                message: "Validation failed for 'action': value is required"
-            )
+            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        action = try container.sdkDecodeRequired(.action)
-        id = try container.sdkDecodeRequired(.id)
-        value = try container.sdkDecodeRequired(.value)
+        self.action = try container.sdkDecodeRequired(.action)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension UpdateFirewallConfigRequestBodyVariant5 {
-    init(
-        action: UpdateFirewallConfigRequestBodyVariant5Action,
-        id: String,
-        value: UpdateFirewallConfigRequestBodyVariant5Value
-    ) {
+extension UpdateFirewallConfigRequestBodyVariant5 {
+    public init(action: UpdateFirewallConfigRequestBodyVariant5Action, id: String, value: UpdateFirewallConfigRequestBodyVariant5Value) {
         (self.action, self.id) = (action, id)
         self.value = value
     }
@@ -536,47 +396,29 @@ public struct UpdateFirewallConfigRequestBodyVariant1: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateFirewallConfigRequestBodyVariant1 {
-    init(from decoder: Decoder) throws {
+extension UpdateFirewallConfigRequestBodyVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.action) else {
-            throw SdkValidationError(
-                field: "action",
-                code: "required",
-                message: "Validation failed for 'action': value is required"
-            )
+            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        action = try container.sdkDecodeRequired(.action)
-        id = try container.sdkDecodeNullable(.id)
-        value = try container.sdkDecodeRequired(.value)
+        self.action = try container.sdkDecodeRequired(.action)
+        self.id = try container.sdkDecodeNullable(.id)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension UpdateFirewallConfigRequestBodyVariant1 {
-    init(
-        action: UpdateFirewallConfigRequestBodyVariant1Action,
-        id: JSONValue?,
-        value: UpdateFirewallConfigRequestBodyVariant1Value
-    ) {
+extension UpdateFirewallConfigRequestBodyVariant1 {
+    public init(action: UpdateFirewallConfigRequestBodyVariant1Action, id: JSONValue?, value: UpdateFirewallConfigRequestBodyVariant1Value) {
         (self.action, self.id) = (action, id)
         self.value = value
     }
@@ -594,43 +436,29 @@ public struct UpdateFirewallConfigRequestBodyVariant11: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateFirewallConfigRequestBodyVariant11 {
-    init(from decoder: Decoder) throws {
+extension UpdateFirewallConfigRequestBodyVariant11 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.action) else {
-            throw SdkValidationError(
-                field: "action",
-                code: "required",
-                message: "Validation failed for 'action': value is required"
-            )
+            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        action = try container.sdkDecodeRequired(.action)
-        id = try container.sdkDecodeRequired(.id)
-        value = try container.sdkDecodeRequired(.value)
+        self.action = try container.sdkDecodeRequired(.action)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension UpdateFirewallConfigRequestBodyVariant11 {
-    init(action: String, id: String, value: UpdateFirewallConfigRequestBodyVariant11Value) {
+extension UpdateFirewallConfigRequestBodyVariant11 {
+    public init(action: String, id: String, value: UpdateFirewallConfigRequestBodyVariant11Value) {
         (self.action, self.id) = (action, id)
         self.value = value
     }
