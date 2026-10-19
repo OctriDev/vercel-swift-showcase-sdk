@@ -3,126 +3,40 @@
 
 import Foundation
 
-public extension KmsNamespace {
-    /// Updates a KMS issuer's name or claims schema. Include one or both fields to change; pass `null` for
-    /// `claimsSchema` to remove the schema. The response contains the updated issuer.
+extension KmsNamespace {
+/// Updates a KMS issuer's name or claims schema. Include one or both fields to change; pass `null` for `claimsSchema` to remove the schema. The response contains the updated issuer.
     ///
     /// Update a KMS issuer's name or claims schema.
-    func updateIssuer(
-        issuerId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        name: String? = nil,
-        claimsSchema: SdkOptional<[String: JSONValue]>? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateKmsIssuerResponse {
-        try await KmsMethods.updateKmsIssuer(
-            config: config,
-            issuerId: issuerId,
-            teamId: teamId,
-            slug: slug,
-            name: name,
-            claimsSchema: claimsSchema,
-            requestOptions: requestOptions
-        )
+    public func updateIssuer(issuerId: String, teamId: String? = nil, slug: String? = nil, name: String? = nil, claimsSchema: SdkOptional<[String: JSONValue]>? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateKmsIssuerResponse {
+        return try await KmsMethods.updateKmsIssuer(config: config, issuerId: issuerId, teamId: teamId, slug: slug, name: name, claimsSchema: claimsSchema, requestOptions: requestOptions)
     }
 
-    /// Deletes a KMS issuer and its signing keys. Use `issuerId` to identify the issuer and optionally provide `teamId`
-    /// or `slug` to select the team scope. The operation removes the issuer and its associated keys.
+/// Deletes a KMS issuer and its signing keys. Use `issuerId` to identify the issuer and optionally provide `teamId` or `slug` to select the team scope. The operation removes the issuer and its associated keys.
     ///
     /// Delete a KMS issuer and its signing keys.
-    func deleteIssuer(
-        issuerId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await KmsMethods.deleteKmsIssuer(
-            config: config,
-            issuerId: issuerId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func deleteIssuer(issuerId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await KmsMethods.deleteKmsIssuer(config: config, issuerId: issuerId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates a policy on a KMS issuer that grants a project's deployments permission to sign with the issuer. Supply
-    /// `kind`, `projectId`, and at least one `environments` entry; optionally include `tokenClaims` for claims to add
-    /// to signed tokens. The response returns the created policy.
+/// Creates a policy on a KMS issuer that grants a project's deployments permission to sign with the issuer. Supply `kind`, `projectId`, and at least one `environments` entry; optionally include `tokenClaims` for claims to add to signed tokens. The response returns the created policy.
     ///
     /// Attach a policy to a KMS issuer that grants a project's deployments permission to sign with it.
-    func createIssuerPolicy(
-        issuerId: String,
-        kind: CreateKmsIssuerPolicyRequestBodyKind,
-        projectId: String,
-        environments: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        tokenClaims: [String: JSONValue]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateKmsIssuerPolicyResponse {
-        try await KmsMethods.createKmsIssuerPolicy(
-            config: config,
-            issuerId: issuerId,
-            kind: kind,
-            projectId: projectId,
-            environments: environments,
-            teamId: teamId,
-            slug: slug,
-            tokenClaims: tokenClaims,
-            requestOptions: requestOptions
-        )
+    public func createIssuerPolicy(issuerId: String, kind: CreateKmsIssuerPolicyRequestBodyKind, projectId: String, environments: [String], teamId: String? = nil, slug: String? = nil, tokenClaims: [String: JSONValue]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateKmsIssuerPolicyResponse {
+        return try await KmsMethods.createKmsIssuerPolicy(config: config, issuerId: issuerId, kind: kind, projectId: projectId, environments: environments, teamId: teamId, slug: slug, tokenClaims: tokenClaims, requestOptions: requestOptions)
     }
 
-    /// Updates an existing KMS issuer policy's environments or token claims. Use `environments` to change where a
-    /// project-grant policy applies, and `tokenClaims` to change the claims included in signed JWTs. Pass `null` for
-    /// `tokenClaims` to remove the claims.
+/// Updates an existing KMS issuer policy's environments or token claims. Use `environments` to change where a project-grant policy applies, and `tokenClaims` to change the claims included in signed JWTs. Pass `null` for `tokenClaims` to remove the claims.
     ///
     /// Update an existing KMS issuer policy's environments or token claims.
-    func updateIssuerPolicy(
-        issuerId: String,
-        kind: UpdateKmsIssuerPolicyParameter,
-        policyKey: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        environments: [String]? = nil,
-        tokenClaims: SdkOptional<[String: JSONValue]>? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateKmsIssuerPolicyResponse {
-        try await KmsMethods.updateKmsIssuerPolicy(
-            config: config,
-            issuerId: issuerId,
-            kind: kind,
-            policyKey: policyKey,
-            teamId: teamId,
-            slug: slug,
-            environments: environments,
-            tokenClaims: tokenClaims,
-            requestOptions: requestOptions
-        )
+    public func updateIssuerPolicy(issuerId: String, kind: UpdateKmsIssuerPolicyParameter, policyKey: String, teamId: String? = nil, slug: String? = nil, environments: [String]? = nil, tokenClaims: SdkOptional<[String: JSONValue]>? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateKmsIssuerPolicyResponse {
+        return try await KmsMethods.updateKmsIssuerPolicy(config: config, issuerId: issuerId, kind: kind, policyKey: policyKey, teamId: teamId, slug: slug, environments: environments, tokenClaims: tokenClaims, requestOptions: requestOptions)
     }
 
-    /// Deletes a policy from a KMS issuer. Use `issuerId`, `kind`, and `policyKey` to identify the issuer policy, and
-    /// use `teamId` or `slug` to specify the team context when needed.
+/// Deletes a policy from a KMS issuer. Use `issuerId`, `kind`, and `policyKey` to identify the issuer policy, and use `teamId` or `slug` to specify the team context when needed.
     ///
     /// Remove a policy from a KMS issuer.
-    func deleteIssuerPolicy(
-        issuerId: String,
-        kind: DeleteKmsIssuerPolicyParameter,
-        policyKey: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await KmsMethods.deleteKmsIssuerPolicy(
-            config: config,
-            issuerId: issuerId,
-            kind: kind,
-            policyKey: policyKey,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func deleteIssuerPolicy(issuerId: String, kind: DeleteKmsIssuerPolicyParameter, policyKey: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await KmsMethods.deleteKmsIssuerPolicy(config: config, issuerId: issuerId, kind: kind, policyKey: policyKey, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -132,25 +46,11 @@ public class LogsNamespace {
         self.config = config
     }
 
-    /// Retrieves a stream of runtime logs for a deployment in a project. Use `projectId` and `deploymentId` to identify
-    /// the deployment, and optionally set `teamId` or `slug` to specify the team context.
+/// Retrieves a stream of runtime logs for a deployment in a project. Use `projectId` and `deploymentId` to identify the deployment, and optionally set `teamId` or `slug` to specify the team context.
     ///
     /// Returns a stream of logs for a given deployment.
-    public func getRuntime(
-        projectId: String,
-        deploymentId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRuntimeLogsResponse {
-        try await LogsMethods.getRuntimeLogs(
-            config: config,
-            projectId: projectId,
-            deploymentId: deploymentId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getRuntime(projectId: String, deploymentId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRuntimeLogsResponse {
+        return try await LogsMethods.getRuntimeLogs(config: config, projectId: projectId, deploymentId: deploymentId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -160,101 +60,39 @@ public class MicrofrontendsNamespace {
         self.config = config
     }
 
-    /// Lists the microfrontends group IDs for a team. Use `teamId` or `slug` to specify which team's groups to
-    /// retrieve.
+/// Lists the microfrontends group IDs for a team. Use `teamId` or `slug` to specify which team's groups to retrieve.
     ///
     /// Get the microfrontends group IDs for a team.
-    public func getGroups(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await MicrofrontendsMethods.getMicrofrontendsGroups(
-            config: config,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getGroups(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try await MicrofrontendsMethods.getMicrofrontendsGroups(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists the projects in a microfrontends group. Use `groupId` to identify the group, and optionally use `teamId`
-    /// or `slug` to specify the team context.
+/// Lists the projects in a microfrontends group. Use `groupId` to identify the group, and optionally use `teamId` or `slug` to specify the team context.
     ///
     /// Get the microfrontends for a given group ID.
-    public func getInGroup(
-        groupId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetMicrofrontendsInGroupResponse {
-        try await MicrofrontendsMethods.getMicrofrontendsInGroup(
-            config: config,
-            groupId: groupId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getInGroup(groupId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetMicrofrontendsInGroupResponse {
+        return try await MicrofrontendsMethods.getMicrofrontendsInGroup(config: config, groupId: groupId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves the microfrontends configuration for a specific deployment. Supply the deployment identifier and, when
-    /// needed, `teamId` or `slug` to scope the request to a team.
+/// Retrieves the microfrontends configuration for a specific deployment. Supply the deployment identifier and, when needed, `teamId` or `slug` to scope the request to a team.
     ///
     /// Get the microfrontends config for a deployment.
-    public func getConfig(
-        deploymentId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetMicrofrontendsConfigResponse {
-        try await MicrofrontendsMethods.getMicrofrontendsConfig(
-            config: config,
-            deploymentId: deploymentId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getConfig(deploymentId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetMicrofrontendsConfigResponse {
+        return try await MicrofrontendsMethods.getMicrofrontendsConfig(config: config, deploymentId: deploymentId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves the production microfrontends configuration for a project. Identify the project with `projectIdOrName`
-    /// and use `teamId` or `slug` to scope the request to a team when needed.
+/// Retrieves the production microfrontends configuration for a project. Identify the project with `projectIdOrName` and use `teamId` or `slug` to scope the request to a team when needed.
     ///
     /// Get the microfrontends config for a project by ID or name.
-    public func getConfigForProject(
-        projectIdOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetMicrofrontendsConfigForProjectResponse {
-        try await MicrofrontendsMethods.getMicrofrontendsConfigForProject(
-            config: config,
-            projectIdOrName: projectIdOrName,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getConfigForProject(projectIdOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetMicrofrontendsConfigForProjectResponse {
+        return try await MicrofrontendsMethods.getMicrofrontendsConfigForProject(config: config, projectIdOrName: projectIdOrName, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates a microfrontends group and attaches multiple projects in one request. Provide `groupName`, a
-    /// `defaultApp` with a project ID, and `otherApplications` with the additional project IDs and optional routes.
+/// Creates a microfrontends group and attaches multiple projects in one request. Provide `groupName`, a `defaultApp` with a project ID, and `otherApplications` with the additional project IDs and optional routes.
     ///
     /// Creates a microfrontends group and attaches multiple projects in a single request.
-    public func createGroupWithApplications(
-        groupName: String,
-        defaultApp: CreateMicrofrontendsGroupWithApplicationsRequestBodyDefaultApp,
-        otherApplications: CreateMicrofrontendsGroupWithApplicationsOtherApplicationsList,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateMicrofrontendsGroupWithApplicationsResponse {
-        try await MicrofrontendsMethods.createMicrofrontendsGroupWithApplications(
-            config: config,
-            groupName: groupName,
-            defaultApp: defaultApp,
-            otherApplications: otherApplications,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func createGroupWithApplications(groupName: String, defaultApp: CreateMicrofrontendsGroupWithApplicationsRequestBodyDefaultApp, otherApplications: CreateMicrofrontendsGroupWithApplicationsOtherApplicationsList, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateMicrofrontendsGroupWithApplicationsResponse {
+        return try await MicrofrontendsMethods.createMicrofrontendsGroupWithApplications(config: config, groupName: groupName, defaultApp: defaultApp, otherApplications: otherApplications, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -264,74 +102,33 @@ public class ObservabilityNamespace {
         self.config = config
     }
 
-    /// Lists the projects currently configured as disabled for Observability Plus on a team. Use this request to review
-    /// which projects have the disabled setting and when that setting was applied.
+/// Lists the projects currently configured as disabled for Observability Plus on a team. Use this request to review which projects have the disabled setting and when that setting was applied.
     ///
     /// Lists the projects that are currently configured as disabled for Observability Plus on a team.
-    public func getConfigurationProjects(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetObservabilityConfigurationProjectsResponse {
-        try await ObservabilityMethods.getObservabilityConfigurationProjects(
-            config: config,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getConfigurationProjects(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetObservabilityConfigurationProjectsResponse {
+        return try await ObservabilityMethods.getObservabilityConfigurationProjects(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates whether Observability Plus is disabled for a project. Identify the project with `projectIdOrName` and
-    /// set `disabled` to the desired boolean value.
+/// Updates whether Observability Plus is disabled for a project. Identify the project with `projectIdOrName` and set `disabled` to the desired boolean value.
     ///
     /// Updates whether Observability Plus is disabled for a single project.
-    public func updateConfigurationProject(
-        projectIdOrName: String,
-        disabled: Bool,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateObservabilityConfigurationProjectResponse {
-        try await ObservabilityMethods.updateObservabilityConfigurationProject(
-            config: config,
-            projectIdOrName: projectIdOrName,
-            disabled: disabled,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func updateConfigurationProject(projectIdOrName: String, disabled: Bool, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateObservabilityConfigurationProjectResponse {
+        return try await ObservabilityMethods.updateObservabilityConfigurationProject(config: config, projectIdOrName: projectIdOrName, disabled: disabled, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Runs an Observability query for a metric and an owner or project scope. Provide `metric` and `scope`, then use
-    /// optional aggregation, grouping, filtering, and time settings to shape the results.
-    public func createQuery(
-        options: ObservabilityMethods.CreateObservabilityQueryOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await ObservabilityMethods.createObservabilityQuery(
-            config: config,
-            options: options,
-            requestOptions: requestOptions
-        )
+/// Runs an Observability query for a metric and an owner or project scope. Provide `metric` and `scope`, then use optional aggregation, grouping, filtering, and time settings to shape the results.
+    public func createQuery(options: ObservabilityMethods.CreateObservabilityQueryOptions, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try await ObservabilityMethods.createObservabilityQuery(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Retrieves the available Observability metrics schema. Use the metric IDs and descriptions in the returned list
-    /// to identify metrics for querying.
+/// Retrieves the available Observability metrics schema. Use the metric IDs and descriptions in the returned list to identify metrics for querying.
     public func getSchema(requestOptions: RequestOptions? = nil) async throws -> GetObservabilitySchemaResponse {
-        try await ObservabilityMethods.getObservabilitySchema(config: config, requestOptions: requestOptions)
+        return try await ObservabilityMethods.getObservabilitySchema(config: config, requestOptions: requestOptions)
     }
 
-    /// Retrieves the Observability schema for a specific metric. Supply `metricId` to get the metric's supported
-    /// aggregations, dimensions, unit, and default aggregation.
-    public func getSchemaByMetricId(
-        metricId: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [GetObservabilitySchemaByMetricIdResponseItem] {
-        try await ObservabilityMethods.getObservabilitySchemaByMetricId(
-            config: config,
-            metricId: metricId,
-            requestOptions: requestOptions
-        )
+/// Retrieves the Observability schema for a specific metric. Supply `metricId` to get the metric's supported aggregations, dimensions, unit, and default aggregation.
+    public func getSchemaByMetricId(metricId: String, requestOptions: RequestOptions? = nil) async throws -> [GetObservabilitySchemaByMetricIdResponseItem] {
+        return try await ObservabilityMethods.getObservabilitySchemaByMetricId(config: config, metricId: metricId, requestOptions: requestOptions)
     }
 }
 
@@ -341,78 +138,24 @@ public class ProjectMembersNamespace {
         self.config = config
     }
 
-    /// Lists members of a project, with pagination and optional filtering by addition time or member details. Use
-    /// `limit` to control the number of members returned and `search` to match names, usernames, or email addresses.
+/// Lists members of a project, with pagination and optional filtering by addition time or member details. Use `limit` to control the number of members returned and `search` to match names, usernames, or email addresses.
     ///
     /// Lists all members of a project.
-    public func get(
-        idOrName: String,
-        limit: Int? = nil,
-        since: Int? = nil,
-        until: Int? = nil,
-        search: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetProjectMembersResponse {
-        try await ProjectMembersMethods.getProjectMembers(
-            config: config,
-            idOrName: idOrName,
-            limit: limit,
-            since: since,
-            until: until,
-            search: search,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func get(idOrName: String, limit: Int? = nil, since: Int? = nil, until: Int? = nil, search: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectMembersResponse {
+        return try await ProjectMembersMethods.getProjectMembers(config: config, idOrName: idOrName, limit: limit, since: since, until: until, search: search, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Adds a member to a project with a specified project role. Identify the member by `uid`, `username`, or `email`,
-    /// and choose one of the supported roles.
+/// Adds a member to a project with a specified project role. Identify the member by `uid`, `username`, or `email`, and choose one of the supported roles.
     ///
     /// Adds a new member to the project.
-    public func add(
-        idOrName: String,
-        role: AddProjectMemberRequestBodyRole,
-        teamId: String? = nil,
-        slug: String? = nil,
-        uid: String? = nil,
-        username: String? = nil,
-        email: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AddProjectMemberResponse {
-        try await ProjectMembersMethods.addProjectMember(
-            config: config,
-            idOrName: idOrName,
-            role: role,
-            teamId: teamId,
-            slug: slug,
-            uid: uid,
-            username: username,
-            email: email,
-            requestOptions: requestOptions
-        )
+    public func add(idOrName: String, role: AddProjectMemberRequestBodyRole, teamId: String? = nil, slug: String? = nil, uid: String? = nil, username: String? = nil, email: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AddProjectMemberResponse {
+        return try await ProjectMembersMethods.addProjectMember(config: config, idOrName: idOrName, role: role, teamId: teamId, slug: slug, uid: uid, username: username, email: email, requestOptions: requestOptions)
     }
 
-    /// Removes a member from a specific project. Use `idOrName` to identify the project and `uid` to identify the
-    /// member to remove. The response includes the project identifier.
+/// Removes a member from a specific project. Use `idOrName` to identify the project and `uid` to identify the member to remove. The response includes the project identifier.
     ///
     /// Remove a member from a specific project
-    public func remove(
-        idOrName: String,
-        uid: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RemoveProjectMemberResponse {
-        try await ProjectMembersMethods.removeProjectMember(
-            config: config,
-            idOrName: idOrName,
-            uid: uid,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func remove(idOrName: String, uid: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RemoveProjectMemberResponse {
+        return try await ProjectMembersMethods.removeProjectMember(config: config, idOrName: idOrName, uid: uid, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }

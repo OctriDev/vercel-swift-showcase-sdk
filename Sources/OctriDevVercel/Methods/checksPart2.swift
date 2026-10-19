@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ChecksMethods {
-    struct CreateCheckOptions: Codable {
+extension ChecksMethods {
+    public struct CreateCheckOptions: Codable {
         public var deploymentId: String
         public var name: String
         public var blocking: Bool
@@ -25,9 +25,7 @@ public extension ChecksMethods {
         }
     }
 
-    /// Creates a check for a deployment. Provide `name` and `blocking` in the request body, and use OAuth2
-    /// authentication as required by this operation. This operation is closing down and will be removed on a date not
-    /// specified in the API definition.
+    /// Creates a check for a deployment. Provide `name` and `blocking` in the request body, and use OAuth2 authentication as required by this operation. This operation is closing down and will be removed on a date not specified in the API definition.
     ///
     /// Creates a new check. This endpoint must be called with an OAuth2 or it will produce a 400 error.
     ///
@@ -44,11 +42,7 @@ public extension ChecksMethods {
     ///   be rerun if it fails
     ///
     /// - Warning: This operation is deprecated and may be removed in a future release.
-    static func createCheck(
-        config: ClientConfig,
-        options: CreateCheckOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateCheckResponse {
+    public static func createCheck(config: ClientConfig, options: CreateCheckOptions, requestOptions: RequestOptions? = nil) async throws -> CreateCheckResponse {
         try validateLength("name", options.name, max: 100)
 
         if let path = options.path {
@@ -57,18 +51,9 @@ public extension ChecksMethods {
 
         let requestBody = CreateCheckRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(options.deploymentId)), "/checks"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "createCheck",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(options.deploymentId)), "/checks"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "createCheck", options: requestOptions)).data
     }
 }

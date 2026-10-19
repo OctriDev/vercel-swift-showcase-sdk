@@ -24,20 +24,16 @@ public enum GetVercelCiInvocationTreeResponseInvocationCompletedConclusionVarian
 }
 
 /// What to do when the gate trips: pause the rollout, or roll it back.
-public struct CreateProjectResponseRollingReleaseGateAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateProjectResponseRollingReleaseGateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let pause = CreateProjectResponseRollingReleaseGateAction(rawValue: "pause")
     public static let rollback = CreateProjectResponseRollingReleaseGateAction(rawValue: "rollback")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -46,22 +42,16 @@ public struct CreateProjectResponseRollingReleaseGateAction: RawRepresentable, H
     }
 }
 
-public struct UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let skipNamespaceQueue =
-        UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
-    public static let waitForNamespaceQueue =
-        UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let skipNamespaceQueue = UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
+    public static let waitForNamespaceQueue = UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -70,21 +60,16 @@ public struct UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration:
     }
 }
 
-public struct CreateInstallationsByIntegrationConfigurationIdResourcesByResX76ac51996e: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateInstallationsByIntegrationConfigurationIdResourcesByResX76ac51996e: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let experiment =
-        CreateInstallationsByIntegrationConfigurationIdResourcesByResX76ac51996e(rawValue: "experiment")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let experiment = CreateInstallationsByIntegrationConfigurationIdResourcesByResX76ac51996e(rawValue: "experiment")
     public static let flag = CreateInstallationsByIntegrationConfigurationIdResourcesByResX76ac51996e(rawValue: "flag")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -93,19 +78,15 @@ public struct CreateInstallationsByIntegrationConfigurationIdResourcesByResX76ac
     }
 }
 
-public struct ListChecksResponseChecksItemOutputMetricsTBTSource: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListChecksResponseChecksItemOutputMetricsTBTSource: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let webVitals = ListChecksResponseChecksItemOutputMetricsTBTSource(rawValue: "web-vitals")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -114,22 +95,16 @@ public struct ListChecksResponseChecksItemOutputMetricsTBTSource: RawRepresentab
     }
 }
 
-public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX81becf9e40: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX81becf9e40: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let fixedWindow =
-        CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX81becf9e40(rawValue: "fixed_window")
-    public static let tokenBucket =
-        CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX81becf9e40(rawValue: "token_bucket")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let fixedWindow = CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX81becf9e40(rawValue: "fixed_window")
+    public static let tokenBucket = CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX81becf9e40(rawValue: "token_bucket")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -138,22 +113,16 @@ public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX81be
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf38b933e60: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf38b933e60: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let create =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf38b933e60(rawValue: "create")
-    public static let update =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf38b933e60(rawValue: "update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf38b933e60(rawValue: "create")
+    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf38b933e60(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -162,20 +131,15 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf38b
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXe702095925: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXe702095925: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let slider =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXe702095925(rawValue: "slider")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let slider = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXe702095925(rawValue: "slider")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -186,20 +150,16 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXe702
 
 /// User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and
 /// callers fall back to existing `type` behavior.
-public struct RemoveProjectEnvResponseVariant0ItemVisibility: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct RemoveProjectEnvResponseVariant0ItemVisibility: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let config = RemoveProjectEnvResponseVariant0ItemVisibility(rawValue: "config")
     public static let secret = RemoveProjectEnvResponseVariant0ItemVisibility(rawValue: "secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -211,10 +171,7 @@ public struct RemoveProjectEnvResponseVariant0ItemVisibility: RawRepresentable, 
 public struct CreateProjectCheckRequestBodyBlocks: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let buildStart = CreateProjectCheckRequestBodyBlocks(rawValue: "build-start")
     public static let deploymentStart = CreateProjectCheckRequestBodyBlocks(rawValue: "deployment-start")
     public static let deploymentAlias = CreateProjectCheckRequestBodyBlocks(rawValue: "deployment-alias")
@@ -223,7 +180,7 @@ public struct CreateProjectCheckRequestBodyBlocks: RawRepresentable, Hashable, C
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

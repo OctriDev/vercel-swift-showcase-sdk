@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AccessGroupsMethods {
-    /// Adds a project and its role to an access group. Provide both `projectId` and `role`; the role must be one of the
-    /// supported project roles.
+extension AccessGroupsMethods {
+    /// Adds a project and its role to an access group. Provide both `projectId` and `role`; the role must be one of the supported project roles.
     ///
     /// Allows creation of an access group project
     ///
@@ -17,66 +16,28 @@ public extension AccessGroupsMethods {
     /// - role: The project role that will be added to this Access Group.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func createAccessGroupProject(
-        config: ClientConfig,
-        accessGroupIdOrName: String,
-        projectId: String,
-        role: CreateAccessGroupProjectRequestBodyRole,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateAccessGroupProjectResponse {
+    public static func createAccessGroupProject(config: ClientConfig, accessGroupIdOrName: String, projectId: String, role: CreateAccessGroupProjectRequestBodyRole, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateAccessGroupProjectResponse {
         try validateLength("projectId", projectId, max: 256)
 
         let requestBody = CreateAccessGroupProjectRequestBody(projectId: projectId, role: role)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(accessGroupIdOrName)), "/projects"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "createAccessGroupProject",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(accessGroupIdOrName)), "/projects"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "createAccessGroupProject", options: requestOptions)).data
     }
 
-    /// Retrieves a project's assignment in an access group. Use both `accessGroupIdOrName` and `projectId` to identify
-    /// the association you want to read.
+    /// Retrieves a project's assignment in an access group. Use both `accessGroupIdOrName` and `projectId` to identify the association you want to read.
     ///
     /// Allows reading an access group project
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func readAccessGroupProject(
-        config: ClientConfig,
-        accessGroupIdOrName: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ReadAccessGroupProjectResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/access-groups/",
-                sdkEncodePathSegment(sdkWireString(accessGroupIdOrName)),
-                "/projects/",
-                sdkEncodePathSegment(sdkWireString(projectId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "readAccessGroupProject",
-            options: requestOptions
-        )).data
+    public static func readAccessGroupProject(config: ClientConfig, accessGroupIdOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ReadAccessGroupProjectResponse {
+        return try (await sdkRequest("GET", ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(accessGroupIdOrName)), "/projects/", sdkEncodePathSegment(sdkWireString(projectId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "readAccessGroupProject", options: requestOptions)).data
     }
 }

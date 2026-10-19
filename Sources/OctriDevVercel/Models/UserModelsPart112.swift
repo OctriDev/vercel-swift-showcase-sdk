@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 public extension ListEventTypeName {
     static let deploymentCheckCreated = ListEventTypeName(rawValue: "deployment-check-created")
     static let deploymentCheckDeleted = ListEventTypeName(rawValue: "deployment-check-deleted")
@@ -14,8 +14,7 @@ public extension ListEventTypeName {
     static let deploymentPolicyBlocked = ListEventTypeName(rawValue: "deployment-policy-blocked")
     static let deploymentProtectionAccessRequests = ListEventTypeName(rawValue: "deployment-protection-access-requests")
     static let deploymentUndeleted = ListEventTypeName(rawValue: "deployment-undeleted")
-    static let disabledIntegrationInstallationRemoved =
-        ListEventTypeName(rawValue: "disabled-integration-installation-removed")
+    static let disabledIntegrationInstallationRemoved = ListEventTypeName(rawValue: "disabled-integration-installation-removed")
     static let disconnectBitbucketApp = ListEventTypeName(rawValue: "disconnect-bitbucket-app")
     static let disconnectGithub = ListEventTypeName(rawValue: "disconnect-github")
     static let disconnectGithubCustomHost = ListEventTypeName(rawValue: "disconnect-github-custom-host")
@@ -49,11 +48,9 @@ public extension ListEventTypeName {
     static let drainDisabled = ListEventTypeName(rawValue: "drain-disabled")
     static let drainEnabled = ListEventTypeName(rawValue: "drain-enabled")
     static let drainUpdated = ListEventTypeName(rawValue: "drain-updated")
-    static let edgeCacheDangerouslyDeleteBySrcImages =
-        ListEventTypeName(rawValue: "edge-cache-dangerously-delete-by-src-images")
+    static let edgeCacheDangerouslyDeleteBySrcImages = ListEventTypeName(rawValue: "edge-cache-dangerously-delete-by-src-images")
     static let edgeCacheDangerouslyDeleteByTags = ListEventTypeName(rawValue: "edge-cache-dangerously-delete-by-tags")
-    static let edgeCacheDangerouslyDeleteImmutableStatic =
-        ListEventTypeName(rawValue: "edge-cache-dangerously-delete-immutable-static")
+    static let edgeCacheDangerouslyDeleteImmutableStatic = ListEventTypeName(rawValue: "edge-cache-dangerously-delete-immutable-static")
     static let edgeCacheInvalidateBySrcImages = ListEventTypeName(rawValue: "edge-cache-invalidate-by-src-images")
     static let edgeCacheInvalidateByTags = ListEventTypeName(rawValue: "edge-cache-invalidate-by-tags")
     static let edgeCachePurgeAll = ListEventTypeName(rawValue: "edge-cache-purge-all")
@@ -73,10 +70,8 @@ public extension ListEventTypeName {
     static let emailNotificationRuleRemoved = ListEventTypeName(rawValue: "email-notification-rule-removed")
     static let emailNotificationRuleUpdated = ListEventTypeName(rawValue: "email-notification-rule-updated")
     static let emuMemberRemovedUnverifiedDomain = ListEventTypeName(rawValue: "emu-member-removed-unverified-domain")
-    static let enforceDisjunctiveProductionSecrets =
-        ListEventTypeName(rawValue: "enforce-disjunctive-production-secrets")
-    static let enforceSensitiveEnvironmentVariables =
-        ListEventTypeName(rawValue: "enforce-sensitive-environment-variables")
+    static let enforceDisjunctiveProductionSecrets = ListEventTypeName(rawValue: "enforce-disjunctive-production-secrets")
+    static let enforceSensitiveEnvironmentVariables = ListEventTypeName(rawValue: "enforce-sensitive-environment-variables")
     static let envVariableAdd = ListEventTypeName(rawValue: "env-variable-add")
     static let envVariableDelete = ListEventTypeName(rawValue: "env-variable-delete")
     static let envVariableEdit = ListEventTypeName(rawValue: "env-variable-edit")
@@ -138,29 +133,19 @@ public extension ListEventTypeName {
     static let globalConfigTransferOut = ListEventTypeName(rawValue: "global-config-transfer-out")
     static let globalConfigUpdated = ListEventTypeName(rawValue: "global-config-updated")
     static let instantRollbackCreated = ListEventTypeName(rawValue: "instant-rollback-created")
-    static let integrationConfigurationCredentialRevoked =
-        ListEventTypeName(rawValue: "integration-configuration-credential-revoked")
-    static let integrationConfigurationCredentialRotated =
-        ListEventTypeName(rawValue: "integration-configuration-credential-rotated")
-    static let integrationConfigurationOwnerChanged =
-        ListEventTypeName(rawValue: "integration-configuration-owner-changed")
-    static let integrationConfigurationScopeChangeConfirmed =
-        ListEventTypeName(rawValue: "integration-configuration-scope-change-confirmed")
-    static let integrationConfigurationTransferInSuccess =
-        ListEventTypeName(rawValue: "integration-configuration-transfer-in-success")
-    static let integrationConfigurationTransferOutSuccess =
-        ListEventTypeName(rawValue: "integration-configuration-transfer-out-success")
+    static let integrationConfigurationCredentialRevoked = ListEventTypeName(rawValue: "integration-configuration-credential-revoked")
+    static let integrationConfigurationCredentialRotated = ListEventTypeName(rawValue: "integration-configuration-credential-rotated")
+    static let integrationConfigurationOwnerChanged = ListEventTypeName(rawValue: "integration-configuration-owner-changed")
+    static let integrationConfigurationScopeChangeConfirmed = ListEventTypeName(rawValue: "integration-configuration-scope-change-confirmed")
+    static let integrationConfigurationTransferInSuccess = ListEventTypeName(rawValue: "integration-configuration-transfer-in-success")
+    static let integrationConfigurationTransferOutSuccess = ListEventTypeName(rawValue: "integration-configuration-transfer-out-success")
     static let integrationConfigurationsDisabled = ListEventTypeName(rawValue: "integration-configurations-disabled")
-    static let integrationInstallationBillingPlanUpdated =
-        ListEventTypeName(rawValue: "integration-installation-billing-plan-updated")
+    static let integrationInstallationBillingPlanUpdated = ListEventTypeName(rawValue: "integration-installation-billing-plan-updated")
     static let integrationInstallationCompleted = ListEventTypeName(rawValue: "integration-installation-completed")
-    static let integrationInstallationPermissionUpdated =
-        ListEventTypeName(rawValue: "integration-installation-permission-updated")
+    static let integrationInstallationPermissionUpdated = ListEventTypeName(rawValue: "integration-installation-permission-updated")
     static let integrationInstallationRemoved = ListEventTypeName(rawValue: "integration-installation-removed")
-    static let integrationResourceRedisCommandExecuted =
-        ListEventTypeName(rawValue: "integration-resource-redis-command-executed")
-    static let integrationResourceSqlQueryExecuted =
-        ListEventTypeName(rawValue: "integration-resource-sql-query-executed")
+    static let integrationResourceRedisCommandExecuted = ListEventTypeName(rawValue: "integration-resource-redis-command-executed")
+    static let integrationResourceSqlQueryExecuted = ListEventTypeName(rawValue: "integration-resource-sql-query-executed")
     static let integrationScopeChanged = ListEventTypeName(rawValue: "integration-scope-changed")
     static let invoiceModified = ListEventTypeName(rawValue: "invoice-modified")
     static let invoiceRefunded = ListEventTypeName(rawValue: "invoice-refunded")
@@ -182,16 +167,13 @@ public extension ListEventTypeName {
     static let loginConnectionLinked = ListEventTypeName(rawValue: "login-connection-linked")
     static let loginConnectionUnlinked = ListEventTypeName(rawValue: "login-connection-unlinked")
     static let manualDeploymentPromotionCreated = ListEventTypeName(rawValue: "manual-deployment-promotion-created")
-    static let marketplaceAutoCardCollectionUpdated =
-        ListEventTypeName(rawValue: "marketplace-auto-card-collection-updated")
+    static let marketplaceAutoCardCollectionUpdated = ListEventTypeName(rawValue: "marketplace-auto-card-collection-updated")
 }
 
 public extension ListEventTypeName {
-    static let marketplaceBillingCollectionUpdated =
-        ListEventTypeName(rawValue: "marketplace-billing-collection-updated")
+    static let marketplaceBillingCollectionUpdated = ListEventTypeName(rawValue: "marketplace-billing-collection-updated")
     static let marketplaceFlexCommitOptIn = ListEventTypeName(rawValue: "marketplace-flex-commit-opt-in")
-    static let marketplaceIntegrationAllowlistUpdated =
-        ListEventTypeName(rawValue: "marketplace-integration-allowlist-updated")
+    static let marketplaceIntegrationAllowlistUpdated = ListEventTypeName(rawValue: "marketplace-integration-allowlist-updated")
     static let messageboardCreated = ListEventTypeName(rawValue: "messageboard-created")
     static let messageboardPrivateCreated = ListEventTypeName(rawValue: "messageboard-private-created")
     static let messageboardPrivateSpaceCreated = ListEventTypeName(rawValue: "messageboard-private-space-created")
@@ -204,8 +186,7 @@ public extension ListEventTypeName {
     static let microfrontendGroupDeleted = ListEventTypeName(rawValue: "microfrontend-group-deleted")
     static let microfrontendGroupUpdated = ListEventTypeName(rawValue: "microfrontend-group-updated")
     static let microfrontendProjectAddedToGroup = ListEventTypeName(rawValue: "microfrontend-project-added-to-group")
-    static let microfrontendProjectRemovedFromGroup =
-        ListEventTypeName(rawValue: "microfrontend-project-removed-from-group")
+    static let microfrontendProjectRemovedFromGroup = ListEventTypeName(rawValue: "microfrontend-project-removed-from-group")
     static let microfrontendProjectUpdated = ListEventTypeName(rawValue: "microfrontend-project-updated")
     static let monitoringAlertUpdated = ListEventTypeName(rawValue: "monitoring-alert-updated")
     static let monitoringDisabled = ListEventTypeName(rawValue: "monitoring-disabled")
@@ -243,10 +224,8 @@ public extension ListEventTypeName {
     static let organizationTeamCreate = ListEventTypeName(rawValue: "organization-team-create")
     static let organizationTeamDelete = ListEventTypeName(rawValue: "organization-team-delete")
     static let organizationTeamSsoUpdate = ListEventTypeName(rawValue: "organization-team-sso-update")
-    static let organizationUpdateAccountFlowDismissed =
-        ListEventTypeName(rawValue: "organization-update-account-flow-dismissed")
-    static let organizationUpdateAccountFlowTriggered =
-        ListEventTypeName(rawValue: "organization-update-account-flow-triggered")
+    static let organizationUpdateAccountFlowDismissed = ListEventTypeName(rawValue: "organization-update-account-flow-dismissed")
+    static let organizationUpdateAccountFlowTriggered = ListEventTypeName(rawValue: "organization-update-account-flow-triggered")
     static let ownerBlocked = ListEventTypeName(rawValue: "owner-blocked")
     static let ownerSoftBlocked = ListEventTypeName(rawValue: "owner-soft-blocked")
     static let ownerSoftUnblocked = ListEventTypeName(rawValue: "owner-soft-unblocked")
@@ -258,10 +237,8 @@ public extension ListEventTypeName {
     static let pageIntegrityResourceApproved = ListEventTypeName(rawValue: "page-integrity-resource-approved")
     static let pageIntegrityResourceDeleted = ListEventTypeName(rawValue: "page-integrity-resource-deleted")
     static let pageIntegrityResourceRejected = ListEventTypeName(rawValue: "page-integrity-resource-rejected")
-    static let pageIntegrityScriptApprovalRuleCreated =
-        ListEventTypeName(rawValue: "page-integrity-script-approval-rule-created")
-    static let pageIntegrityScriptApprovalRuleDeleted =
-        ListEventTypeName(rawValue: "page-integrity-script-approval-rule-deleted")
+    static let pageIntegrityScriptApprovalRuleCreated = ListEventTypeName(rawValue: "page-integrity-script-approval-rule-created")
+    static let pageIntegrityScriptApprovalRuleDeleted = ListEventTypeName(rawValue: "page-integrity-script-approval-rule-deleted")
     static let passkeyCreated = ListEventTypeName(rawValue: "passkey-created")
     static let passkeyDeleted = ListEventTypeName(rawValue: "passkey-deleted")
     static let passkeyUpdated = ListEventTypeName(rawValue: "passkey-updated")
@@ -284,36 +261,29 @@ public extension ListEventTypeName {
     static let productionBranchUpdated = ListEventTypeName(rawValue: "production-branch-updated")
     static let projectAddAlias = ListEventTypeName(rawValue: "project-add-alias")
     static let projectAddRedirect = ListEventTypeName(rawValue: "project-add-redirect")
-    static let projectAffectedProjectsDeploymentsUpdated =
-        ListEventTypeName(rawValue: "project-affected-projects-deployments-updated")
+    static let projectAffectedProjectsDeploymentsUpdated = ListEventTypeName(rawValue: "project-affected-projects-deployments-updated")
     static let projectAliasConfiguredChange = ListEventTypeName(rawValue: "project-alias-configured-change")
     static let projectAnalyticsDisabled = ListEventTypeName(rawValue: "project-analytics-disabled")
     static let projectAnalyticsEnabled = ListEventTypeName(rawValue: "project-analytics-enabled")
-    static let projectAutoAssignCustomProductionDomainsUpdated =
-        ListEventTypeName(rawValue: "project-auto-assign-custom-production-domains-updated")
+    static let projectAutoAssignCustomProductionDomainsUpdated = ListEventTypeName(rawValue: "project-auto-assign-custom-production-domains-updated")
     static let projectAutomationBypass = ListEventTypeName(rawValue: "project-automation-bypass")
     static let projectAvatarDarkModeUpdate = ListEventTypeName(rawValue: "project-avatar-dark-mode-update")
     static let projectAvatarUpdate = ListEventTypeName(rawValue: "project-avatar-update")
     static let projectBuildCommandUpdated = ListEventTypeName(rawValue: "project-build-command-updated")
-    static let projectBuildLogsAndSourceProtectionUpdated =
-        ListEventTypeName(rawValue: "project-build-logs-and-source-protection-updated")
+    static let projectBuildLogsAndSourceProtectionUpdated = ListEventTypeName(rawValue: "project-build-logs-and-source-protection-updated")
     static let projectBuildMachineUpdated = ListEventTypeName(rawValue: "project-build-machine-updated")
-    static let projectCardWidgetPreferenceUpdated =
-        ListEventTypeName(rawValue: "project-card-widget-preference-updated")
+    static let projectCardWidgetPreferenceUpdated = ListEventTypeName(rawValue: "project-card-widget-preference-updated")
     static let projectClientCertDelete = ListEventTypeName(rawValue: "project-client-cert-delete")
     static let projectClientCertUpload = ListEventTypeName(rawValue: "project-client-cert-upload")
     static let projectConnectConfigurations = ListEventTypeName(rawValue: "project-connect-configurations")
-    static let projectConsolidatedGitCommitStatusUpdated =
-        ListEventTypeName(rawValue: "project-consolidated-git-commit-status-updated")
+    static let projectConsolidatedGitCommitStatusUpdated = ListEventTypeName(rawValue: "project-consolidated-git-commit-status-updated")
     static let projectCreated = ListEventTypeName(rawValue: "project-created")
     static let projectCronJobsToggled = ListEventTypeName(rawValue: "project-cron-jobs-toggled")
     static let projectCustomEnvironmentCreated = ListEventTypeName(rawValue: "project-custom-environment-created")
     static let projectCustomEnvironmentDeleted = ListEventTypeName(rawValue: "project-custom-environment-deleted")
-    static let projectCustomEnvironmentSchedulesDefaultUpdated =
-        ListEventTypeName(rawValue: "project-custom-environment-schedules-default-updated")
+    static let projectCustomEnvironmentSchedulesDefaultUpdated = ListEventTypeName(rawValue: "project-custom-environment-schedules-default-updated")
     static let projectCustomEnvironmentUpdated = ListEventTypeName(rawValue: "project-custom-environment-updated")
-    static let projectCustomerSuccessCodeVisibilityUpdated =
-        ListEventTypeName(rawValue: "project-customer-success-code-visibility-updated")
+    static let projectCustomerSuccessCodeVisibilityUpdated = ListEventTypeName(rawValue: "project-customer-success-code-visibility-updated")
     static let projectDelete = ListEventTypeName(rawValue: "project-delete")
     static let projectDeploymentPolicyUpdated = ListEventTypeName(rawValue: "project-deployment-policy-updated")
     static let projectDeploymentRetentionUpdated = ListEventTypeName(rawValue: "project-deployment-retention-updated")
@@ -328,8 +298,7 @@ public extension ListEventTypeName {
     static let projectExpirationReached = ListEventTypeName(rawValue: "project-expiration-reached")
     static let projectExpirationScheduled = ListEventTypeName(rawValue: "project-expiration-scheduled")
     static let projectExpirationUnlocked = ListEventTypeName(rawValue: "project-expiration-unlocked")
-    static let projectExternalRewriteCachingUpdated =
-        ListEventTypeName(rawValue: "project-external-rewrite-caching-updated")
+    static let projectExternalRewriteCachingUpdated = ListEventTypeName(rawValue: "project-external-rewrite-caching-updated")
     static let projectFrameworkUpdated = ListEventTypeName(rawValue: "project-framework-updated")
     static let projectFunctionCpuMemory = ListEventTypeName(rawValue: "project-function-cpu-memory")
     static let projectFunctionFailover = ListEventTypeName(rawValue: "project-function-failover")
@@ -340,8 +309,7 @@ public extension ListEventTypeName {
     static let projectFunctionsFluidEnabled = ListEventTypeName(rawValue: "project-functions-fluid-enabled")
     static let projectGitCommitCommentsToggled = ListEventTypeName(rawValue: "project-git-commit-comments-toggled")
     static let projectGitCommitStatusToggled = ListEventTypeName(rawValue: "project-git-commit-status-toggled")
-    static let projectGitCreateDeploymentsToggled =
-        ListEventTypeName(rawValue: "project-git-create-deployments-toggled")
+    static let projectGitCreateDeploymentsToggled = ListEventTypeName(rawValue: "project-git-create-deployments-toggled")
     static let projectGitCredentialBoundCreated = ListEventTypeName(rawValue: "project-git-credential-bound-created")
     static let projectGitCredentialBoundDeleted = ListEventTypeName(rawValue: "project-git-credential-bound-deleted")
     static let projectGitCredentialBoundUpdated = ListEventTypeName(rawValue: "project-git-credential-bound-updated")
@@ -353,10 +321,8 @@ public extension ListEventTypeName {
     static let projectGitPrCommentsToggled = ListEventTypeName(rawValue: "project-git-pr-comments-toggled")
     static let projectGitRepositoryConnected = ListEventTypeName(rawValue: "project-git-repository-connected")
     static let projectGitRepositoryDisconnected = ListEventTypeName(rawValue: "project-git-repository-disconnected")
-    static let projectGitRepositoryDispatchEventsToggled =
-        ListEventTypeName(rawValue: "project-git-repository-dispatch-events-toggled")
-    static let projectGitRequireVerifiedCommitsToggled =
-        ListEventTypeName(rawValue: "project-git-require-verified-commits-toggled")
+    static let projectGitRepositoryDispatchEventsToggled = ListEventTypeName(rawValue: "project-git-repository-dispatch-events-toggled")
+    static let projectGitRequireVerifiedCommitsToggled = ListEventTypeName(rawValue: "project-git-require-verified-commits-toggled")
     static let projectIgnoredBuildStepUpdated = ListEventTypeName(rawValue: "project-ignored-build-step-updated")
     static let projectInstallCommandUpdated = ListEventTypeName(rawValue: "project-install-command-updated")
     static let projectMemberAdded = ListEventTypeName(rawValue: "project-member-added")
@@ -381,10 +347,8 @@ public extension ListEventTypeName {
     static let projectPasswordProtection = ListEventTypeName(rawValue: "project-password-protection")
     static let projectPaused = ListEventTypeName(rawValue: "project-paused")
     static let projectPreviewDeploymentSuffix = ListEventTypeName(rawValue: "project-preview-deployment-suffix")
-    static let projectPreviewEnvironmentBranchTrackingUpdated =
-        ListEventTypeName(rawValue: "project-preview-environment-branch-tracking-updated")
-    static let projectPrioritizeProductionBuildsUpdated =
-        ListEventTypeName(rawValue: "project-prioritize-production-builds-updated")
+    static let projectPreviewEnvironmentBranchTrackingUpdated = ListEventTypeName(rawValue: "project-preview-environment-branch-tracking-updated")
+    static let projectPrioritizeProductionBuildsUpdated = ListEventTypeName(rawValue: "project-prioritize-production-builds-updated")
     static let projectProgramEnrollmentChanged = ListEventTypeName(rawValue: "project-program-enrollment-changed")
     static let projectProtectedSourcemapsUpdated = ListEventTypeName(rawValue: "project-protected-sourcemaps-updated")
     static let projectRollbackDescriptionUpdated = ListEventTypeName(rawValue: "project-rollback-description-updated")
@@ -397,27 +361,20 @@ public extension ListEventTypeName {
     static let projectRollingReleaseEnabled = ListEventTypeName(rawValue: "project-rolling-release-enabled")
     static let projectRollingReleasePaused = ListEventTypeName(rawValue: "project-rolling-release-paused")
     static let projectRollingReleaseStarted = ListEventTypeName(rawValue: "project-rolling-release-started")
-    static let projectRollingReleaseSuggestedActionsGenerated =
-        ListEventTypeName(rawValue: "project-rolling-release-suggested-actions-generated")
+    static let projectRollingReleaseSuggestedActionsGenerated = ListEventTypeName(rawValue: "project-rolling-release-suggested-actions-generated")
     static let projectRollingReleaseTimer = ListEventTypeName(rawValue: "project-rolling-release-timer")
     static let projectRootDirectoryUpdated = ListEventTypeName(rawValue: "project-root-directory-updated")
     static let projectRoutesVersionPromoted = ListEventTypeName(rawValue: "project-routes-version-promoted")
     static let projectRoutesVersionRestored = ListEventTypeName(rawValue: "project-routes-version-restored")
     static let projectSandboxConfigUpdated = ListEventTypeName(rawValue: "project-sandbox-config-updated")
-    static let projectSandboxUrlProtectionUpdated =
-        ListEventTypeName(rawValue: "project-sandbox-url-protection-updated")
-    static let projectSkewProtectionAllowedDomainsUpdated =
-        ListEventTypeName(rawValue: "project-skew-protection-allowed-domains-updated")
-    static let projectSkewProtectionMaxAgeUpdated =
-        ListEventTypeName(rawValue: "project-skew-protection-max-age-updated")
-    static let projectSkewProtectionThresholdUpdated =
-        ListEventTypeName(rawValue: "project-skew-protection-threshold-updated")
-    static let projectSourceFilesOutsideRootDirectoryUpdated =
-        ListEventTypeName(rawValue: "project-source-files-outside-root-directory-updated")
+    static let projectSandboxUrlProtectionUpdated = ListEventTypeName(rawValue: "project-sandbox-url-protection-updated")
+    static let projectSkewProtectionAllowedDomainsUpdated = ListEventTypeName(rawValue: "project-skew-protection-allowed-domains-updated")
+    static let projectSkewProtectionMaxAgeUpdated = ListEventTypeName(rawValue: "project-skew-protection-max-age-updated")
+    static let projectSkewProtectionThresholdUpdated = ListEventTypeName(rawValue: "project-skew-protection-threshold-updated")
+    static let projectSourceFilesOutsideRootDirectoryUpdated = ListEventTypeName(rawValue: "project-source-files-outside-root-directory-updated")
     static let projectSpeedInsightsDisabled = ListEventTypeName(rawValue: "project-speed-insights-disabled")
     static let projectSpeedInsightsEnabled = ListEventTypeName(rawValue: "project-speed-insights-enabled")
-    static let projectSpeedInsightsFreeDataStarted =
-        ListEventTypeName(rawValue: "project-speed-insights-free-data-started")
+    static let projectSpeedInsightsFreeDataStarted = ListEventTypeName(rawValue: "project-speed-insights-free-data-started")
     static let projectSsoProtection = ListEventTypeName(rawValue: "project-sso-protection")
     static let projectStaticIpsUpdated = ListEventTypeName(rawValue: "project-static-ips-updated")
     static let projectTrustedIps = ListEventTypeName(rawValue: "project-trusted-ips")
@@ -439,8 +396,7 @@ public extension ListEventTypeName {
     static let sandboxDriveDeleted = ListEventTypeName(rawValue: "sandbox-drive-deleted")
     static let sandboxDriveSnapshotCreated = ListEventTypeName(rawValue: "sandbox-drive-snapshot-created")
     static let sandboxDriveSnapshotDeleted = ListEventTypeName(rawValue: "sandbox-drive-snapshot-deleted")
-    static let sandboxSignedCommitIdentityConfigured =
-        ListEventTypeName(rawValue: "sandbox-signed-commit-identity-configured")
+    static let sandboxSignedCommitIdentityConfigured = ListEventTypeName(rawValue: "sandbox-signed-commit-identity-configured")
     static let sandboxSnapshotRegionsUpdated = ListEventTypeName(rawValue: "sandbox-snapshot-regions-updated")
     static let scale = ListEventTypeName(rawValue: "scale")
     static let scaleAuto = ListEventTypeName(rawValue: "scale-auto")

@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 public extension UserEventType {
     static let deploymentCheckCreated = UserEventType(rawValue: "deployment-check-created")
     static let deploymentCheckDeleted = UserEventType(rawValue: "deployment-check-deleted")
@@ -14,8 +14,7 @@ public extension UserEventType {
     static let deploymentPolicyBlocked = UserEventType(rawValue: "deployment-policy-blocked")
     static let deploymentProtectionAccessRequests = UserEventType(rawValue: "deployment-protection-access-requests")
     static let deploymentUndeleted = UserEventType(rawValue: "deployment-undeleted")
-    static let disabledIntegrationInstallationRemoved =
-        UserEventType(rawValue: "disabled-integration-installation-removed")
+    static let disabledIntegrationInstallationRemoved = UserEventType(rawValue: "disabled-integration-installation-removed")
     static let disconnectBitbucketApp = UserEventType(rawValue: "disconnect-bitbucket-app")
     static let disconnectGithub = UserEventType(rawValue: "disconnect-github")
     static let disconnectGithubCustomHost = UserEventType(rawValue: "disconnect-github-custom-host")
@@ -49,11 +48,9 @@ public extension UserEventType {
     static let drainDisabled = UserEventType(rawValue: "drain-disabled")
     static let drainEnabled = UserEventType(rawValue: "drain-enabled")
     static let drainUpdated = UserEventType(rawValue: "drain-updated")
-    static let edgeCacheDangerouslyDeleteBySrcImages =
-        UserEventType(rawValue: "edge-cache-dangerously-delete-by-src-images")
+    static let edgeCacheDangerouslyDeleteBySrcImages = UserEventType(rawValue: "edge-cache-dangerously-delete-by-src-images")
     static let edgeCacheDangerouslyDeleteByTags = UserEventType(rawValue: "edge-cache-dangerously-delete-by-tags")
-    static let edgeCacheDangerouslyDeleteImmutableStatic =
-        UserEventType(rawValue: "edge-cache-dangerously-delete-immutable-static")
+    static let edgeCacheDangerouslyDeleteImmutableStatic = UserEventType(rawValue: "edge-cache-dangerously-delete-immutable-static")
     static let edgeCacheInvalidateBySrcImages = UserEventType(rawValue: "edge-cache-invalidate-by-src-images")
     static let edgeCacheInvalidateByTags = UserEventType(rawValue: "edge-cache-invalidate-by-tags")
     static let edgeCachePurgeAll = UserEventType(rawValue: "edge-cache-purge-all")
@@ -136,26 +133,18 @@ public extension UserEventType {
     static let globalConfigTransferOut = UserEventType(rawValue: "global-config-transfer-out")
     static let globalConfigUpdated = UserEventType(rawValue: "global-config-updated")
     static let instantRollbackCreated = UserEventType(rawValue: "instant-rollback-created")
-    static let integrationConfigurationCredentialRevoked =
-        UserEventType(rawValue: "integration-configuration-credential-revoked")
-    static let integrationConfigurationCredentialRotated =
-        UserEventType(rawValue: "integration-configuration-credential-rotated")
+    static let integrationConfigurationCredentialRevoked = UserEventType(rawValue: "integration-configuration-credential-revoked")
+    static let integrationConfigurationCredentialRotated = UserEventType(rawValue: "integration-configuration-credential-rotated")
     static let integrationConfigurationOwnerChanged = UserEventType(rawValue: "integration-configuration-owner-changed")
-    static let integrationConfigurationScopeChangeConfirmed =
-        UserEventType(rawValue: "integration-configuration-scope-change-confirmed")
-    static let integrationConfigurationTransferInSuccess =
-        UserEventType(rawValue: "integration-configuration-transfer-in-success")
-    static let integrationConfigurationTransferOutSuccess =
-        UserEventType(rawValue: "integration-configuration-transfer-out-success")
+    static let integrationConfigurationScopeChangeConfirmed = UserEventType(rawValue: "integration-configuration-scope-change-confirmed")
+    static let integrationConfigurationTransferInSuccess = UserEventType(rawValue: "integration-configuration-transfer-in-success")
+    static let integrationConfigurationTransferOutSuccess = UserEventType(rawValue: "integration-configuration-transfer-out-success")
     static let integrationConfigurationsDisabled = UserEventType(rawValue: "integration-configurations-disabled")
-    static let integrationInstallationBillingPlanUpdated =
-        UserEventType(rawValue: "integration-installation-billing-plan-updated")
+    static let integrationInstallationBillingPlanUpdated = UserEventType(rawValue: "integration-installation-billing-plan-updated")
     static let integrationInstallationCompleted = UserEventType(rawValue: "integration-installation-completed")
-    static let integrationInstallationPermissionUpdated =
-        UserEventType(rawValue: "integration-installation-permission-updated")
+    static let integrationInstallationPermissionUpdated = UserEventType(rawValue: "integration-installation-permission-updated")
     static let integrationInstallationRemoved = UserEventType(rawValue: "integration-installation-removed")
-    static let integrationResourceRedisCommandExecuted =
-        UserEventType(rawValue: "integration-resource-redis-command-executed")
+    static let integrationResourceRedisCommandExecuted = UserEventType(rawValue: "integration-resource-redis-command-executed")
     static let integrationResourceSqlQueryExecuted = UserEventType(rawValue: "integration-resource-sql-query-executed")
     static let integrationScopeChanged = UserEventType(rawValue: "integration-scope-changed")
     static let invoiceModified = UserEventType(rawValue: "invoice-modified")
@@ -178,15 +167,13 @@ public extension UserEventType {
     static let loginConnectionLinked = UserEventType(rawValue: "login-connection-linked")
     static let loginConnectionUnlinked = UserEventType(rawValue: "login-connection-unlinked")
     static let manualDeploymentPromotionCreated = UserEventType(rawValue: "manual-deployment-promotion-created")
-    static let marketplaceAutoCardCollectionUpdated =
-        UserEventType(rawValue: "marketplace-auto-card-collection-updated")
+    static let marketplaceAutoCardCollectionUpdated = UserEventType(rawValue: "marketplace-auto-card-collection-updated")
 }
 
 public extension UserEventType {
     static let marketplaceBillingCollectionUpdated = UserEventType(rawValue: "marketplace-billing-collection-updated")
     static let marketplaceFlexCommitOptIn = UserEventType(rawValue: "marketplace-flex-commit-opt-in")
-    static let marketplaceIntegrationAllowlistUpdated =
-        UserEventType(rawValue: "marketplace-integration-allowlist-updated")
+    static let marketplaceIntegrationAllowlistUpdated = UserEventType(rawValue: "marketplace-integration-allowlist-updated")
     static let messageboardCreated = UserEventType(rawValue: "messageboard-created")
     static let messageboardPrivateCreated = UserEventType(rawValue: "messageboard-private-created")
     static let messageboardPrivateSpaceCreated = UserEventType(rawValue: "messageboard-private-space-created")
@@ -199,8 +186,7 @@ public extension UserEventType {
     static let microfrontendGroupDeleted = UserEventType(rawValue: "microfrontend-group-deleted")
     static let microfrontendGroupUpdated = UserEventType(rawValue: "microfrontend-group-updated")
     static let microfrontendProjectAddedToGroup = UserEventType(rawValue: "microfrontend-project-added-to-group")
-    static let microfrontendProjectRemovedFromGroup =
-        UserEventType(rawValue: "microfrontend-project-removed-from-group")
+    static let microfrontendProjectRemovedFromGroup = UserEventType(rawValue: "microfrontend-project-removed-from-group")
     static let microfrontendProjectUpdated = UserEventType(rawValue: "microfrontend-project-updated")
     static let monitoringAlertUpdated = UserEventType(rawValue: "monitoring-alert-updated")
     static let monitoringDisabled = UserEventType(rawValue: "monitoring-disabled")
@@ -238,10 +224,8 @@ public extension UserEventType {
     static let organizationTeamCreate = UserEventType(rawValue: "organization-team-create")
     static let organizationTeamDelete = UserEventType(rawValue: "organization-team-delete")
     static let organizationTeamSsoUpdate = UserEventType(rawValue: "organization-team-sso-update")
-    static let organizationUpdateAccountFlowDismissed =
-        UserEventType(rawValue: "organization-update-account-flow-dismissed")
-    static let organizationUpdateAccountFlowTriggered =
-        UserEventType(rawValue: "organization-update-account-flow-triggered")
+    static let organizationUpdateAccountFlowDismissed = UserEventType(rawValue: "organization-update-account-flow-dismissed")
+    static let organizationUpdateAccountFlowTriggered = UserEventType(rawValue: "organization-update-account-flow-triggered")
     static let ownerBlocked = UserEventType(rawValue: "owner-blocked")
     static let ownerSoftBlocked = UserEventType(rawValue: "owner-soft-blocked")
     static let ownerSoftUnblocked = UserEventType(rawValue: "owner-soft-unblocked")
@@ -253,10 +237,8 @@ public extension UserEventType {
     static let pageIntegrityResourceApproved = UserEventType(rawValue: "page-integrity-resource-approved")
     static let pageIntegrityResourceDeleted = UserEventType(rawValue: "page-integrity-resource-deleted")
     static let pageIntegrityResourceRejected = UserEventType(rawValue: "page-integrity-resource-rejected")
-    static let pageIntegrityScriptApprovalRuleCreated =
-        UserEventType(rawValue: "page-integrity-script-approval-rule-created")
-    static let pageIntegrityScriptApprovalRuleDeleted =
-        UserEventType(rawValue: "page-integrity-script-approval-rule-deleted")
+    static let pageIntegrityScriptApprovalRuleCreated = UserEventType(rawValue: "page-integrity-script-approval-rule-created")
+    static let pageIntegrityScriptApprovalRuleDeleted = UserEventType(rawValue: "page-integrity-script-approval-rule-deleted")
     static let passkeyCreated = UserEventType(rawValue: "passkey-created")
     static let passkeyDeleted = UserEventType(rawValue: "passkey-deleted")
     static let passkeyUpdated = UserEventType(rawValue: "passkey-updated")
@@ -279,35 +261,29 @@ public extension UserEventType {
     static let productionBranchUpdated = UserEventType(rawValue: "production-branch-updated")
     static let projectAddAlias = UserEventType(rawValue: "project-add-alias")
     static let projectAddRedirect = UserEventType(rawValue: "project-add-redirect")
-    static let projectAffectedProjectsDeploymentsUpdated =
-        UserEventType(rawValue: "project-affected-projects-deployments-updated")
+    static let projectAffectedProjectsDeploymentsUpdated = UserEventType(rawValue: "project-affected-projects-deployments-updated")
     static let projectAliasConfiguredChange = UserEventType(rawValue: "project-alias-configured-change")
     static let projectAnalyticsDisabled = UserEventType(rawValue: "project-analytics-disabled")
     static let projectAnalyticsEnabled = UserEventType(rawValue: "project-analytics-enabled")
-    static let projectAutoAssignCustomProductionDomainsUpdated =
-        UserEventType(rawValue: "project-auto-assign-custom-production-domains-updated")
+    static let projectAutoAssignCustomProductionDomainsUpdated = UserEventType(rawValue: "project-auto-assign-custom-production-domains-updated")
     static let projectAutomationBypass = UserEventType(rawValue: "project-automation-bypass")
     static let projectAvatarDarkModeUpdate = UserEventType(rawValue: "project-avatar-dark-mode-update")
     static let projectAvatarUpdate = UserEventType(rawValue: "project-avatar-update")
     static let projectBuildCommandUpdated = UserEventType(rawValue: "project-build-command-updated")
-    static let projectBuildLogsAndSourceProtectionUpdated =
-        UserEventType(rawValue: "project-build-logs-and-source-protection-updated")
+    static let projectBuildLogsAndSourceProtectionUpdated = UserEventType(rawValue: "project-build-logs-and-source-protection-updated")
     static let projectBuildMachineUpdated = UserEventType(rawValue: "project-build-machine-updated")
     static let projectCardWidgetPreferenceUpdated = UserEventType(rawValue: "project-card-widget-preference-updated")
     static let projectClientCertDelete = UserEventType(rawValue: "project-client-cert-delete")
     static let projectClientCertUpload = UserEventType(rawValue: "project-client-cert-upload")
     static let projectConnectConfigurations = UserEventType(rawValue: "project-connect-configurations")
-    static let projectConsolidatedGitCommitStatusUpdated =
-        UserEventType(rawValue: "project-consolidated-git-commit-status-updated")
+    static let projectConsolidatedGitCommitStatusUpdated = UserEventType(rawValue: "project-consolidated-git-commit-status-updated")
     static let projectCreated = UserEventType(rawValue: "project-created")
     static let projectCronJobsToggled = UserEventType(rawValue: "project-cron-jobs-toggled")
     static let projectCustomEnvironmentCreated = UserEventType(rawValue: "project-custom-environment-created")
     static let projectCustomEnvironmentDeleted = UserEventType(rawValue: "project-custom-environment-deleted")
-    static let projectCustomEnvironmentSchedulesDefaultUpdated =
-        UserEventType(rawValue: "project-custom-environment-schedules-default-updated")
+    static let projectCustomEnvironmentSchedulesDefaultUpdated = UserEventType(rawValue: "project-custom-environment-schedules-default-updated")
     static let projectCustomEnvironmentUpdated = UserEventType(rawValue: "project-custom-environment-updated")
-    static let projectCustomerSuccessCodeVisibilityUpdated =
-        UserEventType(rawValue: "project-customer-success-code-visibility-updated")
+    static let projectCustomerSuccessCodeVisibilityUpdated = UserEventType(rawValue: "project-customer-success-code-visibility-updated")
     static let projectDelete = UserEventType(rawValue: "project-delete")
     static let projectDeploymentPolicyUpdated = UserEventType(rawValue: "project-deployment-policy-updated")
     static let projectDeploymentRetentionUpdated = UserEventType(rawValue: "project-deployment-retention-updated")
@@ -322,8 +298,7 @@ public extension UserEventType {
     static let projectExpirationReached = UserEventType(rawValue: "project-expiration-reached")
     static let projectExpirationScheduled = UserEventType(rawValue: "project-expiration-scheduled")
     static let projectExpirationUnlocked = UserEventType(rawValue: "project-expiration-unlocked")
-    static let projectExternalRewriteCachingUpdated =
-        UserEventType(rawValue: "project-external-rewrite-caching-updated")
+    static let projectExternalRewriteCachingUpdated = UserEventType(rawValue: "project-external-rewrite-caching-updated")
     static let projectFrameworkUpdated = UserEventType(rawValue: "project-framework-updated")
     static let projectFunctionCpuMemory = UserEventType(rawValue: "project-function-cpu-memory")
     static let projectFunctionFailover = UserEventType(rawValue: "project-function-failover")
@@ -346,10 +321,8 @@ public extension UserEventType {
     static let projectGitPrCommentsToggled = UserEventType(rawValue: "project-git-pr-comments-toggled")
     static let projectGitRepositoryConnected = UserEventType(rawValue: "project-git-repository-connected")
     static let projectGitRepositoryDisconnected = UserEventType(rawValue: "project-git-repository-disconnected")
-    static let projectGitRepositoryDispatchEventsToggled =
-        UserEventType(rawValue: "project-git-repository-dispatch-events-toggled")
-    static let projectGitRequireVerifiedCommitsToggled =
-        UserEventType(rawValue: "project-git-require-verified-commits-toggled")
+    static let projectGitRepositoryDispatchEventsToggled = UserEventType(rawValue: "project-git-repository-dispatch-events-toggled")
+    static let projectGitRequireVerifiedCommitsToggled = UserEventType(rawValue: "project-git-require-verified-commits-toggled")
     static let projectIgnoredBuildStepUpdated = UserEventType(rawValue: "project-ignored-build-step-updated")
     static let projectInstallCommandUpdated = UserEventType(rawValue: "project-install-command-updated")
     static let projectMemberAdded = UserEventType(rawValue: "project-member-added")
@@ -374,10 +347,8 @@ public extension UserEventType {
     static let projectPasswordProtection = UserEventType(rawValue: "project-password-protection")
     static let projectPaused = UserEventType(rawValue: "project-paused")
     static let projectPreviewDeploymentSuffix = UserEventType(rawValue: "project-preview-deployment-suffix")
-    static let projectPreviewEnvironmentBranchTrackingUpdated =
-        UserEventType(rawValue: "project-preview-environment-branch-tracking-updated")
-    static let projectPrioritizeProductionBuildsUpdated =
-        UserEventType(rawValue: "project-prioritize-production-builds-updated")
+    static let projectPreviewEnvironmentBranchTrackingUpdated = UserEventType(rawValue: "project-preview-environment-branch-tracking-updated")
+    static let projectPrioritizeProductionBuildsUpdated = UserEventType(rawValue: "project-prioritize-production-builds-updated")
     static let projectProgramEnrollmentChanged = UserEventType(rawValue: "project-program-enrollment-changed")
     static let projectProtectedSourcemapsUpdated = UserEventType(rawValue: "project-protected-sourcemaps-updated")
     static let projectRollbackDescriptionUpdated = UserEventType(rawValue: "project-rollback-description-updated")
@@ -390,21 +361,17 @@ public extension UserEventType {
     static let projectRollingReleaseEnabled = UserEventType(rawValue: "project-rolling-release-enabled")
     static let projectRollingReleasePaused = UserEventType(rawValue: "project-rolling-release-paused")
     static let projectRollingReleaseStarted = UserEventType(rawValue: "project-rolling-release-started")
-    static let projectRollingReleaseSuggestedActionsGenerated =
-        UserEventType(rawValue: "project-rolling-release-suggested-actions-generated")
+    static let projectRollingReleaseSuggestedActionsGenerated = UserEventType(rawValue: "project-rolling-release-suggested-actions-generated")
     static let projectRollingReleaseTimer = UserEventType(rawValue: "project-rolling-release-timer")
     static let projectRootDirectoryUpdated = UserEventType(rawValue: "project-root-directory-updated")
     static let projectRoutesVersionPromoted = UserEventType(rawValue: "project-routes-version-promoted")
     static let projectRoutesVersionRestored = UserEventType(rawValue: "project-routes-version-restored")
     static let projectSandboxConfigUpdated = UserEventType(rawValue: "project-sandbox-config-updated")
     static let projectSandboxUrlProtectionUpdated = UserEventType(rawValue: "project-sandbox-url-protection-updated")
-    static let projectSkewProtectionAllowedDomainsUpdated =
-        UserEventType(rawValue: "project-skew-protection-allowed-domains-updated")
+    static let projectSkewProtectionAllowedDomainsUpdated = UserEventType(rawValue: "project-skew-protection-allowed-domains-updated")
     static let projectSkewProtectionMaxAgeUpdated = UserEventType(rawValue: "project-skew-protection-max-age-updated")
-    static let projectSkewProtectionThresholdUpdated =
-        UserEventType(rawValue: "project-skew-protection-threshold-updated")
-    static let projectSourceFilesOutsideRootDirectoryUpdated =
-        UserEventType(rawValue: "project-source-files-outside-root-directory-updated")
+    static let projectSkewProtectionThresholdUpdated = UserEventType(rawValue: "project-skew-protection-threshold-updated")
+    static let projectSourceFilesOutsideRootDirectoryUpdated = UserEventType(rawValue: "project-source-files-outside-root-directory-updated")
     static let projectSpeedInsightsDisabled = UserEventType(rawValue: "project-speed-insights-disabled")
     static let projectSpeedInsightsEnabled = UserEventType(rawValue: "project-speed-insights-enabled")
     static let projectSpeedInsightsFreeDataStarted = UserEventType(rawValue: "project-speed-insights-free-data-started")
@@ -429,8 +396,7 @@ public extension UserEventType {
     static let sandboxDriveDeleted = UserEventType(rawValue: "sandbox-drive-deleted")
     static let sandboxDriveSnapshotCreated = UserEventType(rawValue: "sandbox-drive-snapshot-created")
     static let sandboxDriveSnapshotDeleted = UserEventType(rawValue: "sandbox-drive-snapshot-deleted")
-    static let sandboxSignedCommitIdentityConfigured =
-        UserEventType(rawValue: "sandbox-signed-commit-identity-configured")
+    static let sandboxSignedCommitIdentityConfigured = UserEventType(rawValue: "sandbox-signed-commit-identity-configured")
     static let sandboxSnapshotRegionsUpdated = UserEventType(rawValue: "sandbox-snapshot-regions-updated")
     static let scale = UserEventType(rawValue: "scale")
     static let scaleAuto = UserEventType(rawValue: "scale-auto")
@@ -484,8 +450,7 @@ public extension UserEventType {
     static let storageTransferRequestCreated = UserEventType(rawValue: "storage-transfer-request-created")
     static let storageUpdate = UserEventType(rawValue: "storage-update")
     static let storageUpdateProjectConnection = UserEventType(rawValue: "storage-update-project-connection")
-    static let storageUpgradeProjectConnectionToOidc =
-        UserEventType(rawValue: "storage-upgrade-project-connection-to-oidc")
+    static let storageUpgradeProjectConnectionToOidc = UserEventType(rawValue: "storage-upgrade-project-connection-to-oidc")
     static let storageViewSecret = UserEventType(rawValue: "storage-view-secret")
     static let strictConnectors = UserEventType(rawValue: "strict-connectors")
     static let strictDeploymentProtectionSettings = UserEventType(rawValue: "strict-deployment-protection-settings")
@@ -497,18 +462,15 @@ public extension UserEventType {
     static let subscriptionUpdated = UserEventType(rawValue: "subscription-updated")
     static let supportSessionCreated = UserEventType(rawValue: "support-session-created")
     static let team = UserEventType(rawValue: "team")
-    static let teamAgentBillingMigrationDecisionChanged =
-        UserEventType(rawValue: "team-agent-billing-migration-decision-changed")
+    static let teamAgentBillingMigrationDecisionChanged = UserEventType(rawValue: "team-agent-billing-migration-decision-changed")
     static let teamAvatarUpdate = UserEventType(rawValue: "team-avatar-update")
     static let teamCollaborationSettingsUpdated = UserEventType(rawValue: "team-collaboration-settings-updated")
     static let teamDefaultBuildMachineUpdated = UserEventType(rawValue: "team-default-build-machine-updated")
     static let teamDefaultPassportUpdated = UserEventType(rawValue: "team-default-passport-updated")
     static let teamDelete = UserEventType(rawValue: "team-delete")
     static let teamDeploymentPolicyUpdated = UserEventType(rawValue: "team-deployment-policy-updated")
-    static let teamDeploymentStorageHighRetentionOptIn =
-        UserEventType(rawValue: "team-deployment-storage-high-retention-opt-in")
-    static let teamDeploymentStorageRetentionOptOut =
-        UserEventType(rawValue: "team-deployment-storage-retention-opt-out")
+    static let teamDeploymentStorageHighRetentionOptIn = UserEventType(rawValue: "team-deployment-storage-high-retention-opt-in")
+    static let teamDeploymentStorageRetentionOptOut = UserEventType(rawValue: "team-deployment-storage-retention-opt-out")
     static let teamDomainVerificationCreated = UserEventType(rawValue: "team-domain-verification-created")
     static let teamDomainVerificationDeleted = UserEventType(rawValue: "team-domain-verification-deleted")
     static let teamDomainVerificationVerified = UserEventType(rawValue: "team-domain-verification-verified")
@@ -517,10 +479,8 @@ public extension UserEventType {
     static let teamEndedTrial = UserEventType(rawValue: "team-ended-trial")
     static let teamFirewallConfigModified = UserEventType(rawValue: "team-firewall-config-modified")
     static let teamFirewallConfigPromoted = UserEventType(rawValue: "team-firewall-config-promoted")
-    static let teamGitRepositoryDispatchEventsToggled =
-        UserEventType(rawValue: "team-git-repository-dispatch-events-toggled")
-    static let teamGitRequireVerifiedCommitsToggled =
-        UserEventType(rawValue: "team-git-require-verified-commits-toggled")
+    static let teamGitRepositoryDispatchEventsToggled = UserEventType(rawValue: "team-git-repository-dispatch-events-toggled")
+    static let teamGitRequireVerifiedCommitsToggled = UserEventType(rawValue: "team-git-require-verified-commits-toggled")
     static let teamInviteBulkDelete = UserEventType(rawValue: "team-invite-bulk-delete")
     static let teamInviteCodeReset = UserEventType(rawValue: "team-invite-code-reset")
     static let teamInviteLinkCreated = UserEventType(rawValue: "team-invite-link-created")

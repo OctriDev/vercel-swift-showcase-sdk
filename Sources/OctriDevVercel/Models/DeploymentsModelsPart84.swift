@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Deployments domain models
+// Deployments domain models
 public indirect enum CancelDeploymentResponseServicesItemVariant1RedirectsItemMissingItem {
     case cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895(
         CancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895
@@ -14,39 +14,29 @@ public indirect enum CancelDeploymentResponseServicesItemVariant1RedirectsItemMi
 }
 
 extension CancelDeploymentResponseServicesItemVariant1RedirectsItemMissingItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant1RedirectsItemMissingItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant1RedirectsItemMissingItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseServicesItemVariant1RedirectsItemMissingItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(CancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895(value)
         }
-        if let value = try? container
-            .decode(CancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7354353f50.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7354353f50.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7354353f50(value)
         }
         return nil
@@ -58,12 +48,12 @@ extension CancelDeploymentResponseServicesItemVariant1RedirectsItemMissingItem {
         if let value = try? container.decode(
             CancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895.self
         ) {
-            return .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895(value)
+            return             .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895(value)
         }
         if let value = try? container.decode(
             CancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7354353f50.self
         ) {
-            return .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7354353f50(value)
+            return             .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7354353f50(value)
         }
         return nil
     }
@@ -73,10 +63,8 @@ extension CancelDeploymentResponseServicesItemVariant1RedirectsItemMissingItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895(value): try container
-            .encode(value); return true
-        case let .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7354353f50(value): try container
-            .encode(value); return true
+        case let .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7877368895(value): try container.encode(value); return true
+        case let .cancelDeploymentResponseServicesItemVariant1RedirectsItemMissX7354353f50(value): try container.encode(value); return true
         }
     }
 }
@@ -92,43 +80,29 @@ public struct CreateDeploymentResponseVariant1GitSourceVariant9CommitMetadataCom
         case name
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateDeploymentResponseVariant1GitSourceVariant9CommitMetadataCommitter {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentResponseVariant1GitSourceVariant9CommitMetadataCommitter {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.date) else {
-            throw SdkValidationError(
-                field: "date",
-                code: "required",
-                message: "Validation failed for 'date': value is required"
-            )
+            throw SdkValidationError(field: "date", code: "required", message: "Validation failed for 'date': value is required")
         }
         guard container.contains(.email) else {
-            throw SdkValidationError(
-                field: "email",
-                code: "required",
-                message: "Validation failed for 'email': value is required"
-            )
+            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        date = try container.sdkDecodeRequired(.date)
-        email = try container.sdkDecodeRequired(.email)
-        name = try container.sdkDecodeRequired(.name)
+        self.date = try container.sdkDecodeRequired(.date)
+        self.email = try container.sdkDecodeRequired(.email)
+        self.name = try container.sdkDecodeRequired(.name)
     }
 }
 
-public extension CreateDeploymentResponseVariant1GitSourceVariant9CommitMetadataCommitter {
-    init(date: String, email: String, name: String) {
+extension CreateDeploymentResponseVariant1GitSourceVariant9CommitMetadataCommitter {
+    public init(date: String, email: String, name: String) {
         (self.date, self.email) = (date, email)
         self.name = name
     }
@@ -145,29 +119,23 @@ public struct GetDeploymentResponseVariant1BuildsItem: Codable {
         case src
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentResponseVariant1BuildsItem {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentResponseVariant1BuildsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.use) else {
-            throw SdkValidationError(
-                field: "use",
-                code: "required",
-                message: "Validation failed for 'use': value is required"
-            )
+            throw SdkValidationError(field: "use", code: "required", message: "Validation failed for 'use': value is required")
         }
-        use = try container.sdkDecodeRequired(.use)
-        config = try container.sdkDecodeIfPresent(.config)
-        src = try container.sdkDecodeIfPresent(.src)
+        self.use = try container.sdkDecodeRequired(.use)
+        self.config = try container.sdkDecodeIfPresent(.config)
+        self.src = try container.sdkDecodeIfPresent(.src)
     }
 }
 
-public extension GetDeploymentResponseVariant1BuildsItem {
-    init(use: String, config: [String: JSONValue]? = nil, src: String? = nil) {
+extension GetDeploymentResponseVariant1BuildsItem {
+    public init(use: String, config: [String: JSONValue]? = nil, src: String? = nil) {
         (self.use, self.config) = (use, config)
         self.src = src
     }
@@ -190,51 +158,33 @@ public struct CancelDeploymentResponseCustomEnvironmentVariant0DomainsItemVXf3c7
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CancelDeploymentResponseCustomEnvironmentVariant0DomainsItemVXf3c7c9941f {
-    init(from decoder: Decoder) throws {
+extension CancelDeploymentResponseCustomEnvironmentVariant0DomainsItemVXf3c7c9941f {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
         guard container.contains(.reason) else {
-            throw SdkValidationError(
-                field: "reason",
-                code: "required",
-                message: "Validation failed for 'reason': value is required"
-            )
+            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        domain = try container.sdkDecodeRequired(.domain)
-        reason = try container.sdkDecodeRequired(.reason)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeRequired(.value)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.reason = try container.sdkDecodeRequired(.reason)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension CancelDeploymentResponseCustomEnvironmentVariant0DomainsItemVXf3c7c9941f {
-    init(domain: String, reason: String, type: String, value: String) {
+extension CancelDeploymentResponseCustomEnvironmentVariant0DomainsItemVXf3c7c9941f {
+    public init(domain: String, reason: String, type: String, value: String) {
         (self.domain, self.reason) = (domain, reason)
         (self.type, self.value) = (type, value)
     }
@@ -246,32 +196,22 @@ public indirect enum CreateDeploymentResponseVariant1ServicesItemVariant0Builder
 }
 
 extension CreateDeploymentResponseVariant1ServicesItemVariant0BuilderCoX54fa1e6807: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateDeploymentResponseVariant1ServicesItemVariant0BuilderCoX54fa1e6807"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateDeploymentResponseVariant1ServicesItemVariant0BuilderCoX54fa1e6807")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateDeploymentResponseVariant1ServicesItemVariant0BuilderCoX54fa1e6807 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode([String].self) {
-            return .stringList(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode([String].self) { return .stringList(value) }
         return nil
     }
 }
@@ -311,45 +251,33 @@ public struct CancelDeploymentResponseGitRepoVariant4: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CancelDeploymentResponseGitRepoVariant4 {
-    init(from decoder: Decoder) throws {
+extension CancelDeploymentResponseGitRepoVariant4 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        defaultBranch = try container.sdkDecodeRequired(.defaultBranch)
-        name = try container.sdkDecodeRequired(.name)
-        owner = try container.sdkDecodeRequired(.owner)
-        ownerType = try container.sdkDecodeRequired(.ownerType)
-        path = try container.sdkDecodeRequired(.path)
-        self.private = try container.sdkDecodeRequired(.private)
-        repo = try container.sdkDecodeRequired(.repo)
-        repoId = try container.sdkDecodeRequired(.repoId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum("type", type, CancelDeploymentResponseGitRepoVariant4Type.allCases.map(\.rawValue))
+        self.defaultBranch = try container.sdkDecodeRequired(.defaultBranch)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.owner = try container.sdkDecodeRequired(.owner)
+        self.ownerType = try container.sdkDecodeRequired(.ownerType)
+        self.path = try container.sdkDecodeRequired(.path)
+        self.`private` = try container.sdkDecodeRequired(.`private`)
+        self.repo = try container.sdkDecodeRequired(.repo)
+        self.repoId = try container.sdkDecodeRequired(.repoId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, CancelDeploymentResponseGitRepoVariant4Type.allCases.map(\.rawValue))
     }
 }
 
-public extension CancelDeploymentResponseGitRepoVariant4 {
-    init(
-        defaultBranch: String,
-        name: String,
-        owner: String,
-        ownerType: CancelDeploymentResponseGitRepoVariant4OwnerType,
-        path: String,
-        private: Bool,
-        repo: String,
-        repoId: String,
-        type: CancelDeploymentResponseGitRepoVariant4Type
-    ) throws {
+extension CancelDeploymentResponseGitRepoVariant4 {
+    public init(defaultBranch: String, name: String, owner: String, ownerType: CancelDeploymentResponseGitRepoVariant4OwnerType, path: String, `private`: Bool, repo: String, repoId: String, type: CancelDeploymentResponseGitRepoVariant4Type) throws {
         (self.defaultBranch, self.name) = (defaultBranch, name)
         (self.owner, self.ownerType) = (owner, ownerType)
-        (self.path, self.private) = (path, `private`)
+        (self.path, self.`private`) = (path, `private`)
         (self.repo, self.repoId) = (repo, repoId)
         self.type = type
-        try sdkValidateRawEnum("type", self.type, CancelDeploymentResponseGitRepoVariant4Type.allCases.map(\.rawValue))
+            try sdkValidateRawEnum("type", self.type, CancelDeploymentResponseGitRepoVariant4Type.allCases.map(\.rawValue))
     }
 }
 
@@ -366,56 +294,36 @@ public struct CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX042b
         case env
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX042b73abef {
-    init(from decoder: Decoder) throws {
+extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX042b73abef {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.args) else {
-            throw SdkValidationError(
-                field: "args",
-                code: "required",
-                message: "Validation failed for 'args': value is required"
-            )
+            throw SdkValidationError(field: "args", code: "required", message: "Validation failed for 'args': value is required")
         }
         guard container.contains(.op) else {
-            throw SdkValidationError(
-                field: "op",
-                code: "required",
-                message: "Validation failed for 'op': value is required"
-            )
+            throw SdkValidationError(field: "op", code: "required", message: "Validation failed for 'op': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        args = try container.sdkDecodeRequired(.args)
-        op = try container.sdkDecodeRequired(.op)
-        type = try container.sdkDecodeRequired(.type)
-        env = try container.sdkDecodeIfPresent(.env)
+        self.args = try container.sdkDecodeRequired(.args)
+        self.op = try container.sdkDecodeRequired(.op)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.env = try container.sdkDecodeIfPresent(.env)
     }
 }
 
-public extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX042b73abef {
-    init(
-        args: String,
-        op: CancelDeploymentResponseServicesItemVariant1RoutesItemVariantXf87f7ff52d,
-        type: CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX5aa328e64d,
-        env: [String]? = nil
-    ) {
+extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX042b73abef {
+    public init(args: String, op: CancelDeploymentResponseServicesItemVariant1RoutesItemVariantXf87f7ff52d, type: CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX5aa328e64d, env: [String]? = nil) {
         (self.args, self.op) = (args, op)
         (self.type, self.env) = (type, env)
     }
 }
 
-public typealias CreateDeploymentResponseVariant1CustomEnvironmentVariant0DomainsList =
-    [CreateDeploymentResponseVariant1CustomEnvironmentVariant0DomainsItem]
+public typealias CreateDeploymentResponseVariant1CustomEnvironmentVariant0DomainsList = [CreateDeploymentResponseVariant1CustomEnvironmentVariant0DomainsItem]
 
 /// If the deployment was created using a Custom Environment, then this property contains information regarding the
 /// environment used.
@@ -451,73 +359,41 @@ public struct CreateDeploymentResponseVariant1CustomEnvironmentVariant0: Codable
         case domains
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateDeploymentResponseVariant1CustomEnvironmentVariant0 {
-    init(from decoder: Decoder) throws {
+extension CreateDeploymentResponseVariant1CustomEnvironmentVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        slug = try container.sdkDecodeRequired(.slug)
-        type = try container.sdkDecodeRequired(.type)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        branchMatcher = try container.sdkDecodeIfPresent(.branchMatcher)
-        currentDeploymentAliases = try container.sdkDecodeIfPresent(.currentDeploymentAliases)
-        description = try container.sdkDecodeIfPresent(.description)
-        domains = try container.sdkDecodeIfPresent(.domains)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.branchMatcher = try container.sdkDecodeIfPresent(.branchMatcher)
+        self.currentDeploymentAliases = try container.sdkDecodeIfPresent(.currentDeploymentAliases)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.domains = try container.sdkDecodeIfPresent(.domains)
     }
 }
 
-public extension CreateDeploymentResponseVariant1CustomEnvironmentVariant0 {
-    init(
-        createdAt: Double,
-        id: String,
-        slug: String,
-        type: CreateDeploymentResponseVariant1CustomEnvironmentVariant0Type,
-        updatedAt: Double,
-        branchMatcher: CreateDeploymentResponseVariant1CustomEnvironmentVariant0BranchMatcher? = nil,
-        currentDeploymentAliases: [String]? = nil,
-        description: String? = nil,
-        domains: CreateDeploymentResponseVariant1CustomEnvironmentVariant0DomainsList? = nil
-    ) {
+extension CreateDeploymentResponseVariant1CustomEnvironmentVariant0 {
+    public init(createdAt: Double, id: String, slug: String, type: CreateDeploymentResponseVariant1CustomEnvironmentVariant0Type, updatedAt: Double, branchMatcher: CreateDeploymentResponseVariant1CustomEnvironmentVariant0BranchMatcher? = nil, currentDeploymentAliases: [String]? = nil, description: String? = nil, domains: CreateDeploymentResponseVariant1CustomEnvironmentVariant0DomainsList? = nil) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.slug, self.type) = (slug, type)
         (self.updatedAt, self.branchMatcher) = (updatedAt, branchMatcher)
@@ -543,46 +419,29 @@ public struct GetDeploymentResponseVariant2GitSourceVariant7: Codable {
         case workspaceUuid
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentResponseVariant2GitSourceVariant7 {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentResponseVariant2GitSourceVariant7 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.repoUuid) else {
-            throw SdkValidationError(
-                field: "repoUuid",
-                code: "required",
-                message: "Validation failed for 'repoUuid': value is required"
-            )
+            throw SdkValidationError(field: "repoUuid", code: "required", message: "Validation failed for 'repoUuid': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        repoUuid = try container.sdkDecodeRequired(.repoUuid)
-        type = try container.sdkDecodeRequired(.type)
-        prId = try container.sdkDecodeIfPresent(.prId)
-        ref = try container.sdkDecodeIfPresent(.ref)
-        sha = try container.sdkDecodeIfPresent(.sha)
-        workspaceUuid = try container.sdkDecodeIfPresent(.workspaceUuid)
+        self.repoUuid = try container.sdkDecodeRequired(.repoUuid)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.prId = try container.sdkDecodeIfPresent(.prId)
+        self.ref = try container.sdkDecodeIfPresent(.ref)
+        self.sha = try container.sdkDecodeIfPresent(.sha)
+        self.workspaceUuid = try container.sdkDecodeIfPresent(.workspaceUuid)
     }
 }
 
-public extension GetDeploymentResponseVariant2GitSourceVariant7 {
-    init(
-        repoUuid: String,
-        type: GetDeploymentResponseVariant2GitSourceVariant7Type,
-        prId: Double? = nil,
-        ref: String? = nil,
-        sha: String? = nil,
-        workspaceUuid: String? = nil
-    ) {
+extension GetDeploymentResponseVariant2GitSourceVariant7 {
+    public init(repoUuid: String, type: GetDeploymentResponseVariant2GitSourceVariant7Type, prId: Double? = nil, ref: String? = nil, sha: String? = nil, workspaceUuid: String? = nil) {
         (self.repoUuid, self.type) = (repoUuid, type)
         (self.prId, self.ref) = (prId, ref)
         (self.sha, self.workspaceUuid) = (sha, workspaceUuid)
@@ -606,7 +465,5 @@ public struct GetDeploymentResponseVariant2GitSourceVariant1: Codable {
         case sha
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

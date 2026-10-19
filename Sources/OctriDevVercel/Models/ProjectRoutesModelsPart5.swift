@@ -3,34 +3,24 @@
 
 import Foundation
 
-/// ProjectRoutes domain models
+// ProjectRoutes domain models
 extension EditRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for EditRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for EditRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension EditRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -63,38 +53,25 @@ public struct EditRouteResponseRouteRouteMissingItemVariant0: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension EditRouteResponseRouteRouteMissingItemVariant0 {
-    init(from decoder: Decoder) throws {
+extension EditRouteResponseRouteRouteMissingItemVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeRequired(.value)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension EditRouteResponseRouteRouteMissingItemVariant0 {
-    init(
-        type: EditRouteResponseRouteRouteMissingItemVariant0Type,
-        value: EditRouteResponseRouteRouteMissingItemVariant0Value
-    ) {
+extension EditRouteResponseRouteRouteMissingItemVariant0 {
+    public init(type: EditRouteResponseRouteRouteMissingItemVariant0Type, value: EditRouteResponseRouteRouteMissingItemVariant0Value) {
         (self.type, self.value) = (type, value)
     }
 }
@@ -105,32 +82,22 @@ public indirect enum AddRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq {
 }
 
 extension AddRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AddRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AddRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AddRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -160,33 +127,25 @@ public indirect enum AddRouteResponseRouteRouteHasItemVariant1Value {
 }
 
 extension AddRouteResponseRouteRouteHasItemVariant1Value: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AddRouteResponseRouteRouteHasItemVariant1Value"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AddRouteResponseRouteRouteHasItemVariant1Value")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AddRouteResponseRouteRouteHasItemVariant1Value {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             AddRouteResponseRouteRouteHasItemVariant1ValueVariant1.self
         ) {
-            return .addRouteResponseRouteRouteHasItemVariant1ValueVariant1(value)
+            return             .addRouteResponseRouteRouteHasItemVariant1ValueVariant1(value)
         }
         return nil
     }
@@ -197,47 +156,36 @@ extension AddRouteResponseRouteRouteHasItemVariant1Value {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .addRouteResponseRouteRouteHasItemVariant1ValueVariant1(value): try container
-            .encode(value); return true
+        case let .addRouteResponseRouteRouteHasItemVariant1ValueVariant1(value): try container.encode(value); return true
         }
     }
 }
 
 public indirect enum AddRouteResponseRouteRouteMissingItemVariant0Value {
     case stringValue(String)
-    case addRouteResponseRouteRouteMissingItemVariant0ValueVariant1(
-        AddRouteResponseRouteRouteMissingItemVariant0ValueVariant1
-    )
+    case addRouteResponseRouteRouteMissingItemVariant0ValueVariant1(AddRouteResponseRouteRouteMissingItemVariant0ValueVariant1)
 }
 
 extension AddRouteResponseRouteRouteMissingItemVariant0Value: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AddRouteResponseRouteRouteMissingItemVariant0Value"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AddRouteResponseRouteRouteMissingItemVariant0Value")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AddRouteResponseRouteRouteMissingItemVariant0Value {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             AddRouteResponseRouteRouteMissingItemVariant0ValueVariant1.self
         ) {
-            return .addRouteResponseRouteRouteMissingItemVariant0ValueVariant1(value)
+            return             .addRouteResponseRouteRouteMissingItemVariant0ValueVariant1(value)
         }
         return nil
     }
@@ -248,8 +196,7 @@ extension AddRouteResponseRouteRouteMissingItemVariant0Value {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .addRouteResponseRouteRouteMissingItemVariant0ValueVariant1(value): try container
-            .encode(value); return true
+        case let .addRouteResponseRouteRouteMissingItemVariant0ValueVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -260,32 +207,22 @@ public indirect enum AddRouteResponseRouteRouteMissingItemVariant0ValueVariant1E
 }
 
 extension AddRouteResponseRouteRouteMissingItemVariant0ValueVariant1Eq: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AddRouteResponseRouteRouteMissingItemVariant0ValueVariant1Eq"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AddRouteResponseRouteRouteMissingItemVariant0ValueVariant1Eq")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AddRouteResponseRouteRouteMissingItemVariant0ValueVariant1Eq {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -335,40 +272,29 @@ public struct AddRouteResponseRouteRouteTransformsItemVariant0TargetKeyVariant1:
     }
 
     init() {
-        (eq, gt, gte, inc, lt) = (nil, nil, nil, nil, nil)
-        (lte, neq, ninc, pre, suf) = (nil, nil, nil, nil, nil)
+        (self.eq, self.gt, self.gte, self.inc, self.lt) = (nil, nil, nil, nil, nil)
+        (self.lte, self.neq, self.ninc, self.pre, self.suf) = (nil, nil, nil, nil, nil)
     }
 }
 
-public extension AddRouteResponseRouteRouteTransformsItemVariant0TargetKeyVariant1 {
-    init(from decoder: Decoder) throws {
+extension AddRouteResponseRouteRouteTransformsItemVariant0TargetKeyVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        eq = try container.sdkDecodeIfPresent(.eq)
-        gt = try container.sdkDecodeIfPresent(.gt)
-        gte = try container.sdkDecodeIfPresent(.gte)
-        inc = try container.sdkDecodeIfPresent(.inc)
-        lt = try container.sdkDecodeIfPresent(.lt)
-        lte = try container.sdkDecodeIfPresent(.lte)
-        neq = try container.sdkDecodeIfPresent(.neq)
-        ninc = try container.sdkDecodeIfPresent(.ninc)
-        pre = try container.sdkDecodeIfPresent(.pre)
-        suf = try container.sdkDecodeIfPresent(.suf)
+        self.eq = try container.sdkDecodeIfPresent(.eq)
+        self.gt = try container.sdkDecodeIfPresent(.gt)
+        self.gte = try container.sdkDecodeIfPresent(.gte)
+        self.inc = try container.sdkDecodeIfPresent(.inc)
+        self.lt = try container.sdkDecodeIfPresent(.lt)
+        self.lte = try container.sdkDecodeIfPresent(.lte)
+        self.neq = try container.sdkDecodeIfPresent(.neq)
+        self.ninc = try container.sdkDecodeIfPresent(.ninc)
+        self.pre = try container.sdkDecodeIfPresent(.pre)
+        self.suf = try container.sdkDecodeIfPresent(.suf)
     }
 }
 
-public extension AddRouteResponseRouteRouteTransformsItemVariant0TargetKeyVariant1 {
-    init(
-        eq: AddRouteResponseRouteRouteTransformsItemVariant0TargetKeyVariant1Eq? = nil,
-        gt: Double? = nil,
-        gte: Double? = nil,
-        inc: [String]? = nil,
-        lt: Double? = nil,
-        lte: Double? = nil,
-        neq: String? = nil,
-        ninc: [String]? = nil,
-        pre: String? = nil,
-        suf: String? = nil
-    ) {
+extension AddRouteResponseRouteRouteTransformsItemVariant0TargetKeyVariant1 {
+    public init(eq: AddRouteResponseRouteRouteTransformsItemVariant0TargetKeyVariant1Eq? = nil, gt: Double? = nil, gte: Double? = nil, inc: [String]? = nil, lt: Double? = nil, lte: Double? = nil, neq: String? = nil, ninc: [String]? = nil, pre: String? = nil, suf: String? = nil) {
         self.init()
         (self.eq, self.gt) = (eq, gt)
         (self.gte, self.inc) = (gte, inc)
@@ -406,43 +332,31 @@ public struct AddRouteResponseRouteRouteHasItemVariant1ValueVariant1: Codable {
     }
 
     init() {
-        (eq, gt, gte, inc, lt) = (nil, nil, nil, nil, nil)
-        (lte, neq, ninc, pre, re) = (nil, nil, nil, nil, nil)
-        suf = nil
+        (self.eq, self.gt, self.gte, self.inc, self.lt) = (nil, nil, nil, nil, nil)
+        (self.lte, self.neq, self.ninc, self.pre, self.re) = (nil, nil, nil, nil, nil)
+        self.suf = nil
     }
 }
 
-public extension AddRouteResponseRouteRouteHasItemVariant1ValueVariant1 {
-    init(from decoder: Decoder) throws {
+extension AddRouteResponseRouteRouteHasItemVariant1ValueVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        eq = try container.sdkDecodeIfPresent(.eq)
-        gt = try container.sdkDecodeIfPresent(.gt)
-        gte = try container.sdkDecodeIfPresent(.gte)
-        inc = try container.sdkDecodeIfPresent(.inc)
-        lt = try container.sdkDecodeIfPresent(.lt)
-        lte = try container.sdkDecodeIfPresent(.lte)
-        neq = try container.sdkDecodeIfPresent(.neq)
-        ninc = try container.sdkDecodeIfPresent(.ninc)
-        pre = try container.sdkDecodeIfPresent(.pre)
-        re = try container.sdkDecodeIfPresent(.re)
-        suf = try container.sdkDecodeIfPresent(.suf)
+        self.eq = try container.sdkDecodeIfPresent(.eq)
+        self.gt = try container.sdkDecodeIfPresent(.gt)
+        self.gte = try container.sdkDecodeIfPresent(.gte)
+        self.inc = try container.sdkDecodeIfPresent(.inc)
+        self.lt = try container.sdkDecodeIfPresent(.lt)
+        self.lte = try container.sdkDecodeIfPresent(.lte)
+        self.neq = try container.sdkDecodeIfPresent(.neq)
+        self.ninc = try container.sdkDecodeIfPresent(.ninc)
+        self.pre = try container.sdkDecodeIfPresent(.pre)
+        self.re = try container.sdkDecodeIfPresent(.re)
+        self.suf = try container.sdkDecodeIfPresent(.suf)
     }
 }
 
-public extension AddRouteResponseRouteRouteHasItemVariant1ValueVariant1 {
-    init(
-        eq: AddRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq? = nil,
-        gt: Double? = nil,
-        gte: Double? = nil,
-        inc: [String]? = nil,
-        lt: Double? = nil,
-        lte: Double? = nil,
-        neq: String? = nil,
-        ninc: [String]? = nil,
-        pre: String? = nil,
-        re: String? = nil,
-        suf: String? = nil
-    ) {
+extension AddRouteResponseRouteRouteHasItemVariant1ValueVariant1 {
+    public init(eq: AddRouteResponseRouteRouteHasItemVariant1ValueVariant1Eq? = nil, gt: Double? = nil, gte: Double? = nil, inc: [String]? = nil, lt: Double? = nil, lte: Double? = nil, neq: String? = nil, ninc: [String]? = nil, pre: String? = nil, re: String? = nil, suf: String? = nil) {
         self.init()
         (self.eq, self.gt) = (eq, gt)
         (self.gte, self.inc) = (gte, inc)
@@ -455,39 +369,29 @@ public extension AddRouteResponseRouteRouteHasItemVariant1ValueVariant1 {
 
 public indirect enum AddRouteResponseRouteRouteMissingItemVariant1Value {
     case stringValue(String)
-    case addRouteResponseRouteRouteMissingItemVariant1ValueVariant1(
-        AddRouteResponseRouteRouteMissingItemVariant1ValueVariant1
-    )
+    case addRouteResponseRouteRouteMissingItemVariant1ValueVariant1(AddRouteResponseRouteRouteMissingItemVariant1ValueVariant1)
 }
 
 extension AddRouteResponseRouteRouteMissingItemVariant1Value: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AddRouteResponseRouteRouteMissingItemVariant1Value"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AddRouteResponseRouteRouteMissingItemVariant1Value")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AddRouteResponseRouteRouteMissingItemVariant1Value {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             AddRouteResponseRouteRouteMissingItemVariant1ValueVariant1.self
         ) {
-            return .addRouteResponseRouteRouteMissingItemVariant1ValueVariant1(value)
+            return             .addRouteResponseRouteRouteMissingItemVariant1ValueVariant1(value)
         }
         return nil
     }
@@ -498,47 +402,36 @@ extension AddRouteResponseRouteRouteMissingItemVariant1Value {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .addRouteResponseRouteRouteMissingItemVariant1ValueVariant1(value): try container
-            .encode(value); return true
+        case let .addRouteResponseRouteRouteMissingItemVariant1ValueVariant1(value): try container.encode(value); return true
         }
     }
 }
 
 public indirect enum EditRouteResponseRouteRouteHasItemVariant0Value {
     case stringValue(String)
-    case editRouteResponseRouteRouteHasItemVariant0ValueVariant1(
-        EditRouteResponseRouteRouteHasItemVariant0ValueVariant1
-    )
+    case editRouteResponseRouteRouteHasItemVariant0ValueVariant1(EditRouteResponseRouteRouteHasItemVariant0ValueVariant1)
 }
 
 extension EditRouteResponseRouteRouteHasItemVariant0Value: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for EditRouteResponseRouteRouteHasItemVariant0Value"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for EditRouteResponseRouteRouteHasItemVariant0Value")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension EditRouteResponseRouteRouteHasItemVariant0Value {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             EditRouteResponseRouteRouteHasItemVariant0ValueVariant1.self
         ) {
-            return .editRouteResponseRouteRouteHasItemVariant0ValueVariant1(value)
+            return             .editRouteResponseRouteRouteHasItemVariant0ValueVariant1(value)
         }
         return nil
     }
@@ -549,8 +442,7 @@ extension EditRouteResponseRouteRouteHasItemVariant0Value {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .editRouteResponseRouteRouteHasItemVariant0ValueVariant1(value): try container
-            .encode(value); return true
+        case let .editRouteResponseRouteRouteHasItemVariant0ValueVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -566,40 +458,26 @@ public struct AddRouteResponseRouteRouteMissingItemVariant1: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AddRouteResponseRouteRouteMissingItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension AddRouteResponseRouteRouteMissingItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        key = try container.sdkDecodeRequired(.key)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.key = try container.sdkDecodeRequired(.key)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension AddRouteResponseRouteRouteMissingItemVariant1 {
-    init(
-        key: String,
-        type: AddRouteResponseRouteRouteMissingItemVariant1Type,
-        value: AddRouteResponseRouteRouteMissingItemVariant1Value? = nil
-    ) {
+extension AddRouteResponseRouteRouteMissingItemVariant1 {
+    public init(key: String, type: AddRouteResponseRouteRouteMissingItemVariant1Type, value: AddRouteResponseRouteRouteMissingItemVariant1Value? = nil) {
         (self.key, self.type) = (key, type)
         self.value = value
     }

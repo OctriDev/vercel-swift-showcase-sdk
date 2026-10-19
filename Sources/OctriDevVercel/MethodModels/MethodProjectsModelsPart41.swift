@@ -7,299 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
-public extension UpdateProjectResponsePermissions {
-    init(
-        accessGroup: [ACLAction]? = nil,
-        agent: [ACLAction]? = nil,
-        aiGatewayApiKey: [ACLAction]? = nil,
-        aiGatewayApiKeyBypassAll: [ACLAction]? = nil,
-        aiGatewayApiKeyOwnedBySelf: [ACLAction]? = nil,
-        aiGatewayApiKeySpendAttribution: [ACLAction]? = nil,
-        aiGatewayApiKeyZdrExemption: [ACLAction]? = nil,
-        aiGatewayBudget: [ACLAction]? = nil,
-        aiGatewayCredits: [ACLAction]? = nil,
-        aiGatewayGuardrails: [ACLAction]? = nil,
-        aiGatewayPrivateModels: [ACLAction]? = nil,
-        aiGatewayRules: [ACLAction]? = nil,
-        aiGatewaySettings: [ACLAction]? = nil,
-        aiGatewayTranscripts: [ACLAction]? = nil,
-        aiGatewayTranscriptsSettings: [ACLAction]? = nil,
-        aiGatewayUsage: [ACLAction]? = nil,
-        aiGatewayVirtualModelConfigs: [ACLAction]? = nil,
-        alertRules: [ACLAction]? = nil,
-        alerts: [ACLAction]? = nil,
-        aliasGlobal: [ACLAction]? = nil,
-        aliasProject: [ACLAction]? = nil,
-        aliasProtectionBypass: [ACLAction]? = nil,
-        analytics: [ACLAction]? = nil,
-        analyticsSampling: [ACLAction]? = nil,
-        analyticsUsage: [ACLAction]? = nil,
-        apiKey: [ACLAction]? = nil,
-        apiKeyAiGateway: [ACLAction]? = nil,
-        apiKeyOwnedBySelf: [ACLAction]? = nil,
-        auditLog: [ACLAction]? = nil,
-        automation: [ACLAction]? = nil,
-        billingAddress: [ACLAction]? = nil,
-        billingInformation: [ACLAction]? = nil,
-        billingInvoice: [ACLAction]? = nil,
-        billingInvoiceEmailRecipient: [ACLAction]? = nil,
-        billingInvoiceLanguage: [ACLAction]? = nil,
-        billingPlan: [ACLAction]? = nil,
-        billingPurchaseOrder: [ACLAction]? = nil,
-        billingRefund: [ACLAction]? = nil,
-        billingTaxId: [ACLAction]? = nil,
-        blob: [ACLAction]? = nil,
-        blobStoreTokenSet: [ACLAction]? = nil,
-        budget: [ACLAction]? = nil,
-        buildMachine: [ACLAction]? = nil,
-        buildMachineDefault: [ACLAction]? = nil,
-        bulkRedirects: [ACLAction]? = nil,
-        cacheArtifact: [ACLAction]? = nil,
-        cacheArtifactUsageEvent: [ACLAction]? = nil,
-        ciInvocations: [ACLAction]? = nil,
-        ciLogs: [ACLAction]? = nil,
-        codeChecks: [ACLAction]? = nil,
-        codeOwners: [ACLAction]? = nil,
-        concurrentBuilds: [ACLAction]? = nil,
-        connect: [ACLAction]? = nil,
-        connectConfiguration: [ACLAction]? = nil,
-        connectConfigurationLink: [ACLAction]? = nil,
-        connectLogs: [ACLAction]? = nil,
-        connexClient: [ACLAction]? = nil,
-        connexClientProject: [ACLAction]? = nil,
-        connexContact: [ACLAction]? = nil,
-        connexInstallation: [ACLAction]? = nil,
-        connexToken: [ACLAction]? = nil,
-        cursorOriginInstallation: [ACLAction]? = nil,
-        dataCacheBillingSettings: [ACLAction]? = nil,
-        dataCacheNamespace: [ACLAction]? = nil,
-        defaultDeploymentProtection: [ACLAction]? = nil,
-        deployment: [ACLAction]? = nil,
-        deploymentBuildLogs: [ACLAction]? = nil,
-        deploymentCheck: [ACLAction]? = nil,
-        deploymentCheckPreview: [ACLAction]? = nil,
-        deploymentCheckReRunFromProductionBranch: [ACLAction]? = nil,
-        deploymentPolicy: [ACLAction]? = nil,
-        deploymentPreview: [ACLAction]? = nil,
-        deploymentPrivate: [ACLAction]? = nil,
-        deploymentProductionGit: [ACLAction]? = nil,
-        deploymentPromote: [ACLAction]? = nil,
-        deploymentProtectionException: [ACLAction]? = nil,
-        deploymentRollback: [ACLAction]? = nil,
-        deploymentV0: [ACLAction]? = nil,
-        domain: [ACLAction]? = nil,
-        domainAcceptDelegation: [ACLAction]? = nil,
-        domainAuthCodes: [ACLAction]? = nil,
-        domainCertificate: [ACLAction]? = nil,
-        domainCheckConfig: [ACLAction]? = nil,
-        domainMove: [ACLAction]? = nil,
-        domainPurchase: [ACLAction]? = nil,
-        domainRecord: [ACLAction]? = nil,
-        domainTransferIn: [ACLAction]? = nil,
-        drain: [ACLAction]? = nil,
-        edgeCacheNamespace: [ACLAction]? = nil,
-        edgeConfig: [ACLAction]? = nil,
-        edgeConfigItem: [ACLAction]? = nil,
-        edgeConfigSchema: [ACLAction]? = nil,
-        edgeConfigToken: [ACLAction]? = nil,
-        endpointVerification: [ACLAction]? = nil,
-        environments: [ACLAction]? = nil,
-        event: [ACLAction]? = nil,
-        fileUpload: [ACLAction]? = nil,
-        flagsExplorerSubscription: [ACLAction]? = nil,
-        gitCredentialGrant: [ACLAction]? = nil,
-        gitRepository: [ACLAction]? = nil,
-        imageOptimizationNewPrice: [ACLAction]? = nil,
-        integration: [ACLAction]? = nil,
-        integrationAccount: [ACLAction]? = nil,
-        integrationConfiguration: [ACLAction]? = nil,
-        integrationConfigurationProjects: [ACLAction]? = nil,
-        integrationConfigurationRole: [ACLAction]? = nil,
-        integrationConfigurationTransfer: [ACLAction]? = nil,
-        integrationDeploymentAction: [ACLAction]? = nil,
-        integrationEvent: [ACLAction]? = nil,
-        integrationLog: [ACLAction]? = nil,
-        integrationPullRequest: [ACLAction]? = nil,
-        integrationResource: [ACLAction]? = nil,
-        integrationResourceData: [ACLAction]? = nil,
-        integrationResourceReplCommand: [ACLAction]? = nil,
-        integrationResourceSecrets: [ACLAction]? = nil,
-        integrationSsoSession: [ACLAction]? = nil,
-        integrationStoreTokenSet: [ACLAction]? = nil,
-        integrationStrict: [ACLAction]? = nil,
-        integrationVercelConfigurationOverride: [ACLAction]? = nil,
-        ipBlocking: [ACLAction]? = nil,
-        job: [ACLAction]? = nil,
-        jobGlobal: [ACLAction]? = nil,
-        kmsIssuer: [ACLAction]? = nil,
-        kmsProjectGrant: [ACLAction]? = nil,
-        logDrain: [ACLAction]? = nil,
-        logs: [ACLAction]? = nil,
-        logsPreset: [ACLAction]? = nil,
-        marketplaceBillingData: [ACLAction]? = nil,
-        marketplaceExperimentationEdgeConfigData: [ACLAction]? = nil,
-        marketplaceExperimentationItem: [ACLAction]? = nil,
-        marketplaceFlexCommit: [ACLAction]? = nil,
-        marketplaceInstallationMember: [ACLAction]? = nil,
-        marketplaceInvoice: [ACLAction]? = nil,
-        marketplaceSettings: [ACLAction]? = nil,
-        messageboard: [ACLAction]? = nil,
-        messageboardSpace: [ACLAction]? = nil,
-        messageboardTask: [ACLAction]? = nil,
-        monitoring: [ACLAction]? = nil,
-        monitoringAlert: [ACLAction]? = nil,
-        monitoringChart: [ACLAction]? = nil,
-        monitoringQuery: [ACLAction]? = nil,
-        monitoringSettings: [ACLAction]? = nil,
-        notificationCustomerBudget: [ACLAction]? = nil,
-        notificationDeploymentFailed: [ACLAction]? = nil,
-        notificationDomainConfiguration: [ACLAction]? = nil,
-        notificationDomainExpire: [ACLAction]? = nil,
-        notificationDomainMoved: [ACLAction]? = nil,
-        notificationDomainPurchase: [ACLAction]? = nil,
-        notificationDomainRenewal: [ACLAction]? = nil,
-        notificationDomainTransfer: [ACLAction]? = nil,
-        notificationDomainUnverified: [ACLAction]? = nil,
-        notificationMonitoringAlert: [ACLAction]? = nil,
-        notificationPaymentFailed: [ACLAction]? = nil,
-        notificationPreferences: [ACLAction]? = nil,
-        notificationStatementOfReasons: [ACLAction]? = nil,
-        notificationUsageAlert: [ACLAction]? = nil,
-        oauth2Application: [ACLAction]? = nil,
-        oauth2Connection: [ACLAction]? = nil,
-        observabilityConfiguration: [ACLAction]? = nil,
-        observabilityData: [ACLAction]? = nil,
-        observabilityFunnel: [ACLAction]? = nil,
-        observabilityNotebook: [ACLAction]? = nil,
-        oidcFederationPolicy: [ACLAction]? = nil,
-        onDemandBuild: [ACLAction]? = nil,
-        onDemandConcurrency: [ACLAction]? = nil,
-        openTelemetryEndpoint: [ACLAction]? = nil,
-        optionsAllowlist: [ACLAction]? = nil,
-        organization: [ACLAction]? = nil,
-        organizationDomain: [ACLAction]? = nil,
-        organizationTeam: [ACLAction]? = nil,
-        ownEvent: [ACLAction]? = nil,
-        pageIntegrity: [ACLAction]? = nil,
-        passwordProtection: [ACLAction]? = nil,
-        passwordProtectionInvoiceItem: [ACLAction]? = nil,
-        paymentMethod: [ACLAction]? = nil,
-        permissions: [ACLAction]? = nil,
-        postgres: [ACLAction]? = nil,
-        postgresStoreTokenSet: [ACLAction]? = nil,
-        previewDeploymentSuffix: [ACLAction]? = nil,
-        privateCloudAccount: [ACLAction]? = nil,
-        privateLinkEndpoint: [ACLAction]? = nil,
-        productionAliasProtectionBypass: [ACLAction]? = nil,
-        productionShareableLink: [ACLAction]? = nil,
-        project: [ACLAction]? = nil,
-        projectAccessGroup: [ACLAction]? = nil,
-        projectAnalyticsSampling: [ACLAction]? = nil,
-        projectAnalyticsUsage: [ACLAction]? = nil,
-        projectCheck: [ACLAction]? = nil,
-        projectCheckRun: [ACLAction]? = nil,
-        projectDeploymentExpiration: [ACLAction]? = nil,
-        projectDeploymentHook: [ACLAction]? = nil,
-        projectDeploymentProtectionStrict: [ACLAction]? = nil,
-        projectDomain: [ACLAction]? = nil,
-        projectDomainCheckConfig: [ACLAction]? = nil,
-        projectDomainMove: [ACLAction]? = nil,
-        projectDomainVerify: [ACLAction]? = nil,
-        projectEnvVars: [ACLAction]? = nil,
-        projectEnvVarsProduction: [ACLAction]? = nil,
-        projectEnvVarsUnownedByIntegration: [ACLAction]? = nil,
-        projectEvent: [ACLAction]? = nil,
-        projectFlags: [ACLAction]? = nil,
-        projectFlagsProduction: [ACLAction]? = nil,
-        projectFlagsSdkKey: [ACLAction]? = nil,
-        projectFromV0: [ACLAction]? = nil,
-        projectId: [ACLAction]? = nil,
-        projectIntegrationConfiguration: [ACLAction]? = nil,
-        projectLink: [ACLAction]? = nil,
-        projectMember: [ACLAction]? = nil,
-        projectMonitoring: [ACLAction]? = nil,
-        projectOidcToken: [ACLAction]? = nil,
-        projectPermissions: [ACLAction]? = nil,
-        projectProductionBranch: [ACLAction]? = nil,
-        projectProtectionBypass: [ACLAction]? = nil,
-        projectRollingRelease: [ACLAction]? = nil,
-        projectRoutes: [ACLAction]? = nil,
-        projectSetting: [ACLAction]? = nil,
-        projectSupportCase: [ACLAction]? = nil,
-        projectSupportCaseComment: [ACLAction]? = nil,
-        projectTier: [ACLAction]? = nil,
-        projectTransfer: [ACLAction]? = nil,
-        projectTransferIn: [ACLAction]? = nil,
-        projectTransferOut: [ACLAction]? = nil,
-        projectTransferRequest: [ACLAction]? = nil,
-        projectUsage: [ACLAction]? = nil,
-        proTrialOnboarding: [ACLAction]? = nil,
-        rateLimit: [ACLAction]? = nil,
-        redis: [ACLAction]? = nil,
-        redisStoreTokenSet: [ACLAction]? = nil,
-        remoteCaching: [ACLAction]? = nil,
-        repository: [ACLAction]? = nil,
-        samlConfig: [ACLAction]? = nil,
-        schedule: [ACLAction]? = nil,
-        seawallConfig: [ACLAction]? = nil,
-        secret: [ACLAction]? = nil,
-        securityConfig: [ACLAction]? = nil,
-        securityPlusConfiguration: [ACLAction]? = nil,
-        sensitiveEnvironmentVariablePolicy: [ACLAction]? = nil,
-        setting: [ACLAction]? = nil,
-        shareableLink: [ACLAction]? = nil,
-        shareableLinkStrict: [ACLAction]? = nil,
-        sharedEnvVarConnection: [ACLAction]? = nil,
-        sharedEnvVars: [ACLAction]? = nil,
-        sharedEnvVarsProduction: [ACLAction]? = nil,
-        skewProtection: [ACLAction]? = nil,
-        space: [ACLAction]? = nil,
-        spaceRun: [ACLAction]? = nil,
-        storeIsLocked: [ACLAction]? = nil,
-        storeTokenSetSensitive: [ACLAction]? = nil,
-        storeTransfer: [ACLAction]? = nil,
-        supportCase: [ACLAction]? = nil,
-        supportCaseComment: [ACLAction]? = nil,
-        team: [ACLAction]? = nil,
-        teamAccessRequest: [ACLAction]? = nil,
-        teamFellowMembership: [ACLAction]? = nil,
-        teamGitExclusivity: [ACLAction]? = nil,
-        teamInvite: [ACLAction]? = nil,
-        teamInviteCode: [ACLAction]? = nil,
-        teamInviteLink: [ACLAction]? = nil,
-        teamJoin: [ACLAction]? = nil,
-        teamMemberMfaStatus: [ACLAction]? = nil,
-        teamMicrofrontends: [ACLAction]? = nil,
-        teamOwnMembership: [ACLAction]? = nil,
-        teamOwnMembershipDisconnectSaml: [ACLAction]? = nil,
-        teamSudo: [ACLAction]? = nil,
-        teamTokenInvalidation: [ACLAction]? = nil,
-        token: [ACLAction]? = nil,
-        toolbarComment: [ACLAction]? = nil,
-        trustedIps: [ACLAction]? = nil,
-        trustedSources: [ACLAction]? = nil,
-        usage: [ACLAction]? = nil,
-        usageCycle: [ACLAction]? = nil,
-        user: [ACLAction]? = nil,
-        userConnection: [ACLAction]? = nil,
-        userMfaConfiguration: [ACLAction]? = nil,
-        userPreference: [ACLAction]? = nil,
-        userSudo: [ACLAction]? = nil,
-        v0Chat: [ACLAction]? = nil,
-        vcrRepository: [ACLAction]? = nil,
-        vercelAppInstallation: [ACLAction]? = nil,
-        vercelAppInstallationRequest: [ACLAction]? = nil,
-        vercelAuth: [ACLAction]? = nil,
-        vercelRun: [ACLAction]? = nil,
-        vpcPeeringConnection: [ACLAction]? = nil,
-        webAnalytics: [ACLAction]? = nil,
-        webAnalyticsPlan: [ACLAction]? = nil,
-        webAuthn: [ACLAction]? = nil,
-        webhook: [ACLAction]? = nil,
-        webhookEvent: [ACLAction]? = nil,
-        workflowRunData: [ACLAction]? = nil
-    ) {
+// Canonical projects operation model declarations
+extension UpdateProjectResponsePermissions {
+    public init(accessGroup: [ACLAction]? = nil, agent: [ACLAction]? = nil, aiGatewayApiKey: [ACLAction]? = nil, aiGatewayApiKeyBypassAll: [ACLAction]? = nil, aiGatewayApiKeyOwnedBySelf: [ACLAction]? = nil, aiGatewayApiKeySpendAttribution: [ACLAction]? = nil, aiGatewayApiKeyZdrExemption: [ACLAction]? = nil, aiGatewayBudget: [ACLAction]? = nil, aiGatewayCredits: [ACLAction]? = nil, aiGatewayGuardrails: [ACLAction]? = nil, aiGatewayPrivateModels: [ACLAction]? = nil, aiGatewayRules: [ACLAction]? = nil, aiGatewaySettings: [ACLAction]? = nil, aiGatewayTranscripts: [ACLAction]? = nil, aiGatewayTranscriptsSettings: [ACLAction]? = nil, aiGatewayUsage: [ACLAction]? = nil, aiGatewayVirtualModelConfigs: [ACLAction]? = nil, alertRules: [ACLAction]? = nil, alerts: [ACLAction]? = nil, aliasGlobal: [ACLAction]? = nil, aliasProject: [ACLAction]? = nil, aliasProtectionBypass: [ACLAction]? = nil, analytics: [ACLAction]? = nil, analyticsSampling: [ACLAction]? = nil, analyticsUsage: [ACLAction]? = nil, apiKey: [ACLAction]? = nil, apiKeyAiGateway: [ACLAction]? = nil, apiKeyOwnedBySelf: [ACLAction]? = nil, auditLog: [ACLAction]? = nil, automation: [ACLAction]? = nil, billingAddress: [ACLAction]? = nil, billingInformation: [ACLAction]? = nil, billingInvoice: [ACLAction]? = nil, billingInvoiceEmailRecipient: [ACLAction]? = nil, billingInvoiceLanguage: [ACLAction]? = nil, billingPlan: [ACLAction]? = nil, billingPurchaseOrder: [ACLAction]? = nil, billingRefund: [ACLAction]? = nil, billingTaxId: [ACLAction]? = nil, blob: [ACLAction]? = nil, blobStoreTokenSet: [ACLAction]? = nil, budget: [ACLAction]? = nil, buildMachine: [ACLAction]? = nil, buildMachineDefault: [ACLAction]? = nil, bulkRedirects: [ACLAction]? = nil, cacheArtifact: [ACLAction]? = nil, cacheArtifactUsageEvent: [ACLAction]? = nil, ciInvocations: [ACLAction]? = nil, ciLogs: [ACLAction]? = nil, codeChecks: [ACLAction]? = nil, codeOwners: [ACLAction]? = nil, concurrentBuilds: [ACLAction]? = nil, connect: [ACLAction]? = nil, connectConfiguration: [ACLAction]? = nil, connectConfigurationLink: [ACLAction]? = nil, connectLogs: [ACLAction]? = nil, connexClient: [ACLAction]? = nil, connexClientProject: [ACLAction]? = nil, connexContact: [ACLAction]? = nil, connexInstallation: [ACLAction]? = nil, connexToken: [ACLAction]? = nil, cursorOriginInstallation: [ACLAction]? = nil, dataCacheBillingSettings: [ACLAction]? = nil, dataCacheNamespace: [ACLAction]? = nil, defaultDeploymentProtection: [ACLAction]? = nil, deployment: [ACLAction]? = nil, deploymentBuildLogs: [ACLAction]? = nil, deploymentCheck: [ACLAction]? = nil, deploymentCheckPreview: [ACLAction]? = nil, deploymentCheckReRunFromProductionBranch: [ACLAction]? = nil, deploymentPolicy: [ACLAction]? = nil, deploymentPreview: [ACLAction]? = nil, deploymentPrivate: [ACLAction]? = nil, deploymentProductionGit: [ACLAction]? = nil, deploymentPromote: [ACLAction]? = nil, deploymentProtectionException: [ACLAction]? = nil, deploymentRollback: [ACLAction]? = nil, deploymentV0: [ACLAction]? = nil, domain: [ACLAction]? = nil, domainAcceptDelegation: [ACLAction]? = nil, domainAuthCodes: [ACLAction]? = nil, domainCertificate: [ACLAction]? = nil, domainCheckConfig: [ACLAction]? = nil, domainMove: [ACLAction]? = nil, domainPurchase: [ACLAction]? = nil, domainRecord: [ACLAction]? = nil, domainTransferIn: [ACLAction]? = nil, drain: [ACLAction]? = nil, edgeCacheNamespace: [ACLAction]? = nil, edgeConfig: [ACLAction]? = nil, edgeConfigItem: [ACLAction]? = nil, edgeConfigSchema: [ACLAction]? = nil, edgeConfigToken: [ACLAction]? = nil, endpointVerification: [ACLAction]? = nil, environments: [ACLAction]? = nil, event: [ACLAction]? = nil, fileUpload: [ACLAction]? = nil, flagsExplorerSubscription: [ACLAction]? = nil, gitCredentialGrant: [ACLAction]? = nil, gitRepository: [ACLAction]? = nil, imageOptimizationNewPrice: [ACLAction]? = nil, integration: [ACLAction]? = nil, integrationAccount: [ACLAction]? = nil, integrationConfiguration: [ACLAction]? = nil, integrationConfigurationProjects: [ACLAction]? = nil, integrationConfigurationRole: [ACLAction]? = nil, integrationConfigurationTransfer: [ACLAction]? = nil, integrationDeploymentAction: [ACLAction]? = nil, integrationEvent: [ACLAction]? = nil, integrationLog: [ACLAction]? = nil, integrationPullRequest: [ACLAction]? = nil, integrationResource: [ACLAction]? = nil, integrationResourceData: [ACLAction]? = nil, integrationResourceReplCommand: [ACLAction]? = nil, integrationResourceSecrets: [ACLAction]? = nil, integrationSsoSession: [ACLAction]? = nil, integrationStoreTokenSet: [ACLAction]? = nil, integrationStrict: [ACLAction]? = nil, integrationVercelConfigurationOverride: [ACLAction]? = nil, ipBlocking: [ACLAction]? = nil, job: [ACLAction]? = nil, jobGlobal: [ACLAction]? = nil, kmsIssuer: [ACLAction]? = nil, kmsProjectGrant: [ACLAction]? = nil, logDrain: [ACLAction]? = nil, logs: [ACLAction]? = nil, logsPreset: [ACLAction]? = nil, marketplaceBillingData: [ACLAction]? = nil, marketplaceExperimentationEdgeConfigData: [ACLAction]? = nil, marketplaceExperimentationItem: [ACLAction]? = nil, marketplaceFlexCommit: [ACLAction]? = nil, marketplaceInstallationMember: [ACLAction]? = nil, marketplaceInvoice: [ACLAction]? = nil, marketplaceSettings: [ACLAction]? = nil, messageboard: [ACLAction]? = nil, messageboardSpace: [ACLAction]? = nil, messageboardTask: [ACLAction]? = nil, monitoring: [ACLAction]? = nil, monitoringAlert: [ACLAction]? = nil, monitoringChart: [ACLAction]? = nil, monitoringQuery: [ACLAction]? = nil, monitoringSettings: [ACLAction]? = nil, notificationCustomerBudget: [ACLAction]? = nil, notificationDeploymentFailed: [ACLAction]? = nil, notificationDomainConfiguration: [ACLAction]? = nil, notificationDomainExpire: [ACLAction]? = nil, notificationDomainMoved: [ACLAction]? = nil, notificationDomainPurchase: [ACLAction]? = nil, notificationDomainRenewal: [ACLAction]? = nil, notificationDomainTransfer: [ACLAction]? = nil, notificationDomainUnverified: [ACLAction]? = nil, notificationMonitoringAlert: [ACLAction]? = nil, notificationPaymentFailed: [ACLAction]? = nil, notificationPreferences: [ACLAction]? = nil, notificationStatementOfReasons: [ACLAction]? = nil, notificationUsageAlert: [ACLAction]? = nil, oauth2Application: [ACLAction]? = nil, oauth2Connection: [ACLAction]? = nil, observabilityConfiguration: [ACLAction]? = nil, observabilityData: [ACLAction]? = nil, observabilityFunnel: [ACLAction]? = nil, observabilityNotebook: [ACLAction]? = nil, oidcFederationPolicy: [ACLAction]? = nil, onDemandBuild: [ACLAction]? = nil, onDemandConcurrency: [ACLAction]? = nil, openTelemetryEndpoint: [ACLAction]? = nil, optionsAllowlist: [ACLAction]? = nil, organization: [ACLAction]? = nil, organizationDomain: [ACLAction]? = nil, organizationTeam: [ACLAction]? = nil, ownEvent: [ACLAction]? = nil, pageIntegrity: [ACLAction]? = nil, passwordProtection: [ACLAction]? = nil, passwordProtectionInvoiceItem: [ACLAction]? = nil, paymentMethod: [ACLAction]? = nil, permissions: [ACLAction]? = nil, postgres: [ACLAction]? = nil, postgresStoreTokenSet: [ACLAction]? = nil, previewDeploymentSuffix: [ACLAction]? = nil, privateCloudAccount: [ACLAction]? = nil, privateLinkEndpoint: [ACLAction]? = nil, productionAliasProtectionBypass: [ACLAction]? = nil, productionShareableLink: [ACLAction]? = nil, project: [ACLAction]? = nil, projectAccessGroup: [ACLAction]? = nil, projectAnalyticsSampling: [ACLAction]? = nil, projectAnalyticsUsage: [ACLAction]? = nil, projectCheck: [ACLAction]? = nil, projectCheckRun: [ACLAction]? = nil, projectDeploymentExpiration: [ACLAction]? = nil, projectDeploymentHook: [ACLAction]? = nil, projectDeploymentProtectionStrict: [ACLAction]? = nil, projectDomain: [ACLAction]? = nil, projectDomainCheckConfig: [ACLAction]? = nil, projectDomainMove: [ACLAction]? = nil, projectDomainVerify: [ACLAction]? = nil, projectEnvVars: [ACLAction]? = nil, projectEnvVarsProduction: [ACLAction]? = nil, projectEnvVarsUnownedByIntegration: [ACLAction]? = nil, projectEvent: [ACLAction]? = nil, projectFlags: [ACLAction]? = nil, projectFlagsProduction: [ACLAction]? = nil, projectFlagsSdkKey: [ACLAction]? = nil, projectFromV0: [ACLAction]? = nil, projectId: [ACLAction]? = nil, projectIntegrationConfiguration: [ACLAction]? = nil, projectLink: [ACLAction]? = nil, projectMember: [ACLAction]? = nil, projectMonitoring: [ACLAction]? = nil, projectOidcToken: [ACLAction]? = nil, projectPermissions: [ACLAction]? = nil, projectProductionBranch: [ACLAction]? = nil, projectProtectionBypass: [ACLAction]? = nil, projectRollingRelease: [ACLAction]? = nil, projectRoutes: [ACLAction]? = nil, projectSetting: [ACLAction]? = nil, projectSupportCase: [ACLAction]? = nil, projectSupportCaseComment: [ACLAction]? = nil, projectTier: [ACLAction]? = nil, projectTransfer: [ACLAction]? = nil, projectTransferIn: [ACLAction]? = nil, projectTransferOut: [ACLAction]? = nil, projectTransferRequest: [ACLAction]? = nil, projectUsage: [ACLAction]? = nil, proTrialOnboarding: [ACLAction]? = nil, rateLimit: [ACLAction]? = nil, redis: [ACLAction]? = nil, redisStoreTokenSet: [ACLAction]? = nil, remoteCaching: [ACLAction]? = nil, repository: [ACLAction]? = nil, samlConfig: [ACLAction]? = nil, schedule: [ACLAction]? = nil, seawallConfig: [ACLAction]? = nil, secret: [ACLAction]? = nil, securityConfig: [ACLAction]? = nil, securityPlusConfiguration: [ACLAction]? = nil, sensitiveEnvironmentVariablePolicy: [ACLAction]? = nil, setting: [ACLAction]? = nil, shareableLink: [ACLAction]? = nil, shareableLinkStrict: [ACLAction]? = nil, sharedEnvVarConnection: [ACLAction]? = nil, sharedEnvVars: [ACLAction]? = nil, sharedEnvVarsProduction: [ACLAction]? = nil, skewProtection: [ACLAction]? = nil, space: [ACLAction]? = nil, spaceRun: [ACLAction]? = nil, storeIsLocked: [ACLAction]? = nil, storeTokenSetSensitive: [ACLAction]? = nil, storeTransfer: [ACLAction]? = nil, supportCase: [ACLAction]? = nil, supportCaseComment: [ACLAction]? = nil, team: [ACLAction]? = nil, teamAccessRequest: [ACLAction]? = nil, teamFellowMembership: [ACLAction]? = nil, teamGitExclusivity: [ACLAction]? = nil, teamInvite: [ACLAction]? = nil, teamInviteCode: [ACLAction]? = nil, teamInviteLink: [ACLAction]? = nil, teamJoin: [ACLAction]? = nil, teamMemberMfaStatus: [ACLAction]? = nil, teamMicrofrontends: [ACLAction]? = nil, teamOwnMembership: [ACLAction]? = nil, teamOwnMembershipDisconnectSaml: [ACLAction]? = nil, teamSudo: [ACLAction]? = nil, teamTokenInvalidation: [ACLAction]? = nil, token: [ACLAction]? = nil, toolbarComment: [ACLAction]? = nil, trustedIps: [ACLAction]? = nil, trustedSources: [ACLAction]? = nil, usage: [ACLAction]? = nil, usageCycle: [ACLAction]? = nil, user: [ACLAction]? = nil, userConnection: [ACLAction]? = nil, userMfaConfiguration: [ACLAction]? = nil, userPreference: [ACLAction]? = nil, userSudo: [ACLAction]? = nil, v0Chat: [ACLAction]? = nil, vcrRepository: [ACLAction]? = nil, vercelAppInstallation: [ACLAction]? = nil, vercelAppInstallationRequest: [ACLAction]? = nil, vercelAuth: [ACLAction]? = nil, vercelRun: [ACLAction]? = nil, vpcPeeringConnection: [ACLAction]? = nil, webAnalytics: [ACLAction]? = nil, webAnalyticsPlan: [ACLAction]? = nil, webAuthn: [ACLAction]? = nil, webhook: [ACLAction]? = nil, webhookEvent: [ACLAction]? = nil, workflowRunData: [ACLAction]? = nil) {
         self.init(sdkDefaults: ())
         sdkSet1(accessGroup, agent, aiGatewayApiKey, aiGatewayApiKeyBypassAll, aiGatewayApiKeyOwnedBySelf)
         sdkSet2(aiGatewayApiKeySpendAttribution, aiGatewayApiKeyZdrExemption, aiGatewayBudget, aiGatewayCredits)
@@ -370,13 +80,7 @@ public extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet1(
-        _ accessGroup: [ACLAction]?,
-        _ agent: [ACLAction]?,
-        _ aiGatewayApiKey: [ACLAction]?,
-        _ aiGatewayApiKeyBypassAll: [ACLAction]?,
-        _ aiGatewayApiKeyOwnedBySelf: [ACLAction]?
-    ) {
+    mutating func sdkSet1(_ accessGroup: [ACLAction]?, _ agent: [ACLAction]?, _ aiGatewayApiKey: [ACLAction]?, _ aiGatewayApiKeyBypassAll: [ACLAction]?, _ aiGatewayApiKeyOwnedBySelf: [ACLAction]?) {
         self.accessGroup = accessGroup
         self.agent = agent
         self.aiGatewayApiKey = aiGatewayApiKey
@@ -386,12 +90,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet2(
-        _ aiGatewayApiKeySpendAttribution: [ACLAction]?,
-        _ aiGatewayApiKeyZdrExemption: [ACLAction]?,
-        _ aiGatewayBudget: [ACLAction]?,
-        _ aiGatewayCredits: [ACLAction]?
-    ) {
+    mutating func sdkSet2(_ aiGatewayApiKeySpendAttribution: [ACLAction]?, _ aiGatewayApiKeyZdrExemption: [ACLAction]?, _ aiGatewayBudget: [ACLAction]?, _ aiGatewayCredits: [ACLAction]?) {
         self.aiGatewayApiKeySpendAttribution = aiGatewayApiKeySpendAttribution
         self.aiGatewayApiKeyZdrExemption = aiGatewayApiKeyZdrExemption
         self.aiGatewayBudget = aiGatewayBudget
@@ -400,13 +99,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet3(
-        _ aiGatewayGuardrails: [ACLAction]?,
-        _ aiGatewayPrivateModels: [ACLAction]?,
-        _ aiGatewayRules: [ACLAction]?,
-        _ aiGatewaySettings: [ACLAction]?,
-        _ aiGatewayTranscripts: [ACLAction]?
-    ) {
+    mutating func sdkSet3(_ aiGatewayGuardrails: [ACLAction]?, _ aiGatewayPrivateModels: [ACLAction]?, _ aiGatewayRules: [ACLAction]?, _ aiGatewaySettings: [ACLAction]?, _ aiGatewayTranscripts: [ACLAction]?) {
         self.aiGatewayGuardrails = aiGatewayGuardrails
         self.aiGatewayPrivateModels = aiGatewayPrivateModels
         self.aiGatewayRules = aiGatewayRules
@@ -416,13 +109,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet4(
-        _ aiGatewayTranscriptsSettings: [ACLAction]?,
-        _ aiGatewayUsage: [ACLAction]?,
-        _ aiGatewayVirtualModelConfigs: [ACLAction]?,
-        _ alertRules: [ACLAction]?,
-        _ alerts: [ACLAction]?
-    ) {
+    mutating func sdkSet4(_ aiGatewayTranscriptsSettings: [ACLAction]?, _ aiGatewayUsage: [ACLAction]?, _ aiGatewayVirtualModelConfigs: [ACLAction]?, _ alertRules: [ACLAction]?, _ alerts: [ACLAction]?) {
         self.aiGatewayTranscriptsSettings = aiGatewayTranscriptsSettings
         self.aiGatewayUsage = aiGatewayUsage
         self.aiGatewayVirtualModelConfigs = aiGatewayVirtualModelConfigs
@@ -432,13 +119,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet5(
-        _ aliasGlobal: [ACLAction]?,
-        _ aliasProject: [ACLAction]?,
-        _ aliasProtectionBypass: [ACLAction]?,
-        _ analytics: [ACLAction]?,
-        _ analyticsSampling: [ACLAction]?
-    ) {
+    mutating func sdkSet5(_ aliasGlobal: [ACLAction]?, _ aliasProject: [ACLAction]?, _ aliasProtectionBypass: [ACLAction]?, _ analytics: [ACLAction]?, _ analyticsSampling: [ACLAction]?) {
         self.aliasGlobal = aliasGlobal
         self.aliasProject = aliasProject
         self.aliasProtectionBypass = aliasProtectionBypass
@@ -448,13 +129,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet6(
-        _ analyticsUsage: [ACLAction]?,
-        _ apiKey: [ACLAction]?,
-        _ apiKeyAiGateway: [ACLAction]?,
-        _ apiKeyOwnedBySelf: [ACLAction]?,
-        _ auditLog: [ACLAction]?
-    ) {
+    mutating func sdkSet6(_ analyticsUsage: [ACLAction]?, _ apiKey: [ACLAction]?, _ apiKeyAiGateway: [ACLAction]?, _ apiKeyOwnedBySelf: [ACLAction]?, _ auditLog: [ACLAction]?) {
         self.analyticsUsage = analyticsUsage
         self.apiKey = apiKey
         self.apiKeyAiGateway = apiKeyAiGateway
@@ -464,13 +139,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet7(
-        _ automation: [ACLAction]?,
-        _ billingAddress: [ACLAction]?,
-        _ billingInformation: [ACLAction]?,
-        _ billingInvoice: [ACLAction]?,
-        _ billingInvoiceEmailRecipient: [ACLAction]?
-    ) {
+    mutating func sdkSet7(_ automation: [ACLAction]?, _ billingAddress: [ACLAction]?, _ billingInformation: [ACLAction]?, _ billingInvoice: [ACLAction]?, _ billingInvoiceEmailRecipient: [ACLAction]?) {
         self.automation = automation
         self.billingAddress = billingAddress
         self.billingInformation = billingInformation
@@ -480,13 +149,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet8(
-        _ billingInvoiceLanguage: [ACLAction]?,
-        _ billingPlan: [ACLAction]?,
-        _ billingPurchaseOrder: [ACLAction]?,
-        _ billingRefund: [ACLAction]?,
-        _ billingTaxId: [ACLAction]?
-    ) {
+    mutating func sdkSet8(_ billingInvoiceLanguage: [ACLAction]?, _ billingPlan: [ACLAction]?, _ billingPurchaseOrder: [ACLAction]?, _ billingRefund: [ACLAction]?, _ billingTaxId: [ACLAction]?) {
         self.billingInvoiceLanguage = billingInvoiceLanguage
         self.billingPlan = billingPlan
         self.billingPurchaseOrder = billingPurchaseOrder
@@ -496,13 +159,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet9(
-        _ blob: [ACLAction]?,
-        _ blobStoreTokenSet: [ACLAction]?,
-        _ budget: [ACLAction]?,
-        _ buildMachine: [ACLAction]?,
-        _ buildMachineDefault: [ACLAction]?
-    ) {
+    mutating func sdkSet9(_ blob: [ACLAction]?, _ blobStoreTokenSet: [ACLAction]?, _ budget: [ACLAction]?, _ buildMachine: [ACLAction]?, _ buildMachineDefault: [ACLAction]?) {
         self.blob = blob
         self.blobStoreTokenSet = blobStoreTokenSet
         self.budget = budget
@@ -512,13 +169,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet10(
-        _ bulkRedirects: [ACLAction]?,
-        _ cacheArtifact: [ACLAction]?,
-        _ cacheArtifactUsageEvent: [ACLAction]?,
-        _ ciInvocations: [ACLAction]?,
-        _ ciLogs: [ACLAction]?
-    ) {
+    mutating func sdkSet10(_ bulkRedirects: [ACLAction]?, _ cacheArtifact: [ACLAction]?, _ cacheArtifactUsageEvent: [ACLAction]?, _ ciInvocations: [ACLAction]?, _ ciLogs: [ACLAction]?) {
         self.bulkRedirects = bulkRedirects
         self.cacheArtifact = cacheArtifact
         self.cacheArtifactUsageEvent = cacheArtifactUsageEvent
@@ -528,13 +179,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet11(
-        _ codeChecks: [ACLAction]?,
-        _ codeOwners: [ACLAction]?,
-        _ concurrentBuilds: [ACLAction]?,
-        _ connect: [ACLAction]?,
-        _ connectConfiguration: [ACLAction]?
-    ) {
+    mutating func sdkSet11(_ codeChecks: [ACLAction]?, _ codeOwners: [ACLAction]?, _ concurrentBuilds: [ACLAction]?, _ connect: [ACLAction]?, _ connectConfiguration: [ACLAction]?) {
         self.codeChecks = codeChecks
         self.codeOwners = codeOwners
         self.concurrentBuilds = concurrentBuilds
@@ -544,13 +189,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet12(
-        _ connectConfigurationLink: [ACLAction]?,
-        _ connectLogs: [ACLAction]?,
-        _ connexClient: [ACLAction]?,
-        _ connexClientProject: [ACLAction]?,
-        _ connexContact: [ACLAction]?
-    ) {
+    mutating func sdkSet12(_ connectConfigurationLink: [ACLAction]?, _ connectLogs: [ACLAction]?, _ connexClient: [ACLAction]?, _ connexClientProject: [ACLAction]?, _ connexContact: [ACLAction]?) {
         self.connectConfigurationLink = connectConfigurationLink
         self.connectLogs = connectLogs
         self.connexClient = connexClient
@@ -560,12 +199,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet13(
-        _ connexInstallation: [ACLAction]?,
-        _ connexToken: [ACLAction]?,
-        _ cursorOriginInstallation: [ACLAction]?,
-        _ dataCacheBillingSettings: [ACLAction]?
-    ) {
+    mutating func sdkSet13(_ connexInstallation: [ACLAction]?, _ connexToken: [ACLAction]?, _ cursorOriginInstallation: [ACLAction]?, _ dataCacheBillingSettings: [ACLAction]?) {
         self.connexInstallation = connexInstallation
         self.connexToken = connexToken
         self.cursorOriginInstallation = cursorOriginInstallation
@@ -574,13 +208,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet14(
-        _ dataCacheNamespace: [ACLAction]?,
-        _ defaultDeploymentProtection: [ACLAction]?,
-        _ deployment: [ACLAction]?,
-        _ deploymentBuildLogs: [ACLAction]?,
-        _ deploymentCheck: [ACLAction]?
-    ) {
+    mutating func sdkSet14(_ dataCacheNamespace: [ACLAction]?, _ defaultDeploymentProtection: [ACLAction]?, _ deployment: [ACLAction]?, _ deploymentBuildLogs: [ACLAction]?, _ deploymentCheck: [ACLAction]?) {
         self.dataCacheNamespace = dataCacheNamespace
         self.defaultDeploymentProtection = defaultDeploymentProtection
         self.deployment = deployment
@@ -590,11 +218,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet15(
-        _ deploymentCheckPreview: [ACLAction]?,
-        _ deploymentCheckReRunFromProductionBranch: [ACLAction]?,
-        _ deploymentPolicy: [ACLAction]?
-    ) {
+    mutating func sdkSet15(_ deploymentCheckPreview: [ACLAction]?, _ deploymentCheckReRunFromProductionBranch: [ACLAction]?, _ deploymentPolicy: [ACLAction]?) {
         self.deploymentCheckPreview = deploymentCheckPreview
         self.deploymentCheckReRunFromProductionBranch = deploymentCheckReRunFromProductionBranch
         self.deploymentPolicy = deploymentPolicy
@@ -602,12 +226,7 @@ extension UpdateProjectResponsePermissions {
 }
 
 extension UpdateProjectResponsePermissions {
-    mutating func sdkSet16(
-        _ deploymentPreview: [ACLAction]?,
-        _ deploymentPrivate: [ACLAction]?,
-        _ deploymentProductionGit: [ACLAction]?,
-        _ deploymentPromote: [ACLAction]?
-    ) {
+    mutating func sdkSet16(_ deploymentPreview: [ACLAction]?, _ deploymentPrivate: [ACLAction]?, _ deploymentProductionGit: [ACLAction]?, _ deploymentPromote: [ACLAction]?) {
         self.deploymentPreview = deploymentPreview
         self.deploymentPrivate = deploymentPrivate
         self.deploymentProductionGit = deploymentProductionGit

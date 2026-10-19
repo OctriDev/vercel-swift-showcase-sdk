@@ -5,23 +5,21 @@
 
 import PackageDescription
 
-/// HTTP transport: URLSession (Foundation)
+// HTTP transport: URLSession (Foundation)
 let package = Package(
     name: "OctriDevVercel",
     platforms: [.macOS(.v12), .iOS(.v15), .tvOS(.v15), .watchOS(.v8)],
     products: [
-        .library(name: "OctriDevVercel", targets: ["OctriDevVercel"]),
+        .library(name: "OctriDevVercel", targets: ["OctriDevVercel"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-crypto.git", from: "3.0.0"),
+        .package(url: "https://github.com/apple/swift-crypto.git", from: "3.0.0")
     ],
     targets: [
-        .target(
-            name: "OctriDevVercel",
+        .target(name: "OctriDevVercel",
             dependencies: [
-                .product(name: "Crypto", package: "swift-crypto", condition: .when(platforms: [.linux])),
-            ]
-        ),
-        .testTarget(name: "OctriDevVercelTests", dependencies: ["OctriDevVercel"]),
+                .product(name: "Crypto", package: "swift-crypto", condition: .when(platforms: [.linux]))
+            ]),
+        .testTarget(name: "OctriDevVercelTests", dependencies: ["OctriDevVercel"])
     ]
 )

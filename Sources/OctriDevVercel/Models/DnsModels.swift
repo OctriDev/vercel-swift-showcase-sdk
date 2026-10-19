@@ -3,33 +3,25 @@
 
 import Foundation
 
-/// Dns domain models
+// Dns domain models
 public indirect enum CreateRecordResponse {
     case createRecordResponseVariant0(CreateRecordResponseVariant0)
     case createRecordResponseVariant1(CreateRecordResponseVariant1)
 }
 
 extension CreateRecordResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateRecordResponse"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateRecordResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -47,14 +39,8 @@ extension CreateRecordResponse {
 
 extension CreateRecordResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container
-            .decode(CreateRecordResponseVariant0.self) {
-            return .createRecordResponseVariant0(value)
-        }
-        if let value = try? container
-            .decode(CreateRecordResponseVariant1.self) {
-            return .createRecordResponseVariant1(value)
-        }
+        if let value = try? container.decode(CreateRecordResponseVariant0.self) { return .createRecordResponseVariant0(value) }
+        if let value = try? container.decode(CreateRecordResponseVariant1.self) { return .createRecordResponseVariant1(value) }
         return nil
     }
 }
@@ -78,28 +64,22 @@ public struct CreateRecordResponseVariant0: Codable {
         case uid
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateRecordResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension CreateRecordResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.updated) else {
-            throw SdkValidationError(
-                field: "updated",
-                code: "required",
-                message: "Validation failed for 'updated': value is required"
-            )
+            throw SdkValidationError(field: "updated", code: "required", message: "Validation failed for 'updated': value is required")
         }
-        updated = try container.sdkDecodeRequired(.updated)
-        uid = try container.sdkDecodeIfPresent(.uid)
+        self.updated = try container.sdkDecodeRequired(.updated)
+        self.uid = try container.sdkDecodeIfPresent(.uid)
     }
 }
 
-public extension CreateRecordResponseVariant0 {
-    init(updated: Double, uid: String? = nil) {
+extension CreateRecordResponseVariant0 {
+    public init(updated: Double, uid: String? = nil) {
         (self.updated, self.uid) = (updated, uid)
     }
 }
@@ -113,27 +93,21 @@ public struct CreateRecordResponseVariant1: Codable {
         case uid
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateRecordResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension CreateRecordResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.uid) else {
-            throw SdkValidationError(
-                field: "uid",
-                code: "required",
-                message: "Validation failed for 'uid': value is required"
-            )
+            throw SdkValidationError(field: "uid", code: "required", message: "Validation failed for 'uid': value is required")
         }
-        uid = try container.sdkDecodeRequired(.uid)
+        self.uid = try container.sdkDecodeRequired(.uid)
     }
 }
 
-public extension CreateRecordResponseVariant1 {
-    init(uid: String) {
+extension CreateRecordResponseVariant1 {
+    public init(uid: String) {
         self.uid = uid
     }
 }

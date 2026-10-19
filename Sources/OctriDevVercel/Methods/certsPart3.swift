@@ -6,30 +6,22 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension CertsMethods {
-    /// Lists certificates available to the authenticated user or team. Use `teamId` or `slug` to scope the request to a
-    /// team. The response includes certificate details and pagination information.
+extension CertsMethods {
+    /// Lists certificates available to the authenticated user or team. Use `teamId` or `slug` to scope the request to a team. The response includes certificate details and pagination information.
     ///
     /// Get certs
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getCerts(
-        config: ClientConfig,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetCertsResponse {
-        try await (sdkRequest("GET", "/v8/certs", config: config, query: [
+    public static func getCerts(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetCertsResponse {
+        return try (await sdkRequest("GET", "/v8/certs", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "getCerts", options: requestOptions)).data
     }
 
-    /// Issues a new certificate for the common names you provide. Supply `cns` to specify the common names for which
-    /// the certificate should be issued. The response includes the certificate identifier, common names, and
-    /// certificate dates.
+    /// Issues a new certificate for the common names you provide. Supply `cns` to specify the common names for which the certificate should be issued. The response includes the certificate identifier, common names, and certificate dates.
     ///
     /// Issue a new cert
     ///
@@ -37,16 +29,10 @@ public extension CertsMethods {
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - cns: The common names the cert should be issued for
-    static func issueCert(
-        config: ClientConfig,
-        teamId: String? = nil,
-        slug: String? = nil,
-        cns: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> IssueCertResponse {
+    public static func issueCert(config: ClientConfig, teamId: String? = nil, slug: String? = nil, cns: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> IssueCertResponse {
         let requestBody = IssueCertRequestBody(cns: cns)
 
-        return try await (sdkRequest("POST", "/v8/certs", config: config, query: [
+        return try (await sdkRequest("POST", "/v8/certs", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "issueCert", options: requestOptions)).data

@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension TeamsMethods {
-    struct UpdateTeamsOptions: Codable {
+extension TeamsMethods {
+    public struct UpdateTeamsOptions: Codable {
         public var teamId: String
         public var slug: String?
         public var avatar: SdkOptional<String>?
@@ -45,12 +45,9 @@ public extension TeamsMethods {
         }
     }
 
-    /// Updates the specified team's information using the fields supplied in the request body. Include only the team
-    /// properties you want to change, such as its name, slug, avatar, or feedback settings. The authenticated user must
-    /// be a team owner to update the team.
+    /// Updates the specified team's information using the fields supplied in the request body. Include only the team properties you want to change, such as its name, slug, avatar, or feedback settings. The authenticated user must be a team owner to update the team.
     ///
-    /// Update the information of a Team specified by the `teamId` parameter. The request body should contain the
-    /// information that will be updated on the Team.
+    /// Update the information of a Team specified by the `teamId` parameter. The request body should contain the information that will be updated on the Team.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
@@ -101,11 +98,7 @@ public extension TeamsMethods {
     /// - defaultProjectJobs: Typed representation of the
     ///   `UpdateTeamsRequestDefaultProjectJobs` API schema.
     /// - resourceConfig: Resource configuration for the team.
-    static func updateTeams(
-        config: ClientConfig,
-        options: UpdateTeamsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> Team {
+    public static func updateTeams(config: ClientConfig, options: UpdateTeamsOptions, requestOptions: RequestOptions? = nil) async throws -> Team {
         if let avatar = options.avatar?.valueOrNil {
             try validateLength("avatar", avatar, max: 40)
             try sdkValidatePattern("avatar", avatar, sdkPattern1627919cf6d9)
@@ -121,17 +114,8 @@ public extension TeamsMethods {
 
         let requestBody = UpdateTeamsRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v2/teams/", sdkEncodePathSegment(sdkWireString(options.teamId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateTeams",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v2/teams/", sdkEncodePathSegment(sdkWireString(options.teamId))].joined(), config: config, query: [
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "updateTeams", options: requestOptions)).data
     }
 }

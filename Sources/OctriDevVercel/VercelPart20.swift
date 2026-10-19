@@ -9,88 +9,32 @@ public class WebAnalyticsNamespace {
         self.config = config
     }
 
-    /// Aggregates page views for a project within a requested date range. Use `by` to group results by up to two
-    /// dimensions and `filter` to restrict the data; `since` and `until` define the inclusive range. The optional
-    /// `limit` controls the number of distinct results, with remaining results grouped as “Others.”
+/// Aggregates page views for a project within a requested date range. Use `by` to group results by up to two dimensions and `filter` to restrict the data; `since` and `until` define the inclusive range. The optional `limit` controls the number of distinct results, with remaining results grouped as “Others.”
     ///
-    /// Counts pageviews on a project, within the requested date range. Results are either aggregated or broken down
-    /// over time. Results can additionally be broken down by one dimension, and filtered by multiple dimensions.
-    public func aggregatePageviews(
-        options: WebAnalyticsMethods.AggregatePageviewsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AggregatePageviewsResponse {
-        try await WebAnalyticsMethods.aggregatePageviews(
-            config: config,
-            options: options,
-            requestOptions: requestOptions
-        )
+    /// Counts pageviews on a project, within the requested date range. Results are either aggregated or broken down over time. Results can additionally be broken down by one dimension, and filtered by multiple dimensions.
+    public func aggregatePageviews(options: WebAnalyticsMethods.AggregatePageviewsOptions, requestOptions: RequestOptions? = nil) async throws -> AggregatePageviewsResponse {
+        return try await WebAnalyticsMethods.aggregatePageviews(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Aggregates custom events for a project within a requested date range. Use `by` to group results by up to two
-    /// dimensions and `filter` to restrict the data; `since` and `until` define the inclusive range. The optional
-    /// `limit` controls the number of distinct results, with remaining results grouped as “Others.”
+/// Aggregates custom events for a project within a requested date range. Use `by` to group results by up to two dimensions and `filter` to restrict the data; `since` and `until` define the inclusive range. The optional `limit` controls the number of distinct results, with remaining results grouped as “Others.”
     ///
-    /// Counts custom events on a project, within the requested date range. Results are either aggregated or broken down
-    /// over time. Results can additionally be broken down by one dimension, and filtered by multiple dimensions.
-    public func aggregateEvents(
-        options: WebAnalyticsMethods.AggregateEventsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AggregateEventsResponse {
-        try await WebAnalyticsMethods.aggregateEvents(config: config, options: options, requestOptions: requestOptions)
+    /// Counts custom events on a project, within the requested date range. Results are either aggregated or broken down over time. Results can additionally be broken down by one dimension, and filtered by multiple dimensions.
+    public func aggregateEvents(options: WebAnalyticsMethods.AggregateEventsOptions, requestOptions: RequestOptions? = nil) async throws -> AggregateEventsResponse {
+        return try await WebAnalyticsMethods.aggregateEvents(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Counts page views for a project since Web Analytics was enabled; the count covers production data only. Use
-    /// `since` and `until` to select a date range, and `filter` to restrict results by supported dimensions. The date
-    /// bounds accept timestamps in milliseconds or valid date strings.
+/// Counts page views for a project since Web Analytics was enabled; the count covers production data only. Use `since` and `until` to select a date range, and `filter` to restrict results by supported dimensions. The date bounds accept timestamps in milliseconds or valid date strings.
     ///
-    /// Counts the number of page views on a project (production only), since Web Analytics was enabled. Results can be
-    /// filtered on supported dimensions.
-    public func countPageviews(
-        projectId: String,
-        since: CountPageviewsParameter? = nil,
-        until: CountPageviewsParameterX9935b237? = nil,
-        filter: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CountPageviewsResponse {
-        try await WebAnalyticsMethods.countPageviews(
-            config: config,
-            projectId: projectId,
-            since: since,
-            until: until,
-            filter: filter,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Counts the number of page views on a project (production only), since Web Analytics was enabled. Results can be filtered on supported dimensions.
+    public func countPageviews(projectId: String, since: CountPageviewsParameter? = nil, until: CountPageviewsParameterX9935b237? = nil, filter: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CountPageviewsResponse {
+        return try await WebAnalyticsMethods.countPageviews(config: config, projectId: projectId, since: since, until: until, filter: filter, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Counts custom events for a project since Web Analytics was enabled; the count covers production data only. Use
-    /// `since` and `until` to select a date range, and `filter` to restrict results by supported dimensions, including
-    /// `eventName` and event data. The date bounds accept timestamps in milliseconds or valid date strings.
+/// Counts custom events for a project since Web Analytics was enabled; the count covers production data only. Use `since` and `until` to select a date range, and `filter` to restrict results by supported dimensions, including `eventName` and event data. The date bounds accept timestamps in milliseconds or valid date strings.
     ///
-    /// Counts the number of custom events on a project (production only), since Web Analytics was enabled. Results can
-    /// be filtered on supported dimensions.
-    public func countEvents(
-        projectId: String,
-        since: CountEventsParameter? = nil,
-        until: CountEventsParameterX1c5616a1? = nil,
-        filter: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CountEventsResponse {
-        try await WebAnalyticsMethods.countEvents(
-            config: config,
-            projectId: projectId,
-            since: since,
-            until: until,
-            filter: filter,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Counts the number of custom events on a project (production only), since Web Analytics was enabled. Results can be filtered on supported dimensions.
+    public func countEvents(projectId: String, since: CountEventsParameter? = nil, until: CountEventsParameterX1c5616a1? = nil, filter: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CountEventsResponse {
+        return try await WebAnalyticsMethods.countEvents(config: config, projectId: projectId, since: since, until: until, filter: filter, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -100,86 +44,32 @@ public class WebhooksNamespace {
         self.config = config
     }
 
-    /// Creates a webhook that sends selected events to a URL. Provide an HTTP or HTTPS `url` and at least one event in
-    /// `events`; you can optionally associate the webhook with 1 to 50 `projectIds`. The response includes the webhook
-    /// ID and secret used to sign payloads.
+/// Creates a webhook that sends selected events to a URL. Provide an HTTP or HTTPS `url` and at least one event in `events`; you can optionally associate the webhook with 1 to 50 `projectIds`. The response includes the webhook ID and secret used to sign payloads.
     ///
     /// Creates a webhook
-    public func create(
-        url: String,
-        events: [CreateWebhookRequestBodyEventsItem],
-        teamId: String? = nil,
-        slug: String? = nil,
-        projectIds: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateWebhookResponse {
-        try await WebhooksMethods.createWebhook(
-            config: config,
-            url: url,
-            events: events,
-            teamId: teamId,
-            slug: slug,
-            projectIds: projectIds,
-            requestOptions: requestOptions
-        )
+    public func create(url: String, events: [CreateWebhookRequestBodyEventsItem], teamId: String? = nil, slug: String? = nil, projectIds: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateWebhookResponse {
+        return try await WebhooksMethods.createWebhook(config: config, url: url, events: events, teamId: teamId, slug: slug, projectIds: projectIds, requestOptions: requestOptions)
     }
 
-    /// Lists webhooks, optionally scoped to a project. Use `projectId` to retrieve webhooks associated with a specific
-    /// project; omit it to list webhooks without that project filter. The project identifier must match the documented
-    /// character pattern.
+/// Lists webhooks, optionally scoped to a project. Use `projectId` to retrieve webhooks associated with a specific project; omit it to list webhooks without that project filter. The project identifier must match the documented character pattern.
     ///
     /// Get a list of webhooks
-    public func get(
-        projectId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetWebhooksResponse {
-        try await WebhooksMethods.getWebhooks(
-            config: config,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func get(projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetWebhooksResponse {
+        return try await WebhooksMethods.getWebhooks(config: config, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves a webhook by its identifier. Use `teamId` or `slug` to specify the team context for the request. The
-    /// response includes the webhook URL, subscribed events, associated project IDs, and timestamps.
+/// Retrieves a webhook by its identifier. Use `teamId` or `slug` to specify the team context for the request. The response includes the webhook URL, subscribed events, associated project IDs, and timestamps.
     ///
     /// Get a webhook
-    public func getWebhook(
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetWebhookResponse {
-        try await WebhooksMethods.getWebhook(
-            config: config,
-            id: id,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getWebhook(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetWebhookResponse {
+        return try await WebhooksMethods.getWebhook(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes a webhook by its identifier. Use `teamId` or `slug` to specify the team context for the request. The
-    /// operation returns no response body when the deletion succeeds.
+/// Deletes a webhook by its identifier. Use `teamId` or `slug` to specify the team context for the request. The operation returns no response body when the deletion succeeds.
     ///
     /// Deletes a webhook
-    public func delete(
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await WebhooksMethods.deleteWebhook(
-            config: config,
-            id: id,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func delete(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await WebhooksMethods.deleteWebhook(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -189,133 +79,46 @@ public class AliasesNamespace {
         self.config = config
     }
 
-    /// Lists aliases assigned to a deployment. Use `teamId` or `slug` to specify the team context, and provide the
-    /// deployment ID in `id`. The authenticated user or team must own the deployment.
+/// Lists aliases assigned to a deployment. Use `teamId` or `slug` to specify the team context, and provide the deployment ID in `id`. The authenticated user or team must own the deployment.
     ///
-    /// Retrieves all Aliases for the Deployment with the given ID. The authenticated user or team must own the
-    /// deployment.
-    public func listForDeployment(
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListAliasesForDeploymentResponse {
-        try await AliasesMethods.listAliasesForDeployment(
-            config: config,
-            id: id,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// Retrieves all Aliases for the Deployment with the given ID. The authenticated user or team must own the deployment.
+    public func listForDeployment(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListAliasesForDeploymentResponse {
+        return try await AliasesMethods.listAliasesForDeployment(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Creates an alias for the deployment identified by a deployment or alias ID or URL. Provide the alias name in
-    /// `alias`, and optionally set `redirect` to route the alias to another hostname with a 307 status code. If the
-    /// alias is already assigned to another deployment, it is removed from that deployment and assigned to this one.
+/// Creates an alias for the deployment identified by a deployment or alias ID or URL. Provide the alias name in `alias`, and optionally set `redirect` to route the alias to another hostname with a 307 status code. If the alias is already assigned to another deployment, it is removed from that deployment and assigned to this one.
     ///
-    /// Creates a new alias for the deployment resolved from the given deployment or alias ID or URL. The authenticated
-    /// user or team must own this deployment. If the desired alias is already assigned to another deployment, then it
-    /// will be removed from the old deployment and assigned to the new one.
-    public func assignAlias(
-        id: AssignAliasParameter,
-        teamId: String? = nil,
-        slug: String? = nil,
-        alias: String? = nil,
-        redirect: SdkOptional<String>? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AssignAliasResponse {
-        try await AliasesMethods.assignAlias(
-            config: config,
-            id: id,
-            teamId: teamId,
-            slug: slug,
-            alias: alias,
-            redirect: redirect,
-            requestOptions: requestOptions
-        )
+    /// Creates a new alias for the deployment resolved from the given deployment or alias ID or URL. The authenticated user or team must own this deployment. If the desired alias is already assigned to another deployment, then it will be removed from the old deployment and assigned to the new one.
+    public func assignAlias(id: AssignAliasParameter, teamId: String? = nil, slug: String? = nil, alias: String? = nil, redirect: SdkOptional<String>? = nil, requestOptions: RequestOptions? = nil) async throws -> AssignAliasResponse {
+        return try await AliasesMethods.assignAlias(config: config, id: id, teamId: teamId, slug: slug, alias: alias, redirect: redirect, requestOptions: requestOptions)
     }
 
-    /// Lists aliases for the authenticated user or team, with optional filters for domain, project, creation time, or
-    /// rollback deployment. Use `limit` to control the number of aliases returned, and inspect `pagination` for the
-    /// previous and next page values.
+/// Lists aliases for the authenticated user or team, with optional filters for domain, project, creation time, or rollback deployment. Use `limit` to control the number of aliases returned, and inspect `pagination` for the previous and next page values.
     ///
-    /// Retrieves a list of aliases for the authenticated User or Team. When `domain` is provided, only aliases for that
-    /// domain will be returned. When `projectId` is provided, it will only return the given project aliases.
-    public func list(
-        options: AliasesMethods.ListAliasesOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListAliasesResponse {
-        try await AliasesMethods.listAliases(config: config, options: options, requestOptions: requestOptions)
+    /// Retrieves a list of aliases for the authenticated User or Team. When `domain` is provided, only aliases for that domain will be returned. When `projectId` is provided, it will only return the given project aliases.
+    public func list(options: AliasesMethods.ListAliasesOptions, requestOptions: RequestOptions? = nil) async throws -> ListAliasesResponse {
+        return try await AliasesMethods.listAliases(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Retrieves an alias by its hostname or alias ID. Use `projectId` to restrict the result to an alias assigned to a
-    /// specific project, or use `since` and `until` to filter by creation time.
+/// Retrieves an alias by its hostname or alias ID. Use `projectId` to restrict the result to an alias assigned to a specific project, or use `since` and `until` to filter by creation time.
     ///
     /// Retrieves an Alias for the given host name or alias ID.
-    public func getAlias(
-        idOrAlias: String,
-        from: Double? = nil,
-        projectId: String? = nil,
-        since: Double? = nil,
-        until: Double? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetAliasResponse {
-        try await AliasesMethods.getAlias(
-            config: config,
-            idOrAlias: idOrAlias,
-            from: from,
-            projectId: projectId,
-            since: since,
-            until: until,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getAlias(idOrAlias: String, from: Double? = nil, projectId: String? = nil, since: Double? = nil, until: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetAliasResponse {
+        return try await AliasesMethods.getAlias(config: config, idOrAlias: idOrAlias, from: from, projectId: projectId, since: since, until: until, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes an alias by its ID or alias name. Use `teamId` or `slug` to specify the team context for the request. A
-    /// successful response confirms that the alias was removed.
+/// Deletes an alias by its ID or alias name. Use `teamId` or `slug` to specify the team context for the request. A successful response confirms that the alias was removed.
     ///
     /// Delete an Alias with the specified ID.
-    public func deleteAlias(
-        aliasId: DeleteAliasParameter,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteAliasResponse {
-        try await AliasesMethods.deleteAlias(
-            config: config,
-            aliasId: aliasId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func deleteAlias(aliasId: DeleteAliasParameter, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteAliasResponse {
+        return try await AliasesMethods.deleteAlias(config: config, aliasId: aliasId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates protection-bypass settings for an alias or deployment URL. Use the request body to configure a shareable
-    /// link, user-scoped access, or an override for access behavior. The `ttl` value for a shareable link cannot exceed
-    /// 63,072,000 seconds.
+/// Updates protection-bypass settings for an alias or deployment URL. Use the request body to configure a shareable link, user-scoped access, or an override for access behavior. The `ttl` value for a shareable link cannot exceed 63,072,000 seconds.
     ///
-    /// Update the protection bypass for the alias or deployment URL (used for user access & comment access for
-    /// deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow
-    /// external (logged in) people to comment on previews for Preview Comments (next-live-mode).
-    public func patchUrlProtectionBypass(
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        body: PatchUrlProtectionBypassRequestBody? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await AliasesMethods.patchUrlProtectionBypass(
-            config: config,
-            id: id,
-            teamId: teamId,
-            slug: slug,
-            body: body,
-            requestOptions: requestOptions
-        )
+    /// Update the protection bypass for the alias or deployment URL (used for user access & comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).
+    public func patchUrlProtectionBypass(id: String, teamId: String? = nil, slug: String? = nil, body: PatchUrlProtectionBypassRequestBody? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try await AliasesMethods.patchUrlProtectionBypass(config: config, id: id, teamId: teamId, slug: slug, body: body, requestOptions: requestOptions)
     }
 }
 
@@ -325,99 +128,38 @@ public class CertsNamespace {
         self.config = config
     }
 
-    /// Retrieves a certificate by its identifier. Use `teamId` or `slug` to specify the team context for the request.
-    /// The response includes the certificate's common names, renewal setting, and creation and expiration timestamps.
+/// Retrieves a certificate by its identifier. Use `teamId` or `slug` to specify the team context for the request. The response includes the certificate's common names, renewal setting, and creation and expiration timestamps.
     ///
     /// Get cert by id
-    public func getById(
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetCertByIdResponse {
-        try await CertsMethods.getCertById(
-            config: config,
-            id: id,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getById(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetCertByIdResponse {
+        return try await CertsMethods.getCertById(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes a certificate identified by its certificate ID. Use `teamId` or `slug` to scope the request to a team.
-    /// The response object confirms the removal.
+/// Deletes a certificate identified by its certificate ID. Use `teamId` or `slug` to scope the request to a team. The response object confirms the removal.
     ///
     /// Remove cert
-    public func remove(
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await CertsMethods.removeCert(
-            config: config,
-            id: id,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func remove(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try await CertsMethods.removeCert(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists certificates available to the authenticated user or team. Use `teamId` or `slug` to scope the request to a
-    /// team. The response includes certificate details and pagination information.
+/// Lists certificates available to the authenticated user or team. Use `teamId` or `slug` to scope the request to a team. The response includes certificate details and pagination information.
     ///
     /// Get certs
-    public func get(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetCertsResponse {
-        try await CertsMethods.getCerts(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func get(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetCertsResponse {
+        return try await CertsMethods.getCerts(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Issues a new certificate for the common names you provide. Supply `cns` to specify the common names for which
-    /// the certificate should be issued. The response includes the certificate identifier, common names, and
-    /// certificate dates.
+/// Issues a new certificate for the common names you provide. Supply `cns` to specify the common names for which the certificate should be issued. The response includes the certificate identifier, common names, and certificate dates.
     ///
     /// Issue a new cert
-    public func issue(
-        teamId: String? = nil,
-        slug: String? = nil,
-        cns: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> IssueCertResponse {
-        try await CertsMethods.issueCert(
-            config: config,
-            teamId: teamId,
-            slug: slug,
-            cns: cns,
-            requestOptions: requestOptions
-        )
+    public func issue(teamId: String? = nil, slug: String? = nil, cns: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> IssueCertResponse {
+        return try await CertsMethods.issueCert(config: config, teamId: teamId, slug: slug, cns: cns, requestOptions: requestOptions)
     }
 
-    /// Uploads a certificate using its certificate authority, key, and certificate data. Provide `ca`, `key`, and
-    /// `cert` in the request body; you can also set `skipValidation` to control certificate validation. The response
-    /// includes the uploaded certificate details.
+/// Uploads a certificate using its certificate authority, key, and certificate data. Provide `ca`, `key`, and `cert` in the request body; you can also set `skipValidation` to control certificate validation. The response includes the uploaded certificate details.
     ///
     /// Upload a cert
-    public func upload(
-        ca: String,
-        key: String,
-        cert: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        skipValidation: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UploadCertResponse {
-        try await CertsMethods.uploadCert(
-            config: config,
-            ca: ca,
-            key: key,
-            cert: cert,
-            teamId: teamId,
-            slug: slug,
-            skipValidation: skipValidation,
-            requestOptions: requestOptions
-        )
+    public func upload(ca: String, key: String, cert: String, teamId: String? = nil, slug: String? = nil, skipValidation: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> UploadCertResponse {
+        return try await CertsMethods.uploadCert(config: config, ca: ca, key: key, cert: cert, teamId: teamId, slug: slug, skipValidation: skipValidation, requestOptions: requestOptions)
     }
 }

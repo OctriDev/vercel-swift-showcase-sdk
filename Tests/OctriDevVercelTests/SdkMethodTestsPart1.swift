@@ -83,10 +83,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ProjectsMethods.AddProjectDomainOptions(
-            idOrName: decoded("\"Example Name\""),
-            name: decoded("\"www.example.com\"")
-        )
+        var options = try ProjectsMethods.AddProjectDomainOptions(idOrName: decoded("\"Example Name\""), name: decoded("\"www.example.com\""))
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.gitBranch = try decoded("null")
@@ -180,12 +177,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try WebAnalyticsMethods.AggregateEventsOptions(
-            projectId: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\""),
-            by: decoded("[\"day\",\"eventName\"]"),
-            since: decoded("\"2024-09-01T00:00:00.000Z\""),
-            until: decoded("\"2024-09-08T00:00:00.000Z\"")
-        )
+        var options = try WebAnalyticsMethods.AggregateEventsOptions(projectId: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\""), by: decoded("[\"day\",\"eventName\"]"), since: decoded("\"2024-09-01T00:00:00.000Z\""), until: decoded("\"2024-09-08T00:00:00.000Z\""))
         options.limit = try decoded("3")
         options.filter = try decoded("\"eventData/plan eq 'pro'\"")
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
@@ -208,12 +200,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try WebAnalyticsMethods.AggregatePageviewsOptions(
-            projectId: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\""),
-            by: decoded("[\"day\",\"country\"]"),
-            since: decoded("\"2024-09-01T00:00:00.000Z\""),
-            until: decoded("\"2024-09-08T00:00:00.000Z\"")
-        )
+        var options = try WebAnalyticsMethods.AggregatePageviewsOptions(projectId: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\""), by: decoded("[\"day\",\"country\"]"), since: decoded("\"2024-09-01T00:00:00.000Z\""), until: decoded("\"2024-09-08T00:00:00.000Z\""))
         options.limit = try decoded("3")
         options.filter = try decoded("\"requestPath eq '/docs'\"")
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
@@ -416,10 +403,10 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.buyDomains(
-                domains: decoded(sdkMethodFixture19Value1),
-                contactInformation: decoded(sdkMethodFixture19Value2),
-                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-            )
+            domains: decoded(sdkMethodFixture19Value1),
+            contactInformation: decoded(sdkMethodFixture19Value2),
+            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+        )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -470,14 +457,14 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.buySingleDomain(
-                domain: decoded("\"domain\""),
-                autoRenew: decoded("false"),
-                years: decoded("1"),
-                expectedPrice: decoded("0.01"),
-                contactInformation: decoded(sdkMethodFixture21Value1),
-                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-                languageCode: decoded("\"languageCode\"")
-            )
+            domain: decoded("\"domain\""),
+            autoRenew: decoded("false"),
+            years: decoded("1"),
+            expectedPrice: decoded("0.01"),
+            contactInformation: decoded(sdkMethodFixture21Value1),
+            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+            languageCode: decoded("\"languageCode\"")
+        )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)

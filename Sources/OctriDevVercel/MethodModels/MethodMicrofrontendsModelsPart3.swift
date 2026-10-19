@@ -7,17 +7,15 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical microfrontends operation model declarations
+// Canonical microfrontends operation model declarations
 extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProXa7d9a94e03 {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX9cac49bf33.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX9cac49bf33.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX9cac49bf33(value)
         }
-        if let value = try? container
-            .decode(GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX21974c6c65.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX21974c6c65.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX21974c6c65(value)
         }
         return nil
@@ -29,12 +27,12 @@ extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProXa7d9a94e
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX9cac49bf33.self
         ) {
-            return .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX9cac49bf33(value)
+            return             .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX9cac49bf33(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX21974c6c65.self
         ) {
-            return .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX21974c6c65(value)
+            return             .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX21974c6c65(value)
         }
         return nil
     }
@@ -44,10 +42,8 @@ extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProXa7d9a94e
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX9cac49bf33(value): try container
-            .encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX21974c6c65(value): try container
-            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX9cac49bf33(value): try container.encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX21974c6c65(value): try container.encode(value); return true
         }
     }
 }
@@ -62,39 +58,29 @@ public indirect enum GetMicrofrontendsConfigForProjectResponseConfigApplications
 }
 
 extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValue: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetMicrofrontendsConfigForProjectResponseConfigApplicationsValue"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsConfigForProjectResponseConfigApplicationsValue")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValue {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0(value)
         }
-        if let value = try? container
-            .decode(GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1(value)
         }
         return nil
@@ -106,12 +92,12 @@ extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValue {
         if let value = try? container.decode(
             GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0.self
         ) {
-            return .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0(value)
+            return             .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1.self
         ) {
-            return .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1(value)
+            return             .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1(value)
         }
         return nil
     }
@@ -121,10 +107,8 @@ extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValue {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0(value): try container
-            .encode(value); return true
-        case let .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1(value): try container
-            .encode(value); return true
+        case let .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0(value): try container.encode(value); return true
+        case let .getMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -138,35 +122,25 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX2841
         case permanent
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX284125fd0f {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX284125fd0f {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.location) else {
-            throw SdkValidationError(
-                field: "location",
-                code: "required",
-                message: "Validation failed for 'location': value is required"
-            )
+            throw SdkValidationError(field: "location", code: "required", message: "Validation failed for 'location': value is required")
         }
         guard container.contains(.permanent) else {
-            throw SdkValidationError(
-                field: "permanent",
-                code: "required",
-                message: "Validation failed for 'permanent': value is required"
-            )
+            throw SdkValidationError(field: "permanent", code: "required", message: "Validation failed for 'permanent': value is required")
         }
-        location = try container.sdkDecodeRequired(.location)
-        permanent = try container.sdkDecodeRequired(.permanent)
+        self.location = try container.sdkDecodeRequired(.location)
+        self.permanent = try container.sdkDecodeRequired(.permanent)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX284125fd0f {
-    init(location: String, permanent: Bool) {
+extension GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX284125fd0f {
+    public init(location: String, permanent: Bool) {
         (self.location, self.permanent) = (location, permanent)
     }
 }
@@ -182,35 +156,25 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXbda9
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXbda92ca6f1 {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXbda92ca6f1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.pattern) else {
-            throw SdkValidationError(
-                field: "pattern",
-                code: "required",
-                message: "Validation failed for 'pattern': value is required"
-            )
+            throw SdkValidationError(field: "pattern", code: "required", message: "Validation failed for 'pattern': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        pattern = try container.sdkDecodeRequired(.pattern)
-        type = try container.sdkDecodeRequired(.type)
+        self.pattern = try container.sdkDecodeRequired(.pattern)
+        self.type = try container.sdkDecodeRequired(.type)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXbda92ca6f1 {
-    init(pattern: String, type: GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsX5b34a23156) {
+extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXbda92ca6f1 {
+    public init(pattern: String, type: GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsX5b34a23156) {
         (self.pattern, self.type) = (pattern, type)
     }
 }
@@ -226,47 +190,32 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX76b6
         case to
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX76b651b499 {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX76b651b499 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.from) else {
-            throw SdkValidationError(
-                field: "from",
-                code: "required",
-                message: "Validation failed for 'from': value is required"
-            )
+            throw SdkValidationError(field: "from", code: "required", message: "Validation failed for 'from': value is required")
         }
         guard container.contains(.to) else {
-            throw SdkValidationError(
-                field: "to",
-                code: "required",
-                message: "Validation failed for 'to': value is required"
-            )
+            throw SdkValidationError(field: "to", code: "required", message: "Validation failed for 'to': value is required")
         }
-        from = try container.sdkDecodeRequired(.from)
-        to = try container.sdkDecodeRequired(.to)
+        self.from = try container.sdkDecodeRequired(.from)
+        self.to = try container.sdkDecodeRequired(.to)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX76b651b499 {
-    init(
-        from: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProXb552ab7078,
-        to: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProXa7d9a94e03
-    ) {
+extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProX76b651b499 {
+    public init(from: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProXb552ab7078, to: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProXa7d9a94e03) {
         (self.from, self.to) = (from, to)
     }
 }
 
-public typealias GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXd47fdb0253 =
-    [GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX7ca6e7e8d3]
+public typealias GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXd47fdb0253 = [GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX7ca6e7e8d3]
 
-public typealias GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXb0fa8c86ed =
-    [GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX232dabaa69]
+public typealias GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXb0fa8c86ed = [GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX232dabaa69]
 
 /// `enabled: true` with empty `sources` is deny-all.
 public struct GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX9decc3fdd2: Codable {
@@ -280,47 +229,29 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX9dec
         case sources
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX9decc3fdd2 {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX9decc3fdd2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
         guard container.contains(.environments) else {
-            throw SdkValidationError(
-                field: "environments",
-                code: "required",
-                message: "Validation failed for 'environments': value is required"
-            )
+            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
         }
         guard container.contains(.sources) else {
-            throw SdkValidationError(
-                field: "sources",
-                code: "required",
-                message: "Validation failed for 'sources': value is required"
-            )
+            throw SdkValidationError(field: "sources", code: "required", message: "Validation failed for 'sources': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
-        environments = try container.sdkDecodeRequired(.environments)
-        sources = try container.sdkDecodeRequired(.sources)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.environments = try container.sdkDecodeRequired(.environments)
+        self.sources = try container.sdkDecodeRequired(.sources)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX9decc3fdd2 {
-    init(
-        enabled: Bool,
-        environments: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXd47fdb0253,
-        sources: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXb0fa8c86ed
-    ) {
+extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX9decc3fdd2 {
+    public init(enabled: Bool, environments: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXd47fdb0253, sources: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGXb0fa8c86ed) {
         (self.enabled, self.environments) = (enabled, environments)
         self.sources = sources
     }
@@ -347,30 +278,24 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseStagesIt
         case requireApproval
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseStagesItem {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseStagesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.targetPercentage) else {
-            throw SdkValidationError(
-                field: "targetPercentage",
-                code: "required",
-                message: "Validation failed for 'targetPercentage': value is required"
-            )
+            throw SdkValidationError(field: "targetPercentage", code: "required", message: "Validation failed for 'targetPercentage': value is required")
         }
-        targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
-        duration = try container.sdkDecodeIfPresent(.duration)
-        linearShift = try container.sdkDecodeIfPresent(.linearShift)
-        requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
+        self.targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
+        self.duration = try container.sdkDecodeIfPresent(.duration)
+        self.linearShift = try container.sdkDecodeIfPresent(.linearShift)
+        self.requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseStagesItem {
-    init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
+extension GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseStagesItem {
+    public init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
         (self.targetPercentage, self.duration) = (targetPercentage, duration)
         (self.linearShift, self.requireApproval) = (linearShift, requireApproval)
     }
@@ -395,55 +320,33 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemAnalytics: Codable {
         case spendLimitInDollars
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemAnalytics {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemAnalytics {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.disabledAt) else {
-            throw SdkValidationError(
-                field: "disabledAt",
-                code: "required",
-                message: "Validation failed for 'disabledAt': value is required"
-            )
+            throw SdkValidationError(field: "disabledAt", code: "required", message: "Validation failed for 'disabledAt': value is required")
         }
         guard container.contains(.enabledAt) else {
-            throw SdkValidationError(
-                field: "enabledAt",
-                code: "required",
-                message: "Validation failed for 'enabledAt': value is required"
-            )
+            throw SdkValidationError(field: "enabledAt", code: "required", message: "Validation failed for 'enabledAt': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
-        disabledAt = try container.sdkDecodeRequired(.disabledAt)
-        enabledAt = try container.sdkDecodeRequired(.enabledAt)
-        id = try container.sdkDecodeRequired(.id)
-        canceledAt = try container.sdkDecodeIfPresent(.canceledAt)
-        paidAt = try container.sdkDecodeIfPresent(.paidAt)
-        sampleRatePercent = try container.sdkDecodeIfPresent(.sampleRatePercent)
-        spendLimitInDollars = try container.sdkDecodeIfPresent(.spendLimitInDollars)
+        self.disabledAt = try container.sdkDecodeRequired(.disabledAt)
+        self.enabledAt = try container.sdkDecodeRequired(.enabledAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.canceledAt = try container.sdkDecodeIfPresent(.canceledAt)
+        self.paidAt = try container.sdkDecodeIfPresent(.paidAt)
+        self.sampleRatePercent = try container.sdkDecodeIfPresent(.sampleRatePercent)
+        self.spendLimitInDollars = try container.sdkDecodeIfPresent(.spendLimitInDollars)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemAnalytics {
-    init(
-        disabledAt: Double,
-        enabledAt: Double,
-        id: String,
-        canceledAt: Double? = nil,
-        paidAt: Double? = nil,
-        sampleRatePercent: Double? = nil,
-        spendLimitInDollars: Double? = nil
-    ) {
+extension GetMicrofrontendsInGroupResponseProjectsItemAnalytics {
+    public init(disabledAt: Double, enabledAt: Double, id: String, canceledAt: Double? = nil, paidAt: Double? = nil, sampleRatePercent: Double? = nil, spendLimitInDollars: Double? = nil) {
         (self.disabledAt, self.enabledAt) = (disabledAt, enabledAt)
         (self.id, self.canceledAt) = (id, canceledAt)
         (self.paidAt, self.sampleRatePercent) = (paidAt, sampleRatePercent)
@@ -462,35 +365,25 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemGitComments: Codable {
         case onPullRequest
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemGitComments {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemGitComments {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.onCommit) else {
-            throw SdkValidationError(
-                field: "onCommit",
-                code: "required",
-                message: "Validation failed for 'onCommit': value is required"
-            )
+            throw SdkValidationError(field: "onCommit", code: "required", message: "Validation failed for 'onCommit': value is required")
         }
         guard container.contains(.onPullRequest) else {
-            throw SdkValidationError(
-                field: "onPullRequest",
-                code: "required",
-                message: "Validation failed for 'onPullRequest': value is required"
-            )
+            throw SdkValidationError(field: "onPullRequest", code: "required", message: "Validation failed for 'onPullRequest': value is required")
         }
-        onCommit = try container.sdkDecodeRequired(.onCommit)
-        onPullRequest = try container.sdkDecodeRequired(.onPullRequest)
+        self.onCommit = try container.sdkDecodeRequired(.onCommit)
+        self.onPullRequest = try container.sdkDecodeRequired(.onPullRequest)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemGitComments {
-    init(onCommit: Bool, onPullRequest: Bool) {
+extension GetMicrofrontendsInGroupResponseProjectsItemGitComments {
+    public init(onCommit: Bool, onPullRequest: Bool) {
         (self.onCommit, self.onPullRequest) = (onCommit, onPullRequest)
     }
 }
@@ -526,46 +419,30 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXe471
         case plan
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXe471506b3f {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXe471506b3f {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        aud = try container.sdkDecodeRequired(.aud)
-        environment = try container.sdkDecodeRequired(.environment)
-        iss = try container.sdkDecodeRequired(.iss)
-        owner = try container.sdkDecodeRequired(.owner)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        project = try container.sdkDecodeRequired(.project)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        scope = try container.sdkDecodeRequired(.scope)
-        sub = try container.sdkDecodeRequired(.sub)
-        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
-        mfeGroupIds = try container.sdkDecodeIfPresent(.mfeGroupIds)
-        plan = try container.sdkDecodeIfPresent(.plan)
+        self.aud = try container.sdkDecodeRequired(.aud)
+        self.environment = try container.sdkDecodeRequired(.environment)
+        self.iss = try container.sdkDecodeRequired(.iss)
+        self.owner = try container.sdkDecodeRequired(.owner)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.project = try container.sdkDecodeRequired(.project)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.scope = try container.sdkDecodeRequired(.scope)
+        self.sub = try container.sdkDecodeRequired(.sub)
+        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        self.deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
+        self.mfeGroupIds = try container.sdkDecodeIfPresent(.mfeGroupIds)
+        self.plan = try container.sdkDecodeIfPresent(.plan)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXe471506b3f {
-    init(
-        aud: String,
-        environment: String,
-        iss: String,
-        owner: String,
-        ownerId: String,
-        project: String,
-        projectId: String,
-        scope: String,
-        sub: String,
-        customEnvironmentId: String? = nil,
-        deploymentId: String? = nil,
-        mfeGroupIds: [String]? = nil,
-        plan: String? = nil
-    ) {
+extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsXe471506b3f {
+    public init(aud: String, environment: String, iss: String, owner: String, ownerId: String, project: String, projectId: String, scope: String, sub: String, customEnvironmentId: String? = nil, deploymentId: String? = nil, mfeGroupIds: [String]? = nil, plan: String? = nil) {
         (self.aud, self.environment) = (aud, environment)
         (self.iss, self.owner) = (iss, owner)
         (self.ownerId, self.project) = (ownerId, project)
@@ -588,28 +465,22 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidXfc1a
         case slugs
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidXfc1adeb961 {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidXfc1adeb961 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.preset) else {
-            throw SdkValidationError(
-                field: "preset",
-                code: "required",
-                message: "Validation failed for 'preset': value is required"
-            )
+            throw SdkValidationError(field: "preset", code: "required", message: "Validation failed for 'preset': value is required")
         }
-        preset = try container.sdkDecodeRequired(.preset)
-        slugs = try container.sdkDecodeIfPresent(.slugs)
+        self.preset = try container.sdkDecodeRequired(.preset)
+        self.slugs = try container.sdkDecodeIfPresent(.slugs)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidXfc1adeb961 {
-    init(preset: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX1c8675de20, slugs: [String]? = nil) {
+extension GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidXfc1adeb961 {
+    public init(preset: GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidX1c8675de20, slugs: [String]? = nil) {
         (self.preset, self.slugs) = (preset, slugs)
     }
 }

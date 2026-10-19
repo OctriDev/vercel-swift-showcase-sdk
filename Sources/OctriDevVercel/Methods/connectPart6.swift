@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ConnectMethods {
-    struct UpdateConnectorOptions: Codable {
+extension ConnectMethods {
+    public struct UpdateConnectorOptions: Codable {
         public var connector: String
         public var teamId: String?
         public var slug: String?
@@ -27,9 +27,7 @@ public extension ConnectMethods {
         }
     }
 
-    /// Updates connector configuration, trigger settings, or display details and returns any provider-side follow-up
-    /// signals. Supply only the fields you want to change, and handle any reconsent, reinstall, or service
-    /// synchronization information in the response.
+    /// Updates connector configuration, trigger settings, or display details and returns any provider-side follow-up signals. Supply only the fields you want to change, and handle any reconsent, reinstall, or service synchronization information in the response.
     ///
     /// Update a connector and return the connector with any service-side update signals that the caller must handle.
     ///
@@ -77,40 +75,16 @@ public extension ConnectMethods {
     ///   does not change.
     /// - name: Display name for the connector. It is trimmed and cannot be empty or
     ///   contain control characters.
-    static func updateConnector(
-        config: ClientConfig,
-        options: UpdateConnectorOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ConnectConnectorUpdateResult {
+    public static func updateConnector(config: ClientConfig, options: UpdateConnectorOptions, requestOptions: RequestOptions? = nil) async throws -> ConnectConnectorUpdateResult {
         if let icon = options.icon {
             try sdkValidatePattern("icon", icon, sdkPatternd52cc03c09dc)
         }
 
         let requestBody = UpdateConnectorRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v2/connect/connectors/", sdkEncodePathSegment(sdkWireString(options.connector))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateConnector",
-            options: requestOptions,
-            errors: [
-                "400": ConnectError.self,
-                "401": ConnectError.self,
-                "403": ConnectError.self,
-                "404": ConnectError.self,
-                "409": ConnectError.self,
-                "410": ConnectError.self,
-                "422": ConnectError.self,
-                "500": ConnectError.self,
-                "502": ConnectError.self,
-            ]
-        )).data
+        return try (await sdkRequest("PATCH", ["/v2/connect/connectors/", sdkEncodePathSegment(sdkWireString(options.connector))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "updateConnector", options: requestOptions, errors: ["400": ConnectError.self, "401": ConnectError.self, "403": ConnectError.self, "404": ConnectError.self, "409": ConnectError.self, "410": ConnectError.self, "422": ConnectError.self, "500": ConnectError.self, "502": ConnectError.self])).data
     }
 }

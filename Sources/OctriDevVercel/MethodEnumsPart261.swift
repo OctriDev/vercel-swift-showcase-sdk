@@ -13,9 +13,9 @@ struct GetOrCreateDriveRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encodeIfPresent(maxSizeBytes, forKey: SdkCodingKey("maxSizeBytes"))
-        try keyedContainer.encodeIfPresent(region, forKey: SdkCodingKey("region"))
+        try keyedContainer.encodeIfPresent(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encodeIfPresent(self.maxSizeBytes, forKey: SdkCodingKey("maxSizeBytes"))
+        try keyedContainer.encodeIfPresent(self.region, forKey: SdkCodingKey("region"))
     }
 }
 
@@ -24,7 +24,7 @@ struct ForkDriveRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(name2, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(self.name2, forKey: SdkCodingKey("name"))
     }
 }
 
@@ -47,39 +47,39 @@ struct UpdateSandboxRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(resources, forKey: SdkCodingKey("resources"))
-        try keyedContainer.encodeIfPresent(runtime, forKey: SdkCodingKey("runtime"))
-        try keyedContainer.encodeIfPresent(timeout, forKey: SdkCodingKey("timeout"))
-        try keyedContainer.encodeIfPresent(persistent, forKey: SdkCodingKey("persistent"))
-        try keyedContainer.encodeIfPresent(snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
-        try keyedContainer.encodeIfPresent(keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
-        try keyedContainer.encodeIfPresent(networkPolicy, forKey: SdkCodingKey("networkPolicy"))
-        try keyedContainer.encodeIfPresent(region, forKey: SdkCodingKey("region"))
-        try keyedContainer.encodeIfPresent(failoverRegions, forKey: SdkCodingKey("failoverRegions"))
-        try keyedContainer.encodeIfPresent(mounts, forKey: SdkCodingKey("mounts"))
-        try keyedContainer.encodeIfPresent(networkId, forKey: SdkCodingKey("networkId"))
-        try keyedContainer.encodeIfPresent(env, forKey: SdkCodingKey("env"))
-        try keyedContainer.encodeIfPresent(ports, forKey: SdkCodingKey("ports"))
-        try keyedContainer.encodeIfPresent(currentSnapshotId, forKey: SdkCodingKey("currentSnapshotId"))
-        try keyedContainer.encodeIfPresent(tags, forKey: SdkCodingKey("tags"))
+        try keyedContainer.encodeIfPresent(self.resources, forKey: SdkCodingKey("resources"))
+        try keyedContainer.encodeIfPresent(self.runtime, forKey: SdkCodingKey("runtime"))
+        try keyedContainer.encodeIfPresent(self.timeout, forKey: SdkCodingKey("timeout"))
+        try keyedContainer.encodeIfPresent(self.persistent, forKey: SdkCodingKey("persistent"))
+        try keyedContainer.encodeIfPresent(self.snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
+        try keyedContainer.encodeIfPresent(self.keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
+        try keyedContainer.encodeIfPresent(self.networkPolicy, forKey: SdkCodingKey("networkPolicy"))
+        try keyedContainer.encodeIfPresent(self.region, forKey: SdkCodingKey("region"))
+        try keyedContainer.encodeIfPresent(self.failoverRegions, forKey: SdkCodingKey("failoverRegions"))
+        try keyedContainer.encodeIfPresent(self.mounts, forKey: SdkCodingKey("mounts"))
+        try keyedContainer.encodeIfPresent(self.networkId, forKey: SdkCodingKey("networkId"))
+        try keyedContainer.encodeIfPresent(self.env, forKey: SdkCodingKey("env"))
+        try keyedContainer.encodeIfPresent(self.ports, forKey: SdkCodingKey("ports"))
+        try keyedContainer.encodeIfPresent(self.currentSnapshotId, forKey: SdkCodingKey("currentSnapshotId"))
+        try keyedContainer.encodeIfPresent(self.tags, forKey: SdkCodingKey("tags"))
     }
 
     init(options: SandboxesMethods.UpdateSandboxOptions) {
-        resources = options.resources
-        runtime = options.runtime
-        timeout = options.timeout
-        persistent = options.persistent
-        snapshotExpiration = options.snapshotExpiration
-        keepLastSnapshots = options.keepLastSnapshots
-        networkPolicy = options.networkPolicy
-        region = options.region
-        failoverRegions = options.failoverRegions
-        mounts = options.mounts
-        networkId = options.networkId
-        env = options.env
-        ports = options.ports
-        currentSnapshotId = options.currentSnapshotId
-        tags = options.tags
+        self.resources = options.resources
+        self.runtime = options.runtime
+        self.timeout = options.timeout
+        self.persistent = options.persistent
+        self.snapshotExpiration = options.snapshotExpiration
+        self.keepLastSnapshots = options.keepLastSnapshots
+        self.networkPolicy = options.networkPolicy
+        self.region = options.region
+        self.failoverRegions = options.failoverRegions
+        self.mounts = options.mounts
+        self.networkId = options.networkId
+        self.env = options.env
+        self.ports = options.ports
+        self.currentSnapshotId = options.currentSnapshotId
+        self.tags = options.tags
     }
 }
 
@@ -96,27 +96,27 @@ struct RunSessionCommandRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(command, forKey: SdkCodingKey("command"))
-        try keyedContainer.encodeIfPresent(args, forKey: SdkCodingKey("args"))
-        try keyedContainer.encodeIfPresent(cwd, forKey: SdkCodingKey("cwd"))
-        try keyedContainer.encodeIfPresent(env, forKey: SdkCodingKey("env"))
-        try keyedContainer.encodeIfPresent(sudo, forKey: SdkCodingKey("sudo"))
-        try keyedContainer.encodeIfPresent(wait, forKey: SdkCodingKey("wait"))
-        try keyedContainer.encodeIfPresent(logs, forKey: SdkCodingKey("logs"))
-        try keyedContainer.encodeIfPresent(timeout, forKey: SdkCodingKey("timeout"))
-        try keyedContainer.encodeIfPresent(attachStdin, forKey: SdkCodingKey("attachStdin"))
+        try keyedContainer.encode(self.command, forKey: SdkCodingKey("command"))
+        try keyedContainer.encodeIfPresent(self.args, forKey: SdkCodingKey("args"))
+        try keyedContainer.encodeIfPresent(self.cwd, forKey: SdkCodingKey("cwd"))
+        try keyedContainer.encodeIfPresent(self.env, forKey: SdkCodingKey("env"))
+        try keyedContainer.encodeIfPresent(self.sudo, forKey: SdkCodingKey("sudo"))
+        try keyedContainer.encodeIfPresent(self.wait, forKey: SdkCodingKey("wait"))
+        try keyedContainer.encodeIfPresent(self.logs, forKey: SdkCodingKey("logs"))
+        try keyedContainer.encodeIfPresent(self.timeout, forKey: SdkCodingKey("timeout"))
+        try keyedContainer.encodeIfPresent(self.attachStdin, forKey: SdkCodingKey("attachStdin"))
     }
 
     init(options: SandboxesMethods.RunSessionCommandOptions) {
-        command = options.command
-        args = options.args
-        cwd = options.cwd
-        env = options.env
-        sudo = options.sudo
-        wait = options.wait
-        logs = options.logs
-        timeout = options.timeout
-        attachStdin = options.attachStdin
+        self.command = options.command
+        self.args = options.args
+        self.cwd = options.cwd
+        self.env = options.env
+        self.sudo = options.sudo
+        self.wait = options.wait
+        self.logs = options.logs
+        self.timeout = options.timeout
+        self.attachStdin = options.attachStdin
     }
 }
 
@@ -133,27 +133,27 @@ struct RunSessionCommandStreamStreamRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(command, forKey: SdkCodingKey("command"))
-        try keyedContainer.encodeIfPresent(args, forKey: SdkCodingKey("args"))
-        try keyedContainer.encodeIfPresent(cwd, forKey: SdkCodingKey("cwd"))
-        try keyedContainer.encodeIfPresent(env, forKey: SdkCodingKey("env"))
-        try keyedContainer.encodeIfPresent(sudo, forKey: SdkCodingKey("sudo"))
-        try keyedContainer.encodeIfPresent(wait, forKey: SdkCodingKey("wait"))
-        try keyedContainer.encodeIfPresent(logs, forKey: SdkCodingKey("logs"))
-        try keyedContainer.encodeIfPresent(timeout, forKey: SdkCodingKey("timeout"))
-        try keyedContainer.encodeIfPresent(attachStdin, forKey: SdkCodingKey("attachStdin"))
+        try keyedContainer.encode(self.command, forKey: SdkCodingKey("command"))
+        try keyedContainer.encodeIfPresent(self.args, forKey: SdkCodingKey("args"))
+        try keyedContainer.encodeIfPresent(self.cwd, forKey: SdkCodingKey("cwd"))
+        try keyedContainer.encodeIfPresent(self.env, forKey: SdkCodingKey("env"))
+        try keyedContainer.encodeIfPresent(self.sudo, forKey: SdkCodingKey("sudo"))
+        try keyedContainer.encodeIfPresent(self.wait, forKey: SdkCodingKey("wait"))
+        try keyedContainer.encodeIfPresent(self.logs, forKey: SdkCodingKey("logs"))
+        try keyedContainer.encodeIfPresent(self.timeout, forKey: SdkCodingKey("timeout"))
+        try keyedContainer.encodeIfPresent(self.attachStdin, forKey: SdkCodingKey("attachStdin"))
     }
 
     init(options: SandboxesMethods.RunSessionCommandStreamOptions) {
-        command = options.command
-        args = options.args
-        cwd = options.cwd
-        env = options.env
-        sudo = options.sudo
-        wait = options.wait
-        logs = options.logs
-        timeout = options.timeout
-        attachStdin = options.attachStdin
+        self.command = options.command
+        self.args = options.args
+        self.cwd = options.cwd
+        self.env = options.env
+        self.sudo = options.sudo
+        self.wait = options.wait
+        self.logs = options.logs
+        self.timeout = options.timeout
+        self.attachStdin = options.attachStdin
     }
 }
 
@@ -162,7 +162,7 @@ struct KillSessionCommandRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(signal, forKey: SdkCodingKey("signal"))
+        try keyedContainer.encode(self.signal, forKey: SdkCodingKey("signal"))
     }
 }
 
@@ -173,9 +173,9 @@ struct WriteSessionCommandStdinRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(data, forKey: SdkCodingKey("data"))
-        try keyedContainer.encodeIfPresent(offset, forKey: SdkCodingKey("offset"))
-        try keyedContainer.encodeIfPresent(close, forKey: SdkCodingKey("close"))
+        try keyedContainer.encodeIfPresent(self.data, forKey: SdkCodingKey("data"))
+        try keyedContainer.encodeIfPresent(self.offset, forKey: SdkCodingKey("offset"))
+        try keyedContainer.encodeIfPresent(self.close, forKey: SdkCodingKey("close"))
     }
 }
 
@@ -184,7 +184,7 @@ struct ExtendSessionTimeoutRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(duration, forKey: SdkCodingKey("duration"))
+        try keyedContainer.encode(self.duration, forKey: SdkCodingKey("duration"))
     }
 }
 
@@ -194,8 +194,8 @@ struct ReadSessionFileRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(path, forKey: SdkCodingKey("path"))
-        try keyedContainer.encodeIfPresent(cwd, forKey: SdkCodingKey("cwd"))
+        try keyedContainer.encode(self.path, forKey: SdkCodingKey("path"))
+        try keyedContainer.encodeIfPresent(self.cwd, forKey: SdkCodingKey("cwd"))
     }
 }
 
@@ -206,8 +206,8 @@ struct CreateSessionDirectoryRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(path, forKey: SdkCodingKey("path"))
-        try keyedContainer.encodeIfPresent(cwd, forKey: SdkCodingKey("cwd"))
-        try keyedContainer.encodeIfPresent(recursive, forKey: SdkCodingKey("recursive"))
+        try keyedContainer.encode(self.path, forKey: SdkCodingKey("path"))
+        try keyedContainer.encodeIfPresent(self.cwd, forKey: SdkCodingKey("cwd"))
+        try keyedContainer.encodeIfPresent(self.recursive, forKey: SdkCodingKey("recursive"))
     }
 }

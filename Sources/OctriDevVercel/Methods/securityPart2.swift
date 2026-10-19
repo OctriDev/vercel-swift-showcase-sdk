@@ -6,54 +6,25 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SecurityMethods {
-    /// Updates whether Attack Challenge mode is enabled for a project. Supply `projectId` and `attackModeEnabled`;
-    /// include `attackModeActiveUntil` when using the request variant that sets an active-until time. The response
-    /// includes the updated setting and its update timestamp.
+extension SecurityMethods {
+    /// Updates whether Attack Challenge mode is enabled for a project. Supply `projectId` and `attackModeEnabled`; include `attackModeActiveUntil` when using the request variant that sets an active-until time. The response includes the updated setting and its update timestamp.
     ///
     /// Update the setting for determining if the project has Attack Challenge mode enabled.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func updateAttackChallengeMode(
-        config: ClientConfig,
-        body: [String: JSONValue],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateAttackChallengeModeResponse {
-        try await (sdkRequest(
-            "POST",
-            "/v1/security/attack-mode",
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            rawBody: sdkEncodeBody(body, contentType: "application/json"),
-            decoder: .json,
-            operationId: "updateAttackChallengeMode",
-            options: requestOptions
-        )).data
+    public static func updateAttackChallengeMode(config: ClientConfig, body: [String: JSONValue], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateAttackChallengeModeResponse {
+        return try (await sdkRequest("POST", "/v1/security/attack-mode", config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], rawBody: (try sdkEncodeBody(body, contentType: "application/json")), decoder: .json, operationId: "updateAttackChallengeMode", options: requestOptions)).data
     }
 
-    /// Retrieves the active and draft firewall configurations for a project, along with its configuration versions. Use
-    /// this operation to inspect the current WAF settings and review available versions before changing or activating a
-    /// configuration.
+    /// Retrieves the active and draft firewall configurations for a project, along with its configuration versions. Use this operation to inspect the current WAF settings and review available versions before changing or activating a configuration.
     ///
     /// Lists WAF configs for a project
-    static func getSecurityFirewallConfig(
-        config: ClientConfig,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetSecurityFirewallConfigResponse {
-        try await (sdkRequest(
-            "GET",
-            "/v1/security/firewall/config",
-            config: config,
-            decoder: .json,
-            operationId: "getSecurityFirewallConfig",
-            options: requestOptions
-        )).data
+    public static func getSecurityFirewallConfig(config: ClientConfig, requestOptions: RequestOptions? = nil) async throws -> GetSecurityFirewallConfigResponse {
+        return try (await sdkRequest("GET", "/v1/security/firewall/config", config: config, decoder: .json, operationId: "getSecurityFirewallConfig", options: requestOptions)).data
     }
 }

@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Sandboxes domain models
+// Sandboxes domain models
 /// Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use
 /// \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific
 /// rules.
@@ -36,45 +36,32 @@ public struct CreateSandboxesV4RequestNetworkPolicyVariant0: Codable {
         case injectionRules
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateSandboxesV4RequestNetworkPolicyVariant0 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV4RequestNetworkPolicyVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.mode) else {
-            throw SdkValidationError(
-                field: "mode",
-                code: "required",
-                message: "Validation failed for 'mode': value is required"
-            )
+            throw SdkValidationError(field: "mode", code: "required", message: "Validation failed for 'mode': value is required")
         }
-        mode = try container.sdkDecodeRequired(.mode)
-        allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
-        allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
-        deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
-        injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
+        self.mode = try container.sdkDecodeRequired(.mode)
+        self.allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
+        self.allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
+        self.deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
+        self.injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
     }
 }
 
-public extension CreateSandboxesV4RequestNetworkPolicyVariant0 {
-    init(
-        mode: CreateSandboxesV4RequestNetworkPolicyVariant0Mode,
-        allowedDomains: [String]? = nil,
-        allowedCidrs: [String]? = nil,
-        deniedCidrs: [String]? = nil,
-        injectionRules: CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesList? = nil
-    ) {
+extension CreateSandboxesV4RequestNetworkPolicyVariant0 {
+    public init(mode: CreateSandboxesV4RequestNetworkPolicyVariant0Mode, allowedDomains: [String]? = nil, allowedCidrs: [String]? = nil, deniedCidrs: [String]? = nil, injectionRules: CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesList? = nil) {
         (self.mode, self.allowedDomains) = (mode, allowedDomains)
         (self.allowedCidrs, self.deniedCidrs) = (allowedCidrs, deniedCidrs)
         self.injectionRules = injectionRules
     }
 }
 
-public typealias CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesList =
-    [CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItem]
+public typealias CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesList = [CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItem]
 
 /// Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use
 /// \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific
@@ -108,37 +95,25 @@ public struct CreateSandboxesV2RequestNetworkPolicyVariant0: Codable {
         case injectionRules
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateSandboxesV2RequestNetworkPolicyVariant0 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV2RequestNetworkPolicyVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.mode) else {
-            throw SdkValidationError(
-                field: "mode",
-                code: "required",
-                message: "Validation failed for 'mode': value is required"
-            )
+            throw SdkValidationError(field: "mode", code: "required", message: "Validation failed for 'mode': value is required")
         }
-        mode = try container.sdkDecodeRequired(.mode)
-        allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
-        allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
-        deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
-        injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
+        self.mode = try container.sdkDecodeRequired(.mode)
+        self.allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
+        self.allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
+        self.deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
+        self.injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
     }
 }
 
-public extension CreateSandboxesV2RequestNetworkPolicyVariant0 {
-    init(
-        mode: CreateSandboxesV2RequestNetworkPolicyVariant0Mode,
-        allowedDomains: [String]? = nil,
-        allowedCidrs: [String]? = nil,
-        deniedCidrs: [String]? = nil,
-        injectionRules: CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesList? = nil
-    ) {
+extension CreateSandboxesV2RequestNetworkPolicyVariant0 {
+    public init(mode: CreateSandboxesV2RequestNetworkPolicyVariant0Mode, allowedDomains: [String]? = nil, allowedCidrs: [String]? = nil, deniedCidrs: [String]? = nil, injectionRules: CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesList? = nil) {
         (self.mode, self.allowedDomains) = (mode, allowedDomains)
         (self.allowedCidrs, self.deniedCidrs) = (allowedCidrs, deniedCidrs)
         self.injectionRules = injectionRules
@@ -158,38 +133,28 @@ public struct CreateSandboxesV4RequestSourceVariant1: Codable {
         case url
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateSandboxesV4RequestSourceVariant1 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV4RequestSourceVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        url = try container.sdkDecodeRequired(.url)
-        try sdkValidateUri("url", url)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.url = try container.sdkDecodeRequired(.url)
+            try sdkValidateUri("url", self.url)
     }
 }
 
-public extension CreateSandboxesV4RequestSourceVariant1 {
-    init(type: JSONValue, url: String) throws {
+extension CreateSandboxesV4RequestSourceVariant1 {
+    public init(type: JSONValue, url: String) throws {
         (self.type, self.url) = (type, url)
-        try sdkValidateUri("url", self.url)
+            try sdkValidateUri("url", self.url)
     }
 }
 
@@ -205,23 +170,20 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a
     }
 
     init() {
-        (key, value) = (nil, nil)
+        (self.key, self.value) = (nil, nil)
     }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7 {
-    init(from decoder: Decoder) throws {
+extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        key = try container.sdkDecodeIfPresent(.key)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.key = try container.sdkDecodeIfPresent(.key)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7 {
-    init(
-        key: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX3702229f5d? = nil,
-        value: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX0f7ae38277? = nil
-    ) {
+extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7 {
+    public init(key: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX3702229f5d? = nil, value: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX0f7ae38277? = nil) {
         self.init()
         (self.key, self.value) = (key, value)
     }
@@ -231,10 +193,7 @@ public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc
 public struct NamedSandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = NamedSandboxNetworkPolicyMode(rawValue: "allow-all")
     public static let custom = NamedSandboxNetworkPolicyMode(rawValue: "custom")
     public static let defaultAllow = NamedSandboxNetworkPolicyMode(rawValue: "default-allow")
@@ -243,7 +202,7 @@ public struct NamedSandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -252,22 +211,15 @@ public struct NamedSandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable
     }
 }
 
-public struct GetSessionCommandLogsResponseVariant0DataMessage: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetSessionCommandLogsResponseVariant0DataMessage: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let sandboxStreamWasClosedAndIsNotAcceptingCommands =
-        GetSessionCommandLogsResponseVariant0DataMessage(
-            rawValue: "Sandbox stream was closed and is not accepting commands."
-        )
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let sandboxStreamWasClosedAndIsNotAcceptingCommands = GetSessionCommandLogsResponseVariant0DataMessage(rawValue: "Sandbox stream was closed and is not accepting commands.")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -278,14 +230,10 @@ public struct GetSessionCommandLogsResponseVariant0DataMessage: RawRepresentable
 
 /// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block
 /// all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-public struct CreateSandboxesV4RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateSandboxesV4RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = CreateSandboxesV4RequestNetworkPolicyVariant0Mode(rawValue: "allow-all")
     public static let denyAll = CreateSandboxesV4RequestNetworkPolicyVariant0Mode(rawValue: "deny-all")
     public static let custom = CreateSandboxesV4RequestNetworkPolicyVariant0Mode(rawValue: "custom")
@@ -294,7 +242,7 @@ public struct CreateSandboxesV4RequestNetworkPolicyVariant0Mode: RawRepresentabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -307,17 +255,14 @@ public struct CreateSandboxesV4RequestNetworkPolicyVariant0Mode: RawRepresentabl
 public struct SnapshotStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let created = SnapshotStatus(rawValue: "created")
     public static let deleted = SnapshotStatus(rawValue: "deleted")
     public static let failed = SnapshotStatus(rawValue: "failed")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -330,10 +275,7 @@ public struct SnapshotStatus: RawRepresentable, Hashable, Codable, Sendable, Sdk
 public struct SessionStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let aborted = SessionStatus(rawValue: "aborted")
     public static let failed = SessionStatus(rawValue: "failed")
     public static let pending = SessionStatus(rawValue: "pending")
@@ -344,7 +286,7 @@ public struct SessionStatus: RawRepresentable, Hashable, Codable, Sendable, SdkW
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -357,17 +299,14 @@ public struct SessionStatus: RawRepresentable, Hashable, Codable, Sendable, SdkW
 public struct NamedSandboxStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let running = NamedSandboxStatus(rawValue: "running")
     public static let stopped = NamedSandboxStatus(rawValue: "stopped")
     public static let stopping = NamedSandboxStatus(rawValue: "stopping")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -378,26 +317,19 @@ public struct NamedSandboxStatus: RawRepresentable, Hashable, Codable, Sendable,
 
 /// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block
 /// all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-public struct CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode(rawValue: "allow-all")
     public static let denyAll = CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode(rawValue: "deny-all")
     public static let custom = CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode(rawValue: "custom")
-    public static let defaultAllow =
-        CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode(rawValue: "default-allow")
-    public static let defaultDeny =
-        CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode(rawValue: "default-deny")
+    public static let defaultAllow = CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode(rawValue: "default-allow")
+    public static let defaultDeny = CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode(rawValue: "default-deny")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -410,16 +342,13 @@ public struct CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0Mode: RawRe
 public struct SnapshotArchitecture: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let amd64 = SnapshotArchitecture(rawValue: "amd64")
     public static let arm64 = SnapshotArchitecture(rawValue: "arm64")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -428,20 +357,15 @@ public struct SnapshotArchitecture: RawRepresentable, Hashable, Codable, Sendabl
     }
 }
 
-public struct GetSessionCommandLogsResponseVariant0DataCode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetSessionCommandLogsResponseVariant0DataCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let sandboxStreamClosed =
-        GetSessionCommandLogsResponseVariant0DataCode(rawValue: "sandbox_stream_closed")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let sandboxStreamClosed = GetSessionCommandLogsResponseVariant0DataCode(rawValue: "sandbox_stream_closed")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -454,16 +378,13 @@ public struct GetSessionCommandLogsResponseVariant0DataCode: RawRepresentable, H
 public struct NamedSandboxArchitecture: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let amd64 = NamedSandboxArchitecture(rawValue: "amd64")
     public static let arm64 = NamedSandboxArchitecture(rawValue: "arm64")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -474,14 +395,10 @@ public struct NamedSandboxArchitecture: RawRepresentable, Hashable, Codable, Sen
 
 /// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block
 /// all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-public struct UpdateSandboxRequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateSandboxRequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = UpdateSandboxRequestNetworkPolicyVariant0Mode(rawValue: "allow-all")
     public static let denyAll = UpdateSandboxRequestNetworkPolicyVariant0Mode(rawValue: "deny-all")
     public static let custom = UpdateSandboxRequestNetworkPolicyVariant0Mode(rawValue: "custom")
@@ -490,7 +407,7 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0Mode: RawRepresentable, H
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -503,10 +420,7 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0Mode: RawRepresentable, H
 public struct NamedSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let arn1 = NamedSandboxFailoverRegionsItem(rawValue: "arn1")
     public static let bom1 = NamedSandboxFailoverRegionsItem(rawValue: "bom1")
     public static let cdg1 = NamedSandboxFailoverRegionsItem(rawValue: "cdg1")
@@ -529,7 +443,7 @@ public struct NamedSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -542,16 +456,13 @@ public struct NamedSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codab
 public struct SessionArchitecture: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let amd64 = SessionArchitecture(rawValue: "amd64")
     public static let arm64 = SessionArchitecture(rawValue: "arm64")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -562,14 +473,10 @@ public struct SessionArchitecture: RawRepresentable, Hashable, Codable, Sendable
 
 /// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block
 /// all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-public struct CreateSandboxesV3RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateSandboxesV3RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = CreateSandboxesV3RequestNetworkPolicyVariant0Mode(rawValue: "allow-all")
     public static let denyAll = CreateSandboxesV3RequestNetworkPolicyVariant0Mode(rawValue: "deny-all")
     public static let custom = CreateSandboxesV3RequestNetworkPolicyVariant0Mode(rawValue: "custom")
@@ -578,7 +485,7 @@ public struct CreateSandboxesV3RequestNetworkPolicyVariant0Mode: RawRepresentabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -592,17 +499,14 @@ public struct CreateSandboxesV3RequestNetworkPolicyVariant0Mode: RawRepresentabl
 public struct SandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = SandboxNetworkPolicyMode(rawValue: "allow-all")
     public static let custom = SandboxNetworkPolicyMode(rawValue: "custom")
     public static let denyAll = SandboxNetworkPolicyMode(rawValue: "deny-all")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -615,16 +519,13 @@ public struct SandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable, Sen
 public struct SnapshotCreationMethod: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let automatic = SnapshotCreationMethod(rawValue: "automatic")
     public static let manual = SnapshotCreationMethod(rawValue: "manual")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

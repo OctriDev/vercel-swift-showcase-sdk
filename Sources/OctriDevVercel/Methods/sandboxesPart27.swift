@@ -6,14 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    /// Writes files to a session's filesystem by uploading and extracting a gzipped tarball. Send the archive with
-    /// `Content-Type: application/gzip`; use `x-cwd` to choose an extraction directory. When `x-cwd` is omitted, files
-    /// are extracted to the sandbox home directory.
+extension SandboxesMethods {
+    /// Writes files to a session's filesystem by uploading and extracting a gzipped tarball. Send the archive with `Content-Type: application/gzip`; use `x-cwd` to choose an extraction directory. When `x-cwd` is omitted, files are extracted to the sandbox home directory.
     ///
-    /// Uploads and extracts files to a session's filesystem. Files must be uploaded as a gzipped tarball (`.tar.gz`)
-    /// with the `Content-Type` header set to `application/gzip`. The tarball contents are extracted to the session's
-    /// working directory, or to a custom directory specified via the `x-cwd` header.
+    /// Uploads and extracts files to a session's filesystem. Files must be uploaded as a gzipped tarball (`.tar.gz`) with the `Content-Type` header set to `application/gzip`. The tarball contents are extracted to the session's working directory, or to a custom directory specified via the `x-cwd` header.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session to write files to.
@@ -21,28 +17,12 @@ public extension SandboxesMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     /// - xCwd: The target directory where the tarball contents will be extracted.
     ///   If not specified, files are extracted to the sandbox home directory.
-    static func writeSessionFiles(
-        config: ClientConfig,
-        sessionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        xCwd: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await (sdkRequest(
-            "POST",
-            ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/fs/write"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "writeSessionFiles",
-            extraHeaders: sdkHeaders([
-                ("x-cwd", sdkHeaderValue(xCwd)),
-            ]),
-            options: requestOptions
-        )).data
+    public static func writeSessionFiles(config: ClientConfig, sessionId: String, teamId: String? = nil, slug: String? = nil, xCwd: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try (await sdkRequest("POST", ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/fs/write"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "writeSessionFiles", extraHeaders: sdkHeaders([
+            ("x-cwd", sdkHeaderValue(xCwd)),
+        ]), options: requestOptions)).data
     }
 }

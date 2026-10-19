@@ -6,13 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension MarketplaceMethods {
-    /// Submits billing and usage data for an installation. Send the latest data at least daily, and ideally hourly,
-    /// using the installation's billing period, billing entries, and usage metrics. Authorize the request with the
-    /// installation's `credentials.access_token`.
+extension MarketplaceMethods {
+    /// Submits billing and usage data for an installation. Send the latest data at least daily, and ideally hourly, using the installation's billing period, billing entries, and usage metrics. Authorize the request with the installation's `credentials.access_token`.
     ///
-    /// Sends the billing and usage data. The partner should do this at least once a day and ideally once per hour. Use
-    /// the `credentials.access_token` we provided in the Upsert Installation body to authorize this request.
+    /// Sends the billing and usage data. The partner should do this at least once a day and ideally once per hour. Use the `credentials.access_token` we provided in the Upsert Installation body to authorize this request.
     ///
     /// - Parameters:
     /// - timestamp: Server time of your integration, used to determine the most
@@ -26,37 +23,13 @@ public extension MarketplaceMethods {
     /// - period: Period for the billing cycle. The period end date cannot be older
     ///   than 24 hours earlier than our current server's time.
     /// - billing: Billing data (interim invoicing data).
-    static func submitBillingData(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        timestamp: Date,
-        eod: Date,
-        period: SubmitBillingDataRequestBodyPeriod,
-        billing: SubmitBillingDataRequestBodyBilling,
-        usage: [SubmitBillingDataRequestBodyUsageItem],
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func submitBillingData(config: ClientConfig, integrationConfigurationId: String, timestamp: Date, eod: Date, period: SubmitBillingDataRequestBodyPeriod, billing: SubmitBillingDataRequestBodyBilling, usage: [SubmitBillingDataRequestBodyUsageItem], requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         try sdkValidateDateTime("timestamp", timestamp)
 
         try sdkValidateDateTime("eod", eod)
 
-        let requestBody = SubmitBillingDataRequestBody(
-            timestamp: timestamp,
-            eod: eod,
-            period: period,
-            billing: billing,
-            usage: usage
-        )
+        let requestBody = SubmitBillingDataRequestBody(timestamp: timestamp, eod: eod, period: period, billing: billing, usage: usage)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/billing"]
-                .joined(),
-            config: config,
-            body: requestBody,
-            decoder: .empty,
-            operationId: "submitBillingData",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/billing"].joined(), config: config, body: requestBody, decoder: .empty, operationId: "submitBillingData", options: requestOptions)).data
     }
 }

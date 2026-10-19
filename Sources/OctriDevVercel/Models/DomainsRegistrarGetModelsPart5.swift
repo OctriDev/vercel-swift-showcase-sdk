@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// DomainsRegistrarGet domain models
+// DomainsRegistrarGet domain models
 public struct GetOrderResponseDomainsItemVariant2ErrorVariant1Details: Codable {
     public var detectedLanguageCode: String
 
@@ -11,27 +11,21 @@ public struct GetOrderResponseDomainsItemVariant2ErrorVariant1Details: Codable {
         case detectedLanguageCode
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant1Details {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant1Details {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.detectedLanguageCode) else {
-            throw SdkValidationError(
-                field: "detectedLanguageCode",
-                code: "required",
-                message: "Validation failed for 'detectedLanguageCode': value is required"
-            )
+            throw SdkValidationError(field: "detectedLanguageCode", code: "required", message: "Validation failed for 'detectedLanguageCode': value is required")
         }
-        detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
+        self.detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant1Details {
-    init(detectedLanguageCode: String) {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant1Details {
+    public init(detectedLanguageCode: String) {
         self.detectedLanguageCode = detectedLanguageCode
     }
 }
@@ -44,19 +38,19 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant9Details: Codable {
     }
 
     init() {
-        invalidField = nil
+        self.invalidField = nil
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant9Details {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant9Details {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        invalidField = try container.sdkDecodeIfPresent(.invalidField)
+        self.invalidField = try container.sdkDecodeIfPresent(.invalidField)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant9Details {
-    init(invalidField: GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField? = nil) {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant9Details {
+    public init(invalidField: GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField? = nil) {
         self.init()
         self.invalidField = invalidField
     }
@@ -69,27 +63,21 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant7: Codable {
         case code
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant7 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant7 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
+        self.code = try container.sdkDecodeRequired(.code)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant7 {
-    init(code: GetOrderResponseDomainsItemVariant0ErrorVariant7Code) {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant7 {
+    public init(code: GetOrderResponseDomainsItemVariant0ErrorVariant7Code) {
         self.code = code
     }
 }
@@ -101,27 +89,21 @@ public struct GetOrderResponseDomainsItemVariant2ErrorVariant5Details: Codable {
         case numDaysUntilTransferrable
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant5Details {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant5Details {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.numDaysUntilTransferrable) else {
-            throw SdkValidationError(
-                field: "numDaysUntilTransferrable",
-                code: "required",
-                message: "Validation failed for 'numDaysUntilTransferrable': value is required"
-            )
+            throw SdkValidationError(field: "numDaysUntilTransferrable", code: "required", message: "Validation failed for 'numDaysUntilTransferrable': value is required")
         }
-        numDaysUntilTransferrable = try container.sdkDecodeRequired(.numDaysUntilTransferrable)
+        self.numDaysUntilTransferrable = try container.sdkDecodeRequired(.numDaysUntilTransferrable)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant5Details {
-    init(numDaysUntilTransferrable: Double) {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant5Details {
+    public init(numDaysUntilTransferrable: Double) {
         self.numDaysUntilTransferrable = numDaysUntilTransferrable
     }
 }
@@ -133,27 +115,21 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant5Details: Codable {
         case numDaysUntilTransferrable
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant5Details {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant5Details {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.numDaysUntilTransferrable) else {
-            throw SdkValidationError(
-                field: "numDaysUntilTransferrable",
-                code: "required",
-                message: "Validation failed for 'numDaysUntilTransferrable': value is required"
-            )
+            throw SdkValidationError(field: "numDaysUntilTransferrable", code: "required", message: "Validation failed for 'numDaysUntilTransferrable': value is required")
         }
-        numDaysUntilTransferrable = try container.sdkDecodeRequired(.numDaysUntilTransferrable)
+        self.numDaysUntilTransferrable = try container.sdkDecodeRequired(.numDaysUntilTransferrable)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant5Details {
-    init(numDaysUntilTransferrable: Double) {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant5Details {
+    public init(numDaysUntilTransferrable: Double) {
         self.numDaysUntilTransferrable = numDaysUntilTransferrable
     }
 }
@@ -165,27 +141,21 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant1Details: Codable {
         case detectedLanguageCode
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant1Details {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant1Details {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.detectedLanguageCode) else {
-            throw SdkValidationError(
-                field: "detectedLanguageCode",
-                code: "required",
-                message: "Validation failed for 'detectedLanguageCode': value is required"
-            )
+            throw SdkValidationError(field: "detectedLanguageCode", code: "required", message: "Validation failed for 'detectedLanguageCode': value is required")
         }
-        detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
+        self.detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant1Details {
-    init(detectedLanguageCode: String) {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant1Details {
+    public init(detectedLanguageCode: String) {
         self.detectedLanguageCode = detectedLanguageCode
     }
 }
@@ -199,38 +169,25 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant1: Codable {
         case details
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.details) else {
-            throw SdkValidationError(
-                field: "details",
-                code: "required",
-                message: "Validation failed for 'details': value is required"
-            )
+            throw SdkValidationError(field: "details", code: "required", message: "Validation failed for 'details': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        details = try container.sdkDecodeRequired(.details)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.details = try container.sdkDecodeRequired(.details)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant1 {
-    init(
-        code: GetOrderResponseDomainsItemVariant0ErrorVariant1Code,
-        details: GetOrderResponseDomainsItemVariant0ErrorVariant1Details
-    ) {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant1 {
+    public init(code: GetOrderResponseDomainsItemVariant0ErrorVariant1Code, details: GetOrderResponseDomainsItemVariant0ErrorVariant1Details) {
         (self.code, self.details) = (code, details)
     }
 }
@@ -242,27 +199,21 @@ public struct GetOrderResponseDomainsItemVariant2ErrorVariant0Details: Codable {
         case detectedLanguageCode
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant0Details {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant0Details {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.detectedLanguageCode) else {
-            throw SdkValidationError(
-                field: "detectedLanguageCode",
-                code: "required",
-                message: "Validation failed for 'detectedLanguageCode': value is required"
-            )
+            throw SdkValidationError(field: "detectedLanguageCode", code: "required", message: "Validation failed for 'detectedLanguageCode': value is required")
         }
-        detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
+        self.detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant0Details {
-    init(detectedLanguageCode: String) {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant0Details {
+    public init(detectedLanguageCode: String) {
         self.detectedLanguageCode = detectedLanguageCode
     }
 }
@@ -274,27 +225,21 @@ public struct GetOrderResponseErrorVariant1Details: Codable {
         case tlds
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseErrorVariant1Details {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseErrorVariant1Details {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.tlds) else {
-            throw SdkValidationError(
-                field: "tlds",
-                code: "required",
-                message: "Validation failed for 'tlds': value is required"
-            )
+            throw SdkValidationError(field: "tlds", code: "required", message: "Validation failed for 'tlds': value is required")
         }
-        tlds = try container.sdkDecodeRequired(.tlds)
+        self.tlds = try container.sdkDecodeRequired(.tlds)
     }
 }
 
-public extension GetOrderResponseErrorVariant1Details {
-    init(tlds: [GetOrderResponseErrorVariant1DetailsTldsItem]) {
+extension GetOrderResponseErrorVariant1Details {
+    public init(tlds: [GetOrderResponseErrorVariant1DetailsTldsItem]) {
         self.tlds = tlds
     }
 }
@@ -308,38 +253,25 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant0: Codable {
         case details
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant0 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.details) else {
-            throw SdkValidationError(
-                field: "details",
-                code: "required",
-                message: "Validation failed for 'details': value is required"
-            )
+            throw SdkValidationError(field: "details", code: "required", message: "Validation failed for 'details': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        details = try container.sdkDecodeRequired(.details)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.details = try container.sdkDecodeRequired(.details)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant0 {
-    init(
-        code: GetOrderResponseDomainsItemVariant0ErrorVariant0Code,
-        details: GetOrderResponseDomainsItemVariant0ErrorVariant0Details
-    ) {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant0 {
+    public init(code: GetOrderResponseDomainsItemVariant0ErrorVariant0Code, details: GetOrderResponseDomainsItemVariant0ErrorVariant0Details) {
         (self.code, self.details) = (code, details)
     }
 }
@@ -353,28 +285,22 @@ public struct GetOrderResponseErrorVariant2Details: Codable {
         case actualPrice
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseErrorVariant2Details {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseErrorVariant2Details {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expectedPrice) else {
-            throw SdkValidationError(
-                field: "expectedPrice",
-                code: "required",
-                message: "Validation failed for 'expectedPrice': value is required"
-            )
+            throw SdkValidationError(field: "expectedPrice", code: "required", message: "Validation failed for 'expectedPrice': value is required")
         }
-        expectedPrice = try container.sdkDecodeRequired(.expectedPrice)
-        actualPrice = try container.sdkDecodeIfPresent(.actualPrice)
+        self.expectedPrice = try container.sdkDecodeRequired(.expectedPrice)
+        self.actualPrice = try container.sdkDecodeIfPresent(.actualPrice)
     }
 }
 
-public extension GetOrderResponseErrorVariant2Details {
-    init(expectedPrice: Double, actualPrice: Double? = nil) {
+extension GetOrderResponseErrorVariant2Details {
+    public init(expectedPrice: Double, actualPrice: Double? = nil) {
         (self.expectedPrice, self.actualPrice) = (expectedPrice, actualPrice)
     }
 }
@@ -386,27 +312,21 @@ public struct GetOrderResponseDomainsItemVariant1ErrorVariant1Details: Codable {
         case detectedLanguageCode
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant1ErrorVariant1Details {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant1ErrorVariant1Details {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.detectedLanguageCode) else {
-            throw SdkValidationError(
-                field: "detectedLanguageCode",
-                code: "required",
-                message: "Validation failed for 'detectedLanguageCode': value is required"
-            )
+            throw SdkValidationError(field: "detectedLanguageCode", code: "required", message: "Validation failed for 'detectedLanguageCode': value is required")
         }
-        detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
+        self.detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant1ErrorVariant1Details {
-    init(detectedLanguageCode: String) {
+extension GetOrderResponseDomainsItemVariant1ErrorVariant1Details {
+    public init(detectedLanguageCode: String) {
         self.detectedLanguageCode = detectedLanguageCode
     }
 }
@@ -418,27 +338,21 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant6: Codable {
         case code
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant6 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant6 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
+        self.code = try container.sdkDecodeRequired(.code)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant0ErrorVariant6 {
-    init(code: GetOrderResponseDomainsItemVariant0ErrorVariant6Code) {
+extension GetOrderResponseDomainsItemVariant0ErrorVariant6 {
+    public init(code: GetOrderResponseDomainsItemVariant0ErrorVariant6Code) {
         self.code = code
     }
 }
@@ -452,38 +366,25 @@ public struct GetOrderResponseDomainsItemVariant2ErrorVariant0: Codable {
         case details
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant0 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.details) else {
-            throw SdkValidationError(
-                field: "details",
-                code: "required",
-                message: "Validation failed for 'details': value is required"
-            )
+            throw SdkValidationError(field: "details", code: "required", message: "Validation failed for 'details': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        details = try container.sdkDecodeRequired(.details)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.details = try container.sdkDecodeRequired(.details)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant2ErrorVariant0 {
-    init(
-        code: GetOrderResponseDomainsItemVariant2ErrorVariant0Code,
-        details: GetOrderResponseDomainsItemVariant2ErrorVariant0Details
-    ) {
+extension GetOrderResponseDomainsItemVariant2ErrorVariant0 {
+    public init(code: GetOrderResponseDomainsItemVariant2ErrorVariant0Code, details: GetOrderResponseDomainsItemVariant2ErrorVariant0Details) {
         (self.code, self.details) = (code, details)
     }
 }
@@ -507,98 +408,45 @@ public struct GetOrderResponseDomainsItemVariant1: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.purchaseType) else {
-            throw SdkValidationError(
-                field: "purchaseType",
-                code: "required",
-                message: "Validation failed for 'purchaseType': value is required"
-            )
+            throw SdkValidationError(field: "purchaseType", code: "required", message: "Validation failed for 'purchaseType': value is required")
         }
         guard container.contains(.years) else {
-            throw SdkValidationError(
-                field: "years",
-                code: "required",
-                message: "Validation failed for 'years': value is required"
-            )
+            throw SdkValidationError(field: "years", code: "required", message: "Validation failed for 'years': value is required")
         }
         guard container.contains(.domainName) else {
-            throw SdkValidationError(
-                field: "domainName",
-                code: "required",
-                message: "Validation failed for 'domainName': value is required"
-            )
+            throw SdkValidationError(field: "domainName", code: "required", message: "Validation failed for 'domainName': value is required")
         }
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.price) else {
-            throw SdkValidationError(
-                field: "price",
-                code: "required",
-                message: "Validation failed for 'price': value is required"
-            )
+            throw SdkValidationError(field: "price", code: "required", message: "Validation failed for 'price': value is required")
         }
-        purchaseType = try container.sdkDecodeRequired(.purchaseType)
-        years = try container.sdkDecodeRequired(.years)
-        domainName = try container.sdkDecodeRequired(.domainName)
-        status = try container.sdkDecodeRequired(.status)
-        price = try container.sdkDecodeRequired(.price)
-        error = try container.sdkDecodeIfPresent(.error)
-        try sdkValidateRawEnum(
-            "purchaseType",
-            purchaseType,
-            GetOrderResponseDomainsItemVariant1PurchaseType.allCases.map(\.rawValue)
-        )
-        try validateRange(
-            "price",
-            Double(price),
-            min: 0.01,
-            max: nil,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+        self.purchaseType = try container.sdkDecodeRequired(.purchaseType)
+        self.years = try container.sdkDecodeRequired(.years)
+        self.domainName = try container.sdkDecodeRequired(.domainName)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.price = try container.sdkDecodeRequired(.price)
+        self.error = try container.sdkDecodeIfPresent(.error)
+            try sdkValidateRawEnum("purchaseType", self.purchaseType, GetOrderResponseDomainsItemVariant1PurchaseType.allCases.map(\.rawValue))
+            try validateRange("price", Double(self.price), min: 0.01, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant1 {
-    init(
-        purchaseType: GetOrderResponseDomainsItemVariant1PurchaseType,
-        years: Double,
-        domainName: DomainName,
-        status: GetOrderResponseDomainsItemVariant1Status,
-        price: Double,
-        error: GetOrderResponseDomainsItemVariant1Error? = nil
-    ) throws {
+extension GetOrderResponseDomainsItemVariant1 {
+    public init(purchaseType: GetOrderResponseDomainsItemVariant1PurchaseType, years: Double, domainName: DomainName, status: GetOrderResponseDomainsItemVariant1Status, price: Double, error: GetOrderResponseDomainsItemVariant1Error? = nil) throws {
         (self.purchaseType, self.years) = (purchaseType, years)
         (self.domainName, self.status) = (domainName, status)
         (self.price, self.error) = (price, error)
-        try sdkValidateRawEnum(
-            "purchaseType",
-            self.purchaseType,
-            GetOrderResponseDomainsItemVariant1PurchaseType.allCases.map(\.rawValue)
-        )
-        try validateRange(
-            "price",
-            Double(self.price),
-            min: 0.01,
-            max: nil,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+            try sdkValidateRawEnum("purchaseType", self.purchaseType, GetOrderResponseDomainsItemVariant1PurchaseType.allCases.map(\.rawValue))
+            try validateRange("price", Double(self.price), min: 0.01, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
     }
 }
 
@@ -609,27 +457,21 @@ public struct GetOrderResponseDomainsItemVariant1ErrorVariant2: Codable {
         case code
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetOrderResponseDomainsItemVariant1ErrorVariant2 {
-    init(from decoder: Decoder) throws {
+extension GetOrderResponseDomainsItemVariant1ErrorVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
+        self.code = try container.sdkDecodeRequired(.code)
     }
 }
 
-public extension GetOrderResponseDomainsItemVariant1ErrorVariant2 {
-    init(code: GetOrderResponseDomainsItemVariant1ErrorVariant2Code) {
+extension GetOrderResponseDomainsItemVariant1ErrorVariant2 {
+    public init(code: GetOrderResponseDomainsItemVariant1ErrorVariant2Code) {
         self.code = code
     }
 }
@@ -643,7 +485,5 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant9: Codable {
         case details
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

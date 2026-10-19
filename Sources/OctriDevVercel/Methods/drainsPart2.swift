@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DrainsMethods {
-    struct CreateDrainOptions: Codable {
+extension DrainsMethods {
+    public struct CreateDrainOptions: Codable {
         public var name: String
         public var projects: CreateDrainRequestBodyProjects
         public var schemas: [String: CreateDrainRequestBodySchemasValue]
@@ -20,20 +20,14 @@ public extension DrainsMethods {
         public var transforms: [CreateDrainRequestBodyTransformsItem]?
         public var source: CreateDrainRequestSource?
 
-        public init(
-            name: String,
-            projects: CreateDrainRequestBodyProjects,
-            schemas: [String: CreateDrainRequestBodySchemasValue]
-        ) {
+        public init(name: String, projects: CreateDrainRequestBodyProjects, schemas: [String: CreateDrainRequestBodySchemasValue]) {
             self.name = name
             self.projects = projects
             self.schemas = schemas
         }
     }
 
-    /// Creates a new Drain with the supplied configuration. Provide `name`, `projects`, and `schemas`; configure
-    /// `delivery` and optionally scope the Drain to project IDs with `projectIds`. You can also set filters, sampling
-    /// rules, transforms, and a source.
+    /// Creates a new Drain with the supplied configuration. Provide `name`, `projects`, and `schemas`; configure `delivery` and optionally scope the Drain to project IDs with `projectIds`. You can also set filters, sampling rules, transforms, and a source.
     ///
     /// Create a new Drain with the provided configuration.
     ///
@@ -43,40 +37,28 @@ public extension DrainsMethods {
     /// - delivery: Typed representation of the `CreateDrainRequestDelivery` API
     ///   schema.
     /// - source: Typed representation of the `CreateDrainRequestSource` API schema.
-    static func createDrain(
-        config: ClientConfig,
-        options: CreateDrainOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateDrainResponse {
+    public static func createDrain(config: ClientConfig, options: CreateDrainOptions, requestOptions: RequestOptions? = nil) async throws -> CreateDrainResponse {
         if let sampling = options.sampling {
             try validateItems("sampling", sampling, max: 10)
         }
 
         let requestBody = CreateDrainRequestBody(options: options)
 
-        return try await (sdkRequest("POST", "/v1/drains", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/drains", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "createDrain", options: requestOptions)).data
     }
 
-    /// Lists drains owned by the authenticated team. Use `projectId` to filter the results and `includeMetadata` to
-    /// control whether metadata is included; metadata is excluded by default.
+    /// Lists drains owned by the authenticated team. Use `projectId` to filter the results and `includeMetadata` to control whether metadata is included; metadata is excluded by default.
     ///
     /// Allows to retrieve the list of Drains of the authenticated team.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getDrains(
-        config: ClientConfig,
-        projectId: String? = nil,
-        includeMetadata: Bool? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetDrainsResponse {
-        try await (sdkRequest("GET", "/v1/drains", config: config, query: [
+    public static func getDrains(config: ClientConfig, projectId: String? = nil, includeMetadata: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDrainsResponse {
+        return try (await sdkRequest("GET", "/v1/drains", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("includeMetadata", value: includeMetadata),
             SdkQueryParameter("teamId", value: teamId),

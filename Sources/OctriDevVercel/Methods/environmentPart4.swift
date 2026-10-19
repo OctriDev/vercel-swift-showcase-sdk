@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension EnvironmentMethods {
-    /// Updates one or more shared environment variables for a team. Provide an `updates` object keyed by environment
-    /// variable IDs, with each value containing the changes to apply. The response separates updated variables from
-    /// entries that failed.
+extension EnvironmentMethods {
+    /// Updates one or more shared environment variables for a team. Provide an `updates` object keyed by environment variable IDs, with each value containing the changes to apply. The response separates updated variables from entries that failed.
     ///
     /// Updates a given Shared Environment Variable for a Team.
     ///
@@ -18,24 +16,16 @@ public extension EnvironmentMethods {
     ///   key name) and the value is the update to apply
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func updateSharedEnvVariable(
-        config: ClientConfig,
-        updates: [String: UpdateSharedEnvVariableRequestBodyUpdatesValue],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateSharedEnvVariableResponse {
+    public static func updateSharedEnvVariable(config: ClientConfig, updates: [String: UpdateSharedEnvVariableRequestBodyUpdatesValue], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateSharedEnvVariableResponse {
         let requestBody = UpdateSharedEnvVariableRequestBody(updates: updates)
 
-        return try await (sdkRequest("PATCH", "/v1/env", config: config, query: [
+        return try (await sdkRequest("PATCH", "/v1/env", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "updateSharedEnvVariable", options: requestOptions)).data
     }
 
-    /// Deletes one or more shared environment variables for a team. Supply their identifiers in the `ids` array and use
-    /// `teamId` or `slug` to select the team context. The response reports which identifiers were deleted and which
-    /// failed.
+    /// Deletes one or more shared environment variables for a team. Supply their identifiers in the `ids` array and use `teamId` or `slug` to select the team context. The response reports which identifiers were deleted and which failed.
     ///
     /// Deletes one or many Shared Environment Variables for a given team.
     ///
@@ -43,16 +33,10 @@ public extension EnvironmentMethods {
     /// - ids: IDs of the Shared Environment Variables to delete
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteSharedEnvVariable(
-        config: ClientConfig,
-        ids: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteSharedEnvVariableResponse {
+    public static func deleteSharedEnvVariable(config: ClientConfig, ids: [String], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteSharedEnvVariableResponse {
         let requestBody = DeleteSharedEnvVariableRequestBody(ids: ids)
 
-        return try await (sdkRequest("DELETE", "/v1/env", config: config, query: [
+        return try (await sdkRequest("DELETE", "/v1/env", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "deleteSharedEnvVariable", options: requestOptions)).data

@@ -6,14 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Starts a blob upload to a Docker repository. Use the optional `mount` and `from` query parameters to request
-    /// mounting a blob from another repository; otherwise, the operation initiates an upload session. Use the UUID in
-    /// the response's `Location` header for subsequent chunk upload and completion requests.
+extension VcrMethods {
+    /// Starts a blob upload to a Docker repository. Use the optional `mount` and `from` query parameters to request mounting a blob from another repository; otherwise, the operation initiates an upload session. Use the UUID in the response's `Location` header for subsequent chunk upload and completion requests.
     ///
-    /// POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob
-    /// upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT
-    /// (complete) requests.
+    /// POST /v2/:teamSlug/:projectSlug/:repositoryName/blobs/uploads/[?mount=<digest>&from=<repo>] Initiate a blob upload. Returns a UUID in the Location header that the client uses for subsequent PATCH (chunk) and PUT (complete) requests.
     ///
     /// - Parameters:
     /// - teamSlug: Single Docker repository team slug component.
@@ -21,15 +17,7 @@ public extension VcrMethods {
     /// - repositoryName: Single Docker repository name component.
     /// - mount: Digest of the blob to mount from another repository.
     /// - from: Source repository to mount the blob from.
-    static func createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads(
-        config: ClientConfig,
-        teamSlug: String,
-        projectSlug: String,
-        repositoryName: String,
-        mount: String? = nil,
-        from: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> JSONValue {
+    public static func createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, mount: String? = nil, from: String? = nil, requestOptions: RequestOptions? = nil) async throws -> JSONValue {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -39,35 +27,19 @@ public extension VcrMethods {
         try validateLength("repositoryName", repositoryName, max: 255)
         try sdkValidatePattern("repositoryName", repositoryName, sdkPatternccfeb2ca8f11)
 
-        if let mount {
+        if let mount = mount {
             try validateLength("mount", mount, max: 255)
             try sdkValidatePattern("mount", mount, sdkPatternf55d8ca4ed38)
         }
 
-        if let from {
+        if let from = from {
             try validateLength("from", from, max: 255)
             try sdkValidatePattern("from", from, sdkPattern138762441972)
         }
 
-        return try await (sdkRequest(
-            "POST",
-            [
-                "/v2/",
-                sdkEncodePathSegment(sdkWireString(teamSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(projectSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(repositoryName)),
-                "/blobs/uploads/",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("mount", value: mount),
-                SdkQueryParameter("from", value: from),
-            ],
-            decoder: .json,
-            operationId: "createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/blobs/uploads/"].joined(), config: config, query: [
+            SdkQueryParameter("mount", value: mount),
+            SdkQueryParameter("from", value: from),
+        ], decoder: .json, operationId: "createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads", options: requestOptions)).data
     }
 }

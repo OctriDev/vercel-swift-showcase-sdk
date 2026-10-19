@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
+// Canonical projects operation model declarations
 public struct VerifyProjectDomainResponse: Codable {
     public var apexName: String
     public var name: String
@@ -35,68 +35,39 @@ public struct VerifyProjectDomainResponse: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VerifyProjectDomainResponse {
-    init(from decoder: Decoder) throws {
+extension VerifyProjectDomainResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.apexName) else {
-            throw SdkValidationError(
-                field: "apexName",
-                code: "required",
-                message: "Validation failed for 'apexName': value is required"
-            )
+            throw SdkValidationError(field: "apexName", code: "required", message: "Validation failed for 'apexName': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.verified) else {
-            throw SdkValidationError(
-                field: "verified",
-                code: "required",
-                message: "Validation failed for 'verified': value is required"
-            )
+            throw SdkValidationError(field: "verified", code: "required", message: "Validation failed for 'verified': value is required")
         }
-        apexName = try container.sdkDecodeRequired(.apexName)
-        name = try container.sdkDecodeRequired(.name)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        verified = try container.sdkDecodeRequired(.verified)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
-        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.apexName = try container.sdkDecodeRequired(.apexName)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.verified = try container.sdkDecodeRequired(.verified)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
     }
 }
 
-public extension VerifyProjectDomainResponse {
-    init(
-        apexName: String,
-        name: String,
-        projectId: String,
-        verified: Bool,
-        createdAt: Double? = nil,
-        customEnvironmentId: String? = nil,
-        gitBranch: String? = nil,
-        redirect: String? = nil,
-        redirectStatusCode: Double? = nil,
-        updatedAt: Double? = nil
-    ) {
+extension VerifyProjectDomainResponse {
+    public init(apexName: String, name: String, projectId: String, verified: Bool, createdAt: Double? = nil, customEnvironmentId: String? = nil, gitBranch: String? = nil, redirect: String? = nil, redirectStatusCode: Double? = nil, updatedAt: Double? = nil) {
         (self.apexName, self.name) = (apexName, name)
         (self.projectId, self.verified) = (projectId, verified)
         (self.createdAt, self.customEnvironmentId) = (createdAt, customEnvironmentId)
@@ -116,38 +87,25 @@ public struct CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItem: C
         case to
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItem {
-    init(from decoder: Decoder) throws {
+extension CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.from) else {
-            throw SdkValidationError(
-                field: "from",
-                code: "required",
-                message: "Validation failed for 'from': value is required"
-            )
+            throw SdkValidationError(field: "from", code: "required", message: "Validation failed for 'from': value is required")
         }
         guard container.contains(.to) else {
-            throw SdkValidationError(
-                field: "to",
-                code: "required",
-                message: "Validation failed for 'to': value is required"
-            )
+            throw SdkValidationError(field: "to", code: "required", message: "Validation failed for 'to': value is required")
         }
-        from = try container.sdkDecodeRequired(.from)
-        to = try container.sdkDecodeRequired(.to)
+        self.from = try container.sdkDecodeRequired(.from)
+        self.to = try container.sdkDecodeRequired(.to)
     }
 }
 
-public extension CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItem {
-    init(
-        from: CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItemFrom,
-        to: CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItemTo
-    ) {
+extension CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItem {
+    public init(from: CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItemFrom, to: CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItemTo) {
         (self.from, self.to) = (from, to)
     }
 }
@@ -189,57 +147,35 @@ public struct UploadProjectAvatarResponseResourceConfig: Codable {
         case elasticBuildMachine
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UploadProjectAvatarResponseResourceConfig {
-    init(from decoder: Decoder) throws {
+extension UploadProjectAvatarResponseResourceConfig {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.functionDefaultRegions) else {
-            throw SdkValidationError(
-                field: "functionDefaultRegions",
-                code: "required",
-                message: "Validation failed for 'functionDefaultRegions': value is required"
-            )
+            throw SdkValidationError(field: "functionDefaultRegions", code: "required", message: "Validation failed for 'functionDefaultRegions': value is required")
         }
-        functionDefaultRegions = try container.sdkDecodeRequired(.functionDefaultRegions)
-        buildMachineElasticLastUpdated = try container.sdkDecodeIfPresent(.buildMachineElasticLastUpdated)
-        buildMachineElasticReason = try container.sdkDecodeIfPresent(.buildMachineElasticReason)
-        buildMachineElasticTransition = try container.sdkDecodeIfPresent(.buildMachineElasticTransition)
-        buildMachineSelection = try container.sdkDecodeIfPresent(.buildMachineSelection)
-        buildMachineType = try container.sdkDecodeIfPresent(.buildMachineType)
-        buildQueue = try container.sdkDecodeIfPresent(.buildQueue)
-        elasticConcurrencyEnabled = try container.sdkDecodeIfPresent(.elasticConcurrencyEnabled)
-        enableFunctionsBeta = try container.sdkDecodeIfPresent(.enableFunctionsBeta)
-        fluid = try container.sdkDecodeIfPresent(.fluid)
-        functionDefaultMemoryType = try container.sdkDecodeIfPresent(.functionDefaultMemoryType)
-        functionDefaultTimeout = try container.sdkDecodeIfPresent(.functionDefaultTimeout)
-        functionZeroConfigFailover = try container.sdkDecodeIfPresent(.functionZeroConfigFailover)
-        isNsnbDisabled = try container.sdkDecodeIfPresent(.isNsnbDisabled)
-        elasticBuildMachine = try container.sdkDecodeIfPresent(.elasticBuildMachine)
+        self.functionDefaultRegions = try container.sdkDecodeRequired(.functionDefaultRegions)
+        self.buildMachineElasticLastUpdated = try container.sdkDecodeIfPresent(.buildMachineElasticLastUpdated)
+        self.buildMachineElasticReason = try container.sdkDecodeIfPresent(.buildMachineElasticReason)
+        self.buildMachineElasticTransition = try container.sdkDecodeIfPresent(.buildMachineElasticTransition)
+        self.buildMachineSelection = try container.sdkDecodeIfPresent(.buildMachineSelection)
+        self.buildMachineType = try container.sdkDecodeIfPresent(.buildMachineType)
+        self.buildQueue = try container.sdkDecodeIfPresent(.buildQueue)
+        self.elasticConcurrencyEnabled = try container.sdkDecodeIfPresent(.elasticConcurrencyEnabled)
+        self.enableFunctionsBeta = try container.sdkDecodeIfPresent(.enableFunctionsBeta)
+        self.fluid = try container.sdkDecodeIfPresent(.fluid)
+        self.functionDefaultMemoryType = try container.sdkDecodeIfPresent(.functionDefaultMemoryType)
+        self.functionDefaultTimeout = try container.sdkDecodeIfPresent(.functionDefaultTimeout)
+        self.functionZeroConfigFailover = try container.sdkDecodeIfPresent(.functionZeroConfigFailover)
+        self.isNsnbDisabled = try container.sdkDecodeIfPresent(.isNsnbDisabled)
+        self.elasticBuildMachine = try container.sdkDecodeIfPresent(.elasticBuildMachine)
     }
 }
 
-public extension UploadProjectAvatarResponseResourceConfig {
-    init(
-        functionDefaultRegions: [String],
-        buildMachineElasticLastUpdated: Double? = nil,
-        buildMachineElasticReason: UploadProjectAvatarResponseResourceConfigBuildMachineElasticReason? = nil,
-        buildMachineElasticTransition: UploadProjectAvatarResponseResourceConfigBuildMachineElasticTransition? = nil,
-        buildMachineSelection: UploadProjectAvatarResponseResourceConfigBuildMachineSelection? = nil,
-        buildMachineType: UploadProjectAvatarResponseResourceConfigBuildMachineType? = nil,
-        buildQueue: UploadProjectAvatarResponseResourceConfigBuildQueue? = nil,
-        elasticConcurrencyEnabled: Bool? = nil,
-        enableFunctionsBeta: Bool? = nil,
-        fluid: Bool? = nil,
-        functionDefaultMemoryType: UploadProjectAvatarResponseResourceConfigFunctionDefaultMemoryType? = nil,
-        functionDefaultTimeout: Double? = nil,
-        functionZeroConfigFailover: Bool? = nil,
-        isNsnbDisabled: Bool? = nil,
-        elasticBuildMachine: UploadProjectAvatarResponseResourceConfigElasticBuildMachine? = nil
-    ) {
+extension UploadProjectAvatarResponseResourceConfig {
+    public init(functionDefaultRegions: [String], buildMachineElasticLastUpdated: Double? = nil, buildMachineElasticReason: UploadProjectAvatarResponseResourceConfigBuildMachineElasticReason? = nil, buildMachineElasticTransition: UploadProjectAvatarResponseResourceConfigBuildMachineElasticTransition? = nil, buildMachineSelection: UploadProjectAvatarResponseResourceConfigBuildMachineSelection? = nil, buildMachineType: UploadProjectAvatarResponseResourceConfigBuildMachineType? = nil, buildQueue: UploadProjectAvatarResponseResourceConfigBuildQueue? = nil, elasticConcurrencyEnabled: Bool? = nil, enableFunctionsBeta: Bool? = nil, fluid: Bool? = nil, functionDefaultMemoryType: UploadProjectAvatarResponseResourceConfigFunctionDefaultMemoryType? = nil, functionDefaultTimeout: Double? = nil, functionZeroConfigFailover: Bool? = nil, isNsnbDisabled: Bool? = nil, elasticBuildMachine: UploadProjectAvatarResponseResourceConfigElasticBuildMachine? = nil) {
         self.functionDefaultRegions = functionDefaultRegions
         self.buildMachineElasticLastUpdated = buildMachineElasticLastUpdated
         self.buildMachineElasticReason = buildMachineElasticReason
@@ -265,30 +201,24 @@ public struct DeleteProjectAvatarResponseIpBucketsItem: Codable {
         case supportUntil
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension DeleteProjectAvatarResponseIpBucketsItem {
-    init(from decoder: Decoder) throws {
+extension DeleteProjectAvatarResponseIpBucketsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.bucket) else {
-            throw SdkValidationError(
-                field: "bucket",
-                code: "required",
-                message: "Validation failed for 'bucket': value is required"
-            )
+            throw SdkValidationError(field: "bucket", code: "required", message: "Validation failed for 'bucket': value is required")
         }
-        bucket = try container.sdkDecodeRequired(.bucket)
-        self.default = try container.sdkDecodeIfPresent(.default)
-        supportUntil = try container.sdkDecodeIfPresent(.supportUntil)
+        self.bucket = try container.sdkDecodeRequired(.bucket)
+        self.`default` = try container.sdkDecodeIfPresent(.`default`)
+        self.supportUntil = try container.sdkDecodeIfPresent(.supportUntil)
     }
 }
 
-public extension DeleteProjectAvatarResponseIpBucketsItem {
-    init(bucket: String, default: Bool? = nil, supportUntil: Double? = nil) {
-        (self.bucket, self.default) = (bucket, `default`)
+extension DeleteProjectAvatarResponseIpBucketsItem {
+    public init(bucket: String, `default`: Bool? = nil, supportUntil: Double? = nil) {
+        (self.bucket, self.`default`) = (bucket, `default`)
         self.supportUntil = supportUntil
     }
 }
@@ -307,27 +237,22 @@ public struct GetProjectsResponseJobs: Codable {
     }
 
     init() {
-        (flagDefinitionsPresent, lint, mfeConfigPresent, typecheck) = (nil, nil, nil, nil)
+        (self.flagDefinitionsPresent, self.lint, self.mfeConfigPresent, self.typecheck) = (nil, nil, nil, nil)
     }
 }
 
-public extension GetProjectsResponseJobs {
-    init(from decoder: Decoder) throws {
+extension GetProjectsResponseJobs {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        flagDefinitionsPresent = try container.sdkDecodeIfPresent(.flagDefinitionsPresent)
-        lint = try container.sdkDecodeIfPresent(.lint)
-        mfeConfigPresent = try container.sdkDecodeIfPresent(.mfeConfigPresent)
-        typecheck = try container.sdkDecodeIfPresent(.typecheck)
+        self.flagDefinitionsPresent = try container.sdkDecodeIfPresent(.flagDefinitionsPresent)
+        self.lint = try container.sdkDecodeIfPresent(.lint)
+        self.mfeConfigPresent = try container.sdkDecodeIfPresent(.mfeConfigPresent)
+        self.typecheck = try container.sdkDecodeIfPresent(.typecheck)
     }
 }
 
-public extension GetProjectsResponseJobs {
-    init(
-        flagDefinitionsPresent: GetProjectsResponseJobsFlagDefinitionsPresent? = nil,
-        lint: GetProjectsResponseJobsLint? = nil,
-        mfeConfigPresent: GetProjectsResponseJobsMfeConfigPresent? = nil,
-        typecheck: GetProjectsResponseJobsTypecheck? = nil
-    ) {
+extension GetProjectsResponseJobs {
+    public init(flagDefinitionsPresent: GetProjectsResponseJobsFlagDefinitionsPresent? = nil, lint: GetProjectsResponseJobsLint? = nil, mfeConfigPresent: GetProjectsResponseJobsMfeConfigPresent? = nil, typecheck: GetProjectsResponseJobsTypecheck? = nil) {
         self.init()
         (self.flagDefinitionsPresent, self.lint) = (flagDefinitionsPresent, lint)
         (self.mfeConfigPresent, self.typecheck) = (mfeConfigPresent, typecheck)
@@ -341,27 +266,21 @@ public struct UpdateProjectResponseJobsMfeConfigPresent: Codable {
         case targets
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateProjectResponseJobsMfeConfigPresent {
-    init(from decoder: Decoder) throws {
+extension UpdateProjectResponseJobsMfeConfigPresent {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.targets) else {
-            throw SdkValidationError(
-                field: "targets",
-                code: "required",
-                message: "Validation failed for 'targets': value is required"
-            )
+            throw SdkValidationError(field: "targets", code: "required", message: "Validation failed for 'targets': value is required")
         }
-        targets = try container.sdkDecodeRequired(.targets)
+        self.targets = try container.sdkDecodeRequired(.targets)
     }
 }
 
-public extension UpdateProjectResponseJobsMfeConfigPresent {
-    init(targets: [String]) {
+extension UpdateProjectResponseJobsMfeConfigPresent {
+    public init(targets: [String]) {
         self.targets = targets
     }
 }
@@ -376,39 +295,29 @@ public indirect enum DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValue
 }
 
 extension DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItemTo: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItemTo"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItemTo")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItemTo {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItXf98875c7e5.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItXf98875c7e5.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItXf98875c7e5(value)
         }
-        if let value = try? container
-            .decode(DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItX882e99e73a.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItX882e99e73a.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItX882e99e73a(value)
         }
         return nil
@@ -420,12 +329,12 @@ extension DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItemTo {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItXf98875c7e5.self
         ) {
-            return .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItXf98875c7e5(value)
+            return             .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItXf98875c7e5(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItX882e99e73a.self
         ) {
-            return .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItX882e99e73a(value)
+            return             .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItX882e99e73a(value)
         }
         return nil
     }
@@ -435,10 +344,8 @@ extension DeleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItemTo {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItXf98875c7e5(value): try container
-            .encode(value); return true
-        case let .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItX882e99e73a(value): try container
-            .encode(value); return true
+        case let .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItXf98875c7e5(value): try container.encode(value); return true
+        case let .deleteProjectAvatarResponseTrustedSourcesOidcProvidersValueItX882e99e73a(value): try container.encode(value); return true
         }
     }
 }
@@ -458,65 +365,37 @@ public struct UpdateProjectResponseSecurityManagedRules: Codable {
         case vercelRuleset = "vercel_ruleset"
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateProjectResponseSecurityManagedRules {
-    init(from decoder: Decoder) throws {
+extension UpdateProjectResponseSecurityManagedRules {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.aiBots) else {
-            throw SdkValidationError(
-                field: "ai_bots",
-                code: "required",
-                message: "Validation failed for 'ai_bots': value is required"
-            )
+            throw SdkValidationError(field: "ai_bots", code: "required", message: "Validation failed for 'ai_bots': value is required")
         }
         guard container.contains(.botFilter) else {
-            throw SdkValidationError(
-                field: "bot_filter",
-                code: "required",
-                message: "Validation failed for 'bot_filter': value is required"
-            )
+            throw SdkValidationError(field: "bot_filter", code: "required", message: "Validation failed for 'bot_filter': value is required")
         }
         guard container.contains(.owasp) else {
-            throw SdkValidationError(
-                field: "owasp",
-                code: "required",
-                message: "Validation failed for 'owasp': value is required"
-            )
+            throw SdkValidationError(field: "owasp", code: "required", message: "Validation failed for 'owasp': value is required")
         }
         guard container.contains(.trafficSources) else {
-            throw SdkValidationError(
-                field: "traffic_sources",
-                code: "required",
-                message: "Validation failed for 'traffic_sources': value is required"
-            )
+            throw SdkValidationError(field: "traffic_sources", code: "required", message: "Validation failed for 'traffic_sources': value is required")
         }
         guard container.contains(.vercelRuleset) else {
-            throw SdkValidationError(
-                field: "vercel_ruleset",
-                code: "required",
-                message: "Validation failed for 'vercel_ruleset': value is required"
-            )
+            throw SdkValidationError(field: "vercel_ruleset", code: "required", message: "Validation failed for 'vercel_ruleset': value is required")
         }
-        aiBots = try container.sdkDecodeRequired(.aiBots)
-        botFilter = try container.sdkDecodeRequired(.botFilter)
-        owasp = try container.sdkDecodeRequired(.owasp)
-        trafficSources = try container.sdkDecodeRequired(.trafficSources)
-        vercelRuleset = try container.sdkDecodeRequired(.vercelRuleset)
+        self.aiBots = try container.sdkDecodeRequired(.aiBots)
+        self.botFilter = try container.sdkDecodeRequired(.botFilter)
+        self.owasp = try container.sdkDecodeRequired(.owasp)
+        self.trafficSources = try container.sdkDecodeRequired(.trafficSources)
+        self.vercelRuleset = try container.sdkDecodeRequired(.vercelRuleset)
     }
 }
 
-public extension UpdateProjectResponseSecurityManagedRules {
-    init(
-        aiBots: UpdateProjectResponseSecurityManagedRulesAiBots,
-        botFilter: UpdateProjectResponseSecurityManagedRulesBotFilter,
-        owasp: UpdateProjectResponseSecurityManagedRulesOwasp,
-        trafficSources: UpdateProjectResponseSecurityManagedRulesTrafficSources,
-        vercelRuleset: UpdateProjectResponseSecurityManagedRulesVercelRuleset
-    ) {
+extension UpdateProjectResponseSecurityManagedRules {
+    public init(aiBots: UpdateProjectResponseSecurityManagedRulesAiBots, botFilter: UpdateProjectResponseSecurityManagedRulesBotFilter, owasp: UpdateProjectResponseSecurityManagedRulesOwasp, trafficSources: UpdateProjectResponseSecurityManagedRulesTrafficSources, vercelRuleset: UpdateProjectResponseSecurityManagedRulesVercelRuleset) {
         (self.aiBots, self.botFilter) = (aiBots, botFilter)
         (self.owasp, self.trafficSources) = (owasp, trafficSources)
         self.vercelRuleset = vercelRuleset
@@ -544,30 +423,24 @@ public struct GetProjectsResponseRollingReleaseStagesItem: Codable {
         case requireApproval
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetProjectsResponseRollingReleaseStagesItem {
-    init(from decoder: Decoder) throws {
+extension GetProjectsResponseRollingReleaseStagesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.targetPercentage) else {
-            throw SdkValidationError(
-                field: "targetPercentage",
-                code: "required",
-                message: "Validation failed for 'targetPercentage': value is required"
-            )
+            throw SdkValidationError(field: "targetPercentage", code: "required", message: "Validation failed for 'targetPercentage': value is required")
         }
-        targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
-        duration = try container.sdkDecodeIfPresent(.duration)
-        linearShift = try container.sdkDecodeIfPresent(.linearShift)
-        requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
+        self.targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
+        self.duration = try container.sdkDecodeIfPresent(.duration)
+        self.linearShift = try container.sdkDecodeIfPresent(.linearShift)
+        self.requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
     }
 }
 
-public extension GetProjectsResponseRollingReleaseStagesItem {
-    init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
+extension GetProjectsResponseRollingReleaseStagesItem {
+    public init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
         (self.targetPercentage, self.duration) = (targetPercentage, duration)
         (self.linearShift, self.requireApproval) = (linearShift, requireApproval)
     }

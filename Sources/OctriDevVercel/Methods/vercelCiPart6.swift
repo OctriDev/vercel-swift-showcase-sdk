@@ -6,68 +6,34 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VercelCiMethods {
-    /// Lists tasks discovered by a completed Vercel CI task analysis. Identify the analysis with `analysisId`, and use
-    /// `cursor` and `limit` to retrieve task results in pages. Each task includes its configuration path and
-    /// recommendation reasons.
+extension VercelCiMethods {
+    /// Lists tasks discovered by a completed Vercel CI task analysis. Identify the analysis with `analysisId`, and use `cursor` and `limit` to retrieve task results in pages. Each task includes its configuration path and recommendation reasons.
     ///
     /// List task analysis tasks
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listVercelCiTaskAnalysisTasks(
-        config: ClientConfig,
-        analysisId: String,
-        cursor: String? = nil,
-        limit: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListVercelCiTaskAnalysisTasksResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/vercel-ci/task-analyses/", sdkEncodePathSegment(sdkWireString(analysisId)), "/tasks"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("cursor", value: cursor),
-                SdkQueryParameter("limit", value: limit),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listVercelCiTaskAnalysisTasks",
-            options: requestOptions
-        )).data
+    public static func listVercelCiTaskAnalysisTasks(config: ClientConfig, analysisId: String, cursor: String? = nil, limit: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiTaskAnalysisTasksResponse {
+        return try (await sdkRequest("GET", ["/v1/vercel-ci/task-analyses/", sdkEncodePathSegment(sdkWireString(analysisId)), "/tasks"].joined(), config: config, query: [
+            SdkQueryParameter("cursor", value: cursor),
+            SdkQueryParameter("limit", value: limit),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listVercelCiTaskAnalysisTasks", options: requestOptions)).data
     }
 
-    /// Lists all attempts for a Vercel CI invocation. Use `invocationId` to identify the invocation and optionally pass
-    /// `teamId` or `slug` to make the request on behalf of a team. The response includes attempt records and repository
-    /// details.
+    /// Lists all attempts for a Vercel CI invocation. Use `invocationId` to identify the invocation and optionally pass `teamId` or `slug` to make the request on behalf of a team. The response includes attempt records and repository details.
     ///
     /// List Invocation Attempts
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listVercelCiInvocationAttempts(
-        config: ClientConfig,
-        invocationId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListVercelCiInvocationAttemptsResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listVercelCiInvocationAttempts",
-            options: requestOptions
-        )).data
+    public static func listVercelCiInvocationAttempts(config: ClientConfig, invocationId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiInvocationAttemptsResponse {
+        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listVercelCiInvocationAttempts", options: requestOptions)).data
     }
 }

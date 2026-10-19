@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension EnvironmentMethods {
-    /// Updates a custom environment’s slug, description, or branch-matching configuration. Supply only the properties
-    /// you want to change; the environment cannot be named Production or Preview.
+extension EnvironmentMethods {
+    /// Updates a custom environment’s slug, description, or branch-matching configuration. Supply only the properties you want to change; the environment cannot be named Production or Preview.
     ///
     /// Update a custom environment for the project. Must not be named 'Production' or 'Preview'.
     ///
@@ -22,48 +21,20 @@ public extension EnvironmentMethods {
     /// - description: Description of the custom environment. This is optional.
     /// - branchMatcher: How we want to determine a matching branch. This is
     ///   optional.
-    static func updateCustomEnvironment(
-        config: ClientConfig,
-        idOrName: String,
-        environmentSlugOrId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        slug2: String? = nil,
-        description: String? = nil,
-        branchMatcher: SdkOptional<UpdateCustomEnvironmentRequestBodyBranchMatcher>? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateCustomEnvironmentResponse {
-        if let slug2 {
+    public static func updateCustomEnvironment(config: ClientConfig, idOrName: String, environmentSlugOrId: String, teamId: String? = nil, slug: String? = nil, slug2: String? = nil, description: String? = nil, branchMatcher: SdkOptional<UpdateCustomEnvironmentRequestBodyBranchMatcher>? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateCustomEnvironmentResponse {
+        if let slug2 = slug2 {
             try validateLength("slug", slug2, max: 32)
         }
 
-        if let description {
+        if let description = description {
             try validateLength("description", description, max: 256)
         }
 
-        let requestBody = UpdateCustomEnvironmentRequestBody(
-            slug2: slug2,
-            description: description,
-            branchMatcher: branchMatcher
-        )
+        let requestBody = UpdateCustomEnvironmentRequestBody(slug2: slug2, description: description, branchMatcher: branchMatcher)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v9/projects/",
-                sdkEncodePathSegment(sdkWireString(idOrName)),
-                "/custom-environments/",
-                sdkEncodePathSegment(sdkWireString(environmentSlugOrId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateCustomEnvironment",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/custom-environments/", sdkEncodePathSegment(sdkWireString(environmentSlugOrId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateCustomEnvironment", options: requestOptions)).data
     }
 }

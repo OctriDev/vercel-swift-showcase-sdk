@@ -3,29 +3,24 @@
 
 import Foundation
 
-/// ProjectsList domain models
-public extension ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1Value {
-    init(from decoder: Decoder) throws {
+// ProjectsList domain models
+extension ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1Value {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.eq) else {
-            throw SdkValidationError(
-                field: "eq",
-                code: "required",
-                message: "Validation failed for 'eq': value is required"
-            )
+            throw SdkValidationError(field: "eq", code: "required", message: "Validation failed for 'eq': value is required")
         }
-        eq = try container.sdkDecodeRequired(.eq)
+        self.eq = try container.sdkDecodeRequired(.eq)
     }
 }
 
-public extension ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1Value {
-    init(eq: String) {
+extension ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1Value {
+    public init(eq: String) {
         self.eq = eq
     }
 }
 
-public typealias ListProjectsDomainsResponseVariant1DomainsItemVerificationList =
-    [ListProjectsDomainsResponseVariant1DomainsItemVerificationItem]
+public typealias ListProjectsDomainsResponseVariant1DomainsItemVerificationList = [ListProjectsDomainsResponseVariant1DomainsItemVerificationItem]
 
 public struct ListProjectsDomainsResponseVariant1DomainsItem: Codable {
     public var apexName: String
@@ -60,70 +55,40 @@ public struct ListProjectsDomainsResponseVariant1DomainsItem: Codable {
         case verification
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsDomainsResponseVariant1DomainsItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsDomainsResponseVariant1DomainsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.apexName) else {
-            throw SdkValidationError(
-                field: "apexName",
-                code: "required",
-                message: "Validation failed for 'apexName': value is required"
-            )
+            throw SdkValidationError(field: "apexName", code: "required", message: "Validation failed for 'apexName': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.verified) else {
-            throw SdkValidationError(
-                field: "verified",
-                code: "required",
-                message: "Validation failed for 'verified': value is required"
-            )
+            throw SdkValidationError(field: "verified", code: "required", message: "Validation failed for 'verified': value is required")
         }
-        apexName = try container.sdkDecodeRequired(.apexName)
-        name = try container.sdkDecodeRequired(.name)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        verified = try container.sdkDecodeRequired(.verified)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
-        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        verification = try container.sdkDecodeIfPresent(.verification)
+        self.apexName = try container.sdkDecodeRequired(.apexName)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.verified = try container.sdkDecodeRequired(.verified)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.verification = try container.sdkDecodeIfPresent(.verification)
     }
 }
 
-public extension ListProjectsDomainsResponseVariant1DomainsItem {
-    init(
-        apexName: String,
-        name: String,
-        projectId: String,
-        verified: Bool,
-        createdAt: Double? = nil,
-        customEnvironmentId: String? = nil,
-        gitBranch: String? = nil,
-        redirect: String? = nil,
-        redirectStatusCode: Double? = nil,
-        updatedAt: Double? = nil,
-        verification: ListProjectsDomainsResponseVariant1DomainsItemVerificationList? = nil
-    ) {
+extension ListProjectsDomainsResponseVariant1DomainsItem {
+    public init(apexName: String, name: String, projectId: String, verified: Bool, createdAt: Double? = nil, customEnvironmentId: String? = nil, gitBranch: String? = nil, redirect: String? = nil, redirectStatusCode: Double? = nil, updatedAt: Double? = nil, verification: ListProjectsDomainsResponseVariant1DomainsItemVerificationList? = nil) {
         (self.apexName, self.name) = (apexName, name)
         (self.projectId, self.verified) = (projectId, verified)
         (self.createdAt, self.customEnvironmentId) = (createdAt, customEnvironmentId)
@@ -140,27 +105,21 @@ public struct ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0V
         case eq
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Value {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Value {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.eq) else {
-            throw SdkValidationError(
-                field: "eq",
-                code: "required",
-                message: "Validation failed for 'eq': value is required"
-            )
+            throw SdkValidationError(field: "eq", code: "required", message: "Validation failed for 'eq': value is required")
         }
-        eq = try container.sdkDecodeRequired(.eq)
+        self.eq = try container.sdkDecodeRequired(.eq)
     }
 }
 
-public extension ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Value {
-    init(eq: String) {
+extension ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Value {
+    public init(eq: String) {
         self.eq = eq
     }
 }
@@ -177,28 +136,22 @@ public struct ListProjectsResponseItemCreatorVariant0ViaVariant0App: Codable {
         case clientId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsResponseItemCreatorVariant0ViaVariant0App {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseItemCreatorVariant0ViaVariant0App {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        clientId = try container.sdkDecodeIfPresent(.clientId)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.clientId = try container.sdkDecodeIfPresent(.clientId)
     }
 }
 
-public extension ListProjectsResponseItemCreatorVariant0ViaVariant0App {
-    init(id: String, clientId: String? = nil) {
+extension ListProjectsResponseItemCreatorVariant0ViaVariant0App {
+    public init(id: String, clientId: String? = nil) {
         (self.id, self.clientId) = (id, clientId)
     }
 }
@@ -233,45 +186,32 @@ public struct ListProjectsResponseItemSecurityFirewallRoutesItemMissingItemXffd3
     }
 
     init() {
-        (eq, gt, gte, inc, list) = (nil, nil, nil, nil, nil)
-        (lt, lte, neq, ninc, pre) = (nil, nil, nil, nil, nil)
-        (re, suf) = (nil, nil)
+        (self.eq, self.gt, self.gte, self.inc, self.list) = (nil, nil, nil, nil, nil)
+        (self.lt, self.lte, self.neq, self.ninc, self.pre) = (nil, nil, nil, nil, nil)
+        (self.re, self.suf) = (nil, nil)
     }
 }
 
-public extension ListProjectsResponseItemSecurityFirewallRoutesItemMissingItemXffd3951af8 {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseItemSecurityFirewallRoutesItemMissingItemXffd3951af8 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        eq = try container.sdkDecodeIfPresent(.eq)
-        gt = try container.sdkDecodeIfPresent(.gt)
-        gte = try container.sdkDecodeIfPresent(.gte)
-        inc = try container.sdkDecodeIfPresent(.inc)
-        list = try container.sdkDecodeIfPresent(.list)
-        lt = try container.sdkDecodeIfPresent(.lt)
-        lte = try container.sdkDecodeIfPresent(.lte)
-        neq = try container.sdkDecodeIfPresent(.neq)
-        ninc = try container.sdkDecodeIfPresent(.ninc)
-        pre = try container.sdkDecodeIfPresent(.pre)
-        re = try container.sdkDecodeIfPresent(.re)
-        suf = try container.sdkDecodeIfPresent(.suf)
+        self.eq = try container.sdkDecodeIfPresent(.eq)
+        self.gt = try container.sdkDecodeIfPresent(.gt)
+        self.gte = try container.sdkDecodeIfPresent(.gte)
+        self.inc = try container.sdkDecodeIfPresent(.inc)
+        self.list = try container.sdkDecodeIfPresent(.list)
+        self.lt = try container.sdkDecodeIfPresent(.lt)
+        self.lte = try container.sdkDecodeIfPresent(.lte)
+        self.neq = try container.sdkDecodeIfPresent(.neq)
+        self.ninc = try container.sdkDecodeIfPresent(.ninc)
+        self.pre = try container.sdkDecodeIfPresent(.pre)
+        self.re = try container.sdkDecodeIfPresent(.re)
+        self.suf = try container.sdkDecodeIfPresent(.suf)
     }
 }
 
-public extension ListProjectsResponseItemSecurityFirewallRoutesItemMissingItemXffd3951af8 {
-    init(
-        eq: String? = nil,
-        gt: Double? = nil,
-        gte: Double? = nil,
-        inc: [String]? = nil,
-        list: String? = nil,
-        lt: Double? = nil,
-        lte: Double? = nil,
-        neq: String? = nil,
-        ninc: [String]? = nil,
-        pre: String? = nil,
-        re: String? = nil,
-        suf: String? = nil
-    ) {
+extension ListProjectsResponseItemSecurityFirewallRoutesItemMissingItemXffd3951af8 {
+    public init(eq: String? = nil, gt: Double? = nil, gte: Double? = nil, inc: [String]? = nil, list: String? = nil, lt: Double? = nil, lte: Double? = nil, neq: String? = nil, ninc: [String]? = nil, pre: String? = nil, re: String? = nil, suf: String? = nil) {
         self.init()
         (self.eq, self.gt) = (eq, gt)
         (self.gte, self.inc) = (gte, inc)
@@ -288,41 +228,27 @@ public indirect enum ListProjectsResponseItemCreatorVariant0Via {
 }
 
 extension ListProjectsResponseItemCreatorVariant0Via: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ListProjectsResponseItemCreatorVariant0Via"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseItemCreatorVariant0Via")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension ListProjectsResponseItemCreatorVariant0Via {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ListProjectsResponseItemCreatorVariant0ViaVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ListProjectsResponseItemCreatorVariant0ViaVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .listProjectsResponseItemCreatorVariant0ViaVariant0(value)
         }
-        if let value = try? container.decode(ListProjectsResponseItemCreatorVariant0ViaVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ListProjectsResponseItemCreatorVariant0ViaVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .listProjectsResponseItemCreatorVariant0ViaVariant1(value)
         }
         return nil
@@ -334,12 +260,12 @@ extension ListProjectsResponseItemCreatorVariant0Via {
         if let value = try? container.decode(
             ListProjectsResponseItemCreatorVariant0ViaVariant0.self
         ) {
-            return .listProjectsResponseItemCreatorVariant0ViaVariant0(value)
+            return             .listProjectsResponseItemCreatorVariant0ViaVariant0(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseItemCreatorVariant0ViaVariant1.self
         ) {
-            return .listProjectsResponseItemCreatorVariant0ViaVariant1(value)
+            return             .listProjectsResponseItemCreatorVariant0ViaVariant1(value)
         }
         return nil
     }
@@ -385,45 +311,32 @@ public struct ListProjectsResponseItemSecurityFirewallRoutesItemResponseHasX9f5f
     }
 
     init() {
-        (eq, gt, gte, inc, list) = (nil, nil, nil, nil, nil)
-        (lt, lte, neq, ninc, pre) = (nil, nil, nil, nil, nil)
-        (re, suf) = (nil, nil)
+        (self.eq, self.gt, self.gte, self.inc, self.list) = (nil, nil, nil, nil, nil)
+        (self.lt, self.lte, self.neq, self.ninc, self.pre) = (nil, nil, nil, nil, nil)
+        (self.re, self.suf) = (nil, nil)
     }
 }
 
-public extension ListProjectsResponseItemSecurityFirewallRoutesItemResponseHasX9f5f7b62ab {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseItemSecurityFirewallRoutesItemResponseHasX9f5f7b62ab {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        eq = try container.sdkDecodeIfPresent(.eq)
-        gt = try container.sdkDecodeIfPresent(.gt)
-        gte = try container.sdkDecodeIfPresent(.gte)
-        inc = try container.sdkDecodeIfPresent(.inc)
-        list = try container.sdkDecodeIfPresent(.list)
-        lt = try container.sdkDecodeIfPresent(.lt)
-        lte = try container.sdkDecodeIfPresent(.lte)
-        neq = try container.sdkDecodeIfPresent(.neq)
-        ninc = try container.sdkDecodeIfPresent(.ninc)
-        pre = try container.sdkDecodeIfPresent(.pre)
-        re = try container.sdkDecodeIfPresent(.re)
-        suf = try container.sdkDecodeIfPresent(.suf)
+        self.eq = try container.sdkDecodeIfPresent(.eq)
+        self.gt = try container.sdkDecodeIfPresent(.gt)
+        self.gte = try container.sdkDecodeIfPresent(.gte)
+        self.inc = try container.sdkDecodeIfPresent(.inc)
+        self.list = try container.sdkDecodeIfPresent(.list)
+        self.lt = try container.sdkDecodeIfPresent(.lt)
+        self.lte = try container.sdkDecodeIfPresent(.lte)
+        self.neq = try container.sdkDecodeIfPresent(.neq)
+        self.ninc = try container.sdkDecodeIfPresent(.ninc)
+        self.pre = try container.sdkDecodeIfPresent(.pre)
+        self.re = try container.sdkDecodeIfPresent(.re)
+        self.suf = try container.sdkDecodeIfPresent(.suf)
     }
 }
 
-public extension ListProjectsResponseItemSecurityFirewallRoutesItemResponseHasX9f5f7b62ab {
-    init(
-        eq: String? = nil,
-        gt: Double? = nil,
-        gte: Double? = nil,
-        inc: [String]? = nil,
-        list: String? = nil,
-        lt: Double? = nil,
-        lte: Double? = nil,
-        neq: String? = nil,
-        ninc: [String]? = nil,
-        pre: String? = nil,
-        re: String? = nil,
-        suf: String? = nil
-    ) {
+extension ListProjectsResponseItemSecurityFirewallRoutesItemResponseHasX9f5f7b62ab {
+    public init(eq: String? = nil, gt: Double? = nil, gte: Double? = nil, inc: [String]? = nil, list: String? = nil, lt: Double? = nil, lte: Double? = nil, neq: String? = nil, ninc: [String]? = nil, pre: String? = nil, re: String? = nil, suf: String? = nil) {
         self.init()
         (self.eq, self.gt) = (eq, gt)
         (self.gte, self.inc) = (gte, inc)
@@ -444,26 +357,18 @@ public indirect enum ListProjectsResponseItemInternalRoutesItemVariant1HasItem {
 }
 
 extension ListProjectsResponseItemInternalRoutesItemVariant1HasItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ListProjectsResponseItemInternalRoutesItemVariant1HasItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseItemInternalRoutesItemVariant1HasItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -486,12 +391,12 @@ extension ListProjectsResponseItemInternalRoutesItemVariant1HasItem {
         if let value = try? container.decode(
             ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0.self
         ) {
-            return .listProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0(value)
+            return             .listProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0(value)
         }
         if let value = try? container.decode(
             ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1.self
         ) {
-            return .listProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1(value)
+            return             .listProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1(value)
         }
         return nil
     }
@@ -501,16 +406,13 @@ extension ListProjectsResponseItemInternalRoutesItemVariant1HasItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .listProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0(value): try container
-            .encode(value); return true
-        case let .listProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1(value): try container
-            .encode(value); return true
+        case let .listProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0(value): try container.encode(value); return true
+        case let .listProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1(value): try container.encode(value); return true
         }
     }
 }
 
-public typealias ListProjectsDomainsResponseVariant0DomainsItemVerificationList =
-    [ListProjectsDomainsResponseVariant0DomainsItemVerificationItem]
+public typealias ListProjectsDomainsResponseVariant0DomainsItemVerificationList = [ListProjectsDomainsResponseVariant0DomainsItemVerificationItem]
 
 public struct ListProjectsDomainsResponseVariant0DomainsItem: Codable {
     public var apexName: String
@@ -545,70 +447,40 @@ public struct ListProjectsDomainsResponseVariant0DomainsItem: Codable {
         case verification
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsDomainsResponseVariant0DomainsItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsDomainsResponseVariant0DomainsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.apexName) else {
-            throw SdkValidationError(
-                field: "apexName",
-                code: "required",
-                message: "Validation failed for 'apexName': value is required"
-            )
+            throw SdkValidationError(field: "apexName", code: "required", message: "Validation failed for 'apexName': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.verified) else {
-            throw SdkValidationError(
-                field: "verified",
-                code: "required",
-                message: "Validation failed for 'verified': value is required"
-            )
+            throw SdkValidationError(field: "verified", code: "required", message: "Validation failed for 'verified': value is required")
         }
-        apexName = try container.sdkDecodeRequired(.apexName)
-        name = try container.sdkDecodeRequired(.name)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        verified = try container.sdkDecodeRequired(.verified)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
-        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        verification = try container.sdkDecodeIfPresent(.verification)
+        self.apexName = try container.sdkDecodeRequired(.apexName)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.verified = try container.sdkDecodeRequired(.verified)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.verification = try container.sdkDecodeIfPresent(.verification)
     }
 }
 
-public extension ListProjectsDomainsResponseVariant0DomainsItem {
-    init(
-        apexName: String,
-        name: String,
-        projectId: String,
-        verified: Bool,
-        createdAt: Double? = nil,
-        customEnvironmentId: String? = nil,
-        gitBranch: String? = nil,
-        redirect: String? = nil,
-        redirectStatusCode: Double? = nil,
-        updatedAt: Double? = nil,
-        verification: ListProjectsDomainsResponseVariant0DomainsItemVerificationList? = nil
-    ) {
+extension ListProjectsDomainsResponseVariant0DomainsItem {
+    public init(apexName: String, name: String, projectId: String, verified: Bool, createdAt: Double? = nil, customEnvironmentId: String? = nil, gitBranch: String? = nil, redirect: String? = nil, redirectStatusCode: Double? = nil, updatedAt: Double? = nil, verification: ListProjectsDomainsResponseVariant0DomainsItemVerificationList? = nil) {
         (self.apexName, self.name) = (apexName, name)
         (self.projectId, self.verified) = (projectId, verified)
         (self.createdAt, self.customEnvironmentId) = (createdAt, customEnvironmentId)

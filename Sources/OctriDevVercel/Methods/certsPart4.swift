@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension CertsMethods {
-    /// Uploads a certificate using its certificate authority, key, and certificate data. Provide `ca`, `key`, and
-    /// `cert` in the request body; you can also set `skipValidation` to control certificate validation. The response
-    /// includes the uploaded certificate details.
+extension CertsMethods {
+    /// Uploads a certificate using its certificate authority, key, and certificate data. Provide `ca`, `key`, and `cert` in the request body; you can also set `skipValidation` to control certificate validation. The response includes the uploaded certificate details.
     ///
     /// Upload a cert
     ///
@@ -20,19 +18,10 @@ public extension CertsMethods {
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - skipValidation: Skip validation of the certificate
-    static func uploadCert(
-        config: ClientConfig,
-        ca: String,
-        key: String,
-        cert: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        skipValidation: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UploadCertResponse {
+    public static func uploadCert(config: ClientConfig, ca: String, key: String, cert: String, teamId: String? = nil, slug: String? = nil, skipValidation: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> UploadCertResponse {
         let requestBody = UploadCertRequestBody(ca: ca, key: key, cert: cert, skipValidation: skipValidation)
 
-        return try await (sdkRequest("PUT", "/v8/certs", config: config, query: [
+        return try (await sdkRequest("PUT", "/v8/certs", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "uploadCert", options: requestOptions)).data

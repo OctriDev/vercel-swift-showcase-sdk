@@ -6,29 +6,22 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ObservabilityMethods {
-    /// Lists the projects currently configured as disabled for Observability Plus on a team. Use this request to review
-    /// which projects have the disabled setting and when that setting was applied.
+extension ObservabilityMethods {
+    /// Lists the projects currently configured as disabled for Observability Plus on a team. Use this request to review which projects have the disabled setting and when that setting was applied.
     ///
     /// Lists the projects that are currently configured as disabled for Observability Plus on a team.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getObservabilityConfigurationProjects(
-        config: ClientConfig,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetObservabilityConfigurationProjectsResponse {
-        try await (sdkRequest("GET", "/v1/observability/manage/configuration/projects", config: config, query: [
+    public static func getObservabilityConfigurationProjects(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetObservabilityConfigurationProjectsResponse {
+        return try (await sdkRequest("GET", "/v1/observability/manage/configuration/projects", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "getObservabilityConfigurationProjects", options: requestOptions)).data
     }
 
-    /// Updates whether Observability Plus is disabled for a project. Identify the project with `projectIdOrName` and
-    /// set `disabled` to the desired boolean value.
+    /// Updates whether Observability Plus is disabled for a project. Identify the project with `projectIdOrName` and set `disabled` to the desired boolean value.
     ///
     /// Updates whether Observability Plus is disabled for a single project.
     ///
@@ -37,29 +30,12 @@ public extension ObservabilityMethods {
     /// - disabled: Whether Observability Plus should be disabled for the project
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func updateObservabilityConfigurationProject(
-        config: ClientConfig,
-        projectIdOrName: String,
-        disabled: Bool,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateObservabilityConfigurationProjectResponse {
+    public static func updateObservabilityConfigurationProject(config: ClientConfig, projectIdOrName: String, disabled: Bool, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateObservabilityConfigurationProjectResponse {
         let requestBody = UpdateObservabilityConfigurationProjectRequestBody(disabled: disabled)
 
-        return try await (sdkRequest(
-            "PUT",
-            ["/v1/observability/manage/configuration/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName))]
-                .joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateObservabilityConfigurationProject",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PUT", ["/v1/observability/manage/configuration/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateObservabilityConfigurationProject", options: requestOptions)).data
     }
 }

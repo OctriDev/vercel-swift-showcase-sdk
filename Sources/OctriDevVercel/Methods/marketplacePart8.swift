@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension MarketplaceMethods {
-    struct SubmitInvoiceOptions: Codable {
+extension MarketplaceMethods {
+    public struct SubmitInvoiceOptions: Codable {
         public var integrationConfigurationId: String
         public var invoiceDate: Date
         public var period: SubmitInvoiceRequestBodyPeriod
@@ -18,12 +18,7 @@ public extension MarketplaceMethods {
         public var final: Bool?
         public var test: SubmitInvoiceRequestBodyTest?
 
-        public init(
-            integrationConfigurationId: String,
-            invoiceDate: Date,
-            period: SubmitInvoiceRequestBodyPeriod,
-            items: [SubmitInvoiceRequestBodyItemsItem]
-        ) {
+        public init(integrationConfigurationId: String, invoiceDate: Date, period: SubmitInvoiceRequestBodyPeriod, items: [SubmitInvoiceRequestBodyItemsItem]) {
             self.integrationConfigurationId = integrationConfigurationId
             self.invoiceDate = invoiceDate
             self.period = period
@@ -31,19 +26,9 @@ public extension MarketplaceMethods {
         }
     }
 
-    /// Submits an invoice for an installation to the billing system for delivery to the customer. Include the invoice
-    /// date, billing period, and invoice items; the resource must be eligible for the selected active subscription plan
-    /// during that period. Send interim subscription usage data hourly before submitting the invoice.
+    /// Submits an invoice for an installation to the billing system for delivery to the customer. Include the invoice date, billing period, and invoice items; the resource must be eligible for the selected active subscription plan during that period. Send interim subscription usage data hourly before submitting the invoice.
     ///
-    /// This endpoint allows the partner to submit an invoice to Vercel. The invoice is created in Vercel's billing
-    /// system and sent to the customer. Depending on the type of billing plan, the invoice can be sent at a time of
-    /// signup, at the start of the billing period, or at the end of the billing period. Use the
-    /// `credentials.access_token` we provided in the Upsert Installation body to authorize this request. There are
-    /// several limitations to the invoice submission: 1. A resource can only be billed once per the billing period and
-    /// the billing plan. 2. The billing plan used to bill the resource must have been active for this resource during
-    /// the billing period. 3. The billing plan used must be a subscription plan. 4. The interim usage data must be sent
-    /// hourly for all types of subscriptions. See Send subscription billing and usage data API on how to send interim
-    /// billing and usage data. 5. If provided, `externalId` must be unique for the installation.
+    /// This endpoint allows the partner to submit an invoice to Vercel. The invoice is created in Vercel's billing system and sent to the customer. Depending on the type of billing plan, the invoice can be sent at a time of signup, at the start of the billing period, or at the end of the billing period. Use the `credentials.access_token` we provided in the Upsert Installation body to authorize this request. There are several limitations to the invoice submission: 1. A resource can only be billed once per the billing period and the billing plan. 2. The billing plan used to bill the resource must have been active for this resource during the billing period. 3. The billing plan used must be a subscription plan. 4. The interim usage data must be sent hourly for all types of subscriptions. See Send subscription billing and usage data API on how to send interim billing and usage data. 5. If provided, `externalId` must be unique for the installation.
     ///
     /// - Parameters:
     /// - invoiceDate: Invoice date. Must be within the period's start and end.
@@ -54,51 +39,18 @@ public extension MarketplaceMethods {
     /// - final: Set this to `true` if this is the final invoice for the
     ///   installation. Can only be set when the installation is pending deletion.
     /// - test: Test mode
-    static func submitInvoice(
-        config: ClientConfig,
-        options: SubmitInvoiceOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SubmitInvoiceResponse {
+    public static func submitInvoice(config: ClientConfig, options: SubmitInvoiceOptions, requestOptions: RequestOptions? = nil) async throws -> SubmitInvoiceResponse {
         try sdkValidateDateTime("invoiceDate", options.invoiceDate)
 
         let requestBody = SubmitInvoiceRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "POST",
-            [
-                "/v1/installations/",
-                sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)),
-                "/billing/invoices",
-            ].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .json,
-            operationId: "submitInvoice",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)), "/billing/invoices"].joined(), config: config, body: requestBody, decoder: .json, operationId: "submitInvoice", options: requestOptions)).data
     }
 
-    /// Finalizes an installation after a customer requests uninstall and you have submitted any remaining invoices.
-    /// Finalization indicates that you will submit no further invoices and allows uninstall to proceed after
-    /// outstanding invoices are paid. Authorize the request with the installation's `credentials.access_token`.
+    /// Finalizes an installation after a customer requests uninstall and you have submitted any remaining invoices. Finalization indicates that you will submit no further invoices and allows uninstall to proceed after outstanding invoices are paid. Authorize the request with the installation's `credentials.access_token`.
     ///
-    /// This endpoint allows the partner to mark an installation as finalized. This means you will not send any more
-    /// invoices for the installation. Use this after a customer has requested uninstall and you have sent any remaining
-    /// invoices. This will allow the uninstall process to proceed immediately after all invoices have been paid. Use
-    /// the `credentials.access_token` we provided in the Upsert Installation body to authorize this request.
-    static func finalizeInstallation(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await (sdkRequest(
-            "POST",
-            ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/billing/finalize"]
-                .joined(),
-            config: config,
-            decoder: .empty,
-            operationId: "finalizeInstallation",
-            options: requestOptions
-        )).data
+    /// This endpoint allows the partner to mark an installation as finalized. This means you will not send any more invoices for the installation. Use this after a customer has requested uninstall and you have sent any remaining invoices. This will allow the uninstall process to proceed immediately after all invoices have been paid. Use the `credentials.access_token` we provided in the Upsert Installation body to authorize this request.
+    public static func finalizeInstallation(config: ClientConfig, integrationConfigurationId: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try (await sdkRequest("POST", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/billing/finalize"].joined(), config: config, decoder: .empty, operationId: "finalizeInstallation", options: requestOptions)).data
     }
 }

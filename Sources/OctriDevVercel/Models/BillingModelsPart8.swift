@@ -3,33 +3,24 @@
 
 import Foundation
 
-/// Billing domain models
+// Billing domain models
 /// The type of the purchase provider
-public struct BuyCreditsResponseVariant1PurchaseIntentProviderType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct BuyCreditsResponseVariant1PurchaseIntentProviderType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let appleInAppPurchase =
-        BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "apple_in_app_purchase")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let appleInAppPurchase = BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "apple_in_app_purchase")
     public static let orbLedger = BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "orb_ledger")
     public static let stripeElements = BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "stripe_elements")
     public static let stripeHosted = BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "stripe_hosted")
-    public static let stripeInvoiceDeferred =
-        BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "stripe_invoice_deferred")
-    public static let stripeInvoiceElements =
-        BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "stripe_invoice_elements")
-    public static let stripeInvoiceImmediate =
-        BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "stripe_invoice_immediate")
-    public static let tackleAwsMarketplace =
-        BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "tackle_aws_marketplace")
+    public static let stripeInvoiceDeferred = BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "stripe_invoice_deferred")
+    public static let stripeInvoiceElements = BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "stripe_invoice_elements")
+    public static let stripeInvoiceImmediate = BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "stripe_invoice_immediate")
+    public static let tackleAwsMarketplace = BuyCreditsResponseVariant1PurchaseIntentProviderType(rawValue: "tackle_aws_marketplace")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -39,22 +30,16 @@ public struct BuyCreditsResponseVariant1PurchaseIntentProviderType: RawRepresent
 }
 
 /// When the subscription change should take effect.
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX517b3fef06: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX517b3fef06: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let endOfTerm =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX517b3fef06(rawValue: "end_of_term")
-    public static let immediate =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX517b3fef06(rawValue: "immediate")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let endOfTerm = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX517b3fef06(rawValue: "end_of_term")
+    public static let immediate = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX517b3fef06(rawValue: "immediate")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -64,22 +49,16 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX517b
 }
 
 /// When the subscription change should take effect.
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXf88d3abe82: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXf88d3abe82: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let endOfTerm =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXf88d3abe82(rawValue: "end_of_term")
-    public static let immediate =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXf88d3abe82(rawValue: "immediate")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let endOfTerm = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXf88d3abe82(rawValue: "end_of_term")
+    public static let immediate = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXf88d3abe82(rawValue: "immediate")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -88,20 +67,15 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXf88d
     }
 }
 
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant2Status: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant2Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let succeeded =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant2Status(rawValue: "succeeded")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let succeeded = BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant2Status(rawValue: "succeeded")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -111,28 +85,19 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant2St
 }
 
 /// The currency being purchased
-public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let aiCredits =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "ai_credits")
-    public static let aiGatewayCredits =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "ai_gateway_credits")
-    public static let copperTestUnits =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "copper_test_units")
-    public static let v0UserCredits =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "v0_user_credits")
-    public static let vercelAgentCredits =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "vercel_agent_credits")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let aiCredits = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "ai_credits")
+    public static let aiGatewayCredits = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "ai_gateway_credits")
+    public static let copperTestUnits = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "copper_test_units")
+    public static let v0UserCredits = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "v0_user_credits")
+    public static let vercelAgentCredits = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde497129bb(rawValue: "vercel_agent_credits")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -141,19 +106,15 @@ public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant0Xde49
     }
 }
 
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Mode: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let async = BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Mode(rawValue: "async")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -180,22 +141,16 @@ public enum BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant5Type: S
 }
 
 /// When the subscription change should take effect.
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX78b6cb355a: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX78b6cb355a: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let endOfTerm =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX78b6cb355a(rawValue: "end_of_term")
-    public static let immediate =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX78b6cb355a(rawValue: "immediate")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let endOfTerm = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX78b6cb355a(rawValue: "end_of_term")
+    public static let immediate = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX78b6cb355a(rawValue: "immediate")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -205,21 +160,16 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX78b6
 }
 
 /// The source used as the authoritative price for this intent.
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX48c6e1f44b: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX48c6e1f44b: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let copper =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX48c6e1f44b(rawValue: "copper")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let copper = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX48c6e1f44b(rawValue: "copper")
     public static let orb = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX48c6e1f44b(rawValue: "orb")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -228,22 +178,16 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX48c6
     }
 }
 
-public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Xb0cadc54bd: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Xb0cadc54bd: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let endOfSubscriptionTerm =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Xb0cadc54bd(rawValue: "end_of_subscription_term")
-    public static let immediate =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Xb0cadc54bd(rawValue: "immediate")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let endOfSubscriptionTerm = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Xb0cadc54bd(rawValue: "end_of_subscription_term")
+    public static let immediate = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Xb0cadc54bd(rawValue: "immediate")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -252,19 +196,15 @@ public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Xb0ca
     }
 }
 
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant2Mode: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant2Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let async = BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant2Mode(rawValue: "async")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -273,24 +213,17 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant2Mo
     }
 }
 
-public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant1X939aaa5347: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant1X939aaa5347: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let purchase =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant1X939aaa5347(rawValue: "purchase")
-    public static let renewal =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant1X939aaa5347(rawValue: "renewal")
-    public static let transfer =
-        BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant1X939aaa5347(rawValue: "transfer")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let purchase = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant1X939aaa5347(rawValue: "purchase")
+    public static let renewal = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant1X939aaa5347(rawValue: "renewal")
+    public static let transfer = BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant1X939aaa5347(rawValue: "transfer")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -317,21 +250,16 @@ public enum BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant4Type: S
 }
 
 /// The source used as the authoritative price for this intent.
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXa9d46c9c4a: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXa9d46c9c4a: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let copper =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXa9d46c9c4a(rawValue: "copper")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let copper = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXa9d46c9c4a(rawValue: "copper")
     public static let orb = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXa9d46c9c4a(rawValue: "orb")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -340,26 +268,18 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXa9d4
     }
 }
 
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let canceled =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status(rawValue: "canceled")
-    public static let failed =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status(rawValue: "failed")
-    public static let pending =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status(rawValue: "pending")
-    public static let running =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status(rawValue: "running")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let canceled = BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status(rawValue: "canceled")
+    public static let failed = BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status(rawValue: "failed")
+    public static let pending = BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status(rawValue: "pending")
+    public static let running = BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1Status(rawValue: "running")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -369,21 +289,17 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant1St
 }
 
 /// The status of the Orb subscription intent.
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentStatus: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let failed = BuyCreditsResponseVariant2OrbSubscriptionIntentStatus(rawValue: "failed")
     public static let pending = BuyCreditsResponseVariant2OrbSubscriptionIntentStatus(rawValue: "pending")
     public static let succeeded = BuyCreditsResponseVariant2OrbSubscriptionIntentStatus(rawValue: "succeeded")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -427,22 +343,16 @@ public enum BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant1Type: S
 }
 
 /// When the subscription change should take effect.
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXacc6deb8f1: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXacc6deb8f1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let endOfTerm =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXacc6deb8f1(rawValue: "end_of_term")
-    public static let immediate =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXacc6deb8f1(rawValue: "immediate")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let endOfTerm = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXacc6deb8f1(rawValue: "end_of_term")
+    public static let immediate = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXacc6deb8f1(rawValue: "immediate")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -469,21 +379,16 @@ public enum BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Type: S
 }
 
 /// The source used as the authoritative price for this intent.
-public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX4a0b178019: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX4a0b178019: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let copper =
-        BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX4a0b178019(rawValue: "copper")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let copper = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX4a0b178019(rawValue: "copper")
     public static let orb = BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX4a0b178019(rawValue: "orb")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

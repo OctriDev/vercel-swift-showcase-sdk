@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Sandboxes domain models
+// Sandboxes domain models
 public struct CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValueItem: Codable {
     /// Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified
     /// dimension. When multiple injection rules target the same domain they are evaluated in order and the first
@@ -24,27 +24,22 @@ public struct CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValueIte
     }
 
     init() {
-        (match, transform, forwardUrl, response) = (nil, nil, nil, nil)
+        (self.match, self.transform, self.forwardUrl, self.response) = (nil, nil, nil, nil)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValueItem {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValueItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        match = try container.sdkDecodeIfPresent(.match)
-        transform = try container.sdkDecodeIfPresent(.transform)
-        forwardUrl = try container.sdkDecodeIfPresent(.forwardUrl)
-        response = try container.sdkDecodeIfPresent(.response)
+        self.match = try container.sdkDecodeIfPresent(.match)
+        self.transform = try container.sdkDecodeIfPresent(.transform)
+        self.forwardUrl = try container.sdkDecodeIfPresent(.forwardUrl)
+        self.response = try container.sdkDecodeIfPresent(.response)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValueItem {
-    init(
-        match: CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValueItemMatch? = nil,
-        transform: CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValXd35200f166? = nil,
-        forwardUrl: String? = nil,
-        response: CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX3f092f6729? = nil
-    ) {
+extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValueItem {
+    public init(match: CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValueItemMatch? = nil, transform: CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValXd35200f166? = nil, forwardUrl: String? = nil, response: CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX3f092f6729? = nil) {
         self.init()
         (self.match, self.transform) = (match, transform)
         (self.forwardUrl, self.response) = (forwardUrl, response)
@@ -68,40 +63,26 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem: Codab
         case match
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem {
-    init(from decoder: Decoder) throws {
+extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
         guard container.contains(.headers) else {
-            throw SdkValidationError(
-                field: "headers",
-                code: "required",
-                message: "Validation failed for 'headers': value is required"
-            )
+            throw SdkValidationError(field: "headers", code: "required", message: "Validation failed for 'headers': value is required")
         }
-        domain = try container.sdkDecodeRequired(.domain)
-        headers = try container.sdkDecodeRequired(.headers)
-        match = try container.sdkDecodeIfPresent(.match)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.headers = try container.sdkDecodeRequired(.headers)
+        self.match = try container.sdkDecodeIfPresent(.match)
     }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem {
-    init(
-        domain: String,
-        headers: [String: String],
-        match: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatch? = nil
-    ) {
+extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem {
+    public init(domain: String, headers: [String: String], match: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatch? = nil) {
         (self.domain, self.headers) = (domain, headers)
         self.match = match
     }
@@ -121,30 +102,28 @@ public struct CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0InjectX9d6b
     }
 
     init() {
-        (exact, startsWith) = (nil, nil)
+        (self.exact, self.startsWith) = (nil, nil)
     }
 }
 
-public extension CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0InjectX9d6b4bc409 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0InjectX9d6b4bc409 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        exact = try container.sdkDecodeIfPresent(.exact)
-        startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        self.exact = try container.sdkDecodeIfPresent(.exact)
+        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-public extension CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0InjectX9d6b4bc409 {
-    init(exact: String? = nil, startsWith: String? = nil) {
+extension CreateSandboxesByNameForkV3RequestNetworkPolicyVariant0InjectX9d6b4bc409 {
+    public init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
 }
 
-public typealias CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItX052a69b048 =
-    [CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItX5530623d96]
+public typealias CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItX052a69b048 = [CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItX5530623d96]
 
-public typealias CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXc238c7c35c =
-    [CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItX3141ce6f9f]
+public typealias CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXc238c7c35c = [CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItX3141ce6f9f]
 
 /// Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified
 /// dimension. When multiple injection rules target the same domain they are evaluated in order and the first match
@@ -171,27 +150,22 @@ public struct CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItemMat
     }
 
     init() {
-        (path, method, queryString, headers) = (nil, nil, nil, nil)
+        (self.path, self.method, self.queryString, self.headers) = (nil, nil, nil, nil)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItemMatch {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItemMatch {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        path = try container.sdkDecodeIfPresent(.path)
-        method = try container.sdkDecodeIfPresent(.method)
-        queryString = try container.sdkDecodeIfPresent(.queryString)
-        headers = try container.sdkDecodeIfPresent(.headers)
+        self.path = try container.sdkDecodeIfPresent(.path)
+        self.method = try container.sdkDecodeIfPresent(.method)
+        self.queryString = try container.sdkDecodeIfPresent(.queryString)
+        self.headers = try container.sdkDecodeIfPresent(.headers)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItemMatch {
-    init(
-        path: CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItemMatchPath? = nil,
-        method: [String]? = nil,
-        queryString: CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItX052a69b048? = nil,
-        headers: CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXc238c7c35c? = nil
-    ) {
+extension CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItemMatch {
+    public init(path: CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItemMatchPath? = nil, method: [String]? = nil, queryString: CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItX052a69b048? = nil, headers: CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXc238c7c35c? = nil) {
         self.init()
         (self.path, self.method) = (path, method)
         (self.queryString, self.headers) = (queryString, headers)
@@ -207,36 +181,28 @@ public struct StopSessionResponseVariant0: Codable {
         case session
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension StopSessionResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension StopSessionResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.session) else {
-            throw SdkValidationError(
-                field: "session",
-                code: "required",
-                message: "Validation failed for 'session': value is required"
-            )
+            throw SdkValidationError(field: "session", code: "required", message: "Validation failed for 'session': value is required")
         }
-        session = try container.sdkDecodeRequired(.session)
+        self.session = try container.sdkDecodeRequired(.session)
     }
 }
 
-public extension StopSessionResponseVariant0 {
-    init(session: Session) {
+extension StopSessionResponseVariant0 {
+    public init(session: Session) {
         self.session = session
     }
 }
 
-public typealias CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX82e16f6219 =
-    [CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXed48c49fda]
+public typealias CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX82e16f6219 = [CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXed48c49fda]
 
-public typealias CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX534a6dcf48 =
-    [CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX2f98f5a0ca]
+public typealias CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX534a6dcf48 = [CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX2f98f5a0ca]
 
 /// Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified
 /// dimension. When multiple injection rules target the same domain they are evaluated in order and the first match
@@ -263,27 +229,22 @@ public struct CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXd875
     }
 
     init() {
-        (path, method, queryString, headers) = (nil, nil, nil, nil)
+        (self.path, self.method, self.queryString, self.headers) = (nil, nil, nil, nil)
     }
 }
 
-public extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXd875bc47cb {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXd875bc47cb {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        path = try container.sdkDecodeIfPresent(.path)
-        method = try container.sdkDecodeIfPresent(.method)
-        queryString = try container.sdkDecodeIfPresent(.queryString)
-        headers = try container.sdkDecodeIfPresent(.headers)
+        self.path = try container.sdkDecodeIfPresent(.path)
+        self.method = try container.sdkDecodeIfPresent(.method)
+        self.queryString = try container.sdkDecodeIfPresent(.queryString)
+        self.headers = try container.sdkDecodeIfPresent(.headers)
     }
 }
 
-public extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXd875bc47cb {
-    init(
-        path: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXef60042de7? = nil,
-        method: [String]? = nil,
-        queryString: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX82e16f6219? = nil,
-        headers: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX534a6dcf48? = nil
-    ) {
+extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXd875bc47cb {
+    public init(path: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXef60042de7? = nil, method: [String]? = nil, queryString: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX82e16f6219? = nil, headers: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX534a6dcf48? = nil) {
         self.init()
         (self.path, self.method) = (path, method)
         (self.queryString, self.headers) = (queryString, headers)
@@ -302,23 +263,20 @@ public struct CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesItX0db6
     }
 
     init() {
-        (key, value) = (nil, nil)
+        (self.key, self.value) = (nil, nil)
     }
 }
 
-public extension CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesItX0db63e7bf1 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesItX0db63e7bf1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        key = try container.sdkDecodeIfPresent(.key)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.key = try container.sdkDecodeIfPresent(.key)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesItX0db63e7bf1 {
-    init(
-        key: CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesItX0c7d8569f8? = nil,
-        value: CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesItX2dc0e1e365? = nil
-    ) {
+extension CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesItX0db63e7bf1 {
+    public init(key: CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesItX0c7d8569f8? = nil, value: CreateSandboxesV4RequestNetworkPolicyVariant0InjectionRulesItX2dc0e1e365? = nil) {
         self.init()
         (self.key, self.value) = (key, value)
     }
@@ -337,38 +295,28 @@ public struct CreateSandboxesV3RequestSourceVariant1: Codable {
         case url
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateSandboxesV3RequestSourceVariant1 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV3RequestSourceVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        url = try container.sdkDecodeRequired(.url)
-        try sdkValidateUri("url", url)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.url = try container.sdkDecodeRequired(.url)
+            try sdkValidateUri("url", self.url)
     }
 }
 
-public extension CreateSandboxesV3RequestSourceVariant1 {
-    init(type: JSONValue, url: String) throws {
+extension CreateSandboxesV3RequestSourceVariant1 {
+    public init(type: JSONValue, url: String) throws {
         (self.type, self.url) = (type, url)
-        try sdkValidateUri("url", self.url)
+            try sdkValidateUri("url", self.url)
     }
 }
 
@@ -378,32 +326,22 @@ public indirect enum CreateSandboxesV4RequestKeepLastSnapshotsVariant1Expiration
 }
 
 extension CreateSandboxesV4RequestKeepLastSnapshotsVariant1Expiration: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateSandboxesV4RequestKeepLastSnapshotsVariant1Expiration"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesV4RequestKeepLastSnapshotsVariant1Expiration")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateSandboxesV4RequestKeepLastSnapshotsVariant1Expiration {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(JSONValue.self) {
-            return .jsonValue(value)
-        }
-        if let value = try? container.decode(Int.self) {
-            return .intValue(value)
-        }
+        if let value = try? container.decode(JSONValue.self) { return .jsonValue(value) }
+        if let value = try? container.decode(Int.self) { return .intValue(value) }
         return nil
     }
 }
@@ -435,19 +373,19 @@ public struct CreateSandboxesByNameForkV3RequestNetworkPolicyVariant1AllowVXeaa6
     }
 
     init() {
-        headers = nil
+        self.headers = nil
     }
 }
 
-public extension CreateSandboxesByNameForkV3RequestNetworkPolicyVariant1AllowVXeaa6df755d {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesByNameForkV3RequestNetworkPolicyVariant1AllowVXeaa6df755d {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        headers = try container.sdkDecodeIfPresent(.headers)
+        self.headers = try container.sdkDecodeIfPresent(.headers)
     }
 }
 
-public extension CreateSandboxesByNameForkV3RequestNetworkPolicyVariant1AllowVXeaa6df755d {
-    init(headers: [String: String]? = nil) {
+extension CreateSandboxesByNameForkV3RequestNetworkPolicyVariant1AllowVXeaa6df755d {
+    public init(headers: [String: String]? = nil) {
         self.init()
         self.headers = headers
     }
@@ -467,20 +405,20 @@ public struct CreateSandboxesByNameForkV2RequestNetworkPolicyVariant1AllowVX2251
     }
 
     init() {
-        (exact, startsWith) = (nil, nil)
+        (self.exact, self.startsWith) = (nil, nil)
     }
 }
 
-public extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant1AllowVX2251470dc7 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant1AllowVX2251470dc7 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        exact = try container.sdkDecodeIfPresent(.exact)
-        startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        self.exact = try container.sdkDecodeIfPresent(.exact)
+        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-public extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant1AllowVX2251470dc7 {
-    init(exact: String? = nil, startsWith: String? = nil) {
+extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant1AllowVX2251470dc7 {
+    public init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -494,19 +432,19 @@ public struct CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX852d
     }
 
     init() {
-        headers = nil
+        self.headers = nil
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX852d5ce48b {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX852d5ce48b {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        headers = try container.sdkDecodeIfPresent(.headers)
+        self.headers = try container.sdkDecodeIfPresent(.headers)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX852d5ce48b {
-    init(headers: [String: String]? = nil) {
+extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX852d5ce48b {
+    public init(headers: [String: String]? = nil) {
         self.init()
         self.headers = headers
     }
@@ -526,20 +464,20 @@ public struct CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValXb94e
     }
 
     init() {
-        (exact, startsWith) = (nil, nil)
+        (self.exact, self.startsWith) = (nil, nil)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValXb94e938c6f {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValXb94e938c6f {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        exact = try container.sdkDecodeIfPresent(.exact)
-        startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        self.exact = try container.sdkDecodeIfPresent(.exact)
+        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValXb94e938c6f {
-    init(exact: String? = nil, startsWith: String? = nil) {
+extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValXb94e938c6f {
+    public init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -557,23 +495,20 @@ public struct CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX2f98
     }
 
     init() {
-        (key, value) = (nil, nil)
+        (self.key, self.value) = (nil, nil)
     }
 }
 
-public extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX2f98f5a0ca {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX2f98f5a0ca {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        key = try container.sdkDecodeIfPresent(.key)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.key = try container.sdkDecodeIfPresent(.key)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX2f98f5a0ca {
-    init(
-        key: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXfb56132329? = nil,
-        value: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXb0170d6069? = nil
-    ) {
+extension CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectX2f98f5a0ca {
+    public init(key: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXfb56132329? = nil, value: CreateSandboxesByNameForkV2RequestNetworkPolicyVariant0InjectXb0170d6069? = nil) {
         self.init()
         (self.key, self.value) = (key, value)
     }
@@ -592,30 +527,20 @@ public struct CreateSandboxesV2RequestSourceVariant1: Codable {
         case url
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateSandboxesV2RequestSourceVariant1 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV2RequestSourceVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        url = try container.sdkDecodeRequired(.url)
-        try sdkValidateUri("url", url)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.url = try container.sdkDecodeRequired(.url)
+            try sdkValidateUri("url", self.url)
     }
 }

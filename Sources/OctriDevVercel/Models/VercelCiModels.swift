@@ -3,50 +3,34 @@
 
 import Foundation
 
-/// VercelCi domain models
+// VercelCi domain models
 public indirect enum GetVercelCiInvocationResponseInvocationSource {
     case getVercelCiInvocationResponseInvocationSourceVariant0(GetVercelCiInvocationResponseInvocationSourceVariant0)
     case getVercelCiInvocationResponseInvocationSourceVariant1(GetVercelCiInvocationResponseInvocationSourceVariant1)
 }
 
 extension GetVercelCiInvocationResponseInvocationSource: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetVercelCiInvocationResponseInvocationSource"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetVercelCiInvocationResponseInvocationSource")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetVercelCiInvocationResponseInvocationSource {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetVercelCiInvocationResponseInvocationSourceVariant0.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(GetVercelCiInvocationResponseInvocationSourceVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationResponseInvocationSourceVariant0(value)
         }
-        if let value = try? container.decode(GetVercelCiInvocationResponseInvocationSourceVariant1.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(GetVercelCiInvocationResponseInvocationSourceVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationResponseInvocationSourceVariant1(value)
         }
         return nil
@@ -58,12 +42,12 @@ extension GetVercelCiInvocationResponseInvocationSource {
         if let value = try? container.decode(
             GetVercelCiInvocationResponseInvocationSourceVariant0.self
         ) {
-            return .getVercelCiInvocationResponseInvocationSourceVariant0(value)
+            return             .getVercelCiInvocationResponseInvocationSourceVariant0(value)
         }
         if let value = try? container.decode(
             GetVercelCiInvocationResponseInvocationSourceVariant1.self
         ) {
-            return .getVercelCiInvocationResponseInvocationSourceVariant1(value)
+            return             .getVercelCiInvocationResponseInvocationSourceVariant1(value)
         }
         return nil
     }
@@ -80,35 +64,23 @@ extension GetVercelCiInvocationResponseInvocationSource {
 }
 
 public indirect enum GetVercelCiInvocationTreeResponseInvocationSource {
-    case getVercelCiInvocationTreeResponseInvocationSourceVariant0(
-        GetVercelCiInvocationTreeResponseInvocationSourceVariant0
-    )
-    case getVercelCiInvocationTreeResponseInvocationSourceVariant1(
-        GetVercelCiInvocationTreeResponseInvocationSourceVariant1
-    )
+    case getVercelCiInvocationTreeResponseInvocationSourceVariant0(GetVercelCiInvocationTreeResponseInvocationSourceVariant0)
+    case getVercelCiInvocationTreeResponseInvocationSourceVariant1(GetVercelCiInvocationTreeResponseInvocationSourceVariant1)
 }
 
 extension GetVercelCiInvocationTreeResponseInvocationSource: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetVercelCiInvocationTreeResponseInvocationSource"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetVercelCiInvocationTreeResponseInvocationSource")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -131,12 +103,12 @@ extension GetVercelCiInvocationTreeResponseInvocationSource {
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseInvocationSourceVariant0.self
         ) {
-            return .getVercelCiInvocationTreeResponseInvocationSourceVariant0(value)
+            return             .getVercelCiInvocationTreeResponseInvocationSourceVariant0(value)
         }
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseInvocationSourceVariant1.self
         ) {
-            return .getVercelCiInvocationTreeResponseInvocationSourceVariant1(value)
+            return             .getVercelCiInvocationTreeResponseInvocationSourceVariant1(value)
         }
         return nil
     }
@@ -146,10 +118,8 @@ extension GetVercelCiInvocationTreeResponseInvocationSource {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getVercelCiInvocationTreeResponseInvocationSourceVariant0(value): try container
-            .encode(value); return true
-        case let .getVercelCiInvocationTreeResponseInvocationSourceVariant1(value): try container
-            .encode(value); return true
+        case let .getVercelCiInvocationTreeResponseInvocationSourceVariant0(value): try container.encode(value); return true
+        case let .getVercelCiInvocationTreeResponseInvocationSourceVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -167,44 +137,33 @@ public indirect enum GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclu
 }
 
 extension GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusion: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusion"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusion")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusion {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant0.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant0(value)
         }
-        if let value = try? container
-            .decode(GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant1.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant1(value)
         }
-        if let value = try? container
-            .decode(GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant2.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant2.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant2(value)
         }
         return nil
@@ -216,17 +175,17 @@ extension GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusion {
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant0.self
         ) {
-            return .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant0(value)
+            return             .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant0(value)
         }
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant1.self
         ) {
-            return .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant1(value)
+            return             .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant1(value)
         }
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant2.self
         ) {
-            return .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant2(value)
+            return             .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant2(value)
         }
         return nil
     }
@@ -236,12 +195,9 @@ extension GetVercelCiInvocationTreeResponseJobsItemRunCompletedConclusion {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant0(value): try container
-            .encode(value); return true
-        case let .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant1(value): try container
-            .encode(value); return true
-        case let .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant2(value): try container
-            .encode(value); return true
+        case let .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant0(value): try container.encode(value); return true
+        case let .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant1(value): try container.encode(value); return true
+        case let .getVercelCiInvocationTreeResponseJobsItemRunCompletedConclusionVariant2(value): try container.encode(value); return true
         }
     }
 }
@@ -256,39 +212,29 @@ public indirect enum GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitio
 }
 
 extension GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOperation: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOperation"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOperation")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOperation {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX62afcd517d.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX62afcd517d.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx62afcd517d(value)
         }
-        if let value = try? container
-            .decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX3662b3d6f3.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX3662b3d6f3.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx3662b3d6f3(value)
         }
         return nil
@@ -300,12 +246,12 @@ extension GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOperation 
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX62afcd517d.self
         ) {
-            return .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx62afcd517d(value)
+            return             .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx62afcd517d(value)
         }
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOX3662b3d6f3.self
         ) {
-            return .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx3662b3d6f3(value)
+            return             .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx3662b3d6f3(value)
         }
         return nil
     }
@@ -315,10 +261,8 @@ extension GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOperation 
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx62afcd517d(value): try container
-            .encode(value); return true
-        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx3662b3d6f3(value): try container
-            .encode(value); return true
+        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx62afcd517d(value): try container.encode(value); return true
+        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOx3662b3d6f3(value): try container.encode(value); return true
         }
     }
 }
@@ -339,49 +283,37 @@ public indirect enum GetVercelCiInvocationTreeResponseJobsItemTasksItemRunComple
 }
 
 extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompletedConclusion: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompletedConclusion"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompletedConclusion")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompletedConclusion {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2(value)
         }
-        if let value = try? container
-            .decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX7aef495e47.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX7aef495e47.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX7aef495e47(value)
         }
-        if let value = try? container
-            .decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0(value)
         }
-        if let value = try? container
-            .decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX5beb1257fe.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX5beb1257fe.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX5beb1257fe(value)
         }
         return nil
@@ -393,22 +325,22 @@ extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompletedConclusi
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2.self
         ) {
-            return .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2(value)
+            return             .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2(value)
         }
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX7aef495e47.self
         ) {
-            return .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX7aef495e47(value)
+            return             .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX7aef495e47(value)
         }
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0.self
         ) {
-            return .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0(value)
+            return             .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0(value)
         }
         if let value = try? container.decode(
             GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX5beb1257fe.self
         ) {
-            return .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX5beb1257fe(value)
+            return             .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX5beb1257fe(value)
         }
         return nil
     }
@@ -418,51 +350,33 @@ extension GetVercelCiInvocationTreeResponseJobsItemTasksItemRunCompletedConclusi
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2(value): try container
-            .encode(value); return true
-        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX7aef495e47(value): try container
-            .encode(value); return true
-        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0(value): try container
-            .encode(value); return true
-        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX5beb1257fe(value): try container
-            .encode(value); return true
+        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXf3ebed87a2(value): try container.encode(value); return true
+        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX7aef495e47(value): try container.encode(value); return true
+        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteXa779f366f0(value): try container.encode(value); return true
+        case let .getVercelCiInvocationTreeResponseJobsItemTasksItemRunCompleteX5beb1257fe(value): try container.encode(value); return true
         }
     }
 }
 
 public indirect enum GetVercelCiJobRunResponseJobRunCompletedConclusion {
-    case getVercelCiJobRunResponseJobRunCompletedConclusionVariant0(
-        GetVercelCiJobRunResponseJobRunCompletedConclusionVariant0
-    )
-    case getVercelCiJobRunResponseJobRunCompletedConclusionVariant1(
-        GetVercelCiJobRunResponseJobRunCompletedConclusionVariant1
-    )
-    case getVercelCiJobRunResponseJobRunCompletedConclusionVariant2(
-        GetVercelCiJobRunResponseJobRunCompletedConclusionVariant2
-    )
+    case getVercelCiJobRunResponseJobRunCompletedConclusionVariant0(GetVercelCiJobRunResponseJobRunCompletedConclusionVariant0)
+    case getVercelCiJobRunResponseJobRunCompletedConclusionVariant1(GetVercelCiJobRunResponseJobRunCompletedConclusionVariant1)
+    case getVercelCiJobRunResponseJobRunCompletedConclusionVariant2(GetVercelCiJobRunResponseJobRunCompletedConclusionVariant2)
 }
 
 extension GetVercelCiJobRunResponseJobRunCompletedConclusion: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetVercelCiJobRunResponseJobRunCompletedConclusion"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetVercelCiJobRunResponseJobRunCompletedConclusion")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -489,17 +403,17 @@ extension GetVercelCiJobRunResponseJobRunCompletedConclusion {
         if let value = try? container.decode(
             GetVercelCiJobRunResponseJobRunCompletedConclusionVariant0.self
         ) {
-            return .getVercelCiJobRunResponseJobRunCompletedConclusionVariant0(value)
+            return             .getVercelCiJobRunResponseJobRunCompletedConclusionVariant0(value)
         }
         if let value = try? container.decode(
             GetVercelCiJobRunResponseJobRunCompletedConclusionVariant1.self
         ) {
-            return .getVercelCiJobRunResponseJobRunCompletedConclusionVariant1(value)
+            return             .getVercelCiJobRunResponseJobRunCompletedConclusionVariant1(value)
         }
         if let value = try? container.decode(
             GetVercelCiJobRunResponseJobRunCompletedConclusionVariant2.self
         ) {
-            return .getVercelCiJobRunResponseJobRunCompletedConclusionVariant2(value)
+            return             .getVercelCiJobRunResponseJobRunCompletedConclusionVariant2(value)
         }
         return nil
     }
@@ -509,12 +423,9 @@ extension GetVercelCiJobRunResponseJobRunCompletedConclusion {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getVercelCiJobRunResponseJobRunCompletedConclusionVariant0(value): try container
-            .encode(value); return true
-        case let .getVercelCiJobRunResponseJobRunCompletedConclusionVariant1(value): try container
-            .encode(value); return true
-        case let .getVercelCiJobRunResponseJobRunCompletedConclusionVariant2(value): try container
-            .encode(value); return true
+        case let .getVercelCiJobRunResponseJobRunCompletedConclusionVariant0(value): try container.encode(value); return true
+        case let .getVercelCiJobRunResponseJobRunCompletedConclusionVariant1(value): try container.encode(value); return true
+        case let .getVercelCiJobRunResponseJobRunCompletedConclusionVariant2(value): try container.encode(value); return true
         }
     }
 }
@@ -527,25 +438,17 @@ public indirect enum GetVercelCiTaskLogsResponseTasksItemConclusion {
 }
 
 extension GetVercelCiTaskLogsResponseTasksItemConclusion: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetVercelCiTaskLogsResponseTasksItemConclusion"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetVercelCiTaskLogsResponseTasksItemConclusion")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }

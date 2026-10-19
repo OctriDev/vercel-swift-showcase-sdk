@@ -3,48 +3,32 @@
 
 import Foundation
 
-/// User domain models
-public extension UserEventPayloadVariant417 {
-    init(from decoder: Decoder) throws {
+// User domain models
+extension UserEventPayloadVariant417 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expiresAt) else {
-            throw SdkValidationError(
-                field: "expiresAt",
-                code: "required",
-                message: "Validation failed for 'expiresAt': value is required"
-            )
+            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
         }
         guard container.contains(.maxUses) else {
-            throw SdkValidationError(
-                field: "maxUses",
-                code: "required",
-                message: "Validation failed for 'maxUses': value is required"
-            )
+            throw SdkValidationError(field: "maxUses", code: "required", message: "Validation failed for 'maxUses': value is required")
         }
         guard container.contains(.publicId) else {
-            throw SdkValidationError(
-                field: "publicId",
-                code: "required",
-                message: "Validation failed for 'publicId': value is required"
-            )
+            throw SdkValidationError(field: "publicId", code: "required", message: "Validation failed for 'publicId': value is required")
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(
-                field: "role",
-                code: "required",
-                message: "Validation failed for 'role': value is required"
-            )
+            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
         }
-        expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        maxUses = try container.sdkDecodeRequired(.maxUses)
-        publicId = try container.sdkDecodeRequired(.publicId)
-        role = try container.sdkDecodeRequired(.role)
-        name = try container.sdkDecodeIfPresent(.name)
+        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        self.maxUses = try container.sdkDecodeRequired(.maxUses)
+        self.publicId = try container.sdkDecodeRequired(.publicId)
+        self.role = try container.sdkDecodeRequired(.role)
+        self.name = try container.sdkDecodeIfPresent(.name)
     }
 }
 
-public extension UserEventPayloadVariant417 {
-    init(expiresAt: String, maxUses: Double, publicId: String, role: String, name: String? = nil) {
+extension UserEventPayloadVariant417 {
+    public init(expiresAt: String, maxUses: Double, publicId: String, role: String, name: String? = nil) {
         (self.expiresAt, self.maxUses) = (expiresAt, maxUses)
         (self.publicId, self.role) = (publicId, role)
         self.name = name
@@ -167,102 +151,50 @@ public struct AuthUserResourceConfig: Codable {
     }
 
     init() {
-        (awsAccountIds, awsAccountType, blobStores, buildEntitlements, buildQueue) = (nil, nil, nil, nil, nil)
-        (
-            bulkRedirectsFreeLimitOverride,
-            cfZoneName,
-            concurrentBuilds,
-            cronJobsPerProject,
-            customEnvironmentsPerProject
-        ) = (nil, nil, nil, nil, nil)
-        (
-            edgeConfigs,
-            edgeConfigSize,
-            edgeFunctionExecutionTimeoutMs,
-            edgeFunctionMaxSizeBytes,
-            elasticConcurrencyEnabled
-        ) = (nil, nil, nil, nil, nil)
-        (
-            flagsExplorerOverridesThreshold,
-            flagsExplorerUnlimitedOverrides,
-            imageOptimizationType,
-            integrationStores,
-            kvDatabases
-        ) = (nil, nil, nil, nil, nil)
-        (microfrontendGroupsPerTeam, microfrontendProjectsPerGroup, nodeType, postgresDatabases, security) = (
-            nil,
-            nil,
-            nil,
-            nil,
-            nil
-        )
-        (serverlessFunctionMaxDuration, serverlessFunctionMaxMemorySize) = (nil, nil)
+        (self.awsAccountIds, self.awsAccountType, self.blobStores, self.buildEntitlements, self.buildQueue) = (nil, nil, nil, nil, nil)
+        (self.bulkRedirectsFreeLimitOverride, self.cfZoneName, self.concurrentBuilds, self.cronJobsPerProject, self.customEnvironmentsPerProject) = (nil, nil, nil, nil, nil)
+        (self.edgeConfigs, self.edgeConfigSize, self.edgeFunctionExecutionTimeoutMs, self.edgeFunctionMaxSizeBytes, self.elasticConcurrencyEnabled) = (nil, nil, nil, nil, nil)
+        (self.flagsExplorerOverridesThreshold, self.flagsExplorerUnlimitedOverrides, self.imageOptimizationType, self.integrationStores, self.kvDatabases) = (nil, nil, nil, nil, nil)
+        (self.microfrontendGroupsPerTeam, self.microfrontendProjectsPerGroup, self.nodeType, self.postgresDatabases, self.security) = (nil, nil, nil, nil, nil)
+        (self.serverlessFunctionMaxDuration, self.serverlessFunctionMaxMemorySize) = (nil, nil)
     }
 }
 
-public extension AuthUserResourceConfig {
-    init(from decoder: Decoder) throws {
+extension AuthUserResourceConfig {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        awsAccountIds = try container.sdkDecodeIfPresent(.awsAccountIds)
-        awsAccountType = try container.sdkDecodeIfPresent(.awsAccountType)
-        blobStores = try container.sdkDecodeIfPresent(.blobStores)
-        buildEntitlements = try container.sdkDecodeIfPresent(.buildEntitlements)
-        buildQueue = try container.sdkDecodeIfPresent(.buildQueue)
-        bulkRedirectsFreeLimitOverride = try container.sdkDecodeIfPresent(.bulkRedirectsFreeLimitOverride)
-        cfZoneName = try container.sdkDecodeIfPresent(.cfZoneName)
-        concurrentBuilds = try container.sdkDecodeIfPresent(.concurrentBuilds)
-        cronJobsPerProject = try container.sdkDecodeIfPresent(.cronJobsPerProject)
-        customEnvironmentsPerProject = try container.sdkDecodeIfPresent(.customEnvironmentsPerProject)
-        edgeConfigs = try container.sdkDecodeIfPresent(.edgeConfigs)
-        edgeConfigSize = try container.sdkDecodeIfPresent(.edgeConfigSize)
-        edgeFunctionExecutionTimeoutMs = try container.sdkDecodeIfPresent(.edgeFunctionExecutionTimeoutMs)
-        edgeFunctionMaxSizeBytes = try container.sdkDecodeIfPresent(.edgeFunctionMaxSizeBytes)
-        elasticConcurrencyEnabled = try container.sdkDecodeIfPresent(.elasticConcurrencyEnabled)
-        flagsExplorerOverridesThreshold = try container.sdkDecodeIfPresent(.flagsExplorerOverridesThreshold)
-        flagsExplorerUnlimitedOverrides = try container.sdkDecodeIfPresent(.flagsExplorerUnlimitedOverrides)
-        imageOptimizationType = try container.sdkDecodeIfPresent(.imageOptimizationType)
-        integrationStores = try container.sdkDecodeIfPresent(.integrationStores)
-        kvDatabases = try container.sdkDecodeIfPresent(.kvDatabases)
-        microfrontendGroupsPerTeam = try container.sdkDecodeIfPresent(.microfrontendGroupsPerTeam)
-        microfrontendProjectsPerGroup = try container.sdkDecodeIfPresent(.microfrontendProjectsPerGroup)
-        nodeType = try container.sdkDecodeIfPresent(.nodeType)
-        postgresDatabases = try container.sdkDecodeIfPresent(.postgresDatabases)
-        security = try container.sdkDecodeIfPresent(.security)
-        serverlessFunctionMaxDuration = try container.sdkDecodeIfPresent(.serverlessFunctionMaxDuration)
-        serverlessFunctionMaxMemorySize = try container.sdkDecodeIfPresent(.serverlessFunctionMaxMemorySize)
+        self.awsAccountIds = try container.sdkDecodeIfPresent(.awsAccountIds)
+        self.awsAccountType = try container.sdkDecodeIfPresent(.awsAccountType)
+        self.blobStores = try container.sdkDecodeIfPresent(.blobStores)
+        self.buildEntitlements = try container.sdkDecodeIfPresent(.buildEntitlements)
+        self.buildQueue = try container.sdkDecodeIfPresent(.buildQueue)
+        self.bulkRedirectsFreeLimitOverride = try container.sdkDecodeIfPresent(.bulkRedirectsFreeLimitOverride)
+        self.cfZoneName = try container.sdkDecodeIfPresent(.cfZoneName)
+        self.concurrentBuilds = try container.sdkDecodeIfPresent(.concurrentBuilds)
+        self.cronJobsPerProject = try container.sdkDecodeIfPresent(.cronJobsPerProject)
+        self.customEnvironmentsPerProject = try container.sdkDecodeIfPresent(.customEnvironmentsPerProject)
+        self.edgeConfigs = try container.sdkDecodeIfPresent(.edgeConfigs)
+        self.edgeConfigSize = try container.sdkDecodeIfPresent(.edgeConfigSize)
+        self.edgeFunctionExecutionTimeoutMs = try container.sdkDecodeIfPresent(.edgeFunctionExecutionTimeoutMs)
+        self.edgeFunctionMaxSizeBytes = try container.sdkDecodeIfPresent(.edgeFunctionMaxSizeBytes)
+        self.elasticConcurrencyEnabled = try container.sdkDecodeIfPresent(.elasticConcurrencyEnabled)
+        self.flagsExplorerOverridesThreshold = try container.sdkDecodeIfPresent(.flagsExplorerOverridesThreshold)
+        self.flagsExplorerUnlimitedOverrides = try container.sdkDecodeIfPresent(.flagsExplorerUnlimitedOverrides)
+        self.imageOptimizationType = try container.sdkDecodeIfPresent(.imageOptimizationType)
+        self.integrationStores = try container.sdkDecodeIfPresent(.integrationStores)
+        self.kvDatabases = try container.sdkDecodeIfPresent(.kvDatabases)
+        self.microfrontendGroupsPerTeam = try container.sdkDecodeIfPresent(.microfrontendGroupsPerTeam)
+        self.microfrontendProjectsPerGroup = try container.sdkDecodeIfPresent(.microfrontendProjectsPerGroup)
+        self.nodeType = try container.sdkDecodeIfPresent(.nodeType)
+        self.postgresDatabases = try container.sdkDecodeIfPresent(.postgresDatabases)
+        self.security = try container.sdkDecodeIfPresent(.security)
+        self.serverlessFunctionMaxDuration = try container.sdkDecodeIfPresent(.serverlessFunctionMaxDuration)
+        self.serverlessFunctionMaxMemorySize = try container.sdkDecodeIfPresent(.serverlessFunctionMaxMemorySize)
     }
 }
 
-public extension AuthUserResourceConfig {
-    init(
-        awsAccountIds: [String]? = nil,
-        awsAccountType: String? = nil,
-        blobStores: Double? = nil,
-        buildEntitlements: AuthUserResourceConfigBuildEntitlements? = nil,
-        buildQueue: AuthUserResourceConfigBuildQueue? = nil,
-        bulkRedirectsFreeLimitOverride: Double? = nil,
-        cfZoneName: String? = nil,
-        concurrentBuilds: Double? = nil,
-        cronJobsPerProject: Double? = nil,
-        customEnvironmentsPerProject: Double? = nil,
-        edgeConfigs: Double? = nil,
-        edgeConfigSize: Double? = nil,
-        edgeFunctionExecutionTimeoutMs: Double? = nil,
-        edgeFunctionMaxSizeBytes: Double? = nil,
-        elasticConcurrencyEnabled: Bool? = nil,
-        flagsExplorerOverridesThreshold: Double? = nil,
-        flagsExplorerUnlimitedOverrides: Bool? = nil,
-        imageOptimizationType: String? = nil,
-        integrationStores: Double? = nil,
-        kvDatabases: Double? = nil,
-        microfrontendGroupsPerTeam: Double? = nil,
-        microfrontendProjectsPerGroup: Double? = nil,
-        nodeType: String? = nil,
-        postgresDatabases: Double? = nil,
-        security: AuthUserResourceConfigSecurity? = nil,
-        serverlessFunctionMaxDuration: Double? = nil,
-        serverlessFunctionMaxMemorySize: Double? = nil
-    ) {
+extension AuthUserResourceConfig {
+    public init(awsAccountIds: [String]? = nil, awsAccountType: String? = nil, blobStores: Double? = nil, buildEntitlements: AuthUserResourceConfigBuildEntitlements? = nil, buildQueue: AuthUserResourceConfigBuildQueue? = nil, bulkRedirectsFreeLimitOverride: Double? = nil, cfZoneName: String? = nil, concurrentBuilds: Double? = nil, cronJobsPerProject: Double? = nil, customEnvironmentsPerProject: Double? = nil, edgeConfigs: Double? = nil, edgeConfigSize: Double? = nil, edgeFunctionExecutionTimeoutMs: Double? = nil, edgeFunctionMaxSizeBytes: Double? = nil, elasticConcurrencyEnabled: Bool? = nil, flagsExplorerOverridesThreshold: Double? = nil, flagsExplorerUnlimitedOverrides: Bool? = nil, imageOptimizationType: String? = nil, integrationStores: Double? = nil, kvDatabases: Double? = nil, microfrontendGroupsPerTeam: Double? = nil, microfrontendProjectsPerGroup: Double? = nil, nodeType: String? = nil, postgresDatabases: Double? = nil, security: AuthUserResourceConfigSecurity? = nil, serverlessFunctionMaxDuration: Double? = nil, serverlessFunctionMaxMemorySize: Double? = nil) {
         self.init()
         (self.awsAccountIds, self.awsAccountType) = (awsAccountIds, awsAccountType)
         (self.blobStores, self.buildEntitlements) = (blobStores, buildEntitlements)
@@ -349,86 +281,48 @@ public struct UserEventPayloadVariant492: Codable {
         case userAgent
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant492 {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant492 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.actorTokenId) else {
-            throw SdkValidationError(
-                field: "actorTokenId",
-                code: "required",
-                message: "Validation failed for 'actorTokenId': value is required"
-            )
+            throw SdkValidationError(field: "actorTokenId", code: "required", message: "Validation failed for 'actorTokenId': value is required")
         }
         guard container.contains(.tokenId) else {
-            throw SdkValidationError(
-                field: "tokenId",
-                code: "required",
-                message: "Validation failed for 'tokenId': value is required"
-            )
+            throw SdkValidationError(field: "tokenId", code: "required", message: "Validation failed for 'tokenId': value is required")
         }
         guard container.contains(.tokenName) else {
-            throw SdkValidationError(
-                field: "tokenName",
-                code: "required",
-                message: "Validation failed for 'tokenName': value is required"
-            )
+            throw SdkValidationError(field: "tokenName", code: "required", message: "Validation failed for 'tokenName': value is required")
         }
         guard container.contains(.tokenType) else {
-            throw SdkValidationError(
-                field: "tokenType",
-                code: "required",
-                message: "Validation failed for 'tokenType': value is required"
-            )
+            throw SdkValidationError(field: "tokenType", code: "required", message: "Validation failed for 'tokenType': value is required")
         }
-        actorTokenId = try container.sdkDecodeRequired(.actorTokenId)
-        tokenId = try container.sdkDecodeRequired(.tokenId)
-        tokenName = try container.sdkDecodeRequired(.tokenName)
-        tokenType = try container.sdkDecodeRequired(.tokenType)
-        createdByParentTeamId = try container.sdkDecodeIfPresent(.createdByParentTeamId)
-        expired = try container.sdkDecodeIfPresent(.expired)
-        geolocation = try container.sdkDecodeIfPresent(.geolocation)
-        ip = try container.sdkDecodeIfPresent(.ip)
-        leaked = try container.sdkDecodeIfPresent(.leaked)
-        logoutSource = try container.sdkDecodeIfPresent(.logoutSource)
-        origin = try container.sdkDecodeIfPresent(.origin)
-        reason = try container.sdkDecodeIfPresent(.reason)
-        reqId = try container.sdkDecodeIfPresent(.reqId)
-        reqUrl = try container.sdkDecodeIfPresent(.reqUrl)
-        revoked = try container.sdkDecodeIfPresent(.revoked)
-        scope = try container.sdkDecodeIfPresent(.scope)
-        source = try container.sdkDecodeIfPresent(.source)
-        teamId = try container.sdkDecodeIfPresent(.teamId)
-        userAgent = try container.sdkDecodeIfPresent(.userAgent)
+        self.actorTokenId = try container.sdkDecodeRequired(.actorTokenId)
+        self.tokenId = try container.sdkDecodeRequired(.tokenId)
+        self.tokenName = try container.sdkDecodeRequired(.tokenName)
+        self.tokenType = try container.sdkDecodeRequired(.tokenType)
+        self.createdByParentTeamId = try container.sdkDecodeIfPresent(.createdByParentTeamId)
+        self.expired = try container.sdkDecodeIfPresent(.expired)
+        self.geolocation = try container.sdkDecodeIfPresent(.geolocation)
+        self.ip = try container.sdkDecodeIfPresent(.ip)
+        self.leaked = try container.sdkDecodeIfPresent(.leaked)
+        self.logoutSource = try container.sdkDecodeIfPresent(.logoutSource)
+        self.origin = try container.sdkDecodeIfPresent(.origin)
+        self.reason = try container.sdkDecodeIfPresent(.reason)
+        self.reqId = try container.sdkDecodeIfPresent(.reqId)
+        self.reqUrl = try container.sdkDecodeIfPresent(.reqUrl)
+        self.revoked = try container.sdkDecodeIfPresent(.revoked)
+        self.scope = try container.sdkDecodeIfPresent(.scope)
+        self.source = try container.sdkDecodeIfPresent(.source)
+        self.teamId = try container.sdkDecodeIfPresent(.teamId)
+        self.userAgent = try container.sdkDecodeIfPresent(.userAgent)
     }
 }
 
-public extension UserEventPayloadVariant492 {
-    init(
-        actorTokenId: String,
-        tokenId: String,
-        tokenName: String,
-        tokenType: String,
-        createdByParentTeamId: String? = nil,
-        expired: Bool? = nil,
-        geolocation: UserEventPayloadVariant492Geolocation? = nil,
-        ip: String? = nil,
-        leaked: Bool? = nil,
-        logoutSource: UserEventPayloadVariant492LogoutSource? = nil,
-        origin: UserEventPayloadVariant492Origin? = nil,
-        reason: UserEventPayloadVariant492Reason? = nil,
-        reqId: String? = nil,
-        reqUrl: String? = nil,
-        revoked: Bool? = nil,
-        scope: UserEventPayloadVariant492Scope? = nil,
-        source: UserEventPayloadVariant492Source? = nil,
-        teamId: String? = nil,
-        userAgent: String? = nil
-    ) {
+extension UserEventPayloadVariant492 {
+    public init(actorTokenId: String, tokenId: String, tokenName: String, tokenType: String, createdByParentTeamId: String? = nil, expired: Bool? = nil, geolocation: UserEventPayloadVariant492Geolocation? = nil, ip: String? = nil, leaked: Bool? = nil, logoutSource: UserEventPayloadVariant492LogoutSource? = nil, origin: UserEventPayloadVariant492Origin? = nil, reason: UserEventPayloadVariant492Reason? = nil, reqId: String? = nil, reqUrl: String? = nil, revoked: Bool? = nil, scope: UserEventPayloadVariant492Scope? = nil, source: UserEventPayloadVariant492Source? = nil, teamId: String? = nil, userAgent: String? = nil) {
         (self.actorTokenId, self.tokenId) = (actorTokenId, tokenId)
         (self.tokenName, self.tokenType) = (tokenName, tokenType)
         (self.createdByParentTeamId, self.expired) = (createdByParentTeamId, expired)
@@ -460,48 +354,34 @@ public struct UserEventViaItemVariant2: Codable {
         case email
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventViaItemVariant2 {
-    init(from decoder: Decoder) throws {
+extension UserEventViaItemVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        type = try container.sdkDecodeRequired(.type)
-        email = try container.sdkDecodeIfPresent(.email)
-        try sdkValidateRawEnum("type", type, UserEventViaItemVariant2Type.allCases.map(\.rawValue))
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.email = try container.sdkDecodeIfPresent(.email)
+            try sdkValidateRawEnum("type", self.type, UserEventViaItemVariant2Type.allCases.map(\.rawValue))
     }
 }
 
-public extension UserEventViaItemVariant2 {
-    init(id: String, name: String, type: UserEventViaItemVariant2Type, email: String? = nil) throws {
+extension UserEventViaItemVariant2 {
+    public init(id: String, name: String, type: UserEventViaItemVariant2Type, email: String? = nil) throws {
         (self.id, self.name) = (id, name)
         (self.type, self.email) = (type, email)
-        try sdkValidateRawEnum("type", self.type, UserEventViaItemVariant2Type.allCases.map(\.rawValue))
+            try sdkValidateRawEnum("type", self.type, UserEventViaItemVariant2Type.allCases.map(\.rawValue))
     }
 }
 
@@ -514,27 +394,21 @@ public struct UserEventPayloadVariant429: Codable {
         case enabled
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant429 {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant429 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
     }
 }
 
-public extension UserEventPayloadVariant429 {
-    init(enabled: UserEventPayloadVariant429Enabled) {
+extension UserEventPayloadVariant429 {
+    public init(enabled: UserEventPayloadVariant429Enabled) {
         self.enabled = enabled
     }
 }
@@ -561,44 +435,26 @@ public struct UserEventPayloadVariant171LastEditedByPrincipalVariant0: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UserEventPayloadVariant171LastEditedByPrincipalVariant0 {
-    init(from decoder: Decoder) throws {
+extension UserEventPayloadVariant171LastEditedByPrincipalVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.username) else {
-            throw SdkValidationError(
-                field: "username",
-                code: "required",
-                message: "Validation failed for 'username': value is required"
-            )
+            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        type = try container.sdkDecodeRequired(.type)
-        username = try container.sdkDecodeRequired(.username)
-        avatar = try container.sdkDecodeIfPresent(.avatar)
-        name = try container.sdkDecodeIfPresent(.name)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            UserEventPayloadVariant171LastEditedByPrincipalVariant0Type.allCases.map(\.rawValue)
-        )
+        self.id = try container.sdkDecodeRequired(.id)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.username = try container.sdkDecodeRequired(.username)
+        self.avatar = try container.sdkDecodeIfPresent(.avatar)
+        self.name = try container.sdkDecodeIfPresent(.name)
+            try sdkValidateRawEnum("type", self.type, UserEventPayloadVariant171LastEditedByPrincipalVariant0Type.allCases.map(\.rawValue))
     }
 }

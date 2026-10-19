@@ -6,46 +6,28 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension BulkRedirectsMethods {
-    /// Stages a new version of bulk redirects for a project. Supply `projectId` and `teamId` in the request body;
-    /// `redirects` defaults to an empty array when omitted. A successful response includes the staged version and its
-    /// alias.
+extension BulkRedirectsMethods {
+    /// Stages a new version of bulk redirects for a project. Supply `projectId` and `teamId` in the request body; `redirects` defaults to an empty array when omitted. A successful response includes the staged version and its alias.
     ///
     /// Stages new redirects for a project and returns the new version.
     ///
     /// - Parameters:
     /// - teamId2: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func stageRedirects(
-        config: ClientConfig,
-        projectId: String,
-        teamId: String,
-        teamId2: String? = nil,
-        slug: String? = nil,
-        overwrite: Bool? = nil,
-        name: String? = nil,
-        redirects: [StageRedirectsRequestBodyRedirectsItem]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> StageRedirectsResponse {
-        if let name {
+    public static func stageRedirects(config: ClientConfig, projectId: String, teamId: String, teamId2: String? = nil, slug: String? = nil, overwrite: Bool? = nil, name: String? = nil, redirects: [StageRedirectsRequestBodyRedirectsItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> StageRedirectsResponse {
+        if let name = name {
             try validateLength("name", name, max: 256)
         }
 
-        let requestBody = StageRedirectsRequestBody(
-            projectId: projectId,
-            teamId: teamId,
-            overwrite: overwrite,
-            name: name,
-            redirects: redirects
-        )
+        let requestBody = StageRedirectsRequestBody(projectId: projectId, teamId: teamId, overwrite: overwrite, name: name, redirects: redirects)
 
-        return try await (sdkRequest("PUT", "/v1/bulk-redirects", config: config, query: [
+        return try (await sdkRequest("PUT", "/v1/bulk-redirects", config: config, query: [
             SdkQueryParameter("teamId", value: teamId2),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "stageRedirects", options: requestOptions)).data
     }
 
-    struct GetRedirectsOptions: Codable {
+    public struct GetRedirectsOptions: Codable {
         public var projectId: String
         public var versionId: String?
         public var q: String?
@@ -62,19 +44,14 @@ public extension BulkRedirectsMethods {
         }
     }
 
-    /// Lists project-level bulk redirects, with optional filtering and sorting. Use `projectId` to identify the
-    /// project, and `page` and `per_page` to paginate the results.
+    /// Lists project-level bulk redirects, with optional filtering and sorting. Use `projectId` to identify the project, and `page` and `per_page` to paginate the results.
     ///
     /// Get the version history for a project's bulk redirects
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getRedirects(
-        config: ClientConfig,
-        options: GetRedirectsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRedirectsResponse {
+    public static func getRedirects(config: ClientConfig, options: GetRedirectsOptions, requestOptions: RequestOptions? = nil) async throws -> GetRedirectsResponse {
         if let page = options.page {
             try validateRange("page", Double(page), min: 1)
         }
@@ -83,7 +60,7 @@ public extension BulkRedirectsMethods {
             try validateRange("per_page", Double(perPage), min: 10, max: 250)
         }
 
-        return try await (sdkRequest("GET", "/v1/bulk-redirects", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/bulk-redirects", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("versionId", value: options.versionId),
             SdkQueryParameter("q", value: options.q),

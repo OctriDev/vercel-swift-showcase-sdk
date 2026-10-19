@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// DomainsRegistrar domain models
+// DomainsRegistrar domain models
 public typealias CountryCode = String
 
 public typealias DateFromString = String
@@ -23,32 +23,23 @@ public indirect enum PropertyKey {
 }
 
 extension PropertyKey: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
         throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for PropertyKey")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension PropertyKey {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(PropertyKeyVariant2.self) {
-            return .propertyKeyVariant2(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(PropertyKeyVariant2.self) { return .propertyKeyVariant2(value) }
         return nil
     }
 }
@@ -79,41 +70,27 @@ public indirect enum SearchDomainsResponseResultsItem {
 }
 
 extension SearchDomainsResponseResultsItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for SearchDomainsResponseResultsItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for SearchDomainsResponseResultsItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension SearchDomainsResponseResultsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(SearchDomainsResponseResultsItemVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(SearchDomainsResponseResultsItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .searchDomainsResponseResultsItemVariant0(value)
         }
-        if let value = try? container.decode(SearchDomainsResponseResultsItemVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(SearchDomainsResponseResultsItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .searchDomainsResponseResultsItemVariant1(value)
         }
         return nil
@@ -125,12 +102,12 @@ extension SearchDomainsResponseResultsItem {
         if let value = try? container.decode(
             SearchDomainsResponseResultsItemVariant0.self
         ) {
-            return .searchDomainsResponseResultsItemVariant0(value)
+            return             .searchDomainsResponseResultsItemVariant0(value)
         }
         if let value = try? container.decode(
             SearchDomainsResponseResultsItemVariant1.self
         ) {
-            return .searchDomainsResponseResultsItemVariant1(value)
+            return             .searchDomainsResponseResultsItemVariant1(value)
         }
         return nil
     }
@@ -157,35 +134,25 @@ public struct SearchDomainsResponseResultsItemVariant0: Codable {
         case available
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension SearchDomainsResponseResultsItemVariant0 {
-    init(from decoder: Decoder) throws {
+extension SearchDomainsResponseResultsItemVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
         guard container.contains(.available) else {
-            throw SdkValidationError(
-                field: "available",
-                code: "required",
-                message: "Validation failed for 'available': value is required"
-            )
+            throw SdkValidationError(field: "available", code: "required", message: "Validation failed for 'available': value is required")
         }
-        domain = try container.sdkDecodeRequired(.domain)
-        available = try container.sdkDecodeRequired(.available)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.available = try container.sdkDecodeRequired(.available)
     }
 }
 
-public extension SearchDomainsResponseResultsItemVariant0 {
-    init(domain: DomainName, available: Bool) {
+extension SearchDomainsResponseResultsItemVariant0 {
+    public init(domain: DomainName, available: Bool) {
         (self.domain, self.available) = (domain, available)
     }
 }
@@ -205,43 +172,29 @@ public struct InvalidAdditionalContactInfo: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension InvalidAdditionalContactInfo {
-    init(from decoder: Decoder) throws {
+extension InvalidAdditionalContactInfo {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension InvalidAdditionalContactInfo {
-    init(status: Int, code: InvalidAdditionalContactInfoCode, message: String) {
+extension InvalidAdditionalContactInfo {
+    public init(status: Int, code: InvalidAdditionalContactInfoCode, message: String) {
         (self.status, self.code) = (status, code)
         self.message = message
     }
@@ -262,43 +215,29 @@ public struct BadRequest: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension BadRequest {
-    init(from decoder: Decoder) throws {
+extension BadRequest {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension BadRequest {
-    init(status: Int, code: BadRequestCode, message: String) {
+extension BadRequest {
+    public init(status: Int, code: BadRequestCode, message: String) {
         (self.status, self.code) = (status, code)
         self.message = message
     }
@@ -322,67 +261,41 @@ public struct SearchDomainsResponseResultsItemVariant1: Codable {
         case premium
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension SearchDomainsResponseResultsItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension SearchDomainsResponseResultsItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
         guard container.contains(.available) else {
-            throw SdkValidationError(
-                field: "available",
-                code: "required",
-                message: "Validation failed for 'available': value is required"
-            )
+            throw SdkValidationError(field: "available", code: "required", message: "Validation failed for 'available': value is required")
         }
         guard container.contains(.years) else {
-            throw SdkValidationError(
-                field: "years",
-                code: "required",
-                message: "Validation failed for 'years': value is required"
-            )
+            throw SdkValidationError(field: "years", code: "required", message: "Validation failed for 'years': value is required")
         }
         guard container.contains(.price) else {
-            throw SdkValidationError(
-                field: "price",
-                code: "required",
-                message: "Validation failed for 'price': value is required"
-            )
+            throw SdkValidationError(field: "price", code: "required", message: "Validation failed for 'price': value is required")
         }
         guard container.contains(.renewalPrice) else {
-            throw SdkValidationError(
-                field: "renewalPrice",
-                code: "required",
-                message: "Validation failed for 'renewalPrice': value is required"
-            )
+            throw SdkValidationError(field: "renewalPrice", code: "required", message: "Validation failed for 'renewalPrice': value is required")
         }
         guard container.contains(.premium) else {
-            throw SdkValidationError(
-                field: "premium",
-                code: "required",
-                message: "Validation failed for 'premium': value is required"
-            )
+            throw SdkValidationError(field: "premium", code: "required", message: "Validation failed for 'premium': value is required")
         }
-        domain = try container.sdkDecodeRequired(.domain)
-        available = try container.sdkDecodeRequired(.available)
-        years = try container.sdkDecodeRequired(.years)
-        price = try container.sdkDecodeRequired(.price)
-        renewalPrice = try container.sdkDecodeRequired(.renewalPrice)
-        premium = try container.sdkDecodeRequired(.premium)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.available = try container.sdkDecodeRequired(.available)
+        self.years = try container.sdkDecodeRequired(.years)
+        self.price = try container.sdkDecodeRequired(.price)
+        self.renewalPrice = try container.sdkDecodeRequired(.renewalPrice)
+        self.premium = try container.sdkDecodeRequired(.premium)
     }
 }
 
-public extension SearchDomainsResponseResultsItemVariant1 {
-    init(domain: DomainName, available: Bool, years: Double, price: Double, renewalPrice: Double, premium: Bool) {
+extension SearchDomainsResponseResultsItemVariant1 {
+    public init(domain: DomainName, available: Bool, years: Double, price: Double, renewalPrice: Double, premium: Bool) {
         (self.domain, self.available) = (domain, available)
         (self.years, self.price) = (years, price)
         (self.renewalPrice, self.premium) = (renewalPrice, premium)
@@ -407,44 +320,30 @@ public struct Unauthorized: Codable {
         case reason
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension Unauthorized {
-    init(from decoder: Decoder) throws {
+extension Unauthorized {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
-        reason = try container.sdkDecodeIfPresent(.reason)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
+        self.reason = try container.sdkDecodeIfPresent(.reason)
     }
 }
 
-public extension Unauthorized {
-    init(status: Int, code: UnauthorizedCode, message: String, reason: String? = nil) {
+extension Unauthorized {
+    public init(status: Int, code: UnauthorizedCode, message: String, reason: String? = nil) {
         (self.status, self.code) = (status, code)
         (self.message, self.reason) = (message, reason)
     }
@@ -462,35 +361,25 @@ public struct HttpApiDecodeError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension HttpApiDecodeError {
-    init(from decoder: Decoder) throws {
+extension HttpApiDecodeError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.issues) else {
-            throw SdkValidationError(
-                field: "issues",
-                code: "required",
-                message: "Validation failed for 'issues': value is required"
-            )
+            throw SdkValidationError(field: "issues", code: "required", message: "Validation failed for 'issues': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        issues = try container.sdkDecodeRequired(.issues)
-        message = try container.sdkDecodeRequired(.message)
+        self.issues = try container.sdkDecodeRequired(.issues)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension HttpApiDecodeError {
-    init(issues: [Issue], message: String) {
+extension HttpApiDecodeError {
+    public init(issues: [Issue], message: String) {
         (self.issues, self.message) = (issues, message)
     }
 }
@@ -510,43 +399,29 @@ public struct AdditionalContactInfoRequired: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AdditionalContactInfoRequired {
-    init(from decoder: Decoder) throws {
+extension AdditionalContactInfoRequired {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension AdditionalContactInfoRequired {
-    init(status: Int, code: AdditionalContactInfoRequiredCode, message: String) {
+extension AdditionalContactInfoRequired {
+    public init(status: Int, code: AdditionalContactInfoRequiredCode, message: String) {
         (self.status, self.code) = (status, code)
         self.message = message
     }
@@ -567,43 +442,29 @@ public struct BoughtTooRecently: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension BoughtTooRecently {
-    init(from decoder: Decoder) throws {
+extension BoughtTooRecently {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension BoughtTooRecently {
-    init(status: Int, code: BoughtTooRecentlyCode, message: String) {
+extension BoughtTooRecently {
+    public init(status: Int, code: BoughtTooRecentlyCode, message: String) {
         (self.status, self.code) = (status, code)
         self.message = message
     }
@@ -624,7 +485,5 @@ public struct EmojiTldNotSupported: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

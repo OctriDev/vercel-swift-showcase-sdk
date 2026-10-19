@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension EnvironmentMethods {
-    struct ListSharedEnvVariableOptions: Codable {
+extension EnvironmentMethods {
+    public struct ListSharedEnvVariableOptions: Codable {
         public var search: String?
         public var projectId: String?
         public var ids: String?
@@ -21,9 +21,7 @@ public extension EnvironmentMethods {
         public init() {}
     }
 
-    /// Lists shared environment variables for a team, with optional filters for search terms, projects, and variable
-    /// IDs. Use the exclusion filters to omit specified IDs or project associations from the results. The response
-    /// includes variable records and pagination information.
+    /// Lists shared environment variables for a team, with optional filters for search terms, projects, and variable IDs. Use the exclusion filters to omit specified IDs or project associations from the results. The response includes variable records and pagination information.
     ///
     /// Lists all Shared Environment Variables for a team, taking into account optional filters.
     ///
@@ -36,12 +34,8 @@ public extension EnvironmentMethods {
     /// - excludeProjectId2: Filter SharedEnvVariables that belong to a project
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listSharedEnvVariable(
-        config: ClientConfig,
-        options: ListSharedEnvVariableOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListSharedEnvVariableResponse {
-        try await (sdkRequest("GET", "/v1/env", config: config, query: [
+    public static func listSharedEnvVariable(config: ClientConfig, options: ListSharedEnvVariableOptions, requestOptions: RequestOptions? = nil) async throws -> ListSharedEnvVariableResponse {
+        return try (await sdkRequest("GET", "/v1/env", config: config, query: [
             SdkQueryParameter("search", value: options.search),
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("ids", value: options.ids),

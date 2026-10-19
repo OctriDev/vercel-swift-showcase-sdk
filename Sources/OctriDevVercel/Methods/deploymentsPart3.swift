@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DeploymentsMethods {
-    struct UpdateIntegrationDeploymentActionOptions: Codable {
+extension DeploymentsMethods {
+    public struct UpdateIntegrationDeploymentActionOptions: Codable {
         public var deploymentId: String
         public var integrationConfigurationId: String
         public var resourceId: String
@@ -25,16 +25,10 @@ public extension DeploymentsMethods {
         }
     }
 
-    /// Updates an integration action associated with a deployment resource. Use the path parameters to identify the
-    /// deployment, integration installation, resource, and action, then provide any action status or outcome details in
-    /// the body. The update is accepted asynchronously with a 202 response.
+    /// Updates an integration action associated with a deployment resource. Use the path parameters to identify the deployment, integration installation, resource, and action, then provide any action status or outcome details in the body. The update is accepted asynchronously with a 202 response.
     ///
     /// Updates the deployment integration action for the specified integration installation
-    static func updateIntegrationDeploymentAction(
-        config: ClientConfig,
-        options: UpdateIntegrationDeploymentActionOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func updateIntegrationDeploymentAction(config: ClientConfig, options: UpdateIntegrationDeploymentActionOptions, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         if let statusUrl = options.statusUrl {
             try sdkValidatePattern("statusUrl", statusUrl, sdkPattern72c75bbf2232)
             try sdkValidateUri("statusUrl", statusUrl)
@@ -42,32 +36,12 @@ public extension DeploymentsMethods {
 
         let requestBody = UpdateIntegrationDeploymentActionRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v1/deployments/",
-                sdkEncodePathSegment(sdkWireString(options.deploymentId)),
-                "/integrations/",
-                sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)),
-                "/resources/",
-                sdkEncodePathSegment(sdkWireString(options.resourceId)),
-                "/actions/",
-                sdkEncodePathSegment(sdkWireString(options.action)),
-            ].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .empty,
-            operationId: "updateIntegrationDeploymentAction",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(options.deploymentId)), "/integrations/", sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(options.resourceId)), "/actions/", sdkEncodePathSegment(sdkWireString(options.action))].joined(), config: config, body: requestBody, decoder: .empty, operationId: "updateIntegrationDeploymentAction", options: requestOptions)).data
     }
 
-    /// Retrieves a deployment by its unique identifier or hostname. Use `withGitRepoInfo` to include the `gitSource`
-    /// object with commit, branch, and repository metadata. The response includes additional private deployment details
-    /// when the authenticated user or team owns the deployment.
+    /// Retrieves a deployment by its unique identifier or hostname. Use `withGitRepoInfo` to include the `gitSource` object with commit, branch, and repository metadata. The response includes additional private deployment details when the authenticated user or team owns the deployment.
     ///
-    /// Retrieves information for a deployment either by supplying its ID (`id` property) or Hostname (`url` property).
-    /// Additional details will be included when the authenticated user or team is an owner of the deployment.
+    /// Retrieves information for a deployment either by supplying its ID (`id` property) or Hostname (`url` property). Additional details will be included when the authenticated user or team is an owner of the deployment.
     ///
     /// - Parameters:
     /// - idOrUrl: The unique identifier or hostname of the deployment.
@@ -76,26 +50,11 @@ public extension DeploymentsMethods {
     ///   Defaults to `false`.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getDeployment(
-        config: ClientConfig,
-        idOrUrl: String,
-        withGitRepoInfo: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetDeploymentResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v13/deployments/", sdkEncodePathSegment(sdkWireString(idOrUrl))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("withGitRepoInfo", value: withGitRepoInfo),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getDeployment",
-            options: requestOptions
-        )).data
+    public static func getDeployment(config: ClientConfig, idOrUrl: String, withGitRepoInfo: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDeploymentResponse {
+        return try (await sdkRequest("GET", ["/v13/deployments/", sdkEncodePathSegment(sdkWireString(idOrUrl))].joined(), config: config, query: [
+            SdkQueryParameter("withGitRepoInfo", value: withGitRepoInfo),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getDeployment", options: requestOptions)).data
     }
 }

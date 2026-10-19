@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Artifacts domain models
+// Artifacts domain models
 public indirect enum StatusResponse {
     case statusResponseVariant0(StatusResponseVariant0)
     case statusResponseVariant1(StatusResponseVariant1)
@@ -11,23 +11,18 @@ public indirect enum StatusResponse {
 }
 
 extension StatusResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
         throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for StatusResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -48,15 +43,9 @@ extension StatusResponse {
 
 extension StatusResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(StatusResponseVariant0.self) {
-            return .statusResponseVariant0(value)
-        }
-        if let value = try? container.decode(StatusResponseVariant1.self) {
-            return .statusResponseVariant1(value)
-        }
-        if let value = try? container.decode(StatusResponseVariant2.self) {
-            return .statusResponseVariant2(value)
-        }
+        if let value = try? container.decode(StatusResponseVariant0.self) { return .statusResponseVariant0(value) }
+        if let value = try? container.decode(StatusResponseVariant1.self) { return .statusResponseVariant1(value) }
+        if let value = try? container.decode(StatusResponseVariant2.self) { return .statusResponseVariant2(value) }
         return nil
     }
 }
@@ -79,27 +68,21 @@ public struct StatusResponseVariant1: Codable {
         case status
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension StatusResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension StatusResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
+        self.status = try container.sdkDecodeRequired(.status)
     }
 }
 
-public extension StatusResponseVariant1 {
-    init(status: StatusResponseVariant1Status) {
+extension StatusResponseVariant1 {
+    public init(status: StatusResponseVariant1Status) {
         self.status = status
     }
 }
@@ -114,28 +97,22 @@ public struct StatusResponseVariant2: Codable {
         case readOnly
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension StatusResponseVariant2 {
-    init(from decoder: Decoder) throws {
+extension StatusResponseVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        readOnly = try container.sdkDecodeIfPresent(.readOnly)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.readOnly = try container.sdkDecodeIfPresent(.readOnly)
     }
 }
 
-public extension StatusResponseVariant2 {
-    init(status: StatusResponseVariant2Status, readOnly: Bool? = nil) {
+extension StatusResponseVariant2 {
+    public init(status: StatusResponseVariant2Status, readOnly: Bool? = nil) {
         (self.status, self.readOnly) = (status, readOnly)
     }
 }
@@ -147,27 +124,21 @@ public struct StatusResponseVariant0: Codable {
         case status
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension StatusResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension StatusResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
+        self.status = try container.sdkDecodeRequired(.status)
     }
 }
 
-public extension StatusResponseVariant0 {
-    init(status: String) {
+extension StatusResponseVariant0 {
+    public init(status: String) {
         self.status = status
     }
 }
@@ -175,10 +146,7 @@ public extension StatusResponseVariant0 {
 public struct StatusResponseVariant1Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let disabled = StatusResponseVariant1Status(rawValue: "disabled")
     public static let enabled = StatusResponseVariant1Status(rawValue: "enabled")
     public static let overLimit = StatusResponseVariant1Status(rawValue: "over_limit")
@@ -186,7 +154,7 @@ public struct StatusResponseVariant1Status: RawRepresentable, Hashable, Codable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -198,10 +166,7 @@ public struct StatusResponseVariant1Status: RawRepresentable, Hashable, Codable,
 public struct StatusResponseVariant2Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let disabled = StatusResponseVariant2Status(rawValue: "disabled")
     public static let enabled = StatusResponseVariant2Status(rawValue: "enabled")
     public static let overLimit = StatusResponseVariant2Status(rawValue: "over_limit")
@@ -209,7 +174,7 @@ public struct StatusResponseVariant2Status: RawRepresentable, Hashable, Codable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

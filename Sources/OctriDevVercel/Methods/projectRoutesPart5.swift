@@ -6,73 +6,34 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectRoutesMethods {
-    /// Lists the version history for a project's routing rules. The results include the staging version, when one
-    /// exists, followed by production versions in descending recency. Use `isStaging` to identify the staged version
-    /// and `isLive` to identify the current production version.
+extension ProjectRoutesMethods {
+    /// Lists the version history for a project's routing rules. The results include the staging version, when one exists, followed by production versions in descending recency. Use `isStaging` to identify the staged version and `isLive` to identify the current production version.
     ///
-    /// Get the version history for a project's routing rules. Returns the staging version (if one exists) followed by
-    /// production versions, most recent first. The staging version has `isStaging: true` and the current production
-    /// version has `isLive: true`.
+    /// Get the version history for a project's routing rules. Returns the staging version (if one exists) followed by production versions, most recent first. The staging version has `isStaging: true` and the current production version has `isLive: true`.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getRouteVersions(
-        config: ClientConfig,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRouteVersionsResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/routes/versions"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getRouteVersions",
-            options: requestOptions
-        )).data
+    public static func getRouteVersions(config: ClientConfig, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRouteVersionsResponse {
+        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/routes/versions"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getRouteVersions", options: requestOptions)).data
     }
 
-    /// Promotes staged routing rules to production, restores an earlier production version, or discards staged changes.
-    /// Supply the version `id` and choose an `action` of `promote`, `restore`, or `discard`. The response returns the
-    /// resulting routing-rule version.
+    /// Promotes staged routing rules to production, restores an earlier production version, or discards staged changes. Supply the version `id` and choose an `action` of `promote`, `restore`, or `discard`. The response returns the resulting routing-rule version.
     ///
-    /// Promote staged routing rules to production, restore a previous production version, or discard staged changes. -
-    /// `promote`: Publishes the staging version to production. - `restore`: Rolls back to a previous production
-    /// version. - `discard`: Removes the staging version without publishing.
+    /// Promote staged routing rules to production, restore a previous production version, or discard staged changes. - `promote`: Publishes the staging version to production. - `restore`: Rolls back to a previous production version. - `discard`: Removes the staging version without publishing.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func updateRouteVersions(
-        config: ClientConfig,
-        projectId: String,
-        id: String,
-        action: UpdateRouteVersionsRequestBodyAction,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateRouteVersionsResponse {
+    public static func updateRouteVersions(config: ClientConfig, projectId: String, id: String, action: UpdateRouteVersionsRequestBodyAction, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateRouteVersionsResponse {
         let requestBody = UpdateRouteVersionsRequestBody(id: id, action: action)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/routes/versions"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateRouteVersions",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/routes/versions"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateRouteVersions", options: requestOptions)).data
     }
 }

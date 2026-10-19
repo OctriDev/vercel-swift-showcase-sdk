@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ConnectMethods {
-    struct ListConnectorsOptions: Codable {
+extension ConnectMethods {
+    public struct ListConnectorsOptions: Codable {
         public var limit: Int?
         public var cursor: String?
         public var projectId: String?
@@ -21,9 +21,7 @@ public extension ConnectMethods {
         public init() {}
     }
 
-    /// Lists connectors that belong to a team and returns them in cursor-paginated pages. Use filters such as
-    /// `projectId`, `type`, and `service` to narrow the results, and pass the returned `pagination.next` cursor to
-    /// retrieve another page.
+    /// Lists connectors that belong to a team and returns them in cursor-paginated pages. Use filters such as `projectId`, `type`, and `service` to narrow the results, and pass the returned `pagination.next` cursor to retrieve another page.
     ///
     /// List connectors that belong to a team.
     ///
@@ -46,11 +44,7 @@ public extension ConnectMethods {
     ///   If both are omitted, Vercel uses the team associated with the token or the
     ///   authenticated user's default team. The request returns 401 if no team can be
     ///   selected.
-    static func listConnectors(
-        config: ClientConfig,
-        options: ListConnectorsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ConnectConnectorList {
+    public static func listConnectors(config: ClientConfig, options: ListConnectorsOptions, requestOptions: RequestOptions? = nil) async throws -> ConnectConnectorList {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
@@ -59,33 +53,16 @@ public extension ConnectMethods {
             try validateLength("search", search, max: 100)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            "/v2/connect/connectors",
-            config: config,
-            query: [
-                SdkQueryParameter("limit", value: options.limit),
-                SdkQueryParameter("cursor", value: options.cursor),
-                SdkQueryParameter("projectId", value: options.projectId),
-                SdkQueryParameter("search", value: options.search),
-                SdkQueryParameter("type", value: options.type),
-                SdkQueryParameter("service", value: options.service),
-                SdkQueryParameter("sort", value: options.sort),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            decoder: .json,
-            operationId: "listConnectors",
-            options: requestOptions,
-            errors: [
-                "400": ConnectError.self,
-                "401": ConnectError.self,
-                "403": ConnectError.self,
-                "404": ConnectError.self,
-                "409": ConnectError.self,
-                "410": ConnectError.self,
-                "422": ConnectError.self,
-            ]
-        )).data
+        return try (await sdkRequest("GET", "/v2/connect/connectors", config: config, query: [
+            SdkQueryParameter("limit", value: options.limit),
+            SdkQueryParameter("cursor", value: options.cursor),
+            SdkQueryParameter("projectId", value: options.projectId),
+            SdkQueryParameter("search", value: options.search),
+            SdkQueryParameter("type", value: options.type),
+            SdkQueryParameter("service", value: options.service),
+            SdkQueryParameter("sort", value: options.sort),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], decoder: .json, operationId: "listConnectors", options: requestOptions, errors: ["400": ConnectError.self, "401": ConnectError.self, "403": ConnectError.self, "404": ConnectError.self, "409": ConnectError.self, "410": ConnectError.self, "422": ConnectError.self])).data
     }
 }

@@ -6,50 +6,30 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SecurityMethods {
-    /// Triggers activation of a draft firewall configuration version. Supply `configVersion` to select the draft to
-    /// promote; the response contains the activated configuration.
+extension SecurityMethods {
+    /// Triggers activation of a draft firewall configuration version. Supply `configVersion` to select the draft to promote; the response contains the activated configuration.
     ///
     /// Promotes a draft WAF config to an active config
     ///
     /// - Parameters:
     /// - configVersion: The deployed configVersion for the firewall configuration
-    static func createSecurityFirewallConfigByConfigVersionActivate(
-        config: ClientConfig,
-        configVersion: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateSecurityFirewallConfigByConfigVersionActivateResponse {
-        try await (sdkRequest(
-            "POST",
-            ["/v1/security/firewall/config/", sdkEncodePathSegment(sdkWireString(configVersion)), "/activate"].joined(),
-            config: config,
-            decoder: .json,
-            operationId: "createSecurityFirewallConfigByConfigVersionActivate",
-            options: requestOptions
-        )).data
+    public static func createSecurityFirewallConfigByConfigVersionActivate(config: ClientConfig, configVersion: String, requestOptions: RequestOptions? = nil) async throws -> CreateSecurityFirewallConfigByConfigVersionActivateResponse {
+        return try (await sdkRequest("POST", ["/v1/security/firewall/config/", sdkEncodePathSegment(sdkWireString(configVersion)), "/activate"].joined(), config: config, decoder: .json, operationId: "createSecurityFirewallConfigByConfigVersionActivate", options: requestOptions)).data
     }
 
-    /// Retrieves recent active attack data for a project. Use `since` to set the lookback period in days; it defaults
-    /// to one day when omitted.
+    /// Retrieves recent active attack data for a project. Use `since` to set the lookback period in days; it defaults to one day when omitted.
     ///
     /// Retrieve active attack data within the last N days (default: 1 day)
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getActiveAttackStatus(
-        config: ClientConfig,
-        projectId: String,
-        since: Double? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetActiveAttackStatusResponse {
-        if let since {
+    public static func getActiveAttackStatus(config: ClientConfig, projectId: String, since: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetActiveAttackStatusResponse {
+        if let since = since {
             try validateRange("since", Double(since), min: 1)
         }
 
-        return try await (sdkRequest("GET", "/v1/security/firewall/attack-status", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/security/firewall/attack-status", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("since", value: since),
             SdkQueryParameter("teamId", value: teamId),

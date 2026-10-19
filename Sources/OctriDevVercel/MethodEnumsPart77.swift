@@ -23,14 +23,10 @@ public enum RemoveProjectEnvResponseVariant2ContentHintVariant7Type: String, Cas
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemSandboxRegion: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemSandboxRegion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let arn1 = GetMicrofrontendsInGroupResponseProjectsItemSandboxRegion(rawValue: "arn1")
     public static let bom1 = GetMicrofrontendsInGroupResponseProjectsItemSandboxRegion(rawValue: "bom1")
     public static let cdg1 = GetMicrofrontendsInGroupResponseProjectsItemSandboxRegion(rawValue: "cdg1")
@@ -53,7 +49,7 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemSandboxRegion: RawRepr
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -62,29 +58,21 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemSandboxRegion: RawRepr
     }
 }
 
-public struct ReadAccessGroupResponseTeamPermissionsItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ReadAccessGroupResponseTeamPermissionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let aiGatewayBudgetManager =
-        ReadAccessGroupResponseTeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let aiGatewayBudgetManager = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
     public static let aiGatewayCredits = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "AiGatewayCredits")
     public static let aiGatewaySettings = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "AiGatewaySettings")
-    public static let aiGatewayTranscriptsManager =
-        ReadAccessGroupResponseTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
-    public static let aiGatewayTranscriptsViewer =
-        ReadAccessGroupResponseTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
+    public static let aiGatewayTranscriptsManager = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
+    public static let aiGatewayTranscriptsViewer = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
     public static let aiGatewayUser = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "AiGatewayUser")
     public static let connectorManager = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "ConnectorManager")
     public static let createProject = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "CreateProject")
     public static let envVariableManager = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "EnvVariableManager")
     public static let environmentManager = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "EnvironmentManager")
-    public static let fullProductionDeployment =
-        ReadAccessGroupResponseTeamPermissionsItem(rawValue: "FullProductionDeployment")
+    public static let fullProductionDeployment = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "FullProductionDeployment")
     public static let integrationManager = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "IntegrationManager")
     public static let orgAdmin = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "OrgAdmin")
     public static let orgViewer = ReadAccessGroupResponseTeamPermissionsItem(rawValue: "OrgViewer")
@@ -96,7 +84,7 @@ public struct ReadAccessGroupResponseTeamPermissionsItem: RawRepresentable, Hash
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -122,21 +110,17 @@ public enum UpdateFlagResponseEnvironmentsValueFallthroughVariant1Type: String, 
     }
 }
 
-public struct GetDrainsResponseDrainsVariant1ItemStatus: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainsResponseDrainsVariant1ItemStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let disabled = GetDrainsResponseDrainsVariant1ItemStatus(rawValue: "disabled")
     public static let enabled = GetDrainsResponseDrainsVariant1ItemStatus(rawValue: "enabled")
     public static let errored = GetDrainsResponseDrainsVariant1ItemStatus(rawValue: "errored")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -146,20 +130,16 @@ public struct GetDrainsResponseDrainsVariant1ItemStatus: RawRepresentable, Hasha
 }
 
 /// The delivery log format
-public struct CreateConfigurableLogDrainRequestBodyDeliveryFormat: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateConfigurableLogDrainRequestBodyDeliveryFormat: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let json = CreateConfigurableLogDrainRequestBodyDeliveryFormat(rawValue: "json")
     public static let ndjson = CreateConfigurableLogDrainRequestBodyDeliveryFormat(rawValue: "ndjson")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -168,22 +148,16 @@ public struct CreateConfigurableLogDrainRequestBodyDeliveryFormat: RawRepresenta
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemResourceConfigBuildMaXb2f2129a0a: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemResourceConfigBuildMaXb2f2129a0a: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let elastic =
-        ListProjectsResponseVariant2ProjectsItemResourceConfigBuildMaXb2f2129a0a(rawValue: "elastic")
-    public static let fixed =
-        ListProjectsResponseVariant2ProjectsItemResourceConfigBuildMaXb2f2129a0a(rawValue: "fixed")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let elastic = ListProjectsResponseVariant2ProjectsItemResourceConfigBuildMaXb2f2129a0a(rawValue: "elastic")
+    public static let fixed = ListProjectsResponseVariant2ProjectsItemResourceConfigBuildMaXb2f2129a0a(rawValue: "fixed")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -192,20 +166,15 @@ public struct ListProjectsResponseVariant2ProjectsItemResourceConfigBuildMaXb2f2
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7b9242a428: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7b9242a428: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let number =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7b9242a428(rawValue: "number")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let number = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7b9242a428(rawValue: "number")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -214,24 +183,18 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7b92
     }
 }
 
-public struct DeleteProjectAvatarResponsePassportDeploymentType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct DeleteProjectAvatarResponsePassportDeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let all = DeleteProjectAvatarResponsePassportDeploymentType(rawValue: "all")
-    public static let allExceptCustomDomains =
-        DeleteProjectAvatarResponsePassportDeploymentType(rawValue: "all_except_custom_domains")
+    public static let allExceptCustomDomains = DeleteProjectAvatarResponsePassportDeploymentType(rawValue: "all_except_custom_domains")
     public static let preview = DeleteProjectAvatarResponsePassportDeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews =
-        DeleteProjectAvatarResponsePassportDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let prodDeploymentUrlsAndAllPreviews = DeleteProjectAvatarResponsePassportDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

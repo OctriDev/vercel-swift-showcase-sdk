@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical vcr operation model declarations
+// Canonical vcr operation model declarations
 public struct AddRepositoryPermissionResponse: Codable {
     /// A team's access grant to a Vercel Container Registry repository.
     public var permission: VcrRepositoryPermission
@@ -16,27 +16,21 @@ public struct AddRepositoryPermissionResponse: Codable {
         case permission
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AddRepositoryPermissionResponse {
-    init(from decoder: Decoder) throws {
+extension AddRepositoryPermissionResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.permission) else {
-            throw SdkValidationError(
-                field: "permission",
-                code: "required",
-                message: "Validation failed for 'permission': value is required"
-            )
+            throw SdkValidationError(field: "permission", code: "required", message: "Validation failed for 'permission': value is required")
         }
-        permission = try container.sdkDecodeRequired(.permission)
+        self.permission = try container.sdkDecodeRequired(.permission)
     }
 }
 
-public extension AddRepositoryPermissionResponse {
-    init(permission: VcrRepositoryPermission) {
+extension AddRepositoryPermissionResponse {
+    public init(permission: VcrRepositoryPermission) {
         self.permission = permission
     }
 }
@@ -50,27 +44,21 @@ public struct GetRepositoryTagResponse: Codable {
         case tag
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetRepositoryTagResponse {
-    init(from decoder: Decoder) throws {
+extension GetRepositoryTagResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.tag) else {
-            throw SdkValidationError(
-                field: "tag",
-                code: "required",
-                message: "Validation failed for 'tag': value is required"
-            )
+            throw SdkValidationError(field: "tag", code: "required", message: "Validation failed for 'tag': value is required")
         }
-        tag = try container.sdkDecodeRequired(.tag)
+        self.tag = try container.sdkDecodeRequired(.tag)
     }
 }
 
-public extension GetRepositoryTagResponse {
-    init(tag: VcrTag) {
+extension GetRepositoryTagResponse {
+    public init(tag: VcrTag) {
         self.tag = tag
     }
 }
@@ -83,27 +71,21 @@ public struct CreateRepositoryResponse: Codable {
         case repository
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateRepositoryResponse {
-    init(from decoder: Decoder) throws {
+extension CreateRepositoryResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.repository) else {
-            throw SdkValidationError(
-                field: "repository",
-                code: "required",
-                message: "Validation failed for 'repository': value is required"
-            )
+            throw SdkValidationError(field: "repository", code: "required", message: "Validation failed for 'repository': value is required")
         }
-        repository = try container.sdkDecodeRequired(.repository)
+        self.repository = try container.sdkDecodeRequired(.repository)
     }
 }
 
-public extension CreateRepositoryResponse {
-    init(repository: VcrRepository) {
+extension CreateRepositoryResponse {
+    public init(repository: VcrRepository) {
         self.repository = repository
     }
 }
@@ -116,27 +98,21 @@ public struct GetRepositoryImageResponse: Codable {
         case image
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetRepositoryImageResponse {
-    init(from decoder: Decoder) throws {
+extension GetRepositoryImageResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.image) else {
-            throw SdkValidationError(
-                field: "image",
-                code: "required",
-                message: "Validation failed for 'image': value is required"
-            )
+            throw SdkValidationError(field: "image", code: "required", message: "Validation failed for 'image': value is required")
         }
-        image = try container.sdkDecodeRequired(.image)
+        self.image = try container.sdkDecodeRequired(.image)
     }
 }
 
-public extension GetRepositoryImageResponse {
-    init(image: VcrImageDetail) {
+extension GetRepositoryImageResponse {
+    public init(image: VcrImageDetail) {
         self.image = image
     }
 }
@@ -150,28 +126,22 @@ public struct ListRepositoryTagsResponse: Codable {
         case nextCursor
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListRepositoryTagsResponse {
-    init(from decoder: Decoder) throws {
+extension ListRepositoryTagsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.tags) else {
-            throw SdkValidationError(
-                field: "tags",
-                code: "required",
-                message: "Validation failed for 'tags': value is required"
-            )
+            throw SdkValidationError(field: "tags", code: "required", message: "Validation failed for 'tags': value is required")
         }
-        tags = try container.sdkDecodeRequired(.tags)
-        nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+        self.tags = try container.sdkDecodeRequired(.tags)
+        self.nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
     }
 }
 
-public extension ListRepositoryTagsResponse {
-    init(tags: [ListRepositoryTagsResponseTagsItem], nextCursor: String? = nil) {
+extension ListRepositoryTagsResponse {
+    public init(tags: [ListRepositoryTagsResponseTagsItem], nextCursor: String? = nil) {
         (self.tags, self.nextCursor) = (tags, nextCursor)
     }
 }
@@ -184,30 +154,28 @@ public struct GetRepositoryResponse: Codable {
         case repository
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetRepositoryResponse {
-    init(from decoder: Decoder) throws {
+extension GetRepositoryResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.repository) else {
-            throw SdkValidationError(
-                field: "repository",
-                code: "required",
-                message: "Validation failed for 'repository': value is required"
-            )
+            throw SdkValidationError(field: "repository", code: "required", message: "Validation failed for 'repository': value is required")
         }
-        repository = try container.sdkDecodeRequired(.repository)
+        self.repository = try container.sdkDecodeRequired(.repository)
     }
 }
 
-public extension GetRepositoryResponse {
-    init(repository: VcrRepository) {
+extension GetRepositoryResponse {
+    public init(repository: VcrRepository) {
         self.repository = repository
     }
 }
+
+
+
+
 
 public struct ListRepositoryTagsResponseTagsItem: Codable {
     public var createdAt: String
@@ -236,42 +204,28 @@ public struct ListRepositoryTagsResponseTagsItem: Codable {
         case pushedBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListRepositoryTagsResponseTagsItem {
-    init(from decoder: Decoder) throws {
+extension ListRepositoryTagsResponseTagsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        imageId = try container.sdkDecodeRequired(.imageId)
-        kind = try container.sdkDecodeRequired(.kind)
-        manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
-        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        status = try container.sdkDecodeNullable(.status)
-        tag = try container.sdkDecodeRequired(.tag)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        arch = try container.sdkDecodeIfPresent(.arch)
-        platform = try container.sdkDecodeIfPresent(.platform)
-        pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.imageId = try container.sdkDecodeRequired(.imageId)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
+        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        self.status = try container.sdkDecodeNullable(.status)
+        self.tag = try container.sdkDecodeRequired(.tag)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.arch = try container.sdkDecodeIfPresent(.arch)
+        self.platform = try container.sdkDecodeIfPresent(.platform)
+        self.pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
     }
 }
 
-public extension ListRepositoryTagsResponseTagsItem {
-    init(
-        createdAt: String,
-        imageId: String,
-        kind: ListRepositoryTagsResponseTagsItemKind,
-        manifestDigest: String,
-        sizeInBytes: Double,
-        status: ListRepositoryTagsResponseTagsItemStatus?,
-        tag: String,
-        updatedAt: String,
-        arch: String? = nil,
-        platform: String? = nil,
-        pushedBy: String? = nil
-    ) {
+extension ListRepositoryTagsResponseTagsItem {
+    public init(createdAt: String, imageId: String, kind: ListRepositoryTagsResponseTagsItemKind, manifestDigest: String, sizeInBytes: Double, status: ListRepositoryTagsResponseTagsItemStatus?, tag: String, updatedAt: String, arch: String? = nil, platform: String? = nil, pushedBy: String? = nil) {
         (self.createdAt, self.imageId) = (createdAt, imageId)
         (self.kind, self.manifestDigest) = (kind, manifestDigest)
         (self.sizeInBytes, self.status) = (sizeInBytes, status)
@@ -290,35 +244,25 @@ public struct GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponse: Codabl
         case tags
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponse {
-    init(from decoder: Decoder) throws {
+extension GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.tags) else {
-            throw SdkValidationError(
-                field: "tags",
-                code: "required",
-                message: "Validation failed for 'tags': value is required"
-            )
+            throw SdkValidationError(field: "tags", code: "required", message: "Validation failed for 'tags': value is required")
         }
-        name = try container.sdkDecodeRequired(.name)
-        tags = try container.sdkDecodeRequired(.tags)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.tags = try container.sdkDecodeRequired(.tags)
     }
 }
 
-public extension GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponse {
-    init(name: String, tags: [String]) {
+extension GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponse {
+    public init(name: String, tags: [String]) {
         (self.name, self.tags) = (name, tags)
     }
 }

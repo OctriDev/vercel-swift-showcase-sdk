@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VercelCiMethods {
-    struct GetVercelCiTaskLogsOptions: Codable {
+extension VercelCiMethods {
+    public struct GetVercelCiTaskLogsOptions: Codable {
         public var invocationId: String
         public var attempt: String
         public var task: [String]?
@@ -24,13 +24,9 @@ public extension VercelCiMethods {
         }
     }
 
-    /// Lists log lines for tasks in a specific invocation attempt, grouped by task. Use `task`, `conclusion`, and
-    /// `level` to filter the results, or use `search` to return only tasks with matching lines. Search returns at most
-    /// 1,000 matching lines and ignores `limit`.
+    /// Lists log lines for tasks in a specific invocation attempt, grouped by task. Use `task`, `conclusion`, and `level` to filter the results, or use `search` to return only tasks with matching lines. Search returns at most 1,000 matching lines and ignores `limit`.
     ///
-    /// Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be
-    /// narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks. With
-    /// `search`, every matching task is searched at once and only tasks with matching lines are returned.
+    /// Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks. With `search`, every matching task is searched at once and only tasks with matching lines are returned.
     ///
     /// - Parameters:
     /// - task: Only return tasks with one of these names (e.g., \"web#test\").
@@ -42,11 +38,7 @@ public extension VercelCiMethods {
     /// - limit: Maximum number of tasks to return (default: 10, max: 25).
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getVercelCiTaskLogs(
-        config: ClientConfig,
-        options: GetVercelCiTaskLogsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetVercelCiTaskLogsResponse {
+    public static func getVercelCiTaskLogs(config: ClientConfig, options: GetVercelCiTaskLogsOptions, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiTaskLogsResponse {
         if let task = options.task {
             try validateItems("task", task, min: 1)
         }
@@ -63,28 +55,14 @@ public extension VercelCiMethods {
             try validateLength("search", search, max: 256)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            [
-                "/v1/vercel-ci/invocations/",
-                sdkEncodePathSegment(sdkWireString(options.invocationId)),
-                "/attempts/",
-                sdkEncodePathSegment(sdkWireString(options.attempt)),
-                "/task-logs",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("task", values: options.task, style: "form", explode: true),
-                SdkQueryParameter("conclusion", values: options.conclusion, style: "form", explode: true),
-                SdkQueryParameter("level", values: options.level, style: "form", explode: true),
-                SdkQueryParameter("search", value: options.search),
-                SdkQueryParameter("limit", value: options.limit),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            decoder: .json,
-            operationId: "getVercelCiTaskLogs",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(options.invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(options.attempt)), "/task-logs"].joined(), config: config, query: [
+            SdkQueryParameter("task", values: options.task, style: "form", explode: true),
+            SdkQueryParameter("conclusion", values: options.conclusion, style: "form", explode: true),
+            SdkQueryParameter("level", values: options.level, style: "form", explode: true),
+            SdkQueryParameter("search", value: options.search),
+            SdkQueryParameter("limit", value: options.limit),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], decoder: .json, operationId: "getVercelCiTaskLogs", options: requestOptions)).data
     }
 }

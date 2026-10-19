@@ -6,84 +6,48 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let botCategory =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "bot_category")
-    public static let botName =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "bot_name")
-    public static let botProtection =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "bot_protection")
-    public static let botStatus =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "bot_status")
-    public static let cookie =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "cookie")
-    public static let domainEnvironment =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "domain_environment")
-    public static let environment =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "environment")
-    public static let geoAsNumber =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_as_number")
-    public static let geoCity =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_city")
-    public static let geoContinent =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_continent")
-    public static let geoCountry =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_country")
-    public static let geoCountryRegion =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_country_region")
-    public static let header =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "header")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let botCategory = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "bot_category")
+    public static let botName = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "bot_name")
+    public static let botProtection = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "bot_protection")
+    public static let botStatus = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "bot_status")
+    public static let cookie = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "cookie")
+    public static let domainEnvironment = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "domain_environment")
+    public static let environment = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "environment")
+    public static let geoAsNumber = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_as_number")
+    public static let geoCity = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_city")
+    public static let geoContinent = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_continent")
+    public static let geoCountry = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_country")
+    public static let geoCountryRegion = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "geo_country_region")
+    public static let header = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "header")
     public static let host = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "host")
-    public static let ipAddress =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "ip_address")
-    public static let ja3Digest =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "ja3_digest")
-    public static let ja4Digest =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "ja4_digest")
-    public static let method =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "method")
+    public static let ipAddress = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "ip_address")
+    public static let ja3Digest = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "ja3_digest")
+    public static let ja4Digest = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "ja4_digest")
+    public static let method = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "method")
     public static let path = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "path")
-    public static let `protocol` =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "protocol")
-    public static let query =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "query")
-    public static let rateLimitApiId =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "rate_limit_api_id")
-    public static let rawPath =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "raw_path")
-    public static let region =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "region")
-    public static let responseCode =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "response_code")
-    public static let route =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "route")
-    public static let ruleset =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "ruleset")
-    public static let scheme =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "scheme")
-    public static let serverAction =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "server_action")
-    public static let sharedCondition =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "shared_condition")
-    public static let targetPath =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "target_path")
-    public static let trafficSource =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "traffic_source")
-    public static let trustedSource =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "trusted_source")
-    public static let userAgent =
-        CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "user_agent")
+    public static let `protocol` = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "protocol")
+    public static let query = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "query")
+    public static let rateLimitApiId = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "rate_limit_api_id")
+    public static let rawPath = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "raw_path")
+    public static let region = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "region")
+    public static let responseCode = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "response_code")
+    public static let route = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "route")
+    public static let ruleset = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "ruleset")
+    public static let scheme = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "scheme")
+    public static let serverAction = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "server_action")
+    public static let sharedCondition = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "shared_condition")
+    public static let targetPath = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "target_path")
+    public static let trafficSource = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "traffic_source")
+    public static let trustedSource = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "trusted_source")
+    public static let userAgent = CreateConditionalBypassResponseResultConditionGroupItemConditX89b4ba9fa9(rawValue: "user_agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -93,14 +57,10 @@ public struct CreateConditionalBypassResponseResultConditionGroupItemConditX89b4
 }
 
 /// The current status of the resource
-public struct GetIntegrationResourcesResponseResourcesItemStatus: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetIntegrationResourcesResponseResourcesItemStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let error = GetIntegrationResourcesResponseResourcesItemStatus(rawValue: "error")
     public static let onboarding = GetIntegrationResourcesResponseResourcesItemStatus(rawValue: "onboarding")
     public static let pending = GetIntegrationResourcesResponseResourcesItemStatus(rawValue: "pending")
@@ -111,7 +71,7 @@ public struct GetIntegrationResourcesResponseResourcesItemStatus: RawRepresentab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -140,17 +100,14 @@ public enum GetVercelCiInvocationResponseInvocationSetupConclusionResultVariant2
 public struct UpdateCheckResponseStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let completed = UpdateCheckResponseStatus(rawValue: "completed")
     public static let registered = UpdateCheckResponseStatus(rawValue: "registered")
     public static let running = UpdateCheckResponseStatus(rawValue: "running")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -159,19 +116,15 @@ public struct UpdateCheckResponseStatus: RawRepresentable, Hashable, Codable, Se
     }
 }
 
-public struct UploadProjectAvatarResponseSecurityLogHeadersVariant1: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UploadProjectAvatarResponseSecurityLogHeadersVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let unknown = UploadProjectAvatarResponseSecurityLogHeadersVariant1(rawValue: "*")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -181,14 +134,10 @@ public struct UploadProjectAvatarResponseSecurityLogHeadersVariant1: RawRepresen
 }
 
 /// The sources from which logs are currently being delivered to this log drain.
-public struct GetIntegrationLogDrainsResponseItemSourcesItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetIntegrationLogDrainsResponseItemSourcesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let build = GetIntegrationLogDrainsResponseItemSourcesItem(rawValue: "build")
     public static let edge = GetIntegrationLogDrainsResponseItemSourcesItem(rawValue: "edge")
     public static let external = GetIntegrationLogDrainsResponseItemSourcesItem(rawValue: "external")
@@ -199,7 +148,7 @@ public struct GetIntegrationLogDrainsResponseItemSourcesItem: RawRepresentable, 
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -208,20 +157,16 @@ public struct GetIntegrationLogDrainsResponseItemSourcesItem: RawRepresentable, 
     }
 }
 
-public struct GetProjectsResponseSecurityRulesetsValueRateLimitAlgo: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetProjectsResponseSecurityRulesetsValueRateLimitAlgo: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let fixedWindow = GetProjectsResponseSecurityRulesetsValueRateLimitAlgo(rawValue: "fixed_window")
     public static let tokenBucket = GetProjectsResponseSecurityRulesetsValueRateLimitAlgo(rawValue: "token_bucket")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -233,10 +178,7 @@ public struct GetProjectsResponseSecurityRulesetsValueRateLimitAlgo: RawRepresen
 public struct EditRouteResponseRouteRouteType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let redirect = EditRouteResponseRouteRouteType(rawValue: "redirect")
     public static let rewrite = EditRouteResponseRouteRouteType(rawValue: "rewrite")
     public static let setStatus = EditRouteResponseRouteRouteType(rawValue: "set_status")
@@ -244,7 +186,7 @@ public struct EditRouteResponseRouteRouteType: RawRepresentable, Hashable, Codab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -253,19 +195,15 @@ public struct EditRouteResponseRouteRouteType: RawRepresentable, Hashable, Codab
     }
 }
 
-public struct RemoveProjectEnvResponseVariant1InternalContentHintType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct RemoveProjectEnvResponseVariant1InternalContentHintType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let flagsSecret = RemoveProjectEnvResponseVariant1InternalContentHintType(rawValue: "flags-secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

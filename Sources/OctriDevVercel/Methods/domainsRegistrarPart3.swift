@@ -6,78 +6,27 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DomainsRegistrarMethods {
-    /// Retrieves base price data for a top-level domain (TLD); premium domains may have different prices. Use `years`
-    /// to request a registration term, or omit it to use the TLD's minimum term. For premium-domain pricing, use the
-    /// endpoint for getting price data for a domain.
+extension DomainsRegistrarMethods {
+    /// Retrieves base price data for a top-level domain (TLD); premium domains may have different prices. Use `years` to request a registration term, or omit it to use the TLD's minimum term. For premium-domain pricing, use the endpoint for getting price data for a domain.
     ///
-    /// Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have
-    /// different prices. Use the [Get price data for a
-    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain)
-    /// endpoint to get the price data for a specific domain.
+    /// Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have different prices. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to get the price data for a specific domain.
     ///
     /// - Parameters:
     /// - years: The number of years to get the price for. If not provided, the
     ///   minimum number of years for the TLD will be used.
-    static func getTldPrice(
-        config: ClientConfig,
-        tld: TldName,
-        years: String? = nil,
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetTldPriceResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/registrar/tlds/", sdkEncodePathSegment(sdkWireString(tld)), "/price"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("years", value: years),
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            decoder: .json,
-            operationId: "getTldPrice",
-            options: requestOptions,
-            errors: [
-                "401": Unauthorized.self,
-                "403": NotAuthorizedForScope.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+    public static func getTldPrice(config: ClientConfig, tld: TldName, years: String? = nil, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetTldPriceResponse {
+        return try (await sdkRequest("GET", ["/v1/registrar/tlds/", sdkEncodePathSegment(sdkWireString(tld)), "/price"].joined(), config: config, query: [
+            SdkQueryParameter("years", value: years),
+            SdkQueryParameter("teamId", value: teamId),
+        ], decoder: .json, operationId: "getTldPrice", options: requestOptions, errors: ["401": Unauthorized.self, "403": NotAuthorizedForScope.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 
-    /// Retrieves the availability status for a specific domain. Use `domain` to check whether the name is available
-    /// before attempting to purchase it. If it is available, you can purchase it through the single-domain or
-    /// multiple-domain purchase endpoint.
+    /// Retrieves the availability status for a specific domain. Use `domain` to check whether the name is available before attempting to purchase it. If it is available, you can purchase it through the single-domain or multiple-domain purchase endpoint.
     ///
-    /// Get availability for a specific domain. If the domain is available, it can be purchased using the [Buy a
-    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the
-    /// [Buy multiple
-    /// domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
-    static func getDomainAvailability(
-        config: ClientConfig,
-        domain: DomainName,
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetDomainAvailabilityResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/availability"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            decoder: .json,
-            operationId: "getDomainAvailability",
-            options: requestOptions,
-            errors: [
-                "400": HttpApiDecodeError.self,
-                "401": Unauthorized.self,
-                "403": NotAuthorizedForScope.self,
-                "404": NotFound.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+    /// Get availability for a specific domain. If the domain is available, it can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
+    public static func getDomainAvailability(config: ClientConfig, domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainAvailabilityResponse {
+        return try (await sdkRequest("GET", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/availability"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], decoder: .json, operationId: "getDomainAvailability", options: requestOptions, errors: ["400": HttpApiDecodeError.self, "401": Unauthorized.self, "403": NotAuthorizedForScope.self, "404": NotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 }

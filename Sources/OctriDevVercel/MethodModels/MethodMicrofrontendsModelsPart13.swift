@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical microfrontends operation model declarations
+// Canonical microfrontends operation model declarations
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
     enum CodingKeys: String, CodingKey {
         case accessGroup
@@ -302,8 +302,8 @@ extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.init(sdkDefaults: ())
         try sdkDecodeFieldsPart1(container)

@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Vcr domain models
+// Vcr domain models
 public indirect enum VcrImageLayer {
     case vcrImageLayerVariant0(VcrImageLayerVariant0)
     case vcrImageLayerVariant1(VcrImageLayerVariant1)
@@ -12,23 +12,18 @@ public indirect enum VcrImageLayer {
 }
 
 extension VcrImageLayer: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
         throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for VcrImageLayer")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -52,18 +47,10 @@ extension VcrImageLayer {
 
 extension VcrImageLayer {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(VcrImageLayerVariant0.self) {
-            return .vcrImageLayerVariant0(value)
-        }
-        if let value = try? container.decode(VcrImageLayerVariant1.self) {
-            return .vcrImageLayerVariant1(value)
-        }
-        if let value = try? container.decode(VcrImageLayerVariant2.self) {
-            return .vcrImageLayerVariant2(value)
-        }
-        if let value = try? container.decode(VcrImageLayerVariant3.self) {
-            return .vcrImageLayerVariant3(value)
-        }
+        if let value = try? container.decode(VcrImageLayerVariant0.self) { return .vcrImageLayerVariant0(value) }
+        if let value = try? container.decode(VcrImageLayerVariant1.self) { return .vcrImageLayerVariant1(value) }
+        if let value = try? container.decode(VcrImageLayerVariant2.self) { return .vcrImageLayerVariant2(value) }
+        if let value = try? container.decode(VcrImageLayerVariant3.self) { return .vcrImageLayerVariant3(value) }
         return nil
     }
 }
@@ -92,28 +79,22 @@ public struct VcrRepositoryList: Codable {
         case nextCursor
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrRepositoryList {
-    init(from decoder: Decoder) throws {
+extension VcrRepositoryList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.repositories) else {
-            throw SdkValidationError(
-                field: "repositories",
-                code: "required",
-                message: "Validation failed for 'repositories': value is required"
-            )
+            throw SdkValidationError(field: "repositories", code: "required", message: "Validation failed for 'repositories': value is required")
         }
-        repositories = try container.sdkDecodeRequired(.repositories)
-        nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+        self.repositories = try container.sdkDecodeRequired(.repositories)
+        self.nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
     }
 }
 
-public extension VcrRepositoryList {
-    init(repositories: [VcrRepository], nextCursor: String? = nil) {
+extension VcrRepositoryList {
+    public init(repositories: [VcrRepository], nextCursor: String? = nil) {
         (self.repositories, self.nextCursor) = (repositories, nextCursor)
     }
 }
@@ -166,44 +147,29 @@ public struct VcrImageDetail: Codable {
         case pushedBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrImageDetail {
-    init(from decoder: Decoder) throws {
+extension VcrImageDetail {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        kind = try container.sdkDecodeRequired(.kind)
-        layers = try container.sdkDecodeRequired(.layers)
-        manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
-        repositoryId = try container.sdkDecodeRequired(.repositoryId)
-        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        status = try container.sdkDecodeNullable(.status)
-        tags = try container.sdkDecodeRequired(.tags)
-        arch = try container.sdkDecodeIfPresent(.arch)
-        platform = try container.sdkDecodeIfPresent(.platform)
-        pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.layers = try container.sdkDecodeRequired(.layers)
+        self.manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
+        self.repositoryId = try container.sdkDecodeRequired(.repositoryId)
+        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        self.status = try container.sdkDecodeNullable(.status)
+        self.tags = try container.sdkDecodeRequired(.tags)
+        self.arch = try container.sdkDecodeIfPresent(.arch)
+        self.platform = try container.sdkDecodeIfPresent(.platform)
+        self.pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
     }
 }
 
-public extension VcrImageDetail {
-    init(
-        createdAt: String,
-        id: String,
-        kind: VcrImageDetailKind,
-        layers: [VcrImageLayer],
-        manifestDigest: String,
-        repositoryId: String,
-        sizeInBytes: Double,
-        status: VcrImageDetailStatus?,
-        tags: [String],
-        arch: String? = nil,
-        platform: String? = nil,
-        pushedBy: String? = nil
-    ) {
+extension VcrImageDetail {
+    public init(createdAt: String, id: String, kind: VcrImageDetailKind, layers: [VcrImageLayer], manifestDigest: String, repositoryId: String, sizeInBytes: Double, status: VcrImageDetailStatus?, tags: [String], arch: String? = nil, platform: String? = nil, pushedBy: String? = nil) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.kind, self.layers) = (kind, layers)
         (self.manifestDigest, self.repositoryId) = (manifestDigest, repositoryId)
@@ -225,28 +191,22 @@ public struct VcrRepositoryPermissionList: Codable {
         case nextCursor
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrRepositoryPermissionList {
-    init(from decoder: Decoder) throws {
+extension VcrRepositoryPermissionList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.permissions) else {
-            throw SdkValidationError(
-                field: "permissions",
-                code: "required",
-                message: "Validation failed for 'permissions': value is required"
-            )
+            throw SdkValidationError(field: "permissions", code: "required", message: "Validation failed for 'permissions': value is required")
         }
-        permissions = try container.sdkDecodeRequired(.permissions)
-        nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+        self.permissions = try container.sdkDecodeRequired(.permissions)
+        self.nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
     }
 }
 
-public extension VcrRepositoryPermissionList {
-    init(permissions: [VcrRepositoryPermission], nextCursor: String? = nil) {
+extension VcrRepositoryPermissionList {
+    public init(permissions: [VcrRepositoryPermission], nextCursor: String? = nil) {
         (self.permissions, self.nextCursor) = (permissions, nextCursor)
     }
 }
@@ -298,42 +258,28 @@ public struct VcrTag: Codable {
         case pushedBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrTag {
-    init(from decoder: Decoder) throws {
+extension VcrTag {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        imageId = try container.sdkDecodeRequired(.imageId)
-        kind = try container.sdkDecodeRequired(.kind)
-        manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
-        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        status = try container.sdkDecodeNullable(.status)
-        tag = try container.sdkDecodeRequired(.tag)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        arch = try container.sdkDecodeIfPresent(.arch)
-        platform = try container.sdkDecodeIfPresent(.platform)
-        pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.imageId = try container.sdkDecodeRequired(.imageId)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
+        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        self.status = try container.sdkDecodeNullable(.status)
+        self.tag = try container.sdkDecodeRequired(.tag)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.arch = try container.sdkDecodeIfPresent(.arch)
+        self.platform = try container.sdkDecodeIfPresent(.platform)
+        self.pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
     }
 }
 
-public extension VcrTag {
-    init(
-        createdAt: String,
-        imageId: String,
-        kind: VcrTagKind,
-        manifestDigest: String,
-        sizeInBytes: Double,
-        status: VcrTagStatus?,
-        tag: String,
-        updatedAt: String,
-        arch: String? = nil,
-        platform: String? = nil,
-        pushedBy: String? = nil
-    ) {
+extension VcrTag {
+    public init(createdAt: String, imageId: String, kind: VcrTagKind, manifestDigest: String, sizeInBytes: Double, status: VcrTagStatus?, tag: String, updatedAt: String, arch: String? = nil, platform: String? = nil, pushedBy: String? = nil) {
         (self.createdAt, self.imageId) = (createdAt, imageId)
         (self.kind, self.manifestDigest) = (kind, manifestDigest)
         (self.sizeInBytes, self.status) = (sizeInBytes, status)
@@ -365,51 +311,33 @@ public struct VcrRepositoryPermission: Codable {
         case teamSlug
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrRepositoryPermission {
-    init(from decoder: Decoder) throws {
+extension VcrRepositoryPermission {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.repositoryId) else {
-            throw SdkValidationError(
-                field: "repositoryId",
-                code: "required",
-                message: "Validation failed for 'repositoryId': value is required"
-            )
+            throw SdkValidationError(field: "repositoryId", code: "required", message: "Validation failed for 'repositoryId': value is required")
         }
         guard container.contains(.teamId) else {
-            throw SdkValidationError(
-                field: "teamId",
-                code: "required",
-                message: "Validation failed for 'teamId': value is required"
-            )
+            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
         }
         guard container.contains(.teamSlug) else {
-            throw SdkValidationError(
-                field: "teamSlug",
-                code: "required",
-                message: "Validation failed for 'teamSlug': value is required"
-            )
+            throw SdkValidationError(field: "teamSlug", code: "required", message: "Validation failed for 'teamSlug': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        repositoryId = try container.sdkDecodeRequired(.repositoryId)
-        teamId = try container.sdkDecodeRequired(.teamId)
-        teamSlug = try container.sdkDecodeRequired(.teamSlug)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.repositoryId = try container.sdkDecodeRequired(.repositoryId)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
+        self.teamSlug = try container.sdkDecodeRequired(.teamSlug)
     }
 }
 
-public extension VcrRepositoryPermission {
-    init(createdAt: String, repositoryId: String, teamId: String, teamSlug: String) {
+extension VcrRepositoryPermission {
+    public init(createdAt: String, repositoryId: String, teamId: String, teamSlug: String) {
         (self.createdAt, self.repositoryId) = (createdAt, repositoryId)
         (self.teamId, self.teamSlug) = (teamId, teamSlug)
     }
@@ -439,74 +367,41 @@ public struct VcrImageLayerVariant3: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrImageLayerVariant3 {
-    init(from decoder: Decoder) throws {
+extension VcrImageLayerVariant3 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdBy) else {
-            throw SdkValidationError(
-                field: "createdBy",
-                code: "required",
-                message: "Validation failed for 'createdBy': value is required"
-            )
+            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
         }
         guard container.contains(.digest) else {
-            throw SdkValidationError(
-                field: "digest",
-                code: "required",
-                message: "Validation failed for 'digest': value is required"
-            )
+            throw SdkValidationError(field: "digest", code: "required", message: "Validation failed for 'digest': value is required")
         }
         guard container.contains(.operation) else {
-            throw SdkValidationError(
-                field: "operation",
-                code: "required",
-                message: "Validation failed for 'operation': value is required"
-            )
+            throw SdkValidationError(field: "operation", code: "required", message: "Validation failed for 'operation': value is required")
         }
         guard container.contains(.sizeBytes) else {
-            throw SdkValidationError(
-                field: "sizeBytes",
-                code: "required",
-                message: "Validation failed for 'sizeBytes': value is required"
-            )
+            throw SdkValidationError(field: "sizeBytes", code: "required", message: "Validation failed for 'sizeBytes': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        createdBy = try container.sdkDecodeNullable(.createdBy)
-        digest = try container.sdkDecodeNullable(.digest)
-        operation = try container.sdkDecodeRequired(.operation)
-        sizeBytes = try container.sdkDecodeNullable(.sizeBytes)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeNullable(.value)
+        self.createdBy = try container.sdkDecodeNullable(.createdBy)
+        self.digest = try container.sdkDecodeNullable(.digest)
+        self.operation = try container.sdkDecodeRequired(.operation)
+        self.sizeBytes = try container.sdkDecodeNullable(.sizeBytes)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeNullable(.value)
     }
 }
 
-public extension VcrImageLayerVariant3 {
-    init(
-        createdBy: String?,
-        digest: String?,
-        operation: VcrImageLayerVariant3Operation,
-        sizeBytes: Double?,
-        type: VcrImageLayerVariant3Type,
-        value: String?
-    ) {
+extension VcrImageLayerVariant3 {
+    public init(createdBy: String?, digest: String?, operation: VcrImageLayerVariant3Operation, sizeBytes: Double?, type: VcrImageLayerVariant3Type, value: String?) {
         (self.createdBy, self.digest) = (createdBy, digest)
         (self.operation, self.sizeBytes) = (operation, sizeBytes)
         (self.type, self.value) = (type, value)
@@ -558,42 +453,28 @@ public struct VcrImageListItem: Codable {
         case pushedBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrImageListItem {
-    init(from decoder: Decoder) throws {
+extension VcrImageListItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        kind = try container.sdkDecodeRequired(.kind)
-        manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
-        repositoryId = try container.sdkDecodeRequired(.repositoryId)
-        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        status = try container.sdkDecodeNullable(.status)
-        tags = try container.sdkDecodeRequired(.tags)
-        arch = try container.sdkDecodeIfPresent(.arch)
-        platform = try container.sdkDecodeIfPresent(.platform)
-        pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
+        self.repositoryId = try container.sdkDecodeRequired(.repositoryId)
+        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        self.status = try container.sdkDecodeNullable(.status)
+        self.tags = try container.sdkDecodeRequired(.tags)
+        self.arch = try container.sdkDecodeIfPresent(.arch)
+        self.platform = try container.sdkDecodeIfPresent(.platform)
+        self.pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
     }
 }
 
-public extension VcrImageListItem {
-    init(
-        createdAt: String,
-        id: String,
-        kind: VcrImageListItemKind,
-        manifestDigest: String,
-        repositoryId: String,
-        sizeInBytes: Double,
-        status: VcrImageListItemStatus?,
-        tags: [String],
-        arch: String? = nil,
-        platform: String? = nil,
-        pushedBy: String? = nil
-    ) {
+extension VcrImageListItem {
+    public init(createdAt: String, id: String, kind: VcrImageListItemKind, manifestDigest: String, repositoryId: String, sizeInBytes: Double, status: VcrImageListItemStatus?, tags: [String], arch: String? = nil, platform: String? = nil, pushedBy: String? = nil) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.kind, self.manifestDigest) = (kind, manifestDigest)
         (self.repositoryId, self.sizeInBytes) = (repositoryId, sizeInBytes)
@@ -615,22 +496,16 @@ public struct VcrImageList: Codable {
         case nextCursor
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrImageList {
-    init(from decoder: Decoder) throws {
+extension VcrImageList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.images) else {
-            throw SdkValidationError(
-                field: "images",
-                code: "required",
-                message: "Validation failed for 'images': value is required"
-            )
+            throw SdkValidationError(field: "images", code: "required", message: "Validation failed for 'images': value is required")
         }
-        images = try container.sdkDecodeRequired(.images)
-        nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+        self.images = try container.sdkDecodeRequired(.images)
+        self.nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
     }
 }

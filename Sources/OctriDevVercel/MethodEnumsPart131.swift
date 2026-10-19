@@ -8,20 +8,16 @@ import Foundation
 #endif
 /// CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64.
 /// Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access.
-public struct CreateSandboxesV2RequestBodyArchitecture: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateSandboxesV2RequestBodyArchitecture: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let amd64 = CreateSandboxesV2RequestBodyArchitecture(rawValue: "amd64")
     public static let arm64 = CreateSandboxesV2RequestBodyArchitecture(rawValue: "arm64")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -30,23 +26,17 @@ public struct CreateSandboxesV2RequestBodyArchitecture: RawRepresentable, Hashab
     }
 }
 
-public struct CreateProjectRequestBodyEnvironmentVariablesItemTargetVariant0: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateProjectRequestBodyEnvironmentVariablesItemTargetVariant0: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let production =
-        CreateProjectRequestBodyEnvironmentVariablesItemTargetVariant0(rawValue: "production")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let production = CreateProjectRequestBodyEnvironmentVariablesItemTargetVariant0(rawValue: "production")
     public static let preview = CreateProjectRequestBodyEnvironmentVariablesItemTargetVariant0(rawValue: "preview")
-    public static let development =
-        CreateProjectRequestBodyEnvironmentVariablesItemTargetVariant0(rawValue: "development")
+    public static let development = CreateProjectRequestBodyEnvironmentVariablesItemTargetVariant0(rawValue: "development")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -72,20 +62,15 @@ public enum ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitiXa52ffd
     }
 }
 
-public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProXb5a0361614: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProXb5a0361614: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let radioButton =
-        GetConfigurationProductsResponseProductsItemMetadataSchemaProXb5a0361614(rawValue: "radio-button")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let radioButton = GetConfigurationProductsResponseProductsItemMetadataSchemaProXb5a0361614(rawValue: "radio-button")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -94,20 +79,16 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProXb5a0
     }
 }
 
-public struct UpdateMicrofrontendsResponseResourceConfigBuildMachineSelection: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseResourceConfigBuildMachineSelection: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let elastic = UpdateMicrofrontendsResponseResourceConfigBuildMachineSelection(rawValue: "elastic")
     public static let fixed = UpdateMicrofrontendsResponseResourceConfigBuildMachineSelection(rawValue: "fixed")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -116,24 +97,17 @@ public struct UpdateMicrofrontendsResponseResourceConfigBuildMachineSelection: R
     }
 }
 
-public struct CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let eq = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "eq")
     public static let eq2 = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "!eq")
     public static let oneOf = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "oneOf")
     public static let oneOf2 = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "!oneOf")
-    public static let containsAllOf =
-        CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "containsAllOf")
-    public static let containsAnyOf =
-        CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "containsAnyOf")
-    public static let containsNoneOf =
-        CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "containsNoneOf")
+    public static let containsAllOf = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "containsAllOf")
+    public static let containsAnyOf = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "containsAnyOf")
+    public static let containsNoneOf = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "containsNoneOf")
     public static let startsWith = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "startsWith")
     public static let startsWith2 = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "!startsWith")
     public static let endsWith = CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp(rawValue: "endsWith")
@@ -153,7 +127,7 @@ public struct CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp: RawRep
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -163,14 +137,10 @@ public struct CreateFlagSegmentRequestBodyDataRulesItemConditionsItemCmp: RawRep
 }
 
 /// Computed route type based on the route configuration. Only present in API responses, not stored in S3.
-public struct GetRoutesResponseVariant3RoutesItemRouteType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetRoutesResponseVariant3RoutesItemRouteType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let redirect = GetRoutesResponseVariant3RoutesItemRouteType(rawValue: "redirect")
     public static let rewrite = GetRoutesResponseVariant3RoutesItemRouteType(rawValue: "rewrite")
     public static let setStatus = GetRoutesResponseVariant3RoutesItemRouteType(rawValue: "set_status")
@@ -178,7 +148,7 @@ public struct GetRoutesResponseVariant3RoutesItemRouteType: RawRepresentable, Ha
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -190,17 +160,14 @@ public struct GetRoutesResponseVariant3RoutesItemRouteType: RawRepresentable, Ha
 public struct GetCheckResponseStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let completed = GetCheckResponseStatus(rawValue: "completed")
     public static let registered = GetCheckResponseStatus(rawValue: "registered")
     public static let running = GetCheckResponseStatus(rawValue: "running")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -226,20 +193,15 @@ public enum GetAliasResponseProtectionBypassValueVariant0Scope: String, CaseIter
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXacc6e26aa5: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXacc6e26aa5: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let boolean =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXacc6e26aa5(rawValue: "boolean")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let boolean = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXacc6e26aa5(rawValue: "boolean")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

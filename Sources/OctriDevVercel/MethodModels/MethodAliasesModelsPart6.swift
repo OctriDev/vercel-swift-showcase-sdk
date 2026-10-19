@@ -7,28 +7,28 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical aliases operation model declarations
+// Canonical aliases operation model declarations
 extension ListAliasesForDeploymentResponseAliasesItemProtectionBypassValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
         if let value = try? container.decode(
             ListAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant0.self
         ) {
-            return .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant0(value)
+            return             .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant0(value)
         }
         if let value = try? container.decode(
             ListAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant1.self
         ) {
-            return .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant1(value)
+            return             .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant1(value)
         }
         if let value = try? container.decode(
             ListAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant2.self
         ) {
-            return .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant2(value)
+            return             .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant2(value)
         }
         if let value = try? container.decode(
             ListAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant3.self
         ) {
-            return .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant3(value)
+            return             .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant3(value)
         }
         return nil
     }
@@ -38,14 +38,10 @@ extension ListAliasesForDeploymentResponseAliasesItemProtectionBypassValue {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant0(value): try container
-            .encode(value); return true
-        case let .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant1(value): try container
-            .encode(value); return true
-        case let .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant2(value): try container
-            .encode(value); return true
-        case let .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant3(value): try container
-            .encode(value); return true
+        case let .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant0(value): try container.encode(value); return true
+        case let .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant1(value): try container.encode(value); return true
+        case let .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant2(value): try container.encode(value); return true
+        case let .listAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant3(value): try container.encode(value); return true
         }
     }
 }

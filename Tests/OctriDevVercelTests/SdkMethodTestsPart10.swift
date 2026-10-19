@@ -6,8 +6,7 @@ import Foundation
 import XCTest
 
 extension SdkMethodTests {
-    func testGetObservabilityConfigurationProjectsGetObservabilityConfigurXef903cf413ReachesMockAndDecodesResponse(
-    ) async throws {
+    func testGetObservabilityConfigurationProjectsGetObservabilityConfigurXef903cf413ReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -42,8 +41,7 @@ extension SdkMethodTests {
         )
     }
 
-    func testGetObservabilitySchemaByMetricIdGetObservabilitySchemaByMetricIdReachesMockAndDecodesResponse(
-    ) async throws {
+    func testGetObservabilitySchemaByMetricIdGetObservabilitySchemaByMetricIdReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -114,9 +112,9 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getOrder(
-                orderId: decoded("\"order-1\""),
-                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-            )
+            orderId: decoded("\"order-1\""),
+            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+        )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)

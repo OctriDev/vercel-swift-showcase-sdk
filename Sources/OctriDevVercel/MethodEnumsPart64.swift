@@ -6,21 +6,17 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct ListProjectsResponseVariant0ItemTargetsValuePlan: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemTargetsValuePlan: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let enterprise = ListProjectsResponseVariant0ItemTargetsValuePlan(rawValue: "enterprise")
     public static let hobby = ListProjectsResponseVariant0ItemTargetsValuePlan(rawValue: "hobby")
     public static let pro = ListProjectsResponseVariant0ItemTargetsValuePlan(rawValue: "pro")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -29,19 +25,15 @@ public struct ListProjectsResponseVariant0ItemTargetsValuePlan: RawRepresentable
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVXb81e5b37d1: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVXb81e5b37d1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let unknown = GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVXb81e5b37d1(rawValue: "*")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -85,16 +77,11 @@ public enum CreateFlagResponseEnvironmentsValueFallthroughVariant2Type: String, 
 }
 
 /// Framework slug, when the service has one (omitted otherwise).
-public struct GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let actixWeb =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "actix-web")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let actixWeb = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "actix-web")
     public static let angular = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "angular")
     public static let ash = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "ash")
     public static let astro = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "astro")
@@ -102,23 +89,18 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework:
     public static let blitzjs = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "blitzjs")
     public static let brunch = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "brunch")
     public static let bun = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "bun")
-    public static let container =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "container")
-    public static let createReactApp =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "create-react-app")
+    public static let container = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "container")
+    public static let createReactApp = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "create-react-app")
     public static let django = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "django")
-    public static let docusaurus =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "docusaurus")
-    public static let docusaurus2 =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "docusaurus-2")
+    public static let docusaurus = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "docusaurus")
+    public static let docusaurus2 = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "docusaurus-2")
     public static let dojo = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "dojo")
     public static let eleventy = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "eleventy")
     public static let elysia = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "elysia")
     public static let ember = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "ember")
     public static let eve = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "eve")
     public static let express = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "express")
-    public static let factoryEve =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "factory-eve")
+    public static let factoryEve = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "factory-eve")
     public static let fastapi = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "fastapi")
     public static let fasthtml = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "fasthtml")
     public static let fastify = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "fastify")
@@ -131,15 +113,12 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework:
     public static let hono = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "hono")
     public static let hugo = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "hugo")
     public static let hydrogen = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "hydrogen")
-    public static let ionicAngular =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "ionic-angular")
-    public static let ionicReact =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "ionic-react")
+    public static let ionicAngular = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "ionic-angular")
+    public static let ionicReact = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "ionic-react")
     public static let jekyll = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "jekyll")
     public static let koa = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "koa")
     public static let mastra = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "mastra")
-    public static let middleman =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "middleman")
+    public static let middleman = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "middleman")
     public static let nestjs = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "nestjs")
     public static let nextjs = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "nextjs")
     public static let nitro = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "nitro")
@@ -149,40 +128,29 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework:
     public static let polymer = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "polymer")
     public static let preact = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "preact")
     public static let python = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "python")
-    public static let reactRouter =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "react-router")
-    public static let redwoodjs =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "redwoodjs")
+    public static let reactRouter = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "react-router")
+    public static let redwoodjs = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "redwoodjs")
     public static let remix = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "remix")
     public static let ruby = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "ruby")
     public static let rust = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "rust")
     public static let saber = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "saber")
     public static let sanity = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "sanity")
-    public static let sanityV2 =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "sanity-v2")
+    public static let sanityV2 = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "sanity-v2")
     public static let sapper = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "sapper")
     public static let scully = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "scully")
     public static let services = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "services")
-    public static let solidstart =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "solidstart")
-    public static let solidstart1 =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "solidstart-1")
+    public static let solidstart = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "solidstart")
+    public static let solidstart1 = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "solidstart-1")
     public static let stencil = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "stencil")
-    public static let storybook =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "storybook")
+    public static let storybook = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "storybook")
     public static let svelte = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "svelte")
-    public static let sveltekit =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "sveltekit")
-    public static let sveltekit1 =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "sveltekit-1")
-    public static let tanstackStart =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "tanstack-start-lovable")
+    public static let sveltekit = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "sveltekit")
+    public static let sveltekit1 = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "sveltekit-1")
+    public static let tanstackStart = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "tanstack-start")
+    public static let tanstackStartLovable = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "umijs")
     public static let vite = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "vite")
-    public static let vitepress =
-        GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "vitepress")
+    public static let vitepress = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "vitepress")
     public static let vue = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "vue")
     public static let vuepress = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "vuepress")
     public static let xmcp = GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework(rawValue: "xmcp")
@@ -190,7 +158,7 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework:
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -199,22 +167,16 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemServicesItemFramework:
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7a025f2ad7: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7a025f2ad7: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let create =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7a025f2ad7(rawValue: "create")
-    public static let update =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7a025f2ad7(rawValue: "update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7a025f2ad7(rawValue: "create")
+    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7a025f2ad7(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

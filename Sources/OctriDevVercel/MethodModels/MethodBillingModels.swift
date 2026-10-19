@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical billing operation model declarations
+// Canonical billing operation model declarations
 /// Contract commitment information describing terms within a contract. New in FOCUS v1.3 - tracks commitment terms
 /// separate from cost/usage rows. For Vercel: - Pro: $20 monthly spend commitment - Enterprise: MIU allocation per
 /// period (usage commitment)
@@ -58,46 +58,30 @@ public struct ListContractCommitmentsResponse: Codable {
         case contractCommitmentQuantity = "ContractCommitmentQuantity"
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListContractCommitmentsResponse {
-    init(from decoder: Decoder) throws {
+extension ListContractCommitmentsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        billingCurrency = try container.sdkDecodeRequired(.billingCurrency)
-        contractCommitmentCategory = try container.sdkDecodeRequired(.contractCommitmentCategory)
-        contractCommitmentId = try container.sdkDecodeRequired(.contractCommitmentId)
-        contractCommitmentPeriodEnd = try container.sdkDecodeRequired(.contractCommitmentPeriodEnd)
-        contractCommitmentPeriodStart = try container.sdkDecodeRequired(.contractCommitmentPeriodStart)
-        contractCommitmentType = try container.sdkDecodeRequired(.contractCommitmentType)
-        contractCommitmentUnit = try container.sdkDecodeRequired(.contractCommitmentUnit)
-        contractId = try container.sdkDecodeRequired(.contractId)
-        contractPeriodEnd = try container.sdkDecodeRequired(.contractPeriodEnd)
-        contractPeriodStart = try container.sdkDecodeRequired(.contractPeriodStart)
-        contractCommitmentCost = try container.sdkDecodeIfPresent(.contractCommitmentCost)
-        contractCommitmentDescription = try container.sdkDecodeIfPresent(.contractCommitmentDescription)
-        contractCommitmentQuantity = try container.sdkDecodeIfPresent(.contractCommitmentQuantity)
+        self.billingCurrency = try container.sdkDecodeRequired(.billingCurrency)
+        self.contractCommitmentCategory = try container.sdkDecodeRequired(.contractCommitmentCategory)
+        self.contractCommitmentId = try container.sdkDecodeRequired(.contractCommitmentId)
+        self.contractCommitmentPeriodEnd = try container.sdkDecodeRequired(.contractCommitmentPeriodEnd)
+        self.contractCommitmentPeriodStart = try container.sdkDecodeRequired(.contractCommitmentPeriodStart)
+        self.contractCommitmentType = try container.sdkDecodeRequired(.contractCommitmentType)
+        self.contractCommitmentUnit = try container.sdkDecodeRequired(.contractCommitmentUnit)
+        self.contractId = try container.sdkDecodeRequired(.contractId)
+        self.contractPeriodEnd = try container.sdkDecodeRequired(.contractPeriodEnd)
+        self.contractPeriodStart = try container.sdkDecodeRequired(.contractPeriodStart)
+        self.contractCommitmentCost = try container.sdkDecodeIfPresent(.contractCommitmentCost)
+        self.contractCommitmentDescription = try container.sdkDecodeIfPresent(.contractCommitmentDescription)
+        self.contractCommitmentQuantity = try container.sdkDecodeIfPresent(.contractCommitmentQuantity)
     }
 }
 
-public extension ListContractCommitmentsResponse {
-    init(
-        billingCurrency: String,
-        contractCommitmentCategory: ListContractCommitmentsResponseContractCommitmentCategory,
-        contractCommitmentId: String,
-        contractCommitmentPeriodEnd: String,
-        contractCommitmentPeriodStart: String,
-        contractCommitmentType: String,
-        contractCommitmentUnit: String,
-        contractId: String,
-        contractPeriodEnd: String,
-        contractPeriodStart: String,
-        contractCommitmentCost: Double? = nil,
-        contractCommitmentDescription: String? = nil,
-        contractCommitmentQuantity: Double? = nil
-    ) {
+extension ListContractCommitmentsResponse {
+    public init(billingCurrency: String, contractCommitmentCategory: ListContractCommitmentsResponseContractCommitmentCategory, contractCommitmentId: String, contractCommitmentPeriodEnd: String, contractCommitmentPeriodStart: String, contractCommitmentType: String, contractCommitmentUnit: String, contractId: String, contractPeriodEnd: String, contractPeriodStart: String, contractCommitmentCost: Double? = nil, contractCommitmentDescription: String? = nil, contractCommitmentQuantity: Double? = nil) {
         self.billingCurrency = billingCurrency
         self.contractCommitmentCategory = contractCommitmentCategory
         self.contractCommitmentId = contractCommitmentId
@@ -111,6 +95,10 @@ public extension ListContractCommitmentsResponse {
         self.contractCommitmentQuantity = contractCommitmentQuantity
     }
 }
+
+
+
+
 
 public struct BuyCreditsRequestBodyItem: Codable {
     /// The type of item to purchase.
@@ -126,65 +114,45 @@ public struct BuyCreditsRequestBodyItem: Codable {
         case amount
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension BuyCreditsRequestBodyItem {
-    init(from decoder: Decoder) throws {
+extension BuyCreditsRequestBodyItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.creditType) else {
-            throw SdkValidationError(
-                field: "creditType",
-                code: "required",
-                message: "Validation failed for 'creditType': value is required"
-            )
+            throw SdkValidationError(field: "creditType", code: "required", message: "Validation failed for 'creditType': value is required")
         }
         guard container.contains(.amount) else {
-            throw SdkValidationError(
-                field: "amount",
-                code: "required",
-                message: "Validation failed for 'amount': value is required"
-            )
+            throw SdkValidationError(field: "amount", code: "required", message: "Validation failed for 'amount': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        creditType = try container.sdkDecodeRequired(.creditType)
-        amount = try container.sdkDecodeRequired(.amount)
-        try validateRange(
-            "amount",
-            Double(amount),
-            min: 1,
-            max: nil,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+        self.type = try container.sdkDecodeRequired(.type)
+        self.creditType = try container.sdkDecodeRequired(.creditType)
+        self.amount = try container.sdkDecodeRequired(.amount)
+            try validateRange("amount", Double(self.amount), min: 1, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
     }
 }
 
-public extension BuyCreditsRequestBodyItem {
-    init(type: BuyCreditsRequestBodyItemType, creditType: BuyCreditsRequestBodyItemCreditType, amount: Int) throws {
+extension BuyCreditsRequestBodyItem {
+    public init(type: BuyCreditsRequestBodyItemType, creditType: BuyCreditsRequestBodyItemCreditType, amount: Int) throws {
         (self.type, self.creditType) = (type, creditType)
         self.amount = amount
-        try validateRange(
-            "amount",
-            Double(self.amount),
-            min: 1,
-            max: nil,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+            try validateRange("amount", Double(self.amount), min: 1, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 /// Extension of the base schema for Focus charges. Includes pricing information for all customers.
 public struct ListBillingChargesResponse: Codable {
@@ -246,58 +214,36 @@ public struct ListBillingChargesResponse: Codable {
         case serviceCategory = "ServiceCategory"
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListBillingChargesResponse {
-    init(from decoder: Decoder) throws {
+extension ListBillingChargesResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        billedCost = try container.sdkDecodeRequired(.billedCost)
-        billingCurrency = try container.sdkDecodeRequired(.billingCurrency)
-        chargeCategory = try container.sdkDecodeRequired(.chargeCategory)
-        chargePeriodEnd = try container.sdkDecodeRequired(.chargePeriodEnd)
-        chargePeriodStart = try container.sdkDecodeRequired(.chargePeriodStart)
-        consumedQuantity = try container.sdkDecodeNullable(.consumedQuantity)
-        consumedUnit = try container.sdkDecodeNullable(.consumedUnit)
-        effectiveCost = try container.sdkDecodeRequired(.effectiveCost)
-        pricingCategory = try container.sdkDecodeRequired(.pricingCategory)
-        pricingCurrency = try container.sdkDecodeRequired(.pricingCurrency)
-        pricingQuantity = try container.sdkDecodeRequired(.pricingQuantity)
-        pricingUnit = try container.sdkDecodeRequired(.pricingUnit)
-        serviceName = try container.sdkDecodeRequired(.serviceName)
-        serviceProviderName = try container.sdkDecodeRequired(.serviceProviderName)
-        skuId = try container.sdkDecodeRequired(.skuId)
-        tags = try container.sdkDecodeRequired(.tags)
-        regionId = try container.sdkDecodeIfPresent(.regionId)
-        regionName = try container.sdkDecodeIfPresent(.regionName)
-        serviceCategory = try container.sdkDecodeIfPresent(.serviceCategory)
+        self.billedCost = try container.sdkDecodeRequired(.billedCost)
+        self.billingCurrency = try container.sdkDecodeRequired(.billingCurrency)
+        self.chargeCategory = try container.sdkDecodeRequired(.chargeCategory)
+        self.chargePeriodEnd = try container.sdkDecodeRequired(.chargePeriodEnd)
+        self.chargePeriodStart = try container.sdkDecodeRequired(.chargePeriodStart)
+        self.consumedQuantity = try container.sdkDecodeNullable(.consumedQuantity)
+        self.consumedUnit = try container.sdkDecodeNullable(.consumedUnit)
+        self.effectiveCost = try container.sdkDecodeRequired(.effectiveCost)
+        self.pricingCategory = try container.sdkDecodeRequired(.pricingCategory)
+        self.pricingCurrency = try container.sdkDecodeRequired(.pricingCurrency)
+        self.pricingQuantity = try container.sdkDecodeRequired(.pricingQuantity)
+        self.pricingUnit = try container.sdkDecodeRequired(.pricingUnit)
+        self.serviceName = try container.sdkDecodeRequired(.serviceName)
+        self.serviceProviderName = try container.sdkDecodeRequired(.serviceProviderName)
+        self.skuId = try container.sdkDecodeRequired(.skuId)
+        self.tags = try container.sdkDecodeRequired(.tags)
+        self.regionId = try container.sdkDecodeIfPresent(.regionId)
+        self.regionName = try container.sdkDecodeIfPresent(.regionName)
+        self.serviceCategory = try container.sdkDecodeIfPresent(.serviceCategory)
     }
 }
 
-public extension ListBillingChargesResponse {
-    init(
-        billedCost: Double,
-        billingCurrency: ListBillingChargesResponseBillingCurrency,
-        chargeCategory: ListBillingChargesResponseChargeCategory,
-        chargePeriodEnd: String,
-        chargePeriodStart: String,
-        consumedQuantity: Double?,
-        consumedUnit: String?,
-        effectiveCost: Double,
-        pricingCategory: ListBillingChargesResponsePricingCategory,
-        pricingCurrency: ListBillingChargesResponsePricingCurrency,
-        pricingQuantity: Double,
-        pricingUnit: String,
-        serviceName: String,
-        serviceProviderName: String,
-        skuId: String,
-        tags: [String: String],
-        regionId: String? = nil,
-        regionName: String? = nil,
-        serviceCategory: ListBillingChargesResponseServiceCategory? = nil
-    ) {
+extension ListBillingChargesResponse {
+    public init(billedCost: Double, billingCurrency: ListBillingChargesResponseBillingCurrency, chargeCategory: ListBillingChargesResponseChargeCategory, chargePeriodEnd: String, chargePeriodStart: String, consumedQuantity: Double?, consumedUnit: String?, effectiveCost: Double, pricingCategory: ListBillingChargesResponsePricingCategory, pricingCurrency: ListBillingChargesResponsePricingCurrency, pricingQuantity: Double, pricingUnit: String, serviceName: String, serviceProviderName: String, skuId: String, tags: [String: String], regionId: String? = nil, regionName: String? = nil, serviceCategory: ListBillingChargesResponseServiceCategory? = nil) {
         (self.billedCost, self.billingCurrency) = (billedCost, billingCurrency)
         (self.chargeCategory, self.chargePeriodEnd) = (chargeCategory, chargePeriodEnd)
         (self.chargePeriodStart, self.consumedQuantity) = (chargePeriodStart, consumedQuantity)

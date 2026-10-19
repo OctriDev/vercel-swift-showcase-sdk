@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension FeatureFlagsMethods {
-    struct ListTeamFlagsOptions: Codable {
+extension FeatureFlagsMethods {
+    public struct ListTeamFlagsOptions: Codable {
         public var teamId: String
         public var state: ListTeamFlagsParameter?
         public var withMetadata: Bool?
@@ -23,12 +23,9 @@ public extension FeatureFlagsMethods {
         }
     }
 
-    /// Lists feature flags across all projects in a team. Filter the results by state, kind, tags, or search text, and
-    /// use `cursor` to continue through the results. The `withMetadata` parameter is deprecated; resolve creator
-    /// identity separately instead.
+    /// Lists feature flags across all projects in a team. Filter the results by state, kind, tags, or search text, and use `cursor` to continue through the results. The `withMetadata` parameter is deprecated; resolve creator identity separately instead.
     ///
-    /// Retrieve all feature flags for a team across all projects. The list can be filtered by state and supports
-    /// pagination.
+    /// Retrieve all feature flags for a team across all projects. The list can be filtered by state and supports pagination.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
@@ -44,11 +41,7 @@ public extension FeatureFlagsMethods {
     /// - tags: Filter flags by tag. Repeat the parameter for multiple tags (all
     ///   must match).
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listTeamFlags(
-        config: ClientConfig,
-        options: ListTeamFlagsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListTeamFlagsResponse {
+    public static func listTeamFlags(config: ClientConfig, options: ListTeamFlagsOptions, requestOptions: RequestOptions? = nil) async throws -> ListTeamFlagsResponse {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
@@ -57,23 +50,15 @@ public extension FeatureFlagsMethods {
             try validateLength("search", search, max: 256)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(options.teamId)), "/feature-flags/flags"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("state", value: options.state),
-                SdkQueryParameter("withMetadata", value: options.withMetadata),
-                SdkQueryParameter("limit", value: options.limit),
-                SdkQueryParameter("cursor", value: options.cursor),
-                SdkQueryParameter("search", value: options.search),
-                SdkQueryParameter("kind", value: options.kind),
-                SdkQueryParameter("tags", values: options.tags, style: "form", explode: true),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            decoder: .json,
-            operationId: "listTeamFlags",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(options.teamId)), "/feature-flags/flags"].joined(), config: config, query: [
+            SdkQueryParameter("state", value: options.state),
+            SdkQueryParameter("withMetadata", value: options.withMetadata),
+            SdkQueryParameter("limit", value: options.limit),
+            SdkQueryParameter("cursor", value: options.cursor),
+            SdkQueryParameter("search", value: options.search),
+            SdkQueryParameter("kind", value: options.kind),
+            SdkQueryParameter("tags", values: options.tags, style: "form", explode: true),
+            SdkQueryParameter("slug", value: options.slug),
+        ], decoder: .json, operationId: "listTeamFlags", options: requestOptions)).data
     }
 }

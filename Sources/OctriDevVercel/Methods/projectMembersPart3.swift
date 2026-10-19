@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectMembersMethods {
-    /// Adds a member to a project with a specified project role. Identify the member by `uid`, `username`, or `email`,
-    /// and choose one of the supported roles.
+extension ProjectMembersMethods {
+    /// Adds a member to a project with a specified project role. Identify the member by `uid`, `username`, or `email`, and choose one of the supported roles.
     ///
     /// Adds a new member to the project.
     ///
@@ -21,43 +20,24 @@ public extension ProjectMembersMethods {
     /// - username: The username of the team member that should be added to this
     ///   project.
     /// - email: The email of the team member that should be added to this project.
-    static func addProjectMember(
-        config: ClientConfig,
-        idOrName: String,
-        role: AddProjectMemberRequestBodyRole,
-        teamId: String? = nil,
-        slug: String? = nil,
-        uid: String? = nil,
-        username: String? = nil,
-        email: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AddProjectMemberResponse {
-        if let uid {
+    public static func addProjectMember(config: ClientConfig, idOrName: String, role: AddProjectMemberRequestBodyRole, teamId: String? = nil, slug: String? = nil, uid: String? = nil, username: String? = nil, email: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AddProjectMemberResponse {
+        if let uid = uid {
             try validateLength("uid", uid, max: 256)
         }
 
-        if let username {
+        if let username = username {
             try validateLength("username", username, max: 256)
         }
 
-        if let email {
+        if let email = email {
             try sdkValidateEmail("email", email)
         }
 
         let requestBody = AddProjectMemberRequestBody(role: role, uid: uid, username: username, email: email)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/members"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "addProjectMember",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/members"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "addProjectMember", options: requestOptions)).data
     }
 }

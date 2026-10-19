@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 public extension ListEventTypeName {
     static let sharedEnvVariableRepoLink = ListEventTypeName(rawValue: "shared-env-variable-repo-link")
     static let sharedEnvVariableRepoUnlink = ListEventTypeName(rawValue: "shared-env-variable-repo-unlink")
@@ -35,8 +35,7 @@ public extension ListEventTypeName {
     static let storageTransferRequestCreated = ListEventTypeName(rawValue: "storage-transfer-request-created")
     static let storageUpdate = ListEventTypeName(rawValue: "storage-update")
     static let storageUpdateProjectConnection = ListEventTypeName(rawValue: "storage-update-project-connection")
-    static let storageUpgradeProjectConnectionToOidc =
-        ListEventTypeName(rawValue: "storage-upgrade-project-connection-to-oidc")
+    static let storageUpgradeProjectConnectionToOidc = ListEventTypeName(rawValue: "storage-upgrade-project-connection-to-oidc")
     static let storageViewSecret = ListEventTypeName(rawValue: "storage-view-secret")
     static let strictConnectors = ListEventTypeName(rawValue: "strict-connectors")
     static let strictDeploymentProtectionSettings = ListEventTypeName(rawValue: "strict-deployment-protection-settings")
@@ -48,18 +47,15 @@ public extension ListEventTypeName {
     static let subscriptionUpdated = ListEventTypeName(rawValue: "subscription-updated")
     static let supportSessionCreated = ListEventTypeName(rawValue: "support-session-created")
     static let team = ListEventTypeName(rawValue: "team")
-    static let teamAgentBillingMigrationDecisionChanged =
-        ListEventTypeName(rawValue: "team-agent-billing-migration-decision-changed")
+    static let teamAgentBillingMigrationDecisionChanged = ListEventTypeName(rawValue: "team-agent-billing-migration-decision-changed")
     static let teamAvatarUpdate = ListEventTypeName(rawValue: "team-avatar-update")
     static let teamCollaborationSettingsUpdated = ListEventTypeName(rawValue: "team-collaboration-settings-updated")
     static let teamDefaultBuildMachineUpdated = ListEventTypeName(rawValue: "team-default-build-machine-updated")
     static let teamDefaultPassportUpdated = ListEventTypeName(rawValue: "team-default-passport-updated")
     static let teamDelete = ListEventTypeName(rawValue: "team-delete")
     static let teamDeploymentPolicyUpdated = ListEventTypeName(rawValue: "team-deployment-policy-updated")
-    static let teamDeploymentStorageHighRetentionOptIn =
-        ListEventTypeName(rawValue: "team-deployment-storage-high-retention-opt-in")
-    static let teamDeploymentStorageRetentionOptOut =
-        ListEventTypeName(rawValue: "team-deployment-storage-retention-opt-out")
+    static let teamDeploymentStorageHighRetentionOptIn = ListEventTypeName(rawValue: "team-deployment-storage-high-retention-opt-in")
+    static let teamDeploymentStorageRetentionOptOut = ListEventTypeName(rawValue: "team-deployment-storage-retention-opt-out")
     static let teamDomainVerificationCreated = ListEventTypeName(rawValue: "team-domain-verification-created")
     static let teamDomainVerificationDeleted = ListEventTypeName(rawValue: "team-domain-verification-deleted")
     static let teamDomainVerificationVerified = ListEventTypeName(rawValue: "team-domain-verification-verified")
@@ -68,10 +64,8 @@ public extension ListEventTypeName {
     static let teamEndedTrial = ListEventTypeName(rawValue: "team-ended-trial")
     static let teamFirewallConfigModified = ListEventTypeName(rawValue: "team-firewall-config-modified")
     static let teamFirewallConfigPromoted = ListEventTypeName(rawValue: "team-firewall-config-promoted")
-    static let teamGitRepositoryDispatchEventsToggled =
-        ListEventTypeName(rawValue: "team-git-repository-dispatch-events-toggled")
-    static let teamGitRequireVerifiedCommitsToggled =
-        ListEventTypeName(rawValue: "team-git-require-verified-commits-toggled")
+    static let teamGitRepositoryDispatchEventsToggled = ListEventTypeName(rawValue: "team-git-repository-dispatch-events-toggled")
+    static let teamGitRequireVerifiedCommitsToggled = ListEventTypeName(rawValue: "team-git-require-verified-commits-toggled")
     static let teamInviteBulkDelete = ListEventTypeName(rawValue: "team-invite-bulk-delete")
     static let teamInviteCodeReset = ListEventTypeName(rawValue: "team-invite-code-reset")
     static let teamInviteLinkCreated = ListEventTypeName(rawValue: "team-invite-link-created")
@@ -157,15 +151,11 @@ public extension ListEventTypeName {
     static let vcrRepositoryPermissionRemoved = ListEventTypeName(rawValue: "vcr-repository-permission-removed")
     static let vcrRepositoryPermissionsCleared = ListEventTypeName(rawValue: "vcr-repository-permissions-cleared")
     static let vcrRepositoryVisibilityChanged = ListEventTypeName(rawValue: "vcr-repository-visibility-changed")
-    static let vercelAgentElevatedPermissionsApproved =
-        ListEventTypeName(rawValue: "vercel-agent-elevated-permissions-approved")
-    static let vercelAgentElevatedPermissionsRequested =
-        ListEventTypeName(rawValue: "vercel-agent-elevated-permissions-requested")
+    static let vercelAgentElevatedPermissionsApproved = ListEventTypeName(rawValue: "vercel-agent-elevated-permissions-approved")
+    static let vercelAgentElevatedPermissionsRequested = ListEventTypeName(rawValue: "vercel-agent-elevated-permissions-requested")
     static let vercelAgentSessionCreated = ListEventTypeName(rawValue: "vercel-agent-session-created")
-    static let vercelAgentTeamTrialCreditsApplied =
-        ListEventTypeName(rawValue: "vercel-agent-team-trial-credits-applied")
-    static let vercelAppInstallationRequestDismissed =
-        ListEventTypeName(rawValue: "vercel-app-installation-request-dismissed")
+    static let vercelAgentTeamTrialCreditsApplied = ListEventTypeName(rawValue: "vercel-agent-team-trial-credits-applied")
+    static let vercelAppInstallationRequestDismissed = ListEventTypeName(rawValue: "vercel-app-installation-request-dismissed")
     static let vercelAppInstallationRequested = ListEventTypeName(rawValue: "vercel-app-installation-requested")
     static let vercelAppInstallationUpdated = ListEventTypeName(rawValue: "vercel-app-installation-updated")
     static let vercelAppInstalled = ListEventTypeName(rawValue: "vercel-app-installed")

@@ -5,50 +5,50 @@ import Foundation
 
 public class Vercel {
     var config: ClientConfig
-    public internal(set) lazy var accessGroups: AccessGroupsNamespace = .init(config: config)
-    public internal(set) lazy var aiGateway: AiGatewayNamespace = .init(config: config)
-    public internal(set) lazy var artifacts: ArtifactsNamespace = .init(config: config)
-    public internal(set) lazy var billing: BillingNamespace = .init(config: config)
-    public internal(set) lazy var bulkRedirects: BulkRedirectsNamespace = .init(config: config)
-    public internal(set) lazy var checksV2: ChecksV2Namespace = .init(config: config)
-    public internal(set) lazy var checks: ChecksNamespace = .init(config: config)
-    public internal(set) lazy var networking: NetworkingNamespace = .init(config: config)
-    public internal(set) lazy var connect: ConnectNamespace = .init(config: config)
-    public internal(set) lazy var deployments: DeploymentsNamespace = .init(config: config)
-    public internal(set) lazy var dns: DnsNamespace = .init(config: config)
-    public internal(set) lazy var domains: DomainsNamespace = .init(config: config)
-    public internal(set) lazy var domainsRegistrar: DomainsRegistrarNamespace = .init(config: config)
-    public internal(set) lazy var logDrains: LogDrainsNamespace = .init(config: config)
-    public internal(set) lazy var drains: DrainsNamespace = .init(config: config)
-    public internal(set) lazy var edgeCache: EdgeCacheNamespace = .init(config: config)
-    public internal(set) lazy var globalConfig: GlobalConfigNamespace = .init(config: config)
-    public internal(set) lazy var environment: EnvironmentNamespace = .init(config: config)
-    public internal(set) lazy var user: UserNamespace = .init(config: config)
-    public internal(set) lazy var featureFlags: FeatureFlagsNamespace = .init(config: config)
-    public internal(set) lazy var integrations: IntegrationsNamespace = .init(config: config)
-    public internal(set) lazy var marketplace: MarketplaceNamespace = .init(config: config)
-    public internal(set) lazy var authentication: AuthenticationNamespace = .init(config: config)
-    public internal(set) lazy var apiKeys: ApiKeysNamespace = .init(config: config)
-    public internal(set) lazy var kms: KmsNamespace = .init(config: config)
-    public internal(set) lazy var logs: LogsNamespace = .init(config: config)
-    public internal(set) lazy var microfrontends: MicrofrontendsNamespace = .init(config: config)
-    public internal(set) lazy var observability: ObservabilityNamespace = .init(config: config)
-    public internal(set) lazy var projectMembers: ProjectMembersNamespace = .init(config: config)
-    public internal(set) lazy var projectRoutes: ProjectRoutesNamespace = .init(config: config)
-    public internal(set) lazy var projects: ProjectsNamespace = .init(config: config)
-    public internal(set) lazy var rollingRelease: RollingReleaseNamespace = .init(config: config)
-    public internal(set) lazy var sandboxes: SandboxesNamespace = .init(config: config)
-    public internal(set) lazy var security: SecurityNamespace = .init(config: config)
-    public internal(set) lazy var speedInsights: SpeedInsightsNamespace = .init(config: config)
-    public internal(set) lazy var storage: StorageNamespace = .init(config: config)
-    public internal(set) lazy var teams: TeamsNamespace = .init(config: config)
-    public internal(set) lazy var vcr: VcrNamespace = .init(config: config)
-    public internal(set) lazy var vercelCi: VercelCiNamespace = .init(config: config)
-    public internal(set) lazy var web: WebNamespace = .init(config: config)
-    public internal(set) lazy var webAnalytics: WebAnalyticsNamespace = .init(config: config)
-    public internal(set) lazy var webhooks: WebhooksNamespace = .init(config: config)
-    public internal(set) lazy var aliases: AliasesNamespace = .init(config: config)
-    public internal(set) lazy var certs: CertsNamespace = .init(config: config)
+    public internal(set) lazy var accessGroups: AccessGroupsNamespace = AccessGroupsNamespace(config: config)
+    public internal(set) lazy var aiGateway: AiGatewayNamespace = AiGatewayNamespace(config: config)
+    public internal(set) lazy var artifacts: ArtifactsNamespace = ArtifactsNamespace(config: config)
+    public internal(set) lazy var billing: BillingNamespace = BillingNamespace(config: config)
+    public internal(set) lazy var bulkRedirects: BulkRedirectsNamespace = BulkRedirectsNamespace(config: config)
+    public internal(set) lazy var checksV2: ChecksV2Namespace = ChecksV2Namespace(config: config)
+    public internal(set) lazy var checks: ChecksNamespace = ChecksNamespace(config: config)
+    public internal(set) lazy var networking: NetworkingNamespace = NetworkingNamespace(config: config)
+    public internal(set) lazy var connect: ConnectNamespace = ConnectNamespace(config: config)
+    public internal(set) lazy var deployments: DeploymentsNamespace = DeploymentsNamespace(config: config)
+    public internal(set) lazy var dns: DnsNamespace = DnsNamespace(config: config)
+    public internal(set) lazy var domains: DomainsNamespace = DomainsNamespace(config: config)
+    public internal(set) lazy var domainsRegistrar: DomainsRegistrarNamespace = DomainsRegistrarNamespace(config: config)
+    public internal(set) lazy var logDrains: LogDrainsNamespace = LogDrainsNamespace(config: config)
+    public internal(set) lazy var drains: DrainsNamespace = DrainsNamespace(config: config)
+    public internal(set) lazy var edgeCache: EdgeCacheNamespace = EdgeCacheNamespace(config: config)
+    public internal(set) lazy var globalConfig: GlobalConfigNamespace = GlobalConfigNamespace(config: config)
+    public internal(set) lazy var environment: EnvironmentNamespace = EnvironmentNamespace(config: config)
+    public internal(set) lazy var user: UserNamespace = UserNamespace(config: config)
+    public internal(set) lazy var featureFlags: FeatureFlagsNamespace = FeatureFlagsNamespace(config: config)
+    public internal(set) lazy var integrations: IntegrationsNamespace = IntegrationsNamespace(config: config)
+    public internal(set) lazy var marketplace: MarketplaceNamespace = MarketplaceNamespace(config: config)
+    public internal(set) lazy var authentication: AuthenticationNamespace = AuthenticationNamespace(config: config)
+    public internal(set) lazy var apiKeys: ApiKeysNamespace = ApiKeysNamespace(config: config)
+    public internal(set) lazy var kms: KmsNamespace = KmsNamespace(config: config)
+    public internal(set) lazy var logs: LogsNamespace = LogsNamespace(config: config)
+    public internal(set) lazy var microfrontends: MicrofrontendsNamespace = MicrofrontendsNamespace(config: config)
+    public internal(set) lazy var observability: ObservabilityNamespace = ObservabilityNamespace(config: config)
+    public internal(set) lazy var projectMembers: ProjectMembersNamespace = ProjectMembersNamespace(config: config)
+    public internal(set) lazy var projectRoutes: ProjectRoutesNamespace = ProjectRoutesNamespace(config: config)
+    public internal(set) lazy var projects: ProjectsNamespace = ProjectsNamespace(config: config)
+    public internal(set) lazy var rollingRelease: RollingReleaseNamespace = RollingReleaseNamespace(config: config)
+    public internal(set) lazy var sandboxes: SandboxesNamespace = SandboxesNamespace(config: config)
+    public internal(set) lazy var security: SecurityNamespace = SecurityNamespace(config: config)
+    public internal(set) lazy var speedInsights: SpeedInsightsNamespace = SpeedInsightsNamespace(config: config)
+    public internal(set) lazy var storage: StorageNamespace = StorageNamespace(config: config)
+    public internal(set) lazy var teams: TeamsNamespace = TeamsNamespace(config: config)
+    public internal(set) lazy var vcr: VcrNamespace = VcrNamespace(config: config)
+    public internal(set) lazy var vercelCi: VercelCiNamespace = VercelCiNamespace(config: config)
+    public internal(set) lazy var web: WebNamespace = WebNamespace(config: config)
+    public internal(set) lazy var webAnalytics: WebAnalyticsNamespace = WebAnalyticsNamespace(config: config)
+    public internal(set) lazy var webhooks: WebhooksNamespace = WebhooksNamespace(config: config)
+    public internal(set) lazy var aliases: AliasesNamespace = AliasesNamespace(config: config)
+    public internal(set) lazy var certs: CertsNamespace = CertsNamespace(config: config)
     public init(config: ClientConfig) {
         self.config = config
         sdkRebuildNamespaces()
@@ -63,24 +63,12 @@ public class Vercel {
     public func setLoggingConfig(_ logging: LoggingConfig? = nil) -> LoggingConfig {
         var current = config.logging ?? LoggingConfig()
         if let overrides = logging {
-            if let endpoint = overrides.endpoint {
-                current.endpoint = endpoint
-            }
-            if let apiKey = overrides.apiKey {
-                current.apiKey = apiKey
-            }
-            if let environment = overrides.environment {
-                current.environment = environment
-            }
-            if let release = overrides.release {
-                current.release = release
-            }
-            if let user = overrides.user {
-                current.user = user
-            }
-            if let tags = overrides.tags {
-                current.tags = tags
-            }
+            if let endpoint = overrides.endpoint { current.endpoint = endpoint }
+            if let apiKey = overrides.apiKey { current.apiKey = apiKey }
+            if let environment = overrides.environment { current.environment = environment }
+            if let release = overrides.release { current.release = release }
+            if let user = overrides.user { current.user = user }
+            if let tags = overrides.tags { current.tags = tags }
             current.filterPii = overrides.filterPii
         }
         // Opting in IS the point of this call, so enabled flips to true unless the
@@ -99,54 +87,54 @@ public class Vercel {
 
 extension Vercel {
     func sdkRebuildNamespacesPart1() {
-        accessGroups = AccessGroupsNamespace(config: config)
-        aiGateway = AiGatewayNamespace(config: config)
-        artifacts = ArtifactsNamespace(config: config)
-        billing = BillingNamespace(config: config)
-        bulkRedirects = BulkRedirectsNamespace(config: config)
-        checksV2 = ChecksV2Namespace(config: config)
-        checks = ChecksNamespace(config: config)
-        networking = NetworkingNamespace(config: config)
-        connect = ConnectNamespace(config: config)
-        deployments = DeploymentsNamespace(config: config)
-        dns = DnsNamespace(config: config)
-        domains = DomainsNamespace(config: config)
-        domainsRegistrar = DomainsRegistrarNamespace(config: config)
-        logDrains = LogDrainsNamespace(config: config)
-        drains = DrainsNamespace(config: config)
-        edgeCache = EdgeCacheNamespace(config: config)
-        globalConfig = GlobalConfigNamespace(config: config)
-        environment = EnvironmentNamespace(config: config)
-        user = UserNamespace(config: config)
-        featureFlags = FeatureFlagsNamespace(config: config)
-        integrations = IntegrationsNamespace(config: config)
-        marketplace = MarketplaceNamespace(config: config)
-        authentication = AuthenticationNamespace(config: config)
-        apiKeys = ApiKeysNamespace(config: config)
-        kms = KmsNamespace(config: config)
-        logs = LogsNamespace(config: config)
-        microfrontends = MicrofrontendsNamespace(config: config)
-        observability = ObservabilityNamespace(config: config)
-        projectMembers = ProjectMembersNamespace(config: config)
-        projectRoutes = ProjectRoutesNamespace(config: config)
-        projects = ProjectsNamespace(config: config)
-        rollingRelease = RollingReleaseNamespace(config: config)
+        self.accessGroups = AccessGroupsNamespace(config: self.config)
+        self.aiGateway = AiGatewayNamespace(config: self.config)
+        self.artifacts = ArtifactsNamespace(config: self.config)
+        self.billing = BillingNamespace(config: self.config)
+        self.bulkRedirects = BulkRedirectsNamespace(config: self.config)
+        self.checksV2 = ChecksV2Namespace(config: self.config)
+        self.checks = ChecksNamespace(config: self.config)
+        self.networking = NetworkingNamespace(config: self.config)
+        self.connect = ConnectNamespace(config: self.config)
+        self.deployments = DeploymentsNamespace(config: self.config)
+        self.dns = DnsNamespace(config: self.config)
+        self.domains = DomainsNamespace(config: self.config)
+        self.domainsRegistrar = DomainsRegistrarNamespace(config: self.config)
+        self.logDrains = LogDrainsNamespace(config: self.config)
+        self.drains = DrainsNamespace(config: self.config)
+        self.edgeCache = EdgeCacheNamespace(config: self.config)
+        self.globalConfig = GlobalConfigNamespace(config: self.config)
+        self.environment = EnvironmentNamespace(config: self.config)
+        self.user = UserNamespace(config: self.config)
+        self.featureFlags = FeatureFlagsNamespace(config: self.config)
+        self.integrations = IntegrationsNamespace(config: self.config)
+        self.marketplace = MarketplaceNamespace(config: self.config)
+        self.authentication = AuthenticationNamespace(config: self.config)
+        self.apiKeys = ApiKeysNamespace(config: self.config)
+        self.kms = KmsNamespace(config: self.config)
+        self.logs = LogsNamespace(config: self.config)
+        self.microfrontends = MicrofrontendsNamespace(config: self.config)
+        self.observability = ObservabilityNamespace(config: self.config)
+        self.projectMembers = ProjectMembersNamespace(config: self.config)
+        self.projectRoutes = ProjectRoutesNamespace(config: self.config)
+        self.projects = ProjectsNamespace(config: self.config)
+        self.rollingRelease = RollingReleaseNamespace(config: self.config)
     }
 }
 
 extension Vercel {
     func sdkRebuildNamespacesPart2() {
-        sandboxes = SandboxesNamespace(config: config)
-        security = SecurityNamespace(config: config)
-        speedInsights = SpeedInsightsNamespace(config: config)
-        storage = StorageNamespace(config: config)
-        teams = TeamsNamespace(config: config)
-        vcr = VcrNamespace(config: config)
-        vercelCi = VercelCiNamespace(config: config)
-        web = WebNamespace(config: config)
-        webAnalytics = WebAnalyticsNamespace(config: config)
-        webhooks = WebhooksNamespace(config: config)
-        aliases = AliasesNamespace(config: config)
-        certs = CertsNamespace(config: config)
+        self.sandboxes = SandboxesNamespace(config: self.config)
+        self.security = SecurityNamespace(config: self.config)
+        self.speedInsights = SpeedInsightsNamespace(config: self.config)
+        self.storage = StorageNamespace(config: self.config)
+        self.teams = TeamsNamespace(config: self.config)
+        self.vcr = VcrNamespace(config: self.config)
+        self.vercelCi = VercelCiNamespace(config: self.config)
+        self.web = WebNamespace(config: self.config)
+        self.webAnalytics = WebAnalyticsNamespace(config: self.config)
+        self.webhooks = WebhooksNamespace(config: self.config)
+        self.aliases = AliasesNamespace(config: self.config)
+        self.certs = CertsNamespace(config: self.config)
     }
 }

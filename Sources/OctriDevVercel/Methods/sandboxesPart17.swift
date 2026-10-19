@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    struct RunSessionCommandOptions: Codable {
+extension SandboxesMethods {
+    public struct RunSessionCommandOptions: Codable {
         public var sessionId: String
         public var cmdId: String
         public var command: String
@@ -29,13 +29,9 @@ public extension SandboxesMethods {
         }
     }
 
-    /// Submits a shell command for execution in a session and returns a command ID for tracking its progress. Use
-    /// `wait` to stream status updates until the command finishes; set `logs` as well to stream execution output in
-    /// real time.
+    /// Submits a shell command for execution in a session and returns a command ID for tracking its progress. Use `wait` to stream status updates until the command finishes; set `logs` as well to stream execution output in real time.
     ///
-    /// Executes a shell command inside a running session. The command runs asynchronously and returns immediately with
-    /// a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait`
-    /// parameter to stream the command status until completion.
+    /// Executes a shell command inside a running session. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session in which to execute the
@@ -63,30 +59,17 @@ public extension SandboxesMethods {
     /// - attachStdin: If true, keeps the command stdin open so it can be written to
     ///   with the stdin endpoint while the command runs. When false, the command
     ///   reads from an empty stdin.
-    static func runSessionCommand(
-        config: ClientConfig,
-        options: RunSessionCommandOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RunSessionCommandResponse {
+    public static func runSessionCommand(config: ClientConfig, options: RunSessionCommandOptions, requestOptions: RequestOptions? = nil) async throws -> RunSessionCommandResponse {
         if let timeout = options.timeout {
-            try validateRange("timeout", Double(timeout), min: 100, max: 18_000_000)
+            try validateRange("timeout", Double(timeout), min: 100, max: 18000000)
         }
 
         let requestBody = RunSessionCommandRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(options.sessionId)), "/cmd"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("cmdId", value: options.cmdId),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "runSessionCommand",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(options.sessionId)), "/cmd"].joined(), config: config, query: [
+            SdkQueryParameter("cmdId", value: options.cmdId),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "runSessionCommand", options: requestOptions)).data
     }
 }

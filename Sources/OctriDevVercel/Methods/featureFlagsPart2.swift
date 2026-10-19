@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension FeatureFlagsMethods {
-    struct ListFlagsV2Options: Codable {
+extension FeatureFlagsMethods {
+    public struct ListFlagsV2Options: Codable {
         public var projectIdOrName: String
         public var state: ListFlagsV2Parameter?
         public var limit: Int?
@@ -25,9 +25,7 @@ public extension FeatureFlagsMethods {
         }
     }
 
-    /// Lists a project's feature flags with cursor-based pagination. Use `state`, `search`, `tags`, or maintainer and
-    /// creator filters to narrow the results, and pass the returned pagination cursor to continue through the list. The
-    /// `state` filter defaults to `active`.
+    /// Lists a project's feature flags with cursor-based pagination. Use `state`, `search`, `tags`, or maintainer and creator filters to narrow the results, and pass the returned pagination cursor to continue through the list. The `state` filter defaults to `active`.
     ///
     /// Retrieve feature flags for a project. Returns an opaque cursor for pagination.
     ///
@@ -47,11 +45,7 @@ public extension FeatureFlagsMethods {
     ///   items in the paginated response. Defaults to false.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listFlagsV2(
-        config: ClientConfig,
-        options: ListFlagsV2Options,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListFlagsV2Response {
+    public static func listFlagsV2(config: ClientConfig, options: ListFlagsV2Options, requestOptions: RequestOptions? = nil) async throws -> ListFlagsV2Response {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
@@ -68,26 +62,17 @@ public extension FeatureFlagsMethods {
             try validateItems("maintainerIds", maintainerIds, max: 25)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v2/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/flags"]
-                .joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("state", value: options.state),
-                SdkQueryParameter("limit", value: options.limit),
-                SdkQueryParameter("cursor", value: options.cursor),
-                SdkQueryParameter("search", value: options.search),
-                SdkQueryParameter("tags", values: options.tags, style: "form", explode: true),
-                SdkQueryParameter("createdBy", value: options.createdBy),
-                SdkQueryParameter("maintainerIds", values: options.maintainerIds, style: "form", explode: true),
-                SdkQueryParameter("includeMarketplaceFlags", value: options.includeMarketplaceFlags),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            decoder: .json,
-            operationId: "listFlagsV2",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v2/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/flags"].joined(), config: config, query: [
+            SdkQueryParameter("state", value: options.state),
+            SdkQueryParameter("limit", value: options.limit),
+            SdkQueryParameter("cursor", value: options.cursor),
+            SdkQueryParameter("search", value: options.search),
+            SdkQueryParameter("tags", values: options.tags, style: "form", explode: true),
+            SdkQueryParameter("createdBy", value: options.createdBy),
+            SdkQueryParameter("maintainerIds", values: options.maintainerIds, style: "form", explode: true),
+            SdkQueryParameter("includeMarketplaceFlags", value: options.includeMarketplaceFlags),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], decoder: .json, operationId: "listFlagsV2", options: requestOptions)).data
     }
 }

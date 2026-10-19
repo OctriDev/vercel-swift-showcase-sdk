@@ -6,13 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    /// Lists sessions for a sandbox, with results paginated by an opaque cursor and sorted by creation time. Filter by
-    /// project and sandbox name, and use `limit`, `cursor`, and `sortOrder` to shape the results. The response includes
-    /// session records and pagination metadata.
+extension SandboxesMethods {
+    /// Lists sessions for a sandbox, with results paginated by an opaque cursor and sorted by creation time. Filter by project and sandbox name, and use `limit`, `cursor`, and `sortOrder` to shape the results. The response includes session records and pagination metadata.
     ///
-    /// Retrieves a paginated list of sessions belonging to a specific sandbox. Results are sorted by creation time and
-    /// paginated using an opaque cursor.
+    /// Retrieves a paginated list of sessions belonging to a specific sandbox. Results are sorted by creation time and paginated using an opaque cursor.
     ///
     /// - Parameters:
     /// - project: The unique identifier or name of the project to list sessions
@@ -25,27 +22,17 @@ public extension SandboxesMethods {
     /// - sortOrder: Sort direction for results by creation time.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listSessions(
-        config: ClientConfig,
-        project: String? = nil,
-        name: String? = nil,
-        limit: Double? = nil,
-        cursor: String? = nil,
-        sortOrder: ListSessionsParameter? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListSessionsResponse {
-        if let name {
+    public static func listSessions(config: ClientConfig, project: String? = nil, name: String? = nil, limit: Double? = nil, cursor: String? = nil, sortOrder: ListSessionsParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListSessionsResponse {
+        if let name = name {
             try validateLength("name", name, max: 128)
             try sdkValidatePattern("name", name, sdkPatterna828669d9fe5)
         }
 
-        if let limit {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1, max: 50)
         }
 
-        return try await (sdkRequest("GET", "/v2/sandboxes/sessions", config: config, query: [
+        return try (await sdkRequest("GET", "/v2/sandboxes/sessions", config: config, query: [
             SdkQueryParameter("project", value: project),
             SdkQueryParameter("name", value: name),
             SdkQueryParameter("limit", value: limit),

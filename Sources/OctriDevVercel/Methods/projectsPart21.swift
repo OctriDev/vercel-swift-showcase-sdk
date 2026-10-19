@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    /// Deletes multiple environment variables from a project in one request. Provide their IDs in the `ids` array,
-    /// which must contain between 1 and 1,000 entries.
+extension ProjectsMethods {
+    /// Deletes multiple environment variables from a project in one request. Provide their IDs in the `ids` array, which must contain between 1 and 1,000 entries.
     ///
     /// Delete multiple environment variables for a given project in a single batch operation.
     ///
@@ -17,30 +16,14 @@ public extension ProjectsMethods {
     /// - ids: Array of environment variable IDs to delete
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func batchRemoveProjectEnv(
-        config: ClientConfig,
-        idOrName: String,
-        ids: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> BatchRemoveProjectEnvResponse {
+    public static func batchRemoveProjectEnv(config: ClientConfig, idOrName: String, ids: [String], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> BatchRemoveProjectEnvResponse {
         try validateItems("ids", ids, min: 1, max: 1000)
 
         let requestBody = BatchRemoveProjectEnvRequestBody(ids: ids)
 
-        return try await (sdkRequest(
-            "DELETE",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/env"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "batchRemoveProjectEnv",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/env"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "batchRemoveProjectEnv", options: requestOptions)).data
     }
 }

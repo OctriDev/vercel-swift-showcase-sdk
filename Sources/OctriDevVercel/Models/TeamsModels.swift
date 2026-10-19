@@ -3,13 +3,14 @@
 
 import Foundation
 
-/// Teams domain models
+// Teams domain models
 public indirect enum ListTeamsResponseTeamsItem {
     case team(Team)
     case teamLimited(TeamLimited)
 }
 
 extension ListTeamsResponseTeamsItem: Codable {
+
     private enum CodingKeys: String, CodingKey {
         case discriminator = "limited"
     }
@@ -17,29 +18,21 @@ extension ListTeamsResponseTeamsItem: Codable {
     public init(from decoder: Decoder) throws {
         let tagged = try decoder.container(keyedBy: CodingKeys.self)
         let discriminator = try tagged.decode(Bool.self, forKey: .discriminator).description
-        if let value = try Self.decodeGroup1(discriminator, from: decoder) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            forKey: .discriminator,
-            in: tagged,
-            debugDescription: "Unknown discriminator for ListTeamsResponseTeamsItem"
-        )
+        if let value = try Self.decodeGroup1(discriminator, from: decoder) { self = value; return }
+        throw DecodingError.dataCorruptedError(forKey: .discriminator, in: tagged, debugDescription: "Unknown discriminator for ListTeamsResponseTeamsItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension ListTeamsResponseTeamsItem {
     static func decodeGroup1(_ discriminator: String, from decoder: Decoder) throws -> Self? {
         switch discriminator {
-        case "false": try .team(Team(from: decoder))
-        case "true": try .teamLimited(TeamLimited(from: decoder))
-        default: nil
+        case "false": return .team(try Team(from: decoder))
+        case "true": return .teamLimited(try TeamLimited(from: decoder))
+        default: return nil
         }
     }
 }
@@ -64,26 +57,18 @@ public indirect enum TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItem {
 }
 
 extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -106,12 +91,12 @@ extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItem {
         if let value = try? container.decode(
             TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0.self
         ) {
-            return .teamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0(value)
+            return             .teamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0(value)
         }
         if let value = try? container.decode(
             TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1.self
         ) {
-            return .teamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1(value)
+            return             .teamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1(value)
         }
         return nil
     }
@@ -121,44 +106,30 @@ extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .teamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0(value): try container
-            .encode(value); return true
-        case let .teamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1(value): try container
-            .encode(value); return true
+        case let .teamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0(value): try container.encode(value); return true
+        case let .teamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1(value): try container.encode(value); return true
         }
     }
 }
 
 public indirect enum TeamDeploymentPolicyGitSourcesItemEnvironmentsItem {
-    case teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0(
-        TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0
-    )
-    case teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1(
-        TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1
-    )
+    case teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0(TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0)
+    case teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1(TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1)
 }
 
 extension TeamDeploymentPolicyGitSourcesItemEnvironmentsItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for TeamDeploymentPolicyGitSourcesItemEnvironmentsItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for TeamDeploymentPolicyGitSourcesItemEnvironmentsItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -181,12 +152,12 @@ extension TeamDeploymentPolicyGitSourcesItemEnvironmentsItem {
         if let value = try? container.decode(
             TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0.self
         ) {
-            return .teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0(value)
+            return             .teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0(value)
         }
         if let value = try? container.decode(
             TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1.self
         ) {
-            return .teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1(value)
+            return             .teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1(value)
         }
         return nil
     }
@@ -196,10 +167,8 @@ extension TeamDeploymentPolicyGitSourcesItemEnvironmentsItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0(value): try container
-            .encode(value); return true
-        case let .teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1(value): try container
-            .encode(value); return true
+        case let .teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0(value): try container.encode(value); return true
+        case let .teamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -210,43 +179,27 @@ public indirect enum TeamDeploymentPolicyGitSourcesItemSourcesItem {
 }
 
 extension TeamDeploymentPolicyGitSourcesItemSourcesItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for TeamDeploymentPolicyGitSourcesItemSourcesItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for TeamDeploymentPolicyGitSourcesItemSourcesItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension TeamDeploymentPolicyGitSourcesItemSourcesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(TeamDeploymentPolicyGitSourcesItemSourcesItemVariant0.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(TeamDeploymentPolicyGitSourcesItemSourcesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .teamDeploymentPolicyGitSourcesItemSourcesItemVariant0(value)
         }
-        if let value = try? container.decode(TeamDeploymentPolicyGitSourcesItemSourcesItemVariant1.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(TeamDeploymentPolicyGitSourcesItemSourcesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .teamDeploymentPolicyGitSourcesItemSourcesItemVariant1(value)
         }
         return nil
@@ -258,12 +211,12 @@ extension TeamDeploymentPolicyGitSourcesItemSourcesItem {
         if let value = try? container.decode(
             TeamDeploymentPolicyGitSourcesItemSourcesItemVariant0.self
         ) {
-            return .teamDeploymentPolicyGitSourcesItemSourcesItemVariant0(value)
+            return             .teamDeploymentPolicyGitSourcesItemSourcesItemVariant0(value)
         }
         if let value = try? container.decode(
             TeamDeploymentPolicyGitSourcesItemSourcesItemVariant1.self
         ) {
-            return .teamDeploymentPolicyGitSourcesItemSourcesItemVariant1(value)
+            return             .teamDeploymentPolicyGitSourcesItemSourcesItemVariant1(value)
         }
         return nil
     }
@@ -285,21 +238,15 @@ public indirect enum UpdateTeamsRequestDefaultProjectJobs {
 }
 
 extension UpdateTeamsRequestDefaultProjectJobs: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateTeamsRequestDefaultProjectJobs"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateTeamsRequestDefaultProjectJobs")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -308,11 +255,9 @@ extension UpdateTeamsRequestDefaultProjectJobs {
         if let value = try? container.decode(
             UpdateTeamsRequestDefaultProjectJobsVariant0.self
         ) {
-            return .updateTeamsRequestDefaultProjectJobsVariant0(value)
+            return             .updateTeamsRequestDefaultProjectJobsVariant0(value)
         }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -333,21 +278,15 @@ public indirect enum UpdateTeamsRequestDeploymentPolicy {
 }
 
 extension UpdateTeamsRequestDeploymentPolicy: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateTeamsRequestDeploymentPolicy"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateTeamsRequestDeploymentPolicy")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -356,11 +295,9 @@ extension UpdateTeamsRequestDeploymentPolicy {
         if let value = try? container.decode(
             UpdateTeamsRequestDeploymentPolicyVariant0.self
         ) {
-            return .updateTeamsRequestDeploymentPolicyVariant0(value)
+            return             .updateTeamsRequestDeploymentPolicyVariant0(value)
         }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -381,21 +318,15 @@ public indirect enum UpdateTeamsRequestNsnbConfig {
 }
 
 extension UpdateTeamsRequestNsnbConfig: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateTeamsRequestNsnbConfig"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateTeamsRequestNsnbConfig")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -404,11 +335,9 @@ extension UpdateTeamsRequestNsnbConfig {
         if let value = try? container.decode(
             UpdateTeamsRequestNsnbConfigVariant0.self
         ) {
-            return .updateTeamsRequestNsnbConfigVariant0(value)
+            return             .updateTeamsRequestNsnbConfigVariant0(value)
         }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -432,27 +361,21 @@ public struct TeamLimitedMembershipEntitlementsItem: Codable {
         case entitlement
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamLimitedMembershipEntitlementsItem {
-    init(from decoder: Decoder) throws {
+extension TeamLimitedMembershipEntitlementsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.entitlement) else {
-            throw SdkValidationError(
-                field: "entitlement",
-                code: "required",
-                message: "Validation failed for 'entitlement': value is required"
-            )
+            throw SdkValidationError(field: "entitlement", code: "required", message: "Validation failed for 'entitlement': value is required")
         }
-        entitlement = try container.sdkDecodeRequired(.entitlement)
+        self.entitlement = try container.sdkDecodeRequired(.entitlement)
     }
 }
 
-public extension TeamLimitedMembershipEntitlementsItem {
-    init(entitlement: String) {
+extension TeamLimitedMembershipEntitlementsItem {
+    public init(entitlement: String) {
         self.entitlement = entitlement
     }
 }
@@ -467,39 +390,29 @@ public indirect enum UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSources
 }
 
 extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaXcae6f55e1d: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaXcae6f55e1d"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaXcae6f55e1d")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaXcae6f55e1d {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f(value)
         }
-        if let value = try? container
-            .decode(UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX66d432dfdd.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX66d432dfdd.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX66d432dfdd(value)
         }
         return nil
@@ -511,12 +424,12 @@ extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaXcae6f55e
         if let value = try? container.decode(
             UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f.self
         ) {
-            return .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f(value)
+            return             .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f(value)
         }
         if let value = try? container.decode(
             UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX66d432dfdd.self
         ) {
-            return .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX66d432dfdd(value)
+            return             .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX66d432dfdd(value)
         }
         return nil
     }
@@ -526,10 +439,8 @@ extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaXcae6f55e
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f(value): try container
-            .encode(value); return true
-        case let .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX66d432dfdd(value): try container
-            .encode(value); return true
+        case let .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f(value): try container.encode(value); return true
+        case let .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX66d432dfdd(value): try container.encode(value); return true
         }
     }
 }
@@ -574,20 +485,8 @@ public struct TeamResourceConfig: Codable {
     }
 
     init() {
-        (blobStores, buildEntitlements, buildMachine, concurrentBuilds, customEnvironmentsPerProject) = (
-            nil,
-            nil,
-            nil,
-            nil,
-            nil
-        )
-        (edgeConfigs, edgeConfigSize, elasticConcurrencyEnabled, kvDatabases, postgresDatabases) = (
-            nil,
-            nil,
-            nil,
-            nil,
-            nil
-        )
-        serverlessFunctionMaxMemorySize = nil
+        (self.blobStores, self.buildEntitlements, self.buildMachine, self.concurrentBuilds, self.customEnvironmentsPerProject) = (nil, nil, nil, nil, nil)
+        (self.edgeConfigs, self.edgeConfigSize, self.elasticConcurrencyEnabled, self.kvDatabases, self.postgresDatabases) = (nil, nil, nil, nil, nil)
+        self.serverlessFunctionMaxMemorySize = nil
     }
 }

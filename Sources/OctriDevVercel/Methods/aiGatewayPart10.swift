@@ -6,15 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AiGatewayMethods {
-    /// Lists the authenticated team's AI Gateway budgets as a flat list, with optional filtering by scope. Use
-    /// `scopeType` to filter by team, project, user, or API key, and use `limit` and `cursor` to paginate results.
-    /// Paged responses include `nextCursor` and `defaultCoveredCounts`.
+extension AiGatewayMethods {
+    /// Lists the authenticated team's AI Gateway budgets as a flat list, with optional filtering by scope. Use `scopeType` to filter by team, project, user, or API key, and use `limit` and `cursor` to paginate results. Paged responses include `nextCursor` and `defaultCoveredCounts`.
     ///
-    /// List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat
-    /// list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one
-    /// page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging
-    /// still reads the full merge server-side: the gateway meter list it joins has no cursor.
+    /// List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.
     ///
     /// - Parameters:
     /// - scopeType: Restrict the list to a single budget scope.
@@ -25,21 +20,12 @@ public extension AiGatewayMethods {
     /// - cursor: Opaque cursor returned by a prior call as nextCursor.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listAiGatewayBudgets(
-        config: ClientConfig,
-        scopeType: ListAiGatewayBudgetsParameter? = nil,
-        includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayBudgetList {
-        if let limit {
+    public static func listAiGatewayBudgets(config: ClientConfig, scopeType: ListAiGatewayBudgetsParameter? = nil, includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayBudgetList {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1)
         }
 
-        return try await (sdkRequest("GET", "/ai-gateway/budgets/list", config: config, query: [
+        return try (await sdkRequest("GET", "/ai-gateway/budgets/list", config: config, query: [
             SdkQueryParameter("scopeType", value: scopeType),
             SdkQueryParameter("includeDefaultCovered", value: includeDefaultCovered),
             SdkQueryParameter("limit", value: limit),
@@ -49,14 +35,9 @@ public extension AiGatewayMethods {
         ], decoder: .json, operationId: "listAiGatewayBudgets", options: requestOptions)).data
     }
 
-    /// Lists the authenticated team's AI Gateway budgets as a flat list, with optional filtering by scope. Use
-    /// `scopeType` to filter by team, project, user, or API key, and use `limit` and `cursor` to paginate results.
-    /// Paged responses include `nextCursor` and `defaultCoveredCounts`.
+    /// Lists the authenticated team's AI Gateway budgets as a flat list, with optional filtering by scope. Use `scopeType` to filter by team, project, user, or API key, and use `limit` and `cursor` to paginate results. Paged responses include `nextCursor` and `defaultCoveredCounts`.
     ///
-    /// List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat
-    /// list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one
-    /// page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging
-    /// still reads the full merge server-side: the gateway meter list it joins has no cursor.
+    /// List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.
     ///
     /// - Parameters:
     /// - scopeType: Restrict the list to a single budget scope.
@@ -67,44 +48,17 @@ public extension AiGatewayMethods {
     /// - cursor: Opaque cursor returned by a prior call as nextCursor.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listAiGatewayBudgetsPaginated(
-        config: ClientConfig,
-        scopeType: ListAiGatewayBudgetsParameter? = nil,
-        includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<AiGatewayBudget, Swift.Error> {
-        AsyncThrowingStream<AiGatewayBudget, Swift.Error> { (continuation: AsyncThrowingStream<
-            AiGatewayBudget,
-            Swift.Error
-        >.Continuation) in
+    public static func listAiGatewayBudgetsPaginated(config: ClientConfig, scopeType: ListAiGatewayBudgetsParameter? = nil, includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<AiGatewayBudget, Swift.Error> {
+        return AsyncThrowingStream<AiGatewayBudget, Swift.Error> { (continuation: AsyncThrowingStream<AiGatewayBudget, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listAiGatewayBudgets(
-                            config: config,
-                            scopeType: scopeType,
-                            includeDefaultCovered: includeDefaultCovered,
-                            limit: limit,
-                            cursor: pageCursor,
-                            teamId: teamId,
-                            slug: slug,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listAiGatewayBudgets(config: config, scopeType: scopeType, includeDefaultCovered: includeDefaultCovered, limit: limit, cursor: pageCursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
                         let pageItems = pageResponse.budgets
-                        if pageItems.isEmpty {
-                            break
-                        }
-                        for item in pageItems {
-                            continuation.yield(item)
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
+                        for item in pageItems { continuation.yield(item) }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {
@@ -117,56 +71,25 @@ public extension AiGatewayMethods {
         }
     }
 
-    struct ListAiGatewayBudgetsPage {
+    public struct ListAiGatewayBudgetsPage {
         public let data: AiGatewayBudgetList
         public let items: [AiGatewayBudget]
         public let hasMore: Bool
     }
 
-    static func listAiGatewayBudgetsPages(
-        config: ClientConfig,
-        scopeType: ListAiGatewayBudgetsParameter? = nil,
-        includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<ListAiGatewayBudgetsPage, Swift.Error> {
-        AsyncThrowingStream<ListAiGatewayBudgetsPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<
-            ListAiGatewayBudgetsPage,
-            Swift.Error
-        >.Continuation) in
+    public static func listAiGatewayBudgetsPages(config: ClientConfig, scopeType: ListAiGatewayBudgetsParameter? = nil, includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<ListAiGatewayBudgetsPage, Swift.Error> {
+        return AsyncThrowingStream<ListAiGatewayBudgetsPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<ListAiGatewayBudgetsPage, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listAiGatewayBudgets(
-                            config: config,
-                            scopeType: scopeType,
-                            includeDefaultCovered: includeDefaultCovered,
-                            limit: limit,
-                            cursor: pageCursor,
-                            teamId: teamId,
-                            slug: slug,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listAiGatewayBudgets(config: config, scopeType: scopeType, includeDefaultCovered: includeDefaultCovered, limit: limit, cursor: pageCursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
                         let pageItems = pageResponse.budgets
-                        if pageItems.isEmpty {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
                         let hasMore = pageResponse.nextCursor != nil
-                        pageContinuation.yield(ListAiGatewayBudgetsPage(
-                            data: pageResponse,
-                            items: pageItems,
-                            hasMore: hasMore
-                        ))
-                        if !hasMore {
-                            break
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        pageContinuation.yield(ListAiGatewayBudgetsPage(data: pageResponse, items: pageItems, hasMore: hasMore))
+                        if !hasMore { break }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {

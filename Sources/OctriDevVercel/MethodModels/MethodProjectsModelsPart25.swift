@@ -7,19 +7,13 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
+// Canonical projects operation model declarations
 extension CreateProjectResponseProtectionBypassValue {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateProjectResponseProtectionBypassValueVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateProjectResponseProtectionBypassValueVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .createProjectResponseProtectionBypassValueVariant0(value)
         }
-        if let value = try? container.decode(CreateProjectResponseProtectionBypassValueVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CreateProjectResponseProtectionBypassValueVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .createProjectResponseProtectionBypassValueVariant1(value)
         }
         return nil
@@ -31,12 +25,12 @@ extension CreateProjectResponseProtectionBypassValue {
         if let value = try? container.decode(
             CreateProjectResponseProtectionBypassValueVariant0.self
         ) {
-            return .createProjectResponseProtectionBypassValueVariant0(value)
+            return             .createProjectResponseProtectionBypassValueVariant0(value)
         }
         if let value = try? container.decode(
             CreateProjectResponseProtectionBypassValueVariant1.self
         ) {
-            return .createProjectResponseProtectionBypassValueVariant1(value)
+            return             .createProjectResponseProtectionBypassValueVariant1(value)
         }
         return nil
     }
@@ -61,46 +55,28 @@ public struct RemoveProjectEnvResponseVariant1ContentHintVariant3: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RemoveProjectEnvResponseVariant1ContentHintVariant3 {
-    init(from decoder: Decoder) throws {
+extension RemoveProjectEnvResponseVariant1ContentHintVariant3 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.storeId) else {
-            throw SdkValidationError(
-                field: "storeId",
-                code: "required",
-                message: "Validation failed for 'storeId': value is required"
-            )
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        storeId = try container.sdkDecodeRequired(.storeId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            RemoveProjectEnvResponseVariant1ContentHintVariant3Type.allCases.map(\.rawValue)
-        )
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseVariant1ContentHintVariant3Type.allCases.map(\.rawValue))
     }
 }
 
-public extension RemoveProjectEnvResponseVariant1ContentHintVariant3 {
-    init(storeId: String, type: RemoveProjectEnvResponseVariant1ContentHintVariant3Type) throws {
+extension RemoveProjectEnvResponseVariant1ContentHintVariant3 {
+    public init(storeId: String, type: RemoveProjectEnvResponseVariant1ContentHintVariant3Type) throws {
         (self.storeId, self.type) = (storeId, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            RemoveProjectEnvResponseVariant1ContentHintVariant3Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseVariant1ContentHintVariant3Type.allCases.map(\.rawValue))
     }
 }
 
@@ -119,78 +95,42 @@ public struct CreateProjectResponseProtectionBypassValueVariant0: Codable {
         case scope
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateProjectResponseProtectionBypassValueVariant0 {
-    init(from decoder: Decoder) throws {
+extension CreateProjectResponseProtectionBypassValueVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.configurationId) else {
-            throw SdkValidationError(
-                field: "configurationId",
-                code: "required",
-                message: "Validation failed for 'configurationId': value is required"
-            )
+            throw SdkValidationError(field: "configurationId", code: "required", message: "Validation failed for 'configurationId': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.createdBy) else {
-            throw SdkValidationError(
-                field: "createdBy",
-                code: "required",
-                message: "Validation failed for 'createdBy': value is required"
-            )
+            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
         }
         guard container.contains(.integrationId) else {
-            throw SdkValidationError(
-                field: "integrationId",
-                code: "required",
-                message: "Validation failed for 'integrationId': value is required"
-            )
+            throw SdkValidationError(field: "integrationId", code: "required", message: "Validation failed for 'integrationId': value is required")
         }
         guard container.contains(.scope) else {
-            throw SdkValidationError(
-                field: "scope",
-                code: "required",
-                message: "Validation failed for 'scope': value is required"
-            )
+            throw SdkValidationError(field: "scope", code: "required", message: "Validation failed for 'scope': value is required")
         }
-        configurationId = try container.sdkDecodeRequired(.configurationId)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        createdBy = try container.sdkDecodeRequired(.createdBy)
-        integrationId = try container.sdkDecodeRequired(.integrationId)
-        scope = try container.sdkDecodeRequired(.scope)
-        try sdkValidateRawEnum(
-            "scope",
-            scope,
-            CreateProjectResponseProtectionBypassValueVariant0Scope.allCases.map(\.rawValue)
-        )
+        self.configurationId = try container.sdkDecodeRequired(.configurationId)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.createdBy = try container.sdkDecodeRequired(.createdBy)
+        self.integrationId = try container.sdkDecodeRequired(.integrationId)
+        self.scope = try container.sdkDecodeRequired(.scope)
+            try sdkValidateRawEnum("scope", self.scope, CreateProjectResponseProtectionBypassValueVariant0Scope.allCases.map(\.rawValue))
     }
 }
 
-public extension CreateProjectResponseProtectionBypassValueVariant0 {
-    init(
-        configurationId: String,
-        createdAt: Double,
-        createdBy: String,
-        integrationId: String,
-        scope: CreateProjectResponseProtectionBypassValueVariant0Scope
-    ) throws {
+extension CreateProjectResponseProtectionBypassValueVariant0 {
+    public init(configurationId: String, createdAt: Double, createdBy: String, integrationId: String, scope: CreateProjectResponseProtectionBypassValueVariant0Scope) throws {
         (self.configurationId, self.createdAt) = (configurationId, createdAt)
         (self.createdBy, self.integrationId) = (createdBy, integrationId)
         self.scope = scope
-        try sdkValidateRawEnum(
-            "scope",
-            self.scope,
-            CreateProjectResponseProtectionBypassValueVariant0Scope.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("scope", self.scope, CreateProjectResponseProtectionBypassValueVariant0Scope.allCases.map(\.rawValue))
     }
 }
 
@@ -310,17 +250,7 @@ public struct UploadProjectAvatarResponse: Codable {
     public var v0Created: Bool? = .none
     public var webAnalytics: UploadProjectAvatarResponseWebAnalytics? = .none
 
-    init(
-        sdkRequiredFields accountId: String,
-        alias: [UploadProjectAvatarResponseAliasItem],
-        defaultResourceConfig: UploadProjectAvatarResponseDefaultResourceConfig,
-        deploymentExpiration: UploadProjectAvatarResponseDeploymentExpiration,
-        directoryListing: Bool,
-        id: String,
-        name: String,
-        nodeVersion: UploadProjectAvatarResponseNodeVersion,
-        resourceConfig: UploadProjectAvatarResponseResourceConfig
-    ) {
+    init(sdkRequiredFields accountId: String, alias: [UploadProjectAvatarResponseAliasItem], defaultResourceConfig: UploadProjectAvatarResponseDefaultResourceConfig, deploymentExpiration: UploadProjectAvatarResponseDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: UploadProjectAvatarResponseNodeVersion, resourceConfig: UploadProjectAvatarResponseResourceConfig) {
         (self.accountId, self.alias) = (accountId, alias)
         self.defaultResourceConfig = defaultResourceConfig
         (self.deploymentExpiration, self.directoryListing) = (deploymentExpiration, directoryListing)
@@ -431,20 +361,10 @@ extension UploadProjectAvatarResponse {
     }
 }
 
-public extension UploadProjectAvatarResponse {
-    init(from decoder: Decoder) throws {
+extension UploadProjectAvatarResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        try self.init(
-            sdkRequiredFields: container.sdkDecodeRequired(.accountId),
-            alias: container.sdkDecodeRequired(.alias),
-            defaultResourceConfig: container.sdkDecodeRequired(.defaultResourceConfig),
-            deploymentExpiration: container.sdkDecodeRequired(.deploymentExpiration),
-            directoryListing: container.sdkDecodeRequired(.directoryListing),
-            id: container.sdkDecodeRequired(.id),
-            name: container.sdkDecodeRequired(.name),
-            nodeVersion: container.sdkDecodeRequired(.nodeVersion),
-            resourceConfig: container.sdkDecodeRequired(.resourceConfig)
-        )
+        self.init(sdkRequiredFields: try container.sdkDecodeRequired(.accountId), alias: try container.sdkDecodeRequired(.alias), defaultResourceConfig: try container.sdkDecodeRequired(.defaultResourceConfig), deploymentExpiration: try container.sdkDecodeRequired(.deploymentExpiration), directoryListing: try container.sdkDecodeRequired(.directoryListing), id: try container.sdkDecodeRequired(.id), name: try container.sdkDecodeRequired(.name), nodeVersion: try container.sdkDecodeRequired(.nodeVersion), resourceConfig: try container.sdkDecodeRequired(.resourceConfig))
         try sdkDecodeFieldsPart1(container)
         try sdkDecodeFieldsPart2(container)
         try sdkDecodeFieldsPart3(container)
@@ -456,117 +376,9 @@ public extension UploadProjectAvatarResponse {
     }
 }
 
-public extension UploadProjectAvatarResponse {
-    init(
-        accountId: String,
-        alias: [UploadProjectAvatarResponseAliasItem],
-        defaultResourceConfig: UploadProjectAvatarResponseDefaultResourceConfig,
-        deploymentExpiration: UploadProjectAvatarResponseDeploymentExpiration,
-        directoryListing: Bool,
-        id: String,
-        name: String,
-        nodeVersion: UploadProjectAvatarResponseNodeVersion,
-        resourceConfig: UploadProjectAvatarResponseResourceConfig,
-        analytics: UploadProjectAvatarResponseAnalytics? = nil,
-        appliedCve55182Migration: Bool? = nil,
-        autoAssignCustomDomains: Bool? = nil,
-        autoAssignCustomDomainsUpdatedBy: String? = nil,
-        autoExposeSystemEnvs: Bool? = nil,
-        avatar: String? = nil,
-        avatarDarkMode: String? = nil,
-        blobs: UploadProjectAvatarResponseBlobs? = nil,
-        buildCommand: String? = nil,
-        commandForIgnoringBuildStep: String? = nil,
-        concurrencyBucketName: String? = nil,
-        connectBuildsEnabled: Bool? = nil,
-        connectConfigurationId: String? = nil,
-        connectConfigurations: [UploadProjectAvatarResponseConnectConfigurationsItem]? = nil,
-        createdAt: Double? = nil,
-        creator: UploadProjectAvatarResponseCreator? = nil,
-        crons: UploadProjectAvatarResponseCrons? = nil,
-        customEnvironments: [UploadProjectAvatarResponseCustomEnvironmentsItem]? = nil,
-        customerSupportCodeVisibility: Bool? = nil,
-        dataCache: UploadProjectAvatarResponseDataCache? = nil,
-        deploymentPolicy: UploadProjectAvatarResponseDeploymentPolicy? = nil,
-        devCommand: String? = nil,
-        dismissedToasts: [UploadProjectAvatarResponseDismissedToastsItem]? = nil,
-        enableAffectedProjectsDeployments: Bool? = nil,
-        enableExternalRewriteCaching: Bool? = nil,
-        enablePreviewFeedback: Bool? = nil,
-        enableProductionFeedback: Bool? = nil,
-        env: [UploadProjectAvatarResponseEnvItem]? = nil,
-        expiration: UploadProjectAvatarResponseExpiration? = nil,
-        features: UploadProjectAvatarResponseFeatures? = nil,
-        framework: UploadProjectAvatarResponseFramework? = nil,
-        gitComments: UploadProjectAvatarResponseGitComments? = nil,
-        gitForkProtection: Bool? = nil,
-        gitLfs: Bool? = nil,
-        gitProviderOptions: UploadProjectAvatarResponseGitProviderOptions? = nil,
-        hasActiveBranches: Bool? = nil,
-        hasDeployments: Bool? = nil,
-        installCommand: String? = nil,
-        internalRoutes: [UploadProjectAvatarResponseInternalRoutesItem]? = nil,
-        ipBuckets: [UploadProjectAvatarResponseIpBucketsItem]? = nil,
-        jobs: UploadProjectAvatarResponseJobs? = nil,
-        lastAliasRequest: UploadProjectAvatarResponseLastAliasRequest? = nil,
-        lastRollbackTarget: [String: JSONValue]? = nil,
-        latestDeployments: [UploadProjectAvatarResponseLatestDeploymentsItem]? = nil,
-        link: UploadProjectAvatarResponseLink? = nil,
-        live: Bool? = nil,
-        microfrontends: UploadProjectAvatarResponseMicrofrontends? = nil,
-        oidcTokenConfig: UploadProjectAvatarResponseOidcTokenConfig? = nil,
-        optionsAllowlist: UploadProjectAvatarResponseOptionsAllowlist? = nil,
-        outputDirectory: String? = nil,
-        passiveConnectConfigurationId: String? = nil,
-        passport: UploadProjectAvatarResponsePassport? = nil,
-        passwordProtection: UploadProjectAvatarResponsePasswordProtection? = nil,
-        paused: Bool? = nil,
-        permissions: UploadProjectAvatarResponsePermissions? = nil,
-        productionDeploymentsFastLane: Bool? = nil,
-        protectedSourcemaps: Bool? = nil,
-        protectionBypass: [String: UploadProjectAvatarResponseProtectionBypassValue]? = nil,
-        protectionConfig: UploadProjectAvatarResponseProtectionConfig? = nil,
-        rollbackDescription: UploadProjectAvatarResponseRollbackDescription? = nil,
-        rollingRelease: UploadProjectAvatarResponseRollingRelease? = nil,
-        rootDirectory: String? = nil,
-        sandbox: UploadProjectAvatarResponseSandbox? = nil,
-        security: UploadProjectAvatarResponseSecurity? = nil,
-        serverlessFunctionZeroConfigFailover: Bool? = nil,
-        services: [UploadProjectAvatarResponseServicesItem]? = nil,
-        skewProtectionAllowedDomains: [String]? = nil,
-        skewProtectionBoundaryAt: Double? = nil,
-        skewProtectionMaxAge: Double? = nil,
-        skipGitConnectDuringLink: Bool? = nil,
-        sourceFilesOutsideRootDirectory: Bool? = nil,
-        speedInsights: UploadProjectAvatarResponseSpeedInsights? = nil,
-        ssoProtection: UploadProjectAvatarResponseSsoProtection? = nil,
-        staticIps: UploadProjectAvatarResponseStaticIps? = nil,
-        targets: [String: UploadProjectAvatarResponseTargetsValue?]? = nil,
-        tier: UploadProjectAvatarResponseTier? = nil,
-        tracing: UploadProjectAvatarResponseTracing? = nil,
-        transferCompletedAt: Double? = nil,
-        transferredFromAccountId: String? = nil,
-        transferStartedAt: Double? = nil,
-        transferToAccountId: String? = nil,
-        trustedIps: UploadProjectAvatarResponseTrustedIps? = nil,
-        trustedSources: UploadProjectAvatarResponseTrustedSources? = nil,
-        updatedAt: Double? = nil,
-        usageStatus: UploadProjectAvatarResponseUsageStatus? = nil,
-        v0: Bool? = nil,
-        v0Created: Bool? = nil,
-        webAnalytics: UploadProjectAvatarResponseWebAnalytics? = nil
-    ) {
-        self.init(
-            sdkRequiredFields: accountId,
-            alias: alias,
-            defaultResourceConfig: defaultResourceConfig,
-            deploymentExpiration: deploymentExpiration,
-            directoryListing: directoryListing,
-            id: id,
-            name: name,
-            nodeVersion: nodeVersion,
-            resourceConfig: resourceConfig
-        )
+extension UploadProjectAvatarResponse {
+    public init(accountId: String, alias: [UploadProjectAvatarResponseAliasItem], defaultResourceConfig: UploadProjectAvatarResponseDefaultResourceConfig, deploymentExpiration: UploadProjectAvatarResponseDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: UploadProjectAvatarResponseNodeVersion, resourceConfig: UploadProjectAvatarResponseResourceConfig, analytics: UploadProjectAvatarResponseAnalytics? = nil, appliedCve55182Migration: Bool? = nil, autoAssignCustomDomains: Bool? = nil, autoAssignCustomDomainsUpdatedBy: String? = nil, autoExposeSystemEnvs: Bool? = nil, avatar: String? = nil, avatarDarkMode: String? = nil, blobs: UploadProjectAvatarResponseBlobs? = nil, buildCommand: String? = nil, commandForIgnoringBuildStep: String? = nil, concurrencyBucketName: String? = nil, connectBuildsEnabled: Bool? = nil, connectConfigurationId: String? = nil, connectConfigurations: [UploadProjectAvatarResponseConnectConfigurationsItem]? = nil, createdAt: Double? = nil, creator: UploadProjectAvatarResponseCreator? = nil, crons: UploadProjectAvatarResponseCrons? = nil, customEnvironments: [UploadProjectAvatarResponseCustomEnvironmentsItem]? = nil, customerSupportCodeVisibility: Bool? = nil, dataCache: UploadProjectAvatarResponseDataCache? = nil, deploymentPolicy: UploadProjectAvatarResponseDeploymentPolicy? = nil, devCommand: String? = nil, dismissedToasts: [UploadProjectAvatarResponseDismissedToastsItem]? = nil, enableAffectedProjectsDeployments: Bool? = nil, enableExternalRewriteCaching: Bool? = nil, enablePreviewFeedback: Bool? = nil, enableProductionFeedback: Bool? = nil, env: [UploadProjectAvatarResponseEnvItem]? = nil, expiration: UploadProjectAvatarResponseExpiration? = nil, features: UploadProjectAvatarResponseFeatures? = nil, framework: UploadProjectAvatarResponseFramework? = nil, gitComments: UploadProjectAvatarResponseGitComments? = nil, gitForkProtection: Bool? = nil, gitLfs: Bool? = nil, gitProviderOptions: UploadProjectAvatarResponseGitProviderOptions? = nil, hasActiveBranches: Bool? = nil, hasDeployments: Bool? = nil, installCommand: String? = nil, internalRoutes: [UploadProjectAvatarResponseInternalRoutesItem]? = nil, ipBuckets: [UploadProjectAvatarResponseIpBucketsItem]? = nil, jobs: UploadProjectAvatarResponseJobs? = nil, lastAliasRequest: UploadProjectAvatarResponseLastAliasRequest? = nil, lastRollbackTarget: [String: JSONValue]? = nil, latestDeployments: [UploadProjectAvatarResponseLatestDeploymentsItem]? = nil, link: UploadProjectAvatarResponseLink? = nil, live: Bool? = nil, microfrontends: UploadProjectAvatarResponseMicrofrontends? = nil, oidcTokenConfig: UploadProjectAvatarResponseOidcTokenConfig? = nil, optionsAllowlist: UploadProjectAvatarResponseOptionsAllowlist? = nil, outputDirectory: String? = nil, passiveConnectConfigurationId: String? = nil, passport: UploadProjectAvatarResponsePassport? = nil, passwordProtection: UploadProjectAvatarResponsePasswordProtection? = nil, paused: Bool? = nil, permissions: UploadProjectAvatarResponsePermissions? = nil, productionDeploymentsFastLane: Bool? = nil, protectedSourcemaps: Bool? = nil, protectionBypass: [String: UploadProjectAvatarResponseProtectionBypassValue]? = nil, protectionConfig: UploadProjectAvatarResponseProtectionConfig? = nil, rollbackDescription: UploadProjectAvatarResponseRollbackDescription? = nil, rollingRelease: UploadProjectAvatarResponseRollingRelease? = nil, rootDirectory: String? = nil, sandbox: UploadProjectAvatarResponseSandbox? = nil, security: UploadProjectAvatarResponseSecurity? = nil, serverlessFunctionZeroConfigFailover: Bool? = nil, services: [UploadProjectAvatarResponseServicesItem]? = nil, skewProtectionAllowedDomains: [String]? = nil, skewProtectionBoundaryAt: Double? = nil, skewProtectionMaxAge: Double? = nil, skipGitConnectDuringLink: Bool? = nil, sourceFilesOutsideRootDirectory: Bool? = nil, speedInsights: UploadProjectAvatarResponseSpeedInsights? = nil, ssoProtection: UploadProjectAvatarResponseSsoProtection? = nil, staticIps: UploadProjectAvatarResponseStaticIps? = nil, targets: [String: UploadProjectAvatarResponseTargetsValue?]? = nil, tier: UploadProjectAvatarResponseTier? = nil, tracing: UploadProjectAvatarResponseTracing? = nil, transferCompletedAt: Double? = nil, transferredFromAccountId: String? = nil, transferStartedAt: Double? = nil, transferToAccountId: String? = nil, trustedIps: UploadProjectAvatarResponseTrustedIps? = nil, trustedSources: UploadProjectAvatarResponseTrustedSources? = nil, updatedAt: Double? = nil, usageStatus: UploadProjectAvatarResponseUsageStatus? = nil, v0: Bool? = nil, v0Created: Bool? = nil, webAnalytics: UploadProjectAvatarResponseWebAnalytics? = nil) {
+        self.init(sdkRequiredFields: accountId, alias: alias, defaultResourceConfig: defaultResourceConfig, deploymentExpiration: deploymentExpiration, directoryListing: directoryListing, id: id, name: name, nodeVersion: nodeVersion, resourceConfig: resourceConfig)
         sdkSet1(analytics, appliedCve55182Migration, autoAssignCustomDomains, autoAssignCustomDomainsUpdatedBy)
         sdkSet2(autoExposeSystemEnvs, avatar, avatarDarkMode, blobs, buildCommand)
         sdkSet3(commandForIgnoringBuildStep, concurrencyBucketName, connectBuildsEnabled, connectConfigurationId)
@@ -590,12 +402,7 @@ public extension UploadProjectAvatarResponse {
 }
 
 extension UploadProjectAvatarResponse {
-    mutating func sdkSet1(
-        _ analytics: UploadProjectAvatarResponseAnalytics?,
-        _ appliedCve55182Migration: Bool?,
-        _ autoAssignCustomDomains: Bool?,
-        _ autoAssignCustomDomainsUpdatedBy: String?
-    ) {
+    mutating func sdkSet1(_ analytics: UploadProjectAvatarResponseAnalytics?, _ appliedCve55182Migration: Bool?, _ autoAssignCustomDomains: Bool?, _ autoAssignCustomDomainsUpdatedBy: String?) {
         self.analytics = analytics
         self.appliedCve55182Migration = appliedCve55182Migration
         self.autoAssignCustomDomains = autoAssignCustomDomains
@@ -604,13 +411,7 @@ extension UploadProjectAvatarResponse {
 }
 
 extension UploadProjectAvatarResponse {
-    mutating func sdkSet2(
-        _ autoExposeSystemEnvs: Bool?,
-        _ avatar: String?,
-        _ avatarDarkMode: String?,
-        _ blobs: UploadProjectAvatarResponseBlobs?,
-        _ buildCommand: String?
-    ) {
+    mutating func sdkSet2(_ autoExposeSystemEnvs: Bool?, _ avatar: String?, _ avatarDarkMode: String?, _ blobs: UploadProjectAvatarResponseBlobs?, _ buildCommand: String?) {
         self.autoExposeSystemEnvs = autoExposeSystemEnvs
         self.avatar = avatar
         self.avatarDarkMode = avatarDarkMode

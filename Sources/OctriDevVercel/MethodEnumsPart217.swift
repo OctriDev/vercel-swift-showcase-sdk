@@ -23,14 +23,10 @@ public enum ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant1Type:
     }
 }
 
-public struct UpdateFirewallConfigRequestBodyVariant19Id: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateFirewallConfigRequestBodyVariant19Id: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let aiBots = UpdateFirewallConfigRequestBodyVariant19Id(rawValue: "ai_bots")
     public static let botFilter = UpdateFirewallConfigRequestBodyVariant19Id(rawValue: "bot_filter")
     public static let botProtection = UpdateFirewallConfigRequestBodyVariant19Id(rawValue: "bot_protection")
@@ -40,7 +36,7 @@ public struct UpdateFirewallConfigRequestBodyVariant19Id: RawRepresentable, Hash
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -54,27 +50,20 @@ public struct UpdateFirewallConfigRequestBodyVariant19Id: RawRepresentable, Hash
 /// webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct
 /// user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app
 /// tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the…
-public struct ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let cli = ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f(rawValue: "cli")
-    public static let deployHook =
-        ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f(rawValue: "deploy-hook")
+    public static let deployHook = ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f(rawValue: "deploy-hook")
     public static let git = ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f(rawValue: "git")
-    public static let integration =
-        ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f(rawValue: "integration")
-    public static let restApi =
-        ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f(rawValue: "rest-api")
+    public static let integration = ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f(rawValue: "integration")
+    public static let restApi = ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f(rawValue: "rest-api")
     public static let v0 = ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploXd3f9922b2f(rawValue: "v0")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -100,20 +89,15 @@ public enum RemoveProjectEnvResponseVariant2ContentHintVariant9Type: String, Cas
     }
 }
 
-public struct CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItXbe844ff2b2: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItXbe844ff2b2: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let allCustom =
-        CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItXbe844ff2b2(rawValue: "all-custom")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let allCustom = CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItXbe844ff2b2(rawValue: "all-custom")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -122,14 +106,10 @@ public struct CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItXbe84
     }
 }
 
-public struct CreateFlagSegmentResponseDataRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateFlagSegmentResponseDataRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let contains = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "!contains")
     public static let endsWith = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "!endsWith")
     public static let eq = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "!eq")
@@ -142,8 +122,7 @@ public struct CreateFlagSegmentResponseDataRulesItemConditionsItemCmp: RawRepres
     public static let contains2 = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "contains")
     public static let containsAllOf = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "containsAllOf")
     public static let containsAnyOf = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "containsAnyOf")
-    public static let containsNoneOf =
-        CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "containsNoneOf")
+    public static let containsNoneOf = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "containsNoneOf")
     public static let endsWith2 = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "endsWith")
     public static let eq2 = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "eq")
     public static let ex2 = CreateFlagSegmentResponseDataRulesItemConditionsItemCmp(rawValue: "ex")
@@ -157,7 +136,7 @@ public struct CreateFlagSegmentResponseDataRulesItemConditionsItemCmp: RawRepres
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -166,30 +145,21 @@ public struct CreateFlagSegmentResponseDataRulesItemConditionsItemCmp: RawRepres
     }
 }
 
-public struct ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let blocked =
-        ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "BLOCKED")
-    public static let building =
-        ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "BUILDING")
-    public static let canceled =
-        ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "CANCELED")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let blocked = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "BLOCKED")
+    public static let building = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "BUILDING")
+    public static let canceled = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "CANCELED")
     public static let error = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "ERROR")
-    public static let initializing =
-        ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "INITIALIZING")
-    public static let queued =
-        ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "QUEUED")
+    public static let initializing = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "INITIALIZING")
+    public static let queued = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "QUEUED")
     public static let ready = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReadyState(rawValue: "READY")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -198,21 +168,17 @@ public struct ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemReady
     }
 }
 
-public struct ListProjectsResponseVariant0ItemEnvItemTargetVariant1: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemEnvItemTargetVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = ListProjectsResponseVariant0ItemEnvItemTargetVariant1(rawValue: "development")
     public static let preview = ListProjectsResponseVariant0ItemEnvItemTargetVariant1(rawValue: "preview")
     public static let production = ListProjectsResponseVariant0ItemEnvItemTargetVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

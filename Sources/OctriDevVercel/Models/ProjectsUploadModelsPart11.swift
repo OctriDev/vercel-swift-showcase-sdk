@@ -3,21 +3,16 @@
 
 import Foundation
 
-/// ProjectsUpload domain models
-public struct UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b368c27b3: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+// ProjectsUpload domain models
+public struct UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b368c27b3: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let gitlab =
-        UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b368c27b3(rawValue: "gitlab")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let gitlab = UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b368c27b3(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -196,22 +191,16 @@ public enum UploadProjectAvatarResponseLinkVariant5Type: String, CaseIterable, C
     }
 }
 
-public struct UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX9323d58548: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX9323d58548: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let preview =
-        UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX9323d58548(rawValue: "preview")
-    public static let production =
-        UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX9323d58548(rawValue: "production")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let preview = UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX9323d58548(rawValue: "preview")
+    public static let production = UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX9323d58548(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

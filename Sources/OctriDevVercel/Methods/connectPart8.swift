@@ -6,30 +6,16 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ConnectMethods {
-    /// Disconnects a managed connector from its provider-side manager. Use this operation when you want the connector
-    /// to stop being managed by that provider.
+extension ConnectMethods {
+    /// Disconnects a managed connector from its provider-side manager. Use this operation when you want the connector to stop being managed by that provider.
     ///
     /// Disconnect a managed connector from its provider-side manager.
     ///
     /// - Parameters:
     /// - connector: Stable connector ID or URL-encoded team-scoped UID.
-    static func ejectManagedConnector(
-        config: ClientConfig,
-        connector: String,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ConnectConnector {
-        try await (sdkRequest(
-            "POST",
-            ["/v1/connect/connectors/", sdkEncodePathSegment(sdkWireString(connector)), "/managed/eject"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "ejectManagedConnector",
-            options: requestOptions
-        )).data
+    public static func ejectManagedConnector(config: ClientConfig, connector: String, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectConnector {
+        return try (await sdkRequest("POST", ["/v1/connect/connectors/", sdkEncodePathSegment(sdkWireString(connector)), "/managed/eject"].joined(), config: config, query: [
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "ejectManagedConnector", options: requestOptions)).data
     }
 }

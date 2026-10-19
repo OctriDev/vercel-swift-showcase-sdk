@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical kms operation model declarations
+// Canonical kms operation model declarations
 public struct CreateKmsSigningKeyResponse: Codable {
     public var algorithm: String
     public var createdAt: String
@@ -51,97 +51,52 @@ public struct CreateKmsSigningKeyResponse: Codable {
         case revokeAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateKmsSigningKeyResponse {
-    init(from decoder: Decoder) throws {
+extension CreateKmsSigningKeyResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.algorithm) else {
-            throw SdkValidationError(
-                field: "algorithm",
-                code: "required",
-                message: "Validation failed for 'algorithm': value is required"
-            )
+            throw SdkValidationError(field: "algorithm", code: "required", message: "Validation failed for 'algorithm': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.issuerId) else {
-            throw SdkValidationError(
-                field: "issuerId",
-                code: "required",
-                message: "Validation failed for 'issuerId': value is required"
-            )
+            throw SdkValidationError(field: "issuerId", code: "required", message: "Validation failed for 'issuerId': value is required")
         }
         guard container.contains(.keyId) else {
-            throw SdkValidationError(
-                field: "keyId",
-                code: "required",
-                message: "Validation failed for 'keyId': value is required"
-            )
+            throw SdkValidationError(field: "keyId", code: "required", message: "Validation failed for 'keyId': value is required")
         }
         guard container.contains(.publicKeyFingerprint) else {
-            throw SdkValidationError(
-                field: "publicKeyFingerprint",
-                code: "required",
-                message: "Validation failed for 'publicKeyFingerprint': value is required"
-            )
+            throw SdkValidationError(field: "publicKeyFingerprint", code: "required", message: "Validation failed for 'publicKeyFingerprint': value is required")
         }
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        algorithm = try container.sdkDecodeRequired(.algorithm)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        issuerId = try container.sdkDecodeRequired(.issuerId)
-        keyId = try container.sdkDecodeRequired(.keyId)
-        publicKeyFingerprint = try container.sdkDecodeRequired(.publicKeyFingerprint)
-        status = try container.sdkDecodeRequired(.status)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        activateAt = try container.sdkDecodeIfPresent(.activateAt)
-        activatedAt = try container.sdkDecodeIfPresent(.activatedAt)
-        certificatePem = try container.sdkDecodeIfPresent(.certificatePem)
-        importKeyId = try container.sdkDecodeIfPresent(.importKeyId)
-        publicKey = try container.sdkDecodeIfPresent(.publicKey)
-        publicKeyPem = try container.sdkDecodeIfPresent(.publicKeyPem)
-        revokeAt = try container.sdkDecodeIfPresent(.revokeAt)
+        self.algorithm = try container.sdkDecodeRequired(.algorithm)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.issuerId = try container.sdkDecodeRequired(.issuerId)
+        self.keyId = try container.sdkDecodeRequired(.keyId)
+        self.publicKeyFingerprint = try container.sdkDecodeRequired(.publicKeyFingerprint)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.activateAt = try container.sdkDecodeIfPresent(.activateAt)
+        self.activatedAt = try container.sdkDecodeIfPresent(.activatedAt)
+        self.certificatePem = try container.sdkDecodeIfPresent(.certificatePem)
+        self.importKeyId = try container.sdkDecodeIfPresent(.importKeyId)
+        self.publicKey = try container.sdkDecodeIfPresent(.publicKey)
+        self.publicKeyPem = try container.sdkDecodeIfPresent(.publicKeyPem)
+        self.revokeAt = try container.sdkDecodeIfPresent(.revokeAt)
     }
 }
 
-public extension CreateKmsSigningKeyResponse {
-    init(
-        algorithm: String,
-        createdAt: String,
-        issuerId: String,
-        keyId: String,
-        publicKeyFingerprint: String,
-        status: CreateKmsSigningKeyResponseStatus,
-        updatedAt: String,
-        activateAt: String? = nil,
-        activatedAt: String? = nil,
-        certificatePem: String? = nil,
-        importKeyId: String? = nil,
-        publicKey: CreateKmsSigningKeyResponsePublicKey? = nil,
-        publicKeyPem: String? = nil,
-        revokeAt: String? = nil
-    ) {
+extension CreateKmsSigningKeyResponse {
+    public init(algorithm: String, createdAt: String, issuerId: String, keyId: String, publicKeyFingerprint: String, status: CreateKmsSigningKeyResponseStatus, updatedAt: String, activateAt: String? = nil, activatedAt: String? = nil, certificatePem: String? = nil, importKeyId: String? = nil, publicKey: CreateKmsSigningKeyResponsePublicKey? = nil, publicKeyPem: String? = nil, revokeAt: String? = nil) {
         (self.algorithm, self.createdAt) = (algorithm, createdAt)
         (self.issuerId, self.keyId) = (issuerId, keyId)
         (self.publicKeyFingerprint, self.status) = (publicKeyFingerprint, status)
@@ -175,34 +130,26 @@ public struct UpdateKmsIssuerResponseSigningKeysItemPublicKey: Codable {
     }
 
     init() {
-        (alg, keyOps, kid, kty, use) = (nil, nil, nil, nil, nil)
-        (x5c, x5tS256) = (nil, nil)
+        (self.alg, self.keyOps, self.kid, self.kty, self.use) = (nil, nil, nil, nil, nil)
+        (self.x5c, self.x5tS256) = (nil, nil)
     }
 }
 
-public extension UpdateKmsIssuerResponseSigningKeysItemPublicKey {
-    init(from decoder: Decoder) throws {
+extension UpdateKmsIssuerResponseSigningKeysItemPublicKey {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        alg = try container.sdkDecodeIfPresent(.alg)
-        keyOps = try container.sdkDecodeIfPresent(.keyOps)
-        kid = try container.sdkDecodeIfPresent(.kid)
-        kty = try container.sdkDecodeIfPresent(.kty)
-        use = try container.sdkDecodeIfPresent(.use)
-        x5c = try container.sdkDecodeIfPresent(.x5c)
-        x5tS256 = try container.sdkDecodeIfPresent(.x5tS256)
+        self.alg = try container.sdkDecodeIfPresent(.alg)
+        self.keyOps = try container.sdkDecodeIfPresent(.keyOps)
+        self.kid = try container.sdkDecodeIfPresent(.kid)
+        self.kty = try container.sdkDecodeIfPresent(.kty)
+        self.use = try container.sdkDecodeIfPresent(.use)
+        self.x5c = try container.sdkDecodeIfPresent(.x5c)
+        self.x5tS256 = try container.sdkDecodeIfPresent(.x5tS256)
     }
 }
 
-public extension UpdateKmsIssuerResponseSigningKeysItemPublicKey {
-    init(
-        alg: String? = nil,
-        keyOps: [String]? = nil,
-        kid: String? = nil,
-        kty: String? = nil,
-        use: String? = nil,
-        x5c: [String]? = nil,
-        x5tS256: String? = nil
-    ) {
+extension UpdateKmsIssuerResponseSigningKeysItemPublicKey {
+    public init(alg: String? = nil, keyOps: [String]? = nil, kid: String? = nil, kty: String? = nil, use: String? = nil, x5c: [String]? = nil, x5tS256: String? = nil) {
         self.init()
         (self.alg, self.keyOps) = (alg, keyOps)
         (self.kid, self.kty) = (kid, kty)

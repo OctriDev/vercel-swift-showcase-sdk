@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical logs operation model declarations
+// Canonical logs operation model declarations
 public struct GetRuntimeLogsResponse: Codable {
     public var domain: String
     public var level: GetRuntimeLogsResponseLevel
@@ -33,40 +33,27 @@ public struct GetRuntimeLogsResponse: Codable {
         case timestampInMs
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetRuntimeLogsResponse {
-    init(from decoder: Decoder) throws {
+extension GetRuntimeLogsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        domain = try container.sdkDecodeRequired(.domain)
-        level = try container.sdkDecodeRequired(.level)
-        message = try container.sdkDecodeRequired(.message)
-        messageTruncated = try container.sdkDecodeRequired(.messageTruncated)
-        requestMethod = try container.sdkDecodeRequired(.requestMethod)
-        requestPath = try container.sdkDecodeRequired(.requestPath)
-        responseStatusCode = try container.sdkDecodeRequired(.responseStatusCode)
-        rowId = try container.sdkDecodeRequired(.rowId)
-        source = try container.sdkDecodeRequired(.source)
-        timestampInMs = try container.sdkDecodeRequired(.timestampInMs)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.level = try container.sdkDecodeRequired(.level)
+        self.message = try container.sdkDecodeRequired(.message)
+        self.messageTruncated = try container.sdkDecodeRequired(.messageTruncated)
+        self.requestMethod = try container.sdkDecodeRequired(.requestMethod)
+        self.requestPath = try container.sdkDecodeRequired(.requestPath)
+        self.responseStatusCode = try container.sdkDecodeRequired(.responseStatusCode)
+        self.rowId = try container.sdkDecodeRequired(.rowId)
+        self.source = try container.sdkDecodeRequired(.source)
+        self.timestampInMs = try container.sdkDecodeRequired(.timestampInMs)
     }
 }
 
-public extension GetRuntimeLogsResponse {
-    init(
-        domain: String,
-        level: GetRuntimeLogsResponseLevel,
-        message: String,
-        messageTruncated: Bool,
-        requestMethod: String,
-        requestPath: String,
-        responseStatusCode: Double,
-        rowId: String,
-        source: GetRuntimeLogsResponseSource,
-        timestampInMs: Double
-    ) {
+extension GetRuntimeLogsResponse {
+    public init(domain: String, level: GetRuntimeLogsResponseLevel, message: String, messageTruncated: Bool, requestMethod: String, requestPath: String, responseStatusCode: Double, rowId: String, source: GetRuntimeLogsResponseSource, timestampInMs: Double) {
         (self.domain, self.level) = (domain, level)
         (self.message, self.messageTruncated) = (message, messageTruncated)
         (self.requestMethod, self.requestPath) = (requestMethod, requestPath)

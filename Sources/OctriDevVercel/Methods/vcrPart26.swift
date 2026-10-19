@@ -6,29 +6,17 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Lists image tags in a Docker repository. Use `teamSlug`, `projectSlug`, and `repositoryName` to identify the
-    /// repository, and `n` to control the page size. Pass the opaque cursor from a previous response's `Link` header in
-    /// `last` to continue listing.
+extension VcrMethods {
+    /// Lists image tags in a Docker repository. Use `teamSlug`, `projectSlug`, and `repositoryName` to identify the repository, and `n` to control the page size. Pass the opaque cursor from a previous response's `Link` header in `last` to continue listing.
     ///
-    /// GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository. The `last` parameter
-    /// accepts the opaque cursor from a previous response's `Link` header. Unparseable cursors return HTTP 400 with
-    /// code `invalid_cursor`.
+    /// GET /v2/:teamSlug/:projectSlug/:repositoryName/tags/list List the tags in a repository. The `last` parameter accepts the opaque cursor from a previous response's `Link` header. Unparseable cursors return HTTP 400 with code `invalid_cursor`.
     ///
     /// - Parameters:
     /// - teamSlug: Single Docker repository team slug component.
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - last: Opaque pagination cursor returned by a previous list response.
-    static func getByTeamSlugByProjectSlugByRepositoryNameTagsList(
-        config: ClientConfig,
-        teamSlug: String,
-        projectSlug: String,
-        repositoryName: String,
-        n: Int? = nil,
-        last: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponse {
+    public static func getByTeamSlugByProjectSlugByRepositoryNameTagsList(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, n: Int? = nil, last: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponse {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -38,26 +26,17 @@ public extension VcrMethods {
         try validateLength("repositoryName", repositoryName, max: 255)
         try sdkValidatePattern("repositoryName", repositoryName, sdkPatternccfeb2ca8f11)
 
-        if let n {
+        if let n = n {
             try validateRange("n", Double(n), min: 1, max: 1000)
         }
 
-        if let last {
+        if let last = last {
             try validateLength("last", last, max: 1024)
         }
 
-        return try await (sdkRequest("GET", [
-            "/v2/",
-            sdkEncodePathSegment(sdkWireString(teamSlug)),
-            "/",
-            sdkEncodePathSegment(sdkWireString(projectSlug)),
-            "/",
-            sdkEncodePathSegment(sdkWireString(repositoryName)),
-            "/tags/list",
-        ].joined(), config: config, query: [
+        return try (await sdkRequest("GET", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/tags/list"].joined(), config: config, query: [
             SdkQueryParameter("n", value: n),
             SdkQueryParameter("last", value: last),
-        ], decoder: .json, operationId: "getByTeamSlugByProjectSlugByRepositoryNameTagsList", options: requestOptions))
-            .data
+        ], decoder: .json, operationId: "getByTeamSlugByProjectSlugByRepositoryNameTagsList", options: requestOptions)).data
     }
 }

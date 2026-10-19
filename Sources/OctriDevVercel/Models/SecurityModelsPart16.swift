@@ -3,85 +3,49 @@
 
 import Foundation
 
-/// Security domain models
-public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+// Security domain models
+public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let botCategory =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_category")
-    public static let botName =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_name")
-    public static let botProtection =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_protection")
-    public static let botStatus =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_status")
-    public static let cookie =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "cookie")
-    public static let domainEnvironment =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "domain_environment")
-    public static let environment =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "environment")
-    public static let geoAsNumber =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_as_number")
-    public static let geoCity =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_city")
-    public static let geoContinent =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_continent")
-    public static let geoCountry =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_country")
-    public static let geoCountryRegion =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_country_region")
-    public static let header =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "header")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let botCategory = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_category")
+    public static let botName = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_name")
+    public static let botProtection = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_protection")
+    public static let botStatus = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_status")
+    public static let cookie = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "cookie")
+    public static let domainEnvironment = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "domain_environment")
+    public static let environment = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "environment")
+    public static let geoAsNumber = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_as_number")
+    public static let geoCity = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_city")
+    public static let geoContinent = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_continent")
+    public static let geoCountry = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_country")
+    public static let geoCountryRegion = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_country_region")
+    public static let header = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "header")
     public static let host = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "host")
-    public static let ipAddress =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ip_address")
-    public static let ja3Digest =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ja3_digest")
-    public static let ja4Digest =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ja4_digest")
-    public static let method =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "method")
+    public static let ipAddress = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ip_address")
+    public static let ja3Digest = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ja3_digest")
+    public static let ja4Digest = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ja4_digest")
+    public static let method = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "method")
     public static let path = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "path")
-    public static let `protocol` =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "protocol")
-    public static let query =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "query")
-    public static let rateLimitApiId =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "rate_limit_api_id")
-    public static let rawPath =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "raw_path")
-    public static let region =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "region")
-    public static let responseCode =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "response_code")
-    public static let route =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "route")
-    public static let ruleset =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ruleset")
-    public static let scheme =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "scheme")
-    public static let serverAction =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "server_action")
-    public static let sharedCondition =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "shared_condition")
-    public static let targetPath =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "target_path")
-    public static let trafficSource =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "traffic_source")
-    public static let trustedSource =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "trusted_source")
-    public static let userAgent =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "user_agent")
+    public static let `protocol` = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "protocol")
+    public static let query = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "query")
+    public static let rateLimitApiId = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "rate_limit_api_id")
+    public static let rawPath = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "raw_path")
+    public static let region = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "region")
+    public static let responseCode = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "response_code")
+    public static let route = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "route")
+    public static let ruleset = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ruleset")
+    public static let scheme = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "scheme")
+    public static let serverAction = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "server_action")
+    public static let sharedCondition = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "shared_condition")
+    public static let targetPath = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "target_path")
+    public static let trafficSource = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "traffic_source")
+    public static let trustedSource = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "trusted_source")
+    public static let userAgent = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "user_agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -90,20 +54,15 @@ public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a18
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let userAgent =
-        CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda(rawValue: "user-agent")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let userAgent = CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda(rawValue: "user-agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -112,20 +71,16 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845
     }
 }
 
-public struct AddBypassIpResponseVariant1ResultItemAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct AddBypassIpResponseVariant1ResultItemAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let block = AddBypassIpResponseVariant1ResultItemAction(rawValue: "block")
     public static let bypass = AddBypassIpResponseVariant1ResultItemAction(rawValue: "bypass")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -134,14 +89,10 @@ public struct AddBypassIpResponseVariant1ResultItemAction: RawRepresentable, Has
     }
 }
 
-public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseRuXfdb3a422e0: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseRuXfdb3a422e0: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let eq = CreateSecurityFirewallConfigByConfigVersionActivateResponseRuXfdb3a422e0(rawValue: "eq")
     public static let ex = CreateSecurityFirewallConfigByConfigVersionActivateResponseRuXfdb3a422e0(rawValue: "ex")
     public static let gt = CreateSecurityFirewallConfigByConfigVersionActivateResponseRuXfdb3a422e0(rawValue: "gt")
@@ -160,7 +111,7 @@ public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseRuXfdb3
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -169,19 +120,15 @@ public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseRuXfdb3
     }
 }
 
-public struct GetFirewallConfigResponseRulesItemVariant0ActionMitigateLogHeX288a75a72d: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetFirewallConfigResponseRulesItemVariant0ActionMitigateLogHeX288a75a72d: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let unknown = GetFirewallConfigResponseRulesItemVariant0ActionMitigateLogHeX288a75a72d(rawValue: "*")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -190,24 +137,18 @@ public struct GetFirewallConfigResponseRulesItemVariant0ActionMitigateLogHeX288a
     }
 }
 
-public struct PutFirewallConfigResponseActiveRulesItemVariant1ActionMitigatX1bd59859a7: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct PutFirewallConfigResponseActiveRulesItemVariant1ActionMitigatX1bd59859a7: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let challenge =
-        PutFirewallConfigResponseActiveRulesItemVariant1ActionMitigatX1bd59859a7(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let challenge = PutFirewallConfigResponseActiveRulesItemVariant1ActionMitigatX1bd59859a7(rawValue: "challenge")
     public static let deny = PutFirewallConfigResponseActiveRulesItemVariant1ActionMitigatX1bd59859a7(rawValue: "deny")
     public static let log = PutFirewallConfigResponseActiveRulesItemVariant1ActionMitigatX1bd59859a7(rawValue: "log")
-    public static let rateLimit =
-        PutFirewallConfigResponseActiveRulesItemVariant1ActionMitigatX1bd59859a7(rawValue: "rate_limit")
+    public static let rateLimit = PutFirewallConfigResponseActiveRulesItemVariant1ActionMitigatX1bd59859a7(rawValue: "rate_limit")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -216,22 +157,16 @@ public struct PutFirewallConfigResponseActiveRulesItemVariant1ActionMitigatX1bd5
     }
 }
 
-public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionX3abe20add5: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionX3abe20add5: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let fixedWindow =
-        GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionX3abe20add5(rawValue: "fixed_window")
-    public static let tokenBucket =
-        GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionX3abe20add5(rawValue: "token_bucket")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let fixedWindow = GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionX3abe20add5(rawValue: "fixed_window")
+    public static let tokenBucket = GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionX3abe20add5(rawValue: "token_bucket")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -240,84 +175,48 @@ public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionX3abe
     }
 }
 
-public struct GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let botCategory =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "bot_category")
-    public static let botName =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "bot_name")
-    public static let botProtection =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "bot_protection")
-    public static let botStatus =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "bot_status")
-    public static let cookie =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "cookie")
-    public static let domainEnvironment =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "domain_environment")
-    public static let environment =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "environment")
-    public static let geoAsNumber =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_as_number")
-    public static let geoCity =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_city")
-    public static let geoContinent =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_continent")
-    public static let geoCountry =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_country")
-    public static let geoCountryRegion =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_country_region")
-    public static let header =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "header")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let botCategory = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "bot_category")
+    public static let botName = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "bot_name")
+    public static let botProtection = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "bot_protection")
+    public static let botStatus = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "bot_status")
+    public static let cookie = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "cookie")
+    public static let domainEnvironment = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "domain_environment")
+    public static let environment = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "environment")
+    public static let geoAsNumber = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_as_number")
+    public static let geoCity = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_city")
+    public static let geoContinent = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_continent")
+    public static let geoCountry = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_country")
+    public static let geoCountryRegion = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "geo_country_region")
+    public static let header = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "header")
     public static let host = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "host")
-    public static let ipAddress =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "ip_address")
-    public static let ja3Digest =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "ja3_digest")
-    public static let ja4Digest =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "ja4_digest")
-    public static let method =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "method")
+    public static let ipAddress = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "ip_address")
+    public static let ja3Digest = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "ja3_digest")
+    public static let ja4Digest = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "ja4_digest")
+    public static let method = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "method")
     public static let path = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "path")
-    public static let `protocol` =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "protocol")
-    public static let query =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "query")
-    public static let rateLimitApiId =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "rate_limit_api_id")
-    public static let rawPath =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "raw_path")
-    public static let region =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "region")
-    public static let responseCode =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "response_code")
-    public static let route =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "route")
-    public static let ruleset =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "ruleset")
-    public static let scheme =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "scheme")
-    public static let serverAction =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "server_action")
-    public static let sharedCondition =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "shared_condition")
-    public static let targetPath =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "target_path")
-    public static let trafficSource =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "traffic_source")
-    public static let trustedSource =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "trusted_source")
-    public static let userAgent =
-        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "user_agent")
+    public static let `protocol` = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "protocol")
+    public static let query = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "query")
+    public static let rateLimitApiId = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "rate_limit_api_id")
+    public static let rawPath = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "raw_path")
+    public static let region = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "region")
+    public static let responseCode = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "response_code")
+    public static let route = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "route")
+    public static let ruleset = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "ruleset")
+    public static let scheme = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "scheme")
+    public static let serverAction = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "server_action")
+    public static let sharedCondition = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "shared_condition")
+    public static let targetPath = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "target_path")
+    public static let trafficSource = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "traffic_source")
+    public static let trustedSource = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "trusted_source")
+    public static let userAgent = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25915111(rawValue: "user_agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -326,30 +225,21 @@ public struct GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantXcc25
     }
 }
 
-public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let allow =
-        GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "allow")
-    public static let bypass =
-        GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "bypass")
-    public static let challenge =
-        GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let allow = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "allow")
+    public static let bypass = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "bypass")
+    public static let challenge = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "challenge")
     public static let deny = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "log")
-    public static let rateLimit =
-        GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "rate_limit")
-    public static let redirect =
-        GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "redirect")
+    public static let rateLimit = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "rate_limit")
+    public static let redirect = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ActionX02b3d0aabd(rawValue: "redirect")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical web operation model declarations
+// Canonical web operation model declarations
 public struct CreateWebInsightsToggleResponse: Codable {
     public var value: Bool
 
@@ -15,27 +15,21 @@ public struct CreateWebInsightsToggleResponse: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateWebInsightsToggleResponse {
-    init(from decoder: Decoder) throws {
+extension CreateWebInsightsToggleResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        value = try container.sdkDecodeRequired(.value)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension CreateWebInsightsToggleResponse {
-    init(value: Bool) {
+extension CreateWebInsightsToggleResponse {
+    public init(value: Bool) {
         self.value = value
     }
 }

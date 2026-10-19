@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    struct AddProjectDomainOptions: Codable {
+extension ProjectsMethods {
+    public struct AddProjectDomainOptions: Codable {
         public var idOrName: String
         public var name: String
         public var teamId: String?
@@ -23,15 +23,9 @@ public extension ProjectsMethods {
         }
     }
 
-    /// Creates a project-domain association for a project. Provide the domain name and optionally configure its Git
-    /// branch, custom environment, or redirect; an unverified domain must complete the returned verification challenge
-    /// before it can be used as an alias.
+    /// Creates a project-domain association for a project. Provide the domain name and optionally configure its Git branch, custom environment, or redirect; an unverified domain must complete the returned verification challenge before it can be used as an alias.
     ///
-    /// Add a domain to the project by passing its domain name and by specifying the project by either passing the
-    /// project `id` or `name` in the URL. If the domain is not yet verified to be used on this project, the request
-    /// will return `verified = false`, and the domain will need to be verified according to the `verification`
-    /// challenge via `POST /projects/:idOrName/domains/:domain/verify`. If the domain already exists on the project,
-    /// the request will fail with a `400` status code.
+    /// Add a domain to the project by passing its domain name and by specifying the project by either passing the project `id` or `name` in the URL. If the domain is not yet verified to be used on this project, the request will return `verified = false`, and the domain will need to be verified according to the `verification` challenge via `POST /projects/:idOrName/domains/:domain/verify`. If the domain already exists on the project, the request will fail with a `400` status code.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name
@@ -43,29 +37,16 @@ public extension ProjectsMethods {
     ///   project
     /// - redirect: Target destination domain for redirect
     /// - redirectStatusCode: Status code for domain redirect
-    static func addProjectDomain(
-        config: ClientConfig,
-        options: AddProjectDomainOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AddProjectDomainResponse {
+    public static func addProjectDomain(config: ClientConfig, options: AddProjectDomainOptions, requestOptions: RequestOptions? = nil) async throws -> AddProjectDomainResponse {
         if let gitBranch = options.gitBranch?.valueOrNil {
             try validateLength("gitBranch", gitBranch, max: 250)
         }
 
         let requestBody = AddProjectDomainRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v10/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/domains"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "addProjectDomain",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v10/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/domains"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "addProjectDomain", options: requestOptions)).data
     }
 }

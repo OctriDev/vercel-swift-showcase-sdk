@@ -7,13 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical microfrontends operation model declarations
+// Canonical microfrontends operation model declarations
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet15(
-        _ skewProtectionAllowedDomains: [String]?,
-        _ skewProtectionBoundaryAt: Double?,
-        _ skewProtectionMaxAge: Double?
-    ) {
+    mutating func sdkSet15(_ skewProtectionAllowedDomains: [String]?, _ skewProtectionBoundaryAt: Double?, _ skewProtectionMaxAge: Double?) {
         self.skewProtectionAllowedDomains = skewProtectionAllowedDomains
         self.skewProtectionBoundaryAt = skewProtectionBoundaryAt
         self.skewProtectionMaxAge = skewProtectionMaxAge
@@ -21,13 +17,7 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet16(
-        _ skipGitConnectDuringLink: Bool?,
-        _ sourceFilesOutsideRootDirectory: Bool?,
-        _ speedInsights: GetMicrofrontendsInGroupResponseProjectsItemSpeedInsights?,
-        _ ssoProtection: GetMicrofrontendsInGroupResponseProjectsItemSsoProtection?,
-        _ staticIps: GetMicrofrontendsInGroupResponseProjectsItemStaticIps?
-    ) {
+    mutating func sdkSet16(_ skipGitConnectDuringLink: Bool?, _ sourceFilesOutsideRootDirectory: Bool?, _ speedInsights: GetMicrofrontendsInGroupResponseProjectsItemSpeedInsights?, _ ssoProtection: GetMicrofrontendsInGroupResponseProjectsItemSsoProtection?, _ staticIps: GetMicrofrontendsInGroupResponseProjectsItemStaticIps?) {
         self.skipGitConnectDuringLink = skipGitConnectDuringLink
         self.sourceFilesOutsideRootDirectory = sourceFilesOutsideRootDirectory
         self.speedInsights = speedInsights
@@ -37,13 +27,7 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet17(
-        _ targets: [String: GetMicrofrontendsInGroupResponseProjectsItemTargetsValue?]?,
-        _ tier: GetMicrofrontendsInGroupResponseProjectsItemTier?,
-        _ tracing: GetMicrofrontendsInGroupResponseProjectsItemTracing?,
-        _ transferCompletedAt: Double?,
-        _ transferredFromAccountId: String?
-    ) {
+    mutating func sdkSet17(_ targets: [String: GetMicrofrontendsInGroupResponseProjectsItemTargetsValue?]?, _ tier: GetMicrofrontendsInGroupResponseProjectsItemTier?, _ tracing: GetMicrofrontendsInGroupResponseProjectsItemTracing?, _ transferCompletedAt: Double?, _ transferredFromAccountId: String?) {
         self.targets = targets
         self.tier = tier
         self.tracing = tracing
@@ -53,13 +37,7 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet18(
-        _ transferStartedAt: Double?,
-        _ transferToAccountId: String?,
-        _ trustedIps: GetMicrofrontendsInGroupResponseProjectsItemTrustedIps?,
-        _ trustedSources: GetMicrofrontendsInGroupResponseProjectsItemTrustedSources?,
-        _ updatedAt: Double?
-    ) {
+    mutating func sdkSet18(_ transferStartedAt: Double?, _ transferToAccountId: String?, _ trustedIps: GetMicrofrontendsInGroupResponseProjectsItemTrustedIps?, _ trustedSources: GetMicrofrontendsInGroupResponseProjectsItemTrustedSources?, _ updatedAt: Double?) {
         self.transferStartedAt = transferStartedAt
         self.transferToAccountId = transferToAccountId
         self.trustedIps = trustedIps
@@ -69,12 +47,7 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet19(
-        _ usageStatus: GetMicrofrontendsInGroupResponseProjectsItemUsageStatus?,
-        _ v0: Bool?,
-        _ v0Created: Bool?,
-        _ webAnalytics: GetMicrofrontendsInGroupResponseProjectsItemWebAnalytics?
-    ) {
+    mutating func sdkSet19(_ usageStatus: GetMicrofrontendsInGroupResponseProjectsItemUsageStatus?, _ v0: Bool?, _ v0Created: Bool?, _ webAnalytics: GetMicrofrontendsInGroupResponseProjectsItemWebAnalytics?) {
         self.usageStatus = usageStatus
         self.v0 = v0
         self.v0Created = v0Created
@@ -84,128 +57,128 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
     mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        analytics = try container.sdkDecodeIfPresent(.analytics)
-        appliedCve55182Migration = try container.sdkDecodeIfPresent(.appliedCve55182Migration)
-        autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
-        autoAssignCustomDomainsUpdatedBy = try container.sdkDecodeIfPresent(.autoAssignCustomDomainsUpdatedBy)
-        autoExposeSystemEnvs = try container.sdkDecodeIfPresent(.autoExposeSystemEnvs)
-        avatar = try container.sdkDecodeIfPresent(.avatar)
-        avatarDarkMode = try container.sdkDecodeIfPresent(.avatarDarkMode)
-        blobs = try container.sdkDecodeIfPresent(.blobs)
-        buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
-        commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
-        concurrencyBucketName = try container.sdkDecodeIfPresent(.concurrencyBucketName)
-        connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
+        self.analytics = try container.sdkDecodeIfPresent(.analytics)
+        self.appliedCve55182Migration = try container.sdkDecodeIfPresent(.appliedCve55182Migration)
+        self.autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
+        self.autoAssignCustomDomainsUpdatedBy = try container.sdkDecodeIfPresent(.autoAssignCustomDomainsUpdatedBy)
+        self.autoExposeSystemEnvs = try container.sdkDecodeIfPresent(.autoExposeSystemEnvs)
+        self.avatar = try container.sdkDecodeIfPresent(.avatar)
+        self.avatarDarkMode = try container.sdkDecodeIfPresent(.avatarDarkMode)
+        self.blobs = try container.sdkDecodeIfPresent(.blobs)
+        self.buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
+        self.commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
+        self.concurrencyBucketName = try container.sdkDecodeIfPresent(.concurrencyBucketName)
+        self.connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
     mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
-        connectConfigurations = try container.sdkDecodeIfPresent(.connectConfigurations)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        creator = try container.sdkDecodeIfPresent(.creator)
-        crons = try container.sdkDecodeIfPresent(.crons)
-        customEnvironments = try container.sdkDecodeIfPresent(.customEnvironments)
-        customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
-        dataCache = try container.sdkDecodeIfPresent(.dataCache)
-        deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
-        devCommand = try container.sdkDecodeIfPresent(.devCommand)
-        dismissedToasts = try container.sdkDecodeIfPresent(.dismissedToasts)
-        enableAffectedProjectsDeployments = try container.sdkDecodeIfPresent(.enableAffectedProjectsDeployments)
+        self.connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
+        self.connectConfigurations = try container.sdkDecodeIfPresent(.connectConfigurations)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.creator = try container.sdkDecodeIfPresent(.creator)
+        self.crons = try container.sdkDecodeIfPresent(.crons)
+        self.customEnvironments = try container.sdkDecodeIfPresent(.customEnvironments)
+        self.customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
+        self.dataCache = try container.sdkDecodeIfPresent(.dataCache)
+        self.deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
+        self.devCommand = try container.sdkDecodeIfPresent(.devCommand)
+        self.dismissedToasts = try container.sdkDecodeIfPresent(.dismissedToasts)
+        self.enableAffectedProjectsDeployments = try container.sdkDecodeIfPresent(.enableAffectedProjectsDeployments)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
     mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        enableExternalRewriteCaching = try container.sdkDecodeIfPresent(.enableExternalRewriteCaching)
-        enablePreviewFeedback = try container.sdkDecodeIfPresent(.enablePreviewFeedback)
-        enableProductionFeedback = try container.sdkDecodeIfPresent(.enableProductionFeedback)
-        env = try container.sdkDecodeIfPresent(.env)
-        expiration = try container.sdkDecodeIfPresent(.expiration)
-        features = try container.sdkDecodeIfPresent(.features)
-        framework = try container.sdkDecodeIfPresent(.framework)
-        gitComments = try container.sdkDecodeIfPresent(.gitComments)
-        gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
-        gitLfs = try container.sdkDecodeIfPresent(.gitLfs)
-        gitProviderOptions = try container.sdkDecodeIfPresent(.gitProviderOptions)
-        hasActiveBranches = try container.sdkDecodeIfPresent(.hasActiveBranches)
+        self.enableExternalRewriteCaching = try container.sdkDecodeIfPresent(.enableExternalRewriteCaching)
+        self.enablePreviewFeedback = try container.sdkDecodeIfPresent(.enablePreviewFeedback)
+        self.enableProductionFeedback = try container.sdkDecodeIfPresent(.enableProductionFeedback)
+        self.env = try container.sdkDecodeIfPresent(.env)
+        self.expiration = try container.sdkDecodeIfPresent(.expiration)
+        self.features = try container.sdkDecodeIfPresent(.features)
+        self.framework = try container.sdkDecodeIfPresent(.framework)
+        self.gitComments = try container.sdkDecodeIfPresent(.gitComments)
+        self.gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
+        self.gitLfs = try container.sdkDecodeIfPresent(.gitLfs)
+        self.gitProviderOptions = try container.sdkDecodeIfPresent(.gitProviderOptions)
+        self.hasActiveBranches = try container.sdkDecodeIfPresent(.hasActiveBranches)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
     mutating func sdkDecodeFieldsPart4(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        hasDeployments = try container.sdkDecodeIfPresent(.hasDeployments)
-        installCommand = try container.sdkDecodeIfPresent(.installCommand)
-        internalRoutes = try container.sdkDecodeIfPresent(.internalRoutes)
-        ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
-        jobs = try container.sdkDecodeIfPresent(.jobs)
-        lastAliasRequest = try container.sdkDecodeIfPresent(.lastAliasRequest)
-        lastRollbackTarget = try container.sdkDecodeIfPresent(.lastRollbackTarget)
-        latestDeployments = try container.sdkDecodeIfPresent(.latestDeployments)
-        link = try container.sdkDecodeIfPresent(.link)
-        live = try container.sdkDecodeIfPresent(.live)
-        microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
-        oidcTokenConfig = try container.sdkDecodeIfPresent(.oidcTokenConfig)
+        self.hasDeployments = try container.sdkDecodeIfPresent(.hasDeployments)
+        self.installCommand = try container.sdkDecodeIfPresent(.installCommand)
+        self.internalRoutes = try container.sdkDecodeIfPresent(.internalRoutes)
+        self.ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
+        self.jobs = try container.sdkDecodeIfPresent(.jobs)
+        self.lastAliasRequest = try container.sdkDecodeIfPresent(.lastAliasRequest)
+        self.lastRollbackTarget = try container.sdkDecodeIfPresent(.lastRollbackTarget)
+        self.latestDeployments = try container.sdkDecodeIfPresent(.latestDeployments)
+        self.link = try container.sdkDecodeIfPresent(.link)
+        self.live = try container.sdkDecodeIfPresent(.live)
+        self.microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
+        self.oidcTokenConfig = try container.sdkDecodeIfPresent(.oidcTokenConfig)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
     mutating func sdkDecodeFieldsPart5(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
-        outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
-        passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
-        passport = try container.sdkDecodeIfPresent(.passport)
-        passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
-        paused = try container.sdkDecodeIfPresent(.paused)
-        permissions = try container.sdkDecodeIfPresent(.permissions)
-        productionDeploymentsFastLane = try container.sdkDecodeIfPresent(.productionDeploymentsFastLane)
-        protectedSourcemaps = try container.sdkDecodeIfPresent(.protectedSourcemaps)
-        protectionBypass = try container.sdkDecodeIfPresent(.protectionBypass)
-        protectionConfig = try container.sdkDecodeIfPresent(.protectionConfig)
-        rollbackDescription = try container.sdkDecodeIfPresent(.rollbackDescription)
+        self.optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
+        self.outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
+        self.passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
+        self.passport = try container.sdkDecodeIfPresent(.passport)
+        self.passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
+        self.paused = try container.sdkDecodeIfPresent(.paused)
+        self.permissions = try container.sdkDecodeIfPresent(.permissions)
+        self.productionDeploymentsFastLane = try container.sdkDecodeIfPresent(.productionDeploymentsFastLane)
+        self.protectedSourcemaps = try container.sdkDecodeIfPresent(.protectedSourcemaps)
+        self.protectionBypass = try container.sdkDecodeIfPresent(.protectionBypass)
+        self.protectionConfig = try container.sdkDecodeIfPresent(.protectionConfig)
+        self.rollbackDescription = try container.sdkDecodeIfPresent(.rollbackDescription)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
     mutating func sdkDecodeFieldsPart6(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        rollingRelease = try container.sdkDecodeIfPresent(.rollingRelease)
-        rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
-        sandbox = try container.sdkDecodeIfPresent(.sandbox)
-        security = try container.sdkDecodeIfPresent(.security)
-        serverlessFunctionZeroConfigFailover = try container.sdkDecodeIfPresent(.serverlessFunctionZeroConfigFailover)
-        services = try container.sdkDecodeIfPresent(.services)
-        skewProtectionAllowedDomains = try container.sdkDecodeIfPresent(.skewProtectionAllowedDomains)
-        skewProtectionBoundaryAt = try container.sdkDecodeIfPresent(.skewProtectionBoundaryAt)
-        skewProtectionMaxAge = try container.sdkDecodeIfPresent(.skewProtectionMaxAge)
-        skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
-        sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
-        speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
+        self.rollingRelease = try container.sdkDecodeIfPresent(.rollingRelease)
+        self.rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
+        self.sandbox = try container.sdkDecodeIfPresent(.sandbox)
+        self.security = try container.sdkDecodeIfPresent(.security)
+        self.serverlessFunctionZeroConfigFailover = try container.sdkDecodeIfPresent(.serverlessFunctionZeroConfigFailover)
+        self.services = try container.sdkDecodeIfPresent(.services)
+        self.skewProtectionAllowedDomains = try container.sdkDecodeIfPresent(.skewProtectionAllowedDomains)
+        self.skewProtectionBoundaryAt = try container.sdkDecodeIfPresent(.skewProtectionBoundaryAt)
+        self.skewProtectionMaxAge = try container.sdkDecodeIfPresent(.skewProtectionMaxAge)
+        self.skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
+        self.sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
+        self.speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
     mutating func sdkDecodeFieldsPart7(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        ssoProtection = try container.sdkDecodeIfPresent(.ssoProtection)
-        staticIps = try container.sdkDecodeIfPresent(.staticIps)
-        targets = try container.sdkDecodeIfPresent(.targets)
-        tier = try container.sdkDecodeIfPresent(.tier)
-        tracing = try container.sdkDecodeIfPresent(.tracing)
-        transferCompletedAt = try container.sdkDecodeIfPresent(.transferCompletedAt)
-        transferredFromAccountId = try container.sdkDecodeIfPresent(.transferredFromAccountId)
-        transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
-        transferToAccountId = try container.sdkDecodeIfPresent(.transferToAccountId)
-        trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
-        trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.ssoProtection = try container.sdkDecodeIfPresent(.ssoProtection)
+        self.staticIps = try container.sdkDecodeIfPresent(.staticIps)
+        self.targets = try container.sdkDecodeIfPresent(.targets)
+        self.tier = try container.sdkDecodeIfPresent(.tier)
+        self.tracing = try container.sdkDecodeIfPresent(.tracing)
+        self.transferCompletedAt = try container.sdkDecodeIfPresent(.transferCompletedAt)
+        self.transferredFromAccountId = try container.sdkDecodeIfPresent(.transferredFromAccountId)
+        self.transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
+        self.transferToAccountId = try container.sdkDecodeIfPresent(.transferToAccountId)
+        self.trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
+        self.trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
     mutating func sdkDecodeFieldsPart8(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        usageStatus = try container.sdkDecodeIfPresent(.usageStatus)
-        v0 = try container.sdkDecodeIfPresent(.v0)
-        v0Created = try container.sdkDecodeIfPresent(.v0Created)
-        webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
+        self.usageStatus = try container.sdkDecodeIfPresent(.usageStatus)
+        self.v0 = try container.sdkDecodeIfPresent(.v0)
+        self.v0Created = try container.sdkDecodeIfPresent(.v0Created)
+        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
     }
 }

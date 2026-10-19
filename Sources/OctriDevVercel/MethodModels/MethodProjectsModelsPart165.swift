@@ -7,19 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
-public extension CreateProjectResponseCustomEnvironmentsItem {
-    init(
-        createdAt: Double,
-        id: String,
-        slug: String,
-        type: CreateProjectResponseCustomEnvironmentsItemType,
-        updatedAt: Double,
-        branchMatcher: CreateProjectResponseCustomEnvironmentsItemBranchMatcher? = nil,
-        currentDeploymentAliases: [String]? = nil,
-        description: String? = nil,
-        domains: [CreateProjectResponseCustomEnvironmentsItemDomainsItem]? = nil
-    ) {
+// Canonical projects operation model declarations
+extension CreateProjectResponseCustomEnvironmentsItem {
+    public init(createdAt: Double, id: String, slug: String, type: CreateProjectResponseCustomEnvironmentsItemType, updatedAt: Double, branchMatcher: CreateProjectResponseCustomEnvironmentsItemBranchMatcher? = nil, currentDeploymentAliases: [String]? = nil, description: String? = nil, domains: [CreateProjectResponseCustomEnvironmentsItemDomainsItem]? = nil) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.slug, self.type) = (slug, type)
         (self.updatedAt, self.branchMatcher) = (updatedAt, branchMatcher)
@@ -47,67 +37,38 @@ public struct UpdateProjectResponseLastAliasRequest: Codable {
         case fromRollingReleaseId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateProjectResponseLastAliasRequest {
-    init(from decoder: Decoder) throws {
+extension UpdateProjectResponseLastAliasRequest {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.fromDeploymentId) else {
-            throw SdkValidationError(
-                field: "fromDeploymentId",
-                code: "required",
-                message: "Validation failed for 'fromDeploymentId': value is required"
-            )
+            throw SdkValidationError(field: "fromDeploymentId", code: "required", message: "Validation failed for 'fromDeploymentId': value is required")
         }
         guard container.contains(.jobStatus) else {
-            throw SdkValidationError(
-                field: "jobStatus",
-                code: "required",
-                message: "Validation failed for 'jobStatus': value is required"
-            )
+            throw SdkValidationError(field: "jobStatus", code: "required", message: "Validation failed for 'jobStatus': value is required")
         }
         guard container.contains(.requestedAt) else {
-            throw SdkValidationError(
-                field: "requestedAt",
-                code: "required",
-                message: "Validation failed for 'requestedAt': value is required"
-            )
+            throw SdkValidationError(field: "requestedAt", code: "required", message: "Validation failed for 'requestedAt': value is required")
         }
         guard container.contains(.toDeploymentId) else {
-            throw SdkValidationError(
-                field: "toDeploymentId",
-                code: "required",
-                message: "Validation failed for 'toDeploymentId': value is required"
-            )
+            throw SdkValidationError(field: "toDeploymentId", code: "required", message: "Validation failed for 'toDeploymentId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        fromDeploymentId = try container.sdkDecodeNullable(.fromDeploymentId)
-        jobStatus = try container.sdkDecodeRequired(.jobStatus)
-        requestedAt = try container.sdkDecodeRequired(.requestedAt)
-        toDeploymentId = try container.sdkDecodeRequired(.toDeploymentId)
-        type = try container.sdkDecodeRequired(.type)
-        fromRollingReleaseId = try container.sdkDecodeIfPresent(.fromRollingReleaseId)
+        self.fromDeploymentId = try container.sdkDecodeNullable(.fromDeploymentId)
+        self.jobStatus = try container.sdkDecodeRequired(.jobStatus)
+        self.requestedAt = try container.sdkDecodeRequired(.requestedAt)
+        self.toDeploymentId = try container.sdkDecodeRequired(.toDeploymentId)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.fromRollingReleaseId = try container.sdkDecodeIfPresent(.fromRollingReleaseId)
     }
 }
 
-public extension UpdateProjectResponseLastAliasRequest {
-    init(
-        fromDeploymentId: String?,
-        jobStatus: UpdateProjectResponseLastAliasRequestJobStatus,
-        requestedAt: Double,
-        toDeploymentId: String,
-        type: UpdateProjectResponseLastAliasRequestType,
-        fromRollingReleaseId: String? = nil
-    ) {
+extension UpdateProjectResponseLastAliasRequest {
+    public init(fromDeploymentId: String?, jobStatus: UpdateProjectResponseLastAliasRequestJobStatus, requestedAt: Double, toDeploymentId: String, type: UpdateProjectResponseLastAliasRequestType, fromRollingReleaseId: String? = nil) {
         (self.fromDeploymentId, self.jobStatus) = (fromDeploymentId, jobStatus)
         (self.requestedAt, self.toDeploymentId) = (requestedAt, toDeploymentId)
         (self.type, self.fromRollingReleaseId) = (type, fromRollingReleaseId)
@@ -230,17 +191,7 @@ public struct DeleteProjectAvatarResponse: Codable {
     public var v0Created: Bool? = .none
     public var webAnalytics: DeleteProjectAvatarResponseWebAnalytics? = .none
 
-    init(
-        sdkRequiredFields accountId: String,
-        alias: [DeleteProjectAvatarResponseAliasItem],
-        defaultResourceConfig: DeleteProjectAvatarResponseDefaultResourceConfig,
-        deploymentExpiration: DeleteProjectAvatarResponseDeploymentExpiration,
-        directoryListing: Bool,
-        id: String,
-        name: String,
-        nodeVersion: DeleteProjectAvatarResponseNodeVersion,
-        resourceConfig: DeleteProjectAvatarResponseResourceConfig
-    ) {
+    init(sdkRequiredFields accountId: String, alias: [DeleteProjectAvatarResponseAliasItem], defaultResourceConfig: DeleteProjectAvatarResponseDefaultResourceConfig, deploymentExpiration: DeleteProjectAvatarResponseDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: DeleteProjectAvatarResponseNodeVersion, resourceConfig: DeleteProjectAvatarResponseResourceConfig) {
         (self.accountId, self.alias) = (accountId, alias)
         self.defaultResourceConfig = defaultResourceConfig
         (self.deploymentExpiration, self.directoryListing) = (deploymentExpiration, directoryListing)
@@ -351,20 +302,10 @@ extension DeleteProjectAvatarResponse {
     }
 }
 
-public extension DeleteProjectAvatarResponse {
-    init(from decoder: Decoder) throws {
+extension DeleteProjectAvatarResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        try self.init(
-            sdkRequiredFields: container.sdkDecodeRequired(.accountId),
-            alias: container.sdkDecodeRequired(.alias),
-            defaultResourceConfig: container.sdkDecodeRequired(.defaultResourceConfig),
-            deploymentExpiration: container.sdkDecodeRequired(.deploymentExpiration),
-            directoryListing: container.sdkDecodeRequired(.directoryListing),
-            id: container.sdkDecodeRequired(.id),
-            name: container.sdkDecodeRequired(.name),
-            nodeVersion: container.sdkDecodeRequired(.nodeVersion),
-            resourceConfig: container.sdkDecodeRequired(.resourceConfig)
-        )
+        self.init(sdkRequiredFields: try container.sdkDecodeRequired(.accountId), alias: try container.sdkDecodeRequired(.alias), defaultResourceConfig: try container.sdkDecodeRequired(.defaultResourceConfig), deploymentExpiration: try container.sdkDecodeRequired(.deploymentExpiration), directoryListing: try container.sdkDecodeRequired(.directoryListing), id: try container.sdkDecodeRequired(.id), name: try container.sdkDecodeRequired(.name), nodeVersion: try container.sdkDecodeRequired(.nodeVersion), resourceConfig: try container.sdkDecodeRequired(.resourceConfig))
         try sdkDecodeFieldsPart1(container)
         try sdkDecodeFieldsPart2(container)
         try sdkDecodeFieldsPart3(container)
@@ -376,117 +317,9 @@ public extension DeleteProjectAvatarResponse {
     }
 }
 
-public extension DeleteProjectAvatarResponse {
-    init(
-        accountId: String,
-        alias: [DeleteProjectAvatarResponseAliasItem],
-        defaultResourceConfig: DeleteProjectAvatarResponseDefaultResourceConfig,
-        deploymentExpiration: DeleteProjectAvatarResponseDeploymentExpiration,
-        directoryListing: Bool,
-        id: String,
-        name: String,
-        nodeVersion: DeleteProjectAvatarResponseNodeVersion,
-        resourceConfig: DeleteProjectAvatarResponseResourceConfig,
-        analytics: DeleteProjectAvatarResponseAnalytics? = nil,
-        appliedCve55182Migration: Bool? = nil,
-        autoAssignCustomDomains: Bool? = nil,
-        autoAssignCustomDomainsUpdatedBy: String? = nil,
-        autoExposeSystemEnvs: Bool? = nil,
-        avatar: String? = nil,
-        avatarDarkMode: String? = nil,
-        blobs: DeleteProjectAvatarResponseBlobs? = nil,
-        buildCommand: String? = nil,
-        commandForIgnoringBuildStep: String? = nil,
-        concurrencyBucketName: String? = nil,
-        connectBuildsEnabled: Bool? = nil,
-        connectConfigurationId: String? = nil,
-        connectConfigurations: [DeleteProjectAvatarResponseConnectConfigurationsItem]? = nil,
-        createdAt: Double? = nil,
-        creator: DeleteProjectAvatarResponseCreator? = nil,
-        crons: DeleteProjectAvatarResponseCrons? = nil,
-        customEnvironments: [DeleteProjectAvatarResponseCustomEnvironmentsItem]? = nil,
-        customerSupportCodeVisibility: Bool? = nil,
-        dataCache: DeleteProjectAvatarResponseDataCache? = nil,
-        deploymentPolicy: DeleteProjectAvatarResponseDeploymentPolicy? = nil,
-        devCommand: String? = nil,
-        dismissedToasts: [DeleteProjectAvatarResponseDismissedToastsItem]? = nil,
-        enableAffectedProjectsDeployments: Bool? = nil,
-        enableExternalRewriteCaching: Bool? = nil,
-        enablePreviewFeedback: Bool? = nil,
-        enableProductionFeedback: Bool? = nil,
-        env: [DeleteProjectAvatarResponseEnvItem]? = nil,
-        expiration: DeleteProjectAvatarResponseExpiration? = nil,
-        features: DeleteProjectAvatarResponseFeatures? = nil,
-        framework: DeleteProjectAvatarResponseFramework? = nil,
-        gitComments: DeleteProjectAvatarResponseGitComments? = nil,
-        gitForkProtection: Bool? = nil,
-        gitLfs: Bool? = nil,
-        gitProviderOptions: DeleteProjectAvatarResponseGitProviderOptions? = nil,
-        hasActiveBranches: Bool? = nil,
-        hasDeployments: Bool? = nil,
-        installCommand: String? = nil,
-        internalRoutes: [DeleteProjectAvatarResponseInternalRoutesItem]? = nil,
-        ipBuckets: [DeleteProjectAvatarResponseIpBucketsItem]? = nil,
-        jobs: DeleteProjectAvatarResponseJobs? = nil,
-        lastAliasRequest: DeleteProjectAvatarResponseLastAliasRequest? = nil,
-        lastRollbackTarget: [String: JSONValue]? = nil,
-        latestDeployments: [DeleteProjectAvatarResponseLatestDeploymentsItem]? = nil,
-        link: DeleteProjectAvatarResponseLink? = nil,
-        live: Bool? = nil,
-        microfrontends: DeleteProjectAvatarResponseMicrofrontends? = nil,
-        oidcTokenConfig: DeleteProjectAvatarResponseOidcTokenConfig? = nil,
-        optionsAllowlist: DeleteProjectAvatarResponseOptionsAllowlist? = nil,
-        outputDirectory: String? = nil,
-        passiveConnectConfigurationId: String? = nil,
-        passport: DeleteProjectAvatarResponsePassport? = nil,
-        passwordProtection: DeleteProjectAvatarResponsePasswordProtection? = nil,
-        paused: Bool? = nil,
-        permissions: DeleteProjectAvatarResponsePermissions? = nil,
-        productionDeploymentsFastLane: Bool? = nil,
-        protectedSourcemaps: Bool? = nil,
-        protectionBypass: [String: DeleteProjectAvatarResponseProtectionBypassValue]? = nil,
-        protectionConfig: DeleteProjectAvatarResponseProtectionConfig? = nil,
-        rollbackDescription: DeleteProjectAvatarResponseRollbackDescription? = nil,
-        rollingRelease: DeleteProjectAvatarResponseRollingRelease? = nil,
-        rootDirectory: String? = nil,
-        sandbox: DeleteProjectAvatarResponseSandbox? = nil,
-        security: DeleteProjectAvatarResponseSecurity? = nil,
-        serverlessFunctionZeroConfigFailover: Bool? = nil,
-        services: [DeleteProjectAvatarResponseServicesItem]? = nil,
-        skewProtectionAllowedDomains: [String]? = nil,
-        skewProtectionBoundaryAt: Double? = nil,
-        skewProtectionMaxAge: Double? = nil,
-        skipGitConnectDuringLink: Bool? = nil,
-        sourceFilesOutsideRootDirectory: Bool? = nil,
-        speedInsights: DeleteProjectAvatarResponseSpeedInsights? = nil,
-        ssoProtection: DeleteProjectAvatarResponseSsoProtection? = nil,
-        staticIps: DeleteProjectAvatarResponseStaticIps? = nil,
-        targets: [String: DeleteProjectAvatarResponseTargetsValue?]? = nil,
-        tier: DeleteProjectAvatarResponseTier? = nil,
-        tracing: DeleteProjectAvatarResponseTracing? = nil,
-        transferCompletedAt: Double? = nil,
-        transferredFromAccountId: String? = nil,
-        transferStartedAt: Double? = nil,
-        transferToAccountId: String? = nil,
-        trustedIps: DeleteProjectAvatarResponseTrustedIps? = nil,
-        trustedSources: DeleteProjectAvatarResponseTrustedSources? = nil,
-        updatedAt: Double? = nil,
-        usageStatus: DeleteProjectAvatarResponseUsageStatus? = nil,
-        v0: Bool? = nil,
-        v0Created: Bool? = nil,
-        webAnalytics: DeleteProjectAvatarResponseWebAnalytics? = nil
-    ) {
-        self.init(
-            sdkRequiredFields: accountId,
-            alias: alias,
-            defaultResourceConfig: defaultResourceConfig,
-            deploymentExpiration: deploymentExpiration,
-            directoryListing: directoryListing,
-            id: id,
-            name: name,
-            nodeVersion: nodeVersion,
-            resourceConfig: resourceConfig
-        )
+extension DeleteProjectAvatarResponse {
+    public init(accountId: String, alias: [DeleteProjectAvatarResponseAliasItem], defaultResourceConfig: DeleteProjectAvatarResponseDefaultResourceConfig, deploymentExpiration: DeleteProjectAvatarResponseDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: DeleteProjectAvatarResponseNodeVersion, resourceConfig: DeleteProjectAvatarResponseResourceConfig, analytics: DeleteProjectAvatarResponseAnalytics? = nil, appliedCve55182Migration: Bool? = nil, autoAssignCustomDomains: Bool? = nil, autoAssignCustomDomainsUpdatedBy: String? = nil, autoExposeSystemEnvs: Bool? = nil, avatar: String? = nil, avatarDarkMode: String? = nil, blobs: DeleteProjectAvatarResponseBlobs? = nil, buildCommand: String? = nil, commandForIgnoringBuildStep: String? = nil, concurrencyBucketName: String? = nil, connectBuildsEnabled: Bool? = nil, connectConfigurationId: String? = nil, connectConfigurations: [DeleteProjectAvatarResponseConnectConfigurationsItem]? = nil, createdAt: Double? = nil, creator: DeleteProjectAvatarResponseCreator? = nil, crons: DeleteProjectAvatarResponseCrons? = nil, customEnvironments: [DeleteProjectAvatarResponseCustomEnvironmentsItem]? = nil, customerSupportCodeVisibility: Bool? = nil, dataCache: DeleteProjectAvatarResponseDataCache? = nil, deploymentPolicy: DeleteProjectAvatarResponseDeploymentPolicy? = nil, devCommand: String? = nil, dismissedToasts: [DeleteProjectAvatarResponseDismissedToastsItem]? = nil, enableAffectedProjectsDeployments: Bool? = nil, enableExternalRewriteCaching: Bool? = nil, enablePreviewFeedback: Bool? = nil, enableProductionFeedback: Bool? = nil, env: [DeleteProjectAvatarResponseEnvItem]? = nil, expiration: DeleteProjectAvatarResponseExpiration? = nil, features: DeleteProjectAvatarResponseFeatures? = nil, framework: DeleteProjectAvatarResponseFramework? = nil, gitComments: DeleteProjectAvatarResponseGitComments? = nil, gitForkProtection: Bool? = nil, gitLfs: Bool? = nil, gitProviderOptions: DeleteProjectAvatarResponseGitProviderOptions? = nil, hasActiveBranches: Bool? = nil, hasDeployments: Bool? = nil, installCommand: String? = nil, internalRoutes: [DeleteProjectAvatarResponseInternalRoutesItem]? = nil, ipBuckets: [DeleteProjectAvatarResponseIpBucketsItem]? = nil, jobs: DeleteProjectAvatarResponseJobs? = nil, lastAliasRequest: DeleteProjectAvatarResponseLastAliasRequest? = nil, lastRollbackTarget: [String: JSONValue]? = nil, latestDeployments: [DeleteProjectAvatarResponseLatestDeploymentsItem]? = nil, link: DeleteProjectAvatarResponseLink? = nil, live: Bool? = nil, microfrontends: DeleteProjectAvatarResponseMicrofrontends? = nil, oidcTokenConfig: DeleteProjectAvatarResponseOidcTokenConfig? = nil, optionsAllowlist: DeleteProjectAvatarResponseOptionsAllowlist? = nil, outputDirectory: String? = nil, passiveConnectConfigurationId: String? = nil, passport: DeleteProjectAvatarResponsePassport? = nil, passwordProtection: DeleteProjectAvatarResponsePasswordProtection? = nil, paused: Bool? = nil, permissions: DeleteProjectAvatarResponsePermissions? = nil, productionDeploymentsFastLane: Bool? = nil, protectedSourcemaps: Bool? = nil, protectionBypass: [String: DeleteProjectAvatarResponseProtectionBypassValue]? = nil, protectionConfig: DeleteProjectAvatarResponseProtectionConfig? = nil, rollbackDescription: DeleteProjectAvatarResponseRollbackDescription? = nil, rollingRelease: DeleteProjectAvatarResponseRollingRelease? = nil, rootDirectory: String? = nil, sandbox: DeleteProjectAvatarResponseSandbox? = nil, security: DeleteProjectAvatarResponseSecurity? = nil, serverlessFunctionZeroConfigFailover: Bool? = nil, services: [DeleteProjectAvatarResponseServicesItem]? = nil, skewProtectionAllowedDomains: [String]? = nil, skewProtectionBoundaryAt: Double? = nil, skewProtectionMaxAge: Double? = nil, skipGitConnectDuringLink: Bool? = nil, sourceFilesOutsideRootDirectory: Bool? = nil, speedInsights: DeleteProjectAvatarResponseSpeedInsights? = nil, ssoProtection: DeleteProjectAvatarResponseSsoProtection? = nil, staticIps: DeleteProjectAvatarResponseStaticIps? = nil, targets: [String: DeleteProjectAvatarResponseTargetsValue?]? = nil, tier: DeleteProjectAvatarResponseTier? = nil, tracing: DeleteProjectAvatarResponseTracing? = nil, transferCompletedAt: Double? = nil, transferredFromAccountId: String? = nil, transferStartedAt: Double? = nil, transferToAccountId: String? = nil, trustedIps: DeleteProjectAvatarResponseTrustedIps? = nil, trustedSources: DeleteProjectAvatarResponseTrustedSources? = nil, updatedAt: Double? = nil, usageStatus: DeleteProjectAvatarResponseUsageStatus? = nil, v0: Bool? = nil, v0Created: Bool? = nil, webAnalytics: DeleteProjectAvatarResponseWebAnalytics? = nil) {
+        self.init(sdkRequiredFields: accountId, alias: alias, defaultResourceConfig: defaultResourceConfig, deploymentExpiration: deploymentExpiration, directoryListing: directoryListing, id: id, name: name, nodeVersion: nodeVersion, resourceConfig: resourceConfig)
         sdkSet1(analytics, appliedCve55182Migration, autoAssignCustomDomains, autoAssignCustomDomainsUpdatedBy)
         sdkSet2(autoExposeSystemEnvs, avatar, avatarDarkMode, blobs, buildCommand)
         sdkSet3(commandForIgnoringBuildStep, concurrencyBucketName, connectBuildsEnabled, connectConfigurationId)
@@ -510,12 +343,7 @@ public extension DeleteProjectAvatarResponse {
 }
 
 extension DeleteProjectAvatarResponse {
-    mutating func sdkSet1(
-        _ analytics: DeleteProjectAvatarResponseAnalytics?,
-        _ appliedCve55182Migration: Bool?,
-        _ autoAssignCustomDomains: Bool?,
-        _ autoAssignCustomDomainsUpdatedBy: String?
-    ) {
+    mutating func sdkSet1(_ analytics: DeleteProjectAvatarResponseAnalytics?, _ appliedCve55182Migration: Bool?, _ autoAssignCustomDomains: Bool?, _ autoAssignCustomDomainsUpdatedBy: String?) {
         self.analytics = analytics
         self.appliedCve55182Migration = appliedCve55182Migration
         self.autoAssignCustomDomains = autoAssignCustomDomains
@@ -524,13 +352,7 @@ extension DeleteProjectAvatarResponse {
 }
 
 extension DeleteProjectAvatarResponse {
-    mutating func sdkSet2(
-        _ autoExposeSystemEnvs: Bool?,
-        _ avatar: String?,
-        _ avatarDarkMode: String?,
-        _ blobs: DeleteProjectAvatarResponseBlobs?,
-        _ buildCommand: String?
-    ) {
+    mutating func sdkSet2(_ autoExposeSystemEnvs: Bool?, _ avatar: String?, _ avatarDarkMode: String?, _ blobs: DeleteProjectAvatarResponseBlobs?, _ buildCommand: String?) {
         self.autoExposeSystemEnvs = autoExposeSystemEnvs
         self.avatar = avatar
         self.avatarDarkMode = avatarDarkMode
@@ -540,12 +362,7 @@ extension DeleteProjectAvatarResponse {
 }
 
 extension DeleteProjectAvatarResponse {
-    mutating func sdkSet3(
-        _ commandForIgnoringBuildStep: String?,
-        _ concurrencyBucketName: String?,
-        _ connectBuildsEnabled: Bool?,
-        _ connectConfigurationId: String?
-    ) {
+    mutating func sdkSet3(_ commandForIgnoringBuildStep: String?, _ concurrencyBucketName: String?, _ connectBuildsEnabled: Bool?, _ connectConfigurationId: String?) {
         self.commandForIgnoringBuildStep = commandForIgnoringBuildStep
         self.concurrencyBucketName = concurrencyBucketName
         self.connectBuildsEnabled = connectBuildsEnabled
@@ -554,13 +371,7 @@ extension DeleteProjectAvatarResponse {
 }
 
 extension DeleteProjectAvatarResponse {
-    mutating func sdkSet4(
-        _ connectConfigurations: [DeleteProjectAvatarResponseConnectConfigurationsItem]?,
-        _ createdAt: Double?,
-        _ creator: DeleteProjectAvatarResponseCreator?,
-        _ crons: DeleteProjectAvatarResponseCrons?,
-        _ customEnvironments: [DeleteProjectAvatarResponseCustomEnvironmentsItem]?
-    ) {
+    mutating func sdkSet4(_ connectConfigurations: [DeleteProjectAvatarResponseConnectConfigurationsItem]?, _ createdAt: Double?, _ creator: DeleteProjectAvatarResponseCreator?, _ crons: DeleteProjectAvatarResponseCrons?, _ customEnvironments: [DeleteProjectAvatarResponseCustomEnvironmentsItem]?) {
         self.connectConfigurations = connectConfigurations
         self.createdAt = createdAt
         self.creator = creator
@@ -570,13 +381,7 @@ extension DeleteProjectAvatarResponse {
 }
 
 extension DeleteProjectAvatarResponse {
-    mutating func sdkSet5(
-        _ customerSupportCodeVisibility: Bool?,
-        _ dataCache: DeleteProjectAvatarResponseDataCache?,
-        _ deploymentPolicy: DeleteProjectAvatarResponseDeploymentPolicy?,
-        _ devCommand: String?,
-        _ dismissedToasts: [DeleteProjectAvatarResponseDismissedToastsItem]?
-    ) {
+    mutating func sdkSet5(_ customerSupportCodeVisibility: Bool?, _ dataCache: DeleteProjectAvatarResponseDataCache?, _ deploymentPolicy: DeleteProjectAvatarResponseDeploymentPolicy?, _ devCommand: String?, _ dismissedToasts: [DeleteProjectAvatarResponseDismissedToastsItem]?) {
         self.customerSupportCodeVisibility = customerSupportCodeVisibility
         self.dataCache = dataCache
         self.deploymentPolicy = deploymentPolicy
@@ -586,11 +391,7 @@ extension DeleteProjectAvatarResponse {
 }
 
 extension DeleteProjectAvatarResponse {
-    mutating func sdkSet6(
-        _ enableAffectedProjectsDeployments: Bool?,
-        _ enableExternalRewriteCaching: Bool?,
-        _ enablePreviewFeedback: Bool?
-    ) {
+    mutating func sdkSet6(_ enableAffectedProjectsDeployments: Bool?, _ enableExternalRewriteCaching: Bool?, _ enablePreviewFeedback: Bool?) {
         self.enableAffectedProjectsDeployments = enableAffectedProjectsDeployments
         self.enableExternalRewriteCaching = enableExternalRewriteCaching
         self.enablePreviewFeedback = enablePreviewFeedback
@@ -598,13 +399,7 @@ extension DeleteProjectAvatarResponse {
 }
 
 extension DeleteProjectAvatarResponse {
-    mutating func sdkSet7(
-        _ enableProductionFeedback: Bool?,
-        _ env: [DeleteProjectAvatarResponseEnvItem]?,
-        _ expiration: DeleteProjectAvatarResponseExpiration?,
-        _ features: DeleteProjectAvatarResponseFeatures?,
-        _ framework: DeleteProjectAvatarResponseFramework?
-    ) {
+    mutating func sdkSet7(_ enableProductionFeedback: Bool?, _ env: [DeleteProjectAvatarResponseEnvItem]?, _ expiration: DeleteProjectAvatarResponseExpiration?, _ features: DeleteProjectAvatarResponseFeatures?, _ framework: DeleteProjectAvatarResponseFramework?) {
         self.enableProductionFeedback = enableProductionFeedback
         self.env = env
         self.expiration = expiration
@@ -614,13 +409,7 @@ extension DeleteProjectAvatarResponse {
 }
 
 extension DeleteProjectAvatarResponse {
-    mutating func sdkSet8(
-        _ gitComments: DeleteProjectAvatarResponseGitComments?,
-        _ gitForkProtection: Bool?,
-        _ gitLfs: Bool?,
-        _ gitProviderOptions: DeleteProjectAvatarResponseGitProviderOptions?,
-        _ hasActiveBranches: Bool?
-    ) {
+    mutating func sdkSet8(_ gitComments: DeleteProjectAvatarResponseGitComments?, _ gitForkProtection: Bool?, _ gitLfs: Bool?, _ gitProviderOptions: DeleteProjectAvatarResponseGitProviderOptions?, _ hasActiveBranches: Bool?) {
         self.gitComments = gitComments
         self.gitForkProtection = gitForkProtection
         self.gitLfs = gitLfs

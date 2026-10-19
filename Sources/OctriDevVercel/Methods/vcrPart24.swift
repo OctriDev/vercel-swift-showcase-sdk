@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Retrieves an image manifest from a Docker repository using its tag or digest as the reference. Use this
-    /// operation when you need to fetch the manifest associated with a repository reference. Supply a valid `reference`
-    /// along with the repository components.
+extension VcrMethods {
+    /// Retrieves an image manifest from a Docker repository using its tag or digest as the reference. Use this operation when you need to fetch the manifest associated with a repository reference. Supply a valid `reference` along with the repository components.
     ///
     /// GET /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Fetch a manifest by tag or digest.
     ///
@@ -18,14 +16,7 @@ public extension VcrMethods {
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - reference: Manifest reference: a tag or digest.
-    static func getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
-        config: ClientConfig,
-        teamSlug: String,
-        projectSlug: String,
-        repositoryName: String,
-        reference: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, reference: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -38,22 +29,6 @@ public extension VcrMethods {
         try validateLength("reference", reference, max: 255)
         try sdkValidatePattern("reference", reference, sdkPatternb704b0d56f71)
 
-        return try await (sdkRequest(
-            "GET",
-            [
-                "/v2/",
-                sdkEncodePathSegment(sdkWireString(teamSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(projectSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(repositoryName)),
-                "/manifests/",
-                sdkEncodePathSegment(sdkWireString(reference)),
-            ].joined(),
-            config: config,
-            decoder: .empty,
-            operationId: "getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/manifests/", sdkEncodePathSegment(sdkWireString(reference))].joined(), config: config, decoder: .empty, operationId: "getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference", options: requestOptions)).data
     }
 }

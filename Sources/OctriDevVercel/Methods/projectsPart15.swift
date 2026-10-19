@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    struct MoveProjectDomainOptions: Codable {
+extension ProjectsMethods {
+    public struct MoveProjectDomainOptions: Codable {
         public var idOrName: String
         public var domain: String
         public var projectId: MoveProjectDomainRequestBodyProjectId
@@ -24,12 +24,9 @@ public extension ProjectsMethods {
         }
     }
 
-    /// Moves a domain from one project to another and can move the domain's redirects with it. Supply the target
-    /// `projectId`; optionally set `gitBranch`, `redirect`, or `redirectStatusCode` to configure the domain on the
-    /// destination project.
+    /// Moves a domain from one project to another and can move the domain's redirects with it. Supply the target `projectId`; optionally set `gitBranch`, `redirect`, or `redirectStatusCode` to configure the domain on the destination project.
     ///
-    /// Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in
-    /// the same project.
+    /// Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in the same project.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name
@@ -40,35 +37,16 @@ public extension ProjectsMethods {
     /// - gitBranch: Git branch to link the project domain
     /// - redirect: Target destination domain for redirect
     /// - redirectStatusCode: Status code for domain redirect
-    static func moveProjectDomain(
-        config: ClientConfig,
-        options: MoveProjectDomainOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> MoveProjectDomainResponse {
+    public static func moveProjectDomain(config: ClientConfig, options: MoveProjectDomainOptions, requestOptions: RequestOptions? = nil) async throws -> MoveProjectDomainResponse {
         if let gitBranch = options.gitBranch?.valueOrNil {
             try validateLength("gitBranch", gitBranch, max: 250)
         }
 
         let requestBody = MoveProjectDomainRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "POST",
-            [
-                "/v1/projects/",
-                sdkEncodePathSegment(sdkWireString(options.idOrName)),
-                "/domains/",
-                sdkEncodePathSegment(sdkWireString(options.domain)),
-                "/move",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "moveProjectDomain",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/domains/", sdkEncodePathSegment(sdkWireString(options.domain)), "/move"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "moveProjectDomain", options: requestOptions)).data
     }
 }

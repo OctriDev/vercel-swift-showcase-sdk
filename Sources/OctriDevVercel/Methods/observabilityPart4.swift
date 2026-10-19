@@ -6,37 +6,14 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ObservabilityMethods {
-    /// Retrieves the available Observability metrics schema. Use the metric IDs and descriptions in the returned list
-    /// to identify metrics for querying.
-    static func getObservabilitySchema(
-        config: ClientConfig,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetObservabilitySchemaResponse {
-        try await (sdkRequest(
-            "GET",
-            "/v2/observability/schema",
-            config: config,
-            decoder: .json,
-            operationId: "getObservabilitySchema",
-            options: requestOptions
-        )).data
+extension ObservabilityMethods {
+    /// Retrieves the available Observability metrics schema. Use the metric IDs and descriptions in the returned list to identify metrics for querying.
+    public static func getObservabilitySchema(config: ClientConfig, requestOptions: RequestOptions? = nil) async throws -> GetObservabilitySchemaResponse {
+        return try (await sdkRequest("GET", "/v2/observability/schema", config: config, decoder: .json, operationId: "getObservabilitySchema", options: requestOptions)).data
     }
 
-    /// Retrieves the Observability schema for a specific metric. Supply `metricId` to get the metric's supported
-    /// aggregations, dimensions, unit, and default aggregation.
-    static func getObservabilitySchemaByMetricId(
-        config: ClientConfig,
-        metricId: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [GetObservabilitySchemaByMetricIdResponseItem] {
-        try await (sdkRequest(
-            "GET",
-            ["/v2/observability/schema/", sdkEncodePathSegment(sdkWireString(metricId))].joined(),
-            config: config,
-            decoder: .json,
-            operationId: "getObservabilitySchemaByMetricId",
-            options: requestOptions
-        )).data
+    /// Retrieves the Observability schema for a specific metric. Supply `metricId` to get the metric's supported aggregations, dimensions, unit, and default aggregation.
+    public static func getObservabilitySchemaByMetricId(config: ClientConfig, metricId: String, requestOptions: RequestOptions? = nil) async throws -> [GetObservabilitySchemaByMetricIdResponseItem] {
+        return try (await sdkRequest("GET", ["/v2/observability/schema/", sdkEncodePathSegment(sdkWireString(metricId))].joined(), config: config, decoder: .json, operationId: "getObservabilitySchemaByMetricId", options: requestOptions)).data
     }
 }

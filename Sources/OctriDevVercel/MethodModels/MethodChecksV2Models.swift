@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical checksV2 operation model declarations
+// Canonical checksV2 operation model declarations
 public struct ListProjectChecksResponseChecksItem: Codable {
     public var blocks: ListProjectChecksResponseChecksItemBlocks
     public var createdAt: Double
@@ -44,50 +44,32 @@ public struct ListProjectChecksResponseChecksItem: Codable {
         case sourceIntegrationConfigurationId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectChecksResponseChecksItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectChecksResponseChecksItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        blocks = try container.sdkDecodeRequired(.blocks)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        isRerequestable = try container.sdkDecodeRequired(.isRerequestable)
-        name = try container.sdkDecodeRequired(.name)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        requires = try container.sdkDecodeRequired(.requires)
-        source = try container.sdkDecodeRequired(.source)
-        sourceKind = try container.sdkDecodeRequired(.sourceKind)
-        targets = try container.sdkDecodeRequired(.targets)
-        timeout = try container.sdkDecodeRequired(.timeout)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        sourceIntegrationConfigurationId = try container.sdkDecodeIfPresent(.sourceIntegrationConfigurationId)
+        self.blocks = try container.sdkDecodeRequired(.blocks)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.isRerequestable = try container.sdkDecodeRequired(.isRerequestable)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.requires = try container.sdkDecodeRequired(.requires)
+        self.source = try container.sdkDecodeRequired(.source)
+        self.sourceKind = try container.sdkDecodeRequired(.sourceKind)
+        self.targets = try container.sdkDecodeRequired(.targets)
+        self.timeout = try container.sdkDecodeRequired(.timeout)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        self.sourceIntegrationConfigurationId = try container.sdkDecodeIfPresent(.sourceIntegrationConfigurationId)
     }
 }
 
-public extension ListProjectChecksResponseChecksItem {
-    init(
-        blocks: ListProjectChecksResponseChecksItemBlocks,
-        createdAt: Double,
-        id: String,
-        isRerequestable: Bool,
-        name: String,
-        ownerId: String,
-        projectId: String,
-        requires: ListProjectChecksResponseChecksItemRequires,
-        source: ListProjectChecksResponseChecksItemSource,
-        sourceKind: ListProjectChecksResponseChecksItemSourceKind,
-        targets: [String],
-        timeout: Double,
-        updatedAt: Double,
-        deletedAt: Double? = nil,
-        sourceIntegrationConfigurationId: String? = nil
-    ) {
+extension ListProjectChecksResponseChecksItem {
+    public init(blocks: ListProjectChecksResponseChecksItemBlocks, createdAt: Double, id: String, isRerequestable: Bool, name: String, ownerId: String, projectId: String, requires: ListProjectChecksResponseChecksItemRequires, source: ListProjectChecksResponseChecksItemSource, sourceKind: ListProjectChecksResponseChecksItemSourceKind, targets: [String], timeout: Double, updatedAt: Double, deletedAt: Double? = nil, sourceIntegrationConfigurationId: String? = nil) {
         (self.blocks, self.createdAt) = (blocks, createdAt)
         (self.id, self.isRerequestable) = (id, isRerequestable)
         (self.name, self.ownerId) = (name, ownerId)
@@ -98,6 +80,12 @@ public extension ListProjectChecksResponseChecksItem {
         self.sourceIntegrationConfigurationId = sourceIntegrationConfigurationId
     }
 }
+
+
+
+
+
+
 
 public struct GetProjectCheckResponse: Codable {
     public var blocks: GetProjectCheckResponseBlocks
@@ -135,50 +123,32 @@ public struct GetProjectCheckResponse: Codable {
         case sourceIntegrationConfigurationId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetProjectCheckResponse {
-    init(from decoder: Decoder) throws {
+extension GetProjectCheckResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        blocks = try container.sdkDecodeRequired(.blocks)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        isRerequestable = try container.sdkDecodeRequired(.isRerequestable)
-        name = try container.sdkDecodeRequired(.name)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        requires = try container.sdkDecodeRequired(.requires)
-        source = try container.sdkDecodeRequired(.source)
-        sourceKind = try container.sdkDecodeRequired(.sourceKind)
-        targets = try container.sdkDecodeRequired(.targets)
-        timeout = try container.sdkDecodeRequired(.timeout)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        sourceIntegrationConfigurationId = try container.sdkDecodeIfPresent(.sourceIntegrationConfigurationId)
+        self.blocks = try container.sdkDecodeRequired(.blocks)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.isRerequestable = try container.sdkDecodeRequired(.isRerequestable)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.requires = try container.sdkDecodeRequired(.requires)
+        self.source = try container.sdkDecodeRequired(.source)
+        self.sourceKind = try container.sdkDecodeRequired(.sourceKind)
+        self.targets = try container.sdkDecodeRequired(.targets)
+        self.timeout = try container.sdkDecodeRequired(.timeout)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        self.sourceIntegrationConfigurationId = try container.sdkDecodeIfPresent(.sourceIntegrationConfigurationId)
     }
 }
 
-public extension GetProjectCheckResponse {
-    init(
-        blocks: GetProjectCheckResponseBlocks,
-        createdAt: Double,
-        id: String,
-        isRerequestable: Bool,
-        name: String,
-        ownerId: String,
-        projectId: String,
-        requires: GetProjectCheckResponseRequires,
-        source: GetProjectCheckResponseSource,
-        sourceKind: GetProjectCheckResponseSourceKind,
-        targets: [String],
-        timeout: Double,
-        updatedAt: Double,
-        deletedAt: Double? = nil,
-        sourceIntegrationConfigurationId: String? = nil
-    ) {
+extension GetProjectCheckResponse {
+    public init(blocks: GetProjectCheckResponseBlocks, createdAt: Double, id: String, isRerequestable: Bool, name: String, ownerId: String, projectId: String, requires: GetProjectCheckResponseRequires, source: GetProjectCheckResponseSource, sourceKind: GetProjectCheckResponseSourceKind, targets: [String], timeout: Double, updatedAt: Double, deletedAt: Double? = nil, sourceIntegrationConfigurationId: String? = nil) {
         (self.blocks, self.createdAt) = (blocks, createdAt)
         (self.id, self.isRerequestable) = (id, isRerequestable)
         (self.name, self.ownerId) = (name, ownerId)
@@ -189,6 +159,12 @@ public extension GetProjectCheckResponse {
         self.sourceIntegrationConfigurationId = sourceIntegrationConfigurationId
     }
 }
+
+
+
+
+
+
 
 public struct UpdateProjectCheckResponse: Codable {
     public var blocks: UpdateProjectCheckResponseBlocks
@@ -226,50 +202,32 @@ public struct UpdateProjectCheckResponse: Codable {
         case sourceIntegrationConfigurationId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateProjectCheckResponse {
-    init(from decoder: Decoder) throws {
+extension UpdateProjectCheckResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        blocks = try container.sdkDecodeRequired(.blocks)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        isRerequestable = try container.sdkDecodeRequired(.isRerequestable)
-        name = try container.sdkDecodeRequired(.name)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        requires = try container.sdkDecodeRequired(.requires)
-        source = try container.sdkDecodeRequired(.source)
-        sourceKind = try container.sdkDecodeRequired(.sourceKind)
-        targets = try container.sdkDecodeRequired(.targets)
-        timeout = try container.sdkDecodeRequired(.timeout)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        sourceIntegrationConfigurationId = try container.sdkDecodeIfPresent(.sourceIntegrationConfigurationId)
+        self.blocks = try container.sdkDecodeRequired(.blocks)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.isRerequestable = try container.sdkDecodeRequired(.isRerequestable)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.requires = try container.sdkDecodeRequired(.requires)
+        self.source = try container.sdkDecodeRequired(.source)
+        self.sourceKind = try container.sdkDecodeRequired(.sourceKind)
+        self.targets = try container.sdkDecodeRequired(.targets)
+        self.timeout = try container.sdkDecodeRequired(.timeout)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        self.sourceIntegrationConfigurationId = try container.sdkDecodeIfPresent(.sourceIntegrationConfigurationId)
     }
 }
 
-public extension UpdateProjectCheckResponse {
-    init(
-        blocks: UpdateProjectCheckResponseBlocks,
-        createdAt: Double,
-        id: String,
-        isRerequestable: Bool,
-        name: String,
-        ownerId: String,
-        projectId: String,
-        requires: UpdateProjectCheckResponseRequires,
-        source: UpdateProjectCheckResponseSource,
-        sourceKind: UpdateProjectCheckResponseSourceKind,
-        targets: [String],
-        timeout: Double,
-        updatedAt: Double,
-        deletedAt: Double? = nil,
-        sourceIntegrationConfigurationId: String? = nil
-    ) {
+extension UpdateProjectCheckResponse {
+    public init(blocks: UpdateProjectCheckResponseBlocks, createdAt: Double, id: String, isRerequestable: Bool, name: String, ownerId: String, projectId: String, requires: UpdateProjectCheckResponseRequires, source: UpdateProjectCheckResponseSource, sourceKind: UpdateProjectCheckResponseSourceKind, targets: [String], timeout: Double, updatedAt: Double, deletedAt: Double? = nil, sourceIntegrationConfigurationId: String? = nil) {
         (self.blocks, self.createdAt) = (blocks, createdAt)
         (self.id, self.isRerequestable) = (id, isRerequestable)
         (self.name, self.ownerId) = (name, ownerId)
@@ -280,6 +238,12 @@ public extension UpdateProjectCheckResponse {
         self.sourceIntegrationConfigurationId = sourceIntegrationConfigurationId
     }
 }
+
+
+
+
+
+
 
 public struct CreateProjectCheckResponse: Codable {
     public var blocks: CreateProjectCheckResponseBlocks
@@ -317,50 +281,32 @@ public struct CreateProjectCheckResponse: Codable {
         case sourceIntegrationConfigurationId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateProjectCheckResponse {
-    init(from decoder: Decoder) throws {
+extension CreateProjectCheckResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        blocks = try container.sdkDecodeRequired(.blocks)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        isRerequestable = try container.sdkDecodeRequired(.isRerequestable)
-        name = try container.sdkDecodeRequired(.name)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        requires = try container.sdkDecodeRequired(.requires)
-        source = try container.sdkDecodeRequired(.source)
-        sourceKind = try container.sdkDecodeRequired(.sourceKind)
-        targets = try container.sdkDecodeRequired(.targets)
-        timeout = try container.sdkDecodeRequired(.timeout)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        sourceIntegrationConfigurationId = try container.sdkDecodeIfPresent(.sourceIntegrationConfigurationId)
+        self.blocks = try container.sdkDecodeRequired(.blocks)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.isRerequestable = try container.sdkDecodeRequired(.isRerequestable)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.requires = try container.sdkDecodeRequired(.requires)
+        self.source = try container.sdkDecodeRequired(.source)
+        self.sourceKind = try container.sdkDecodeRequired(.sourceKind)
+        self.targets = try container.sdkDecodeRequired(.targets)
+        self.timeout = try container.sdkDecodeRequired(.timeout)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        self.sourceIntegrationConfigurationId = try container.sdkDecodeIfPresent(.sourceIntegrationConfigurationId)
     }
 }
 
-public extension CreateProjectCheckResponse {
-    init(
-        blocks: CreateProjectCheckResponseBlocks,
-        createdAt: Double,
-        id: String,
-        isRerequestable: Bool,
-        name: String,
-        ownerId: String,
-        projectId: String,
-        requires: CreateProjectCheckResponseRequires,
-        source: CreateProjectCheckResponseSource,
-        sourceKind: CreateProjectCheckResponseSourceKind,
-        targets: [String],
-        timeout: Double,
-        updatedAt: Double,
-        deletedAt: Double? = nil,
-        sourceIntegrationConfigurationId: String? = nil
-    ) {
+extension CreateProjectCheckResponse {
+    public init(blocks: CreateProjectCheckResponseBlocks, createdAt: Double, id: String, isRerequestable: Bool, name: String, ownerId: String, projectId: String, requires: CreateProjectCheckResponseRequires, source: CreateProjectCheckResponseSource, sourceKind: CreateProjectCheckResponseSourceKind, targets: [String], timeout: Double, updatedAt: Double, deletedAt: Double? = nil, sourceIntegrationConfigurationId: String? = nil) {
         (self.blocks, self.createdAt) = (blocks, createdAt)
         (self.id, self.isRerequestable) = (id, isRerequestable)
         (self.name, self.ownerId) = (name, ownerId)
@@ -379,27 +325,21 @@ public struct ListDeploymentCheckRunsResponse: Codable {
         case runs
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListDeploymentCheckRunsResponse {
-    init(from decoder: Decoder) throws {
+extension ListDeploymentCheckRunsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.runs) else {
-            throw SdkValidationError(
-                field: "runs",
-                code: "required",
-                message: "Validation failed for 'runs': value is required"
-            )
+            throw SdkValidationError(field: "runs", code: "required", message: "Validation failed for 'runs': value is required")
         }
-        runs = try container.sdkDecodeRequired(.runs)
+        self.runs = try container.sdkDecodeRequired(.runs)
     }
 }
 
-public extension ListDeploymentCheckRunsResponse {
-    init(runs: [ListDeploymentCheckRunsResponseRunsItem]) {
+extension ListDeploymentCheckRunsResponse {
+    public init(runs: [ListDeploymentCheckRunsResponseRunsItem]) {
         self.runs = runs
     }
 }
@@ -413,35 +353,25 @@ public struct ListProjectChecksResponse: Codable {
         case checks
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectChecksResponse {
-    init(from decoder: Decoder) throws {
+extension ListProjectChecksResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.availableNativeChecks) else {
-            throw SdkValidationError(
-                field: "availableNativeChecks",
-                code: "required",
-                message: "Validation failed for 'availableNativeChecks': value is required"
-            )
+            throw SdkValidationError(field: "availableNativeChecks", code: "required", message: "Validation failed for 'availableNativeChecks': value is required")
         }
         guard container.contains(.checks) else {
-            throw SdkValidationError(
-                field: "checks",
-                code: "required",
-                message: "Validation failed for 'checks': value is required"
-            )
+            throw SdkValidationError(field: "checks", code: "required", message: "Validation failed for 'checks': value is required")
         }
-        availableNativeChecks = try container.sdkDecodeRequired(.availableNativeChecks)
-        checks = try container.sdkDecodeRequired(.checks)
+        self.availableNativeChecks = try container.sdkDecodeRequired(.availableNativeChecks)
+        self.checks = try container.sdkDecodeRequired(.checks)
     }
 }
 
-public extension ListProjectChecksResponse {
-    init(availableNativeChecks: [String], checks: [ListProjectChecksResponseChecksItem]) {
+extension ListProjectChecksResponse {
+    public init(availableNativeChecks: [String], checks: [ListProjectChecksResponseChecksItem]) {
         (self.availableNativeChecks, self.checks) = (availableNativeChecks, checks)
     }
 }
@@ -453,27 +383,21 @@ public struct ListCheckRunsResponse: Codable {
         case runs
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListCheckRunsResponse {
-    init(from decoder: Decoder) throws {
+extension ListCheckRunsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.runs) else {
-            throw SdkValidationError(
-                field: "runs",
-                code: "required",
-                message: "Validation failed for 'runs': value is required"
-            )
+            throw SdkValidationError(field: "runs", code: "required", message: "Validation failed for 'runs': value is required")
         }
-        runs = try container.sdkDecodeRequired(.runs)
+        self.runs = try container.sdkDecodeRequired(.runs)
     }
 }
 
-public extension ListCheckRunsResponse {
-    init(runs: [ListCheckRunsResponseRunsItem]) {
+extension ListCheckRunsResponse {
+    public init(runs: [ListCheckRunsResponseRunsItem]) {
         self.runs = runs
     }
 }
@@ -485,27 +409,21 @@ public struct DeleteProjectCheckResponse: Codable {
         case success
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension DeleteProjectCheckResponse {
-    init(from decoder: Decoder) throws {
+extension DeleteProjectCheckResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.success) else {
-            throw SdkValidationError(
-                field: "success",
-                code: "required",
-                message: "Validation failed for 'success': value is required"
-            )
+            throw SdkValidationError(field: "success", code: "required", message: "Validation failed for 'success': value is required")
         }
-        success = try container.sdkDecodeRequired(.success)
+        self.success = try container.sdkDecodeRequired(.success)
     }
 }
 
-public extension DeleteProjectCheckResponse {
-    init(success: Bool) {
+extension DeleteProjectCheckResponse {
+    public init(success: Bool) {
         self.success = success
     }
 }

@@ -6,21 +6,21 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    struct RunSessionCommandStreamOptions {
+extension SandboxesMethods {
+    public struct RunSessionCommandStreamOptions {
         public var sessionId: String
         public var cmdId: String
         public var command: String
-        public var teamId: String?
-        public var slug: String?
-        public var args: [String]?
-        public var cwd: String?
-        public var env: [String: String]?
-        public var sudo: Bool?
-        public var wait: Bool?
-        public var logs: Bool?
-        public var timeout: Int?
-        public var attachStdin: Bool?
+        public var teamId: String? = nil
+        public var slug: String? = nil
+        public var args: [String]? = nil
+        public var cwd: String? = nil
+        public var env: [String: String]? = nil
+        public var sudo: Bool? = nil
+        public var wait: Bool? = nil
+        public var logs: Bool? = nil
+        public var timeout: Int? = nil
+        public var attachStdin: Bool? = nil
 
         public init(sessionId: String, cmdId: String, command: String) {
             self.sessionId = sessionId
@@ -29,13 +29,9 @@ public extension SandboxesMethods {
         }
     }
 
-    /// Submits a shell command for execution in a session and returns a command ID for tracking its progress. Use
-    /// `wait` to stream status updates until the command finishes; set `logs` as well to stream execution output in
-    /// real time.
+    /// Submits a shell command for execution in a session and returns a command ID for tracking its progress. Use `wait` to stream status updates until the command finishes; set `logs` as well to stream execution output in real time.
     ///
-    /// Executes a shell command inside a running session. The command runs asynchronously and returns immediately with
-    /// a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait`
-    /// parameter to stream the command status until completion.
+    /// Executes a shell command inside a running session. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session in which to execute the
@@ -63,12 +59,9 @@ public extension SandboxesMethods {
     /// - attachStdin: If true, keeps the command stdin open so it can be written to
     ///   with the stdin endpoint while the command runs. When false, the command
     ///   reads from an empty stdin.
-    static func runSessionCommandStream(
-        config: ClientConfig,
-        options: RunSessionCommandStreamOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AsyncThrowingStream<RunSessionCommandResponseX26a0914c, Swift.Error> {
+    public static func runSessionCommandStream(config: ClientConfig, options: RunSessionCommandStreamOptions, requestOptions: RequestOptions? = nil) async throws -> AsyncThrowingStream<RunSessionCommandResponseX26a0914c, Swift.Error> {
         let requestBody = RunSessionCommandStreamStreamRequestBody(options: options)
+
 
         let upstream = try await sdkStream(
             "POST",
@@ -94,11 +87,8 @@ public extension SandboxesMethods {
                             continuation.finish()
                             return
                         }
-                        let payload = try sdkDecodeBody(Data(event.data.utf8)) { try sdkJsonDecoder().decode(
-                            RunSessionCommandResponseX26a0914c.self,
-                            from: Data(event.data.utf8)
-                        ) }
-
+                        let payload = try sdkDecodeBody(Data(event.data.utf8)) { try sdkJsonDecoder().decode(RunSessionCommandResponseX26a0914c.self, from: Data(event.data.utf8)) }
+                        
                         continuation.yield(payload)
                     }
                     continuation.finish()

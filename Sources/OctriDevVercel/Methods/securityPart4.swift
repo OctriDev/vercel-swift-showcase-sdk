@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SecurityMethods {
-    /// Retrieves a specific firewall configuration version for a project. Use `configVersion` to select the version to
-    /// inspect; the deployed version is identified as `active`.
+extension SecurityMethods {
+    /// Retrieves a specific firewall configuration version for a project. Use `configVersion` to select the version to inspect; the deployed version is identified as `active`.
     ///
     /// Retrieve the specified firewall configuration for a project. The deployed configVersion will be `active`
     ///
@@ -16,48 +15,21 @@ public extension SecurityMethods {
     /// - configVersion: The deployed configVersion for the firewall configuration
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getFirewallConfig(
-        config: ClientConfig,
-        configVersion: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetFirewallConfigResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/security/firewall/config/", sdkEncodePathSegment(sdkWireString(configVersion))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getFirewallConfig",
-            options: requestOptions
-        )).data
+    public static func getFirewallConfig(config: ClientConfig, configVersion: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetFirewallConfigResponse {
+        return try (await sdkRequest("GET", ["/v1/security/firewall/config/", sdkEncodePathSegment(sdkWireString(configVersion))].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getFirewallConfig", options: requestOptions)).data
     }
 
-    /// Deletes a firewall configuration version. Supply `configVersion` to identify the version to remove; use this
-    /// operation when that version should no longer be available.
+    /// Deletes a firewall configuration version. Supply `configVersion` to identify the version to remove; use this operation when that version should no longer be available.
     ///
     /// Promotes a draft WAF config to an active config
     ///
     /// - Parameters:
     /// - configVersion: The deployed configVersion for the firewall configuration
-    static func deleteSecurityFirewallConfigByConfigVersion(
-        config: ClientConfig,
-        configVersion: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v1/security/firewall/config/", sdkEncodePathSegment(sdkWireString(configVersion))].joined(),
-            config: config,
-            decoder: .empty,
-            operationId: "deleteSecurityFirewallConfigByConfigVersion",
-            options: requestOptions
-        )).data
+    public static func deleteSecurityFirewallConfigByConfigVersion(config: ClientConfig, configVersion: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try (await sdkRequest("DELETE", ["/v1/security/firewall/config/", sdkEncodePathSegment(sdkWireString(configVersion))].joined(), config: config, decoder: .empty, operationId: "deleteSecurityFirewallConfigByConfigVersion", options: requestOptions)).data
     }
 }

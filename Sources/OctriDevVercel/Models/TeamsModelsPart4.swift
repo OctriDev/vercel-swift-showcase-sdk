@@ -3,58 +3,34 @@
 
 import Foundation
 
-/// Teams domain models
-public extension TeamLimitedSamlConnection {
-    init(from decoder: Decoder) throws {
+// Teams domain models
+extension TeamLimitedSamlConnection {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.connectedAt) else {
-            throw SdkValidationError(
-                field: "connectedAt",
-                code: "required",
-                message: "Validation failed for 'connectedAt': value is required"
-            )
+            throw SdkValidationError(field: "connectedAt", code: "required", message: "Validation failed for 'connectedAt': value is required")
         }
         guard container.contains(.state) else {
-            throw SdkValidationError(
-                field: "state",
-                code: "required",
-                message: "Validation failed for 'state': value is required"
-            )
+            throw SdkValidationError(field: "state", code: "required", message: "Validation failed for 'state': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
-        connectedAt = try container.sdkDecodeRequired(.connectedAt)
-        state = try container.sdkDecodeRequired(.state)
-        type = try container.sdkDecodeRequired(.type)
-        status = try container.sdkDecodeRequired(.status)
-        lastReceivedWebhookEvent = try container.sdkDecodeIfPresent(.lastReceivedWebhookEvent)
-        lastSyncedAt = try container.sdkDecodeIfPresent(.lastSyncedAt)
-        syncState = try container.sdkDecodeIfPresent(.syncState)
+        self.connectedAt = try container.sdkDecodeRequired(.connectedAt)
+        self.state = try container.sdkDecodeRequired(.state)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.lastReceivedWebhookEvent = try container.sdkDecodeIfPresent(.lastReceivedWebhookEvent)
+        self.lastSyncedAt = try container.sdkDecodeIfPresent(.lastSyncedAt)
+        self.syncState = try container.sdkDecodeIfPresent(.syncState)
     }
 }
 
-public extension TeamLimitedSamlConnection {
-    init(
-        connectedAt: Double,
-        state: String,
-        type: String,
-        status: String,
-        lastReceivedWebhookEvent: Double? = nil,
-        lastSyncedAt: Double? = nil,
-        syncState: TeamLimitedSamlConnectionSyncState? = nil
-    ) {
+extension TeamLimitedSamlConnection {
+    public init(connectedAt: Double, state: String, type: String, status: String, lastReceivedWebhookEvent: Double? = nil, lastSyncedAt: Double? = nil, syncState: TeamLimitedSamlConnectionSyncState? = nil) {
         (self.connectedAt, self.state) = (connectedAt, state)
         (self.type, self.status) = (type, status)
         (self.lastReceivedWebhookEvent, self.lastSyncedAt) = (lastReceivedWebhookEvent, lastSyncedAt)
@@ -75,23 +51,20 @@ public struct TeamDefaultRoles: Codable {
     }
 
     init() {
-        (teamPermissions, teamRoles) = (nil, nil)
+        (self.teamPermissions, self.teamRoles) = (nil, nil)
     }
 }
 
-public extension TeamDefaultRoles {
-    init(from decoder: Decoder) throws {
+extension TeamDefaultRoles {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
     }
 }
 
-public extension TeamDefaultRoles {
-    init(
-        teamPermissions: [TeamDefaultRolesTeamPermissionsItem]? = nil,
-        teamRoles: [TeamDefaultRolesTeamRolesItem]? = nil
-    ) {
+extension TeamDefaultRoles {
+    public init(teamPermissions: [TeamDefaultRolesTeamPermissionsItem]? = nil, teamRoles: [TeamDefaultRolesTeamRolesItem]? = nil) {
         self.init()
         (self.teamPermissions, self.teamRoles) = (teamPermissions, teamRoles)
     }
@@ -109,31 +82,22 @@ public struct TeamSamlRolesValueVariant1: Codable {
         case teamPermissions
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamSamlRolesValueVariant1 {
-    init(from decoder: Decoder) throws {
+extension TeamSamlRolesValueVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.teamRoles) else {
-            throw SdkValidationError(
-                field: "teamRoles",
-                code: "required",
-                message: "Validation failed for 'teamRoles': value is required"
-            )
+            throw SdkValidationError(field: "teamRoles", code: "required", message: "Validation failed for 'teamRoles': value is required")
         }
-        teamRoles = try container.sdkDecodeRequired(.teamRoles)
-        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        self.teamRoles = try container.sdkDecodeRequired(.teamRoles)
+        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
     }
 }
 
-public extension TeamSamlRolesValueVariant1 {
-    init(
-        teamRoles: [TeamSamlRolesValueVariant1TeamRolesItem],
-        teamPermissions: [TeamSamlRolesValueVariant1TeamPermissionsItem]? = nil
-    ) {
+extension TeamSamlRolesValueVariant1 {
+    public init(teamRoles: [TeamSamlRolesValueVariant1TeamRolesItem], teamPermissions: [TeamSamlRolesValueVariant1TeamPermissionsItem]? = nil) {
         (self.teamRoles, self.teamPermissions) = (teamRoles, teamPermissions)
     }
 }
@@ -270,19 +234,7 @@ public struct Team: Codable {
     /// Keys the schema admits beside the declared fields.
     public var additionalProperties: [String: JSONValue] = [:]
 
-    init(
-        sdkRequiredFields avatar: String?,
-        billing: TeamBilling?,
-        createdAt: Double,
-        creatorId: String,
-        description: String?,
-        id: String,
-        limited: Bool,
-        name: String?,
-        slug: String,
-        stagingPrefix: String,
-        updatedAt: Double
-    ) {
+    init(sdkRequiredFields avatar: String?, billing: TeamBilling?, createdAt: Double, creatorId: String, description: String?, id: String, limited: Bool, name: String?, slug: String, stagingPrefix: String, updatedAt: Double) {
         (self.avatar, self.billing) = (avatar, billing)
         (self.createdAt, self.creatorId) = (createdAt, creatorId)
         (self.description, self.id) = (description, id)
@@ -347,22 +299,10 @@ extension Team {
     }
 }
 
-public extension Team {
-    init(from decoder: Decoder) throws {
+extension Team {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        try self.init(
-            sdkRequiredFields: container.sdkDecodeNullable(.avatar),
-            billing: container.sdkDecodeNullable(.billing),
-            createdAt: container.sdkDecodeRequired(.createdAt),
-            creatorId: container.sdkDecodeRequired(.creatorId),
-            description: container.sdkDecodeNullable(.description),
-            id: container.sdkDecodeRequired(.id),
-            limited: container.sdkDecodeRequired(.limited),
-            name: container.sdkDecodeNullable(.name),
-            slug: container.sdkDecodeRequired(.slug),
-            stagingPrefix: container.sdkDecodeRequired(.stagingPrefix),
-            updatedAt: container.sdkDecodeRequired(.updatedAt)
-        )
+        self.init(sdkRequiredFields: try container.sdkDecodeNullable(.avatar), billing: try container.sdkDecodeNullable(.billing), createdAt: try container.sdkDecodeRequired(.createdAt), creatorId: try container.sdkDecodeRequired(.creatorId), description: try container.sdkDecodeNullable(.description), id: try container.sdkDecodeRequired(.id), limited: try container.sdkDecodeRequired(.limited), name: try container.sdkDecodeNullable(.name), slug: try container.sdkDecodeRequired(.slug), stagingPrefix: try container.sdkDecodeRequired(.stagingPrefix), updatedAt: try container.sdkDecodeRequired(.updatedAt))
         try sdkDecodeFieldsPart1(container)
         try sdkDecodeFieldsPart2(container)
         try sdkDecodeFieldsPart3(container)
@@ -371,72 +311,9 @@ public extension Team {
     }
 }
 
-public extension Team {
-    init(
-        avatar: String?,
-        billing: TeamBilling?,
-        createdAt: Double,
-        creatorId: String,
-        description: String?,
-        id: String,
-        limited: Bool,
-        name: String?,
-        slug: String,
-        stagingPrefix: String,
-        updatedAt: Double,
-        apiKeysInvalidatedAt: Double? = nil,
-        appTokensInvalidatedAt: Double? = nil,
-        connect: TeamConnect? = nil,
-        defaultContinuousUsageKind: TeamDefaultContinuousUsageKind? = nil,
-        defaultDeploymentProtection: TeamDefaultDeploymentProtection? = nil,
-        defaultExpirationSettings: TeamDefaultExpirationSettings? = nil,
-        defaultPassport: TeamDefaultPassport? = nil,
-        defaultProjectJobs: TeamDefaultProjectJobs? = nil,
-        defaultRoles: TeamDefaultRoles? = nil,
-        deploymentPolicy: TeamDeploymentPolicy? = nil,
-        deploymentStorageRollout: TeamDeploymentStorageRollout? = nil,
-        disableHardAutoBlocks: TeamDisableHardAutoBlocks? = nil,
-        disableRepositoryDispatchEvents: Bool? = nil,
-        disjunctiveProductionSecretPolicy: TeamDisjunctiveProductionSecretPolicy? = nil,
-        dpAccessRequestsMode: TeamDpAccessRequestsMode? = nil,
-        emailDomain: String? = nil,
-        enablePreviewFeedback: TeamEnablePreviewFeedback? = nil,
-        enableProductionFeedback: TeamEnableProductionFeedback? = nil,
-        hideIpAddresses: Bool? = nil,
-        hideIpAddressesInLogDrains: Bool? = nil,
-        integrationTokensInvalidatedAt: Double? = nil,
-        inviteCode: String? = nil,
-        ipBuckets: [TeamIpBucketsItem]? = nil,
-        membership: TeamMembership? = nil,
-        nsnbConfig: TeamNsnbConfig? = nil,
-        orgRootTeamId: String? = nil,
-        parentId: String? = nil,
-        personalAccessTokensInvalidatedAt: Double? = nil,
-        platform: Bool? = nil,
-        previewDeploymentSuffix: String? = nil,
-        remoteCaching: TeamRemoteCaching? = nil,
-        requireVerifiedCommits: Bool? = nil,
-        resourceConfig: TeamResourceConfig? = nil,
-        saml: TeamSaml? = nil,
-        sensitiveEnvironmentVariablePolicy: TeamSensitiveEnvironmentVariablePolicy? = nil,
-        strictConnectors: TeamStrictConnectors? = nil,
-        strictDeploymentProtectionSettings: TeamStrictDeploymentProtectionSettings? = nil,
-        strictPasswordProtectionSettings: TeamStrictPasswordProtectionSettings? = nil,
-        strictShareableLinks: TeamStrictShareableLinks? = nil
-    ) {
-        self.init(
-            sdkRequiredFields: avatar,
-            billing: billing,
-            createdAt: createdAt,
-            creatorId: creatorId,
-            description: description,
-            id: id,
-            limited: limited,
-            name: name,
-            slug: slug,
-            stagingPrefix: stagingPrefix,
-            updatedAt: updatedAt
-        )
+extension Team {
+    public init(avatar: String?, billing: TeamBilling?, createdAt: Double, creatorId: String, description: String?, id: String, limited: Bool, name: String?, slug: String, stagingPrefix: String, updatedAt: Double, apiKeysInvalidatedAt: Double? = nil, appTokensInvalidatedAt: Double? = nil, connect: TeamConnect? = nil, defaultContinuousUsageKind: TeamDefaultContinuousUsageKind? = nil, defaultDeploymentProtection: TeamDefaultDeploymentProtection? = nil, defaultExpirationSettings: TeamDefaultExpirationSettings? = nil, defaultPassport: TeamDefaultPassport? = nil, defaultProjectJobs: TeamDefaultProjectJobs? = nil, defaultRoles: TeamDefaultRoles? = nil, deploymentPolicy: TeamDeploymentPolicy? = nil, deploymentStorageRollout: TeamDeploymentStorageRollout? = nil, disableHardAutoBlocks: TeamDisableHardAutoBlocks? = nil, disableRepositoryDispatchEvents: Bool? = nil, disjunctiveProductionSecretPolicy: TeamDisjunctiveProductionSecretPolicy? = nil, dpAccessRequestsMode: TeamDpAccessRequestsMode? = nil, emailDomain: String? = nil, enablePreviewFeedback: TeamEnablePreviewFeedback? = nil, enableProductionFeedback: TeamEnableProductionFeedback? = nil, hideIpAddresses: Bool? = nil, hideIpAddressesInLogDrains: Bool? = nil, integrationTokensInvalidatedAt: Double? = nil, inviteCode: String? = nil, ipBuckets: [TeamIpBucketsItem]? = nil, membership: TeamMembership? = nil, nsnbConfig: TeamNsnbConfig? = nil, orgRootTeamId: String? = nil, parentId: String? = nil, personalAccessTokensInvalidatedAt: Double? = nil, platform: Bool? = nil, previewDeploymentSuffix: String? = nil, remoteCaching: TeamRemoteCaching? = nil, requireVerifiedCommits: Bool? = nil, resourceConfig: TeamResourceConfig? = nil, saml: TeamSaml? = nil, sensitiveEnvironmentVariablePolicy: TeamSensitiveEnvironmentVariablePolicy? = nil, strictConnectors: TeamStrictConnectors? = nil, strictDeploymentProtectionSettings: TeamStrictDeploymentProtectionSettings? = nil, strictPasswordProtectionSettings: TeamStrictPasswordProtectionSettings? = nil, strictShareableLinks: TeamStrictShareableLinks? = nil) {
+        self.init(sdkRequiredFields: avatar, billing: billing, createdAt: createdAt, creatorId: creatorId, description: description, id: id, limited: limited, name: name, slug: slug, stagingPrefix: stagingPrefix, updatedAt: updatedAt)
         sdkSet1(apiKeysInvalidatedAt, appTokensInvalidatedAt, connect, defaultContinuousUsageKind)
         sdkSet2(defaultDeploymentProtection, defaultExpirationSettings, defaultPassport, defaultProjectJobs)
         sdkSet3(defaultRoles, deploymentPolicy, deploymentStorageRollout, disableHardAutoBlocks)
@@ -450,8 +327,8 @@ public extension Team {
     }
 }
 
-public extension Team {
-    func encode(to encoder: Encoder) throws {
+extension Team {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(avatar, forKey: .avatar)
@@ -508,12 +385,7 @@ public extension Team {
 }
 
 extension Team {
-    mutating func sdkSet1(
-        _ apiKeysInvalidatedAt: Double?,
-        _ appTokensInvalidatedAt: Double?,
-        _ connect: TeamConnect?,
-        _ defaultContinuousUsageKind: TeamDefaultContinuousUsageKind?
-    ) {
+    mutating func sdkSet1(_ apiKeysInvalidatedAt: Double?, _ appTokensInvalidatedAt: Double?, _ connect: TeamConnect?, _ defaultContinuousUsageKind: TeamDefaultContinuousUsageKind?) {
         self.apiKeysInvalidatedAt = apiKeysInvalidatedAt
         self.appTokensInvalidatedAt = appTokensInvalidatedAt
         self.connect = connect
@@ -522,12 +394,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet2(
-        _ defaultDeploymentProtection: TeamDefaultDeploymentProtection?,
-        _ defaultExpirationSettings: TeamDefaultExpirationSettings?,
-        _ defaultPassport: TeamDefaultPassport?,
-        _ defaultProjectJobs: TeamDefaultProjectJobs?
-    ) {
+    mutating func sdkSet2(_ defaultDeploymentProtection: TeamDefaultDeploymentProtection?, _ defaultExpirationSettings: TeamDefaultExpirationSettings?, _ defaultPassport: TeamDefaultPassport?, _ defaultProjectJobs: TeamDefaultProjectJobs?) {
         self.defaultDeploymentProtection = defaultDeploymentProtection
         self.defaultExpirationSettings = defaultExpirationSettings
         self.defaultPassport = defaultPassport
@@ -536,12 +403,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet3(
-        _ defaultRoles: TeamDefaultRoles?,
-        _ deploymentPolicy: TeamDeploymentPolicy?,
-        _ deploymentStorageRollout: TeamDeploymentStorageRollout?,
-        _ disableHardAutoBlocks: TeamDisableHardAutoBlocks?
-    ) {
+    mutating func sdkSet3(_ defaultRoles: TeamDefaultRoles?, _ deploymentPolicy: TeamDeploymentPolicy?, _ deploymentStorageRollout: TeamDeploymentStorageRollout?, _ disableHardAutoBlocks: TeamDisableHardAutoBlocks?) {
         self.defaultRoles = defaultRoles
         self.deploymentPolicy = deploymentPolicy
         self.deploymentStorageRollout = deploymentStorageRollout
@@ -550,11 +412,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet4(
-        _ disableRepositoryDispatchEvents: Bool?,
-        _ disjunctiveProductionSecretPolicy: TeamDisjunctiveProductionSecretPolicy?,
-        _ dpAccessRequestsMode: TeamDpAccessRequestsMode?
-    ) {
+    mutating func sdkSet4(_ disableRepositoryDispatchEvents: Bool?, _ disjunctiveProductionSecretPolicy: TeamDisjunctiveProductionSecretPolicy?, _ dpAccessRequestsMode: TeamDpAccessRequestsMode?) {
         self.disableRepositoryDispatchEvents = disableRepositoryDispatchEvents
         self.disjunctiveProductionSecretPolicy = disjunctiveProductionSecretPolicy
         self.dpAccessRequestsMode = dpAccessRequestsMode
@@ -562,12 +420,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet5(
-        _ emailDomain: String?,
-        _ enablePreviewFeedback: TeamEnablePreviewFeedback?,
-        _ enableProductionFeedback: TeamEnableProductionFeedback?,
-        _ hideIpAddresses: Bool?
-    ) {
+    mutating func sdkSet5(_ emailDomain: String?, _ enablePreviewFeedback: TeamEnablePreviewFeedback?, _ enableProductionFeedback: TeamEnableProductionFeedback?, _ hideIpAddresses: Bool?) {
         self.emailDomain = emailDomain
         self.enablePreviewFeedback = enablePreviewFeedback
         self.enableProductionFeedback = enableProductionFeedback
@@ -576,13 +429,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet6(
-        _ hideIpAddressesInLogDrains: Bool?,
-        _ integrationTokensInvalidatedAt: Double?,
-        _ inviteCode: String?,
-        _ ipBuckets: [TeamIpBucketsItem]?,
-        _ membership: TeamMembership?
-    ) {
+    mutating func sdkSet6(_ hideIpAddressesInLogDrains: Bool?, _ integrationTokensInvalidatedAt: Double?, _ inviteCode: String?, _ ipBuckets: [TeamIpBucketsItem]?, _ membership: TeamMembership?) {
         self.hideIpAddressesInLogDrains = hideIpAddressesInLogDrains
         self.integrationTokensInvalidatedAt = integrationTokensInvalidatedAt
         self.inviteCode = inviteCode
@@ -592,13 +439,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet7(
-        _ nsnbConfig: TeamNsnbConfig?,
-        _ orgRootTeamId: String?,
-        _ parentId: String?,
-        _ personalAccessTokensInvalidatedAt: Double?,
-        _ platform: Bool?
-    ) {
+    mutating func sdkSet7(_ nsnbConfig: TeamNsnbConfig?, _ orgRootTeamId: String?, _ parentId: String?, _ personalAccessTokensInvalidatedAt: Double?, _ platform: Bool?) {
         self.nsnbConfig = nsnbConfig
         self.orgRootTeamId = orgRootTeamId
         self.parentId = parentId
@@ -608,13 +449,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet8(
-        _ previewDeploymentSuffix: String?,
-        _ remoteCaching: TeamRemoteCaching?,
-        _ requireVerifiedCommits: Bool?,
-        _ resourceConfig: TeamResourceConfig?,
-        _ saml: TeamSaml?
-    ) {
+    mutating func sdkSet8(_ previewDeploymentSuffix: String?, _ remoteCaching: TeamRemoteCaching?, _ requireVerifiedCommits: Bool?, _ resourceConfig: TeamResourceConfig?, _ saml: TeamSaml?) {
         self.previewDeploymentSuffix = previewDeploymentSuffix
         self.remoteCaching = remoteCaching
         self.requireVerifiedCommits = requireVerifiedCommits

@@ -3,68 +3,68 @@
 
 import Foundation
 
-/// ProjectsUpdate domain models
+// ProjectsUpdate domain models
 extension UpdateMicrofrontendsResponseEnvItemContentHint {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant0.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant0(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant0(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant1.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant1(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant1(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant2.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant2(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant2(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant3.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant3(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant3(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant4.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant4(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant4(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant5.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant5(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant5(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant6.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant6(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant6(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant7.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant7(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant7(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant8.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant8(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant8(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant9.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant9(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant9(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant10.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant10(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant10(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant11.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant11(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant11(value)
         }
         return nil
     }
@@ -75,27 +75,27 @@ extension UpdateMicrofrontendsResponseEnvItemContentHint {
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant12.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant12(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant12(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant13.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant13(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant13(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant14.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant14(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant14(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant15.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant15(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant15(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseEnvItemContentHintVariant16.self
         ) {
-            return .updateMicrofrontendsResponseEnvItemContentHintVariant16(value)
+            return             .updateMicrofrontendsResponseEnvItemContentHintVariant16(value)
         }
         return nil
     }
@@ -105,30 +105,18 @@ extension UpdateMicrofrontendsResponseEnvItemContentHint {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant0(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant1(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant2(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant3(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant4(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant5(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant6(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant7(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant8(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant9(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant10(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant11(value): try container
-            .encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant0(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant1(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant2(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant3(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant4(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant5(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant6(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant7(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant8(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant9(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant10(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant11(value): try container.encode(value); return true
         default: return false
         }
     }
@@ -138,16 +126,11 @@ extension UpdateMicrofrontendsResponseEnvItemContentHint {
     func encodeGroup2(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant12(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant13(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant14(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant15(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseEnvItemContentHintVariant16(value): try container
-            .encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant12(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant13(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant14(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant15(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseEnvItemContentHintVariant16(value): try container.encode(value); return true
         default: return false
         }
     }
@@ -159,41 +142,27 @@ public indirect enum UpdateMicrofrontendsResponseExpiration {
 }
 
 extension UpdateMicrofrontendsResponseExpiration: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateMicrofrontendsResponseExpiration"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateMicrofrontendsResponseExpiration")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UpdateMicrofrontendsResponseExpiration {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateMicrofrontendsResponseExpirationVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseExpirationVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseExpirationVariant0(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseExpirationVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseExpirationVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseExpirationVariant1(value)
         }
         return nil
@@ -205,12 +174,12 @@ extension UpdateMicrofrontendsResponseExpiration {
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseExpirationVariant0.self
         ) {
-            return .updateMicrofrontendsResponseExpirationVariant0(value)
+            return             .updateMicrofrontendsResponseExpirationVariant0(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseExpirationVariant1.self
         ) {
-            return .updateMicrofrontendsResponseExpirationVariant1(value)
+            return             .updateMicrofrontendsResponseExpirationVariant1(value)
         }
         return nil
     }
@@ -232,26 +201,18 @@ public indirect enum UpdateMicrofrontendsResponseInternalRoutesItem {
 }
 
 extension UpdateMicrofrontendsResponseInternalRoutesItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateMicrofrontendsResponseInternalRoutesItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateMicrofrontendsResponseInternalRoutesItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -274,12 +235,12 @@ extension UpdateMicrofrontendsResponseInternalRoutesItem {
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseInternalRoutesItemVariant0.self
         ) {
-            return .updateMicrofrontendsResponseInternalRoutesItemVariant0(value)
+            return             .updateMicrofrontendsResponseInternalRoutesItemVariant0(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseInternalRoutesItemVariant1.self
         ) {
-            return .updateMicrofrontendsResponseInternalRoutesItemVariant1(value)
+            return             .updateMicrofrontendsResponseInternalRoutesItemVariant1(value)
         }
         return nil
     }
@@ -289,10 +250,8 @@ extension UpdateMicrofrontendsResponseInternalRoutesItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateMicrofrontendsResponseInternalRoutesItemVariant0(value): try container
-            .encode(value); return true
-        case let .updateMicrofrontendsResponseInternalRoutesItemVariant1(value): try container
-            .encode(value); return true
+        case let .updateMicrofrontendsResponseInternalRoutesItemVariant0(value): try container.encode(value); return true
+        case let .updateMicrofrontendsResponseInternalRoutesItemVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -309,77 +268,45 @@ public indirect enum UpdateMicrofrontendsResponseLink {
 }
 
 extension UpdateMicrofrontendsResponseLink: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateMicrofrontendsResponseLink"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateMicrofrontendsResponseLink")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UpdateMicrofrontendsResponseLink {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseLinkVariant0(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseLinkVariant1(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseLinkVariant2(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant3.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant3.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseLinkVariant3(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant4.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant4.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseLinkVariant4(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant5.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant5.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseLinkVariant5(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant6.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant6.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseLinkVariant6(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant7.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseLinkVariant7.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseLinkVariant7(value)
         }
         return nil
@@ -391,42 +318,42 @@ extension UpdateMicrofrontendsResponseLink {
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseLinkVariant0.self
         ) {
-            return .updateMicrofrontendsResponseLinkVariant0(value)
+            return             .updateMicrofrontendsResponseLinkVariant0(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseLinkVariant1.self
         ) {
-            return .updateMicrofrontendsResponseLinkVariant1(value)
+            return             .updateMicrofrontendsResponseLinkVariant1(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseLinkVariant2.self
         ) {
-            return .updateMicrofrontendsResponseLinkVariant2(value)
+            return             .updateMicrofrontendsResponseLinkVariant2(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseLinkVariant3.self
         ) {
-            return .updateMicrofrontendsResponseLinkVariant3(value)
+            return             .updateMicrofrontendsResponseLinkVariant3(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseLinkVariant4.self
         ) {
-            return .updateMicrofrontendsResponseLinkVariant4(value)
+            return             .updateMicrofrontendsResponseLinkVariant4(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseLinkVariant5.self
         ) {
-            return .updateMicrofrontendsResponseLinkVariant5(value)
+            return             .updateMicrofrontendsResponseLinkVariant5(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseLinkVariant6.self
         ) {
-            return .updateMicrofrontendsResponseLinkVariant6(value)
+            return             .updateMicrofrontendsResponseLinkVariant6(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseLinkVariant7.self
         ) {
-            return .updateMicrofrontendsResponseLinkVariant7(value)
+            return             .updateMicrofrontendsResponseLinkVariant7(value)
         }
         return nil
     }
@@ -455,47 +382,30 @@ public indirect enum UpdateMicrofrontendsResponseMicrofrontends {
 }
 
 extension UpdateMicrofrontendsResponseMicrofrontends: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateMicrofrontendsResponseMicrofrontends"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateMicrofrontendsResponseMicrofrontends")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UpdateMicrofrontendsResponseMicrofrontends {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateMicrofrontendsResponseMicrofrontendsVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseMicrofrontendsVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseMicrofrontendsVariant0(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseMicrofrontendsVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseMicrofrontendsVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseMicrofrontendsVariant1(value)
         }
-        if let value = try? container.decode(UpdateMicrofrontendsResponseMicrofrontendsVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateMicrofrontendsResponseMicrofrontendsVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateMicrofrontendsResponseMicrofrontendsVariant2(value)
         }
         return nil
@@ -507,17 +417,17 @@ extension UpdateMicrofrontendsResponseMicrofrontends {
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseMicrofrontendsVariant0.self
         ) {
-            return .updateMicrofrontendsResponseMicrofrontendsVariant0(value)
+            return             .updateMicrofrontendsResponseMicrofrontendsVariant0(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseMicrofrontendsVariant1.self
         ) {
-            return .updateMicrofrontendsResponseMicrofrontendsVariant1(value)
+            return             .updateMicrofrontendsResponseMicrofrontendsVariant1(value)
         }
         if let value = try? container.decode(
             UpdateMicrofrontendsResponseMicrofrontendsVariant2.self
         ) {
-            return .updateMicrofrontendsResponseMicrofrontendsVariant2(value)
+            return             .updateMicrofrontendsResponseMicrofrontendsVariant2(value)
         }
         return nil
     }
@@ -540,25 +450,17 @@ public indirect enum UpdateMicrofrontendsResponseTrustedIps {
 }
 
 extension UpdateMicrofrontendsResponseTrustedIps: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateMicrofrontendsResponseTrustedIps"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateMicrofrontendsResponseTrustedIps")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }

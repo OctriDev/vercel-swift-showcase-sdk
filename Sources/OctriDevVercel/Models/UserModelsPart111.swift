@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 /// Required enumerated value serialized in the `type` wire field.
 public enum UserEventPayloadVariant173OldEnvVarLastEditedByPrincipalVariant0Type: String, CaseIterable, Codable {
     case user
@@ -23,20 +23,16 @@ public enum UserEventPayloadVariant173OldEnvVarLastEditedByPrincipalVariant0Type
 }
 
 /// Optional enumerated value serialized in the `issuerMode` wire field.
-public struct UserEventPayloadVariant337PreviousIssuerMode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant337PreviousIssuerMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let global = UserEventPayloadVariant337PreviousIssuerMode(rawValue: "global")
     public static let team = UserEventPayloadVariant337PreviousIssuerMode(rawValue: "team")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -49,15 +45,12 @@ public struct UserEventPayloadVariant337PreviousIssuerMode: RawRepresentable, Ha
 public struct UserEventPayloadVariant424ActorType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let admin = UserEventPayloadVariant424ActorType(rawValue: "admin")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -70,15 +63,12 @@ public struct UserEventPayloadVariant424ActorType: RawRepresentable, Hashable, C
 public struct UserEventPayloadVariant260Scope: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let network = UserEventPayloadVariant260Scope(rawValue: "network")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -88,19 +78,15 @@ public struct UserEventPayloadVariant260Scope: RawRepresentable, Hashable, Codab
 }
 
 /// Required enumerated value serialized in the `type` wire field.
-public struct UserEventPayloadVariant65BeforeResourcesProjectIdsType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant65BeforeResourcesProjectIdsType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let list = UserEventPayloadVariant65BeforeResourcesProjectIdsType(rawValue: "list")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -113,16 +99,13 @@ public struct UserEventPayloadVariant65BeforeResourcesProjectIdsType: RawReprese
 public struct UserEventPayloadVariant12Provider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let chatgpt = UserEventPayloadVariant12Provider(rawValue: "chatgpt")
     public static let stripe = UserEventPayloadVariant12Provider(rawValue: "stripe")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -132,21 +115,17 @@ public struct UserEventPayloadVariant12Provider: RawRepresentable, Hashable, Cod
 }
 
 /// Required enumerated value serialized in the `provider` wire field.
-public struct UserEventPayloadVariant120JobVariant3Provider: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant120JobVariant3Provider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let github = UserEventPayloadVariant120JobVariant3Provider(rawValue: "github")
     public static let githubCustomHost = UserEventPayloadVariant120JobVariant3Provider(rawValue: "github-custom-host")
     public static let githubLimited = UserEventPayloadVariant120JobVariant3Provider(rawValue: "github-limited")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -156,21 +135,17 @@ public struct UserEventPayloadVariant120JobVariant3Provider: RawRepresentable, H
 }
 
 /// Optional enumerated value serialized in the `previousPlan` wire field.
-public struct UserEventPayloadVariant409PreviousPlan: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant409PreviousPlan: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let enterprise = UserEventPayloadVariant409PreviousPlan(rawValue: "enterprise")
     public static let hobby = UserEventPayloadVariant409PreviousPlan(rawValue: "hobby")
     public static let pro = UserEventPayloadVariant409PreviousPlan(rawValue: "pro")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -180,27 +155,18 @@ public struct UserEventPayloadVariant409PreviousPlan: RawRepresentable, Hashable
 }
 
 /// Optional enumerated value serialized in the `cve55182MigrationAppliedFrom` wire field.
-public struct UserEventPayloadVariant114OldSsoProtectionCve55182MigrationAppliedFrom: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UserEventPayloadVariant114OldSsoProtectionCve55182MigrationAppliedFrom: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let all = UserEventPayloadVariant114OldSsoProtectionCve55182MigrationAppliedFrom(rawValue: "all")
-    public static let allExceptCustomDomains =
-        UserEventPayloadVariant114OldSsoProtectionCve55182MigrationAppliedFrom(rawValue: "all_except_custom_domains")
-    public static let preview =
-        UserEventPayloadVariant114OldSsoProtectionCve55182MigrationAppliedFrom(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews =
-        UserEventPayloadVariant114OldSsoProtectionCve55182MigrationAppliedFrom(
-            rawValue: "prod_deployment_urls_and_all_previews"
-        )
+    public static let allExceptCustomDomains = UserEventPayloadVariant114OldSsoProtectionCve55182MigrationAppliedFrom(rawValue: "all_except_custom_domains")
+    public static let preview = UserEventPayloadVariant114OldSsoProtectionCve55182MigrationAppliedFrom(rawValue: "preview")
+    public static let prodDeploymentUrlsAndAllPreviews = UserEventPayloadVariant114OldSsoProtectionCve55182MigrationAppliedFrom(rawValue: "prod_deployment_urls_and_all_previews")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -213,10 +179,7 @@ public struct UserEventPayloadVariant114OldSsoProtectionCve55182MigrationApplied
 public struct UserEventPayloadVariant298GitProvider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bitbucket = UserEventPayloadVariant298GitProvider(rawValue: "bitbucket")
     public static let cursorOrigin = UserEventPayloadVariant298GitProvider(rawValue: "cursor-origin")
     public static let github = UserEventPayloadVariant298GitProvider(rawValue: "github")
@@ -228,7 +191,7 @@ public struct UserEventPayloadVariant298GitProvider: RawRepresentable, Hashable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -237,14 +200,10 @@ public struct UserEventPayloadVariant298GitProvider: RawRepresentable, Hashable,
     }
 }
 
-public struct UserEventPayloadVariant398RemovedUsersValueRole: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant398RemovedUsersValueRole: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let billing = UserEventPayloadVariant398RemovedUsersValueRole(rawValue: "BILLING")
     public static let contributor = UserEventPayloadVariant398RemovedUsersValueRole(rawValue: "CONTRIBUTOR")
     public static let developer = UserEventPayloadVariant398RemovedUsersValueRole(rawValue: "DEVELOPER")
@@ -256,7 +215,7 @@ public struct UserEventPayloadVariant398RemovedUsersValueRole: RawRepresentable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -266,21 +225,16 @@ public struct UserEventPayloadVariant398RemovedUsersValueRole: RawRepresentable,
 }
 
 /// Required enumerated value serialized in the `newResourceBlockingPolicy` wire field.
-public struct UserEventPayloadVariant238PreviousNewResourceBlockingPolicy: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant238PreviousNewResourceBlockingPolicy: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allow = UserEventPayloadVariant238PreviousNewResourceBlockingPolicy(rawValue: "allow")
     public static let block = UserEventPayloadVariant238PreviousNewResourceBlockingPolicy(rawValue: "block")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -308,14 +262,10 @@ public enum UserEventPrincipalVariant2Type: String, CaseIterable, Codable {
 }
 
 /// Required enumerated value serialized in the `refreshPeriod` wire field.
-public struct UserEventPayloadVariant26BudgetRefreshPeriod: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant26BudgetRefreshPeriod: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let daily = UserEventPayloadVariant26BudgetRefreshPeriod(rawValue: "daily")
     public static let monthly = UserEventPayloadVariant26BudgetRefreshPeriod(rawValue: "monthly")
     public static let none = UserEventPayloadVariant26BudgetRefreshPeriod(rawValue: "none")
@@ -323,7 +273,7 @@ public struct UserEventPayloadVariant26BudgetRefreshPeriod: RawRepresentable, Ha
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -333,19 +283,15 @@ public struct UserEventPayloadVariant26BudgetRefreshPeriod: RawRepresentable, Ha
 }
 
 /// Required enumerated value serialized in the `provider` wire field.
-public struct UserEventPayloadVariant120JobVariant9Provider: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant120JobVariant9Provider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let cursorOrigin = UserEventPayloadVariant120JobVariant9Provider(rawValue: "cursor-origin")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -358,13 +304,11 @@ public struct UserEventPayloadVariant120JobVariant9Provider: RawRepresentable, H
 public struct ListEventTypeName: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
+    public init(rawValue: String) { self.rawValue = rawValue }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -380,8 +324,7 @@ public extension ListEventTypeName {
     static let accessGroupUpdated = ListEventTypeName(rawValue: "access-group-updated")
     static let accessGroupUserAdded = ListEventTypeName(rawValue: "access-group-user-added")
     static let accessGroupUserRemoved = ListEventTypeName(rawValue: "access-group-user-removed")
-    static let adminAgenticProvisioningAccountUnlinked =
-        ListEventTypeName(rawValue: "admin-agentic-provisioning-account-unlinked")
+    static let adminAgenticProvisioningAccountUnlinked = ListEventTypeName(rawValue: "admin-agentic-provisioning-account-unlinked")
     static let adminPlanUpdated = ListEventTypeName(rawValue: "admin-plan-updated")
     static let adminPreviewDeploymentSuffixClear = ListEventTypeName(rawValue: "admin-preview-deployment-suffix-clear")
     static let adminSamlIdpMaterialDeleted = ListEventTypeName(rawValue: "admin-saml-idp-material-deleted")
@@ -399,8 +342,7 @@ public extension ListEventTypeName {
     static let agenticProvisioningAccountLinked = ListEventTypeName(rawValue: "agentic-provisioning-account-linked")
     static let agenticProvisioningAccountRelinked = ListEventTypeName(rawValue: "agentic-provisioning-account-relinked")
     static let agenticProvisioningAccountUnlinked = ListEventTypeName(rawValue: "agentic-provisioning-account-unlinked")
-    static let agenticProvisioningCredentialsRotated =
-        ListEventTypeName(rawValue: "agentic-provisioning-credentials-rotated")
+    static let agenticProvisioningCredentialsRotated = ListEventTypeName(rawValue: "agentic-provisioning-credentials-rotated")
     static let agenticProvisioningPlanChanged = ListEventTypeName(rawValue: "agentic-provisioning-plan-changed")
     static let agenticProvisioningTeamCreated = ListEventTypeName(rawValue: "agentic-provisioning-team-created")
     static let aiAlertInvestigation = ListEventTypeName(rawValue: "ai-alert-investigation")
@@ -408,8 +350,7 @@ public extension ListEventTypeName {
     static let aiGatewayAccessPolicyCreated = ListEventTypeName(rawValue: "ai-gateway-access-policy-created")
     static let aiGatewayAccessPolicyDeleted = ListEventTypeName(rawValue: "ai-gateway-access-policy-deleted")
     static let aiGatewayAccessPolicyMemberAdded = ListEventTypeName(rawValue: "ai-gateway-access-policy-member-added")
-    static let aiGatewayAccessPolicyMemberRemoved =
-        ListEventTypeName(rawValue: "ai-gateway-access-policy-member-removed")
+    static let aiGatewayAccessPolicyMemberRemoved = ListEventTypeName(rawValue: "ai-gateway-access-policy-member-removed")
     static let aiGatewayAccessPolicyUpdated = ListEventTypeName(rawValue: "ai-gateway-access-policy-updated")
     static let aiGatewayApiKeyCreated = ListEventTypeName(rawValue: "ai-gateway-api-key-created")
     static let aiGatewayApiKeyDeleted = ListEventTypeName(rawValue: "ai-gateway-api-key-deleted")
@@ -424,48 +365,35 @@ public extension ListEventTypeName {
     static let aiGatewayGuardrailsUpdated = ListEventTypeName(rawValue: "ai-gateway-guardrails-updated")
     static let aiGatewayHipaaComplianceToggled = ListEventTypeName(rawValue: "ai-gateway-hipaa-compliance-toggled")
     static let aiGatewayInferenceRegionsUpdated = ListEventTypeName(rawValue: "ai-gateway-inference-regions-updated")
-    static let aiGatewayModelAllowlistModelsUpdated =
-        ListEventTypeName(rawValue: "ai-gateway-model-allowlist-models-updated")
+    static let aiGatewayModelAllowlistModelsUpdated = ListEventTypeName(rawValue: "ai-gateway-model-allowlist-models-updated")
     static let aiGatewayModelAllowlistToggled = ListEventTypeName(rawValue: "ai-gateway-model-allowlist-toggled")
-    static let aiGatewayModelCatalogAlertSettingsUpdated =
-        ListEventTypeName(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
+    static let aiGatewayModelCatalogAlertSettingsUpdated = ListEventTypeName(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
     static let aiGatewayPrivateModelCreated = ListEventTypeName(rawValue: "ai-gateway-private-model-created")
     static let aiGatewayPrivateModelDeleted = ListEventTypeName(rawValue: "ai-gateway-private-model-deleted")
     static let aiGatewayPrivateModelUpdated = ListEventTypeName(rawValue: "ai-gateway-private-model-updated")
     static let aiGatewayPrivateProviderCreated = ListEventTypeName(rawValue: "ai-gateway-private-provider-created")
     static let aiGatewayPrivateProviderDeleted = ListEventTypeName(rawValue: "ai-gateway-private-provider-deleted")
     static let aiGatewayPrivateProviderUpdated = ListEventTypeName(rawValue: "ai-gateway-private-provider-updated")
-    static let aiGatewayPromptTrainingOptOutToggled =
-        ListEventTypeName(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
-    static let aiGatewayProviderAllowlistProvidersUpdated =
-        ListEventTypeName(rawValue: "ai-gateway-provider-allowlist-providers-updated")
+    static let aiGatewayPromptTrainingOptOutToggled = ListEventTypeName(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
+    static let aiGatewayProviderAllowlistProvidersUpdated = ListEventTypeName(rawValue: "ai-gateway-provider-allowlist-providers-updated")
     static let aiGatewayProviderAllowlistToggled = ListEventTypeName(rawValue: "ai-gateway-provider-allowlist-toggled")
     static let aiGatewayRuleCreated = ListEventTypeName(rawValue: "ai-gateway-rule-created")
     static let aiGatewayRuleDeleted = ListEventTypeName(rawValue: "ai-gateway-rule-deleted")
     static let aiGatewayRuleUpdated = ListEventTypeName(rawValue: "ai-gateway-rule-updated")
     static let aiGatewayScopeBudgetUpdated = ListEventTypeName(rawValue: "ai-gateway-scope-budget-updated")
-    static let aiGatewayTranscriptsDefaultDisabled =
-        ListEventTypeName(rawValue: "ai-gateway-transcripts-default-disabled")
-    static let aiGatewayTranscriptsDefaultEnabled =
-        ListEventTypeName(rawValue: "ai-gateway-transcripts-default-enabled")
+    static let aiGatewayTranscriptsDefaultDisabled = ListEventTypeName(rawValue: "ai-gateway-transcripts-default-disabled")
+    static let aiGatewayTranscriptsDefaultEnabled = ListEventTypeName(rawValue: "ai-gateway-transcripts-default-enabled")
     static let aiGatewayTranscriptsDisabled = ListEventTypeName(rawValue: "ai-gateway-transcripts-disabled")
     static let aiGatewayTranscriptsEnabled = ListEventTypeName(rawValue: "ai-gateway-transcripts-enabled")
-    static let aiGatewayTranscriptsRetentionUpdated =
-        ListEventTypeName(rawValue: "ai-gateway-transcripts-retention-updated")
-    static let aiGatewayVirtualModelConfigArchived =
-        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-archived")
-    static let aiGatewayVirtualModelConfigCreated =
-        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-created")
-    static let aiGatewayVirtualModelConfigDeleted =
-        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-deleted")
-    static let aiGatewayVirtualModelConfigRestored =
-        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-restored")
-    static let aiGatewayVirtualModelConfigUpdated =
-        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-updated")
+    static let aiGatewayTranscriptsRetentionUpdated = ListEventTypeName(rawValue: "ai-gateway-transcripts-retention-updated")
+    static let aiGatewayVirtualModelConfigArchived = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-archived")
+    static let aiGatewayVirtualModelConfigCreated = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-created")
+    static let aiGatewayVirtualModelConfigDeleted = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-deleted")
+    static let aiGatewayVirtualModelConfigRestored = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-restored")
+    static let aiGatewayVirtualModelConfigUpdated = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-updated")
     static let aiGatewayZeroDataRetentionToggled = ListEventTypeName(rawValue: "ai-gateway-zero-data-retention-toggled")
     static let aiOmniagent = ListEventTypeName(rawValue: "ai-omniagent")
-    static let alertInvestigationProjectAllowlistUpdated =
-        ListEventTypeName(rawValue: "alert-investigation-project-allowlist-updated")
+    static let alertInvestigationProjectAllowlistUpdated = ListEventTypeName(rawValue: "alert-investigation-project-allowlist-updated")
     static let alertRuleCreated = ListEventTypeName(rawValue: "alert-rule-created")
     static let alertRuleDeleted = ListEventTypeName(rawValue: "alert-rule-deleted")
     static let alertRuleUpdated = ListEventTypeName(rawValue: "alert-rule-updated")

@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ChecksMethods {
-    struct UpdateCheckOptions: Codable {
+extension ChecksMethods {
+    public struct UpdateCheckOptions: Codable {
         public var deploymentId: String
         public var checkId: String
         public var teamId: String?
@@ -26,9 +26,7 @@ public extension ChecksMethods {
         }
     }
 
-    /// Updates an existing check for a deployment. Supply the check fields you want to change, such as `status`,
-    /// `conclusion`, or `output`; call the operation with OAuth2 authentication. A 200 response returns the updated
-    /// check object.
+    /// Updates an existing check for a deployment. Supply the check fields you want to change, such as `status`, `conclusion`, or `output`; call the operation with OAuth2 authentication. A 200 response returns the updated check object.
     ///
     /// Update an existing check. This endpoint must be called with an OAuth2 or it will produce a 400 error.
     ///
@@ -46,11 +44,7 @@ public extension ChecksMethods {
     /// - externalId: An identifier that can be used as an external reference
     ///
     /// - Warning: This operation is deprecated and may be removed in a future release.
-    static func updateCheck(
-        config: ClientConfig,
-        options: UpdateCheckOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateCheckResponse {
+    public static func updateCheck(config: ClientConfig, options: UpdateCheckOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateCheckResponse {
         if let name = options.name {
             try validateLength("name", name, max: 100)
         }
@@ -61,23 +55,9 @@ public extension ChecksMethods {
 
         let requestBody = UpdateCheckRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v1/deployments/",
-                sdkEncodePathSegment(sdkWireString(options.deploymentId)),
-                "/checks/",
-                sdkEncodePathSegment(sdkWireString(options.checkId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateCheck",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(options.deploymentId)), "/checks/", sdkEncodePathSegment(sdkWireString(options.checkId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "updateCheck", options: requestOptions)).data
     }
 }

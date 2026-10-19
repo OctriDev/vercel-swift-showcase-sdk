@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension MarketplaceMethods {
-    struct UpdateResourceOptions: Codable {
+extension MarketplaceMethods {
+    public struct UpdateResourceOptions: Codable {
         public var integrationConfigurationId: String
         public var resourceId: String
         public var ownership: UpdateResourceRequestBodyOwnership?
@@ -26,37 +26,18 @@ public extension MarketplaceMethods {
         }
     }
 
-    /// Updates selected properties of an existing resource in an integration installation. Send only the fields you
-    /// want to change; use the path identifiers to target the resource within its installation.
+    /// Updates selected properties of an existing resource in an integration installation. Send only the fields you want to change; use the path identifiers to target the resource within its installation.
     ///
-    /// This endpoint updates an existing resource in the installation. All parameters are optional, allowing partial
-    /// updates.
+    /// This endpoint updates an existing resource in the installation. All parameters are optional, allowing partial updates.
     ///
     /// - Parameters:
     /// - notification: Typed representation of the
     ///   `UpdateResourceRequestNotification` API schema.
     /// - customClaims: Custom claims embedded in the resource tokens Vercel mints
     ///   for this resource.
-    static func updateResource(
-        config: ClientConfig,
-        options: UpdateResourceOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateResourceResponse {
+    public static func updateResource(config: ClientConfig, options: UpdateResourceOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateResourceResponse {
         let requestBody = UpdateResourceRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v1/installations/",
-                sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)),
-                "/resources/",
-                sdkEncodePathSegment(sdkWireString(options.resourceId)),
-            ].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateResource",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(options.resourceId))].joined(), config: config, body: requestBody, decoder: .json, operationId: "updateResource", options: requestOptions)).data
     }
 }

@@ -24,21 +24,17 @@ public enum ListLogDrainsResponseVariant1DrainsVariant1ItemDeliveryVariant1Type:
 }
 
 /// environments this env variable targets
-public struct ListSharedEnvVariableResponseDataItemTargetItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListSharedEnvVariableResponseDataItemTargetItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = ListSharedEnvVariableResponseDataItemTargetItem(rawValue: "development")
     public static let preview = ListSharedEnvVariableResponseDataItemTargetItem(rawValue: "preview")
     public static let production = ListSharedEnvVariableResponseDataItemTargetItem(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -47,22 +43,16 @@ public struct ListSharedEnvVariableResponseDataItemTargetItem: RawRepresentable,
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX333ac3faa5: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX333ac3faa5: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let create =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX333ac3faa5(rawValue: "create")
-    public static let update =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX333ac3faa5(rawValue: "update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX333ac3faa5(rawValue: "create")
+    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX333ac3faa5(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -71,21 +61,17 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX333a
     }
 }
 
-public struct GetProjectsResponseSecurityManagedRulesOwaspAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetProjectsResponseSecurityManagedRulesOwaspAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let challenge = GetProjectsResponseSecurityManagedRulesOwaspAction(rawValue: "challenge")
     public static let deny = GetProjectsResponseSecurityManagedRulesOwaspAction(rawValue: "deny")
     public static let log = GetProjectsResponseSecurityManagedRulesOwaspAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -95,20 +81,16 @@ public struct GetProjectsResponseSecurityManagedRulesOwaspAction: RawRepresentab
 }
 
 /// Whether the value is an opaque identifier or a URL.
-public struct GetDeploymentsResponseDeploymentsItemPlatformOriginType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentsResponseDeploymentsItemPlatformOriginType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let id = GetDeploymentsResponseDeploymentsItemPlatformOriginType(rawValue: "id")
     public static let url = GetDeploymentsResponseDeploymentsItemPlatformOriginType(rawValue: "url")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -117,24 +99,17 @@ public struct GetDeploymentsResponseDeploymentsItemPlatformOriginType: RawRepres
     }
 }
 
-public struct ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVarianX103eeb967e: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVarianX103eeb967e: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let aes256 =
-        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVarianX103eeb967e(rawValue: "AES256")
-    public static let awsKms =
-        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVarianX103eeb967e(rawValue: "aws:kms")
-    public static let awsKmsDsse =
-        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVarianX103eeb967e(rawValue: "aws:kms:dsse")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let aes256 = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVarianX103eeb967e(rawValue: "AES256")
+    public static let awsKms = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVarianX103eeb967e(rawValue: "aws:kms")
+    public static let awsKmsDsse = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVarianX103eeb967e(rawValue: "aws:kms:dsse")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -163,15 +138,12 @@ public enum CreateProjectEnvResponseCreatedVariant0ContentHintVariant2Type: Stri
 public struct GetProjectsResponseTier: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let priority = GetProjectsResponseTier(rawValue: "priority")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -180,22 +152,16 @@ public struct GetProjectsResponseTier: RawRepresentable, Hashable, Codable, Send
     }
 }
 
-public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX80f63b1372: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX80f63b1372: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let create =
-        GetConfigurationProductsResponseProductsItemMetadataSchemaProX80f63b1372(rawValue: "create")
-    public static let update =
-        GetConfigurationProductsResponseProductsItemMetadataSchemaProX80f63b1372(rawValue: "update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let create = GetConfigurationProductsResponseProductsItemMetadataSchemaProX80f63b1372(rawValue: "create")
+    public static let update = GetConfigurationProductsResponseProductsItemMetadataSchemaProX80f63b1372(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -204,21 +170,17 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX80f6
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreNotificationLevel: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreNotificationLevel: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let error = CreateIntegrationStoreDirectResponseStoreNotificationLevel(rawValue: "error")
     public static let info = CreateIntegrationStoreDirectResponseStoreNotificationLevel(rawValue: "info")
     public static let warn = CreateIntegrationStoreDirectResponseStoreNotificationLevel(rawValue: "warn")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -227,22 +189,17 @@ public struct CreateIntegrationStoreDirectResponseStoreNotificationLevel: RawRep
     }
 }
 
-public struct UploadProjectAvatarResponseLatestDeploymentsItemChecksState: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct UploadProjectAvatarResponseLatestDeploymentsItemChecksState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let completed = UploadProjectAvatarResponseLatestDeploymentsItemChecksState(rawValue: "completed")
     public static let registered = UploadProjectAvatarResponseLatestDeploymentsItemChecksState(rawValue: "registered")
     public static let running = UploadProjectAvatarResponseLatestDeploymentsItemChecksState(rawValue: "running")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

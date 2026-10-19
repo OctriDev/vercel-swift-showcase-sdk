@@ -7,31 +7,23 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
-public extension DeleteProjectAvatarResponseAliasItemDeploymentBranchMatcher {
-    init(from decoder: Decoder) throws {
+// Canonical projects operation model declarations
+extension DeleteProjectAvatarResponseAliasItemDeploymentBranchMatcher {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.pattern) else {
-            throw SdkValidationError(
-                field: "pattern",
-                code: "required",
-                message: "Validation failed for 'pattern': value is required"
-            )
+            throw SdkValidationError(field: "pattern", code: "required", message: "Validation failed for 'pattern': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        pattern = try container.sdkDecodeRequired(.pattern)
-        type = try container.sdkDecodeRequired(.type)
+        self.pattern = try container.sdkDecodeRequired(.pattern)
+        self.type = try container.sdkDecodeRequired(.type)
     }
 }
 
-public extension DeleteProjectAvatarResponseAliasItemDeploymentBranchMatcher {
-    init(pattern: String, type: DeleteProjectAvatarResponseAliasItemDeploymentBranchMatcherType) {
+extension DeleteProjectAvatarResponseAliasItemDeploymentBranchMatcher {
+    public init(pattern: String, type: DeleteProjectAvatarResponseAliasItemDeploymentBranchMatcherType) {
         (self.pattern, self.type) = (pattern, type)
     }
 }
@@ -66,37 +58,25 @@ public struct UpdateProjectResponseRollingReleaseGateChecksItem: Codable {
         case significanceLevel
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateProjectResponseRollingReleaseGateChecksItem {
-    init(from decoder: Decoder) throws {
+extension UpdateProjectResponseRollingReleaseGateChecksItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        excludePaths = try container.sdkDecodeIfPresent(.excludePaths)
-        excludeStatusCodes = try container.sdkDecodeIfPresent(.excludeStatusCodes)
-        ingestWatermarkSeconds = try container.sdkDecodeIfPresent(.ingestWatermarkSeconds)
-        significanceLevel = try container.sdkDecodeIfPresent(.significanceLevel)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.excludePaths = try container.sdkDecodeIfPresent(.excludePaths)
+        self.excludeStatusCodes = try container.sdkDecodeIfPresent(.excludeStatusCodes)
+        self.ingestWatermarkSeconds = try container.sdkDecodeIfPresent(.ingestWatermarkSeconds)
+        self.significanceLevel = try container.sdkDecodeIfPresent(.significanceLevel)
     }
 }
 
-public extension UpdateProjectResponseRollingReleaseGateChecksItem {
-    init(
-        type: UpdateProjectResponseRollingReleaseGateChecksItemType,
-        excludePaths: [String]? = nil,
-        excludeStatusCodes: [Double]? = nil,
-        ingestWatermarkSeconds: Double? = nil,
-        significanceLevel: Double? = nil
-    ) {
+extension UpdateProjectResponseRollingReleaseGateChecksItem {
+    public init(type: UpdateProjectResponseRollingReleaseGateChecksItemType, excludePaths: [String]? = nil, excludeStatusCodes: [Double]? = nil, ingestWatermarkSeconds: Double? = nil, significanceLevel: Double? = nil) {
         (self.type, self.excludePaths) = (type, excludePaths)
         self.excludeStatusCodes = excludeStatusCodes
         (self.ingestWatermarkSeconds, self.significanceLevel) = (ingestWatermarkSeconds, significanceLevel)
@@ -115,49 +95,28 @@ public struct ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1 {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.integration) else {
-            throw SdkValidationError(
-                field: "integration",
-                code: "required",
-                message: "Validation failed for 'integration': value is required"
-            )
+            throw SdkValidationError(field: "integration", code: "required", message: "Validation failed for 'integration': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        integration = try container.sdkDecodeRequired(.integration)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1Type.allCases.map(\.rawValue)
-        )
+        self.integration = try container.sdkDecodeRequired(.integration)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1Type.allCases.map(\.rawValue))
     }
 }
 
-public extension ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1 {
-    init(
-        integration: ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVarX3699f96848,
-        type: ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1Type
-    ) throws {
+extension ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1 {
+    public init(integration: ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVarX3699f96848, type: ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1Type) throws {
         (self.integration, self.type) = (integration, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -182,97 +141,49 @@ public indirect enum RemoveProjectEnvResponseVariant2ContentHint {
 }
 
 extension RemoveProjectEnvResponseVariant2ContentHint: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
-            if let value = Self.decodeLossless2(from: container, raw) {
-                self = value; return
-            }
-            if let value = Self.decodeLossless3(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless3(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        if let value = Self.decodeGroup2(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for RemoveProjectEnvResponseVariant2ContentHint"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        if let value = Self.decodeGroup2(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RemoveProjectEnvResponseVariant2ContentHint")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
-        if try encodeGroup2(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup2(to: encoder) { return }
     }
 }
 
 extension RemoveProjectEnvResponseVariant2ContentHint {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant0.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant0(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant1.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant1(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant2.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant2(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant3.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant3.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant3(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant4.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant4.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant4(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant5.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant5.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant5(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant6.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant6.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant6(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant7.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant7.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant7(value)
         }
         return nil
@@ -281,60 +192,28 @@ extension RemoveProjectEnvResponseVariant2ContentHint {
 
 extension RemoveProjectEnvResponseVariant2ContentHint {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant8.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant8.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant8(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant9.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant9.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant9(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant10.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant10.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant10(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant11.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant11.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant11(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant12.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant12.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant12(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant13.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant13.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant13(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant14.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant14.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant14(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant15.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant15.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant15(value)
         }
         return nil
@@ -343,11 +222,7 @@ extension RemoveProjectEnvResponseVariant2ContentHint {
 
 extension RemoveProjectEnvResponseVariant2ContentHint {
     static func decodeLossless3(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant16.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseVariant2ContentHintVariant16.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseVariant2ContentHintVariant16(value)
         }
         return nil
@@ -359,62 +234,62 @@ extension RemoveProjectEnvResponseVariant2ContentHint {
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant0.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant0(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant0(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant1.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant1(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant1(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant2.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant2(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant2(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant3.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant3(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant3(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant4.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant4(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant4(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant5.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant5(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant5(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant6.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant6(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant6(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant7.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant7(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant7(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant8.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant8(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant8(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant9.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant9(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant9(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant10.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant10(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant10(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant11.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant11(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant11(value)
         }
         return nil
     }
@@ -425,27 +300,27 @@ extension RemoveProjectEnvResponseVariant2ContentHint {
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant12.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant12(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant12(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant13.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant13(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant13(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant14.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant14(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant14(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant15.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant15(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant15(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseVariant2ContentHintVariant16.self
         ) {
-            return .removeProjectEnvResponseVariant2ContentHintVariant16(value)
+            return             .removeProjectEnvResponseVariant2ContentHintVariant16(value)
         }
         return nil
     }
@@ -501,52 +376,34 @@ public struct ListProjectsResponseVariant1ProjectsItemLinkVariant7DeployHooksIte
         case createdAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsResponseVariant1ProjectsItemLinkVariant7DeployHooksItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsResponseVariant1ProjectsItemLinkVariant7DeployHooksItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.ref) else {
-            throw SdkValidationError(
-                field: "ref",
-                code: "required",
-                message: "Validation failed for 'ref': value is required"
-            )
+            throw SdkValidationError(field: "ref", code: "required", message: "Validation failed for 'ref': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        ref = try container.sdkDecodeRequired(.ref)
-        url = try container.sdkDecodeRequired(.url)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.ref = try container.sdkDecodeRequired(.ref)
+        self.url = try container.sdkDecodeRequired(.url)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
     }
 }
 
-public extension ListProjectsResponseVariant1ProjectsItemLinkVariant7DeployHooksItem {
-    init(id: String, name: String, ref: String, url: String, createdAt: Double? = nil) {
+extension ListProjectsResponseVariant1ProjectsItemLinkVariant7DeployHooksItem {
+    public init(id: String, name: String, ref: String, url: String, createdAt: Double? = nil) {
         (self.id, self.name) = (id, name)
         (self.ref, self.url) = (ref, url)
         self.createdAt = createdAt
@@ -569,28 +426,24 @@ public struct UpdateProjectRequestBodyTracing: Codable {
     }
 
     init() {
-        (domains, ignorePaths, samplingRules) = (nil, nil, nil)
+        (self.domains, self.ignorePaths, self.samplingRules) = (nil, nil, nil)
     }
 }
 
-public extension UpdateProjectRequestBodyTracing {
-    init(from decoder: Decoder) throws {
+extension UpdateProjectRequestBodyTracing {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        domains = try container.sdkDecodeIfPresent(.domains)
-        ignorePaths = try container.sdkDecodeIfPresent(.ignorePaths)
-        samplingRules = try container.sdkDecodeIfPresent(.samplingRules)
-        if let value = samplingRules {
+        self.domains = try container.sdkDecodeIfPresent(.domains)
+        self.ignorePaths = try container.sdkDecodeIfPresent(.ignorePaths)
+        self.samplingRules = try container.sdkDecodeIfPresent(.samplingRules)
+        if let value = self.samplingRules {
             try validateItems("samplingRules", value, min: nil, max: 10)
         }
     }
 }
 
-public extension UpdateProjectRequestBodyTracing {
-    init(
-        domains: String? = nil,
-        ignorePaths: [String]? = nil,
-        samplingRules: [UpdateProjectRequestBodyTracingSamplingRulesItem]? = nil
-    ) throws {
+extension UpdateProjectRequestBodyTracing {
+    public init(domains: String? = nil, ignorePaths: [String]? = nil, samplingRules: [UpdateProjectRequestBodyTracingSamplingRulesItem]? = nil) throws {
         self.init()
         (self.domains, self.ignorePaths) = (domains, ignorePaths)
         self.samplingRules = samplingRules
@@ -611,7 +464,5 @@ public struct UpdateProjectResponseResourceConfigBuildMachineElasticTransition: 
         case direction
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

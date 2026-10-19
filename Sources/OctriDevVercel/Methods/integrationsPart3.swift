@@ -6,96 +6,37 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension IntegrationsMethods {
-    /// Lists billing plans for an integration and product. Use `integrationIdOrSlug` and `productIdOrSlug` to identify
-    /// them, and use `source` to filter by the source of the request. You can also provide `integrationConfigurationId`
-    /// or `metadata` to scope the plan lookup.
+extension IntegrationsMethods {
+    /// Lists billing plans for an integration and product. Use `integrationIdOrSlug` and `productIdOrSlug` to identify them, and use `source` to filter by the source of the request. You can also provide `integrationConfigurationId` or `metadata` to scope the plan lookup.
     ///
     /// Get a list of billing plans for an integration and product.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getBillingPlans(
-        config: ClientConfig,
-        integrationIdOrSlug: String,
-        productIdOrSlug: String,
-        integrationConfigurationId: String? = nil,
-        metadata: String? = nil,
-        source: GetBillingPlansParameter? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetBillingPlansResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/integrations/integration/",
-                sdkEncodePathSegment(sdkWireString(integrationIdOrSlug)),
-                "/products/",
-                sdkEncodePathSegment(sdkWireString(productIdOrSlug)),
-                "/plans",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("integrationConfigurationId", value: integrationConfigurationId),
-                SdkQueryParameter("metadata", value: metadata),
-                SdkQueryParameter("source", value: source),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getBillingPlans",
-            options: requestOptions
-        )).data
+    public static func getBillingPlans(config: ClientConfig, integrationIdOrSlug: String, productIdOrSlug: String, integrationConfigurationId: String? = nil, metadata: String? = nil, source: GetBillingPlansParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetBillingPlansResponse {
+        return try (await sdkRequest("GET", ["/v1/integrations/integration/", sdkEncodePathSegment(sdkWireString(integrationIdOrSlug)), "/products/", sdkEncodePathSegment(sdkWireString(productIdOrSlug)), "/plans"].joined(), config: config, query: [
+            SdkQueryParameter("integrationConfigurationId", value: integrationConfigurationId),
+            SdkQueryParameter("metadata", value: metadata),
+            SdkQueryParameter("source", value: source),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getBillingPlans", options: requestOptions)).data
     }
 
-    /// Connects a provisioned integration resource to a project. Supply `projectId` in the request body to establish
-    /// the connection, and optionally choose which environments receive environment variables or mark those variables
-    /// as sensitive. Use this operation for a resource that has already been provisioned through an integration.
+    /// Connects a provisioned integration resource to a project. Supply `projectId` in the request body to establish the connection, and optionally choose which environments receive environment variables or mark those variables as sensitive. Use this operation for a resource that has already been provisioned through an integration.
     ///
-    /// Connects an integration resource to a Vercel project. This endpoint establishes a connection between a
-    /// provisioned integration resource (from storage APIs like `POST /v1/storage/stores/integration/direct`) and a
-    /// specific Vercel project.
+    /// Connects an integration resource to a Vercel project. This endpoint establishes a connection between a provisioned integration resource (from storage APIs like `POST /v1/storage/stores/integration/direct`) and a specific Vercel project.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func connectIntegrationResourceToProject(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        resourceId: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        envVarEnvironments: [ConnectIntegrationResourceToProjectRequestBodyEnvVarEnvironmentsItem]? = nil,
-        makeEnvVarsSensitive: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        let requestBody = ConnectIntegrationResourceToProjectRequestBody(
-            projectId: projectId,
-            envVarEnvironments: envVarEnvironments,
-            makeEnvVarsSensitive: makeEnvVarsSensitive
-        )
+    public static func connectIntegrationResourceToProject(config: ClientConfig, integrationConfigurationId: String, resourceId: String, projectId: String, teamId: String? = nil, slug: String? = nil, envVarEnvironments: [ConnectIntegrationResourceToProjectRequestBodyEnvVarEnvironmentsItem]? = nil, makeEnvVarsSensitive: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        let requestBody = ConnectIntegrationResourceToProjectRequestBody(projectId: projectId, envVarEnvironments: envVarEnvironments, makeEnvVarsSensitive: makeEnvVarsSensitive)
 
-        return try await (sdkRequest(
-            "POST",
-            [
-                "/v1/integrations/installations/",
-                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
-                "/resources/",
-                sdkEncodePathSegment(sdkWireString(resourceId)),
-                "/connections",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .empty,
-            operationId: "connectIntegrationResourceToProject",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/integrations/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(resourceId)), "/connections"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .empty, operationId: "connectIntegrationResourceToProject", options: requestOptions)).data
     }
 }

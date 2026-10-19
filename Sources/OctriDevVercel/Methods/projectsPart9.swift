@@ -6,36 +6,19 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    /// Removes the avatar assignment from a project identified by its ID or name. This clears the project's avatar
-    /// field so a later production deployment can run avatar auto-detection again, but it does not delete the stored
-    /// image. The response returns the updated project.
+extension ProjectsMethods {
+    /// Removes the avatar assignment from a project identified by its ID or name. This clears the project's avatar field so a later production deployment can run avatar auto-detection again, but it does not delete the stored image. The response returns the updated project.
     ///
-    /// Remove the avatar of the project identified by `idOrName`. Deletes the chosen avatar field so the next
-    /// production deploy can run auto-detection again. Does not delete the stored image.
+    /// Remove the avatar of the project identified by `idOrName`. Deletes the chosen avatar field so the next production deploy can run auto-detection again. Does not delete the stored image.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteProjectAvatar(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteProjectAvatarResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/avatar"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "deleteProjectAvatar",
-            options: requestOptions
-        )).data
+    public static func deleteProjectAvatar(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteProjectAvatarResponse {
+        return try (await sdkRequest("DELETE", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/avatar"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "deleteProjectAvatar", options: requestOptions)).data
     }
 }

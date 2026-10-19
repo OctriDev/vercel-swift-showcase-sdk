@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Retrieves a container registry repository for a project by its identifier or name. Supply `projectId` to select
-    /// the project; IDs take precedence over names when identifying the project.
+extension VcrMethods {
+    /// Retrieves a container registry repository for a project by its identifier or name. Supply `projectId` to select the project; IDs take precedence over names when identifying the project.
     ///
     /// Fetch a container registry repository for a project by ID or name.
     ///
@@ -17,65 +16,32 @@ public extension VcrMethods {
     ///   take precedence over names. Missing or empty values return HTTP 400.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getRepository(
-        config: ClientConfig,
-        idOrName: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetRepositoryResponse {
+    public static func getRepository(config: ClientConfig, idOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRepositoryResponse {
         try validateLength("idOrName", idOrName, max: 255)
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getRepository",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getRepository", options: requestOptions)).data
     }
 
-    /// Deletes a container registry repository by scheduling it for removal. The repository disappears from list and
-    /// get results immediately, while its images and associated data are reclaimed asynchronously.
+    /// Deletes a container registry repository by scheduling it for removal. The repository disappears from list and get results immediately, while its images and associated data are reclaimed asynchronously.
     ///
-    /// Schedule a repository for deletion. The repository is marked so it disappears from list/get immediately;
-    /// subscriber-vcr reclaims every image (manifests, blobs, tags and rows) and finally deletes the repository row
-    /// asynchronously via the VcrRepositoryRemoved event.
+    /// Schedule a repository for deletion. The repository is marked so it disappears from list/get immediately; subscriber-vcr reclaims every image (manifests, blobs, tags and rows) and finally deletes the repository row asynchronously via the VcrRepositoryRemoved event.
     ///
     /// - Parameters:
     /// - projectId: Project ID or name (slug) within the authenticated team. IDs
     ///   take precedence over names. Missing or empty values return HTTP 400.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteRepository(
-        config: ClientConfig,
-        idOrName: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> JSONValue {
+    public static func deleteRepository(config: ClientConfig, idOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> JSONValue {
         try validateLength("idOrName", idOrName, max: 255)
 
-        return try await (sdkRequest(
-            "DELETE",
-            ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "deleteRepository",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "deleteRepository", options: requestOptions)).data
     }
 }

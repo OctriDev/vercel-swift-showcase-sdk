@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension FeatureFlagsMethods {
-    /// Lists feature flag segments defined for a project. Use `withMetadata` to control whether metadata is included in
-    /// the segment records.
+extension FeatureFlagsMethods {
+    /// Lists feature flag segments defined for a project. Use `withMetadata` to control whether metadata is included in the segment records.
     ///
     /// List all feature flag segments for a project.
     ///
@@ -17,31 +16,15 @@ public extension FeatureFlagsMethods {
     /// - withMetadata: Whether to include metadata
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listFlagSegments(
-        config: ClientConfig,
-        projectIdOrName: String,
-        withMetadata: Bool? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListFlagSegmentsResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/segments"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("withMetadata", value: withMetadata),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listFlagSegments",
-            options: requestOptions
-        )).data
+    public static func listFlagSegments(config: ClientConfig, projectIdOrName: String, withMetadata: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListFlagSegmentsResponse {
+        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/segments"].joined(), config: config, query: [
+            SdkQueryParameter("withMetadata", value: withMetadata),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listFlagSegments", options: requestOptions)).data
     }
 
-    /// Retrieves a feature flag segment from a project by its identifier or slug. Use `withMetadata` to control whether
-    /// the response includes segment metadata.
+    /// Retrieves a feature flag segment from a project by its identifier or slug. Use `withMetadata` to control whether the response includes segment metadata.
     ///
     /// Retrieve a feature flag segment by ID or slug.
     ///
@@ -51,32 +34,11 @@ public extension FeatureFlagsMethods {
     /// - withMetadata: Whether to include metadata
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getFlagSegment(
-        config: ClientConfig,
-        projectIdOrName: String,
-        segmentIdOrSlug: String,
-        withMetadata: Bool? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> Segment {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/projects/",
-                sdkEncodePathSegment(sdkWireString(projectIdOrName)),
-                "/feature-flags/segments/",
-                sdkEncodePathSegment(sdkWireString(segmentIdOrSlug)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("withMetadata", value: withMetadata),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getFlagSegment",
-            options: requestOptions
-        )).data
+    public static func getFlagSegment(config: ClientConfig, projectIdOrName: String, segmentIdOrSlug: String, withMetadata: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> Segment {
+        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/segments/", sdkEncodePathSegment(sdkWireString(segmentIdOrSlug))].joined(), config: config, query: [
+            SdkQueryParameter("withMetadata", value: withMetadata),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getFlagSegment", options: requestOptions)).data
     }
 }

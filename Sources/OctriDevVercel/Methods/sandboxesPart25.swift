@@ -6,12 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    /// Retrieves a file from a session's filesystem. Supply `path` to identify the file and optionally use `cwd` to
-    /// resolve a relative path from a different base directory. The file is returned as a binary stream for download.
+extension SandboxesMethods {
+    /// Retrieves a file from a session's filesystem. Supply `path` to identify the file and optionally use `cwd` to resolve a relative path from a different base directory. The file is returned as a binary stream for download.
     ///
-    /// Downloads the contents of a file from a session's filesystem. The file content is returned as a binary stream
-    /// with appropriate Content-Disposition headers for file download.
+    /// Downloads the contents of a file from a session's filesystem. The file content is returned as a binary stream with appropriate Content-Disposition headers for file download.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session to read the file from.
@@ -21,29 +19,12 @@ public extension SandboxesMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     /// - cwd: The base directory for resolving relative paths. If not specified,
     ///   paths are resolved from the sandbox home directory.
-    static func readSessionFile(
-        config: ClientConfig,
-        sessionId: String,
-        path: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        cwd: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> Data {
+    public static func readSessionFile(config: ClientConfig, sessionId: String, path: String, teamId: String? = nil, slug: String? = nil, cwd: String? = nil, requestOptions: RequestOptions? = nil) async throws -> Data {
         let requestBody = ReadSessionFileRequestBody(path: path, cwd: cwd)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/fs/read"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .bytes,
-            operationId: "readSessionFile",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/fs/read"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .bytes, operationId: "readSessionFile", options: requestOptions)).data
     }
 }
