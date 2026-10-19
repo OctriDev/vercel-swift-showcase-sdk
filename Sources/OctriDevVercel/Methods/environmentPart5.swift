@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension EnvironmentMethods {
-    /// Retrieves the decrypted value and metadata for a shared environment variable. Supply its `id` and, when needed, `teamId` or `slug` to select the team context. The response includes whether the value is decrypted and the projects and custom environments associated with it.
+public extension EnvironmentMethods {
+    /// Retrieves the decrypted value and metadata for a shared environment variable. Supply its `id` and, when needed,
+    /// `teamId` or `slug` to select the team context. The response includes whether the value is decrypted and the
+    /// projects and custom environments associated with it.
     ///
     /// Retrieve the decrypted value of a Shared Environment Variable by id.
     ///
@@ -16,14 +18,30 @@ extension EnvironmentMethods {
     ///   value.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getSharedEnvVar(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetSharedEnvVarResponse {
-        return try (await sdkRequest("GET", ["/v1/env/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getSharedEnvVar", options: requestOptions)).data
+    static func getSharedEnvVar(
+        config: ClientConfig,
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetSharedEnvVarResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/env/", sdkEncodePathSegment(sdkWireString(id))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getSharedEnvVar",
+            options: requestOptions
+        )).data
     }
 
-    /// Disconnects a shared environment variable from a project without deleting the variable. Supply the variable's `id` and the target `projectId`, and use `teamId` or `slug` to select the team context. The response identifies the shared environment variable that was unlinked.
+    /// Disconnects a shared environment variable from a project without deleting the variable. Supply the variable's
+    /// `id` and the target `projectId`, and use `teamId` or `slug` to select the team context. The response identifies
+    /// the shared environment variable that was unlinked.
     ///
     /// Disconnects a shared environment variable for a given project
     ///
@@ -32,10 +50,30 @@ extension EnvironmentMethods {
     ///   project.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func unlinkSharedEnvVariable(config: ClientConfig, id: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UnlinkSharedEnvVariableResponse {
-        return try (await sdkRequest("PATCH", ["/v1/env/", sdkEncodePathSegment(sdkWireString(id)), "/unlink/", sdkEncodePathSegment(sdkWireString(projectId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "unlinkSharedEnvVariable", options: requestOptions)).data
+    static func unlinkSharedEnvVariable(
+        config: ClientConfig,
+        id: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UnlinkSharedEnvVariableResponse {
+        try await (sdkRequest(
+            "PATCH",
+            [
+                "/v1/env/",
+                sdkEncodePathSegment(sdkWireString(id)),
+                "/unlink/",
+                sdkEncodePathSegment(sdkWireString(projectId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "unlinkSharedEnvVariable",
+            options: requestOptions
+        )).data
     }
 }

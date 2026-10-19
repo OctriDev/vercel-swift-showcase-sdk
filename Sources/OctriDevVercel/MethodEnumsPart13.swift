@@ -6,10 +6,14 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let actixWeb = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "actix-web")
     public static let angular = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "angular")
     public static let ash = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ash")
@@ -19,10 +23,12 @@ public struct GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework: RawR
     public static let brunch = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "brunch")
     public static let bun = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "bun")
     public static let container = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "container")
-    public static let createReactApp = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "create-react-app")
+    public static let createReactApp =
+        GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "create-react-app")
     public static let django = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "django")
     public static let docusaurus = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "docusaurus")
-    public static let docusaurus2 = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "docusaurus-2")
+    public static let docusaurus2 =
+        GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "docusaurus-2")
     public static let dojo = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "dojo")
     public static let eleventy = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "eleventy")
     public static let elysia = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "elysia")
@@ -42,7 +48,8 @@ public struct GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework: RawR
     public static let hono = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "hono")
     public static let hugo = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "hugo")
     public static let hydrogen = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "hydrogen")
-    public static let ionicAngular = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ionic-angular")
+    public static let ionicAngular =
+        GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ionic-angular")
     public static let ionicReact = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ionic-react")
     public static let jekyll = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "jekyll")
     public static let koa = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "koa")
@@ -57,7 +64,8 @@ public struct GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework: RawR
     public static let polymer = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "polymer")
     public static let preact = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "preact")
     public static let python = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "python")
-    public static let reactRouter = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "react-router")
+    public static let reactRouter =
+        GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "react-router")
     public static let redwoodjs = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "redwoodjs")
     public static let remix = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "remix")
     public static let ruby = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ruby")
@@ -69,14 +77,17 @@ public struct GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework: RawR
     public static let scully = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "scully")
     public static let services = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "services")
     public static let solidstart = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "solidstart")
-    public static let solidstart1 = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "solidstart-1")
+    public static let solidstart1 =
+        GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "solidstart-1")
     public static let stencil = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "stencil")
     public static let storybook = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "storybook")
     public static let svelte = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "svelte")
     public static let sveltekit = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "sveltekit")
     public static let sveltekit1 = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "sveltekit-1")
-    public static let tanstackStart = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "tanstack-start-lovable")
+    public static let tanstackStart =
+        GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "tanstack-start")
+    public static let tanstackStartLovable =
+        GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "umijs")
     public static let vite = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "vite")
     public static let vitepress = GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "vitepress")
@@ -87,7 +98,7 @@ public struct GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework: RawR
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -97,15 +108,19 @@ public struct GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework: RawR
 }
 
 /// Currency used for billing (ISO 4217)
-public struct ListBillingChargesResponseBillingCurrency: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListBillingChargesResponseBillingCurrency: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let usd = ListBillingChargesResponseBillingCurrency(rawValue: "USD")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -117,7 +132,10 @@ public struct ListBillingChargesResponseBillingCurrency: RawRepresentable, Hasha
 public struct UpdateProjectResponseNodeVersion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let value10X = UpdateProjectResponseNodeVersion(rawValue: "10.x")
     public static let value12X = UpdateProjectResponseNodeVersion(rawValue: "12.x")
     public static let value14X = UpdateProjectResponseNodeVersion(rawValue: "14.x")
@@ -131,7 +149,7 @@ public struct UpdateProjectResponseNodeVersion: RawRepresentable, Hashable, Coda
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -140,16 +158,22 @@ public struct UpdateProjectResponseNodeVersion: RawRepresentable, Hashable, Coda
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXbe31c38a26: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXbe31c38a26: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXbe31c38a26(rawValue: "create")
-    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXbe31c38a26(rawValue: "update")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let create =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXbe31c38a26(rawValue: "create")
+    public static let update =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXbe31c38a26(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -158,15 +182,20 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXbe31
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVarX5464d10037: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVarX5464d10037: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let blockLegalCwc = ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVarX5464d10037(rawValue: "block_legal_cwc")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let blockLegalCwc =
+        ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVarX5464d10037(rawValue: "block_legal_cwc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -179,7 +208,10 @@ public struct ListProjectsResponseVariant2ProjectsItemInternalRoutesItemVarX5464
 public struct GetTeamMembersParameter: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let owner = GetTeamMembersParameter(rawValue: "OWNER")
     public static let member = GetTeamMembersParameter(rawValue: "MEMBER")
     public static let developer = GetTeamMembersParameter(rawValue: "DEVELOPER")
@@ -191,7 +223,7 @@ public struct GetTeamMembersParameter: RawRepresentable, Hashable, Codable, Send
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -201,16 +233,20 @@ public struct GetTeamMembersParameter: RawRepresentable, Hashable, Codable, Send
 }
 
 /// - team: `oidc.vercel.com - global: `oidc.vercel.com`
-public struct DeleteProjectAvatarResponseOidcTokenConfigIssuerMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct DeleteProjectAvatarResponseOidcTokenConfigIssuerMode: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let global = DeleteProjectAvatarResponseOidcTokenConfigIssuerMode(rawValue: "global")
     public static let team = DeleteProjectAvatarResponseOidcTokenConfigIssuerMode(rawValue: "team")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    public struct ListTeamFlagsV2Options: Codable {
+public extension FeatureFlagsMethods {
+    struct ListTeamFlagsV2Options: Codable {
         public var teamId: String
         public var state: ListTeamFlagsV2Parameter?
         public var limit: Int?
@@ -25,7 +25,9 @@ extension FeatureFlagsMethods {
         }
     }
 
-    /// Lists feature flags across all projects in a team. Filter the results by state, kind, tags, creator, maintainers, or search text, and use `cursor` to continue through the results. The response includes an opaque next cursor for pagination.
+    /// Lists feature flags across all projects in a team. Filter the results by state, kind, tags, creator,
+    /// maintainers, or search text, and use `cursor` to continue through the results. The response includes an opaque
+    /// next cursor for pagination.
     ///
     /// Retrieve all feature flags for a team across all projects. Returns an opaque cursor for pagination.
     ///
@@ -45,7 +47,11 @@ extension FeatureFlagsMethods {
     /// - includeMarketplaceFlags: Whether to include Marketplace experimentation
     ///   items in the paginated response. Defaults to false.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listTeamFlagsV2(config: ClientConfig, options: ListTeamFlagsV2Options, requestOptions: RequestOptions? = nil) async throws -> ListTeamFlagsV2Response {
+    static func listTeamFlagsV2(
+        config: ClientConfig,
+        options: ListTeamFlagsV2Options,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListTeamFlagsV2Response {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
@@ -62,17 +68,25 @@ extension FeatureFlagsMethods {
             try validateItems("maintainerIds", maintainerIds, max: 25)
         }
 
-        return try (await sdkRequest("GET", ["/v2/teams/", sdkEncodePathSegment(sdkWireString(options.teamId)), "/feature-flags/flags"].joined(), config: config, query: [
-            SdkQueryParameter("state", value: options.state),
-            SdkQueryParameter("limit", value: options.limit),
-            SdkQueryParameter("cursor", value: options.cursor),
-            SdkQueryParameter("search", value: options.search),
-            SdkQueryParameter("kind", value: options.kind),
-            SdkQueryParameter("tags", values: options.tags, style: "form", explode: true),
-            SdkQueryParameter("createdBy", value: options.createdBy),
-            SdkQueryParameter("maintainerIds", values: options.maintainerIds, style: "form", explode: true),
-            SdkQueryParameter("includeMarketplaceFlags", value: options.includeMarketplaceFlags),
-            SdkQueryParameter("slug", value: options.slug),
-        ], decoder: .json, operationId: "listTeamFlagsV2", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v2/teams/", sdkEncodePathSegment(sdkWireString(options.teamId)), "/feature-flags/flags"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("state", value: options.state),
+                SdkQueryParameter("limit", value: options.limit),
+                SdkQueryParameter("cursor", value: options.cursor),
+                SdkQueryParameter("search", value: options.search),
+                SdkQueryParameter("kind", value: options.kind),
+                SdkQueryParameter("tags", values: options.tags, style: "form", explode: true),
+                SdkQueryParameter("createdBy", value: options.createdBy),
+                SdkQueryParameter("maintainerIds", values: options.maintainerIds, style: "form", explode: true),
+                SdkQueryParameter("includeMarketplaceFlags", value: options.includeMarketplaceFlags),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            decoder: .json,
+            operationId: "listTeamFlagsV2",
+            options: requestOptions
+        )).data
     }
 }

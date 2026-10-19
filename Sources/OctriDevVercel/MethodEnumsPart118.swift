@@ -6,10 +6,14 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct CreateSandboxesV3RequestBodyFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateSandboxesV3RequestBodyFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let iad1 = CreateSandboxesV3RequestBodyFailoverRegionsItem(rawValue: "iad1")
     public static let sfo1 = CreateSandboxesV3RequestBodyFailoverRegionsItem(rawValue: "sfo1")
     public static let cle1 = CreateSandboxesV3RequestBodyFailoverRegionsItem(rawValue: "cle1")
@@ -32,7 +36,7 @@ public struct CreateSandboxesV3RequestBodyFailoverRegionsItem: RawRepresentable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -58,17 +62,22 @@ public enum RemoveProjectEnvResponseVariant1ContentHintVariant6Type: String, Cas
     }
 }
 
-public struct DeleteProjectAvatarResponseAliasItemDeploymentReadySubstate: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct DeleteProjectAvatarResponseAliasItemDeploymentReadySubstate: RawRepresentable, Hashable, Codable,
+    Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let promoted = DeleteProjectAvatarResponseAliasItemDeploymentReadySubstate(rawValue: "PROMOTED")
     public static let rolling = DeleteProjectAvatarResponseAliasItemDeploymentReadySubstate(rawValue: "ROLLING")
     public static let staged = DeleteProjectAvatarResponseAliasItemDeploymentReadySubstate(rawValue: "STAGED")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -94,10 +103,14 @@ public enum ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13T
     }
 }
 
-public struct CreateStorageStoresBlobRequestBodyRegion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateStorageStoresBlobRequestBodyRegion: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let arn1 = CreateStorageStoresBlobRequestBodyRegion(rawValue: "arn1")
     public static let bom1 = CreateStorageStoresBlobRequestBodyRegion(rawValue: "bom1")
     public static let cdg1 = CreateStorageStoresBlobRequestBodyRegion(rawValue: "cdg1")
@@ -121,7 +134,7 @@ public struct CreateStorageStoresBlobRequestBodyRegion: RawRepresentable, Hashab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -147,10 +160,14 @@ public enum ListLogDrainsResponseVariant1DrainsVariant0ItemSourceVariant0Kind: S
     }
 }
 
-public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemCoX93ef3d10f6: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemCoX93ef3d10f6: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let eq = GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemCoX93ef3d10f6(rawValue: "eq")
     public static let ex = GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemCoX93ef3d10f6(rawValue: "ex")
     public static let gt = GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemCoX93ef3d10f6(rawValue: "gt")
@@ -169,7 +186,7 @@ public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemCoX93ef
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -178,17 +195,24 @@ public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemCoX93ef
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentReadySubstate: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentReadySubstate: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let promoted = ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentReadySubstate(rawValue: "PROMOTED")
-    public static let rolling = ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentReadySubstate(rawValue: "ROLLING")
-    public static let staged = ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentReadySubstate(rawValue: "STAGED")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let promoted =
+        ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentReadySubstate(rawValue: "PROMOTED")
+    public static let rolling =
+        ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentReadySubstate(rawValue: "ROLLING")
+    public static let staged =
+        ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentReadySubstate(rawValue: "STAGED")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -197,17 +221,21 @@ public struct ListProjectsResponseVariant2ProjectsItemAliasItemDeploymentReadySu
     }
 }
 
-public struct ListKmsIssuersResponseIssuersItemSigningKeysItemStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListKmsIssuersResponseIssuersItemSigningKeysItemStatus: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let active = ListKmsIssuersResponseIssuersItemSigningKeysItemStatus(rawValue: "active")
     public static let pending = ListKmsIssuersResponseIssuersItemSigningKeysItemStatus(rawValue: "pending")
     public static let revoking = ListKmsIssuersResponseIssuersItemSigningKeysItemStatus(rawValue: "revoking")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

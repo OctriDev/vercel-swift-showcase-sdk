@@ -3,7 +3,7 @@
 
 import Foundation
 
-// RollingRelease domain models
+/// RollingRelease domain models
 public enum GetRollingReleaseBillingStatusResponseVariant1Reason: String, CaseIterable, Codable {
     case unlimitedSlots = "unlimited_slots"
     public init(from decoder: Decoder) throws {
@@ -21,15 +21,19 @@ public enum GetRollingReleaseBillingStatusResponseVariant1Reason: String, CaseIt
     }
 }
 
-public struct GetRollingReleaseBillingStatusResponseVariant1AvailableSlots: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetRollingReleaseBillingStatusResponseVariant1AvailableSlots: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let unlimited = GetRollingReleaseBillingStatusResponseVariant1AvailableSlots(rawValue: "unlimited")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

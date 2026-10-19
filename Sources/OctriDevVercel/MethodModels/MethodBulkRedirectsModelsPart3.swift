@@ -7,36 +7,62 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical bulkRedirects operation model declarations
-extension StageRedirectsResponseVersion {
-    public init(from decoder: Decoder) throws {
+/// Canonical bulkRedirects operation model declarations
+public extension StageRedirectsResponseVersion {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdBy) else {
-            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
+            throw SdkValidationError(
+                field: "createdBy",
+                code: "required",
+                message: "Validation failed for 'createdBy': value is required"
+            )
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
         }
         guard container.contains(.lastModified) else {
-            throw SdkValidationError(field: "lastModified", code: "required", message: "Validation failed for 'lastModified': value is required")
+            throw SdkValidationError(
+                field: "lastModified",
+                code: "required",
+                message: "Validation failed for 'lastModified': value is required"
+            )
         }
-        self.createdBy = try container.sdkDecodeRequired(.createdBy)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.key = try container.sdkDecodeRequired(.key)
-        self.lastModified = try container.sdkDecodeRequired(.lastModified)
-        self.alias = try container.sdkDecodeIfPresent(.alias)
-        self.isLive = try container.sdkDecodeIfPresent(.isLive)
-        self.isStaging = try container.sdkDecodeIfPresent(.isStaging)
-        self.name = try container.sdkDecodeIfPresent(.name)
-        self.redirectCount = try container.sdkDecodeIfPresent(.redirectCount)
+        createdBy = try container.sdkDecodeRequired(.createdBy)
+        id = try container.sdkDecodeRequired(.id)
+        key = try container.sdkDecodeRequired(.key)
+        lastModified = try container.sdkDecodeRequired(.lastModified)
+        alias = try container.sdkDecodeIfPresent(.alias)
+        isLive = try container.sdkDecodeIfPresent(.isLive)
+        isStaging = try container.sdkDecodeIfPresent(.isStaging)
+        name = try container.sdkDecodeIfPresent(.name)
+        redirectCount = try container.sdkDecodeIfPresent(.redirectCount)
     }
 }
 
-extension StageRedirectsResponseVersion {
-    public init(createdBy: String, id: String, key: String, lastModified: Double, alias: String? = nil, isLive: Bool? = nil, isStaging: Bool? = nil, name: String? = nil, redirectCount: Double? = nil) {
+public extension StageRedirectsResponseVersion {
+    init(
+        createdBy: String,
+        id: String,
+        key: String,
+        lastModified: Double,
+        alias: String? = nil,
+        isLive: Bool? = nil,
+        isStaging: Bool? = nil,
+        name: String? = nil,
+        redirectCount: Double? = nil
+    ) {
         (self.createdBy, self.id) = (createdBy, id)
         (self.key, self.lastModified) = (key, lastModified)
         (self.alias, self.isLive) = (alias, isLive)
@@ -56,29 +82,43 @@ public struct RestoreRedirectsResponse: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RestoreRedirectsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.failedToRestore) else {
-            throw SdkValidationError(field: "failedToRestore", code: "required", message: "Validation failed for 'failedToRestore': value is required")
-        }
-        guard container.contains(.restored) else {
-            throw SdkValidationError(field: "restored", code: "required", message: "Validation failed for 'restored': value is required")
-        }
-        guard container.contains(.version) else {
-            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
-        }
-        self.failedToRestore = try container.sdkDecodeRequired(.failedToRestore)
-        self.restored = try container.sdkDecodeRequired(.restored)
-        self.version = try container.sdkDecodeRequired(.version)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RestoreRedirectsResponse {
-    public init(failedToRestore: [String], restored: [String], version: RestoreRedirectsResponseVersion) {
+public extension RestoreRedirectsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.failedToRestore) else {
+            throw SdkValidationError(
+                field: "failedToRestore",
+                code: "required",
+                message: "Validation failed for 'failedToRestore': value is required"
+            )
+        }
+        guard container.contains(.restored) else {
+            throw SdkValidationError(
+                field: "restored",
+                code: "required",
+                message: "Validation failed for 'restored': value is required"
+            )
+        }
+        guard container.contains(.version) else {
+            throw SdkValidationError(
+                field: "version",
+                code: "required",
+                message: "Validation failed for 'version': value is required"
+            )
+        }
+        failedToRestore = try container.sdkDecodeRequired(.failedToRestore)
+        restored = try container.sdkDecodeRequired(.restored)
+        version = try container.sdkDecodeRequired(.version)
+    }
+}
+
+public extension RestoreRedirectsResponse {
+    init(failedToRestore: [String], restored: [String], version: RestoreRedirectsResponseVersion) {
         (self.failedToRestore, self.restored) = (failedToRestore, restored)
         self.version = version
     }
@@ -115,38 +155,66 @@ public struct GetRedirectsResponseVariant1Version: Codable {
         case redirectCount
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRedirectsResponseVariant1Version {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdBy) else {
-            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.key) else {
-            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
-        }
-        guard container.contains(.lastModified) else {
-            throw SdkValidationError(field: "lastModified", code: "required", message: "Validation failed for 'lastModified': value is required")
-        }
-        self.createdBy = try container.sdkDecodeRequired(.createdBy)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.key = try container.sdkDecodeRequired(.key)
-        self.lastModified = try container.sdkDecodeRequired(.lastModified)
-        self.alias = try container.sdkDecodeIfPresent(.alias)
-        self.isLive = try container.sdkDecodeIfPresent(.isLive)
-        self.isStaging = try container.sdkDecodeIfPresent(.isStaging)
-        self.name = try container.sdkDecodeIfPresent(.name)
-        self.redirectCount = try container.sdkDecodeIfPresent(.redirectCount)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRedirectsResponseVariant1Version {
-    public init(createdBy: String, id: String, key: String, lastModified: Double, alias: String? = nil, isLive: Bool? = nil, isStaging: Bool? = nil, name: String? = nil, redirectCount: Double? = nil) {
+public extension GetRedirectsResponseVariant1Version {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdBy) else {
+            throw SdkValidationError(
+                field: "createdBy",
+                code: "required",
+                message: "Validation failed for 'createdBy': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.key) else {
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
+        }
+        guard container.contains(.lastModified) else {
+            throw SdkValidationError(
+                field: "lastModified",
+                code: "required",
+                message: "Validation failed for 'lastModified': value is required"
+            )
+        }
+        createdBy = try container.sdkDecodeRequired(.createdBy)
+        id = try container.sdkDecodeRequired(.id)
+        key = try container.sdkDecodeRequired(.key)
+        lastModified = try container.sdkDecodeRequired(.lastModified)
+        alias = try container.sdkDecodeIfPresent(.alias)
+        isLive = try container.sdkDecodeIfPresent(.isLive)
+        isStaging = try container.sdkDecodeIfPresent(.isStaging)
+        name = try container.sdkDecodeIfPresent(.name)
+        redirectCount = try container.sdkDecodeIfPresent(.redirectCount)
+    }
+}
+
+public extension GetRedirectsResponseVariant1Version {
+    init(
+        createdBy: String,
+        id: String,
+        key: String,
+        lastModified: Double,
+        alias: String? = nil,
+        isLive: Bool? = nil,
+        isStaging: Bool? = nil,
+        name: String? = nil,
+        redirectCount: Double? = nil
+    ) {
         (self.createdBy, self.id) = (createdBy, id)
         (self.key, self.lastModified) = (key, lastModified)
         (self.alias, self.isLive) = (alias, isLive)
@@ -161,22 +229,32 @@ public indirect enum StageRedirectsRequestBodyRedirectsItemStatusCode {
 }
 
 extension StageRedirectsRequestBodyRedirectsItemStatusCode: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for StageRedirectsRequestBodyRedirectsItemStatusCode")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for StageRedirectsRequestBodyRedirectsItemStatusCode"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension StageRedirectsRequestBodyRedirectsItemStatusCode {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -207,21 +285,27 @@ public struct UpdateVersionResponse: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateVersionResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.version) else {
-            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
-        }
-        self.version = try container.sdkDecodeRequired(.version)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateVersionResponse {
-    public init(version: UpdateVersionResponseVersion) {
+public extension UpdateVersionResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.version) else {
+            throw SdkValidationError(
+                field: "version",
+                code: "required",
+                message: "Validation failed for 'version': value is required"
+            )
+        }
+        version = try container.sdkDecodeRequired(.version)
+    }
+}
+
+public extension UpdateVersionResponse {
+    init(version: UpdateVersionResponseVersion) {
         self.version = version
     }
 }
@@ -233,21 +317,27 @@ public struct GetVersionsResponse: Codable {
         case versions
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVersionsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.versions) else {
-            throw SdkValidationError(field: "versions", code: "required", message: "Validation failed for 'versions': value is required")
-        }
-        self.versions = try container.sdkDecodeRequired(.versions)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVersionsResponse {
-    public init(versions: [GetVersionsResponseVersionsItem]) {
+public extension GetVersionsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.versions) else {
+            throw SdkValidationError(
+                field: "versions",
+                code: "required",
+                message: "Validation failed for 'versions': value is required"
+            )
+        }
+        versions = try container.sdkDecodeRequired(.versions)
+    }
+}
+
+public extension GetVersionsResponse {
+    init(versions: [GetVersionsResponseVersionsItem]) {
         self.versions = versions
     }
 }

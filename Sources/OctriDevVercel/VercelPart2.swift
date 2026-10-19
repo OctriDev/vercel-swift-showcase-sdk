@@ -3,60 +3,186 @@
 
 import Foundation
 
-extension AiGatewayNamespace {
-/// Deletes a virtual model configuration identified by its path slug using a soft delete. Specify `vmcSlug` to select the configuration, and optionally use `ownerId`, `teamId`, or `slug` to scope the operation.
+public extension AiGatewayNamespace {
+    /// Deletes a virtual model configuration identified by its path slug using a soft delete. Specify `vmcSlug` to
+    /// select the configuration, and optionally use `ownerId`, `teamId`, or `slug` to scope the operation.
     ///
     /// Delete a virtual model config by path slug (soft delete)
-    public func deleteVirtualModelConfigBySlug(vmcSlug: String, ownerId: String? = nil, updatedBy: String? = nil, actingIp: String? = nil, actingUserAgent: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await AiGatewayMethods.deleteAiGatewayVirtualModelConfigBySlug(config: config, vmcSlug: vmcSlug, ownerId: ownerId, updatedBy: updatedBy, actingIp: actingIp, actingUserAgent: actingUserAgent, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func deleteVirtualModelConfigBySlug(
+        vmcSlug: String,
+        ownerId: String? = nil,
+        updatedBy: String? = nil,
+        actingIp: String? = nil,
+        actingUserAgent: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await AiGatewayMethods.deleteAiGatewayVirtualModelConfigBySlug(
+            config: config,
+            vmcSlug: vmcSlug,
+            ownerId: ownerId,
+            updatedBy: updatedBy,
+            actingIp: actingIp,
+            actingUserAgent: actingUserAgent,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists the authenticated team's active and archived AI Gateway routers. Public callers select the team with `teamId` or `slug`; trusted-origin callers can use `ownerId` to scope the list.
+    /// Lists the authenticated team's active and archived AI Gateway routers. Public callers select the team with
+    /// `teamId` or `slug`; trusted-origin callers can use `ownerId` to scope the list.
     ///
     /// List the authenticated team's active and archived custom routers.
-    public func listRouters(ownerId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayRouterList {
-        return try await AiGatewayMethods.listAiGatewayRouters(config: config, ownerId: ownerId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func listRouters(
+        ownerId: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayRouterList {
+        try await AiGatewayMethods.listAiGatewayRouters(
+            config: config,
+            ownerId: ownerId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a routing rule for the authenticated team. Use `teamId` or `slug` to select the team context when needed. A 201 response returns the created rule, including its identifier and configuration.
+    /// Creates a routing rule for the authenticated team. Use `teamId` or `slug` to select the team context when
+    /// needed. A 201 response returns the created rule, including its identifier and configuration.
     ///
     /// Create a routing rule
-    public func createRule(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayRule {
-        return try await AiGatewayMethods.createAiGatewayRule(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func createRule(
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayRule {
+        try await AiGatewayMethods.createAiGatewayRule(
+            config: config,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists the authenticated team's AI Gateway routing rules, ordered from oldest to newest. Use `includeDisabled` to control whether disabled rules are included, and use `limit` and `cursor` to retrieve a page of results. Paged responses include `nextCursor` for the next request; it is null on the last page.
+    /// Lists the authenticated team's AI Gateway routing rules, ordered from oldest to newest. Use `includeDisabled` to
+    /// control whether disabled rules are included, and use `limit` and `cursor` to retrieve a page of results. Paged
+    /// responses include `nextCursor` for the next request; it is null on the last page.
     ///
-    /// List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts the team's rules server-side, which is fine at current rule counts.
-    public func listRules(includeDisabled: ListAiGatewayRulesParameter? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayRuleList {
-        return try await AiGatewayMethods.listAiGatewayRules(config: config, includeDisabled: includeDisabled, limit: limit, cursor: cursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With
+    /// either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts
+    /// the team's rules server-side, which is fine at current rule counts.
+    func listRules(
+        includeDisabled: ListAiGatewayRulesParameter? = nil,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayRuleList {
+        try await AiGatewayMethods.listAiGatewayRules(
+            config: config,
+            includeDisabled: includeDisabled,
+            limit: limit,
+            cursor: cursor,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists the authenticated team's AI Gateway routing rules, ordered from oldest to newest. Use `includeDisabled` to control whether disabled rules are included, and use `limit` and `cursor` to retrieve a page of results. Paged responses include `nextCursor` for the next request; it is null on the last page.
+    /// Lists the authenticated team's AI Gateway routing rules, ordered from oldest to newest. Use `includeDisabled` to
+    /// control whether disabled rules are included, and use `limit` and `cursor` to retrieve a page of results. Paged
+    /// responses include `nextCursor` for the next request; it is null on the last page.
     ///
-    /// List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts the team's rules server-side, which is fine at current rule counts.
-    public func listRulesPaginated(includeDisabled: ListAiGatewayRulesParameter? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<AiGatewayRule, Swift.Error> {
-        return AiGatewayMethods.listAiGatewayRulesPaginated(config: config, includeDisabled: includeDisabled, limit: limit, cursor: cursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With
+    /// either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts
+    /// the team's rules server-side, which is fine at current rule counts.
+    func listRulesPaginated(
+        includeDisabled: ListAiGatewayRulesParameter? = nil,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) -> AsyncThrowingStream<AiGatewayRule, Swift.Error> {
+        AiGatewayMethods.listAiGatewayRulesPaginated(
+            config: config,
+            includeDisabled: includeDisabled,
+            limit: limit,
+            cursor: cursor,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates a routing rule's enabled state, action, or description for the authenticated team. Use `teamId` or `slug` to select the team context when needed. A 200 response returns the updated rule and its current configuration.
+    /// Updates a routing rule's enabled state, action, or description for the authenticated team. Use `teamId` or
+    /// `slug` to select the team context when needed. A 200 response returns the updated rule and its current
+    /// configuration.
     ///
     /// Update a routing rule (enabled, action, or description)
-    public func updateRule(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayRule {
-        return try await AiGatewayMethods.updateAiGatewayRule(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func updateRule(
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayRule {
+        try await AiGatewayMethods.updateAiGatewayRule(
+            config: config,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a routing rule from the authenticated team's active rules; deletion is soft, so the rule is not necessarily permanently removed. Supply the rule's `ruleId` and use `teamId` or `slug` to select the team context when needed.
+    /// Deletes a routing rule from the authenticated team's active rules; deletion is soft, so the rule is not
+    /// necessarily permanently removed. Supply the rule's `ruleId` and use `teamId` or `slug` to select the team
+    /// context when needed.
     ///
     /// Delete a routing rule (soft delete)
-    public func deleteRule(ruleId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await AiGatewayMethods.deleteAiGatewayRule(config: config, ruleId: ruleId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func deleteRule(
+        ruleId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await AiGatewayMethods.deleteAiGatewayRule(
+            config: config,
+            ruleId: ruleId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists the authenticated team's AI Gateway budgets as a flat list, with optional filtering by scope. Use `scopeType` to filter by team, project, user, or API key, and use `limit` and `cursor` to paginate results. Paged responses include `nextCursor` and `defaultCoveredCounts`.
+    /// Lists the authenticated team's AI Gateway budgets as a flat list, with optional filtering by scope. Use
+    /// `scopeType` to filter by team, project, user, or API key, and use `limit` and `cursor` to paginate results.
+    /// Paged responses include `nextCursor` and `defaultCoveredCounts`.
     ///
-    /// List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.
-    public func listBudgets(scopeType: ListAiGatewayBudgetsParameter? = nil, includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayBudgetList {
-        return try await AiGatewayMethods.listAiGatewayBudgets(config: config, scopeType: scopeType, includeDefaultCovered: includeDefaultCovered, limit: limit, cursor: cursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat
+    /// list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one
+    /// page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging
+    /// still reads the full merge server-side: the gateway meter list it joins has no cursor.
+    func listBudgets(
+        scopeType: ListAiGatewayBudgetsParameter? = nil,
+        includeDefaultCovered: ListAiGatewayBudgetsParameterX7b8a9465? = nil,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayBudgetList {
+        try await AiGatewayMethods.listAiGatewayBudgets(
+            config: config,
+            scopeType: scopeType,
+            includeDefaultCovered: includeDefaultCovered,
+            limit: limit,
+            cursor: cursor,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }

@@ -7,11 +7,17 @@ import Foundation
     import FoundationNetworking
 #endif
 public enum WebMethods {
-    /// Updates the Web Insights setting for a project. Supply `projectId` and the `value` to set the toggle to true or false. The response returns the resulting toggle value.
-    public static func createWebInsightsToggle(config: ClientConfig, projectId: String, value: Bool, requestOptions: RequestOptions? = nil) async throws -> CreateWebInsightsToggleResponse {
+    /// Updates the Web Insights setting for a project. Supply `projectId` and the `value` to set the toggle to true or
+    /// false. The response returns the resulting toggle value.
+    public static func createWebInsightsToggle(
+        config: ClientConfig,
+        projectId: String,
+        value: Bool,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateWebInsightsToggleResponse {
         let requestBody = CreateWebInsightsToggleRequestBody(value: value)
 
-        return try (await sdkRequest("POST", "/web/insights/toggle", config: config, query: [
+        return try await (sdkRequest("POST", "/web/insights/toggle", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
         ], body: requestBody, decoder: .json, operationId: "createWebInsightsToggle", options: requestOptions)).data
     }

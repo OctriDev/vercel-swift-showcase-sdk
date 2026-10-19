@@ -3,34 +3,48 @@
 
 import Foundation
 
-// GlobalConfig domain models
+/// GlobalConfig domain models
 public indirect enum GetEdgeConfigBackupResponse {
     case getEdgeConfigBackupResponseVariant0(GetEdgeConfigBackupResponseVariant0)
     case getEdgeConfigBackupResponseVariant1(GetEdgeConfigBackupResponseVariant1)
 }
 
 extension GetEdgeConfigBackupResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetEdgeConfigBackupResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetEdgeConfigBackupResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetEdgeConfigBackupResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetEdgeConfigBackupResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetEdgeConfigBackupResponseVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getEdgeConfigBackupResponseVariant0(value)
         }
-        if let value = try? container.decode(GetEdgeConfigBackupResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetEdgeConfigBackupResponseVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getEdgeConfigBackupResponseVariant1(value)
         }
         return nil
@@ -42,12 +56,12 @@ extension GetEdgeConfigBackupResponse {
         if let value = try? container.decode(
             GetEdgeConfigBackupResponseVariant0.self
         ) {
-            return             .getEdgeConfigBackupResponseVariant0(value)
+            return .getEdgeConfigBackupResponseVariant0(value)
         }
         if let value = try? container.decode(
             GetEdgeConfigBackupResponseVariant1.self
         ) {
-            return             .getEdgeConfigBackupResponseVariant1(value)
+            return .getEdgeConfigBackupResponseVariant1(value)
         }
         return nil
     }
@@ -71,33 +85,53 @@ public indirect enum PatchEdgeConfigItemsRequestItemsItem {
 }
 
 extension PatchEdgeConfigItemsRequestItemsItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for PatchEdgeConfigItemsRequestItemsItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for PatchEdgeConfigItemsRequestItemsItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension PatchEdgeConfigItemsRequestItemsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .patchEdgeConfigItemsRequestItemsItemVariant0(value)
         }
-        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .patchEdgeConfigItemsRequestItemsItemVariant1(value)
         }
-        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .patchEdgeConfigItemsRequestItemsItemVariant2(value)
         }
-        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .patchEdgeConfigItemsRequestItemsItemVariant3(value)
         }
         return nil
@@ -109,22 +143,22 @@ extension PatchEdgeConfigItemsRequestItemsItem {
         if let value = try? container.decode(
             PatchEdgeConfigItemsRequestItemsItemVariant0.self
         ) {
-            return             .patchEdgeConfigItemsRequestItemsItemVariant0(value)
+            return .patchEdgeConfigItemsRequestItemsItemVariant0(value)
         }
         if let value = try? container.decode(
             PatchEdgeConfigItemsRequestItemsItemVariant1.self
         ) {
-            return             .patchEdgeConfigItemsRequestItemsItemVariant1(value)
+            return .patchEdgeConfigItemsRequestItemsItemVariant1(value)
         }
         if let value = try? container.decode(
             PatchEdgeConfigItemsRequestItemsItemVariant2.self
         ) {
-            return             .patchEdgeConfigItemsRequestItemsItemVariant2(value)
+            return .patchEdgeConfigItemsRequestItemsItemVariant2(value)
         }
         if let value = try? container.decode(
             PatchEdgeConfigItemsRequestItemsItemVariant3.self
         ) {
-            return             .patchEdgeConfigItemsRequestItemsItemVariant3(value)
+            return .patchEdgeConfigItemsRequestItemsItemVariant3(value)
         }
         return nil
     }
@@ -174,38 +208,67 @@ public struct GlobalConfigToken: Codable {
         case token
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GlobalConfigToken {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.edgeConfigId) else {
-            throw SdkValidationError(field: "edgeConfigId", code: "required", message: "Validation failed for 'edgeConfigId': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.label) else {
-            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
-        }
-        guard container.contains(.partialToken) else {
-            throw SdkValidationError(field: "partialToken", code: "required", message: "Validation failed for 'partialToken': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.edgeConfigId = try container.sdkDecodeRequired(.edgeConfigId)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.label = try container.sdkDecodeRequired(.label)
-        self.partialToken = try container.sdkDecodeRequired(.partialToken)
-        self.token = try container.sdkDecodeIfPresent(.token)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GlobalConfigToken {
-    public init(createdAt: Double, edgeConfigId: String, id: String, label: String, partialToken: String, token: String? = nil) {
+public extension GlobalConfigToken {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.edgeConfigId) else {
+            throw SdkValidationError(
+                field: "edgeConfigId",
+                code: "required",
+                message: "Validation failed for 'edgeConfigId': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.label) else {
+            throw SdkValidationError(
+                field: "label",
+                code: "required",
+                message: "Validation failed for 'label': value is required"
+            )
+        }
+        guard container.contains(.partialToken) else {
+            throw SdkValidationError(
+                field: "partialToken",
+                code: "required",
+                message: "Validation failed for 'partialToken': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        edgeConfigId = try container.sdkDecodeRequired(.edgeConfigId)
+        id = try container.sdkDecodeRequired(.id)
+        label = try container.sdkDecodeRequired(.label)
+        partialToken = try container.sdkDecodeRequired(.partialToken)
+        token = try container.sdkDecodeIfPresent(.token)
+    }
+}
+
+public extension GlobalConfigToken {
+    init(
+        createdAt: Double,
+        edgeConfigId: String,
+        id: String,
+        label: String,
+        partialToken: String,
+        token: String? = nil
+    ) {
         (self.createdAt, self.edgeConfigId) = (createdAt, edgeConfigId)
         (self.id, self.label) = (id, label)
         (self.partialToken, self.token) = (partialToken, token)
@@ -225,30 +288,44 @@ public struct GetEdgeConfigBackupResponseVariant0BackupItemsValue: Codable {
         case description
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetEdgeConfigBackupResponseVariant0BackupItemsValue {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.value = try container.sdkDecodeNullable(.value)
-        self.description = try container.sdkDecodeIfPresent(.description)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetEdgeConfigBackupResponseVariant0BackupItemsValue {
-    public init(createdAt: Double, updatedAt: Double, value: GlobalConfigItemValue?, description: String? = nil) {
+public extension GetEdgeConfigBackupResponseVariant0BackupItemsValue {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        value = try container.sdkDecodeNullable(.value)
+        description = try container.sdkDecodeIfPresent(.description)
+    }
+}
+
+public extension GetEdgeConfigBackupResponseVariant0BackupItemsValue {
+    init(createdAt: Double, updatedAt: Double, value: GlobalConfigItemValue?, description: String? = nil) {
         (self.createdAt, self.updatedAt) = (createdAt, updatedAt)
         (self.value, self.description) = (value, description)
     }
@@ -267,36 +344,51 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant3: Codable {
         case description
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension PatchEdgeConfigItemsRequestItemsItemVariant3 {
-    public init(from decoder: Decoder) throws {
+public extension PatchEdgeConfigItemsRequestItemsItemVariant3 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.operation) else {
-            throw SdkValidationError(field: "operation", code: "required", message: "Validation failed for 'operation': value is required")
+            throw SdkValidationError(
+                field: "operation",
+                code: "required",
+                message: "Validation failed for 'operation': value is required"
+            )
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
         }
-        self.operation = try container.sdkDecodeRequired(.operation)
-        self.key = try container.sdkDecodeRequired(.key)
-        self.value = try container.sdkDecodeIfPresent(.value)
-        self.description = try container.sdkDecodeIfPresent(.description)
-            try validateLength("key", self.key, min: nil, max: 256)
-            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
-        if let value = self.description {
+        operation = try container.sdkDecodeRequired(.operation)
+        key = try container.sdkDecodeRequired(.key)
+        value = try container.sdkDecodeIfPresent(.value)
+        description = try container.sdkDecodeIfPresent(.description)
+        try validateLength("key", key, min: nil, max: 256)
+        try sdkValidatePattern("key", key, sdkPattern8b2444202961)
+        if let value = description {
             try validateLength("description", value, min: nil, max: 512)
         }
     }
 }
 
-extension PatchEdgeConfigItemsRequestItemsItemVariant3 {
-    public init(operation: PatchEdgeConfigItemsRequestItemsItemVariant3Operation, key: String, value: JSONValue? = nil, description: String? = nil) throws {
+public extension PatchEdgeConfigItemsRequestItemsItemVariant3 {
+    init(
+        operation: PatchEdgeConfigItemsRequestItemsItemVariant3Operation,
+        key: String,
+        value: JSONValue? = nil,
+        description: String? = nil
+    ) throws {
         (self.operation, self.key) = (operation, key)
         (self.value, self.description) = (value, description)
-            try validateLength("key", self.key, min: nil, max: 256)
-            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+        try validateLength("key", self.key, min: nil, max: 256)
+        try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
         if let value = self.description {
             try validateLength("description", value, min: nil, max: 512)
         }
@@ -318,31 +410,45 @@ public struct GetEdgeConfigBackupResponseVariant1User: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetEdgeConfigBackupResponseVariant1User {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.email) else {
-            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.username) else {
-            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
-        }
-        self.email = try container.sdkDecodeRequired(.email)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.username = try container.sdkDecodeRequired(.username)
-        self.avatar = try container.sdkDecodeIfPresent(.avatar)
-        self.name = try container.sdkDecodeIfPresent(.name)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetEdgeConfigBackupResponseVariant1User {
-    public init(email: String, id: String, username: String, avatar: String? = nil, name: String? = nil) {
+public extension GetEdgeConfigBackupResponseVariant1User {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.email) else {
+            throw SdkValidationError(
+                field: "email",
+                code: "required",
+                message: "Validation failed for 'email': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.username) else {
+            throw SdkValidationError(
+                field: "username",
+                code: "required",
+                message: "Validation failed for 'username': value is required"
+            )
+        }
+        email = try container.sdkDecodeRequired(.email)
+        id = try container.sdkDecodeRequired(.id)
+        username = try container.sdkDecodeRequired(.username)
+        avatar = try container.sdkDecodeIfPresent(.avatar)
+        name = try container.sdkDecodeIfPresent(.name)
+    }
+}
+
+public extension GetEdgeConfigBackupResponseVariant1User {
+    init(email: String, id: String, username: String, avatar: String? = nil, name: String? = nil) {
         (self.email, self.id) = (email, id)
         (self.username, self.avatar) = (username, avatar)
         self.name = name
@@ -362,39 +468,58 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant2: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension PatchEdgeConfigItemsRequestItemsItemVariant2 {
-    public init(from decoder: Decoder) throws {
+public extension PatchEdgeConfigItemsRequestItemsItemVariant2 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.operation) else {
-            throw SdkValidationError(field: "operation", code: "required", message: "Validation failed for 'operation': value is required")
+            throw SdkValidationError(
+                field: "operation",
+                code: "required",
+                message: "Validation failed for 'operation': value is required"
+            )
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
         }
         guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
+            throw SdkValidationError(
+                field: "description",
+                code: "required",
+                message: "Validation failed for 'description': value is required"
+            )
         }
-        self.operation = try container.sdkDecodeRequired(.operation)
-        self.key = try container.sdkDecodeRequired(.key)
-        self.description = try container.sdkDecodeNullable(.description)
-        self.value = try container.sdkDecodeIfPresent(.value)
-            try validateLength("key", self.key, min: nil, max: 256)
-            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
-        if let value = self.description {
+        operation = try container.sdkDecodeRequired(.operation)
+        key = try container.sdkDecodeRequired(.key)
+        description = try container.sdkDecodeNullable(.description)
+        value = try container.sdkDecodeIfPresent(.value)
+        try validateLength("key", key, min: nil, max: 256)
+        try sdkValidatePattern("key", key, sdkPattern8b2444202961)
+        if let value = description {
             try validateLength("description", value, min: nil, max: 512)
         }
     }
 }
 
-extension PatchEdgeConfigItemsRequestItemsItemVariant2 {
-    public init(operation: PatchEdgeConfigItemsRequestItemsItemVariant2Operation, key: String, description: String?, value: JSONValue? = nil) throws {
+public extension PatchEdgeConfigItemsRequestItemsItemVariant2 {
+    init(
+        operation: PatchEdgeConfigItemsRequestItemsItemVariant2Operation,
+        key: String,
+        description: String?,
+        value: JSONValue? = nil
+    ) throws {
         (self.operation, self.key) = (operation, key)
         (self.description, self.value) = (description, value)
-            try validateLength("key", self.key, min: nil, max: 256)
-            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+        try validateLength("key", self.key, min: nil, max: 256)
+        try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
         if let value = self.description {
             try validateLength("description", value, min: nil, max: 512)
         }
@@ -416,31 +541,45 @@ public struct GetEdgeConfigBackupResponseVariant0User: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetEdgeConfigBackupResponseVariant0User {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.email) else {
-            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.username) else {
-            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
-        }
-        self.email = try container.sdkDecodeRequired(.email)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.username = try container.sdkDecodeRequired(.username)
-        self.avatar = try container.sdkDecodeIfPresent(.avatar)
-        self.name = try container.sdkDecodeIfPresent(.name)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetEdgeConfigBackupResponseVariant0User {
-    public init(email: String, id: String, username: String, avatar: String? = nil, name: String? = nil) {
+public extension GetEdgeConfigBackupResponseVariant0User {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.email) else {
+            throw SdkValidationError(
+                field: "email",
+                code: "required",
+                message: "Validation failed for 'email': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.username) else {
+            throw SdkValidationError(
+                field: "username",
+                code: "required",
+                message: "Validation failed for 'username': value is required"
+            )
+        }
+        email = try container.sdkDecodeRequired(.email)
+        id = try container.sdkDecodeRequired(.id)
+        username = try container.sdkDecodeRequired(.username)
+        avatar = try container.sdkDecodeIfPresent(.avatar)
+        name = try container.sdkDecodeIfPresent(.name)
+    }
+}
+
+public extension GetEdgeConfigBackupResponseVariant0User {
+    init(email: String, id: String, username: String, avatar: String? = nil, name: String? = nil) {
         (self.email, self.id) = (email, id)
         (self.username, self.avatar) = (username, avatar)
         self.name = name
@@ -460,5 +599,7 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant1: Codable {
         case description
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AccessGroupsMethods {
-    /// Updates the role assigned to a project in an access group. Supply `role` with a supported project role, or null to remove the project-level role.
+public extension AccessGroupsMethods {
+    /// Updates the role assigned to a project in an access group. Supply `role` with a supported project role, or null
+    /// to remove the project-level role.
     ///
     /// Allows update of an access group project
     ///
@@ -15,26 +16,69 @@ extension AccessGroupsMethods {
     /// - role: The project role that will be added to this Access Group.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func updateAccessGroupProject(config: ClientConfig, accessGroupIdOrName: String, projectId: String, role: UpdateAccessGroupProjectRequestBodyRole, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateAccessGroupProjectResponse {
+    static func updateAccessGroupProject(
+        config: ClientConfig,
+        accessGroupIdOrName: String,
+        projectId: String,
+        role: UpdateAccessGroupProjectRequestBodyRole,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateAccessGroupProjectResponse {
         let requestBody = UpdateAccessGroupProjectRequestBody(role: role)
 
-        return try (await sdkRequest("PATCH", ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(accessGroupIdOrName)), "/projects/", sdkEncodePathSegment(sdkWireString(projectId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "updateAccessGroupProject", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            [
+                "/v1/access-groups/",
+                sdkEncodePathSegment(sdkWireString(accessGroupIdOrName)),
+                "/projects/",
+                sdkEncodePathSegment(sdkWireString(projectId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "updateAccessGroupProject",
+            options: requestOptions
+        )).data
     }
 
-    /// Deletes a project association from an access group. Use `accessGroupIdOrName` and `projectId` to identify the association, and optionally specify the team context with `teamId` or `slug`.
+    /// Deletes a project association from an access group. Use `accessGroupIdOrName` and `projectId` to identify the
+    /// association, and optionally specify the team context with `teamId` or `slug`.
     ///
     /// Allows deletion of an access group project
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteAccessGroupProject(config: ClientConfig, accessGroupIdOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(accessGroupIdOrName)), "/projects/", sdkEncodePathSegment(sdkWireString(projectId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "deleteAccessGroupProject", options: requestOptions)).data
+    static func deleteAccessGroupProject(
+        config: ClientConfig,
+        accessGroupIdOrName: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/access-groups/",
+                sdkEncodePathSegment(sdkWireString(accessGroupIdOrName)),
+                "/projects/",
+                sdkEncodePathSegment(sdkWireString(projectId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "deleteAccessGroupProject",
+            options: requestOptions
+        )).data
     }
 }

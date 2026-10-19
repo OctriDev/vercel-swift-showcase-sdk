@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension KmsMethods {
-    /// Revokes a signing key immediately when it is already scheduled for revocation. Identify the issuer and key with `issuerId` and `keyId`. The response contains the updated issuer and its signing keys.
+public extension KmsMethods {
+    /// Revokes a signing key immediately when it is already scheduled for revocation. Identify the issuer and key with
+    /// `issuerId` and `keyId`. The response contains the updated issuer and its signing keys.
     ///
     /// Immediately revoke a signing key that is already scheduled for revocation.
     ///
@@ -17,25 +18,64 @@ extension KmsMethods {
     ///   already be scheduled for revocation.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func revokeKmsSigningKey(config: ClientConfig, issuerId: String, keyId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RevokeKmsSigningKeyResponse {
-        return try (await sdkRequest("POST", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/keys/", sdkEncodePathSegment(sdkWireString(keyId)), "/revoke"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "revokeKmsSigningKey", options: requestOptions)).data
+    static func revokeKmsSigningKey(
+        config: ClientConfig,
+        issuerId: String,
+        keyId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RevokeKmsSigningKeyResponse {
+        try await (sdkRequest(
+            "POST",
+            [
+                "/v1/kms/issuers/",
+                sdkEncodePathSegment(sdkWireString(issuerId)),
+                "/keys/",
+                sdkEncodePathSegment(sdkWireString(keyId)),
+                "/revoke",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "revokeKmsSigningKey",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves a KMS issuer by its identifier. Use a team bearer token for issuer management access or an OIDC token authorized by one of the issuer's policies for signing access. An OIDC-authorized response omits policies because that token does not grant management access.
+    /// Retrieves a KMS issuer by its identifier. Use a team bearer token for issuer management access or an OIDC token
+    /// authorized by one of the issuer's policies for signing access. An OIDC-authorized response omits policies
+    /// because that token does not grant management access.
     ///
-    /// Retrieve a single KMS issuer by its ID. Accepts either a team bearer token (existing path) or an OIDC token authorized by one of the issuer's policies (e.g. a connex-grant token). The OIDC path returns the issuer without policies, since a policy token only proves signing access, not management access.
+    /// Retrieve a single KMS issuer by its ID. Accepts either a team bearer token (existing path) or an OIDC token
+    /// authorized by one of the issuer's policies (e.g. a connex-grant token). The OIDC path returns the issuer without
+    /// policies, since a policy token only proves signing access, not management access.
     ///
     /// - Parameters:
     /// - issuerId: The ID of the issuer.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getKmsIssuer(config: ClientConfig, issuerId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetKmsIssuerResponse {
-        return try (await sdkRequest("GET", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getKmsIssuer", options: requestOptions)).data
+    static func getKmsIssuer(
+        config: ClientConfig,
+        issuerId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetKmsIssuerResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getKmsIssuer",
+            options: requestOptions
+        )).data
     }
 }

@@ -3,39 +3,47 @@
 
 import Foundation
 
-// Microfrontends domain models
+/// Microfrontends domain models
 extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHint {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant8.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant8.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant8(value)
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant9.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant9.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant9(value)
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant10.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant10.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant10(value)
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant11.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant11.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant11(value)
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant12.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant12.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant12(value)
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant13.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant13.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant13(value)
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant14.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant14.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant14(value)
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant15.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant15.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant15(value)
         }
         return nil
@@ -44,8 +52,9 @@ extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHint {
 
 extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHint {
     static func decodeLossless3(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant16.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant16.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant16(value)
         }
         return nil
@@ -57,62 +66,62 @@ extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHint {
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant0.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant0(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant0(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant1.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant1(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant1(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant2.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant2(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant2(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant3.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant3(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant3(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant4.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant4(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant4(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant5.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant5(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant5(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant6.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant6(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant6(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant7.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant7(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant7(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant8.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant8(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant8(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant9.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant9(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant9(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant10.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant10(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant10(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant11.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant11(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant11(value)
         }
         return nil
     }
@@ -123,27 +132,27 @@ extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHint {
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant12.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant12(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant12(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant13.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant13(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant13(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant14.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant14(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant14(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant15.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant15(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant15(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant16.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant16(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant16(value)
         }
         return nil
     }
@@ -153,18 +162,30 @@ extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHint {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant0(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant1(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant2(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant3(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant4(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant5(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant6(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant7(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant8(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant9(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant10(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant11(value): try container.encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant0(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant1(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant2(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant3(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant4(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant5(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant6(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant7(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant8(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant9(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant10(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant11(value): try container
+            .encode(value); return true
         default: return false
         }
     }
@@ -174,34 +195,51 @@ extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHint {
     func encodeGroup2(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant12(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant13(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant14(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant15(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant16(value): try container.encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant12(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant13(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant14(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant15(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant16(value): try container
+            .encode(value); return true
         default: return false
         }
     }
 }
 
 public indirect enum GetMicrofrontendsInGroupResponseProjectsItemExpiration {
-    case getMicrofrontendsInGroupResponseProjectsItemExpirationVariant0(GetMicrofrontendsInGroupResponseProjectsItemExpirationVariant0)
-    case getMicrofrontendsInGroupResponseProjectsItemExpirationVariant1(GetMicrofrontendsInGroupResponseProjectsItemExpirationVariant1)
+    case getMicrofrontendsInGroupResponseProjectsItemExpirationVariant0(
+        GetMicrofrontendsInGroupResponseProjectsItemExpirationVariant0
+    )
+    case getMicrofrontendsInGroupResponseProjectsItemExpirationVariant1(
+        GetMicrofrontendsInGroupResponseProjectsItemExpirationVariant1
+    )
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemExpiration: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemExpiration")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemExpiration"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -224,12 +262,12 @@ extension GetMicrofrontendsInGroupResponseProjectsItemExpiration {
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemExpirationVariant0.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemExpirationVariant0(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemExpirationVariant0(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemExpirationVariant1.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemExpirationVariant1(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemExpirationVariant1(value)
         }
         return nil
     }
@@ -239,8 +277,10 @@ extension GetMicrofrontendsInGroupResponseProjectsItemExpiration {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsInGroupResponseProjectsItemExpirationVariant0(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemExpirationVariant1(value): try container.encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemExpirationVariant0(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemExpirationVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -255,29 +295,39 @@ public indirect enum GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesI
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant0.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant0.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant0(value)
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant1.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant1.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant1(value)
         }
         return nil
@@ -289,12 +339,12 @@ extension GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItem {
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant0.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant0(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant0(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant1.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant1(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant1(value)
         }
         return nil
     }
@@ -304,36 +354,62 @@ extension GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant0(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant1(value): try container.encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant0(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesItemVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
 
 public indirect enum GetMicrofrontendsInGroupResponseProjectsItemLink {
-    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant0(GetMicrofrontendsInGroupResponseProjectsItemLinkVariant0)
-    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant1(GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1)
-    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant2(GetMicrofrontendsInGroupResponseProjectsItemLinkVariant2)
-    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant3(GetMicrofrontendsInGroupResponseProjectsItemLinkVariant3)
-    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant4(GetMicrofrontendsInGroupResponseProjectsItemLinkVariant4)
-    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant5(GetMicrofrontendsInGroupResponseProjectsItemLinkVariant5)
-    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant6(GetMicrofrontendsInGroupResponseProjectsItemLinkVariant6)
-    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant7(GetMicrofrontendsInGroupResponseProjectsItemLinkVariant7)
+    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant0(
+        GetMicrofrontendsInGroupResponseProjectsItemLinkVariant0
+    )
+    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant1(
+        GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1
+    )
+    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant2(
+        GetMicrofrontendsInGroupResponseProjectsItemLinkVariant2
+    )
+    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant3(
+        GetMicrofrontendsInGroupResponseProjectsItemLinkVariant3
+    )
+    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant4(
+        GetMicrofrontendsInGroupResponseProjectsItemLinkVariant4
+    )
+    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant5(
+        GetMicrofrontendsInGroupResponseProjectsItemLinkVariant5
+    )
+    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant6(
+        GetMicrofrontendsInGroupResponseProjectsItemLinkVariant6
+    )
+    case getMicrofrontendsInGroupResponseProjectsItemLinkVariant7(
+        GetMicrofrontendsInGroupResponseProjectsItemLinkVariant7
+    )
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemLink: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemLink")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemLink"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -380,42 +456,42 @@ extension GetMicrofrontendsInGroupResponseProjectsItemLink {
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemLinkVariant0.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemLinkVariant0(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemLinkVariant0(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemLinkVariant1(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemLinkVariant1(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemLinkVariant2.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemLinkVariant2(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemLinkVariant2(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemLinkVariant3.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemLinkVariant3(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemLinkVariant3(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemLinkVariant4.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemLinkVariant4(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemLinkVariant4(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemLinkVariant5.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemLinkVariant5(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemLinkVariant5(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemLinkVariant6.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemLinkVariant6(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemLinkVariant6(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemLinkVariant7.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemLinkVariant7(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemLinkVariant7(value)
         }
         return nil
     }
@@ -425,14 +501,22 @@ extension GetMicrofrontendsInGroupResponseProjectsItemLink {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant0(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant1(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant2(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant3(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant4(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant5(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant6(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant7(value): try container.encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant0(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant1(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant2(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant3(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant4(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant5(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant6(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemLinkVariant7(value): try container
+            .encode(value); return true
         }
     }
 }

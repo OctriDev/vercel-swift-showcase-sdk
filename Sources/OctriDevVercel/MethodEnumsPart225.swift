@@ -6,42 +6,63 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let tagAgents = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_agents")
     public static let tagAi = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_ai")
-    public static let tagAnalytics = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_analytics")
-    public static let tagAuthentication = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_authentication")
+    public static let tagAnalytics =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_analytics")
+    public static let tagAuthentication =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_authentication")
     public static let tagCms = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_cms")
-    public static let tagCodeRepository = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_code_repository")
-    public static let tagCodeReview = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_code_review")
-    public static let tagCodeSecurity = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_code_security")
-    public static let tagCodeTesting = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_code_testing")
+    public static let tagCodeRepository =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_code_repository")
+    public static let tagCodeReview =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_code_review")
+    public static let tagCodeSecurity =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_code_security")
+    public static let tagCodeTesting =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_code_testing")
     public static let tagCommerce = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_commerce")
-    public static let tagDatabases = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_databases")
-    public static let tagDevTools = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_dev_tools")
-    public static let tagExperimentation = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_experimentation")
+    public static let tagDatabases =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_databases")
+    public static let tagDevTools =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_dev_tools")
+    public static let tagExperimentation =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_experimentation")
     public static let tagFlags = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_flags")
     public static let tagLogging = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_logging")
-    public static let tagMessaging = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_messaging")
-    public static let tagMonitoring = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_monitoring")
-    public static let tagObservability = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_observability")
+    public static let tagMessaging =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_messaging")
+    public static let tagMonitoring =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_monitoring")
+    public static let tagObservability =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_observability")
     public static let tagPayments = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_payments")
-    public static let tagPerformance = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_performance")
-    public static let tagProductivity = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_productivity")
-    public static let tagSearching = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_searching")
+    public static let tagPerformance =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_performance")
+    public static let tagProductivity =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_productivity")
+    public static let tagSearching =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_searching")
     public static let tagSecurity = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_security")
-    public static let tagSupportAgent = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_support_agent")
+    public static let tagSupportAgent =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_support_agent")
     public static let tagTesting = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_testing")
     public static let tagVideo = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_video")
-    public static let tagWebAutomation = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_web_automation")
+    public static let tagWebAutomation =
+        GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_web_automation")
     public static let tagWorkflow = GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem(rawValue: "tag_workflow")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -50,16 +71,22 @@ public struct GetConfigurationsResponseVariant1ItemIntegrationTagIdsItem: RawRep
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemDeploymentPolicyGitSoXdeb4c7bb72: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemDeploymentPolicyGitSoXdeb4c7bb72: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let preview = ListProjectsResponseVariant2ProjectsItemDeploymentPolicyGitSoXdeb4c7bb72(rawValue: "preview")
-    public static let production = ListProjectsResponseVariant2ProjectsItemDeploymentPolicyGitSoXdeb4c7bb72(rawValue: "production")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let preview =
+        ListProjectsResponseVariant2ProjectsItemDeploymentPolicyGitSoXdeb4c7bb72(rawValue: "preview")
+    public static let production =
+        ListProjectsResponseVariant2ProjectsItemDeploymentPolicyGitSoXdeb4c7bb72(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -71,14 +98,17 @@ public struct ListProjectsResponseVariant2ProjectsItemDeploymentPolicyGitSoXdeb4
 public struct EditProjectEnvRequestBodyTargetItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let production = EditProjectEnvRequestBodyTargetItem(rawValue: "production")
     public static let preview = EditProjectEnvRequestBodyTargetItem(rawValue: "preview")
     public static let development = EditProjectEnvRequestBodyTargetItem(rawValue: "development")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -90,13 +120,16 @@ public struct EditProjectEnvRequestBodyTargetItem: RawRepresentable, Hashable, C
 public struct ListAiGatewayRulesParameter: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let `true` = ListAiGatewayRulesParameter(rawValue: "true")
     public static let `false` = ListAiGatewayRulesParameter(rawValue: "false")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -105,15 +138,19 @@ public struct ListAiGatewayRulesParameter: RawRepresentable, Hashable, Codable, 
     }
 }
 
-public struct GetFirewallConfigResponseLogHeadersVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetFirewallConfigResponseLogHeadersVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let unknown = GetFirewallConfigResponseLogHeadersVariant1(rawValue: "*")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -123,10 +160,14 @@ public struct GetFirewallConfigResponseLogHeadersVariant1: RawRepresentable, Has
 }
 
 /// Default build machine type for new builds: standard, enhanced, turbo, or elastic.
-public struct UpdateTeamsRequestBodyResourceConfigBuildMachineDefault: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamsRequestBodyResourceConfigBuildMachineDefault: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let basic = UpdateTeamsRequestBodyResourceConfigBuildMachineDefault(rawValue: "basic")
     public static let enhanced = UpdateTeamsRequestBodyResourceConfigBuildMachineDefault(rawValue: "enhanced")
     public static let turbo = UpdateTeamsRequestBodyResourceConfigBuildMachineDefault(rawValue: "turbo")
@@ -135,7 +176,7 @@ public struct UpdateTeamsRequestBodyResourceConfigBuildMachineDefault: RawRepres
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -144,16 +185,22 @@ public struct UpdateTeamsRequestBodyResourceConfigBuildMachineDefault: RawRepres
     }
 }
 
-public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX778b09743d: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX778b09743d: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let create = GetConfigurationProductsResponseProductsItemMetadataSchemaProX778b09743d(rawValue: "create")
-    public static let update = GetConfigurationProductsResponseProductsItemMetadataSchemaProX778b09743d(rawValue: "update")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let create =
+        GetConfigurationProductsResponseProductsItemMetadataSchemaProX778b09743d(rawValue: "create")
+    public static let update =
+        GetConfigurationProductsResponseProductsItemMetadataSchemaProX778b09743d(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -162,10 +209,14 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX778b
     }
 }
 
-public struct ListProjectsResponseVariant1ProjectsItemNodeVersion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant1ProjectsItemNodeVersion: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let value10X = ListProjectsResponseVariant1ProjectsItemNodeVersion(rawValue: "10.x")
     public static let value12X = ListProjectsResponseVariant1ProjectsItemNodeVersion(rawValue: "12.x")
     public static let value14X = ListProjectsResponseVariant1ProjectsItemNodeVersion(rawValue: "14.x")
@@ -179,7 +230,7 @@ public struct ListProjectsResponseVariant1ProjectsItemNodeVersion: RawRepresenta
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -188,10 +239,14 @@ public struct ListProjectsResponseVariant1ProjectsItemNodeVersion: RawRepresenta
     }
 }
 
-public struct GetVercelCiTaskLogsParameterItemX1e08a244: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetVercelCiTaskLogsParameterItemX1e08a244: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let trace = GetVercelCiTaskLogsParameterItemX1e08a244(rawValue: "trace")
     public static let debug = GetVercelCiTaskLogsParameterItemX1e08a244(rawValue: "debug")
     public static let command = GetVercelCiTaskLogsParameterItemX1e08a244(rawValue: "command")
@@ -203,7 +258,7 @@ public struct GetVercelCiTaskLogsParameterItemX1e08a244: RawRepresentable, Hasha
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

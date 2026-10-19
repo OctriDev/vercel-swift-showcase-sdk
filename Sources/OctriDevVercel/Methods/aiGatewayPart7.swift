@@ -6,16 +6,22 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AiGatewayMethods {
-    /// Creates a routing rule for the authenticated team. Use `teamId` or `slug` to select the team context when needed. A 201 response returns the created rule, including its identifier and configuration.
+public extension AiGatewayMethods {
+    /// Creates a routing rule for the authenticated team. Use `teamId` or `slug` to select the team context when
+    /// needed. A 201 response returns the created rule, including its identifier and configuration.
     ///
     /// Create a routing rule
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func createAiGatewayRule(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayRule {
-        return try (await sdkRequest("POST", "/ai-gateway/rules", config: config, query: [
+    static func createAiGatewayRule(
+        config: ClientConfig,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayRule {
+        try await (sdkRequest("POST", "/ai-gateway/rules", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "createAiGatewayRule", options: requestOptions)).data

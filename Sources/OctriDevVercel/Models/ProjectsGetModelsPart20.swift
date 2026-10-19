@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsGet domain models
+/// ProjectsGet domain models
 public enum GetProjectsResponseLinkVariant5Type: String, CaseIterable, Codable {
     case vercel
     public init(from decoder: Decoder) throws {
@@ -72,17 +72,21 @@ public enum GetProjectsResponseEnvItemContentHintVariant9Type: String, CaseItera
     }
 }
 
-public struct GetProjectEnvResponseVariant1TargetVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetProjectEnvResponseVariant1TargetVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let production = GetProjectEnvResponseVariant1TargetVariant1(rawValue: "production")
     public static let preview = GetProjectEnvResponseVariant1TargetVariant1(rawValue: "preview")
     public static let development = GetProjectEnvResponseVariant1TargetVariant1(rawValue: "development")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

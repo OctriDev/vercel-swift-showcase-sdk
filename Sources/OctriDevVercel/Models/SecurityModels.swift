@@ -3,25 +3,33 @@
 
 import Foundation
 
-// Security domain models
+/// Security domain models
 public indirect enum AddBypassIpResponse {
     case addBypassIpResponseVariant0(AddBypassIpResponseVariant0)
     case addBypassIpResponseVariant1(AddBypassIpResponseVariant1)
 }
 
 extension AddBypassIpResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AddBypassIpResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AddBypassIpResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -39,8 +47,14 @@ extension AddBypassIpResponse {
 
 extension AddBypassIpResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(AddBypassIpResponseVariant0.self) { return .addBypassIpResponseVariant0(value) }
-        if let value = try? container.decode(AddBypassIpResponseVariant1.self) { return .addBypassIpResponseVariant1(value) }
+        if let value = try? container
+            .decode(AddBypassIpResponseVariant0.self) {
+            return .addBypassIpResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(AddBypassIpResponseVariant1.self) {
+            return .addBypassIpResponseVariant1(value)
+        }
         return nil
     }
 }
@@ -71,37 +85,49 @@ public indirect enum CreateConditionalBypassRequestConditionGroupItemConditionsI
 }
 
 extension CreateConditionalBypassRequestConditionGroupItemConditionsItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateConditionalBypassRequestConditionGroupItemConditionsItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateConditionalBypassRequestConditionGroupItemConditionsItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateConditionalBypassRequestConditionGroupItemConditionsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value)
         }
-        if let value = try? container.decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value)
         }
-        if let value = try? container.decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value)
         }
-        if let value = try? container.decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value)
         }
         return nil
@@ -113,22 +139,22 @@ extension CreateConditionalBypassRequestConditionGroupItemConditionsItem {
         if let value = try? container.decode(
             CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0.self
         ) {
-            return             .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value)
+            return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value)
         }
         if let value = try? container.decode(
             CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1.self
         ) {
-            return             .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value)
+            return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value)
         }
         if let value = try? container.decode(
             CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2.self
         ) {
-            return             .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value)
+            return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value)
         }
         if let value = try? container.decode(
             CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3.self
         ) {
-            return             .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value)
+            return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value)
         }
         return nil
     }
@@ -138,10 +164,14 @@ extension CreateConditionalBypassRequestConditionGroupItemConditionsItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value): try container.encode(value); return true
-        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value): try container.encode(value); return true
-        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value): try container.encode(value); return true
-        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value): try container.encode(value); return true
+        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value): try container
+            .encode(value); return true
+        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value): try container
+            .encode(value); return true
+        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value): try container
+            .encode(value); return true
+        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -156,29 +186,39 @@ public indirect enum CreateSecurityFirewallConfigByConfigVersionActivateResponse
 }
 
 extension CreateSecurityFirewallConfigByConfigVersionActivateResponseRulesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSecurityFirewallConfigByConfigVersionActivateResponseRulesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateSecurityFirewallConfigByConfigVersionActivateResponseRulesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateSecurityFirewallConfigByConfigVersionActivateResponseRulesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX587be2efd9.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX587be2efd9.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createSecurityFirewallConfigByConfigVersionActivateResponseRuX587be2efd9(value)
         }
-        if let value = try? container.decode(CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX52bf4fd076.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX52bf4fd076.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .createSecurityFirewallConfigByConfigVersionActivateResponseRuX52bf4fd076(value)
         }
         return nil
@@ -190,12 +230,12 @@ extension CreateSecurityFirewallConfigByConfigVersionActivateResponseRulesItem {
         if let value = try? container.decode(
             CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX587be2efd9.self
         ) {
-            return             .createSecurityFirewallConfigByConfigVersionActivateResponseRuX587be2efd9(value)
+            return .createSecurityFirewallConfigByConfigVersionActivateResponseRuX587be2efd9(value)
         }
         if let value = try? container.decode(
             CreateSecurityFirewallConfigByConfigVersionActivateResponseRuX52bf4fd076.self
         ) {
-            return             .createSecurityFirewallConfigByConfigVersionActivateResponseRuX52bf4fd076(value)
+            return .createSecurityFirewallConfigByConfigVersionActivateResponseRuX52bf4fd076(value)
         }
         return nil
     }
@@ -205,8 +245,10 @@ extension CreateSecurityFirewallConfigByConfigVersionActivateResponseRulesItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createSecurityFirewallConfigByConfigVersionActivateResponseRuX587be2efd9(value): try container.encode(value); return true
-        case let .createSecurityFirewallConfigByConfigVersionActivateResponseRuX52bf4fd076(value): try container.encode(value); return true
+        case let .createSecurityFirewallConfigByConfigVersionActivateResponseRuX587be2efd9(value): try container
+            .encode(value); return true
+        case let .createSecurityFirewallConfigByConfigVersionActivateResponseRuX52bf4fd076(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -217,27 +259,41 @@ public indirect enum GetConditionalBypassResponse {
 }
 
 extension GetConditionalBypassResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConditionalBypassResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetConditionalBypassResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetConditionalBypassResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetConditionalBypassResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetConditionalBypassResponseVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getConditionalBypassResponseVariant0(value)
         }
-        if let value = try? container.decode(GetConditionalBypassResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetConditionalBypassResponseVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getConditionalBypassResponseVariant1(value)
         }
         return nil
@@ -249,12 +305,12 @@ extension GetConditionalBypassResponse {
         if let value = try? container.decode(
             GetConditionalBypassResponseVariant0.self
         ) {
-            return             .getConditionalBypassResponseVariant0(value)
+            return .getConditionalBypassResponseVariant0(value)
         }
         if let value = try? container.decode(
             GetConditionalBypassResponseVariant1.self
         ) {
-            return             .getConditionalBypassResponseVariant1(value)
+            return .getConditionalBypassResponseVariant1(value)
         }
         return nil
     }
@@ -276,27 +332,41 @@ public indirect enum GetFirewallConfigResponseRulesItem {
 }
 
 extension GetFirewallConfigResponseRulesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetFirewallConfigResponseRulesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetFirewallConfigResponseRulesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetFirewallConfigResponseRulesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetFirewallConfigResponseRulesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetFirewallConfigResponseRulesItemVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getFirewallConfigResponseRulesItemVariant0(value)
         }
-        if let value = try? container.decode(GetFirewallConfigResponseRulesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetFirewallConfigResponseRulesItemVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getFirewallConfigResponseRulesItemVariant1(value)
         }
         return nil
@@ -308,12 +378,12 @@ extension GetFirewallConfigResponseRulesItem {
         if let value = try? container.decode(
             GetFirewallConfigResponseRulesItemVariant0.self
         ) {
-            return             .getFirewallConfigResponseRulesItemVariant0(value)
+            return .getFirewallConfigResponseRulesItemVariant0(value)
         }
         if let value = try? container.decode(
             GetFirewallConfigResponseRulesItemVariant1.self
         ) {
-            return             .getFirewallConfigResponseRulesItemVariant1(value)
+            return .getFirewallConfigResponseRulesItemVariant1(value)
         }
         return nil
     }
@@ -330,23 +400,35 @@ extension GetFirewallConfigResponseRulesItem {
 }
 
 public indirect enum GetSecurityFirewallConfigResponseActiveRulesItem {
-    case getSecurityFirewallConfigResponseActiveRulesItemVariant0(GetSecurityFirewallConfigResponseActiveRulesItemVariant0)
-    case getSecurityFirewallConfigResponseActiveRulesItemVariant1(GetSecurityFirewallConfigResponseActiveRulesItemVariant1)
+    case getSecurityFirewallConfigResponseActiveRulesItemVariant0(
+        GetSecurityFirewallConfigResponseActiveRulesItemVariant0
+    )
+    case getSecurityFirewallConfigResponseActiveRulesItemVariant1(
+        GetSecurityFirewallConfigResponseActiveRulesItemVariant1
+    )
 }
 
 extension GetSecurityFirewallConfigResponseActiveRulesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetSecurityFirewallConfigResponseActiveRulesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetSecurityFirewallConfigResponseActiveRulesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -369,12 +451,12 @@ extension GetSecurityFirewallConfigResponseActiveRulesItem {
         if let value = try? container.decode(
             GetSecurityFirewallConfigResponseActiveRulesItemVariant0.self
         ) {
-            return             .getSecurityFirewallConfigResponseActiveRulesItemVariant0(value)
+            return .getSecurityFirewallConfigResponseActiveRulesItemVariant0(value)
         }
         if let value = try? container.decode(
             GetSecurityFirewallConfigResponseActiveRulesItemVariant1.self
         ) {
-            return             .getSecurityFirewallConfigResponseActiveRulesItemVariant1(value)
+            return .getSecurityFirewallConfigResponseActiveRulesItemVariant1(value)
         }
         return nil
     }
@@ -384,30 +466,44 @@ extension GetSecurityFirewallConfigResponseActiveRulesItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getSecurityFirewallConfigResponseActiveRulesItemVariant0(value): try container.encode(value); return true
-        case let .getSecurityFirewallConfigResponseActiveRulesItemVariant1(value): try container.encode(value); return true
+        case let .getSecurityFirewallConfigResponseActiveRulesItemVariant0(value): try container
+            .encode(value); return true
+        case let .getSecurityFirewallConfigResponseActiveRulesItemVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
 
 public indirect enum GetSecurityFirewallConfigResponseDraftRulesItem {
-    case getSecurityFirewallConfigResponseDraftRulesItemVariant0(GetSecurityFirewallConfigResponseDraftRulesItemVariant0)
-    case getSecurityFirewallConfigResponseDraftRulesItemVariant1(GetSecurityFirewallConfigResponseDraftRulesItemVariant1)
+    case getSecurityFirewallConfigResponseDraftRulesItemVariant0(
+        GetSecurityFirewallConfigResponseDraftRulesItemVariant0
+    )
+    case getSecurityFirewallConfigResponseDraftRulesItemVariant1(
+        GetSecurityFirewallConfigResponseDraftRulesItemVariant1
+    )
 }
 
 extension GetSecurityFirewallConfigResponseDraftRulesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetSecurityFirewallConfigResponseDraftRulesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetSecurityFirewallConfigResponseDraftRulesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -430,12 +526,12 @@ extension GetSecurityFirewallConfigResponseDraftRulesItem {
         if let value = try? container.decode(
             GetSecurityFirewallConfigResponseDraftRulesItemVariant0.self
         ) {
-            return             .getSecurityFirewallConfigResponseDraftRulesItemVariant0(value)
+            return .getSecurityFirewallConfigResponseDraftRulesItemVariant0(value)
         }
         if let value = try? container.decode(
             GetSecurityFirewallConfigResponseDraftRulesItemVariant1.self
         ) {
-            return             .getSecurityFirewallConfigResponseDraftRulesItemVariant1(value)
+            return .getSecurityFirewallConfigResponseDraftRulesItemVariant1(value)
         }
         return nil
     }
@@ -445,13 +541,19 @@ extension GetSecurityFirewallConfigResponseDraftRulesItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getSecurityFirewallConfigResponseDraftRulesItemVariant0(value): try container.encode(value); return true
-        case let .getSecurityFirewallConfigResponseDraftRulesItemVariant1(value): try container.encode(value); return true
+        case let .getSecurityFirewallConfigResponseDraftRulesItemVariant0(value): try container
+            .encode(value); return true
+        case let .getSecurityFirewallConfigResponseDraftRulesItemVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
 
 public indirect enum GetSecurityFirewallConfigResponseVersionsItemRulesItem {
-    case getSecurityFirewallConfigResponseVersionsItemRulesItemVariant0(GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant0)
-    case getSecurityFirewallConfigResponseVersionsItemRulesItemVariant1(GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant1)
+    case getSecurityFirewallConfigResponseVersionsItemRulesItemVariant0(
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant0
+    )
+    case getSecurityFirewallConfigResponseVersionsItemRulesItemVariant1(
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant1
+    )
 }

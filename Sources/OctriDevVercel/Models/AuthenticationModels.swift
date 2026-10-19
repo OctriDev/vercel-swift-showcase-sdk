@@ -3,25 +3,33 @@
 
 import Foundation
 
-// Authentication domain models
+/// Authentication domain models
 public indirect enum AuthTokenScopesItem {
     case authTokenScopesItemVariant0(AuthTokenScopesItemVariant0)
     case authTokenScopesItemVariant1(AuthTokenScopesItemVariant1)
 }
 
 extension AuthTokenScopesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AuthTokenScopesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AuthTokenScopesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -39,8 +47,14 @@ extension AuthTokenScopesItem {
 
 extension AuthTokenScopesItem {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(AuthTokenScopesItemVariant0.self) { return .authTokenScopesItemVariant0(value) }
-        if let value = try? container.decode(AuthTokenScopesItemVariant1.self) { return .authTokenScopesItemVariant1(value) }
+        if let value = try? container
+            .decode(AuthTokenScopesItemVariant0.self) {
+            return .authTokenScopesItemVariant0(value)
+        }
+        if let value = try? container
+            .decode(AuthTokenScopesItemVariant1.self) {
+            return .authTokenScopesItemVariant1(value)
+        }
         return nil
     }
 }
@@ -61,18 +75,26 @@ public indirect enum ExchangeSsoTokenResponse {
 }
 
 extension ExchangeSsoTokenResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ExchangeSsoTokenResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ExchangeSsoTokenResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -90,8 +112,14 @@ extension ExchangeSsoTokenResponse {
 
 extension ExchangeSsoTokenResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(ExchangeSsoTokenResponseVariant0.self) { return .exchangeSsoTokenResponseVariant0(value) }
-        if let value = try? container.decode(ExchangeSsoTokenResponseVariant1.self) { return .exchangeSsoTokenResponseVariant1(value) }
+        if let value = try? container
+            .decode(ExchangeSsoTokenResponseVariant0.self) {
+            return .exchangeSsoTokenResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(ExchangeSsoTokenResponseVariant1.self) {
+            return .exchangeSsoTokenResponseVariant1(value)
+        }
         return nil
     }
 }
@@ -112,18 +140,26 @@ public indirect enum ListAuthTokensResponse {
 }
 
 extension ListAuthTokensResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListAuthTokensResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ListAuthTokensResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -141,8 +177,14 @@ extension ListAuthTokensResponse {
 
 extension ListAuthTokensResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(ListAuthTokensResponseVariant0.self) { return .listAuthTokensResponseVariant0(value) }
-        if let value = try? container.decode(ListAuthTokensResponseVariant1.self) { return .listAuthTokensResponseVariant1(value) }
+        if let value = try? container
+            .decode(ListAuthTokensResponseVariant0.self) {
+            return .listAuthTokensResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(ListAuthTokensResponseVariant1.self) {
+            return .listAuthTokensResponseVariant1(value)
+        }
         return nil
     }
 }
@@ -166,25 +208,35 @@ public struct ListAuthTokensResponseVariant0: Codable {
         case tokens
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListAuthTokensResponseVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        guard container.contains(.tokens) else {
-            throw SdkValidationError(field: "tokens", code: "required", message: "Validation failed for 'tokens': value is required")
-        }
-        self.pagination = try container.sdkDecodeRequired(.pagination)
-        self.tokens = try container.sdkDecodeRequired(.tokens)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListAuthTokensResponseVariant0 {
-    public init(pagination: ListAuthTokensResponseVariant0Pagination, tokens: [AuthToken]) {
+public extension ListAuthTokensResponseVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        guard container.contains(.tokens) else {
+            throw SdkValidationError(
+                field: "tokens",
+                code: "required",
+                message: "Validation failed for 'tokens': value is required"
+            )
+        }
+        pagination = try container.sdkDecodeRequired(.pagination)
+        tokens = try container.sdkDecodeRequired(.tokens)
+    }
+}
+
+public extension ListAuthTokensResponseVariant0 {
+    init(pagination: ListAuthTokensResponseVariant0Pagination, tokens: [AuthToken]) {
         (self.pagination, self.tokens) = (pagination, tokens)
     }
 }
@@ -210,33 +262,49 @@ public struct AuthTokenScopesItemVariant0: Codable {
         case sudo
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AuthTokenScopesItemVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
-        self.origin = try container.sdkDecodeIfPresent(.origin)
-        self.sudo = try container.sdkDecodeIfPresent(.sudo)
-            try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant0Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AuthTokenScopesItemVariant0 {
-    public init(createdAt: Double, type: AuthTokenScopesItemVariant0Type, expiresAt: Double? = nil, origin: AuthTokenScopesItemVariant0Origin? = nil, sudo: AuthTokenScopesItemVariant0Sudo? = nil) throws {
+public extension AuthTokenScopesItemVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        type = try container.sdkDecodeRequired(.type)
+        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        origin = try container.sdkDecodeIfPresent(.origin)
+        sudo = try container.sdkDecodeIfPresent(.sudo)
+        try sdkValidateRawEnum("type", type, AuthTokenScopesItemVariant0Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension AuthTokenScopesItemVariant0 {
+    init(
+        createdAt: Double,
+        type: AuthTokenScopesItemVariant0Type,
+        expiresAt: Double? = nil,
+        origin: AuthTokenScopesItemVariant0Origin? = nil,
+        sudo: AuthTokenScopesItemVariant0Sudo? = nil
+    ) throws {
         (self.createdAt, self.type) = (createdAt, type)
         (self.expiresAt, self.origin) = (expiresAt, origin)
         self.sudo = sudo
-            try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant0Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant0Type.allCases.map(\.rawValue))
     }
 }
 
@@ -255,31 +323,51 @@ public struct ExchangeSsoTokenResponseVariant0: Codable {
         case refreshToken = "refresh_token"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ExchangeSsoTokenResponseVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.accessToken) else {
-            throw SdkValidationError(field: "access_token", code: "required", message: "Validation failed for 'access_token': value is required")
-        }
-        guard container.contains(.idToken) else {
-            throw SdkValidationError(field: "id_token", code: "required", message: "Validation failed for 'id_token': value is required")
-        }
-        guard container.contains(.tokenType) else {
-            throw SdkValidationError(field: "token_type", code: "required", message: "Validation failed for 'token_type': value is required")
-        }
-        self.accessToken = try container.sdkDecodeNullable(.accessToken)
-        self.idToken = try container.sdkDecodeRequired(.idToken)
-        self.tokenType = try container.sdkDecodeNullable(.tokenType)
-        self.expiresIn = try container.sdkDecodeIfPresent(.expiresIn)
-        self.refreshToken = try container.sdkDecodeIfPresent(.refreshToken)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ExchangeSsoTokenResponseVariant0 {
-    public init(accessToken: String?, idToken: String, tokenType: String?, expiresIn: Double? = nil, refreshToken: String? = nil) {
+public extension ExchangeSsoTokenResponseVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.accessToken) else {
+            throw SdkValidationError(
+                field: "access_token",
+                code: "required",
+                message: "Validation failed for 'access_token': value is required"
+            )
+        }
+        guard container.contains(.idToken) else {
+            throw SdkValidationError(
+                field: "id_token",
+                code: "required",
+                message: "Validation failed for 'id_token': value is required"
+            )
+        }
+        guard container.contains(.tokenType) else {
+            throw SdkValidationError(
+                field: "token_type",
+                code: "required",
+                message: "Validation failed for 'token_type': value is required"
+            )
+        }
+        accessToken = try container.sdkDecodeNullable(.accessToken)
+        idToken = try container.sdkDecodeRequired(.idToken)
+        tokenType = try container.sdkDecodeNullable(.tokenType)
+        expiresIn = try container.sdkDecodeIfPresent(.expiresIn)
+        refreshToken = try container.sdkDecodeIfPresent(.refreshToken)
+    }
+}
+
+public extension ExchangeSsoTokenResponseVariant0 {
+    init(
+        accessToken: String?,
+        idToken: String,
+        tokenType: String?,
+        expiresIn: Double? = nil,
+        refreshToken: String? = nil
+    ) {
         (self.accessToken, self.idToken) = (accessToken, idToken)
         (self.tokenType, self.expiresIn) = (tokenType, expiresIn)
         self.refreshToken = refreshToken
@@ -297,25 +385,35 @@ public struct ListAuthTokensResponseVariant1: Codable {
         case tokens
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListAuthTokensResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        guard container.contains(.tokens) else {
-            throw SdkValidationError(field: "tokens", code: "required", message: "Validation failed for 'tokens': value is required")
-        }
-        self.pagination = try container.sdkDecodeRequired(.pagination)
-        self.tokens = try container.sdkDecodeRequired(.tokens)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListAuthTokensResponseVariant1 {
-    public init(pagination: Pagination, tokens: [AuthToken]) {
+public extension ListAuthTokensResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        guard container.contains(.tokens) else {
+            throw SdkValidationError(
+                field: "tokens",
+                code: "required",
+                message: "Validation failed for 'tokens': value is required"
+            )
+        }
+        pagination = try container.sdkDecodeRequired(.pagination)
+        tokens = try container.sdkDecodeRequired(.tokens)
+    }
+}
+
+public extension ListAuthTokensResponseVariant1 {
+    init(pagination: Pagination, tokens: [AuthToken]) {
         (self.pagination, self.tokens) = (pagination, tokens)
     }
 }
@@ -375,45 +473,81 @@ public struct AuthToken: Codable {
         case suffix
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AuthToken {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.activeAt) else {
-            throw SdkValidationError(field: "activeAt", code: "required", message: "Validation failed for 'activeAt': value is required")
-        }
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.activeAt = try container.sdkDecodeRequired(.activeAt)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
-        self.leakedAt = try container.sdkDecodeIfPresent(.leakedAt)
-        self.leakedUrl = try container.sdkDecodeIfPresent(.leakedUrl)
-        self.origin = try container.sdkDecodeIfPresent(.origin)
-        self.prefix = try container.sdkDecodeIfPresent(.prefix)
-        self.revokedAt = try container.sdkDecodeIfPresent(.revokedAt)
-        self.scopes = try container.sdkDecodeIfPresent(.scopes)
-        self.suffix = try container.sdkDecodeIfPresent(.suffix)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AuthToken {
-    public init(activeAt: Double, createdAt: Double, id: String, name: String, type: String, expiresAt: Double? = nil, leakedAt: Double? = nil, leakedUrl: String? = nil, origin: String? = nil, prefix: String? = nil, revokedAt: Double? = nil, scopes: [AuthTokenScopesItem]? = nil, suffix: String? = nil) {
+public extension AuthToken {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.activeAt) else {
+            throw SdkValidationError(
+                field: "activeAt",
+                code: "required",
+                message: "Validation failed for 'activeAt': value is required"
+            )
+        }
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        activeAt = try container.sdkDecodeRequired(.activeAt)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        type = try container.sdkDecodeRequired(.type)
+        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        leakedAt = try container.sdkDecodeIfPresent(.leakedAt)
+        leakedUrl = try container.sdkDecodeIfPresent(.leakedUrl)
+        origin = try container.sdkDecodeIfPresent(.origin)
+        prefix = try container.sdkDecodeIfPresent(.prefix)
+        revokedAt = try container.sdkDecodeIfPresent(.revokedAt)
+        scopes = try container.sdkDecodeIfPresent(.scopes)
+        suffix = try container.sdkDecodeIfPresent(.suffix)
+    }
+}
+
+public extension AuthToken {
+    init(
+        activeAt: Double,
+        createdAt: Double,
+        id: String,
+        name: String,
+        type: String,
+        expiresAt: Double? = nil,
+        leakedAt: Double? = nil,
+        leakedUrl: String? = nil,
+        origin: String? = nil,
+        prefix: String? = nil,
+        revokedAt: Double? = nil,
+        scopes: [AuthTokenScopesItem]? = nil,
+        suffix: String? = nil
+    ) {
         (self.activeAt, self.createdAt) = (activeAt, createdAt)
         (self.id, self.name) = (id, name)
         (self.type, self.expiresAt) = (type, expiresAt)
@@ -445,26 +579,40 @@ public struct AuthTokenScopesItemVariant1: Codable {
         case origin
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension AuthTokenScopesItemVariant1 {
-    public init(from decoder: Decoder) throws {
+public extension AuthTokenScopesItemVariant1 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
         }
         guard container.contains(.teamId) else {
-            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
+            throw SdkValidationError(
+                field: "teamId",
+                code: "required",
+                message: "Validation failed for 'teamId': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.teamId = try container.sdkDecodeRequired(.teamId)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
-        self.origin = try container.sdkDecodeIfPresent(.origin)
-            try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant1Type.allCases.map(\.rawValue))
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        teamId = try container.sdkDecodeRequired(.teamId)
+        type = try container.sdkDecodeRequired(.type)
+        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        origin = try container.sdkDecodeIfPresent(.origin)
+        try sdkValidateRawEnum("type", type, AuthTokenScopesItemVariant1Type.allCases.map(\.rawValue))
     }
 }

@@ -3,12 +3,15 @@
 
 import Foundation
 
-// Vcr domain models
+/// Vcr domain models
 /// Docker/OCI build instruction associated with an image layer.
 public struct VcrImageLayerVariant3Operation: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let add = VcrImageLayerVariant3Operation(rawValue: "ADD")
     public static let arg = VcrImageLayerVariant3Operation(rawValue: "ARG")
     public static let cmd = VcrImageLayerVariant3Operation(rawValue: "CMD")
@@ -30,7 +33,7 @@ public struct VcrImageLayerVariant3Operation: RawRepresentable, Hashable, Codabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -43,14 +46,17 @@ public struct VcrImageLayerVariant3Operation: RawRepresentable, Hashable, Codabl
 public struct VcrImageListItemKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let attestation = VcrImageListItemKind(rawValue: "attestation")
     public static let index = VcrImageListItemKind(rawValue: "index")
     public static let manifest = VcrImageListItemKind(rawValue: "manifest")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -63,7 +69,10 @@ public struct VcrImageListItemKind: RawRepresentable, Hashable, Codable, Sendabl
 public struct VcrImageListItemStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let errored = VcrImageListItemStatus(rawValue: "errored")
     public static let preparing = VcrImageListItemStatus(rawValue: "preparing")
     public static let ready = VcrImageListItemStatus(rawValue: "ready")
@@ -71,7 +80,7 @@ public struct VcrImageListItemStatus: RawRepresentable, Hashable, Codable, Senda
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -84,7 +93,10 @@ public struct VcrImageListItemStatus: RawRepresentable, Hashable, Codable, Senda
 public struct VcrTagStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let errored = VcrTagStatus(rawValue: "errored")
     public static let preparing = VcrTagStatus(rawValue: "preparing")
     public static let ready = VcrTagStatus(rawValue: "ready")
@@ -92,7 +104,7 @@ public struct VcrTagStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWi
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -105,14 +117,17 @@ public struct VcrTagStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWi
 public struct VcrTagKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let attestation = VcrTagKind(rawValue: "attestation")
     public static let index = VcrTagKind(rawValue: "index")
     public static let manifest = VcrTagKind(rawValue: "manifest")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

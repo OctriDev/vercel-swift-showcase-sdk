@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension MarketplaceMethods {
-    public struct UpdateInstallationsByIntegrationConfigurationIdResourcesByResX5235ac8d4aOptions: Codable {
+public extension MarketplaceMethods {
+    struct UpdateInstallationsByIntegrationConfigurationIdResourcesByResX5235ac8d4aOptions: Codable {
         public var integrationConfigurationId: String
         public var resourceId: String
         public var itemId: String
@@ -20,7 +20,13 @@ extension MarketplaceMethods {
         public var createdAt: Double?
         public var updatedAt: Double?
 
-        public init(integrationConfigurationId: String, resourceId: String, itemId: String, slug: String, origin: String) {
+        public init(
+            integrationConfigurationId: String,
+            resourceId: String,
+            itemId: String,
+            slug: String,
+            origin: String
+        ) {
             self.integrationConfigurationId = integrationConfigurationId
             self.resourceId = resourceId
             self.itemId = itemId
@@ -29,10 +35,15 @@ extension MarketplaceMethods {
         }
     }
 
-    /// Updates an existing experimentation item for an integration resource. Identify the item with `itemId` and provide its required `slug` and `origin`, along with any other fields you want to change.
+    /// Updates an existing experimentation item for an integration resource. Identify the item with `itemId` and
+    /// provide its required `slug` and `origin`, along with any other fields you want to change.
     ///
     /// Patch an existing experimentation item
-    public static func updateInstallationsByIntegrationConfigurationIdResourcesByResXbf2233b2b8(config: ClientConfig, options: UpdateInstallationsByIntegrationConfigurationIdResourcesByResX5235ac8d4aOptions, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func updateInstallationsByIntegrationConfigurationIdResourcesByResXbf2233b2b8(
+        config: ClientConfig,
+        options: UpdateInstallationsByIntegrationConfigurationIdResourcesByResX5235ac8d4aOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         try validateLength("slug", options.slug, max: 1024)
 
         try validateLength("origin", options.origin, max: 2048)
@@ -47,10 +58,25 @@ extension MarketplaceMethods {
 
         let requestBody = UpdateInstallationsByIntegrationConfigurationIdResourcesByResX1267b2e3b7(options: options)
 
-        return try (await sdkRequest("PATCH", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(options.resourceId)), "/experimentation/items/", sdkEncodePathSegment(sdkWireString(options.itemId))].joined(), config: config, body: requestBody, decoder: .empty, operationId: """
-    updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentat\
-    ionItemsByItemId
-    """, options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            [
+                "/v1/installations/",
+                sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)),
+                "/resources/",
+                sdkEncodePathSegment(sdkWireString(options.resourceId)),
+                "/experimentation/items/",
+                sdkEncodePathSegment(sdkWireString(options.itemId)),
+            ].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .empty,
+            operationId: """
+            updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentat\
+            ionItemsByItemId
+            """,
+            options: requestOptions
+        )).data
     }
 
     private struct UpdateInstallationsByIntegrationConfigurationIdResourcesByResX1267b2e3b7: Encodable {
@@ -65,35 +91,56 @@ extension MarketplaceMethods {
 
         func encode(to encoder: Encoder) throws {
             var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-            try keyedContainer.encode(self.slug, forKey: SdkCodingKey("slug"))
-            try keyedContainer.encode(self.origin, forKey: SdkCodingKey("origin"))
-            try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-            try keyedContainer.encodeIfPresent(self.category, forKey: SdkCodingKey("category"))
-            try keyedContainer.encodeIfPresent(self.description, forKey: SdkCodingKey("description"))
-            try keyedContainer.encodeIfPresent(self.isArchived, forKey: SdkCodingKey("isArchived"))
-            try keyedContainer.encodeIfPresent(self.createdAt, forKey: SdkCodingKey("createdAt"))
-            try keyedContainer.encodeIfPresent(self.updatedAt, forKey: SdkCodingKey("updatedAt"))
+            try keyedContainer.encode(slug, forKey: SdkCodingKey("slug"))
+            try keyedContainer.encode(origin, forKey: SdkCodingKey("origin"))
+            try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+            try keyedContainer.encodeIfPresent(category, forKey: SdkCodingKey("category"))
+            try keyedContainer.encodeIfPresent(description, forKey: SdkCodingKey("description"))
+            try keyedContainer.encodeIfPresent(isArchived, forKey: SdkCodingKey("isArchived"))
+            try keyedContainer.encodeIfPresent(createdAt, forKey: SdkCodingKey("createdAt"))
+            try keyedContainer.encodeIfPresent(updatedAt, forKey: SdkCodingKey("updatedAt"))
         }
 
         init(options: UpdateInstallationsByIntegrationConfigurationIdResourcesByResX5235ac8d4aOptions) {
-            self.slug = options.slug
-            self.origin = options.origin
-            self.name = options.name
-            self.category = options.category
-            self.description = options.description
-            self.isArchived = options.isArchived
-            self.createdAt = options.createdAt
-            self.updatedAt = options.updatedAt
+            slug = options.slug
+            origin = options.origin
+            name = options.name
+            category = options.category
+            description = options.description
+            isArchived = options.isArchived
+            createdAt = options.createdAt
+            updatedAt = options.updatedAt
         }
     }
 
-    /// Deletes an experimentation item from an integration resource. Use `integrationConfigurationId`, `resourceId`, and `itemId` to identify the item to remove.
+    /// Deletes an experimentation item from an integration resource. Use `integrationConfigurationId`, `resourceId`,
+    /// and `itemId` to identify the item to remove.
     ///
     /// Delete an existing experimentation item
-    public static func deleteInstallationsByIntegrationConfigurationIdResourcesByResXb3eb2998ac(config: ClientConfig, integrationConfigurationId: String, resourceId: String, itemId: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(resourceId)), "/experimentation/items/", sdkEncodePathSegment(sdkWireString(itemId))].joined(), config: config, decoder: .empty, operationId: """
-    deleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentat\
-    ionItemsByItemId
-    """, options: requestOptions)).data
+    static func deleteInstallationsByIntegrationConfigurationIdResourcesByResXb3eb2998ac(
+        config: ClientConfig,
+        integrationConfigurationId: String,
+        resourceId: String,
+        itemId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/installations/",
+                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
+                "/resources/",
+                sdkEncodePathSegment(sdkWireString(resourceId)),
+                "/experimentation/items/",
+                sdkEncodePathSegment(sdkWireString(itemId)),
+            ].joined(),
+            config: config,
+            decoder: .empty,
+            operationId: """
+            deleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentat\
+            ionItemsByItemId
+            """,
+            options: requestOptions
+        )).data
     }
 }

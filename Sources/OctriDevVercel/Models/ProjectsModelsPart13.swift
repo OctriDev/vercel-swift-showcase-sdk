@@ -3,19 +3,23 @@
 
 import Foundation
 
-// Projects domain models
+/// Projects domain models
 /// User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and
 /// callers fall back to existing `type` behavior.
-public struct FilterProjectEnvsResponseVariant1EnvsItemVisibility: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant1EnvsItemVisibility: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let config = FilterProjectEnvsResponseVariant1EnvsItemVisibility(rawValue: "config")
     public static let secret = FilterProjectEnvsResponseVariant1EnvsItemVisibility(rawValue: "secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -245,17 +249,21 @@ public enum RemoveProjectEnvResponseItemContentHintVariant3Type: String, CaseIte
     }
 }
 
-public struct FilterProjectEnvsResponseVariant0TargetVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant0TargetVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = FilterProjectEnvsResponseVariant0TargetVariant1(rawValue: "development")
     public static let preview = FilterProjectEnvsResponseVariant0TargetVariant1(rawValue: "preview")
     public static let production = FilterProjectEnvsResponseVariant0TargetVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

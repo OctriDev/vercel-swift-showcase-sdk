@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical certs operation model declarations
+/// Canonical certs operation model declarations
 public struct GetCertByIdResponse: Codable {
     public var autoRenew: Bool
     public var cns: [String]
@@ -23,37 +23,59 @@ public struct GetCertByIdResponse: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetCertByIdResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.autoRenew) else {
-            throw SdkValidationError(field: "autoRenew", code: "required", message: "Validation failed for 'autoRenew': value is required")
-        }
-        guard container.contains(.cns) else {
-            throw SdkValidationError(field: "cns", code: "required", message: "Validation failed for 'cns': value is required")
-        }
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.expiresAt) else {
-            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.autoRenew = try container.sdkDecodeRequired(.autoRenew)
-        self.cns = try container.sdkDecodeRequired(.cns)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        self.id = try container.sdkDecodeRequired(.id)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetCertByIdResponse {
-    public init(autoRenew: Bool, cns: [String], createdAt: Double, expiresAt: Double, id: String) {
+public extension GetCertByIdResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.autoRenew) else {
+            throw SdkValidationError(
+                field: "autoRenew",
+                code: "required",
+                message: "Validation failed for 'autoRenew': value is required"
+            )
+        }
+        guard container.contains(.cns) else {
+            throw SdkValidationError(
+                field: "cns",
+                code: "required",
+                message: "Validation failed for 'cns': value is required"
+            )
+        }
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.expiresAt) else {
+            throw SdkValidationError(
+                field: "expiresAt",
+                code: "required",
+                message: "Validation failed for 'expiresAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        autoRenew = try container.sdkDecodeRequired(.autoRenew)
+        cns = try container.sdkDecodeRequired(.cns)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        id = try container.sdkDecodeRequired(.id)
+    }
+}
+
+public extension GetCertByIdResponse {
+    init(autoRenew: Bool, cns: [String], createdAt: Double, expiresAt: Double, id: String) {
         (self.autoRenew, self.cns) = (autoRenew, cns)
         (self.createdAt, self.expiresAt) = (createdAt, expiresAt)
         self.id = id
@@ -75,37 +97,59 @@ public struct UploadCertResponse: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UploadCertResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.autoRenew) else {
-            throw SdkValidationError(field: "autoRenew", code: "required", message: "Validation failed for 'autoRenew': value is required")
-        }
-        guard container.contains(.cns) else {
-            throw SdkValidationError(field: "cns", code: "required", message: "Validation failed for 'cns': value is required")
-        }
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.expiresAt) else {
-            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.autoRenew = try container.sdkDecodeRequired(.autoRenew)
-        self.cns = try container.sdkDecodeRequired(.cns)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        self.id = try container.sdkDecodeRequired(.id)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UploadCertResponse {
-    public init(autoRenew: Bool, cns: [String], createdAt: Double, expiresAt: Double, id: String) {
+public extension UploadCertResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.autoRenew) else {
+            throw SdkValidationError(
+                field: "autoRenew",
+                code: "required",
+                message: "Validation failed for 'autoRenew': value is required"
+            )
+        }
+        guard container.contains(.cns) else {
+            throw SdkValidationError(
+                field: "cns",
+                code: "required",
+                message: "Validation failed for 'cns': value is required"
+            )
+        }
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.expiresAt) else {
+            throw SdkValidationError(
+                field: "expiresAt",
+                code: "required",
+                message: "Validation failed for 'expiresAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        autoRenew = try container.sdkDecodeRequired(.autoRenew)
+        cns = try container.sdkDecodeRequired(.cns)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        id = try container.sdkDecodeRequired(.id)
+    }
+}
+
+public extension UploadCertResponse {
+    init(autoRenew: Bool, cns: [String], createdAt: Double, expiresAt: Double, id: String) {
         (self.autoRenew, self.cns) = (autoRenew, cns)
         (self.createdAt, self.expiresAt) = (createdAt, expiresAt)
         self.id = id
@@ -127,37 +171,59 @@ public struct GetCertsResponseCertsItem: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetCertsResponseCertsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.autoRenew) else {
-            throw SdkValidationError(field: "autoRenew", code: "required", message: "Validation failed for 'autoRenew': value is required")
-        }
-        guard container.contains(.cns) else {
-            throw SdkValidationError(field: "cns", code: "required", message: "Validation failed for 'cns': value is required")
-        }
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.expiresAt) else {
-            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.autoRenew = try container.sdkDecodeRequired(.autoRenew)
-        self.cns = try container.sdkDecodeRequired(.cns)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        self.id = try container.sdkDecodeRequired(.id)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetCertsResponseCertsItem {
-    public init(autoRenew: Bool, cns: [String], createdAt: Double, expiresAt: Double, id: String) {
+public extension GetCertsResponseCertsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.autoRenew) else {
+            throw SdkValidationError(
+                field: "autoRenew",
+                code: "required",
+                message: "Validation failed for 'autoRenew': value is required"
+            )
+        }
+        guard container.contains(.cns) else {
+            throw SdkValidationError(
+                field: "cns",
+                code: "required",
+                message: "Validation failed for 'cns': value is required"
+            )
+        }
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.expiresAt) else {
+            throw SdkValidationError(
+                field: "expiresAt",
+                code: "required",
+                message: "Validation failed for 'expiresAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        autoRenew = try container.sdkDecodeRequired(.autoRenew)
+        cns = try container.sdkDecodeRequired(.cns)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        id = try container.sdkDecodeRequired(.id)
+    }
+}
+
+public extension GetCertsResponseCertsItem {
+    init(autoRenew: Bool, cns: [String], createdAt: Double, expiresAt: Double, id: String) {
         (self.autoRenew, self.cns) = (autoRenew, cns)
         (self.createdAt, self.expiresAt) = (createdAt, expiresAt)
         self.id = id
@@ -175,25 +241,35 @@ public struct GetCertsResponse: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetCertsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.certs) else {
-            throw SdkValidationError(field: "certs", code: "required", message: "Validation failed for 'certs': value is required")
-        }
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        self.certs = try container.sdkDecodeRequired(.certs)
-        self.pagination = try container.sdkDecodeRequired(.pagination)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetCertsResponse {
-    public init(certs: [GetCertsResponseCertsItem], pagination: Pagination) {
+public extension GetCertsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.certs) else {
+            throw SdkValidationError(
+                field: "certs",
+                code: "required",
+                message: "Validation failed for 'certs': value is required"
+            )
+        }
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        certs = try container.sdkDecodeRequired(.certs)
+        pagination = try container.sdkDecodeRequired(.pagination)
+    }
+}
+
+public extension GetCertsResponse {
+    init(certs: [GetCertsResponseCertsItem], pagination: Pagination) {
         (self.certs, self.pagination) = (certs, pagination)
     }
 }
@@ -213,37 +289,59 @@ public struct IssueCertResponse: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension IssueCertResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.autoRenew) else {
-            throw SdkValidationError(field: "autoRenew", code: "required", message: "Validation failed for 'autoRenew': value is required")
-        }
-        guard container.contains(.cns) else {
-            throw SdkValidationError(field: "cns", code: "required", message: "Validation failed for 'cns': value is required")
-        }
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.expiresAt) else {
-            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.autoRenew = try container.sdkDecodeRequired(.autoRenew)
-        self.cns = try container.sdkDecodeRequired(.cns)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        self.id = try container.sdkDecodeRequired(.id)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension IssueCertResponse {
-    public init(autoRenew: Bool, cns: [String], createdAt: Double, expiresAt: Double, id: String) {
+public extension IssueCertResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.autoRenew) else {
+            throw SdkValidationError(
+                field: "autoRenew",
+                code: "required",
+                message: "Validation failed for 'autoRenew': value is required"
+            )
+        }
+        guard container.contains(.cns) else {
+            throw SdkValidationError(
+                field: "cns",
+                code: "required",
+                message: "Validation failed for 'cns': value is required"
+            )
+        }
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.expiresAt) else {
+            throw SdkValidationError(
+                field: "expiresAt",
+                code: "required",
+                message: "Validation failed for 'expiresAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        autoRenew = try container.sdkDecodeRequired(.autoRenew)
+        cns = try container.sdkDecodeRequired(.cns)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        id = try container.sdkDecodeRequired(.id)
+    }
+}
+
+public extension IssueCertResponse {
+    init(autoRenew: Bool, cns: [String], createdAt: Double, expiresAt: Double, id: String) {
         (self.autoRenew, self.cns) = (autoRenew, cns)
         (self.createdAt, self.expiresAt) = (createdAt, expiresAt)
         self.id = id

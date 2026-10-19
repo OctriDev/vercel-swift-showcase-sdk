@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension NetworkingMethods {
-    /// Creates a PrivateLink endpoint connecting a project to an AWS VPC endpoint service. Supply `projectId`, `name`, `vercelRegion`, and `awsServiceName`; Advanced Networking must be enabled for the project in the selected Vercel region. The endpoint is provisioned asynchronously, and the 201 response includes its current status.
+public extension NetworkingMethods {
+    /// Creates a PrivateLink endpoint connecting a project to an AWS VPC endpoint service. Supply `projectId`, `name`,
+    /// `vercelRegion`, and `awsServiceName`; Advanced Networking must be enabled for the project in the selected Vercel
+    /// region. The endpoint is provisioned asynchronously, and the 201 response includes its current status.
     ///
     /// Creates a PrivateLink endpoint for a project.
     ///
@@ -27,12 +29,28 @@ extension NetworkingMethods {
     ///   private DNS names, which are then returned in `privateDnsNames`. Defaults to
     ///   `false`, in which case the endpoint is reachable through the DNS names in
     ///   `awsDnsEntries`.
-    public static func createPrivateLinkEndpoint(config: ClientConfig, projectId: String, name: String, vercelRegion: String, awsServiceName: String, teamId: String? = nil, slug: String? = nil, enablePrivateDns: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> PrivateLinkEndpoint {
+    static func createPrivateLinkEndpoint(
+        config: ClientConfig,
+        projectId: String,
+        name: String,
+        vercelRegion: String,
+        awsServiceName: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        enablePrivateDns: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> PrivateLinkEndpoint {
         try validateLength("name", name, max: 255)
 
-        let requestBody = CreatePrivateLinkEndpointRequestBody(projectId: projectId, name: name, vercelRegion: vercelRegion, awsServiceName: awsServiceName, enablePrivateDns: enablePrivateDns)
+        let requestBody = CreatePrivateLinkEndpointRequestBody(
+            projectId: projectId,
+            name: name,
+            vercelRegion: vercelRegion,
+            awsServiceName: awsServiceName,
+            enablePrivateDns: enablePrivateDns
+        )
 
-        return try (await sdkRequest("POST", "/v1/networking/privatelink/endpoints", config: config, query: [
+        return try await (sdkRequest("POST", "/v1/networking/privatelink/endpoints", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createPrivateLinkEndpoint", options: requestOptions)).data

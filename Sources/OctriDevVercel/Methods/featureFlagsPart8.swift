@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    public struct ListFlagVersionsOptions: Codable {
+public extension FeatureFlagsMethods {
+    struct ListFlagVersionsOptions: Codable {
         public var projectIdOrName: String
         public var flagIdOrSlug: String
         public var limit: Double?
@@ -23,7 +23,9 @@ extension FeatureFlagsMethods {
         }
     }
 
-    /// Lists the versions recorded for a feature flag in a project. Use `cursor` to continue through the results and `environment` to filter versions by environment. The response includes pagination information alongside the version records.
+    /// Lists the versions recorded for a feature flag in a project. Use `cursor` to continue through the results and
+    /// `environment` to filter versions by environment. The response includes pagination information alongside the
+    /// version records.
     ///
     /// Lists flag versions for a given flag.
     ///
@@ -33,22 +35,41 @@ extension FeatureFlagsMethods {
     /// - withMetadata: Whether to include metadata
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listFlagVersions(config: ClientConfig, options: ListFlagVersionsOptions, requestOptions: RequestOptions? = nil) async throws -> ListFlagVersionsResponse {
+    static func listFlagVersions(
+        config: ClientConfig,
+        options: ListFlagVersionsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListFlagVersionsResponse {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/flags/", sdkEncodePathSegment(sdkWireString(options.flagIdOrSlug)), "/versions"].joined(), config: config, query: [
-            SdkQueryParameter("limit", value: options.limit),
-            SdkQueryParameter("cursor", value: options.cursor),
-            SdkQueryParameter("environment", value: options.environment),
-            SdkQueryParameter("withMetadata", value: options.withMetadata),
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], decoder: .json, operationId: "listFlagVersions", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(options.projectIdOrName)),
+                "/feature-flags/flags/",
+                sdkEncodePathSegment(sdkWireString(options.flagIdOrSlug)),
+                "/versions",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("limit", value: options.limit),
+                SdkQueryParameter("cursor", value: options.cursor),
+                SdkQueryParameter("environment", value: options.environment),
+                SdkQueryParameter("withMetadata", value: options.withMetadata),
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            decoder: .json,
+            operationId: "listFlagVersions",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves feature flag settings for a project. Use these settings to inspect whether flags are enabled, which environments are configured, and the project's flag-related metadata.
+    /// Retrieves feature flag settings for a project. Use these settings to inspect whether flags are enabled, which
+    /// environments are configured, and the project's flag-related metadata.
     ///
     /// Retrieve feature flag settings for a project.
     ///
@@ -56,10 +77,24 @@ extension FeatureFlagsMethods {
     /// - projectIdOrName: The project id or name
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getFlagSettings(config: ClientConfig, projectIdOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetFlagSettingsResponse {
-        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/settings"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getFlagSettings", options: requestOptions)).data
+    static func getFlagSettings(
+        config: ClientConfig,
+        projectIdOrName: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetFlagSettingsResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/settings"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getFlagSettings",
+            options: requestOptions
+        )).data
     }
 }

@@ -6,20 +6,43 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    /// Verifies a project domain by checking its verification challenge when the domain is not yet verified. Use this operation after completing one of the challenges associated with the domain.
+public extension ProjectsMethods {
+    /// Verifies a project domain by checking its verification challenge when the domain is not yet verified. Use this
+    /// operation after completing one of the challenges associated with the domain.
     ///
-    /// Attempts to verify a project domain with `verified = false` by checking the correctness of the project domain's `verification` challenge.
+    /// Attempts to verify a project domain with `verified = false` by checking the correctness of the project domain's
+    /// `verification` challenge.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name
     /// - domain: The domain name you want to verify
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func verifyProjectDomain(config: ClientConfig, idOrName: String, domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> VerifyProjectDomainResponse {
-        return try (await sdkRequest("POST", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/verify"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "verifyProjectDomain", options: requestOptions)).data
+    static func verifyProjectDomain(
+        config: ClientConfig,
+        idOrName: String,
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> VerifyProjectDomainResponse {
+        try await (sdkRequest(
+            "POST",
+            [
+                "/v9/projects/",
+                sdkEncodePathSegment(sdkWireString(idOrName)),
+                "/domains/",
+                sdkEncodePathSegment(sdkWireString(domain)),
+                "/verify",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "verifyProjectDomain",
+            options: requestOptions
+        )).data
     }
 }

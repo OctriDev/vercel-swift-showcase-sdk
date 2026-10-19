@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical authentication operation model declarations
+/// Canonical authentication operation model declarations
 /// Successful response.
 public struct GetAuthTokenResponse: Codable {
     /// Authentication token metadata.
@@ -17,21 +17,27 @@ public struct GetAuthTokenResponse: Codable {
         case token
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetAuthTokenResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.token) else {
-            throw SdkValidationError(field: "token", code: "required", message: "Validation failed for 'token': value is required")
-        }
-        self.token = try container.sdkDecodeRequired(.token)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetAuthTokenResponse {
-    public init(token: AuthToken) {
+public extension GetAuthTokenResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.token) else {
+            throw SdkValidationError(
+                field: "token",
+                code: "required",
+                message: "Validation failed for 'token': value is required"
+            )
+        }
+        token = try container.sdkDecodeRequired(.token)
+    }
+}
+
+public extension GetAuthTokenResponse {
+    init(token: AuthToken) {
         self.token = token
     }
 }
@@ -59,40 +65,73 @@ public struct ExchangeSsoTokenRequestBodyVariant0: Codable {
         case redirectUri = "redirect_uri"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ExchangeSsoTokenRequestBodyVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
-        }
-        guard container.contains(.clientId) else {
-            throw SdkValidationError(field: "client_id", code: "required", message: "Validation failed for 'client_id': value is required")
-        }
-        guard container.contains(.clientSecret) else {
-            throw SdkValidationError(field: "client_secret", code: "required", message: "Validation failed for 'client_secret': value is required")
-        }
-        guard container.contains(.grantType) else {
-            throw SdkValidationError(field: "grant_type", code: "required", message: "Validation failed for 'grant_type': value is required")
-        }
-        self.code = try container.sdkDecodeRequired(.code)
-        self.clientId = try container.sdkDecodeRequired(.clientId)
-        self.clientSecret = try container.sdkDecodeRequired(.clientSecret)
-        self.grantType = try container.sdkDecodeRequired(.grantType)
-        self.state = try container.sdkDecodeIfPresent(.state)
-        self.redirectUri = try container.sdkDecodeIfPresent(.redirectUri)
-            try sdkValidateRawEnum("grant_type", self.grantType, ExchangeSsoTokenRequestBodyVariant0GrantType.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ExchangeSsoTokenRequestBodyVariant0 {
-    public init(code: String, clientId: String, clientSecret: String, grantType: ExchangeSsoTokenRequestBodyVariant0GrantType, state: String? = nil, redirectUri: String? = nil) throws {
+public extension ExchangeSsoTokenRequestBodyVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.code) else {
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
+        }
+        guard container.contains(.clientId) else {
+            throw SdkValidationError(
+                field: "client_id",
+                code: "required",
+                message: "Validation failed for 'client_id': value is required"
+            )
+        }
+        guard container.contains(.clientSecret) else {
+            throw SdkValidationError(
+                field: "client_secret",
+                code: "required",
+                message: "Validation failed for 'client_secret': value is required"
+            )
+        }
+        guard container.contains(.grantType) else {
+            throw SdkValidationError(
+                field: "grant_type",
+                code: "required",
+                message: "Validation failed for 'grant_type': value is required"
+            )
+        }
+        code = try container.sdkDecodeRequired(.code)
+        clientId = try container.sdkDecodeRequired(.clientId)
+        clientSecret = try container.sdkDecodeRequired(.clientSecret)
+        grantType = try container.sdkDecodeRequired(.grantType)
+        state = try container.sdkDecodeIfPresent(.state)
+        redirectUri = try container.sdkDecodeIfPresent(.redirectUri)
+        try sdkValidateRawEnum(
+            "grant_type",
+            grantType,
+            ExchangeSsoTokenRequestBodyVariant0GrantType.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension ExchangeSsoTokenRequestBodyVariant0 {
+    init(
+        code: String,
+        clientId: String,
+        clientSecret: String,
+        grantType: ExchangeSsoTokenRequestBodyVariant0GrantType,
+        state: String? = nil,
+        redirectUri: String? = nil
+    ) throws {
         (self.code, self.clientId) = (code, clientId)
         (self.clientSecret, self.grantType) = (clientSecret, grantType)
         (self.state, self.redirectUri) = (state, redirectUri)
-            try sdkValidateRawEnum("grant_type", self.grantType, ExchangeSsoTokenRequestBodyVariant0GrantType.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "grant_type",
+            self.grantType,
+            ExchangeSsoTokenRequestBodyVariant0GrantType.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -110,25 +149,35 @@ public struct CreateAuthTokenResponse: Codable {
         case token
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateAuthTokenResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.bearerToken) else {
-            throw SdkValidationError(field: "bearerToken", code: "required", message: "Validation failed for 'bearerToken': value is required")
-        }
-        guard container.contains(.token) else {
-            throw SdkValidationError(field: "token", code: "required", message: "Validation failed for 'token': value is required")
-        }
-        self.bearerToken = try container.sdkDecodeRequired(.bearerToken)
-        self.token = try container.sdkDecodeRequired(.token)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateAuthTokenResponse {
-    public init(bearerToken: String, token: AuthToken) {
+public extension CreateAuthTokenResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.bearerToken) else {
+            throw SdkValidationError(
+                field: "bearerToken",
+                code: "required",
+                message: "Validation failed for 'bearerToken': value is required"
+            )
+        }
+        guard container.contains(.token) else {
+            throw SdkValidationError(
+                field: "token",
+                code: "required",
+                message: "Validation failed for 'token': value is required"
+            )
+        }
+        bearerToken = try container.sdkDecodeRequired(.bearerToken)
+        token = try container.sdkDecodeRequired(.token)
+    }
+}
+
+public extension CreateAuthTokenResponse {
+    init(bearerToken: String, token: AuthToken) {
         (self.bearerToken, self.token) = (bearerToken, token)
     }
 }
@@ -139,27 +188,41 @@ public indirect enum ExchangeSsoTokenRequestBody {
 }
 
 extension ExchangeSsoTokenRequestBody: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ExchangeSsoTokenRequestBody")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ExchangeSsoTokenRequestBody"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ExchangeSsoTokenRequestBody {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ExchangeSsoTokenRequestBodyVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ExchangeSsoTokenRequestBodyVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .exchangeSsoTokenRequestBodyVariant0(value)
         }
-        if let value = try? container.decode(ExchangeSsoTokenRequestBodyVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ExchangeSsoTokenRequestBodyVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .exchangeSsoTokenRequestBodyVariant1(value)
         }
         return nil
@@ -171,12 +234,12 @@ extension ExchangeSsoTokenRequestBody {
         if let value = try? container.decode(
             ExchangeSsoTokenRequestBodyVariant0.self
         ) {
-            return             .exchangeSsoTokenRequestBodyVariant0(value)
+            return .exchangeSsoTokenRequestBodyVariant0(value)
         }
         if let value = try? container.decode(
             ExchangeSsoTokenRequestBodyVariant1.self
         ) {
-            return             .exchangeSsoTokenRequestBodyVariant1(value)
+            return .exchangeSsoTokenRequestBodyVariant1(value)
         }
         return nil
     }
@@ -209,37 +272,68 @@ public struct ExchangeSsoTokenRequestBodyVariant1: Codable {
         case grantType = "grant_type"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ExchangeSsoTokenRequestBodyVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.refreshToken) else {
-            throw SdkValidationError(field: "refresh_token", code: "required", message: "Validation failed for 'refresh_token': value is required")
-        }
-        guard container.contains(.clientId) else {
-            throw SdkValidationError(field: "client_id", code: "required", message: "Validation failed for 'client_id': value is required")
-        }
-        guard container.contains(.clientSecret) else {
-            throw SdkValidationError(field: "client_secret", code: "required", message: "Validation failed for 'client_secret': value is required")
-        }
-        guard container.contains(.grantType) else {
-            throw SdkValidationError(field: "grant_type", code: "required", message: "Validation failed for 'grant_type': value is required")
-        }
-        self.refreshToken = try container.sdkDecodeRequired(.refreshToken)
-        self.clientId = try container.sdkDecodeRequired(.clientId)
-        self.clientSecret = try container.sdkDecodeRequired(.clientSecret)
-        self.grantType = try container.sdkDecodeRequired(.grantType)
-            try sdkValidateRawEnum("grant_type", self.grantType, ExchangeSsoTokenRequestBodyVariant1GrantType.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ExchangeSsoTokenRequestBodyVariant1 {
-    public init(refreshToken: String, clientId: String, clientSecret: String, grantType: ExchangeSsoTokenRequestBodyVariant1GrantType) throws {
+public extension ExchangeSsoTokenRequestBodyVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.refreshToken) else {
+            throw SdkValidationError(
+                field: "refresh_token",
+                code: "required",
+                message: "Validation failed for 'refresh_token': value is required"
+            )
+        }
+        guard container.contains(.clientId) else {
+            throw SdkValidationError(
+                field: "client_id",
+                code: "required",
+                message: "Validation failed for 'client_id': value is required"
+            )
+        }
+        guard container.contains(.clientSecret) else {
+            throw SdkValidationError(
+                field: "client_secret",
+                code: "required",
+                message: "Validation failed for 'client_secret': value is required"
+            )
+        }
+        guard container.contains(.grantType) else {
+            throw SdkValidationError(
+                field: "grant_type",
+                code: "required",
+                message: "Validation failed for 'grant_type': value is required"
+            )
+        }
+        refreshToken = try container.sdkDecodeRequired(.refreshToken)
+        clientId = try container.sdkDecodeRequired(.clientId)
+        clientSecret = try container.sdkDecodeRequired(.clientSecret)
+        grantType = try container.sdkDecodeRequired(.grantType)
+        try sdkValidateRawEnum(
+            "grant_type",
+            grantType,
+            ExchangeSsoTokenRequestBodyVariant1GrantType.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension ExchangeSsoTokenRequestBodyVariant1 {
+    init(
+        refreshToken: String,
+        clientId: String,
+        clientSecret: String,
+        grantType: ExchangeSsoTokenRequestBodyVariant1GrantType
+    ) throws {
         (self.refreshToken, self.clientId) = (refreshToken, clientId)
         (self.clientSecret, self.grantType) = (clientSecret, grantType)
-            try sdkValidateRawEnum("grant_type", self.grantType, ExchangeSsoTokenRequestBodyVariant1GrantType.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "grant_type",
+            self.grantType,
+            ExchangeSsoTokenRequestBodyVariant1GrantType.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -253,21 +347,27 @@ public struct DeleteAuthTokenResponse: Codable {
         case tokenId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteAuthTokenResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.tokenId) else {
-            throw SdkValidationError(field: "tokenId", code: "required", message: "Validation failed for 'tokenId': value is required")
-        }
-        self.tokenId = try container.sdkDecodeRequired(.tokenId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension DeleteAuthTokenResponse {
-    public init(tokenId: String) {
+public extension DeleteAuthTokenResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.tokenId) else {
+            throw SdkValidationError(
+                field: "tokenId",
+                code: "required",
+                message: "Validation failed for 'tokenId': value is required"
+            )
+        }
+        tokenId = try container.sdkDecodeRequired(.tokenId)
+    }
+}
+
+public extension DeleteAuthTokenResponse {
+    init(tokenId: String) {
         self.tokenId = tokenId
     }
 }

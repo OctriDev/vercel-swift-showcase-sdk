@@ -3,7 +3,7 @@
 
 import Foundation
 
-// DomainsRegistrarOrder domain models
+/// DomainsRegistrarOrder domain models
 public typealias OrderId = String
 
 /// The total price of the order is too high.
@@ -21,29 +21,43 @@ public struct OrderTooExpensive: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension OrderTooExpensive {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.status) else {
-            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
-        }
-        guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        self.status = try container.sdkDecodeRequired(.status)
-        self.code = try container.sdkDecodeRequired(.code)
-        self.message = try container.sdkDecodeRequired(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension OrderTooExpensive {
-    public init(status: Int, code: OrderTooExpensiveCode, message: String) {
+public extension OrderTooExpensive {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.status) else {
+            throw SdkValidationError(
+                field: "status",
+                code: "required",
+                message: "Validation failed for 'status': value is required"
+            )
+        }
+        guard container.contains(.code) else {
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        status = try container.sdkDecodeRequired(.status)
+        code = try container.sdkDecodeRequired(.code)
+        message = try container.sdkDecodeRequired(.message)
+    }
+}
+
+public extension OrderTooExpensive {
+    init(status: Int, code: OrderTooExpensiveCode, message: String) {
         (self.status, self.code) = (status, code)
         self.message = message
     }
@@ -53,12 +67,15 @@ extension OrderTooExpensive {
 public struct OrderTooExpensiveCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let orderTooExpensive = OrderTooExpensiveCode(rawValue: "order_too_expensive")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

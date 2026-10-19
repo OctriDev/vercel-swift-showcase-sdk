@@ -18,25 +18,25 @@ struct SubmitInvoiceRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.invoiceDate, forKey: SdkCodingKey("invoiceDate"))
-        try keyedContainer.encode(self.period, forKey: SdkCodingKey("period"))
-        try keyedContainer.encode(self.items, forKey: SdkCodingKey("items"))
-        try keyedContainer.encodeIfPresent(self.externalId, forKey: SdkCodingKey("externalId"))
-        try keyedContainer.encodeIfPresent(self.memo, forKey: SdkCodingKey("memo"))
-        try keyedContainer.encodeIfPresent(self.discounts, forKey: SdkCodingKey("discounts"))
-        try keyedContainer.encodeIfPresent(self.final, forKey: SdkCodingKey("final"))
-        try keyedContainer.encodeIfPresent(self.test, forKey: SdkCodingKey("test"))
+        try keyedContainer.encode(invoiceDate, forKey: SdkCodingKey("invoiceDate"))
+        try keyedContainer.encode(period, forKey: SdkCodingKey("period"))
+        try keyedContainer.encode(items, forKey: SdkCodingKey("items"))
+        try keyedContainer.encodeIfPresent(externalId, forKey: SdkCodingKey("externalId"))
+        try keyedContainer.encodeIfPresent(memo, forKey: SdkCodingKey("memo"))
+        try keyedContainer.encodeIfPresent(discounts, forKey: SdkCodingKey("discounts"))
+        try keyedContainer.encodeIfPresent(final, forKey: SdkCodingKey("final"))
+        try keyedContainer.encodeIfPresent(test, forKey: SdkCodingKey("test"))
     }
 
     init(options: MarketplaceMethods.SubmitInvoiceOptions) {
-        self.invoiceDate = options.invoiceDate
-        self.period = options.period
-        self.items = options.items
-        self.externalId = options.externalId
-        self.memo = options.memo
-        self.discounts = options.discounts
-        self.final = options.final
-        self.test = options.test
+        invoiceDate = options.invoiceDate
+        period = options.period
+        items = options.items
+        externalId = options.externalId
+        memo = options.memo
+        discounts = options.discounts
+        final = options.final
+        test = options.test
     }
 }
 
@@ -47,9 +47,9 @@ struct UpdateInvoiceRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.action, forKey: SdkCodingKey("action"))
-        try keyedContainer.encode(self.reason, forKey: SdkCodingKey("reason"))
-        try keyedContainer.encode(self.total, forKey: SdkCodingKey("total"))
+        try keyedContainer.encode(action, forKey: SdkCodingKey("action"))
+        try keyedContainer.encode(reason, forKey: SdkCodingKey("reason"))
+        try keyedContainer.encode(total, forKey: SdkCodingKey("total"))
     }
 }
 
@@ -59,8 +59,8 @@ struct SubmitPrepaymentBalancesRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.timestamp, forKey: SdkCodingKey("timestamp"))
-        try keyedContainer.encode(self.balances, forKey: SdkCodingKey("balances"))
+        try keyedContainer.encode(timestamp, forKey: SdkCodingKey("timestamp"))
+        try keyedContainer.encode(balances, forKey: SdkCodingKey("balances"))
     }
 }
 
@@ -70,8 +70,8 @@ struct UpdateResourceSecretsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.secrets, forKey: SdkCodingKey("secrets"))
-        try keyedContainer.encodeIfPresent(self.partial, forKey: SdkCodingKey("partial"))
+        try keyedContainer.encode(secrets, forKey: SdkCodingKey("secrets"))
+        try keyedContainer.encodeIfPresent(partial, forKey: SdkCodingKey("partial"))
     }
 }
 
@@ -81,8 +81,8 @@ struct UpdateResourceSecretsByIdRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.secrets, forKey: SdkCodingKey("secrets"))
-        try keyedContainer.encodeIfPresent(self.partial, forKey: SdkCodingKey("partial"))
+        try keyedContainer.encode(secrets, forKey: SdkCodingKey("secrets"))
+        try keyedContainer.encodeIfPresent(partial, forKey: SdkCodingKey("partial"))
     }
 }
 
@@ -93,9 +93,9 @@ struct CreateAuthTokenRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.expiresAt, forKey: SdkCodingKey("expiresAt"))
-        try keyedContainer.encodeIfPresent(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(expiresAt, forKey: SdkCodingKey("expiresAt"))
+        try keyedContainer.encodeIfPresent(projectId, forKey: SdkCodingKey("projectId"))
     }
 }
 
@@ -109,12 +109,12 @@ struct CreateApiKeysRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.purpose, forKey: SdkCodingKey("purpose"))
-        try keyedContainer.encodeIfPresent(self.projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.expiresAt, forKey: SdkCodingKey("expiresAt"))
-        try keyedContainer.encodeIfPresent(self.aiGatewayQuota, forKey: SdkCodingKey("aiGatewayQuota"))
-        try keyedContainer.encodeIfPresent(self.metadata, forKey: SdkCodingKey("metadata"))
+        try keyedContainer.encode(purpose, forKey: SdkCodingKey("purpose"))
+        try keyedContainer.encodeIfPresent(projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(expiresAt, forKey: SdkCodingKey("expiresAt"))
+        try keyedContainer.encodeIfPresent(aiGatewayQuota, forKey: SdkCodingKey("aiGatewayQuota"))
+        try keyedContainer.encodeIfPresent(metadata, forKey: SdkCodingKey("metadata"))
     }
 }
 
@@ -123,7 +123,7 @@ struct SignKmsMessageRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.message, forKey: SdkCodingKey("message"))
+        try keyedContainer.encode(message, forKey: SdkCodingKey("message"))
     }
 }
 
@@ -134,9 +134,9 @@ struct SignKmsTokenRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.claims, forKey: SdkCodingKey("claims"))
-        try keyedContainer.encodeIfPresent(self.headers, forKey: SdkCodingKey("headers"))
-        try keyedContainer.encodeIfPresent(self.ttl, forKey: SdkCodingKey("ttl"))
+        try keyedContainer.encodeIfPresent(claims, forKey: SdkCodingKey("claims"))
+        try keyedContainer.encodeIfPresent(headers, forKey: SdkCodingKey("headers"))
+        try keyedContainer.encodeIfPresent(ttl, forKey: SdkCodingKey("ttl"))
     }
 }
 
@@ -150,21 +150,21 @@ struct CreateKmsIssuerRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.algorithm, forKey: SdkCodingKey("algorithm"))
-        try keyedContainer.encodeIfPresent(self.claimsSchema, forKey: SdkCodingKey("claimsSchema"))
-        try keyedContainer.encodeIfPresent(self.policy, forKey: SdkCodingKey("policy"))
-        try keyedContainer.encodeIfPresent(self.importKey, forKey: SdkCodingKey("importKey"))
-        try keyedContainer.encodeIfPresent(self.importKeyId, forKey: SdkCodingKey("importKeyId"))
+        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(algorithm, forKey: SdkCodingKey("algorithm"))
+        try keyedContainer.encodeIfPresent(claimsSchema, forKey: SdkCodingKey("claimsSchema"))
+        try keyedContainer.encodeIfPresent(policy, forKey: SdkCodingKey("policy"))
+        try keyedContainer.encodeIfPresent(importKey, forKey: SdkCodingKey("importKey"))
+        try keyedContainer.encodeIfPresent(importKeyId, forKey: SdkCodingKey("importKeyId"))
     }
 
     init(options: KmsMethods.CreateKmsIssuerOptions) {
-        self.name = options.name
-        self.algorithm = options.algorithm
-        self.claimsSchema = options.claimsSchema
-        self.policy = options.policy
-        self.importKey = options.importKey
-        self.importKeyId = options.importKeyId
+        name = options.name
+        algorithm = options.algorithm
+        claimsSchema = options.claimsSchema
+        policy = options.policy
+        importKey = options.importKey
+        importKeyId = options.importKeyId
     }
 }
 
@@ -177,19 +177,19 @@ struct CreateKmsSigningKeyRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.activation, forKey: SdkCodingKey("activation"))
-        try keyedContainer.encodeIfPresent(self.revokePreviousAfterHours, forKey: SdkCodingKey("revokePreviousAfterHours"))
-        try keyedContainer.encodeIfPresent(self.revokePreviousAt, forKey: SdkCodingKey("revokePreviousAt"))
-        try keyedContainer.encodeIfPresent(self.importKey, forKey: SdkCodingKey("importKey"))
-        try keyedContainer.encodeIfPresent(self.importKeyId, forKey: SdkCodingKey("importKeyId"))
+        try keyedContainer.encodeIfPresent(activation, forKey: SdkCodingKey("activation"))
+        try keyedContainer.encodeIfPresent(revokePreviousAfterHours, forKey: SdkCodingKey("revokePreviousAfterHours"))
+        try keyedContainer.encodeIfPresent(revokePreviousAt, forKey: SdkCodingKey("revokePreviousAt"))
+        try keyedContainer.encodeIfPresent(importKey, forKey: SdkCodingKey("importKey"))
+        try keyedContainer.encodeIfPresent(importKeyId, forKey: SdkCodingKey("importKeyId"))
     }
 
     init(options: KmsMethods.CreateKmsSigningKeyOptions) {
-        self.activation = options.activation
-        self.revokePreviousAfterHours = options.revokePreviousAfterHours
-        self.revokePreviousAt = options.revokePreviousAt
-        self.importKey = options.importKey
-        self.importKeyId = options.importKeyId
+        activation = options.activation
+        revokePreviousAfterHours = options.revokePreviousAfterHours
+        revokePreviousAt = options.revokePreviousAt
+        importKey = options.importKey
+        importKeyId = options.importKeyId
     }
 }
 
@@ -198,7 +198,7 @@ struct ActivateKmsSigningKeyRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.revokePreviousAfterHours, forKey: SdkCodingKey("revokePreviousAfterHours"))
+        try keyedContainer.encodeIfPresent(revokePreviousAfterHours, forKey: SdkCodingKey("revokePreviousAfterHours"))
     }
 }
 
@@ -208,7 +208,7 @@ struct UpdateKmsIssuerRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.claimsSchema, forKey: SdkCodingKey("claimsSchema"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(claimsSchema, forKey: SdkCodingKey("claimsSchema"))
     }
 }

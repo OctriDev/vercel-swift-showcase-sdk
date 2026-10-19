@@ -9,7 +9,10 @@ import Foundation
 public struct UploadProjectAvatarResponseFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let actixWeb = UploadProjectAvatarResponseFramework(rawValue: "actix-web")
     public static let angular = UploadProjectAvatarResponseFramework(rawValue: "angular")
     public static let ash = UploadProjectAvatarResponseFramework(rawValue: "ash")
@@ -87,7 +90,7 @@ public struct UploadProjectAvatarResponseFramework: RawRepresentable, Hashable, 
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -147,16 +150,20 @@ public enum CreateProjectEnvResponseCreatedVariant0ContentHintVariant11Type: Str
     }
 }
 
-public struct GetProjectsResponseResourceConfigBuildMachineSelection: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetProjectsResponseResourceConfigBuildMachineSelection: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let elastic = GetProjectsResponseResourceConfigBuildMachineSelection(rawValue: "elastic")
     public static let fixed = GetProjectsResponseResourceConfigBuildMachineSelection(rawValue: "fixed")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -186,14 +193,17 @@ public enum ListLogDrainsResponseVariant1DrainsVariant0ItemFilterV2FilterX927f97
 public struct RemoveCustomEnvironmentResponseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = RemoveCustomEnvironmentResponseType(rawValue: "development")
     public static let preview = RemoveCustomEnvironmentResponseType(rawValue: "preview")
     public static let production = RemoveCustomEnvironmentResponseType(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

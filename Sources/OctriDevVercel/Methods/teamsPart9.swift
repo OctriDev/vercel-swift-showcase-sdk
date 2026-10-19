@@ -6,7 +6,7 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension TeamsMethods {
+public extension TeamsMethods {
     /// Deletes an active team invite code. Use `teamId` and `inviteId` to identify the team and invite code to remove.
     ///
     /// Delete an active Team invite code.
@@ -14,11 +14,29 @@ extension TeamsMethods {
     /// - Parameters:
     /// - inviteId: The Team invite code ID.
     /// - teamId: The Team identifier to perform the request on behalf of.
-    public static func deleteTeamInviteCode(config: ClientConfig, inviteId: String, teamId: String, requestOptions: RequestOptions? = nil) async throws -> DeleteTeamInviteCodeResponse {
-        return try (await sdkRequest("DELETE", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/invites/", sdkEncodePathSegment(sdkWireString(inviteId))].joined(), config: config, decoder: .json, operationId: "deleteTeamInviteCode", options: requestOptions)).data
+    static func deleteTeamInviteCode(
+        config: ClientConfig,
+        inviteId: String,
+        teamId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteTeamInviteCodeResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/teams/",
+                sdkEncodePathSegment(sdkWireString(teamId)),
+                "/invites/",
+                sdkEncodePathSegment(sdkWireString(inviteId)),
+            ].joined(),
+            config: config,
+            decoder: .json,
+            operationId: "deleteTeamInviteCode",
+            options: requestOptions
+        )).data
     }
 
-    /// Updates the settings of a microfrontends group in a team. Supply any of `name`, `fallbackEnvironment`, or `enablePolyrepoBranchRouting` to change that setting; fields you omit are not specified for update.
+    /// Updates the settings of a microfrontends group in a team. Supply any of `name`, `fallbackEnvironment`, or
+    /// `enablePolyrepoBranchRouting` to change that setting; fields you omit are not specified for update.
     ///
     /// Updates a microfrontends group's settings.
     ///
@@ -31,11 +49,38 @@ extension TeamsMethods {
     ///   from the default app.
     /// - enablePolyrepoBranchRouting: Whether Preview Deployments can link to
     ///   branches with the same name in other Git repositories.
-    public static func updateMicrofrontendsGroup(config: ClientConfig, groupId: String, teamId: String, slug: String? = nil, name: String? = nil, fallbackEnvironment: String? = nil, enablePolyrepoBranchRouting: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateMicrofrontendsGroupResponse {
-        let requestBody = UpdateMicrofrontendsGroupRequestBody(name: name, fallbackEnvironment: fallbackEnvironment, enablePolyrepoBranchRouting: enablePolyrepoBranchRouting)
+    static func updateMicrofrontendsGroup(
+        config: ClientConfig,
+        groupId: String,
+        teamId: String,
+        slug: String? = nil,
+        name: String? = nil,
+        fallbackEnvironment: String? = nil,
+        enablePolyrepoBranchRouting: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateMicrofrontendsGroupResponse {
+        let requestBody = UpdateMicrofrontendsGroupRequestBody(
+            name: name,
+            fallbackEnvironment: fallbackEnvironment,
+            enablePolyrepoBranchRouting: enablePolyrepoBranchRouting
+        )
 
-        return try (await sdkRequest("PATCH", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/microfrontends/", sdkEncodePathSegment(sdkWireString(groupId))].joined(), config: config, query: [
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "updateMicrofrontendsGroup", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            [
+                "/v1/teams/",
+                sdkEncodePathSegment(sdkWireString(teamId)),
+                "/microfrontends/",
+                sdkEncodePathSegment(sdkWireString(groupId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "updateMicrofrontendsGroup",
+            options: requestOptions
+        )).data
     }
 }
