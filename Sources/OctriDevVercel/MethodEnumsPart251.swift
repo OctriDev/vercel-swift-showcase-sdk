@@ -17,23 +17,23 @@ struct GetConnectorTokenRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.subject, forKey: SdkCodingKey("subject"))
-        try keyedContainer.encodeIfPresent(self.installationId, forKey: SdkCodingKey("installationId"))
-        try keyedContainer.encodeIfPresent(self.audience, forKey: SdkCodingKey("audience"))
-        try keyedContainer.encodeIfPresent(self.scopes, forKey: SdkCodingKey("scopes"))
-        try keyedContainer.encodeIfPresent(self.resources, forKey: SdkCodingKey("resources"))
-        try keyedContainer.encodeIfPresent(self.authorizationDetails, forKey: SdkCodingKey("authorizationDetails"))
-        try keyedContainer.encodeIfPresent(self.validityBufferMs, forKey: SdkCodingKey("validityBufferMs"))
+        try keyedContainer.encodeIfPresent(subject, forKey: SdkCodingKey("subject"))
+        try keyedContainer.encodeIfPresent(installationId, forKey: SdkCodingKey("installationId"))
+        try keyedContainer.encodeIfPresent(audience, forKey: SdkCodingKey("audience"))
+        try keyedContainer.encodeIfPresent(scopes, forKey: SdkCodingKey("scopes"))
+        try keyedContainer.encodeIfPresent(resources, forKey: SdkCodingKey("resources"))
+        try keyedContainer.encodeIfPresent(authorizationDetails, forKey: SdkCodingKey("authorizationDetails"))
+        try keyedContainer.encodeIfPresent(validityBufferMs, forKey: SdkCodingKey("validityBufferMs"))
     }
 
     init(options: ConnectMethods.GetConnectorTokenOptions) {
-        self.subject = options.subject
-        self.installationId = options.installationId
-        self.audience = options.audience
-        self.scopes = options.scopes
-        self.resources = options.resources
-        self.authorizationDetails = options.authorizationDetails
-        self.validityBufferMs = options.validityBufferMs
+        subject = options.subject
+        installationId = options.installationId
+        audience = options.audience
+        scopes = options.scopes
+        resources = options.resources
+        authorizationDetails = options.authorizationDetails
+        validityBufferMs = options.validityBufferMs
     }
 }
 
@@ -54,35 +54,35 @@ struct CreateConnectorAuthorizationRequestRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.subject, forKey: SdkCodingKey("subject"))
-        try keyedContainer.encodeIfPresent(self.installationId, forKey: SdkCodingKey("installationId"))
-        try keyedContainer.encodeIfPresent(self.audience, forKey: SdkCodingKey("audience"))
-        try keyedContainer.encodeIfPresent(self.scopes, forKey: SdkCodingKey("scopes"))
-        try keyedContainer.encodeIfPresent(self.resources, forKey: SdkCodingKey("resources"))
-        try keyedContainer.encodeIfPresent(self.authorizationDetails, forKey: SdkCodingKey("authorizationDetails"))
-        try keyedContainer.encodeIfPresent(self.validityBufferMs, forKey: SdkCodingKey("validityBufferMs"))
-        try keyedContainer.encodeIfPresent(self.returnUrl, forKey: SdkCodingKey("returnUrl"))
-        try keyedContainer.encodeIfPresent(self.webhook, forKey: SdkCodingKey("webhook"))
-        try keyedContainer.encodeIfPresent(self.prompt, forKey: SdkCodingKey("prompt"))
-        try keyedContainer.encodeIfPresent(self.deviceCode, forKey: SdkCodingKey("deviceCode"))
-        try keyedContainer.encodeIfPresent(self.expiresInMs, forKey: SdkCodingKey("expiresInMs"))
-        try keyedContainer.encodeIfPresent(self.additionalParams, forKey: SdkCodingKey("additionalParams"))
+        try keyedContainer.encodeIfPresent(subject, forKey: SdkCodingKey("subject"))
+        try keyedContainer.encodeIfPresent(installationId, forKey: SdkCodingKey("installationId"))
+        try keyedContainer.encodeIfPresent(audience, forKey: SdkCodingKey("audience"))
+        try keyedContainer.encodeIfPresent(scopes, forKey: SdkCodingKey("scopes"))
+        try keyedContainer.encodeIfPresent(resources, forKey: SdkCodingKey("resources"))
+        try keyedContainer.encodeIfPresent(authorizationDetails, forKey: SdkCodingKey("authorizationDetails"))
+        try keyedContainer.encodeIfPresent(validityBufferMs, forKey: SdkCodingKey("validityBufferMs"))
+        try keyedContainer.encodeIfPresent(returnUrl, forKey: SdkCodingKey("returnUrl"))
+        try keyedContainer.encodeIfPresent(webhook, forKey: SdkCodingKey("webhook"))
+        try keyedContainer.encodeIfPresent(prompt, forKey: SdkCodingKey("prompt"))
+        try keyedContainer.encodeIfPresent(deviceCode, forKey: SdkCodingKey("deviceCode"))
+        try keyedContainer.encodeIfPresent(expiresInMs, forKey: SdkCodingKey("expiresInMs"))
+        try keyedContainer.encodeIfPresent(additionalParams, forKey: SdkCodingKey("additionalParams"))
     }
 
     init(options: ConnectMethods.CreateConnectorAuthorizationRequestOptions) {
-        self.subject = options.subject
-        self.installationId = options.installationId
-        self.audience = options.audience
-        self.scopes = options.scopes
-        self.resources = options.resources
-        self.authorizationDetails = options.authorizationDetails
-        self.validityBufferMs = options.validityBufferMs
-        self.returnUrl = options.returnUrl
-        self.webhook = options.webhook
-        self.prompt = options.prompt
-        self.deviceCode = options.deviceCode
-        self.expiresInMs = options.expiresInMs
-        self.additionalParams = options.additionalParams
+        subject = options.subject
+        installationId = options.installationId
+        audience = options.audience
+        scopes = options.scopes
+        resources = options.resources
+        authorizationDetails = options.authorizationDetails
+        validityBufferMs = options.validityBufferMs
+        returnUrl = options.returnUrl
+        webhook = options.webhook
+        prompt = options.prompt
+        deviceCode = options.deviceCode
+        expiresInMs = options.expiresInMs
+        additionalParams = options.additionalParams
     }
 }
 
@@ -94,17 +94,17 @@ struct UpdateIntegrationDeploymentActionRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.status, forKey: SdkCodingKey("status"))
-        try keyedContainer.encodeIfPresent(self.statusText, forKey: SdkCodingKey("statusText"))
-        try keyedContainer.encodeIfPresent(self.statusUrl, forKey: SdkCodingKey("statusUrl"))
-        try keyedContainer.encodeIfPresent(self.outcomes, forKey: SdkCodingKey("outcomes"))
+        try keyedContainer.encodeIfPresent(status, forKey: SdkCodingKey("status"))
+        try keyedContainer.encodeIfPresent(statusText, forKey: SdkCodingKey("statusText"))
+        try keyedContainer.encodeIfPresent(statusUrl, forKey: SdkCodingKey("statusUrl"))
+        try keyedContainer.encodeIfPresent(outcomes, forKey: SdkCodingKey("outcomes"))
     }
 
     init(options: DeploymentsMethods.UpdateIntegrationDeploymentActionOptions) {
-        self.status = options.status
-        self.statusText = options.statusText
-        self.statusUrl = options.statusUrl
-        self.outcomes = options.outcomes
+        status = options.status
+        statusText = options.statusText
+        statusUrl = options.statusUrl
+        outcomes = options.outcomes
     }
 }
 
@@ -126,37 +126,37 @@ struct CreateDeploymentRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.buildMachine, forKey: SdkCodingKey("buildMachine"))
-        try keyedContainer.encodeIfPresent(self.customEnvironmentSlugOrId, forKey: SdkCodingKey("customEnvironmentSlugOrId"))
-        try keyedContainer.encodeIfPresent(self.deploymentId, forKey: SdkCodingKey("deploymentId"))
-        try keyedContainer.encodeIfPresent(self.files, forKey: SdkCodingKey("files"))
-        try keyedContainer.encodeIfPresent(self.gitAccessToken, forKey: SdkCodingKey("gitAccessToken"))
-        try keyedContainer.encodeIfPresent(self.gitMetadata, forKey: SdkCodingKey("gitMetadata"))
-        try keyedContainer.encodeIfPresent(self.gitSource, forKey: SdkCodingKey("gitSource"))
-        try keyedContainer.encodeIfPresent(self.meta, forKey: SdkCodingKey("meta"))
-        try keyedContainer.encodeIfPresent(self.monorepoManager, forKey: SdkCodingKey("monorepoManager"))
-        try keyedContainer.encodeIfPresent(self.project, forKey: SdkCodingKey("project"))
-        try keyedContainer.encodeIfPresent(self.projectSettings, forKey: SdkCodingKey("projectSettings"))
-        try keyedContainer.encodeIfPresent(self.target, forKey: SdkCodingKey("target"))
-        try keyedContainer.encodeIfPresent(self.withLatestCommit, forKey: SdkCodingKey("withLatestCommit"))
+        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(buildMachine, forKey: SdkCodingKey("buildMachine"))
+        try keyedContainer.encodeIfPresent(customEnvironmentSlugOrId, forKey: SdkCodingKey("customEnvironmentSlugOrId"))
+        try keyedContainer.encodeIfPresent(deploymentId, forKey: SdkCodingKey("deploymentId"))
+        try keyedContainer.encodeIfPresent(files, forKey: SdkCodingKey("files"))
+        try keyedContainer.encodeIfPresent(gitAccessToken, forKey: SdkCodingKey("gitAccessToken"))
+        try keyedContainer.encodeIfPresent(gitMetadata, forKey: SdkCodingKey("gitMetadata"))
+        try keyedContainer.encodeIfPresent(gitSource, forKey: SdkCodingKey("gitSource"))
+        try keyedContainer.encodeIfPresent(meta, forKey: SdkCodingKey("meta"))
+        try keyedContainer.encodeIfPresent(monorepoManager, forKey: SdkCodingKey("monorepoManager"))
+        try keyedContainer.encodeIfPresent(project, forKey: SdkCodingKey("project"))
+        try keyedContainer.encodeIfPresent(projectSettings, forKey: SdkCodingKey("projectSettings"))
+        try keyedContainer.encodeIfPresent(target, forKey: SdkCodingKey("target"))
+        try keyedContainer.encodeIfPresent(withLatestCommit, forKey: SdkCodingKey("withLatestCommit"))
     }
 
     init(options: DeploymentsMethods.CreateDeploymentOptions) {
-        self.name = options.name
-        self.buildMachine = options.buildMachine
-        self.customEnvironmentSlugOrId = options.customEnvironmentSlugOrId
-        self.deploymentId = options.deploymentId
-        self.files = options.files
-        self.gitAccessToken = options.gitAccessToken
-        self.gitMetadata = options.gitMetadata
-        self.gitSource = options.gitSource
-        self.meta = options.meta
-        self.monorepoManager = options.monorepoManager
-        self.project = options.project
-        self.projectSettings = options.projectSettings
-        self.target = options.target
-        self.withLatestCommit = options.withLatestCommit
+        name = options.name
+        buildMachine = options.buildMachine
+        customEnvironmentSlugOrId = options.customEnvironmentSlugOrId
+        deploymentId = options.deploymentId
+        files = options.files
+        gitAccessToken = options.gitAccessToken
+        gitMetadata = options.gitMetadata
+        gitSource = options.gitSource
+        meta = options.meta
+        monorepoManager = options.monorepoManager
+        project = options.project
+        projectSettings = options.projectSettings
+        target = options.target
+        withLatestCommit = options.withLatestCommit
     }
 }
 
@@ -165,7 +165,7 @@ struct CreateRecordRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.type, forKey: SdkCodingKey("type"))
+        try keyedContainer.encode(type, forKey: SdkCodingKey("type"))
     }
 }
 
@@ -181,25 +181,25 @@ struct UpdateRecordRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.value, forKey: SdkCodingKey("value"))
-        try keyedContainer.encodeIfPresent(self.type, forKey: SdkCodingKey("type"))
-        try keyedContainer.encodeIfPresent(self.ttl, forKey: SdkCodingKey("ttl"))
-        try keyedContainer.encodeIfPresent(self.mxPriority, forKey: SdkCodingKey("mxPriority"))
-        try keyedContainer.encodeIfPresent(self.srv, forKey: SdkCodingKey("srv"))
-        try keyedContainer.encodeIfPresent(self.https, forKey: SdkCodingKey("https"))
-        try keyedContainer.encodeIfPresent(self.comment, forKey: SdkCodingKey("comment"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(value, forKey: SdkCodingKey("value"))
+        try keyedContainer.encodeIfPresent(type, forKey: SdkCodingKey("type"))
+        try keyedContainer.encodeIfPresent(ttl, forKey: SdkCodingKey("ttl"))
+        try keyedContainer.encodeIfPresent(mxPriority, forKey: SdkCodingKey("mxPriority"))
+        try keyedContainer.encodeIfPresent(srv, forKey: SdkCodingKey("srv"))
+        try keyedContainer.encodeIfPresent(https, forKey: SdkCodingKey("https"))
+        try keyedContainer.encodeIfPresent(comment, forKey: SdkCodingKey("comment"))
     }
 
     init(options: DnsMethods.UpdateRecordOptions) {
-        self.name = options.name
-        self.value = options.value
-        self.type = options.type
-        self.ttl = options.ttl
-        self.mxPriority = options.mxPriority
-        self.srv = options.srv
-        self.https = options.https
-        self.comment = options.comment
+        name = options.name
+        value = options.value
+        type = options.type
+        ttl = options.ttl
+        mxPriority = options.mxPriority
+        srv = options.srv
+        https = options.https
+        comment = options.comment
     }
 }
 
@@ -208,6 +208,6 @@ struct CreateOrTransferDomainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.method, forKey: SdkCodingKey("method"))
+        try keyedContainer.encodeIfPresent(method, forKey: SdkCodingKey("method"))
     }
 }

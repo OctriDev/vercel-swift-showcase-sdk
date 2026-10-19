@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ChecksMethods {
-    /// Triggers another run of a selected check that has failed. Use `deploymentId` and `checkId` to identify the deployment and check, and set `autoUpdate` to mark the check as running. This operation is closing down and will be removed on a date not specified in the API definition.
+public extension ChecksMethods {
+    /// Triggers another run of a selected check that has failed. Use `deploymentId` and `checkId` to identify the
+    /// deployment and check, and set `autoUpdate` to mark the check as running. This operation is closing down and will
+    /// be removed on a date not specified in the API definition.
     ///
     /// Rerequest a selected check that has failed.
     ///
@@ -19,11 +21,33 @@ extension ChecksMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     ///
     /// - Warning: This operation is deprecated and may be removed in a future release.
-    public static func rerequestCheck(config: ClientConfig, deploymentId: String, checkId: String, autoUpdate: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try (await sdkRequest("POST", ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/checks/", sdkEncodePathSegment(sdkWireString(checkId)), "/rerequest"].joined(), config: config, query: [
-            SdkQueryParameter("autoUpdate", value: autoUpdate),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "rerequestCheck", options: requestOptions)).data
+    static func rerequestCheck(
+        config: ClientConfig,
+        deploymentId: String,
+        checkId: String,
+        autoUpdate: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await (sdkRequest(
+            "POST",
+            [
+                "/v1/deployments/",
+                sdkEncodePathSegment(sdkWireString(deploymentId)),
+                "/checks/",
+                sdkEncodePathSegment(sdkWireString(checkId)),
+                "/rerequest",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("autoUpdate", value: autoUpdate),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "rerequestCheck",
+            options: requestOptions
+        )).data
     }
 }

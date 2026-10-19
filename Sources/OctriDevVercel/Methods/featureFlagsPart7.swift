@@ -6,10 +6,13 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    /// Deletes a feature flag from a project permanently. Use this operation only when you no longer need the flag, because deletion cannot be undone; archive the flag instead if you may need it later. A 204 response has no response body.
+public extension FeatureFlagsMethods {
+    /// Deletes a feature flag from a project permanently. Use this operation only when you no longer need the flag,
+    /// because deletion cannot be undone; archive the flag instead if you may need it later. A 204 response has no
+    /// response body.
     ///
-    /// Permanently delete a feature flag from the project. This action cannot be undone. Consider archiving the flag instead if you may need it in the future.
+    /// Permanently delete a feature flag from the project. This action cannot be undone. Consider archiving the flag
+    /// instead if you may need it in the future.
     ///
     /// - Parameters:
     /// - projectIdOrName: The project id or name
@@ -19,12 +22,34 @@ extension FeatureFlagsMethods {
     /// - withMetadata: Whether to include metadata in the response
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteFlag(config: ClientConfig, projectIdOrName: String, flagIdOrSlug: String, ifMatch: String? = nil, withMetadata: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/flags/", sdkEncodePathSegment(sdkWireString(flagIdOrSlug))].joined(), config: config, query: [
-            SdkQueryParameter("ifMatch", value: ifMatch),
-            SdkQueryParameter("withMetadata", value: withMetadata),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "deleteFlag", options: requestOptions)).data
+    static func deleteFlag(
+        config: ClientConfig,
+        projectIdOrName: String,
+        flagIdOrSlug: String,
+        ifMatch: String? = nil,
+        withMetadata: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(projectIdOrName)),
+                "/feature-flags/flags/",
+                sdkEncodePathSegment(sdkWireString(flagIdOrSlug)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("ifMatch", value: ifMatch),
+                SdkQueryParameter("withMetadata", value: withMetadata),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "deleteFlag",
+            options: requestOptions
+        )).data
     }
 }

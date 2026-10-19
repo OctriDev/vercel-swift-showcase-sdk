@@ -3,7 +3,7 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 public extension ListEventTypeReplacedByItem {
     static let teamMfaEnforcementUpdated = ListEventTypeReplacedByItem(rawValue: "team-mfa-enforcement-updated")
     static let teamNameUpdate = ListEventTypeReplacedByItem(rawValue: "team-name-update")
@@ -40,15 +40,18 @@ public extension ListEventTypeReplacedByItem {
     static let userMfaChangeFailed = ListEventTypeReplacedByItem(rawValue: "user-mfa-change-failed")
     static let userMfaConfigurationUpdated = ListEventTypeReplacedByItem(rawValue: "user-mfa-configuration-updated")
     static let userMfaRecoveryCodeUsed = ListEventTypeReplacedByItem(rawValue: "user-mfa-recovery-code-used")
-    static let userMfaRecoveryCodesRegenerated = ListEventTypeReplacedByItem(rawValue: "user-mfa-recovery-codes-regenerated")
+    static let userMfaRecoveryCodesRegenerated =
+        ListEventTypeReplacedByItem(rawValue: "user-mfa-recovery-codes-regenerated")
     static let userMfaRemoved = ListEventTypeReplacedByItem(rawValue: "user-mfa-removed")
     static let userMfaSetupSkipped = ListEventTypeReplacedByItem(rawValue: "user-mfa-setup-skipped")
-    static let userMfaTotpVerificationStarted = ListEventTypeReplacedByItem(rawValue: "user-mfa-totp-verification-started")
+    static let userMfaTotpVerificationStarted =
+        ListEventTypeReplacedByItem(rawValue: "user-mfa-totp-verification-started")
     static let userMfaTotpVerified = ListEventTypeReplacedByItem(rawValue: "user-mfa-totp-verified")
     static let userPhoneRemoved = ListEventTypeReplacedByItem(rawValue: "user-phone-removed")
     static let userPhoneUpdated = ListEventTypeReplacedByItem(rawValue: "user-phone-updated")
     static let userPrimaryEmailUpdated = ListEventTypeReplacedByItem(rawValue: "user-primary-email-updated")
-    static let userProviderEmailClaimEvaluated = ListEventTypeReplacedByItem(rawValue: "user-provider-email-claim-evaluated")
+    static let userProviderEmailClaimEvaluated =
+        ListEventTypeReplacedByItem(rawValue: "user-provider-email-claim-evaluated")
     static let userSudoModeRemoved = ListEventTypeReplacedByItem(rawValue: "user-sudo-mode-removed")
     static let userTokenCreated = ListEventTypeReplacedByItem(rawValue: "user-token-created")
     static let userTokenDeleted = ListEventTypeReplacedByItem(rawValue: "user-token-deleted")
@@ -59,26 +62,36 @@ public extension ListEventTypeReplacedByItem {
     static let v0ChatCreated = ListEventTypeReplacedByItem(rawValue: "v0-chat-created")
     static let v0ChatMessageSent = ListEventTypeReplacedByItem(rawValue: "v0-chat-message-sent")
     static let v0MigrationPaymentConfirmed = ListEventTypeReplacedByItem(rawValue: "v0-migration-payment-confirmed")
-    static let v0MigrationSubscriptionCompleted = ListEventTypeReplacedByItem(rawValue: "v0-migration-subscription-completed")
+    static let v0MigrationSubscriptionCompleted =
+        ListEventTypeReplacedByItem(rawValue: "v0-migration-subscription-completed")
     static let vcrImageDeleted = ListEventTypeReplacedByItem(rawValue: "vcr-image-deleted")
     static let vcrImagePushed = ListEventTypeReplacedByItem(rawValue: "vcr-image-pushed")
     static let vcrRepositoryCreated = ListEventTypeReplacedByItem(rawValue: "vcr-repository-created")
     static let vcrRepositoryDeleted = ListEventTypeReplacedByItem(rawValue: "vcr-repository-deleted")
     static let vcrRepositoryPermissionAdded = ListEventTypeReplacedByItem(rawValue: "vcr-repository-permission-added")
-    static let vcrRepositoryPermissionRemoved = ListEventTypeReplacedByItem(rawValue: "vcr-repository-permission-removed")
-    static let vcrRepositoryPermissionsCleared = ListEventTypeReplacedByItem(rawValue: "vcr-repository-permissions-cleared")
-    static let vcrRepositoryVisibilityChanged = ListEventTypeReplacedByItem(rawValue: "vcr-repository-visibility-changed")
-    static let vercelAgentElevatedPermissionsApproved = ListEventTypeReplacedByItem(rawValue: "vercel-agent-elevated-permissions-approved")
-    static let vercelAgentElevatedPermissionsRequested = ListEventTypeReplacedByItem(rawValue: "vercel-agent-elevated-permissions-requested")
+    static let vcrRepositoryPermissionRemoved =
+        ListEventTypeReplacedByItem(rawValue: "vcr-repository-permission-removed")
+    static let vcrRepositoryPermissionsCleared =
+        ListEventTypeReplacedByItem(rawValue: "vcr-repository-permissions-cleared")
+    static let vcrRepositoryVisibilityChanged =
+        ListEventTypeReplacedByItem(rawValue: "vcr-repository-visibility-changed")
+    static let vercelAgentElevatedPermissionsApproved =
+        ListEventTypeReplacedByItem(rawValue: "vercel-agent-elevated-permissions-approved")
+    static let vercelAgentElevatedPermissionsRequested =
+        ListEventTypeReplacedByItem(rawValue: "vercel-agent-elevated-permissions-requested")
     static let vercelAgentSessionCreated = ListEventTypeReplacedByItem(rawValue: "vercel-agent-session-created")
-    static let vercelAgentTeamTrialCreditsApplied = ListEventTypeReplacedByItem(rawValue: "vercel-agent-team-trial-credits-applied")
-    static let vercelAppInstallationRequestDismissed = ListEventTypeReplacedByItem(rawValue: "vercel-app-installation-request-dismissed")
-    static let vercelAppInstallationRequested = ListEventTypeReplacedByItem(rawValue: "vercel-app-installation-requested")
+    static let vercelAgentTeamTrialCreditsApplied =
+        ListEventTypeReplacedByItem(rawValue: "vercel-agent-team-trial-credits-applied")
+    static let vercelAppInstallationRequestDismissed =
+        ListEventTypeReplacedByItem(rawValue: "vercel-app-installation-request-dismissed")
+    static let vercelAppInstallationRequested =
+        ListEventTypeReplacedByItem(rawValue: "vercel-app-installation-requested")
     static let vercelAppInstallationUpdated = ListEventTypeReplacedByItem(rawValue: "vercel-app-installation-updated")
     static let vercelAppInstalled = ListEventTypeReplacedByItem(rawValue: "vercel-app-installed")
     static let vercelAppTokensRevoked = ListEventTypeReplacedByItem(rawValue: "vercel-app-tokens-revoked")
     static let vercelAppUninstalled = ListEventTypeReplacedByItem(rawValue: "vercel-app-uninstalled")
-    static let vercelCiRepositorySettingsUpdated = ListEventTypeReplacedByItem(rawValue: "vercel-ci-repository-settings-updated")
+    static let vercelCiRepositorySettingsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "vercel-ci-repository-settings-updated")
     static let vercelToolbar = ListEventTypeReplacedByItem(rawValue: "vercel-toolbar")
     static let vpcPeeringConnectionAccepted = ListEventTypeReplacedByItem(rawValue: "vpc-peering-connection-accepted")
     static let vpcPeeringConnectionDeleted = ListEventTypeReplacedByItem(rawValue: "vpc-peering-connection-deleted")

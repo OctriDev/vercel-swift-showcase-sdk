@@ -6,18 +6,24 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct UpdateTeamsRequestBodyDefaultPassportDeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamsRequestBodyDefaultPassportDeploymentType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let all = UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "all")
     public static let preview = UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews = UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
-    public static let allExceptCustomDomains = UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "all_except_custom_domains")
+    public static let prodDeploymentUrlsAndAllPreviews =
+        UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let allExceptCustomDomains =
+        UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "all_except_custom_domains")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -47,7 +53,10 @@ public enum ListProjectsResponseVariant2ProjectsItemCreatorVariant2Type: String,
 public struct UpdateProjectRequestBodyFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let container = UpdateProjectRequestBodyFramework(rawValue: "container")
     public static let blitzjs = UpdateProjectRequestBodyFramework(rawValue: "blitzjs")
     public static let nextjs = UpdateProjectRequestBodyFramework(rawValue: "nextjs")
@@ -125,7 +134,7 @@ public struct UpdateProjectRequestBodyFramework: RawRepresentable, Hashable, Cod
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -134,10 +143,14 @@ public struct UpdateProjectRequestBodyFramework: RawRepresentable, Hashable, Cod
     }
 }
 
-public struct DeleteProjectAvatarResponseNodeVersion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct DeleteProjectAvatarResponseNodeVersion: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let value10X = DeleteProjectAvatarResponseNodeVersion(rawValue: "10.x")
     public static let value12X = DeleteProjectAvatarResponseNodeVersion(rawValue: "12.x")
     public static let value14X = DeleteProjectAvatarResponseNodeVersion(rawValue: "14.x")
@@ -151,7 +164,7 @@ public struct DeleteProjectAvatarResponseNodeVersion: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -160,16 +173,22 @@ public struct DeleteProjectAvatarResponseNodeVersion: RawRepresentable, Hashable
     }
 }
 
-public struct GetProjectsResponseResourceConfigBuildMachineElasticTransitionDirection: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetProjectsResponseResourceConfigBuildMachineElasticTransitionDirection: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let downgrade = GetProjectsResponseResourceConfigBuildMachineElasticTransitionDirection(rawValue: "downgrade")
-    public static let upgrade = GetProjectsResponseResourceConfigBuildMachineElasticTransitionDirection(rawValue: "upgrade")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let downgrade =
+        GetProjectsResponseResourceConfigBuildMachineElasticTransitionDirection(rawValue: "downgrade")
+    public static let upgrade =
+        GetProjectsResponseResourceConfigBuildMachineElasticTransitionDirection(rawValue: "upgrade")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -179,21 +198,28 @@ public struct GetProjectsResponseResourceConfigBuildMachineElasticTransitionDire
 }
 
 /// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-public struct StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let blocked = StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "BLOCKED")
-    public static let building = StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "BUILDING")
-    public static let canceled = StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "CANCELED")
+    public static let building =
+        StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "BUILDING")
+    public static let canceled =
+        StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "CANCELED")
     public static let error = StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "ERROR")
-    public static let initializing = StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "INITIALIZING")
+    public static let initializing =
+        StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "INITIALIZING")
     public static let queued = StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "QUEUED")
     public static let ready = StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState(rawValue: "READY")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

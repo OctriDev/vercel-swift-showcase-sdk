@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical user operation model declarations
+/// Canonical user operation model declarations
 /// An object describing the reason why the User account is being deleted.
 public struct RequestDeleteRequestBodyReasonsItem: Codable {
     /// Idenitifier slug of the reason why the User account is being deleted.
@@ -20,25 +20,35 @@ public struct RequestDeleteRequestBodyReasonsItem: Codable {
         case description
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RequestDeleteRequestBodyReasonsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.slug) else {
-            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
-        }
-        guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
-        }
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.description = try container.sdkDecodeRequired(.description)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RequestDeleteRequestBodyReasonsItem {
-    public init(slug: String, description: String) {
+public extension RequestDeleteRequestBodyReasonsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.slug) else {
+            throw SdkValidationError(
+                field: "slug",
+                code: "required",
+                message: "Validation failed for 'slug': value is required"
+            )
+        }
+        guard container.contains(.description) else {
+            throw SdkValidationError(
+                field: "description",
+                code: "required",
+                message: "Validation failed for 'description': value is required"
+            )
+        }
+        slug = try container.sdkDecodeRequired(.slug)
+        description = try container.sdkDecodeRequired(.description)
+    }
+}
+
+public extension RequestDeleteRequestBodyReasonsItem {
+    init(slug: String, description: String) {
         (self.slug, self.description) = (slug, description)
     }
 }
@@ -52,21 +62,27 @@ public struct GetAuthUserResponse: Codable {
         case user
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetAuthUserResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.user) else {
-            throw SdkValidationError(field: "user", code: "required", message: "Validation failed for 'user': value is required")
-        }
-        self.user = try container.sdkDecodeRequired(.user)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetAuthUserResponse {
-    public init(user: GetAuthUserResponseUser) {
+public extension GetAuthUserResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.user) else {
+            throw SdkValidationError(
+                field: "user",
+                code: "required",
+                message: "Validation failed for 'user': value is required"
+            )
+        }
+        user = try container.sdkDecodeRequired(.user)
+    }
+}
+
+public extension GetAuthUserResponse {
+    init(user: GetAuthUserResponseUser) {
         self.user = user
     }
 }
@@ -86,29 +102,43 @@ public struct RequestDeleteResponse: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RequestDeleteResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.email) else {
-            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        self.email = try container.sdkDecodeRequired(.email)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.message = try container.sdkDecodeRequired(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RequestDeleteResponse {
-    public init(email: String, id: String, message: String) {
+public extension RequestDeleteResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.email) else {
+            throw SdkValidationError(
+                field: "email",
+                code: "required",
+                message: "Validation failed for 'email': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        email = try container.sdkDecodeRequired(.email)
+        id = try container.sdkDecodeRequired(.id)
+        message = try container.sdkDecodeRequired(.message)
+    }
+}
+
+public extension RequestDeleteResponse {
+    init(email: String, id: String, message: String) {
         (self.email, self.id) = (email, id)
         self.message = message
     }
@@ -123,21 +153,27 @@ public struct ListUserEventsResponse: Codable {
         case events
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListUserEventsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.events) else {
-            throw SdkValidationError(field: "events", code: "required", message: "Validation failed for 'events': value is required")
-        }
-        self.events = try container.sdkDecodeRequired(.events)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListUserEventsResponse {
-    public init(events: [UserEvent]) {
+public extension ListUserEventsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.events) else {
+            throw SdkValidationError(
+                field: "events",
+                code: "required",
+                message: "Validation failed for 'events': value is required"
+            )
+        }
+        events = try container.sdkDecodeRequired(.events)
+    }
+}
+
+public extension ListUserEventsResponse {
+    init(events: [UserEvent]) {
         self.events = events
     }
 }

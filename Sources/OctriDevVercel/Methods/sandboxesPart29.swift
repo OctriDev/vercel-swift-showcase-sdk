@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    public struct CreateSandboxesByNameForkV2Options: Codable {
+public extension SandboxesMethods {
+    struct CreateSandboxesByNameForkV2Options: Codable {
         public var name: String
         public var projectId: String?
         public var teamId: String?
@@ -33,9 +33,16 @@ extension SandboxesMethods {
         }
     }
 
-    /// Forks a named sandbox into a new named sandbox, copying its configuration and environment variables. Supply `name` to identify the source and `projectId` unless you authenticate with an OIDC token; request fields override values copied from the source. If the source has a snapshot, the fork starts from it; otherwise, it starts from the source runtime or image.
+    /// Forks a named sandbox into a new named sandbox, copying its configuration and environment variables. Supply
+    /// `name` to identify the source and `projectId` unless you authenticate with an OIDC token; request fields
+    /// override values copied from the source. If the source has a snapshot, the fork starts from it; otherwise, it
+    /// starts from the source runtime or image.
     ///
-    /// Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports, tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side fork — environment variables are copied from the source automatically (`interactive` is not). When the source has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided in the request body overrides the value copied from the source.
+    /// Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports,
+    /// tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side
+    /// fork — environment variables are copied from the source automatically (`interactive` is not). When the source
+    /// has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided
+    /// in the request body overrides the value copied from the source.
     ///
     /// - Parameters:
     /// - name: Name of the source sandbox to fork.
@@ -70,7 +77,11 @@ extension SandboxesMethods {
     /// - keepLastSnapshots: Protect the N most recent snapshots with different
     ///   expiration/deletion behavior.
     /// - tags: Key-value tags to associate with the sandbox. Maximum 5 tags.
-    public static func createSandboxesByNameForkV2(config: ClientConfig, options: CreateSandboxesByNameForkV2Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesByNameForkV2Response {
+    static func createSandboxesByNameForkV2(
+        config: ClientConfig,
+        options: CreateSandboxesByNameForkV2Options,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSandboxesByNameForkV2Response {
         try validateLength("name", options.name, max: 128)
         try sdkValidatePattern("name", options.name, sdkPatterna828669d9fe5)
 
@@ -105,10 +116,19 @@ extension SandboxesMethods {
 
         let requestBody = CreateSandboxesByNameForkV2RequestBody(options: options)
 
-        return try (await sdkRequest("POST", ["/v2/sandboxes/", sdkEncodePathSegment(sdkWireString(options.name)), "/fork"].joined(), config: config, query: [
-            SdkQueryParameter("projectId", value: options.projectId),
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], body: requestBody, decoder: .json, operationId: "createSandboxesByNameForkV2", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v2/sandboxes/", sdkEncodePathSegment(sdkWireString(options.name)), "/fork"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: options.projectId),
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "createSandboxesByNameForkV2",
+            options: requestOptions
+        )).data
     }
 }

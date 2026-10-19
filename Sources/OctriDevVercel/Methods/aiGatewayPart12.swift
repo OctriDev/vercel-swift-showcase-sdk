@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AiGatewayMethods {
-    /// Archives an AI Gateway budget for a team, project, or user scope. Set `scopeType` and include `projectId` or `userId` when the selected scope requires it. The response returns the archived budget and its current configuration.
+public extension AiGatewayMethods {
+    /// Archives an AI Gateway budget for a team, project, or user scope. Set `scopeType` and include `projectId` or
+    /// `userId` when the selected scope requires it. The response returns the archived budget and its current
+    /// configuration.
     ///
     /// Archive a team-, project-, or user-scope AI Gateway budget.
     ///
@@ -17,8 +19,16 @@ extension AiGatewayMethods {
     /// - userId: Required when scopeType is "user".
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func archiveAiGatewayBudget(config: ClientConfig, scopeType: ArchiveAiGatewayBudgetParameter, projectId: String? = nil, userId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayBudget {
-        return try (await sdkRequest("DELETE", "/ai-gateway/budgets", config: config, query: [
+    static func archiveAiGatewayBudget(
+        config: ClientConfig,
+        scopeType: ArchiveAiGatewayBudgetParameter,
+        projectId: String? = nil,
+        userId: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayBudget {
+        try await (sdkRequest("DELETE", "/ai-gateway/budgets", config: config, query: [
             SdkQueryParameter("scopeType", value: scopeType),
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("userId", value: userId),
@@ -27,15 +37,23 @@ extension AiGatewayMethods {
         ], decoder: .json, operationId: "archiveAiGatewayBudget", options: requestOptions)).data
     }
 
-    /// Lists the authenticated team's AI Gateway budget defaults as a flat list, with one entry for each scope that has a default. An empty `defaults` array is a normal result when no defaults are configured. Use `teamId` or `slug` to select the team context when needed.
+    /// Lists the authenticated team's AI Gateway budget defaults as a flat list, with one entry for each scope that has
+    /// a default. An empty `defaults` array is a normal result when no defaults are configured. Use `teamId` or `slug`
+    /// to select the team context when needed.
     ///
-    /// List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user scope with a default set). An empty list is a normal state for the dashboard.
+    /// List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user scope
+    /// with a default set). An empty list is a normal state for the dashboard.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listAiGatewayBudgetDefaults(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayBudgetDefaultList {
-        return try (await sdkRequest("GET", "/ai-gateway/budgets/defaults/list", config: config, query: [
+    static func listAiGatewayBudgetDefaults(
+        config: ClientConfig,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayBudgetDefaultList {
+        try await (sdkRequest("GET", "/ai-gateway/budgets/defaults/list", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "listAiGatewayBudgetDefaults", options: requestOptions)).data

@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsList domain models
+/// ProjectsList domain models
 public enum ListProjectsResponseItemEnvItemContentHintVariant3Type: String, CaseIterable, Codable {
     case redisRestApiReadOnlyToken = "redis-rest-api-read-only-token"
     public init(from decoder: Decoder) throws {

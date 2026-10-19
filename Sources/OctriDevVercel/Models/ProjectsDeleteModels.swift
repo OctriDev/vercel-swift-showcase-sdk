@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsDelete domain models
+/// ProjectsDelete domain models
 public indirect enum DeleteProjectAvatarResponseCreator {
     case deleteProjectAvatarResponseCreatorVariant0(DeleteProjectAvatarResponseCreatorVariant0)
     case deleteProjectAvatarResponseCreatorVariant1(DeleteProjectAvatarResponseCreatorVariant1)
@@ -12,33 +12,53 @@ public indirect enum DeleteProjectAvatarResponseCreator {
 }
 
 extension DeleteProjectAvatarResponseCreator: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseCreator")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseCreator"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseCreator {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseCreatorVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseCreatorVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseCreatorVariant0(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseCreatorVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseCreatorVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseCreatorVariant1(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseCreatorVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseCreatorVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseCreatorVariant2(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseCreatorVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseCreatorVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .deleteProjectAvatarResponseCreatorVariant3(value)
         }
         return nil
@@ -50,22 +70,22 @@ extension DeleteProjectAvatarResponseCreator {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseCreatorVariant0.self
         ) {
-            return             .deleteProjectAvatarResponseCreatorVariant0(value)
+            return .deleteProjectAvatarResponseCreatorVariant0(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseCreatorVariant1.self
         ) {
-            return             .deleteProjectAvatarResponseCreatorVariant1(value)
+            return .deleteProjectAvatarResponseCreatorVariant1(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseCreatorVariant2.self
         ) {
-            return             .deleteProjectAvatarResponseCreatorVariant2(value)
+            return .deleteProjectAvatarResponseCreatorVariant2(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseCreatorVariant3.self
         ) {
-            return             .deleteProjectAvatarResponseCreatorVariant3(value)
+            return .deleteProjectAvatarResponseCreatorVariant3(value)
         }
         return nil
     }
@@ -93,29 +113,39 @@ public indirect enum DeleteProjectAvatarResponseDeploymentPolicyDeploymentSource
 }
 
 extension DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX8e6b1bb563: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX8e6b1bb563")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX8e6b1bb563"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX8e6b1bb563 {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX72d621b98d.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX72d621b98d.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx72d621b98d(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX3e4e172ad0.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX3e4e172ad0.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx3e4e172ad0(value)
         }
         return nil
@@ -127,12 +157,12 @@ extension DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX8e6b1bb5
         if let value = try? container.decode(
             DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX72d621b98d.self
         ) {
-            return             .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx72d621b98d(value)
+            return .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx72d621b98d(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX3e4e172ad0.self
         ) {
-            return             .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx3e4e172ad0(value)
+            return .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx3e4e172ad0(value)
         }
         return nil
     }
@@ -142,8 +172,10 @@ extension DeleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX8e6b1bb5
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx72d621b98d(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx3e4e172ad0(value): try container.encode(value); return true
+        case let .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx72d621b98d(value): try container
+            .encode(value); return true
+        case let .deleteProjectAvatarResponseDeploymentPolicyDeploymentSourcesIx3e4e172ad0(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -158,29 +190,39 @@ public indirect enum DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEn
 }
 
 extension DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXe05bbcae44: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXe05bbcae44")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXe05bbcae44"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXe05bbcae44 {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX103b73d8fb.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX103b73d8fb.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX103b73d8fb(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXbbad1c5f3a.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXbbad1c5f3a.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXbbad1c5f3a(value)
         }
         return nil
@@ -192,12 +234,12 @@ extension DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXe05bbcae
         if let value = try? container.decode(
             DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX103b73d8fb.self
         ) {
-            return             .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX103b73d8fb(value)
+            return .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX103b73d8fb(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXbbad1c5f3a.self
         ) {
-            return             .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXbbad1c5f3a(value)
+            return .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXbbad1c5f3a(value)
         }
         return nil
     }
@@ -207,8 +249,10 @@ extension DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXe05bbcae
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX103b73d8fb(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXbbad1c5f3a(value): try container.encode(value); return true
+        case let .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviX103b73d8fb(value): try container
+            .encode(value); return true
+        case let .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviXbbad1c5f3a(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -223,29 +267,39 @@ public indirect enum DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSo
 }
 
 extension DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b4a5cbb0f.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b4a5cbb0f.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b4a5cbb0f(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX8b6673a0c3.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX8b6673a0c3.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX8b6673a0c3(value)
         }
         return nil
@@ -257,12 +311,12 @@ extension DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItem {
         if let value = try? container.decode(
             DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b4a5cbb0f.self
         ) {
-            return             .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b4a5cbb0f(value)
+            return .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b4a5cbb0f(value)
         }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX8b6673a0c3.self
         ) {
-            return             .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX8b6673a0c3(value)
+            return .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX8b6673a0c3(value)
         }
         return nil
     }
@@ -272,8 +326,10 @@ extension DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b4a5cbb0f(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX8b6673a0c3(value): try container.encode(value); return true
+        case let .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX1b4a5cbb0f(value): try container
+            .encode(value); return true
+        case let .deleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX8b6673a0c3(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -281,33 +337,47 @@ extension DeleteProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItem {
 public indirect enum DeleteProjectAvatarResponseDismissedToastsItemValue {
     case stringValue(String)
     case doubleValue(Double)
-    case deleteProjectAvatarResponseDismissedToastsItemValueVariant2(DeleteProjectAvatarResponseDismissedToastsItemValueVariant2)
+    case deleteProjectAvatarResponseDismissedToastsItemValueVariant2(
+        DeleteProjectAvatarResponseDismissedToastsItemValueVariant2
+    )
     case boolValue(Bool)
 }
 
 extension DeleteProjectAvatarResponseDismissedToastsItemValue: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseDismissedToastsItemValue")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseDismissedToastsItemValue"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseDismissedToastsItemValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         if let value = try? container.decode(
             DeleteProjectAvatarResponseDismissedToastsItemValueVariant2.self
         ) {
-            return             .deleteProjectAvatarResponseDismissedToastsItemValueVariant2(value)
+            return .deleteProjectAvatarResponseDismissedToastsItemValueVariant2(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
         return nil
     }
 }
@@ -318,7 +388,8 @@ extension DeleteProjectAvatarResponseDismissedToastsItemValue {
         switch self {
         case let .stringValue(value): try container.encode(value); return true
         case let .doubleValue(value): try container.encode(value); return true
-        case let .deleteProjectAvatarResponseDismissedToastsItemValueVariant2(value): try container.encode(value); return true
+        case let .deleteProjectAvatarResponseDismissedToastsItemValueVariant2(value): try container
+            .encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         }
     }
@@ -354,49 +425,97 @@ public indirect enum DeleteProjectAvatarResponseEnvItemContentHint {
 }
 
 extension DeleteProjectAvatarResponseEnvItemContentHint: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless3(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless2(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless3(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        if let value = Self.decodeGroup2(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteProjectAvatarResponseEnvItemContentHint")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        if let value = Self.decodeGroup2(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteProjectAvatarResponseEnvItemContentHint"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-        if try encodeGroup2(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
+        if try encodeGroup2(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteProjectAvatarResponseEnvItemContentHint {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant0.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant0(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant1.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant1(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant2.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant2(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant3.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant3(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant4.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant4.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant4(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant5.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant5.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant5(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant6.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant6.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant6(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant7.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant7.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant7(value)
         }
         return nil
@@ -405,10 +524,18 @@ extension DeleteProjectAvatarResponseEnvItemContentHint {
 
 extension DeleteProjectAvatarResponseEnvItemContentHint {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant8.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant8.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant8(value)
         }
-        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant9.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant9.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .deleteProjectAvatarResponseEnvItemContentHintVariant9(value)
         }
         if let value = try? container.decode(DeleteProjectAvatarResponseEnvItemContentHintVariant10.self),

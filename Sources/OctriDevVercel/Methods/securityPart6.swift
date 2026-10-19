@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SecurityMethods {
-    public struct GetBypassIpOptions: Codable {
+public extension SecurityMethods {
+    struct GetBypassIpOptions: Codable {
         public var projectId: String
         public var limit: Double?
         public var sourceIp: String?
@@ -22,7 +22,8 @@ extension SecurityMethods {
         }
     }
 
-    /// Lists system bypass rules configured for a project. Filter the results with `sourceIp`, `domain`, or `projectScope`, and use `offset` and `limit` to page through matching rules.
+    /// Lists system bypass rules configured for a project. Filter the results with `sourceIp`, `domain`, or
+    /// `projectScope`, and use `offset` and `limit` to page through matching rules.
     ///
     /// Retrieve the system bypass rules configured for the specified project
     ///
@@ -33,7 +34,11 @@ extension SecurityMethods {
     /// - offset: Used for pagination. Retrieves results after the provided id
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getBypassIp(config: ClientConfig, options: GetBypassIpOptions, requestOptions: RequestOptions? = nil) async throws -> GetBypassIpResponse {
+    static func getBypassIp(
+        config: ClientConfig,
+        options: GetBypassIpOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetBypassIpResponse {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), max: 256)
         }
@@ -51,7 +56,7 @@ extension SecurityMethods {
             try validateLength("offset", offset, max: 2560)
         }
 
-        return try (await sdkRequest("GET", "/v1/security/firewall/bypass", config: config, query: [
+        return try await (sdkRequest("GET", "/v1/security/firewall/bypass", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("limit", value: options.limit),
             SdkQueryParameter("sourceIp", value: options.sourceIp),

@@ -7,203 +7,610 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
-extension ListProjectsResponseVariant0ItemResourceConfig {
-    public init(functionDefaultRegions: [String], buildMachineElasticLastUpdated: Double? = nil, buildMachineElasticReason: ListProjectsResponseVariant0ItemResourceConfigBuildMachineElasticReason? = nil, buildMachineElasticTransition: ListProjectsResponseVariant0ItemResourceConfigBuildMachineElaXf3dadc7d66? = nil, buildMachineSelection: ListProjectsResponseVariant0ItemResourceConfigBuildMachineSelection? = nil, buildMachineType: ListProjectsResponseVariant0ItemResourceConfigBuildMachineType? = nil, buildQueue: ListProjectsResponseVariant0ItemResourceConfigBuildQueue? = nil, elasticConcurrencyEnabled: Bool? = nil, enableFunctionsBeta: Bool? = nil, fluid: Bool? = nil, functionDefaultMemoryType: ListProjectsResponseVariant0ItemResourceConfigFunctionDefaultMemoryType? = nil, functionDefaultTimeout: Double? = nil, functionZeroConfigFailover: Bool? = nil, isNsnbDisabled: Bool? = nil, elasticBuildMachine: ListProjectsResponseVariant0ItemResourceConfigElasticBuildMachine? = nil) {
-        self.functionDefaultRegions = functionDefaultRegions
-        self.buildMachineElasticLastUpdated = buildMachineElasticLastUpdated
-        self.buildMachineElasticReason = buildMachineElasticReason
-        self.buildMachineElasticTransition = buildMachineElasticTransition
-        (self.buildMachineSelection, self.buildMachineType) = (buildMachineSelection, buildMachineType)
-        (self.buildQueue, self.elasticConcurrencyEnabled) = (buildQueue, elasticConcurrencyEnabled)
-        (self.enableFunctionsBeta, self.fluid) = (enableFunctionsBeta, fluid)
-        self.functionDefaultMemoryType = functionDefaultMemoryType
-        self.functionDefaultTimeout = functionDefaultTimeout
-        self.functionZeroConfigFailover = functionZeroConfigFailover
-        (self.isNsnbDisabled, self.elasticBuildMachine) = (isNsnbDisabled, elasticBuildMachine)
+/// Canonical projects operation model declarations
+public extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    init(
+        accessGroup: [ACLAction]? = nil,
+        agent: [ACLAction]? = nil,
+        aiGatewayApiKey: [ACLAction]? = nil,
+        aiGatewayApiKeyBypassAll: [ACLAction]? = nil,
+        aiGatewayApiKeyOwnedBySelf: [ACLAction]? = nil,
+        aiGatewayApiKeySpendAttribution: [ACLAction]? = nil,
+        aiGatewayApiKeyZdrExemption: [ACLAction]? = nil,
+        aiGatewayBudget: [ACLAction]? = nil,
+        aiGatewayCredits: [ACLAction]? = nil,
+        aiGatewayGuardrails: [ACLAction]? = nil,
+        aiGatewayPrivateModels: [ACLAction]? = nil,
+        aiGatewayRules: [ACLAction]? = nil,
+        aiGatewaySettings: [ACLAction]? = nil,
+        aiGatewayTranscripts: [ACLAction]? = nil,
+        aiGatewayTranscriptsSettings: [ACLAction]? = nil,
+        aiGatewayUsage: [ACLAction]? = nil,
+        aiGatewayVirtualModelConfigs: [ACLAction]? = nil,
+        alertRules: [ACLAction]? = nil,
+        alerts: [ACLAction]? = nil,
+        aliasGlobal: [ACLAction]? = nil,
+        aliasProject: [ACLAction]? = nil,
+        aliasProtectionBypass: [ACLAction]? = nil,
+        analytics: [ACLAction]? = nil,
+        analyticsSampling: [ACLAction]? = nil,
+        analyticsUsage: [ACLAction]? = nil,
+        apiKey: [ACLAction]? = nil,
+        apiKeyAiGateway: [ACLAction]? = nil,
+        apiKeyOwnedBySelf: [ACLAction]? = nil,
+        auditLog: [ACLAction]? = nil,
+        automation: [ACLAction]? = nil,
+        billingAddress: [ACLAction]? = nil,
+        billingInformation: [ACLAction]? = nil,
+        billingInvoice: [ACLAction]? = nil,
+        billingInvoiceEmailRecipient: [ACLAction]? = nil,
+        billingInvoiceLanguage: [ACLAction]? = nil,
+        billingPlan: [ACLAction]? = nil,
+        billingPurchaseOrder: [ACLAction]? = nil,
+        billingRefund: [ACLAction]? = nil,
+        billingTaxId: [ACLAction]? = nil,
+        blob: [ACLAction]? = nil,
+        blobStoreTokenSet: [ACLAction]? = nil,
+        budget: [ACLAction]? = nil,
+        buildMachine: [ACLAction]? = nil,
+        buildMachineDefault: [ACLAction]? = nil,
+        bulkRedirects: [ACLAction]? = nil,
+        cacheArtifact: [ACLAction]? = nil,
+        cacheArtifactUsageEvent: [ACLAction]? = nil,
+        ciInvocations: [ACLAction]? = nil,
+        ciLogs: [ACLAction]? = nil,
+        codeChecks: [ACLAction]? = nil,
+        codeOwners: [ACLAction]? = nil,
+        concurrentBuilds: [ACLAction]? = nil,
+        connect: [ACLAction]? = nil,
+        connectConfiguration: [ACLAction]? = nil,
+        connectConfigurationLink: [ACLAction]? = nil,
+        connectLogs: [ACLAction]? = nil,
+        connexClient: [ACLAction]? = nil,
+        connexClientProject: [ACLAction]? = nil,
+        connexContact: [ACLAction]? = nil,
+        connexInstallation: [ACLAction]? = nil,
+        connexToken: [ACLAction]? = nil,
+        cursorOriginInstallation: [ACLAction]? = nil,
+        dataCacheBillingSettings: [ACLAction]? = nil,
+        dataCacheNamespace: [ACLAction]? = nil,
+        defaultDeploymentProtection: [ACLAction]? = nil,
+        deployment: [ACLAction]? = nil,
+        deploymentBuildLogs: [ACLAction]? = nil,
+        deploymentCheck: [ACLAction]? = nil,
+        deploymentCheckPreview: [ACLAction]? = nil,
+        deploymentCheckReRunFromProductionBranch: [ACLAction]? = nil,
+        deploymentPolicy: [ACLAction]? = nil,
+        deploymentPreview: [ACLAction]? = nil,
+        deploymentPrivate: [ACLAction]? = nil,
+        deploymentProductionGit: [ACLAction]? = nil,
+        deploymentPromote: [ACLAction]? = nil,
+        deploymentProtectionException: [ACLAction]? = nil,
+        deploymentRollback: [ACLAction]? = nil,
+        deploymentV0: [ACLAction]? = nil,
+        domain: [ACLAction]? = nil,
+        domainAcceptDelegation: [ACLAction]? = nil,
+        domainAuthCodes: [ACLAction]? = nil,
+        domainCertificate: [ACLAction]? = nil,
+        domainCheckConfig: [ACLAction]? = nil,
+        domainMove: [ACLAction]? = nil,
+        domainPurchase: [ACLAction]? = nil,
+        domainRecord: [ACLAction]? = nil,
+        domainTransferIn: [ACLAction]? = nil,
+        drain: [ACLAction]? = nil,
+        edgeCacheNamespace: [ACLAction]? = nil,
+        edgeConfig: [ACLAction]? = nil,
+        edgeConfigItem: [ACLAction]? = nil,
+        edgeConfigSchema: [ACLAction]? = nil,
+        edgeConfigToken: [ACLAction]? = nil,
+        endpointVerification: [ACLAction]? = nil,
+        environments: [ACLAction]? = nil,
+        event: [ACLAction]? = nil,
+        fileUpload: [ACLAction]? = nil,
+        flagsExplorerSubscription: [ACLAction]? = nil,
+        gitCredentialGrant: [ACLAction]? = nil,
+        gitRepository: [ACLAction]? = nil,
+        imageOptimizationNewPrice: [ACLAction]? = nil,
+        integration: [ACLAction]? = nil,
+        integrationAccount: [ACLAction]? = nil,
+        integrationConfiguration: [ACLAction]? = nil,
+        integrationConfigurationProjects: [ACLAction]? = nil,
+        integrationConfigurationRole: [ACLAction]? = nil,
+        integrationConfigurationTransfer: [ACLAction]? = nil,
+        integrationDeploymentAction: [ACLAction]? = nil,
+        integrationEvent: [ACLAction]? = nil,
+        integrationLog: [ACLAction]? = nil,
+        integrationPullRequest: [ACLAction]? = nil,
+        integrationResource: [ACLAction]? = nil,
+        integrationResourceData: [ACLAction]? = nil,
+        integrationResourceReplCommand: [ACLAction]? = nil,
+        integrationResourceSecrets: [ACLAction]? = nil,
+        integrationSsoSession: [ACLAction]? = nil,
+        integrationStoreTokenSet: [ACLAction]? = nil,
+        integrationStrict: [ACLAction]? = nil,
+        integrationVercelConfigurationOverride: [ACLAction]? = nil,
+        ipBlocking: [ACLAction]? = nil,
+        job: [ACLAction]? = nil,
+        jobGlobal: [ACLAction]? = nil,
+        kmsIssuer: [ACLAction]? = nil,
+        kmsProjectGrant: [ACLAction]? = nil,
+        logDrain: [ACLAction]? = nil,
+        logs: [ACLAction]? = nil,
+        logsPreset: [ACLAction]? = nil,
+        marketplaceBillingData: [ACLAction]? = nil,
+        marketplaceExperimentationEdgeConfigData: [ACLAction]? = nil,
+        marketplaceExperimentationItem: [ACLAction]? = nil,
+        marketplaceFlexCommit: [ACLAction]? = nil,
+        marketplaceInstallationMember: [ACLAction]? = nil,
+        marketplaceInvoice: [ACLAction]? = nil,
+        marketplaceSettings: [ACLAction]? = nil,
+        messageboard: [ACLAction]? = nil,
+        messageboardSpace: [ACLAction]? = nil,
+        messageboardTask: [ACLAction]? = nil,
+        monitoring: [ACLAction]? = nil,
+        monitoringAlert: [ACLAction]? = nil,
+        monitoringChart: [ACLAction]? = nil,
+        monitoringQuery: [ACLAction]? = nil,
+        monitoringSettings: [ACLAction]? = nil,
+        notificationCustomerBudget: [ACLAction]? = nil,
+        notificationDeploymentFailed: [ACLAction]? = nil,
+        notificationDomainConfiguration: [ACLAction]? = nil,
+        notificationDomainExpire: [ACLAction]? = nil,
+        notificationDomainMoved: [ACLAction]? = nil,
+        notificationDomainPurchase: [ACLAction]? = nil,
+        notificationDomainRenewal: [ACLAction]? = nil,
+        notificationDomainTransfer: [ACLAction]? = nil,
+        notificationDomainUnverified: [ACLAction]? = nil,
+        notificationMonitoringAlert: [ACLAction]? = nil,
+        notificationPaymentFailed: [ACLAction]? = nil,
+        notificationPreferences: [ACLAction]? = nil,
+        notificationStatementOfReasons: [ACLAction]? = nil,
+        notificationUsageAlert: [ACLAction]? = nil,
+        oauth2Application: [ACLAction]? = nil,
+        oauth2Connection: [ACLAction]? = nil,
+        observabilityConfiguration: [ACLAction]? = nil,
+        observabilityData: [ACLAction]? = nil,
+        observabilityFunnel: [ACLAction]? = nil,
+        observabilityNotebook: [ACLAction]? = nil,
+        oidcFederationPolicy: [ACLAction]? = nil,
+        onDemandBuild: [ACLAction]? = nil,
+        onDemandConcurrency: [ACLAction]? = nil,
+        openTelemetryEndpoint: [ACLAction]? = nil,
+        optionsAllowlist: [ACLAction]? = nil,
+        organization: [ACLAction]? = nil,
+        organizationDomain: [ACLAction]? = nil,
+        organizationTeam: [ACLAction]? = nil,
+        ownEvent: [ACLAction]? = nil,
+        pageIntegrity: [ACLAction]? = nil,
+        passwordProtection: [ACLAction]? = nil,
+        passwordProtectionInvoiceItem: [ACLAction]? = nil,
+        paymentMethod: [ACLAction]? = nil,
+        permissions: [ACLAction]? = nil,
+        postgres: [ACLAction]? = nil,
+        postgresStoreTokenSet: [ACLAction]? = nil,
+        previewDeploymentSuffix: [ACLAction]? = nil,
+        privateCloudAccount: [ACLAction]? = nil,
+        privateLinkEndpoint: [ACLAction]? = nil,
+        productionAliasProtectionBypass: [ACLAction]? = nil,
+        productionShareableLink: [ACLAction]? = nil,
+        project: [ACLAction]? = nil,
+        projectAccessGroup: [ACLAction]? = nil,
+        projectAnalyticsSampling: [ACLAction]? = nil,
+        projectAnalyticsUsage: [ACLAction]? = nil,
+        projectCheck: [ACLAction]? = nil,
+        projectCheckRun: [ACLAction]? = nil,
+        projectDeploymentExpiration: [ACLAction]? = nil,
+        projectDeploymentHook: [ACLAction]? = nil,
+        projectDeploymentProtectionStrict: [ACLAction]? = nil,
+        projectDomain: [ACLAction]? = nil,
+        projectDomainCheckConfig: [ACLAction]? = nil,
+        projectDomainMove: [ACLAction]? = nil,
+        projectDomainVerify: [ACLAction]? = nil,
+        projectEnvVars: [ACLAction]? = nil,
+        projectEnvVarsProduction: [ACLAction]? = nil,
+        projectEnvVarsUnownedByIntegration: [ACLAction]? = nil,
+        projectEvent: [ACLAction]? = nil,
+        projectFlags: [ACLAction]? = nil,
+        projectFlagsProduction: [ACLAction]? = nil,
+        projectFlagsSdkKey: [ACLAction]? = nil,
+        projectFromV0: [ACLAction]? = nil,
+        projectId: [ACLAction]? = nil,
+        projectIntegrationConfiguration: [ACLAction]? = nil,
+        projectLink: [ACLAction]? = nil,
+        projectMember: [ACLAction]? = nil,
+        projectMonitoring: [ACLAction]? = nil,
+        projectOidcToken: [ACLAction]? = nil,
+        projectPermissions: [ACLAction]? = nil,
+        projectProductionBranch: [ACLAction]? = nil,
+        projectProtectionBypass: [ACLAction]? = nil,
+        projectRollingRelease: [ACLAction]? = nil,
+        projectRoutes: [ACLAction]? = nil,
+        projectSetting: [ACLAction]? = nil,
+        projectSupportCase: [ACLAction]? = nil,
+        projectSupportCaseComment: [ACLAction]? = nil,
+        projectTier: [ACLAction]? = nil,
+        projectTransfer: [ACLAction]? = nil,
+        projectTransferIn: [ACLAction]? = nil,
+        projectTransferOut: [ACLAction]? = nil,
+        projectTransferRequest: [ACLAction]? = nil,
+        projectUsage: [ACLAction]? = nil,
+        proTrialOnboarding: [ACLAction]? = nil,
+        rateLimit: [ACLAction]? = nil,
+        redis: [ACLAction]? = nil,
+        redisStoreTokenSet: [ACLAction]? = nil,
+        remoteCaching: [ACLAction]? = nil,
+        repository: [ACLAction]? = nil,
+        samlConfig: [ACLAction]? = nil,
+        schedule: [ACLAction]? = nil,
+        seawallConfig: [ACLAction]? = nil,
+        secret: [ACLAction]? = nil,
+        securityConfig: [ACLAction]? = nil,
+        securityPlusConfiguration: [ACLAction]? = nil,
+        sensitiveEnvironmentVariablePolicy: [ACLAction]? = nil,
+        setting: [ACLAction]? = nil,
+        shareableLink: [ACLAction]? = nil,
+        shareableLinkStrict: [ACLAction]? = nil,
+        sharedEnvVarConnection: [ACLAction]? = nil,
+        sharedEnvVars: [ACLAction]? = nil,
+        sharedEnvVarsProduction: [ACLAction]? = nil,
+        skewProtection: [ACLAction]? = nil,
+        space: [ACLAction]? = nil,
+        spaceRun: [ACLAction]? = nil,
+        storeIsLocked: [ACLAction]? = nil,
+        storeTokenSetSensitive: [ACLAction]? = nil,
+        storeTransfer: [ACLAction]? = nil,
+        supportCase: [ACLAction]? = nil,
+        supportCaseComment: [ACLAction]? = nil,
+        team: [ACLAction]? = nil,
+        teamAccessRequest: [ACLAction]? = nil,
+        teamFellowMembership: [ACLAction]? = nil,
+        teamGitExclusivity: [ACLAction]? = nil,
+        teamInvite: [ACLAction]? = nil,
+        teamInviteCode: [ACLAction]? = nil,
+        teamInviteLink: [ACLAction]? = nil,
+        teamJoin: [ACLAction]? = nil,
+        teamMemberMfaStatus: [ACLAction]? = nil,
+        teamMicrofrontends: [ACLAction]? = nil,
+        teamOwnMembership: [ACLAction]? = nil,
+        teamOwnMembershipDisconnectSaml: [ACLAction]? = nil,
+        teamSudo: [ACLAction]? = nil,
+        teamTokenInvalidation: [ACLAction]? = nil,
+        token: [ACLAction]? = nil,
+        toolbarComment: [ACLAction]? = nil,
+        trustedIps: [ACLAction]? = nil,
+        trustedSources: [ACLAction]? = nil,
+        usage: [ACLAction]? = nil,
+        usageCycle: [ACLAction]? = nil,
+        user: [ACLAction]? = nil,
+        userConnection: [ACLAction]? = nil,
+        userMfaConfiguration: [ACLAction]? = nil,
+        userPreference: [ACLAction]? = nil,
+        userSudo: [ACLAction]? = nil,
+        v0Chat: [ACLAction]? = nil,
+        vcrRepository: [ACLAction]? = nil,
+        vercelAppInstallation: [ACLAction]? = nil,
+        vercelAppInstallationRequest: [ACLAction]? = nil,
+        vercelAuth: [ACLAction]? = nil,
+        vercelRun: [ACLAction]? = nil,
+        vpcPeeringConnection: [ACLAction]? = nil,
+        webAnalytics: [ACLAction]? = nil,
+        webAnalyticsPlan: [ACLAction]? = nil,
+        webAuthn: [ACLAction]? = nil,
+        webhook: [ACLAction]? = nil,
+        webhookEvent: [ACLAction]? = nil,
+        workflowRunData: [ACLAction]? = nil
+    ) {
+        self.init(sdkDefaults: ())
+        sdkSet1(accessGroup, agent, aiGatewayApiKey, aiGatewayApiKeyBypassAll, aiGatewayApiKeyOwnedBySelf)
+        sdkSet2(aiGatewayApiKeySpendAttribution, aiGatewayApiKeyZdrExemption, aiGatewayBudget, aiGatewayCredits)
+        sdkSet3(aiGatewayGuardrails, aiGatewayPrivateModels, aiGatewayRules, aiGatewaySettings, aiGatewayTranscripts)
+        sdkSet4(aiGatewayTranscriptsSettings, aiGatewayUsage, aiGatewayVirtualModelConfigs, alertRules, alerts)
+        sdkSet5(aliasGlobal, aliasProject, aliasProtectionBypass, analytics, analyticsSampling)
+        sdkSet6(analyticsUsage, apiKey, apiKeyAiGateway, apiKeyOwnedBySelf, auditLog)
+        sdkSet7(automation, billingAddress, billingInformation, billingInvoice, billingInvoiceEmailRecipient)
+        sdkSet8(billingInvoiceLanguage, billingPlan, billingPurchaseOrder, billingRefund, billingTaxId)
+        sdkSet9(blob, blobStoreTokenSet, budget, buildMachine, buildMachineDefault)
+        sdkSet10(bulkRedirects, cacheArtifact, cacheArtifactUsageEvent, ciInvocations, ciLogs)
+        sdkSet11(codeChecks, codeOwners, concurrentBuilds, connect, connectConfiguration)
+        sdkSet12(connectConfigurationLink, connectLogs, connexClient, connexClientProject, connexContact)
+        sdkSet13(connexInstallation, connexToken, cursorOriginInstallation, dataCacheBillingSettings)
+        sdkSet14(dataCacheNamespace, defaultDeploymentProtection, deployment, deploymentBuildLogs, deploymentCheck)
+        sdkSet15(deploymentCheckPreview, deploymentCheckReRunFromProductionBranch, deploymentPolicy)
+        sdkSet16(deploymentPreview, deploymentPrivate, deploymentProductionGit, deploymentPromote)
+        sdkSet17(deploymentProtectionException, deploymentRollback, deploymentV0, domain, domainAcceptDelegation)
+        sdkSet18(domainAuthCodes, domainCertificate, domainCheckConfig, domainMove, domainPurchase)
+        sdkSet19(domainRecord, domainTransferIn, drain, edgeCacheNamespace, edgeConfig)
+        sdkSet20(edgeConfigItem, edgeConfigSchema, edgeConfigToken, endpointVerification, environments)
+        sdkSet21(event, fileUpload, flagsExplorerSubscription, gitCredentialGrant, gitRepository)
+        sdkSet22(imageOptimizationNewPrice, integration, integrationAccount, integrationConfiguration)
+        sdkSet23(integrationConfigurationProjects, integrationConfigurationRole, integrationConfigurationTransfer)
+        sdkSet24(integrationDeploymentAction, integrationEvent, integrationLog, integrationPullRequest)
+        sdkSet25(integrationResource, integrationResourceData, integrationResourceReplCommand)
+        sdkSet26(integrationResourceSecrets, integrationSsoSession, integrationStoreTokenSet, integrationStrict)
+        sdkSet27(integrationVercelConfigurationOverride, ipBlocking, job, jobGlobal, kmsIssuer)
+        sdkSet28(kmsProjectGrant, logDrain, logs, logsPreset, marketplaceBillingData)
+        sdkSet29(marketplaceExperimentationEdgeConfigData, marketplaceExperimentationItem, marketplaceFlexCommit)
+        sdkSet30(marketplaceInstallationMember, marketplaceInvoice, marketplaceSettings, messageboard)
+        sdkSet31(messageboardSpace, messageboardTask, monitoring, monitoringAlert, monitoringChart)
+        sdkSet32(monitoringQuery, monitoringSettings, notificationCustomerBudget, notificationDeploymentFailed)
+        sdkSet33(notificationDomainConfiguration, notificationDomainExpire, notificationDomainMoved)
+        sdkSet34(notificationDomainPurchase, notificationDomainRenewal, notificationDomainTransfer)
+        sdkSet35(notificationDomainUnverified, notificationMonitoringAlert, notificationPaymentFailed)
+        sdkSet36(notificationPreferences, notificationStatementOfReasons, notificationUsageAlert, oauth2Application)
+        sdkSet37(oauth2Connection, observabilityConfiguration, observabilityData, observabilityFunnel)
+        sdkSet38(observabilityNotebook, oidcFederationPolicy, onDemandBuild, onDemandConcurrency)
+        sdkSet39(openTelemetryEndpoint, optionsAllowlist, organization, organizationDomain, organizationTeam)
+        sdkSet40(ownEvent, pageIntegrity, passwordProtection, passwordProtectionInvoiceItem, paymentMethod)
+        sdkSet41(permissions, postgres, postgresStoreTokenSet, previewDeploymentSuffix, privateCloudAccount)
+        sdkSet42(privateLinkEndpoint, productionAliasProtectionBypass, productionShareableLink, project)
+        sdkSet43(projectAccessGroup, projectAnalyticsSampling, projectAnalyticsUsage, projectCheck, projectCheckRun)
+        sdkSet44(projectDeploymentExpiration, projectDeploymentHook, projectDeploymentProtectionStrict, projectDomain)
+        sdkSet45(projectDomainCheckConfig, projectDomainMove, projectDomainVerify, projectEnvVars)
+        sdkSet46(projectEnvVarsProduction, projectEnvVarsUnownedByIntegration, projectEvent, projectFlags)
+        sdkSet47(projectFlagsProduction, projectFlagsSdkKey, projectFromV0, projectId)
+        sdkSet48(projectIntegrationConfiguration, projectLink, projectMember, projectMonitoring, projectOidcToken)
+        sdkSet49(projectPermissions, projectProductionBranch, projectProtectionBypass, projectRollingRelease)
+        sdkSet50(projectRoutes, projectSetting, projectSupportCase, projectSupportCaseComment, projectTier)
+        sdkSet51(projectTransfer, projectTransferIn, projectTransferOut, projectTransferRequest, projectUsage)
+        sdkSet52(proTrialOnboarding, rateLimit, redis, redisStoreTokenSet, remoteCaching)
+        sdkSet53(repository, samlConfig, schedule, seawallConfig, secret)
+        sdkSet54(securityConfig, securityPlusConfiguration, sensitiveEnvironmentVariablePolicy, setting)
+        sdkSet55(shareableLink, shareableLinkStrict, sharedEnvVarConnection, sharedEnvVars, sharedEnvVarsProduction)
+        sdkSet56(skewProtection, space, spaceRun, storeIsLocked, storeTokenSetSensitive)
+        sdkSet57(storeTransfer, supportCase, supportCaseComment, team, teamAccessRequest)
+        sdkSet58(teamFellowMembership, teamGitExclusivity, teamInvite, teamInviteCode, teamInviteLink)
+        sdkSet59(teamJoin, teamMemberMfaStatus, teamMicrofrontends, teamOwnMembership)
+        sdkSet60(teamOwnMembershipDisconnectSaml, teamSudo, teamTokenInvalidation, token, toolbarComment)
+        sdkSet61(trustedIps, trustedSources, usage, usageCycle, user)
+        sdkSet62(userConnection, userMfaConfiguration, userPreference, userSudo, v0Chat)
+        sdkSet63(vcrRepository, vercelAppInstallation, vercelAppInstallationRequest, vercelAuth, vercelRun)
+        sdkSet64(vpcPeeringConnection, webAnalytics, webAnalyticsPlan, webAuthn, webhook)
+        sdkSet65(webhookEvent, workflowRunData)
     }
 }
 
-public struct CreateProjectEnvResponseCreatedVariant0ContentHintVariant3: Codable {
-    public var storeId: String
-    public var type: CreateProjectEnvResponseCreatedVariant0ContentHintVariant3Type
-
-    enum CodingKeys: String, CodingKey {
-        case storeId
-        case type
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateProjectEnvResponseCreatedVariant0ContentHintVariant3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.storeId) else {
-            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.storeId = try container.sdkDecodeRequired(.storeId)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, CreateProjectEnvResponseCreatedVariant0ContentHintVariant3Type.allCases.map(\.rawValue))
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet1(
+        _ accessGroup: [ACLAction]?,
+        _ agent: [ACLAction]?,
+        _ aiGatewayApiKey: [ACLAction]?,
+        _ aiGatewayApiKeyBypassAll: [ACLAction]?,
+        _ aiGatewayApiKeyOwnedBySelf: [ACLAction]?
+    ) {
+        self.accessGroup = accessGroup
+        self.agent = agent
+        self.aiGatewayApiKey = aiGatewayApiKey
+        self.aiGatewayApiKeyBypassAll = aiGatewayApiKeyBypassAll
+        self.aiGatewayApiKeyOwnedBySelf = aiGatewayApiKeyOwnedBySelf
     }
 }
 
-extension CreateProjectEnvResponseCreatedVariant0ContentHintVariant3 {
-    public init(storeId: String, type: CreateProjectEnvResponseCreatedVariant0ContentHintVariant3Type) throws {
-        (self.storeId, self.type) = (storeId, type)
-            try sdkValidateRawEnum("type", self.type, CreateProjectEnvResponseCreatedVariant0ContentHintVariant3Type.allCases.map(\.rawValue))
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet2(
+        _ aiGatewayApiKeySpendAttribution: [ACLAction]?,
+        _ aiGatewayApiKeyZdrExemption: [ACLAction]?,
+        _ aiGatewayBudget: [ACLAction]?,
+        _ aiGatewayCredits: [ACLAction]?
+    ) {
+        self.aiGatewayApiKeySpendAttribution = aiGatewayApiKeySpendAttribution
+        self.aiGatewayApiKeyZdrExemption = aiGatewayApiKeyZdrExemption
+        self.aiGatewayBudget = aiGatewayBudget
+        self.aiGatewayCredits = aiGatewayCredits
     }
 }
 
-public indirect enum ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede {
-    case stringValue(String)
-    case listProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7(
-        ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7
-    )
-}
-
-extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede: Codable {
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede")
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet3(
+        _ aiGatewayGuardrails: [ACLAction]?,
+        _ aiGatewayPrivateModels: [ACLAction]?,
+        _ aiGatewayRules: [ACLAction]?,
+        _ aiGatewaySettings: [ACLAction]?,
+        _ aiGatewayTranscripts: [ACLAction]?
+    ) {
+        self.aiGatewayGuardrails = aiGatewayGuardrails
+        self.aiGatewayPrivateModels = aiGatewayPrivateModels
+        self.aiGatewayRules = aiGatewayRules
+        self.aiGatewaySettings = aiGatewaySettings
+        self.aiGatewayTranscripts = aiGatewayTranscripts
     }
 }
 
-extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede {
-    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(
-            ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7.self
-        ) {
-            return             .listProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7(value)
-        }
-        return nil
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet4(
+        _ aiGatewayTranscriptsSettings: [ACLAction]?,
+        _ aiGatewayUsage: [ACLAction]?,
+        _ aiGatewayVirtualModelConfigs: [ACLAction]?,
+        _ alertRules: [ACLAction]?,
+        _ alerts: [ACLAction]?
+    ) {
+        self.aiGatewayTranscriptsSettings = aiGatewayTranscriptsSettings
+        self.aiGatewayUsage = aiGatewayUsage
+        self.aiGatewayVirtualModelConfigs = aiGatewayVirtualModelConfigs
+        self.alertRules = alertRules
+        self.alerts = alerts
     }
 }
 
-extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteXb3441ecede {
-    func encodeGroup1(to encoder: Encoder) throws -> Bool {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case let .stringValue(value): try container.encode(value); return true
-        case let .listProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX9b356e7fe7(value): try container.encode(value); return true
-        }
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet5(
+        _ aliasGlobal: [ACLAction]?,
+        _ aliasProject: [ACLAction]?,
+        _ aliasProtectionBypass: [ACLAction]?,
+        _ analytics: [ACLAction]?,
+        _ analyticsSampling: [ACLAction]?
+    ) {
+        self.aliasGlobal = aliasGlobal
+        self.aliasProject = aliasProject
+        self.aliasProtectionBypass = aliasProtectionBypass
+        self.analytics = analytics
+        self.analyticsSampling = analyticsSampling
     }
 }
 
-public struct UploadProjectAvatarResponseSecurityManagedRulesBotFilter: Codable {
-    public var active: Bool
-    public var action: UploadProjectAvatarResponseSecurityManagedRulesBotFilterAction?
-
-    enum CodingKeys: String, CodingKey {
-        case active
-        case action
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UploadProjectAvatarResponseSecurityManagedRulesBotFilter {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.active) else {
-            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
-        }
-        self.active = try container.sdkDecodeRequired(.active)
-        self.action = try container.sdkDecodeIfPresent(.action)
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet6(
+        _ analyticsUsage: [ACLAction]?,
+        _ apiKey: [ACLAction]?,
+        _ apiKeyAiGateway: [ACLAction]?,
+        _ apiKeyOwnedBySelf: [ACLAction]?,
+        _ auditLog: [ACLAction]?
+    ) {
+        self.analyticsUsage = analyticsUsage
+        self.apiKey = apiKey
+        self.apiKeyAiGateway = apiKeyAiGateway
+        self.apiKeyOwnedBySelf = apiKeyOwnedBySelf
+        self.auditLog = auditLog
     }
 }
 
-extension UploadProjectAvatarResponseSecurityManagedRulesBotFilter {
-    public init(active: Bool, action: UploadProjectAvatarResponseSecurityManagedRulesBotFilterAction? = nil) {
-        (self.active, self.action) = (active, action)
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet7(
+        _ automation: [ACLAction]?,
+        _ billingAddress: [ACLAction]?,
+        _ billingInformation: [ACLAction]?,
+        _ billingInvoice: [ACLAction]?,
+        _ billingInvoiceEmailRecipient: [ACLAction]?
+    ) {
+        self.automation = automation
+        self.billingAddress = billingAddress
+        self.billingInformation = billingInformation
+        self.billingInvoice = billingInvoice
+        self.billingInvoiceEmailRecipient = billingInvoiceEmailRecipient
     }
 }
 
-public typealias ListProjectsResponseVariant1ProjectsItemLinkVariant6DeployHooksList = [ListProjectsResponseVariant1ProjectsItemLinkVariant6DeployHooksItem]
-
-public struct ListProjectsResponseVariant1ProjectsItemLinkVariant6: Codable {
-    public var deployHooks: ListProjectsResponseVariant1ProjectsItemLinkVariant6DeployHooksList
-    public var gitCredentialId: String
-    public var org: String
-    public var productionBranch: String
-    public var repo: String
-    public var repoId: String
-    public var type: ListProjectsResponseVariant1ProjectsItemLinkVariant6Type
-    public var createdAt: Double?
-    public var sourceless: Bool?
-    public var updatedAt: Double?
-
-    enum CodingKeys: String, CodingKey {
-        case deployHooks
-        case gitCredentialId
-        case org
-        case productionBranch
-        case repo
-        case repoId
-        case type
-        case createdAt
-        case sourceless
-        case updatedAt
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemLinkVariant6 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.deployHooks) else {
-            throw SdkValidationError(field: "deployHooks", code: "required", message: "Validation failed for 'deployHooks': value is required")
-        }
-        guard container.contains(.gitCredentialId) else {
-            throw SdkValidationError(field: "gitCredentialId", code: "required", message: "Validation failed for 'gitCredentialId': value is required")
-        }
-        guard container.contains(.org) else {
-            throw SdkValidationError(field: "org", code: "required", message: "Validation failed for 'org': value is required")
-        }
-        guard container.contains(.productionBranch) else {
-            throw SdkValidationError(field: "productionBranch", code: "required", message: "Validation failed for 'productionBranch': value is required")
-        }
-        guard container.contains(.repo) else {
-            throw SdkValidationError(field: "repo", code: "required", message: "Validation failed for 'repo': value is required")
-        }
-        guard container.contains(.repoId) else {
-            throw SdkValidationError(field: "repoId", code: "required", message: "Validation failed for 'repoId': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.deployHooks = try container.sdkDecodeRequired(.deployHooks)
-        self.gitCredentialId = try container.sdkDecodeRequired(.gitCredentialId)
-        self.org = try container.sdkDecodeRequired(.org)
-        self.productionBranch = try container.sdkDecodeRequired(.productionBranch)
-        self.repo = try container.sdkDecodeRequired(.repo)
-        self.repoId = try container.sdkDecodeRequired(.repoId)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.sourceless = try container.sdkDecodeIfPresent(.sourceless)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemLinkVariant6Type.allCases.map(\.rawValue))
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet8(
+        _ billingInvoiceLanguage: [ACLAction]?,
+        _ billingPlan: [ACLAction]?,
+        _ billingPurchaseOrder: [ACLAction]?,
+        _ billingRefund: [ACLAction]?,
+        _ billingTaxId: [ACLAction]?
+    ) {
+        self.billingInvoiceLanguage = billingInvoiceLanguage
+        self.billingPlan = billingPlan
+        self.billingPurchaseOrder = billingPurchaseOrder
+        self.billingRefund = billingRefund
+        self.billingTaxId = billingTaxId
     }
 }
 
-extension ListProjectsResponseVariant1ProjectsItemLinkVariant6 {
-    public init(deployHooks: ListProjectsResponseVariant1ProjectsItemLinkVariant6DeployHooksList, gitCredentialId: String, org: String, productionBranch: String, repo: String, repoId: String, type: ListProjectsResponseVariant1ProjectsItemLinkVariant6Type, createdAt: Double? = nil, sourceless: Bool? = nil, updatedAt: Double? = nil) throws {
-        (self.deployHooks, self.gitCredentialId) = (deployHooks, gitCredentialId)
-        (self.org, self.productionBranch) = (org, productionBranch)
-        (self.repo, self.repoId) = (repo, repoId)
-        (self.type, self.createdAt) = (type, createdAt)
-        (self.sourceless, self.updatedAt) = (sourceless, updatedAt)
-            try sdkValidateRawEnum("type", self.type, ListProjectsResponseVariant1ProjectsItemLinkVariant6Type.allCases.map(\.rawValue))
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet9(
+        _ blob: [ACLAction]?,
+        _ blobStoreTokenSet: [ACLAction]?,
+        _ budget: [ACLAction]?,
+        _ buildMachine: [ACLAction]?,
+        _ buildMachineDefault: [ACLAction]?
+    ) {
+        self.blob = blob
+        self.blobStoreTokenSet = blobStoreTokenSet
+        self.budget = budget
+        self.buildMachine = buildMachine
+        self.buildMachineDefault = buildMachineDefault
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet10(
+        _ bulkRedirects: [ACLAction]?,
+        _ cacheArtifact: [ACLAction]?,
+        _ cacheArtifactUsageEvent: [ACLAction]?,
+        _ ciInvocations: [ACLAction]?,
+        _ ciLogs: [ACLAction]?
+    ) {
+        self.bulkRedirects = bulkRedirects
+        self.cacheArtifact = cacheArtifact
+        self.cacheArtifactUsageEvent = cacheArtifactUsageEvent
+        self.ciInvocations = ciInvocations
+        self.ciLogs = ciLogs
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet11(
+        _ codeChecks: [ACLAction]?,
+        _ codeOwners: [ACLAction]?,
+        _ concurrentBuilds: [ACLAction]?,
+        _ connect: [ACLAction]?,
+        _ connectConfiguration: [ACLAction]?
+    ) {
+        self.codeChecks = codeChecks
+        self.codeOwners = codeOwners
+        self.concurrentBuilds = concurrentBuilds
+        self.connect = connect
+        self.connectConfiguration = connectConfiguration
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet12(
+        _ connectConfigurationLink: [ACLAction]?,
+        _ connectLogs: [ACLAction]?,
+        _ connexClient: [ACLAction]?,
+        _ connexClientProject: [ACLAction]?,
+        _ connexContact: [ACLAction]?
+    ) {
+        self.connectConfigurationLink = connectConfigurationLink
+        self.connectLogs = connectLogs
+        self.connexClient = connexClient
+        self.connexClientProject = connexClientProject
+        self.connexContact = connexContact
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet13(
+        _ connexInstallation: [ACLAction]?,
+        _ connexToken: [ACLAction]?,
+        _ cursorOriginInstallation: [ACLAction]?,
+        _ dataCacheBillingSettings: [ACLAction]?
+    ) {
+        self.connexInstallation = connexInstallation
+        self.connexToken = connexToken
+        self.cursorOriginInstallation = cursorOriginInstallation
+        self.dataCacheBillingSettings = dataCacheBillingSettings
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet14(
+        _ dataCacheNamespace: [ACLAction]?,
+        _ defaultDeploymentProtection: [ACLAction]?,
+        _ deployment: [ACLAction]?,
+        _ deploymentBuildLogs: [ACLAction]?,
+        _ deploymentCheck: [ACLAction]?
+    ) {
+        self.dataCacheNamespace = dataCacheNamespace
+        self.defaultDeploymentProtection = defaultDeploymentProtection
+        self.deployment = deployment
+        self.deploymentBuildLogs = deploymentBuildLogs
+        self.deploymentCheck = deploymentCheck
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet15(
+        _ deploymentCheckPreview: [ACLAction]?,
+        _ deploymentCheckReRunFromProductionBranch: [ACLAction]?,
+        _ deploymentPolicy: [ACLAction]?
+    ) {
+        self.deploymentCheckPreview = deploymentCheckPreview
+        self.deploymentCheckReRunFromProductionBranch = deploymentCheckReRunFromProductionBranch
+        self.deploymentPolicy = deploymentPolicy
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet16(
+        _ deploymentPreview: [ACLAction]?,
+        _ deploymentPrivate: [ACLAction]?,
+        _ deploymentProductionGit: [ACLAction]?,
+        _ deploymentPromote: [ACLAction]?
+    ) {
+        self.deploymentPreview = deploymentPreview
+        self.deploymentPrivate = deploymentPrivate
+        self.deploymentProductionGit = deploymentProductionGit
+        self.deploymentPromote = deploymentPromote
     }
 }

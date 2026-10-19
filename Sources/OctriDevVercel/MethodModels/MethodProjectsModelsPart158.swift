@@ -7,396 +7,614 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet17(_ deploymentProtectionException: [ACLAction]?, _ deploymentRollback: [ACLAction]?, _ deploymentV0: [ACLAction]?, _ domain: [ACLAction]?, _ domainAcceptDelegation: [ACLAction]?) {
-        self.deploymentProtectionException = deploymentProtectionException
-        self.deploymentRollback = deploymentRollback
-        self.deploymentV0 = deploymentV0
-        self.domain = domain
-        self.domainAcceptDelegation = domainAcceptDelegation
+/// Canonical projects operation model declarations
+public extension CreateProjectResponseCustomEnvironmentsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.slug) else {
+            throw SdkValidationError(
+                field: "slug",
+                code: "required",
+                message: "Validation failed for 'slug': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        id = try container.sdkDecodeRequired(.id)
+        slug = try container.sdkDecodeRequired(.slug)
+        type = try container.sdkDecodeRequired(.type)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        branchMatcher = try container.sdkDecodeIfPresent(.branchMatcher)
+        currentDeploymentAliases = try container.sdkDecodeIfPresent(.currentDeploymentAliases)
+        description = try container.sdkDecodeIfPresent(.description)
+        domains = try container.sdkDecodeIfPresent(.domains)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet18(_ domainAuthCodes: [ACLAction]?, _ domainCertificate: [ACLAction]?, _ domainCheckConfig: [ACLAction]?, _ domainMove: [ACLAction]?, _ domainPurchase: [ACLAction]?) {
-        self.domainAuthCodes = domainAuthCodes
-        self.domainCertificate = domainCertificate
-        self.domainCheckConfig = domainCheckConfig
-        self.domainMove = domainMove
-        self.domainPurchase = domainPurchase
+public extension CreateProjectResponseCustomEnvironmentsItem {
+    init(
+        createdAt: Double,
+        id: String,
+        slug: String,
+        type: CreateProjectResponseCustomEnvironmentsItemType,
+        updatedAt: Double,
+        branchMatcher: CreateProjectResponseCustomEnvironmentsItemBranchMatcher? = nil,
+        currentDeploymentAliases: [String]? = nil,
+        description: String? = nil,
+        domains: [CreateProjectResponseCustomEnvironmentsItemDomainsItem]? = nil
+    ) {
+        (self.createdAt, self.id) = (createdAt, id)
+        (self.slug, self.type) = (slug, type)
+        (self.updatedAt, self.branchMatcher) = (updatedAt, branchMatcher)
+        (self.currentDeploymentAliases, self.description) = (currentDeploymentAliases, description)
+        self.domains = domains
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet19(_ domainRecord: [ACLAction]?, _ domainTransferIn: [ACLAction]?, _ drain: [ACLAction]?, _ edgeCacheNamespace: [ACLAction]?, _ edgeConfig: [ACLAction]?) {
-        self.domainRecord = domainRecord
-        self.domainTransferIn = domainTransferIn
-        self.drain = drain
-        self.edgeCacheNamespace = edgeCacheNamespace
-        self.edgeConfig = edgeConfig
+public struct UpdateProjectResponseLastAliasRequest: Codable {
+    public var fromDeploymentId: String?
+    public var jobStatus: UpdateProjectResponseLastAliasRequestJobStatus
+    public var requestedAt: Double
+    public var toDeploymentId: String
+    public var type: UpdateProjectResponseLastAliasRequestType
+    /// If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and
+    /// fromRollingReleaseId captures the "target" of that rolling release.
+    public var fromRollingReleaseId: String?
+
+    enum CodingKeys: String, CodingKey {
+        case fromDeploymentId
+        case jobStatus
+        case requestedAt
+        case toDeploymentId
+        case type
+        case fromRollingReleaseId
+    }
+
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet20(_ edgeConfigItem: [ACLAction]?, _ edgeConfigSchema: [ACLAction]?, _ edgeConfigToken: [ACLAction]?, _ endpointVerification: [ACLAction]?, _ environments: [ACLAction]?) {
-        self.edgeConfigItem = edgeConfigItem
-        self.edgeConfigSchema = edgeConfigSchema
-        self.edgeConfigToken = edgeConfigToken
-        self.endpointVerification = endpointVerification
-        self.environments = environments
+public extension UpdateProjectResponseLastAliasRequest {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.fromDeploymentId) else {
+            throw SdkValidationError(
+                field: "fromDeploymentId",
+                code: "required",
+                message: "Validation failed for 'fromDeploymentId': value is required"
+            )
+        }
+        guard container.contains(.jobStatus) else {
+            throw SdkValidationError(
+                field: "jobStatus",
+                code: "required",
+                message: "Validation failed for 'jobStatus': value is required"
+            )
+        }
+        guard container.contains(.requestedAt) else {
+            throw SdkValidationError(
+                field: "requestedAt",
+                code: "required",
+                message: "Validation failed for 'requestedAt': value is required"
+            )
+        }
+        guard container.contains(.toDeploymentId) else {
+            throw SdkValidationError(
+                field: "toDeploymentId",
+                code: "required",
+                message: "Validation failed for 'toDeploymentId': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        fromDeploymentId = try container.sdkDecodeNullable(.fromDeploymentId)
+        jobStatus = try container.sdkDecodeRequired(.jobStatus)
+        requestedAt = try container.sdkDecodeRequired(.requestedAt)
+        toDeploymentId = try container.sdkDecodeRequired(.toDeploymentId)
+        type = try container.sdkDecodeRequired(.type)
+        fromRollingReleaseId = try container.sdkDecodeIfPresent(.fromRollingReleaseId)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet21(_ event: [ACLAction]?, _ fileUpload: [ACLAction]?, _ flagsExplorerSubscription: [ACLAction]?, _ gitCredentialGrant: [ACLAction]?, _ gitRepository: [ACLAction]?) {
-        self.event = event
-        self.fileUpload = fileUpload
-        self.flagsExplorerSubscription = flagsExplorerSubscription
-        self.gitCredentialGrant = gitCredentialGrant
-        self.gitRepository = gitRepository
+public extension UpdateProjectResponseLastAliasRequest {
+    init(
+        fromDeploymentId: String?,
+        jobStatus: UpdateProjectResponseLastAliasRequestJobStatus,
+        requestedAt: Double,
+        toDeploymentId: String,
+        type: UpdateProjectResponseLastAliasRequestType,
+        fromRollingReleaseId: String? = nil
+    ) {
+        (self.fromDeploymentId, self.jobStatus) = (fromDeploymentId, jobStatus)
+        (self.requestedAt, self.toDeploymentId) = (requestedAt, toDeploymentId)
+        (self.type, self.fromRollingReleaseId) = (type, fromRollingReleaseId)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet22(_ imageOptimizationNewPrice: [ACLAction]?, _ integration: [ACLAction]?, _ integrationAccount: [ACLAction]?, _ integrationConfiguration: [ACLAction]?) {
-        self.imageOptimizationNewPrice = imageOptimizationNewPrice
-        self.integration = integration
-        self.integrationAccount = integrationAccount
-        self.integrationConfiguration = integrationConfiguration
+public struct DeleteProjectAvatarResponse: Codable {
+    public var accountId: String
+    public var alias: [DeleteProjectAvatarResponseAliasItem]
+    public var defaultResourceConfig: DeleteProjectAvatarResponseDefaultResourceConfig
+    /// Retention policies for deployments. These are enforced at the project level, but we also maintain an
+    /// instance of this at the team level as a default policy that gets applied to new projects.
+    public var deploymentExpiration: DeleteProjectAvatarResponseDeploymentExpiration
+    public var directoryListing: Bool
+    public var id: String
+    public var name: String
+    public var nodeVersion: DeleteProjectAvatarResponseNodeVersion
+    public var resourceConfig: DeleteProjectAvatarResponseResourceConfig
+    public var analytics: DeleteProjectAvatarResponseAnalytics? = .none
+    public var appliedCve55182Migration: Bool? = .none
+    public var autoAssignCustomDomains: Bool? = .none
+    public var autoAssignCustomDomainsUpdatedBy: String? = .none
+    public var autoExposeSystemEnvs: Bool? = .none
+    public var avatar: String? = .none
+    public var avatarDarkMode: String? = .none
+    public var blobs: DeleteProjectAvatarResponseBlobs? = .none
+    public var buildCommand: String? = .none
+    public var commandForIgnoringBuildStep: String? = .none
+    public var concurrencyBucketName: String? = .none
+    public var connectBuildsEnabled: Bool? = .none
+    public var connectConfigurationId: String? = .none
+    public var connectConfigurations: [DeleteProjectAvatarResponseConnectConfigurationsItem]? = .none
+    public var createdAt: Double? = .none
+    /// Typed representation of the `DeleteProjectAvatarResponseCreator` API schema.
+    public var creator: DeleteProjectAvatarResponseCreator? = .none
+    public var crons: DeleteProjectAvatarResponseCrons? = .none
+    public var customEnvironments: [DeleteProjectAvatarResponseCustomEnvironmentsItem]? = .none
+    public var customerSupportCodeVisibility: Bool? = .none
+    public var dataCache: DeleteProjectAvatarResponseDataCache? = .none
+    /// Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for
+    /// every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at
+    /// once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share
+    /// a type by accident.
+    public var deploymentPolicy: DeleteProjectAvatarResponseDeploymentPolicy? = .none
+    public var devCommand: String? = .none
+    public var dismissedToasts: [DeleteProjectAvatarResponseDismissedToastsItem]? = .none
+    public var enableAffectedProjectsDeployments: Bool? = .none
+    public var enableExternalRewriteCaching: Bool? = .none
+    public var enablePreviewFeedback: Bool? = .none
+    public var enableProductionFeedback: Bool? = .none
+    public var env: [DeleteProjectAvatarResponseEnvItem]? = .none
+    /// Typed representation of the `DeleteProjectAvatarResponseExpiration` API schema.
+    public var expiration: DeleteProjectAvatarResponseExpiration? = .none
+    public var features: DeleteProjectAvatarResponseFeatures? = .none
+    public var framework: DeleteProjectAvatarResponseFramework? = .none
+    public var gitComments: DeleteProjectAvatarResponseGitComments? = .none
+    public var gitForkProtection: Bool? = .none
+    public var gitLfs: Bool? = .none
+    public var gitProviderOptions: DeleteProjectAvatarResponseGitProviderOptions? = .none
+    public var hasActiveBranches: Bool? = .none
+    public var hasDeployments: Bool? = .none
+    public var installCommand: String? = .none
+    public var internalRoutes: [DeleteProjectAvatarResponseInternalRoutesItem]? = .none
+    public var ipBuckets: [DeleteProjectAvatarResponseIpBucketsItem]? = .none
+    public var jobs: DeleteProjectAvatarResponseJobs? = .none
+    public var lastAliasRequest: DeleteProjectAvatarResponseLastAliasRequest? = .none
+    public var lastRollbackTarget: [String: JSONValue]? = .none
+    public var latestDeployments: [DeleteProjectAvatarResponseLatestDeploymentsItem]? = .none
+    /// Typed representation of the `DeleteProjectAvatarResponseLink` API schema.
+    public var link: DeleteProjectAvatarResponseLink? = .none
+    public var live: Bool? = .none
+    /// Typed representation of the `DeleteProjectAvatarResponseMicrofrontends` API schema.
+    public var microfrontends: DeleteProjectAvatarResponseMicrofrontends? = .none
+    public var oidcTokenConfig: DeleteProjectAvatarResponseOidcTokenConfig? = .none
+    public var optionsAllowlist: DeleteProjectAvatarResponseOptionsAllowlist? = .none
+    public var outputDirectory: String? = .none
+    public var passiveConnectConfigurationId: String? = .none
+    public var passport: DeleteProjectAvatarResponsePassport? = .none
+    /// Password protection settings returned without the secret password hash.
+    public var passwordProtection: DeleteProjectAvatarResponsePasswordProtection? = .none
+    public var paused: Bool? = .none
+    /// Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses
+    /// contain a broader, non-authoritative permission summary.
+    public var permissions: DeleteProjectAvatarResponsePermissions? = .none
+    public var productionDeploymentsFastLane: Bool? = .none
+    public var protectedSourcemaps: Bool? = .none
+    public var protectionBypass: [String: DeleteProjectAvatarResponseProtectionBypassValue]? = .none
+    public var protectionConfig: DeleteProjectAvatarResponseProtectionConfig? = .none
+    /// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to
+    /// details of the rollback.
+    public var rollbackDescription: DeleteProjectAvatarResponseRollbackDescription? = .none
+    /// Project-level rolling release configuration that defines how deployments should be gradually rolled out
+    public var rollingRelease: DeleteProjectAvatarResponseRollingRelease? = .none
+    public var rootDirectory: String? = .none
+    public var sandbox: DeleteProjectAvatarResponseSandbox? = .none
+    public var security: DeleteProjectAvatarResponseSecurity? = .none
+    public var serverlessFunctionZeroConfigFailover: Bool? = .none
+    public var services: [DeleteProjectAvatarResponseServicesItem]? = .none
+    public var skewProtectionAllowedDomains: [String]? = .none
+    public var skewProtectionBoundaryAt: Double? = .none
+    public var skewProtectionMaxAge: Double? = .none
+    public var skipGitConnectDuringLink: Bool? = .none
+    public var sourceFilesOutsideRootDirectory: Bool? = .none
+    public var speedInsights: DeleteProjectAvatarResponseSpeedInsights? = .none
+    public var ssoProtection: DeleteProjectAvatarResponseSsoProtection? = .none
+    public var staticIps: DeleteProjectAvatarResponseStaticIps? = .none
+    public var targets: [String: DeleteProjectAvatarResponseTargetsValue?]? = .none
+    public var tier: DeleteProjectAvatarResponseTier? = .none
+    public var tracing: DeleteProjectAvatarResponseTracing? = .none
+    public var transferCompletedAt: Double? = .none
+    public var transferredFromAccountId: String? = .none
+    public var transferStartedAt: Double? = .none
+    public var transferToAccountId: String? = .none
+    /// Typed representation of the `DeleteProjectAvatarResponseTrustedIps` API schema.
+    public var trustedIps: DeleteProjectAvatarResponseTrustedIps? = .none
+    public var trustedSources: DeleteProjectAvatarResponseTrustedSources? = .none
+    public var updatedAt: Double? = .none
+    public var usageStatus: DeleteProjectAvatarResponseUsageStatus? = .none
+    public var v0: Bool? = .none
+    public var v0Created: Bool? = .none
+    public var webAnalytics: DeleteProjectAvatarResponseWebAnalytics? = .none
+
+    init(
+        sdkRequiredFields accountId: String,
+        alias: [DeleteProjectAvatarResponseAliasItem],
+        defaultResourceConfig: DeleteProjectAvatarResponseDefaultResourceConfig,
+        deploymentExpiration: DeleteProjectAvatarResponseDeploymentExpiration,
+        directoryListing: Bool,
+        id: String,
+        name: String,
+        nodeVersion: DeleteProjectAvatarResponseNodeVersion,
+        resourceConfig: DeleteProjectAvatarResponseResourceConfig
+    ) {
+        (self.accountId, self.alias) = (accountId, alias)
+        self.defaultResourceConfig = defaultResourceConfig
+        (self.deploymentExpiration, self.directoryListing) = (deploymentExpiration, directoryListing)
+        (self.id, self.name) = (id, name)
+        (self.nodeVersion, self.resourceConfig) = (nodeVersion, resourceConfig)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet23(_ integrationConfigurationProjects: [ACLAction]?, _ integrationConfigurationRole: [ACLAction]?, _ integrationConfigurationTransfer: [ACLAction]?) {
-        self.integrationConfigurationProjects = integrationConfigurationProjects
-        self.integrationConfigurationRole = integrationConfigurationRole
-        self.integrationConfigurationTransfer = integrationConfigurationTransfer
+extension DeleteProjectAvatarResponse {
+    enum CodingKeys: String, CodingKey {
+        case accountId
+        case alias
+        case defaultResourceConfig
+        case deploymentExpiration
+        case directoryListing
+        case id
+        case name
+        case nodeVersion
+        case resourceConfig
+        case analytics
+        case appliedCve55182Migration
+        case autoAssignCustomDomains
+        case autoAssignCustomDomainsUpdatedBy
+        case autoExposeSystemEnvs
+        case avatar
+        case avatarDarkMode
+        case blobs
+        case buildCommand
+        case commandForIgnoringBuildStep
+        case concurrencyBucketName
+        case connectBuildsEnabled
+        case connectConfigurationId
+        case connectConfigurations
+        case createdAt
+        case creator
+        case crons
+        case customEnvironments
+        case customerSupportCodeVisibility
+        case dataCache
+        case deploymentPolicy
+        case devCommand
+        case dismissedToasts
+        case enableAffectedProjectsDeployments
+        case enableExternalRewriteCaching
+        case enablePreviewFeedback
+        case enableProductionFeedback
+        case env
+        case expiration
+        case features
+        case framework
+        case gitComments
+        case gitForkProtection
+        case gitLfs = "gitLFS"
+        case gitProviderOptions
+        case hasActiveBranches
+        case hasDeployments
+        case installCommand
+        case internalRoutes
+        case ipBuckets
+        case jobs
+        case lastAliasRequest
+        case lastRollbackTarget
+        case latestDeployments
+        case link
+        case live
+        case microfrontends
+        case oidcTokenConfig
+        case optionsAllowlist
+        case outputDirectory
+        case passiveConnectConfigurationId
+        case passport
+        case passwordProtection
+        case paused
+        case permissions
+        case productionDeploymentsFastLane
+        case protectedSourcemaps
+        case protectionBypass
+        case protectionConfig
+        case rollbackDescription
+        case rollingRelease
+        case rootDirectory
+        case sandbox
+        case security
+        case serverlessFunctionZeroConfigFailover
+        case services
+        case skewProtectionAllowedDomains
+        case skewProtectionBoundaryAt
+        case skewProtectionMaxAge
+        case skipGitConnectDuringLink
+        case sourceFilesOutsideRootDirectory
+        case speedInsights
+        case ssoProtection
+        case staticIps
+        case targets
+        case tier
+        case tracing
+        case transferCompletedAt
+        case transferredFromAccountId
+        case transferStartedAt
+        case transferToAccountId
+        case trustedIps
+        case trustedSources
+        case updatedAt
+        case usageStatus
+        case v0
+        case v0Created
+        case webAnalytics
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet24(_ integrationDeploymentAction: [ACLAction]?, _ integrationEvent: [ACLAction]?, _ integrationLog: [ACLAction]?, _ integrationPullRequest: [ACLAction]?) {
-        self.integrationDeploymentAction = integrationDeploymentAction
-        self.integrationEvent = integrationEvent
-        self.integrationLog = integrationLog
-        self.integrationPullRequest = integrationPullRequest
+public extension DeleteProjectAvatarResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        try self.init(
+            sdkRequiredFields: container.sdkDecodeRequired(.accountId),
+            alias: container.sdkDecodeRequired(.alias),
+            defaultResourceConfig: container.sdkDecodeRequired(.defaultResourceConfig),
+            deploymentExpiration: container.sdkDecodeRequired(.deploymentExpiration),
+            directoryListing: container.sdkDecodeRequired(.directoryListing),
+            id: container.sdkDecodeRequired(.id),
+            name: container.sdkDecodeRequired(.name),
+            nodeVersion: container.sdkDecodeRequired(.nodeVersion),
+            resourceConfig: container.sdkDecodeRequired(.resourceConfig)
+        )
+        try sdkDecodeFieldsPart1(container)
+        try sdkDecodeFieldsPart2(container)
+        try sdkDecodeFieldsPart3(container)
+        try sdkDecodeFieldsPart4(container)
+        try sdkDecodeFieldsPart5(container)
+        try sdkDecodeFieldsPart6(container)
+        try sdkDecodeFieldsPart7(container)
+        try sdkDecodeFieldsPart8(container)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet25(_ integrationResource: [ACLAction]?, _ integrationResourceData: [ACLAction]?, _ integrationResourceReplCommand: [ACLAction]?) {
-        self.integrationResource = integrationResource
-        self.integrationResourceData = integrationResourceData
-        self.integrationResourceReplCommand = integrationResourceReplCommand
+public extension DeleteProjectAvatarResponse {
+    init(
+        accountId: String,
+        alias: [DeleteProjectAvatarResponseAliasItem],
+        defaultResourceConfig: DeleteProjectAvatarResponseDefaultResourceConfig,
+        deploymentExpiration: DeleteProjectAvatarResponseDeploymentExpiration,
+        directoryListing: Bool,
+        id: String,
+        name: String,
+        nodeVersion: DeleteProjectAvatarResponseNodeVersion,
+        resourceConfig: DeleteProjectAvatarResponseResourceConfig,
+        analytics: DeleteProjectAvatarResponseAnalytics? = nil,
+        appliedCve55182Migration: Bool? = nil,
+        autoAssignCustomDomains: Bool? = nil,
+        autoAssignCustomDomainsUpdatedBy: String? = nil,
+        autoExposeSystemEnvs: Bool? = nil,
+        avatar: String? = nil,
+        avatarDarkMode: String? = nil,
+        blobs: DeleteProjectAvatarResponseBlobs? = nil,
+        buildCommand: String? = nil,
+        commandForIgnoringBuildStep: String? = nil,
+        concurrencyBucketName: String? = nil,
+        connectBuildsEnabled: Bool? = nil,
+        connectConfigurationId: String? = nil,
+        connectConfigurations: [DeleteProjectAvatarResponseConnectConfigurationsItem]? = nil,
+        createdAt: Double? = nil,
+        creator: DeleteProjectAvatarResponseCreator? = nil,
+        crons: DeleteProjectAvatarResponseCrons? = nil,
+        customEnvironments: [DeleteProjectAvatarResponseCustomEnvironmentsItem]? = nil,
+        customerSupportCodeVisibility: Bool? = nil,
+        dataCache: DeleteProjectAvatarResponseDataCache? = nil,
+        deploymentPolicy: DeleteProjectAvatarResponseDeploymentPolicy? = nil,
+        devCommand: String? = nil,
+        dismissedToasts: [DeleteProjectAvatarResponseDismissedToastsItem]? = nil,
+        enableAffectedProjectsDeployments: Bool? = nil,
+        enableExternalRewriteCaching: Bool? = nil,
+        enablePreviewFeedback: Bool? = nil,
+        enableProductionFeedback: Bool? = nil,
+        env: [DeleteProjectAvatarResponseEnvItem]? = nil,
+        expiration: DeleteProjectAvatarResponseExpiration? = nil,
+        features: DeleteProjectAvatarResponseFeatures? = nil,
+        framework: DeleteProjectAvatarResponseFramework? = nil,
+        gitComments: DeleteProjectAvatarResponseGitComments? = nil,
+        gitForkProtection: Bool? = nil,
+        gitLfs: Bool? = nil,
+        gitProviderOptions: DeleteProjectAvatarResponseGitProviderOptions? = nil,
+        hasActiveBranches: Bool? = nil,
+        hasDeployments: Bool? = nil,
+        installCommand: String? = nil,
+        internalRoutes: [DeleteProjectAvatarResponseInternalRoutesItem]? = nil,
+        ipBuckets: [DeleteProjectAvatarResponseIpBucketsItem]? = nil,
+        jobs: DeleteProjectAvatarResponseJobs? = nil,
+        lastAliasRequest: DeleteProjectAvatarResponseLastAliasRequest? = nil,
+        lastRollbackTarget: [String: JSONValue]? = nil,
+        latestDeployments: [DeleteProjectAvatarResponseLatestDeploymentsItem]? = nil,
+        link: DeleteProjectAvatarResponseLink? = nil,
+        live: Bool? = nil,
+        microfrontends: DeleteProjectAvatarResponseMicrofrontends? = nil,
+        oidcTokenConfig: DeleteProjectAvatarResponseOidcTokenConfig? = nil,
+        optionsAllowlist: DeleteProjectAvatarResponseOptionsAllowlist? = nil,
+        outputDirectory: String? = nil,
+        passiveConnectConfigurationId: String? = nil,
+        passport: DeleteProjectAvatarResponsePassport? = nil,
+        passwordProtection: DeleteProjectAvatarResponsePasswordProtection? = nil,
+        paused: Bool? = nil,
+        permissions: DeleteProjectAvatarResponsePermissions? = nil,
+        productionDeploymentsFastLane: Bool? = nil,
+        protectedSourcemaps: Bool? = nil,
+        protectionBypass: [String: DeleteProjectAvatarResponseProtectionBypassValue]? = nil,
+        protectionConfig: DeleteProjectAvatarResponseProtectionConfig? = nil,
+        rollbackDescription: DeleteProjectAvatarResponseRollbackDescription? = nil,
+        rollingRelease: DeleteProjectAvatarResponseRollingRelease? = nil,
+        rootDirectory: String? = nil,
+        sandbox: DeleteProjectAvatarResponseSandbox? = nil,
+        security: DeleteProjectAvatarResponseSecurity? = nil,
+        serverlessFunctionZeroConfigFailover: Bool? = nil,
+        services: [DeleteProjectAvatarResponseServicesItem]? = nil,
+        skewProtectionAllowedDomains: [String]? = nil,
+        skewProtectionBoundaryAt: Double? = nil,
+        skewProtectionMaxAge: Double? = nil,
+        skipGitConnectDuringLink: Bool? = nil,
+        sourceFilesOutsideRootDirectory: Bool? = nil,
+        speedInsights: DeleteProjectAvatarResponseSpeedInsights? = nil,
+        ssoProtection: DeleteProjectAvatarResponseSsoProtection? = nil,
+        staticIps: DeleteProjectAvatarResponseStaticIps? = nil,
+        targets: [String: DeleteProjectAvatarResponseTargetsValue?]? = nil,
+        tier: DeleteProjectAvatarResponseTier? = nil,
+        tracing: DeleteProjectAvatarResponseTracing? = nil,
+        transferCompletedAt: Double? = nil,
+        transferredFromAccountId: String? = nil,
+        transferStartedAt: Double? = nil,
+        transferToAccountId: String? = nil,
+        trustedIps: DeleteProjectAvatarResponseTrustedIps? = nil,
+        trustedSources: DeleteProjectAvatarResponseTrustedSources? = nil,
+        updatedAt: Double? = nil,
+        usageStatus: DeleteProjectAvatarResponseUsageStatus? = nil,
+        v0: Bool? = nil,
+        v0Created: Bool? = nil,
+        webAnalytics: DeleteProjectAvatarResponseWebAnalytics? = nil
+    ) {
+        self.init(
+            sdkRequiredFields: accountId,
+            alias: alias,
+            defaultResourceConfig: defaultResourceConfig,
+            deploymentExpiration: deploymentExpiration,
+            directoryListing: directoryListing,
+            id: id,
+            name: name,
+            nodeVersion: nodeVersion,
+            resourceConfig: resourceConfig
+        )
+        sdkSet1(analytics, appliedCve55182Migration, autoAssignCustomDomains, autoAssignCustomDomainsUpdatedBy)
+        sdkSet2(autoExposeSystemEnvs, avatar, avatarDarkMode, blobs, buildCommand)
+        sdkSet3(commandForIgnoringBuildStep, concurrencyBucketName, connectBuildsEnabled, connectConfigurationId)
+        sdkSet4(connectConfigurations, createdAt, creator, crons, customEnvironments)
+        sdkSet5(customerSupportCodeVisibility, dataCache, deploymentPolicy, devCommand, dismissedToasts)
+        sdkSet6(enableAffectedProjectsDeployments, enableExternalRewriteCaching, enablePreviewFeedback)
+        sdkSet7(enableProductionFeedback, env, expiration, features, framework)
+        sdkSet8(gitComments, gitForkProtection, gitLfs, gitProviderOptions, hasActiveBranches)
+        sdkSet9(hasDeployments, installCommand, internalRoutes, ipBuckets, jobs)
+        sdkSet10(lastAliasRequest, lastRollbackTarget, latestDeployments, link, live)
+        sdkSet11(microfrontends, oidcTokenConfig, optionsAllowlist, outputDirectory, passiveConnectConfigurationId)
+        sdkSet12(passport, passwordProtection, paused, permissions, productionDeploymentsFastLane)
+        sdkSet13(protectedSourcemaps, protectionBypass, protectionConfig, rollbackDescription, rollingRelease)
+        sdkSet14(rootDirectory, sandbox, security, serverlessFunctionZeroConfigFailover, services)
+        sdkSet15(skewProtectionAllowedDomains, skewProtectionBoundaryAt, skewProtectionMaxAge)
+        sdkSet16(skipGitConnectDuringLink, sourceFilesOutsideRootDirectory, speedInsights, ssoProtection, staticIps)
+        sdkSet17(targets, tier, tracing, transferCompletedAt, transferredFromAccountId)
+        sdkSet18(transferStartedAt, transferToAccountId, trustedIps, trustedSources, updatedAt)
+        sdkSet19(usageStatus, v0, v0Created, webAnalytics)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet26(_ integrationResourceSecrets: [ACLAction]?, _ integrationSsoSession: [ACLAction]?, _ integrationStoreTokenSet: [ACLAction]?, _ integrationStrict: [ACLAction]?) {
-        self.integrationResourceSecrets = integrationResourceSecrets
-        self.integrationSsoSession = integrationSsoSession
-        self.integrationStoreTokenSet = integrationStoreTokenSet
-        self.integrationStrict = integrationStrict
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet1(
+        _ analytics: DeleteProjectAvatarResponseAnalytics?,
+        _ appliedCve55182Migration: Bool?,
+        _ autoAssignCustomDomains: Bool?,
+        _ autoAssignCustomDomainsUpdatedBy: String?
+    ) {
+        self.analytics = analytics
+        self.appliedCve55182Migration = appliedCve55182Migration
+        self.autoAssignCustomDomains = autoAssignCustomDomains
+        self.autoAssignCustomDomainsUpdatedBy = autoAssignCustomDomainsUpdatedBy
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet27(_ integrationVercelConfigurationOverride: [ACLAction]?, _ ipBlocking: [ACLAction]?, _ job: [ACLAction]?, _ jobGlobal: [ACLAction]?, _ kmsIssuer: [ACLAction]?) {
-        self.integrationVercelConfigurationOverride = integrationVercelConfigurationOverride
-        self.ipBlocking = ipBlocking
-        self.job = job
-        self.jobGlobal = jobGlobal
-        self.kmsIssuer = kmsIssuer
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet2(
+        _ autoExposeSystemEnvs: Bool?,
+        _ avatar: String?,
+        _ avatarDarkMode: String?,
+        _ blobs: DeleteProjectAvatarResponseBlobs?,
+        _ buildCommand: String?
+    ) {
+        self.autoExposeSystemEnvs = autoExposeSystemEnvs
+        self.avatar = avatar
+        self.avatarDarkMode = avatarDarkMode
+        self.blobs = blobs
+        self.buildCommand = buildCommand
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet28(_ kmsProjectGrant: [ACLAction]?, _ logDrain: [ACLAction]?, _ logs: [ACLAction]?, _ logsPreset: [ACLAction]?, _ marketplaceBillingData: [ACLAction]?) {
-        self.kmsProjectGrant = kmsProjectGrant
-        self.logDrain = logDrain
-        self.logs = logs
-        self.logsPreset = logsPreset
-        self.marketplaceBillingData = marketplaceBillingData
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet3(
+        _ commandForIgnoringBuildStep: String?,
+        _ concurrencyBucketName: String?,
+        _ connectBuildsEnabled: Bool?,
+        _ connectConfigurationId: String?
+    ) {
+        self.commandForIgnoringBuildStep = commandForIgnoringBuildStep
+        self.concurrencyBucketName = concurrencyBucketName
+        self.connectBuildsEnabled = connectBuildsEnabled
+        self.connectConfigurationId = connectConfigurationId
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet29(_ marketplaceExperimentationEdgeConfigData: [ACLAction]?, _ marketplaceExperimentationItem: [ACLAction]?, _ marketplaceFlexCommit: [ACLAction]?) {
-        self.marketplaceExperimentationEdgeConfigData = marketplaceExperimentationEdgeConfigData
-        self.marketplaceExperimentationItem = marketplaceExperimentationItem
-        self.marketplaceFlexCommit = marketplaceFlexCommit
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet30(_ marketplaceInstallationMember: [ACLAction]?, _ marketplaceInvoice: [ACLAction]?, _ marketplaceSettings: [ACLAction]?, _ messageboard: [ACLAction]?) {
-        self.marketplaceInstallationMember = marketplaceInstallationMember
-        self.marketplaceInvoice = marketplaceInvoice
-        self.marketplaceSettings = marketplaceSettings
-        self.messageboard = messageboard
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet31(_ messageboardSpace: [ACLAction]?, _ messageboardTask: [ACLAction]?, _ monitoring: [ACLAction]?, _ monitoringAlert: [ACLAction]?, _ monitoringChart: [ACLAction]?) {
-        self.messageboardSpace = messageboardSpace
-        self.messageboardTask = messageboardTask
-        self.monitoring = monitoring
-        self.monitoringAlert = monitoringAlert
-        self.monitoringChart = monitoringChart
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet32(_ monitoringQuery: [ACLAction]?, _ monitoringSettings: [ACLAction]?, _ notificationCustomerBudget: [ACLAction]?, _ notificationDeploymentFailed: [ACLAction]?) {
-        self.monitoringQuery = monitoringQuery
-        self.monitoringSettings = monitoringSettings
-        self.notificationCustomerBudget = notificationCustomerBudget
-        self.notificationDeploymentFailed = notificationDeploymentFailed
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet33(_ notificationDomainConfiguration: [ACLAction]?, _ notificationDomainExpire: [ACLAction]?, _ notificationDomainMoved: [ACLAction]?) {
-        self.notificationDomainConfiguration = notificationDomainConfiguration
-        self.notificationDomainExpire = notificationDomainExpire
-        self.notificationDomainMoved = notificationDomainMoved
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet34(_ notificationDomainPurchase: [ACLAction]?, _ notificationDomainRenewal: [ACLAction]?, _ notificationDomainTransfer: [ACLAction]?) {
-        self.notificationDomainPurchase = notificationDomainPurchase
-        self.notificationDomainRenewal = notificationDomainRenewal
-        self.notificationDomainTransfer = notificationDomainTransfer
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet35(_ notificationDomainUnverified: [ACLAction]?, _ notificationMonitoringAlert: [ACLAction]?, _ notificationPaymentFailed: [ACLAction]?) {
-        self.notificationDomainUnverified = notificationDomainUnverified
-        self.notificationMonitoringAlert = notificationMonitoringAlert
-        self.notificationPaymentFailed = notificationPaymentFailed
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet36(_ notificationPreferences: [ACLAction]?, _ notificationStatementOfReasons: [ACLAction]?, _ notificationUsageAlert: [ACLAction]?, _ oauth2Application: [ACLAction]?) {
-        self.notificationPreferences = notificationPreferences
-        self.notificationStatementOfReasons = notificationStatementOfReasons
-        self.notificationUsageAlert = notificationUsageAlert
-        self.oauth2Application = oauth2Application
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet37(_ oauth2Connection: [ACLAction]?, _ observabilityConfiguration: [ACLAction]?, _ observabilityData: [ACLAction]?, _ observabilityFunnel: [ACLAction]?) {
-        self.oauth2Connection = oauth2Connection
-        self.observabilityConfiguration = observabilityConfiguration
-        self.observabilityData = observabilityData
-        self.observabilityFunnel = observabilityFunnel
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet38(_ observabilityNotebook: [ACLAction]?, _ oidcFederationPolicy: [ACLAction]?, _ onDemandBuild: [ACLAction]?, _ onDemandConcurrency: [ACLAction]?) {
-        self.observabilityNotebook = observabilityNotebook
-        self.oidcFederationPolicy = oidcFederationPolicy
-        self.onDemandBuild = onDemandBuild
-        self.onDemandConcurrency = onDemandConcurrency
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet39(_ openTelemetryEndpoint: [ACLAction]?, _ optionsAllowlist: [ACLAction]?, _ organization: [ACLAction]?, _ organizationDomain: [ACLAction]?, _ organizationTeam: [ACLAction]?) {
-        self.openTelemetryEndpoint = openTelemetryEndpoint
-        self.optionsAllowlist = optionsAllowlist
-        self.organization = organization
-        self.organizationDomain = organizationDomain
-        self.organizationTeam = organizationTeam
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet40(_ ownEvent: [ACLAction]?, _ pageIntegrity: [ACLAction]?, _ passwordProtection: [ACLAction]?, _ passwordProtectionInvoiceItem: [ACLAction]?, _ paymentMethod: [ACLAction]?) {
-        self.ownEvent = ownEvent
-        self.pageIntegrity = pageIntegrity
-        self.passwordProtection = passwordProtection
-        self.passwordProtectionInvoiceItem = passwordProtectionInvoiceItem
-        self.paymentMethod = paymentMethod
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet41(_ permissions: [ACLAction]?, _ postgres: [ACLAction]?, _ postgresStoreTokenSet: [ACLAction]?, _ previewDeploymentSuffix: [ACLAction]?, _ privateCloudAccount: [ACLAction]?) {
-        self.permissions = permissions
-        self.postgres = postgres
-        self.postgresStoreTokenSet = postgresStoreTokenSet
-        self.previewDeploymentSuffix = previewDeploymentSuffix
-        self.privateCloudAccount = privateCloudAccount
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet42(_ privateLinkEndpoint: [ACLAction]?, _ productionAliasProtectionBypass: [ACLAction]?, _ productionShareableLink: [ACLAction]?, _ project: [ACLAction]?) {
-        self.privateLinkEndpoint = privateLinkEndpoint
-        self.productionAliasProtectionBypass = productionAliasProtectionBypass
-        self.productionShareableLink = productionShareableLink
-        self.project = project
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet43(_ projectAccessGroup: [ACLAction]?, _ projectAnalyticsSampling: [ACLAction]?, _ projectAnalyticsUsage: [ACLAction]?, _ projectCheck: [ACLAction]?, _ projectCheckRun: [ACLAction]?) {
-        self.projectAccessGroup = projectAccessGroup
-        self.projectAnalyticsSampling = projectAnalyticsSampling
-        self.projectAnalyticsUsage = projectAnalyticsUsage
-        self.projectCheck = projectCheck
-        self.projectCheckRun = projectCheckRun
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet44(_ projectDeploymentExpiration: [ACLAction]?, _ projectDeploymentHook: [ACLAction]?, _ projectDeploymentProtectionStrict: [ACLAction]?, _ projectDomain: [ACLAction]?) {
-        self.projectDeploymentExpiration = projectDeploymentExpiration
-        self.projectDeploymentHook = projectDeploymentHook
-        self.projectDeploymentProtectionStrict = projectDeploymentProtectionStrict
-        self.projectDomain = projectDomain
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet45(_ projectDomainCheckConfig: [ACLAction]?, _ projectDomainMove: [ACLAction]?, _ projectDomainVerify: [ACLAction]?, _ projectEnvVars: [ACLAction]?) {
-        self.projectDomainCheckConfig = projectDomainCheckConfig
-        self.projectDomainMove = projectDomainMove
-        self.projectDomainVerify = projectDomainVerify
-        self.projectEnvVars = projectEnvVars
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet46(_ projectEnvVarsProduction: [ACLAction]?, _ projectEnvVarsUnownedByIntegration: [ACLAction]?, _ projectEvent: [ACLAction]?, _ projectFlags: [ACLAction]?) {
-        self.projectEnvVarsProduction = projectEnvVarsProduction
-        self.projectEnvVarsUnownedByIntegration = projectEnvVarsUnownedByIntegration
-        self.projectEvent = projectEvent
-        self.projectFlags = projectFlags
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet47(_ projectFlagsProduction: [ACLAction]?, _ projectFlagsSdkKey: [ACLAction]?, _ projectFromV0: [ACLAction]?, _ projectId: [ACLAction]?) {
-        self.projectFlagsProduction = projectFlagsProduction
-        self.projectFlagsSdkKey = projectFlagsSdkKey
-        self.projectFromV0 = projectFromV0
-        self.projectId = projectId
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet48(_ projectIntegrationConfiguration: [ACLAction]?, _ projectLink: [ACLAction]?, _ projectMember: [ACLAction]?, _ projectMonitoring: [ACLAction]?, _ projectOidcToken: [ACLAction]?) {
-        self.projectIntegrationConfiguration = projectIntegrationConfiguration
-        self.projectLink = projectLink
-        self.projectMember = projectMember
-        self.projectMonitoring = projectMonitoring
-        self.projectOidcToken = projectOidcToken
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet49(_ projectPermissions: [ACLAction]?, _ projectProductionBranch: [ACLAction]?, _ projectProtectionBypass: [ACLAction]?, _ projectRollingRelease: [ACLAction]?) {
-        self.projectPermissions = projectPermissions
-        self.projectProductionBranch = projectProductionBranch
-        self.projectProtectionBypass = projectProtectionBypass
-        self.projectRollingRelease = projectRollingRelease
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet50(_ projectRoutes: [ACLAction]?, _ projectSetting: [ACLAction]?, _ projectSupportCase: [ACLAction]?, _ projectSupportCaseComment: [ACLAction]?, _ projectTier: [ACLAction]?) {
-        self.projectRoutes = projectRoutes
-        self.projectSetting = projectSetting
-        self.projectSupportCase = projectSupportCase
-        self.projectSupportCaseComment = projectSupportCaseComment
-        self.projectTier = projectTier
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet51(_ projectTransfer: [ACLAction]?, _ projectTransferIn: [ACLAction]?, _ projectTransferOut: [ACLAction]?, _ projectTransferRequest: [ACLAction]?, _ projectUsage: [ACLAction]?) {
-        self.projectTransfer = projectTransfer
-        self.projectTransferIn = projectTransferIn
-        self.projectTransferOut = projectTransferOut
-        self.projectTransferRequest = projectTransferRequest
-        self.projectUsage = projectUsage
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet52(_ proTrialOnboarding: [ACLAction]?, _ rateLimit: [ACLAction]?, _ redis: [ACLAction]?, _ redisStoreTokenSet: [ACLAction]?, _ remoteCaching: [ACLAction]?) {
-        self.proTrialOnboarding = proTrialOnboarding
-        self.rateLimit = rateLimit
-        self.redis = redis
-        self.redisStoreTokenSet = redisStoreTokenSet
-        self.remoteCaching = remoteCaching
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet53(_ repository: [ACLAction]?, _ samlConfig: [ACLAction]?, _ schedule: [ACLAction]?, _ seawallConfig: [ACLAction]?, _ secret: [ACLAction]?) {
-        self.repository = repository
-        self.samlConfig = samlConfig
-        self.schedule = schedule
-        self.seawallConfig = seawallConfig
-        self.secret = secret
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet54(_ securityConfig: [ACLAction]?, _ securityPlusConfiguration: [ACLAction]?, _ sensitiveEnvironmentVariablePolicy: [ACLAction]?, _ setting: [ACLAction]?) {
-        self.securityConfig = securityConfig
-        self.securityPlusConfiguration = securityPlusConfiguration
-        self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
-        self.setting = setting
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet55(_ shareableLink: [ACLAction]?, _ shareableLinkStrict: [ACLAction]?, _ sharedEnvVarConnection: [ACLAction]?, _ sharedEnvVars: [ACLAction]?, _ sharedEnvVarsProduction: [ACLAction]?) {
-        self.shareableLink = shareableLink
-        self.shareableLinkStrict = shareableLinkStrict
-        self.sharedEnvVarConnection = sharedEnvVarConnection
-        self.sharedEnvVars = sharedEnvVars
-        self.sharedEnvVarsProduction = sharedEnvVarsProduction
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet56(_ skewProtection: [ACLAction]?, _ space: [ACLAction]?, _ spaceRun: [ACLAction]?, _ storeIsLocked: [ACLAction]?, _ storeTokenSetSensitive: [ACLAction]?) {
-        self.skewProtection = skewProtection
-        self.space = space
-        self.spaceRun = spaceRun
-        self.storeIsLocked = storeIsLocked
-        self.storeTokenSetSensitive = storeTokenSetSensitive
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet57(_ storeTransfer: [ACLAction]?, _ supportCase: [ACLAction]?, _ supportCaseComment: [ACLAction]?, _ team: [ACLAction]?, _ teamAccessRequest: [ACLAction]?) {
-        self.storeTransfer = storeTransfer
-        self.supportCase = supportCase
-        self.supportCaseComment = supportCaseComment
-        self.team = team
-        self.teamAccessRequest = teamAccessRequest
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet58(_ teamFellowMembership: [ACLAction]?, _ teamGitExclusivity: [ACLAction]?, _ teamInvite: [ACLAction]?, _ teamInviteCode: [ACLAction]?, _ teamInviteLink: [ACLAction]?) {
-        self.teamFellowMembership = teamFellowMembership
-        self.teamGitExclusivity = teamGitExclusivity
-        self.teamInvite = teamInvite
-        self.teamInviteCode = teamInviteCode
-        self.teamInviteLink = teamInviteLink
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet4(
+        _ connectConfigurations: [DeleteProjectAvatarResponseConnectConfigurationsItem]?,
+        _ createdAt: Double?,
+        _ creator: DeleteProjectAvatarResponseCreator?,
+        _ crons: DeleteProjectAvatarResponseCrons?,
+        _ customEnvironments: [DeleteProjectAvatarResponseCustomEnvironmentsItem]?
+    ) {
+        self.connectConfigurations = connectConfigurations
+        self.createdAt = createdAt
+        self.creator = creator
+        self.crons = crons
+        self.customEnvironments = customEnvironments
     }
 }

@@ -7,558 +7,624 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet59(_ teamJoin: [ACLAction]?, _ teamMemberMfaStatus: [ACLAction]?, _ teamMicrofrontends: [ACLAction]?, _ teamOwnMembership: [ACLAction]?) {
-        self.teamJoin = teamJoin
-        self.teamMemberMfaStatus = teamMemberMfaStatus
-        self.teamMicrofrontends = teamMicrofrontends
-        self.teamOwnMembership = teamOwnMembership
+/// Canonical projects operation model declarations
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet5(
+        _ customerSupportCodeVisibility: Bool?,
+        _ dataCache: DeleteProjectAvatarResponseDataCache?,
+        _ deploymentPolicy: DeleteProjectAvatarResponseDeploymentPolicy?,
+        _ devCommand: String?,
+        _ dismissedToasts: [DeleteProjectAvatarResponseDismissedToastsItem]?
+    ) {
+        self.customerSupportCodeVisibility = customerSupportCodeVisibility
+        self.dataCache = dataCache
+        self.deploymentPolicy = deploymentPolicy
+        self.devCommand = devCommand
+        self.dismissedToasts = dismissedToasts
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet60(_ teamOwnMembershipDisconnectSaml: [ACLAction]?, _ teamSudo: [ACLAction]?, _ teamTokenInvalidation: [ACLAction]?, _ token: [ACLAction]?, _ toolbarComment: [ACLAction]?) {
-        self.teamOwnMembershipDisconnectSaml = teamOwnMembershipDisconnectSaml
-        self.teamSudo = teamSudo
-        self.teamTokenInvalidation = teamTokenInvalidation
-        self.token = token
-        self.toolbarComment = toolbarComment
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet6(
+        _ enableAffectedProjectsDeployments: Bool?,
+        _ enableExternalRewriteCaching: Bool?,
+        _ enablePreviewFeedback: Bool?
+    ) {
+        self.enableAffectedProjectsDeployments = enableAffectedProjectsDeployments
+        self.enableExternalRewriteCaching = enableExternalRewriteCaching
+        self.enablePreviewFeedback = enablePreviewFeedback
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet61(_ trustedIps: [ACLAction]?, _ trustedSources: [ACLAction]?, _ usage: [ACLAction]?, _ usageCycle: [ACLAction]?, _ user: [ACLAction]?) {
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet7(
+        _ enableProductionFeedback: Bool?,
+        _ env: [DeleteProjectAvatarResponseEnvItem]?,
+        _ expiration: DeleteProjectAvatarResponseExpiration?,
+        _ features: DeleteProjectAvatarResponseFeatures?,
+        _ framework: DeleteProjectAvatarResponseFramework?
+    ) {
+        self.enableProductionFeedback = enableProductionFeedback
+        self.env = env
+        self.expiration = expiration
+        self.features = features
+        self.framework = framework
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet8(
+        _ gitComments: DeleteProjectAvatarResponseGitComments?,
+        _ gitForkProtection: Bool?,
+        _ gitLfs: Bool?,
+        _ gitProviderOptions: DeleteProjectAvatarResponseGitProviderOptions?,
+        _ hasActiveBranches: Bool?
+    ) {
+        self.gitComments = gitComments
+        self.gitForkProtection = gitForkProtection
+        self.gitLfs = gitLfs
+        self.gitProviderOptions = gitProviderOptions
+        self.hasActiveBranches = hasActiveBranches
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet9(
+        _ hasDeployments: Bool?,
+        _ installCommand: String?,
+        _ internalRoutes: [DeleteProjectAvatarResponseInternalRoutesItem]?,
+        _ ipBuckets: [DeleteProjectAvatarResponseIpBucketsItem]?,
+        _ jobs: DeleteProjectAvatarResponseJobs?
+    ) {
+        self.hasDeployments = hasDeployments
+        self.installCommand = installCommand
+        self.internalRoutes = internalRoutes
+        self.ipBuckets = ipBuckets
+        self.jobs = jobs
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet10(
+        _ lastAliasRequest: DeleteProjectAvatarResponseLastAliasRequest?,
+        _ lastRollbackTarget: [String: JSONValue]?,
+        _ latestDeployments: [DeleteProjectAvatarResponseLatestDeploymentsItem]?,
+        _ link: DeleteProjectAvatarResponseLink?,
+        _ live: Bool?
+    ) {
+        self.lastAliasRequest = lastAliasRequest
+        self.lastRollbackTarget = lastRollbackTarget
+        self.latestDeployments = latestDeployments
+        self.link = link
+        self.live = live
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet11(
+        _ microfrontends: DeleteProjectAvatarResponseMicrofrontends?,
+        _ oidcTokenConfig: DeleteProjectAvatarResponseOidcTokenConfig?,
+        _ optionsAllowlist: DeleteProjectAvatarResponseOptionsAllowlist?,
+        _ outputDirectory: String?,
+        _ passiveConnectConfigurationId: String?
+    ) {
+        self.microfrontends = microfrontends
+        self.oidcTokenConfig = oidcTokenConfig
+        self.optionsAllowlist = optionsAllowlist
+        self.outputDirectory = outputDirectory
+        self.passiveConnectConfigurationId = passiveConnectConfigurationId
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet12(
+        _ passport: DeleteProjectAvatarResponsePassport?,
+        _ passwordProtection: DeleteProjectAvatarResponsePasswordProtection?,
+        _ paused: Bool?,
+        _ permissions: DeleteProjectAvatarResponsePermissions?,
+        _ productionDeploymentsFastLane: Bool?
+    ) {
+        self.passport = passport
+        self.passwordProtection = passwordProtection
+        self.paused = paused
+        self.permissions = permissions
+        self.productionDeploymentsFastLane = productionDeploymentsFastLane
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet13(
+        _ protectedSourcemaps: Bool?,
+        _ protectionBypass: [String: DeleteProjectAvatarResponseProtectionBypassValue]?,
+        _ protectionConfig: DeleteProjectAvatarResponseProtectionConfig?,
+        _ rollbackDescription: DeleteProjectAvatarResponseRollbackDescription?,
+        _ rollingRelease: DeleteProjectAvatarResponseRollingRelease?
+    ) {
+        self.protectedSourcemaps = protectedSourcemaps
+        self.protectionBypass = protectionBypass
+        self.protectionConfig = protectionConfig
+        self.rollbackDescription = rollbackDescription
+        self.rollingRelease = rollingRelease
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet14(
+        _ rootDirectory: String?,
+        _ sandbox: DeleteProjectAvatarResponseSandbox?,
+        _ security: DeleteProjectAvatarResponseSecurity?,
+        _ serverlessFunctionZeroConfigFailover: Bool?,
+        _ services: [DeleteProjectAvatarResponseServicesItem]?
+    ) {
+        self.rootDirectory = rootDirectory
+        self.sandbox = sandbox
+        self.security = security
+        self.serverlessFunctionZeroConfigFailover = serverlessFunctionZeroConfigFailover
+        self.services = services
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet15(
+        _ skewProtectionAllowedDomains: [String]?,
+        _ skewProtectionBoundaryAt: Double?,
+        _ skewProtectionMaxAge: Double?
+    ) {
+        self.skewProtectionAllowedDomains = skewProtectionAllowedDomains
+        self.skewProtectionBoundaryAt = skewProtectionBoundaryAt
+        self.skewProtectionMaxAge = skewProtectionMaxAge
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet16(
+        _ skipGitConnectDuringLink: Bool?,
+        _ sourceFilesOutsideRootDirectory: Bool?,
+        _ speedInsights: DeleteProjectAvatarResponseSpeedInsights?,
+        _ ssoProtection: DeleteProjectAvatarResponseSsoProtection?,
+        _ staticIps: DeleteProjectAvatarResponseStaticIps?
+    ) {
+        self.skipGitConnectDuringLink = skipGitConnectDuringLink
+        self.sourceFilesOutsideRootDirectory = sourceFilesOutsideRootDirectory
+        self.speedInsights = speedInsights
+        self.ssoProtection = ssoProtection
+        self.staticIps = staticIps
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet17(
+        _ targets: [String: DeleteProjectAvatarResponseTargetsValue?]?,
+        _ tier: DeleteProjectAvatarResponseTier?,
+        _ tracing: DeleteProjectAvatarResponseTracing?,
+        _ transferCompletedAt: Double?,
+        _ transferredFromAccountId: String?
+    ) {
+        self.targets = targets
+        self.tier = tier
+        self.tracing = tracing
+        self.transferCompletedAt = transferCompletedAt
+        self.transferredFromAccountId = transferredFromAccountId
+    }
+}
+
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet18(
+        _ transferStartedAt: Double?,
+        _ transferToAccountId: String?,
+        _ trustedIps: DeleteProjectAvatarResponseTrustedIps?,
+        _ trustedSources: DeleteProjectAvatarResponseTrustedSources?,
+        _ updatedAt: Double?
+    ) {
+        self.transferStartedAt = transferStartedAt
+        self.transferToAccountId = transferToAccountId
         self.trustedIps = trustedIps
         self.trustedSources = trustedSources
-        self.usage = usage
-        self.usageCycle = usageCycle
-        self.user = user
+        self.updatedAt = updatedAt
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet62(_ userConnection: [ACLAction]?, _ userMfaConfiguration: [ACLAction]?, _ userPreference: [ACLAction]?, _ userSudo: [ACLAction]?, _ v0Chat: [ACLAction]?) {
-        self.userConnection = userConnection
-        self.userMfaConfiguration = userMfaConfiguration
-        self.userPreference = userPreference
-        self.userSudo = userSudo
-        self.v0Chat = v0Chat
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet63(_ vcrRepository: [ACLAction]?, _ vercelAppInstallation: [ACLAction]?, _ vercelAppInstallationRequest: [ACLAction]?, _ vercelAuth: [ACLAction]?, _ vercelRun: [ACLAction]?) {
-        self.vcrRepository = vcrRepository
-        self.vercelAppInstallation = vercelAppInstallation
-        self.vercelAppInstallationRequest = vercelAppInstallationRequest
-        self.vercelAuth = vercelAuth
-        self.vercelRun = vercelRun
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet64(_ vpcPeeringConnection: [ACLAction]?, _ webAnalytics: [ACLAction]?, _ webAnalyticsPlan: [ACLAction]?, _ webAuthn: [ACLAction]?, _ webhook: [ACLAction]?) {
-        self.vpcPeeringConnection = vpcPeeringConnection
+extension DeleteProjectAvatarResponse {
+    mutating func sdkSet19(
+        _ usageStatus: DeleteProjectAvatarResponseUsageStatus?,
+        _ v0: Bool?,
+        _ v0Created: Bool?,
+        _ webAnalytics: DeleteProjectAvatarResponseWebAnalytics?
+    ) {
+        self.usageStatus = usageStatus
+        self.v0 = v0
+        self.v0Created = v0Created
         self.webAnalytics = webAnalytics
-        self.webAnalyticsPlan = webAnalyticsPlan
-        self.webAuthn = webAuthn
-        self.webhook = webhook
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkSet65(_ webhookEvent: [ACLAction]?, _ workflowRunData: [ACLAction]?) {
-        self.webhookEvent = webhookEvent
-        self.workflowRunData = workflowRunData
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
+extension DeleteProjectAvatarResponse {
     mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.accessGroup = try container.sdkDecodeIfPresent(.accessGroup)
-        self.agent = try container.sdkDecodeIfPresent(.agent)
-        self.aiGatewayApiKey = try container.sdkDecodeIfPresent(.aiGatewayApiKey)
-        self.aiGatewayApiKeyBypassAll = try container.sdkDecodeIfPresent(.aiGatewayApiKeyBypassAll)
-        self.aiGatewayApiKeyOwnedBySelf = try container.sdkDecodeIfPresent(.aiGatewayApiKeyOwnedBySelf)
-        self.aiGatewayApiKeySpendAttribution = try container.sdkDecodeIfPresent(.aiGatewayApiKeySpendAttribution)
-        self.aiGatewayApiKeyZdrExemption = try container.sdkDecodeIfPresent(.aiGatewayApiKeyZdrExemption)
-        self.aiGatewayBudget = try container.sdkDecodeIfPresent(.aiGatewayBudget)
-        self.aiGatewayCredits = try container.sdkDecodeIfPresent(.aiGatewayCredits)
-        self.aiGatewayGuardrails = try container.sdkDecodeIfPresent(.aiGatewayGuardrails)
-        self.aiGatewayPrivateModels = try container.sdkDecodeIfPresent(.aiGatewayPrivateModels)
-        self.aiGatewayRules = try container.sdkDecodeIfPresent(.aiGatewayRules)
+        analytics = try container.sdkDecodeIfPresent(.analytics)
+        appliedCve55182Migration = try container.sdkDecodeIfPresent(.appliedCve55182Migration)
+        autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
+        autoAssignCustomDomainsUpdatedBy = try container.sdkDecodeIfPresent(.autoAssignCustomDomainsUpdatedBy)
+        autoExposeSystemEnvs = try container.sdkDecodeIfPresent(.autoExposeSystemEnvs)
+        avatar = try container.sdkDecodeIfPresent(.avatar)
+        avatarDarkMode = try container.sdkDecodeIfPresent(.avatarDarkMode)
+        blobs = try container.sdkDecodeIfPresent(.blobs)
+        buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
+        commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
+        concurrencyBucketName = try container.sdkDecodeIfPresent(.concurrencyBucketName)
+        connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
+extension DeleteProjectAvatarResponse {
     mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.aiGatewaySettings = try container.sdkDecodeIfPresent(.aiGatewaySettings)
-        self.aiGatewayTranscripts = try container.sdkDecodeIfPresent(.aiGatewayTranscripts)
-        self.aiGatewayTranscriptsSettings = try container.sdkDecodeIfPresent(.aiGatewayTranscriptsSettings)
-        self.aiGatewayUsage = try container.sdkDecodeIfPresent(.aiGatewayUsage)
-        self.aiGatewayVirtualModelConfigs = try container.sdkDecodeIfPresent(.aiGatewayVirtualModelConfigs)
-        self.alertRules = try container.sdkDecodeIfPresent(.alertRules)
-        self.alerts = try container.sdkDecodeIfPresent(.alerts)
-        self.aliasGlobal = try container.sdkDecodeIfPresent(.aliasGlobal)
-        self.aliasProject = try container.sdkDecodeIfPresent(.aliasProject)
-        self.aliasProtectionBypass = try container.sdkDecodeIfPresent(.aliasProtectionBypass)
-        self.analytics = try container.sdkDecodeIfPresent(.analytics)
-        self.analyticsSampling = try container.sdkDecodeIfPresent(.analyticsSampling)
+        connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
+        connectConfigurations = try container.sdkDecodeIfPresent(.connectConfigurations)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        creator = try container.sdkDecodeIfPresent(.creator)
+        crons = try container.sdkDecodeIfPresent(.crons)
+        customEnvironments = try container.sdkDecodeIfPresent(.customEnvironments)
+        customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
+        dataCache = try container.sdkDecodeIfPresent(.dataCache)
+        deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
+        devCommand = try container.sdkDecodeIfPresent(.devCommand)
+        dismissedToasts = try container.sdkDecodeIfPresent(.dismissedToasts)
+        enableAffectedProjectsDeployments = try container.sdkDecodeIfPresent(.enableAffectedProjectsDeployments)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
+extension DeleteProjectAvatarResponse {
     mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.analyticsUsage = try container.sdkDecodeIfPresent(.analyticsUsage)
-        self.apiKey = try container.sdkDecodeIfPresent(.apiKey)
-        self.apiKeyAiGateway = try container.sdkDecodeIfPresent(.apiKeyAiGateway)
-        self.apiKeyOwnedBySelf = try container.sdkDecodeIfPresent(.apiKeyOwnedBySelf)
-        self.auditLog = try container.sdkDecodeIfPresent(.auditLog)
-        self.automation = try container.sdkDecodeIfPresent(.automation)
-        self.billingAddress = try container.sdkDecodeIfPresent(.billingAddress)
-        self.billingInformation = try container.sdkDecodeIfPresent(.billingInformation)
-        self.billingInvoice = try container.sdkDecodeIfPresent(.billingInvoice)
-        self.billingInvoiceEmailRecipient = try container.sdkDecodeIfPresent(.billingInvoiceEmailRecipient)
-        self.billingInvoiceLanguage = try container.sdkDecodeIfPresent(.billingInvoiceLanguage)
-        self.billingPlan = try container.sdkDecodeIfPresent(.billingPlan)
+        enableExternalRewriteCaching = try container.sdkDecodeIfPresent(.enableExternalRewriteCaching)
+        enablePreviewFeedback = try container.sdkDecodeIfPresent(.enablePreviewFeedback)
+        enableProductionFeedback = try container.sdkDecodeIfPresent(.enableProductionFeedback)
+        env = try container.sdkDecodeIfPresent(.env)
+        expiration = try container.sdkDecodeIfPresent(.expiration)
+        features = try container.sdkDecodeIfPresent(.features)
+        framework = try container.sdkDecodeIfPresent(.framework)
+        gitComments = try container.sdkDecodeIfPresent(.gitComments)
+        gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
+        gitLfs = try container.sdkDecodeIfPresent(.gitLfs)
+        gitProviderOptions = try container.sdkDecodeIfPresent(.gitProviderOptions)
+        hasActiveBranches = try container.sdkDecodeIfPresent(.hasActiveBranches)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
+extension DeleteProjectAvatarResponse {
     mutating func sdkDecodeFieldsPart4(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.billingPurchaseOrder = try container.sdkDecodeIfPresent(.billingPurchaseOrder)
-        self.billingRefund = try container.sdkDecodeIfPresent(.billingRefund)
-        self.billingTaxId = try container.sdkDecodeIfPresent(.billingTaxId)
-        self.blob = try container.sdkDecodeIfPresent(.blob)
-        self.blobStoreTokenSet = try container.sdkDecodeIfPresent(.blobStoreTokenSet)
-        self.budget = try container.sdkDecodeIfPresent(.budget)
-        self.buildMachine = try container.sdkDecodeIfPresent(.buildMachine)
-        self.buildMachineDefault = try container.sdkDecodeIfPresent(.buildMachineDefault)
-        self.bulkRedirects = try container.sdkDecodeIfPresent(.bulkRedirects)
-        self.cacheArtifact = try container.sdkDecodeIfPresent(.cacheArtifact)
-        self.cacheArtifactUsageEvent = try container.sdkDecodeIfPresent(.cacheArtifactUsageEvent)
-        self.ciInvocations = try container.sdkDecodeIfPresent(.ciInvocations)
+        hasDeployments = try container.sdkDecodeIfPresent(.hasDeployments)
+        installCommand = try container.sdkDecodeIfPresent(.installCommand)
+        internalRoutes = try container.sdkDecodeIfPresent(.internalRoutes)
+        ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
+        jobs = try container.sdkDecodeIfPresent(.jobs)
+        lastAliasRequest = try container.sdkDecodeIfPresent(.lastAliasRequest)
+        lastRollbackTarget = try container.sdkDecodeIfPresent(.lastRollbackTarget)
+        latestDeployments = try container.sdkDecodeIfPresent(.latestDeployments)
+        link = try container.sdkDecodeIfPresent(.link)
+        live = try container.sdkDecodeIfPresent(.live)
+        microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
+        oidcTokenConfig = try container.sdkDecodeIfPresent(.oidcTokenConfig)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
+extension DeleteProjectAvatarResponse {
     mutating func sdkDecodeFieldsPart5(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.ciLogs = try container.sdkDecodeIfPresent(.ciLogs)
-        self.codeChecks = try container.sdkDecodeIfPresent(.codeChecks)
-        self.codeOwners = try container.sdkDecodeIfPresent(.codeOwners)
-        self.concurrentBuilds = try container.sdkDecodeIfPresent(.concurrentBuilds)
-        self.connect = try container.sdkDecodeIfPresent(.connect)
-        self.connectConfiguration = try container.sdkDecodeIfPresent(.connectConfiguration)
-        self.connectConfigurationLink = try container.sdkDecodeIfPresent(.connectConfigurationLink)
-        self.connectLogs = try container.sdkDecodeIfPresent(.connectLogs)
-        self.connexClient = try container.sdkDecodeIfPresent(.connexClient)
-        self.connexClientProject = try container.sdkDecodeIfPresent(.connexClientProject)
-        self.connexContact = try container.sdkDecodeIfPresent(.connexContact)
-        self.connexInstallation = try container.sdkDecodeIfPresent(.connexInstallation)
+        optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
+        outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
+        passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
+        passport = try container.sdkDecodeIfPresent(.passport)
+        passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
+        paused = try container.sdkDecodeIfPresent(.paused)
+        permissions = try container.sdkDecodeIfPresent(.permissions)
+        productionDeploymentsFastLane = try container.sdkDecodeIfPresent(.productionDeploymentsFastLane)
+        protectedSourcemaps = try container.sdkDecodeIfPresent(.protectedSourcemaps)
+        protectionBypass = try container.sdkDecodeIfPresent(.protectionBypass)
+        protectionConfig = try container.sdkDecodeIfPresent(.protectionConfig)
+        rollbackDescription = try container.sdkDecodeIfPresent(.rollbackDescription)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
+extension DeleteProjectAvatarResponse {
     mutating func sdkDecodeFieldsPart6(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.connexToken = try container.sdkDecodeIfPresent(.connexToken)
-        self.cursorOriginInstallation = try container.sdkDecodeIfPresent(.cursorOriginInstallation)
-        self.dataCacheBillingSettings = try container.sdkDecodeIfPresent(.dataCacheBillingSettings)
-        self.dataCacheNamespace = try container.sdkDecodeIfPresent(.dataCacheNamespace)
-        self.defaultDeploymentProtection = try container.sdkDecodeIfPresent(.defaultDeploymentProtection)
-        self.deployment = try container.sdkDecodeIfPresent(.deployment)
-        self.deploymentBuildLogs = try container.sdkDecodeIfPresent(.deploymentBuildLogs)
-        self.deploymentCheck = try container.sdkDecodeIfPresent(.deploymentCheck)
-        self.deploymentCheckPreview = try container.sdkDecodeIfPresent(.deploymentCheckPreview)
-        self.deploymentCheckReRunFromProductionBranch = try container.sdkDecodeIfPresent(.deploymentCheckReRunFromProductionBranch)
-        self.deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
-        self.deploymentPreview = try container.sdkDecodeIfPresent(.deploymentPreview)
+        rollingRelease = try container.sdkDecodeIfPresent(.rollingRelease)
+        rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
+        sandbox = try container.sdkDecodeIfPresent(.sandbox)
+        security = try container.sdkDecodeIfPresent(.security)
+        serverlessFunctionZeroConfigFailover = try container.sdkDecodeIfPresent(.serverlessFunctionZeroConfigFailover)
+        services = try container.sdkDecodeIfPresent(.services)
+        skewProtectionAllowedDomains = try container.sdkDecodeIfPresent(.skewProtectionAllowedDomains)
+        skewProtectionBoundaryAt = try container.sdkDecodeIfPresent(.skewProtectionBoundaryAt)
+        skewProtectionMaxAge = try container.sdkDecodeIfPresent(.skewProtectionMaxAge)
+        skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
+        sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
+        speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
+extension DeleteProjectAvatarResponse {
     mutating func sdkDecodeFieldsPart7(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.deploymentPrivate = try container.sdkDecodeIfPresent(.deploymentPrivate)
-        self.deploymentProductionGit = try container.sdkDecodeIfPresent(.deploymentProductionGit)
-        self.deploymentPromote = try container.sdkDecodeIfPresent(.deploymentPromote)
-        self.deploymentProtectionException = try container.sdkDecodeIfPresent(.deploymentProtectionException)
-        self.deploymentRollback = try container.sdkDecodeIfPresent(.deploymentRollback)
-        self.deploymentV0 = try container.sdkDecodeIfPresent(.deploymentV0)
-        self.domain = try container.sdkDecodeIfPresent(.domain)
-        self.domainAcceptDelegation = try container.sdkDecodeIfPresent(.domainAcceptDelegation)
-        self.domainAuthCodes = try container.sdkDecodeIfPresent(.domainAuthCodes)
-        self.domainCertificate = try container.sdkDecodeIfPresent(.domainCertificate)
-        self.domainCheckConfig = try container.sdkDecodeIfPresent(.domainCheckConfig)
-        self.domainMove = try container.sdkDecodeIfPresent(.domainMove)
+        ssoProtection = try container.sdkDecodeIfPresent(.ssoProtection)
+        staticIps = try container.sdkDecodeIfPresent(.staticIps)
+        targets = try container.sdkDecodeIfPresent(.targets)
+        tier = try container.sdkDecodeIfPresent(.tier)
+        tracing = try container.sdkDecodeIfPresent(.tracing)
+        transferCompletedAt = try container.sdkDecodeIfPresent(.transferCompletedAt)
+        transferredFromAccountId = try container.sdkDecodeIfPresent(.transferredFromAccountId)
+        transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
+        transferToAccountId = try container.sdkDecodeIfPresent(.transferToAccountId)
+        trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
+        trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
+extension DeleteProjectAvatarResponse {
     mutating func sdkDecodeFieldsPart8(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.domainPurchase = try container.sdkDecodeIfPresent(.domainPurchase)
-        self.domainRecord = try container.sdkDecodeIfPresent(.domainRecord)
-        self.domainTransferIn = try container.sdkDecodeIfPresent(.domainTransferIn)
-        self.drain = try container.sdkDecodeIfPresent(.drain)
-        self.edgeCacheNamespace = try container.sdkDecodeIfPresent(.edgeCacheNamespace)
-        self.edgeConfig = try container.sdkDecodeIfPresent(.edgeConfig)
-        self.edgeConfigItem = try container.sdkDecodeIfPresent(.edgeConfigItem)
-        self.edgeConfigSchema = try container.sdkDecodeIfPresent(.edgeConfigSchema)
-        self.edgeConfigToken = try container.sdkDecodeIfPresent(.edgeConfigToken)
-        self.endpointVerification = try container.sdkDecodeIfPresent(.endpointVerification)
-        self.environments = try container.sdkDecodeIfPresent(.environments)
-        self.event = try container.sdkDecodeIfPresent(.event)
+        usageStatus = try container.sdkDecodeIfPresent(.usageStatus)
+        v0 = try container.sdkDecodeIfPresent(.v0)
+        v0Created = try container.sdkDecodeIfPresent(.v0Created)
+        webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
     }
 }
 
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart9(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.fileUpload = try container.sdkDecodeIfPresent(.fileUpload)
-        self.flagsExplorerSubscription = try container.sdkDecodeIfPresent(.flagsExplorerSubscription)
-        self.gitCredentialGrant = try container.sdkDecodeIfPresent(.gitCredentialGrant)
-        self.gitRepository = try container.sdkDecodeIfPresent(.gitRepository)
-        self.imageOptimizationNewPrice = try container.sdkDecodeIfPresent(.imageOptimizationNewPrice)
-        self.integration = try container.sdkDecodeIfPresent(.integration)
-        self.integrationAccount = try container.sdkDecodeIfPresent(.integrationAccount)
-        self.integrationConfiguration = try container.sdkDecodeIfPresent(.integrationConfiguration)
-        self.integrationConfigurationProjects = try container.sdkDecodeIfPresent(.integrationConfigurationProjects)
-        self.integrationConfigurationRole = try container.sdkDecodeIfPresent(.integrationConfigurationRole)
-        self.integrationConfigurationTransfer = try container.sdkDecodeIfPresent(.integrationConfigurationTransfer)
-        self.integrationDeploymentAction = try container.sdkDecodeIfPresent(.integrationDeploymentAction)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart10(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.integrationEvent = try container.sdkDecodeIfPresent(.integrationEvent)
-        self.integrationLog = try container.sdkDecodeIfPresent(.integrationLog)
-        self.integrationPullRequest = try container.sdkDecodeIfPresent(.integrationPullRequest)
-        self.integrationResource = try container.sdkDecodeIfPresent(.integrationResource)
-        self.integrationResourceData = try container.sdkDecodeIfPresent(.integrationResourceData)
-        self.integrationResourceReplCommand = try container.sdkDecodeIfPresent(.integrationResourceReplCommand)
-        self.integrationResourceSecrets = try container.sdkDecodeIfPresent(.integrationResourceSecrets)
-        self.integrationSsoSession = try container.sdkDecodeIfPresent(.integrationSsoSession)
-        self.integrationStoreTokenSet = try container.sdkDecodeIfPresent(.integrationStoreTokenSet)
-        self.integrationStrict = try container.sdkDecodeIfPresent(.integrationStrict)
-        self.integrationVercelConfigurationOverride = try container.sdkDecodeIfPresent(.integrationVercelConfigurationOverride)
-        self.ipBlocking = try container.sdkDecodeIfPresent(.ipBlocking)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart11(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.job = try container.sdkDecodeIfPresent(.job)
-        self.jobGlobal = try container.sdkDecodeIfPresent(.jobGlobal)
-        self.kmsIssuer = try container.sdkDecodeIfPresent(.kmsIssuer)
-        self.kmsProjectGrant = try container.sdkDecodeIfPresent(.kmsProjectGrant)
-        self.logDrain = try container.sdkDecodeIfPresent(.logDrain)
-        self.logs = try container.sdkDecodeIfPresent(.logs)
-        self.logsPreset = try container.sdkDecodeIfPresent(.logsPreset)
-        self.marketplaceBillingData = try container.sdkDecodeIfPresent(.marketplaceBillingData)
-        self.marketplaceExperimentationEdgeConfigData = try container.sdkDecodeIfPresent(.marketplaceExperimentationEdgeConfigData)
-        self.marketplaceExperimentationItem = try container.sdkDecodeIfPresent(.marketplaceExperimentationItem)
-        self.marketplaceFlexCommit = try container.sdkDecodeIfPresent(.marketplaceFlexCommit)
-        self.marketplaceInstallationMember = try container.sdkDecodeIfPresent(.marketplaceInstallationMember)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart12(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.marketplaceInvoice = try container.sdkDecodeIfPresent(.marketplaceInvoice)
-        self.marketplaceSettings = try container.sdkDecodeIfPresent(.marketplaceSettings)
-        self.messageboard = try container.sdkDecodeIfPresent(.messageboard)
-        self.messageboardSpace = try container.sdkDecodeIfPresent(.messageboardSpace)
-        self.messageboardTask = try container.sdkDecodeIfPresent(.messageboardTask)
-        self.monitoring = try container.sdkDecodeIfPresent(.monitoring)
-        self.monitoringAlert = try container.sdkDecodeIfPresent(.monitoringAlert)
-        self.monitoringChart = try container.sdkDecodeIfPresent(.monitoringChart)
-        self.monitoringQuery = try container.sdkDecodeIfPresent(.monitoringQuery)
-        self.monitoringSettings = try container.sdkDecodeIfPresent(.monitoringSettings)
-        self.notificationCustomerBudget = try container.sdkDecodeIfPresent(.notificationCustomerBudget)
-        self.notificationDeploymentFailed = try container.sdkDecodeIfPresent(.notificationDeploymentFailed)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart13(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.notificationDomainConfiguration = try container.sdkDecodeIfPresent(.notificationDomainConfiguration)
-        self.notificationDomainExpire = try container.sdkDecodeIfPresent(.notificationDomainExpire)
-        self.notificationDomainMoved = try container.sdkDecodeIfPresent(.notificationDomainMoved)
-        self.notificationDomainPurchase = try container.sdkDecodeIfPresent(.notificationDomainPurchase)
-        self.notificationDomainRenewal = try container.sdkDecodeIfPresent(.notificationDomainRenewal)
-        self.notificationDomainTransfer = try container.sdkDecodeIfPresent(.notificationDomainTransfer)
-        self.notificationDomainUnverified = try container.sdkDecodeIfPresent(.notificationDomainUnverified)
-        self.notificationMonitoringAlert = try container.sdkDecodeIfPresent(.notificationMonitoringAlert)
-        self.notificationPaymentFailed = try container.sdkDecodeIfPresent(.notificationPaymentFailed)
-        self.notificationPreferences = try container.sdkDecodeIfPresent(.notificationPreferences)
-        self.notificationStatementOfReasons = try container.sdkDecodeIfPresent(.notificationStatementOfReasons)
-        self.notificationUsageAlert = try container.sdkDecodeIfPresent(.notificationUsageAlert)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart14(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.oauth2Application = try container.sdkDecodeIfPresent(.oauth2Application)
-        self.oauth2Connection = try container.sdkDecodeIfPresent(.oauth2Connection)
-        self.observabilityConfiguration = try container.sdkDecodeIfPresent(.observabilityConfiguration)
-        self.observabilityData = try container.sdkDecodeIfPresent(.observabilityData)
-        self.observabilityFunnel = try container.sdkDecodeIfPresent(.observabilityFunnel)
-        self.observabilityNotebook = try container.sdkDecodeIfPresent(.observabilityNotebook)
-        self.oidcFederationPolicy = try container.sdkDecodeIfPresent(.oidcFederationPolicy)
-        self.onDemandBuild = try container.sdkDecodeIfPresent(.onDemandBuild)
-        self.onDemandConcurrency = try container.sdkDecodeIfPresent(.onDemandConcurrency)
-        self.openTelemetryEndpoint = try container.sdkDecodeIfPresent(.openTelemetryEndpoint)
-        self.optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
-        self.organization = try container.sdkDecodeIfPresent(.organization)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart15(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.organizationDomain = try container.sdkDecodeIfPresent(.organizationDomain)
-        self.organizationTeam = try container.sdkDecodeIfPresent(.organizationTeam)
-        self.ownEvent = try container.sdkDecodeIfPresent(.ownEvent)
-        self.pageIntegrity = try container.sdkDecodeIfPresent(.pageIntegrity)
-        self.passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
-        self.passwordProtectionInvoiceItem = try container.sdkDecodeIfPresent(.passwordProtectionInvoiceItem)
-        self.paymentMethod = try container.sdkDecodeIfPresent(.paymentMethod)
-        self.permissions = try container.sdkDecodeIfPresent(.permissions)
-        self.postgres = try container.sdkDecodeIfPresent(.postgres)
-        self.postgresStoreTokenSet = try container.sdkDecodeIfPresent(.postgresStoreTokenSet)
-        self.previewDeploymentSuffix = try container.sdkDecodeIfPresent(.previewDeploymentSuffix)
-        self.privateCloudAccount = try container.sdkDecodeIfPresent(.privateCloudAccount)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart16(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.privateLinkEndpoint = try container.sdkDecodeIfPresent(.privateLinkEndpoint)
-        self.productionAliasProtectionBypass = try container.sdkDecodeIfPresent(.productionAliasProtectionBypass)
-        self.productionShareableLink = try container.sdkDecodeIfPresent(.productionShareableLink)
-        self.project = try container.sdkDecodeIfPresent(.project)
-        self.projectAccessGroup = try container.sdkDecodeIfPresent(.projectAccessGroup)
-        self.projectAnalyticsSampling = try container.sdkDecodeIfPresent(.projectAnalyticsSampling)
-        self.projectAnalyticsUsage = try container.sdkDecodeIfPresent(.projectAnalyticsUsage)
-        self.projectCheck = try container.sdkDecodeIfPresent(.projectCheck)
-        self.projectCheckRun = try container.sdkDecodeIfPresent(.projectCheckRun)
-        self.projectDeploymentExpiration = try container.sdkDecodeIfPresent(.projectDeploymentExpiration)
-        self.projectDeploymentHook = try container.sdkDecodeIfPresent(.projectDeploymentHook)
-        self.projectDeploymentProtectionStrict = try container.sdkDecodeIfPresent(.projectDeploymentProtectionStrict)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart17(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.projectDomain = try container.sdkDecodeIfPresent(.projectDomain)
-        self.projectDomainCheckConfig = try container.sdkDecodeIfPresent(.projectDomainCheckConfig)
-        self.projectDomainMove = try container.sdkDecodeIfPresent(.projectDomainMove)
-        self.projectDomainVerify = try container.sdkDecodeIfPresent(.projectDomainVerify)
-        self.projectEnvVars = try container.sdkDecodeIfPresent(.projectEnvVars)
-        self.projectEnvVarsProduction = try container.sdkDecodeIfPresent(.projectEnvVarsProduction)
-        self.projectEnvVarsUnownedByIntegration = try container.sdkDecodeIfPresent(.projectEnvVarsUnownedByIntegration)
-        self.projectEvent = try container.sdkDecodeIfPresent(.projectEvent)
-        self.projectFlags = try container.sdkDecodeIfPresent(.projectFlags)
-        self.projectFlagsProduction = try container.sdkDecodeIfPresent(.projectFlagsProduction)
-        self.projectFlagsSdkKey = try container.sdkDecodeIfPresent(.projectFlagsSdkKey)
-        self.projectFromV0 = try container.sdkDecodeIfPresent(.projectFromV0)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart18(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.projectId = try container.sdkDecodeIfPresent(.projectId)
-        self.projectIntegrationConfiguration = try container.sdkDecodeIfPresent(.projectIntegrationConfiguration)
-        self.projectLink = try container.sdkDecodeIfPresent(.projectLink)
-        self.projectMember = try container.sdkDecodeIfPresent(.projectMember)
-        self.projectMonitoring = try container.sdkDecodeIfPresent(.projectMonitoring)
-        self.projectOidcToken = try container.sdkDecodeIfPresent(.projectOidcToken)
-        self.projectPermissions = try container.sdkDecodeIfPresent(.projectPermissions)
-        self.projectProductionBranch = try container.sdkDecodeIfPresent(.projectProductionBranch)
-        self.projectProtectionBypass = try container.sdkDecodeIfPresent(.projectProtectionBypass)
-        self.projectRollingRelease = try container.sdkDecodeIfPresent(.projectRollingRelease)
-        self.projectRoutes = try container.sdkDecodeIfPresent(.projectRoutes)
-        self.projectSetting = try container.sdkDecodeIfPresent(.projectSetting)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart19(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.projectSupportCase = try container.sdkDecodeIfPresent(.projectSupportCase)
-        self.projectSupportCaseComment = try container.sdkDecodeIfPresent(.projectSupportCaseComment)
-        self.projectTier = try container.sdkDecodeIfPresent(.projectTier)
-        self.projectTransfer = try container.sdkDecodeIfPresent(.projectTransfer)
-        self.projectTransferIn = try container.sdkDecodeIfPresent(.projectTransferIn)
-        self.projectTransferOut = try container.sdkDecodeIfPresent(.projectTransferOut)
-        self.projectTransferRequest = try container.sdkDecodeIfPresent(.projectTransferRequest)
-        self.projectUsage = try container.sdkDecodeIfPresent(.projectUsage)
-        self.proTrialOnboarding = try container.sdkDecodeIfPresent(.proTrialOnboarding)
-        self.rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
-        self.redis = try container.sdkDecodeIfPresent(.redis)
-        self.redisStoreTokenSet = try container.sdkDecodeIfPresent(.redisStoreTokenSet)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart20(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.remoteCaching = try container.sdkDecodeIfPresent(.remoteCaching)
-        self.repository = try container.sdkDecodeIfPresent(.repository)
-        self.samlConfig = try container.sdkDecodeIfPresent(.samlConfig)
-        self.schedule = try container.sdkDecodeIfPresent(.schedule)
-        self.seawallConfig = try container.sdkDecodeIfPresent(.seawallConfig)
-        self.secret = try container.sdkDecodeIfPresent(.secret)
-        self.securityConfig = try container.sdkDecodeIfPresent(.securityConfig)
-        self.securityPlusConfiguration = try container.sdkDecodeIfPresent(.securityPlusConfiguration)
-        self.sensitiveEnvironmentVariablePolicy = try container.sdkDecodeIfPresent(.sensitiveEnvironmentVariablePolicy)
-        self.setting = try container.sdkDecodeIfPresent(.setting)
-        self.shareableLink = try container.sdkDecodeIfPresent(.shareableLink)
-        self.shareableLinkStrict = try container.sdkDecodeIfPresent(.shareableLinkStrict)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart21(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.sharedEnvVarConnection = try container.sdkDecodeIfPresent(.sharedEnvVarConnection)
-        self.sharedEnvVars = try container.sdkDecodeIfPresent(.sharedEnvVars)
-        self.sharedEnvVarsProduction = try container.sdkDecodeIfPresent(.sharedEnvVarsProduction)
-        self.skewProtection = try container.sdkDecodeIfPresent(.skewProtection)
-        self.space = try container.sdkDecodeIfPresent(.space)
-        self.spaceRun = try container.sdkDecodeIfPresent(.spaceRun)
-        self.storeIsLocked = try container.sdkDecodeIfPresent(.storeIsLocked)
-        self.storeTokenSetSensitive = try container.sdkDecodeIfPresent(.storeTokenSetSensitive)
-        self.storeTransfer = try container.sdkDecodeIfPresent(.storeTransfer)
-        self.supportCase = try container.sdkDecodeIfPresent(.supportCase)
-        self.supportCaseComment = try container.sdkDecodeIfPresent(.supportCaseComment)
-        self.team = try container.sdkDecodeIfPresent(.team)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart22(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.teamAccessRequest = try container.sdkDecodeIfPresent(.teamAccessRequest)
-        self.teamFellowMembership = try container.sdkDecodeIfPresent(.teamFellowMembership)
-        self.teamGitExclusivity = try container.sdkDecodeIfPresent(.teamGitExclusivity)
-        self.teamInvite = try container.sdkDecodeIfPresent(.teamInvite)
-        self.teamInviteCode = try container.sdkDecodeIfPresent(.teamInviteCode)
-        self.teamInviteLink = try container.sdkDecodeIfPresent(.teamInviteLink)
-        self.teamJoin = try container.sdkDecodeIfPresent(.teamJoin)
-        self.teamMemberMfaStatus = try container.sdkDecodeIfPresent(.teamMemberMfaStatus)
-        self.teamMicrofrontends = try container.sdkDecodeIfPresent(.teamMicrofrontends)
-        self.teamOwnMembership = try container.sdkDecodeIfPresent(.teamOwnMembership)
-        self.teamOwnMembershipDisconnectSaml = try container.sdkDecodeIfPresent(.teamOwnMembershipDisconnectSaml)
-        self.teamSudo = try container.sdkDecodeIfPresent(.teamSudo)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart23(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.teamTokenInvalidation = try container.sdkDecodeIfPresent(.teamTokenInvalidation)
-        self.token = try container.sdkDecodeIfPresent(.token)
-        self.toolbarComment = try container.sdkDecodeIfPresent(.toolbarComment)
-        self.trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
-        self.trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
-        self.usage = try container.sdkDecodeIfPresent(.usage)
-        self.usageCycle = try container.sdkDecodeIfPresent(.usageCycle)
-        self.user = try container.sdkDecodeIfPresent(.user)
-        self.userConnection = try container.sdkDecodeIfPresent(.userConnection)
-        self.userMfaConfiguration = try container.sdkDecodeIfPresent(.userMfaConfiguration)
-        self.userPreference = try container.sdkDecodeIfPresent(.userPreference)
-        self.userSudo = try container.sdkDecodeIfPresent(.userSudo)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart24(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.v0Chat = try container.sdkDecodeIfPresent(.v0Chat)
-        self.vcrRepository = try container.sdkDecodeIfPresent(.vcrRepository)
-        self.vercelAppInstallation = try container.sdkDecodeIfPresent(.vercelAppInstallation)
-        self.vercelAppInstallationRequest = try container.sdkDecodeIfPresent(.vercelAppInstallationRequest)
-        self.vercelAuth = try container.sdkDecodeIfPresent(.vercelAuth)
-        self.vercelRun = try container.sdkDecodeIfPresent(.vercelRun)
-        self.vpcPeeringConnection = try container.sdkDecodeIfPresent(.vpcPeeringConnection)
-        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
-        self.webAnalyticsPlan = try container.sdkDecodeIfPresent(.webAnalyticsPlan)
-        self.webAuthn = try container.sdkDecodeIfPresent(.webAuthn)
-        self.webhook = try container.sdkDecodeIfPresent(.webhook)
-        self.webhookEvent = try container.sdkDecodeIfPresent(.webhookEvent)
-    }
-}
-
-extension DeleteProjectAvatarResponsePermissions {
-    mutating func sdkDecodeFieldsPart25(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.workflowRunData = try container.sdkDecodeIfPresent(.workflowRunData)
-    }
-}
-
-public struct ListProjectsResponseVariant1ProjectsItemLinkVariant4DeployHooksItem: Codable {
-    public var id: String
+public struct AddProjectDomainResponse: Codable {
+    public var apexName: String
     public var name: String
-    public var ref: String
-    public var url: String
+    public var projectId: String
+    /// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on
+    /// this project until the challenge in `verification` is completed.
+    public var verified: Bool
     public var createdAt: Double?
+    public var customEnvironmentId: String?
+    public var gitBranch: String?
+    public var redirect: String?
+    public var redirectStatusCode: Double?
+    public var updatedAt: Double?
+    /// A list of verification challenges, one of which must be completed to verify the domain for use on the
+    /// project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the
+    /// domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a
+    /// TXT record matching `verification.value`.
+    public var verification: [AddProjectDomainResponseVerificationItem]?
 
     enum CodingKeys: String, CodingKey {
-        case id
+        case apexName
         case name
-        case ref
-        case url
+        case projectId
+        case verified
         case createdAt
+        case customEnvironmentId
+        case gitBranch
+        case redirect
+        case redirectStatusCode
+        case updatedAt
+        case verification
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension ListProjectsResponseVariant1ProjectsItemLinkVariant4DeployHooksItem {
-    public init(from decoder: Decoder) throws {
+public extension AddProjectDomainResponse {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
+        guard container.contains(.apexName) else {
+            throw SdkValidationError(
+                field: "apexName",
+                code: "required",
+                message: "Validation failed for 'apexName': value is required"
+            )
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
-        guard container.contains(.ref) else {
-            throw SdkValidationError(field: "ref", code: "required", message: "Validation failed for 'ref': value is required")
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
         }
-        guard container.contains(.url) else {
-            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
+        guard container.contains(.verified) else {
+            throw SdkValidationError(
+                field: "verified",
+                code: "required",
+                message: "Validation failed for 'verified': value is required"
+            )
         }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.ref = try container.sdkDecodeRequired(.ref)
-        self.url = try container.sdkDecodeRequired(.url)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        apexName = try container.sdkDecodeRequired(.apexName)
+        name = try container.sdkDecodeRequired(.name)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        verified = try container.sdkDecodeRequired(.verified)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        redirect = try container.sdkDecodeIfPresent(.redirect)
+        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        verification = try container.sdkDecodeIfPresent(.verification)
     }
 }
 
-extension ListProjectsResponseVariant1ProjectsItemLinkVariant4DeployHooksItem {
-    public init(id: String, name: String, ref: String, url: String, createdAt: Double? = nil) {
-        (self.id, self.name) = (id, name)
-        (self.ref, self.url) = (ref, url)
-        self.createdAt = createdAt
+public extension AddProjectDomainResponse {
+    init(
+        apexName: String,
+        name: String,
+        projectId: String,
+        verified: Bool,
+        createdAt: Double? = nil,
+        customEnvironmentId: String? = nil,
+        gitBranch: String? = nil,
+        redirect: String? = nil,
+        redirectStatusCode: Double? = nil,
+        updatedAt: Double? = nil,
+        verification: [AddProjectDomainResponseVerificationItem]? = nil
+    ) {
+        (self.apexName, self.name) = (apexName, name)
+        (self.projectId, self.verified) = (projectId, verified)
+        (self.createdAt, self.customEnvironmentId) = (createdAt, customEnvironmentId)
+        (self.gitBranch, self.redirect) = (gitBranch, redirect)
+        (self.redirectStatusCode, self.updatedAt) = (redirectStatusCode, updatedAt)
+        self.verification = verification
     }
 }
 
-/// The source envs on the trusted project that are allowed to access `to`.
-public struct UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX54fbe4d9ee: Codable {
-    public var preset: UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX44764ddd7a
-    /// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced
-    /// project.
-    public var slugs: [String]?
+/// Similar to `contentHints`, but should not be exposed to the user.
+public struct EditProjectEnvResponseInternalContentHint: Codable {
+    /// Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the
+    /// subscriber Lambda.
+    public var encryptedValue: String
+    public var type: EditProjectEnvResponseInternalContentHintType
 
     enum CodingKeys: String, CodingKey {
-        case preset
-        case slugs
+        case encryptedValue
+        case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX54fbe4d9ee {
-    public init(from decoder: Decoder) throws {
+public extension EditProjectEnvResponseInternalContentHint {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.preset) else {
-            throw SdkValidationError(field: "preset", code: "required", message: "Validation failed for 'preset': value is required")
+        guard container.contains(.encryptedValue) else {
+            throw SdkValidationError(
+                field: "encryptedValue",
+                code: "required",
+                message: "Validation failed for 'encryptedValue': value is required"
+            )
         }
-        self.preset = try container.sdkDecodeRequired(.preset)
-        self.slugs = try container.sdkDecodeIfPresent(.slugs)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        encryptedValue = try container.sdkDecodeRequired(.encryptedValue)
+        type = try container.sdkDecodeRequired(.type)
+    }
+}
+
+public extension EditProjectEnvResponseInternalContentHint {
+    init(encryptedValue: String, type: EditProjectEnvResponseInternalContentHintType) {
+        (self.encryptedValue, self.type) = (encryptedValue, type)
+    }
+}
+
+public indirect enum CreateProjectResponseEnvItemTarget {
+    case stringList([String])
+    case stringValue(String)
+}
+
+extension CreateProjectResponseEnvItemTarget: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateProjectResponseEnvItemTarget"
+        )
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        if try encodeGroup1(to: encoder) {
+            return
+        }
+    }
+}
+
+extension CreateProjectResponseEnvItemTarget {
+    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
+        if let value = try? container.decode([String].self) {
+            return .stringList(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        return nil
+    }
+}
+
+extension CreateProjectResponseEnvItemTarget {
+    func encodeGroup1(to encoder: Encoder) throws -> Bool {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case let .stringList(value): try container.encode(value); return true
+        case let .stringValue(value): try container.encode(value); return true
+        }
+    }
+}
+
+public struct CreateProjectResponseSecurityManagedRules: Codable {
+    public var aiBots: CreateProjectResponseSecurityManagedRulesAiBots
+    public var botFilter: CreateProjectResponseSecurityManagedRulesBotFilter
+    public var owasp: CreateProjectResponseSecurityManagedRulesOwasp
+    public var trafficSources: CreateProjectResponseSecurityManagedRulesTrafficSources
+    public var vercelRuleset: CreateProjectResponseSecurityManagedRulesVercelRuleset
+
+    enum CodingKeys: String, CodingKey {
+        case aiBots = "ai_bots"
+        case botFilter = "bot_filter"
+        case owasp
+        case trafficSources = "traffic_sources"
+        case vercelRuleset = "vercel_ruleset"
+    }
+
+    private init(sdkCopy value: Self) {
+        self = value
+    }
+}
+
+public extension CreateProjectResponseSecurityManagedRules {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.aiBots) else {
+            throw SdkValidationError(
+                field: "ai_bots",
+                code: "required",
+                message: "Validation failed for 'ai_bots': value is required"
+            )
+        }
+        guard container.contains(.botFilter) else {
+            throw SdkValidationError(
+                field: "bot_filter",
+                code: "required",
+                message: "Validation failed for 'bot_filter': value is required"
+            )
+        }
+        guard container.contains(.owasp) else {
+            throw SdkValidationError(
+                field: "owasp",
+                code: "required",
+                message: "Validation failed for 'owasp': value is required"
+            )
+        }
+        guard container.contains(.trafficSources) else {
+            throw SdkValidationError(
+                field: "traffic_sources",
+                code: "required",
+                message: "Validation failed for 'traffic_sources': value is required"
+            )
+        }
+        guard container.contains(.vercelRuleset) else {
+            throw SdkValidationError(
+                field: "vercel_ruleset",
+                code: "required",
+                message: "Validation failed for 'vercel_ruleset': value is required"
+            )
+        }
+        aiBots = try container.sdkDecodeRequired(.aiBots)
+        botFilter = try container.sdkDecodeRequired(.botFilter)
+        owasp = try container.sdkDecodeRequired(.owasp)
+        trafficSources = try container.sdkDecodeRequired(.trafficSources)
+        vercelRuleset = try container.sdkDecodeRequired(.vercelRuleset)
     }
 }

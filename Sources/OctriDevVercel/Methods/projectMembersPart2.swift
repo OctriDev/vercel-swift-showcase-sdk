@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectMembersMethods {
-    /// Lists members of a project, with pagination and optional filtering by addition time or member details. Use `limit` to control the number of members returned and `search` to match names, usernames, or email addresses.
+public extension ProjectMembersMethods {
+    /// Lists members of a project, with pagination and optional filtering by addition time or member details. Use
+    /// `limit` to control the number of members returned and `search` to match names, usernames, or email addresses.
     ///
     /// Lists all members of a project.
     ///
@@ -19,18 +20,36 @@ extension ProjectMembersMethods {
     /// - search: Search project members by their name, username, and email.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getProjectMembers(config: ClientConfig, idOrName: String, limit: Int? = nil, since: Int? = nil, until: Int? = nil, search: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectMembersResponse {
-        if let limit = limit {
+    static func getProjectMembers(
+        config: ClientConfig,
+        idOrName: String,
+        limit: Int? = nil,
+        since: Int? = nil,
+        until: Int? = nil,
+        search: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetProjectMembersResponse {
+        if let limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/members"].joined(), config: config, query: [
-            SdkQueryParameter("limit", value: limit),
-            SdkQueryParameter("since", value: since),
-            SdkQueryParameter("until", value: until),
-            SdkQueryParameter("search", value: search),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getProjectMembers", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/members"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("limit", value: limit),
+                SdkQueryParameter("since", value: since),
+                SdkQueryParameter("until", value: until),
+                SdkQueryParameter("search", value: search),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getProjectMembers",
+            options: requestOptions
+        )).data
     }
 }

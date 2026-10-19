@@ -9,169 +9,519 @@ public class VercelCiNamespace {
         self.config = config
     }
 
-/// Retrieves Vercel CI settings for a connected repository. Identify the repository with `provider`, `organizationId`, and `repository`; use `teamId` or `slug` to make the request on behalf of a team. The response includes whether Vercel CI is enabled and the associated timestamps.
+    /// Retrieves Vercel CI settings for a connected repository. Identify the repository with `provider`,
+    /// `organizationId`, and `repository`; use `teamId` or `slug` to make the request on behalf of a team. The response
+    /// includes whether Vercel CI is enabled and the associated timestamps.
     ///
     /// Get Repository Settings
-    public func getRepositorySettings(provider: GetVercelCiRepositorySettingsParameter, organizationId: String, repository: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiRepositorySettingsResponse {
-        return try await VercelCiMethods.getVercelCiRepositorySettings(config: config, provider: provider, organizationId: organizationId, repository: repository, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func getRepositorySettings(
+        provider: GetVercelCiRepositorySettingsParameter,
+        organizationId: String,
+        repository: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiRepositorySettingsResponse {
+        try await VercelCiMethods.getVercelCiRepositorySettings(
+            config: config,
+            provider: provider,
+            organizationId: organizationId,
+            repository: repository,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates the Vercel CI enabled state for a connected repository. Identify the repository with `provider`, `organizationId`, and `repository`, then set `ciEnabled` in the request body. Use `teamId` or `slug` to perform the request on behalf of a team.
+    /// Updates the Vercel CI enabled state for a connected repository. Identify the repository with `provider`,
+    /// `organizationId`, and `repository`, then set `ciEnabled` in the request body. Use `teamId` or `slug` to perform
+    /// the request on behalf of a team.
     ///
     /// Update Repository Settings
-    public func updateRepositorySettings(provider: UpdateVercelCiRepositorySettingsParameter, organizationId: String, repository: String, ciEnabled: Bool, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateVercelCiRepositorySettingsResponse {
-        return try await VercelCiMethods.updateVercelCiRepositorySettings(config: config, provider: provider, organizationId: organizationId, repository: repository, ciEnabled: ciEnabled, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func updateRepositorySettings(
+        provider: UpdateVercelCiRepositorySettingsParameter,
+        organizationId: String,
+        repository: String,
+        ciEnabled: Bool,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateVercelCiRepositorySettingsResponse {
+        try await VercelCiMethods.updateVercelCiRepositorySettings(
+            config: config,
+            provider: provider,
+            organizationId: organizationId,
+            repository: repository,
+            ciEnabled: ciEnabled,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists Vercel CI invocations for a team, with optional filters for repository, branch, commit, status, conclusion, source, author, and creation time. Use `cursor` to continue from a previous response and `limit` to set the page size. The response includes invocation records, repository details, and pagination metadata.
+    /// Lists Vercel CI invocations for a team, with optional filters for repository, branch, commit, status,
+    /// conclusion, source, author, and creation time. Use `cursor` to continue from a previous response and `limit` to
+    /// set the page size. The response includes invocation records, repository details, and pagination metadata.
     ///
     /// List Invocations
-    public func listInvocations(options: VercelCiMethods.ListVercelCiInvocationsOptions, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiInvocationsResponse {
-        return try await VercelCiMethods.listVercelCiInvocations(config: config, options: options, requestOptions: requestOptions)
+    public func listInvocations(
+        options: VercelCiMethods.ListVercelCiInvocationsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiInvocationsResponse {
+        try await VercelCiMethods.listVercelCiInvocations(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists Vercel CI branch suggestions for a team. Use `query` to filter the suggestions and `limit` to control how many results are returned. The response contains branch names and their counts.
+    /// Lists Vercel CI branch suggestions for a team. Use `query` to filter the suggestions and `limit` to control how
+    /// many results are returned. The response contains branch names and their counts.
     ///
     /// List branches
-    public func listBranches(query: String? = nil, limit: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiBranchesResponse {
-        return try await VercelCiMethods.listVercelCiBranches(config: config, query: query, limit: limit, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func listBranches(
+        query: String? = nil,
+        limit: Double? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiBranchesResponse {
+        try await VercelCiMethods.listVercelCiBranches(
+            config: config,
+            query: query,
+            limit: limit,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Starts an asynchronous Vercel CI task analysis for a repository. Supply the repository `owner` and `repo` in the request body, and use `teamId` or `slug` to perform the request on behalf of a team. A 202 response confirms acceptance and provides an `analysisId` to check the analysis status.
+    /// Starts an asynchronous Vercel CI task analysis for a repository. Supply the repository `owner` and `repo` in the
+    /// request body, and use `teamId` or `slug` to perform the request on behalf of a team. A 202 response confirms
+    /// acceptance and provides an `analysisId` to check the analysis status.
     ///
     /// Create task analysis
-    public func createTaskAnalysis(owner: String, repo: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateVercelCiTaskAnalysisResponse {
-        return try await VercelCiMethods.createVercelCiTaskAnalysis(config: config, owner: owner, repo: repo, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func createTaskAnalysis(
+        owner: String,
+        repo: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateVercelCiTaskAnalysisResponse {
+        try await VercelCiMethods.createVercelCiTaskAnalysis(
+            config: config,
+            owner: owner,
+            repo: repo,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves the current status of a Vercel CI task analysis. Use `analysisId` to identify the analysis and optionally pass `teamId` or `slug` to make the request on behalf of a team. The response includes a failure reason when one is available.
+    /// Retrieves the current status of a Vercel CI task analysis. Use `analysisId` to identify the analysis and
+    /// optionally pass `teamId` or `slug` to make the request on behalf of a team. The response includes a failure
+    /// reason when one is available.
     ///
     /// Get task analysis
-    public func getTaskAnalysis(analysisId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiTaskAnalysisResponse {
-        return try await VercelCiMethods.getVercelCiTaskAnalysis(config: config, analysisId: analysisId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func getTaskAnalysis(
+        analysisId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiTaskAnalysisResponse {
+        try await VercelCiMethods.getVercelCiTaskAnalysis(
+            config: config,
+            analysisId: analysisId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a GitHub pull request that adds Vercel CI tags for tasks discovered in a completed analysis. Identify the analysis with `analysisId` and provide the tasks and configuration paths in the request body. The response includes the pull request URL and the names of changed tasks.
+    /// Creates a GitHub pull request that adds Vercel CI tags for tasks discovered in a completed analysis. Identify
+    /// the analysis with `analysisId` and provide the tasks and configuration paths in the request body. The response
+    /// includes the pull request URL and the names of changed tasks.
     ///
     /// Create task configuration pull request
-    public func createTaskConfigurationPullRequest(analysisId: String, tasks: CreateVercelCiTaskConfigurationPullRequestTasksList, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateVercelCiTaskConfigurationPullRequestResponse {
-        return try await VercelCiMethods.createVercelCiTaskConfigurationPullRequest(config: config, analysisId: analysisId, tasks: tasks, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func createTaskConfigurationPullRequest(
+        analysisId: String,
+        tasks: CreateVercelCiTaskConfigurationPullRequestTasksList,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateVercelCiTaskConfigurationPullRequestResponse {
+        try await VercelCiMethods.createVercelCiTaskConfigurationPullRequest(
+            config: config,
+            analysisId: analysisId,
+            tasks: tasks,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists tasks discovered by a completed Vercel CI task analysis. Identify the analysis with `analysisId`, and use `cursor` and `limit` to retrieve task results in pages. Each task includes its configuration path and recommendation reasons.
+    /// Lists tasks discovered by a completed Vercel CI task analysis. Identify the analysis with `analysisId`, and use
+    /// `cursor` and `limit` to retrieve task results in pages. Each task includes its configuration path and
+    /// recommendation reasons.
     ///
     /// List task analysis tasks
-    public func listTaskAnalysisTasks(analysisId: String, cursor: String? = nil, limit: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiTaskAnalysisTasksResponse {
-        return try await VercelCiMethods.listVercelCiTaskAnalysisTasks(config: config, analysisId: analysisId, cursor: cursor, limit: limit, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func listTaskAnalysisTasks(
+        analysisId: String,
+        cursor: String? = nil,
+        limit: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiTaskAnalysisTasksResponse {
+        try await VercelCiMethods.listVercelCiTaskAnalysisTasks(
+            config: config,
+            analysisId: analysisId,
+            cursor: cursor,
+            limit: limit,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
-extension VercelCiNamespace {
-/// Lists all attempts for a Vercel CI invocation. Use `invocationId` to identify the invocation and optionally pass `teamId` or `slug` to make the request on behalf of a team. The response includes attempt records and repository details.
+public extension VercelCiNamespace {
+    /// Lists all attempts for a Vercel CI invocation. Use `invocationId` to identify the invocation and optionally pass
+    /// `teamId` or `slug` to make the request on behalf of a team. The response includes attempt records and repository
+    /// details.
     ///
     /// List Invocation Attempts
-    public func listInvocationAttempts(invocationId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiInvocationAttemptsResponse {
-        return try await VercelCiMethods.listVercelCiInvocationAttempts(config: config, invocationId: invocationId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func listInvocationAttempts(
+        invocationId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiInvocationAttemptsResponse {
+        try await VercelCiMethods.listVercelCiInvocationAttempts(
+            config: config,
+            invocationId: invocationId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves an invocation attempt with its job definitions, latest job runs, and task definitions and active task runs. Use `attempt` to select an attempt, or omit it to use the latest; set `follow` to `1` to receive newline-delimited JSON updates until the attempt finishes or the stream times out.
+    /// Retrieves an invocation attempt with its job definitions, latest job runs, and task definitions and active task
+    /// runs. Use `attempt` to select an attempt, or omit it to use the latest; set `follow` to `1` to receive
+    /// newline-delimited JSON updates until the attempt finishes or the stream times out.
     ///
-    /// Returns an invocation attempt together with every job definition, its latest job run, and the task definitions and active task runs of that job run. Defaults to the latest attempt when `attempt` is omitted. With `follow=1` the response is a newline-delimited JSON stream: a `{"type":"tree", ...}` event with the full tree is sent immediately and again whenever it changes, and a final `{"type":"end","reason":...}` event is sent when the attempt finishes (`completed`) or the stream reaches its maximum duration (`timeout`), after which clients should reconnect.
-    public func getInvocationTree(invocationId: String, attempt: String? = nil, follow: Int? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiInvocationTreeResponse {
-        return try await VercelCiMethods.getVercelCiInvocationTree(config: config, invocationId: invocationId, attempt: attempt, follow: follow, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Returns an invocation attempt together with every job definition, its latest job run, and the task definitions
+    /// and active task runs of that job run. Defaults to the latest attempt when `attempt` is omitted. With `follow=1`
+    /// the response is a newline-delimited JSON stream: a `{"type":"tree", ...}` event with the full tree is sent
+    /// immediately and again whenever it changes, and a final `{"type":"end","reason":...}` event is sent when the
+    /// attempt finishes (`completed`) or the stream reaches its maximum duration (`timeout`), after which clients
+    /// should reconnect.
+    func getInvocationTree(
+        invocationId: String,
+        attempt: String? = nil,
+        follow: Int? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiInvocationTreeResponse {
+        try await VercelCiMethods.getVercelCiInvocationTree(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            follow: follow,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves a specific invocation attempt and its repository details. Use `invocationId` and `attempt` to identify the attempt you want to inspect. The response includes the invocation record and associated repositories.
+    /// Retrieves a specific invocation attempt and its repository details. Use `invocationId` and `attempt` to identify
+    /// the attempt you want to inspect. The response includes the invocation record and associated repositories.
     ///
     /// Get Invocation
-    public func getInvocation(invocationId: String, attempt: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiInvocationResponse {
-        return try await VercelCiMethods.getVercelCiInvocation(config: config, invocationId: invocationId, attempt: attempt, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func getInvocation(
+        invocationId: String,
+        attempt: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiInvocationResponse {
+        try await VercelCiMethods.getVercelCiInvocation(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Triggers a retry of a terminal Vercel CI invocation attempt. Use `invocationId` and `attempt` to identify the attempt to retry. The response confirms that the retry was scheduled and provides the new attempt number.
+    /// Triggers a retry of a terminal Vercel CI invocation attempt. Use `invocationId` and `attempt` to identify the
+    /// attempt to retry. The response confirms that the retry was scheduled and provides the new attempt number.
     ///
     /// Retry Invocation
-    public func retryInvocation(invocationId: String, attempt: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RetryVercelCiInvocationResponse {
-        return try await VercelCiMethods.retryVercelCiInvocation(config: config, invocationId: invocationId, attempt: attempt, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func retryInvocation(
+        invocationId: String,
+        attempt: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RetryVercelCiInvocationResponse {
+        try await VercelCiMethods.retryVercelCiInvocation(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists the job definitions associated with an invocation attempt. Use `invocationId` and `attempt` to select the attempt whose jobs you want to inspect. Each result includes the job definition's identifier, kind, name, command, and creation time.
+    /// Lists the job definitions associated with an invocation attempt. Use `invocationId` and `attempt` to select the
+    /// attempt whose jobs you want to inspect. Each result includes the job definition's identifier, kind, name,
+    /// command, and creation time.
     ///
     /// List Job Definitions
-    public func listJobDefinitions(invocationId: String, attempt: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiJobDefinitionsResponse {
-        return try await VercelCiMethods.listVercelCiJobDefinitions(config: config, invocationId: invocationId, attempt: attempt, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func listJobDefinitions(
+        invocationId: String,
+        attempt: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiJobDefinitionsResponse {
+        try await VercelCiMethods.listVercelCiJobDefinitions(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves a specific job definition for an invocation attempt. Use `invocationId`, `attempt`, and `jobDefinitionId` to identify the definition. The response contains the job definition's kind, name, command, and creation time.
+    /// Retrieves a specific job definition for an invocation attempt. Use `invocationId`, `attempt`, and
+    /// `jobDefinitionId` to identify the definition. The response contains the job definition's kind, name, command,
+    /// and creation time.
     ///
     /// Get Job Definition
-    public func getJobDefinition(invocationId: String, attempt: String, jobDefinitionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiJobDefinitionResponse {
-        return try await VercelCiMethods.getVercelCiJobDefinition(config: config, invocationId: invocationId, attempt: attempt, jobDefinitionId: jobDefinitionId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func getJobDefinition(
+        invocationId: String,
+        attempt: String,
+        jobDefinitionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiJobDefinitionResponse {
+        try await VercelCiMethods.getVercelCiJobDefinition(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            jobDefinitionId: jobDefinitionId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists the runs for a job definition in a specific invocation attempt. Use `invocationId`, `attempt`, and `jobDefinitionId` to select the job whose run history you want to inspect. Each result includes the run attempt number and creation time, with start and completion details when available.
+    /// Lists the runs for a job definition in a specific invocation attempt. Use `invocationId`, `attempt`, and
+    /// `jobDefinitionId` to select the job whose run history you want to inspect. Each result includes the run attempt
+    /// number and creation time, with start and completion details when available.
     ///
     /// List Job Runs
-    public func listJobRuns(invocationId: String, attempt: String, jobDefinitionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiJobRunsResponse {
-        return try await VercelCiMethods.listVercelCiJobRuns(config: config, invocationId: invocationId, attempt: attempt, jobDefinitionId: jobDefinitionId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func listJobRuns(
+        invocationId: String,
+        attempt: String,
+        jobDefinitionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiJobRunsResponse {
+        try await VercelCiMethods.listVercelCiJobRuns(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            jobDefinitionId: jobDefinitionId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves a specific run attempt for a job definition. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to identify the run. The response contains the run's creation time and any available start and completion details.
+    /// Retrieves a specific run attempt for a job definition. Use `invocationId`, `attempt`, `jobDefinitionId`, and
+    /// `runAttempt` to identify the run. The response contains the run's creation time and any available start and
+    /// completion details.
     ///
     /// Get Job Run
-    public func getJobRun(invocationId: String, attempt: String, jobDefinitionId: String, runAttempt: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiJobRunResponse {
-        return try await VercelCiMethods.getVercelCiJobRun(config: config, invocationId: invocationId, attempt: attempt, jobDefinitionId: jobDefinitionId, runAttempt: runAttempt, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func getJobRun(
+        invocationId: String,
+        attempt: String,
+        jobDefinitionId: String,
+        runAttempt: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiJobRunResponse {
+        try await VercelCiMethods.getVercelCiJobRun(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            jobDefinitionId: jobDefinitionId,
+            runAttempt: runAttempt,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
-extension VercelCiNamespace {
-/// Lists the task definitions associated with a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to select the run. Each result includes its task definition identifier, name, operation, dependencies, and creation time.
+public extension VercelCiNamespace {
+    /// Lists the task definitions associated with a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and
+    /// `runAttempt` to select the run. Each result includes its task definition identifier, name, operation,
+    /// dependencies, and creation time.
     ///
     /// List Task Definitions
-    public func listTaskDefinitions(invocationId: String, attempt: String, jobDefinitionId: String, runAttempt: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiTaskDefinitionsResponse {
-        return try await VercelCiMethods.listVercelCiTaskDefinitions(config: config, invocationId: invocationId, attempt: attempt, jobDefinitionId: jobDefinitionId, runAttempt: runAttempt, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func listTaskDefinitions(
+        invocationId: String,
+        attempt: String,
+        jobDefinitionId: String,
+        runAttempt: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiTaskDefinitionsResponse {
+        try await VercelCiMethods.listVercelCiTaskDefinitions(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            jobDefinitionId: jobDefinitionId,
+            runAttempt: runAttempt,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists the task runs for a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to select the job run, and use `taskRunAttempt` to filter the results by task run attempt. Each result includes task identifiers, the attempt number, creation time, and available start, completion, and deployment binding details.
+    /// Lists the task runs for a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to select
+    /// the job run, and use `taskRunAttempt` to filter the results by task run attempt. Each result includes task
+    /// identifiers, the attempt number, creation time, and available start, completion, and deployment binding details.
     ///
     /// List Task Runs
-    public func listTaskRuns(invocationId: String, attempt: String, jobDefinitionId: String, runAttempt: String, taskRunAttempt: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiTaskRunsResponse {
-        return try await VercelCiMethods.listVercelCiTaskRuns(config: config, invocationId: invocationId, attempt: attempt, jobDefinitionId: jobDefinitionId, runAttempt: runAttempt, taskRunAttempt: taskRunAttempt, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func listTaskRuns(
+        invocationId: String,
+        attempt: String,
+        jobDefinitionId: String,
+        runAttempt: String,
+        taskRunAttempt: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiTaskRunsResponse {
+        try await VercelCiMethods.listVercelCiTaskRuns(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            jobDefinitionId: jobDefinitionId,
+            runAttempt: runAttempt,
+            taskRunAttempt: taskRunAttempt,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves log lines for a specific invocation attempt. Use `level` to filter the results to one or more log levels, such as `warn` or `error`. Each returned line includes its level, timestamp, and message.
+    /// Retrieves log lines for a specific invocation attempt. Use `level` to filter the results to one or more log
+    /// levels, such as `warn` or `error`. Each returned line includes its level, timestamp, and message.
     ///
     /// Get Invocation Logs
-    public func getInvocationLogs(invocationId: String, attempt: String, level: [GetVercelCiInvocationLogsParameterItem]? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiInvocationLogsResponse {
-        return try await VercelCiMethods.getVercelCiInvocationLogs(config: config, invocationId: invocationId, attempt: attempt, level: level, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func getInvocationLogs(
+        invocationId: String,
+        attempt: String,
+        level: [GetVercelCiInvocationLogsParameterItem]? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiInvocationLogsResponse {
+        try await VercelCiMethods.getVercelCiInvocationLogs(
+            config: config,
+            invocationId: invocationId,
+            attempt: attempt,
+            level: level,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists log lines for tasks in a specific invocation attempt, grouped by task. Use `task`, `conclusion`, and `level` to filter the results, or use `search` to return only tasks with matching lines. Search returns at most 1,000 matching lines and ignores `limit`.
+    /// Lists log lines for tasks in a specific invocation attempt, grouped by task. Use `task`, `conclusion`, and
+    /// `level` to filter the results, or use `search` to return only tasks with matching lines. Search returns at most
+    /// 1,000 matching lines and ignores `limit`.
     ///
-    /// Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks. With `search`, every matching task is searched at once and only tasks with matching lines are returned.
-    public func getTaskLogs(options: VercelCiMethods.GetVercelCiTaskLogsOptions, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiTaskLogsResponse {
-        return try await VercelCiMethods.getVercelCiTaskLogs(config: config, options: options, requestOptions: requestOptions)
+    /// Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be
+    /// narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks. With
+    /// `search`, every matching task is searched at once and only tasks with matching lines are returned.
+    func getTaskLogs(
+        options: VercelCiMethods.GetVercelCiTaskLogsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiTaskLogsResponse {
+        try await VercelCiMethods.getVercelCiTaskLogs(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Searches task logs across multiple invocation attempts and returns only invocations and tasks with matching lines. Supply up to 50 unique invocation attempts in `invocation` and a search string in `search`; matching is case-insensitive. When more than 1,000 lines match, the response keeps the newest lines.
+    /// Searches task logs across multiple invocation attempts and returns only invocations and tasks with matching
+    /// lines. Supply up to 50 unique invocation attempts in `invocation` and a search string in `search`; matching is
+    /// case-insensitive. When more than 1,000 lines match, the response keeps the newest lines.
     ///
-    /// Searches the task logs of up to 50 invocation attempts at once, for example the most recent runs of a branch from `GET /v2/vercel-ci/invocations`. Only invocations and tasks with matching lines are returned. When more than 1000 lines match, the newest are kept.
-    public func searchLogs(invocation: [String], search: String, level: [SearchVercelCiLogsParameterItem]? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SearchVercelCiLogsResponse {
-        return try await VercelCiMethods.searchVercelCiLogs(config: config, invocation: invocation, search: search, level: level, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Searches the task logs of up to 50 invocation attempts at once, for example the most recent runs of a branch
+    /// from `GET /v2/vercel-ci/invocations`. Only invocations and tasks with matching lines are returned. When more
+    /// than 1000 lines match, the newest are kept.
+    func searchLogs(
+        invocation: [String],
+        search: String,
+        level: [SearchVercelCiLogsParameterItem]? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SearchVercelCiLogsResponse {
+        try await VercelCiMethods.searchVercelCiLogs(
+            config: config,
+            invocation: invocation,
+            search: search,
+            level: level,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves log lines for a specific job run attempt. Use `level` to filter the returned lines, or provide `since` to retrieve lines from a specified point. Set `follow` to 1 to request ongoing log output.
+    /// Retrieves log lines for a specific job run attempt. Use `level` to filter the returned lines, or provide `since`
+    /// to retrieve lines from a specified point. Set `follow` to 1 to request ongoing log output.
     ///
     /// Get Job Run Logs
-    public func getJobRunLogs(options: VercelCiMethods.GetVercelCiJobRunLogsOptions, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiJobRunLogsResponse {
-        return try await VercelCiMethods.getVercelCiJobRunLogs(config: config, options: options, requestOptions: requestOptions)
+    func getJobRunLogs(
+        options: VercelCiMethods.GetVercelCiJobRunLogsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiJobRunLogsResponse {
+        try await VercelCiMethods.getVercelCiJobRunLogs(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves log lines for a specific task run attempt. Use `level` to filter the returned lines, or provide `since` to retrieve lines from a specified point. Set `follow` to 1 to stream newline-delimited JSON log lines until the task run finishes or the stream reaches its maximum duration.
+    /// Retrieves log lines for a specific task run attempt. Use `level` to filter the returned lines, or provide
+    /// `since` to retrieve lines from a specified point. Set `follow` to 1 to stream newline-delimited JSON log lines
+    /// until the task run finishes or the stream reaches its maximum duration.
     ///
-    /// Get Task Run Logs With `follow=1` the response is a newline-delimited JSON stream of log lines that ends once the task run has finished and its logs are flushed, or when the stream reaches its maximum duration.
-    public func getTaskRunLogs(options: VercelCiMethods.GetVercelCiTaskRunLogsOptions, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiTaskRunLogsResponse {
-        return try await VercelCiMethods.getVercelCiTaskRunLogs(config: config, options: options, requestOptions: requestOptions)
+    /// Get Task Run Logs With `follow=1` the response is a newline-delimited JSON stream of log lines that ends once
+    /// the task run has finished and its logs are flushed, or when the stream reaches its maximum duration.
+    func getTaskRunLogs(
+        options: VercelCiMethods.GetVercelCiTaskRunLogsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiTaskRunLogsResponse {
+        try await VercelCiMethods.getVercelCiTaskRunLogs(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 }
 
@@ -181,8 +531,18 @@ public class WebNamespace {
         self.config = config
     }
 
-/// Updates the Web Insights setting for a project. Supply `projectId` and the `value` to set the toggle to true or false. The response returns the resulting toggle value.
-    public func createInsightsToggle(projectId: String, value: Bool, requestOptions: RequestOptions? = nil) async throws -> CreateWebInsightsToggleResponse {
-        return try await WebMethods.createWebInsightsToggle(config: config, projectId: projectId, value: value, requestOptions: requestOptions)
+    /// Updates the Web Insights setting for a project. Supply `projectId` and the `value` to set the toggle to true or
+    /// false. The response returns the resulting toggle value.
+    public func createInsightsToggle(
+        projectId: String,
+        value: Bool,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateWebInsightsToggleResponse {
+        try await WebMethods.createWebInsightsToggle(
+            config: config,
+            projectId: projectId,
+            value: value,
+            requestOptions: requestOptions
+        )
     }
 }

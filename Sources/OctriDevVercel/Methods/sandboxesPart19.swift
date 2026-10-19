@@ -6,10 +6,12 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    /// Retrieves the status and details of a command executed in a session, including its exit code if it has finished. Set `wait` to true to block the request until the command finishes.
+public extension SandboxesMethods {
+    /// Retrieves the status and details of a command executed in a session, including its exit code if it has finished.
+    /// Set `wait` to true to block the request until the command finishes.
     ///
-    /// Retrieves the current status and details of a command executed in a session. Use the `wait` parameter to block until the command finishes execution.
+    /// Retrieves the current status and details of a command executed in a session. Use the `wait` parameter to block
+    /// until the command finishes execution.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session containing the command.
@@ -18,11 +20,32 @@ extension SandboxesMethods {
     ///   execution. Useful for synchronously waiting for command completion.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getSessionCommand(config: ClientConfig, sessionId: String, cmdId: String, wait: GetSessionCommandParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetSessionCommandResponse {
-        return try (await sdkRequest("GET", ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/cmd/", sdkEncodePathSegment(sdkWireString(cmdId))].joined(), config: config, query: [
-            SdkQueryParameter("wait", value: wait),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getSessionCommand", options: requestOptions)).data
+    static func getSessionCommand(
+        config: ClientConfig,
+        sessionId: String,
+        cmdId: String,
+        wait: GetSessionCommandParameter? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetSessionCommandResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v2/sandboxes/sessions/",
+                sdkEncodePathSegment(sdkWireString(sessionId)),
+                "/cmd/",
+                sdkEncodePathSegment(sdkWireString(cmdId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("wait", value: wait),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getSessionCommand",
+            options: requestOptions
+        )).data
     }
 }

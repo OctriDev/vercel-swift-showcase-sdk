@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    public struct CreateSandboxesV2Options: Codable {
+public extension SandboxesMethods {
+    struct CreateSandboxesV2Options: Codable {
         public var teamId: String?
         public var slug: String?
         public var networkPolicy: CreateSandboxesV2RequestNetworkPolicy?
@@ -33,9 +33,12 @@ extension SandboxesMethods {
         public init() {}
     }
 
-    /// Creates a named sandbox with an initialized filesystem and runtime configuration. Supply `name` and `projectId` to assign it to a project, and optionally configure its source, resources, network policy, ports, or mounted drives. A 200 response includes the sandbox, session, and exposed routes.
+    /// Creates a named sandbox with an initialized filesystem and runtime configuration. Supply `name` and `projectId`
+    /// to assign it to a project, and optionally configure its source, resources, network policy, ports, or mounted
+    /// drives. A 200 response includes the sandbox, session, and exposed routes.
     ///
-    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic snapshotting on shutdown.
+    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic
+    /// snapshotting on shutdown.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
@@ -76,7 +79,11 @@ extension SandboxesMethods {
     /// - keepLastSnapshots: Protect the N most recent snapshots with different
     ///   expiration/deletion behavior.
     /// - tags: Key-value tags to associate with the sandbox. Maximum 5 tags.
-    public static func createSandboxesV2(config: ClientConfig, options: CreateSandboxesV2Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesV2Response {
+    static func createSandboxesV2(
+        config: ClientConfig,
+        options: CreateSandboxesV2Options,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSandboxesV2Response {
         if let ports = options.ports {
             try validateItems("ports", ports, max: 15)
         }
@@ -104,7 +111,7 @@ extension SandboxesMethods {
 
         let requestBody = CreateSandboxesV2RequestBody(options: options)
 
-        return try (await sdkRequest("POST", "/v2/sandboxes", config: config, query: [
+        return try await (sdkRequest("POST", "/v2/sandboxes", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "createSandboxesV2", options: requestOptions)).data

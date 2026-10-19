@@ -6,25 +6,49 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DeploymentsMethods {
-    /// Cancels a deployment that is currently in progress and stops its build before completion. Use this operation to stop an accidental deployment or a build with known errors; deployments in `READY`, `ERROR`, or `CANCELED` states are not cancelable. The 200 response returns the updated deployment with `readyState` set to `CANCELED`, and cancellation is irreversible.
+public extension DeploymentsMethods {
+    /// Cancels a deployment that is currently in progress and stops its build before completion. Use this operation to
+    /// stop an accidental deployment or a build with known errors; deployments in `READY`, `ERROR`, or `CANCELED`
+    /// states are not cancelable. The 200 response returns the updated deployment with `readyState` set to `CANCELED`,
+    /// and cancellation is irreversible.
     ///
-    /// Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover quickly from accidental deploys, wrong-branch pushes, or builds with known errors — without waiting for them to finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns the updated deployment object with `readyState: 'CANCELED'` on success.
+    /// Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover
+    /// quickly from accidental deploys, wrong-branch pushes, or builds with known errors — without waiting for them to
+    /// finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns
+    /// the updated deployment object with `readyState: 'CANCELED'` on success.
     ///
     /// - Parameters:
     /// - id: The unique identifier of the deployment.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func cancelDeployment(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CancelDeploymentResponse {
-        return try (await sdkRequest("PATCH", ["/v12/deployments/", sdkEncodePathSegment(sdkWireString(id)), "/cancel"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "cancelDeployment", options: requestOptions)).data
+    static func cancelDeployment(
+        config: ClientConfig,
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CancelDeploymentResponse {
+        try await (sdkRequest(
+            "PATCH",
+            ["/v12/deployments/", sdkEncodePathSegment(sdkWireString(id)), "/cancel"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "cancelDeployment",
+            options: requestOptions
+        )).data
     }
 
-    /// Uploads a file for use in a deployment. Send the file content as the request body before creating the deployment that uses it. A successful response confirms the file is already uploaded or has been uploaded.
+    /// Uploads a file for use in a deployment. Send the file content as the request body before creating the deployment
+    /// that uses it. A successful response confirms the file is already uploaded or has been uploaded.
     ///
-    /// Before you create a deployment you need to upload the required files for that deployment. To do it, you need to first upload each file to this endpoint. Once that's completed, you can create a new deployment with the uploaded files. The file content must be placed inside the body of the request. In the case of a successful response you'll receive a status code 200 with an empty body.
+    /// Before you create a deployment you need to upload the required files for that deployment. To do it, you need to
+    /// first upload each file to this endpoint. Once that's completed, you can create a new deployment with the
+    /// uploaded files. The file content must be placed inside the body of the request. In the case of a successful
+    /// response you'll receive a status code 200 with an empty body.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
@@ -32,22 +56,42 @@ extension DeploymentsMethods {
     /// - xVercelDigest: The file SHA1 used to check the integrity
     /// - xNowDigest: The file SHA1 used to check the integrity
     /// - xNowSize: The file size as an alternative to `Content-Length`
-    public static func uploadFile(config: ClientConfig, teamId: String? = nil, slug: String? = nil, xVercelDigest: String? = nil, xNowDigest: String? = nil, xNowSize: Double? = nil, body: Data? = nil, requestOptions: RequestOptions? = nil) async throws -> UploadFileResponse {
-        if let xVercelDigest = xVercelDigest {
+    static func uploadFile(
+        config: ClientConfig,
+        teamId: String? = nil,
+        slug: String? = nil,
+        xVercelDigest: String? = nil,
+        xNowDigest: String? = nil,
+        xNowSize: Double? = nil,
+        body: Data? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UploadFileResponse {
+        if let xVercelDigest {
             try validateLength("x-vercel-digest", xVercelDigest, max: 40)
         }
 
-        if let xNowDigest = xNowDigest {
+        if let xNowDigest {
             try validateLength("x-now-digest", xNowDigest, max: 40)
         }
 
-        return try (await sdkRequest("POST", "/v2/files", config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], rawBody: body, contentType: "application/octet-stream", decoder: .json, operationId: "uploadFile", extraHeaders: sdkHeaders([
-            ("x-vercel-digest", sdkHeaderValue(xVercelDigest)),
-            ("x-now-digest", sdkHeaderValue(xNowDigest)),
-            ("x-now-size", sdkHeaderValue(xNowSize)),
-        ]), options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            "/v2/files",
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            rawBody: body,
+            contentType: "application/octet-stream",
+            decoder: .json,
+            operationId: "uploadFile",
+            extraHeaders: sdkHeaders([
+                ("x-vercel-digest", sdkHeaderValue(xVercelDigest)),
+                ("x-now-digest", sdkHeaderValue(xNowDigest)),
+                ("x-now-size", sdkHeaderValue(xNowSize)),
+            ]),
+            options: requestOptions
+        )).data
     }
 }

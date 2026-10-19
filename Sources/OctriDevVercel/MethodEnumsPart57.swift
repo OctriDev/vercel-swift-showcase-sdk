@@ -7,16 +7,20 @@ import Foundation
     import FoundationNetworking
 #endif
 /// Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.
-public struct CreateSandboxesV2RequestBodyMountsValueMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateSandboxesV2RequestBodyMountsValueMode: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let snapshot = CreateSandboxesV2RequestBodyMountsValueMode(rawValue: "snapshot")
     public static let readWrite = CreateSandboxesV2RequestBodyMountsValueMode(rawValue: "read-write")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -26,15 +30,21 @@ public struct CreateSandboxesV2RequestBodyMountsValueMode: RawRepresentable, Has
 }
 
 /// The metric this check evaluates.
-public struct UploadProjectAvatarResponseRollingReleaseGateChecksItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseRollingReleaseGateChecksItemType: RawRepresentable, Hashable, Codable,
+    Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let errorRate5xx = UploadProjectAvatarResponseRollingReleaseGateChecksItemType(rawValue: "error-rate-5xx")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let errorRate5xx =
+        UploadProjectAvatarResponseRollingReleaseGateChecksItemType(rawValue: "error-rate-5xx")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -43,15 +53,19 @@ public struct UploadProjectAvatarResponseRollingReleaseGateChecksItemType: RawRe
     }
 }
 
-public struct UpdateMicrofrontendsResponseSecurityLogHeadersVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseSecurityLogHeadersVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let unknown = UpdateMicrofrontendsResponseSecurityLogHeadersVariant1(rawValue: "*")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -60,15 +74,20 @@ public struct UpdateMicrofrontendsResponseSecurityLogHeadersVariant1: RawReprese
     }
 }
 
-public struct UpdateProjectResponseTrustedSourcesProjectsValueCustomAllowItX23976a668e: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateProjectResponseTrustedSourcesProjectsValueCustomAllowItX23976a668e: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let allCustom = UpdateProjectResponseTrustedSourcesProjectsValueCustomAllowItX23976a668e(rawValue: "all-custom")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let allCustom =
+        UpdateProjectResponseTrustedSourcesProjectsValueCustomAllowItX23976a668e(rawValue: "all-custom")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -77,16 +96,22 @@ public struct UpdateProjectResponseTrustedSourcesProjectsValueCustomAllowItX2397
     }
 }
 
-public struct UploadProjectAvatarResponseResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let skipNamespaceQueue = UploadProjectAvatarResponseResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
-    public static let waitForNamespaceQueue = UploadProjectAvatarResponseResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let skipNamespaceQueue =
+        UploadProjectAvatarResponseResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
+    public static let waitForNamespaceQueue =
+        UploadProjectAvatarResponseResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -130,17 +155,24 @@ public enum UpdateFlagResponseEnvironmentsValueFallthroughVariant3Type: String, 
 }
 
 /// The type of matching to perform
-public struct ListProjectsResponseVariant2ProjectsItemTargetsValueBranchMatcherType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemTargetsValueBranchMatcherType: RawRepresentable, Hashable,
+    Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let endsWith = ListProjectsResponseVariant2ProjectsItemTargetsValueBranchMatcherType(rawValue: "endsWith")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let endsWith =
+        ListProjectsResponseVariant2ProjectsItemTargetsValueBranchMatcherType(rawValue: "endsWith")
     public static let equals = ListProjectsResponseVariant2ProjectsItemTargetsValueBranchMatcherType(rawValue: "equals")
-    public static let startsWith = ListProjectsResponseVariant2ProjectsItemTargetsValueBranchMatcherType(rawValue: "startsWith")
+    public static let startsWith =
+        ListProjectsResponseVariant2ProjectsItemTargetsValueBranchMatcherType(rawValue: "startsWith")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -149,26 +181,52 @@ public struct ListProjectsResponseVariant2ProjectsItemTargetsValueBranchMatcherT
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let readWriteDeployment = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:deployment")
-    public static let readWriteDeploymentCheck = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:deployment-check")
-    public static let readWriteDomain = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:domain")
-    public static let readWriteDrains = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:drains")
-    public static let readWriteGlobalProjectEnvVars = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:global-project-env-vars")
-    public static let readWriteIntegrationDeploymentAction = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:integration-deployment-action")
-    public static let readWriteLogDrain = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:log-drain")
-    public static let readWriteProjectEnvVars = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:project-env-vars")
-    public static let readWriteProjectProtectionBypass = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:project-protection-bypass")
-    public static let readDeployment = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read:deployment")
-    public static let readDomain = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read:domain")
-    public static let readProject = CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read:project")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let readWriteDeployment =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:deployment")
+    public static let readWriteDeploymentCheck =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(
+            rawValue: "read-write:deployment-check"
+        )
+    public static let readWriteDomain =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:domain")
+    public static let readWriteDrains =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:drains")
+    public static let readWriteGlobalProjectEnvVars =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(
+            rawValue: "read-write:global-project-env-vars"
+        )
+    public static let readWriteIntegrationDeploymentAction =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(
+            rawValue: "read-write:integration-deployment-action"
+        )
+    public static let readWriteLogDrain =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read-write:log-drain")
+    public static let readWriteProjectEnvVars =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(
+            rawValue: "read-write:project-env-vars"
+        )
+    public static let readWriteProjectProtectionBypass =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(
+            rawValue: "read-write:project-protection-bypass"
+        )
+    public static let readDeployment =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read:deployment")
+    public static let readDomain =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read:domain")
+    public static let readProject =
+        CreateIntegrationStoreDirectResponseStoreProductProjectConnecXe625f20180(rawValue: "read:project")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -195,17 +253,23 @@ public enum ListProjectsResponseVariant2ProjectsItemDeploymentPolicyDeploX635ee3
 }
 
 /// The type of environment (production, preview, or development)
-public struct ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsItemType: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let development = ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsItemType(rawValue: "development")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let development =
+        ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsItemType(rawValue: "development")
     public static let preview = ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsItemType(rawValue: "preview")
-    public static let production = ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsItemType(rawValue: "production")
+    public static let production =
+        ListProjectsResponseVariant2ProjectsItemCustomEnvironmentsItemType(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

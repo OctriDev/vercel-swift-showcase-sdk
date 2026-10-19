@@ -36,9 +36,9 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getContactInfoSchema(
-            domain: decoded("\"domain\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domain: decoded("\"domain\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -122,7 +122,8 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try DeploymentsMethods.GetDeploymentEventsOptions(idOrUrl: decoded("\"dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd\""))
+        var options = try DeploymentsMethods
+            .GetDeploymentEventsOptions(idOrUrl: decoded("\"dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd\""))
         options.direction = try decoded("\"backward\"")
         options.follow = try decoded("1")
         options.limit = try decoded("100")
@@ -232,9 +233,9 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getDomainAuthCode(
-            domain: decoded("\"domain\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domain: decoded("\"domain\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -280,9 +281,9 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getDomainAvailability(
-            domain: decoded("\"domain\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domain: decoded("\"domain\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -350,9 +351,9 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getDomainContactVerification(
-            domain: decoded("\"domain\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domain: decoded("\"domain\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -399,10 +400,10 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getDomainPrice(
-            domain: decoded("\"domain\""),
-            years: decoded("\"years\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domain: decoded("\"domain\""),
+                years: decoded("\"years\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -509,9 +510,9 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.getDomainTransferIn(
-            domain: decoded("\"domain\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domain: decoded("\"domain\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)

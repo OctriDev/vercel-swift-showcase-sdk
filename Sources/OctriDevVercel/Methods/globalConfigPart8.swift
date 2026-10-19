@@ -6,44 +6,84 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension GlobalConfigMethods {
-    /// Deletes one or more tokens from an existing Global Config. Provide token values or token IDs in the request body to choose which tokens to delete. Each supplied list must contain at least one item.
+public extension GlobalConfigMethods {
+    /// Deletes one or more tokens from an existing Global Config. Provide token values or token IDs in the request body
+    /// to choose which tokens to delete. Each supplied list must contain at least one item.
     ///
     /// Deletes one or more tokens of an existing Global Config.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteEdgeConfigTokens(config: ClientConfig, edgeConfigId: String, teamId: String? = nil, slug: String? = nil, tokens: [String]? = nil, ids: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func deleteEdgeConfigTokens(
+        config: ClientConfig,
+        edgeConfigId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        tokens: [String]? = nil,
+        ids: [String]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         try sdkValidatePattern("edgeConfigId", edgeConfigId, sdkPatterncb86996207cb)
 
-        if let tokens = tokens {
+        if let tokens {
             try validateItems("tokens", tokens, min: 1)
         }
 
-        if let ids = ids {
+        if let ids {
             try validateItems("ids", ids, min: 1)
         }
 
         let requestBody = DeleteEdgeConfigTokensRequestBody(tokens: tokens, ids: ids)
 
-        return try (await sdkRequest("DELETE", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/tokens"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .empty, operationId: "deleteEdgeConfigTokens", options: requestOptions)).data
+        return try await (sdkRequest(
+            "DELETE",
+            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/tokens"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .empty,
+            operationId: "deleteEdgeConfigTokens",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves metadata for a specific Global Config token. Use `edgeConfigId` and `token` to identify the token whose metadata you need. The response includes a partially masked token representation and may include the full token for backwards compatibility.
+    /// Retrieves metadata for a specific Global Config token. Use `edgeConfigId` and `token` to identify the token
+    /// whose metadata you need. The response includes a partially masked token representation and may include the full
+    /// token for backwards compatibility.
     ///
     /// Return meta data about a Global Config token.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getEdgeConfigToken(config: ClientConfig, edgeConfigId: String, token: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GlobalConfigToken {
-        return try (await sdkRequest("GET", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/token/", sdkEncodePathSegment(sdkWireString(token))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getEdgeConfigToken", options: requestOptions)).data
+    static func getEdgeConfigToken(
+        config: ClientConfig,
+        edgeConfigId: String,
+        token: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GlobalConfigToken {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/global-config/",
+                sdkEncodePathSegment(sdkWireString(edgeConfigId)),
+                "/token/",
+                sdkEncodePathSegment(sdkWireString(token)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getEdgeConfigToken",
+            options: requestOptions
+        )).data
     }
 }

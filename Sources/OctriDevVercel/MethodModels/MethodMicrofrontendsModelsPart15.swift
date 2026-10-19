@@ -7,396 +7,609 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical microfrontends operation model declarations
+/// Canonical microfrontends operation model declarations
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet17(_ deploymentProtectionException: [ACLAction]?, _ deploymentRollback: [ACLAction]?, _ deploymentV0: [ACLAction]?, _ domain: [ACLAction]?, _ domainAcceptDelegation: [ACLAction]?) {
-        self.deploymentProtectionException = deploymentProtectionException
-        self.deploymentRollback = deploymentRollback
-        self.deploymentV0 = deploymentV0
-        self.domain = domain
-        self.domainAcceptDelegation = domainAcceptDelegation
+    mutating func sdkSet59(
+        _ teamJoin: [ACLAction]?,
+        _ teamMemberMfaStatus: [ACLAction]?,
+        _ teamMicrofrontends: [ACLAction]?,
+        _ teamOwnMembership: [ACLAction]?
+    ) {
+        self.teamJoin = teamJoin
+        self.teamMemberMfaStatus = teamMemberMfaStatus
+        self.teamMicrofrontends = teamMicrofrontends
+        self.teamOwnMembership = teamOwnMembership
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet18(_ domainAuthCodes: [ACLAction]?, _ domainCertificate: [ACLAction]?, _ domainCheckConfig: [ACLAction]?, _ domainMove: [ACLAction]?, _ domainPurchase: [ACLAction]?) {
-        self.domainAuthCodes = domainAuthCodes
-        self.domainCertificate = domainCertificate
-        self.domainCheckConfig = domainCheckConfig
-        self.domainMove = domainMove
-        self.domainPurchase = domainPurchase
+    mutating func sdkSet60(
+        _ teamOwnMembershipDisconnectSaml: [ACLAction]?,
+        _ teamSudo: [ACLAction]?,
+        _ teamTokenInvalidation: [ACLAction]?,
+        _ token: [ACLAction]?,
+        _ toolbarComment: [ACLAction]?
+    ) {
+        self.teamOwnMembershipDisconnectSaml = teamOwnMembershipDisconnectSaml
+        self.teamSudo = teamSudo
+        self.teamTokenInvalidation = teamTokenInvalidation
+        self.token = token
+        self.toolbarComment = toolbarComment
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet19(_ domainRecord: [ACLAction]?, _ domainTransferIn: [ACLAction]?, _ drain: [ACLAction]?, _ edgeCacheNamespace: [ACLAction]?, _ edgeConfig: [ACLAction]?) {
-        self.domainRecord = domainRecord
-        self.domainTransferIn = domainTransferIn
-        self.drain = drain
-        self.edgeCacheNamespace = edgeCacheNamespace
-        self.edgeConfig = edgeConfig
+    mutating func sdkSet61(
+        _ trustedIps: [ACLAction]?,
+        _ trustedSources: [ACLAction]?,
+        _ usage: [ACLAction]?,
+        _ usageCycle: [ACLAction]?,
+        _ user: [ACLAction]?
+    ) {
+        self.trustedIps = trustedIps
+        self.trustedSources = trustedSources
+        self.usage = usage
+        self.usageCycle = usageCycle
+        self.user = user
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet20(_ edgeConfigItem: [ACLAction]?, _ edgeConfigSchema: [ACLAction]?, _ edgeConfigToken: [ACLAction]?, _ endpointVerification: [ACLAction]?, _ environments: [ACLAction]?) {
-        self.edgeConfigItem = edgeConfigItem
-        self.edgeConfigSchema = edgeConfigSchema
-        self.edgeConfigToken = edgeConfigToken
-        self.endpointVerification = endpointVerification
-        self.environments = environments
+    mutating func sdkSet62(
+        _ userConnection: [ACLAction]?,
+        _ userMfaConfiguration: [ACLAction]?,
+        _ userPreference: [ACLAction]?,
+        _ userSudo: [ACLAction]?,
+        _ v0Chat: [ACLAction]?
+    ) {
+        self.userConnection = userConnection
+        self.userMfaConfiguration = userMfaConfiguration
+        self.userPreference = userPreference
+        self.userSudo = userSudo
+        self.v0Chat = v0Chat
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet21(_ event: [ACLAction]?, _ fileUpload: [ACLAction]?, _ flagsExplorerSubscription: [ACLAction]?, _ gitCredentialGrant: [ACLAction]?, _ gitRepository: [ACLAction]?) {
-        self.event = event
-        self.fileUpload = fileUpload
-        self.flagsExplorerSubscription = flagsExplorerSubscription
-        self.gitCredentialGrant = gitCredentialGrant
-        self.gitRepository = gitRepository
+    mutating func sdkSet63(
+        _ vcrRepository: [ACLAction]?,
+        _ vercelAppInstallation: [ACLAction]?,
+        _ vercelAppInstallationRequest: [ACLAction]?,
+        _ vercelAuth: [ACLAction]?,
+        _ vercelRun: [ACLAction]?
+    ) {
+        self.vcrRepository = vcrRepository
+        self.vercelAppInstallation = vercelAppInstallation
+        self.vercelAppInstallationRequest = vercelAppInstallationRequest
+        self.vercelAuth = vercelAuth
+        self.vercelRun = vercelRun
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet22(_ imageOptimizationNewPrice: [ACLAction]?, _ integration: [ACLAction]?, _ integrationAccount: [ACLAction]?, _ integrationConfiguration: [ACLAction]?) {
-        self.imageOptimizationNewPrice = imageOptimizationNewPrice
-        self.integration = integration
-        self.integrationAccount = integrationAccount
-        self.integrationConfiguration = integrationConfiguration
+    mutating func sdkSet64(
+        _ vpcPeeringConnection: [ACLAction]?,
+        _ webAnalytics: [ACLAction]?,
+        _ webAnalyticsPlan: [ACLAction]?,
+        _ webAuthn: [ACLAction]?,
+        _ webhook: [ACLAction]?
+    ) {
+        self.vpcPeeringConnection = vpcPeeringConnection
+        self.webAnalytics = webAnalytics
+        self.webAnalyticsPlan = webAnalyticsPlan
+        self.webAuthn = webAuthn
+        self.webhook = webhook
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet23(_ integrationConfigurationProjects: [ACLAction]?, _ integrationConfigurationRole: [ACLAction]?, _ integrationConfigurationTransfer: [ACLAction]?) {
-        self.integrationConfigurationProjects = integrationConfigurationProjects
-        self.integrationConfigurationRole = integrationConfigurationRole
-        self.integrationConfigurationTransfer = integrationConfigurationTransfer
+    mutating func sdkSet65(_ webhookEvent: [ACLAction]?, _ workflowRunData: [ACLAction]?) {
+        self.webhookEvent = webhookEvent
+        self.workflowRunData = workflowRunData
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet24(_ integrationDeploymentAction: [ACLAction]?, _ integrationEvent: [ACLAction]?, _ integrationLog: [ACLAction]?, _ integrationPullRequest: [ACLAction]?) {
-        self.integrationDeploymentAction = integrationDeploymentAction
-        self.integrationEvent = integrationEvent
-        self.integrationLog = integrationLog
-        self.integrationPullRequest = integrationPullRequest
+    mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        accessGroup = try container.sdkDecodeIfPresent(.accessGroup)
+        agent = try container.sdkDecodeIfPresent(.agent)
+        aiGatewayApiKey = try container.sdkDecodeIfPresent(.aiGatewayApiKey)
+        aiGatewayApiKeyBypassAll = try container.sdkDecodeIfPresent(.aiGatewayApiKeyBypassAll)
+        aiGatewayApiKeyOwnedBySelf = try container.sdkDecodeIfPresent(.aiGatewayApiKeyOwnedBySelf)
+        aiGatewayApiKeySpendAttribution = try container.sdkDecodeIfPresent(.aiGatewayApiKeySpendAttribution)
+        aiGatewayApiKeyZdrExemption = try container.sdkDecodeIfPresent(.aiGatewayApiKeyZdrExemption)
+        aiGatewayBudget = try container.sdkDecodeIfPresent(.aiGatewayBudget)
+        aiGatewayCredits = try container.sdkDecodeIfPresent(.aiGatewayCredits)
+        aiGatewayGuardrails = try container.sdkDecodeIfPresent(.aiGatewayGuardrails)
+        aiGatewayPrivateModels = try container.sdkDecodeIfPresent(.aiGatewayPrivateModels)
+        aiGatewayRules = try container.sdkDecodeIfPresent(.aiGatewayRules)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet25(_ integrationResource: [ACLAction]?, _ integrationResourceData: [ACLAction]?, _ integrationResourceReplCommand: [ACLAction]?) {
-        self.integrationResource = integrationResource
-        self.integrationResourceData = integrationResourceData
-        self.integrationResourceReplCommand = integrationResourceReplCommand
+    mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        aiGatewaySettings = try container.sdkDecodeIfPresent(.aiGatewaySettings)
+        aiGatewayTranscripts = try container.sdkDecodeIfPresent(.aiGatewayTranscripts)
+        aiGatewayTranscriptsSettings = try container.sdkDecodeIfPresent(.aiGatewayTranscriptsSettings)
+        aiGatewayUsage = try container.sdkDecodeIfPresent(.aiGatewayUsage)
+        aiGatewayVirtualModelConfigs = try container.sdkDecodeIfPresent(.aiGatewayVirtualModelConfigs)
+        alertRules = try container.sdkDecodeIfPresent(.alertRules)
+        alerts = try container.sdkDecodeIfPresent(.alerts)
+        aliasGlobal = try container.sdkDecodeIfPresent(.aliasGlobal)
+        aliasProject = try container.sdkDecodeIfPresent(.aliasProject)
+        aliasProtectionBypass = try container.sdkDecodeIfPresent(.aliasProtectionBypass)
+        analytics = try container.sdkDecodeIfPresent(.analytics)
+        analyticsSampling = try container.sdkDecodeIfPresent(.analyticsSampling)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet26(_ integrationResourceSecrets: [ACLAction]?, _ integrationSsoSession: [ACLAction]?, _ integrationStoreTokenSet: [ACLAction]?, _ integrationStrict: [ACLAction]?) {
-        self.integrationResourceSecrets = integrationResourceSecrets
-        self.integrationSsoSession = integrationSsoSession
-        self.integrationStoreTokenSet = integrationStoreTokenSet
-        self.integrationStrict = integrationStrict
+    mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        analyticsUsage = try container.sdkDecodeIfPresent(.analyticsUsage)
+        apiKey = try container.sdkDecodeIfPresent(.apiKey)
+        apiKeyAiGateway = try container.sdkDecodeIfPresent(.apiKeyAiGateway)
+        apiKeyOwnedBySelf = try container.sdkDecodeIfPresent(.apiKeyOwnedBySelf)
+        auditLog = try container.sdkDecodeIfPresent(.auditLog)
+        automation = try container.sdkDecodeIfPresent(.automation)
+        billingAddress = try container.sdkDecodeIfPresent(.billingAddress)
+        billingInformation = try container.sdkDecodeIfPresent(.billingInformation)
+        billingInvoice = try container.sdkDecodeIfPresent(.billingInvoice)
+        billingInvoiceEmailRecipient = try container.sdkDecodeIfPresent(.billingInvoiceEmailRecipient)
+        billingInvoiceLanguage = try container.sdkDecodeIfPresent(.billingInvoiceLanguage)
+        billingPlan = try container.sdkDecodeIfPresent(.billingPlan)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet27(_ integrationVercelConfigurationOverride: [ACLAction]?, _ ipBlocking: [ACLAction]?, _ job: [ACLAction]?, _ jobGlobal: [ACLAction]?, _ kmsIssuer: [ACLAction]?) {
-        self.integrationVercelConfigurationOverride = integrationVercelConfigurationOverride
-        self.ipBlocking = ipBlocking
-        self.job = job
-        self.jobGlobal = jobGlobal
-        self.kmsIssuer = kmsIssuer
+    mutating func sdkDecodeFieldsPart4(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        billingPurchaseOrder = try container.sdkDecodeIfPresent(.billingPurchaseOrder)
+        billingRefund = try container.sdkDecodeIfPresent(.billingRefund)
+        billingTaxId = try container.sdkDecodeIfPresent(.billingTaxId)
+        blob = try container.sdkDecodeIfPresent(.blob)
+        blobStoreTokenSet = try container.sdkDecodeIfPresent(.blobStoreTokenSet)
+        budget = try container.sdkDecodeIfPresent(.budget)
+        buildMachine = try container.sdkDecodeIfPresent(.buildMachine)
+        buildMachineDefault = try container.sdkDecodeIfPresent(.buildMachineDefault)
+        bulkRedirects = try container.sdkDecodeIfPresent(.bulkRedirects)
+        cacheArtifact = try container.sdkDecodeIfPresent(.cacheArtifact)
+        cacheArtifactUsageEvent = try container.sdkDecodeIfPresent(.cacheArtifactUsageEvent)
+        ciInvocations = try container.sdkDecodeIfPresent(.ciInvocations)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet28(_ kmsProjectGrant: [ACLAction]?, _ logDrain: [ACLAction]?, _ logs: [ACLAction]?, _ logsPreset: [ACLAction]?, _ marketplaceBillingData: [ACLAction]?) {
-        self.kmsProjectGrant = kmsProjectGrant
-        self.logDrain = logDrain
-        self.logs = logs
-        self.logsPreset = logsPreset
-        self.marketplaceBillingData = marketplaceBillingData
+    mutating func sdkDecodeFieldsPart5(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        ciLogs = try container.sdkDecodeIfPresent(.ciLogs)
+        codeChecks = try container.sdkDecodeIfPresent(.codeChecks)
+        codeOwners = try container.sdkDecodeIfPresent(.codeOwners)
+        concurrentBuilds = try container.sdkDecodeIfPresent(.concurrentBuilds)
+        connect = try container.sdkDecodeIfPresent(.connect)
+        connectConfiguration = try container.sdkDecodeIfPresent(.connectConfiguration)
+        connectConfigurationLink = try container.sdkDecodeIfPresent(.connectConfigurationLink)
+        connectLogs = try container.sdkDecodeIfPresent(.connectLogs)
+        connexClient = try container.sdkDecodeIfPresent(.connexClient)
+        connexClientProject = try container.sdkDecodeIfPresent(.connexClientProject)
+        connexContact = try container.sdkDecodeIfPresent(.connexContact)
+        connexInstallation = try container.sdkDecodeIfPresent(.connexInstallation)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet29(_ marketplaceExperimentationEdgeConfigData: [ACLAction]?, _ marketplaceExperimentationItem: [ACLAction]?, _ marketplaceFlexCommit: [ACLAction]?) {
-        self.marketplaceExperimentationEdgeConfigData = marketplaceExperimentationEdgeConfigData
-        self.marketplaceExperimentationItem = marketplaceExperimentationItem
-        self.marketplaceFlexCommit = marketplaceFlexCommit
+    mutating func sdkDecodeFieldsPart6(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        connexToken = try container.sdkDecodeIfPresent(.connexToken)
+        cursorOriginInstallation = try container.sdkDecodeIfPresent(.cursorOriginInstallation)
+        dataCacheBillingSettings = try container.sdkDecodeIfPresent(.dataCacheBillingSettings)
+        dataCacheNamespace = try container.sdkDecodeIfPresent(.dataCacheNamespace)
+        defaultDeploymentProtection = try container.sdkDecodeIfPresent(.defaultDeploymentProtection)
+        deployment = try container.sdkDecodeIfPresent(.deployment)
+        deploymentBuildLogs = try container.sdkDecodeIfPresent(.deploymentBuildLogs)
+        deploymentCheck = try container.sdkDecodeIfPresent(.deploymentCheck)
+        deploymentCheckPreview = try container.sdkDecodeIfPresent(.deploymentCheckPreview)
+        deploymentCheckReRunFromProductionBranch = try container
+            .sdkDecodeIfPresent(.deploymentCheckReRunFromProductionBranch)
+        deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
+        deploymentPreview = try container.sdkDecodeIfPresent(.deploymentPreview)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet30(_ marketplaceInstallationMember: [ACLAction]?, _ marketplaceInvoice: [ACLAction]?, _ marketplaceSettings: [ACLAction]?, _ messageboard: [ACLAction]?) {
-        self.marketplaceInstallationMember = marketplaceInstallationMember
-        self.marketplaceInvoice = marketplaceInvoice
-        self.marketplaceSettings = marketplaceSettings
-        self.messageboard = messageboard
+    mutating func sdkDecodeFieldsPart7(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        deploymentPrivate = try container.sdkDecodeIfPresent(.deploymentPrivate)
+        deploymentProductionGit = try container.sdkDecodeIfPresent(.deploymentProductionGit)
+        deploymentPromote = try container.sdkDecodeIfPresent(.deploymentPromote)
+        deploymentProtectionException = try container.sdkDecodeIfPresent(.deploymentProtectionException)
+        deploymentRollback = try container.sdkDecodeIfPresent(.deploymentRollback)
+        deploymentV0 = try container.sdkDecodeIfPresent(.deploymentV0)
+        domain = try container.sdkDecodeIfPresent(.domain)
+        domainAcceptDelegation = try container.sdkDecodeIfPresent(.domainAcceptDelegation)
+        domainAuthCodes = try container.sdkDecodeIfPresent(.domainAuthCodes)
+        domainCertificate = try container.sdkDecodeIfPresent(.domainCertificate)
+        domainCheckConfig = try container.sdkDecodeIfPresent(.domainCheckConfig)
+        domainMove = try container.sdkDecodeIfPresent(.domainMove)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet31(_ messageboardSpace: [ACLAction]?, _ messageboardTask: [ACLAction]?, _ monitoring: [ACLAction]?, _ monitoringAlert: [ACLAction]?, _ monitoringChart: [ACLAction]?) {
-        self.messageboardSpace = messageboardSpace
-        self.messageboardTask = messageboardTask
-        self.monitoring = monitoring
-        self.monitoringAlert = monitoringAlert
-        self.monitoringChart = monitoringChart
+    mutating func sdkDecodeFieldsPart8(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        domainPurchase = try container.sdkDecodeIfPresent(.domainPurchase)
+        domainRecord = try container.sdkDecodeIfPresent(.domainRecord)
+        domainTransferIn = try container.sdkDecodeIfPresent(.domainTransferIn)
+        drain = try container.sdkDecodeIfPresent(.drain)
+        edgeCacheNamespace = try container.sdkDecodeIfPresent(.edgeCacheNamespace)
+        edgeConfig = try container.sdkDecodeIfPresent(.edgeConfig)
+        edgeConfigItem = try container.sdkDecodeIfPresent(.edgeConfigItem)
+        edgeConfigSchema = try container.sdkDecodeIfPresent(.edgeConfigSchema)
+        edgeConfigToken = try container.sdkDecodeIfPresent(.edgeConfigToken)
+        endpointVerification = try container.sdkDecodeIfPresent(.endpointVerification)
+        environments = try container.sdkDecodeIfPresent(.environments)
+        event = try container.sdkDecodeIfPresent(.event)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet32(_ monitoringQuery: [ACLAction]?, _ monitoringSettings: [ACLAction]?, _ notificationCustomerBudget: [ACLAction]?, _ notificationDeploymentFailed: [ACLAction]?) {
-        self.monitoringQuery = monitoringQuery
-        self.monitoringSettings = monitoringSettings
-        self.notificationCustomerBudget = notificationCustomerBudget
-        self.notificationDeploymentFailed = notificationDeploymentFailed
+    mutating func sdkDecodeFieldsPart9(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        fileUpload = try container.sdkDecodeIfPresent(.fileUpload)
+        flagsExplorerSubscription = try container.sdkDecodeIfPresent(.flagsExplorerSubscription)
+        gitCredentialGrant = try container.sdkDecodeIfPresent(.gitCredentialGrant)
+        gitRepository = try container.sdkDecodeIfPresent(.gitRepository)
+        imageOptimizationNewPrice = try container.sdkDecodeIfPresent(.imageOptimizationNewPrice)
+        integration = try container.sdkDecodeIfPresent(.integration)
+        integrationAccount = try container.sdkDecodeIfPresent(.integrationAccount)
+        integrationConfiguration = try container.sdkDecodeIfPresent(.integrationConfiguration)
+        integrationConfigurationProjects = try container.sdkDecodeIfPresent(.integrationConfigurationProjects)
+        integrationConfigurationRole = try container.sdkDecodeIfPresent(.integrationConfigurationRole)
+        integrationConfigurationTransfer = try container.sdkDecodeIfPresent(.integrationConfigurationTransfer)
+        integrationDeploymentAction = try container.sdkDecodeIfPresent(.integrationDeploymentAction)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet33(_ notificationDomainConfiguration: [ACLAction]?, _ notificationDomainExpire: [ACLAction]?, _ notificationDomainMoved: [ACLAction]?) {
-        self.notificationDomainConfiguration = notificationDomainConfiguration
-        self.notificationDomainExpire = notificationDomainExpire
-        self.notificationDomainMoved = notificationDomainMoved
+    mutating func sdkDecodeFieldsPart10(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        integrationEvent = try container.sdkDecodeIfPresent(.integrationEvent)
+        integrationLog = try container.sdkDecodeIfPresent(.integrationLog)
+        integrationPullRequest = try container.sdkDecodeIfPresent(.integrationPullRequest)
+        integrationResource = try container.sdkDecodeIfPresent(.integrationResource)
+        integrationResourceData = try container.sdkDecodeIfPresent(.integrationResourceData)
+        integrationResourceReplCommand = try container.sdkDecodeIfPresent(.integrationResourceReplCommand)
+        integrationResourceSecrets = try container.sdkDecodeIfPresent(.integrationResourceSecrets)
+        integrationSsoSession = try container.sdkDecodeIfPresent(.integrationSsoSession)
+        integrationStoreTokenSet = try container.sdkDecodeIfPresent(.integrationStoreTokenSet)
+        integrationStrict = try container.sdkDecodeIfPresent(.integrationStrict)
+        integrationVercelConfigurationOverride = try container
+            .sdkDecodeIfPresent(.integrationVercelConfigurationOverride)
+        ipBlocking = try container.sdkDecodeIfPresent(.ipBlocking)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet34(_ notificationDomainPurchase: [ACLAction]?, _ notificationDomainRenewal: [ACLAction]?, _ notificationDomainTransfer: [ACLAction]?) {
-        self.notificationDomainPurchase = notificationDomainPurchase
-        self.notificationDomainRenewal = notificationDomainRenewal
-        self.notificationDomainTransfer = notificationDomainTransfer
+    mutating func sdkDecodeFieldsPart11(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        job = try container.sdkDecodeIfPresent(.job)
+        jobGlobal = try container.sdkDecodeIfPresent(.jobGlobal)
+        kmsIssuer = try container.sdkDecodeIfPresent(.kmsIssuer)
+        kmsProjectGrant = try container.sdkDecodeIfPresent(.kmsProjectGrant)
+        logDrain = try container.sdkDecodeIfPresent(.logDrain)
+        logs = try container.sdkDecodeIfPresent(.logs)
+        logsPreset = try container.sdkDecodeIfPresent(.logsPreset)
+        marketplaceBillingData = try container.sdkDecodeIfPresent(.marketplaceBillingData)
+        marketplaceExperimentationEdgeConfigData = try container
+            .sdkDecodeIfPresent(.marketplaceExperimentationEdgeConfigData)
+        marketplaceExperimentationItem = try container.sdkDecodeIfPresent(.marketplaceExperimentationItem)
+        marketplaceFlexCommit = try container.sdkDecodeIfPresent(.marketplaceFlexCommit)
+        marketplaceInstallationMember = try container.sdkDecodeIfPresent(.marketplaceInstallationMember)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet35(_ notificationDomainUnverified: [ACLAction]?, _ notificationMonitoringAlert: [ACLAction]?, _ notificationPaymentFailed: [ACLAction]?) {
-        self.notificationDomainUnverified = notificationDomainUnverified
-        self.notificationMonitoringAlert = notificationMonitoringAlert
-        self.notificationPaymentFailed = notificationPaymentFailed
+    mutating func sdkDecodeFieldsPart12(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        marketplaceInvoice = try container.sdkDecodeIfPresent(.marketplaceInvoice)
+        marketplaceSettings = try container.sdkDecodeIfPresent(.marketplaceSettings)
+        messageboard = try container.sdkDecodeIfPresent(.messageboard)
+        messageboardSpace = try container.sdkDecodeIfPresent(.messageboardSpace)
+        messageboardTask = try container.sdkDecodeIfPresent(.messageboardTask)
+        monitoring = try container.sdkDecodeIfPresent(.monitoring)
+        monitoringAlert = try container.sdkDecodeIfPresent(.monitoringAlert)
+        monitoringChart = try container.sdkDecodeIfPresent(.monitoringChart)
+        monitoringQuery = try container.sdkDecodeIfPresent(.monitoringQuery)
+        monitoringSettings = try container.sdkDecodeIfPresent(.monitoringSettings)
+        notificationCustomerBudget = try container.sdkDecodeIfPresent(.notificationCustomerBudget)
+        notificationDeploymentFailed = try container.sdkDecodeIfPresent(.notificationDeploymentFailed)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet36(_ notificationPreferences: [ACLAction]?, _ notificationStatementOfReasons: [ACLAction]?, _ notificationUsageAlert: [ACLAction]?, _ oauth2Application: [ACLAction]?) {
-        self.notificationPreferences = notificationPreferences
-        self.notificationStatementOfReasons = notificationStatementOfReasons
-        self.notificationUsageAlert = notificationUsageAlert
-        self.oauth2Application = oauth2Application
+    mutating func sdkDecodeFieldsPart13(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        notificationDomainConfiguration = try container.sdkDecodeIfPresent(.notificationDomainConfiguration)
+        notificationDomainExpire = try container.sdkDecodeIfPresent(.notificationDomainExpire)
+        notificationDomainMoved = try container.sdkDecodeIfPresent(.notificationDomainMoved)
+        notificationDomainPurchase = try container.sdkDecodeIfPresent(.notificationDomainPurchase)
+        notificationDomainRenewal = try container.sdkDecodeIfPresent(.notificationDomainRenewal)
+        notificationDomainTransfer = try container.sdkDecodeIfPresent(.notificationDomainTransfer)
+        notificationDomainUnverified = try container.sdkDecodeIfPresent(.notificationDomainUnverified)
+        notificationMonitoringAlert = try container.sdkDecodeIfPresent(.notificationMonitoringAlert)
+        notificationPaymentFailed = try container.sdkDecodeIfPresent(.notificationPaymentFailed)
+        notificationPreferences = try container.sdkDecodeIfPresent(.notificationPreferences)
+        notificationStatementOfReasons = try container.sdkDecodeIfPresent(.notificationStatementOfReasons)
+        notificationUsageAlert = try container.sdkDecodeIfPresent(.notificationUsageAlert)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet37(_ oauth2Connection: [ACLAction]?, _ observabilityConfiguration: [ACLAction]?, _ observabilityData: [ACLAction]?, _ observabilityFunnel: [ACLAction]?) {
-        self.oauth2Connection = oauth2Connection
-        self.observabilityConfiguration = observabilityConfiguration
-        self.observabilityData = observabilityData
-        self.observabilityFunnel = observabilityFunnel
+    mutating func sdkDecodeFieldsPart14(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        oauth2Application = try container.sdkDecodeIfPresent(.oauth2Application)
+        oauth2Connection = try container.sdkDecodeIfPresent(.oauth2Connection)
+        observabilityConfiguration = try container.sdkDecodeIfPresent(.observabilityConfiguration)
+        observabilityData = try container.sdkDecodeIfPresent(.observabilityData)
+        observabilityFunnel = try container.sdkDecodeIfPresent(.observabilityFunnel)
+        observabilityNotebook = try container.sdkDecodeIfPresent(.observabilityNotebook)
+        oidcFederationPolicy = try container.sdkDecodeIfPresent(.oidcFederationPolicy)
+        onDemandBuild = try container.sdkDecodeIfPresent(.onDemandBuild)
+        onDemandConcurrency = try container.sdkDecodeIfPresent(.onDemandConcurrency)
+        openTelemetryEndpoint = try container.sdkDecodeIfPresent(.openTelemetryEndpoint)
+        optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
+        organization = try container.sdkDecodeIfPresent(.organization)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet38(_ observabilityNotebook: [ACLAction]?, _ oidcFederationPolicy: [ACLAction]?, _ onDemandBuild: [ACLAction]?, _ onDemandConcurrency: [ACLAction]?) {
-        self.observabilityNotebook = observabilityNotebook
-        self.oidcFederationPolicy = oidcFederationPolicy
-        self.onDemandBuild = onDemandBuild
-        self.onDemandConcurrency = onDemandConcurrency
+    mutating func sdkDecodeFieldsPart15(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        organizationDomain = try container.sdkDecodeIfPresent(.organizationDomain)
+        organizationTeam = try container.sdkDecodeIfPresent(.organizationTeam)
+        ownEvent = try container.sdkDecodeIfPresent(.ownEvent)
+        pageIntegrity = try container.sdkDecodeIfPresent(.pageIntegrity)
+        passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
+        passwordProtectionInvoiceItem = try container.sdkDecodeIfPresent(.passwordProtectionInvoiceItem)
+        paymentMethod = try container.sdkDecodeIfPresent(.paymentMethod)
+        permissions = try container.sdkDecodeIfPresent(.permissions)
+        postgres = try container.sdkDecodeIfPresent(.postgres)
+        postgresStoreTokenSet = try container.sdkDecodeIfPresent(.postgresStoreTokenSet)
+        previewDeploymentSuffix = try container.sdkDecodeIfPresent(.previewDeploymentSuffix)
+        privateCloudAccount = try container.sdkDecodeIfPresent(.privateCloudAccount)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet39(_ openTelemetryEndpoint: [ACLAction]?, _ optionsAllowlist: [ACLAction]?, _ organization: [ACLAction]?, _ organizationDomain: [ACLAction]?, _ organizationTeam: [ACLAction]?) {
-        self.openTelemetryEndpoint = openTelemetryEndpoint
-        self.optionsAllowlist = optionsAllowlist
-        self.organization = organization
-        self.organizationDomain = organizationDomain
-        self.organizationTeam = organizationTeam
+    mutating func sdkDecodeFieldsPart16(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        privateLinkEndpoint = try container.sdkDecodeIfPresent(.privateLinkEndpoint)
+        productionAliasProtectionBypass = try container.sdkDecodeIfPresent(.productionAliasProtectionBypass)
+        productionShareableLink = try container.sdkDecodeIfPresent(.productionShareableLink)
+        project = try container.sdkDecodeIfPresent(.project)
+        projectAccessGroup = try container.sdkDecodeIfPresent(.projectAccessGroup)
+        projectAnalyticsSampling = try container.sdkDecodeIfPresent(.projectAnalyticsSampling)
+        projectAnalyticsUsage = try container.sdkDecodeIfPresent(.projectAnalyticsUsage)
+        projectCheck = try container.sdkDecodeIfPresent(.projectCheck)
+        projectCheckRun = try container.sdkDecodeIfPresent(.projectCheckRun)
+        projectDeploymentExpiration = try container.sdkDecodeIfPresent(.projectDeploymentExpiration)
+        projectDeploymentHook = try container.sdkDecodeIfPresent(.projectDeploymentHook)
+        projectDeploymentProtectionStrict = try container.sdkDecodeIfPresent(.projectDeploymentProtectionStrict)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet40(_ ownEvent: [ACLAction]?, _ pageIntegrity: [ACLAction]?, _ passwordProtection: [ACLAction]?, _ passwordProtectionInvoiceItem: [ACLAction]?, _ paymentMethod: [ACLAction]?) {
-        self.ownEvent = ownEvent
-        self.pageIntegrity = pageIntegrity
-        self.passwordProtection = passwordProtection
-        self.passwordProtectionInvoiceItem = passwordProtectionInvoiceItem
-        self.paymentMethod = paymentMethod
+    mutating func sdkDecodeFieldsPart17(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        projectDomain = try container.sdkDecodeIfPresent(.projectDomain)
+        projectDomainCheckConfig = try container.sdkDecodeIfPresent(.projectDomainCheckConfig)
+        projectDomainMove = try container.sdkDecodeIfPresent(.projectDomainMove)
+        projectDomainVerify = try container.sdkDecodeIfPresent(.projectDomainVerify)
+        projectEnvVars = try container.sdkDecodeIfPresent(.projectEnvVars)
+        projectEnvVarsProduction = try container.sdkDecodeIfPresent(.projectEnvVarsProduction)
+        projectEnvVarsUnownedByIntegration = try container.sdkDecodeIfPresent(.projectEnvVarsUnownedByIntegration)
+        projectEvent = try container.sdkDecodeIfPresent(.projectEvent)
+        projectFlags = try container.sdkDecodeIfPresent(.projectFlags)
+        projectFlagsProduction = try container.sdkDecodeIfPresent(.projectFlagsProduction)
+        projectFlagsSdkKey = try container.sdkDecodeIfPresent(.projectFlagsSdkKey)
+        projectFromV0 = try container.sdkDecodeIfPresent(.projectFromV0)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet41(_ permissions: [ACLAction]?, _ postgres: [ACLAction]?, _ postgresStoreTokenSet: [ACLAction]?, _ previewDeploymentSuffix: [ACLAction]?, _ privateCloudAccount: [ACLAction]?) {
-        self.permissions = permissions
-        self.postgres = postgres
-        self.postgresStoreTokenSet = postgresStoreTokenSet
-        self.previewDeploymentSuffix = previewDeploymentSuffix
-        self.privateCloudAccount = privateCloudAccount
+    mutating func sdkDecodeFieldsPart18(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        projectId = try container.sdkDecodeIfPresent(.projectId)
+        projectIntegrationConfiguration = try container.sdkDecodeIfPresent(.projectIntegrationConfiguration)
+        projectLink = try container.sdkDecodeIfPresent(.projectLink)
+        projectMember = try container.sdkDecodeIfPresent(.projectMember)
+        projectMonitoring = try container.sdkDecodeIfPresent(.projectMonitoring)
+        projectOidcToken = try container.sdkDecodeIfPresent(.projectOidcToken)
+        projectPermissions = try container.sdkDecodeIfPresent(.projectPermissions)
+        projectProductionBranch = try container.sdkDecodeIfPresent(.projectProductionBranch)
+        projectProtectionBypass = try container.sdkDecodeIfPresent(.projectProtectionBypass)
+        projectRollingRelease = try container.sdkDecodeIfPresent(.projectRollingRelease)
+        projectRoutes = try container.sdkDecodeIfPresent(.projectRoutes)
+        projectSetting = try container.sdkDecodeIfPresent(.projectSetting)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet42(_ privateLinkEndpoint: [ACLAction]?, _ productionAliasProtectionBypass: [ACLAction]?, _ productionShareableLink: [ACLAction]?, _ project: [ACLAction]?) {
-        self.privateLinkEndpoint = privateLinkEndpoint
-        self.productionAliasProtectionBypass = productionAliasProtectionBypass
-        self.productionShareableLink = productionShareableLink
-        self.project = project
+    mutating func sdkDecodeFieldsPart19(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        projectSupportCase = try container.sdkDecodeIfPresent(.projectSupportCase)
+        projectSupportCaseComment = try container.sdkDecodeIfPresent(.projectSupportCaseComment)
+        projectTier = try container.sdkDecodeIfPresent(.projectTier)
+        projectTransfer = try container.sdkDecodeIfPresent(.projectTransfer)
+        projectTransferIn = try container.sdkDecodeIfPresent(.projectTransferIn)
+        projectTransferOut = try container.sdkDecodeIfPresent(.projectTransferOut)
+        projectTransferRequest = try container.sdkDecodeIfPresent(.projectTransferRequest)
+        projectUsage = try container.sdkDecodeIfPresent(.projectUsage)
+        proTrialOnboarding = try container.sdkDecodeIfPresent(.proTrialOnboarding)
+        rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
+        redis = try container.sdkDecodeIfPresent(.redis)
+        redisStoreTokenSet = try container.sdkDecodeIfPresent(.redisStoreTokenSet)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet43(_ projectAccessGroup: [ACLAction]?, _ projectAnalyticsSampling: [ACLAction]?, _ projectAnalyticsUsage: [ACLAction]?, _ projectCheck: [ACLAction]?, _ projectCheckRun: [ACLAction]?) {
-        self.projectAccessGroup = projectAccessGroup
-        self.projectAnalyticsSampling = projectAnalyticsSampling
-        self.projectAnalyticsUsage = projectAnalyticsUsage
-        self.projectCheck = projectCheck
-        self.projectCheckRun = projectCheckRun
+    mutating func sdkDecodeFieldsPart20(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        remoteCaching = try container.sdkDecodeIfPresent(.remoteCaching)
+        repository = try container.sdkDecodeIfPresent(.repository)
+        samlConfig = try container.sdkDecodeIfPresent(.samlConfig)
+        schedule = try container.sdkDecodeIfPresent(.schedule)
+        seawallConfig = try container.sdkDecodeIfPresent(.seawallConfig)
+        secret = try container.sdkDecodeIfPresent(.secret)
+        securityConfig = try container.sdkDecodeIfPresent(.securityConfig)
+        securityPlusConfiguration = try container.sdkDecodeIfPresent(.securityPlusConfiguration)
+        sensitiveEnvironmentVariablePolicy = try container.sdkDecodeIfPresent(.sensitiveEnvironmentVariablePolicy)
+        setting = try container.sdkDecodeIfPresent(.setting)
+        shareableLink = try container.sdkDecodeIfPresent(.shareableLink)
+        shareableLinkStrict = try container.sdkDecodeIfPresent(.shareableLinkStrict)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet44(_ projectDeploymentExpiration: [ACLAction]?, _ projectDeploymentHook: [ACLAction]?, _ projectDeploymentProtectionStrict: [ACLAction]?, _ projectDomain: [ACLAction]?) {
-        self.projectDeploymentExpiration = projectDeploymentExpiration
-        self.projectDeploymentHook = projectDeploymentHook
-        self.projectDeploymentProtectionStrict = projectDeploymentProtectionStrict
-        self.projectDomain = projectDomain
+    mutating func sdkDecodeFieldsPart21(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        sharedEnvVarConnection = try container.sdkDecodeIfPresent(.sharedEnvVarConnection)
+        sharedEnvVars = try container.sdkDecodeIfPresent(.sharedEnvVars)
+        sharedEnvVarsProduction = try container.sdkDecodeIfPresent(.sharedEnvVarsProduction)
+        skewProtection = try container.sdkDecodeIfPresent(.skewProtection)
+        space = try container.sdkDecodeIfPresent(.space)
+        spaceRun = try container.sdkDecodeIfPresent(.spaceRun)
+        storeIsLocked = try container.sdkDecodeIfPresent(.storeIsLocked)
+        storeTokenSetSensitive = try container.sdkDecodeIfPresent(.storeTokenSetSensitive)
+        storeTransfer = try container.sdkDecodeIfPresent(.storeTransfer)
+        supportCase = try container.sdkDecodeIfPresent(.supportCase)
+        supportCaseComment = try container.sdkDecodeIfPresent(.supportCaseComment)
+        team = try container.sdkDecodeIfPresent(.team)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet45(_ projectDomainCheckConfig: [ACLAction]?, _ projectDomainMove: [ACLAction]?, _ projectDomainVerify: [ACLAction]?, _ projectEnvVars: [ACLAction]?) {
-        self.projectDomainCheckConfig = projectDomainCheckConfig
-        self.projectDomainMove = projectDomainMove
-        self.projectDomainVerify = projectDomainVerify
-        self.projectEnvVars = projectEnvVars
+    mutating func sdkDecodeFieldsPart22(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        teamAccessRequest = try container.sdkDecodeIfPresent(.teamAccessRequest)
+        teamFellowMembership = try container.sdkDecodeIfPresent(.teamFellowMembership)
+        teamGitExclusivity = try container.sdkDecodeIfPresent(.teamGitExclusivity)
+        teamInvite = try container.sdkDecodeIfPresent(.teamInvite)
+        teamInviteCode = try container.sdkDecodeIfPresent(.teamInviteCode)
+        teamInviteLink = try container.sdkDecodeIfPresent(.teamInviteLink)
+        teamJoin = try container.sdkDecodeIfPresent(.teamJoin)
+        teamMemberMfaStatus = try container.sdkDecodeIfPresent(.teamMemberMfaStatus)
+        teamMicrofrontends = try container.sdkDecodeIfPresent(.teamMicrofrontends)
+        teamOwnMembership = try container.sdkDecodeIfPresent(.teamOwnMembership)
+        teamOwnMembershipDisconnectSaml = try container.sdkDecodeIfPresent(.teamOwnMembershipDisconnectSaml)
+        teamSudo = try container.sdkDecodeIfPresent(.teamSudo)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet46(_ projectEnvVarsProduction: [ACLAction]?, _ projectEnvVarsUnownedByIntegration: [ACLAction]?, _ projectEvent: [ACLAction]?, _ projectFlags: [ACLAction]?) {
-        self.projectEnvVarsProduction = projectEnvVarsProduction
-        self.projectEnvVarsUnownedByIntegration = projectEnvVarsUnownedByIntegration
-        self.projectEvent = projectEvent
-        self.projectFlags = projectFlags
+    mutating func sdkDecodeFieldsPart23(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        teamTokenInvalidation = try container.sdkDecodeIfPresent(.teamTokenInvalidation)
+        token = try container.sdkDecodeIfPresent(.token)
+        toolbarComment = try container.sdkDecodeIfPresent(.toolbarComment)
+        trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
+        trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
+        usage = try container.sdkDecodeIfPresent(.usage)
+        usageCycle = try container.sdkDecodeIfPresent(.usageCycle)
+        user = try container.sdkDecodeIfPresent(.user)
+        userConnection = try container.sdkDecodeIfPresent(.userConnection)
+        userMfaConfiguration = try container.sdkDecodeIfPresent(.userMfaConfiguration)
+        userPreference = try container.sdkDecodeIfPresent(.userPreference)
+        userSudo = try container.sdkDecodeIfPresent(.userSudo)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet47(_ projectFlagsProduction: [ACLAction]?, _ projectFlagsSdkKey: [ACLAction]?, _ projectFromV0: [ACLAction]?, _ projectId: [ACLAction]?) {
-        self.projectFlagsProduction = projectFlagsProduction
-        self.projectFlagsSdkKey = projectFlagsSdkKey
-        self.projectFromV0 = projectFromV0
-        self.projectId = projectId
+    mutating func sdkDecodeFieldsPart24(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        v0Chat = try container.sdkDecodeIfPresent(.v0Chat)
+        vcrRepository = try container.sdkDecodeIfPresent(.vcrRepository)
+        vercelAppInstallation = try container.sdkDecodeIfPresent(.vercelAppInstallation)
+        vercelAppInstallationRequest = try container.sdkDecodeIfPresent(.vercelAppInstallationRequest)
+        vercelAuth = try container.sdkDecodeIfPresent(.vercelAuth)
+        vercelRun = try container.sdkDecodeIfPresent(.vercelRun)
+        vpcPeeringConnection = try container.sdkDecodeIfPresent(.vpcPeeringConnection)
+        webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
+        webAnalyticsPlan = try container.sdkDecodeIfPresent(.webAnalyticsPlan)
+        webAuthn = try container.sdkDecodeIfPresent(.webAuthn)
+        webhook = try container.sdkDecodeIfPresent(.webhook)
+        webhookEvent = try container.sdkDecodeIfPresent(.webhookEvent)
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet48(_ projectIntegrationConfiguration: [ACLAction]?, _ projectLink: [ACLAction]?, _ projectMember: [ACLAction]?, _ projectMonitoring: [ACLAction]?, _ projectOidcToken: [ACLAction]?) {
-        self.projectIntegrationConfiguration = projectIntegrationConfiguration
-        self.projectLink = projectLink
-        self.projectMember = projectMember
-        self.projectMonitoring = projectMonitoring
-        self.projectOidcToken = projectOidcToken
+    mutating func sdkDecodeFieldsPart25(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        workflowRunData = try container.sdkDecodeIfPresent(.workflowRunData)
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet49(_ projectPermissions: [ACLAction]?, _ projectProductionBranch: [ACLAction]?, _ projectProtectionBypass: [ACLAction]?, _ projectRollingRelease: [ACLAction]?) {
-        self.projectPermissions = projectPermissions
-        self.projectProductionBranch = projectProductionBranch
-        self.projectProtectionBypass = projectProtectionBypass
-        self.projectRollingRelease = projectRollingRelease
+public struct GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeXf98ca6ac41: Codable {
+    public var use: String
+    public var dest: String?
+    public var src: String?
+
+    enum CodingKeys: String, CodingKey {
+        case use
+        case dest
+        case src
+    }
+
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet50(_ projectRoutes: [ACLAction]?, _ projectSetting: [ACLAction]?, _ projectSupportCase: [ACLAction]?, _ projectSupportCaseComment: [ACLAction]?, _ projectTier: [ACLAction]?) {
-        self.projectRoutes = projectRoutes
-        self.projectSetting = projectSetting
-        self.projectSupportCase = projectSupportCase
-        self.projectSupportCaseComment = projectSupportCaseComment
-        self.projectTier = projectTier
+public extension GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeXf98ca6ac41 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.use) else {
+            throw SdkValidationError(
+                field: "use",
+                code: "required",
+                message: "Validation failed for 'use': value is required"
+            )
+        }
+        use = try container.sdkDecodeRequired(.use)
+        dest = try container.sdkDecodeIfPresent(.dest)
+        src = try container.sdkDecodeIfPresent(.src)
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet51(_ projectTransfer: [ACLAction]?, _ projectTransferIn: [ACLAction]?, _ projectTransferOut: [ACLAction]?, _ projectTransferRequest: [ACLAction]?, _ projectUsage: [ACLAction]?) {
-        self.projectTransfer = projectTransfer
-        self.projectTransferIn = projectTransferIn
-        self.projectTransferOut = projectTransferOut
-        self.projectTransferRequest = projectTransferRequest
-        self.projectUsage = projectUsage
+public extension GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeXf98ca6ac41 {
+    init(use: String, dest: String? = nil, src: String? = nil) {
+        (self.use, self.dest) = (use, dest)
+        self.src = src
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet52(_ proTrialOnboarding: [ACLAction]?, _ rateLimit: [ACLAction]?, _ redis: [ACLAction]?, _ redisStoreTokenSet: [ACLAction]?, _ remoteCaching: [ACLAction]?) {
-        self.proTrialOnboarding = proTrialOnboarding
-        self.rateLimit = rateLimit
-        self.redis = redis
-        self.redisStoreTokenSet = redisStoreTokenSet
-        self.remoteCaching = remoteCaching
+public indirect enum GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue {
+    case getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(
+        GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX9fff3a1d39
+    )
+    case getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(
+        GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX3be9939fdd
+    )
+}
+
+extension GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let raw = try? container.decode(JSONValue.self) {
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+        }
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue"
+        )
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet53(_ repository: [ACLAction]?, _ samlConfig: [ACLAction]?, _ schedule: [ACLAction]?, _ seawallConfig: [ACLAction]?, _ secret: [ACLAction]?) {
-        self.repository = repository
-        self.samlConfig = samlConfig
-        self.schedule = schedule
-        self.seawallConfig = seawallConfig
-        self.secret = secret
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet54(_ securityConfig: [ACLAction]?, _ securityPlusConfiguration: [ACLAction]?, _ sensitiveEnvironmentVariablePolicy: [ACLAction]?, _ setting: [ACLAction]?) {
-        self.securityConfig = securityConfig
-        self.securityPlusConfiguration = securityPlusConfiguration
-        self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
-        self.setting = setting
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet55(_ shareableLink: [ACLAction]?, _ shareableLinkStrict: [ACLAction]?, _ sharedEnvVarConnection: [ACLAction]?, _ sharedEnvVars: [ACLAction]?, _ sharedEnvVarsProduction: [ACLAction]?) {
-        self.shareableLink = shareableLink
-        self.shareableLinkStrict = shareableLinkStrict
-        self.sharedEnvVarConnection = sharedEnvVarConnection
-        self.sharedEnvVars = sharedEnvVars
-        self.sharedEnvVarsProduction = sharedEnvVarsProduction
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet56(_ skewProtection: [ACLAction]?, _ space: [ACLAction]?, _ spaceRun: [ACLAction]?, _ storeIsLocked: [ACLAction]?, _ storeTokenSetSensitive: [ACLAction]?) {
-        self.skewProtection = skewProtection
-        self.space = space
-        self.spaceRun = spaceRun
-        self.storeIsLocked = storeIsLocked
-        self.storeTokenSetSensitive = storeTokenSetSensitive
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet57(_ storeTransfer: [ACLAction]?, _ supportCase: [ACLAction]?, _ supportCaseComment: [ACLAction]?, _ team: [ACLAction]?, _ teamAccessRequest: [ACLAction]?) {
-        self.storeTransfer = storeTransfer
-        self.supportCase = supportCase
-        self.supportCaseComment = supportCaseComment
-        self.team = team
-        self.teamAccessRequest = teamAccessRequest
-    }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemPermissions {
-    mutating func sdkSet58(_ teamFellowMembership: [ACLAction]?, _ teamGitExclusivity: [ACLAction]?, _ teamInvite: [ACLAction]?, _ teamInviteCode: [ACLAction]?, _ teamInviteLink: [ACLAction]?) {
-        self.teamFellowMembership = teamFellowMembership
-        self.teamGitExclusivity = teamGitExclusivity
-        self.teamInvite = teamInvite
-        self.teamInviteCode = teamInviteCode
-        self.teamInviteLink = teamInviteLink
+extension GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue {
+    static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX9fff3a1d39.self),
+            sdkKeepsEveryKey(value, of: raw) {
+            return .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx9fff3a1d39(value)
+        }
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVX3be9939fdd.self),
+            sdkKeepsEveryKey(value, of: raw) {
+            return .getMicrofrontendsInGroupResponseProjectsItemProtectionBypassVx3be9939fdd(value)
+        }
+        return nil
     }
 }
