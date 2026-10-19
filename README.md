@@ -4,7 +4,7 @@
 
 Vercel combines the best developer experience with an obsessive focus on end-user performance. Our platform enables frontend teams to do their best work.
 
-> Package `Octridevvercel` · Version `0.0.1` · 458 operations
+> Package `OctriDevVercel` · Version `0.0.1` · 458 operations
 
 ## Installation
 
@@ -18,7 +18,7 @@ The example calls `client.logDrains.getConfigurable` (GET `/v1/log-drains/{id}`)
 
 ```swift
 import Foundation
-import Octridevvercel
+import OctriDevVercel
 
 @main
 struct Example {
@@ -86,8 +86,8 @@ Pagination follows the cursor, offset, page-number, or next-URL contract declare
 
 ## Project layout and API discovery
 
-- Operation implementations are grouped under `Sources/Octridevvercel/Methods/`.
-- 379 component models are split by API domain under `Sources/Octridevvercel/Models/<Domain>Models.swift` or `Models/<Tag Path>/<TagPath>Models.swift` in the same Swift module.
+- Operation implementations are grouped under `Sources/OctriDevVercel/Methods/`.
+- 379 component models are split by API domain under `Sources/OctriDevVercel/Models/<Domain>Models.swift` or `Models/<Tag Path>/<TagPath>Models.swift` in the same Swift module.
 - Component schemas can choose a nested model folder with `x-octri-sdk-tags: ["Billing/Invoices"]`; the first tag owns the model and `/` creates nesting.
 - [`sdk-manifest.json`](sdk-manifest.json) is the language-neutral public API index: operations, request/response modes, model properties, enum values, and generation settings.
 - Public barrel/module exports are the compatibility boundary. Import public model names from those exports; internal domain filenames may evolve without changing model names.
