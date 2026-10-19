@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ChecksMethods {
-    /// Lists the checks created for a deployment. Use `deploymentId` to select the deployment whose checks you want to inspect. This operation is closing down and will be removed on a date not specified in the API definition.
+public extension ChecksMethods {
+    /// Lists the checks created for a deployment. Use `deploymentId` to select the deployment whose checks you want to
+    /// inspect. This operation is closing down and will be removed on a date not specified in the API definition.
     ///
     /// List all of the checks created for a deployment.
     ///
@@ -17,14 +18,30 @@ extension ChecksMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     ///
     /// - Warning: This operation is deprecated and may be removed in a future release.
-    public static func listChecks(config: ClientConfig, deploymentId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListChecksResponse {
-        return try (await sdkRequest("GET", ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/checks"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listChecks", options: requestOptions)).data
+    static func listChecks(
+        config: ClientConfig,
+        deploymentId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListChecksResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/checks"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listChecks",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves the details of a single check for a deployment. Use `deploymentId` and `checkId` to identify the deployment and check. This operation is closing down and will be removed on a date not specified in the API definition.
+    /// Retrieves the details of a single check for a deployment. Use `deploymentId` and `checkId` to identify the
+    /// deployment and check. This operation is closing down and will be removed on a date not specified in the API
+    /// definition.
     ///
     /// Return a detailed response for a single check.
     ///
@@ -35,10 +52,30 @@ extension ChecksMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     ///
     /// - Warning: This operation is deprecated and may be removed in a future release.
-    public static func getCheck(config: ClientConfig, deploymentId: String, checkId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetCheckResponse {
-        return try (await sdkRequest("GET", ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/checks/", sdkEncodePathSegment(sdkWireString(checkId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getCheck", options: requestOptions)).data
+    static func getCheck(
+        config: ClientConfig,
+        deploymentId: String,
+        checkId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetCheckResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/deployments/",
+                sdkEncodePathSegment(sdkWireString(deploymentId)),
+                "/checks/",
+                sdkEncodePathSegment(sdkWireString(checkId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getCheck",
+            options: requestOptions
+        )).data
     }
 }

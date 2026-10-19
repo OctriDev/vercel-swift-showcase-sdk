@@ -3,9 +3,9 @@
 
 import Foundation
 
-// Connect domain models
-extension ConnectConnectorUpdateDataVariant0ServerConfigJwks {
-    public func encode(to encoder: Encoder) throws {
+/// Connect domain models
+public extension ConnectConnectorUpdateDataVariant0ServerConfigJwks {
+    func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(keys, forKey: .keys)
@@ -18,22 +18,32 @@ public indirect enum ConnectConnectorCreatedByVariant1Environment {
 }
 
 extension ConnectConnectorCreatedByVariant1Environment: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectConnectorCreatedByVariant1Environment")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ConnectConnectorCreatedByVariant1Environment"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ConnectConnectorCreatedByVariant1Environment {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue1(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue1(value)
+        }
         return nil
     }
 }
@@ -61,22 +71,28 @@ public struct ConnectServiceSync: Codable {
         case errors
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectServiceSync {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.status) else {
-            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
-        }
-        self.status = try container.sdkDecodeRequired(.status)
-        self.errors = try container.sdkDecodeIfPresent(.errors)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectServiceSync {
-    public init(status: ConnectServiceSyncStatus, errors: [ConnectServiceSyncError]? = nil) {
+public extension ConnectServiceSync {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.status) else {
+            throw SdkValidationError(
+                field: "status",
+                code: "required",
+                message: "Validation failed for 'status': value is required"
+            )
+        }
+        status = try container.sdkDecodeRequired(.status)
+        errors = try container.sdkDecodeIfPresent(.errors)
+    }
+}
+
+public extension ConnectServiceSync {
+    init(status: ConnectServiceSyncStatus, errors: [ConnectServiceSyncError]? = nil) {
         (self.status, self.errors) = (status, errors)
     }
 }
@@ -110,33 +126,55 @@ public struct ConnectConnectorCreateResultUserTokens: Codable {
         case supportsResources
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectConnectorCreateResultUserTokens {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.crossInstallation) else {
-            throw SdkValidationError(field: "crossInstallation", code: "required", message: "Validation failed for 'crossInstallation': value is required")
-        }
-        guard container.contains(.isStaticCredential) else {
-            throw SdkValidationError(field: "isStaticCredential", code: "required", message: "Validation failed for 'isStaticCredential': value is required")
-        }
-        guard container.contains(.supportsRefinement) else {
-            throw SdkValidationError(field: "supportsRefinement", code: "required", message: "Validation failed for 'supportsRefinement': value is required")
-        }
-        self.crossInstallation = try container.sdkDecodeRequired(.crossInstallation)
-        self.isStaticCredential = try container.sdkDecodeRequired(.isStaticCredential)
-        self.supportsRefinement = try container.sdkDecodeRequired(.supportsRefinement)
-        self.manualCredentialInput = try container.sdkDecodeIfPresent(.manualCredentialInput)
-        self.scopes = try container.sdkDecodeIfPresent(.scopes)
-        self.supportedAuthorizationDetails = try container.sdkDecodeIfPresent(.supportedAuthorizationDetails)
-        self.supportsResources = try container.sdkDecodeIfPresent(.supportsResources)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectConnectorCreateResultUserTokens {
-    public init(crossInstallation: Bool, isStaticCredential: Bool, supportsRefinement: Bool, manualCredentialInput: Bool? = nil, scopes: [String]? = nil, supportedAuthorizationDetails: [String]? = nil, supportsResources: Bool? = nil) {
+public extension ConnectConnectorCreateResultUserTokens {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.crossInstallation) else {
+            throw SdkValidationError(
+                field: "crossInstallation",
+                code: "required",
+                message: "Validation failed for 'crossInstallation': value is required"
+            )
+        }
+        guard container.contains(.isStaticCredential) else {
+            throw SdkValidationError(
+                field: "isStaticCredential",
+                code: "required",
+                message: "Validation failed for 'isStaticCredential': value is required"
+            )
+        }
+        guard container.contains(.supportsRefinement) else {
+            throw SdkValidationError(
+                field: "supportsRefinement",
+                code: "required",
+                message: "Validation failed for 'supportsRefinement': value is required"
+            )
+        }
+        crossInstallation = try container.sdkDecodeRequired(.crossInstallation)
+        isStaticCredential = try container.sdkDecodeRequired(.isStaticCredential)
+        supportsRefinement = try container.sdkDecodeRequired(.supportsRefinement)
+        manualCredentialInput = try container.sdkDecodeIfPresent(.manualCredentialInput)
+        scopes = try container.sdkDecodeIfPresent(.scopes)
+        supportedAuthorizationDetails = try container.sdkDecodeIfPresent(.supportedAuthorizationDetails)
+        supportsResources = try container.sdkDecodeIfPresent(.supportsResources)
+    }
+}
+
+public extension ConnectConnectorCreateResultUserTokens {
+    init(
+        crossInstallation: Bool,
+        isStaticCredential: Bool,
+        supportsRefinement: Bool,
+        manualCredentialInput: Bool? = nil,
+        scopes: [String]? = nil,
+        supportedAuthorizationDetails: [String]? = nil,
+        supportsResources: Bool? = nil
+    ) {
         (self.crossInstallation, self.isStaticCredential) = (crossInstallation, isStaticCredential)
         (self.supportsRefinement, self.manualCredentialInput) = (supportsRefinement, manualCredentialInput)
         (self.scopes, self.supportedAuthorizationDetails) = (scopes, supportedAuthorizationDetails)
@@ -186,38 +224,51 @@ public struct ConnectConnectorUpdateDataRequestVariant5: Codable {
     }
 
     init() {
-        (self.appId, self.appName, self.clientId, self.clientSecret, self.slackTeam) = (nil, nil, nil, nil, nil)
-        (self.signingSecret, self.verificationToken, self.botScopes, self.userScopes, self.slashCommands) = (nil, nil, nil, nil, nil)
-        (self.shortcuts, self.extras) = (nil, nil)
+        (appId, appName, clientId, clientSecret, slackTeam) = (nil, nil, nil, nil, nil)
+        (signingSecret, verificationToken, botScopes, userScopes, slashCommands) = (nil, nil, nil, nil, nil)
+        (shortcuts, extras) = (nil, nil)
     }
 }
 
-extension ConnectConnectorUpdateDataRequestVariant5 {
-    public init(from decoder: Decoder) throws {
+public extension ConnectConnectorUpdateDataRequestVariant5 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.appId = try container.sdkDecodeIfPresent(.appId)
-        self.appName = try container.sdkDecodeIfPresent(.appName)
-        self.clientId = try container.sdkDecodeIfPresent(.clientId)
-        self.clientSecret = try container.sdkDecodeIfPresent(.clientSecret)
-        self.slackTeam = try container.sdkDecodeIfPresent(.slackTeam)
-        self.signingSecret = try container.sdkDecodeIfPresent(.signingSecret)
-        self.verificationToken = try container.sdkDecodeIfPresent(.verificationToken)
-        self.botScopes = try container.sdkDecodeIfPresent(.botScopes)
-        self.userScopes = try container.sdkDecodeIfPresent(.userScopes)
-        self.slashCommands = try container.sdkDecodeIfPresent(.slashCommands)
-        self.shortcuts = try container.sdkDecodeIfPresent(.shortcuts)
-        self.extras = try container.sdkDecodeIfPresent(.extras)
-        if let value = self.slashCommands {
+        appId = try container.sdkDecodeIfPresent(.appId)
+        appName = try container.sdkDecodeIfPresent(.appName)
+        clientId = try container.sdkDecodeIfPresent(.clientId)
+        clientSecret = try container.sdkDecodeIfPresent(.clientSecret)
+        slackTeam = try container.sdkDecodeIfPresent(.slackTeam)
+        signingSecret = try container.sdkDecodeIfPresent(.signingSecret)
+        verificationToken = try container.sdkDecodeIfPresent(.verificationToken)
+        botScopes = try container.sdkDecodeIfPresent(.botScopes)
+        userScopes = try container.sdkDecodeIfPresent(.userScopes)
+        slashCommands = try container.sdkDecodeIfPresent(.slashCommands)
+        shortcuts = try container.sdkDecodeIfPresent(.shortcuts)
+        extras = try container.sdkDecodeIfPresent(.extras)
+        if let value = slashCommands {
             try validateItems("slashCommands", value, min: nil, max: 50)
         }
-        if let value = self.shortcuts {
+        if let value = shortcuts {
             try validateItems("shortcuts", value, min: nil, max: 10)
         }
     }
 }
 
-extension ConnectConnectorUpdateDataRequestVariant5 {
-    public init(appId: String? = nil, appName: String? = nil, clientId: String? = nil, clientSecret: String? = nil, slackTeam: ConnectConnectorUpdateDataRequestVariant5SlackTeam? = nil, signingSecret: String? = nil, verificationToken: String? = nil, botScopes: [String]? = nil, userScopes: [String]? = nil, slashCommands: [ConnectConnectorUpdateDataRequestVariant5SlashCommandsItem]? = nil, shortcuts: [ConnectConnectorUpdateDataRequestVariant5ShortcutsItem]? = nil, extras: [String: JSONValue]? = nil) throws {
+public extension ConnectConnectorUpdateDataRequestVariant5 {
+    init(
+        appId: String? = nil,
+        appName: String? = nil,
+        clientId: String? = nil,
+        clientSecret: String? = nil,
+        slackTeam: ConnectConnectorUpdateDataRequestVariant5SlackTeam? = nil,
+        signingSecret: String? = nil,
+        verificationToken: String? = nil,
+        botScopes: [String]? = nil,
+        userScopes: [String]? = nil,
+        slashCommands: [ConnectConnectorUpdateDataRequestVariant5SlashCommandsItem]? = nil,
+        shortcuts: [ConnectConnectorUpdateDataRequestVariant5ShortcutsItem]? = nil,
+        extras: [String: JSONValue]? = nil
+    ) throws {
         self.init()
         (self.appId, self.appName) = (appId, appName)
         (self.clientId, self.clientSecret) = (clientId, clientSecret)
@@ -267,41 +318,65 @@ public struct ConnectConnectorCreateDataVariant7: Codable {
         case extras
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension ConnectConnectorCreateDataVariant7 {
-    public init(from decoder: Decoder) throws {
+public extension ConnectConnectorCreateDataVariant7 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.appId) else {
-            throw SdkValidationError(field: "appId", code: "required", message: "Validation failed for 'appId': value is required")
+            throw SdkValidationError(
+                field: "appId",
+                code: "required",
+                message: "Validation failed for 'appId': value is required"
+            )
         }
         guard container.contains(.appName) else {
-            throw SdkValidationError(field: "appName", code: "required", message: "Validation failed for 'appName': value is required")
+            throw SdkValidationError(
+                field: "appName",
+                code: "required",
+                message: "Validation failed for 'appName': value is required"
+            )
         }
         guard container.contains(.clientId) else {
-            throw SdkValidationError(field: "clientId", code: "required", message: "Validation failed for 'clientId': value is required")
+            throw SdkValidationError(
+                field: "clientId",
+                code: "required",
+                message: "Validation failed for 'clientId': value is required"
+            )
         }
-        self.appId = try container.sdkDecodeRequired(.appId)
-        self.appName = try container.sdkDecodeRequired(.appName)
-        self.clientId = try container.sdkDecodeRequired(.clientId)
-        self.slackTeam = try container.sdkDecodeIfPresent(.slackTeam)
-        self.botScopes = try container.sdkDecodeIfPresent(.botScopes)
-        self.userScopes = try container.sdkDecodeIfPresent(.userScopes)
-        self.slashCommands = try container.sdkDecodeIfPresent(.slashCommands)
-        self.shortcuts = try container.sdkDecodeIfPresent(.shortcuts)
-        self.extras = try container.sdkDecodeIfPresent(.extras)
-        if let value = self.slashCommands {
+        appId = try container.sdkDecodeRequired(.appId)
+        appName = try container.sdkDecodeRequired(.appName)
+        clientId = try container.sdkDecodeRequired(.clientId)
+        slackTeam = try container.sdkDecodeIfPresent(.slackTeam)
+        botScopes = try container.sdkDecodeIfPresent(.botScopes)
+        userScopes = try container.sdkDecodeIfPresent(.userScopes)
+        slashCommands = try container.sdkDecodeIfPresent(.slashCommands)
+        shortcuts = try container.sdkDecodeIfPresent(.shortcuts)
+        extras = try container.sdkDecodeIfPresent(.extras)
+        if let value = slashCommands {
             try validateItems("slashCommands", value, min: nil, max: 50)
         }
-        if let value = self.shortcuts {
+        if let value = shortcuts {
             try validateItems("shortcuts", value, min: nil, max: 10)
         }
     }
 }
 
-extension ConnectConnectorCreateDataVariant7 {
-    public init(appId: String, appName: String, clientId: String, slackTeam: ConnectConnectorCreateDataVariant7SlackTeam? = nil, botScopes: [String]? = nil, userScopes: [String]? = nil, slashCommands: [ConnectConnectorCreateDataVariant7SlashCommandsItem]? = nil, shortcuts: [ConnectConnectorCreateDataVariant7ShortcutsItem]? = nil, extras: [String: JSONValue]? = nil) throws {
+public extension ConnectConnectorCreateDataVariant7 {
+    init(
+        appId: String,
+        appName: String,
+        clientId: String,
+        slackTeam: ConnectConnectorCreateDataVariant7SlackTeam? = nil,
+        botScopes: [String]? = nil,
+        userScopes: [String]? = nil,
+        slashCommands: [ConnectConnectorCreateDataVariant7SlashCommandsItem]? = nil,
+        shortcuts: [ConnectConnectorCreateDataVariant7ShortcutsItem]? = nil,
+        extras: [String: JSONValue]? = nil
+    ) throws {
         (self.appId, self.appName) = (appId, appName)
         (self.clientId, self.slackTeam) = (clientId, slackTeam)
         (self.botScopes, self.userScopes) = (botScopes, userScopes)
@@ -345,33 +420,55 @@ public struct ConnectConnectorUserTokens: Codable {
         case supportsResources
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectConnectorUserTokens {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.crossInstallation) else {
-            throw SdkValidationError(field: "crossInstallation", code: "required", message: "Validation failed for 'crossInstallation': value is required")
-        }
-        guard container.contains(.isStaticCredential) else {
-            throw SdkValidationError(field: "isStaticCredential", code: "required", message: "Validation failed for 'isStaticCredential': value is required")
-        }
-        guard container.contains(.supportsRefinement) else {
-            throw SdkValidationError(field: "supportsRefinement", code: "required", message: "Validation failed for 'supportsRefinement': value is required")
-        }
-        self.crossInstallation = try container.sdkDecodeRequired(.crossInstallation)
-        self.isStaticCredential = try container.sdkDecodeRequired(.isStaticCredential)
-        self.supportsRefinement = try container.sdkDecodeRequired(.supportsRefinement)
-        self.manualCredentialInput = try container.sdkDecodeIfPresent(.manualCredentialInput)
-        self.scopes = try container.sdkDecodeIfPresent(.scopes)
-        self.supportedAuthorizationDetails = try container.sdkDecodeIfPresent(.supportedAuthorizationDetails)
-        self.supportsResources = try container.sdkDecodeIfPresent(.supportsResources)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectConnectorUserTokens {
-    public init(crossInstallation: Bool, isStaticCredential: Bool, supportsRefinement: Bool, manualCredentialInput: Bool? = nil, scopes: [String]? = nil, supportedAuthorizationDetails: [String]? = nil, supportsResources: Bool? = nil) {
+public extension ConnectConnectorUserTokens {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.crossInstallation) else {
+            throw SdkValidationError(
+                field: "crossInstallation",
+                code: "required",
+                message: "Validation failed for 'crossInstallation': value is required"
+            )
+        }
+        guard container.contains(.isStaticCredential) else {
+            throw SdkValidationError(
+                field: "isStaticCredential",
+                code: "required",
+                message: "Validation failed for 'isStaticCredential': value is required"
+            )
+        }
+        guard container.contains(.supportsRefinement) else {
+            throw SdkValidationError(
+                field: "supportsRefinement",
+                code: "required",
+                message: "Validation failed for 'supportsRefinement': value is required"
+            )
+        }
+        crossInstallation = try container.sdkDecodeRequired(.crossInstallation)
+        isStaticCredential = try container.sdkDecodeRequired(.isStaticCredential)
+        supportsRefinement = try container.sdkDecodeRequired(.supportsRefinement)
+        manualCredentialInput = try container.sdkDecodeIfPresent(.manualCredentialInput)
+        scopes = try container.sdkDecodeIfPresent(.scopes)
+        supportedAuthorizationDetails = try container.sdkDecodeIfPresent(.supportedAuthorizationDetails)
+        supportsResources = try container.sdkDecodeIfPresent(.supportsResources)
+    }
+}
+
+public extension ConnectConnectorUserTokens {
+    init(
+        crossInstallation: Bool,
+        isStaticCredential: Bool,
+        supportsRefinement: Bool,
+        manualCredentialInput: Bool? = nil,
+        scopes: [String]? = nil,
+        supportedAuthorizationDetails: [String]? = nil,
+        supportsResources: Bool? = nil
+    ) {
         (self.crossInstallation, self.isStaticCredential) = (crossInstallation, isStaticCredential)
         (self.supportsRefinement, self.manualCredentialInput) = (supportsRefinement, manualCredentialInput)
         (self.scopes, self.supportedAuthorizationDetails) = (scopes, supportedAuthorizationDetails)
@@ -519,5 +616,7 @@ public struct ConnectConnectorCreateResult: Codable {
         case website
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

@@ -6,27 +6,71 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension MarketplaceMethods {
-    /// Retrieves invoice details and status for an installation. Use the installation and invoice identifiers to select the invoice, and use the returned state and timestamps to track its billing lifecycle. Consult billing events through webhooks when you need invoice event notifications.
+public extension MarketplaceMethods {
+    /// Retrieves invoice details and status for an installation. Use the installation and invoice identifiers to select
+    /// the invoice, and use the returned state and timestamps to track its billing lifecycle. Consult billing events
+    /// through webhooks when you need invoice event notifications.
     ///
-    /// Get Invoice details and status for a given invoice ID. See [Billing Events with Webhooks documentation](https://vercel.com/docs/integrations/create-integration/marketplace-api#working-with-billing-events-through-webhooks) on how to receive invoice events. This endpoint is used to retrieve the invoice details.
-    public static func getInvoice(config: ClientConfig, integrationConfigurationId: String, invoiceId: String, requestOptions: RequestOptions? = nil) async throws -> GetInvoiceResponse {
-        return try (await sdkRequest("GET", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/billing/invoices/", sdkEncodePathSegment(sdkWireString(invoiceId))].joined(), config: config, decoder: .json, operationId: "getInvoice", options: requestOptions)).data
+    /// Get Invoice details and status for a given invoice ID. See [Billing Events with Webhooks documentation](https://vercel.com/docs/integrations/create-integration/marketplace-api#working-with-billing-events-through-webhooks)
+    /// on how to receive invoice events. This endpoint is used to retrieve the invoice details.
+    static func getInvoice(
+        config: ClientConfig,
+        integrationConfigurationId: String,
+        invoiceId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetInvoiceResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/installations/",
+                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
+                "/billing/invoices/",
+                sdkEncodePathSegment(sdkWireString(invoiceId)),
+            ].joined(),
+            config: config,
+            decoder: .json,
+            operationId: "getInvoice",
+            options: requestOptions
+        )).data
     }
 
-    /// Submits a refund request for an invoice previously created through the invoice submission operation. Provide the refund reason and amount along with the `refund` action. The requested amount cannot exceed the invoice total.
+    /// Submits a refund request for an invoice previously created through the invoice submission operation. Provide the
+    /// refund reason and amount along with the `refund` action. The requested amount cannot exceed the invoice total.
     ///
-    /// This endpoint allows the partner to request a refund for an invoice to Vercel. The invoice is created using the Submit Invoice API.
+    /// This endpoint allows the partner to request a refund for an invoice to Vercel. The invoice is created using the
+    /// Submit Invoice API.
     ///
     /// - Parameters:
     /// - reason: Refund reason.
     /// - total: The total amount to be refunded. Must be less than or equal to the
     ///   total amount of the invoice.
-    public static func updateInvoice(config: ClientConfig, integrationConfigurationId: String, invoiceId: String, action: UpdateInvoiceRequestBodyAction, reason: String, total: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func updateInvoice(
+        config: ClientConfig,
+        integrationConfigurationId: String,
+        invoiceId: String,
+        action: UpdateInvoiceRequestBodyAction,
+        reason: String,
+        total: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         try sdkValidatePattern("total", total, sdkPatternc108d58e346a)
 
         let requestBody = UpdateInvoiceRequestBody(action: action, reason: reason, total: total)
 
-        return try (await sdkRequest("POST", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/billing/invoices/", sdkEncodePathSegment(sdkWireString(invoiceId)), "/actions"].joined(), config: config, body: requestBody, decoder: .empty, operationId: "updateInvoice", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            [
+                "/v1/installations/",
+                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
+                "/billing/invoices/",
+                sdkEncodePathSegment(sdkWireString(invoiceId)),
+                "/actions",
+            ].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .empty,
+            operationId: "updateInvoice",
+            options: requestOptions
+        )).data
     }
 }

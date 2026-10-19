@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsUpdate domain models
+/// ProjectsUpdate domain models
 extension UpdateMicrofrontendsResponseDismissedToastsItemValueVariant2CurrentValue {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
@@ -33,28 +33,41 @@ public struct UpdateProjectResponseCreatorVariant2: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateProjectResponseCreatorVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.integration) else {
-            throw SdkValidationError(field: "integration", code: "required", message: "Validation failed for 'integration': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.integration = try container.sdkDecodeRequired(.integration)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, UpdateProjectResponseCreatorVariant2Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateProjectResponseCreatorVariant2 {
-    public init(integration: UpdateProjectResponseCreatorVariant2Integration, type: UpdateProjectResponseCreatorVariant2Type) throws {
+public extension UpdateProjectResponseCreatorVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.integration) else {
+            throw SdkValidationError(
+                field: "integration",
+                code: "required",
+                message: "Validation failed for 'integration': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        integration = try container.sdkDecodeRequired(.integration)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum("type", type, UpdateProjectResponseCreatorVariant2Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension UpdateProjectResponseCreatorVariant2 {
+    init(
+        integration: UpdateProjectResponseCreatorVariant2Integration,
+        type: UpdateProjectResponseCreatorVariant2Type
+    ) throws {
         (self.integration, self.type) = (integration, type)
-            try sdkValidateRawEnum("type", self.type, UpdateProjectResponseCreatorVariant2Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, UpdateProjectResponseCreatorVariant2Type.allCases.map(\.rawValue))
     }
 }
 
@@ -69,29 +82,47 @@ public struct UpdateMicrofrontendsResponseTrustedIpsVariant0: Codable {
         case protectionMode
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateMicrofrontendsResponseTrustedIpsVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.addresses) else {
-            throw SdkValidationError(field: "addresses", code: "required", message: "Validation failed for 'addresses': value is required")
-        }
-        guard container.contains(.deploymentType) else {
-            throw SdkValidationError(field: "deploymentType", code: "required", message: "Validation failed for 'deploymentType': value is required")
-        }
-        guard container.contains(.protectionMode) else {
-            throw SdkValidationError(field: "protectionMode", code: "required", message: "Validation failed for 'protectionMode': value is required")
-        }
-        self.addresses = try container.sdkDecodeRequired(.addresses)
-        self.deploymentType = try container.sdkDecodeRequired(.deploymentType)
-        self.protectionMode = try container.sdkDecodeRequired(.protectionMode)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateMicrofrontendsResponseTrustedIpsVariant0 {
-    public init(addresses: [UpdateMicrofrontendsResponseTrustedIpsVariant0AddressesItem], deploymentType: UpdateMicrofrontendsResponseTrustedIpsVariant0DeploymentType, protectionMode: UpdateMicrofrontendsResponseTrustedIpsVariant0ProtectionMode) {
+public extension UpdateMicrofrontendsResponseTrustedIpsVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.addresses) else {
+            throw SdkValidationError(
+                field: "addresses",
+                code: "required",
+                message: "Validation failed for 'addresses': value is required"
+            )
+        }
+        guard container.contains(.deploymentType) else {
+            throw SdkValidationError(
+                field: "deploymentType",
+                code: "required",
+                message: "Validation failed for 'deploymentType': value is required"
+            )
+        }
+        guard container.contains(.protectionMode) else {
+            throw SdkValidationError(
+                field: "protectionMode",
+                code: "required",
+                message: "Validation failed for 'protectionMode': value is required"
+            )
+        }
+        addresses = try container.sdkDecodeRequired(.addresses)
+        deploymentType = try container.sdkDecodeRequired(.deploymentType)
+        protectionMode = try container.sdkDecodeRequired(.protectionMode)
+    }
+}
+
+public extension UpdateMicrofrontendsResponseTrustedIpsVariant0 {
+    init(
+        addresses: [UpdateMicrofrontendsResponseTrustedIpsVariant0AddressesItem],
+        deploymentType: UpdateMicrofrontendsResponseTrustedIpsVariant0DeploymentType,
+        protectionMode: UpdateMicrofrontendsResponseTrustedIpsVariant0ProtectionMode
+    ) {
         (self.addresses, self.deploymentType) = (addresses, deploymentType)
         self.protectionMode = protectionMode
     }
@@ -127,36 +158,50 @@ public struct UpdateProjectResponseLinkVariant7: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateProjectResponseLinkVariant7 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.deployHooks = try container.sdkDecodeRequired(.deployHooks)
-        self.gitCredentialId = try container.sdkDecodeRequired(.gitCredentialId)
-        self.owner = try container.sdkDecodeRequired(.owner)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.productionBranch = try container.sdkDecodeRequired(.productionBranch)
-        self.repo = try container.sdkDecodeRequired(.repo)
-        self.repoId = try container.sdkDecodeRequired(.repoId)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.sourceless = try container.sdkDecodeIfPresent(.sourceless)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-            try sdkValidateRawEnum("type", self.type, UpdateProjectResponseLinkVariant7Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateProjectResponseLinkVariant7 {
-    public init(deployHooks: [UpdateProjectResponseLinkVariant7DeployHooksItem], gitCredentialId: String, owner: String, ownerId: String, productionBranch: String, repo: String, repoId: String, type: UpdateProjectResponseLinkVariant7Type, createdAt: Double? = nil, sourceless: Bool? = nil, updatedAt: Double? = nil) throws {
+public extension UpdateProjectResponseLinkVariant7 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        deployHooks = try container.sdkDecodeRequired(.deployHooks)
+        gitCredentialId = try container.sdkDecodeRequired(.gitCredentialId)
+        owner = try container.sdkDecodeRequired(.owner)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        productionBranch = try container.sdkDecodeRequired(.productionBranch)
+        repo = try container.sdkDecodeRequired(.repo)
+        repoId = try container.sdkDecodeRequired(.repoId)
+        type = try container.sdkDecodeRequired(.type)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        sourceless = try container.sdkDecodeIfPresent(.sourceless)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        try sdkValidateRawEnum("type", type, UpdateProjectResponseLinkVariant7Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension UpdateProjectResponseLinkVariant7 {
+    init(
+        deployHooks: [UpdateProjectResponseLinkVariant7DeployHooksItem],
+        gitCredentialId: String,
+        owner: String,
+        ownerId: String,
+        productionBranch: String,
+        repo: String,
+        repoId: String,
+        type: UpdateProjectResponseLinkVariant7Type,
+        createdAt: Double? = nil,
+        sourceless: Bool? = nil,
+        updatedAt: Double? = nil
+    ) throws {
         (self.deployHooks, self.gitCredentialId) = (deployHooks, gitCredentialId)
         (self.owner, self.ownerId) = (owner, ownerId)
         (self.productionBranch, self.repo) = (productionBranch, repo)
         (self.repoId, self.type) = (repoId, type)
         (self.createdAt, self.sourceless) = (createdAt, sourceless)
         self.updatedAt = updatedAt
-            try sdkValidateRawEnum("type", self.type, UpdateProjectResponseLinkVariant7Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, UpdateProjectResponseLinkVariant7Type.allCases.map(\.rawValue))
     }
 }
 
@@ -194,16 +239,22 @@ public enum UpdateMicrofrontendsResponseCreatorVariant0ViaVariant0Type: String, 
     }
 }
 
-public struct UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let bitbucket = UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68(rawValue: "bitbucket")
-    public static let github = UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68(rawValue: "github")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let bitbucket =
+        UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68(rawValue: "bitbucket")
+    public static let github =
+        UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68(rawValue: "github")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -297,15 +348,20 @@ public enum UpdateMicrofrontendsResponseCreatorVariant0Type: String, CaseIterabl
     }
 }
 
-public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let xVercelIpCountry = UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let xVercelIpCountry =
+        UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -314,15 +370,20 @@ public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVaria
     }
 }
 
-public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let blockLegalCwc = UpdateMicrofrontendsResponseInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let blockLegalCwc =
+        UpdateMicrofrontendsResponseInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -365,16 +426,22 @@ public enum UpdateProjectResponseEnvItemContentHintVariant3Type: String, CaseIte
     }
 }
 
-public struct UpdateProjectRequestDeploymentPolicyVariant0DeploymentSourcesX4a89c6acc9: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateProjectRequestDeploymentPolicyVariant0DeploymentSourcesX4a89c6acc9: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let production = UpdateProjectRequestDeploymentPolicyVariant0DeploymentSourcesX4a89c6acc9(rawValue: "production")
-    public static let preview = UpdateProjectRequestDeploymentPolicyVariant0DeploymentSourcesX4a89c6acc9(rawValue: "preview")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let production =
+        UpdateProjectRequestDeploymentPolicyVariant0DeploymentSourcesX4a89c6acc9(rawValue: "production")
+    public static let preview =
+        UpdateProjectRequestDeploymentPolicyVariant0DeploymentSourcesX4a89c6acc9(rawValue: "preview")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -434,15 +501,20 @@ public enum UpdateMicrofrontendsResponseEnvItemContentHintVariant11Type: String,
     }
 }
 
-public struct UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXe2935f43cc: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXe2935f43cc: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let gitlab = UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXe2935f43cc(rawValue: "gitlab")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let gitlab =
+        UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXe2935f43cc(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -468,16 +540,20 @@ public enum UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX67a1bd
     }
 }
 
-public struct UpdateProjectResponseTrustedIpsVariant0ProtectionMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateProjectResponseTrustedIpsVariant0ProtectionMode: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let additional = UpdateProjectResponseTrustedIpsVariant0ProtectionMode(rawValue: "additional")
     public static let exclusive = UpdateProjectResponseTrustedIpsVariant0ProtectionMode(rawValue: "exclusive")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

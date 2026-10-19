@@ -11,7 +11,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ChecksMethods.UpdateCheckOptions(deploymentId: decoded("\"dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6\""), checkId: decoded("\"check_2qn7PZrx89yxY34vEZPD31Y9XVj6\""))
+        var options = try ChecksMethods.UpdateCheckOptions(
+            deploymentId: decoded("\"dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6\""),
+            checkId: decoded("\"check_2qn7PZrx89yxY34vEZPD31Y9XVj6\"")
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.name = try decoded("\"Performance Check\"")
@@ -89,8 +92,8 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.updateConnector(
-            options: options
-        )
+                options: options
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -135,7 +138,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ChecksV2Methods.UpdateDeploymentCheckRunOptions(deploymentId: decoded("\"deployment-1\""), checkRunId: decoded("\"checkRun-1\""))
+        var options = try ChecksV2Methods.UpdateDeploymentCheckRunOptions(
+            deploymentId: decoded("\"deployment-1\""),
+            checkRunId: decoded("\"checkRun-1\"")
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.externalId = try decoded("\"external-1\"")
@@ -182,10 +188,10 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.updateDomainAutoRenew(
-            domain: decoded("\"domain\""),
-            autoRenew: decoded("false"),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domain: decoded("\"domain\""),
+                autoRenew: decoded("false"),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -225,10 +231,10 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.updateDomainNameservers(
-            domain: decoded("\"domain\""),
-            nameservers: decoded("[\"Example Name\"]"),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domain: decoded("\"domain\""),
+                nameservers: decoded("[\"Example Name\"]"),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -343,7 +349,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try FeatureFlagsMethods.UpdateFlagOptions(projectIdOrName: decoded("\"Example Name\""), flagIdOrSlug: decoded("\"flagIdOrSlug\""))
+        var options = try FeatureFlagsMethods.UpdateFlagOptions(
+            projectIdOrName: decoded("\"Example Name\""),
+            flagIdOrSlug: decoded("\"flagIdOrSlug\"")
+        )
         options.ifMatch = try decoded("\"ifMatch\"")
         options.withMetadata = try decoded("false")
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
@@ -376,7 +385,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try FeatureFlagsMethods.UpdateFlagSegmentOptions(projectIdOrName: decoded("\"Example Name\""), segmentIdOrSlug: decoded("\"segmentIdOrSlug\""))
+        var options = try FeatureFlagsMethods.UpdateFlagSegmentOptions(
+            projectIdOrName: decoded("\"Example Name\""),
+            segmentIdOrSlug: decoded("\"segmentIdOrSlug\"")
+        )
         options.withMetadata = try decoded("false")
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
@@ -436,12 +448,20 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testUpdateInstallationsByIntegrationConfigurationIdResourcesByResX517c7bbae9ReachesMockAndDecodesResponse() async throws {
+    func testUpdateInstallationsByIntegrationConfigurationIdResourcesByResX517c7bbae9ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
         _ = client
-        var options = try MarketplaceMethods.UpdateInstallationsByIntegrationConfigurationIdResourcesByResX5235ac8d4aOptions(integrationConfigurationId: decoded("\"integrationConfiguration-1\""), resourceId: decoded("\"resource-1\""), itemId: decoded("\"item-1\""), slug: decoded("\"slug\""), origin: decoded("\"origin\""))
+        var options = try MarketplaceMethods
+            .UpdateInstallationsByIntegrationConfigurationIdResourcesByResX5235ac8d4aOptions(
+                integrationConfigurationId: decoded("\"integrationConfiguration-1\""),
+                resourceId: decoded("\"resource-1\""),
+                itemId: decoded("\"item-1\""),
+                slug: decoded("\"slug\""),
+                origin: decoded("\"origin\"")
+            )
         options.name = try decoded("\"Example Name\"")
         options.category = try decoded("\"experiment\"")
         options.description = try decoded("\"example text\"")
@@ -454,12 +474,18 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testUpdateIntegrationDeploymentActionUpdateIntegrationDeploymentActionReachesMockAndDecodesResponse() async throws {
+    func testUpdateIntegrationDeploymentActionUpdateIntegrationDeploymentActionReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
         _ = client
-        var options = try DeploymentsMethods.UpdateIntegrationDeploymentActionOptions(deploymentId: decoded("\"deployment-1\""), integrationConfigurationId: decoded("\"integrationConfiguration-1\""), resourceId: decoded("\"resource-1\""), action: decoded("\"action\""))
+        var options = try DeploymentsMethods.UpdateIntegrationDeploymentActionOptions(
+            deploymentId: decoded("\"deployment-1\""),
+            integrationConfigurationId: decoded("\"integrationConfiguration-1\""),
+            resourceId: decoded("\"resource-1\""),
+            action: decoded("\"action\"")
+        )
         options.status = try decoded("\"running\"")
         options.statusText = try decoded("\"active\"")
         options.statusUrl = try decoded("\"https://example.com\"")

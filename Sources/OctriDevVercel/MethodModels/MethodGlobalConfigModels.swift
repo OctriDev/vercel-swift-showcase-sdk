@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical globalConfig operation model declarations
+/// Canonical globalConfig operation model declarations
 public struct GetEdgeConfigBackupsResponseBackupsItem: Codable {
     public var id: String
     public var lastModified: Double
@@ -19,26 +19,36 @@ public struct GetEdgeConfigBackupsResponseBackupsItem: Codable {
         case metadata
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetEdgeConfigBackupsResponseBackupsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.lastModified) else {
-            throw SdkValidationError(field: "lastModified", code: "required", message: "Validation failed for 'lastModified': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.lastModified = try container.sdkDecodeRequired(.lastModified)
-        self.metadata = try container.sdkDecodeIfPresent(.metadata)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetEdgeConfigBackupsResponseBackupsItem {
-    public init(id: String, lastModified: Double, metadata: GetEdgeConfigBackupsResponseBackupsItemMetadata? = nil) {
+public extension GetEdgeConfigBackupsResponseBackupsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.lastModified) else {
+            throw SdkValidationError(
+                field: "lastModified",
+                code: "required",
+                message: "Validation failed for 'lastModified': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        lastModified = try container.sdkDecodeRequired(.lastModified)
+        metadata = try container.sdkDecodeIfPresent(.metadata)
+    }
+}
+
+public extension GetEdgeConfigBackupsResponseBackupsItem {
+    init(id: String, lastModified: Double, metadata: GetEdgeConfigBackupsResponseBackupsItemMetadata? = nil) {
         (self.id, self.lastModified) = (id, lastModified)
         self.metadata = metadata
     }
@@ -71,26 +81,38 @@ public struct GetEdgeConfigsResponseItem: Codable {
         case createdBy
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetEdgeConfigsResponseItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.digest = try container.sdkDecodeRequired(.digest)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.itemCount = try container.sdkDecodeRequired(.itemCount)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetEdgeConfigsResponseItem {
-    public init(createdAt: Double, digest: String, id: String, itemCount: Double, ownerId: String, sizeInBytes: Double, slug: String, updatedAt: Double, createdBy: String? = nil) {
+public extension GetEdgeConfigsResponseItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        digest = try container.sdkDecodeRequired(.digest)
+        id = try container.sdkDecodeRequired(.id)
+        itemCount = try container.sdkDecodeRequired(.itemCount)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        slug = try container.sdkDecodeRequired(.slug)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        createdBy = try container.sdkDecodeIfPresent(.createdBy)
+    }
+}
+
+public extension GetEdgeConfigsResponseItem {
+    init(
+        createdAt: Double,
+        digest: String,
+        id: String,
+        itemCount: Double,
+        ownerId: String,
+        sizeInBytes: Double,
+        slug: String,
+        updatedAt: Double,
+        createdBy: String? = nil
+    ) {
         (self.createdAt, self.digest) = (createdAt, digest)
         (self.id, self.itemCount) = (id, itemCount)
         (self.ownerId, self.sizeInBytes) = (ownerId, sizeInBytes)
@@ -106,21 +128,27 @@ public struct PatchEdgeConfigItemsResponse: Codable {
         case status
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension PatchEdgeConfigItemsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.status) else {
-            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
-        }
-        self.status = try container.sdkDecodeRequired(.status)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension PatchEdgeConfigItemsResponse {
-    public init(status: String) {
+public extension PatchEdgeConfigItemsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.status) else {
+            throw SdkValidationError(
+                field: "status",
+                code: "required",
+                message: "Validation failed for 'status': value is required"
+            )
+        }
+        status = try container.sdkDecodeRequired(.status)
+    }
+}
+
+public extension PatchEdgeConfigItemsResponse {
+    init(status: String) {
         self.status = status
     }
 }
@@ -152,26 +180,38 @@ public struct CreateEdgeConfigResponse: Codable {
         case createdBy
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateEdgeConfigResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.digest = try container.sdkDecodeRequired(.digest)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.itemCount = try container.sdkDecodeRequired(.itemCount)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateEdgeConfigResponse {
-    public init(createdAt: Double, digest: String, id: String, itemCount: Double, ownerId: String, sizeInBytes: Double, slug: String, updatedAt: Double, createdBy: String? = nil) {
+public extension CreateEdgeConfigResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        digest = try container.sdkDecodeRequired(.digest)
+        id = try container.sdkDecodeRequired(.id)
+        itemCount = try container.sdkDecodeRequired(.itemCount)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        slug = try container.sdkDecodeRequired(.slug)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        createdBy = try container.sdkDecodeIfPresent(.createdBy)
+    }
+}
+
+public extension CreateEdgeConfigResponse {
+    init(
+        createdAt: Double,
+        digest: String,
+        id: String,
+        itemCount: Double,
+        ownerId: String,
+        sizeInBytes: Double,
+        slug: String,
+        updatedAt: Double,
+        createdBy: String? = nil
+    ) {
         (self.createdAt, self.digest) = (createdAt, digest)
         (self.id, self.itemCount) = (id, itemCount)
         (self.ownerId, self.sizeInBytes) = (ownerId, sizeInBytes)
@@ -207,26 +247,38 @@ public struct UpdateEdgeConfigResponse: Codable {
         case createdBy
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateEdgeConfigResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.digest = try container.sdkDecodeRequired(.digest)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.itemCount = try container.sdkDecodeRequired(.itemCount)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateEdgeConfigResponse {
-    public init(createdAt: Double, digest: String, id: String, itemCount: Double, ownerId: String, sizeInBytes: Double, slug: String, updatedAt: Double, createdBy: String? = nil) {
+public extension UpdateEdgeConfigResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        digest = try container.sdkDecodeRequired(.digest)
+        id = try container.sdkDecodeRequired(.id)
+        itemCount = try container.sdkDecodeRequired(.itemCount)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        slug = try container.sdkDecodeRequired(.slug)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        createdBy = try container.sdkDecodeIfPresent(.createdBy)
+    }
+}
+
+public extension UpdateEdgeConfigResponse {
+    init(
+        createdAt: Double,
+        digest: String,
+        id: String,
+        itemCount: Double,
+        ownerId: String,
+        sizeInBytes: Double,
+        slug: String,
+        updatedAt: Double,
+        createdBy: String? = nil
+    ) {
         (self.createdAt, self.digest) = (createdAt, digest)
         (self.id, self.itemCount) = (id, itemCount)
         (self.ownerId, self.sizeInBytes) = (ownerId, sizeInBytes)
@@ -244,22 +296,28 @@ public struct GetEdgeConfigBackupsResponsePagination: Codable {
         case next
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetEdgeConfigBackupsResponsePagination {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.hasNext) else {
-            throw SdkValidationError(field: "hasNext", code: "required", message: "Validation failed for 'hasNext': value is required")
-        }
-        self.hasNext = try container.sdkDecodeRequired(.hasNext)
-        self.next = try container.sdkDecodeIfPresent(.next)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetEdgeConfigBackupsResponsePagination {
-    public init(hasNext: Bool, next: String? = nil) {
+public extension GetEdgeConfigBackupsResponsePagination {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.hasNext) else {
+            throw SdkValidationError(
+                field: "hasNext",
+                code: "required",
+                message: "Validation failed for 'hasNext': value is required"
+            )
+        }
+        hasNext = try container.sdkDecodeRequired(.hasNext)
+        next = try container.sdkDecodeIfPresent(.next)
+    }
+}
+
+public extension GetEdgeConfigBackupsResponsePagination {
+    init(hasNext: Bool, next: String? = nil) {
         (self.hasNext, self.next) = (hasNext, next)
     }
 }
@@ -273,25 +331,35 @@ public struct GetEdgeConfigBackupsResponse: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetEdgeConfigBackupsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.backups) else {
-            throw SdkValidationError(field: "backups", code: "required", message: "Validation failed for 'backups': value is required")
-        }
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        self.backups = try container.sdkDecodeRequired(.backups)
-        self.pagination = try container.sdkDecodeRequired(.pagination)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetEdgeConfigBackupsResponse {
-    public init(backups: [GetEdgeConfigBackupsResponseBackupsItem], pagination: GetEdgeConfigBackupsResponsePagination) {
+public extension GetEdgeConfigBackupsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.backups) else {
+            throw SdkValidationError(
+                field: "backups",
+                code: "required",
+                message: "Validation failed for 'backups': value is required"
+            )
+        }
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        backups = try container.sdkDecodeRequired(.backups)
+        pagination = try container.sdkDecodeRequired(.pagination)
+    }
+}
+
+public extension GetEdgeConfigBackupsResponse {
+    init(backups: [GetEdgeConfigBackupsResponseBackupsItem], pagination: GetEdgeConfigBackupsResponsePagination) {
         (self.backups, self.pagination) = (backups, pagination)
     }
 }
@@ -309,33 +377,51 @@ public struct RestoreEdgeConfigBackupResponse: Codable {
         case status
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RestoreEdgeConfigBackupResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.digest) else {
-            throw SdkValidationError(field: "digest", code: "required", message: "Validation failed for 'digest': value is required")
-        }
-        guard container.contains(.previousDigest) else {
-            throw SdkValidationError(field: "previousDigest", code: "required", message: "Validation failed for 'previousDigest': value is required")
-        }
-        guard container.contains(.restoredFrom) else {
-            throw SdkValidationError(field: "restoredFrom", code: "required", message: "Validation failed for 'restoredFrom': value is required")
-        }
-        guard container.contains(.status) else {
-            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
-        }
-        self.digest = try container.sdkDecodeRequired(.digest)
-        self.previousDigest = try container.sdkDecodeRequired(.previousDigest)
-        self.restoredFrom = try container.sdkDecodeRequired(.restoredFrom)
-        self.status = try container.sdkDecodeRequired(.status)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RestoreEdgeConfigBackupResponse {
-    public init(digest: String, previousDigest: String, restoredFrom: String, status: RestoreEdgeConfigBackupResponseStatus) {
+public extension RestoreEdgeConfigBackupResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.digest) else {
+            throw SdkValidationError(
+                field: "digest",
+                code: "required",
+                message: "Validation failed for 'digest': value is required"
+            )
+        }
+        guard container.contains(.previousDigest) else {
+            throw SdkValidationError(
+                field: "previousDigest",
+                code: "required",
+                message: "Validation failed for 'previousDigest': value is required"
+            )
+        }
+        guard container.contains(.restoredFrom) else {
+            throw SdkValidationError(
+                field: "restoredFrom",
+                code: "required",
+                message: "Validation failed for 'restoredFrom': value is required"
+            )
+        }
+        guard container.contains(.status) else {
+            throw SdkValidationError(
+                field: "status",
+                code: "required",
+                message: "Validation failed for 'status': value is required"
+            )
+        }
+        digest = try container.sdkDecodeRequired(.digest)
+        previousDigest = try container.sdkDecodeRequired(.previousDigest)
+        restoredFrom = try container.sdkDecodeRequired(.restoredFrom)
+        status = try container.sdkDecodeRequired(.status)
+    }
+}
+
+public extension RestoreEdgeConfigBackupResponse {
+    init(digest: String, previousDigest: String, restoredFrom: String, status: RestoreEdgeConfigBackupResponseStatus) {
         (self.digest, self.previousDigest) = (digest, previousDigest)
         (self.restoredFrom, self.status) = (restoredFrom, status)
     }
@@ -368,26 +454,38 @@ public struct GetEdgeConfigResponse: Codable {
         case createdBy
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetEdgeConfigResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.digest = try container.sdkDecodeRequired(.digest)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.itemCount = try container.sdkDecodeRequired(.itemCount)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetEdgeConfigResponse {
-    public init(createdAt: Double, digest: String, id: String, itemCount: Double, ownerId: String, sizeInBytes: Double, slug: String, updatedAt: Double, createdBy: String? = nil) {
+public extension GetEdgeConfigResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        digest = try container.sdkDecodeRequired(.digest)
+        id = try container.sdkDecodeRequired(.id)
+        itemCount = try container.sdkDecodeRequired(.itemCount)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        slug = try container.sdkDecodeRequired(.slug)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        createdBy = try container.sdkDecodeIfPresent(.createdBy)
+    }
+}
+
+public extension GetEdgeConfigResponse {
+    init(
+        createdAt: Double,
+        digest: String,
+        id: String,
+        itemCount: Double,
+        ownerId: String,
+        sizeInBytes: Double,
+        slug: String,
+        updatedAt: Double,
+        createdBy: String? = nil
+    ) {
         (self.createdAt, self.digest) = (createdAt, digest)
         (self.id, self.itemCount) = (id, itemCount)
         (self.ownerId, self.sizeInBytes) = (ownerId, sizeInBytes)
@@ -405,25 +503,35 @@ public struct CreateEdgeConfigTokenResponse: Codable {
         case token
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateEdgeConfigTokenResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.token) else {
-            throw SdkValidationError(field: "token", code: "required", message: "Validation failed for 'token': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.token = try container.sdkDecodeRequired(.token)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateEdgeConfigTokenResponse {
-    public init(id: String, token: String) {
+public extension CreateEdgeConfigTokenResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.token) else {
+            throw SdkValidationError(
+                field: "token",
+                code: "required",
+                message: "Validation failed for 'token': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        token = try container.sdkDecodeRequired(.token)
+    }
+}
+
+public extension CreateEdgeConfigTokenResponse {
+    init(id: String, token: String) {
         (self.id, self.token) = (id, token)
     }
 }
@@ -442,22 +550,22 @@ public struct GetEdgeConfigBackupsResponseBackupsItemMetadata: Codable {
     }
 
     init() {
-        (self.itemsBytes, self.itemsCount, self.updatedAt, self.updatedBy) = (nil, nil, nil, nil)
+        (itemsBytes, itemsCount, updatedAt, updatedBy) = (nil, nil, nil, nil)
     }
 }
 
-extension GetEdgeConfigBackupsResponseBackupsItemMetadata {
-    public init(from decoder: Decoder) throws {
+public extension GetEdgeConfigBackupsResponseBackupsItemMetadata {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.itemsBytes = try container.sdkDecodeIfPresent(.itemsBytes)
-        self.itemsCount = try container.sdkDecodeIfPresent(.itemsCount)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        self.updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
+        itemsBytes = try container.sdkDecodeIfPresent(.itemsBytes)
+        itemsCount = try container.sdkDecodeIfPresent(.itemsCount)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
     }
 }
 
-extension GetEdgeConfigBackupsResponseBackupsItemMetadata {
-    public init(itemsBytes: Double? = nil, itemsCount: Double? = nil, updatedAt: String? = nil, updatedBy: String? = nil) {
+public extension GetEdgeConfigBackupsResponseBackupsItemMetadata {
+    init(itemsBytes: Double? = nil, itemsCount: Double? = nil, updatedAt: String? = nil, updatedBy: String? = nil) {
         self.init()
         (self.itemsBytes, self.itemsCount) = (itemsBytes, itemsCount)
         (self.updatedAt, self.updatedBy) = (updatedAt, updatedBy)

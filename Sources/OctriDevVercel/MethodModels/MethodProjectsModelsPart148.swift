@@ -7,512 +7,521 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
-extension GetProjectTraceResponseTraceResourcesItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.attributes) else {
-            throw SdkValidationError(field: "attributes", code: "required", message: "Validation failed for 'attributes': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        self.attributes = try container.sdkDecodeRequired(.attributes)
-        self.name = try container.sdkDecodeRequired(.name)
+/// Canonical projects operation model declarations
+extension GetProjectsResponsePermissions {
+    mutating func sdkSet59(
+        _ teamJoin: [ACLAction]?,
+        _ teamMemberMfaStatus: [ACLAction]?,
+        _ teamMicrofrontends: [ACLAction]?,
+        _ teamOwnMembership: [ACLAction]?
+    ) {
+        self.teamJoin = teamJoin
+        self.teamMemberMfaStatus = teamMemberMfaStatus
+        self.teamMicrofrontends = teamMicrofrontends
+        self.teamOwnMembership = teamOwnMembership
     }
 }
 
-extension GetProjectTraceResponseTraceResourcesItem {
-    public init(attributes: [String: String], name: String) {
-        (self.attributes, self.name) = (attributes, name)
-    }
-}
-
-/// Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated
-/// commit status instead of individual statuses for each deployment.
-public struct DeleteProjectAvatarResponseGitProviderOptionsConsolidatedGitCommitStatus: Codable {
-    /// Whether consolidated commit status is enabled.
-    public var enabled: Bool
-    /// Whether to propagate individual deployment failures to the consolidated status.
-    public var propagateFailures: Bool
-
-    enum CodingKeys: String, CodingKey {
-        case enabled
-        case propagateFailures
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteProjectAvatarResponseGitProviderOptionsConsolidatedGitCommitStatus {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.enabled) else {
-            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
-        }
-        guard container.contains(.propagateFailures) else {
-            throw SdkValidationError(field: "propagateFailures", code: "required", message: "Validation failed for 'propagateFailures': value is required")
-        }
-        self.enabled = try container.sdkDecodeRequired(.enabled)
-        self.propagateFailures = try container.sdkDecodeRequired(.propagateFailures)
-    }
-}
-
-extension DeleteProjectAvatarResponseGitProviderOptionsConsolidatedGitCommitStatus {
-    public init(enabled: Bool, propagateFailures: Bool) {
-        (self.enabled, self.propagateFailures) = (enabled, propagateFailures)
-    }
-}
-
-/// The Vercel Auth setting for the project (historically named \"SSO Protection\")
-public struct CreateProjectRequestBodySsoProtection: Codable {
-    public var deploymentType: CreateProjectRequestBodySsoProtectionDeploymentType
-
-    enum CodingKeys: String, CodingKey {
-        case deploymentType
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateProjectRequestBodySsoProtection {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.deploymentType) else {
-            throw SdkValidationError(field: "deploymentType", code: "required", message: "Validation failed for 'deploymentType': value is required")
-        }
-        self.deploymentType = try container.sdkDecodeRequired(.deploymentType)
-    }
-}
-
-extension CreateProjectRequestBodySsoProtection {
-    public init(deploymentType: CreateProjectRequestBodySsoProtectionDeploymentType) {
-        self.deploymentType = deploymentType
-    }
-}
-
-public struct UpdateMicrofrontendsResponseSpeedInsights: Codable {
-    public var id: String
-    public var canceledAt: Double?
-    /// When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by
-    /// subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on
-    /// their next batch, so it reads "first free data point observed", not necessarily "first ever".
-    public var dataReceivedAt: Double?
-    public var disabledAt: Double?
-    public var enabledAt: Double?
-    public var hasData: Bool?
-    public var paidAt: Double?
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case canceledAt
-        case dataReceivedAt
-        case disabledAt
-        case enabledAt
-        case hasData
-        case paidAt
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateMicrofrontendsResponseSpeedInsights {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.canceledAt = try container.sdkDecodeIfPresent(.canceledAt)
-        self.dataReceivedAt = try container.sdkDecodeIfPresent(.dataReceivedAt)
-        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        self.enabledAt = try container.sdkDecodeIfPresent(.enabledAt)
-        self.hasData = try container.sdkDecodeIfPresent(.hasData)
-        self.paidAt = try container.sdkDecodeIfPresent(.paidAt)
-    }
-}
-
-extension UpdateMicrofrontendsResponseSpeedInsights {
-    public init(id: String, canceledAt: Double? = nil, dataReceivedAt: Double? = nil, disabledAt: Double? = nil, enabledAt: Double? = nil, hasData: Bool? = nil, paidAt: Double? = nil) {
-        (self.id, self.canceledAt) = (id, canceledAt)
-        (self.dataReceivedAt, self.disabledAt) = (dataReceivedAt, disabledAt)
-        (self.enabledAt, self.hasData) = (enabledAt, hasData)
-        self.paidAt = paidAt
-    }
-}
-
-public struct DeleteProjectAvatarResponseSecurityRulesetsValueRateLimit: Codable {
-    public var algo: DeleteProjectAvatarResponseSecurityRulesetsValueRateLimitAlgo
-    public var keys: [String]
-    public var limit: Double
-    public var window: Double
-
-    enum CodingKeys: String, CodingKey {
-        case algo
-        case keys
-        case limit
-        case window
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteProjectAvatarResponseSecurityRulesetsValueRateLimit {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.algo) else {
-            throw SdkValidationError(field: "algo", code: "required", message: "Validation failed for 'algo': value is required")
-        }
-        guard container.contains(.keys) else {
-            throw SdkValidationError(field: "keys", code: "required", message: "Validation failed for 'keys': value is required")
-        }
-        guard container.contains(.limit) else {
-            throw SdkValidationError(field: "limit", code: "required", message: "Validation failed for 'limit': value is required")
-        }
-        guard container.contains(.window) else {
-            throw SdkValidationError(field: "window", code: "required", message: "Validation failed for 'window': value is required")
-        }
-        self.algo = try container.sdkDecodeRequired(.algo)
-        self.keys = try container.sdkDecodeRequired(.keys)
-        self.limit = try container.sdkDecodeRequired(.limit)
-        self.window = try container.sdkDecodeRequired(.window)
-    }
-}
-
-extension DeleteProjectAvatarResponseSecurityRulesetsValueRateLimit {
-    public init(algo: DeleteProjectAvatarResponseSecurityRulesetsValueRateLimitAlgo, keys: [String], limit: Double, window: Double) {
-        (self.algo, self.keys) = (algo, keys)
-        (self.limit, self.window) = (limit, window)
-    }
-}
-
-public struct ListProjectsResponseVariant0ItemSecurityManagedRulesVercelRuleset: Codable {
-    public var active: Bool
-    public var action: ListProjectsResponseVariant0ItemSecurityManagedRulesVercelRulesetAction?
-
-    enum CodingKeys: String, CodingKey {
-        case active
-        case action
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant0ItemSecurityManagedRulesVercelRuleset {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.active) else {
-            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
-        }
-        self.active = try container.sdkDecodeRequired(.active)
-        self.action = try container.sdkDecodeIfPresent(.action)
-    }
-}
-
-extension ListProjectsResponseVariant0ItemSecurityManagedRulesVercelRuleset {
-    public init(active: Bool, action: ListProjectsResponseVariant0ItemSecurityManagedRulesVercelRulesetAction? = nil) {
-        (self.active, self.action) = (active, action)
-    }
-}
-
-public struct GetProjectTokenResponse: Codable {
-    public var token: String
-
-    enum CodingKeys: String, CodingKey {
-        case token
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetProjectTokenResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.token) else {
-            throw SdkValidationError(field: "token", code: "required", message: "Validation failed for 'token': value is required")
-        }
-        self.token = try container.sdkDecodeRequired(.token)
-    }
-}
-
-extension GetProjectTokenResponse {
-    public init(token: String) {
+extension GetProjectsResponsePermissions {
+    mutating func sdkSet60(
+        _ teamOwnMembershipDisconnectSaml: [ACLAction]?,
+        _ teamSudo: [ACLAction]?,
+        _ teamTokenInvalidation: [ACLAction]?,
+        _ token: [ACLAction]?,
+        _ toolbarComment: [ACLAction]?
+    ) {
+        self.teamOwnMembershipDisconnectSaml = teamOwnMembershipDisconnectSaml
+        self.teamSudo = teamSudo
+        self.teamTokenInvalidation = teamTokenInvalidation
         self.token = token
+        self.toolbarComment = toolbarComment
     }
 }
 
-public struct ListProjectsResponseVariant1ProjectsItemResourceConfigBuildQueue: Codable {
-    public var configuration: ListProjectsResponseVariant1ProjectsItemResourceConfigBuildQuXc0de3a822f?
-
-    enum CodingKeys: String, CodingKey {
-        case configuration
-    }
-
-    init() {
-        self.configuration = nil
-    }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemResourceConfigBuildQueue {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.configuration = try container.sdkDecodeIfPresent(.configuration)
+extension GetProjectsResponsePermissions {
+    mutating func sdkSet61(
+        _ trustedIps: [ACLAction]?,
+        _ trustedSources: [ACLAction]?,
+        _ usage: [ACLAction]?,
+        _ usageCycle: [ACLAction]?,
+        _ user: [ACLAction]?
+    ) {
+        self.trustedIps = trustedIps
+        self.trustedSources = trustedSources
+        self.usage = usage
+        self.usageCycle = usageCycle
+        self.user = user
     }
 }
 
-extension ListProjectsResponseVariant1ProjectsItemResourceConfigBuildQueue {
-    public init(configuration: ListProjectsResponseVariant1ProjectsItemResourceConfigBuildQuXc0de3a822f? = nil) {
-        self.init()
-        self.configuration = configuration
+extension GetProjectsResponsePermissions {
+    mutating func sdkSet62(
+        _ userConnection: [ACLAction]?,
+        _ userMfaConfiguration: [ACLAction]?,
+        _ userPreference: [ACLAction]?,
+        _ userSudo: [ACLAction]?,
+        _ v0Chat: [ACLAction]?
+    ) {
+        self.userConnection = userConnection
+        self.userMfaConfiguration = userMfaConfiguration
+        self.userPreference = userPreference
+        self.userSudo = userSudo
+        self.v0Chat = v0Chat
     }
 }
 
-public struct UploadProjectAvatarResponseSecurityManagedRulesVercelRuleset: Codable {
-    public var active: Bool
-    public var action: UploadProjectAvatarResponseSecurityManagedRulesVercelRulesetAction?
-
-    enum CodingKeys: String, CodingKey {
-        case active
-        case action
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UploadProjectAvatarResponseSecurityManagedRulesVercelRuleset {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.active) else {
-            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
-        }
-        self.active = try container.sdkDecodeRequired(.active)
-        self.action = try container.sdkDecodeIfPresent(.action)
+extension GetProjectsResponsePermissions {
+    mutating func sdkSet63(
+        _ vcrRepository: [ACLAction]?,
+        _ vercelAppInstallation: [ACLAction]?,
+        _ vercelAppInstallationRequest: [ACLAction]?,
+        _ vercelAuth: [ACLAction]?,
+        _ vercelRun: [ACLAction]?
+    ) {
+        self.vcrRepository = vcrRepository
+        self.vercelAppInstallation = vercelAppInstallation
+        self.vercelAppInstallationRequest = vercelAppInstallationRequest
+        self.vercelAuth = vercelAuth
+        self.vercelRun = vercelRun
     }
 }
 
-extension UploadProjectAvatarResponseSecurityManagedRulesVercelRuleset {
-    public init(active: Bool, action: UploadProjectAvatarResponseSecurityManagedRulesVercelRulesetAction? = nil) {
-        (self.active, self.action) = (active, action)
-    }
-}
-
-public struct DeleteProjectAvatarResponseFeatures: Codable {
-    public var webAnalytics: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case webAnalytics
-    }
-
-    init() {
-        self.webAnalytics = nil
-    }
-}
-
-extension DeleteProjectAvatarResponseFeatures {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
-    }
-}
-
-extension DeleteProjectAvatarResponseFeatures {
-    public init(webAnalytics: Bool? = nil) {
-        self.init()
+extension GetProjectsResponsePermissions {
+    mutating func sdkSet64(
+        _ vpcPeeringConnection: [ACLAction]?,
+        _ webAnalytics: [ACLAction]?,
+        _ webAnalyticsPlan: [ACLAction]?,
+        _ webAuthn: [ACLAction]?,
+        _ webhook: [ACLAction]?
+    ) {
+        self.vpcPeeringConnection = vpcPeeringConnection
         self.webAnalytics = webAnalytics
+        self.webAnalyticsPlan = webAnalyticsPlan
+        self.webAuthn = webAuthn
+        self.webhook = webhook
     }
 }
 
-public struct UpdateProjectResponseTargetsValueOidcTokenClaims: Codable {
-    public var aud: String
-    public var environment: String
-    public var iss: String
-    public var owner: String
-    public var ownerId: String
-    public var project: String
-    public var projectId: String
-    public var scope: String
-    public var sub: String
-    public var customEnvironmentId: String?
-    public var deploymentId: String?
-    public var mfeGroupIds: [String]?
-    public var plan: String?
-
-    enum CodingKeys: String, CodingKey {
-        case aud
-        case environment
-        case iss
-        case owner
-        case ownerId = "owner_id"
-        case project
-        case projectId = "project_id"
-        case scope
-        case sub
-        case customEnvironmentId = "custom_environment_id"
-        case deploymentId = "deployment_id"
-        case mfeGroupIds = "mfe_group_ids"
-        case plan
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateProjectResponseTargetsValueOidcTokenClaims {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.aud = try container.sdkDecodeRequired(.aud)
-        self.environment = try container.sdkDecodeRequired(.environment)
-        self.iss = try container.sdkDecodeRequired(.iss)
-        self.owner = try container.sdkDecodeRequired(.owner)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.project = try container.sdkDecodeRequired(.project)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.scope = try container.sdkDecodeRequired(.scope)
-        self.sub = try container.sdkDecodeRequired(.sub)
-        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        self.deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
-        self.mfeGroupIds = try container.sdkDecodeIfPresent(.mfeGroupIds)
-        self.plan = try container.sdkDecodeIfPresent(.plan)
+extension GetProjectsResponsePermissions {
+    mutating func sdkSet65(_ webhookEvent: [ACLAction]?, _ workflowRunData: [ACLAction]?) {
+        self.webhookEvent = webhookEvent
+        self.workflowRunData = workflowRunData
     }
 }
 
-extension UpdateProjectResponseTargetsValueOidcTokenClaims {
-    public init(aud: String, environment: String, iss: String, owner: String, ownerId: String, project: String, projectId: String, scope: String, sub: String, customEnvironmentId: String? = nil, deploymentId: String? = nil, mfeGroupIds: [String]? = nil, plan: String? = nil) {
-        (self.aud, self.environment) = (aud, environment)
-        (self.iss, self.owner) = (iss, owner)
-        (self.ownerId, self.project) = (ownerId, project)
-        (self.projectId, self.scope) = (projectId, scope)
-        (self.sub, self.customEnvironmentId) = (sub, customEnvironmentId)
-        (self.deploymentId, self.mfeGroupIds) = (deploymentId, mfeGroupIds)
-        self.plan = plan
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        accessGroup = try container.sdkDecodeIfPresent(.accessGroup)
+        agent = try container.sdkDecodeIfPresent(.agent)
+        aiGatewayApiKey = try container.sdkDecodeIfPresent(.aiGatewayApiKey)
+        aiGatewayApiKeyBypassAll = try container.sdkDecodeIfPresent(.aiGatewayApiKeyBypassAll)
+        aiGatewayApiKeyOwnedBySelf = try container.sdkDecodeIfPresent(.aiGatewayApiKeyOwnedBySelf)
+        aiGatewayApiKeySpendAttribution = try container.sdkDecodeIfPresent(.aiGatewayApiKeySpendAttribution)
+        aiGatewayApiKeyZdrExemption = try container.sdkDecodeIfPresent(.aiGatewayApiKeyZdrExemption)
+        aiGatewayBudget = try container.sdkDecodeIfPresent(.aiGatewayBudget)
+        aiGatewayCredits = try container.sdkDecodeIfPresent(.aiGatewayCredits)
+        aiGatewayGuardrails = try container.sdkDecodeIfPresent(.aiGatewayGuardrails)
+        aiGatewayPrivateModels = try container.sdkDecodeIfPresent(.aiGatewayPrivateModels)
+        aiGatewayRules = try container.sdkDecodeIfPresent(.aiGatewayRules)
     }
 }
 
-/// The source envs on the trusted project that are allowed to access `to`.
-public struct ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX7658df9a68: Codable {
-    /// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced
-    /// project.
-    public var slugs: [String]
-    public var preset: ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectXc579d0d850?
-
-    enum CodingKeys: String, CodingKey {
-        case slugs
-        case preset
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX7658df9a68 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.slugs) else {
-            throw SdkValidationError(field: "slugs", code: "required", message: "Validation failed for 'slugs': value is required")
-        }
-        self.slugs = try container.sdkDecodeRequired(.slugs)
-        self.preset = try container.sdkDecodeIfPresent(.preset)
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        aiGatewaySettings = try container.sdkDecodeIfPresent(.aiGatewaySettings)
+        aiGatewayTranscripts = try container.sdkDecodeIfPresent(.aiGatewayTranscripts)
+        aiGatewayTranscriptsSettings = try container.sdkDecodeIfPresent(.aiGatewayTranscriptsSettings)
+        aiGatewayUsage = try container.sdkDecodeIfPresent(.aiGatewayUsage)
+        aiGatewayVirtualModelConfigs = try container.sdkDecodeIfPresent(.aiGatewayVirtualModelConfigs)
+        alertRules = try container.sdkDecodeIfPresent(.alertRules)
+        alerts = try container.sdkDecodeIfPresent(.alerts)
+        aliasGlobal = try container.sdkDecodeIfPresent(.aliasGlobal)
+        aliasProject = try container.sdkDecodeIfPresent(.aliasProject)
+        aliasProtectionBypass = try container.sdkDecodeIfPresent(.aliasProtectionBypass)
+        analytics = try container.sdkDecodeIfPresent(.analytics)
+        analyticsSampling = try container.sdkDecodeIfPresent(.analyticsSampling)
     }
 }
 
-extension ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX7658df9a68 {
-    public init(slugs: [String], preset: ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectXc579d0d850? = nil) {
-        (self.slugs, self.preset) = (slugs, preset)
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        analyticsUsage = try container.sdkDecodeIfPresent(.analyticsUsage)
+        apiKey = try container.sdkDecodeIfPresent(.apiKey)
+        apiKeyAiGateway = try container.sdkDecodeIfPresent(.apiKeyAiGateway)
+        apiKeyOwnedBySelf = try container.sdkDecodeIfPresent(.apiKeyOwnedBySelf)
+        auditLog = try container.sdkDecodeIfPresent(.auditLog)
+        automation = try container.sdkDecodeIfPresent(.automation)
+        billingAddress = try container.sdkDecodeIfPresent(.billingAddress)
+        billingInformation = try container.sdkDecodeIfPresent(.billingInformation)
+        billingInvoice = try container.sdkDecodeIfPresent(.billingInvoice)
+        billingInvoiceEmailRecipient = try container.sdkDecodeIfPresent(.billingInvoiceEmailRecipient)
+        billingInvoiceLanguage = try container.sdkDecodeIfPresent(.billingInvoiceLanguage)
+        billingPlan = try container.sdkDecodeIfPresent(.billingPlan)
     }
 }
 
-public struct ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX97d899153e: Codable {
-    public var type: ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX6b941cf7f1
-    public var key: String?
-    public var value: ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX2f7cb3ac08?
-
-    enum CodingKeys: String, CodingKey {
-        case type
-        case key
-        case value
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX97d899153e {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.key = try container.sdkDecodeIfPresent(.key)
-        self.value = try container.sdkDecodeIfPresent(.value)
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart4(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        billingPurchaseOrder = try container.sdkDecodeIfPresent(.billingPurchaseOrder)
+        billingRefund = try container.sdkDecodeIfPresent(.billingRefund)
+        billingTaxId = try container.sdkDecodeIfPresent(.billingTaxId)
+        blob = try container.sdkDecodeIfPresent(.blob)
+        blobStoreTokenSet = try container.sdkDecodeIfPresent(.blobStoreTokenSet)
+        budget = try container.sdkDecodeIfPresent(.budget)
+        buildMachine = try container.sdkDecodeIfPresent(.buildMachine)
+        buildMachineDefault = try container.sdkDecodeIfPresent(.buildMachineDefault)
+        bulkRedirects = try container.sdkDecodeIfPresent(.bulkRedirects)
+        cacheArtifact = try container.sdkDecodeIfPresent(.cacheArtifact)
+        cacheArtifactUsageEvent = try container.sdkDecodeIfPresent(.cacheArtifactUsageEvent)
+        ciInvocations = try container.sdkDecodeIfPresent(.ciInvocations)
     }
 }
 
-extension ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX97d899153e {
-    public init(type: ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX6b941cf7f1, key: String? = nil, value: ListProjectsResponseVariant1ProjectsItemSecurityFirewallRouteX2f7cb3ac08? = nil) {
-        (self.type, self.key) = (type, key)
-        self.value = value
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart5(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        ciLogs = try container.sdkDecodeIfPresent(.ciLogs)
+        codeChecks = try container.sdkDecodeIfPresent(.codeChecks)
+        codeOwners = try container.sdkDecodeIfPresent(.codeOwners)
+        concurrentBuilds = try container.sdkDecodeIfPresent(.concurrentBuilds)
+        connect = try container.sdkDecodeIfPresent(.connect)
+        connectConfiguration = try container.sdkDecodeIfPresent(.connectConfiguration)
+        connectConfigurationLink = try container.sdkDecodeIfPresent(.connectConfigurationLink)
+        connectLogs = try container.sdkDecodeIfPresent(.connectLogs)
+        connexClient = try container.sdkDecodeIfPresent(.connexClient)
+        connexClientProject = try container.sdkDecodeIfPresent(.connexClientProject)
+        connexContact = try container.sdkDecodeIfPresent(.connexContact)
+        connexInstallation = try container.sdkDecodeIfPresent(.connexInstallation)
     }
 }
 
-public struct UpdateMicrofrontendsResponseOidcTokenConfig: Codable {
-    /// Whether or not to generate OpenID Connect JSON Web Tokens.
-    public var enabled: Bool?
-    /// - team: `oidc.vercel.com - global: `oidc.vercel.com`
-    public var issuerMode: UpdateMicrofrontendsResponseOidcTokenConfigIssuerMode?
-
-    enum CodingKeys: String, CodingKey {
-        case enabled
-        case issuerMode
-    }
-
-    init() {
-        (self.enabled, self.issuerMode) = (nil, nil)
-    }
-}
-
-extension UpdateMicrofrontendsResponseOidcTokenConfig {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.enabled = try container.sdkDecodeIfPresent(.enabled)
-        self.issuerMode = try container.sdkDecodeIfPresent(.issuerMode)
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart6(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        connexToken = try container.sdkDecodeIfPresent(.connexToken)
+        cursorOriginInstallation = try container.sdkDecodeIfPresent(.cursorOriginInstallation)
+        dataCacheBillingSettings = try container.sdkDecodeIfPresent(.dataCacheBillingSettings)
+        dataCacheNamespace = try container.sdkDecodeIfPresent(.dataCacheNamespace)
+        defaultDeploymentProtection = try container.sdkDecodeIfPresent(.defaultDeploymentProtection)
+        deployment = try container.sdkDecodeIfPresent(.deployment)
+        deploymentBuildLogs = try container.sdkDecodeIfPresent(.deploymentBuildLogs)
+        deploymentCheck = try container.sdkDecodeIfPresent(.deploymentCheck)
+        deploymentCheckPreview = try container.sdkDecodeIfPresent(.deploymentCheckPreview)
+        deploymentCheckReRunFromProductionBranch = try container
+            .sdkDecodeIfPresent(.deploymentCheckReRunFromProductionBranch)
+        deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
+        deploymentPreview = try container.sdkDecodeIfPresent(.deploymentPreview)
     }
 }
 
-extension UpdateMicrofrontendsResponseOidcTokenConfig {
-    public init(enabled: Bool? = nil, issuerMode: UpdateMicrofrontendsResponseOidcTokenConfigIssuerMode? = nil) {
-        self.init()
-        (self.enabled, self.issuerMode) = (enabled, issuerMode)
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart7(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        deploymentPrivate = try container.sdkDecodeIfPresent(.deploymentPrivate)
+        deploymentProductionGit = try container.sdkDecodeIfPresent(.deploymentProductionGit)
+        deploymentPromote = try container.sdkDecodeIfPresent(.deploymentPromote)
+        deploymentProtectionException = try container.sdkDecodeIfPresent(.deploymentProtectionException)
+        deploymentRollback = try container.sdkDecodeIfPresent(.deploymentRollback)
+        deploymentV0 = try container.sdkDecodeIfPresent(.deploymentV0)
+        domain = try container.sdkDecodeIfPresent(.domain)
+        domainAcceptDelegation = try container.sdkDecodeIfPresent(.domainAcceptDelegation)
+        domainAuthCodes = try container.sdkDecodeIfPresent(.domainAuthCodes)
+        domainCertificate = try container.sdkDecodeIfPresent(.domainCertificate)
+        domainCheckConfig = try container.sdkDecodeIfPresent(.domainCheckConfig)
+        domainMove = try container.sdkDecodeIfPresent(.domainMove)
     }
 }
 
-public struct UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcher: Codable {
-    /// The pattern to match against branch names
-    public var pattern: String
-    /// The type of matching to perform
-    public var type: UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcherType
-
-    enum CodingKeys: String, CodingKey {
-        case pattern
-        case type
-    }
-
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcher {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pattern) else {
-            throw SdkValidationError(field: "pattern", code: "required", message: "Validation failed for 'pattern': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.pattern = try container.sdkDecodeRequired(.pattern)
-        self.type = try container.sdkDecodeRequired(.type)
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart8(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        domainPurchase = try container.sdkDecodeIfPresent(.domainPurchase)
+        domainRecord = try container.sdkDecodeIfPresent(.domainRecord)
+        domainTransferIn = try container.sdkDecodeIfPresent(.domainTransferIn)
+        drain = try container.sdkDecodeIfPresent(.drain)
+        edgeCacheNamespace = try container.sdkDecodeIfPresent(.edgeCacheNamespace)
+        edgeConfig = try container.sdkDecodeIfPresent(.edgeConfig)
+        edgeConfigItem = try container.sdkDecodeIfPresent(.edgeConfigItem)
+        edgeConfigSchema = try container.sdkDecodeIfPresent(.edgeConfigSchema)
+        edgeConfigToken = try container.sdkDecodeIfPresent(.edgeConfigToken)
+        endpointVerification = try container.sdkDecodeIfPresent(.endpointVerification)
+        environments = try container.sdkDecodeIfPresent(.environments)
+        event = try container.sdkDecodeIfPresent(.event)
     }
 }
 
-extension UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcher {
-    public init(pattern: String, type: UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcherType) {
-        (self.pattern, self.type) = (pattern, type)
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart9(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        fileUpload = try container.sdkDecodeIfPresent(.fileUpload)
+        flagsExplorerSubscription = try container.sdkDecodeIfPresent(.flagsExplorerSubscription)
+        gitCredentialGrant = try container.sdkDecodeIfPresent(.gitCredentialGrant)
+        gitRepository = try container.sdkDecodeIfPresent(.gitRepository)
+        imageOptimizationNewPrice = try container.sdkDecodeIfPresent(.imageOptimizationNewPrice)
+        integration = try container.sdkDecodeIfPresent(.integration)
+        integrationAccount = try container.sdkDecodeIfPresent(.integrationAccount)
+        integrationConfiguration = try container.sdkDecodeIfPresent(.integrationConfiguration)
+        integrationConfigurationProjects = try container.sdkDecodeIfPresent(.integrationConfigurationProjects)
+        integrationConfigurationRole = try container.sdkDecodeIfPresent(.integrationConfigurationRole)
+        integrationConfigurationTransfer = try container.sdkDecodeIfPresent(.integrationConfigurationTransfer)
+        integrationDeploymentAction = try container.sdkDecodeIfPresent(.integrationDeploymentAction)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart10(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        integrationEvent = try container.sdkDecodeIfPresent(.integrationEvent)
+        integrationLog = try container.sdkDecodeIfPresent(.integrationLog)
+        integrationPullRequest = try container.sdkDecodeIfPresent(.integrationPullRequest)
+        integrationResource = try container.sdkDecodeIfPresent(.integrationResource)
+        integrationResourceData = try container.sdkDecodeIfPresent(.integrationResourceData)
+        integrationResourceReplCommand = try container.sdkDecodeIfPresent(.integrationResourceReplCommand)
+        integrationResourceSecrets = try container.sdkDecodeIfPresent(.integrationResourceSecrets)
+        integrationSsoSession = try container.sdkDecodeIfPresent(.integrationSsoSession)
+        integrationStoreTokenSet = try container.sdkDecodeIfPresent(.integrationStoreTokenSet)
+        integrationStrict = try container.sdkDecodeIfPresent(.integrationStrict)
+        integrationVercelConfigurationOverride = try container
+            .sdkDecodeIfPresent(.integrationVercelConfigurationOverride)
+        ipBlocking = try container.sdkDecodeIfPresent(.ipBlocking)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart11(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        job = try container.sdkDecodeIfPresent(.job)
+        jobGlobal = try container.sdkDecodeIfPresent(.jobGlobal)
+        kmsIssuer = try container.sdkDecodeIfPresent(.kmsIssuer)
+        kmsProjectGrant = try container.sdkDecodeIfPresent(.kmsProjectGrant)
+        logDrain = try container.sdkDecodeIfPresent(.logDrain)
+        logs = try container.sdkDecodeIfPresent(.logs)
+        logsPreset = try container.sdkDecodeIfPresent(.logsPreset)
+        marketplaceBillingData = try container.sdkDecodeIfPresent(.marketplaceBillingData)
+        marketplaceExperimentationEdgeConfigData = try container
+            .sdkDecodeIfPresent(.marketplaceExperimentationEdgeConfigData)
+        marketplaceExperimentationItem = try container.sdkDecodeIfPresent(.marketplaceExperimentationItem)
+        marketplaceFlexCommit = try container.sdkDecodeIfPresent(.marketplaceFlexCommit)
+        marketplaceInstallationMember = try container.sdkDecodeIfPresent(.marketplaceInstallationMember)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart12(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        marketplaceInvoice = try container.sdkDecodeIfPresent(.marketplaceInvoice)
+        marketplaceSettings = try container.sdkDecodeIfPresent(.marketplaceSettings)
+        messageboard = try container.sdkDecodeIfPresent(.messageboard)
+        messageboardSpace = try container.sdkDecodeIfPresent(.messageboardSpace)
+        messageboardTask = try container.sdkDecodeIfPresent(.messageboardTask)
+        monitoring = try container.sdkDecodeIfPresent(.monitoring)
+        monitoringAlert = try container.sdkDecodeIfPresent(.monitoringAlert)
+        monitoringChart = try container.sdkDecodeIfPresent(.monitoringChart)
+        monitoringQuery = try container.sdkDecodeIfPresent(.monitoringQuery)
+        monitoringSettings = try container.sdkDecodeIfPresent(.monitoringSettings)
+        notificationCustomerBudget = try container.sdkDecodeIfPresent(.notificationCustomerBudget)
+        notificationDeploymentFailed = try container.sdkDecodeIfPresent(.notificationDeploymentFailed)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart13(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        notificationDomainConfiguration = try container.sdkDecodeIfPresent(.notificationDomainConfiguration)
+        notificationDomainExpire = try container.sdkDecodeIfPresent(.notificationDomainExpire)
+        notificationDomainMoved = try container.sdkDecodeIfPresent(.notificationDomainMoved)
+        notificationDomainPurchase = try container.sdkDecodeIfPresent(.notificationDomainPurchase)
+        notificationDomainRenewal = try container.sdkDecodeIfPresent(.notificationDomainRenewal)
+        notificationDomainTransfer = try container.sdkDecodeIfPresent(.notificationDomainTransfer)
+        notificationDomainUnverified = try container.sdkDecodeIfPresent(.notificationDomainUnverified)
+        notificationMonitoringAlert = try container.sdkDecodeIfPresent(.notificationMonitoringAlert)
+        notificationPaymentFailed = try container.sdkDecodeIfPresent(.notificationPaymentFailed)
+        notificationPreferences = try container.sdkDecodeIfPresent(.notificationPreferences)
+        notificationStatementOfReasons = try container.sdkDecodeIfPresent(.notificationStatementOfReasons)
+        notificationUsageAlert = try container.sdkDecodeIfPresent(.notificationUsageAlert)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart14(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        oauth2Application = try container.sdkDecodeIfPresent(.oauth2Application)
+        oauth2Connection = try container.sdkDecodeIfPresent(.oauth2Connection)
+        observabilityConfiguration = try container.sdkDecodeIfPresent(.observabilityConfiguration)
+        observabilityData = try container.sdkDecodeIfPresent(.observabilityData)
+        observabilityFunnel = try container.sdkDecodeIfPresent(.observabilityFunnel)
+        observabilityNotebook = try container.sdkDecodeIfPresent(.observabilityNotebook)
+        oidcFederationPolicy = try container.sdkDecodeIfPresent(.oidcFederationPolicy)
+        onDemandBuild = try container.sdkDecodeIfPresent(.onDemandBuild)
+        onDemandConcurrency = try container.sdkDecodeIfPresent(.onDemandConcurrency)
+        openTelemetryEndpoint = try container.sdkDecodeIfPresent(.openTelemetryEndpoint)
+        optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
+        organization = try container.sdkDecodeIfPresent(.organization)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart15(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        organizationDomain = try container.sdkDecodeIfPresent(.organizationDomain)
+        organizationTeam = try container.sdkDecodeIfPresent(.organizationTeam)
+        ownEvent = try container.sdkDecodeIfPresent(.ownEvent)
+        pageIntegrity = try container.sdkDecodeIfPresent(.pageIntegrity)
+        passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
+        passwordProtectionInvoiceItem = try container.sdkDecodeIfPresent(.passwordProtectionInvoiceItem)
+        paymentMethod = try container.sdkDecodeIfPresent(.paymentMethod)
+        permissions = try container.sdkDecodeIfPresent(.permissions)
+        postgres = try container.sdkDecodeIfPresent(.postgres)
+        postgresStoreTokenSet = try container.sdkDecodeIfPresent(.postgresStoreTokenSet)
+        previewDeploymentSuffix = try container.sdkDecodeIfPresent(.previewDeploymentSuffix)
+        privateCloudAccount = try container.sdkDecodeIfPresent(.privateCloudAccount)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart16(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        privateLinkEndpoint = try container.sdkDecodeIfPresent(.privateLinkEndpoint)
+        productionAliasProtectionBypass = try container.sdkDecodeIfPresent(.productionAliasProtectionBypass)
+        productionShareableLink = try container.sdkDecodeIfPresent(.productionShareableLink)
+        project = try container.sdkDecodeIfPresent(.project)
+        projectAccessGroup = try container.sdkDecodeIfPresent(.projectAccessGroup)
+        projectAnalyticsSampling = try container.sdkDecodeIfPresent(.projectAnalyticsSampling)
+        projectAnalyticsUsage = try container.sdkDecodeIfPresent(.projectAnalyticsUsage)
+        projectCheck = try container.sdkDecodeIfPresent(.projectCheck)
+        projectCheckRun = try container.sdkDecodeIfPresent(.projectCheckRun)
+        projectDeploymentExpiration = try container.sdkDecodeIfPresent(.projectDeploymentExpiration)
+        projectDeploymentHook = try container.sdkDecodeIfPresent(.projectDeploymentHook)
+        projectDeploymentProtectionStrict = try container.sdkDecodeIfPresent(.projectDeploymentProtectionStrict)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart17(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        projectDomain = try container.sdkDecodeIfPresent(.projectDomain)
+        projectDomainCheckConfig = try container.sdkDecodeIfPresent(.projectDomainCheckConfig)
+        projectDomainMove = try container.sdkDecodeIfPresent(.projectDomainMove)
+        projectDomainVerify = try container.sdkDecodeIfPresent(.projectDomainVerify)
+        projectEnvVars = try container.sdkDecodeIfPresent(.projectEnvVars)
+        projectEnvVarsProduction = try container.sdkDecodeIfPresent(.projectEnvVarsProduction)
+        projectEnvVarsUnownedByIntegration = try container.sdkDecodeIfPresent(.projectEnvVarsUnownedByIntegration)
+        projectEvent = try container.sdkDecodeIfPresent(.projectEvent)
+        projectFlags = try container.sdkDecodeIfPresent(.projectFlags)
+        projectFlagsProduction = try container.sdkDecodeIfPresent(.projectFlagsProduction)
+        projectFlagsSdkKey = try container.sdkDecodeIfPresent(.projectFlagsSdkKey)
+        projectFromV0 = try container.sdkDecodeIfPresent(.projectFromV0)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart18(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        projectId = try container.sdkDecodeIfPresent(.projectId)
+        projectIntegrationConfiguration = try container.sdkDecodeIfPresent(.projectIntegrationConfiguration)
+        projectLink = try container.sdkDecodeIfPresent(.projectLink)
+        projectMember = try container.sdkDecodeIfPresent(.projectMember)
+        projectMonitoring = try container.sdkDecodeIfPresent(.projectMonitoring)
+        projectOidcToken = try container.sdkDecodeIfPresent(.projectOidcToken)
+        projectPermissions = try container.sdkDecodeIfPresent(.projectPermissions)
+        projectProductionBranch = try container.sdkDecodeIfPresent(.projectProductionBranch)
+        projectProtectionBypass = try container.sdkDecodeIfPresent(.projectProtectionBypass)
+        projectRollingRelease = try container.sdkDecodeIfPresent(.projectRollingRelease)
+        projectRoutes = try container.sdkDecodeIfPresent(.projectRoutes)
+        projectSetting = try container.sdkDecodeIfPresent(.projectSetting)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart19(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        projectSupportCase = try container.sdkDecodeIfPresent(.projectSupportCase)
+        projectSupportCaseComment = try container.sdkDecodeIfPresent(.projectSupportCaseComment)
+        projectTier = try container.sdkDecodeIfPresent(.projectTier)
+        projectTransfer = try container.sdkDecodeIfPresent(.projectTransfer)
+        projectTransferIn = try container.sdkDecodeIfPresent(.projectTransferIn)
+        projectTransferOut = try container.sdkDecodeIfPresent(.projectTransferOut)
+        projectTransferRequest = try container.sdkDecodeIfPresent(.projectTransferRequest)
+        projectUsage = try container.sdkDecodeIfPresent(.projectUsage)
+        proTrialOnboarding = try container.sdkDecodeIfPresent(.proTrialOnboarding)
+        rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
+        redis = try container.sdkDecodeIfPresent(.redis)
+        redisStoreTokenSet = try container.sdkDecodeIfPresent(.redisStoreTokenSet)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart20(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        remoteCaching = try container.sdkDecodeIfPresent(.remoteCaching)
+        repository = try container.sdkDecodeIfPresent(.repository)
+        samlConfig = try container.sdkDecodeIfPresent(.samlConfig)
+        schedule = try container.sdkDecodeIfPresent(.schedule)
+        seawallConfig = try container.sdkDecodeIfPresent(.seawallConfig)
+        secret = try container.sdkDecodeIfPresent(.secret)
+        securityConfig = try container.sdkDecodeIfPresent(.securityConfig)
+        securityPlusConfiguration = try container.sdkDecodeIfPresent(.securityPlusConfiguration)
+        sensitiveEnvironmentVariablePolicy = try container.sdkDecodeIfPresent(.sensitiveEnvironmentVariablePolicy)
+        setting = try container.sdkDecodeIfPresent(.setting)
+        shareableLink = try container.sdkDecodeIfPresent(.shareableLink)
+        shareableLinkStrict = try container.sdkDecodeIfPresent(.shareableLinkStrict)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart21(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        sharedEnvVarConnection = try container.sdkDecodeIfPresent(.sharedEnvVarConnection)
+        sharedEnvVars = try container.sdkDecodeIfPresent(.sharedEnvVars)
+        sharedEnvVarsProduction = try container.sdkDecodeIfPresent(.sharedEnvVarsProduction)
+        skewProtection = try container.sdkDecodeIfPresent(.skewProtection)
+        space = try container.sdkDecodeIfPresent(.space)
+        spaceRun = try container.sdkDecodeIfPresent(.spaceRun)
+        storeIsLocked = try container.sdkDecodeIfPresent(.storeIsLocked)
+        storeTokenSetSensitive = try container.sdkDecodeIfPresent(.storeTokenSetSensitive)
+        storeTransfer = try container.sdkDecodeIfPresent(.storeTransfer)
+        supportCase = try container.sdkDecodeIfPresent(.supportCase)
+        supportCaseComment = try container.sdkDecodeIfPresent(.supportCaseComment)
+        team = try container.sdkDecodeIfPresent(.team)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart22(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        teamAccessRequest = try container.sdkDecodeIfPresent(.teamAccessRequest)
+        teamFellowMembership = try container.sdkDecodeIfPresent(.teamFellowMembership)
+        teamGitExclusivity = try container.sdkDecodeIfPresent(.teamGitExclusivity)
+        teamInvite = try container.sdkDecodeIfPresent(.teamInvite)
+        teamInviteCode = try container.sdkDecodeIfPresent(.teamInviteCode)
+        teamInviteLink = try container.sdkDecodeIfPresent(.teamInviteLink)
+        teamJoin = try container.sdkDecodeIfPresent(.teamJoin)
+        teamMemberMfaStatus = try container.sdkDecodeIfPresent(.teamMemberMfaStatus)
+        teamMicrofrontends = try container.sdkDecodeIfPresent(.teamMicrofrontends)
+        teamOwnMembership = try container.sdkDecodeIfPresent(.teamOwnMembership)
+        teamOwnMembershipDisconnectSaml = try container.sdkDecodeIfPresent(.teamOwnMembershipDisconnectSaml)
+        teamSudo = try container.sdkDecodeIfPresent(.teamSudo)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart23(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        teamTokenInvalidation = try container.sdkDecodeIfPresent(.teamTokenInvalidation)
+        token = try container.sdkDecodeIfPresent(.token)
+        toolbarComment = try container.sdkDecodeIfPresent(.toolbarComment)
+        trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
+        trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
+        usage = try container.sdkDecodeIfPresent(.usage)
+        usageCycle = try container.sdkDecodeIfPresent(.usageCycle)
+        user = try container.sdkDecodeIfPresent(.user)
+        userConnection = try container.sdkDecodeIfPresent(.userConnection)
+        userMfaConfiguration = try container.sdkDecodeIfPresent(.userMfaConfiguration)
+        userPreference = try container.sdkDecodeIfPresent(.userPreference)
+        userSudo = try container.sdkDecodeIfPresent(.userSudo)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart24(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        v0Chat = try container.sdkDecodeIfPresent(.v0Chat)
+        vcrRepository = try container.sdkDecodeIfPresent(.vcrRepository)
+        vercelAppInstallation = try container.sdkDecodeIfPresent(.vercelAppInstallation)
+        vercelAppInstallationRequest = try container.sdkDecodeIfPresent(.vercelAppInstallationRequest)
+        vercelAuth = try container.sdkDecodeIfPresent(.vercelAuth)
+        vercelRun = try container.sdkDecodeIfPresent(.vercelRun)
+        vpcPeeringConnection = try container.sdkDecodeIfPresent(.vpcPeeringConnection)
+        webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
+        webAnalyticsPlan = try container.sdkDecodeIfPresent(.webAnalyticsPlan)
+        webAuthn = try container.sdkDecodeIfPresent(.webAuthn)
+        webhook = try container.sdkDecodeIfPresent(.webhook)
+        webhookEvent = try container.sdkDecodeIfPresent(.webhookEvent)
+    }
+}
+
+extension GetProjectsResponsePermissions {
+    mutating func sdkDecodeFieldsPart25(_ container: KeyedDecodingContainer<CodingKeys>) throws {
+        workflowRunData = try container.sdkDecodeIfPresent(.workflowRunData)
     }
 }

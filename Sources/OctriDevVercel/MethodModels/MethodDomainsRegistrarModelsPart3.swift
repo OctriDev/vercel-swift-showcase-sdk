@@ -7,24 +7,34 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical domainsRegistrar operation model declarations
+/// Canonical domainsRegistrar operation model declarations
 extension GetDomainPriceResponseTransferPrice: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDomainPriceResponseTransferPrice")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetDomainPriceResponseTransferPrice"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetDomainPriceResponseTransferPrice {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -55,18 +65,26 @@ public indirect enum GetDomainContactVerificationResponseXeac2c10f {
 }
 
 extension GetDomainContactVerificationResponseXeac2c10f: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDomainContactVerificationResponseXeac2c10f")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetDomainContactVerificationResponseXeac2c10f"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -87,9 +105,15 @@ extension GetDomainContactVerificationResponseXeac2c10f {
 
 extension GetDomainContactVerificationResponseXeac2c10f {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(BoughtTooRecently.self) { return .boughtTooRecently(value) }
-        if let value = try? container.decode(DomainNotRegistered.self) { return .domainNotRegistered(value) }
-        if let value = try? container.decode(HttpApiDecodeError.self) { return .httpApiDecodeError(value) }
+        if let value = try? container.decode(BoughtTooRecently.self) {
+            return .boughtTooRecently(value)
+        }
+        if let value = try? container.decode(DomainNotRegistered.self) {
+            return .domainNotRegistered(value)
+        }
+        if let value = try? container.decode(HttpApiDecodeError.self) {
+            return .httpApiDecodeError(value)
+        }
         return nil
     }
 }
@@ -119,19 +143,29 @@ public indirect enum BuySingleDomainResponseXbae52f21 {
 }
 
 extension BuySingleDomainResponseXbae52f21: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless2(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for BuySingleDomainResponseXbae52f21")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for BuySingleDomainResponseXbae52f21"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -179,16 +213,38 @@ extension BuySingleDomainResponseXbae52f21 {
 
 extension BuySingleDomainResponseXbae52f21 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(DomainTooShort.self) { return .domainTooShort(value) }
-        if let value = try? container.decode(OrderTooExpensive.self) { return .orderTooExpensive(value) }
-        if let value = try? container.decode(InvalidAdditionalContactInfo.self) { return .invalidAdditionalContactInfo(value) }
-        if let value = try? container.decode(AdditionalContactInfoRequired.self) { return .additionalContactInfoRequired(value) }
-        if let value = try? container.decode(ExpectedPriceMismatch.self) { return .expectedPriceMismatch(value) }
-        if let value = try? container.decode(DomainNotAvailable.self) { return .domainNotAvailable(value) }
-        if let value = try? container.decode(EmojiTldNotSupported.self) { return .emojiTldNotSupported(value) }
-        if let value = try? container.decode(LanguageCodeRequired.self) { return .languageCodeRequired(value) }
-        if let value = try? container.decode(TldNotSupported.self) { return .tldNotSupported(value) }
-        if let value = try? container.decode(HttpApiDecodeError.self) { return .httpApiDecodeError(value) }
+        if let value = try? container.decode(DomainTooShort.self) {
+            return .domainTooShort(value)
+        }
+        if let value = try? container.decode(OrderTooExpensive.self) {
+            return .orderTooExpensive(value)
+        }
+        if let value = try? container
+            .decode(InvalidAdditionalContactInfo.self) {
+            return .invalidAdditionalContactInfo(value)
+        }
+        if let value = try? container
+            .decode(AdditionalContactInfoRequired.self) {
+            return .additionalContactInfoRequired(value)
+        }
+        if let value = try? container.decode(ExpectedPriceMismatch.self) {
+            return .expectedPriceMismatch(value)
+        }
+        if let value = try? container.decode(DomainNotAvailable.self) {
+            return .domainNotAvailable(value)
+        }
+        if let value = try? container.decode(EmojiTldNotSupported.self) {
+            return .emojiTldNotSupported(value)
+        }
+        if let value = try? container.decode(LanguageCodeRequired.self) {
+            return .languageCodeRequired(value)
+        }
+        if let value = try? container.decode(TldNotSupported.self) {
+            return .tldNotSupported(value)
+        }
+        if let value = try? container.decode(HttpApiDecodeError.self) {
+            return .httpApiDecodeError(value)
+        }
         return nil
     }
 }
@@ -219,7 +275,6 @@ public indirect enum RenewDomainResponseX672de0d3 {
 }
 
 extension RenewDomainResponseX672de0d3: Codable {
-
     private enum CodingKeys: String, CodingKey {
         case discriminator = "code"
     }
@@ -227,12 +282,16 @@ extension RenewDomainResponseX672de0d3: Codable {
     public init(from decoder: Decoder) throws {
         let tagged = try decoder.container(keyedBy: CodingKeys.self)
         let discriminator = try tagged.decode(String.self, forKey: .discriminator)
-        if let value = try Self.decodeGroup1(discriminator, from: decoder) { self = value; return }
+        if let value = try Self.decodeGroup1(discriminator, from: decoder) {
+            self = value; return
+        }
         self = try .unknown(tag: discriminator, raw: JSONValue(from: decoder))
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
         if case let .unknown(_, raw) = self {
             var container = encoder.singleValueContainer()
             try container.encode(raw)
@@ -243,9 +302,9 @@ extension RenewDomainResponseX672de0d3: Codable {
 extension RenewDomainResponseX672de0d3 {
     static func decodeGroup1(_ discriminator: String, from decoder: Decoder) throws -> Self? {
         switch discriminator {
-        case "forbidden": return .forbidden(try Forbidden(from: decoder))
-        case "not_authorized_for_scope": return .notAuthorizedForScope(try NotAuthorizedForScope(from: decoder))
-        default: return nil
+        case "forbidden": try .forbidden(Forbidden(from: decoder))
+        case "not_authorized_for_scope": try .notAuthorizedForScope(NotAuthorizedForScope(from: decoder))
+        default: nil
         }
     }
 }
@@ -271,25 +330,35 @@ public struct RenewDomainResponse: Codable {
         case links = "_links"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RenewDomainResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.orderId) else {
-            throw SdkValidationError(field: "orderId", code: "required", message: "Validation failed for 'orderId': value is required")
-        }
-        guard container.contains(.links) else {
-            throw SdkValidationError(field: "_links", code: "required", message: "Validation failed for '_links': value is required")
-        }
-        self.orderId = try container.sdkDecodeRequired(.orderId)
-        self.links = try container.sdkDecodeRequired(.links)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RenewDomainResponse {
-    public init(orderId: OrderId, links: [String: RenewDomainResponseLinksValue]) {
+public extension RenewDomainResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.orderId) else {
+            throw SdkValidationError(
+                field: "orderId",
+                code: "required",
+                message: "Validation failed for 'orderId': value is required"
+            )
+        }
+        guard container.contains(.links) else {
+            throw SdkValidationError(
+                field: "_links",
+                code: "required",
+                message: "Validation failed for '_links': value is required"
+            )
+        }
+        orderId = try container.sdkDecodeRequired(.orderId)
+        links = try container.sdkDecodeRequired(.links)
+    }
+}
+
+public extension RenewDomainResponse {
+    init(orderId: OrderId, links: [String: RenewDomainResponseLinksValue]) {
         (self.orderId, self.links) = (orderId, links)
     }
 }
@@ -303,25 +372,35 @@ public struct BuySingleDomainResponseLinksValue: Codable {
         case method
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension BuySingleDomainResponseLinksValue {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.href) else {
-            throw SdkValidationError(field: "href", code: "required", message: "Validation failed for 'href': value is required")
-        }
-        guard container.contains(.method) else {
-            throw SdkValidationError(field: "method", code: "required", message: "Validation failed for 'method': value is required")
-        }
-        self.href = try container.sdkDecodeRequired(.href)
-        self.method = try container.sdkDecodeRequired(.method)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension BuySingleDomainResponseLinksValue {
-    public init(href: String, method: BuySingleDomainResponseLinksValueMethod) {
+public extension BuySingleDomainResponseLinksValue {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.href) else {
+            throw SdkValidationError(
+                field: "href",
+                code: "required",
+                message: "Validation failed for 'href': value is required"
+            )
+        }
+        guard container.contains(.method) else {
+            throw SdkValidationError(
+                field: "method",
+                code: "required",
+                message: "Validation failed for 'method': value is required"
+            )
+        }
+        href = try container.sdkDecodeRequired(.href)
+        method = try container.sdkDecodeRequired(.method)
+    }
+}
+
+public extension BuySingleDomainResponseLinksValue {
+    init(href: String, method: BuySingleDomainResponseLinksValueMethod) {
         (self.href, self.method) = (href, method)
     }
 }
@@ -333,21 +412,27 @@ public struct SearchDomainsResponse: Codable {
         case results
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SearchDomainsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.results) else {
-            throw SdkValidationError(field: "results", code: "required", message: "Validation failed for 'results': value is required")
-        }
-        self.results = try container.sdkDecodeRequired(.results)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SearchDomainsResponse {
-    public init(results: [SearchDomainsResponseResultsItem]) {
+public extension SearchDomainsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.results) else {
+            throw SdkValidationError(
+                field: "results",
+                code: "required",
+                message: "Validation failed for 'results': value is required"
+            )
+        }
+        results = try container.sdkDecodeRequired(.results)
+    }
+}
+
+public extension SearchDomainsResponse {
+    init(results: [SearchDomainsResponseResultsItem]) {
         self.results = results
     }
 }
@@ -364,18 +449,26 @@ public indirect enum TransferInDomainResponseX97fc73d1 {
 }
 
 extension TransferInDomainResponseX97fc73d1: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for TransferInDomainResponseX97fc73d1")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for TransferInDomainResponseX97fc73d1"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -411,14 +504,30 @@ extension TransferInDomainResponseX97fc73d1 {
 
 extension TransferInDomainResponseX97fc73d1 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(BadRequest.self) { return .badRequest(value) }
-        if let value = try? container.decode(DomainAlreadyOwned.self) { return .domainAlreadyOwned(value) }
-        if let value = try? container.decode(DomainTooShort.self) { return .domainTooShort(value) }
-        if let value = try? container.decode(DNSSECEnabled.self) { return .dNssecEnabled(value) }
-        if let value = try? container.decode(ExpectedPriceMismatch.self) { return .expectedPriceMismatch(value) }
-        if let value = try? container.decode(DomainNotAvailable.self) { return .domainNotAvailable(value) }
-        if let value = try? container.decode(TldNotSupported.self) { return .tldNotSupported(value) }
-        if let value = try? container.decode(HttpApiDecodeError.self) { return .httpApiDecodeError(value) }
+        if let value = try? container.decode(BadRequest.self) {
+            return .badRequest(value)
+        }
+        if let value = try? container.decode(DomainAlreadyOwned.self) {
+            return .domainAlreadyOwned(value)
+        }
+        if let value = try? container.decode(DomainTooShort.self) {
+            return .domainTooShort(value)
+        }
+        if let value = try? container.decode(DNSSECEnabled.self) {
+            return .dNssecEnabled(value)
+        }
+        if let value = try? container.decode(ExpectedPriceMismatch.self) {
+            return .expectedPriceMismatch(value)
+        }
+        if let value = try? container.decode(DomainNotAvailable.self) {
+            return .domainNotAvailable(value)
+        }
+        if let value = try? container.decode(TldNotSupported.self) {
+            return .tldNotSupported(value)
+        }
+        if let value = try? container.decode(HttpApiDecodeError.self) {
+            return .httpApiDecodeError(value)
+        }
         return nil
     }
 }
@@ -445,18 +554,26 @@ public indirect enum GetTldPriceResponseX8bfa3538 {
 }
 
 extension GetTldPriceResponseX8bfa3538: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetTldPriceResponseX8bfa3538")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetTldPriceResponseX8bfa3538"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -474,8 +591,12 @@ extension GetTldPriceResponseX8bfa3538 {
 
 extension GetTldPriceResponseX8bfa3538 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(TldNotSupported.self) { return .tldNotSupported(value) }
-        if let value = try? container.decode(HttpApiDecodeError.self) { return .httpApiDecodeError(value) }
+        if let value = try? container.decode(TldNotSupported.self) {
+            return .tldNotSupported(value)
+        }
+        if let value = try? container.decode(HttpApiDecodeError.self) {
+            return .httpApiDecodeError(value)
+        }
         return nil
     }
 }

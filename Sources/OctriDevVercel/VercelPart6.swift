@@ -9,79 +9,241 @@ public class DomainsNamespace {
         self.config = config
     }
 
-/// Replaces the DNS records associated with a domain. Use this operation when you need to stage a replacement set of records rather than update one record individually. The response returns the identifiers of the records involved.
-    public func replaceByDomainRecords(domain: String, requestOptions: RequestOptions? = nil) async throws -> ReplaceDomainsByDomainRecordsResponse {
-        return try await DomainsMethods.replaceDomainsByDomainRecords(config: config, domain: domain, requestOptions: requestOptions)
+    /// Replaces the DNS records associated with a domain. Use this operation when you need to stage a replacement set
+    /// of records rather than update one record individually. The response returns the identifiers of the records
+    /// involved.
+    public func replaceByDomainRecords(
+        domain: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ReplaceDomainsByDomainRecordsResponse {
+        try await DomainsMethods.replaceDomainsByDomainRecords(
+            config: config,
+            domain: domain,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves a DNS record by its unique identifier. Use this operation to inspect the record's domain, name, type, value, and other available properties. The response contains the requested record.
-    public func getRecordsByRecordId(recordId: String, requestOptions: RequestOptions? = nil) async throws -> GetDomainsRecordsByRecordIdResponse {
-        return try await DomainsMethods.getDomainsRecordsByRecordId(config: config, recordId: recordId, requestOptions: requestOptions)
+    /// Retrieves a DNS record by its unique identifier. Use this operation to inspect the record's domain, name, type,
+    /// value, and other available properties. The response contains the requested record.
+    public func getRecordsByRecordId(
+        recordId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainsRecordsByRecordIdResponse {
+        try await DomainsMethods.getDomainsRecordsByRecordId(
+            config: config,
+            recordId: recordId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves configuration information for a domain, including its detected configuration and recommended DNS values. Use `projectIdOrName` to associate a domain that is not yet linked to a project, and `strict` to control whether the response includes only nameservers assigned directly to the domain. The response also indicates supported certificate challenges and whether the domain is misconfigured.
+    /// Retrieves configuration information for a domain, including its detected configuration and recommended DNS
+    /// values. Use `projectIdOrName` to associate a domain that is not yet linked to a project, and `strict` to control
+    /// whether the response includes only nameservers assigned directly to the domain. The response also indicates
+    /// supported certificate challenges and whether the domain is misconfigured.
     ///
     /// Get a Domain's configuration.
-    public func getConfig(domain: String, projectIdOrName: String? = nil, strict: GetDomainConfigParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainConfigResponse {
-        return try await DomainsMethods.getDomainConfig(config: config, domain: domain, projectIdOrName: projectIdOrName, strict: strict, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func getConfig(
+        domain: String,
+        projectIdOrName: String? = nil,
+        strict: GetDomainConfigParameter? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainConfigResponse {
+        try await DomainsMethods.getDomainConfig(
+            config: config,
+            domain: domain,
+            projectIdOrName: projectIdOrName,
+            strict: strict,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves the TXT record needed to verify ownership of a domain for the authenticated user's team. Add the returned record to `_vercel.{domain}` in your DNS configuration before completing the ownership claim. Then call POST /domains/:domain/claim to transfer ownership.
+    /// Retrieves the TXT record needed to verify ownership of a domain for the authenticated user's team. Add the
+    /// returned record to `_vercel.{domain}` in your DNS configuration before completing the ownership claim. Then call
+    /// POST /domains/:domain/claim to transfer ownership.
     ///
-    /// Get the TXT verification record needed to claim ownership of a domain for the authenticated team. The caller must add this TXT record to `_vercel.{domain}` in their DNS configuration, then call POST /domains/:domain/claim to complete the ownership transfer.
-    public func getVerificationRecord(domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainVerificationRecordResponse {
-        return try await DomainsMethods.getDomainVerificationRecord(config: config, domain: domain, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Get the TXT verification record needed to claim ownership of a domain for the authenticated team. The caller
+    /// must add this TXT record to `_vercel.{domain}` in their DNS configuration, then call POST /domains/:domain/claim
+    /// to complete the ownership transfer.
+    public func getVerificationRecord(
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainVerificationRecordResponse {
+        try await DomainsMethods.getDomainVerificationRecord(
+            config: config,
+            domain: domain,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Claims ownership of a domain for the authenticated user's team by verifying a TXT record. First add the record returned by GET /domains/:domain/verification to `_vercel.{domain}` in your DNS configuration. Once verified, ownership transfers to your team even if another user or team currently owns the domain.
+    /// Claims ownership of a domain for the authenticated user's team by verifying a TXT record. First add the record
+    /// returned by GET /domains/:domain/verification to `_vercel.{domain}` in your DNS configuration. Once verified,
+    /// ownership transfers to your team even if another user or team currently owns the domain.
     ///
-    /// Claim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to complete the ownership transfer. If the TXT record is verified, the domain ownership will be transferred to the caller's team, even if the domain is currently owned by another user or team.
-    public func claimOwnership(domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ClaimDomainOwnershipResponse {
-        return try await DomainsMethods.claimDomainOwnership(config: config, domain: domain, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Claim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a
+    /// TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to
+    /// complete the ownership transfer. If the TXT record is verified, the domain ownership will be transferred to the
+    /// caller's team, even if the domain is currently owned by another user or team.
+    public func claimOwnership(
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ClaimDomainOwnershipResponse {
+        try await DomainsMethods.claimDomainOwnership(
+            config: config,
+            domain: domain,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists project domains associated with an apex domain owned by the authenticated user's account. Use `limit` to control the maximum number of results and `since` or `until` to filter by creation time using JavaScript timestamps. The response includes pagination metadata and the matching project domains.
+    /// Lists project domains associated with an apex domain owned by the authenticated user's account. Use `limit` to
+    /// control the maximum number of results and `since` or `until` to filter by creation time using JavaScript
+    /// timestamps. The response includes pagination metadata and the matching project domains.
     ///
     /// List all project domains associated with an apex domain owned by the authenticated account.
-    public func getProjectDomains(domain: String, limit: Double? = nil, since: Double? = nil, until: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainProjectDomainsResponse {
-        return try await DomainsMethods.getDomainProjectDomains(config: config, domain: domain, limit: limit, since: since, until: until, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func getProjectDomains(
+        domain: String,
+        limit: Double? = nil,
+        since: Double? = nil,
+        until: Double? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainProjectDomainsResponse {
+        try await DomainsMethods.getDomainProjectDomains(
+            config: config,
+            domain: domain,
+            limit: limit,
+            since: since,
+            until: until,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves information about a domain registered to an account or team. Use `teamId` or `slug` to make the request on behalf of a team.
+    /// Retrieves information about a domain registered to an account or team. Use `teamId` or `slug` to make the
+    /// request on behalf of a team.
     ///
     /// Get information for a single domain in an account or team.
-    public func get(domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainsResponse {
-        return try await DomainsMethods.getDomains(config: config, domain: domain, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func get(
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainsResponse {
+        try await DomainsMethods.getDomains(
+            config: config,
+            domain: domain,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists domains registered to the authenticated user or team. Use `since` and `until` to filter by creation time, and `limit` to control the number of domains returned; the response includes pagination metadata.
+    /// Lists domains registered to the authenticated user or team. Use `since` and `until` to filter by creation time,
+    /// and `limit` to control the number of domains returned; the response includes pagination metadata.
     ///
-    /// Retrieves a list of domains registered for the authenticated user or team. By default it returns the last 20 domains if no limit is provided.
-    public func list(limit: Double? = nil, since: Double? = nil, until: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListDomainsResponse {
-        return try await DomainsMethods.listDomains(config: config, limit: limit, since: since, until: until, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Retrieves a list of domains registered for the authenticated user or team. By default it returns the last 20
+    /// domains if no limit is provided.
+    public func list(
+        limit: Double? = nil,
+        since: Double? = nil,
+        until: Double? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListDomainsResponse {
+        try await DomainsMethods.listDomains(
+            config: config,
+            limit: limit,
+            since: since,
+            until: until,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
-extension DomainsNamespace {
-/// Adds an apex domain to the authenticated user's account or team. Supply `name` and use the `method` field to select the add or move-in operation; a move-in request can also include its transfer token. Use the transfer-in endpoint for transfers from external registrars.
+public extension DomainsNamespace {
+    /// Adds an apex domain to the authenticated user's account or team. Supply `name` and use the `method` field to
+    /// select the add or move-in operation; a move-in request can also include its transfer token. Use the transfer-in
+    /// endpoint for transfers from external registrars.
     ///
-    /// This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Note: This endpoint is no longer used for initiating domain transfers from external registrars to Vercel. For this, please use the endpoint [Transfer-in a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/transfer-in-a-domain).
-    public func createOrTransfer(teamId: String? = nil, slug: String? = nil, method: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateOrTransferDomainResponse {
-        return try await DomainsMethods.createOrTransferDomain(config: config, teamId: teamId, slug: slug, method: method, requestOptions: requestOptions)
+    /// This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Note: This
+    /// endpoint is no longer used for initiating domain transfers from external registrars to Vercel. For this, please
+    /// use the endpoint [Transfer-in a
+    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/transfer-in-a-domain).
+    func createOrTransfer(
+        teamId: String? = nil,
+        slug: String? = nil,
+        method: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateOrTransferDomainResponse {
+        try await DomainsMethods.createOrTransferDomain(
+            config: config,
+            teamId: teamId,
+            slug: slug,
+            method: method,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates settings for an apex domain or moves the domain to another user or team. Use the update operation for domain settings, or the move-out operation to specify a `destination`; use the dedicated registrar endpoints to change auto-renew or nameservers.
+    /// Updates settings for an apex domain or moves the domain to another user or team. Use the update operation for
+    /// domain settings, or the move-out operation to specify a `destination`; use the dedicated registrar endpoints to
+    /// change auto-renew or nameservers.
     ///
-    /// Update or move apex domain. Note: This endpoint is no longer used for updating auto-renew or nameservers. For this, please use the endpoints [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) and [Update nameservers for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-nameservers-for-a-domain).
-    public func update(domain: String, body: UpdateDomainsRequestBody, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateDomainsResponse {
-        return try await DomainsMethods.updateDomains(config: config, domain: domain, body: body, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Update or move apex domain. Note: This endpoint is no longer used for updating auto-renew or nameservers. For
+    /// this, please use the endpoints [Update auto-renew for a
+    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain)
+    /// and [Update nameservers for a
+    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-nameservers-for-a-domain).
+    func update(
+        domain: String,
+        body: UpdateDomainsRequestBody,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateDomainsResponse {
+        try await DomainsMethods.updateDomains(
+            config: config,
+            domain: domain,
+            body: body,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a registered domain from Vercel. Use `domain` to identify the domain to remove; deleting it also removes any aliases associated with it.
+    /// Deletes a registered domain from Vercel. Use `domain` to identify the domain to remove; deleting it also removes
+    /// any aliases associated with it.
     ///
-    /// Delete a previously registered domain name from Vercel. Deleting a domain will automatically remove any associated aliases.
-    public func delete(domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteDomainResponse {
-        return try await DomainsMethods.deleteDomain(config: config, domain: domain, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Delete a previously registered domain name from Vercel. Deleting a domain will automatically remove any
+    /// associated aliases.
+    func delete(
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteDomainResponse {
+        try await DomainsMethods.deleteDomain(
+            config: config,
+            domain: domain,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
@@ -91,117 +253,334 @@ public class DomainsRegistrarNamespace {
         self.config = config
     }
 
-/// Searches for domain registration availability and pricing for a batch of exact domain names. Provide between 1 and 200 valid domain names in `domains`; results are returned in input order and include registration and renewal prices in USD for available domains. This operation does not require authentication.
+    /// Searches for domain registration availability and pricing for a batch of exact domain names. Provide between 1
+    /// and 200 valid domain names in `domains`; results are returned in input order and include registration and
+    /// renewal prices in USD for available domains. This operation does not require authentication.
     ///
-    /// Start domain research here. Get registration availability and pricing for 1–200 exact domain names. Returns results in input order, with registration and renewal prices in USD for available domains. No authentication required.
-    public func searchDomains(domains: [DomainName], teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SearchDomainsResponse {
-        return try await DomainsRegistrarMethods.searchDomains(config: config, domains: domains, teamId: teamId, requestOptions: requestOptions)
+    /// Start domain research here. Get registration availability and pricing for 1–200 exact domain names. Returns
+    /// results in input order, with registration and renewal prices in USD for available domains. No authentication
+    /// required.
+    public func searchDomains(
+        domains: [DomainName],
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SearchDomainsResponse {
+        try await DomainsRegistrarMethods.searchDomains(
+            config: config,
+            domains: domains,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists the top-level domains supported for domain registration. Use this operation to discover which TLDs are available before requesting TLD metadata or checking domain availability. The response is an array of TLD names.
+    /// Lists the top-level domains supported for domain registration. Use this operation to discover which TLDs are
+    /// available before requesting TLD metadata or checking domain availability. The response is an array of TLD names.
     ///
     /// Get a list of TLDs supported by Vercel
-    public func getSupportedTlds(teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [TldName] {
-        return try await DomainsRegistrarMethods.getSupportedTlds(config: config, teamId: teamId, requestOptions: requestOptions)
+    public func getSupportedTlds(
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [TldName] {
+        try await DomainsRegistrarMethods.getSupportedTlds(
+            config: config,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves metadata for a specific top-level domain. Use this operation to find the language codes supported for the TLD and their corresponding language names. The response contains a map of supported language codes.
+    /// Retrieves metadata for a specific top-level domain. Use this operation to find the language codes supported for
+    /// the TLD and their corresponding language names. The response contains a map of supported language codes.
     ///
     /// Get the metadata for a specific TLD.
-    public func getTld(tld: TldName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetTldResponse {
-        return try await DomainsRegistrarMethods.getTld(config: config, tld: tld, teamId: teamId, requestOptions: requestOptions)
+    public func getTld(
+        tld: TldName,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetTldResponse {
+        try await DomainsRegistrarMethods.getTld(
+            config: config,
+            tld: tld,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves base price data for a top-level domain (TLD); premium domains may have different prices. Use `years` to request a registration term, or omit it to use the TLD's minimum term. For premium-domain pricing, use the endpoint for getting price data for a domain.
+    /// Retrieves base price data for a top-level domain (TLD); premium domains may have different prices. Use `years`
+    /// to request a registration term, or omit it to use the TLD's minimum term. For premium-domain pricing, use the
+    /// endpoint for getting price data for a domain.
     ///
-    /// Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have different prices. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to get the price data for a specific domain.
-    public func getTldPrice(tld: TldName, years: String? = nil, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetTldPriceResponse {
-        return try await DomainsRegistrarMethods.getTldPrice(config: config, tld: tld, years: years, teamId: teamId, requestOptions: requestOptions)
+    /// Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have
+    /// different prices. Use the [Get price data for a
+    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain)
+    /// endpoint to get the price data for a specific domain.
+    public func getTldPrice(
+        tld: TldName,
+        years: String? = nil,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetTldPriceResponse {
+        try await DomainsRegistrarMethods.getTldPrice(
+            config: config,
+            tld: tld,
+            years: years,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves the availability status for a specific domain. Use `domain` to check whether the name is available before attempting to purchase it. If it is available, you can purchase it through the single-domain or multiple-domain purchase endpoint.
+    /// Retrieves the availability status for a specific domain. Use `domain` to check whether the name is available
+    /// before attempting to purchase it. If it is available, you can purchase it through the single-domain or
+    /// multiple-domain purchase endpoint.
     ///
-    /// Get availability for a specific domain. If the domain is available, it can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
-    public func getDomainAvailability(domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainAvailabilityResponse {
-        return try await DomainsRegistrarMethods.getDomainAvailability(config: config, domain: domain, teamId: teamId, requestOptions: requestOptions)
+    /// Get availability for a specific domain. If the domain is available, it can be purchased using the [Buy a
+    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the
+    /// [Buy multiple
+    /// domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
+    public func getDomainAvailability(
+        domain: DomainName,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainAvailabilityResponse {
+        try await DomainsRegistrarMethods.getDomainAvailability(
+            config: config,
+            domain: domain,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves price data for a specific domain, including purchase, renewal, and transfer prices. Use `years` to request pricing for a particular term, or omit it to use the minimum term for the domain's TLD.
+    /// Retrieves price data for a specific domain, including purchase, renewal, and transfer prices. Use `years` to
+    /// request pricing for a particular term, or omit it to use the minimum term for the domain's TLD.
     ///
     /// Get price data for a specific domain
-    public func getDomainPrice(domain: DomainName, years: String? = nil, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainPriceResponse {
-        return try await DomainsRegistrarMethods.getDomainPrice(config: config, domain: domain, years: years, teamId: teamId, requestOptions: requestOptions)
+    public func getDomainPrice(
+        domain: DomainName,
+        years: String? = nil,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainPriceResponse {
+        try await DomainsRegistrarMethods.getDomainPrice(
+            config: config,
+            domain: domain,
+            years: years,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves price data for multiple domains in one request. Supply `domains` with the names to price, and optionally set `years` to request a specific term; omitted terms use the minimum term for each TLD. Use the returned prices to evaluate domains before purchasing them.
+    /// Retrieves price data for multiple domains in one request. Supply `domains` with the names to price, and
+    /// optionally set `years` to request a specific term; omitted terms use the minimum term for each TLD. Use the
+    /// returned prices to evaluate domains before purchasing them.
     ///
     /// Get price data for multiple domains in a single request.
-    public func getBulkPrice(domains: [DomainName], teamId: String? = nil, years: Double? = nil, requestOptions: RequestOptions? = nil) async throws -> GetBulkPriceResponse {
-        return try await DomainsRegistrarMethods.getBulkPrice(config: config, domains: domains, teamId: teamId, years: years, requestOptions: requestOptions)
+    public func getBulkPrice(
+        domains: [DomainName],
+        teamId: String? = nil,
+        years: Double? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetBulkPriceResponse {
+        try await DomainsRegistrarMethods.getBulkPrice(
+            config: config,
+            domains: domains,
+            teamId: teamId,
+            years: years,
+            requestOptions: requestOptions
+        )
     }
 
-/// Checks the availability of multiple domains in one request. Supply `domains` with the names to check, up to 50 per request. If domains are available, you can purchase them through the single-domain or multiple-domain purchase endpoint.
+    /// Checks the availability of multiple domains in one request. Supply `domains` with the names to check, up to 50
+    /// per request. If domains are available, you can purchase them through the single-domain or multiple-domain
+    /// purchase endpoint.
     ///
-    /// Get availability for multiple domains. If the domains are available, they can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
-    public func getBulkAvailability(domains: [DomainName], teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetBulkAvailabilityResponse {
-        return try await DomainsRegistrarMethods.getBulkAvailability(config: config, domains: domains, teamId: teamId, requestOptions: requestOptions)
+    /// Get availability for multiple domains. If the domains are available, they can be purchased using the [Buy a
+    /// domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the
+    /// [Buy multiple
+    /// domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
+    public func getBulkAvailability(
+        domains: [DomainName],
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetBulkAvailabilityResponse {
+        try await DomainsRegistrarMethods.getBulkAvailability(
+            config: config,
+            domains: domains,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 }
 
-extension DomainsRegistrarNamespace {
-/// Retrieves the contact information schema for a domain's TLD. Use the schema to identify any TLD-specific contact fields you need to supply when registering a domain. The required fields can differ between TLDs.
+public extension DomainsRegistrarNamespace {
+    /// Retrieves the contact information schema for a domain's TLD. Use the schema to identify any TLD-specific contact
+    /// fields you need to supply when registering a domain. The required fields can differ between TLDs.
     ///
-    /// Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
-    public func getContactInfoSchema(domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try await DomainsRegistrarMethods.getContactInfoSchema(config: config, domain: domain, teamId: teamId, requestOptions: requestOptions)
+    /// Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific
+    /// contact information for a domain.
+    func getContactInfoSchema(
+        domain: DomainName,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await DomainsRegistrarMethods.getContactInfoSchema(
+            config: config,
+            domain: domain,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves the authorization code for a domain registered with the domain registrar. Use this code when transferring the domain from the registrar to another registrar. The domain must be eligible for transfer out before its code can be retrieved.
+    /// Retrieves the authorization code for a domain registered with the domain registrar. Use this code when
+    /// transferring the domain from the registrar to another registrar. The domain must be eligible for transfer out
+    /// before its code can be retrieved.
     ///
     /// Get the auth code for a domain. This is required to transfer a domain from Vercel to another registrar.
-    public func getDomainAuthCode(domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainAuthCodeResponse {
-        return try await DomainsRegistrarMethods.getDomainAuthCode(config: config, domain: domain, teamId: teamId, requestOptions: requestOptions)
+    func getDomainAuthCode(
+        domain: DomainName,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainAuthCodeResponse {
+        try await DomainsRegistrarMethods.getDomainAuthCode(
+            config: config,
+            domain: domain,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Purchases a domain using the supplied registration term, renewal preference, expected price, and contact information. Provide `contactInformation` with the required registrant details and use the TLD contact schema to determine whether additional fields are needed. For a punycode domain, include `languageCode`.
+    /// Purchases a domain using the supplied registration term, renewal preference, expected price, and contact
+    /// information. Provide `contactInformation` with the required registrant details and use the TLD contact schema to
+    /// determine whether additional fields are needed. For a punycode domain, include `languageCode`.
     ///
     /// Buy a domain
-    public func buySingleDomain(domain: DomainName, autoRenew: Bool, years: Double, expectedPrice: Double, contactInformation: BuySingleDomainRequestBodyContactInformation, teamId: String? = nil, languageCode: String? = nil, requestOptions: RequestOptions? = nil) async throws -> BuySingleDomainResponse {
-        return try await DomainsRegistrarMethods.buySingleDomain(config: config, domain: domain, autoRenew: autoRenew, years: years, expectedPrice: expectedPrice, contactInformation: contactInformation, teamId: teamId, languageCode: languageCode, requestOptions: requestOptions)
+    func buySingleDomain(
+        domain: DomainName,
+        autoRenew: Bool,
+        years: Double,
+        expectedPrice: Double,
+        contactInformation: BuySingleDomainRequestBodyContactInformation,
+        teamId: String? = nil,
+        languageCode: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> BuySingleDomainResponse {
+        try await DomainsRegistrarMethods.buySingleDomain(
+            config: config,
+            domain: domain,
+            autoRenew: autoRenew,
+            years: years,
+            expectedPrice: expectedPrice,
+            contactInformation: contactInformation,
+            teamId: teamId,
+            languageCode: languageCode,
+            requestOptions: requestOptions
+        )
     }
 
-/// Purchases multiple domains in one order using shared contact information. Supply `domains` with each domain's renewal preference, term, and expected price, and provide the registrant details in `contactInformation`. Include `languageCode` for any punycode domain.
+    /// Purchases multiple domains in one order using shared contact information. Supply `domains` with each domain's
+    /// renewal preference, term, and expected price, and provide the registrant details in `contactInformation`.
+    /// Include `languageCode` for any punycode domain.
     ///
     /// Buy multiple domains at once
-    public func buyDomains(domains: [BuyDomainsRequestBodyDomainsItem], contactInformation: BuyDomainsRequestBodyContactInformation, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> BuyDomainsResponse {
-        return try await DomainsRegistrarMethods.buyDomains(config: config, domains: domains, contactInformation: contactInformation, teamId: teamId, requestOptions: requestOptions)
+    func buyDomains(
+        domains: [BuyDomainsRequestBodyDomainsItem],
+        contactInformation: BuyDomainsRequestBodyContactInformation,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> BuyDomainsResponse {
+        try await DomainsRegistrarMethods.buyDomains(
+            config: config,
+            domains: domains,
+            contactInformation: contactInformation,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Transfers a domain to the account from another registrar. Provide the losing registrar's `authCode`, the transfer term in `years`, the `expectedPrice`, and registrant `contactInformation`; set `autoRenew` to control future renewals. A 200 response includes the transfer order's `orderId` and links for related actions.
+    /// Transfers a domain to the account from another registrar. Provide the losing registrar's `authCode`, the
+    /// transfer term in `years`, the `expectedPrice`, and registrant `contactInformation`; set `autoRenew` to control
+    /// future renewals. A 200 response includes the transfer order's `orderId` and links for related actions.
     ///
     /// Transfer a domain in from another registrar
-    public func transferInDomain(domain: DomainName, authCode: String, autoRenew: Bool, years: Double, expectedPrice: Double, contactInformation: TransferInDomainRequestBodyContactInformation, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> TransferInDomainResponse {
-        return try await DomainsRegistrarMethods.transferInDomain(config: config, domain: domain, authCode: authCode, autoRenew: autoRenew, years: years, expectedPrice: expectedPrice, contactInformation: contactInformation, teamId: teamId, requestOptions: requestOptions)
+    func transferInDomain(
+        domain: DomainName,
+        authCode: String,
+        autoRenew: Bool,
+        years: Double,
+        expectedPrice: Double,
+        contactInformation: TransferInDomainRequestBodyContactInformation,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> TransferInDomainResponse {
+        try await DomainsRegistrarMethods.transferInDomain(
+            config: config,
+            domain: domain,
+            authCode: authCode,
+            autoRenew: autoRenew,
+            years: years,
+            expectedPrice: expectedPrice,
+            contactInformation: contactInformation,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves the transfer status for a domain. Use the status to check the progress or outcome of an incoming domain transfer. The response reports the transfer's current state.
+    /// Retrieves the transfer status for a domain. Use the status to check the progress or outcome of an incoming
+    /// domain transfer. The response reports the transfer's current state.
     ///
     /// Get the transfer status for a domain
-    public func getDomainTransferIn(domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainTransferInResponse {
-        return try await DomainsRegistrarMethods.getDomainTransferIn(config: config, domain: domain, teamId: teamId, requestOptions: requestOptions)
+    func getDomainTransferIn(
+        domain: DomainName,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainTransferInResponse {
+        try await DomainsRegistrarMethods.getDomainTransferIn(
+            config: config,
+            domain: domain,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Renews a domain registered with Vercel for the specified number of years. Provide `years` and `expectedPrice`, and include `contactInformation` when updating the registrant details as part of the renewal. A 200 response includes the renewal order's `orderId` and links for related actions.
+    /// Renews a domain registered with Vercel for the specified number of years. Provide `years` and `expectedPrice`,
+    /// and include `contactInformation` when updating the registrant details as part of the renewal. A 200 response
+    /// includes the renewal order's `orderId` and links for related actions.
     ///
     /// Renew a domain
-    public func renewDomain(domain: DomainName, years: Double, expectedPrice: Double, teamId: String? = nil, contactInformation: RenewDomainRequestBodyContactInformation? = nil, requestOptions: RequestOptions? = nil) async throws -> RenewDomainResponse {
-        return try await DomainsRegistrarMethods.renewDomain(config: config, domain: domain, years: years, expectedPrice: expectedPrice, teamId: teamId, contactInformation: contactInformation, requestOptions: requestOptions)
+    func renewDomain(
+        domain: DomainName,
+        years: Double,
+        expectedPrice: Double,
+        teamId: String? = nil,
+        contactInformation: RenewDomainRequestBodyContactInformation? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RenewDomainResponse {
+        try await DomainsRegistrarMethods.renewDomain(
+            config: config,
+            domain: domain,
+            years: years,
+            expectedPrice: expectedPrice,
+            teamId: teamId,
+            contactInformation: contactInformation,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates whether a domain is set to renew automatically. Set `autoRenew` to `true` or `false` to enable or disable automatic renewal for the specified domain. A 204 response confirms the setting was updated and contains no response body.
+    /// Updates whether a domain is set to renew automatically. Set `autoRenew` to `true` or `false` to enable or
+    /// disable automatic renewal for the specified domain. A 204 response confirms the setting was updated and contains
+    /// no response body.
     ///
     /// Update the auto-renew setting for a domain
-    public func updateDomainAutoRenew(domain: DomainName, autoRenew: Bool, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await DomainsRegistrarMethods.updateDomainAutoRenew(config: config, domain: domain, autoRenew: autoRenew, teamId: teamId, requestOptions: requestOptions)
+    func updateDomainAutoRenew(
+        domain: DomainName,
+        autoRenew: Bool,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await DomainsRegistrarMethods.updateDomainAutoRenew(
+            config: config,
+            domain: domain,
+            autoRenew: autoRenew,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 }

@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension KmsMethods {
-    /// Deletes a policy from a KMS issuer. Use `issuerId`, `kind`, and `policyKey` to identify the issuer policy, and use `teamId` or `slug` to specify the team context when needed.
+public extension KmsMethods {
+    /// Deletes a policy from a KMS issuer. Use `issuerId`, `kind`, and `policyKey` to identify the issuer policy, and
+    /// use `teamId` or `slug` to specify the team context when needed.
     ///
     /// Remove a policy from a KMS issuer.
     ///
@@ -17,10 +18,33 @@ extension KmsMethods {
     /// - policyKey: The policy identifier.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteKmsIssuerPolicy(config: ClientConfig, issuerId: String, kind: DeleteKmsIssuerPolicyParameter, policyKey: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/policies/", sdkEncodePathSegment(sdkWireString(kind)), "/", sdkEncodePathSegment(sdkWireString(policyKey))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "deleteKmsIssuerPolicy", options: requestOptions)).data
+    static func deleteKmsIssuerPolicy(
+        config: ClientConfig,
+        issuerId: String,
+        kind: DeleteKmsIssuerPolicyParameter,
+        policyKey: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/kms/issuers/",
+                sdkEncodePathSegment(sdkWireString(issuerId)),
+                "/policies/",
+                sdkEncodePathSegment(sdkWireString(kind)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(policyKey)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "deleteKmsIssuerPolicy",
+            options: requestOptions
+        )).data
     }
 }

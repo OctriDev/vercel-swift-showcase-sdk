@@ -3,7 +3,7 @@
 
 import Foundation
 
-// RollingRelease domain models
+/// RollingRelease domain models
 public indirect enum GetRollingReleaseBillingStatusResponse {
     case getRollingReleaseBillingStatusResponseVariant0(GetRollingReleaseBillingStatusResponseVariant0)
     case getRollingReleaseBillingStatusResponseVariant1(GetRollingReleaseBillingStatusResponseVariant1)
@@ -12,33 +12,53 @@ public indirect enum GetRollingReleaseBillingStatusResponse {
 }
 
 extension GetRollingReleaseBillingStatusResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetRollingReleaseBillingStatusResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetRollingReleaseBillingStatusResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetRollingReleaseBillingStatusResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetRollingReleaseBillingStatusResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetRollingReleaseBillingStatusResponseVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getRollingReleaseBillingStatusResponseVariant0(value)
         }
-        if let value = try? container.decode(GetRollingReleaseBillingStatusResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetRollingReleaseBillingStatusResponseVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getRollingReleaseBillingStatusResponseVariant1(value)
         }
-        if let value = try? container.decode(GetRollingReleaseBillingStatusResponseVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetRollingReleaseBillingStatusResponseVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getRollingReleaseBillingStatusResponseVariant2(value)
         }
-        if let value = try? container.decode(GetRollingReleaseBillingStatusResponseVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetRollingReleaseBillingStatusResponseVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getRollingReleaseBillingStatusResponseVariant3(value)
         }
         return nil
@@ -50,22 +70,22 @@ extension GetRollingReleaseBillingStatusResponse {
         if let value = try? container.decode(
             GetRollingReleaseBillingStatusResponseVariant0.self
         ) {
-            return             .getRollingReleaseBillingStatusResponseVariant0(value)
+            return .getRollingReleaseBillingStatusResponseVariant0(value)
         }
         if let value = try? container.decode(
             GetRollingReleaseBillingStatusResponseVariant1.self
         ) {
-            return             .getRollingReleaseBillingStatusResponseVariant1(value)
+            return .getRollingReleaseBillingStatusResponseVariant1(value)
         }
         if let value = try? container.decode(
             GetRollingReleaseBillingStatusResponseVariant2.self
         ) {
-            return             .getRollingReleaseBillingStatusResponseVariant2(value)
+            return .getRollingReleaseBillingStatusResponseVariant2(value)
         }
         if let value = try? container.decode(
             GetRollingReleaseBillingStatusResponseVariant3.self
         ) {
-            return             .getRollingReleaseBillingStatusResponseVariant3(value)
+            return .getRollingReleaseBillingStatusResponseVariant3(value)
         }
         return nil
     }
@@ -89,27 +109,41 @@ public indirect enum UpdateRollingReleaseConfigResponse {
 }
 
 extension UpdateRollingReleaseConfigResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateRollingReleaseConfigResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateRollingReleaseConfigResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateRollingReleaseConfigResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateRollingReleaseConfigResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateRollingReleaseConfigResponseVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateRollingReleaseConfigResponseVariant0(value)
         }
-        if let value = try? container.decode(UpdateRollingReleaseConfigResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateRollingReleaseConfigResponseVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateRollingReleaseConfigResponseVariant1(value)
         }
         return nil
@@ -121,12 +155,12 @@ extension UpdateRollingReleaseConfigResponse {
         if let value = try? container.decode(
             UpdateRollingReleaseConfigResponseVariant0.self
         ) {
-            return             .updateRollingReleaseConfigResponseVariant0(value)
+            return .updateRollingReleaseConfigResponseVariant0(value)
         }
         if let value = try? container.decode(
             UpdateRollingReleaseConfigResponseVariant1.self
         ) {
-            return             .updateRollingReleaseConfigResponseVariant1(value)
+            return .updateRollingReleaseConfigResponseVariant1(value)
         }
         return nil
     }
@@ -153,33 +187,55 @@ public struct GetRollingReleaseBillingStatusResponseVariant0: Codable {
         case reason
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRollingReleaseBillingStatusResponseVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.availableSlots) else {
-            throw SdkValidationError(field: "availableSlots", code: "required", message: "Validation failed for 'availableSlots': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        self.availableSlots = try container.sdkDecodeRequired(.availableSlots)
-        self.message = try container.sdkDecodeRequired(.message)
-        self.reason = try container.sdkDecodeRequired(.reason)
-            try sdkValidateRawEnum("reason", self.reason, GetRollingReleaseBillingStatusResponseVariant0Reason.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRollingReleaseBillingStatusResponseVariant0 {
-    public init(availableSlots: Int, message: String, reason: GetRollingReleaseBillingStatusResponseVariant0Reason) throws {
+public extension GetRollingReleaseBillingStatusResponseVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.availableSlots) else {
+            throw SdkValidationError(
+                field: "availableSlots",
+                code: "required",
+                message: "Validation failed for 'availableSlots': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        availableSlots = try container.sdkDecodeRequired(.availableSlots)
+        message = try container.sdkDecodeRequired(.message)
+        reason = try container.sdkDecodeRequired(.reason)
+        try sdkValidateRawEnum(
+            "reason",
+            reason,
+            GetRollingReleaseBillingStatusResponseVariant0Reason.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetRollingReleaseBillingStatusResponseVariant0 {
+    init(availableSlots: Int, message: String, reason: GetRollingReleaseBillingStatusResponseVariant0Reason) throws {
         (self.availableSlots, self.message) = (availableSlots, message)
         self.reason = reason
-            try sdkValidateRawEnum("reason", self.reason, GetRollingReleaseBillingStatusResponseVariant0Reason.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "reason",
+            self.reason,
+            GetRollingReleaseBillingStatusResponseVariant0Reason.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -205,30 +261,37 @@ public struct UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem
         case requireApproval
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.targetPercentage) else {
-            throw SdkValidationError(field: "targetPercentage", code: "required", message: "Validation failed for 'targetPercentage': value is required")
-        }
-        self.targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
-        self.duration = try container.sdkDecodeIfPresent(.duration)
-        self.linearShift = try container.sdkDecodeIfPresent(.linearShift)
-        self.requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem {
-    public init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
+public extension UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.targetPercentage) else {
+            throw SdkValidationError(
+                field: "targetPercentage",
+                code: "required",
+                message: "Validation failed for 'targetPercentage': value is required"
+            )
+        }
+        targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
+        duration = try container.sdkDecodeIfPresent(.duration)
+        linearShift = try container.sdkDecodeIfPresent(.linearShift)
+        requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
+    }
+}
+
+public extension UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem {
+    init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
         (self.targetPercentage, self.duration) = (targetPercentage, duration)
         (self.linearShift, self.requireApproval) = (linearShift, requireApproval)
     }
 }
 
-public typealias UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList = [UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem]
+public typealias UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList =
+    [UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem]
 
 public struct UpdateRollingReleaseConfigResponseVariant1RollingRelease: Codable {
     public var stages: UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList?
@@ -238,19 +301,19 @@ public struct UpdateRollingReleaseConfigResponseVariant1RollingRelease: Codable 
     }
 
     init() {
-        self.stages = nil
+        stages = nil
     }
 }
 
-extension UpdateRollingReleaseConfigResponseVariant1RollingRelease {
-    public init(from decoder: Decoder) throws {
+public extension UpdateRollingReleaseConfigResponseVariant1RollingRelease {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.stages = try container.sdkDecodeIfPresent(.stages)
+        stages = try container.sdkDecodeIfPresent(.stages)
     }
 }
 
-extension UpdateRollingReleaseConfigResponseVariant1RollingRelease {
-    public init(stages: UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList? = nil) {
+public extension UpdateRollingReleaseConfigResponseVariant1RollingRelease {
+    init(stages: UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList? = nil) {
         self.init()
         self.stages = stages
     }
@@ -267,33 +330,55 @@ public struct GetRollingReleaseBillingStatusResponseVariant3: Codable {
         case reason
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRollingReleaseBillingStatusResponseVariant3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.availableSlots) else {
-            throw SdkValidationError(field: "availableSlots", code: "required", message: "Validation failed for 'availableSlots': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        self.availableSlots = try container.sdkDecodeRequired(.availableSlots)
-        self.message = try container.sdkDecodeRequired(.message)
-        self.reason = try container.sdkDecodeRequired(.reason)
-            try sdkValidateRawEnum("reason", self.reason, GetRollingReleaseBillingStatusResponseVariant3Reason.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRollingReleaseBillingStatusResponseVariant3 {
-    public init(availableSlots: Double, message: String, reason: GetRollingReleaseBillingStatusResponseVariant3Reason) throws {
+public extension GetRollingReleaseBillingStatusResponseVariant3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.availableSlots) else {
+            throw SdkValidationError(
+                field: "availableSlots",
+                code: "required",
+                message: "Validation failed for 'availableSlots': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        availableSlots = try container.sdkDecodeRequired(.availableSlots)
+        message = try container.sdkDecodeRequired(.message)
+        reason = try container.sdkDecodeRequired(.reason)
+        try sdkValidateRawEnum(
+            "reason",
+            reason,
+            GetRollingReleaseBillingStatusResponseVariant3Reason.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetRollingReleaseBillingStatusResponseVariant3 {
+    init(availableSlots: Double, message: String, reason: GetRollingReleaseBillingStatusResponseVariant3Reason) throws {
         (self.availableSlots, self.message) = (availableSlots, message)
         self.reason = reason
-            try sdkValidateRawEnum("reason", self.reason, GetRollingReleaseBillingStatusResponseVariant3Reason.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "reason",
+            self.reason,
+            GetRollingReleaseBillingStatusResponseVariant3Reason.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -304,21 +389,27 @@ public struct UpdateRollingReleaseConfigResponseVariant1: Codable {
         case rollingRelease
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateRollingReleaseConfigResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.rollingRelease) else {
-            throw SdkValidationError(field: "rollingRelease", code: "required", message: "Validation failed for 'rollingRelease': value is required")
-        }
-        self.rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateRollingReleaseConfigResponseVariant1 {
-    public init(rollingRelease: UpdateRollingReleaseConfigResponseVariant1RollingRelease?) {
+public extension UpdateRollingReleaseConfigResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.rollingRelease) else {
+            throw SdkValidationError(
+                field: "rollingRelease",
+                code: "required",
+                message: "Validation failed for 'rollingRelease': value is required"
+            )
+        }
+        rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+    }
+}
+
+public extension UpdateRollingReleaseConfigResponseVariant1 {
+    init(rollingRelease: UpdateRollingReleaseConfigResponseVariant1RollingRelease?) {
         self.rollingRelease = rollingRelease
     }
 }
@@ -334,33 +425,59 @@ public struct GetRollingReleaseBillingStatusResponseVariant1: Codable {
         case reason
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRollingReleaseBillingStatusResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.availableSlots) else {
-            throw SdkValidationError(field: "availableSlots", code: "required", message: "Validation failed for 'availableSlots': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        self.availableSlots = try container.sdkDecodeRequired(.availableSlots)
-        self.message = try container.sdkDecodeRequired(.message)
-        self.reason = try container.sdkDecodeRequired(.reason)
-            try sdkValidateRawEnum("reason", self.reason, GetRollingReleaseBillingStatusResponseVariant1Reason.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRollingReleaseBillingStatusResponseVariant1 {
-    public init(availableSlots: GetRollingReleaseBillingStatusResponseVariant1AvailableSlots, message: String, reason: GetRollingReleaseBillingStatusResponseVariant1Reason) throws {
+public extension GetRollingReleaseBillingStatusResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.availableSlots) else {
+            throw SdkValidationError(
+                field: "availableSlots",
+                code: "required",
+                message: "Validation failed for 'availableSlots': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        availableSlots = try container.sdkDecodeRequired(.availableSlots)
+        message = try container.sdkDecodeRequired(.message)
+        reason = try container.sdkDecodeRequired(.reason)
+        try sdkValidateRawEnum(
+            "reason",
+            reason,
+            GetRollingReleaseBillingStatusResponseVariant1Reason.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetRollingReleaseBillingStatusResponseVariant1 {
+    init(
+        availableSlots: GetRollingReleaseBillingStatusResponseVariant1AvailableSlots,
+        message: String,
+        reason: GetRollingReleaseBillingStatusResponseVariant1Reason
+    ) throws {
         (self.availableSlots, self.message) = (availableSlots, message)
         self.reason = reason
-            try sdkValidateRawEnum("reason", self.reason, GetRollingReleaseBillingStatusResponseVariant1Reason.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "reason",
+            self.reason,
+            GetRollingReleaseBillingStatusResponseVariant1Reason.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -377,37 +494,68 @@ public struct GetRollingReleaseBillingStatusResponseVariant2: Codable {
         case reason
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRollingReleaseBillingStatusResponseVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.availableSlots) else {
-            throw SdkValidationError(field: "availableSlots", code: "required", message: "Validation failed for 'availableSlots': value is required")
-        }
-        guard container.contains(.enabledProjects) else {
-            throw SdkValidationError(field: "enabledProjects", code: "required", message: "Validation failed for 'enabledProjects': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        self.availableSlots = try container.sdkDecodeRequired(.availableSlots)
-        self.enabledProjects = try container.sdkDecodeRequired(.enabledProjects)
-        self.message = try container.sdkDecodeRequired(.message)
-        self.reason = try container.sdkDecodeRequired(.reason)
-            try sdkValidateRawEnum("reason", self.reason, GetRollingReleaseBillingStatusResponseVariant2Reason.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRollingReleaseBillingStatusResponseVariant2 {
-    public init(availableSlots: Int, enabledProjects: [String], message: String, reason: GetRollingReleaseBillingStatusResponseVariant2Reason) throws {
+public extension GetRollingReleaseBillingStatusResponseVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.availableSlots) else {
+            throw SdkValidationError(
+                field: "availableSlots",
+                code: "required",
+                message: "Validation failed for 'availableSlots': value is required"
+            )
+        }
+        guard container.contains(.enabledProjects) else {
+            throw SdkValidationError(
+                field: "enabledProjects",
+                code: "required",
+                message: "Validation failed for 'enabledProjects': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        availableSlots = try container.sdkDecodeRequired(.availableSlots)
+        enabledProjects = try container.sdkDecodeRequired(.enabledProjects)
+        message = try container.sdkDecodeRequired(.message)
+        reason = try container.sdkDecodeRequired(.reason)
+        try sdkValidateRawEnum(
+            "reason",
+            reason,
+            GetRollingReleaseBillingStatusResponseVariant2Reason.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetRollingReleaseBillingStatusResponseVariant2 {
+    init(
+        availableSlots: Int,
+        enabledProjects: [String],
+        message: String,
+        reason: GetRollingReleaseBillingStatusResponseVariant2Reason
+    ) throws {
         (self.availableSlots, self.enabledProjects) = (availableSlots, enabledProjects)
         (self.message, self.reason) = (message, reason)
-            try sdkValidateRawEnum("reason", self.reason, GetRollingReleaseBillingStatusResponseVariant2Reason.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "reason",
+            self.reason,
+            GetRollingReleaseBillingStatusResponseVariant2Reason.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -418,21 +566,27 @@ public struct UpdateRollingReleaseConfigResponseVariant0: Codable {
         case rollingRelease
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateRollingReleaseConfigResponseVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.rollingRelease) else {
-            throw SdkValidationError(field: "rollingRelease", code: "required", message: "Validation failed for 'rollingRelease': value is required")
-        }
-        self.rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateRollingReleaseConfigResponseVariant0 {
-    public init(rollingRelease: JSONValue?) {
+public extension UpdateRollingReleaseConfigResponseVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.rollingRelease) else {
+            throw SdkValidationError(
+                field: "rollingRelease",
+                code: "required",
+                message: "Validation failed for 'rollingRelease': value is required"
+            )
+        }
+        rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+    }
+}
+
+public extension UpdateRollingReleaseConfigResponseVariant0 {
+    init(rollingRelease: JSONValue?) {
         self.rollingRelease = rollingRelease
     }
 }

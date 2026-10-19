@@ -3,26 +3,42 @@
 
 import Foundation
 
-// Teams domain models
-extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1 {
-    public init(from decoder: Decoder) throws {
+/// Teams domain models
+public extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.environmentId) else {
-            throw SdkValidationError(field: "environmentId", code: "required", message: "Validation failed for 'environmentId': value is required")
+            throw SdkValidationError(
+                field: "environmentId",
+                code: "required",
+                message: "Validation failed for 'environmentId': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
-        self.environmentId = try container.sdkDecodeRequired(.environmentId)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1Type.allCases.map(\.rawValue))
+        environmentId = try container.sdkDecodeRequired(.environmentId)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1Type.allCases.map(\.rawValue)
+        )
     }
 }
 
-extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1 {
-    public init(environmentId: String, type: TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1Type) throws {
+public extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1 {
+    init(environmentId: String, type: TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1Type) throws {
         (self.environmentId, self.type) = (environmentId, type)
-            try sdkValidateRawEnum("type", self.type, TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant1Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -32,22 +48,32 @@ public indirect enum TeamMembershipJoinedFromGitUserId {
 }
 
 extension TeamMembershipJoinedFromGitUserId: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for TeamMembershipJoinedFromGitUserId")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for TeamMembershipJoinedFromGitUserId"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension TeamMembershipJoinedFromGitUserId {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         return nil
     }
 }
@@ -85,20 +111,23 @@ public struct TeamDeploymentPolicy: Codable {
     }
 
     init() {
-        (self.deploymentSources, self.gitSources) = (nil, nil)
+        (deploymentSources, gitSources) = (nil, nil)
     }
 }
 
-extension TeamDeploymentPolicy {
-    public init(from decoder: Decoder) throws {
+public extension TeamDeploymentPolicy {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.deploymentSources = try container.sdkDecodeIfPresent(.deploymentSources)
-        self.gitSources = try container.sdkDecodeIfPresent(.gitSources)
+        deploymentSources = try container.sdkDecodeIfPresent(.deploymentSources)
+        gitSources = try container.sdkDecodeIfPresent(.gitSources)
     }
 }
 
-extension TeamDeploymentPolicy {
-    public init(deploymentSources: [TeamDeploymentPolicyDeploymentSourcesItem]? = nil, gitSources: [TeamDeploymentPolicyGitSourcesItem]? = nil) {
+public extension TeamDeploymentPolicy {
+    init(
+        deploymentSources: [TeamDeploymentPolicyDeploymentSourcesItem]? = nil,
+        gitSources: [TeamDeploymentPolicyGitSourcesItem]? = nil
+    ) {
         self.init()
         (self.deploymentSources, self.gitSources) = (deploymentSources, gitSources)
     }
@@ -114,19 +143,19 @@ public struct TeamRemoteCaching: Codable {
     }
 
     init() {
-        self.enabled = nil
+        enabled = nil
     }
 }
 
-extension TeamRemoteCaching {
-    public init(from decoder: Decoder) throws {
+public extension TeamRemoteCaching {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.enabled = try container.sdkDecodeIfPresent(.enabled)
+        enabled = try container.sdkDecodeIfPresent(.enabled)
     }
 }
 
-extension TeamRemoteCaching {
-    public init(enabled: Bool? = nil) {
+public extension TeamRemoteCaching {
+    init(enabled: Bool? = nil) {
         self.init()
         self.enabled = enabled
     }
@@ -140,15 +169,21 @@ public indirect enum UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSources
 }
 
 extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSources: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSources")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSources"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -157,9 +192,11 @@ extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSources {
         if let value = try? container.decode(
             [UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVariant0Item].self
         ) {
-            return             .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX74013b0f6c(value)
+            return .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX74013b0f6c(value)
         }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -168,7 +205,8 @@ extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSources {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX74013b0f6c(value): try container.encode(value); return true
+        case let .updateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX74013b0f6c(value): try container
+            .encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }
     }
@@ -185,20 +223,23 @@ public struct UpdateTeamsRequestDefaultProjectJobsVariant0: Codable {
     }
 
     init() {
-        (self.lint, self.typecheck) = (nil, nil)
+        (lint, typecheck) = (nil, nil)
     }
 }
 
-extension UpdateTeamsRequestDefaultProjectJobsVariant0 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateTeamsRequestDefaultProjectJobsVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.lint = try container.sdkDecodeIfPresent(.lint)
-        self.typecheck = try container.sdkDecodeIfPresent(.typecheck)
+        lint = try container.sdkDecodeIfPresent(.lint)
+        typecheck = try container.sdkDecodeIfPresent(.typecheck)
     }
 }
 
-extension UpdateTeamsRequestDefaultProjectJobsVariant0 {
-    public init(lint: UpdateTeamsRequestDefaultProjectJobsVariant0Lint? = nil, typecheck: UpdateTeamsRequestDefaultProjectJobsVariant0Typecheck? = nil) {
+public extension UpdateTeamsRequestDefaultProjectJobsVariant0 {
+    init(
+        lint: UpdateTeamsRequestDefaultProjectJobsVariant0Lint? = nil,
+        typecheck: UpdateTeamsRequestDefaultProjectJobsVariant0Typecheck? = nil
+    ) {
         self.init()
         (self.lint, self.typecheck) = (lint, typecheck)
     }
@@ -223,22 +264,27 @@ public struct TeamDefaultProjectJobs: Codable {
     }
 
     init() {
-        (self.flagDefinitionsPresent, self.lint, self.mfeConfigPresent, self.typecheck) = (nil, nil, nil, nil)
+        (flagDefinitionsPresent, lint, mfeConfigPresent, typecheck) = (nil, nil, nil, nil)
     }
 }
 
-extension TeamDefaultProjectJobs {
-    public init(from decoder: Decoder) throws {
+public extension TeamDefaultProjectJobs {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.flagDefinitionsPresent = try container.sdkDecodeIfPresent(.flagDefinitionsPresent)
-        self.lint = try container.sdkDecodeIfPresent(.lint)
-        self.mfeConfigPresent = try container.sdkDecodeIfPresent(.mfeConfigPresent)
-        self.typecheck = try container.sdkDecodeIfPresent(.typecheck)
+        flagDefinitionsPresent = try container.sdkDecodeIfPresent(.flagDefinitionsPresent)
+        lint = try container.sdkDecodeIfPresent(.lint)
+        mfeConfigPresent = try container.sdkDecodeIfPresent(.mfeConfigPresent)
+        typecheck = try container.sdkDecodeIfPresent(.typecheck)
     }
 }
 
-extension TeamDefaultProjectJobs {
-    public init(flagDefinitionsPresent: TeamDefaultProjectJobsFlagDefinitionsPresent? = nil, lint: TeamDefaultProjectJobsLint? = nil, mfeConfigPresent: TeamDefaultProjectJobsMfeConfigPresent? = nil, typecheck: TeamDefaultProjectJobsTypecheck? = nil) {
+public extension TeamDefaultProjectJobs {
+    init(
+        flagDefinitionsPresent: TeamDefaultProjectJobsFlagDefinitionsPresent? = nil,
+        lint: TeamDefaultProjectJobsLint? = nil,
+        mfeConfigPresent: TeamDefaultProjectJobsMfeConfigPresent? = nil,
+        typecheck: TeamDefaultProjectJobsTypecheck? = nil
+    ) {
         self.init()
         (self.flagDefinitionsPresent, self.lint) = (flagDefinitionsPresent, lint)
         (self.mfeConfigPresent, self.typecheck) = (mfeConfigPresent, typecheck)
@@ -257,25 +303,35 @@ public struct TeamDefaultPassport: Codable {
         case deploymentType
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension TeamDefaultPassport {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.connectorId) else {
-            throw SdkValidationError(field: "connectorId", code: "required", message: "Validation failed for 'connectorId': value is required")
-        }
-        guard container.contains(.deploymentType) else {
-            throw SdkValidationError(field: "deploymentType", code: "required", message: "Validation failed for 'deploymentType': value is required")
-        }
-        self.connectorId = try container.sdkDecodeRequired(.connectorId)
-        self.deploymentType = try container.sdkDecodeRequired(.deploymentType)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension TeamDefaultPassport {
-    public init(connectorId: String, deploymentType: TeamDefaultPassportDeploymentType) {
+public extension TeamDefaultPassport {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.connectorId) else {
+            throw SdkValidationError(
+                field: "connectorId",
+                code: "required",
+                message: "Validation failed for 'connectorId': value is required"
+            )
+        }
+        guard container.contains(.deploymentType) else {
+            throw SdkValidationError(
+                field: "deploymentType",
+                code: "required",
+                message: "Validation failed for 'deploymentType': value is required"
+            )
+        }
+        connectorId = try container.sdkDecodeRequired(.connectorId)
+        deploymentType = try container.sdkDecodeRequired(.deploymentType)
+    }
+}
+
+public extension TeamDefaultPassport {
+    init(connectorId: String, deploymentType: TeamDefaultPassportDeploymentType) {
         (self.connectorId, self.deploymentType) = (connectorId, deploymentType)
     }
 }
@@ -289,21 +345,27 @@ public struct UpdateTeamsRequestNsnbConfigVariant0: Codable {
         case preference
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateTeamsRequestNsnbConfigVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.preference) else {
-            throw SdkValidationError(field: "preference", code: "required", message: "Validation failed for 'preference': value is required")
-        }
-        self.preference = try container.sdkDecodeRequired(.preference)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateTeamsRequestNsnbConfigVariant0 {
-    public init(preference: UpdateTeamsRequestNsnbConfigVariant0Preference) {
+public extension UpdateTeamsRequestNsnbConfigVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.preference) else {
+            throw SdkValidationError(
+                field: "preference",
+                code: "required",
+                message: "Validation failed for 'preference': value is required"
+            )
+        }
+        preference = try container.sdkDecodeRequired(.preference)
+    }
+}
+
+public extension UpdateTeamsRequestNsnbConfigVariant0 {
+    init(preference: UpdateTeamsRequestNsnbConfigVariant0Preference) {
         self.preference = preference
     }
 }
@@ -315,21 +377,27 @@ public struct UpdateTeamsRequestDefaultProjectJobsVariant0Typecheck: Codable {
         case targets
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateTeamsRequestDefaultProjectJobsVariant0Typecheck {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.targets) else {
-            throw SdkValidationError(field: "targets", code: "required", message: "Validation failed for 'targets': value is required")
-        }
-        self.targets = try container.sdkDecodeRequired(.targets)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateTeamsRequestDefaultProjectJobsVariant0Typecheck {
-    public init(targets: [String]) {
+public extension UpdateTeamsRequestDefaultProjectJobsVariant0Typecheck {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.targets) else {
+            throw SdkValidationError(
+                field: "targets",
+                code: "required",
+                message: "Validation failed for 'targets': value is required"
+            )
+        }
+        targets = try container.sdkDecodeRequired(.targets)
+    }
+}
+
+public extension UpdateTeamsRequestDefaultProjectJobsVariant0Typecheck {
+    init(targets: [String]) {
         self.targets = targets
     }
 }
@@ -343,28 +411,49 @@ public struct UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87ee
         case target
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.target) else {
-            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.target = try container.sdkDecodeRequired(.target)
-            try sdkValidateRawEnum("type", self.type, UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX51c7ee89d5.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f {
-    public init(type: UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX51c7ee89d5, target: UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX5b4960a8d4) throws {
+public extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.target) else {
+            throw SdkValidationError(
+                field: "target",
+                code: "required",
+                message: "Validation failed for 'target': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        target = try container.sdkDecodeRequired(.target)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX51c7ee89d5.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f {
+    init(
+        type: UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX51c7ee89d5,
+        target: UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX5b4960a8d4
+    ) throws {
         (self.type, self.target) = (type, target)
-            try sdkValidateRawEnum("type", self.type, UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX51c7ee89d5.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX51c7ee89d5.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -378,21 +467,21 @@ public struct TeamResourceConfigBuildMachine: Codable {
     }
 
     init() {
-        self.`default` = nil
+        self.default = nil
     }
 }
 
-extension TeamResourceConfigBuildMachine {
-    public init(from decoder: Decoder) throws {
+public extension TeamResourceConfigBuildMachine {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.`default` = try container.sdkDecodeIfPresent(.`default`)
+        self.default = try container.sdkDecodeIfPresent(.default)
     }
 }
 
-extension TeamResourceConfigBuildMachine {
-    public init(`default`: TeamResourceConfigBuildMachineDefault? = nil) {
+public extension TeamResourceConfigBuildMachine {
+    init(default: TeamResourceConfigBuildMachineDefault? = nil) {
         self.init()
-        self.`default` = `default`
+        self.default = `default`
     }
 }
 
@@ -405,21 +494,27 @@ public struct TeamDefaultProjectJobsLint: Codable {
         case targets
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension TeamDefaultProjectJobsLint {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.targets) else {
-            throw SdkValidationError(field: "targets", code: "required", message: "Validation failed for 'targets': value is required")
-        }
-        self.targets = try container.sdkDecodeRequired(.targets)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension TeamDefaultProjectJobsLint {
-    public init(targets: [String]) {
+public extension TeamDefaultProjectJobsLint {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.targets) else {
+            throw SdkValidationError(
+                field: "targets",
+                code: "required",
+                message: "Validation failed for 'targets': value is required"
+            )
+        }
+        targets = try container.sdkDecodeRequired(.targets)
+    }
+}
+
+public extension TeamDefaultProjectJobsLint {
+    init(targets: [String]) {
         self.targets = targets
     }
 }
@@ -469,36 +564,54 @@ public struct TeamLimitedMembership: Codable {
         case uid
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension TeamLimitedMembership {
-    public init(from decoder: Decoder) throws {
+public extension TeamLimitedMembership {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.confirmed) else {
-            throw SdkValidationError(field: "confirmed", code: "required", message: "Validation failed for 'confirmed': value is required")
+            throw SdkValidationError(
+                field: "confirmed",
+                code: "required",
+                message: "Validation failed for 'confirmed': value is required"
+            )
         }
         guard container.contains(.created) else {
-            throw SdkValidationError(field: "created", code: "required", message: "Validation failed for 'created': value is required")
+            throw SdkValidationError(
+                field: "created",
+                code: "required",
+                message: "Validation failed for 'created': value is required"
+            )
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
+            throw SdkValidationError(
+                field: "role",
+                code: "required",
+                message: "Validation failed for 'role': value is required"
+            )
         }
-        self.confirmed = try container.sdkDecodeRequired(.confirmed)
-        self.created = try container.sdkDecodeRequired(.created)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.role = try container.sdkDecodeRequired(.role)
-        self.accessRequestedAt = try container.sdkDecodeIfPresent(.accessRequestedAt)
-        self.entitlements = try container.sdkDecodeIfPresent(.entitlements)
-        self.isOrgBackingTeamMembership = try container.sdkDecodeIfPresent(.isOrgBackingTeamMembership)
-        self.joinedFrom = try container.sdkDecodeIfPresent(.joinedFrom)
-        self.organizationId = try container.sdkDecodeIfPresent(.organizationId)
-        self.teamId = try container.sdkDecodeIfPresent(.teamId)
-        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
-        self.uid = try container.sdkDecodeIfPresent(.uid)
+        confirmed = try container.sdkDecodeRequired(.confirmed)
+        created = try container.sdkDecodeRequired(.created)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        role = try container.sdkDecodeRequired(.role)
+        accessRequestedAt = try container.sdkDecodeIfPresent(.accessRequestedAt)
+        entitlements = try container.sdkDecodeIfPresent(.entitlements)
+        isOrgBackingTeamMembership = try container.sdkDecodeIfPresent(.isOrgBackingTeamMembership)
+        joinedFrom = try container.sdkDecodeIfPresent(.joinedFrom)
+        organizationId = try container.sdkDecodeIfPresent(.organizationId)
+        teamId = try container.sdkDecodeIfPresent(.teamId)
+        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+        uid = try container.sdkDecodeIfPresent(.uid)
     }
 }

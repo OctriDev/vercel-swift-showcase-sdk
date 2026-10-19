@@ -7,396 +7,584 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet17(_ deploymentProtectionException: [ACLAction]?, _ deploymentRollback: [ACLAction]?, _ deploymentV0: [ACLAction]?, _ domain: [ACLAction]?, _ domainAcceptDelegation: [ACLAction]?) {
-        self.deploymentProtectionException = deploymentProtectionException
-        self.deploymentRollback = deploymentRollback
-        self.deploymentV0 = deploymentV0
-        self.domain = domain
-        self.domainAcceptDelegation = domainAcceptDelegation
+/// Canonical projects operation model declarations
+/// The source envs on the trusted project that are allowed to access `to`.
+public struct UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX54fbe4d9ee: Codable {
+    public var preset: UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX44764ddd7a
+    /// System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced
+    /// project.
+    public var slugs: [String]?
+
+    enum CodingKeys: String, CodingKey {
+        case preset
+        case slugs
+    }
+
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet18(_ domainAuthCodes: [ACLAction]?, _ domainCertificate: [ACLAction]?, _ domainCheckConfig: [ACLAction]?, _ domainMove: [ACLAction]?, _ domainPurchase: [ACLAction]?) {
-        self.domainAuthCodes = domainAuthCodes
-        self.domainCertificate = domainCertificate
-        self.domainCheckConfig = domainCheckConfig
-        self.domainMove = domainMove
-        self.domainPurchase = domainPurchase
+public extension UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX54fbe4d9ee {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.preset) else {
+            throw SdkValidationError(
+                field: "preset",
+                code: "required",
+                message: "Validation failed for 'preset': value is required"
+            )
+        }
+        preset = try container.sdkDecodeRequired(.preset)
+        slugs = try container.sdkDecodeIfPresent(.slugs)
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet19(_ domainRecord: [ACLAction]?, _ domainTransferIn: [ACLAction]?, _ drain: [ACLAction]?, _ edgeCacheNamespace: [ACLAction]?, _ edgeConfig: [ACLAction]?) {
-        self.domainRecord = domainRecord
-        self.domainTransferIn = domainTransferIn
-        self.drain = drain
-        self.edgeCacheNamespace = edgeCacheNamespace
-        self.edgeConfig = edgeConfig
+public extension UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX54fbe4d9ee {
+    init(preset: UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAX44764ddd7a, slugs: [String]? = nil) {
+        (self.preset, self.slugs) = (preset, slugs)
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet20(_ edgeConfigItem: [ACLAction]?, _ edgeConfigSchema: [ACLAction]?, _ edgeConfigToken: [ACLAction]?, _ endpointVerification: [ACLAction]?, _ environments: [ACLAction]?) {
-        self.edgeConfigItem = edgeConfigItem
-        self.edgeConfigSchema = edgeConfigSchema
-        self.edgeConfigToken = edgeConfigToken
-        self.endpointVerification = endpointVerification
-        self.environments = environments
+public struct CreateProjectEnvRequestBodyVariant1Item: Codable {
+    /// The name of the environment variable
+    /// - Example: "API_URL"
+    public var key: String
+    /// The value of the environment variable
+    /// - Example: "https://api.vercel.com"
+    public var value: String
+    /// The type of environment variable
+    /// - Example: "plain"
+    public var type: CreateProjectEnvRequestBodyVariant1ItemType
+    /// The target environment of the environment variable
+    /// - Example: ["preview"]
+    public var target: [CreateProjectEnvRequestBodyVariant1ItemTargetItem]?
+    /// If defined, the git branch of the environment variable (must have target=preview)
+    /// - Example: "feature-1"
+    public var gitBranch: String?
+    /// A comment to add context on what this environment variable is for
+    /// - Example: "database connection string for production"
+    public var comment: String?
+    /// The custom environment IDs associated with the environment variable
+    public var customEnvironmentIds: [String]?
+
+    enum CodingKeys: String, CodingKey {
+        case key
+        case value
+        case type
+        case target
+        case gitBranch
+        case comment
+        case customEnvironmentIds
+    }
+
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet21(_ event: [ACLAction]?, _ fileUpload: [ACLAction]?, _ flagsExplorerSubscription: [ACLAction]?, _ gitCredentialGrant: [ACLAction]?, _ gitRepository: [ACLAction]?) {
-        self.event = event
-        self.fileUpload = fileUpload
-        self.flagsExplorerSubscription = flagsExplorerSubscription
-        self.gitCredentialGrant = gitCredentialGrant
-        self.gitRepository = gitRepository
+public extension CreateProjectEnvRequestBodyVariant1Item {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.key) else {
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        key = try container.sdkDecodeRequired(.key)
+        value = try container.sdkDecodeRequired(.value)
+        type = try container.sdkDecodeRequired(.type)
+        target = try container.sdkDecodeIfPresent(.target)
+        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        comment = try container.sdkDecodeIfPresent(.comment)
+        customEnvironmentIds = try container.sdkDecodeIfPresent(.customEnvironmentIds)
+        if let value = gitBranch {
+            try validateLength("gitBranch", value, min: nil, max: 250)
+        }
+        if let value = comment {
+            try validateLength("comment", value, min: nil, max: 500)
+        }
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet22(_ imageOptimizationNewPrice: [ACLAction]?, _ integration: [ACLAction]?, _ integrationAccount: [ACLAction]?, _ integrationConfiguration: [ACLAction]?) {
-        self.imageOptimizationNewPrice = imageOptimizationNewPrice
-        self.integration = integration
-        self.integrationAccount = integrationAccount
-        self.integrationConfiguration = integrationConfiguration
+public extension CreateProjectEnvRequestBodyVariant1Item {
+    init(
+        key: String,
+        value: String,
+        type: CreateProjectEnvRequestBodyVariant1ItemType,
+        target: [CreateProjectEnvRequestBodyVariant1ItemTargetItem]? = nil,
+        gitBranch: String? = nil,
+        comment: String? = nil,
+        customEnvironmentIds: [String]? = nil
+    ) throws {
+        (self.key, self.value) = (key, value)
+        (self.type, self.target) = (type, target)
+        (self.gitBranch, self.comment) = (gitBranch, comment)
+        self.customEnvironmentIds = customEnvironmentIds
+        if let value = self.gitBranch {
+            try validateLength("gitBranch", value, min: nil, max: 250)
+        }
+        if let value = self.comment {
+            try validateLength("comment", value, min: nil, max: 500)
+        }
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet23(_ integrationConfigurationProjects: [ACLAction]?, _ integrationConfigurationRole: [ACLAction]?, _ integrationConfigurationTransfer: [ACLAction]?) {
-        self.integrationConfigurationProjects = integrationConfigurationProjects
-        self.integrationConfigurationRole = integrationConfigurationRole
-        self.integrationConfigurationTransfer = integrationConfigurationTransfer
+public struct CreateProjectResponseGitComments: Codable {
+    /// Whether the Vercel bot should comment on commits
+    public var onCommit: Bool
+    /// Whether the Vercel bot should comment on PRs
+    public var onPullRequest: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case onCommit
+        case onPullRequest
+    }
+
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet24(_ integrationDeploymentAction: [ACLAction]?, _ integrationEvent: [ACLAction]?, _ integrationLog: [ACLAction]?, _ integrationPullRequest: [ACLAction]?) {
-        self.integrationDeploymentAction = integrationDeploymentAction
-        self.integrationEvent = integrationEvent
-        self.integrationLog = integrationLog
-        self.integrationPullRequest = integrationPullRequest
+public extension CreateProjectResponseGitComments {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.onCommit) else {
+            throw SdkValidationError(
+                field: "onCommit",
+                code: "required",
+                message: "Validation failed for 'onCommit': value is required"
+            )
+        }
+        guard container.contains(.onPullRequest) else {
+            throw SdkValidationError(
+                field: "onPullRequest",
+                code: "required",
+                message: "Validation failed for 'onPullRequest': value is required"
+            )
+        }
+        onCommit = try container.sdkDecodeRequired(.onCommit)
+        onPullRequest = try container.sdkDecodeRequired(.onPullRequest)
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet25(_ integrationResource: [ACLAction]?, _ integrationResourceData: [ACLAction]?, _ integrationResourceReplCommand: [ACLAction]?) {
-        self.integrationResource = integrationResource
-        self.integrationResourceData = integrationResourceData
-        self.integrationResourceReplCommand = integrationResourceReplCommand
+public extension CreateProjectResponseGitComments {
+    init(onCommit: Bool, onPullRequest: Bool) {
+        (self.onCommit, self.onPullRequest) = (onCommit, onPullRequest)
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet26(_ integrationResourceSecrets: [ACLAction]?, _ integrationSsoSession: [ACLAction]?, _ integrationStoreTokenSet: [ACLAction]?, _ integrationStrict: [ACLAction]?) {
-        self.integrationResourceSecrets = integrationResourceSecrets
-        self.integrationSsoSession = integrationSsoSession
-        self.integrationStoreTokenSet = integrationStoreTokenSet
-        self.integrationStrict = integrationStrict
+public indirect enum ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15
+    )
+    case listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16(
+        ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16
+    )
+}
+
+extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let raw = try? container.decode(JSONValue.self) {
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless2(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless3(from: container, raw) {
+                self = value; return
+            }
+        }
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        if let value = Self.decodeGroup2(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ListProjectsResponseVariant2ProjectsItemEnvItemContentHint"
+        )
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        if try encodeGroup1(to: encoder) {
+            return
+        }
+        if try encodeGroup2(to: encoder) {
+            return
+        }
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet27(_ integrationVercelConfigurationOverride: [ACLAction]?, _ ipBlocking: [ACLAction]?, _ job: [ACLAction]?, _ jobGlobal: [ACLAction]?, _ kmsIssuer: [ACLAction]?) {
-        self.integrationVercelConfigurationOverride = integrationVercelConfigurationOverride
-        self.ipBlocking = ipBlocking
-        self.job = job
-        self.jobGlobal = jobGlobal
-        self.kmsIssuer = kmsIssuer
+extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
+    static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7(value)
+        }
+        return nil
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet28(_ kmsProjectGrant: [ACLAction]?, _ logDrain: [ACLAction]?, _ logs: [ACLAction]?, _ logsPreset: [ACLAction]?, _ marketplaceBillingData: [ACLAction]?) {
-        self.kmsProjectGrant = kmsProjectGrant
-        self.logDrain = logDrain
-        self.logs = logs
-        self.logsPreset = logsPreset
-        self.marketplaceBillingData = marketplaceBillingData
+extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
+    static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14(value)
+        }
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15(value)
+        }
+        return nil
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet29(_ marketplaceExperimentationEdgeConfigData: [ACLAction]?, _ marketplaceExperimentationItem: [ACLAction]?, _ marketplaceFlexCommit: [ACLAction]?) {
-        self.marketplaceExperimentationEdgeConfigData = marketplaceExperimentationEdgeConfigData
-        self.marketplaceExperimentationItem = marketplaceExperimentationItem
-        self.marketplaceFlexCommit = marketplaceFlexCommit
+extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
+    static func decodeLossless3(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
+        if let value = try? container.decode(ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16.self),
+           sdkKeepsEveryKey(value, of: raw) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16(value)
+        }
+        return nil
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet30(_ marketplaceInstallationMember: [ACLAction]?, _ marketplaceInvoice: [ACLAction]?, _ marketplaceSettings: [ACLAction]?, _ messageboard: [ACLAction]?) {
-        self.marketplaceInstallationMember = marketplaceInstallationMember
-        self.marketplaceInvoice = marketplaceInvoice
-        self.marketplaceSettings = marketplaceSettings
-        self.messageboard = messageboard
+extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
+    static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11(value)
+        }
+        return nil
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet31(_ messageboardSpace: [ACLAction]?, _ messageboardTask: [ACLAction]?, _ monitoring: [ACLAction]?, _ monitoringAlert: [ACLAction]?, _ monitoringChart: [ACLAction]?) {
-        self.messageboardSpace = messageboardSpace
-        self.messageboardTask = messageboardTask
-        self.monitoring = monitoring
-        self.monitoringAlert = monitoringAlert
-        self.monitoringChart = monitoringChart
+extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
+    static func decodeGroup2(from container: SingleValueDecodingContainer) -> Self? {
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15(value)
+        }
+        if let value = try? container.decode(
+            ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16.self
+        ) {
+            return .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16(value)
+        }
+        return nil
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet32(_ monitoringQuery: [ACLAction]?, _ monitoringSettings: [ACLAction]?, _ notificationCustomerBudget: [ACLAction]?, _ notificationDeploymentFailed: [ACLAction]?) {
-        self.monitoringQuery = monitoringQuery
-        self.monitoringSettings = monitoringSettings
-        self.notificationCustomerBudget = notificationCustomerBudget
-        self.notificationDeploymentFailed = notificationDeploymentFailed
+extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
+    func encodeGroup1(to encoder: Encoder) throws -> Bool {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant0(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant1(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant2(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant3(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant4(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant5(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant8(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant9(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant10(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant11(value): try container
+            .encode(value); return true
+        default: return false
+        }
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet33(_ notificationDomainConfiguration: [ACLAction]?, _ notificationDomainExpire: [ACLAction]?, _ notificationDomainMoved: [ACLAction]?) {
-        self.notificationDomainConfiguration = notificationDomainConfiguration
-        self.notificationDomainExpire = notificationDomainExpire
-        self.notificationDomainMoved = notificationDomainMoved
+extension ListProjectsResponseVariant2ProjectsItemEnvItemContentHint {
+    func encodeGroup2(to encoder: Encoder) throws -> Bool {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant12(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant13(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant14(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant15(value): try container
+            .encode(value); return true
+        case let .listProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant16(value): try container
+            .encode(value); return true
+        default: return false
+        }
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet34(_ notificationDomainPurchase: [ACLAction]?, _ notificationDomainRenewal: [ACLAction]?, _ notificationDomainTransfer: [ACLAction]?) {
-        self.notificationDomainPurchase = notificationDomainPurchase
-        self.notificationDomainRenewal = notificationDomainRenewal
-        self.notificationDomainTransfer = notificationDomainTransfer
+/// Password protection settings returned without the secret password hash.
+public struct UploadProjectAvatarResponsePasswordProtection: Codable {
+    public var deploymentType: UploadProjectAvatarResponsePasswordProtectionDeploymentType
+
+    enum CodingKeys: String, CodingKey {
+        case deploymentType
+    }
+
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet35(_ notificationDomainUnverified: [ACLAction]?, _ notificationMonitoringAlert: [ACLAction]?, _ notificationPaymentFailed: [ACLAction]?) {
-        self.notificationDomainUnverified = notificationDomainUnverified
-        self.notificationMonitoringAlert = notificationMonitoringAlert
-        self.notificationPaymentFailed = notificationPaymentFailed
+public extension UploadProjectAvatarResponsePasswordProtection {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.deploymentType) else {
+            throw SdkValidationError(
+                field: "deploymentType",
+                code: "required",
+                message: "Validation failed for 'deploymentType': value is required"
+            )
+        }
+        deploymentType = try container.sdkDecodeRequired(.deploymentType)
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet36(_ notificationPreferences: [ACLAction]?, _ notificationStatementOfReasons: [ACLAction]?, _ notificationUsageAlert: [ACLAction]?, _ oauth2Application: [ACLAction]?) {
-        self.notificationPreferences = notificationPreferences
-        self.notificationStatementOfReasons = notificationStatementOfReasons
-        self.notificationUsageAlert = notificationUsageAlert
-        self.oauth2Application = oauth2Application
+public extension UploadProjectAvatarResponsePasswordProtection {
+    init(deploymentType: UploadProjectAvatarResponsePasswordProtectionDeploymentType) {
+        self.deploymentType = deploymentType
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet37(_ oauth2Connection: [ACLAction]?, _ observabilityConfiguration: [ACLAction]?, _ observabilityData: [ACLAction]?, _ observabilityFunnel: [ACLAction]?) {
-        self.oauth2Connection = oauth2Connection
-        self.observabilityConfiguration = observabilityConfiguration
-        self.observabilityData = observabilityData
-        self.observabilityFunnel = observabilityFunnel
+public struct UploadProjectAvatarResponseSecurityRulesetsValue: Codable {
+    public var action: UploadProjectAvatarResponseSecurityRulesetsValueAction
+    public var actionDuration: String?
+    public var bypassSystem: Bool?
+    public var logHeaders: UploadProjectAvatarResponseSecurityRulesetsValueLogHeaders?
+    public var rateLimit: UploadProjectAvatarResponseSecurityRulesetsValueRateLimit?
+    public var redirect: UploadProjectAvatarResponseSecurityRulesetsValueRedirect?
+
+    enum CodingKeys: String, CodingKey {
+        case action
+        case actionDuration
+        case bypassSystem
+        case logHeaders
+        case rateLimit
+        case redirect
+    }
+
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet38(_ observabilityNotebook: [ACLAction]?, _ oidcFederationPolicy: [ACLAction]?, _ onDemandBuild: [ACLAction]?, _ onDemandConcurrency: [ACLAction]?) {
-        self.observabilityNotebook = observabilityNotebook
-        self.oidcFederationPolicy = oidcFederationPolicy
-        self.onDemandBuild = onDemandBuild
-        self.onDemandConcurrency = onDemandConcurrency
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet39(_ openTelemetryEndpoint: [ACLAction]?, _ optionsAllowlist: [ACLAction]?, _ organization: [ACLAction]?, _ organizationDomain: [ACLAction]?, _ organizationTeam: [ACLAction]?) {
-        self.openTelemetryEndpoint = openTelemetryEndpoint
-        self.optionsAllowlist = optionsAllowlist
-        self.organization = organization
-        self.organizationDomain = organizationDomain
-        self.organizationTeam = organizationTeam
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet40(_ ownEvent: [ACLAction]?, _ pageIntegrity: [ACLAction]?, _ passwordProtection: [ACLAction]?, _ passwordProtectionInvoiceItem: [ACLAction]?, _ paymentMethod: [ACLAction]?) {
-        self.ownEvent = ownEvent
-        self.pageIntegrity = pageIntegrity
-        self.passwordProtection = passwordProtection
-        self.passwordProtectionInvoiceItem = passwordProtectionInvoiceItem
-        self.paymentMethod = paymentMethod
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet41(_ permissions: [ACLAction]?, _ postgres: [ACLAction]?, _ postgresStoreTokenSet: [ACLAction]?, _ previewDeploymentSuffix: [ACLAction]?, _ privateCloudAccount: [ACLAction]?) {
-        self.permissions = permissions
-        self.postgres = postgres
-        self.postgresStoreTokenSet = postgresStoreTokenSet
-        self.previewDeploymentSuffix = previewDeploymentSuffix
-        self.privateCloudAccount = privateCloudAccount
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet42(_ privateLinkEndpoint: [ACLAction]?, _ productionAliasProtectionBypass: [ACLAction]?, _ productionShareableLink: [ACLAction]?, _ project: [ACLAction]?) {
-        self.privateLinkEndpoint = privateLinkEndpoint
-        self.productionAliasProtectionBypass = productionAliasProtectionBypass
-        self.productionShareableLink = productionShareableLink
-        self.project = project
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet43(_ projectAccessGroup: [ACLAction]?, _ projectAnalyticsSampling: [ACLAction]?, _ projectAnalyticsUsage: [ACLAction]?, _ projectCheck: [ACLAction]?, _ projectCheckRun: [ACLAction]?) {
-        self.projectAccessGroup = projectAccessGroup
-        self.projectAnalyticsSampling = projectAnalyticsSampling
-        self.projectAnalyticsUsage = projectAnalyticsUsage
-        self.projectCheck = projectCheck
-        self.projectCheckRun = projectCheckRun
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet44(_ projectDeploymentExpiration: [ACLAction]?, _ projectDeploymentHook: [ACLAction]?, _ projectDeploymentProtectionStrict: [ACLAction]?, _ projectDomain: [ACLAction]?) {
-        self.projectDeploymentExpiration = projectDeploymentExpiration
-        self.projectDeploymentHook = projectDeploymentHook
-        self.projectDeploymentProtectionStrict = projectDeploymentProtectionStrict
-        self.projectDomain = projectDomain
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet45(_ projectDomainCheckConfig: [ACLAction]?, _ projectDomainMove: [ACLAction]?, _ projectDomainVerify: [ACLAction]?, _ projectEnvVars: [ACLAction]?) {
-        self.projectDomainCheckConfig = projectDomainCheckConfig
-        self.projectDomainMove = projectDomainMove
-        self.projectDomainVerify = projectDomainVerify
-        self.projectEnvVars = projectEnvVars
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet46(_ projectEnvVarsProduction: [ACLAction]?, _ projectEnvVarsUnownedByIntegration: [ACLAction]?, _ projectEvent: [ACLAction]?, _ projectFlags: [ACLAction]?) {
-        self.projectEnvVarsProduction = projectEnvVarsProduction
-        self.projectEnvVarsUnownedByIntegration = projectEnvVarsUnownedByIntegration
-        self.projectEvent = projectEvent
-        self.projectFlags = projectFlags
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet47(_ projectFlagsProduction: [ACLAction]?, _ projectFlagsSdkKey: [ACLAction]?, _ projectFromV0: [ACLAction]?, _ projectId: [ACLAction]?) {
-        self.projectFlagsProduction = projectFlagsProduction
-        self.projectFlagsSdkKey = projectFlagsSdkKey
-        self.projectFromV0 = projectFromV0
-        self.projectId = projectId
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet48(_ projectIntegrationConfiguration: [ACLAction]?, _ projectLink: [ACLAction]?, _ projectMember: [ACLAction]?, _ projectMonitoring: [ACLAction]?, _ projectOidcToken: [ACLAction]?) {
-        self.projectIntegrationConfiguration = projectIntegrationConfiguration
-        self.projectLink = projectLink
-        self.projectMember = projectMember
-        self.projectMonitoring = projectMonitoring
-        self.projectOidcToken = projectOidcToken
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet49(_ projectPermissions: [ACLAction]?, _ projectProductionBranch: [ACLAction]?, _ projectProtectionBypass: [ACLAction]?, _ projectRollingRelease: [ACLAction]?) {
-        self.projectPermissions = projectPermissions
-        self.projectProductionBranch = projectProductionBranch
-        self.projectProtectionBypass = projectProtectionBypass
-        self.projectRollingRelease = projectRollingRelease
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet50(_ projectRoutes: [ACLAction]?, _ projectSetting: [ACLAction]?, _ projectSupportCase: [ACLAction]?, _ projectSupportCaseComment: [ACLAction]?, _ projectTier: [ACLAction]?) {
-        self.projectRoutes = projectRoutes
-        self.projectSetting = projectSetting
-        self.projectSupportCase = projectSupportCase
-        self.projectSupportCaseComment = projectSupportCaseComment
-        self.projectTier = projectTier
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet51(_ projectTransfer: [ACLAction]?, _ projectTransferIn: [ACLAction]?, _ projectTransferOut: [ACLAction]?, _ projectTransferRequest: [ACLAction]?, _ projectUsage: [ACLAction]?) {
-        self.projectTransfer = projectTransfer
-        self.projectTransferIn = projectTransferIn
-        self.projectTransferOut = projectTransferOut
-        self.projectTransferRequest = projectTransferRequest
-        self.projectUsage = projectUsage
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet52(_ proTrialOnboarding: [ACLAction]?, _ rateLimit: [ACLAction]?, _ redis: [ACLAction]?, _ redisStoreTokenSet: [ACLAction]?, _ remoteCaching: [ACLAction]?) {
-        self.proTrialOnboarding = proTrialOnboarding
-        self.rateLimit = rateLimit
-        self.redis = redis
-        self.redisStoreTokenSet = redisStoreTokenSet
-        self.remoteCaching = remoteCaching
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet53(_ repository: [ACLAction]?, _ samlConfig: [ACLAction]?, _ schedule: [ACLAction]?, _ seawallConfig: [ACLAction]?, _ secret: [ACLAction]?) {
-        self.repository = repository
-        self.samlConfig = samlConfig
-        self.schedule = schedule
-        self.seawallConfig = seawallConfig
-        self.secret = secret
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet54(_ securityConfig: [ACLAction]?, _ securityPlusConfiguration: [ACLAction]?, _ sensitiveEnvironmentVariablePolicy: [ACLAction]?, _ setting: [ACLAction]?) {
-        self.securityConfig = securityConfig
-        self.securityPlusConfiguration = securityPlusConfiguration
-        self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
-        self.setting = setting
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet55(_ shareableLink: [ACLAction]?, _ shareableLinkStrict: [ACLAction]?, _ sharedEnvVarConnection: [ACLAction]?, _ sharedEnvVars: [ACLAction]?, _ sharedEnvVarsProduction: [ACLAction]?) {
-        self.shareableLink = shareableLink
-        self.shareableLinkStrict = shareableLinkStrict
-        self.sharedEnvVarConnection = sharedEnvVarConnection
-        self.sharedEnvVars = sharedEnvVars
-        self.sharedEnvVarsProduction = sharedEnvVarsProduction
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet56(_ skewProtection: [ACLAction]?, _ space: [ACLAction]?, _ spaceRun: [ACLAction]?, _ storeIsLocked: [ACLAction]?, _ storeTokenSetSensitive: [ACLAction]?) {
-        self.skewProtection = skewProtection
-        self.space = space
-        self.spaceRun = spaceRun
-        self.storeIsLocked = storeIsLocked
-        self.storeTokenSetSensitive = storeTokenSetSensitive
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet57(_ storeTransfer: [ACLAction]?, _ supportCase: [ACLAction]?, _ supportCaseComment: [ACLAction]?, _ team: [ACLAction]?, _ teamAccessRequest: [ACLAction]?) {
-        self.storeTransfer = storeTransfer
-        self.supportCase = supportCase
-        self.supportCaseComment = supportCaseComment
-        self.team = team
-        self.teamAccessRequest = teamAccessRequest
-    }
-}
-
-extension GetProjectsResponsePermissions {
-    mutating func sdkSet58(_ teamFellowMembership: [ACLAction]?, _ teamGitExclusivity: [ACLAction]?, _ teamInvite: [ACLAction]?, _ teamInviteCode: [ACLAction]?, _ teamInviteLink: [ACLAction]?) {
-        self.teamFellowMembership = teamFellowMembership
-        self.teamGitExclusivity = teamGitExclusivity
-        self.teamInvite = teamInvite
-        self.teamInviteCode = teamInviteCode
-        self.teamInviteLink = teamInviteLink
+public extension UploadProjectAvatarResponseSecurityRulesetsValue {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.action) else {
+            throw SdkValidationError(
+                field: "action",
+                code: "required",
+                message: "Validation failed for 'action': value is required"
+            )
+        }
+        action = try container.sdkDecodeRequired(.action)
+        actionDuration = try container.sdkDecodeIfPresent(.actionDuration)
+        bypassSystem = try container.sdkDecodeIfPresent(.bypassSystem)
+        logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
+        rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
+        redirect = try container.sdkDecodeIfPresent(.redirect)
     }
 }

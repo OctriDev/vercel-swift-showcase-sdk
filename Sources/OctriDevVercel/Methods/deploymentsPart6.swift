@@ -6,23 +6,41 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DeploymentsMethods {
-    /// Retrieves the source file tree for a deployment. Use `id` to identify the deployment; a retrievable file tree is available when the deployment was created with the Vercel CLI or through the API using the `files` key.
+public extension DeploymentsMethods {
+    /// Retrieves the source file tree for a deployment. Use `id` to identify the deployment; a retrievable file tree is
+    /// available when the deployment was created with the Vercel CLI or through the API using the `files` key.
     ///
-    /// Allows to retrieve the file structure of the source code of a deployment by supplying the deployment unique identifier. If the deployment was created with the Vercel CLI or the API directly with the `files` key, it will have a file tree that can be retrievable.
+    /// Allows to retrieve the file structure of the source code of a deployment by supplying the deployment unique
+    /// identifier. If the deployment was created with the Vercel CLI or the API directly with the `files` key, it will
+    /// have a file tree that can be retrievable.
     ///
     /// - Parameters:
     /// - id: The unique deployment identifier
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listDeploymentFiles(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [FileTree] {
-        return try (await sdkRequest("GET", ["/v6/deployments/", sdkEncodePathSegment(sdkWireString(id)), "/files"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listDeploymentFiles", options: requestOptions)).data
+    static func listDeploymentFiles(
+        config: ClientConfig,
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [FileTree] {
+        try await (sdkRequest(
+            "GET",
+            ["/v6/deployments/", sdkEncodePathSegment(sdkWireString(id)), "/files"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listDeploymentFiles",
+            options: requestOptions
+        )).data
     }
 
-    /// Allows to retrieve the content of a file by supplying the file identifier and the deployment unique identifier. The response body will contain a JSON response containing the contents of the file encoded as base64.
+    /// Allows to retrieve the content of a file by supplying the file identifier and the deployment unique identifier.
+    /// The response body will contain a JSON response containing the contents of the file encoded as base64.
     ///
     /// - Parameters:
     /// - id: The unique deployment identifier
@@ -30,11 +48,32 @@ extension DeploymentsMethods {
     /// - path: Path to the file to fetch (only for Git deployments)
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getDeploymentFileContents(config: ClientConfig, id: String, fileId: String, path: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("GET", ["/v8/deployments/", sdkEncodePathSegment(sdkWireString(id)), "/files/", sdkEncodePathSegment(sdkWireString(fileId))].joined(), config: config, query: [
-            SdkQueryParameter("path", value: path),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "getDeploymentFileContents", options: requestOptions)).data
+    static func getDeploymentFileContents(
+        config: ClientConfig,
+        id: String,
+        fileId: String,
+        path: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v8/deployments/",
+                sdkEncodePathSegment(sdkWireString(id)),
+                "/files/",
+                sdkEncodePathSegment(sdkWireString(fileId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("path", value: path),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "getDeploymentFileContents",
+            options: requestOptions
+        )).data
     }
 }

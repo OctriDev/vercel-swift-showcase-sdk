@@ -6,7 +6,8 @@ import Foundation
 import XCTest
 
 extension SdkMethodTests {
-    func testCreateSandboxesSessionsBySessionIdSnapshotV2CreateSandboxesSeX93417249e5ReachesMockAndDecodesResponse() async throws {
+    func testCreateSandboxesSessionsBySessionIdSnapshotV2CreateSandboxesSeX93417249e5ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -27,7 +28,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testCreateSandboxesSessionsBySessionIdSnapshotV3CreateSandboxesSeXee0988976fReachesMockAndDecodesResponse() async throws {
+    func testCreateSandboxesSessionsBySessionIdSnapshotV3CreateSandboxesSeXee0988976fReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -189,7 +191,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testCreateSecurityFirewallConfigByConfigVersionActivateCreateSecuX08d28e8ebcReachesMockAndDecodesResponse() async throws {
+    func testCreateSecurityFirewallConfigByConfigVersionActivateCreateSecuX08d28e8ebcReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -355,7 +358,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testCreateVercelCiTaskConfigurationPullRequestCreateVercelCiTaskCX797f69146cReachesMockAndDecodesResponse() async throws {
+    func testCreateVercelCiTaskConfigurationPullRequestCreateVercelCiTaskCX797f69146cReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -488,7 +492,8 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testDeleteAiGatewayVirtualModelConfigDeleteAiGatewayVirtualModelConfigReachesMockAndDecodesResponse() async throws {
+    func testDeleteAiGatewayVirtualModelConfigDeleteAiGatewayVirtualModelConfigReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -505,7 +510,8 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testDeleteAiGatewayVirtualModelConfigBySlugDeleteAiGatewayVirtualXdf58cdd282ReachesMockAndDecodesResponse() async throws {
+    func testDeleteAiGatewayVirtualModelConfigBySlugDeleteAiGatewayVirtualXdf58cdd282ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }

@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ChecksV2Methods {
-    /// Retrieves the details of a single check configured for a project. Provide the project identifier or name and the check identifier to select the check you want to inspect.
+public extension ChecksV2Methods {
+    /// Retrieves the details of a single check configured for a project. Provide the project identifier or name and the
+    /// check identifier to select the check you want to inspect.
     ///
     /// Return a detailed response for a single check.
     ///
@@ -15,14 +16,34 @@ extension ChecksV2Methods {
     /// - checkId: The ID of the resource that will be updated.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getProjectCheck(config: ClientConfig, projectIdOrName: String, checkId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectCheckResponse {
-        return try (await sdkRequest("GET", ["/v2/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/checks/", sdkEncodePathSegment(sdkWireString(checkId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getProjectCheck", options: requestOptions)).data
+    static func getProjectCheck(
+        config: ClientConfig,
+        projectIdOrName: String,
+        checkId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetProjectCheckResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v2/projects/",
+                sdkEncodePathSegment(sdkWireString(projectIdOrName)),
+                "/checks/",
+                sdkEncodePathSegment(sdkWireString(checkId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getProjectCheck",
+            options: requestOptions
+        )).data
     }
 
-    public struct UpdateProjectCheckOptions: Codable {
+    struct UpdateProjectCheckOptions: Codable {
         public var projectIdOrName: String
         public var checkId: String
         public var teamId: String?
@@ -40,19 +61,39 @@ extension ChecksV2Methods {
         }
     }
 
-    /// Updates a project check's configuration, including its name, targets, and deployment behavior. Supply only the properties you want to change; `requires`, `blocks`, and `timeout` have defaults when omitted. Use the project and check identifiers to select the check to update.
+    /// Updates a project check's configuration, including its name, targets, and deployment behavior. Supply only the
+    /// properties you want to change; `requires`, `blocks`, and `timeout` have defaults when omitted. Use the project
+    /// and check identifiers to select the check to update.
     ///
     /// Update an existing check.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func updateProjectCheck(config: ClientConfig, options: UpdateProjectCheckOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateProjectCheckResponse {
+    static func updateProjectCheck(
+        config: ClientConfig,
+        options: UpdateProjectCheckOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateProjectCheckResponse {
         let requestBody = UpdateProjectCheckRequestBody(options: options)
 
-        return try (await sdkRequest("PATCH", ["/v2/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/checks/", sdkEncodePathSegment(sdkWireString(options.checkId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], body: requestBody, decoder: .json, operationId: "updateProjectCheck", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            [
+                "/v2/projects/",
+                sdkEncodePathSegment(sdkWireString(options.projectIdOrName)),
+                "/checks/",
+                sdkEncodePathSegment(sdkWireString(options.checkId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "updateProjectCheck",
+            options: requestOptions
+        )).data
     }
 }

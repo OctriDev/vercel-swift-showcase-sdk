@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ConnectMethods {
-    public struct GetConnectorTokenOptions: Codable {
+public extension ConnectMethods {
+    struct GetConnectorTokenOptions: Codable {
         public var connector: String
         public var subject: GetConnectorTokenRequestSubject?
         public var installationId: String?
@@ -22,20 +22,34 @@ extension ConnectMethods {
         }
     }
 
-    /// Retrieves an access token for a connector, scoped to the authenticated user or another subject specified in the request body. Supply the connector identifier in the path and optionally provide token settings such as `scopes`, `resources`, or `audience`. Use the returned token and expiration details to access the connector.
+    /// Retrieves an access token for a connector, scoped to the authenticated user or another subject specified in the
+    /// request body. Supply the connector identifier in the path and optionally provide token settings such as
+    /// `scopes`, `resources`, or `audience`. Use the returned token and expiration details to access the connector.
     ///
     /// Get an access token for a connector identified by the path parameter and scoped to the requester.
     ///
     /// - Parameters:
     /// - subject: Typed representation of the `GetConnectorTokenRequestSubject` API
     ///   schema.
-    public static func getConnectorToken(config: ClientConfig, options: GetConnectorTokenOptions, requestOptions: RequestOptions? = nil) async throws -> GetConnectorTokenResponse {
+    static func getConnectorToken(
+        config: ClientConfig,
+        options: GetConnectorTokenOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetConnectorTokenResponse {
         let requestBody = GetConnectorTokenRequestBody(options: options)
 
-        return try (await sdkRequest("POST", ["/v1/connect/token/", sdkEncodePathSegment(sdkWireString(options.connector))].joined(), config: config, body: requestBody, decoder: .json, operationId: "getConnectorToken", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/connect/token/", sdkEncodePathSegment(sdkWireString(options.connector))].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "getConnectorToken",
+            options: requestOptions
+        )).data
     }
 
-    public struct CreateConnectorAuthorizationRequestOptions: Codable {
+    struct CreateConnectorAuthorizationRequestOptions: Codable {
         public var connector: String
         public var subject: CreateConnectorAuthorizationRequestRequestSubject?
         public var installationId: String?
@@ -56,16 +70,32 @@ extension ConnectMethods {
         }
     }
 
-    /// Creates an authorization request for a connector and returns the URL and verifier details needed to complete the authorization flow. Supply the connector identifier and, if needed, settings such as `subject`, `scopes`, `returnUrl`, or `deviceCode`. Use the returned `url` and `verifier` to continue the connector authorization flow.
+    /// Creates an authorization request for a connector and returns the URL and verifier details needed to complete the
+    /// authorization flow. Supply the connector identifier and, if needed, settings such as `subject`, `scopes`,
+    /// `returnUrl`, or `deviceCode`. Use the returned `url` and `verifier` to continue the connector authorization
+    /// flow.
     ///
-    /// Create an authorization request for a connector and return the URL and verifier details needed to complete the flow.
+    /// Create an authorization request for a connector and return the URL and verifier details needed to complete the
+    /// flow.
     ///
     /// - Parameters:
     /// - subject: Typed representation of the
     ///   `CreateConnectorAuthorizationRequestRequestSubject` API schema.
-    public static func createConnectorAuthorizationRequest(config: ClientConfig, options: CreateConnectorAuthorizationRequestOptions, requestOptions: RequestOptions? = nil) async throws -> CreateConnectorAuthorizationRequestResponse {
+    static func createConnectorAuthorizationRequest(
+        config: ClientConfig,
+        options: CreateConnectorAuthorizationRequestOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateConnectorAuthorizationRequestResponse {
         let requestBody = CreateConnectorAuthorizationRequestRequestBody(options: options)
 
-        return try (await sdkRequest("POST", ["/v1/connect/authorize/", sdkEncodePathSegment(sdkWireString(options.connector))].joined(), config: config, body: requestBody, decoder: .json, operationId: "createConnectorAuthorizationRequest", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/connect/authorize/", sdkEncodePathSegment(sdkWireString(options.connector))].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "createConnectorAuthorizationRequest",
+            options: requestOptions
+        )).data
     }
 }

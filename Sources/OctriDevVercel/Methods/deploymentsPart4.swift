@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DeploymentsMethods {
-    public struct CreateDeploymentOptions: Codable {
+public extension DeploymentsMethods {
+    struct CreateDeploymentOptions: Codable {
         public var name: String
         public var forceNew: CreateDeploymentParameter?
         public var skipAutoDetectionConfirmation: CreateDeploymentParameterXa1d18b77?
@@ -32,9 +32,15 @@ extension DeploymentsMethods {
         }
     }
 
-    /// Creates a deployment for the authenticated team or user and starts its build. Supply `name` and either a Git source or deployment files for a non-Git deployment; you can also provide a `deploymentId` to redeploy an existing deployment. Poll the returned `readyState` to track progress through the build states.
+    /// Creates a deployment for the authenticated team or user and starts its build. Supply `name` and either a Git
+    /// source or deployment files for a non-Git deployment; you can also provide a `deploymentId` to redeploy an
+    /// existing deployment. Poll the returned `readyState` to track progress through the build states.
     ///
-    /// Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the file upload API, then reference them here by SHA — or inline small files directly in the request body. To redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly overridden. The deployment begins building immediately and transitions through `QUEUED` → `INITIALIZING` → `BUILDING` before reaching `READY` or `ERROR`.
+    /// Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the
+    /// file upload API, then reference them here by SHA — or inline small files directly in the request body. To
+    /// redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly
+    /// overridden. The deployment begins building immediately and transitions through `QUEUED` → `INITIALIZING` →
+    /// `BUILDING` before reaching `READY` or `ERROR`.
     ///
     /// - Parameters:
     /// - name: A string with the project name used in the deployment URL
@@ -91,14 +97,18 @@ extension DeploymentsMethods {
     /// - withLatestCommit: When `true` and `deploymentId` is passed in, the sha
     ///   from the previous deployment's `gitSource` is removed forcing the latest
     ///   commit to be used.
-    public static func createDeployment(config: ClientConfig, options: CreateDeploymentOptions, requestOptions: RequestOptions? = nil) async throws -> CreateDeploymentResponse {
+    static func createDeployment(
+        config: ClientConfig,
+        options: CreateDeploymentOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateDeploymentResponse {
         if let gitAccessToken = options.gitAccessToken {
             try validateLength("gitAccessToken", gitAccessToken, max: 1024)
         }
 
         let requestBody = CreateDeploymentRequestBody(options: options)
 
-        return try (await sdkRequest("POST", "/v13/deployments", config: config, query: [
+        return try await (sdkRequest("POST", "/v13/deployments", config: config, query: [
             SdkQueryParameter("forceNew", value: options.forceNew),
             SdkQueryParameter("skipAutoDetectionConfirmation", value: options.skipAutoDetectionConfirmation),
             SdkQueryParameter("teamId", value: options.teamId),

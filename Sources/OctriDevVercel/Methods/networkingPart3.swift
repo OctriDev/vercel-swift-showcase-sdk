@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension NetworkingMethods {
-    /// Creates a Secure Compute network. Supply `cidr`, `name`, and `region`; optionally provide two AWS availability zone IDs for the network. A 201 response returns the created network while it is being provisioned.
+public extension NetworkingMethods {
+    /// Creates a Secure Compute network. Supply `cidr`, `name`, and `region`; optionally provide two AWS availability
+    /// zone IDs for the network. A 201 response returns the created network while it is being provisioned.
     ///
     /// Allows to create a Secure Compute network.
     ///
@@ -17,22 +18,38 @@ extension NetworkingMethods {
     /// - region: The region where the network will be created
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func createNetwork(config: ClientConfig, cidr: String, name: String, region: String, teamId: String? = nil, slug: String? = nil, awsAvailabilityZoneIds: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> Network {
+    static func createNetwork(
+        config: ClientConfig,
+        cidr: String,
+        name: String,
+        region: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        awsAvailabilityZoneIds: [String]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> Network {
         try validateLength("name", name, max: 255)
 
-        if let awsAvailabilityZoneIds = awsAvailabilityZoneIds {
+        if let awsAvailabilityZoneIds {
             try validateItems("awsAvailabilityZoneIds", awsAvailabilityZoneIds, min: 2, max: 2)
         }
 
-        let requestBody = CreateNetworkRequestBody(cidr: cidr, name: name, region: region, awsAvailabilityZoneIds: awsAvailabilityZoneIds)
+        let requestBody = CreateNetworkRequestBody(
+            cidr: cidr,
+            name: name,
+            region: region,
+            awsAvailabilityZoneIds: awsAvailabilityZoneIds
+        )
 
-        return try (await sdkRequest("POST", "/v1/connect/networks", config: config, query: [
+        return try await (sdkRequest("POST", "/v1/connect/networks", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createNetwork", options: requestOptions)).data
     }
 
-    /// Deletes a Secure Compute network by its identifier. Use `networkId` to select the network and the optional team parameters to make the request on behalf of a team. A 204 response confirms the deletion without returning a response body.
+    /// Deletes a Secure Compute network by its identifier. Use `networkId` to select the network and the optional team
+    /// parameters to make the request on behalf of a team. A 204 response confirms the deletion without returning a
+    /// response body.
     ///
     /// Allows to delete a Secure Compute network.
     ///
@@ -40,10 +57,24 @@ extension NetworkingMethods {
     /// - networkId: The ID of the network to delete
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteNetwork(config: ClientConfig, networkId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/v1/connect/networks/", sdkEncodePathSegment(sdkWireString(networkId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "deleteNetwork", options: requestOptions)).data
+    static func deleteNetwork(
+        config: ClientConfig,
+        networkId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            ["/v1/connect/networks/", sdkEncodePathSegment(sdkWireString(networkId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "deleteNetwork",
+            options: requestOptions
+        )).data
     }
 }

@@ -7,588 +7,621 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
-/// Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses
-/// contain a broader, non-authoritative permission summary.
-public struct ListProjectsResponseVariant2ProjectsItemPermissions: Codable {
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var accessGroup: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var agent: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayApiKey: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayApiKeyBypassAll: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayApiKeyOwnedBySelf: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayApiKeySpendAttribution: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayApiKeyZdrExemption: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayBudget: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayCredits: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayGuardrails: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayPrivateModels: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayRules: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewaySettings: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayTranscripts: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayTranscriptsSettings: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayUsage: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aiGatewayVirtualModelConfigs: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var alertRules: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var alerts: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aliasGlobal: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aliasProject: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var aliasProtectionBypass: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var analytics: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var analyticsSampling: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var analyticsUsage: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var apiKey: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var apiKeyAiGateway: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var apiKeyOwnedBySelf: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var auditLog: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var automation: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var billingAddress: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var billingInformation: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var billingInvoice: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var billingInvoiceEmailRecipient: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var billingInvoiceLanguage: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var billingPlan: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var billingPurchaseOrder: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var billingRefund: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var billingTaxId: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var blob: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var blobStoreTokenSet: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var budget: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var buildMachine: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var buildMachineDefault: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var bulkRedirects: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var cacheArtifact: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var cacheArtifactUsageEvent: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var ciInvocations: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var ciLogs: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var codeChecks: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var codeOwners: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var concurrentBuilds: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var connect: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var connectConfiguration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var connectConfigurationLink: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var connectLogs: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var connexClient: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var connexClientProject: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var connexContact: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var connexInstallation: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var connexToken: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var cursorOriginInstallation: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var dataCacheBillingSettings: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var dataCacheNamespace: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var defaultDeploymentProtection: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deployment: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentBuildLogs: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentCheck: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentCheckPreview: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentCheckReRunFromProductionBranch: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentPolicy: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentPreview: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentPrivate: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentProductionGit: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentPromote: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentProtectionException: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentRollback: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var deploymentV0: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var domain: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var domainAcceptDelegation: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var domainAuthCodes: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var domainCertificate: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var domainCheckConfig: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var domainMove: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var domainPurchase: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var domainRecord: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var domainTransferIn: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var drain: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var edgeCacheNamespace: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var edgeConfig: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var edgeConfigItem: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var edgeConfigSchema: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var edgeConfigToken: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var endpointVerification: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var environments: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var event: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var fileUpload: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var flagsExplorerSubscription: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var gitCredentialGrant: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var gitRepository: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var imageOptimizationNewPrice: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationAccount: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationConfiguration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationConfigurationProjects: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationConfigurationRole: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationConfigurationTransfer: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationDeploymentAction: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationEvent: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationLog: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationPullRequest: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationResource: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationResourceData: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationResourceReplCommand: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationResourceSecrets: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationSsoSession: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationStoreTokenSet: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationStrict: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var integrationVercelConfigurationOverride: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var ipBlocking: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var job: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var jobGlobal: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var kmsIssuer: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var kmsProjectGrant: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var logDrain: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var logs: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var logsPreset: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var marketplaceBillingData: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var marketplaceExperimentationEdgeConfigData: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var marketplaceExperimentationItem: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var marketplaceFlexCommit: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var marketplaceInstallationMember: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var marketplaceInvoice: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var marketplaceSettings: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var messageboard: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var messageboardSpace: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var messageboardTask: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var monitoring: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var monitoringAlert: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var monitoringChart: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var monitoringQuery: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var monitoringSettings: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationCustomerBudget: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationDeploymentFailed: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationDomainConfiguration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationDomainExpire: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationDomainMoved: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationDomainPurchase: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationDomainRenewal: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationDomainTransfer: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationDomainUnverified: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationMonitoringAlert: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationPaymentFailed: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationPreferences: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationStatementOfReasons: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var notificationUsageAlert: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var oauth2Application: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var oauth2Connection: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var observabilityConfiguration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var observabilityData: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var observabilityFunnel: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var observabilityNotebook: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var oidcFederationPolicy: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var onDemandBuild: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var onDemandConcurrency: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var openTelemetryEndpoint: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var optionsAllowlist: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var organization: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var organizationDomain: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var organizationTeam: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var ownEvent: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var pageIntegrity: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var passwordProtection: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var passwordProtectionInvoiceItem: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var paymentMethod: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var permissions: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var postgres: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var postgresStoreTokenSet: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var previewDeploymentSuffix: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var privateCloudAccount: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var privateLinkEndpoint: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var productionAliasProtectionBypass: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var productionShareableLink: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var project: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectAccessGroup: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectAnalyticsSampling: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectAnalyticsUsage: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectCheck: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectCheckRun: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectDeploymentExpiration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectDeploymentHook: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectDeploymentProtectionStrict: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectDomain: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectDomainCheckConfig: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectDomainMove: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectDomainVerify: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectEnvVars: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectEnvVarsProduction: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectEnvVarsUnownedByIntegration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectEvent: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectFlags: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectFlagsProduction: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectFlagsSdkKey: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectFromV0: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectId: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectIntegrationConfiguration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectLink: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectMember: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectMonitoring: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectOidcToken: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectPermissions: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectProductionBranch: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectProtectionBypass: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectRollingRelease: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectRoutes: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectSetting: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectSupportCase: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectSupportCaseComment: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectTier: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectTransfer: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectTransferIn: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectTransferOut: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectTransferRequest: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var projectUsage: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var proTrialOnboarding: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var rateLimit: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var redis: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var redisStoreTokenSet: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var remoteCaching: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var repository: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var samlConfig: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var schedule: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var seawallConfig: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var secret: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var securityConfig: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var securityPlusConfiguration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var sensitiveEnvironmentVariablePolicy: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var setting: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var shareableLink: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var shareableLinkStrict: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var sharedEnvVarConnection: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var sharedEnvVars: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var sharedEnvVarsProduction: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var skewProtection: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var space: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var spaceRun: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var storeIsLocked: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var storeTokenSetSensitive: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var storeTransfer: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var supportCase: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var supportCaseComment: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var team: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamAccessRequest: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamFellowMembership: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamGitExclusivity: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamInvite: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamInviteCode: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamInviteLink: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamJoin: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamMemberMfaStatus: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamMicrofrontends: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamOwnMembership: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamOwnMembershipDisconnectSaml: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamSudo: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var teamTokenInvalidation: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var token: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var toolbarComment: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var trustedIps: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var trustedSources: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var usage: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var usageCycle: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var user: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var userConnection: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var userMfaConfiguration: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var userPreference: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var userSudo: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var v0Chat: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var vcrRepository: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var vercelAppInstallation: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var vercelAppInstallationRequest: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var vercelAuth: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var vercelRun: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var vpcPeeringConnection: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var webAnalytics: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var webAnalyticsPlan: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var webAuthn: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var webhook: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var webhookEvent: [ACLAction]? = .none
-    /// Requested and authorized operations when `checkPermissions` is used.
-    public var workflowRunData: [ACLAction]? = .none
+/// Canonical projects operation model declarations
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet17(
+        _ deploymentProtectionException: [ACLAction]?,
+        _ deploymentRollback: [ACLAction]?,
+        _ deploymentV0: [ACLAction]?,
+        _ domain: [ACLAction]?,
+        _ domainAcceptDelegation: [ACLAction]?
+    ) {
+        self.deploymentProtectionException = deploymentProtectionException
+        self.deploymentRollback = deploymentRollback
+        self.deploymentV0 = deploymentV0
+        self.domain = domain
+        self.domainAcceptDelegation = domainAcceptDelegation
+    }
+}
 
-    init(sdkDefaults _: Void) {}
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet18(
+        _ domainAuthCodes: [ACLAction]?,
+        _ domainCertificate: [ACLAction]?,
+        _ domainCheckConfig: [ACLAction]?,
+        _ domainMove: [ACLAction]?,
+        _ domainPurchase: [ACLAction]?
+    ) {
+        self.domainAuthCodes = domainAuthCodes
+        self.domainCertificate = domainCertificate
+        self.domainCheckConfig = domainCheckConfig
+        self.domainMove = domainMove
+        self.domainPurchase = domainPurchase
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet19(
+        _ domainRecord: [ACLAction]?,
+        _ domainTransferIn: [ACLAction]?,
+        _ drain: [ACLAction]?,
+        _ edgeCacheNamespace: [ACLAction]?,
+        _ edgeConfig: [ACLAction]?
+    ) {
+        self.domainRecord = domainRecord
+        self.domainTransferIn = domainTransferIn
+        self.drain = drain
+        self.edgeCacheNamespace = edgeCacheNamespace
+        self.edgeConfig = edgeConfig
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet20(
+        _ edgeConfigItem: [ACLAction]?,
+        _ edgeConfigSchema: [ACLAction]?,
+        _ edgeConfigToken: [ACLAction]?,
+        _ endpointVerification: [ACLAction]?,
+        _ environments: [ACLAction]?
+    ) {
+        self.edgeConfigItem = edgeConfigItem
+        self.edgeConfigSchema = edgeConfigSchema
+        self.edgeConfigToken = edgeConfigToken
+        self.endpointVerification = endpointVerification
+        self.environments = environments
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet21(
+        _ event: [ACLAction]?,
+        _ fileUpload: [ACLAction]?,
+        _ flagsExplorerSubscription: [ACLAction]?,
+        _ gitCredentialGrant: [ACLAction]?,
+        _ gitRepository: [ACLAction]?
+    ) {
+        self.event = event
+        self.fileUpload = fileUpload
+        self.flagsExplorerSubscription = flagsExplorerSubscription
+        self.gitCredentialGrant = gitCredentialGrant
+        self.gitRepository = gitRepository
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet22(
+        _ imageOptimizationNewPrice: [ACLAction]?,
+        _ integration: [ACLAction]?,
+        _ integrationAccount: [ACLAction]?,
+        _ integrationConfiguration: [ACLAction]?
+    ) {
+        self.imageOptimizationNewPrice = imageOptimizationNewPrice
+        self.integration = integration
+        self.integrationAccount = integrationAccount
+        self.integrationConfiguration = integrationConfiguration
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet23(
+        _ integrationConfigurationProjects: [ACLAction]?,
+        _ integrationConfigurationRole: [ACLAction]?,
+        _ integrationConfigurationTransfer: [ACLAction]?
+    ) {
+        self.integrationConfigurationProjects = integrationConfigurationProjects
+        self.integrationConfigurationRole = integrationConfigurationRole
+        self.integrationConfigurationTransfer = integrationConfigurationTransfer
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet24(
+        _ integrationDeploymentAction: [ACLAction]?,
+        _ integrationEvent: [ACLAction]?,
+        _ integrationLog: [ACLAction]?,
+        _ integrationPullRequest: [ACLAction]?
+    ) {
+        self.integrationDeploymentAction = integrationDeploymentAction
+        self.integrationEvent = integrationEvent
+        self.integrationLog = integrationLog
+        self.integrationPullRequest = integrationPullRequest
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet25(
+        _ integrationResource: [ACLAction]?,
+        _ integrationResourceData: [ACLAction]?,
+        _ integrationResourceReplCommand: [ACLAction]?
+    ) {
+        self.integrationResource = integrationResource
+        self.integrationResourceData = integrationResourceData
+        self.integrationResourceReplCommand = integrationResourceReplCommand
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet26(
+        _ integrationResourceSecrets: [ACLAction]?,
+        _ integrationSsoSession: [ACLAction]?,
+        _ integrationStoreTokenSet: [ACLAction]?,
+        _ integrationStrict: [ACLAction]?
+    ) {
+        self.integrationResourceSecrets = integrationResourceSecrets
+        self.integrationSsoSession = integrationSsoSession
+        self.integrationStoreTokenSet = integrationStoreTokenSet
+        self.integrationStrict = integrationStrict
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet27(
+        _ integrationVercelConfigurationOverride: [ACLAction]?,
+        _ ipBlocking: [ACLAction]?,
+        _ job: [ACLAction]?,
+        _ jobGlobal: [ACLAction]?,
+        _ kmsIssuer: [ACLAction]?
+    ) {
+        self.integrationVercelConfigurationOverride = integrationVercelConfigurationOverride
+        self.ipBlocking = ipBlocking
+        self.job = job
+        self.jobGlobal = jobGlobal
+        self.kmsIssuer = kmsIssuer
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet28(
+        _ kmsProjectGrant: [ACLAction]?,
+        _ logDrain: [ACLAction]?,
+        _ logs: [ACLAction]?,
+        _ logsPreset: [ACLAction]?,
+        _ marketplaceBillingData: [ACLAction]?
+    ) {
+        self.kmsProjectGrant = kmsProjectGrant
+        self.logDrain = logDrain
+        self.logs = logs
+        self.logsPreset = logsPreset
+        self.marketplaceBillingData = marketplaceBillingData
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet29(
+        _ marketplaceExperimentationEdgeConfigData: [ACLAction]?,
+        _ marketplaceExperimentationItem: [ACLAction]?,
+        _ marketplaceFlexCommit: [ACLAction]?
+    ) {
+        self.marketplaceExperimentationEdgeConfigData = marketplaceExperimentationEdgeConfigData
+        self.marketplaceExperimentationItem = marketplaceExperimentationItem
+        self.marketplaceFlexCommit = marketplaceFlexCommit
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet30(
+        _ marketplaceInstallationMember: [ACLAction]?,
+        _ marketplaceInvoice: [ACLAction]?,
+        _ marketplaceSettings: [ACLAction]?,
+        _ messageboard: [ACLAction]?
+    ) {
+        self.marketplaceInstallationMember = marketplaceInstallationMember
+        self.marketplaceInvoice = marketplaceInvoice
+        self.marketplaceSettings = marketplaceSettings
+        self.messageboard = messageboard
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet31(
+        _ messageboardSpace: [ACLAction]?,
+        _ messageboardTask: [ACLAction]?,
+        _ monitoring: [ACLAction]?,
+        _ monitoringAlert: [ACLAction]?,
+        _ monitoringChart: [ACLAction]?
+    ) {
+        self.messageboardSpace = messageboardSpace
+        self.messageboardTask = messageboardTask
+        self.monitoring = monitoring
+        self.monitoringAlert = monitoringAlert
+        self.monitoringChart = monitoringChart
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet32(
+        _ monitoringQuery: [ACLAction]?,
+        _ monitoringSettings: [ACLAction]?,
+        _ notificationCustomerBudget: [ACLAction]?,
+        _ notificationDeploymentFailed: [ACLAction]?
+    ) {
+        self.monitoringQuery = monitoringQuery
+        self.monitoringSettings = monitoringSettings
+        self.notificationCustomerBudget = notificationCustomerBudget
+        self.notificationDeploymentFailed = notificationDeploymentFailed
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet33(
+        _ notificationDomainConfiguration: [ACLAction]?,
+        _ notificationDomainExpire: [ACLAction]?,
+        _ notificationDomainMoved: [ACLAction]?
+    ) {
+        self.notificationDomainConfiguration = notificationDomainConfiguration
+        self.notificationDomainExpire = notificationDomainExpire
+        self.notificationDomainMoved = notificationDomainMoved
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet34(
+        _ notificationDomainPurchase: [ACLAction]?,
+        _ notificationDomainRenewal: [ACLAction]?,
+        _ notificationDomainTransfer: [ACLAction]?
+    ) {
+        self.notificationDomainPurchase = notificationDomainPurchase
+        self.notificationDomainRenewal = notificationDomainRenewal
+        self.notificationDomainTransfer = notificationDomainTransfer
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet35(
+        _ notificationDomainUnverified: [ACLAction]?,
+        _ notificationMonitoringAlert: [ACLAction]?,
+        _ notificationPaymentFailed: [ACLAction]?
+    ) {
+        self.notificationDomainUnverified = notificationDomainUnverified
+        self.notificationMonitoringAlert = notificationMonitoringAlert
+        self.notificationPaymentFailed = notificationPaymentFailed
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet36(
+        _ notificationPreferences: [ACLAction]?,
+        _ notificationStatementOfReasons: [ACLAction]?,
+        _ notificationUsageAlert: [ACLAction]?,
+        _ oauth2Application: [ACLAction]?
+    ) {
+        self.notificationPreferences = notificationPreferences
+        self.notificationStatementOfReasons = notificationStatementOfReasons
+        self.notificationUsageAlert = notificationUsageAlert
+        self.oauth2Application = oauth2Application
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet37(
+        _ oauth2Connection: [ACLAction]?,
+        _ observabilityConfiguration: [ACLAction]?,
+        _ observabilityData: [ACLAction]?,
+        _ observabilityFunnel: [ACLAction]?
+    ) {
+        self.oauth2Connection = oauth2Connection
+        self.observabilityConfiguration = observabilityConfiguration
+        self.observabilityData = observabilityData
+        self.observabilityFunnel = observabilityFunnel
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet38(
+        _ observabilityNotebook: [ACLAction]?,
+        _ oidcFederationPolicy: [ACLAction]?,
+        _ onDemandBuild: [ACLAction]?,
+        _ onDemandConcurrency: [ACLAction]?
+    ) {
+        self.observabilityNotebook = observabilityNotebook
+        self.oidcFederationPolicy = oidcFederationPolicy
+        self.onDemandBuild = onDemandBuild
+        self.onDemandConcurrency = onDemandConcurrency
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet39(
+        _ openTelemetryEndpoint: [ACLAction]?,
+        _ optionsAllowlist: [ACLAction]?,
+        _ organization: [ACLAction]?,
+        _ organizationDomain: [ACLAction]?,
+        _ organizationTeam: [ACLAction]?
+    ) {
+        self.openTelemetryEndpoint = openTelemetryEndpoint
+        self.optionsAllowlist = optionsAllowlist
+        self.organization = organization
+        self.organizationDomain = organizationDomain
+        self.organizationTeam = organizationTeam
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet40(
+        _ ownEvent: [ACLAction]?,
+        _ pageIntegrity: [ACLAction]?,
+        _ passwordProtection: [ACLAction]?,
+        _ passwordProtectionInvoiceItem: [ACLAction]?,
+        _ paymentMethod: [ACLAction]?
+    ) {
+        self.ownEvent = ownEvent
+        self.pageIntegrity = pageIntegrity
+        self.passwordProtection = passwordProtection
+        self.passwordProtectionInvoiceItem = passwordProtectionInvoiceItem
+        self.paymentMethod = paymentMethod
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet41(
+        _ permissions: [ACLAction]?,
+        _ postgres: [ACLAction]?,
+        _ postgresStoreTokenSet: [ACLAction]?,
+        _ previewDeploymentSuffix: [ACLAction]?,
+        _ privateCloudAccount: [ACLAction]?
+    ) {
+        self.permissions = permissions
+        self.postgres = postgres
+        self.postgresStoreTokenSet = postgresStoreTokenSet
+        self.previewDeploymentSuffix = previewDeploymentSuffix
+        self.privateCloudAccount = privateCloudAccount
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet42(
+        _ privateLinkEndpoint: [ACLAction]?,
+        _ productionAliasProtectionBypass: [ACLAction]?,
+        _ productionShareableLink: [ACLAction]?,
+        _ project: [ACLAction]?
+    ) {
+        self.privateLinkEndpoint = privateLinkEndpoint
+        self.productionAliasProtectionBypass = productionAliasProtectionBypass
+        self.productionShareableLink = productionShareableLink
+        self.project = project
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet43(
+        _ projectAccessGroup: [ACLAction]?,
+        _ projectAnalyticsSampling: [ACLAction]?,
+        _ projectAnalyticsUsage: [ACLAction]?,
+        _ projectCheck: [ACLAction]?,
+        _ projectCheckRun: [ACLAction]?
+    ) {
+        self.projectAccessGroup = projectAccessGroup
+        self.projectAnalyticsSampling = projectAnalyticsSampling
+        self.projectAnalyticsUsage = projectAnalyticsUsage
+        self.projectCheck = projectCheck
+        self.projectCheckRun = projectCheckRun
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet44(
+        _ projectDeploymentExpiration: [ACLAction]?,
+        _ projectDeploymentHook: [ACLAction]?,
+        _ projectDeploymentProtectionStrict: [ACLAction]?,
+        _ projectDomain: [ACLAction]?
+    ) {
+        self.projectDeploymentExpiration = projectDeploymentExpiration
+        self.projectDeploymentHook = projectDeploymentHook
+        self.projectDeploymentProtectionStrict = projectDeploymentProtectionStrict
+        self.projectDomain = projectDomain
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet45(
+        _ projectDomainCheckConfig: [ACLAction]?,
+        _ projectDomainMove: [ACLAction]?,
+        _ projectDomainVerify: [ACLAction]?,
+        _ projectEnvVars: [ACLAction]?
+    ) {
+        self.projectDomainCheckConfig = projectDomainCheckConfig
+        self.projectDomainMove = projectDomainMove
+        self.projectDomainVerify = projectDomainVerify
+        self.projectEnvVars = projectEnvVars
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet46(
+        _ projectEnvVarsProduction: [ACLAction]?,
+        _ projectEnvVarsUnownedByIntegration: [ACLAction]?,
+        _ projectEvent: [ACLAction]?,
+        _ projectFlags: [ACLAction]?
+    ) {
+        self.projectEnvVarsProduction = projectEnvVarsProduction
+        self.projectEnvVarsUnownedByIntegration = projectEnvVarsUnownedByIntegration
+        self.projectEvent = projectEvent
+        self.projectFlags = projectFlags
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet47(
+        _ projectFlagsProduction: [ACLAction]?,
+        _ projectFlagsSdkKey: [ACLAction]?,
+        _ projectFromV0: [ACLAction]?,
+        _ projectId: [ACLAction]?
+    ) {
+        self.projectFlagsProduction = projectFlagsProduction
+        self.projectFlagsSdkKey = projectFlagsSdkKey
+        self.projectFromV0 = projectFromV0
+        self.projectId = projectId
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet48(
+        _ projectIntegrationConfiguration: [ACLAction]?,
+        _ projectLink: [ACLAction]?,
+        _ projectMember: [ACLAction]?,
+        _ projectMonitoring: [ACLAction]?,
+        _ projectOidcToken: [ACLAction]?
+    ) {
+        self.projectIntegrationConfiguration = projectIntegrationConfiguration
+        self.projectLink = projectLink
+        self.projectMember = projectMember
+        self.projectMonitoring = projectMonitoring
+        self.projectOidcToken = projectOidcToken
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet49(
+        _ projectPermissions: [ACLAction]?,
+        _ projectProductionBranch: [ACLAction]?,
+        _ projectProtectionBypass: [ACLAction]?,
+        _ projectRollingRelease: [ACLAction]?
+    ) {
+        self.projectPermissions = projectPermissions
+        self.projectProductionBranch = projectProductionBranch
+        self.projectProtectionBypass = projectProtectionBypass
+        self.projectRollingRelease = projectRollingRelease
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet50(
+        _ projectRoutes: [ACLAction]?,
+        _ projectSetting: [ACLAction]?,
+        _ projectSupportCase: [ACLAction]?,
+        _ projectSupportCaseComment: [ACLAction]?,
+        _ projectTier: [ACLAction]?
+    ) {
+        self.projectRoutes = projectRoutes
+        self.projectSetting = projectSetting
+        self.projectSupportCase = projectSupportCase
+        self.projectSupportCaseComment = projectSupportCaseComment
+        self.projectTier = projectTier
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet51(
+        _ projectTransfer: [ACLAction]?,
+        _ projectTransferIn: [ACLAction]?,
+        _ projectTransferOut: [ACLAction]?,
+        _ projectTransferRequest: [ACLAction]?,
+        _ projectUsage: [ACLAction]?
+    ) {
+        self.projectTransfer = projectTransfer
+        self.projectTransferIn = projectTransferIn
+        self.projectTransferOut = projectTransferOut
+        self.projectTransferRequest = projectTransferRequest
+        self.projectUsage = projectUsage
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet52(
+        _ proTrialOnboarding: [ACLAction]?,
+        _ rateLimit: [ACLAction]?,
+        _ redis: [ACLAction]?,
+        _ redisStoreTokenSet: [ACLAction]?,
+        _ remoteCaching: [ACLAction]?
+    ) {
+        self.proTrialOnboarding = proTrialOnboarding
+        self.rateLimit = rateLimit
+        self.redis = redis
+        self.redisStoreTokenSet = redisStoreTokenSet
+        self.remoteCaching = remoteCaching
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet53(
+        _ repository: [ACLAction]?,
+        _ samlConfig: [ACLAction]?,
+        _ schedule: [ACLAction]?,
+        _ seawallConfig: [ACLAction]?,
+        _ secret: [ACLAction]?
+    ) {
+        self.repository = repository
+        self.samlConfig = samlConfig
+        self.schedule = schedule
+        self.seawallConfig = seawallConfig
+        self.secret = secret
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet54(
+        _ securityConfig: [ACLAction]?,
+        _ securityPlusConfiguration: [ACLAction]?,
+        _ sensitiveEnvironmentVariablePolicy: [ACLAction]?,
+        _ setting: [ACLAction]?
+    ) {
+        self.securityConfig = securityConfig
+        self.securityPlusConfiguration = securityPlusConfiguration
+        self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
+        self.setting = setting
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet55(
+        _ shareableLink: [ACLAction]?,
+        _ shareableLinkStrict: [ACLAction]?,
+        _ sharedEnvVarConnection: [ACLAction]?,
+        _ sharedEnvVars: [ACLAction]?,
+        _ sharedEnvVarsProduction: [ACLAction]?
+    ) {
+        self.shareableLink = shareableLink
+        self.shareableLinkStrict = shareableLinkStrict
+        self.sharedEnvVarConnection = sharedEnvVarConnection
+        self.sharedEnvVars = sharedEnvVars
+        self.sharedEnvVarsProduction = sharedEnvVarsProduction
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet56(
+        _ skewProtection: [ACLAction]?,
+        _ space: [ACLAction]?,
+        _ spaceRun: [ACLAction]?,
+        _ storeIsLocked: [ACLAction]?,
+        _ storeTokenSetSensitive: [ACLAction]?
+    ) {
+        self.skewProtection = skewProtection
+        self.space = space
+        self.spaceRun = spaceRun
+        self.storeIsLocked = storeIsLocked
+        self.storeTokenSetSensitive = storeTokenSetSensitive
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet57(
+        _ storeTransfer: [ACLAction]?,
+        _ supportCase: [ACLAction]?,
+        _ supportCaseComment: [ACLAction]?,
+        _ team: [ACLAction]?,
+        _ teamAccessRequest: [ACLAction]?
+    ) {
+        self.storeTransfer = storeTransfer
+        self.supportCase = supportCase
+        self.supportCaseComment = supportCaseComment
+        self.team = team
+        self.teamAccessRequest = teamAccessRequest
+    }
+}
+
+extension ListProjectsResponseVariant2ProjectsItemPermissions {
+    mutating func sdkSet58(
+        _ teamFellowMembership: [ACLAction]?,
+        _ teamGitExclusivity: [ACLAction]?,
+        _ teamInvite: [ACLAction]?,
+        _ teamInviteCode: [ACLAction]?,
+        _ teamInviteLink: [ACLAction]?
+    ) {
+        self.teamFellowMembership = teamFellowMembership
+        self.teamGitExclusivity = teamGitExclusivity
+        self.teamInvite = teamInvite
+        self.teamInviteCode = teamInviteCode
+        self.teamInviteLink = teamInviteLink
+    }
 }

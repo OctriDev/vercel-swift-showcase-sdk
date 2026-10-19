@@ -3,7 +3,7 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 public extension ListEventTypeReplacedByItem {
     static let accessGroupCreated = ListEventTypeReplacedByItem(rawValue: "access-group-created")
     static let accessGroupDeleted = ListEventTypeReplacedByItem(rawValue: "access-group-deleted")
@@ -11,9 +11,11 @@ public extension ListEventTypeReplacedByItem {
     static let accessGroupUpdated = ListEventTypeReplacedByItem(rawValue: "access-group-updated")
     static let accessGroupUserAdded = ListEventTypeReplacedByItem(rawValue: "access-group-user-added")
     static let accessGroupUserRemoved = ListEventTypeReplacedByItem(rawValue: "access-group-user-removed")
-    static let adminAgenticProvisioningAccountUnlinked = ListEventTypeReplacedByItem(rawValue: "admin-agentic-provisioning-account-unlinked")
+    static let adminAgenticProvisioningAccountUnlinked =
+        ListEventTypeReplacedByItem(rawValue: "admin-agentic-provisioning-account-unlinked")
     static let adminPlanUpdated = ListEventTypeReplacedByItem(rawValue: "admin-plan-updated")
-    static let adminPreviewDeploymentSuffixClear = ListEventTypeReplacedByItem(rawValue: "admin-preview-deployment-suffix-clear")
+    static let adminPreviewDeploymentSuffixClear =
+        ListEventTypeReplacedByItem(rawValue: "admin-preview-deployment-suffix-clear")
     static let adminSamlIdpMaterialDeleted = ListEventTypeReplacedByItem(rawValue: "admin-saml-idp-material-deleted")
     static let adminSamlIdpMaterialSet = ListEventTypeReplacedByItem(rawValue: "admin-saml-idp-material-set")
     static let adminSamlSpSigningKeyCreated = ListEventTypeReplacedByItem(rawValue: "admin-saml-sp-signing-key-created")
@@ -25,62 +27,97 @@ public extension ListEventTypeReplacedByItem {
     static let adminUserDelete = ListEventTypeReplacedByItem(rawValue: "admin-user-delete")
     static let adminUserPrimaryEmailUpdated = ListEventTypeReplacedByItem(rawValue: "admin-user-primary-email-updated")
     static let adminUsernameUpdated = ListEventTypeReplacedByItem(rawValue: "admin-username-updated")
-    static let agenticProvisioningAccountBlocked = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-blocked")
-    static let agenticProvisioningAccountLinked = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-linked")
-    static let agenticProvisioningAccountRelinked = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-relinked")
-    static let agenticProvisioningAccountUnlinked = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-unlinked")
-    static let agenticProvisioningCredentialsRotated = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-credentials-rotated")
-    static let agenticProvisioningPlanChanged = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-plan-changed")
-    static let agenticProvisioningTeamCreated = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-team-created")
+    static let agenticProvisioningAccountBlocked =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-blocked")
+    static let agenticProvisioningAccountLinked =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-linked")
+    static let agenticProvisioningAccountRelinked =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-relinked")
+    static let agenticProvisioningAccountUnlinked =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-unlinked")
+    static let agenticProvisioningCredentialsRotated =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-credentials-rotated")
+    static let agenticProvisioningPlanChanged =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-plan-changed")
+    static let agenticProvisioningTeamCreated =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-team-created")
     static let aiAlertInvestigation = ListEventTypeReplacedByItem(rawValue: "ai-alert-investigation")
     static let aiCodeReview = ListEventTypeReplacedByItem(rawValue: "ai-code-review")
     static let aiGatewayAccessPolicyCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-created")
     static let aiGatewayAccessPolicyDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-deleted")
-    static let aiGatewayAccessPolicyMemberAdded = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-member-added")
-    static let aiGatewayAccessPolicyMemberRemoved = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-member-removed")
+    static let aiGatewayAccessPolicyMemberAdded =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-member-added")
+    static let aiGatewayAccessPolicyMemberRemoved =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-member-removed")
     static let aiGatewayAccessPolicyUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-updated")
     static let aiGatewayApiKeyCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-api-key-created")
     static let aiGatewayApiKeyDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-api-key-deleted")
     static let aiGatewayApiKeyQuotaUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-api-key-quota-updated")
     static let aiGatewayAutoReloadUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-auto-reload-updated")
-    static let aiGatewayBudgetDefaultUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-budget-default-updated")
-    static let aiGatewayByokCredentialCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-created")
-    static let aiGatewayByokCredentialDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-deleted")
-    static let aiGatewayByokCredentialUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-updated")
-    static let aiGatewayByokModelMappingsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-model-mappings-updated")
+    static let aiGatewayBudgetDefaultUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-budget-default-updated")
+    static let aiGatewayByokCredentialCreated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-created")
+    static let aiGatewayByokCredentialDeleted =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-deleted")
+    static let aiGatewayByokCredentialUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-updated")
+    static let aiGatewayByokModelMappingsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-model-mappings-updated")
     static let aiGatewayCreditsPurchased = ListEventTypeReplacedByItem(rawValue: "ai-gateway-credits-purchased")
     static let aiGatewayGuardrailsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-guardrails-updated")
-    static let aiGatewayHipaaComplianceToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-hipaa-compliance-toggled")
-    static let aiGatewayInferenceRegionsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-inference-regions-updated")
-    static let aiGatewayModelAllowlistModelsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-allowlist-models-updated")
-    static let aiGatewayModelAllowlistToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-allowlist-toggled")
-    static let aiGatewayModelCatalogAlertSettingsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
+    static let aiGatewayHipaaComplianceToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-hipaa-compliance-toggled")
+    static let aiGatewayInferenceRegionsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-inference-regions-updated")
+    static let aiGatewayModelAllowlistModelsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-allowlist-models-updated")
+    static let aiGatewayModelAllowlistToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-allowlist-toggled")
+    static let aiGatewayModelCatalogAlertSettingsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
     static let aiGatewayPrivateModelCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-model-created")
     static let aiGatewayPrivateModelDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-model-deleted")
     static let aiGatewayPrivateModelUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-model-updated")
-    static let aiGatewayPrivateProviderCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-created")
-    static let aiGatewayPrivateProviderDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-deleted")
-    static let aiGatewayPrivateProviderUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-updated")
-    static let aiGatewayPromptTrainingOptOutToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
-    static let aiGatewayProviderAllowlistProvidersUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-provider-allowlist-providers-updated")
-    static let aiGatewayProviderAllowlistToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-provider-allowlist-toggled")
+    static let aiGatewayPrivateProviderCreated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-created")
+    static let aiGatewayPrivateProviderDeleted =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-deleted")
+    static let aiGatewayPrivateProviderUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-updated")
+    static let aiGatewayPromptTrainingOptOutToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
+    static let aiGatewayProviderAllowlistProvidersUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-provider-allowlist-providers-updated")
+    static let aiGatewayProviderAllowlistToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-provider-allowlist-toggled")
     static let aiGatewayRuleCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-rule-created")
     static let aiGatewayRuleDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-rule-deleted")
     static let aiGatewayRuleUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-rule-updated")
     static let aiGatewayScopeBudgetUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-scope-budget-updated")
-    static let aiGatewayTranscriptsDefaultDisabled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-default-disabled")
-    static let aiGatewayTranscriptsDefaultEnabled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-default-enabled")
+    static let aiGatewayTranscriptsDefaultDisabled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-default-disabled")
+    static let aiGatewayTranscriptsDefaultEnabled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-default-enabled")
     static let aiGatewayTranscriptsDisabled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-disabled")
     static let aiGatewayTranscriptsEnabled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-enabled")
-    static let aiGatewayTranscriptsRetentionUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-retention-updated")
-    static let aiGatewayVirtualModelConfigArchived = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-archived")
-    static let aiGatewayVirtualModelConfigCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-created")
-    static let aiGatewayVirtualModelConfigDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-deleted")
-    static let aiGatewayVirtualModelConfigRestored = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-restored")
-    static let aiGatewayVirtualModelConfigUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-updated")
-    static let aiGatewayZeroDataRetentionToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-zero-data-retention-toggled")
+    static let aiGatewayTranscriptsRetentionUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-retention-updated")
+    static let aiGatewayVirtualModelConfigArchived =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-archived")
+    static let aiGatewayVirtualModelConfigCreated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-created")
+    static let aiGatewayVirtualModelConfigDeleted =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-deleted")
+    static let aiGatewayVirtualModelConfigRestored =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-restored")
+    static let aiGatewayVirtualModelConfigUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-updated")
+    static let aiGatewayZeroDataRetentionToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-zero-data-retention-toggled")
     static let aiOmniagent = ListEventTypeReplacedByItem(rawValue: "ai-omniagent")
-    static let alertInvestigationProjectAllowlistUpdated = ListEventTypeReplacedByItem(rawValue: "alert-investigation-project-allowlist-updated")
+    static let alertInvestigationProjectAllowlistUpdated =
+        ListEventTypeReplacedByItem(rawValue: "alert-investigation-project-allowlist-updated")
     static let alertRuleCreated = ListEventTypeReplacedByItem(rawValue: "alert-rule-created")
     static let alertRuleDeleted = ListEventTypeReplacedByItem(rawValue: "alert-rule-deleted")
     static let alertRuleUpdated = ListEventTypeReplacedByItem(rawValue: "alert-rule-updated")
@@ -94,13 +131,16 @@ public extension ListEventTypeReplacedByItem {
     static let aliasInviteJoined = ListEventTypeReplacedByItem(rawValue: "alias-invite-joined")
     static let aliasInviteRevoked = ListEventTypeReplacedByItem(rawValue: "alias-invite-revoked")
     static let aliasProtectionBypassCreated = ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-created")
-    static let aliasProtectionBypassException = ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-exception")
-    static let aliasProtectionBypassRegenerated = ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-regenerated")
+    static let aliasProtectionBypassException =
+        ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-exception")
+    static let aliasProtectionBypassRegenerated =
+        ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-regenerated")
     static let aliasProtectionBypassRevoked = ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-revoked")
     static let aliasSystem = ListEventTypeReplacedByItem(rawValue: "alias-system")
     static let aliasUserScopedAccessDenied = ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-denied")
     static let aliasUserScopedAccessGranted = ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-granted")
-    static let aliasUserScopedAccessRequested = ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-requested")
+    static let aliasUserScopedAccessRequested =
+        ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-requested")
     static let aliasUserScopedAccessRevoked = ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-revoked")
     static let aliasesAssigned = ListEventTypeReplacedByItem(rawValue: "aliases-assigned")
     static let attackModeDisabled = ListEventTypeReplacedByItem(rawValue: "attack-mode-disabled")
@@ -125,14 +165,16 @@ public extension ListEventTypeReplacedByItem {
     static let codeOwnersConfigUpdated = ListEventTypeReplacedByItem(rawValue: "code-owners-config-updated")
     static let complianceDocumentDownloaded = ListEventTypeReplacedByItem(rawValue: "compliance-document-downloaded")
     static let complianceDocumentPreviewed = ListEventTypeReplacedByItem(rawValue: "compliance-document-previewed")
-    static let complianceDocumentsBulkDownloaded = ListEventTypeReplacedByItem(rawValue: "compliance-documents-bulk-downloaded")
+    static let complianceDocumentsBulkDownloaded =
+        ListEventTypeReplacedByItem(rawValue: "compliance-documents-bulk-downloaded")
     static let concurrentBuildsUpdate = ListEventTypeReplacedByItem(rawValue: "concurrent-builds-update")
     static let connectAttachProject = ListEventTypeReplacedByItem(rawValue: "connect-attach-project")
     static let connectBitbucket = ListEventTypeReplacedByItem(rawValue: "connect-bitbucket")
     static let connectBitbucketApp = ListEventTypeReplacedByItem(rawValue: "connect-bitbucket-app")
     static let connectConfigurationCreated = ListEventTypeReplacedByItem(rawValue: "connect-configuration-created")
     static let connectConfigurationDeleted = ListEventTypeReplacedByItem(rawValue: "connect-configuration-deleted")
-    static let connectConfigurationLinkUpdated = ListEventTypeReplacedByItem(rawValue: "connect-configuration-link-updated")
+    static let connectConfigurationLinkUpdated =
+        ListEventTypeReplacedByItem(rawValue: "connect-configuration-link-updated")
     static let connectConfigurationLinked = ListEventTypeReplacedByItem(rawValue: "connect-configuration-linked")
     static let connectConfigurationUnlinked = ListEventTypeReplacedByItem(rawValue: "connect-configuration-unlinked")
     static let connectConfigurationUpdated = ListEventTypeReplacedByItem(rawValue: "connect-configuration-updated")
@@ -148,12 +190,14 @@ public extension ListEventTypeReplacedByItem {
     static let connectImportTokens = ListEventTypeReplacedByItem(rawValue: "connect-import-tokens")
     static let connectRevokeAllTokens = ListEventTypeReplacedByItem(rawValue: "connect-revoke-all-tokens")
     static let connectUpdateConnector = ListEventTypeReplacedByItem(rawValue: "connect-update-connector")
-    static let connectUpdateTriggerDestinations = ListEventTypeReplacedByItem(rawValue: "connect-update-trigger-destinations")
+    static let connectUpdateTriggerDestinations =
+        ListEventTypeReplacedByItem(rawValue: "connect-update-trigger-destinations")
     static let connectUpsertInstallation = ListEventTypeReplacedByItem(rawValue: "connect-upsert-installation")
     static let customAlertCreated = ListEventTypeReplacedByItem(rawValue: "custom-alert-created")
     static let customAlertDeleted = ListEventTypeReplacedByItem(rawValue: "custom-alert-deleted")
     static let customAlertUpdated = ListEventTypeReplacedByItem(rawValue: "custom-alert-updated")
-    static let customEnvironmentsSettingsUpdated = ListEventTypeReplacedByItem(rawValue: "custom-environments-settings-updated")
+    static let customEnvironmentsSettingsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "custom-environments-settings-updated")
     static let customMetricMetadataDeleted = ListEventTypeReplacedByItem(rawValue: "custom-metric-metadata-deleted")
     static let customMetricMetadataUpdated = ListEventTypeReplacedByItem(rawValue: "custom-metric-metadata-updated")
     static let customSuffixClear = ListEventTypeReplacedByItem(rawValue: "custom-suffix-clear")
@@ -178,9 +222,11 @@ public extension ListEventTypeReplacedByItem {
     static let deploymentCreationBlocked = ListEventTypeReplacedByItem(rawValue: "deployment-creation-blocked")
     static let deploymentDelete = ListEventTypeReplacedByItem(rawValue: "deployment-delete")
     static let deploymentPolicyBlocked = ListEventTypeReplacedByItem(rawValue: "deployment-policy-blocked")
-    static let deploymentProtectionAccessRequests = ListEventTypeReplacedByItem(rawValue: "deployment-protection-access-requests")
+    static let deploymentProtectionAccessRequests =
+        ListEventTypeReplacedByItem(rawValue: "deployment-protection-access-requests")
     static let deploymentUndeleted = ListEventTypeReplacedByItem(rawValue: "deployment-undeleted")
-    static let disabledIntegrationInstallationRemoved = ListEventTypeReplacedByItem(rawValue: "disabled-integration-installation-removed")
+    static let disabledIntegrationInstallationRemoved =
+        ListEventTypeReplacedByItem(rawValue: "disabled-integration-installation-removed")
     static let disconnectBitbucketApp = ListEventTypeReplacedByItem(rawValue: "disconnect-bitbucket-app")
     static let disconnectGithub = ListEventTypeReplacedByItem(rawValue: "disconnect-github")
     static let disconnectGithubCustomHost = ListEventTypeReplacedByItem(rawValue: "disconnect-github-custom-host")
@@ -214,10 +260,14 @@ public extension ListEventTypeReplacedByItem {
     static let drainDisabled = ListEventTypeReplacedByItem(rawValue: "drain-disabled")
     static let drainEnabled = ListEventTypeReplacedByItem(rawValue: "drain-enabled")
     static let drainUpdated = ListEventTypeReplacedByItem(rawValue: "drain-updated")
-    static let edgeCacheDangerouslyDeleteBySrcImages = ListEventTypeReplacedByItem(rawValue: "edge-cache-dangerously-delete-by-src-images")
-    static let edgeCacheDangerouslyDeleteByTags = ListEventTypeReplacedByItem(rawValue: "edge-cache-dangerously-delete-by-tags")
-    static let edgeCacheDangerouslyDeleteImmutableStatic = ListEventTypeReplacedByItem(rawValue: "edge-cache-dangerously-delete-immutable-static")
-    static let edgeCacheInvalidateBySrcImages = ListEventTypeReplacedByItem(rawValue: "edge-cache-invalidate-by-src-images")
+    static let edgeCacheDangerouslyDeleteBySrcImages =
+        ListEventTypeReplacedByItem(rawValue: "edge-cache-dangerously-delete-by-src-images")
+    static let edgeCacheDangerouslyDeleteByTags =
+        ListEventTypeReplacedByItem(rawValue: "edge-cache-dangerously-delete-by-tags")
+    static let edgeCacheDangerouslyDeleteImmutableStatic =
+        ListEventTypeReplacedByItem(rawValue: "edge-cache-dangerously-delete-immutable-static")
+    static let edgeCacheInvalidateBySrcImages =
+        ListEventTypeReplacedByItem(rawValue: "edge-cache-invalidate-by-src-images")
     static let edgeCacheInvalidateByTags = ListEventTypeReplacedByItem(rawValue: "edge-cache-invalidate-by-tags")
     static let edgeCachePurgeAll = ListEventTypeReplacedByItem(rawValue: "edge-cache-purge-all")
     static let edgeCacheRollbackPurge = ListEventTypeReplacedByItem(rawValue: "edge-cache-rollback-purge")
@@ -235,9 +285,12 @@ public extension ListEventTypeReplacedByItem {
     static let email = ListEventTypeReplacedByItem(rawValue: "email")
     static let emailNotificationRuleRemoved = ListEventTypeReplacedByItem(rawValue: "email-notification-rule-removed")
     static let emailNotificationRuleUpdated = ListEventTypeReplacedByItem(rawValue: "email-notification-rule-updated")
-    static let emuMemberRemovedUnverifiedDomain = ListEventTypeReplacedByItem(rawValue: "emu-member-removed-unverified-domain")
-    static let enforceDisjunctiveProductionSecrets = ListEventTypeReplacedByItem(rawValue: "enforce-disjunctive-production-secrets")
-    static let enforceSensitiveEnvironmentVariables = ListEventTypeReplacedByItem(rawValue: "enforce-sensitive-environment-variables")
+    static let emuMemberRemovedUnverifiedDomain =
+        ListEventTypeReplacedByItem(rawValue: "emu-member-removed-unverified-domain")
+    static let enforceDisjunctiveProductionSecrets =
+        ListEventTypeReplacedByItem(rawValue: "enforce-disjunctive-production-secrets")
+    static let enforceSensitiveEnvironmentVariables =
+        ListEventTypeReplacedByItem(rawValue: "enforce-sensitive-environment-variables")
     static let envVariableAdd = ListEventTypeReplacedByItem(rawValue: "env-variable-add")
     static let envVariableDelete = ListEventTypeReplacedByItem(rawValue: "env-variable-delete")
     static let envVariableEdit = ListEventTypeReplacedByItem(rawValue: "env-variable-edit")
@@ -261,12 +314,15 @@ public extension ListEventTypeReplacedByItem {
     static let experimentUpdated = ListEventTypeReplacedByItem(rawValue: "experiment-updated")
     static let firewallBypassCreated = ListEventTypeReplacedByItem(rawValue: "firewall-bypass-created")
     static let firewallBypassDeleted = ListEventTypeReplacedByItem(rawValue: "firewall-bypass-deleted")
-    static let firewallConditionalBypassCreated = ListEventTypeReplacedByItem(rawValue: "firewall-conditional-bypass-created")
-    static let firewallConditionalBypassDeleted = ListEventTypeReplacedByItem(rawValue: "firewall-conditional-bypass-deleted")
+    static let firewallConditionalBypassCreated =
+        ListEventTypeReplacedByItem(rawValue: "firewall-conditional-bypass-created")
+    static let firewallConditionalBypassDeleted =
+        ListEventTypeReplacedByItem(rawValue: "firewall-conditional-bypass-deleted")
     static let firewallConfigModified = ListEventTypeReplacedByItem(rawValue: "firewall-config-modified")
     static let firewallConfigPromoted = ListEventTypeReplacedByItem(rawValue: "firewall-config-promoted")
     static let firewallConfigRemoved = ListEventTypeReplacedByItem(rawValue: "firewall-config-removed")
-    static let firewallManagedRulegroupUpdated = ListEventTypeReplacedByItem(rawValue: "firewall-managed-rulegroup-updated")
+    static let firewallManagedRulegroupUpdated =
+        ListEventTypeReplacedByItem(rawValue: "firewall-managed-rulegroup-updated")
     static let firewallManagedRulesetUpdated = ListEventTypeReplacedByItem(rawValue: "firewall-managed-ruleset-updated")
     static let flag = ListEventTypeReplacedByItem(rawValue: "flag")
     static let flagArchived = ListEventTypeReplacedByItem(rawValue: "flag-archived")
@@ -284,9 +340,11 @@ public extension ListEventTypeReplacedByItem {
     static let flagsSegment = ListEventTypeReplacedByItem(rawValue: "flags-segment")
     static let flagsSettings = ListEventTypeReplacedByItem(rawValue: "flags-settings")
     static let flagsTransferred = ListEventTypeReplacedByItem(rawValue: "flags-transferred")
-    static let flatRateCdnAutoUpgradeConsent = ListEventTypeReplacedByItem(rawValue: "flat-rate-cdn-auto-upgrade-consent")
+    static let flatRateCdnAutoUpgradeConsent =
+        ListEventTypeReplacedByItem(rawValue: "flat-rate-cdn-auto-upgrade-consent")
     static let gitIntegrationRepoPush = ListEventTypeReplacedByItem(rawValue: "git-integration-repo-push")
-    static let gitAccountIntegrationLinkAdded = ListEventTypeReplacedByItem(rawValue: "git_account_integration_link_added")
+    static let gitAccountIntegrationLinkAdded =
+        ListEventTypeReplacedByItem(rawValue: "git_account_integration_link_added")
     static let globalConfigBackupRestored = ListEventTypeReplacedByItem(rawValue: "global-config-backup-restored")
     static let globalConfigCreated = ListEventTypeReplacedByItem(rawValue: "global-config-created")
     static let globalConfigDeleted = ListEventTypeReplacedByItem(rawValue: "global-config-deleted")
@@ -299,19 +357,32 @@ public extension ListEventTypeReplacedByItem {
     static let globalConfigTransferOut = ListEventTypeReplacedByItem(rawValue: "global-config-transfer-out")
     static let globalConfigUpdated = ListEventTypeReplacedByItem(rawValue: "global-config-updated")
     static let instantRollbackCreated = ListEventTypeReplacedByItem(rawValue: "instant-rollback-created")
-    static let integrationConfigurationCredentialRevoked = ListEventTypeReplacedByItem(rawValue: "integration-configuration-credential-revoked")
-    static let integrationConfigurationCredentialRotated = ListEventTypeReplacedByItem(rawValue: "integration-configuration-credential-rotated")
-    static let integrationConfigurationOwnerChanged = ListEventTypeReplacedByItem(rawValue: "integration-configuration-owner-changed")
-    static let integrationConfigurationScopeChangeConfirmed = ListEventTypeReplacedByItem(rawValue: "integration-configuration-scope-change-confirmed")
-    static let integrationConfigurationTransferInSuccess = ListEventTypeReplacedByItem(rawValue: "integration-configuration-transfer-in-success")
-    static let integrationConfigurationTransferOutSuccess = ListEventTypeReplacedByItem(rawValue: "integration-configuration-transfer-out-success")
-    static let integrationConfigurationsDisabled = ListEventTypeReplacedByItem(rawValue: "integration-configurations-disabled")
-    static let integrationInstallationBillingPlanUpdated = ListEventTypeReplacedByItem(rawValue: "integration-installation-billing-plan-updated")
-    static let integrationInstallationCompleted = ListEventTypeReplacedByItem(rawValue: "integration-installation-completed")
-    static let integrationInstallationPermissionUpdated = ListEventTypeReplacedByItem(rawValue: "integration-installation-permission-updated")
-    static let integrationInstallationRemoved = ListEventTypeReplacedByItem(rawValue: "integration-installation-removed")
-    static let integrationResourceRedisCommandExecuted = ListEventTypeReplacedByItem(rawValue: "integration-resource-redis-command-executed")
-    static let integrationResourceSqlQueryExecuted = ListEventTypeReplacedByItem(rawValue: "integration-resource-sql-query-executed")
+    static let integrationConfigurationCredentialRevoked =
+        ListEventTypeReplacedByItem(rawValue: "integration-configuration-credential-revoked")
+    static let integrationConfigurationCredentialRotated =
+        ListEventTypeReplacedByItem(rawValue: "integration-configuration-credential-rotated")
+    static let integrationConfigurationOwnerChanged =
+        ListEventTypeReplacedByItem(rawValue: "integration-configuration-owner-changed")
+    static let integrationConfigurationScopeChangeConfirmed =
+        ListEventTypeReplacedByItem(rawValue: "integration-configuration-scope-change-confirmed")
+    static let integrationConfigurationTransferInSuccess =
+        ListEventTypeReplacedByItem(rawValue: "integration-configuration-transfer-in-success")
+    static let integrationConfigurationTransferOutSuccess =
+        ListEventTypeReplacedByItem(rawValue: "integration-configuration-transfer-out-success")
+    static let integrationConfigurationsDisabled =
+        ListEventTypeReplacedByItem(rawValue: "integration-configurations-disabled")
+    static let integrationInstallationBillingPlanUpdated =
+        ListEventTypeReplacedByItem(rawValue: "integration-installation-billing-plan-updated")
+    static let integrationInstallationCompleted =
+        ListEventTypeReplacedByItem(rawValue: "integration-installation-completed")
+    static let integrationInstallationPermissionUpdated =
+        ListEventTypeReplacedByItem(rawValue: "integration-installation-permission-updated")
+    static let integrationInstallationRemoved =
+        ListEventTypeReplacedByItem(rawValue: "integration-installation-removed")
+    static let integrationResourceRedisCommandExecuted =
+        ListEventTypeReplacedByItem(rawValue: "integration-resource-redis-command-executed")
+    static let integrationResourceSqlQueryExecuted =
+        ListEventTypeReplacedByItem(rawValue: "integration-resource-sql-query-executed")
     static let integrationScopeChanged = ListEventTypeReplacedByItem(rawValue: "integration-scope-changed")
     static let invoiceModified = ListEventTypeReplacedByItem(rawValue: "invoice-modified")
     static let invoiceRefunded = ListEventTypeReplacedByItem(rawValue: "invoice-refunded")
@@ -332,6 +403,8 @@ public extension ListEventTypeReplacedByItem {
     static let login = ListEventTypeReplacedByItem(rawValue: "login")
     static let loginConnectionLinked = ListEventTypeReplacedByItem(rawValue: "login-connection-linked")
     static let loginConnectionUnlinked = ListEventTypeReplacedByItem(rawValue: "login-connection-unlinked")
-    static let manualDeploymentPromotionCreated = ListEventTypeReplacedByItem(rawValue: "manual-deployment-promotion-created")
-    static let marketplaceAutoCardCollectionUpdated = ListEventTypeReplacedByItem(rawValue: "marketplace-auto-card-collection-updated")
+    static let manualDeploymentPromotionCreated =
+        ListEventTypeReplacedByItem(rawValue: "manual-deployment-promotion-created")
+    static let marketplaceAutoCardCollectionUpdated =
+        ListEventTypeReplacedByItem(rawValue: "marketplace-auto-card-collection-updated")
 }

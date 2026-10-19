@@ -6,21 +6,35 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    /// Streams command output in real time as newline-delimited JSON (ND-JSON). Each stream entry includes output data and a stream type such as `stdout`, `stderr`, or `error`.
+public extension SandboxesMethods {
+    /// Streams command output in real time as newline-delimited JSON (ND-JSON). Each stream entry includes output data
+    /// and a stream type such as `stdout`, `stderr`, or `error`.
     ///
-    /// Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures).
+    /// Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the
+    /// output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures).
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session containing the command.
     /// - cmdId: The unique identifier of the command to stream logs for.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getSessionCommandLogs(config: ClientConfig, sessionId: String, cmdId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AsyncThrowingStream<GetSessionCommandLogsResponse, Swift.Error> {
-
+    static func getSessionCommandLogs(
+        config: ClientConfig,
+        sessionId: String,
+        cmdId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AsyncThrowingStream<GetSessionCommandLogsResponse, Swift.Error> {
         let upstream = try await sdkStream(
             "GET",
-            ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/cmd/", sdkEncodePathSegment(sdkWireString(cmdId)), "/logs"].joined(),
+            [
+                "/v2/sandboxes/sessions/",
+                sdkEncodePathSegment(sdkWireString(sessionId)),
+                "/cmd/",
+                sdkEncodePathSegment(sdkWireString(cmdId)),
+                "/logs",
+            ].joined(),
             config: config,
             query: [
                 SdkQueryParameter("teamId", value: teamId),
@@ -40,8 +54,11 @@ extension SandboxesMethods {
                             continuation.finish()
                             return
                         }
-                        let payload = try sdkDecodeBody(Data(event.data.utf8)) { try sdkJsonDecoder().decode(GetSessionCommandLogsResponse.self, from: Data(event.data.utf8)) }
-                        
+                        let payload = try sdkDecodeBody(Data(event.data.utf8)) { try sdkJsonDecoder().decode(
+                            GetSessionCommandLogsResponse.self,
+                            from: Data(event.data.utf8)
+                        ) }
+
                         continuation.yield(payload)
                     }
                     continuation.finish()

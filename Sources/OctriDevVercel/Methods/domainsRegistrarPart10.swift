@@ -6,22 +6,66 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsRegistrarMethods {
-    /// Retrieves the registrant contact verification status for a domain. Use this after purchasing a domain to check whether its registrant contact has been verified. A 400 is returned if the domain was bought less than 30 minutes before the request.
+public extension DomainsRegistrarMethods {
+    /// Retrieves the registrant contact verification status for a domain. Use this after purchasing a domain to check
+    /// whether its registrant contact has been verified. A 400 is returned if the domain was bought less than 30
+    /// minutes before the request.
     ///
-    /// Get the registrant contact verification status for a domain. Use this after purchasing a domain to determine whether the contact has been verified. Note that a bought_too_recently error will be returned if the domain was bought less than 30 minutes before the request.
-    public static func getDomainContactVerification(config: ClientConfig, domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainContactVerificationResponse {
-        return try (await sdkRequest("GET", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/contact-verification"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-        ], decoder: .json, operationId: "getDomainContactVerification", options: requestOptions, errors: ["401": Unauthorized.self, "404": DomainNotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
+    /// Get the registrant contact verification status for a domain. Use this after purchasing a domain to determine
+    /// whether the contact has been verified. Note that a bought_too_recently error will be returned if the domain was
+    /// bought less than 30 minutes before the request.
+    static func getDomainContactVerification(
+        config: ClientConfig,
+        domain: DomainName,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainContactVerificationResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/contact-verification"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+            ],
+            decoder: .json,
+            operationId: "getDomainContactVerification",
+            options: requestOptions,
+            errors: [
+                "401": Unauthorized.self,
+                "404": DomainNotFound.self,
+                "429": TooManyRequests.self,
+                "500": InternalServerError.self,
+            ]
+        )).data
     }
 
-    /// Retrieves information about a domain order using its order ID. Use the response to inspect the domains included in the order and its current status. The status is one of `draft`, `purchasing`, `completed`, or `failed`.
+    /// Retrieves information about a domain order using its order ID. Use the response to inspect the domains included
+    /// in the order and its current status. The status is one of `draft`, `purchasing`, `completed`, or `failed`.
     ///
     /// Get information about a domain order by its ID
-    public static func getOrder(config: ClientConfig, orderId: OrderId, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetOrderResponse {
-        return try (await sdkRequest("GET", ["/v1/registrar/orders/", sdkEncodePathSegment(sdkWireString(orderId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-        ], decoder: .json, operationId: "getOrder", options: requestOptions, errors: ["400": HttpApiDecodeError.self, "401": Unauthorized.self, "404": NotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
+    static func getOrder(
+        config: ClientConfig,
+        orderId: OrderId,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetOrderResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/registrar/orders/", sdkEncodePathSegment(sdkWireString(orderId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+            ],
+            decoder: .json,
+            operationId: "getOrder",
+            options: requestOptions,
+            errors: [
+                "400": HttpApiDecodeError.self,
+                "401": Unauthorized.self,
+                "404": NotFound.self,
+                "429": TooManyRequests.self,
+                "500": InternalServerError.self,
+            ]
+        )).data
     }
 }

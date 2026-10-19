@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical deployments operation model declarations
+/// Canonical deployments operation model declarations
 public struct DeleteDeploymentResponse: Codable {
     /// A constant with the final state of the deployment.
     public var state: DeleteDeploymentResponseState
@@ -20,25 +20,35 @@ public struct DeleteDeploymentResponse: Codable {
         case uid
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteDeploymentResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.state) else {
-            throw SdkValidationError(field: "state", code: "required", message: "Validation failed for 'state': value is required")
-        }
-        guard container.contains(.uid) else {
-            throw SdkValidationError(field: "uid", code: "required", message: "Validation failed for 'uid': value is required")
-        }
-        self.state = try container.sdkDecodeRequired(.state)
-        self.uid = try container.sdkDecodeRequired(.uid)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension DeleteDeploymentResponse {
-    public init(state: DeleteDeploymentResponseState, uid: String) {
+public extension DeleteDeploymentResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.state) else {
+            throw SdkValidationError(
+                field: "state",
+                code: "required",
+                message: "Validation failed for 'state': value is required"
+            )
+        }
+        guard container.contains(.uid) else {
+            throw SdkValidationError(
+                field: "uid",
+                code: "required",
+                message: "Validation failed for 'uid': value is required"
+            )
+        }
+        state = try container.sdkDecodeRequired(.state)
+        uid = try container.sdkDecodeRequired(.uid)
+    }
+}
+
+public extension DeleteDeploymentResponse {
+    init(state: DeleteDeploymentResponseState, uid: String) {
         (self.state, self.uid) = (state, uid)
     }
 }
@@ -52,25 +62,35 @@ public struct CancelDeploymentResponseCronsItem: Codable {
         case schedule
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CancelDeploymentResponseCronsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.path) else {
-            throw SdkValidationError(field: "path", code: "required", message: "Validation failed for 'path': value is required")
-        }
-        guard container.contains(.schedule) else {
-            throw SdkValidationError(field: "schedule", code: "required", message: "Validation failed for 'schedule': value is required")
-        }
-        self.path = try container.sdkDecodeRequired(.path)
-        self.schedule = try container.sdkDecodeRequired(.schedule)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CancelDeploymentResponseCronsItem {
-    public init(path: String, schedule: String) {
+public extension CancelDeploymentResponseCronsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.path) else {
+            throw SdkValidationError(
+                field: "path",
+                code: "required",
+                message: "Validation failed for 'path': value is required"
+            )
+        }
+        guard container.contains(.schedule) else {
+            throw SdkValidationError(
+                field: "schedule",
+                code: "required",
+                message: "Validation failed for 'schedule': value is required"
+            )
+        }
+        path = try container.sdkDecodeRequired(.path)
+        schedule = try container.sdkDecodeRequired(.schedule)
+    }
+}
+
+public extension CancelDeploymentResponseCronsItem {
+    init(path: String, schedule: String) {
         (self.path, self.schedule) = (path, schedule)
     }
 }
@@ -99,28 +119,38 @@ public struct CancelDeploymentResponseProjectSettings: Codable {
     }
 
     init() {
-        (self.buildCommand, self.commandForIgnoringBuildStep, self.devCommand, self.framework, self.installCommand) = (nil, nil, nil, nil, nil)
-        (self.nodeVersion, self.outputDirectory, self.speedInsights, self.webAnalytics) = (nil, nil, nil, nil)
+        (buildCommand, commandForIgnoringBuildStep, devCommand, framework, installCommand) = (nil, nil, nil, nil, nil)
+        (nodeVersion, outputDirectory, speedInsights, webAnalytics) = (nil, nil, nil, nil)
     }
 }
 
-extension CancelDeploymentResponseProjectSettings {
-    public init(from decoder: Decoder) throws {
+public extension CancelDeploymentResponseProjectSettings {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
-        self.commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
-        self.devCommand = try container.sdkDecodeIfPresent(.devCommand)
-        self.framework = try container.sdkDecodeIfPresent(.framework)
-        self.installCommand = try container.sdkDecodeIfPresent(.installCommand)
-        self.nodeVersion = try container.sdkDecodeIfPresent(.nodeVersion)
-        self.outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
-        self.speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
-        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
+        buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
+        commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
+        devCommand = try container.sdkDecodeIfPresent(.devCommand)
+        framework = try container.sdkDecodeIfPresent(.framework)
+        installCommand = try container.sdkDecodeIfPresent(.installCommand)
+        nodeVersion = try container.sdkDecodeIfPresent(.nodeVersion)
+        outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
+        speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
+        webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
     }
 }
 
-extension CancelDeploymentResponseProjectSettings {
-    public init(buildCommand: String? = nil, commandForIgnoringBuildStep: String? = nil, devCommand: String? = nil, framework: CancelDeploymentResponseProjectSettingsFramework? = nil, installCommand: String? = nil, nodeVersion: CancelDeploymentResponseProjectSettingsNodeVersion? = nil, outputDirectory: String? = nil, speedInsights: CancelDeploymentResponseProjectSettingsSpeedInsights? = nil, webAnalytics: CancelDeploymentResponseProjectSettingsWebAnalytics? = nil) {
+public extension CancelDeploymentResponseProjectSettings {
+    init(
+        buildCommand: String? = nil,
+        commandForIgnoringBuildStep: String? = nil,
+        devCommand: String? = nil,
+        framework: CancelDeploymentResponseProjectSettingsFramework? = nil,
+        installCommand: String? = nil,
+        nodeVersion: CancelDeploymentResponseProjectSettingsNodeVersion? = nil,
+        outputDirectory: String? = nil,
+        speedInsights: CancelDeploymentResponseProjectSettingsSpeedInsights? = nil,
+        webAnalytics: CancelDeploymentResponseProjectSettingsWebAnalytics? = nil
+    ) {
         self.init()
         (self.buildCommand, self.commandForIgnoringBuildStep) = (buildCommand, commandForIgnoringBuildStep)
         (self.devCommand, self.framework) = (devCommand, framework)
@@ -140,19 +170,19 @@ public struct CancelDeploymentResponseResourceConfig: Codable {
     }
 
     init() {
-        self.buildMachine = nil
+        buildMachine = nil
     }
 }
 
-extension CancelDeploymentResponseResourceConfig {
-    public init(from decoder: Decoder) throws {
+public extension CancelDeploymentResponseResourceConfig {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.buildMachine = try container.sdkDecodeIfPresent(.buildMachine)
+        buildMachine = try container.sdkDecodeIfPresent(.buildMachine)
     }
 }
 
-extension CancelDeploymentResponseResourceConfig {
-    public init(buildMachine: CancelDeploymentResponseResourceConfigBuildMachine? = nil) {
+public extension CancelDeploymentResponseResourceConfig {
+    init(buildMachine: CancelDeploymentResponseResourceConfigBuildMachine? = nil) {
         self.init()
         self.buildMachine = buildMachine
     }
@@ -175,27 +205,42 @@ public struct CancelDeploymentResponseAttributionGitUser: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CancelDeploymentResponseAttributionGitUser {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.login) else {
-            throw SdkValidationError(field: "login", code: "required", message: "Validation failed for 'login': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.login = try container.sdkDecodeRequired(.login)
-        self.provider = try container.sdkDecodeIfPresent(.provider)
-        self.type = try container.sdkDecodeIfPresent(.type)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CancelDeploymentResponseAttributionGitUser {
-    public init(id: CancelDeploymentResponseAttributionGitUserId, login: String, provider: String? = nil, type: String? = nil) {
+public extension CancelDeploymentResponseAttributionGitUser {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.login) else {
+            throw SdkValidationError(
+                field: "login",
+                code: "required",
+                message: "Validation failed for 'login': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        login = try container.sdkDecodeRequired(.login)
+        provider = try container.sdkDecodeIfPresent(.provider)
+        type = try container.sdkDecodeIfPresent(.type)
+    }
+}
+
+public extension CancelDeploymentResponseAttributionGitUser {
+    init(
+        id: CancelDeploymentResponseAttributionGitUserId,
+        login: String,
+        provider: String? = nil,
+        type: String? = nil
+    ) {
         (self.id, self.login) = (id, login)
         (self.provider, self.type) = (provider, type)
     }
@@ -217,21 +262,21 @@ public struct GetDeploymentsResponseDeploymentsItemAttributionCommitMeta: Codabl
     }
 
     init() {
-        (self.email, self.isVerified, self.name) = (nil, nil, nil)
+        (email, isVerified, name) = (nil, nil, nil)
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItemAttributionCommitMeta {
-    public init(from decoder: Decoder) throws {
+public extension GetDeploymentsResponseDeploymentsItemAttributionCommitMeta {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.email = try container.sdkDecodeIfPresent(.email)
-        self.isVerified = try container.sdkDecodeIfPresent(.isVerified)
-        self.name = try container.sdkDecodeIfPresent(.name)
+        email = try container.sdkDecodeIfPresent(.email)
+        isVerified = try container.sdkDecodeIfPresent(.isVerified)
+        name = try container.sdkDecodeIfPresent(.name)
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItemAttributionCommitMeta {
-    public init(email: String? = nil, isVerified: Bool? = nil, name: String? = nil) {
+public extension GetDeploymentsResponseDeploymentsItemAttributionCommitMeta {
+    init(email: String? = nil, isVerified: Bool? = nil, name: String? = nil) {
         self.init()
         (self.email, self.isVerified) = (email, isVerified)
         self.name = name
@@ -507,5 +552,7 @@ public struct CancelDeploymentResponse: Codable {
         case userConfiguredDeploymentId
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
