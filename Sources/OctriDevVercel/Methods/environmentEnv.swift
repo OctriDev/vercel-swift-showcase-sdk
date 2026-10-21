@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension EnvironmentMethods {
-    /// Creates one or more shared environment variables for a team. Provide between 1 and 50 entries in `evs`, each
-    /// with a `key` and `value`, and specify at least one target or custom-environment scope. A 201 response reports
-    /// which entries were created and which failed.
+extension EnvironmentMethods {
+    /// Creates one or more shared environment variables for a team. Provide between 1 and 50 entries in `evs`, each with a `key` and `value`, and specify at least one target or custom-environment scope. A 201 response reports which entries were created and which failed.
     ///
     /// Creates shared environment variable(s) for a team.
     ///
@@ -19,19 +17,10 @@ public extension EnvironmentMethods {
     /// - type: The type of environment variable
     /// - target: The target environment of the Shared Environment Variable
     /// - projectId: Associate a Shared Environment Variable to projects.
-    static func createSharedEnvVariable(
-        config: ClientConfig,
-        evs: [CreateSharedEnvVariableRequestBodyEvsItem],
-        teamId: String? = nil,
-        slug: String? = nil,
-        type: CreateSharedEnvVariableRequestBodyType? = nil,
-        target: [CreateSharedEnvVariableRequestBodyTargetItem]? = nil,
-        projectId: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateSharedEnvVariableResponse {
+    public static func createSharedEnvVariable(config: ClientConfig, evs: [CreateSharedEnvVariableRequestBodyEvsItem], teamId: String? = nil, slug: String? = nil, type: CreateSharedEnvVariableRequestBodyType? = nil, target: [CreateSharedEnvVariableRequestBodyTargetItem]? = nil, projectId: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateSharedEnvVariableResponse {
         let requestBody = CreateSharedEnvVariableRequestBody(evs: evs, type: type, target: target, projectId: projectId)
 
-        return try await (sdkRequest("POST", "/v1/env", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/env", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createSharedEnvVariable", options: requestOptions)).data

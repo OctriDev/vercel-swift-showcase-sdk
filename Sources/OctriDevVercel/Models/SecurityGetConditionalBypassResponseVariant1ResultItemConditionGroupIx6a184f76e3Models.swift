@@ -3,85 +3,49 @@
 
 import Foundation
 
-/// Security domain models
-public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+// Security domain models
+public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let botCategory =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_category")
-    public static let botName =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_name")
-    public static let botProtection =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_protection")
-    public static let botStatus =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_status")
-    public static let cookie =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "cookie")
-    public static let domainEnvironment =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "domain_environment")
-    public static let environment =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "environment")
-    public static let geoAsNumber =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_as_number")
-    public static let geoCity =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_city")
-    public static let geoContinent =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_continent")
-    public static let geoCountry =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_country")
-    public static let geoCountryRegion =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_country_region")
-    public static let header =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "header")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let botCategory = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_category")
+    public static let botName = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_name")
+    public static let botProtection = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_protection")
+    public static let botStatus = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "bot_status")
+    public static let cookie = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "cookie")
+    public static let domainEnvironment = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "domain_environment")
+    public static let environment = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "environment")
+    public static let geoAsNumber = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_as_number")
+    public static let geoCity = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_city")
+    public static let geoContinent = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_continent")
+    public static let geoCountry = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_country")
+    public static let geoCountryRegion = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "geo_country_region")
+    public static let header = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "header")
     public static let host = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "host")
-    public static let ipAddress =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ip_address")
-    public static let ja3Digest =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ja3_digest")
-    public static let ja4Digest =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ja4_digest")
-    public static let method =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "method")
+    public static let ipAddress = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ip_address")
+    public static let ja3Digest = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ja3_digest")
+    public static let ja4Digest = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ja4_digest")
+    public static let method = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "method")
     public static let path = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "path")
-    public static let `protocol` =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "protocol")
-    public static let query =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "query")
-    public static let rateLimitApiId =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "rate_limit_api_id")
-    public static let rawPath =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "raw_path")
-    public static let region =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "region")
-    public static let responseCode =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "response_code")
-    public static let route =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "route")
-    public static let ruleset =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ruleset")
-    public static let scheme =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "scheme")
-    public static let serverAction =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "server_action")
-    public static let sharedCondition =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "shared_condition")
-    public static let targetPath =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "target_path")
-    public static let trafficSource =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "traffic_source")
-    public static let trustedSource =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "trusted_source")
-    public static let userAgent =
-        GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "user_agent")
+    public static let `protocol` = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "protocol")
+    public static let query = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "query")
+    public static let rateLimitApiId = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "rate_limit_api_id")
+    public static let rawPath = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "raw_path")
+    public static let region = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "region")
+    public static let responseCode = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "response_code")
+    public static let route = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "route")
+    public static let ruleset = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "ruleset")
+    public static let scheme = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "scheme")
+    public static let serverAction = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "server_action")
+    public static let sharedCondition = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "shared_condition")
+    public static let targetPath = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "target_path")
+    public static let trafficSource = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "traffic_source")
+    public static let trustedSource = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "trusted_source")
+    public static let userAgent = GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3(rawValue: "user_agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -90,14 +54,10 @@ public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a18
     }
 }
 
-public struct GetConditionalBypassResponseVariant0ResultItemConditionsItemOp: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetConditionalBypassResponseVariant0ResultItemConditionsItemOp: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let eq = GetConditionalBypassResponseVariant0ResultItemConditionsItemOp(rawValue: "eq")
     public static let ex = GetConditionalBypassResponseVariant0ResultItemConditionsItemOp(rawValue: "ex")
     public static let gt = GetConditionalBypassResponseVariant0ResultItemConditionsItemOp(rawValue: "gt")
@@ -116,7 +76,7 @@ public struct GetConditionalBypassResponseVariant0ResultItemConditionsItemOp: Ra
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -125,73 +85,48 @@ public struct GetConditionalBypassResponseVariant0ResultItemConditionsItemOp: Ra
     }
 }
 
-public struct GetConditionalBypassResponseVariant0ResultItemConditionsItemType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetConditionalBypassResponseVariant0ResultItemConditionsItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let botCategory =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "bot_category")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let botCategory = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "bot_category")
     public static let botName = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "bot_name")
-    public static let botProtection =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "bot_protection")
-    public static let botStatus =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "bot_status")
+    public static let botProtection = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "bot_protection")
+    public static let botStatus = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "bot_status")
     public static let cookie = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "cookie")
-    public static let domainEnvironment =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "domain_environment")
-    public static let environment =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "environment")
-    public static let geoAsNumber =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "geo_as_number")
+    public static let domainEnvironment = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "domain_environment")
+    public static let environment = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "environment")
+    public static let geoAsNumber = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "geo_as_number")
     public static let geoCity = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "geo_city")
-    public static let geoContinent =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "geo_continent")
-    public static let geoCountry =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "geo_country")
-    public static let geoCountryRegion =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "geo_country_region")
+    public static let geoContinent = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "geo_continent")
+    public static let geoCountry = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "geo_country")
+    public static let geoCountryRegion = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "geo_country_region")
     public static let header = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "header")
     public static let host = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "host")
-    public static let ipAddress =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "ip_address")
-    public static let ja3Digest =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "ja3_digest")
-    public static let ja4Digest =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "ja4_digest")
+    public static let ipAddress = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "ip_address")
+    public static let ja3Digest = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "ja3_digest")
+    public static let ja4Digest = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "ja4_digest")
     public static let method = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "method")
     public static let path = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "path")
-    public static let `protocol` =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "protocol")
+    public static let `protocol` = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "protocol")
     public static let query = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "query")
-    public static let rateLimitApiId =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "rate_limit_api_id")
+    public static let rateLimitApiId = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "rate_limit_api_id")
     public static let rawPath = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "raw_path")
     public static let region = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "region")
-    public static let responseCode =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "response_code")
+    public static let responseCode = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "response_code")
     public static let route = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "route")
     public static let ruleset = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "ruleset")
     public static let scheme = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "scheme")
-    public static let serverAction =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "server_action")
-    public static let sharedCondition =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "shared_condition")
-    public static let targetPath =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "target_path")
-    public static let trafficSource =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "traffic_source")
-    public static let trustedSource =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "trusted_source")
-    public static let userAgent =
-        GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "user_agent")
+    public static let serverAction = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "server_action")
+    public static let sharedCondition = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "shared_condition")
+    public static let targetPath = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "target_path")
+    public static let trafficSource = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "traffic_source")
+    public static let trustedSource = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "trusted_source")
+    public static let userAgent = GetConditionalBypassResponseVariant0ResultItemConditionsItemType(rawValue: "user_agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

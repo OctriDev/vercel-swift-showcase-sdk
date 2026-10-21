@@ -7,15 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical projects operation model declarations
+// Canonical projects operation model declarations
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet2(
-        _ autoExposeSystemEnvs: Bool?,
-        _ avatar: String?,
-        _ avatarDarkMode: String?,
-        _ blobs: UpdateMicrofrontendsResponseBlobs?,
-        _ buildCommand: String?
-    ) {
+    mutating func sdkSet2(_ autoExposeSystemEnvs: Bool?, _ avatar: String?, _ avatarDarkMode: String?, _ blobs: UpdateMicrofrontendsResponseBlobs?, _ buildCommand: String?) {
         self.autoExposeSystemEnvs = autoExposeSystemEnvs
         self.avatar = avatar
         self.avatarDarkMode = avatarDarkMode
@@ -25,12 +19,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet3(
-        _ commandForIgnoringBuildStep: String?,
-        _ concurrencyBucketName: String?,
-        _ connectBuildsEnabled: Bool?,
-        _ connectConfigurationId: String?
-    ) {
+    mutating func sdkSet3(_ commandForIgnoringBuildStep: String?, _ concurrencyBucketName: String?, _ connectBuildsEnabled: Bool?, _ connectConfigurationId: String?) {
         self.commandForIgnoringBuildStep = commandForIgnoringBuildStep
         self.concurrencyBucketName = concurrencyBucketName
         self.connectBuildsEnabled = connectBuildsEnabled
@@ -39,13 +28,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet4(
-        _ connectConfigurations: [UpdateMicrofrontendsResponseConnectConfigurationsItem]?,
-        _ createdAt: Double?,
-        _ creator: UpdateMicrofrontendsResponseCreator?,
-        _ crons: UpdateMicrofrontendsResponseCrons?,
-        _ customEnvironments: [UpdateMicrofrontendsResponseCustomEnvironmentsItem]?
-    ) {
+    mutating func sdkSet4(_ connectConfigurations: [UpdateMicrofrontendsResponseConnectConfigurationsItem]?, _ createdAt: Double?, _ creator: UpdateMicrofrontendsResponseCreator?, _ crons: UpdateMicrofrontendsResponseCrons?, _ customEnvironments: [UpdateMicrofrontendsResponseCustomEnvironmentsItem]?) {
         self.connectConfigurations = connectConfigurations
         self.createdAt = createdAt
         self.creator = creator
@@ -55,13 +38,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet5(
-        _ customerSupportCodeVisibility: Bool?,
-        _ dataCache: UpdateMicrofrontendsResponseDataCache?,
-        _ deploymentPolicy: UpdateMicrofrontendsResponseDeploymentPolicy?,
-        _ devCommand: String?,
-        _ dismissedToasts: [UpdateMicrofrontendsResponseDismissedToastsItem]?
-    ) {
+    mutating func sdkSet5(_ customerSupportCodeVisibility: Bool?, _ dataCache: UpdateMicrofrontendsResponseDataCache?, _ deploymentPolicy: UpdateMicrofrontendsResponseDeploymentPolicy?, _ devCommand: String?, _ dismissedToasts: [UpdateMicrofrontendsResponseDismissedToastsItem]?) {
         self.customerSupportCodeVisibility = customerSupportCodeVisibility
         self.dataCache = dataCache
         self.deploymentPolicy = deploymentPolicy
@@ -71,11 +48,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet6(
-        _ enableAffectedProjectsDeployments: Bool?,
-        _ enableExternalRewriteCaching: Bool?,
-        _ enablePreviewFeedback: Bool?
-    ) {
+    mutating func sdkSet6(_ enableAffectedProjectsDeployments: Bool?, _ enableExternalRewriteCaching: Bool?, _ enablePreviewFeedback: Bool?) {
         self.enableAffectedProjectsDeployments = enableAffectedProjectsDeployments
         self.enableExternalRewriteCaching = enableExternalRewriteCaching
         self.enablePreviewFeedback = enablePreviewFeedback
@@ -83,13 +56,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet7(
-        _ enableProductionFeedback: Bool?,
-        _ env: [UpdateMicrofrontendsResponseEnvItem]?,
-        _ expiration: UpdateMicrofrontendsResponseExpiration?,
-        _ features: UpdateMicrofrontendsResponseFeatures?,
-        _ framework: UpdateMicrofrontendsResponseFramework?
-    ) {
+    mutating func sdkSet7(_ enableProductionFeedback: Bool?, _ env: [UpdateMicrofrontendsResponseEnvItem]?, _ expiration: UpdateMicrofrontendsResponseExpiration?, _ features: UpdateMicrofrontendsResponseFeatures?, _ framework: UpdateMicrofrontendsResponseFramework?) {
         self.enableProductionFeedback = enableProductionFeedback
         self.env = env
         self.expiration = expiration
@@ -99,13 +66,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet8(
-        _ gitComments: UpdateMicrofrontendsResponseGitComments?,
-        _ gitForkProtection: Bool?,
-        _ gitLfs: Bool?,
-        _ gitProviderOptions: UpdateMicrofrontendsResponseGitProviderOptions?,
-        _ hasActiveBranches: Bool?
-    ) {
+    mutating func sdkSet8(_ gitComments: UpdateMicrofrontendsResponseGitComments?, _ gitForkProtection: Bool?, _ gitLfs: Bool?, _ gitProviderOptions: UpdateMicrofrontendsResponseGitProviderOptions?, _ hasActiveBranches: Bool?) {
         self.gitComments = gitComments
         self.gitForkProtection = gitForkProtection
         self.gitLfs = gitLfs
@@ -115,13 +76,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet9(
-        _ hasDeployments: Bool?,
-        _ installCommand: String?,
-        _ internalRoutes: [UpdateMicrofrontendsResponseInternalRoutesItem]?,
-        _ ipBuckets: [UpdateMicrofrontendsResponseIpBucketsItem]?,
-        _ jobs: UpdateMicrofrontendsResponseJobs?
-    ) {
+    mutating func sdkSet9(_ hasDeployments: Bool?, _ installCommand: String?, _ internalRoutes: [UpdateMicrofrontendsResponseInternalRoutesItem]?, _ ipBuckets: [UpdateMicrofrontendsResponseIpBucketsItem]?, _ jobs: UpdateMicrofrontendsResponseJobs?) {
         self.hasDeployments = hasDeployments
         self.installCommand = installCommand
         self.internalRoutes = internalRoutes
@@ -131,13 +86,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet10(
-        _ lastAliasRequest: UpdateMicrofrontendsResponseLastAliasRequest?,
-        _ lastRollbackTarget: [String: JSONValue]?,
-        _ latestDeployments: [UpdateMicrofrontendsResponseLatestDeploymentsItem]?,
-        _ link: UpdateMicrofrontendsResponseLink?,
-        _ live: Bool?
-    ) {
+    mutating func sdkSet10(_ lastAliasRequest: UpdateMicrofrontendsResponseLastAliasRequest?, _ lastRollbackTarget: [String: JSONValue]?, _ latestDeployments: [UpdateMicrofrontendsResponseLatestDeploymentsItem]?, _ link: UpdateMicrofrontendsResponseLink?, _ live: Bool?) {
         self.lastAliasRequest = lastAliasRequest
         self.lastRollbackTarget = lastRollbackTarget
         self.latestDeployments = latestDeployments
@@ -147,13 +96,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet11(
-        _ microfrontends: UpdateMicrofrontendsResponseMicrofrontends?,
-        _ oidcTokenConfig: UpdateMicrofrontendsResponseOidcTokenConfig?,
-        _ optionsAllowlist: UpdateMicrofrontendsResponseOptionsAllowlist?,
-        _ outputDirectory: String?,
-        _ passiveConnectConfigurationId: String?
-    ) {
+    mutating func sdkSet11(_ microfrontends: UpdateMicrofrontendsResponseMicrofrontends?, _ oidcTokenConfig: UpdateMicrofrontendsResponseOidcTokenConfig?, _ optionsAllowlist: UpdateMicrofrontendsResponseOptionsAllowlist?, _ outputDirectory: String?, _ passiveConnectConfigurationId: String?) {
         self.microfrontends = microfrontends
         self.oidcTokenConfig = oidcTokenConfig
         self.optionsAllowlist = optionsAllowlist
@@ -163,13 +106,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet12(
-        _ passport: UpdateMicrofrontendsResponsePassport?,
-        _ passwordProtection: UpdateMicrofrontendsResponsePasswordProtection?,
-        _ paused: Bool?,
-        _ permissions: UpdateMicrofrontendsResponsePermissions?,
-        _ productionDeploymentsFastLane: Bool?
-    ) {
+    mutating func sdkSet12(_ passport: UpdateMicrofrontendsResponsePassport?, _ passwordProtection: UpdateMicrofrontendsResponsePasswordProtection?, _ paused: Bool?, _ permissions: UpdateMicrofrontendsResponsePermissions?, _ productionDeploymentsFastLane: Bool?) {
         self.passport = passport
         self.passwordProtection = passwordProtection
         self.paused = paused
@@ -179,13 +116,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet13(
-        _ protectedSourcemaps: Bool?,
-        _ protectionBypass: [String: UpdateMicrofrontendsResponseProtectionBypassValue]?,
-        _ protectionConfig: UpdateMicrofrontendsResponseProtectionConfig?,
-        _ rollbackDescription: UpdateMicrofrontendsResponseRollbackDescription?,
-        _ rollingRelease: UpdateMicrofrontendsResponseRollingRelease?
-    ) {
+    mutating func sdkSet13(_ protectedSourcemaps: Bool?, _ protectionBypass: [String: UpdateMicrofrontendsResponseProtectionBypassValue]?, _ protectionConfig: UpdateMicrofrontendsResponseProtectionConfig?, _ rollbackDescription: UpdateMicrofrontendsResponseRollbackDescription?, _ rollingRelease: UpdateMicrofrontendsResponseRollingRelease?) {
         self.protectedSourcemaps = protectedSourcemaps
         self.protectionBypass = protectionBypass
         self.protectionConfig = protectionConfig
@@ -195,13 +126,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet14(
-        _ rootDirectory: String?,
-        _ sandbox: UpdateMicrofrontendsResponseSandbox?,
-        _ security: UpdateMicrofrontendsResponseSecurity?,
-        _ serverlessFunctionZeroConfigFailover: Bool?,
-        _ services: [UpdateMicrofrontendsResponseServicesItem]?
-    ) {
+    mutating func sdkSet14(_ rootDirectory: String?, _ sandbox: UpdateMicrofrontendsResponseSandbox?, _ security: UpdateMicrofrontendsResponseSecurity?, _ serverlessFunctionZeroConfigFailover: Bool?, _ services: [UpdateMicrofrontendsResponseServicesItem]?) {
         self.rootDirectory = rootDirectory
         self.sandbox = sandbox
         self.security = security
@@ -211,11 +136,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet15(
-        _ skewProtectionAllowedDomains: [String]?,
-        _ skewProtectionBoundaryAt: Double?,
-        _ skewProtectionMaxAge: Double?
-    ) {
+    mutating func sdkSet15(_ skewProtectionAllowedDomains: [String]?, _ skewProtectionBoundaryAt: Double?, _ skewProtectionMaxAge: Double?) {
         self.skewProtectionAllowedDomains = skewProtectionAllowedDomains
         self.skewProtectionBoundaryAt = skewProtectionBoundaryAt
         self.skewProtectionMaxAge = skewProtectionMaxAge
@@ -223,13 +144,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet16(
-        _ skipGitConnectDuringLink: Bool?,
-        _ sourceFilesOutsideRootDirectory: Bool?,
-        _ speedInsights: UpdateMicrofrontendsResponseSpeedInsights?,
-        _ ssoProtection: UpdateMicrofrontendsResponseSsoProtection?,
-        _ staticIps: UpdateMicrofrontendsResponseStaticIps?
-    ) {
+    mutating func sdkSet16(_ skipGitConnectDuringLink: Bool?, _ sourceFilesOutsideRootDirectory: Bool?, _ speedInsights: UpdateMicrofrontendsResponseSpeedInsights?, _ ssoProtection: UpdateMicrofrontendsResponseSsoProtection?, _ staticIps: UpdateMicrofrontendsResponseStaticIps?) {
         self.skipGitConnectDuringLink = skipGitConnectDuringLink
         self.sourceFilesOutsideRootDirectory = sourceFilesOutsideRootDirectory
         self.speedInsights = speedInsights
@@ -239,13 +154,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet17(
-        _ targets: [String: UpdateMicrofrontendsResponseTargetsValue?]?,
-        _ tier: UpdateMicrofrontendsResponseTier?,
-        _ tracing: UpdateMicrofrontendsResponseTracing?,
-        _ transferCompletedAt: Double?,
-        _ transferredFromAccountId: String?
-    ) {
+    mutating func sdkSet17(_ targets: [String: UpdateMicrofrontendsResponseTargetsValue?]?, _ tier: UpdateMicrofrontendsResponseTier?, _ tracing: UpdateMicrofrontendsResponseTracing?, _ transferCompletedAt: Double?, _ transferredFromAccountId: String?) {
         self.targets = targets
         self.tier = tier
         self.tracing = tracing
@@ -255,13 +164,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet18(
-        _ transferStartedAt: Double?,
-        _ transferToAccountId: String?,
-        _ trustedIps: UpdateMicrofrontendsResponseTrustedIps?,
-        _ trustedSources: UpdateMicrofrontendsResponseTrustedSources?,
-        _ updatedAt: Double?
-    ) {
+    mutating func sdkSet18(_ transferStartedAt: Double?, _ transferToAccountId: String?, _ trustedIps: UpdateMicrofrontendsResponseTrustedIps?, _ trustedSources: UpdateMicrofrontendsResponseTrustedSources?, _ updatedAt: Double?) {
         self.transferStartedAt = transferStartedAt
         self.transferToAccountId = transferToAccountId
         self.trustedIps = trustedIps
@@ -271,12 +174,7 @@ extension UpdateMicrofrontendsResponse {
 }
 
 extension UpdateMicrofrontendsResponse {
-    mutating func sdkSet19(
-        _ usageStatus: UpdateMicrofrontendsResponseUsageStatus?,
-        _ v0: Bool?,
-        _ v0Created: Bool?,
-        _ webAnalytics: UpdateMicrofrontendsResponseWebAnalytics?
-    ) {
+    mutating func sdkSet19(_ usageStatus: UpdateMicrofrontendsResponseUsageStatus?, _ v0: Bool?, _ v0Created: Bool?, _ webAnalytics: UpdateMicrofrontendsResponseWebAnalytics?) {
         self.usageStatus = usageStatus
         self.v0 = v0
         self.v0Created = v0Created
@@ -286,129 +184,129 @@ extension UpdateMicrofrontendsResponse {
 
 extension UpdateMicrofrontendsResponse {
     mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        analytics = try container.sdkDecodeIfPresent(.analytics)
-        appliedCve55182Migration = try container.sdkDecodeIfPresent(.appliedCve55182Migration)
-        autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
-        autoAssignCustomDomainsUpdatedBy = try container.sdkDecodeIfPresent(.autoAssignCustomDomainsUpdatedBy)
-        autoExposeSystemEnvs = try container.sdkDecodeIfPresent(.autoExposeSystemEnvs)
-        avatar = try container.sdkDecodeIfPresent(.avatar)
-        avatarDarkMode = try container.sdkDecodeIfPresent(.avatarDarkMode)
-        blobs = try container.sdkDecodeIfPresent(.blobs)
-        buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
-        commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
-        concurrencyBucketName = try container.sdkDecodeIfPresent(.concurrencyBucketName)
-        connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
+        self.analytics = try container.sdkDecodeIfPresent(.analytics)
+        self.appliedCve55182Migration = try container.sdkDecodeIfPresent(.appliedCve55182Migration)
+        self.autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
+        self.autoAssignCustomDomainsUpdatedBy = try container.sdkDecodeIfPresent(.autoAssignCustomDomainsUpdatedBy)
+        self.autoExposeSystemEnvs = try container.sdkDecodeIfPresent(.autoExposeSystemEnvs)
+        self.avatar = try container.sdkDecodeIfPresent(.avatar)
+        self.avatarDarkMode = try container.sdkDecodeIfPresent(.avatarDarkMode)
+        self.blobs = try container.sdkDecodeIfPresent(.blobs)
+        self.buildCommand = try container.sdkDecodeIfPresent(.buildCommand)
+        self.commandForIgnoringBuildStep = try container.sdkDecodeIfPresent(.commandForIgnoringBuildStep)
+        self.concurrencyBucketName = try container.sdkDecodeIfPresent(.concurrencyBucketName)
+        self.connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
     }
 }
 
 extension UpdateMicrofrontendsResponse {
     mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
-        connectConfigurations = try container.sdkDecodeIfPresent(.connectConfigurations)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        creator = try container.sdkDecodeIfPresent(.creator)
-        crons = try container.sdkDecodeIfPresent(.crons)
-        customEnvironments = try container.sdkDecodeIfPresent(.customEnvironments)
-        customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
-        dataCache = try container.sdkDecodeIfPresent(.dataCache)
-        deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
-        devCommand = try container.sdkDecodeIfPresent(.devCommand)
-        dismissedToasts = try container.sdkDecodeIfPresent(.dismissedToasts)
-        enableAffectedProjectsDeployments = try container.sdkDecodeIfPresent(.enableAffectedProjectsDeployments)
+        self.connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
+        self.connectConfigurations = try container.sdkDecodeIfPresent(.connectConfigurations)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.creator = try container.sdkDecodeIfPresent(.creator)
+        self.crons = try container.sdkDecodeIfPresent(.crons)
+        self.customEnvironments = try container.sdkDecodeIfPresent(.customEnvironments)
+        self.customerSupportCodeVisibility = try container.sdkDecodeIfPresent(.customerSupportCodeVisibility)
+        self.dataCache = try container.sdkDecodeIfPresent(.dataCache)
+        self.deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
+        self.devCommand = try container.sdkDecodeIfPresent(.devCommand)
+        self.dismissedToasts = try container.sdkDecodeIfPresent(.dismissedToasts)
+        self.enableAffectedProjectsDeployments = try container.sdkDecodeIfPresent(.enableAffectedProjectsDeployments)
     }
 }
 
 extension UpdateMicrofrontendsResponse {
     mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        enableExternalRewriteCaching = try container.sdkDecodeIfPresent(.enableExternalRewriteCaching)
-        enablePreviewFeedback = try container.sdkDecodeIfPresent(.enablePreviewFeedback)
-        enableProductionFeedback = try container.sdkDecodeIfPresent(.enableProductionFeedback)
-        env = try container.sdkDecodeIfPresent(.env)
-        expiration = try container.sdkDecodeIfPresent(.expiration)
-        features = try container.sdkDecodeIfPresent(.features)
-        framework = try container.sdkDecodeIfPresent(.framework)
-        gitComments = try container.sdkDecodeIfPresent(.gitComments)
-        gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
-        gitLfs = try container.sdkDecodeIfPresent(.gitLfs)
-        gitProviderOptions = try container.sdkDecodeIfPresent(.gitProviderOptions)
-        hasActiveBranches = try container.sdkDecodeIfPresent(.hasActiveBranches)
+        self.enableExternalRewriteCaching = try container.sdkDecodeIfPresent(.enableExternalRewriteCaching)
+        self.enablePreviewFeedback = try container.sdkDecodeIfPresent(.enablePreviewFeedback)
+        self.enableProductionFeedback = try container.sdkDecodeIfPresent(.enableProductionFeedback)
+        self.env = try container.sdkDecodeIfPresent(.env)
+        self.expiration = try container.sdkDecodeIfPresent(.expiration)
+        self.features = try container.sdkDecodeIfPresent(.features)
+        self.framework = try container.sdkDecodeIfPresent(.framework)
+        self.gitComments = try container.sdkDecodeIfPresent(.gitComments)
+        self.gitForkProtection = try container.sdkDecodeIfPresent(.gitForkProtection)
+        self.gitLfs = try container.sdkDecodeIfPresent(.gitLfs)
+        self.gitProviderOptions = try container.sdkDecodeIfPresent(.gitProviderOptions)
+        self.hasActiveBranches = try container.sdkDecodeIfPresent(.hasActiveBranches)
     }
 }
 
 extension UpdateMicrofrontendsResponse {
     mutating func sdkDecodeFieldsPart4(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        hasDeployments = try container.sdkDecodeIfPresent(.hasDeployments)
-        installCommand = try container.sdkDecodeIfPresent(.installCommand)
-        internalRoutes = try container.sdkDecodeIfPresent(.internalRoutes)
-        ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
-        jobs = try container.sdkDecodeIfPresent(.jobs)
-        lastAliasRequest = try container.sdkDecodeIfPresent(.lastAliasRequest)
-        lastRollbackTarget = try container.sdkDecodeIfPresent(.lastRollbackTarget)
-        latestDeployments = try container.sdkDecodeIfPresent(.latestDeployments)
-        link = try container.sdkDecodeIfPresent(.link)
-        live = try container.sdkDecodeIfPresent(.live)
-        microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
-        oidcTokenConfig = try container.sdkDecodeIfPresent(.oidcTokenConfig)
+        self.hasDeployments = try container.sdkDecodeIfPresent(.hasDeployments)
+        self.installCommand = try container.sdkDecodeIfPresent(.installCommand)
+        self.internalRoutes = try container.sdkDecodeIfPresent(.internalRoutes)
+        self.ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
+        self.jobs = try container.sdkDecodeIfPresent(.jobs)
+        self.lastAliasRequest = try container.sdkDecodeIfPresent(.lastAliasRequest)
+        self.lastRollbackTarget = try container.sdkDecodeIfPresent(.lastRollbackTarget)
+        self.latestDeployments = try container.sdkDecodeIfPresent(.latestDeployments)
+        self.link = try container.sdkDecodeIfPresent(.link)
+        self.live = try container.sdkDecodeIfPresent(.live)
+        self.microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
+        self.oidcTokenConfig = try container.sdkDecodeIfPresent(.oidcTokenConfig)
     }
 }
 
 extension UpdateMicrofrontendsResponse {
     mutating func sdkDecodeFieldsPart5(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
-        outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
-        passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
-        passport = try container.sdkDecodeIfPresent(.passport)
-        passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
-        paused = try container.sdkDecodeIfPresent(.paused)
-        permissions = try container.sdkDecodeIfPresent(.permissions)
-        productionDeploymentsFastLane = try container.sdkDecodeIfPresent(.productionDeploymentsFastLane)
-        protectedSourcemaps = try container.sdkDecodeIfPresent(.protectedSourcemaps)
-        protectionBypass = try container.sdkDecodeIfPresent(.protectionBypass)
-        protectionConfig = try container.sdkDecodeIfPresent(.protectionConfig)
-        rollbackDescription = try container.sdkDecodeIfPresent(.rollbackDescription)
+        self.optionsAllowlist = try container.sdkDecodeIfPresent(.optionsAllowlist)
+        self.outputDirectory = try container.sdkDecodeIfPresent(.outputDirectory)
+        self.passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
+        self.passport = try container.sdkDecodeIfPresent(.passport)
+        self.passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
+        self.paused = try container.sdkDecodeIfPresent(.paused)
+        self.permissions = try container.sdkDecodeIfPresent(.permissions)
+        self.productionDeploymentsFastLane = try container.sdkDecodeIfPresent(.productionDeploymentsFastLane)
+        self.protectedSourcemaps = try container.sdkDecodeIfPresent(.protectedSourcemaps)
+        self.protectionBypass = try container.sdkDecodeIfPresent(.protectionBypass)
+        self.protectionConfig = try container.sdkDecodeIfPresent(.protectionConfig)
+        self.rollbackDescription = try container.sdkDecodeIfPresent(.rollbackDescription)
     }
 }
 
 extension UpdateMicrofrontendsResponse {
     mutating func sdkDecodeFieldsPart6(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        rollingRelease = try container.sdkDecodeIfPresent(.rollingRelease)
-        rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
-        sandbox = try container.sdkDecodeIfPresent(.sandbox)
-        security = try container.sdkDecodeIfPresent(.security)
-        serverlessFunctionZeroConfigFailover = try container.sdkDecodeIfPresent(.serverlessFunctionZeroConfigFailover)
-        services = try container.sdkDecodeIfPresent(.services)
-        skewProtectionAllowedDomains = try container.sdkDecodeIfPresent(.skewProtectionAllowedDomains)
-        skewProtectionBoundaryAt = try container.sdkDecodeIfPresent(.skewProtectionBoundaryAt)
-        skewProtectionMaxAge = try container.sdkDecodeIfPresent(.skewProtectionMaxAge)
-        skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
-        sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
-        speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
+        self.rollingRelease = try container.sdkDecodeIfPresent(.rollingRelease)
+        self.rootDirectory = try container.sdkDecodeIfPresent(.rootDirectory)
+        self.sandbox = try container.sdkDecodeIfPresent(.sandbox)
+        self.security = try container.sdkDecodeIfPresent(.security)
+        self.serverlessFunctionZeroConfigFailover = try container.sdkDecodeIfPresent(.serverlessFunctionZeroConfigFailover)
+        self.services = try container.sdkDecodeIfPresent(.services)
+        self.skewProtectionAllowedDomains = try container.sdkDecodeIfPresent(.skewProtectionAllowedDomains)
+        self.skewProtectionBoundaryAt = try container.sdkDecodeIfPresent(.skewProtectionBoundaryAt)
+        self.skewProtectionMaxAge = try container.sdkDecodeIfPresent(.skewProtectionMaxAge)
+        self.skipGitConnectDuringLink = try container.sdkDecodeIfPresent(.skipGitConnectDuringLink)
+        self.sourceFilesOutsideRootDirectory = try container.sdkDecodeIfPresent(.sourceFilesOutsideRootDirectory)
+        self.speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
     }
 }
 
 extension UpdateMicrofrontendsResponse {
     mutating func sdkDecodeFieldsPart7(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        ssoProtection = try container.sdkDecodeIfPresent(.ssoProtection)
-        staticIps = try container.sdkDecodeIfPresent(.staticIps)
-        targets = try container.sdkDecodeIfPresent(.targets)
-        tier = try container.sdkDecodeIfPresent(.tier)
-        tracing = try container.sdkDecodeIfPresent(.tracing)
-        transferCompletedAt = try container.sdkDecodeIfPresent(.transferCompletedAt)
-        transferredFromAccountId = try container.sdkDecodeIfPresent(.transferredFromAccountId)
-        transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
-        transferToAccountId = try container.sdkDecodeIfPresent(.transferToAccountId)
-        trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
-        trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.ssoProtection = try container.sdkDecodeIfPresent(.ssoProtection)
+        self.staticIps = try container.sdkDecodeIfPresent(.staticIps)
+        self.targets = try container.sdkDecodeIfPresent(.targets)
+        self.tier = try container.sdkDecodeIfPresent(.tier)
+        self.tracing = try container.sdkDecodeIfPresent(.tracing)
+        self.transferCompletedAt = try container.sdkDecodeIfPresent(.transferCompletedAt)
+        self.transferredFromAccountId = try container.sdkDecodeIfPresent(.transferredFromAccountId)
+        self.transferStartedAt = try container.sdkDecodeIfPresent(.transferStartedAt)
+        self.transferToAccountId = try container.sdkDecodeIfPresent(.transferToAccountId)
+        self.trustedIps = try container.sdkDecodeIfPresent(.trustedIps)
+        self.trustedSources = try container.sdkDecodeIfPresent(.trustedSources)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
     }
 }
 
 extension UpdateMicrofrontendsResponse {
     mutating func sdkDecodeFieldsPart8(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        usageStatus = try container.sdkDecodeIfPresent(.usageStatus)
-        v0 = try container.sdkDecodeIfPresent(.v0)
-        v0Created = try container.sdkDecodeIfPresent(.v0Created)
-        webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
+        self.usageStatus = try container.sdkDecodeIfPresent(.usageStatus)
+        self.v0 = try container.sdkDecodeIfPresent(.v0)
+        self.v0Created = try container.sdkDecodeIfPresent(.v0Created)
+        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
     }
 }
 
@@ -431,67 +329,38 @@ public struct CreateProjectResponseLastAliasRequest: Codable {
         case fromRollingReleaseId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateProjectResponseLastAliasRequest {
-    init(from decoder: Decoder) throws {
+extension CreateProjectResponseLastAliasRequest {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.fromDeploymentId) else {
-            throw SdkValidationError(
-                field: "fromDeploymentId",
-                code: "required",
-                message: "Validation failed for 'fromDeploymentId': value is required"
-            )
+            throw SdkValidationError(field: "fromDeploymentId", code: "required", message: "Validation failed for 'fromDeploymentId': value is required")
         }
         guard container.contains(.jobStatus) else {
-            throw SdkValidationError(
-                field: "jobStatus",
-                code: "required",
-                message: "Validation failed for 'jobStatus': value is required"
-            )
+            throw SdkValidationError(field: "jobStatus", code: "required", message: "Validation failed for 'jobStatus': value is required")
         }
         guard container.contains(.requestedAt) else {
-            throw SdkValidationError(
-                field: "requestedAt",
-                code: "required",
-                message: "Validation failed for 'requestedAt': value is required"
-            )
+            throw SdkValidationError(field: "requestedAt", code: "required", message: "Validation failed for 'requestedAt': value is required")
         }
         guard container.contains(.toDeploymentId) else {
-            throw SdkValidationError(
-                field: "toDeploymentId",
-                code: "required",
-                message: "Validation failed for 'toDeploymentId': value is required"
-            )
+            throw SdkValidationError(field: "toDeploymentId", code: "required", message: "Validation failed for 'toDeploymentId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        fromDeploymentId = try container.sdkDecodeNullable(.fromDeploymentId)
-        jobStatus = try container.sdkDecodeRequired(.jobStatus)
-        requestedAt = try container.sdkDecodeRequired(.requestedAt)
-        toDeploymentId = try container.sdkDecodeRequired(.toDeploymentId)
-        type = try container.sdkDecodeRequired(.type)
-        fromRollingReleaseId = try container.sdkDecodeIfPresent(.fromRollingReleaseId)
+        self.fromDeploymentId = try container.sdkDecodeNullable(.fromDeploymentId)
+        self.jobStatus = try container.sdkDecodeRequired(.jobStatus)
+        self.requestedAt = try container.sdkDecodeRequired(.requestedAt)
+        self.toDeploymentId = try container.sdkDecodeRequired(.toDeploymentId)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.fromRollingReleaseId = try container.sdkDecodeIfPresent(.fromRollingReleaseId)
     }
 }
 
-public extension CreateProjectResponseLastAliasRequest {
-    init(
-        fromDeploymentId: String?,
-        jobStatus: CreateProjectResponseLastAliasRequestJobStatus,
-        requestedAt: Double,
-        toDeploymentId: String,
-        type: CreateProjectResponseLastAliasRequestType,
-        fromRollingReleaseId: String? = nil
-    ) {
+extension CreateProjectResponseLastAliasRequest {
+    public init(fromDeploymentId: String?, jobStatus: CreateProjectResponseLastAliasRequestJobStatus, requestedAt: Double, toDeploymentId: String, type: CreateProjectResponseLastAliasRequestType, fromRollingReleaseId: String? = nil) {
         (self.fromDeploymentId, self.jobStatus) = (fromDeploymentId, jobStatus)
         (self.requestedAt, self.toDeploymentId) = (requestedAt, toDeploymentId)
         (self.type, self.fromRollingReleaseId) = (type, fromRollingReleaseId)
@@ -505,35 +374,23 @@ public indirect enum ListProjectsResponseVariant2ProjectsItemDismissedToastsItem
 }
 
 extension ListProjectsResponseVariant2ProjectsItemDismissedToastsItemVaX7da3131b85: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ListProjectsResponseVariant2ProjectsItemDismissedToastsItemVaX7da3131b85"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsResponseVariant2ProjectsItemDismissedToastsItemVaX7da3131b85")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension ListProjectsResponseVariant2ProjectsItemDismissedToastsItemVaX7da3131b85 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
         return nil
     }
 }
@@ -558,8 +415,7 @@ extension ListProjectsResponseVariant2ProjectsItemDismissedToastsItemVaX7da3131b
     }
 }
 
-public typealias ListProjectsResponseVariant2ProjectsItemLinkVariant2DeployHooksList =
-    [ListProjectsResponseVariant2ProjectsItemLinkVariant2DeployHooksItem]
+public typealias ListProjectsResponseVariant2ProjectsItemLinkVariant2DeployHooksList = [ListProjectsResponseVariant2ProjectsItemLinkVariant2DeployHooksItem]
 
 public struct ListProjectsResponseVariant2ProjectsItemLinkVariant2: Codable {
     public var deployHooks: ListProjectsResponseVariant2ProjectsItemLinkVariant2DeployHooksList
@@ -592,7 +448,5 @@ public struct ListProjectsResponseVariant2ProjectsItemLinkVariant2: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

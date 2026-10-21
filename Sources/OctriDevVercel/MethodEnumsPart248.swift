@@ -6,14 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct GetProjectsResponseSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetProjectsResponseSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let arn1 = GetProjectsResponseSandboxFailoverRegionsItem(rawValue: "arn1")
     public static let bom1 = GetProjectsResponseSandboxFailoverRegionsItem(rawValue: "bom1")
     public static let cdg1 = GetProjectsResponseSandboxFailoverRegionsItem(rawValue: "cdg1")
@@ -36,7 +32,7 @@ public struct GetProjectsResponseSandboxFailoverRegionsItem: RawRepresentable, H
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -45,19 +41,15 @@ public struct GetProjectsResponseSandboxFailoverRegionsItem: RawRepresentable, H
     }
 }
 
-public struct UpdateFlagResponseEnvironmentsValueFallthroughVariant1BaseType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateFlagResponseEnvironmentsValueFallthroughVariant1BaseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let entity = UpdateFlagResponseEnvironmentsValueFallthroughVariant1BaseType(rawValue: "entity")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -71,27 +63,20 @@ public struct UpdateFlagResponseEnvironmentsValueFallthroughVariant1BaseType: Ra
 /// webhook. - `'cli'` — Vercel CLI (legacy classic-token CLI and SIWV CLI both). - `'rest-api'` — direct
 /// user/team-token REST upload. Does NOT cover deploy hooks, Marketplace integrations, or first-party app
 /// tokens. - `'deploy-hook'` — project deploy-hook URL. The URL is the…
-public struct UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let cli = UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8(rawValue: "cli")
-    public static let deployHook =
-        UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8(rawValue: "deploy-hook")
+    public static let deployHook = UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8(rawValue: "deploy-hook")
     public static let git = UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8(rawValue: "git")
-    public static let integration =
-        UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8(rawValue: "integration")
-    public static let restApi =
-        UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8(rawValue: "rest-api")
+    public static let integration = UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8(rawValue: "integration")
+    public static let restApi = UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8(rawValue: "rest-api")
     public static let v0 = UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesX01533aaff8(rawValue: "v0")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -108,10 +93,10 @@ struct UpdateAccessGroupRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(projects, forKey: SdkCodingKey("projects"))
-        try keyedContainer.encodeIfPresent(membersToAdd, forKey: SdkCodingKey("membersToAdd"))
-        try keyedContainer.encodeIfPresent(membersToRemove, forKey: SdkCodingKey("membersToRemove"))
+        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.projects, forKey: SdkCodingKey("projects"))
+        try keyedContainer.encodeIfPresent(self.membersToAdd, forKey: SdkCodingKey("membersToAdd"))
+        try keyedContainer.encodeIfPresent(self.membersToRemove, forKey: SdkCodingKey("membersToRemove"))
     }
 }
 
@@ -122,9 +107,9 @@ struct CreateAccessGroupRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(projects, forKey: SdkCodingKey("projects"))
-        try keyedContainer.encodeIfPresent(membersToAdd, forKey: SdkCodingKey("membersToAdd"))
+        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.projects, forKey: SdkCodingKey("projects"))
+        try keyedContainer.encodeIfPresent(self.membersToAdd, forKey: SdkCodingKey("membersToAdd"))
     }
 }
 
@@ -134,8 +119,8 @@ struct CreateAccessGroupProjectRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encode(role, forKey: SdkCodingKey("role"))
+        try keyedContainer.encode(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encode(self.role, forKey: SdkCodingKey("role"))
     }
 }
 
@@ -144,7 +129,7 @@ struct UpdateAccessGroupProjectRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(role, forKey: SdkCodingKey("role"))
+        try keyedContainer.encode(self.role, forKey: SdkCodingKey("role"))
     }
 }
 
@@ -159,23 +144,23 @@ struct UpsertAiGatewayBudgetRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(scopeType, forKey: SdkCodingKey("scopeType"))
-        try keyedContainer.encode(limitAmount, forKey: SdkCodingKey("limitAmount"))
-        try keyedContainer.encodeIfPresent(projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encodeIfPresent(userId, forKey: SdkCodingKey("userId"))
-        try keyedContainer.encodeIfPresent(refreshPeriod, forKey: SdkCodingKey("refreshPeriod"))
-        try keyedContainer.encodeIfPresent(includeByokInQuota, forKey: SdkCodingKey("includeByokInQuota"))
-        try keyedContainer.encodeIfPresent(alertThresholds, forKey: SdkCodingKey("alertThresholds"))
+        try keyedContainer.encode(self.scopeType, forKey: SdkCodingKey("scopeType"))
+        try keyedContainer.encode(self.limitAmount, forKey: SdkCodingKey("limitAmount"))
+        try keyedContainer.encodeIfPresent(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encodeIfPresent(self.userId, forKey: SdkCodingKey("userId"))
+        try keyedContainer.encodeIfPresent(self.refreshPeriod, forKey: SdkCodingKey("refreshPeriod"))
+        try keyedContainer.encodeIfPresent(self.includeByokInQuota, forKey: SdkCodingKey("includeByokInQuota"))
+        try keyedContainer.encodeIfPresent(self.alertThresholds, forKey: SdkCodingKey("alertThresholds"))
     }
 
     init(options: AiGatewayMethods.UpsertAiGatewayBudgetOptions) {
-        scopeType = options.scopeType
-        limitAmount = options.limitAmount
-        projectId = options.projectId
-        userId = options.userId
-        refreshPeriod = options.refreshPeriod
-        includeByokInQuota = options.includeByokInQuota
-        alertThresholds = options.alertThresholds
+        self.scopeType = options.scopeType
+        self.limitAmount = options.limitAmount
+        self.projectId = options.projectId
+        self.userId = options.userId
+        self.refreshPeriod = options.refreshPeriod
+        self.includeByokInQuota = options.includeByokInQuota
+        self.alertThresholds = options.alertThresholds
     }
 }
 
@@ -187,10 +172,10 @@ struct UpsertAiGatewayBudgetDefaultRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(scopeType, forKey: SdkCodingKey("scopeType"))
-        try keyedContainer.encode(limitAmount, forKey: SdkCodingKey("limitAmount"))
-        try keyedContainer.encodeIfPresent(refreshPeriod, forKey: SdkCodingKey("refreshPeriod"))
-        try keyedContainer.encodeIfPresent(alertThresholds, forKey: SdkCodingKey("alertThresholds"))
+        try keyedContainer.encode(self.scopeType, forKey: SdkCodingKey("scopeType"))
+        try keyedContainer.encode(self.limitAmount, forKey: SdkCodingKey("limitAmount"))
+        try keyedContainer.encodeIfPresent(self.refreshPeriod, forKey: SdkCodingKey("refreshPeriod"))
+        try keyedContainer.encodeIfPresent(self.alertThresholds, forKey: SdkCodingKey("alertThresholds"))
     }
 }
 
@@ -199,7 +184,7 @@ struct ArtifactQueryRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(hashes, forKey: SdkCodingKey("hashes"))
+        try keyedContainer.encode(self.hashes, forKey: SdkCodingKey("hashes"))
     }
 }
 
@@ -208,7 +193,7 @@ struct BuyCreditsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(item, forKey: SdkCodingKey("item"))
+        try keyedContainer.encode(self.item, forKey: SdkCodingKey("item"))
     }
 }
 
@@ -221,10 +206,10 @@ struct StageRedirectsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encode(teamId, forKey: SdkCodingKey("teamId"))
-        try keyedContainer.encodeIfPresent(overwrite, forKey: SdkCodingKey("overwrite"))
-        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(redirects, forKey: SdkCodingKey("redirects"))
+        try keyedContainer.encode(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encode(self.teamId, forKey: SdkCodingKey("teamId"))
+        try keyedContainer.encodeIfPresent(self.overwrite, forKey: SdkCodingKey("overwrite"))
+        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.redirects, forKey: SdkCodingKey("redirects"))
     }
 }

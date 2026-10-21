@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    struct CreateSandboxesV3Options: Codable {
+extension SandboxesMethods {
+    public struct CreateSandboxesV3Options: Codable {
         public var teamId: String?
         public var slug: String?
         public var networkPolicy: CreateSandboxesV3RequestNetworkPolicy?
@@ -32,13 +32,9 @@ public extension SandboxesMethods {
         public init() {}
     }
 
-    /// Creates a named sandbox environment with automatic snapshotting on shutdown. Configure its resources, source,
-    /// networking, and other settings in the request body; when `image` and a snapshot source are both absent, the
-    /// sandbox uses the default universal image. This API version does not accept a `runtime` parameter.
+    /// Creates a named sandbox environment with automatic snapshotting on shutdown. Configure its resources, source, networking, and other settings in the request body; when `image` and a snapshot source are both absent, the sandbox uses the default universal image. This API version does not accept a `runtime` parameter.
     ///
-    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic
-    /// snapshotting on shutdown. Unlike v2, this version has no `runtime` parameter: when no `image` is provided (and
-    /// the sandbox is not restored from a snapshot), the sandbox is created from the default universal image.
+    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic snapshotting on shutdown. Unlike v2, this version has no `runtime` parameter: when no `image` is provided (and the sandbox is not restored from a snapshot), the sandbox is created from the default universal image.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
@@ -77,11 +73,7 @@ public extension SandboxesMethods {
     /// - keepLastSnapshots: Protect the N most recent snapshots with different
     ///   expiration/deletion behavior.
     /// - tags: Key-value tags to associate with the sandbox. Maximum 5 tags.
-    static func createSandboxesV3(
-        config: ClientConfig,
-        options: CreateSandboxesV3Options,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateSandboxesV3Response {
+    public static func createSandboxesV3(config: ClientConfig, options: CreateSandboxesV3Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesV3Response {
         if let ports = options.ports {
             try validateItems("ports", ports, max: 15)
         }
@@ -109,7 +101,7 @@ public extension SandboxesMethods {
 
         let requestBody = CreateSandboxesV3RequestBody(options: options)
 
-        return try await (sdkRequest("POST", "/v3/sandboxes", config: config, query: [
+        return try (await sdkRequest("POST", "/v3/sandboxes", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "createSandboxesV3", options: requestOptions)).data

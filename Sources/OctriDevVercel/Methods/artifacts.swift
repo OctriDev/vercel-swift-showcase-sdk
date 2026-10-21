@@ -8,8 +8,8 @@ import Foundation
 #endif
 public enum ArtifactsMethods {}
 
-public extension ArtifactsMethods {
-    struct UploadArtifactOptions: Codable {
+extension ArtifactsMethods {
+    public struct UploadArtifactOptions: Codable {
         public var hash: String
         public var body: Data
         public var teamId: String?
@@ -27,11 +27,9 @@ public extension ArtifactsMethods {
         }
     }
 
-    /// Uploads an artifact to the cache using its hash. Send the artifact as an octet-stream body and provide its size
-    /// in the `Content-Length` header. The uploaded artifact can then be downloaded using the same hash.
+    /// Uploads an artifact to the cache using its hash. Send the artifact as an octet-stream body and provide its size in the `Content-Length` header. The uploaded artifact can then be downloaded using the same hash.
     ///
-    /// Uploads a cache artifact identified by the `hash` specified on the path. The cache artifact can then be
-    /// downloaded with the provided `hash`.
+    /// Uploads a cache artifact identified by the `hash` specified on the path. The cache artifact can then be downloaded with the provided `hash`.
     ///
     /// - Parameters:
     /// - hash: The artifact hash
@@ -50,11 +48,7 @@ public extension ArtifactsMethods {
     ///   artifact.
     /// - xArtifactDirtyHash: A hash representing uncommitted changes in the working
     ///   directory when this artifact was generated.
-    static func uploadArtifact(
-        config: ClientConfig,
-        options: UploadArtifactOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UploadArtifactResponse {
+    public static func uploadArtifact(config: ClientConfig, options: UploadArtifactOptions, requestOptions: RequestOptions? = nil) async throws -> UploadArtifactResponse {
         if let xArtifactClientCi = options.xArtifactClientCi {
             try validateLength("x-artifact-client-ci", xArtifactClientCi, max: 50)
         }
@@ -75,27 +69,16 @@ public extension ArtifactsMethods {
             try validateLength("x-artifact-dirty-hash", xArtifactDirtyHash, max: 200)
         }
 
-        return try await (sdkRequest(
-            "PUT",
-            ["/v8/artifacts/", sdkEncodePathSegment(sdkWireString(options.hash))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            rawBody: options.body,
-            contentType: "application/octet-stream",
-            decoder: .json,
-            operationId: "uploadArtifact",
-            extraHeaders: sdkHeaders([
-                ("x-artifact-duration", sdkHeaderValue(options.xArtifactDuration)),
-                ("x-artifact-client-ci", sdkHeaderValue(options.xArtifactClientCi)),
-                ("x-artifact-client-interactive", sdkHeaderValue(options.xArtifactClientInteractive)),
-                ("x-artifact-tag", sdkHeaderValue(options.xArtifactTag)),
-                ("x-artifact-sha", sdkHeaderValue(options.xArtifactSha)),
-                ("x-artifact-dirty-hash", sdkHeaderValue(options.xArtifactDirtyHash)),
-            ]),
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PUT", ["/v8/artifacts/", sdkEncodePathSegment(sdkWireString(options.hash))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], rawBody: options.body, contentType: "application/octet-stream", decoder: .json, operationId: "uploadArtifact", extraHeaders: sdkHeaders([
+            ("x-artifact-duration", sdkHeaderValue(options.xArtifactDuration)),
+            ("x-artifact-client-ci", sdkHeaderValue(options.xArtifactClientCi)),
+            ("x-artifact-client-interactive", sdkHeaderValue(options.xArtifactClientInteractive)),
+            ("x-artifact-tag", sdkHeaderValue(options.xArtifactTag)),
+            ("x-artifact-sha", sdkHeaderValue(options.xArtifactSha)),
+            ("x-artifact-dirty-hash", sdkHeaderValue(options.xArtifactDirtyHash)),
+        ]), options: requestOptions)).data
     }
 }

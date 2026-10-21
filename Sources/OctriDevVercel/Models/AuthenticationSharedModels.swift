@@ -3,33 +3,25 @@
 
 import Foundation
 
-/// Authentication domain models
+// Authentication domain models
 public indirect enum AuthTokenScopesItem {
     case authTokenScopesItemVariant0(AuthTokenScopesItemVariant0)
     case authTokenScopesItemVariant1(AuthTokenScopesItemVariant1)
 }
 
 extension AuthTokenScopesItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AuthTokenScopesItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AuthTokenScopesItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -47,14 +39,8 @@ extension AuthTokenScopesItem {
 
 extension AuthTokenScopesItem {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container
-            .decode(AuthTokenScopesItemVariant0.self) {
-            return .authTokenScopesItemVariant0(value)
-        }
-        if let value = try? container
-            .decode(AuthTokenScopesItemVariant1.self) {
-            return .authTokenScopesItemVariant1(value)
-        }
+        if let value = try? container.decode(AuthTokenScopesItemVariant0.self) { return .authTokenScopesItemVariant0(value) }
+        if let value = try? container.decode(AuthTokenScopesItemVariant1.self) { return .authTokenScopesItemVariant1(value) }
         return nil
     }
 }
@@ -90,49 +76,33 @@ public struct AuthTokenScopesItemVariant0: Codable {
         case sudo
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthTokenScopesItemVariant0 {
-    init(from decoder: Decoder) throws {
+extension AuthTokenScopesItemVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        type = try container.sdkDecodeRequired(.type)
-        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
-        origin = try container.sdkDecodeIfPresent(.origin)
-        sudo = try container.sdkDecodeIfPresent(.sudo)
-        try sdkValidateRawEnum("type", type, AuthTokenScopesItemVariant0Type.allCases.map(\.rawValue))
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        self.origin = try container.sdkDecodeIfPresent(.origin)
+        self.sudo = try container.sdkDecodeIfPresent(.sudo)
+            try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant0Type.allCases.map(\.rawValue))
     }
 }
 
-public extension AuthTokenScopesItemVariant0 {
-    init(
-        createdAt: Double,
-        type: AuthTokenScopesItemVariant0Type,
-        expiresAt: Double? = nil,
-        origin: AuthTokenScopesItemVariant0Origin? = nil,
-        sudo: AuthTokenScopesItemVariant0Sudo? = nil
-    ) throws {
+extension AuthTokenScopesItemVariant0 {
+    public init(createdAt: Double, type: AuthTokenScopesItemVariant0Type, expiresAt: Double? = nil, origin: AuthTokenScopesItemVariant0Origin? = nil, sudo: AuthTokenScopesItemVariant0Sudo? = nil) throws {
         (self.createdAt, self.type) = (createdAt, type)
         (self.expiresAt, self.origin) = (expiresAt, origin)
         self.sudo = sudo
-        try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant0Type.allCases.map(\.rawValue))
+            try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant0Type.allCases.map(\.rawValue))
     }
 }
 
@@ -191,81 +161,45 @@ public struct AuthToken: Codable {
         case suffix
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthToken {
-    init(from decoder: Decoder) throws {
+extension AuthToken {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.activeAt) else {
-            throw SdkValidationError(
-                field: "activeAt",
-                code: "required",
-                message: "Validation failed for 'activeAt': value is required"
-            )
+            throw SdkValidationError(field: "activeAt", code: "required", message: "Validation failed for 'activeAt': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        activeAt = try container.sdkDecodeRequired(.activeAt)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        type = try container.sdkDecodeRequired(.type)
-        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
-        leakedAt = try container.sdkDecodeIfPresent(.leakedAt)
-        leakedUrl = try container.sdkDecodeIfPresent(.leakedUrl)
-        origin = try container.sdkDecodeIfPresent(.origin)
-        prefix = try container.sdkDecodeIfPresent(.prefix)
-        revokedAt = try container.sdkDecodeIfPresent(.revokedAt)
-        scopes = try container.sdkDecodeIfPresent(.scopes)
-        suffix = try container.sdkDecodeIfPresent(.suffix)
+        self.activeAt = try container.sdkDecodeRequired(.activeAt)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        self.leakedAt = try container.sdkDecodeIfPresent(.leakedAt)
+        self.leakedUrl = try container.sdkDecodeIfPresent(.leakedUrl)
+        self.origin = try container.sdkDecodeIfPresent(.origin)
+        self.prefix = try container.sdkDecodeIfPresent(.prefix)
+        self.revokedAt = try container.sdkDecodeIfPresent(.revokedAt)
+        self.scopes = try container.sdkDecodeIfPresent(.scopes)
+        self.suffix = try container.sdkDecodeIfPresent(.suffix)
     }
 }
 
-public extension AuthToken {
-    init(
-        activeAt: Double,
-        createdAt: Double,
-        id: String,
-        name: String,
-        type: String,
-        expiresAt: Double? = nil,
-        leakedAt: Double? = nil,
-        leakedUrl: String? = nil,
-        origin: String? = nil,
-        prefix: String? = nil,
-        revokedAt: Double? = nil,
-        scopes: [AuthTokenScopesItem]? = nil,
-        suffix: String? = nil
-    ) {
+extension AuthToken {
+    public init(activeAt: Double, createdAt: Double, id: String, name: String, type: String, expiresAt: Double? = nil, leakedAt: Double? = nil, leakedUrl: String? = nil, origin: String? = nil, prefix: String? = nil, revokedAt: Double? = nil, scopes: [AuthTokenScopesItem]? = nil, suffix: String? = nil) {
         (self.activeAt, self.createdAt) = (activeAt, createdAt)
         (self.id, self.name) = (id, name)
         (self.type, self.expiresAt) = (type, expiresAt)
@@ -297,56 +231,36 @@ public struct AuthTokenScopesItemVariant1: Codable {
         case origin
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthTokenScopesItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension AuthTokenScopesItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.teamId) else {
-            throw SdkValidationError(
-                field: "teamId",
-                code: "required",
-                message: "Validation failed for 'teamId': value is required"
-            )
+            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        teamId = try container.sdkDecodeRequired(.teamId)
-        type = try container.sdkDecodeRequired(.type)
-        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
-        origin = try container.sdkDecodeIfPresent(.origin)
-        try sdkValidateRawEnum("type", type, AuthTokenScopesItemVariant1Type.allCases.map(\.rawValue))
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        self.origin = try container.sdkDecodeIfPresent(.origin)
+            try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant1Type.allCases.map(\.rawValue))
     }
 }
 
-public extension AuthTokenScopesItemVariant1 {
-    init(
-        createdAt: Double,
-        teamId: String,
-        type: AuthTokenScopesItemVariant1Type,
-        expiresAt: Double? = nil,
-        origin: AuthTokenScopesItemVariant1Origin? = nil
-    ) throws {
+extension AuthTokenScopesItemVariant1 {
+    public init(createdAt: Double, teamId: String, type: AuthTokenScopesItemVariant1Type, expiresAt: Double? = nil, origin: AuthTokenScopesItemVariant1Origin? = nil) throws {
         (self.createdAt, self.teamId) = (createdAt, teamId)
         (self.type, self.expiresAt) = (type, expiresAt)
         self.origin = origin
-        try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant1Type.allCases.map(\.rawValue))
+            try sdkValidateRawEnum("type", self.type, AuthTokenScopesItemVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -365,36 +279,26 @@ public struct AuthTokenScopesItemVariant0Sudo: Codable {
         case verifiedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthTokenScopesItemVariant0Sudo {
-    init(from decoder: Decoder) throws {
+extension AuthTokenScopesItemVariant0Sudo {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.expiresAt) else {
-            throw SdkValidationError(
-                field: "expiresAt",
-                code: "required",
-                message: "Validation failed for 'expiresAt': value is required"
-            )
+            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
         }
         guard container.contains(.origin) else {
-            throw SdkValidationError(
-                field: "origin",
-                code: "required",
-                message: "Validation failed for 'origin': value is required"
-            )
+            throw SdkValidationError(field: "origin", code: "required", message: "Validation failed for 'origin': value is required")
         }
-        expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        origin = try container.sdkDecodeRequired(.origin)
-        verifiedAt = try container.sdkDecodeIfPresent(.verifiedAt)
+        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        self.origin = try container.sdkDecodeRequired(.origin)
+        self.verifiedAt = try container.sdkDecodeIfPresent(.verifiedAt)
     }
 }
 
-public extension AuthTokenScopesItemVariant0Sudo {
-    init(expiresAt: Double, origin: AuthTokenScopesItemVariant0SudoOrigin, verifiedAt: Double? = nil) {
+extension AuthTokenScopesItemVariant0Sudo {
+    public init(expiresAt: Double, origin: AuthTokenScopesItemVariant0SudoOrigin, verifiedAt: Double? = nil) {
         (self.expiresAt, self.origin) = (expiresAt, origin)
         self.verifiedAt = verifiedAt
     }
@@ -404,10 +308,7 @@ public extension AuthTokenScopesItemVariant0Sudo {
 public struct AuthTokenScopesItemVariant1Origin: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let app = AuthTokenScopesItemVariant1Origin(rawValue: "app")
     public static let apple = AuthTokenScopesItemVariant1Origin(rawValue: "apple")
     public static let bitbucket = AuthTokenScopesItemVariant1Origin(rawValue: "bitbucket")
@@ -428,7 +329,7 @@ public struct AuthTokenScopesItemVariant1Origin: RawRepresentable, Hashable, Cod
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -441,10 +342,7 @@ public struct AuthTokenScopesItemVariant1Origin: RawRepresentable, Hashable, Cod
 public struct AuthTokenScopesItemVariant0Origin: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let app = AuthTokenScopesItemVariant0Origin(rawValue: "app")
     public static let apple = AuthTokenScopesItemVariant0Origin(rawValue: "apple")
     public static let bitbucket = AuthTokenScopesItemVariant0Origin(rawValue: "bitbucket")
@@ -465,7 +363,7 @@ public struct AuthTokenScopesItemVariant0Origin: RawRepresentable, Hashable, Cod
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -496,10 +394,7 @@ public enum AuthTokenScopesItemVariant0Type: String, CaseIterable, Codable {
 public struct AuthTokenScopesItemVariant0SudoOrigin: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let emailOtp = AuthTokenScopesItemVariant0SudoOrigin(rawValue: "email-otp")
     public static let otp = AuthTokenScopesItemVariant0SudoOrigin(rawValue: "otp")
     public static let recoveryCode = AuthTokenScopesItemVariant0SudoOrigin(rawValue: "recovery-code")
@@ -508,7 +403,7 @@ public struct AuthTokenScopesItemVariant0SudoOrigin: RawRepresentable, Hashable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

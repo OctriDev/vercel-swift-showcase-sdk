@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 extension UserEventType {
     static let allCasesPart2: [UserEventType] = [
         .aliasChown,

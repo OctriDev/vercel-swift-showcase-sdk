@@ -6,75 +6,32 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VercelCiMethods {
-    /// Retrieves a specific invocation attempt and its repository details. Use `invocationId` and `attempt` to identify
-    /// the attempt you want to inspect. The response includes the invocation record and associated repositories.
+extension VercelCiMethods {
+    /// Retrieves a specific invocation attempt and its repository details. Use `invocationId` and `attempt` to identify the attempt you want to inspect. The response includes the invocation record and associated repositories.
     ///
     /// Get Invocation
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getVercelCiInvocation(
-        config: ClientConfig,
-        invocationId: String,
-        attempt: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetVercelCiInvocationResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/vercel-ci/invocations/",
-                sdkEncodePathSegment(sdkWireString(invocationId)),
-                "/attempts/",
-                sdkEncodePathSegment(sdkWireString(attempt)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getVercelCiInvocation",
-            options: requestOptions
-        )).data
+    public static func getVercelCiInvocation(config: ClientConfig, invocationId: String, attempt: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiInvocationResponse {
+        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(attempt))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getVercelCiInvocation", options: requestOptions)).data
     }
 
-    /// Triggers a retry of a terminal Vercel CI invocation attempt. Use `invocationId` and `attempt` to identify the
-    /// attempt to retry. The response confirms that the retry was scheduled and provides the new attempt number.
+    /// Triggers a retry of a terminal Vercel CI invocation attempt. Use `invocationId` and `attempt` to identify the attempt to retry. The response confirms that the retry was scheduled and provides the new attempt number.
     ///
     /// Retry Invocation
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func retryVercelCiInvocation(
-        config: ClientConfig,
-        invocationId: String,
-        attempt: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RetryVercelCiInvocationResponse {
-        try await (sdkRequest(
-            "POST",
-            [
-                "/v1/vercel-ci/invocations/",
-                sdkEncodePathSegment(sdkWireString(invocationId)),
-                "/attempts/",
-                sdkEncodePathSegment(sdkWireString(attempt)),
-                "/retry",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "retryVercelCiInvocation",
-            options: requestOptions
-        )).data
+    public static func retryVercelCiInvocation(config: ClientConfig, invocationId: String, attempt: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RetryVercelCiInvocationResponse {
+        return try (await sdkRequest("POST", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(attempt)), "/retry"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "retryVercelCiInvocation", options: requestOptions)).data
     }
 }

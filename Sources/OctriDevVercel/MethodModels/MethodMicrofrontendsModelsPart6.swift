@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical microfrontends operation model declarations
+// Canonical microfrontends operation model declarations
 public struct GetMicrofrontendsInGroupResponseProjectsItemAliasItem: Codable {
     public var deployment: GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeployment?
     public var domain: String
@@ -33,68 +33,39 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemAliasItem: Codable {
         case redirectStatusCode
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemAliasItem {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemAliasItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.deployment) else {
-            throw SdkValidationError(
-                field: "deployment",
-                code: "required",
-                message: "Validation failed for 'deployment': value is required"
-            )
+            throw SdkValidationError(field: "deployment", code: "required", message: "Validation failed for 'deployment': value is required")
         }
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
         guard container.contains(.environment) else {
-            throw SdkValidationError(
-                field: "environment",
-                code: "required",
-                message: "Validation failed for 'environment': value is required"
-            )
+            throw SdkValidationError(field: "environment", code: "required", message: "Validation failed for 'environment': value is required")
         }
         guard container.contains(.target) else {
-            throw SdkValidationError(
-                field: "target",
-                code: "required",
-                message: "Validation failed for 'target': value is required"
-            )
+            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
         }
-        deployment = try container.sdkDecodeNullable(.deployment)
-        domain = try container.sdkDecodeRequired(.domain)
-        environment = try container.sdkDecodeRequired(.environment)
-        target = try container.sdkDecodeRequired(.target)
-        configuredBy = try container.sdkDecodeIfPresent(.configuredBy)
-        configuredChangedAt = try container.sdkDecodeIfPresent(.configuredChangedAt)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
-        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        self.deployment = try container.sdkDecodeNullable(.deployment)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.environment = try container.sdkDecodeRequired(.environment)
+        self.target = try container.sdkDecodeRequired(.target)
+        self.configuredBy = try container.sdkDecodeIfPresent(.configuredBy)
+        self.configuredChangedAt = try container.sdkDecodeIfPresent(.configuredChangedAt)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemAliasItem {
-    init(
-        deployment: GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeployment?,
-        domain: String,
-        environment: GetMicrofrontendsInGroupResponseProjectsItemAliasItemEnvironment,
-        target: GetMicrofrontendsInGroupResponseProjectsItemAliasItemTarget,
-        configuredBy: GetMicrofrontendsInGroupResponseProjectsItemAliasItemConfiguredBy? = nil,
-        configuredChangedAt: Double? = nil,
-        createdAt: Double? = nil,
-        gitBranch: String? = nil,
-        redirect: String? = nil,
-        redirectStatusCode: Double? = nil
-    ) {
+extension GetMicrofrontendsInGroupResponseProjectsItemAliasItem {
+    public init(deployment: GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeployment?, domain: String, environment: GetMicrofrontendsInGroupResponseProjectsItemAliasItemEnvironment, target: GetMicrofrontendsInGroupResponseProjectsItemAliasItemTarget, configuredBy: GetMicrofrontendsInGroupResponseProjectsItemAliasItemConfiguredBy? = nil, configuredChangedAt: Double? = nil, createdAt: Double? = nil, gitBranch: String? = nil, redirect: String? = nil, redirectStatusCode: Double? = nil) {
         (self.deployment, self.domain) = (deployment, domain)
         (self.environment, self.target) = (environment, target)
         (self.configuredBy, self.configuredChangedAt) = (configuredBy, configuredChangedAt)
@@ -112,35 +83,25 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsX5b79
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsX5b79c072c9 {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsX5b79c072c9 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsX5b79c072c9 {
-    init(code: String, message: String) {
+extension GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsX5b79c072c9 {
+    public init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -151,32 +112,22 @@ public indirect enum GetMicrofrontendsConfigResponseConfigApplicationsValueVaria
 }
 
 extension GetMicrofrontendsConfigResponseConfigApplicationsValueVariantX7d2ac14782: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetMicrofrontendsConfigResponseConfigApplicationsValueVariantX7d2ac14782"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsConfigResponseConfigApplicationsValueVariantX7d2ac14782")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetMicrofrontendsConfigResponseConfigApplicationsValueVariantX7d2ac14782 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -215,36 +166,29 @@ public struct GetMicrofrontendsConfigResponseConfigApplicationsValueVariantX3e54
         case group
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsConfigResponseConfigApplicationsValueVariantX3e54b79be2 {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsConfigResponseConfigApplicationsValueVariantX3e54b79be2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.paths) else {
-            throw SdkValidationError(
-                field: "paths",
-                code: "required",
-                message: "Validation failed for 'paths': value is required"
-            )
+            throw SdkValidationError(field: "paths", code: "required", message: "Validation failed for 'paths': value is required")
         }
-        paths = try container.sdkDecodeRequired(.paths)
-        flag = try container.sdkDecodeIfPresent(.flag)
-        group = try container.sdkDecodeIfPresent(.group)
+        self.paths = try container.sdkDecodeRequired(.paths)
+        self.flag = try container.sdkDecodeIfPresent(.flag)
+        self.group = try container.sdkDecodeIfPresent(.group)
     }
 }
 
-public extension GetMicrofrontendsConfigResponseConfigApplicationsValueVariantX3e54b79be2 {
-    init(paths: [String], flag: String? = nil, group: String? = nil) {
+extension GetMicrofrontendsConfigResponseConfigApplicationsValueVariantX3e54b79be2 {
+    public init(paths: [String], flag: String? = nil, group: String? = nil) {
         (self.paths, self.flag) = (paths, flag)
         self.group = group
     }
 }
 
-public typealias GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX54e287ee4f =
-    [GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaXae99a39723]
+public typealias GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX54e287ee4f = [GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaXae99a39723]
 
 public struct GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1: Codable {
     /// Groups of path expressions that are routed to this application. See vercel.com
@@ -271,44 +215,28 @@ public struct GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVa
         case packageName
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.routing) else {
-            throw SdkValidationError(
-                field: "routing",
-                code: "required",
-                message: "Validation failed for 'routing': value is required"
-            )
+            throw SdkValidationError(field: "routing", code: "required", message: "Validation failed for 'routing': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
-        routing = try container.sdkDecodeRequired(.routing)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        assetPrefix = try container.sdkDecodeIfPresent(.assetPrefix)
-        development = try container.sdkDecodeIfPresent(.development)
-        packageName = try container.sdkDecodeIfPresent(.packageName)
+        self.routing = try container.sdkDecodeRequired(.routing)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.assetPrefix = try container.sdkDecodeIfPresent(.assetPrefix)
+        self.development = try container.sdkDecodeIfPresent(.development)
+        self.packageName = try container.sdkDecodeIfPresent(.packageName)
     }
 }
 
-public extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1 {
-    init(
-        routing: GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX54e287ee4f,
-        projectId: String,
-        assetPrefix: String? = nil,
-        development: GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX3a363c55be? = nil,
-        packageName: String? = nil
-    ) {
+extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant1 {
+    public init(routing: GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX54e287ee4f, projectId: String, assetPrefix: String? = nil, development: GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX3a363c55be? = nil, packageName: String? = nil) {
         (self.routing, self.projectId) = (routing, projectId)
         (self.assetPrefix, self.development) = (assetPrefix, development)
         self.packageName = packageName
@@ -321,32 +249,22 @@ public indirect enum GetMicrofrontendsInGroupResponseProjectsItemSecurityRuleset
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX06d61c02f4: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX06d61c02f4"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX06d61c02f4")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX06d61c02f4 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String].self) {
-            return .stringList(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode([String].self) { return .stringList(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -361,8 +279,7 @@ extension GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsVX06d61c02
     }
 }
 
-public typealias GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsList =
-    [GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsItem]
+public typealias GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsList = [GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsItem]
 
 public struct GetMicrofrontendsInGroupResponseProjectsItemTargetsValue: Codable {
     public var createdAt: Double
@@ -443,96 +360,57 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTargetsValue: Codable 
         case withCache
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValue {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValue {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        createdIn = try container.sdkDecodeRequired(.createdIn)
-        creator = try container.sdkDecodeNullable(.creator)
-        deploymentHostname = try container.sdkDecodeRequired(.deploymentHostname)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        plan = try container.sdkDecodeRequired(.plan)
-        self.private = try container.sdkDecodeRequired(.private)
-        readyState = try container.sdkDecodeRequired(.readyState)
-        type = try container.sdkDecodeRequired(.type)
-        url = try container.sdkDecodeRequired(.url)
-        alias = try container.sdkDecodeIfPresent(.alias)
-        aliasAssigned = try container.sdkDecodeIfPresent(.aliasAssigned)
-        aliasError = try container.sdkDecodeIfPresent(.aliasError)
-        aliasFinal = try container.sdkDecodeIfPresent(.aliasFinal)
-        automaticAliases = try container.sdkDecodeIfPresent(.automaticAliases)
-        branchMatcher = try container.sdkDecodeIfPresent(.branchMatcher)
-        buildingAt = try container.sdkDecodeIfPresent(.buildingAt)
-        builds = try container.sdkDecodeIfPresent(.builds)
-        checksConclusion = try container.sdkDecodeIfPresent(.checksConclusion)
-        checksState = try container.sdkDecodeIfPresent(.checksState)
-        connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
-        connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
-        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        forced = try container.sdkDecodeIfPresent(.forced)
-        meta = try container.sdkDecodeIfPresent(.meta)
-        monorepoManager = try container.sdkDecodeIfPresent(.monorepoManager)
-        oidcTokenClaims = try container.sdkDecodeIfPresent(.oidcTokenClaims)
-        previewCommentsEnabled = try container.sdkDecodeIfPresent(.previewCommentsEnabled)
-        readyAt = try container.sdkDecodeIfPresent(.readyAt)
-        readySubstate = try container.sdkDecodeIfPresent(.readySubstate)
-        requestedAt = try container.sdkDecodeIfPresent(.requestedAt)
-        target = try container.sdkDecodeIfPresent(.target)
-        teamId = try container.sdkDecodeIfPresent(.teamId)
-        userId = try container.sdkDecodeIfPresent(.userId)
-        withCache = try container.sdkDecodeIfPresent(.withCache)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.createdIn = try container.sdkDecodeRequired(.createdIn)
+        self.creator = try container.sdkDecodeNullable(.creator)
+        self.deploymentHostname = try container.sdkDecodeRequired(.deploymentHostname)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.plan = try container.sdkDecodeRequired(.plan)
+        self.`private` = try container.sdkDecodeRequired(.`private`)
+        self.readyState = try container.sdkDecodeRequired(.readyState)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.url = try container.sdkDecodeRequired(.url)
+        self.alias = try container.sdkDecodeIfPresent(.alias)
+        self.aliasAssigned = try container.sdkDecodeIfPresent(.aliasAssigned)
+        self.aliasError = try container.sdkDecodeIfPresent(.aliasError)
+        self.aliasFinal = try container.sdkDecodeIfPresent(.aliasFinal)
+        self.automaticAliases = try container.sdkDecodeIfPresent(.automaticAliases)
+        self.branchMatcher = try container.sdkDecodeIfPresent(.branchMatcher)
+        self.buildingAt = try container.sdkDecodeIfPresent(.buildingAt)
+        self.builds = try container.sdkDecodeIfPresent(.builds)
+        self.checksConclusion = try container.sdkDecodeIfPresent(.checksConclusion)
+        self.checksState = try container.sdkDecodeIfPresent(.checksState)
+        self.connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
+        self.connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
+        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        self.forced = try container.sdkDecodeIfPresent(.forced)
+        self.meta = try container.sdkDecodeIfPresent(.meta)
+        self.monorepoManager = try container.sdkDecodeIfPresent(.monorepoManager)
+        self.oidcTokenClaims = try container.sdkDecodeIfPresent(.oidcTokenClaims)
+        self.previewCommentsEnabled = try container.sdkDecodeIfPresent(.previewCommentsEnabled)
+        self.readyAt = try container.sdkDecodeIfPresent(.readyAt)
+        self.readySubstate = try container.sdkDecodeIfPresent(.readySubstate)
+        self.requestedAt = try container.sdkDecodeIfPresent(.requestedAt)
+        self.target = try container.sdkDecodeIfPresent(.target)
+        self.teamId = try container.sdkDecodeIfPresent(.teamId)
+        self.userId = try container.sdkDecodeIfPresent(.userId)
+        self.withCache = try container.sdkDecodeIfPresent(.withCache)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValue {
-    init(
-        createdAt: Double,
-        createdIn: String,
-        creator: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueCreator?,
-        deploymentHostname: String,
-        id: String,
-        name: String,
-        plan: GetMicrofrontendsInGroupResponseProjectsItemTargetsValuePlan,
-        private: Bool,
-        readyState: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueReadyState,
-        type: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueType,
-        url: String,
-        alias: [String]? = nil,
-        aliasAssigned: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasAssigned? = nil,
-        aliasError: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasError? = nil,
-        aliasFinal: String? = nil,
-        automaticAliases: [String]? = nil,
-        branchMatcher: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchMatcher? = nil,
-        buildingAt: Double? = nil,
-        builds: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsList? = nil,
-        checksConclusion: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueChecksConclusion? = nil,
-        checksState: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueChecksState? = nil,
-        connectBuildsEnabled: Bool? = nil,
-        connectConfigurationId: String? = nil,
-        deletedAt: Double? = nil,
-        forced: Bool? = nil,
-        meta: [String: String]? = nil,
-        monorepoManager: String? = nil,
-        oidcTokenClaims: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims? = nil,
-        previewCommentsEnabled: Bool? = nil,
-        readyAt: Double? = nil,
-        readySubstate: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueReadySubstate? = nil,
-        requestedAt: Double? = nil,
-        target: String? = nil,
-        teamId: String? = nil,
-        userId: String? = nil,
-        withCache: Bool? = nil
-    ) {
+extension GetMicrofrontendsInGroupResponseProjectsItemTargetsValue {
+    public init(createdAt: Double, createdIn: String, creator: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueCreator?, deploymentHostname: String, id: String, name: String, plan: GetMicrofrontendsInGroupResponseProjectsItemTargetsValuePlan, `private`: Bool, readyState: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueReadyState, type: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueType, url: String, alias: [String]? = nil, aliasAssigned: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasAssigned? = nil, aliasError: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasError? = nil, aliasFinal: String? = nil, automaticAliases: [String]? = nil, branchMatcher: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchMatcher? = nil, buildingAt: Double? = nil, builds: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsList? = nil, checksConclusion: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueChecksConclusion? = nil, checksState: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueChecksState? = nil, connectBuildsEnabled: Bool? = nil, connectConfigurationId: String? = nil, deletedAt: Double? = nil, forced: Bool? = nil, meta: [String: String]? = nil, monorepoManager: String? = nil, oidcTokenClaims: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims? = nil, previewCommentsEnabled: Bool? = nil, readyAt: Double? = nil, readySubstate: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueReadySubstate? = nil, requestedAt: Double? = nil, target: String? = nil, teamId: String? = nil, userId: String? = nil, withCache: Bool? = nil) {
         (self.createdAt, self.createdIn) = (createdAt, createdIn)
         (self.creator, self.deploymentHostname) = (creator, deploymentHostname)
         (self.id, self.name) = (id, name)
-        (self.plan, self.private) = (plan, `private`)
+        (self.plan, self.`private`) = (plan, `private`)
         (self.readyState, self.type) = (readyState, type)
         (self.url, self.alias) = (url, alias)
         (self.aliasAssigned, self.aliasError) = (aliasAssigned, aliasError)
@@ -558,27 +436,21 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemPasswordProtection: Co
         case deploymentType
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemPasswordProtection {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsInGroupResponseProjectsItemPasswordProtection {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.deploymentType) else {
-            throw SdkValidationError(
-                field: "deploymentType",
-                code: "required",
-                message: "Validation failed for 'deploymentType': value is required"
-            )
+            throw SdkValidationError(field: "deploymentType", code: "required", message: "Validation failed for 'deploymentType': value is required")
         }
-        deploymentType = try container.sdkDecodeRequired(.deploymentType)
+        self.deploymentType = try container.sdkDecodeRequired(.deploymentType)
     }
 }
 
-public extension GetMicrofrontendsInGroupResponseProjectsItemPasswordProtection {
-    init(deploymentType: GetMicrofrontendsInGroupResponseProjectsItemPasswordProtectioX24cd63c11b) {
+extension GetMicrofrontendsInGroupResponseProjectsItemPasswordProtection {
+    public init(deploymentType: GetMicrofrontendsInGroupResponseProjectsItemPasswordProtectioX24cd63c11b) {
         self.deploymentType = deploymentType
     }
 }
@@ -598,40 +470,26 @@ public struct GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVa
         case packageName
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0 {
-    init(from decoder: Decoder) throws {
+extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.development) else {
-            throw SdkValidationError(
-                field: "development",
-                code: "required",
-                message: "Validation failed for 'development': value is required"
-            )
+            throw SdkValidationError(field: "development", code: "required", message: "Validation failed for 'development': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
-        development = try container.sdkDecodeRequired(.development)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        packageName = try container.sdkDecodeIfPresent(.packageName)
+        self.development = try container.sdkDecodeRequired(.development)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.packageName = try container.sdkDecodeIfPresent(.packageName)
     }
 }
 
-public extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0 {
-    init(
-        development: GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX160580d77e,
-        projectId: String,
-        packageName: String? = nil
-    ) {
+extension GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueVariant0 {
+    public init(development: GetMicrofrontendsConfigForProjectResponseConfigApplicationsVaX160580d77e, projectId: String, packageName: String? = nil) {
         (self.development, self.projectId) = (development, projectId)
         self.packageName = packageName
     }

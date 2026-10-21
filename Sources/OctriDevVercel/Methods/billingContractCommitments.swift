@@ -6,23 +6,16 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension BillingMethods {
-    /// Lists a Vercel team's contract commitments in FOCUS v1.3 JSONL format. Use this endpoint for Enterprise contract
-    /// commitment allocations by contract period. Non-Enterprise customers receive an empty response.
+extension BillingMethods {
+    /// Lists a Vercel team's contract commitments in FOCUS v1.3 JSONL format. Use this endpoint for Enterprise contract commitment allocations by contract period. Non-Enterprise customers receive an empty response.
     ///
-    /// Returns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The
-    /// response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel
-    /// customers. An empty response is returned for non-Enterprise (Pro/Flex) customers.
+    /// Returns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel customers. An empty response is returned for non-Enterprise (Pro/Flex) customers.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listContractCommitments(
-        config: ClientConfig,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AsyncThrowingStream<ListContractCommitmentsResponse, Swift.Error> {
+    public static func listContractCommitments(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AsyncThrowingStream<ListContractCommitmentsResponse, Swift.Error> {
+
         let upstream = try await sdkStream(
             "GET",
             "/v1/billing/contract-commitments",
@@ -45,11 +38,8 @@ public extension BillingMethods {
                             continuation.finish()
                             return
                         }
-                        let payload = try sdkDecodeBody(Data(event.data.utf8)) { try sdkJsonDecoder().decode(
-                            ListContractCommitmentsResponse.self,
-                            from: Data(event.data.utf8)
-                        ) }
-
+                        let payload = try sdkDecodeBody(Data(event.data.utf8)) { try sdkJsonDecoder().decode(ListContractCommitmentsResponse.self, from: Data(event.data.utf8)) }
+                        
                         continuation.yield(payload)
                     }
                     continuation.finish()

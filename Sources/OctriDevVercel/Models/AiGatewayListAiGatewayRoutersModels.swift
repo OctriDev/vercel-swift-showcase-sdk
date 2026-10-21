@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// AiGateway domain models
+// AiGateway domain models
 /// Typed representation of the `AiGatewayRouterList` API schema.
 public struct AiGatewayRouterList: Codable {
     /// Active and archived router configurations owned by the authenticated team.
@@ -13,27 +13,21 @@ public struct AiGatewayRouterList: Codable {
         case routers
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AiGatewayRouterList {
-    init(from decoder: Decoder) throws {
+extension AiGatewayRouterList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.routers) else {
-            throw SdkValidationError(
-                field: "routers",
-                code: "required",
-                message: "Validation failed for 'routers': value is required"
-            )
+            throw SdkValidationError(field: "routers", code: "required", message: "Validation failed for 'routers': value is required")
         }
-        routers = try container.sdkDecodeRequired(.routers)
+        self.routers = try container.sdkDecodeRequired(.routers)
     }
 }
 
-public extension AiGatewayRouterList {
-    init(routers: [AiGatewayVirtualModelConfig]) {
+extension AiGatewayRouterList {
+    public init(routers: [AiGatewayVirtualModelConfig]) {
         self.routers = routers
     }
 }

@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VercelCiMethods {
-    struct GetVercelCiJobRunLogsOptions: Codable {
+extension VercelCiMethods {
+    public struct GetVercelCiJobRunLogsOptions: Codable {
         public var invocationId: String
         public var attempt: String
         public var jobDefinitionId: String
@@ -26,8 +26,7 @@ public extension VercelCiMethods {
         }
     }
 
-    /// Retrieves log lines for a specific job run attempt. Use `level` to filter the returned lines, or provide `since`
-    /// to retrieve lines from a specified point. Set `follow` to 1 to request ongoing log output.
+    /// Retrieves log lines for a specific job run attempt. Use `level` to filter the returned lines, or provide `since` to retrieve lines from a specified point. Set `follow` to 1 to request ongoing log output.
     ///
     /// Get Job Run Logs
     ///
@@ -35,39 +34,17 @@ public extension VercelCiMethods {
     /// - level: Only return log lines with one of these levels.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getVercelCiJobRunLogs(
-        config: ClientConfig,
-        options: GetVercelCiJobRunLogsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetVercelCiJobRunLogsResponse {
+    public static func getVercelCiJobRunLogs(config: ClientConfig, options: GetVercelCiJobRunLogsOptions, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiJobRunLogsResponse {
         if let level = options.level {
             try validateItems("level", level, min: 1)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            [
-                "/v1/vercel-ci/invocations/",
-                sdkEncodePathSegment(sdkWireString(options.invocationId)),
-                "/attempts/",
-                sdkEncodePathSegment(sdkWireString(options.attempt)),
-                "/job-definitions/",
-                sdkEncodePathSegment(sdkWireString(options.jobDefinitionId)),
-                "/runs/",
-                sdkEncodePathSegment(sdkWireString(options.runAttempt)),
-                "/logs",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("follow", value: options.follow),
-                SdkQueryParameter("since", value: options.since),
-                SdkQueryParameter("level", values: options.level, style: "form", explode: true),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            decoder: .json,
-            operationId: "getVercelCiJobRunLogs",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(options.invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(options.attempt)), "/job-definitions/", sdkEncodePathSegment(sdkWireString(options.jobDefinitionId)), "/runs/", sdkEncodePathSegment(sdkWireString(options.runAttempt)), "/logs"].joined(), config: config, query: [
+            SdkQueryParameter("follow", value: options.follow),
+            SdkQueryParameter("since", value: options.since),
+            SdkQueryParameter("level", values: options.level, style: "form", explode: true),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], decoder: .json, operationId: "getVercelCiJobRunLogs", options: requestOptions)).data
     }
 }

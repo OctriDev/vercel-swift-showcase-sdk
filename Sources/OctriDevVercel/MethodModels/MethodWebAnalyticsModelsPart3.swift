@@ -7,31 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical webAnalytics operation model declarations
-public extension AggregateEventsResponseDataVariant0Item {
-    init(
-        timestamp: Date,
-        browserName: String? = nil,
-        country: String? = nil,
-        deviceType: String? = nil,
-        environment: String? = nil,
-        eventData: String? = nil,
-        eventName: String? = nil,
-        flags: String? = nil,
-        osName: String? = nil,
-        projectId: String? = nil,
-        projectName: String? = nil,
-        referrerHostname: String? = nil,
-        requestHostname: String? = nil,
-        requestPath: String? = nil,
-        route: String? = nil,
-        utmCampaign: String? = nil,
-        utmContent: String? = nil,
-        utmMedium: String? = nil,
-        utmSource: String? = nil,
-        utmTerm: String? = nil,
-        visitorId: String? = nil
-    ) throws {
+// Canonical webAnalytics operation model declarations
+extension AggregateEventsResponseDataVariant0Item {
+    public init(timestamp: Date, browserName: String? = nil, country: String? = nil, deviceType: String? = nil, environment: String? = nil, eventData: String? = nil, eventName: String? = nil, flags: String? = nil, osName: String? = nil, projectId: String? = nil, projectName: String? = nil, referrerHostname: String? = nil, requestHostname: String? = nil, requestPath: String? = nil, route: String? = nil, utmCampaign: String? = nil, utmContent: String? = nil, utmMedium: String? = nil, utmSource: String? = nil, utmTerm: String? = nil, visitorId: String? = nil) throws {
         (self.timestamp, self.browserName) = (timestamp, browserName)
         (self.country, self.deviceType) = (country, deviceType)
         (self.environment, self.eventData) = (environment, eventData)
@@ -43,7 +21,7 @@ public extension AggregateEventsResponseDataVariant0Item {
         (self.utmContent, self.utmMedium) = (utmContent, utmMedium)
         (self.utmSource, self.utmTerm) = (utmSource, utmTerm)
         self.visitorId = visitorId
-        try sdkValidateDateTime("timestamp", sdkWireString(self.timestamp))
+            try sdkValidateDateTime("timestamp", sdkWireString(self.timestamp))
     }
 }
 
@@ -53,32 +31,22 @@ public indirect enum AggregateEventsParameterXb028ca8d {
 }
 
 extension AggregateEventsParameterXb028ca8d: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AggregateEventsParameterXb028ca8d"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregateEventsParameterXb028ca8d")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AggregateEventsParameterXb028ca8d {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -108,32 +76,22 @@ public indirect enum CountEventsParameter {
 }
 
 extension CountEventsParameter: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CountEventsParameter"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CountEventsParameter")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CountEventsParameter {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -168,43 +126,29 @@ public struct AggregatePageviewsResponse: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AggregatePageviewsResponse {
-    init(from decoder: Decoder) throws {
+extension AggregatePageviewsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.data) else {
-            throw SdkValidationError(
-                field: "data",
-                code: "required",
-                message: "Validation failed for 'data': value is required"
-            )
+            throw SdkValidationError(field: "data", code: "required", message: "Validation failed for 'data': value is required")
         }
         guard container.contains(.query) else {
-            throw SdkValidationError(
-                field: "query",
-                code: "required",
-                message: "Validation failed for 'query': value is required"
-            )
+            throw SdkValidationError(field: "query", code: "required", message: "Validation failed for 'query': value is required")
         }
         guard container.contains(.version) else {
-            throw SdkValidationError(
-                field: "version",
-                code: "required",
-                message: "Validation failed for 'version': value is required"
-            )
+            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
         }
-        data = try container.sdkDecodeRequired(.data)
-        query = try container.sdkDecodeRequired(.query)
-        version = try container.sdkDecodeRequired(.version)
+        self.data = try container.sdkDecodeRequired(.data)
+        self.query = try container.sdkDecodeRequired(.query)
+        self.version = try container.sdkDecodeRequired(.version)
     }
 }
 
-public extension AggregatePageviewsResponse {
-    init(data: AggregatePageviewsResponseData, query: AggregatePageviewsResponseQuery, version: Double) {
+extension AggregatePageviewsResponse {
+    public init(data: AggregatePageviewsResponseData, query: AggregatePageviewsResponseQuery, version: Double) {
         (self.data, self.query) = (data, query)
         self.version = version
     }
@@ -216,21 +160,15 @@ public indirect enum AggregateEventsResponseData {
 }
 
 extension AggregateEventsResponseData: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AggregateEventsResponseData"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregateEventsResponseData")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -239,12 +177,12 @@ extension AggregateEventsResponseData {
         if let value = try? container.decode(
             [AggregateEventsResponseDataVariant0Item].self
         ) {
-            return .aggregateEventsResponseDataVariant0ItemList(value)
+            return             .aggregateEventsResponseDataVariant0ItemList(value)
         }
         if let value = try? container.decode(
             [AggregateEventsResponseDataVariant1Item].self
         ) {
-            return .aggregateEventsResponseDataVariant1ItemList(value)
+            return             .aggregateEventsResponseDataVariant1ItemList(value)
         }
         return nil
     }
@@ -272,43 +210,29 @@ public struct CountEventsResponse: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CountEventsResponse {
-    init(from decoder: Decoder) throws {
+extension CountEventsResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.data) else {
-            throw SdkValidationError(
-                field: "data",
-                code: "required",
-                message: "Validation failed for 'data': value is required"
-            )
+            throw SdkValidationError(field: "data", code: "required", message: "Validation failed for 'data': value is required")
         }
         guard container.contains(.query) else {
-            throw SdkValidationError(
-                field: "query",
-                code: "required",
-                message: "Validation failed for 'query': value is required"
-            )
+            throw SdkValidationError(field: "query", code: "required", message: "Validation failed for 'query': value is required")
         }
         guard container.contains(.version) else {
-            throw SdkValidationError(
-                field: "version",
-                code: "required",
-                message: "Validation failed for 'version': value is required"
-            )
+            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
         }
-        data = try container.sdkDecodeRequired(.data)
-        query = try container.sdkDecodeRequired(.query)
-        version = try container.sdkDecodeRequired(.version)
+        self.data = try container.sdkDecodeRequired(.data)
+        self.query = try container.sdkDecodeRequired(.query)
+        self.version = try container.sdkDecodeRequired(.version)
     }
 }
 
-public extension CountEventsResponse {
-    init(data: CountEventsResponseData, query: CountEventsResponseQuery, version: Double) {
+extension CountEventsResponse {
+    public init(data: CountEventsResponseData, query: CountEventsResponseQuery, version: Double) {
         (self.data, self.query) = (data, query)
         self.version = version
     }
@@ -329,51 +253,31 @@ public struct AggregateEventsResponseQuery: Codable {
         case groupBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AggregateEventsResponseQuery {
-    init(from decoder: Decoder) throws {
+extension AggregateEventsResponseQuery {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.limit) else {
-            throw SdkValidationError(
-                field: "limit",
-                code: "required",
-                message: "Validation failed for 'limit': value is required"
-            )
+            throw SdkValidationError(field: "limit", code: "required", message: "Validation failed for 'limit': value is required")
         }
         guard container.contains(.since) else {
-            throw SdkValidationError(
-                field: "since",
-                code: "required",
-                message: "Validation failed for 'since': value is required"
-            )
+            throw SdkValidationError(field: "since", code: "required", message: "Validation failed for 'since': value is required")
         }
         guard container.contains(.until) else {
-            throw SdkValidationError(
-                field: "until",
-                code: "required",
-                message: "Validation failed for 'until': value is required"
-            )
+            throw SdkValidationError(field: "until", code: "required", message: "Validation failed for 'until': value is required")
         }
-        limit = try container.sdkDecodeRequired(.limit)
-        since = try container.sdkDecodeRequired(.since)
-        until = try container.sdkDecodeRequired(.until)
-        filter = try container.sdkDecodeIfPresent(.filter)
-        groupBy = try container.sdkDecodeIfPresent(.groupBy)
+        self.limit = try container.sdkDecodeRequired(.limit)
+        self.since = try container.sdkDecodeRequired(.since)
+        self.until = try container.sdkDecodeRequired(.until)
+        self.filter = try container.sdkDecodeIfPresent(.filter)
+        self.groupBy = try container.sdkDecodeIfPresent(.groupBy)
     }
 }
 
-public extension AggregateEventsResponseQuery {
-    init(
-        limit: Double,
-        since: String,
-        until: String,
-        filter: String? = nil,
-        groupBy: [AggregateEventsResponseQueryGroupByItem]? = nil
-    ) {
+extension AggregateEventsResponseQuery {
+    public init(limit: Double, since: String, until: String, filter: String? = nil, groupBy: [AggregateEventsResponseQueryGroupByItem]? = nil) {
         (self.limit, self.since) = (limit, since)
         (self.until, self.filter) = (until, filter)
         self.groupBy = groupBy
@@ -386,32 +290,22 @@ public indirect enum AggregatePageviewsParameterItem {
 }
 
 extension AggregatePageviewsParameterItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AggregatePageviewsParameterItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregatePageviewsParameterItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AggregatePageviewsParameterItem {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(JSONValue.self) {
-            return .jsonValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(JSONValue.self) { return .jsonValue(value) }
         return nil
     }
 }
@@ -432,32 +326,22 @@ public indirect enum AggregatePageviewsResponseQueryGroupByItem {
 }
 
 extension AggregatePageviewsResponseQueryGroupByItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AggregatePageviewsResponseQueryGroupByItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregatePageviewsResponseQueryGroupByItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AggregatePageviewsResponseQueryGroupByItem {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue1(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue1(value) }
         return nil
     }
 }

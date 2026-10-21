@@ -3,46 +3,28 @@
 
 import Foundation
 
-/// Connect domain models
+// Connect domain models
 public indirect enum CreateConnectorAuthorizationRequestRequestSubject {
-    case createConnectorAuthorizationRequestRequestSubjectVariant0(
-        CreateConnectorAuthorizationRequestRequestSubjectVariant0
-    )
-    case createConnectorAuthorizationRequestRequestSubjectVariant1(
-        CreateConnectorAuthorizationRequestRequestSubjectVariant1
-    )
-    case createConnectorAuthorizationRequestRequestSubjectVariant2(
-        CreateConnectorAuthorizationRequestRequestSubjectVariant2
-    )
-    case createConnectorAuthorizationRequestRequestSubjectVariant3(
-        CreateConnectorAuthorizationRequestRequestSubjectVariant3
-    )
-    case createConnectorAuthorizationRequestRequestSubjectVariant4(
-        CreateConnectorAuthorizationRequestRequestSubjectVariant4
-    )
+    case createConnectorAuthorizationRequestRequestSubjectVariant0(CreateConnectorAuthorizationRequestRequestSubjectVariant0)
+    case createConnectorAuthorizationRequestRequestSubjectVariant1(CreateConnectorAuthorizationRequestRequestSubjectVariant1)
+    case createConnectorAuthorizationRequestRequestSubjectVariant2(CreateConnectorAuthorizationRequestRequestSubjectVariant2)
+    case createConnectorAuthorizationRequestRequestSubjectVariant3(CreateConnectorAuthorizationRequestRequestSubjectVariant3)
+    case createConnectorAuthorizationRequestRequestSubjectVariant4(CreateConnectorAuthorizationRequestRequestSubjectVariant4)
 }
 
 extension CreateConnectorAuthorizationRequestRequestSubject: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateConnectorAuthorizationRequestRequestSubject"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateConnectorAuthorizationRequestRequestSubject")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -77,27 +59,27 @@ extension CreateConnectorAuthorizationRequestRequestSubject {
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant0.self
         ) {
-            return .createConnectorAuthorizationRequestRequestSubjectVariant0(value)
+            return             .createConnectorAuthorizationRequestRequestSubjectVariant0(value)
         }
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant1.self
         ) {
-            return .createConnectorAuthorizationRequestRequestSubjectVariant1(value)
+            return             .createConnectorAuthorizationRequestRequestSubjectVariant1(value)
         }
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant2.self
         ) {
-            return .createConnectorAuthorizationRequestRequestSubjectVariant2(value)
+            return             .createConnectorAuthorizationRequestRequestSubjectVariant2(value)
         }
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant3.self
         ) {
-            return .createConnectorAuthorizationRequestRequestSubjectVariant3(value)
+            return             .createConnectorAuthorizationRequestRequestSubjectVariant3(value)
         }
         if let value = try? container.decode(
             CreateConnectorAuthorizationRequestRequestSubjectVariant4.self
         ) {
-            return .createConnectorAuthorizationRequestRequestSubjectVariant4(value)
+            return             .createConnectorAuthorizationRequestRequestSubjectVariant4(value)
         }
         return nil
     }
@@ -107,16 +89,11 @@ extension CreateConnectorAuthorizationRequestRequestSubject {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant0(value): try container
-            .encode(value); return true
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant1(value): try container
-            .encode(value); return true
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant2(value): try container
-            .encode(value); return true
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant3(value): try container
-            .encode(value); return true
-        case let .createConnectorAuthorizationRequestRequestSubjectVariant4(value): try container
-            .encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant0(value): try container.encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant1(value): try container.encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant2(value): try container.encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant3(value): try container.encode(value); return true
+        case let .createConnectorAuthorizationRequestRequestSubjectVariant4(value): try container.encode(value); return true
         }
     }
 }
@@ -128,27 +105,21 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant4X63557cf1
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant4X63557cf1 {
-    init(from decoder: Decoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant4X63557cf1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
+        self.type = try container.sdkDecodeRequired(.type)
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant4X63557cf1 {
-    init(type: CreateConnectorAuthorizationRequestRequestSubjectVariant4Type) {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant4X63557cf1 {
+    public init(type: CreateConnectorAuthorizationRequestRequestSubjectVariant4Type) {
         self.type = type
     }
 }
@@ -162,35 +133,25 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant3: Codable
         case token
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant3 {
-    init(from decoder: Decoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant3 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.token) else {
-            throw SdkValidationError(
-                field: "token",
-                code: "required",
-                message: "Validation failed for 'token': value is required"
-            )
+            throw SdkValidationError(field: "token", code: "required", message: "Validation failed for 'token': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        token = try container.sdkDecodeRequired(.token)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.token = try container.sdkDecodeRequired(.token)
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant3 {
-    init(type: CreateConnectorAuthorizationRequestRequestSubjectVariant3Type, token: String) {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant3 {
+    public init(type: CreateConnectorAuthorizationRequestRequestSubjectVariant3Type, token: String) {
         (self.type, self.token) = (type, token)
     }
 }
@@ -212,46 +173,34 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant2: Codable
         case additionalClaims
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant2 {
-    init(from decoder: Decoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        sub = try container.sdkDecodeIfPresent(.sub)
-        iss = try container.sdkDecodeIfPresent(.iss)
-        aud = try container.sdkDecodeIfPresent(.aud)
-        additionalClaims = try container.sdkDecodeIfPresent(.additionalClaims)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.sub = try container.sdkDecodeIfPresent(.sub)
+        self.iss = try container.sdkDecodeIfPresent(.iss)
+        self.aud = try container.sdkDecodeIfPresent(.aud)
+        self.additionalClaims = try container.sdkDecodeIfPresent(.additionalClaims)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant2 {
-    init(
-        type: CreateConnectorAuthorizationRequestRequestSubjectVariant2Type,
-        sub: String? = nil,
-        iss: String? = nil,
-        aud: String? = nil,
-        additionalClaims: [String: JSONValue]? = nil
-    ) {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant2 {
+    public init(type: CreateConnectorAuthorizationRequestRequestSubjectVariant2Type, sub: String? = nil, iss: String? = nil, aud: String? = nil, additionalClaims: [String: JSONValue]? = nil) {
         (self.type, self.sub) = (type, sub)
         (self.iss, self.aud) = (iss, aud)
         self.additionalClaims = additionalClaims
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant2 {
-    func encode(to encoder: Encoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant2 {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
@@ -275,41 +224,31 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant1: Codable
         case issuer
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant1 {
-    init(from decoder: Decoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        id = try container.sdkDecodeIfPresent(.id)
-        issuer = try container.sdkDecodeIfPresent(.issuer)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.id = try container.sdkDecodeIfPresent(.id)
+        self.issuer = try container.sdkDecodeIfPresent(.issuer)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant1 {
-    init(
-        type: CreateConnectorAuthorizationRequestRequestSubjectVariant1Type,
-        id: String? = nil,
-        issuer: String? = nil
-    ) {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant1 {
+    public init(type: CreateConnectorAuthorizationRequestRequestSubjectVariant1Type, id: String? = nil, issuer: String? = nil) {
         (self.type, self.id) = (type, id)
         self.issuer = issuer
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant1 {
-    func encode(to encoder: Encoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant1 {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
@@ -327,34 +266,28 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant0: Codable
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant0 {
-    init(from decoder: Decoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
+        self.type = try container.sdkDecodeRequired(.type)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant0 {
-    init(type: CreateConnectorAuthorizationRequestRequestSubjectVariant0Type) {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant0 {
+    public init(type: CreateConnectorAuthorizationRequestRequestSubjectVariant0Type) {
         self.type = type
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant0 {
-    func encode(to encoder: Encoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant0 {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
@@ -370,48 +303,38 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant4: Codable
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant4 {
-    init(from decoder: Decoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant4 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
+        self.type = try container.sdkDecodeRequired(.type)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant4 {
-    init(type: String) {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant4 {
+    public init(type: String) {
         self.type = type
     }
 }
 
-public extension CreateConnectorAuthorizationRequestRequestSubjectVariant4 {
-    func encode(to encoder: Encoder) throws {
+extension CreateConnectorAuthorizationRequestRequestSubjectVariant4 {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
     }
 }
 
-public struct CreateConnectorAuthorizationRequestRequestSubjectVariant4Type: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateConnectorAuthorizationRequestRequestSubjectVariant4Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let app = CreateConnectorAuthorizationRequestRequestSubjectVariant4Type(rawValue: "app")
     public static let user = CreateConnectorAuthorizationRequestRequestSubjectVariant4Type(rawValue: "user")
     public static let jwtBearer = CreateConnectorAuthorizationRequestRequestSubjectVariant4Type(rawValue: "jwt-bearer")
@@ -419,7 +342,7 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant4Type: Raw
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -428,19 +351,15 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant4Type: Raw
     }
 }
 
-public struct CreateConnectorAuthorizationRequestRequestSubjectVariant3Type: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateConnectorAuthorizationRequestRequestSubjectVariant3Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let token = CreateConnectorAuthorizationRequestRequestSubjectVariant3Type(rawValue: "token")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -449,19 +368,15 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant3Type: Raw
     }
 }
 
-public struct CreateConnectorAuthorizationRequestRequestSubjectVariant1Type: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateConnectorAuthorizationRequestRequestSubjectVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let user = CreateConnectorAuthorizationRequestRequestSubjectVariant1Type(rawValue: "user")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -470,19 +385,15 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant1Type: Raw
     }
 }
 
-public struct CreateConnectorAuthorizationRequestRequestSubjectVariant0Type: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateConnectorAuthorizationRequestRequestSubjectVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let app = CreateConnectorAuthorizationRequestRequestSubjectVariant0Type(rawValue: "app")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -491,19 +402,15 @@ public struct CreateConnectorAuthorizationRequestRequestSubjectVariant0Type: Raw
     }
 }
 
-public struct CreateConnectorAuthorizationRequestRequestSubjectVariant2Type: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateConnectorAuthorizationRequestRequestSubjectVariant2Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let jwtBearer = CreateConnectorAuthorizationRequestRequestSubjectVariant2Type(rawValue: "jwt-bearer")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

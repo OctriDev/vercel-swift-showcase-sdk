@@ -6,14 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    /// Deletes a named sandbox and its metadata, stopping any running sandbox processes first. Use
-    /// `deleteOrphanSnapshots` to request asynchronous deletion of snapshots that are not referenced by another
-    /// sandbox; when the config item is missing, returned sandbox fields may be stale.
+extension SandboxesMethods {
+    /// Deletes a named sandbox and its metadata, stopping any running sandbox processes first. Use `deleteOrphanSnapshots` to request asynchronous deletion of snapshots that are not referenced by another sandbox; when the config item is missing, returned sandbox fields may be stale.
     ///
-    /// Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation
-    /// deletes all sandbox entities with the given name and the named sandbox metadata. When the config item is already
-    /// missing, the returned sandbox uses stored metadata and defaults; config fields may be stale.
+    /// Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata. When the config item is already missing, the returned sandbox uses stored metadata and defaults; config fields may be stale.
     ///
     /// - Parameters:
     /// - name: The sandbox name to delete.
@@ -24,35 +20,19 @@ public extension SandboxesMethods {
     ///   Defaults to false.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteSandbox(
-        config: ClientConfig,
-        name: String,
-        projectId: String? = nil,
-        deleteOrphanSnapshots: Bool? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteSandboxResponse {
+    public static func deleteSandbox(config: ClientConfig, name: String, projectId: String? = nil, deleteOrphanSnapshots: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteSandboxResponse {
         try validateLength("name", name, max: 128)
         try sdkValidatePattern("name", name, sdkPatterna828669d9fe5)
 
-        if let projectId {
+        if let projectId = projectId {
             try validateLength("projectId", projectId, max: 128)
         }
 
-        return try await (sdkRequest(
-            "DELETE",
-            ["/v2/sandboxes/", sdkEncodePathSegment(sdkWireString(name))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("deleteOrphanSnapshots", value: deleteOrphanSnapshots),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "deleteSandbox",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v2/sandboxes/", sdkEncodePathSegment(sdkWireString(name))].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("deleteOrphanSnapshots", value: deleteOrphanSnapshots),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "deleteSandbox", options: requestOptions)).data
     }
 }

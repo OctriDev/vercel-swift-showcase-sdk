@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    /// Deletes a project identified by its ID or name. Use the `teamId` or `slug` query parameter to make the request
-    /// on behalf of a team. A 204 response confirms the project was removed.
+extension ProjectsMethods {
+    /// Deletes a project identified by its ID or name. Use the `teamId` or `slug` query parameter to make the request on behalf of a team. A 204 response confirms the project was removed.
     ///
     /// Delete a specific project by passing either the project `id` or `name` in the URL.
     ///
@@ -16,24 +15,10 @@ public extension ProjectsMethods {
     /// - idOrName: The unique project identifier or the project name
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteProject(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .empty,
-            operationId: "deleteProject",
-            options: requestOptions
-        )).data
+    public static func deleteProject(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try (await sdkRequest("DELETE", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .empty, operationId: "deleteProject", options: requestOptions)).data
     }
 }

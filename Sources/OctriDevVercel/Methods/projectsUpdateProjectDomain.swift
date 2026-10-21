@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    /// Updates a project domain’s configuration, including its Git branch association and redirect settings. Supply
-    /// only the configuration fields you want to change; `redirectStatusCode` accepts 301, 302, 307, 308, or null.
+extension ProjectsMethods {
+    /// Updates a project domain’s configuration, including its Git branch association and redirect settings. Supply only the configuration fields you want to change; `redirectStatusCode` accepts 301, 302, 307, 308, or null.
     ///
     /// Update a project domain's configuration, including the name, git branch and redirect of the domain.
     ///
@@ -20,44 +19,16 @@ public extension ProjectsMethods {
     /// - gitBranch: Git branch to link the project domain
     /// - redirect: Target destination domain for redirect
     /// - redirectStatusCode: Status code for domain redirect
-    static func updateProjectDomain(
-        config: ClientConfig,
-        idOrName: String,
-        domain: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        gitBranch: SdkOptional<String>? = nil,
-        redirect: SdkOptional<String>? = nil,
-        redirectStatusCode: SdkOptional<Int>? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateProjectDomainResponse {
+    public static func updateProjectDomain(config: ClientConfig, idOrName: String, domain: String, teamId: String? = nil, slug: String? = nil, gitBranch: SdkOptional<String>? = nil, redirect: SdkOptional<String>? = nil, redirectStatusCode: SdkOptional<Int>? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateProjectDomainResponse {
         if let gitBranch = gitBranch?.valueOrNil {
             try validateLength("gitBranch", gitBranch, max: 250)
         }
 
-        let requestBody = UpdateProjectDomainRequestBody(
-            gitBranch: gitBranch,
-            redirect: redirect,
-            redirectStatusCode: redirectStatusCode
-        )
+        let requestBody = UpdateProjectDomainRequestBody(gitBranch: gitBranch, redirect: redirect, redirectStatusCode: redirectStatusCode)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v9/projects/",
-                sdkEncodePathSegment(sdkWireString(idOrName)),
-                "/domains/",
-                sdkEncodePathSegment(sdkWireString(domain)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateProjectDomain",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateProjectDomain", options: requestOptions)).data
     }
 }

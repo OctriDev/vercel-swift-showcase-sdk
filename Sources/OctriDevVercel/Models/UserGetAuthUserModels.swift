@@ -3,33 +3,25 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 public indirect enum GetAuthUserResponseUser {
     case authUser(AuthUser)
     case authUserLimited(AuthUserLimited)
 }
 
 extension GetAuthUserResponseUser: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetAuthUserResponseUser"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetAuthUserResponseUser")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -47,12 +39,8 @@ extension GetAuthUserResponseUser {
 
 extension GetAuthUserResponseUser {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(AuthUser.self) {
-            return .authUser(value)
-        }
-        if let value = try? container.decode(AuthUserLimited.self) {
-            return .authUserLimited(value)
-        }
+        if let value = try? container.decode(AuthUser.self) { return .authUser(value) }
+        if let value = try? container.decode(AuthUserLimited.self) { return .authUserLimited(value) }
         return nil
     }
 }
@@ -82,43 +70,29 @@ public struct AuthUserAccountUpdateContextOrganization: Codable {
         case slug
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthUserAccountUpdateContextOrganization {
-    init(from decoder: Decoder) throws {
+extension AuthUserAccountUpdateContextOrganization {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        slug = try container.sdkDecodeRequired(.slug)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.slug = try container.sdkDecodeRequired(.slug)
     }
 }
 
-public extension AuthUserAccountUpdateContextOrganization {
-    init(id: String, name: String, slug: String) {
+extension AuthUserAccountUpdateContextOrganization {
+    public init(id: String, name: String, slug: String) {
         (self.id, self.name) = (id, name)
         self.slug = slug
     }
@@ -136,19 +110,19 @@ public struct AuthUserResourceConfigBuildQueue: Codable {
     }
 
     init() {
-        configuration = nil
+        self.configuration = nil
     }
 }
 
-public extension AuthUserResourceConfigBuildQueue {
-    init(from decoder: Decoder) throws {
+extension AuthUserResourceConfigBuildQueue {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        configuration = try container.sdkDecodeIfPresent(.configuration)
+        self.configuration = try container.sdkDecodeIfPresent(.configuration)
     }
 }
 
-public extension AuthUserResourceConfigBuildQueue {
-    init(configuration: AuthUserResourceConfigBuildQueueConfiguration? = nil) {
+extension AuthUserResourceConfigBuildQueue {
+    public init(configuration: AuthUserResourceConfigBuildQueueConfiguration? = nil) {
         self.init()
         self.configuration = configuration
     }
@@ -194,36 +168,27 @@ public struct AuthUserResourceConfigSecurity: Codable {
     }
 
     init() {
-        (customRules, ipBlocks, ipBypass, rateLimit, securityLists) = (nil, nil, nil, nil, nil)
-        (teamLevelConditions, teamLevelRules, teamLevelRulesets) = (nil, nil, nil)
+        (self.customRules, self.ipBlocks, self.ipBypass, self.rateLimit, self.securityLists) = (nil, nil, nil, nil, nil)
+        (self.teamLevelConditions, self.teamLevelRules, self.teamLevelRulesets) = (nil, nil, nil)
     }
 }
 
-public extension AuthUserResourceConfigSecurity {
-    init(from decoder: Decoder) throws {
+extension AuthUserResourceConfigSecurity {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        customRules = try container.sdkDecodeIfPresent(.customRules)
-        ipBlocks = try container.sdkDecodeIfPresent(.ipBlocks)
-        ipBypass = try container.sdkDecodeIfPresent(.ipBypass)
-        rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
-        securityLists = try container.sdkDecodeIfPresent(.securityLists)
-        teamLevelConditions = try container.sdkDecodeIfPresent(.teamLevelConditions)
-        teamLevelRules = try container.sdkDecodeIfPresent(.teamLevelRules)
-        teamLevelRulesets = try container.sdkDecodeIfPresent(.teamLevelRulesets)
+        self.customRules = try container.sdkDecodeIfPresent(.customRules)
+        self.ipBlocks = try container.sdkDecodeIfPresent(.ipBlocks)
+        self.ipBypass = try container.sdkDecodeIfPresent(.ipBypass)
+        self.rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
+        self.securityLists = try container.sdkDecodeIfPresent(.securityLists)
+        self.teamLevelConditions = try container.sdkDecodeIfPresent(.teamLevelConditions)
+        self.teamLevelRules = try container.sdkDecodeIfPresent(.teamLevelRules)
+        self.teamLevelRulesets = try container.sdkDecodeIfPresent(.teamLevelRulesets)
     }
 }
 
-public extension AuthUserResourceConfigSecurity {
-    init(
-        customRules: Double? = nil,
-        ipBlocks: Double? = nil,
-        ipBypass: Double? = nil,
-        rateLimit: Double? = nil,
-        securityLists: Double? = nil,
-        teamLevelConditions: Double? = nil,
-        teamLevelRules: Double? = nil,
-        teamLevelRulesets: Double? = nil
-    ) {
+extension AuthUserResourceConfigSecurity {
+    public init(customRules: Double? = nil, ipBlocks: Double? = nil, ipBypass: Double? = nil, rateLimit: Double? = nil, securityLists: Double? = nil, teamLevelConditions: Double? = nil, teamLevelRules: Double? = nil, teamLevelRulesets: Double? = nil) {
         self.init()
         (self.customRules, self.ipBlocks) = (customRules, ipBlocks)
         (self.ipBypass, self.rateLimit) = (ipBypass, rateLimit)
@@ -246,23 +211,20 @@ public struct AuthUserFeatureBlocks: Codable {
     }
 
     init() {
-        (speedInsightsFree, webAnalytics) = (nil, nil)
+        (self.speedInsightsFree, self.webAnalytics) = (nil, nil)
     }
 }
 
-public extension AuthUserFeatureBlocks {
-    init(from decoder: Decoder) throws {
+extension AuthUserFeatureBlocks {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        speedInsightsFree = try container.sdkDecodeIfPresent(.speedInsightsFree)
-        webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
+        self.speedInsightsFree = try container.sdkDecodeIfPresent(.speedInsightsFree)
+        self.webAnalytics = try container.sdkDecodeIfPresent(.webAnalytics)
     }
 }
 
-public extension AuthUserFeatureBlocks {
-    init(
-        speedInsightsFree: AuthUserFeatureBlocksSpeedInsightsFree? = nil,
-        webAnalytics: AuthUserFeatureBlocksWebAnalytics? = nil
-    ) {
+extension AuthUserFeatureBlocks {
+    public init(speedInsightsFree: AuthUserFeatureBlocksSpeedInsightsFree? = nil, webAnalytics: AuthUserFeatureBlocksWebAnalytics? = nil) {
         self.init()
         (self.speedInsightsFree, self.webAnalytics) = (speedInsightsFree, webAnalytics)
     }
@@ -280,35 +242,25 @@ public struct AuthUserFavoriteProjectsAndSpacesItem: Codable {
         case teamId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthUserFavoriteProjectsAndSpacesItem {
-    init(from decoder: Decoder) throws {
+extension AuthUserFavoriteProjectsAndSpacesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.teamId) else {
-            throw SdkValidationError(
-                field: "teamId",
-                code: "required",
-                message: "Validation failed for 'teamId': value is required"
-            )
+            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
         }
-        projectId = try container.sdkDecodeRequired(.projectId)
-        teamId = try container.sdkDecodeRequired(.teamId)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
     }
 }
 
-public extension AuthUserFavoriteProjectsAndSpacesItem {
-    init(projectId: String, teamId: String) {
+extension AuthUserFavoriteProjectsAndSpacesItem {
+    public init(projectId: String, teamId: String) {
         (self.projectId, self.teamId) = (projectId, teamId)
     }
 }
@@ -325,35 +277,25 @@ public struct AuthUserDismissedToastsItem: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthUserDismissedToastsItem {
-    init(from decoder: Decoder) throws {
+extension AuthUserDismissedToastsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.dismissals) else {
-            throw SdkValidationError(
-                field: "dismissals",
-                code: "required",
-                message: "Validation failed for 'dismissals': value is required"
-            )
+            throw SdkValidationError(field: "dismissals", code: "required", message: "Validation failed for 'dismissals': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        dismissals = try container.sdkDecodeRequired(.dismissals)
-        name = try container.sdkDecodeRequired(.name)
+        self.dismissals = try container.sdkDecodeRequired(.dismissals)
+        self.name = try container.sdkDecodeRequired(.name)
     }
 }
 
-public extension AuthUserDismissedToastsItem {
-    init(dismissals: [AuthUserDismissedToastsItemDismissalsItem], name: String) {
+extension AuthUserDismissedToastsItem {
+    public init(dismissals: [AuthUserDismissedToastsItemDismissalsItem], name: String) {
         (self.dismissals, self.name) = (dismissals, name)
     }
 }
@@ -379,59 +321,37 @@ public struct AuthUserAccountUpdateContextManagedTeamsItem: Codable {
         case workEmail
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthUserAccountUpdateContextManagedTeamsItem {
-    init(from decoder: Decoder) throws {
+extension AuthUserAccountUpdateContextManagedTeamsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.avatar) else {
-            throw SdkValidationError(
-                field: "avatar",
-                code: "required",
-                message: "Validation failed for 'avatar': value is required"
-            )
+            throw SdkValidationError(field: "avatar", code: "required", message: "Validation failed for 'avatar': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
         guard container.contains(.teamId) else {
-            throw SdkValidationError(
-                field: "teamId",
-                code: "required",
-                message: "Validation failed for 'teamId': value is required"
-            )
+            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
         }
         guard container.contains(.workEmail) else {
-            throw SdkValidationError(
-                field: "workEmail",
-                code: "required",
-                message: "Validation failed for 'workEmail': value is required"
-            )
+            throw SdkValidationError(field: "workEmail", code: "required", message: "Validation failed for 'workEmail': value is required")
         }
-        avatar = try container.sdkDecodeNullable(.avatar)
-        name = try container.sdkDecodeRequired(.name)
-        slug = try container.sdkDecodeRequired(.slug)
-        teamId = try container.sdkDecodeRequired(.teamId)
-        workEmail = try container.sdkDecodeRequired(.workEmail)
+        self.avatar = try container.sdkDecodeNullable(.avatar)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
+        self.workEmail = try container.sdkDecodeRequired(.workEmail)
     }
 }
 
-public extension AuthUserAccountUpdateContextManagedTeamsItem {
-    init(avatar: String?, name: String, slug: String, teamId: String, workEmail: String) {
+extension AuthUserAccountUpdateContextManagedTeamsItem {
+    public init(avatar: String?, name: String, slug: String, teamId: String, workEmail: String) {
         (self.avatar, self.name) = (avatar, name)
         (self.slug, self.teamId) = (slug, teamId)
         self.workEmail = workEmail
@@ -448,19 +368,19 @@ public struct AuthUserRemoteCaching: Codable {
     }
 
     init() {
-        enabled = nil
+        self.enabled = nil
     }
 }
 
-public extension AuthUserRemoteCaching {
-    init(from decoder: Decoder) throws {
+extension AuthUserRemoteCaching {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        enabled = try container.sdkDecodeIfPresent(.enabled)
+        self.enabled = try container.sdkDecodeIfPresent(.enabled)
     }
 }
 
-public extension AuthUserRemoteCaching {
-    init(enabled: Bool? = nil) {
+extension AuthUserRemoteCaching {
+    public init(enabled: Bool? = nil) {
         self.init()
         self.enabled = enabled
     }
@@ -561,39 +481,37 @@ public struct AuthUser: Codable {
         case shouldShowEnterpriseManagedWelcome
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthUser {
-    init(from decoder: Decoder) throws {
+extension AuthUser {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        avatar = try container.sdkDecodeNullable(.avatar)
-        billing = try container.sdkDecodeNullable(.billing)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        defaultTeamId = try container.sdkDecodeNullable(.defaultTeamId)
-        email = try container.sdkDecodeRequired(.email)
-        hasTrialAvailable = try container.sdkDecodeRequired(.hasTrialAvailable)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeNullable(.name)
-        resourceConfig = try container.sdkDecodeRequired(.resourceConfig)
-        softBlock = try container.sdkDecodeNullable(.softBlock)
-        stagingPrefix = try container.sdkDecodeRequired(.stagingPrefix)
-        username = try container.sdkDecodeRequired(.username)
-        accountUpdateContext = try container.sdkDecodeIfPresent(.accountUpdateContext)
-        activeDashboardViews = try container.sdkDecodeIfPresent(.activeDashboardViews)
-        dataCache = try container.sdkDecodeIfPresent(.dataCache)
-        dismissedToasts = try container.sdkDecodeIfPresent(.dismissedToasts)
-        favoriteProjectsAndSpaces = try container.sdkDecodeIfPresent(.favoriteProjectsAndSpaces)
-        featureBlocks = try container.sdkDecodeIfPresent(.featureBlocks)
-        importFlowGitNamespace = try container.sdkDecodeIfPresent(.importFlowGitNamespace)
-        importFlowGitNamespaceId = try container.sdkDecodeIfPresent(.importFlowGitNamespaceId)
-        importFlowGitProvider = try container.sdkDecodeIfPresent(.importFlowGitProvider)
-        isAccountUpdateRequired = try container.sdkDecodeIfPresent(.isAccountUpdateRequired)
-        isEnterpriseManaged = try container.sdkDecodeIfPresent(.isEnterpriseManaged)
-        preferredScopesAndGitNamespaces = try container.sdkDecodeIfPresent(.preferredScopesAndGitNamespaces)
-        remoteCaching = try container.sdkDecodeIfPresent(.remoteCaching)
-        shouldShowEnterpriseManagedWelcome = try container.sdkDecodeIfPresent(.shouldShowEnterpriseManagedWelcome)
+        self.avatar = try container.sdkDecodeNullable(.avatar)
+        self.billing = try container.sdkDecodeNullable(.billing)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.defaultTeamId = try container.sdkDecodeNullable(.defaultTeamId)
+        self.email = try container.sdkDecodeRequired(.email)
+        self.hasTrialAvailable = try container.sdkDecodeRequired(.hasTrialAvailable)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeNullable(.name)
+        self.resourceConfig = try container.sdkDecodeRequired(.resourceConfig)
+        self.softBlock = try container.sdkDecodeNullable(.softBlock)
+        self.stagingPrefix = try container.sdkDecodeRequired(.stagingPrefix)
+        self.username = try container.sdkDecodeRequired(.username)
+        self.accountUpdateContext = try container.sdkDecodeIfPresent(.accountUpdateContext)
+        self.activeDashboardViews = try container.sdkDecodeIfPresent(.activeDashboardViews)
+        self.dataCache = try container.sdkDecodeIfPresent(.dataCache)
+        self.dismissedToasts = try container.sdkDecodeIfPresent(.dismissedToasts)
+        self.favoriteProjectsAndSpaces = try container.sdkDecodeIfPresent(.favoriteProjectsAndSpaces)
+        self.featureBlocks = try container.sdkDecodeIfPresent(.featureBlocks)
+        self.importFlowGitNamespace = try container.sdkDecodeIfPresent(.importFlowGitNamespace)
+        self.importFlowGitNamespaceId = try container.sdkDecodeIfPresent(.importFlowGitNamespaceId)
+        self.importFlowGitProvider = try container.sdkDecodeIfPresent(.importFlowGitProvider)
+        self.isAccountUpdateRequired = try container.sdkDecodeIfPresent(.isAccountUpdateRequired)
+        self.isEnterpriseManaged = try container.sdkDecodeIfPresent(.isEnterpriseManaged)
+        self.preferredScopesAndGitNamespaces = try container.sdkDecodeIfPresent(.preferredScopesAndGitNamespaces)
+        self.remoteCaching = try container.sdkDecodeIfPresent(.remoteCaching)
+        self.shouldShowEnterpriseManagedWelcome = try container.sdkDecodeIfPresent(.shouldShowEnterpriseManagedWelcome)
     }
 }

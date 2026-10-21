@@ -7,21 +7,17 @@ import Foundation
     import FoundationNetworking
 #endif
 /// The git provider type associated with gitUserId.
-public struct CancelDeploymentResponseSeatBlockGitProvider: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CancelDeploymentResponseSeatBlockGitProvider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bitbucket = CancelDeploymentResponseSeatBlockGitProvider(rawValue: "bitbucket")
     public static let github = CancelDeploymentResponseSeatBlockGitProvider(rawValue: "github")
     public static let gitlab = CancelDeploymentResponseSeatBlockGitProvider(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -30,14 +26,10 @@ public struct CancelDeploymentResponseSeatBlockGitProvider: RawRepresentable, Ha
     }
 }
 
-public struct GetSecurityFirewallConfigResponseDraftIpsItemAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseDraftIpsItemAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bypass = GetSecurityFirewallConfigResponseDraftIpsItemAction(rawValue: "bypass")
     public static let challenge = GetSecurityFirewallConfigResponseDraftIpsItemAction(rawValue: "challenge")
     public static let deny = GetSecurityFirewallConfigResponseDraftIpsItemAction(rawValue: "deny")
@@ -45,7 +37,7 @@ public struct GetSecurityFirewallConfigResponseDraftIpsItemAction: RawRepresenta
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -54,22 +46,17 @@ public struct GetSecurityFirewallConfigResponseDraftIpsItemAction: RawRepresenta
     }
 }
 
-public struct ListProjectsResponseVariant0ItemSecurityManagedRulesTrafficSourcesAction: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemSecurityManagedRulesTrafficSourcesAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let challenge =
-        ListProjectsResponseVariant0ItemSecurityManagedRulesTrafficSourcesAction(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let challenge = ListProjectsResponseVariant0ItemSecurityManagedRulesTrafficSourcesAction(rawValue: "challenge")
     public static let deny = ListProjectsResponseVariant0ItemSecurityManagedRulesTrafficSourcesAction(rawValue: "deny")
     public static let log = ListProjectsResponseVariant0ItemSecurityManagedRulesTrafficSourcesAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -78,20 +65,16 @@ public struct ListProjectsResponseVariant0ItemSecurityManagedRulesTrafficSources
     }
 }
 
-public struct CreateConfigurableLogDrainRequestBodyEnvironmentsItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateConfigurableLogDrainRequestBodyEnvironmentsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let preview = CreateConfigurableLogDrainRequestBodyEnvironmentsItem(rawValue: "preview")
     public static let production = CreateConfigurableLogDrainRequestBodyEnvironmentsItem(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -100,24 +83,17 @@ public struct CreateConfigurableLogDrainRequestBodyEnvironmentsItem: RawRepresen
     }
 }
 
-public struct GetStorageStoresByIdResponseStoreProjectFilterGitProvidersVariant0Item: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetStorageStoresByIdResponseStoreProjectFilterGitProvidersVariant0Item: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let bitbucket =
-        GetStorageStoresByIdResponseStoreProjectFilterGitProvidersVariant0Item(rawValue: "bitbucket")
-    public static let github =
-        GetStorageStoresByIdResponseStoreProjectFilterGitProvidersVariant0Item(rawValue: "github")
-    public static let gitlab =
-        GetStorageStoresByIdResponseStoreProjectFilterGitProvidersVariant0Item(rawValue: "gitlab")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let bitbucket = GetStorageStoresByIdResponseStoreProjectFilterGitProvidersVariant0Item(rawValue: "bitbucket")
+    public static let github = GetStorageStoresByIdResponseStoreProjectFilterGitProvidersVariant0Item(rawValue: "github")
+    public static let gitlab = GetStorageStoresByIdResponseStoreProjectFilterGitProvidersVariant0Item(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -127,14 +103,10 @@ public struct GetStorageStoresByIdResponseStoreProjectFilterGitProvidersVariant0
 }
 
 /// Framework slug, when the service has one (omitted otherwise).
-public struct UploadProjectAvatarResponseServicesItemFramework: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UploadProjectAvatarResponseServicesItemFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let actixWeb = UploadProjectAvatarResponseServicesItemFramework(rawValue: "actix-web")
     public static let angular = UploadProjectAvatarResponseServicesItemFramework(rawValue: "angular")
     public static let ash = UploadProjectAvatarResponseServicesItemFramework(rawValue: "ash")
@@ -201,8 +173,7 @@ public struct UploadProjectAvatarResponseServicesItemFramework: RawRepresentable
     public static let sveltekit = UploadProjectAvatarResponseServicesItemFramework(rawValue: "sveltekit")
     public static let sveltekit1 = UploadProjectAvatarResponseServicesItemFramework(rawValue: "sveltekit-1")
     public static let tanstackStart = UploadProjectAvatarResponseServicesItemFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable =
-        UploadProjectAvatarResponseServicesItemFramework(rawValue: "tanstack-start-lovable")
+    public static let tanstackStartLovable = UploadProjectAvatarResponseServicesItemFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = UploadProjectAvatarResponseServicesItemFramework(rawValue: "umijs")
     public static let vite = UploadProjectAvatarResponseServicesItemFramework(rawValue: "vite")
     public static let vitepress = UploadProjectAvatarResponseServicesItemFramework(rawValue: "vitepress")
@@ -213,7 +184,7 @@ public struct UploadProjectAvatarResponseServicesItemFramework: RawRepresentable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -222,20 +193,15 @@ public struct UploadProjectAvatarResponseServicesItemFramework: RawRepresentable
     }
 }
 
-public struct CreateProjectEnvResponseCreatedVariant0InternalContentHintType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateProjectEnvResponseCreatedVariant0InternalContentHintType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let flagsSecret =
-        CreateProjectEnvResponseCreatedVariant0InternalContentHintType(rawValue: "flags-secret")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let flagsSecret = CreateProjectEnvResponseCreatedVariant0InternalContentHintType(rawValue: "flags-secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

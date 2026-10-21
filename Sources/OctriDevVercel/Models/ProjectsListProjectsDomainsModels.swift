@@ -3,48 +3,34 @@
 
 import Foundation
 
-/// ProjectsList domain models
+// ProjectsList domain models
 public indirect enum ListProjectsDomainsResponse {
     case listProjectsDomainsResponseVariant0(ListProjectsDomainsResponseVariant0)
     case listProjectsDomainsResponseVariant1(ListProjectsDomainsResponseVariant1)
 }
 
 extension ListProjectsDomainsResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ListProjectsDomainsResponse"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListProjectsDomainsResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension ListProjectsDomainsResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ListProjectsDomainsResponseVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ListProjectsDomainsResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .listProjectsDomainsResponseVariant0(value)
         }
-        if let value = try? container.decode(ListProjectsDomainsResponseVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ListProjectsDomainsResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .listProjectsDomainsResponseVariant1(value)
         }
         return nil
@@ -56,12 +42,12 @@ extension ListProjectsDomainsResponse {
         if let value = try? container.decode(
             ListProjectsDomainsResponseVariant0.self
         ) {
-            return .listProjectsDomainsResponseVariant0(value)
+            return             .listProjectsDomainsResponseVariant0(value)
         }
         if let value = try? container.decode(
             ListProjectsDomainsResponseVariant1.self
         ) {
-            return .listProjectsDomainsResponseVariant1(value)
+            return             .listProjectsDomainsResponseVariant1(value)
         }
         return nil
     }
@@ -88,50 +74,35 @@ public struct ListProjectsDomainsResponseVariant0Pagination: Codable {
         case prev
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsDomainsResponseVariant0Pagination {
-    init(from decoder: Decoder) throws {
+extension ListProjectsDomainsResponseVariant0Pagination {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.count) else {
-            throw SdkValidationError(
-                field: "count",
-                code: "required",
-                message: "Validation failed for 'count': value is required"
-            )
+            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
         }
         guard container.contains(.next) else {
-            throw SdkValidationError(
-                field: "next",
-                code: "required",
-                message: "Validation failed for 'next': value is required"
-            )
+            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
         }
         guard container.contains(.prev) else {
-            throw SdkValidationError(
-                field: "prev",
-                code: "required",
-                message: "Validation failed for 'prev': value is required"
-            )
+            throw SdkValidationError(field: "prev", code: "required", message: "Validation failed for 'prev': value is required")
         }
-        count = try container.sdkDecodeRequired(.count)
-        next = try container.sdkDecodeNullable(.next)
-        prev = try container.sdkDecodeNullable(.prev)
+        self.count = try container.sdkDecodeRequired(.count)
+        self.next = try container.sdkDecodeNullable(.next)
+        self.prev = try container.sdkDecodeNullable(.prev)
     }
 }
 
-public extension ListProjectsDomainsResponseVariant0Pagination {
-    init(count: Double, next: Double?, prev: Double?) {
+extension ListProjectsDomainsResponseVariant0Pagination {
+    public init(count: Double, next: Double?, prev: Double?) {
         (self.count, self.next) = (count, next)
         self.prev = prev
     }
 }
 
-public typealias ListProjectsDomainsResponseVariant1DomainsItemVerificationList =
-    [ListProjectsDomainsResponseVariant1DomainsItemVerificationItem]
+public typealias ListProjectsDomainsResponseVariant1DomainsItemVerificationList = [ListProjectsDomainsResponseVariant1DomainsItemVerificationItem]
 
 public struct ListProjectsDomainsResponseVariant1DomainsItem: Codable {
     public var apexName: String
@@ -166,70 +137,40 @@ public struct ListProjectsDomainsResponseVariant1DomainsItem: Codable {
         case verification
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsDomainsResponseVariant1DomainsItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsDomainsResponseVariant1DomainsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.apexName) else {
-            throw SdkValidationError(
-                field: "apexName",
-                code: "required",
-                message: "Validation failed for 'apexName': value is required"
-            )
+            throw SdkValidationError(field: "apexName", code: "required", message: "Validation failed for 'apexName': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.verified) else {
-            throw SdkValidationError(
-                field: "verified",
-                code: "required",
-                message: "Validation failed for 'verified': value is required"
-            )
+            throw SdkValidationError(field: "verified", code: "required", message: "Validation failed for 'verified': value is required")
         }
-        apexName = try container.sdkDecodeRequired(.apexName)
-        name = try container.sdkDecodeRequired(.name)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        verified = try container.sdkDecodeRequired(.verified)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
-        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        verification = try container.sdkDecodeIfPresent(.verification)
+        self.apexName = try container.sdkDecodeRequired(.apexName)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.verified = try container.sdkDecodeRequired(.verified)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.verification = try container.sdkDecodeIfPresent(.verification)
     }
 }
 
-public extension ListProjectsDomainsResponseVariant1DomainsItem {
-    init(
-        apexName: String,
-        name: String,
-        projectId: String,
-        verified: Bool,
-        createdAt: Double? = nil,
-        customEnvironmentId: String? = nil,
-        gitBranch: String? = nil,
-        redirect: String? = nil,
-        redirectStatusCode: Double? = nil,
-        updatedAt: Double? = nil,
-        verification: ListProjectsDomainsResponseVariant1DomainsItemVerificationList? = nil
-    ) {
+extension ListProjectsDomainsResponseVariant1DomainsItem {
+    public init(apexName: String, name: String, projectId: String, verified: Bool, createdAt: Double? = nil, customEnvironmentId: String? = nil, gitBranch: String? = nil, redirect: String? = nil, redirectStatusCode: Double? = nil, updatedAt: Double? = nil, verification: ListProjectsDomainsResponseVariant1DomainsItemVerificationList? = nil) {
         (self.apexName, self.name) = (apexName, name)
         (self.projectId, self.verified) = (projectId, verified)
         (self.createdAt, self.customEnvironmentId) = (createdAt, customEnvironmentId)
@@ -239,8 +180,7 @@ public extension ListProjectsDomainsResponseVariant1DomainsItem {
     }
 }
 
-public typealias ListProjectsDomainsResponseVariant0DomainsItemVerificationList =
-    [ListProjectsDomainsResponseVariant0DomainsItemVerificationItem]
+public typealias ListProjectsDomainsResponseVariant0DomainsItemVerificationList = [ListProjectsDomainsResponseVariant0DomainsItemVerificationItem]
 
 public struct ListProjectsDomainsResponseVariant0DomainsItem: Codable {
     public var apexName: String
@@ -275,70 +215,40 @@ public struct ListProjectsDomainsResponseVariant0DomainsItem: Codable {
         case verification
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsDomainsResponseVariant0DomainsItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsDomainsResponseVariant0DomainsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.apexName) else {
-            throw SdkValidationError(
-                field: "apexName",
-                code: "required",
-                message: "Validation failed for 'apexName': value is required"
-            )
+            throw SdkValidationError(field: "apexName", code: "required", message: "Validation failed for 'apexName': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.verified) else {
-            throw SdkValidationError(
-                field: "verified",
-                code: "required",
-                message: "Validation failed for 'verified': value is required"
-            )
+            throw SdkValidationError(field: "verified", code: "required", message: "Validation failed for 'verified': value is required")
         }
-        apexName = try container.sdkDecodeRequired(.apexName)
-        name = try container.sdkDecodeRequired(.name)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        verified = try container.sdkDecodeRequired(.verified)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
-        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        verification = try container.sdkDecodeIfPresent(.verification)
+        self.apexName = try container.sdkDecodeRequired(.apexName)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.verified = try container.sdkDecodeRequired(.verified)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.verification = try container.sdkDecodeIfPresent(.verification)
     }
 }
 
-public extension ListProjectsDomainsResponseVariant0DomainsItem {
-    init(
-        apexName: String,
-        name: String,
-        projectId: String,
-        verified: Bool,
-        createdAt: Double? = nil,
-        customEnvironmentId: String? = nil,
-        gitBranch: String? = nil,
-        redirect: String? = nil,
-        redirectStatusCode: Double? = nil,
-        updatedAt: Double? = nil,
-        verification: ListProjectsDomainsResponseVariant0DomainsItemVerificationList? = nil
-    ) {
+extension ListProjectsDomainsResponseVariant0DomainsItem {
+    public init(apexName: String, name: String, projectId: String, verified: Bool, createdAt: Double? = nil, customEnvironmentId: String? = nil, gitBranch: String? = nil, redirect: String? = nil, redirectStatusCode: Double? = nil, updatedAt: Double? = nil, verification: ListProjectsDomainsResponseVariant0DomainsItemVerificationList? = nil) {
         (self.apexName, self.name) = (apexName, name)
         (self.projectId, self.verified) = (projectId, verified)
         (self.createdAt, self.customEnvironmentId) = (createdAt, customEnvironmentId)
@@ -365,51 +275,33 @@ public struct ListProjectsDomainsResponseVariant0DomainsItemVerificationItem: Co
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsDomainsResponseVariant0DomainsItemVerificationItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsDomainsResponseVariant0DomainsItemVerificationItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
         guard container.contains(.reason) else {
-            throw SdkValidationError(
-                field: "reason",
-                code: "required",
-                message: "Validation failed for 'reason': value is required"
-            )
+            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        domain = try container.sdkDecodeRequired(.domain)
-        reason = try container.sdkDecodeRequired(.reason)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeRequired(.value)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.reason = try container.sdkDecodeRequired(.reason)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension ListProjectsDomainsResponseVariant0DomainsItemVerificationItem {
-    init(domain: String, reason: String, type: String, value: String) {
+extension ListProjectsDomainsResponseVariant0DomainsItemVerificationItem {
+    public init(domain: String, reason: String, type: String, value: String) {
         (self.domain, self.reason) = (domain, reason)
         (self.type, self.value) = (type, value)
     }
@@ -426,35 +318,25 @@ public struct ListProjectsDomainsResponseVariant1: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsDomainsResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension ListProjectsDomainsResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domains) else {
-            throw SdkValidationError(
-                field: "domains",
-                code: "required",
-                message: "Validation failed for 'domains': value is required"
-            )
+            throw SdkValidationError(field: "domains", code: "required", message: "Validation failed for 'domains': value is required")
         }
         guard container.contains(.pagination) else {
-            throw SdkValidationError(
-                field: "pagination",
-                code: "required",
-                message: "Validation failed for 'pagination': value is required"
-            )
+            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
         }
-        domains = try container.sdkDecodeRequired(.domains)
-        pagination = try container.sdkDecodeRequired(.pagination)
+        self.domains = try container.sdkDecodeRequired(.domains)
+        self.pagination = try container.sdkDecodeRequired(.pagination)
     }
 }
 
-public extension ListProjectsDomainsResponseVariant1 {
-    init(domains: [ListProjectsDomainsResponseVariant1DomainsItem], pagination: Pagination) {
+extension ListProjectsDomainsResponseVariant1 {
+    public init(domains: [ListProjectsDomainsResponseVariant1DomainsItem], pagination: Pagination) {
         (self.domains, self.pagination) = (domains, pagination)
     }
 }
@@ -468,38 +350,25 @@ public struct ListProjectsDomainsResponseVariant0: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsDomainsResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension ListProjectsDomainsResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domains) else {
-            throw SdkValidationError(
-                field: "domains",
-                code: "required",
-                message: "Validation failed for 'domains': value is required"
-            )
+            throw SdkValidationError(field: "domains", code: "required", message: "Validation failed for 'domains': value is required")
         }
         guard container.contains(.pagination) else {
-            throw SdkValidationError(
-                field: "pagination",
-                code: "required",
-                message: "Validation failed for 'pagination': value is required"
-            )
+            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
         }
-        domains = try container.sdkDecodeRequired(.domains)
-        pagination = try container.sdkDecodeRequired(.pagination)
+        self.domains = try container.sdkDecodeRequired(.domains)
+        self.pagination = try container.sdkDecodeRequired(.pagination)
     }
 }
 
-public extension ListProjectsDomainsResponseVariant0 {
-    init(
-        domains: [ListProjectsDomainsResponseVariant0DomainsItem],
-        pagination: ListProjectsDomainsResponseVariant0Pagination
-    ) {
+extension ListProjectsDomainsResponseVariant0 {
+    public init(domains: [ListProjectsDomainsResponseVariant0DomainsItem], pagination: ListProjectsDomainsResponseVariant0Pagination) {
         (self.domains, self.pagination) = (domains, pagination)
     }
 }
@@ -521,51 +390,33 @@ public struct ListProjectsDomainsResponseVariant1DomainsItemVerificationItem: Co
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListProjectsDomainsResponseVariant1DomainsItemVerificationItem {
-    init(from decoder: Decoder) throws {
+extension ListProjectsDomainsResponseVariant1DomainsItemVerificationItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
         guard container.contains(.reason) else {
-            throw SdkValidationError(
-                field: "reason",
-                code: "required",
-                message: "Validation failed for 'reason': value is required"
-            )
+            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        domain = try container.sdkDecodeRequired(.domain)
-        reason = try container.sdkDecodeRequired(.reason)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeRequired(.value)
+        self.domain = try container.sdkDecodeRequired(.domain)
+        self.reason = try container.sdkDecodeRequired(.reason)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeRequired(.value)
     }
 }
 
-public extension ListProjectsDomainsResponseVariant1DomainsItemVerificationItem {
-    init(domain: String, reason: String, type: String, value: String) {
+extension ListProjectsDomainsResponseVariant1DomainsItemVerificationItem {
+    public init(domain: String, reason: String, type: String, value: String) {
         (self.domain, self.reason) = (domain, reason)
         (self.type, self.value) = (type, value)
     }

@@ -29,16 +29,13 @@ public enum GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassVXbbeaf9
 public struct GetDomainConfigParameter: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let `true` = GetDomainConfigParameter(rawValue: "true")
     public static let `false` = GetDomainConfigParameter(rawValue: "false")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -47,14 +44,10 @@ public struct GetDomainConfigParameter: RawRepresentable, Hashable, Codable, Sen
     }
 }
 
-public struct GetDeploymentsResponseDeploymentsItemProjectSettingsFramework: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetDeploymentsResponseDeploymentsItemProjectSettingsFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let actixWeb = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "actix-web")
     public static let angular = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "angular")
     public static let ash = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "ash")
@@ -64,20 +57,17 @@ public struct GetDeploymentsResponseDeploymentsItemProjectSettingsFramework: Raw
     public static let brunch = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "brunch")
     public static let bun = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "bun")
     public static let container = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "container")
-    public static let createReactApp =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "create-react-app")
+    public static let createReactApp = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "create-react-app")
     public static let django = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "django")
     public static let docusaurus = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "docusaurus")
-    public static let docusaurus2 =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "docusaurus-2")
+    public static let docusaurus2 = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "docusaurus-2")
     public static let dojo = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "dojo")
     public static let eleventy = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "eleventy")
     public static let elysia = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "elysia")
     public static let ember = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "ember")
     public static let eve = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "eve")
     public static let express = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "express")
-    public static let factoryEve =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "factory-eve")
+    public static let factoryEve = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "factory-eve")
     public static let fastapi = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "fastapi")
     public static let fasthtml = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "fasthtml")
     public static let fastify = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "fastify")
@@ -90,10 +80,8 @@ public struct GetDeploymentsResponseDeploymentsItemProjectSettingsFramework: Raw
     public static let hono = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "hono")
     public static let hugo = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "hugo")
     public static let hydrogen = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "hydrogen")
-    public static let ionicAngular =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "ionic-angular")
-    public static let ionicReact =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "ionic-react")
+    public static let ionicAngular = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "ionic-angular")
+    public static let ionicReact = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "ionic-react")
     public static let jekyll = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "jekyll")
     public static let koa = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "koa")
     public static let mastra = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "mastra")
@@ -107,8 +95,7 @@ public struct GetDeploymentsResponseDeploymentsItemProjectSettingsFramework: Raw
     public static let polymer = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "polymer")
     public static let preact = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "preact")
     public static let python = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "python")
-    public static let reactRouter =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "react-router")
+    public static let reactRouter = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "react-router")
     public static let redwoodjs = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "redwoodjs")
     public static let remix = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "remix")
     public static let ruby = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "ruby")
@@ -120,18 +107,14 @@ public struct GetDeploymentsResponseDeploymentsItemProjectSettingsFramework: Raw
     public static let scully = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "scully")
     public static let services = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "services")
     public static let solidstart = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "solidstart")
-    public static let solidstart1 =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "solidstart-1")
+    public static let solidstart1 = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "solidstart-1")
     public static let stencil = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "stencil")
     public static let storybook = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "storybook")
     public static let svelte = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "svelte")
     public static let sveltekit = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "sveltekit")
-    public static let sveltekit1 =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "sveltekit-1")
-    public static let tanstackStart =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable =
-        GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "tanstack-start-lovable")
+    public static let sveltekit1 = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "sveltekit-1")
+    public static let tanstackStart = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "tanstack-start")
+    public static let tanstackStartLovable = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "umijs")
     public static let vite = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "vite")
     public static let vitepress = GetDeploymentsResponseDeploymentsItemProjectSettingsFramework(rawValue: "vitepress")
@@ -142,7 +125,7 @@ public struct GetDeploymentsResponseDeploymentsItemProjectSettingsFramework: Raw
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -151,22 +134,17 @@ public struct GetDeploymentsResponseDeploymentsItemProjectSettingsFramework: Raw
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesAiBotsAction: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesAiBotsAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let challenge =
-        ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesAiBotsAction(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let challenge = ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesAiBotsAction(rawValue: "challenge")
     public static let deny = ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesAiBotsAction(rawValue: "deny")
     public static let log = ListProjectsResponseVariant2ProjectsItemSecurityManagedRulesAiBotsAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -192,22 +170,16 @@ public enum RemoveProjectEnvResponseVariant2ContentHintVariant10Type: String, Ca
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX454c8160f2: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX454c8160f2: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let create =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX454c8160f2(rawValue: "create")
-    public static let update =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX454c8160f2(rawValue: "update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX454c8160f2(rawValue: "create")
+    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX454c8160f2(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -216,21 +188,16 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX454c
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemTracingSamplingRulesItemEnv: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemTracingSamplingRulesItemEnv: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let preview = ListProjectsResponseVariant2ProjectsItemTracingSamplingRulesItemEnv(rawValue: "preview")
-    public static let production =
-        ListProjectsResponseVariant2ProjectsItemTracingSamplingRulesItemEnv(rawValue: "production")
+    public static let production = ListProjectsResponseVariant2ProjectsItemTracingSamplingRulesItemEnv(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

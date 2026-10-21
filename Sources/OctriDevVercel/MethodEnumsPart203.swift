@@ -7,14 +7,10 @@ import Foundation
     import FoundationNetworking
 #endif
 /// Framework slug, when the service has one (omitted otherwise).
-public struct DeleteProjectAvatarResponseServicesItemFramework: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct DeleteProjectAvatarResponseServicesItemFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let actixWeb = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "actix-web")
     public static let angular = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "angular")
     public static let ash = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "ash")
@@ -81,8 +77,7 @@ public struct DeleteProjectAvatarResponseServicesItemFramework: RawRepresentable
     public static let sveltekit = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "sveltekit")
     public static let sveltekit1 = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "sveltekit-1")
     public static let tanstackStart = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable =
-        DeleteProjectAvatarResponseServicesItemFramework(rawValue: "tanstack-start-lovable")
+    public static let tanstackStartLovable = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "umijs")
     public static let vite = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "vite")
     public static let vitepress = DeleteProjectAvatarResponseServicesItemFramework(rawValue: "vitepress")
@@ -93,7 +88,7 @@ public struct DeleteProjectAvatarResponseServicesItemFramework: RawRepresentable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -119,21 +114,17 @@ public enum UpdateFlagResponseEnvironmentsValueFallthroughVariant0Type: String, 
     }
 }
 
-public struct UpdateSharedEnvVariableRequestBodyUpdatesValueTargetItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateSharedEnvVariableRequestBodyUpdatesValueTargetItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let production = UpdateSharedEnvVariableRequestBodyUpdatesValueTargetItem(rawValue: "production")
     public static let preview = UpdateSharedEnvVariableRequestBodyUpdatesValueTargetItem(rawValue: "preview")
     public static let development = UpdateSharedEnvVariableRequestBodyUpdatesValueTargetItem(rawValue: "development")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -143,21 +134,17 @@ public struct UpdateSharedEnvVariableRequestBodyUpdatesValueTargetItem: RawRepre
 }
 
 /// The project role that will be added to this Access Group.
-public struct UpdateAccessGroupProjectRequestBodyRole: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateAccessGroupProjectRequestBodyRole: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let admin = UpdateAccessGroupProjectRequestBodyRole(rawValue: "ADMIN")
     public static let projectViewer = UpdateAccessGroupProjectRequestBodyRole(rawValue: "PROJECT_VIEWER")
     public static let projectDeveloper = UpdateAccessGroupProjectRequestBodyRole(rawValue: "PROJECT_DEVELOPER")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -166,14 +153,10 @@ public struct UpdateAccessGroupProjectRequestBodyRole: RawRepresentable, Hashabl
     }
 }
 
-public struct UploadProjectAvatarResponseTargetsValueReadyState: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UploadProjectAvatarResponseTargetsValueReadyState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let blocked = UploadProjectAvatarResponseTargetsValueReadyState(rawValue: "BLOCKED")
     public static let building = UploadProjectAvatarResponseTargetsValueReadyState(rawValue: "BUILDING")
     public static let canceled = UploadProjectAvatarResponseTargetsValueReadyState(rawValue: "CANCELED")
@@ -184,7 +167,7 @@ public struct UploadProjectAvatarResponseTargetsValueReadyState: RawRepresentabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -194,24 +177,17 @@ public struct UploadProjectAvatarResponseTargetsValueReadyState: RawRepresentabl
 }
 
 /// The type of matching to perform
-public struct ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemXc1223958f6: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemXc1223958f6: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let endsWith =
-        ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemXc1223958f6(rawValue: "endsWith")
-    public static let equals =
-        ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemXc1223958f6(rawValue: "equals")
-    public static let startsWith =
-        ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemXc1223958f6(rawValue: "startsWith")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let endsWith = ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemXc1223958f6(rawValue: "endsWith")
+    public static let equals = ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemXc1223958f6(rawValue: "equals")
+    public static let startsWith = ListProjectsResponseVariant2ProjectsItemLatestDeploymentsItemXc1223958f6(rawValue: "startsWith")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

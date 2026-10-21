@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension KmsMethods {
-    /// Updates an existing KMS issuer policy's environments or token claims. Use `environments` to change where a
-    /// project-grant policy applies, and `tokenClaims` to change the claims included in signed JWTs. Pass `null` for
-    /// `tokenClaims` to remove the claims.
+extension KmsMethods {
+    /// Updates an existing KMS issuer policy's environments or token claims. Use `environments` to change where a project-grant policy applies, and `tokenClaims` to change the claims included in signed JWTs. Pass `null` for `tokenClaims` to remove the claims.
     ///
     /// Update an existing KMS issuer policy's environments or token claims.
     ///
@@ -24,42 +22,16 @@ public extension KmsMethods {
     ///   environment ID (env_...).
     /// - tokenClaims: The claims that KMS should include in signed JWTs for this
     ///   policy. Pass null to remove them.
-    static func updateKmsIssuerPolicy(
-        config: ClientConfig,
-        issuerId: String,
-        kind: UpdateKmsIssuerPolicyParameter,
-        policyKey: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        environments: [String]? = nil,
-        tokenClaims: SdkOptional<[String: JSONValue]>? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateKmsIssuerPolicyResponse {
-        if let environments {
+    public static func updateKmsIssuerPolicy(config: ClientConfig, issuerId: String, kind: UpdateKmsIssuerPolicyParameter, policyKey: String, teamId: String? = nil, slug: String? = nil, environments: [String]? = nil, tokenClaims: SdkOptional<[String: JSONValue]>? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateKmsIssuerPolicyResponse {
+        if let environments = environments {
             try validateItems("environments", environments, min: 1)
         }
 
         let requestBody = UpdateKmsIssuerPolicyRequestBody(environments: environments, tokenClaims: tokenClaims)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v1/kms/issuers/",
-                sdkEncodePathSegment(sdkWireString(issuerId)),
-                "/policies/",
-                sdkEncodePathSegment(sdkWireString(kind)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(policyKey)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateKmsIssuerPolicy",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/policies/", sdkEncodePathSegment(sdkWireString(kind)), "/", sdkEncodePathSegment(sdkWireString(policyKey))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateKmsIssuerPolicy", options: requestOptions)).data
     }
 }

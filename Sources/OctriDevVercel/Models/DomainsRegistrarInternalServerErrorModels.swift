@@ -3,39 +3,27 @@
 
 import Foundation
 
-/// DomainsRegistrar domain models
-public extension InternalServerError {
-    init(from decoder: Decoder) throws {
+// DomainsRegistrar domain models
+extension InternalServerError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension InternalServerError {
-    init(status: Int, code: InternalServerErrorCode, message: String) {
+extension InternalServerError {
+    public init(status: Int, code: InternalServerErrorCode, message: String) {
         (self.status, self.code) = (status, code)
         self.message = message
     }
@@ -53,35 +41,25 @@ public struct Issue: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension Issue {
-    init(from decoder: Decoder) throws {
+extension Issue {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.path) else {
-            throw SdkValidationError(
-                field: "path",
-                code: "required",
-                message: "Validation failed for 'path': value is required"
-            )
+            throw SdkValidationError(field: "path", code: "required", message: "Validation failed for 'path': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        path = try container.sdkDecodeRequired(.path)
-        message = try container.sdkDecodeRequired(.message)
+        self.path = try container.sdkDecodeRequired(.path)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension Issue {
-    init(path: [PropertyKey], message: String) {
+extension Issue {
+    public init(path: [PropertyKey], message: String) {
         (self.path, self.message) = (path, message)
     }
 }
@@ -90,15 +68,12 @@ public extension Issue {
 public struct PropertyKeyVariant2Tag: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let symbol = PropertyKeyVariant2Tag(rawValue: "symbol")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -129,16 +104,12 @@ public enum ForbiddenCode: String, CaseIterable, Codable {
 public struct InvalidAdditionalContactInfoCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let invalidAdditionalContactInfo =
-        InvalidAdditionalContactInfoCode(rawValue: "invalid_additional_contact_info")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let invalidAdditionalContactInfo = InvalidAdditionalContactInfoCode(rawValue: "invalid_additional_contact_info")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -151,16 +122,12 @@ public struct InvalidAdditionalContactInfoCode: RawRepresentable, Hashable, Coda
 public struct AdditionalContactInfoRequiredCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let additionalContactInfoRequired =
-        AdditionalContactInfoRequiredCode(rawValue: "additional_contact_info_required")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let additionalContactInfoRequired = AdditionalContactInfoRequiredCode(rawValue: "additional_contact_info_required")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -173,15 +140,12 @@ public struct AdditionalContactInfoRequiredCode: RawRepresentable, Hashable, Cod
 public struct ExpectedPriceMismatchCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let expectedPriceMismatch = ExpectedPriceMismatchCode(rawValue: "expected_price_mismatch")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -194,15 +158,12 @@ public struct ExpectedPriceMismatchCode: RawRepresentable, Hashable, Codable, Se
 public struct UnauthorizedCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let unauthorized = UnauthorizedCode(rawValue: "unauthorized")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -215,15 +176,12 @@ public struct UnauthorizedCode: RawRepresentable, Hashable, Codable, Sendable, S
 public struct InternalServerErrorCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let internalServerError = InternalServerErrorCode(rawValue: "internal_server_error")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -236,15 +194,12 @@ public struct InternalServerErrorCode: RawRepresentable, Hashable, Codable, Send
 public struct BadRequestCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let badRequest = BadRequestCode(rawValue: "bad_request")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -257,15 +212,12 @@ public struct BadRequestCode: RawRepresentable, Hashable, Codable, Sendable, Sdk
 public struct LanguageCodeRequiredCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let languageCodeRequired = LanguageCodeRequiredCode(rawValue: "language_code_required")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -278,15 +230,12 @@ public struct LanguageCodeRequiredCode: RawRepresentable, Hashable, Codable, Sen
 public struct EmojiTldNotSupportedCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let emojiTldNotSupported = EmojiTldNotSupportedCode(rawValue: "emoji_tld_not_supported")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

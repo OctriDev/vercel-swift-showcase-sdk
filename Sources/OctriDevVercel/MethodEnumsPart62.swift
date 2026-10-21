@@ -10,10 +10,7 @@ import Foundation
 public struct CreateSandboxesV2RequestBodyRegion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let iad1 = CreateSandboxesV2RequestBodyRegion(rawValue: "iad1")
     public static let sfo1 = CreateSandboxesV2RequestBodyRegion(rawValue: "sfo1")
     public static let cle1 = CreateSandboxesV2RequestBodyRegion(rawValue: "cle1")
@@ -36,7 +33,7 @@ public struct CreateSandboxesV2RequestBodyRegion: RawRepresentable, Hashable, Co
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -45,26 +42,21 @@ public struct CreateSandboxesV2RequestBodyRegion: RawRepresentable, Hashable, Co
     }
 }
 
-public struct ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let blocked = ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState(rawValue: "BLOCKED")
     public static let building = ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState(rawValue: "BUILDING")
     public static let canceled = ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState(rawValue: "CANCELED")
     public static let error = ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState(rawValue: "ERROR")
-    public static let initializing =
-        ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState(rawValue: "INITIALIZING")
+    public static let initializing = ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState(rawValue: "INITIALIZING")
     public static let queued = ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState(rawValue: "QUEUED")
     public static let ready = ListProjectsResponseVariant0ItemAliasItemDeploymentReadyState(rawValue: "READY")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -91,19 +83,15 @@ public enum ListVercelCiInvocationsResponseInvocationsItemStatusVariant10: Strin
 }
 
 /// The version of the microfrontends config schema.
-public struct GetMicrofrontendsConfigResponseConfigVersion: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetMicrofrontendsConfigResponseConfigVersion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let value1 = GetMicrofrontendsConfigResponseConfigVersion(rawValue: "1")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -112,22 +100,16 @@ public struct GetMicrofrontendsConfigResponseConfigVersion: RawRepresentable, Ha
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc63a62da1c: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc63a62da1c: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let create =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc63a62da1c(rawValue: "create")
-    public static let update =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc63a62da1c(rawValue: "update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc63a62da1c(rawValue: "create")
+    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc63a62da1c(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -136,20 +118,16 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc63a
     }
 }
 
-public struct GetSecurityFirewallConfigResponseVersionsItemCrsPhpAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseVersionsItemCrsPhpAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let deny = GetSecurityFirewallConfigResponseVersionsItemCrsPhpAction(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseVersionsItemCrsPhpAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -161,10 +139,7 @@ public struct GetSecurityFirewallConfigResponseVersionsItemCrsPhpAction: RawRepr
 public struct UpdateFlagResponseKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let boolean = UpdateFlagResponseKind(rawValue: "boolean")
     public static let json = UpdateFlagResponseKind(rawValue: "json")
     public static let number = UpdateFlagResponseKind(rawValue: "number")
@@ -172,7 +147,7 @@ public struct UpdateFlagResponseKind: RawRepresentable, Hashable, Codable, Senda
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -184,21 +159,16 @@ public struct UpdateFlagResponseKind: RawRepresentable, Hashable, Codable, Senda
 /// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon
 /// creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview"
 /// deployment.
-public struct StartRollingReleaseResponseRollingReleaseCurrentDeploymentTarget: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct StartRollingReleaseResponseRollingReleaseCurrentDeploymentTarget: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let production =
-        StartRollingReleaseResponseRollingReleaseCurrentDeploymentTarget(rawValue: "production")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let production = StartRollingReleaseResponseRollingReleaseCurrentDeploymentTarget(rawValue: "production")
     public static let staging = StartRollingReleaseResponseRollingReleaseCurrentDeploymentTarget(rawValue: "staging")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

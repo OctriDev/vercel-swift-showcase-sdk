@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// VercelCi domain models
+// VercelCi domain models
 public indirect enum ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation {
     case listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0(
         ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0
@@ -14,39 +14,29 @@ public indirect enum ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOpera
 }
 
 extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0(value)
         }
-        if let value = try? container
-            .decode(ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1(value)
         }
         return nil
@@ -58,12 +48,12 @@ extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation {
         if let value = try? container.decode(
             ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0.self
         ) {
-            return .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0(value)
+            return             .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0(value)
         }
         if let value = try? container.decode(
             ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1.self
         ) {
-            return .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1(value)
+            return             .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1(value)
         }
         return nil
     }
@@ -73,10 +63,8 @@ extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0(value): try container
-            .encode(value); return true
-        case let .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1(value): try container
-            .encode(value); return true
+        case let .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0(value): try container.encode(value); return true
+        case let .listVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -90,46 +78,28 @@ public struct ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVar
         case command
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0 {
-    init(from decoder: Decoder) throws {
+extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
         guard container.contains(.command) else {
-            throw SdkValidationError(
-                field: "command",
-                code: "required",
-                message: "Validation failed for 'command': value is required"
-            )
+            throw SdkValidationError(field: "command", code: "required", message: "Validation failed for 'command': value is required")
         }
-        kind = try container.sdkDecodeRequired(.kind)
-        command = try container.sdkDecodeRequired(.command)
-        try sdkValidateRawEnum(
-            "kind",
-            kind,
-            ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX6dab3429ba.allCases.map(\.rawValue)
-        )
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.command = try container.sdkDecodeRequired(.command)
+            try sdkValidateRawEnum("kind", self.kind, ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX6dab3429ba.allCases.map(\.rawValue))
     }
 }
 
-public extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0 {
-    init(kind: ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX6dab3429ba, command: String) throws {
+extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant0 {
+    public init(kind: ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX6dab3429ba, command: String) throws {
         (self.kind, self.command) = (kind, command)
-        try sdkValidateRawEnum(
-            "kind",
-            self.kind,
-            ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX6dab3429ba.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("kind", self.kind, ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX6dab3429ba.allCases.map(\.rawValue))
     }
 }
 
@@ -139,32 +109,22 @@ public indirect enum ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOpera
 }
 
 extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiXc890f4720f: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiXc890f4720f"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiXc890f4720f")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiXc890f4720f {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue1(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue1(value) }
         return nil
     }
 }
@@ -190,59 +150,33 @@ public struct ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVar
         case target
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1 {
-    init(from decoder: Decoder) throws {
+extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.target) else {
-            throw SdkValidationError(
-                field: "target",
-                code: "required",
-                message: "Validation failed for 'target': value is required"
-            )
+            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
         }
-        kind = try container.sdkDecodeRequired(.kind)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        target = try container.sdkDecodeRequired(.target)
-        try sdkValidateRawEnum(
-            "kind",
-            kind,
-            ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX7ef5c29df3.allCases.map(\.rawValue)
-        )
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.target = try container.sdkDecodeRequired(.target)
+            try sdkValidateRawEnum("kind", self.kind, ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX7ef5c29df3.allCases.map(\.rawValue))
     }
 }
 
-public extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1 {
-    init(
-        kind: ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX7ef5c29df3,
-        projectId: String,
-        target: ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiXc890f4720f
-    ) throws {
+extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperationVariant1 {
+    public init(kind: ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX7ef5c29df3, projectId: String, target: ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiXc890f4720f) throws {
         (self.kind, self.projectId) = (kind, projectId)
         self.target = target
-        try sdkValidateRawEnum(
-            "kind",
-            self.kind,
-            ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX7ef5c29df3.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("kind", self.kind, ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperatiX7ef5c29df3.allCases.map(\.rawValue))
     }
 }
 

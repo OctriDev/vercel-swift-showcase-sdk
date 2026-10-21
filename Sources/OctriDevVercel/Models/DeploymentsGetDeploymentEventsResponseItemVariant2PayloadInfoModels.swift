@@ -3,44 +3,28 @@
 
 import Foundation
 
-/// Deployments domain models
-public extension GetDeploymentEventsResponseItemVariant2PayloadInfo {
-    init(from decoder: Decoder) throws {
+// Deployments domain models
+extension GetDeploymentEventsResponseItemVariant2PayloadInfo {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        name = try container.sdkDecodeRequired(.name)
-        type = try container.sdkDecodeRequired(.type)
-        entrypoint = try container.sdkDecodeIfPresent(.entrypoint)
-        path = try container.sdkDecodeIfPresent(.path)
-        readyState = try container.sdkDecodeIfPresent(.readyState)
-        serviceName = try container.sdkDecodeIfPresent(.serviceName)
-        step = try container.sdkDecodeIfPresent(.step)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.entrypoint = try container.sdkDecodeIfPresent(.entrypoint)
+        self.path = try container.sdkDecodeIfPresent(.path)
+        self.readyState = try container.sdkDecodeIfPresent(.readyState)
+        self.serviceName = try container.sdkDecodeIfPresent(.serviceName)
+        self.step = try container.sdkDecodeIfPresent(.step)
     }
 }
 
-public extension GetDeploymentEventsResponseItemVariant2PayloadInfo {
-    init(
-        name: String,
-        type: String,
-        entrypoint: String? = nil,
-        path: String? = nil,
-        readyState: String? = nil,
-        serviceName: String? = nil,
-        step: String? = nil
-    ) {
+extension GetDeploymentEventsResponseItemVariant2PayloadInfo {
+    public init(name: String, type: String, entrypoint: String? = nil, path: String? = nil, readyState: String? = nil, serviceName: String? = nil, step: String? = nil) {
         (self.name, self.type) = (name, type)
         (self.entrypoint, self.path) = (entrypoint, path)
         (self.readyState, self.serviceName) = (readyState, serviceName)
@@ -59,65 +43,43 @@ public struct GetDeploymentEventsResponseItemVariant0: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentEventsResponseItemVariant0 {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentEventsResponseItemVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.created) else {
-            throw SdkValidationError(
-                field: "created",
-                code: "required",
-                message: "Validation failed for 'created': value is required"
-            )
+            throw SdkValidationError(field: "created", code: "required", message: "Validation failed for 'created': value is required")
         }
         guard container.contains(.payload) else {
-            throw SdkValidationError(
-                field: "payload",
-                code: "required",
-                message: "Validation failed for 'payload': value is required"
-            )
+            throw SdkValidationError(field: "payload", code: "required", message: "Validation failed for 'payload': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        created = try container.sdkDecodeRequired(.created)
-        payload = try container.sdkDecodeRequired(.payload)
-        type = try container.sdkDecodeRequired(.type)
+        self.created = try container.sdkDecodeRequired(.created)
+        self.payload = try container.sdkDecodeRequired(.payload)
+        self.type = try container.sdkDecodeRequired(.type)
     }
 }
 
-public extension GetDeploymentEventsResponseItemVariant0 {
-    init(
-        created: Double,
-        payload: GetDeploymentEventsResponseItemVariant0Payload,
-        type: GetDeploymentEventsResponseItemVariant0Type
-    ) {
+extension GetDeploymentEventsResponseItemVariant0 {
+    public init(created: Double, payload: GetDeploymentEventsResponseItemVariant0Payload, type: GetDeploymentEventsResponseItemVariant0Type) {
         (self.created, self.payload) = (created, payload)
         self.type = type
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant4Type: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant4Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let aliasAssigned = GetDeploymentEventsResponseItemVariant4Type(rawValue: "alias-assigned")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -126,25 +88,20 @@ public struct GetDeploymentEventsResponseItemVariant4Type: RawRepresentable, Has
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bypass = GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache(rawValue: "BYPASS")
     public static let hit = GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache(rawValue: "HIT")
     public static let miss = GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache(rawValue: "MISS")
     public static let prerender = GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache(rawValue: "PRERENDER")
-    public static let revalidated =
-        GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache(rawValue: "REVALIDATED")
+    public static let revalidated = GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache(rawValue: "REVALIDATED")
     public static let stale = GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache(rawValue: "STALE")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -153,32 +110,26 @@ public struct GetDeploymentEventsResponseItemVariant0PayloadProxyVercelCache: Ra
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant3Type: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant3Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let command = GetDeploymentEventsResponseItemVariant3Type(rawValue: "command")
     public static let delimiter = GetDeploymentEventsResponseItemVariant3Type(rawValue: "delimiter")
     public static let deploymentState = GetDeploymentEventsResponseItemVariant3Type(rawValue: "deployment-state")
-    public static let edgeFunctionInvocation =
-        GetDeploymentEventsResponseItemVariant3Type(rawValue: "edge-function-invocation")
+    public static let edgeFunctionInvocation = GetDeploymentEventsResponseItemVariant3Type(rawValue: "edge-function-invocation")
     public static let exit = GetDeploymentEventsResponseItemVariant3Type(rawValue: "exit")
     public static let fatal = GetDeploymentEventsResponseItemVariant3Type(rawValue: "fatal")
     public static let metric = GetDeploymentEventsResponseItemVariant3Type(rawValue: "metric")
     public static let middleware = GetDeploymentEventsResponseItemVariant3Type(rawValue: "middleware")
-    public static let middlewareInvocation =
-        GetDeploymentEventsResponseItemVariant3Type(rawValue: "middleware-invocation")
+    public static let middlewareInvocation = GetDeploymentEventsResponseItemVariant3Type(rawValue: "middleware-invocation")
     public static let report = GetDeploymentEventsResponseItemVariant3Type(rawValue: "report")
     public static let stderr = GetDeploymentEventsResponseItemVariant3Type(rawValue: "stderr")
     public static let stdout = GetDeploymentEventsResponseItemVariant3Type(rawValue: "stdout")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -187,32 +138,26 @@ public struct GetDeploymentEventsResponseItemVariant3Type: RawRepresentable, Has
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let command = GetDeploymentEventsResponseItemVariant0Type(rawValue: "command")
     public static let delimiter = GetDeploymentEventsResponseItemVariant0Type(rawValue: "delimiter")
     public static let deploymentState = GetDeploymentEventsResponseItemVariant0Type(rawValue: "deployment-state")
-    public static let edgeFunctionInvocation =
-        GetDeploymentEventsResponseItemVariant0Type(rawValue: "edge-function-invocation")
+    public static let edgeFunctionInvocation = GetDeploymentEventsResponseItemVariant0Type(rawValue: "edge-function-invocation")
     public static let exit = GetDeploymentEventsResponseItemVariant0Type(rawValue: "exit")
     public static let fatal = GetDeploymentEventsResponseItemVariant0Type(rawValue: "fatal")
     public static let metric = GetDeploymentEventsResponseItemVariant0Type(rawValue: "metric")
     public static let middleware = GetDeploymentEventsResponseItemVariant0Type(rawValue: "middleware")
-    public static let middlewareInvocation =
-        GetDeploymentEventsResponseItemVariant0Type(rawValue: "middleware-invocation")
+    public static let middlewareInvocation = GetDeploymentEventsResponseItemVariant0Type(rawValue: "middleware-invocation")
     public static let report = GetDeploymentEventsResponseItemVariant0Type(rawValue: "report")
     public static let stderr = GetDeploymentEventsResponseItemVariant0Type(rawValue: "stderr")
     public static let stdout = GetDeploymentEventsResponseItemVariant0Type(rawValue: "stdout")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -221,14 +166,10 @@ public struct GetDeploymentEventsResponseItemVariant0Type: RawRepresentable, Has
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant0PayloadProxyWafAction: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant0PayloadProxyWafAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bypass = GetDeploymentEventsResponseItemVariant0PayloadProxyWafAction(rawValue: "bypass")
     public static let challenge = GetDeploymentEventsResponseItemVariant0PayloadProxyWafAction(rawValue: "challenge")
     public static let deny = GetDeploymentEventsResponseItemVariant0PayloadProxyWafAction(rawValue: "deny")
@@ -237,7 +178,7 @@ public struct GetDeploymentEventsResponseItemVariant0PayloadProxyWafAction: RawR
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -246,14 +187,10 @@ public struct GetDeploymentEventsResponseItemVariant0PayloadProxyWafAction: RawR
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant2PayloadProxyWafAction: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant2PayloadProxyWafAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bypass = GetDeploymentEventsResponseItemVariant2PayloadProxyWafAction(rawValue: "bypass")
     public static let challenge = GetDeploymentEventsResponseItemVariant2PayloadProxyWafAction(rawValue: "challenge")
     public static let deny = GetDeploymentEventsResponseItemVariant2PayloadProxyWafAction(rawValue: "deny")
@@ -262,7 +199,7 @@ public struct GetDeploymentEventsResponseItemVariant2PayloadProxyWafAction: RawR
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -271,20 +208,16 @@ public struct GetDeploymentEventsResponseItemVariant2PayloadProxyWafAction: RawR
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant1Level: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant1Level: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let error = GetDeploymentEventsResponseItemVariant1Level(rawValue: "error")
     public static let warning = GetDeploymentEventsResponseItemVariant1Level(rawValue: "warning")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -293,32 +226,26 @@ public struct GetDeploymentEventsResponseItemVariant1Level: RawRepresentable, Ha
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant2Type: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant2Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let command = GetDeploymentEventsResponseItemVariant2Type(rawValue: "command")
     public static let delimiter = GetDeploymentEventsResponseItemVariant2Type(rawValue: "delimiter")
     public static let deploymentState = GetDeploymentEventsResponseItemVariant2Type(rawValue: "deployment-state")
-    public static let edgeFunctionInvocation =
-        GetDeploymentEventsResponseItemVariant2Type(rawValue: "edge-function-invocation")
+    public static let edgeFunctionInvocation = GetDeploymentEventsResponseItemVariant2Type(rawValue: "edge-function-invocation")
     public static let exit = GetDeploymentEventsResponseItemVariant2Type(rawValue: "exit")
     public static let fatal = GetDeploymentEventsResponseItemVariant2Type(rawValue: "fatal")
     public static let metric = GetDeploymentEventsResponseItemVariant2Type(rawValue: "metric")
     public static let middleware = GetDeploymentEventsResponseItemVariant2Type(rawValue: "middleware")
-    public static let middlewareInvocation =
-        GetDeploymentEventsResponseItemVariant2Type(rawValue: "middleware-invocation")
+    public static let middlewareInvocation = GetDeploymentEventsResponseItemVariant2Type(rawValue: "middleware-invocation")
     public static let report = GetDeploymentEventsResponseItemVariant2Type(rawValue: "report")
     public static let stderr = GetDeploymentEventsResponseItemVariant2Type(rawValue: "stderr")
     public static let stdout = GetDeploymentEventsResponseItemVariant2Type(rawValue: "stdout")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -327,25 +254,20 @@ public struct GetDeploymentEventsResponseItemVariant2Type: RawRepresentable, Has
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bypass = GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache(rawValue: "BYPASS")
     public static let hit = GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache(rawValue: "HIT")
     public static let miss = GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache(rawValue: "MISS")
     public static let prerender = GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache(rawValue: "PRERENDER")
-    public static let revalidated =
-        GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache(rawValue: "REVALIDATED")
+    public static let revalidated = GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache(rawValue: "REVALIDATED")
     public static let stale = GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache(rawValue: "STALE")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -354,20 +276,16 @@ public struct GetDeploymentEventsResponseItemVariant2PayloadProxyVercelCache: Ra
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant3Level: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant3Level: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let error = GetDeploymentEventsResponseItemVariant3Level(rawValue: "error")
     public static let warning = GetDeploymentEventsResponseItemVariant3Level(rawValue: "warning")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -376,32 +294,26 @@ public struct GetDeploymentEventsResponseItemVariant3Level: RawRepresentable, Ha
     }
 }
 
-public struct GetDeploymentEventsResponseItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentEventsResponseItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let command = GetDeploymentEventsResponseItemVariant1Type(rawValue: "command")
     public static let delimiter = GetDeploymentEventsResponseItemVariant1Type(rawValue: "delimiter")
     public static let deploymentState = GetDeploymentEventsResponseItemVariant1Type(rawValue: "deployment-state")
-    public static let edgeFunctionInvocation =
-        GetDeploymentEventsResponseItemVariant1Type(rawValue: "edge-function-invocation")
+    public static let edgeFunctionInvocation = GetDeploymentEventsResponseItemVariant1Type(rawValue: "edge-function-invocation")
     public static let exit = GetDeploymentEventsResponseItemVariant1Type(rawValue: "exit")
     public static let fatal = GetDeploymentEventsResponseItemVariant1Type(rawValue: "fatal")
     public static let metric = GetDeploymentEventsResponseItemVariant1Type(rawValue: "metric")
     public static let middleware = GetDeploymentEventsResponseItemVariant1Type(rawValue: "middleware")
-    public static let middlewareInvocation =
-        GetDeploymentEventsResponseItemVariant1Type(rawValue: "middleware-invocation")
+    public static let middlewareInvocation = GetDeploymentEventsResponseItemVariant1Type(rawValue: "middleware-invocation")
     public static let report = GetDeploymentEventsResponseItemVariant1Type(rawValue: "report")
     public static let stderr = GetDeploymentEventsResponseItemVariant1Type(rawValue: "stderr")
     public static let stdout = GetDeploymentEventsResponseItemVariant1Type(rawValue: "stdout")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

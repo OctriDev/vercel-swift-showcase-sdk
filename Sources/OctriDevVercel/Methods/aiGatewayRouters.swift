@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AiGatewayMethods {
-    /// Lists the authenticated team's active and archived AI Gateway routers. Public callers select the team with
-    /// `teamId` or `slug`; trusted-origin callers can use `ownerId` to scope the list.
+extension AiGatewayMethods {
+    /// Lists the authenticated team's active and archived AI Gateway routers. Public callers select the team with `teamId` or `slug`; trusted-origin callers can use `ownerId` to scope the list.
     ///
     /// List the authenticated team's active and archived custom routers.
     ///
@@ -18,14 +17,8 @@ public extension AiGatewayMethods {
     ///   and a supplied ownerId never overrides the authenticated team.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listAiGatewayRouters(
-        config: ClientConfig,
-        ownerId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayRouterList {
-        try await (sdkRequest("GET", "/v1/ai-gateway/routers", config: config, query: [
+    public static func listAiGatewayRouters(config: ClientConfig, ownerId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayRouterList {
+        return try (await sdkRequest("GET", "/v1/ai-gateway/routers", config: config, query: [
             SdkQueryParameter("ownerId", value: ownerId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),

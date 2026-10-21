@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AuthenticationMethods {
-    /// Deletes an authentication token, invalidating it for future HTTP requests. Pass `current` as `tokenId` to
-    /// invalidate the token used to authenticate the request; the logout parameters apply only when deleting that
-    /// token.
+extension AuthenticationMethods {
+    /// Deletes an authentication token, invalidating it for future HTTP requests. Pass `current` as `tokenId` to invalidate the token used to authenticate the request; the logout parameters apply only when deleting that token.
     ///
     /// Invalidate an authentication token, such that it will no longer be valid for future HTTP requests.
     ///
@@ -21,24 +19,10 @@ public extension AuthenticationMethods {
     ///   when tokenId is current.
     /// - logoutSource: The product the caller is logging out of. Only applies when
     ///   reason is logout and tokenId is current.
-    static func deleteAuthToken(
-        config: ClientConfig,
-        tokenId: String,
-        reason: DeleteAuthTokenParameter? = nil,
-        logoutSource: DeleteAuthTokenParameterX116a3556? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteAuthTokenResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v3/user/tokens/", sdkEncodePathSegment(sdkWireString(tokenId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("reason", value: reason),
-                SdkQueryParameter("logoutSource", value: logoutSource),
-            ],
-            decoder: .json,
-            operationId: "deleteAuthToken",
-            options: requestOptions
-        )).data
+    public static func deleteAuthToken(config: ClientConfig, tokenId: String, reason: DeleteAuthTokenParameter? = nil, logoutSource: DeleteAuthTokenParameterX116a3556? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteAuthTokenResponse {
+        return try (await sdkRequest("DELETE", ["/v3/user/tokens/", sdkEncodePathSegment(sdkWireString(tokenId))].joined(), config: config, query: [
+            SdkQueryParameter("reason", value: reason),
+            SdkQueryParameter("logoutSource", value: logoutSource),
+        ], decoder: .json, operationId: "deleteAuthToken", options: requestOptions)).data
     }
 }

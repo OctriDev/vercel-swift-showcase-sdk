@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DrainsMethods {
-    struct UpdateDrainOptions: Codable {
+extension DrainsMethods {
+    public struct UpdateDrainOptions: Codable {
         public var id: String
         public var teamId: String?
         public var slug: String?
@@ -27,9 +27,7 @@ public extension DrainsMethods {
         }
     }
 
-    /// Updates the configuration of an existing Drain. Send only the fields you want to change, such as `name`,
-    /// `delivery`, or `status`; `status` can be `enabled` or `disabled`. You can also update its project scope,
-    /// schemas, sampling rules, transforms, filter, or source.
+    /// Updates the configuration of an existing Drain. Send only the fields you want to change, such as `name`, `delivery`, or `status`; `status` can be `enabled` or `disabled`. You can also update its project scope, schemas, sampling rules, transforms, filter, or source.
     ///
     /// Update the configuration of an existing drain.
     ///
@@ -40,29 +38,16 @@ public extension DrainsMethods {
     /// - delivery: Typed representation of the `UpdateDrainRequestDelivery` API
     ///   schema.
     /// - source: Typed representation of the `UpdateDrainRequestSource` API schema.
-    static func updateDrain(
-        config: ClientConfig,
-        options: UpdateDrainOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateDrainResponse {
+    public static func updateDrain(config: ClientConfig, options: UpdateDrainOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateDrainResponse {
         if let sampling = options.sampling?.valueOrNil {
             try validateItems("sampling", sampling, max: 10)
         }
 
         let requestBody = UpdateDrainRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/drains/", sdkEncodePathSegment(sdkWireString(options.id))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateDrain",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/drains/", sdkEncodePathSegment(sdkWireString(options.id))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "updateDrain", options: requestOptions)).data
     }
 }

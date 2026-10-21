@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Connect domain models
+// Connect domain models
 /// Principal kind.
 public enum ConnectConnectorCreatedByVariant0Type: String, CaseIterable, Codable {
     case user
@@ -23,20 +23,16 @@ public enum ConnectConnectorCreatedByVariant0Type: String, CaseIterable, Codable
 }
 
 /// Intended key use: signing or encryption.
-public struct ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let sig = ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse(rawValue: "sig")
     public static let enc = ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse(rawValue: "enc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -49,10 +45,7 @@ public struct ConnectConnectorUpdateDataVariant0ServerConfigJwksKeysItemUse: Raw
 public struct ConnectConnectorType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let apiKey = ConnectConnectorType(rawValue: "api-key")
     public static let awsAlpha = ConnectConnectorType(rawValue: "aws-alpha")
     public static let custom = ConnectConnectorType(rawValue: "custom")
@@ -73,7 +66,7 @@ public struct ConnectConnectorType: RawRepresentable, Hashable, Codable, Sendabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

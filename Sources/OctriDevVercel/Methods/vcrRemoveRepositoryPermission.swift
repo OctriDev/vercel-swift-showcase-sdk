@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Revokes a team's access to a VCR repository. Supply the repository and project identifiers, then identify the
-    /// team whose permission you want to remove. The operation removes the team's repository-wide access grant.
+extension VcrMethods {
+    /// Revokes a team's access to a VCR repository. Supply the repository and project identifiers, then identify the team whose permission you want to remove. The operation removes the team's repository-wide access grant.
     ///
     /// Revoke a team's access to a VCR repository.
     ///
@@ -19,43 +18,25 @@ public extension VcrMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     /// - teamId2: ID of a team that is granted access to a repository.
     /// - teamSlug: Slug of a team that is granted access to a repository.
-    static func removeRepositoryPermission(
-        config: ClientConfig,
-        idOrName: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        teamId2: String? = nil,
-        teamSlug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func removeRepositoryPermission(config: ClientConfig, idOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, teamId2: String? = nil, teamSlug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         try validateLength("idOrName", idOrName, max: 255)
 
-        if let teamId2 {
+        if let teamId2 = teamId2 {
             try validateLength("teamId", teamId2, max: 64)
             try sdkValidatePattern("teamId", teamId2, sdkPattern2c1ef711bfd1)
         }
 
-        if let teamSlug {
+        if let teamSlug = teamSlug {
             try validateLength("teamSlug", teamSlug, max: 64)
             try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
         }
 
         let requestBody = RemoveRepositoryPermissionRequestBody(teamId2: teamId2, teamSlug: teamSlug)
 
-        return try await (sdkRequest(
-            "DELETE",
-            ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/permissions"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .empty,
-            operationId: "removeRepositoryPermission",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/permissions"].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .empty, operationId: "removeRepositoryPermission", options: requestOptions)).data
     }
 }

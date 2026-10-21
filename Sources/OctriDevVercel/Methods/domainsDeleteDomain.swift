@@ -6,35 +6,19 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DomainsMethods {
-    /// Deletes a registered domain from Vercel. Use `domain` to identify the domain to remove; deleting it also removes
-    /// any aliases associated with it.
+extension DomainsMethods {
+    /// Deletes a registered domain from Vercel. Use `domain` to identify the domain to remove; deleting it also removes any aliases associated with it.
     ///
-    /// Delete a previously registered domain name from Vercel. Deleting a domain will automatically remove any
-    /// associated aliases.
+    /// Delete a previously registered domain name from Vercel. Deleting a domain will automatically remove any associated aliases.
     ///
     /// - Parameters:
     /// - domain: The name of the domain.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteDomain(
-        config: ClientConfig,
-        domain: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteDomainResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v6/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "deleteDomain",
-            options: requestOptions
-        )).data
+    public static func deleteDomain(config: ClientConfig, domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteDomainResponse {
+        return try (await sdkRequest("DELETE", ["/v6/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "deleteDomain", options: requestOptions)).data
     }
 }

@@ -3,52 +3,31 @@
 
 import Foundation
 
-/// GlobalConfig domain models
-public extension GetEdgeConfigBackupResponseVariant1Backup {
-    init(from decoder: Decoder) throws {
+// GlobalConfig domain models
+extension GetEdgeConfigBackupResponseVariant1Backup {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.digest) else {
-            throw SdkValidationError(
-                field: "digest",
-                code: "required",
-                message: "Validation failed for 'digest': value is required"
-            )
+            throw SdkValidationError(field: "digest", code: "required", message: "Validation failed for 'digest': value is required")
         }
         guard container.contains(.items) else {
-            throw SdkValidationError(
-                field: "items",
-                code: "required",
-                message: "Validation failed for 'items': value is required"
-            )
+            throw SdkValidationError(field: "items", code: "required", message: "Validation failed for 'items': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        digest = try container.sdkDecodeRequired(.digest)
-        items = try container.sdkDecodeRequired(.items)
-        slug = try container.sdkDecodeRequired(.slug)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.digest = try container.sdkDecodeRequired(.digest)
+        self.items = try container.sdkDecodeRequired(.items)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
     }
 }
 
-public extension GetEdgeConfigBackupResponseVariant1Backup {
-    init(
-        digest: String,
-        items: [String: GetEdgeConfigBackupResponseVariant1BackupItemsValue],
-        slug: String,
-        updatedAt: Double
-    ) {
+extension GetEdgeConfigBackupResponseVariant1Backup {
+    public init(digest: String, items: [String: GetEdgeConfigBackupResponseVariant1BackupItemsValue], slug: String, updatedAt: Double) {
         (self.digest, self.items) = (digest, items)
         (self.slug, self.updatedAt) = (slug, updatedAt)
     }

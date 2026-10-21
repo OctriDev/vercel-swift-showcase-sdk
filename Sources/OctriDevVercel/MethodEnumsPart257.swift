@@ -14,10 +14,10 @@ struct CreateKmsIssuerPolicyRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(kind, forKey: SdkCodingKey("kind"))
-        try keyedContainer.encode(projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encode(environments, forKey: SdkCodingKey("environments"))
-        try keyedContainer.encodeIfPresent(tokenClaims, forKey: SdkCodingKey("tokenClaims"))
+        try keyedContainer.encode(self.kind, forKey: SdkCodingKey("kind"))
+        try keyedContainer.encode(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encode(self.environments, forKey: SdkCodingKey("environments"))
+        try keyedContainer.encodeIfPresent(self.tokenClaims, forKey: SdkCodingKey("tokenClaims"))
     }
 }
 
@@ -27,13 +27,12 @@ struct UpdateKmsIssuerPolicyRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(environments, forKey: SdkCodingKey("environments"))
-        try keyedContainer.encodeIfPresent(tokenClaims, forKey: SdkCodingKey("tokenClaims"))
+        try keyedContainer.encodeIfPresent(self.environments, forKey: SdkCodingKey("environments"))
+        try keyedContainer.encodeIfPresent(self.tokenClaims, forKey: SdkCodingKey("tokenClaims"))
     }
 }
 
-public typealias CreateMicrofrontendsGroupWithApplicationsOtherApplicationsList =
-    [CreateMicrofrontendsGroupWithApplicationsRequestBodyOtherApplX34cb3fda07]
+public typealias CreateMicrofrontendsGroupWithApplicationsOtherApplicationsList = [CreateMicrofrontendsGroupWithApplicationsRequestBodyOtherApplX34cb3fda07]
 
 struct CreateMicrofrontendsGroupWithApplicationsRequestBody: Encodable {
     let groupName: String
@@ -42,9 +41,9 @@ struct CreateMicrofrontendsGroupWithApplicationsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(groupName, forKey: SdkCodingKey("groupName"))
-        try keyedContainer.encode(defaultApp, forKey: SdkCodingKey("defaultApp"))
-        try keyedContainer.encode(otherApplications, forKey: SdkCodingKey("otherApplications"))
+        try keyedContainer.encode(self.groupName, forKey: SdkCodingKey("groupName"))
+        try keyedContainer.encode(self.defaultApp, forKey: SdkCodingKey("defaultApp"))
+        try keyedContainer.encode(self.otherApplications, forKey: SdkCodingKey("otherApplications"))
     }
 }
 
@@ -53,7 +52,7 @@ struct UpdateObservabilityConfigurationProjectRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(disabled, forKey: SdkCodingKey("disabled"))
+        try keyedContainer.encode(self.disabled, forKey: SdkCodingKey("disabled"))
     }
 }
 
@@ -73,33 +72,33 @@ struct CreateObservabilityQueryRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(metric, forKey: SdkCodingKey("metric"))
-        try keyedContainer.encode(scope, forKey: SdkCodingKey("scope"))
-        try keyedContainer.encodeIfPresent(aggregation, forKey: SdkCodingKey("aggregation"))
-        try keyedContainer.encodeIfPresent(groupBy, forKey: SdkCodingKey("groupBy"))
-        try keyedContainer.encodeIfPresent(filter, forKey: SdkCodingKey("filter"))
-        try keyedContainer.encodeIfPresent(limit, forKey: SdkCodingKey("limit"))
-        try keyedContainer.encodeIfPresent(orderBy, forKey: SdkCodingKey("orderBy"))
-        try keyedContainer.encodeIfPresent(orderDirection, forKey: SdkCodingKey("orderDirection"))
-        try keyedContainer.encodeIfPresent(granularity, forKey: SdkCodingKey("granularity"))
-        try keyedContainer.encodeIfPresent(startTime, forKey: SdkCodingKey("startTime"))
-        try keyedContainer.encodeIfPresent(endTime, forKey: SdkCodingKey("endTime"))
-        try keyedContainer.encodeIfPresent(bucketTimezone, forKey: SdkCodingKey("bucketTimezone"))
+        try keyedContainer.encode(self.metric, forKey: SdkCodingKey("metric"))
+        try keyedContainer.encode(self.scope, forKey: SdkCodingKey("scope"))
+        try keyedContainer.encodeIfPresent(self.aggregation, forKey: SdkCodingKey("aggregation"))
+        try keyedContainer.encodeIfPresent(self.groupBy, forKey: SdkCodingKey("groupBy"))
+        try keyedContainer.encodeIfPresent(self.filter, forKey: SdkCodingKey("filter"))
+        try keyedContainer.encodeIfPresent(self.limit, forKey: SdkCodingKey("limit"))
+        try keyedContainer.encodeIfPresent(self.orderBy, forKey: SdkCodingKey("orderBy"))
+        try keyedContainer.encodeIfPresent(self.orderDirection, forKey: SdkCodingKey("orderDirection"))
+        try keyedContainer.encodeIfPresent(self.granularity, forKey: SdkCodingKey("granularity"))
+        try keyedContainer.encodeIfPresent(self.startTime, forKey: SdkCodingKey("startTime"))
+        try keyedContainer.encodeIfPresent(self.endTime, forKey: SdkCodingKey("endTime"))
+        try keyedContainer.encodeIfPresent(self.bucketTimezone, forKey: SdkCodingKey("bucketTimezone"))
     }
 
     init(options: ObservabilityMethods.CreateObservabilityQueryOptions) {
-        metric = options.metric
-        scope = options.scope
-        aggregation = options.aggregation
-        groupBy = options.groupBy
-        filter = options.filter
-        limit = options.limit
-        orderBy = options.orderBy
-        orderDirection = options.orderDirection
-        granularity = options.granularity
-        startTime = options.startTime
-        endTime = options.endTime
-        bucketTimezone = options.bucketTimezone
+        self.metric = options.metric
+        self.scope = options.scope
+        self.aggregation = options.aggregation
+        self.groupBy = options.groupBy
+        self.filter = options.filter
+        self.limit = options.limit
+        self.orderBy = options.orderBy
+        self.orderDirection = options.orderDirection
+        self.granularity = options.granularity
+        self.startTime = options.startTime
+        self.endTime = options.endTime
+        self.bucketTimezone = options.bucketTimezone
     }
 }
 
@@ -111,10 +110,10 @@ struct AddProjectMemberRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(role, forKey: SdkCodingKey("role"))
-        try keyedContainer.encodeIfPresent(uid, forKey: SdkCodingKey("uid"))
-        try keyedContainer.encodeIfPresent(username, forKey: SdkCodingKey("username"))
-        try keyedContainer.encodeIfPresent(email, forKey: SdkCodingKey("email"))
+        try keyedContainer.encode(self.role, forKey: SdkCodingKey("role"))
+        try keyedContainer.encodeIfPresent(self.uid, forKey: SdkCodingKey("uid"))
+        try keyedContainer.encodeIfPresent(self.username, forKey: SdkCodingKey("username"))
+        try keyedContainer.encodeIfPresent(self.email, forKey: SdkCodingKey("email"))
     }
 }
 
@@ -124,8 +123,8 @@ struct StageRoutesRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(overwrite, forKey: SdkCodingKey("overwrite"))
-        try keyedContainer.encodeIfPresent(routes, forKey: SdkCodingKey("routes"))
+        try keyedContainer.encodeIfPresent(self.overwrite, forKey: SdkCodingKey("overwrite"))
+        try keyedContainer.encodeIfPresent(self.routes, forKey: SdkCodingKey("routes"))
     }
 }
 
@@ -135,8 +134,8 @@ struct AddRouteRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(route, forKey: SdkCodingKey("route"))
-        try keyedContainer.encodeIfPresent(position, forKey: SdkCodingKey("position"))
+        try keyedContainer.encode(self.route, forKey: SdkCodingKey("route"))
+        try keyedContainer.encodeIfPresent(self.position, forKey: SdkCodingKey("position"))
     }
 }
 
@@ -145,7 +144,7 @@ struct DeleteRoutesRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(routeIds, forKey: SdkCodingKey("routeIds"))
+        try keyedContainer.encode(self.routeIds, forKey: SdkCodingKey("routeIds"))
     }
 }
 
@@ -155,8 +154,8 @@ struct EditRouteRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(route, forKey: SdkCodingKey("route"))
-        try keyedContainer.encodeIfPresent(restore, forKey: SdkCodingKey("restore"))
+        try keyedContainer.encodeIfPresent(self.route, forKey: SdkCodingKey("route"))
+        try keyedContainer.encodeIfPresent(self.restore, forKey: SdkCodingKey("restore"))
     }
 }
 
@@ -166,8 +165,8 @@ struct GenerateRouteRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(prompt, forKey: SdkCodingKey("prompt"))
-        try keyedContainer.encodeIfPresent(currentRoute, forKey: SdkCodingKey("currentRoute"))
+        try keyedContainer.encode(self.prompt, forKey: SdkCodingKey("prompt"))
+        try keyedContainer.encodeIfPresent(self.currentRoute, forKey: SdkCodingKey("currentRoute"))
     }
 }
 
@@ -177,7 +176,7 @@ struct UpdateRouteVersionsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(id, forKey: SdkCodingKey("id"))
-        try keyedContainer.encode(action, forKey: SdkCodingKey("action"))
+        try keyedContainer.encode(self.id, forKey: SdkCodingKey("id"))
+        try keyedContainer.encode(self.action, forKey: SdkCodingKey("action"))
     }
 }

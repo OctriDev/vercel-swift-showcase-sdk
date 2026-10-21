@@ -9,241 +9,83 @@ public class AccessGroupsNamespace {
         self.config = config
     }
 
-    /// Retrieves an access group by its ID or name. Use `idOrName` to identify the group and `teamId` or `slug` to
-    /// select the team for the request.
+/// Retrieves an access group by its ID or name. Use `idOrName` to identify the group and `teamId` or `slug` to select the team for the request.
     ///
     /// Allows to read an access group
-    public func read(
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ReadAccessGroupResponse {
-        try await AccessGroupsMethods.readAccessGroup(
-            config: config,
-            idOrName: idOrName,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func read(idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ReadAccessGroupResponse {
+        return try await AccessGroupsMethods.readAccessGroup(config: config, idOrName: idOrName, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates an access group's metadata, members, or project roles. Supply only the fields you want to change; `name`
-    /// is limited to 50 characters and `projects` associates projects with roles.
+/// Updates an access group's metadata, members, or project roles. Supply only the fields you want to change; `name` is limited to 50 characters and `projects` associates projects with roles.
     ///
     /// Allows to update an access group metadata
-    public func update(
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        name: String? = nil,
-        projects: [UpdateAccessGroupRequestBodyProjectsItem]? = nil,
-        membersToAdd: [String]? = nil,
-        membersToRemove: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateAccessGroupResponse {
-        try await AccessGroupsMethods.updateAccessGroup(
-            config: config,
-            idOrName: idOrName,
-            teamId: teamId,
-            slug: slug,
-            name: name,
-            projects: projects,
-            membersToAdd: membersToAdd,
-            membersToRemove: membersToRemove,
-            requestOptions: requestOptions
-        )
+    public func update(idOrName: String, teamId: String? = nil, slug: String? = nil, name: String? = nil, projects: [UpdateAccessGroupRequestBodyProjectsItem]? = nil, membersToAdd: [String]? = nil, membersToRemove: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateAccessGroupResponse {
+        return try await AccessGroupsMethods.updateAccessGroup(config: config, idOrName: idOrName, teamId: teamId, slug: slug, name: name, projects: projects, membersToAdd: membersToAdd, membersToRemove: membersToRemove, requestOptions: requestOptions)
     }
 
-    /// Deletes an access group. Use `idOrName` to identify the group and `teamId` or `slug` to select the team for the
-    /// request.
+/// Deletes an access group. Use `idOrName` to identify the group and `teamId` or `slug` to select the team for the request.
     ///
     /// Allows to delete an access group
-    public func delete(
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await AccessGroupsMethods.deleteAccessGroup(
-            config: config,
-            idOrName: idOrName,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func delete(idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await AccessGroupsMethods.deleteAccessGroup(config: config, idOrName: idOrName, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists members of an access group, with optional search and cursor-based pagination. Use `search` to match
-    /// members by name, username, or email, and `next` to retrieve the next page.
+/// Lists members of an access group, with optional search and cursor-based pagination. Use `search` to match members by name, username, or email, and `next` to retrieve the next page.
     ///
     /// List members of an access group
-    public func listMembers(
-        idOrName: String,
-        limit: Int? = nil,
-        next: String? = nil,
-        search: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListAccessGroupMembersResponse {
-        try await AccessGroupsMethods.listAccessGroupMembers(
-            config: config,
-            idOrName: idOrName,
-            limit: limit,
-            next: next,
-            search: search,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func listMembers(idOrName: String, limit: Int? = nil, next: String? = nil, search: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListAccessGroupMembersResponse {
+        return try await AccessGroupsMethods.listAccessGroupMembers(config: config, idOrName: idOrName, limit: limit, next: next, search: search, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists access groups, with optional filters for project and group name. Use `membersLimit` and `projectsLimit` to
-    /// control how many associated members and projects are included, and `next` to continue through paginated results.
+/// Lists access groups, with optional filters for project and group name. Use `membersLimit` and `projectsLimit` to control how many associated members and projects are included, and `next` to continue through paginated results.
     ///
     /// List access groups
-    public func list(
-        options: AccessGroupsMethods.ListAccessGroupsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListAccessGroupsResponse {
-        try await AccessGroupsMethods.listAccessGroups(config: config, options: options, requestOptions: requestOptions)
+    public func list(options: AccessGroupsMethods.ListAccessGroupsOptions, requestOptions: RequestOptions? = nil) async throws -> ListAccessGroupsResponse {
+        return try await AccessGroupsMethods.listAccessGroups(config: config, options: options, requestOptions: requestOptions)
     }
 
-    /// Creates an access group for a team, optionally assigning projects and adding members. Provide a `name` that
-    /// matches the allowed character pattern and is no longer than 50 characters.
+/// Creates an access group for a team, optionally assigning projects and adding members. Provide a `name` that matches the allowed character pattern and is no longer than 50 characters.
     ///
     /// Allows to create an access group
-    public func create(
-        name: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        projects: [CreateAccessGroupRequestBodyProjectsItem]? = nil,
-        membersToAdd: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateAccessGroupResponse {
-        try await AccessGroupsMethods.createAccessGroup(
-            config: config,
-            name: name,
-            teamId: teamId,
-            slug: slug,
-            projects: projects,
-            membersToAdd: membersToAdd,
-            requestOptions: requestOptions
-        )
+    public func create(name: String, teamId: String? = nil, slug: String? = nil, projects: [CreateAccessGroupRequestBodyProjectsItem]? = nil, membersToAdd: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateAccessGroupResponse {
+        return try await AccessGroupsMethods.createAccessGroup(config: config, name: name, teamId: teamId, slug: slug, projects: projects, membersToAdd: membersToAdd, requestOptions: requestOptions)
     }
 
-    /// Lists the projects associated with an access group. Use `limit` to control the number of project assignments
-    /// returned and `next` to continue through the cursor-based results.
+/// Lists the projects associated with an access group. Use `limit` to control the number of project assignments returned and `next` to continue through the cursor-based results.
     ///
     /// List projects of an access group
-    public func listProjects(
-        idOrName: String,
-        limit: Int? = nil,
-        next: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListAccessGroupProjectsResponse {
-        try await AccessGroupsMethods.listAccessGroupProjects(
-            config: config,
-            idOrName: idOrName,
-            limit: limit,
-            next: next,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func listProjects(idOrName: String, limit: Int? = nil, next: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListAccessGroupProjectsResponse {
+        return try await AccessGroupsMethods.listAccessGroupProjects(config: config, idOrName: idOrName, limit: limit, next: next, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Adds a project and its role to an access group. Provide both `projectId` and `role`; the role must be one of the
-    /// supported project roles.
+/// Adds a project and its role to an access group. Provide both `projectId` and `role`; the role must be one of the supported project roles.
     ///
     /// Allows creation of an access group project
-    public func createProject(
-        accessGroupIdOrName: String,
-        projectId: String,
-        role: CreateAccessGroupProjectRequestBodyRole,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateAccessGroupProjectResponse {
-        try await AccessGroupsMethods.createAccessGroupProject(
-            config: config,
-            accessGroupIdOrName: accessGroupIdOrName,
-            projectId: projectId,
-            role: role,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func createProject(accessGroupIdOrName: String, projectId: String, role: CreateAccessGroupProjectRequestBodyRole, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateAccessGroupProjectResponse {
+        return try await AccessGroupsMethods.createAccessGroupProject(config: config, accessGroupIdOrName: accessGroupIdOrName, projectId: projectId, role: role, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
-public extension AccessGroupsNamespace {
-    /// Retrieves a project's assignment in an access group. Use both `accessGroupIdOrName` and `projectId` to identify
-    /// the association you want to read.
+extension AccessGroupsNamespace {
+/// Retrieves a project's assignment in an access group. Use both `accessGroupIdOrName` and `projectId` to identify the association you want to read.
     ///
     /// Allows reading an access group project
-    func readProject(
-        accessGroupIdOrName: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ReadAccessGroupProjectResponse {
-        try await AccessGroupsMethods.readAccessGroupProject(
-            config: config,
-            accessGroupIdOrName: accessGroupIdOrName,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func readProject(accessGroupIdOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ReadAccessGroupProjectResponse {
+        return try await AccessGroupsMethods.readAccessGroupProject(config: config, accessGroupIdOrName: accessGroupIdOrName, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates the role assigned to a project in an access group. Supply `role` with a supported project role, or null
-    /// to remove the project-level role.
+/// Updates the role assigned to a project in an access group. Supply `role` with a supported project role, or null to remove the project-level role.
     ///
     /// Allows update of an access group project
-    func updateProject(
-        accessGroupIdOrName: String,
-        projectId: String,
-        role: UpdateAccessGroupProjectRequestBodyRole,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateAccessGroupProjectResponse {
-        try await AccessGroupsMethods.updateAccessGroupProject(
-            config: config,
-            accessGroupIdOrName: accessGroupIdOrName,
-            projectId: projectId,
-            role: role,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func updateProject(accessGroupIdOrName: String, projectId: String, role: UpdateAccessGroupProjectRequestBodyRole, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateAccessGroupProjectResponse {
+        return try await AccessGroupsMethods.updateAccessGroupProject(config: config, accessGroupIdOrName: accessGroupIdOrName, projectId: projectId, role: role, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes a project association from an access group. Use `accessGroupIdOrName` and `projectId` to identify the
-    /// association, and optionally specify the team context with `teamId` or `slug`.
+/// Deletes a project association from an access group. Use `accessGroupIdOrName` and `projectId` to identify the association, and optionally specify the team context with `teamId` or `slug`.
     ///
     /// Allows deletion of an access group project
-    func deleteProject(
-        accessGroupIdOrName: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await AccessGroupsMethods.deleteAccessGroupProject(
-            config: config,
-            accessGroupIdOrName: accessGroupIdOrName,
-            projectId: projectId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func deleteProject(accessGroupIdOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await AccessGroupsMethods.deleteAccessGroupProject(config: config, accessGroupIdOrName: accessGroupIdOrName, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
@@ -253,182 +95,59 @@ public class AiGatewayNamespace {
         self.config = config
     }
 
-    /// Creates a virtual model configuration (VMC) for a team. Specify `teamId` or `slug` to perform the request in
-    /// that team's context. A 201 response returns the created configuration.
+/// Creates a virtual model configuration (VMC) for a team. Specify `teamId` or `slug` to perform the request in that team's context. A 201 response returns the created configuration.
     ///
     /// Create a virtual model config (VMC)
-    public func createVirtualModelConfig(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayVirtualModelConfig {
-        try await AiGatewayMethods.createAiGatewayVirtualModelConfig(
-            config: config,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func createVirtualModelConfig(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayVirtualModelConfig {
+        return try await AiGatewayMethods.createAiGatewayVirtualModelConfig(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves virtual model configuration data for the authenticated team, including active and archived
-    /// configurations. Use `virtualModelSlug` to select a configuration or `limit` and `cursor` to request a page of
-    /// results.
+/// Retrieves virtual model configuration data for the authenticated team, including active and archived configurations. Use `virtualModelSlug` to select a configuration or `limit` and `cursor` to request a page of results.
     ///
     /// Get a virtual model config
-    public func getVirtualModelConfig(
-        ownerId: String? = nil,
-        virtualModelSlug: String? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetAiGatewayVirtualModelConfigResponse {
-        try await AiGatewayMethods.getAiGatewayVirtualModelConfig(
-            config: config,
-            ownerId: ownerId,
-            virtualModelSlug: virtualModelSlug,
-            limit: limit,
-            cursor: cursor,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getVirtualModelConfig(ownerId: String? = nil, virtualModelSlug: String? = nil, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetAiGatewayVirtualModelConfigResponse {
+        return try await AiGatewayMethods.getAiGatewayVirtualModelConfig(config: config, ownerId: ownerId, virtualModelSlug: virtualModelSlug, limit: limit, cursor: cursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates a virtual model configuration for a team. Specify `teamId` or `slug` to perform the request in that
-    /// team's context. A 200 response returns the updated configuration.
+/// Updates a virtual model configuration for a team. Specify `teamId` or `slug` to perform the request in that team's context. A 200 response returns the updated configuration.
     ///
     /// Update a virtual model config
-    public func updateVirtualModelConfig(
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayVirtualModelConfig {
-        try await AiGatewayMethods.updateAiGatewayVirtualModelConfig(
-            config: config,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func updateVirtualModelConfig(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayVirtualModelConfig {
+        return try await AiGatewayMethods.updateAiGatewayVirtualModelConfig(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Deletes a virtual model configuration by its slug using a soft delete. Specify `virtualModelSlug` to identify
-    /// the configuration and optionally use `ownerId`, `teamId`, or `slug` to select the owner context.
+/// Deletes a virtual model configuration by its slug using a soft delete. Specify `virtualModelSlug` to identify the configuration and optionally use `ownerId`, `teamId`, or `slug` to select the owner context.
     ///
     /// Delete a virtual model config (soft delete)
-    public func deleteVirtualModelConfig(
-        virtualModelSlug: String,
-        ownerId: String? = nil,
-        updatedBy: String? = nil,
-        actingIp: String? = nil,
-        actingUserAgent: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await AiGatewayMethods.deleteAiGatewayVirtualModelConfig(
-            config: config,
-            virtualModelSlug: virtualModelSlug,
-            ownerId: ownerId,
-            updatedBy: updatedBy,
-            actingIp: actingIp,
-            actingUserAgent: actingUserAgent,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func deleteVirtualModelConfig(virtualModelSlug: String, ownerId: String? = nil, updatedBy: String? = nil, actingIp: String? = nil, actingUserAgent: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try await AiGatewayMethods.deleteAiGatewayVirtualModelConfig(config: config, virtualModelSlug: virtualModelSlug, ownerId: ownerId, updatedBy: updatedBy, actingIp: actingIp, actingUserAgent: actingUserAgent, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists virtual model configurations for a team or across teams. Use `limit` and `cursor` to retrieve a page; team
-    /// results are ordered by `virtualModelSlug`, while cross-team results are ordered newest first.
+/// Lists virtual model configurations for a team or across teams. Use `limit` and `cursor` to retrieve a page; team results are ordered by `virtualModelSlug`, while cross-team results are ordered newest first.
     ///
-    /// List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by
-    /// `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
-    public func listVirtualModelConfigs(
-        ownerId: String? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayVirtualModelConfigList {
-        try await AiGatewayMethods.listAiGatewayVirtualModelConfigs(
-            config: config,
-            ownerId: ownerId,
-            limit: limit,
-            cursor: cursor,
-            includeArchived: includeArchived,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
+    public func listVirtualModelConfigs(ownerId: String? = nil, limit: Int? = nil, cursor: String? = nil, includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayVirtualModelConfigList {
+        return try await AiGatewayMethods.listAiGatewayVirtualModelConfigs(config: config, ownerId: ownerId, limit: limit, cursor: cursor, includeArchived: includeArchived, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Lists virtual model configurations for a team or across teams. Use `limit` and `cursor` to retrieve a page; team
-    /// results are ordered by `virtualModelSlug`, while cross-team results are ordered newest first.
+/// Lists virtual model configurations for a team or across teams. Use `limit` and `cursor` to retrieve a page; team results are ordered by `virtualModelSlug`, while cross-team results are ordered newest first.
     ///
-    /// List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by
-    /// `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
-    public func listVirtualModelConfigsPaginated(
-        ownerId: String? = nil,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<AiGatewayVirtualModelConfig, Swift.Error> {
-        AiGatewayMethods.listAiGatewayVirtualModelConfigsPaginated(
-            config: config,
-            ownerId: ownerId,
-            limit: limit,
-            cursor: cursor,
-            includeArchived: includeArchived,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    /// List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
+    public func listVirtualModelConfigsPaginated(ownerId: String? = nil, limit: Int? = nil, cursor: String? = nil, includeArchived: ListAiGatewayVirtualModelConfigsParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<AiGatewayVirtualModelConfig, Swift.Error> {
+        return AiGatewayMethods.listAiGatewayVirtualModelConfigsPaginated(config: config, ownerId: ownerId, limit: limit, cursor: cursor, includeArchived: includeArchived, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Retrieves a virtual model configuration by its path slug. Use `ownerId` or the team selectors `teamId` and
-    /// `slug` to scope the lookup to the appropriate owner.
+/// Retrieves a virtual model configuration by its path slug. Use `ownerId` or the team selectors `teamId` and `slug` to scope the lookup to the appropriate owner.
     ///
     /// Get a virtual model config by path slug
-    public func getVirtualModelConfigBySlug(
-        vmcSlug: String,
-        ownerId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayVirtualModelConfig {
-        try await AiGatewayMethods.getAiGatewayVirtualModelConfigBySlug(
-            config: config,
-            vmcSlug: vmcSlug,
-            ownerId: ownerId,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func getVirtualModelConfigBySlug(vmcSlug: String, ownerId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayVirtualModelConfig {
+        return try await AiGatewayMethods.getAiGatewayVirtualModelConfigBySlug(config: config, vmcSlug: vmcSlug, ownerId: ownerId, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 
-    /// Updates a virtual model configuration identified by its path slug. Specify `teamId` or `slug` to perform the
-    /// request in that team's context. A 200 response returns the updated configuration.
+/// Updates a virtual model configuration identified by its path slug. Specify `teamId` or `slug` to perform the request in that team's context. A 200 response returns the updated configuration.
     ///
     /// Update a virtual model config by path slug
-    public func updateVirtualModelConfigBySlug(
-        vmcSlug: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayVirtualModelConfig {
-        try await AiGatewayMethods.updateAiGatewayVirtualModelConfigBySlug(
-            config: config,
-            vmcSlug: vmcSlug,
-            teamId: teamId,
-            slug: slug,
-            requestOptions: requestOptions
-        )
+    public func updateVirtualModelConfigBySlug(vmcSlug: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayVirtualModelConfig {
+        return try await AiGatewayMethods.updateAiGatewayVirtualModelConfigBySlug(config: config, vmcSlug: vmcSlug, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }

@@ -6,36 +6,24 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct CreateProjectResponseResourceConfigBuildMachineElasticReason: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateProjectResponseResourceConfigBuildMachineElasticReason: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let basicFloor = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "basic-floor")
-    public static let buildTimeoutFailure =
-        CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "build-timeout-failure")
-    public static let enospcFailure =
-        CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "enospc-failure")
-    public static let enterpriseFloor =
-        CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "enterprise-floor")
-    public static let highPeakDisk =
-        CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "high-peak-disk")
-    public static let highPeakMemory =
-        CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "high-peak-memory")
-    public static let longBuildDuration =
-        CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "long-build-duration")
+    public static let buildTimeoutFailure = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "build-timeout-failure")
+    public static let enospcFailure = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "enospc-failure")
+    public static let enterpriseFloor = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "enterprise-floor")
+    public static let highPeakDisk = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "high-peak-disk")
+    public static let highPeakMemory = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "high-peak-memory")
+    public static let longBuildDuration = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "long-build-duration")
     public static let oomFailure = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "oom-failure")
-    public static let shortBuildDuration =
-        CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "short-build-duration")
-    public static let sustainedHighCpu =
-        CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "sustained-high-cpu")
+    public static let shortBuildDuration = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "short-build-duration")
+    public static let sustainedHighCpu = CreateProjectResponseResourceConfigBuildMachineElasticReason(rawValue: "sustained-high-cpu")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -63,20 +51,16 @@ public enum ListLogDrainsResponseVariant1DrainsVariant1ItemDeliveryVariant0Type:
 
 /// User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and
 /// callers fall back to existing `type` behavior.
-public struct CreateProjectEnvResponseCreatedVariant0Visibility: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateProjectEnvResponseCreatedVariant0Visibility: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let config = CreateProjectEnvResponseCreatedVariant0Visibility(rawValue: "config")
     public static let secret = CreateProjectEnvResponseCreatedVariant0Visibility(rawValue: "secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -87,19 +71,15 @@ public struct CreateProjectEnvResponseCreatedVariant0Visibility: RawRepresentabl
 
 /// The origin of this definition. 'api' means created via the API. Undefined means it originated from a
 /// deployment (vercel.json).
-public struct DeleteProjectAvatarResponseCronsDefinitionsItemSource: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct DeleteProjectAvatarResponseCronsDefinitionsItemSource: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let api = DeleteProjectAvatarResponseCronsDefinitionsItemSource(rawValue: "api")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -111,10 +91,7 @@ public struct DeleteProjectAvatarResponseCronsDefinitionsItemSource: RawRepresen
 public struct CreateProjectCheckResponseBlocks: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let buildStart = CreateProjectCheckResponseBlocks(rawValue: "build-start")
     public static let deploymentAlias = CreateProjectCheckResponseBlocks(rawValue: "deployment-alias")
     public static let deploymentPromotion = CreateProjectCheckResponseBlocks(rawValue: "deployment-promotion")
@@ -123,7 +100,7 @@ public struct CreateProjectCheckResponseBlocks: RawRepresentable, Hashable, Coda
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -135,17 +112,14 @@ public struct CreateProjectCheckResponseBlocks: RawRepresentable, Hashable, Coda
 public struct ActivateKmsSigningKeyResponseStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let active = ActivateKmsSigningKeyResponseStatus(rawValue: "active")
     public static let pending = ActivateKmsSigningKeyResponseStatus(rawValue: "pending")
     public static let revoking = ActivateKmsSigningKeyResponseStatus(rawValue: "revoking")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -174,16 +148,13 @@ public enum ListLogDrainsResponseVariant1DrainsVariant1ItemSourceVariant0Kind: S
 public struct UpdateFlagResponseState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let active = UpdateFlagResponseState(rawValue: "active")
     public static let archived = UpdateFlagResponseState(rawValue: "archived")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -193,21 +164,17 @@ public struct UpdateFlagResponseState: RawRepresentable, Hashable, Codable, Send
 }
 
 /// The project role that will be added to this Access Group. "null" will remove this project level role.
-public struct CreateAccessGroupRequestBodyProjectsItemRole: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateAccessGroupRequestBodyProjectsItemRole: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let admin = CreateAccessGroupRequestBodyProjectsItemRole(rawValue: "ADMIN")
     public static let projectViewer = CreateAccessGroupRequestBodyProjectsItemRole(rawValue: "PROJECT_VIEWER")
     public static let projectDeveloper = CreateAccessGroupRequestBodyProjectsItemRole(rawValue: "PROJECT_DEVELOPER")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -216,23 +183,17 @@ public struct CreateAccessGroupRequestBodyProjectsItemRole: RawRepresentable, Ha
     }
 }
 
-public struct UpdateSharedEnvVariableResponseFailedItemErrorValueVariant1Item: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateSharedEnvVariableResponseFailedItemErrorValueVariant1Item: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let development =
-        UpdateSharedEnvVariableResponseFailedItemErrorValueVariant1Item(rawValue: "development")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let development = UpdateSharedEnvVariableResponseFailedItemErrorValueVariant1Item(rawValue: "development")
     public static let preview = UpdateSharedEnvVariableResponseFailedItemErrorValueVariant1Item(rawValue: "preview")
-    public static let production =
-        UpdateSharedEnvVariableResponseFailedItemErrorValueVariant1Item(rawValue: "production")
+    public static let production = UpdateSharedEnvVariableResponseFailedItemErrorValueVariant1Item(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

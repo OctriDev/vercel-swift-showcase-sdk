@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Sandboxes domain models
+// Sandboxes domain models
 /// Matcher for the entry value.
 public struct CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXf019d96679: Codable {
     /// Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains
@@ -18,20 +18,20 @@ public struct CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXf019
     }
 
     init() {
-        (exact, startsWith) = (nil, nil)
+        (self.exact, self.startsWith) = (nil, nil)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXf019d96679 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXf019d96679 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        exact = try container.sdkDecodeIfPresent(.exact)
-        startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        self.exact = try container.sdkDecodeIfPresent(.exact)
+        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXf019d96679 {
-    init(exact: String? = nil, startsWith: String? = nil) {
+extension CreateSandboxesV3RequestNetworkPolicyVariant0InjectionRulesItXf019d96679 {
+    public init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -56,63 +56,37 @@ public struct CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX3f09
         case contentType
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX3f092f6729 {
-    init(from decoder: Decoder) throws {
+extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX3f092f6729 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.statusCode) else {
-            throw SdkValidationError(
-                field: "statusCode",
-                code: "required",
-                message: "Validation failed for 'statusCode': value is required"
-            )
+            throw SdkValidationError(field: "statusCode", code: "required", message: "Validation failed for 'statusCode': value is required")
         }
-        statusCode = try container.sdkDecodeRequired(.statusCode)
-        headers = try container.sdkDecodeIfPresent(.headers)
-        body = try container.sdkDecodeIfPresent(.body)
-        contentType = try container.sdkDecodeIfPresent(.contentType)
-        try validateRange(
-            "statusCode",
-            Double(statusCode),
-            min: 200,
-            max: 599,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+        self.statusCode = try container.sdkDecodeRequired(.statusCode)
+        self.headers = try container.sdkDecodeIfPresent(.headers)
+        self.body = try container.sdkDecodeIfPresent(.body)
+        self.contentType = try container.sdkDecodeIfPresent(.contentType)
+            try validateRange("statusCode", Double(self.statusCode), min: 200, max: 599, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
     }
 }
 
-public extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX3f092f6729 {
-    init(statusCode: Int, headers: [String: String]? = nil, body: String? = nil, contentType: String? = nil) throws {
+extension CreateSandboxesV3RequestNetworkPolicyVariant1AllowVariant1ValX3f092f6729 {
+    public init(statusCode: Int, headers: [String: String]? = nil, body: String? = nil, contentType: String? = nil) throws {
         (self.statusCode, self.headers) = (statusCode, headers)
         (self.body, self.contentType) = (body, contentType)
-        try validateRange(
-            "statusCode",
-            Double(self.statusCode),
-            min: 200,
-            max: 599,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+            try validateRange("statusCode", Double(self.statusCode), min: 200, max: 599, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
     }
 }
 
 /// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block
 /// all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-public struct CreateSandboxesV3RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateSandboxesV3RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = CreateSandboxesV3RequestNetworkPolicyVariant0Mode(rawValue: "allow-all")
     public static let denyAll = CreateSandboxesV3RequestNetworkPolicyVariant0Mode(rawValue: "deny-all")
     public static let custom = CreateSandboxesV3RequestNetworkPolicyVariant0Mode(rawValue: "custom")
@@ -121,7 +95,7 @@ public struct CreateSandboxesV3RequestNetworkPolicyVariant0Mode: RawRepresentabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -6,85 +6,34 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension MarketplaceMethods {
-    /// Submits prepayment credit balances for an installation. Send the latest balances at least daily, and ideally
-    /// hourly, so the billing system can use their USD values to evaluate automatic purchase thresholds. Authorize the
-    /// request with the installation's `credentials.access_token`.
+extension MarketplaceMethods {
+    /// Submits prepayment credit balances for an installation. Send the latest balances at least daily, and ideally hourly, so the billing system can use their USD values to evaluate automatic purchase thresholds. Authorize the request with the installation's `credentials.access_token`.
     ///
-    /// Sends the prepayment balances. The partner should do this at least once a day and ideally once per hour. Use the
-    /// `credentials.access_token` we provided in the Upsert Installation body to authorize this request.
+    /// Sends the prepayment balances. The partner should do this at least once a day and ideally once per hour. Use the `credentials.access_token` we provided in the Upsert Installation body to authorize this request.
     ///
     /// - Parameters:
     /// - timestamp: Server time of your integration, used to determine the most
     ///   recent data for race conditions & updates. Only the latest usage data for a
     ///   given day, week, and month will be kept.
-    static func submitPrepaymentBalances(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        timestamp: Date,
-        balances: [SubmitPrepaymentBalancesRequestBodyBalancesItem],
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func submitPrepaymentBalances(config: ClientConfig, integrationConfigurationId: String, timestamp: Date, balances: [SubmitPrepaymentBalancesRequestBodyBalancesItem], requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         try sdkValidateDateTime("timestamp", timestamp)
 
         let requestBody = SubmitPrepaymentBalancesRequestBody(timestamp: timestamp, balances: balances)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/billing/balance"]
-                .joined(),
-            config: config,
-            body: requestBody,
-            decoder: .empty,
-            operationId: "submitPrepaymentBalances",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/billing/balance"].joined(), config: config, body: requestBody, decoder: .empty, operationId: "submitPrepaymentBalances", options: requestOptions)).data
     }
 
-    /// Replaces the secrets for a resource connected to an installation. This operation is deprecated and has been
-    /// replaced by PUT /v1/installations/{integrationConfigurationId}/resources/{resourceId}/secrets; existing
-    /// connected projects may continue using old secrets until you redeploy them. Use `partial` to update only the
-    /// supplied secrets instead of replacing the full set.
+    /// Replaces the secrets for a resource connected to an installation. This operation is deprecated and has been replaced by PUT /v1/installations/{integrationConfigurationId}/resources/{resourceId}/secrets; existing connected projects may continue using old secrets until you redeploy them. Use `partial` to update only the supplied secrets instead of replacing the full set.
     ///
-    /// This endpoint is deprecated and replaced with the endpoint Update Resource Secrets. This endpoint updates the
-    /// secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new
-    /// secrets. The old secrets may still be used by existing connected projects because they are not automatically
-    /// redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will
-    /// use the new secrets. Use cases for this endpoint: - Resetting the credentials of a database in the partner. If
-    /// the user requests the credentials to be updated in the partner’s application, the partner post the new set of
-    /// secrets to Vercel, the user should redeploy their application and the expire the old credentials.
+    /// This endpoint is deprecated and replaced with the endpoint Update Resource Secrets. This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets. Use cases for this endpoint: - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.
     ///
     /// - Parameters:
     /// - partial: If true, will only update the provided secrets
     ///
     /// - Warning: This operation is deprecated and may be removed in a future release.
-    static func updateResourceSecrets(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        integrationProductIdOrSlug: String,
-        resourceId: String,
-        secrets: [UpdateResourceSecretsRequestBodySecretsItem],
-        partial: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func updateResourceSecrets(config: ClientConfig, integrationConfigurationId: String, integrationProductIdOrSlug: String, resourceId: String, secrets: [UpdateResourceSecretsRequestBodySecretsItem], partial: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         let requestBody = UpdateResourceSecretsRequestBody(secrets: secrets, partial: partial)
 
-        return try await (sdkRequest(
-            "PUT",
-            [
-                "/v1/installations/",
-                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
-                "/products/",
-                sdkEncodePathSegment(sdkWireString(integrationProductIdOrSlug)),
-                "/resources/",
-                sdkEncodePathSegment(sdkWireString(resourceId)),
-                "/secrets",
-            ].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .empty,
-            operationId: "updateResourceSecrets",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PUT", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/products/", sdkEncodePathSegment(sdkWireString(integrationProductIdOrSlug)), "/resources/", sdkEncodePathSegment(sdkWireString(resourceId)), "/secrets"].joined(), config: config, body: requestBody, decoder: .empty, operationId: "updateResourceSecrets", options: requestOptions)).data
     }
 }

@@ -3,35 +3,27 @@
 
 import Foundation
 
-/// Sandboxes domain models
+// Sandboxes domain models
 extension UpdateSandboxRequestNetworkPolicyVariant1Allow: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateSandboxRequestNetworkPolicyVariant1Allow"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateSandboxRequestNetworkPolicyVariant1Allow")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UpdateSandboxRequestNetworkPolicyVariant1Allow {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String].self) {
-            return .stringList(value)
-        }
+        if let value = try? container.decode([String].self) { return .stringList(value) }
         if let value = try? container.decode(
             [String: [UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItem]].self
         ) {
-            return .dictionary(value)
+            return             .dictionary(value)
         }
         return nil
     }
@@ -47,11 +39,9 @@ extension UpdateSandboxRequestNetworkPolicyVariant1Allow {
     }
 }
 
-public typealias UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXa46eeb7765 =
-    [UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7]
+public typealias UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXa46eeb7765 = [UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7]
 
-public typealias UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXffbde1c8d8 =
-    [UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX20b9a7f2a8]
+public typealias UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXffbde1c8d8 = [UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX20b9a7f2a8]
 
 /// Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified
 /// dimension. When multiple injection rules target the same domain they are evaluated in order and the first match
@@ -78,27 +68,22 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatch: 
     }
 
     init() {
-        (path, method, queryString, headers) = (nil, nil, nil, nil)
+        (self.path, self.method, self.queryString, self.headers) = (nil, nil, nil, nil)
     }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatch {
-    init(from decoder: Decoder) throws {
+extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatch {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        path = try container.sdkDecodeIfPresent(.path)
-        method = try container.sdkDecodeIfPresent(.method)
-        queryString = try container.sdkDecodeIfPresent(.queryString)
-        headers = try container.sdkDecodeIfPresent(.headers)
+        self.path = try container.sdkDecodeIfPresent(.path)
+        self.method = try container.sdkDecodeIfPresent(.method)
+        self.queryString = try container.sdkDecodeIfPresent(.queryString)
+        self.headers = try container.sdkDecodeIfPresent(.headers)
     }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatch {
-    init(
-        path: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatchPath? = nil,
-        method: [String]? = nil,
-        queryString: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXa46eeb7765? = nil,
-        headers: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXffbde1c8d8? = nil
-    ) {
+extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatch {
+    public init(path: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatchPath? = nil, method: [String]? = nil, queryString: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXa46eeb7765? = nil, headers: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXffbde1c8d8? = nil) {
         self.init()
         (self.path, self.method) = (path, method)
         (self.queryString, self.headers) = (queryString, headers)
@@ -119,20 +104,20 @@ public struct UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX7b85
     }
 
     init() {
-        (exact, startsWith) = (nil, nil)
+        (self.exact, self.startsWith) = (nil, nil)
     }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX7b8599b007 {
-    init(from decoder: Decoder) throws {
+extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX7b8599b007 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        exact = try container.sdkDecodeIfPresent(.exact)
-        startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        self.exact = try container.sdkDecodeIfPresent(.exact)
+        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX7b8599b007 {
-    init(exact: String? = nil, startsWith: String? = nil) {
+extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX7b8599b007 {
+    public init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -150,23 +135,20 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a
     }
 
     init() {
-        (key, value) = (nil, nil)
+        (self.key, self.value) = (nil, nil)
     }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7 {
-    init(from decoder: Decoder) throws {
+extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        key = try container.sdkDecodeIfPresent(.key)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.key = try container.sdkDecodeIfPresent(.key)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7 {
-    init(
-        key: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX3702229f5d? = nil,
-        value: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX0f7ae38277? = nil
-    ) {
+extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc45a4726f7 {
+    public init(key: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX3702229f5d? = nil, value: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX0f7ae38277? = nil) {
         self.init()
         (self.key, self.value) = (key, value)
     }
@@ -174,14 +156,10 @@ public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaXc
 
 /// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block
 /// all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-public struct UpdateSandboxRequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateSandboxRequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = UpdateSandboxRequestNetworkPolicyVariant0Mode(rawValue: "allow-all")
     public static let denyAll = UpdateSandboxRequestNetworkPolicyVariant0Mode(rawValue: "deny-all")
     public static let custom = UpdateSandboxRequestNetworkPolicyVariant0Mode(rawValue: "custom")
@@ -190,7 +168,7 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0Mode: RawRepresentable, H
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

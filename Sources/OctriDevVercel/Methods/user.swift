@@ -8,50 +8,24 @@ import Foundation
 #endif
 public enum UserMethods {}
 
-public extension UserMethods {
-    /// Retrieves information about the authenticated user. Use this endpoint to obtain the user information associated
-    /// with the request's authentication context.
+extension UserMethods {
+    /// Retrieves information about the authenticated user. Use this endpoint to obtain the user information associated with the request's authentication context.
     ///
     /// Retrieves information related to the currently authenticated User.
-    static func getAuthUser(
-        config: ClientConfig,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetAuthUserResponse {
-        try await (sdkRequest(
-            "GET",
-            "/v2/user",
-            config: config,
-            decoder: .json,
-            operationId: "getAuthUser",
-            options: requestOptions
-        )).data
+    public static func getAuthUser(config: ClientConfig, requestOptions: RequestOptions? = nil) async throws -> GetAuthUserResponse {
+        return try (await sdkRequest("GET", "/v2/user", config: config, decoder: .json, operationId: "getAuthUser", options: requestOptions)).data
     }
 
-    /// Starts the authenticated user's account deletion process by sending a confirmation email. You must follow the
-    /// link in that email to proceed with deletion; you can optionally include `reasons` to describe why the account is
-    /// being deleted.
+    /// Starts the authenticated user's account deletion process by sending a confirmation email. You must follow the link in that email to proceed with deletion; you can optionally include `reasons` to describe why the account is being deleted.
     ///
-    /// Initiates the deletion process for the currently authenticated User, by sending a deletion confirmation email.
-    /// The email contains a link that the user needs to visit in order to proceed with the deletion process.
+    /// Initiates the deletion process for the currently authenticated User, by sending a deletion confirmation email. The email contains a link that the user needs to visit in order to proceed with the deletion process.
     ///
     /// - Parameters:
     /// - reasons: Optional array of objects that describe the reason why the User
     ///   account is being deleted.
-    static func requestDelete(
-        config: ClientConfig,
-        reasons: [RequestDeleteRequestBodyReasonsItem]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RequestDeleteResponse {
+    public static func requestDelete(config: ClientConfig, reasons: [RequestDeleteRequestBodyReasonsItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> RequestDeleteResponse {
         let requestBody = RequestDeleteRequestBody(reasons: reasons)
 
-        return try await (sdkRequest(
-            "DELETE",
-            "/v1/user",
-            config: config,
-            body: requestBody,
-            decoder: .json,
-            operationId: "requestDelete",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", "/v1/user", config: config, body: requestBody, decoder: .json, operationId: "requestDelete", options: requestOptions)).data
     }
 }

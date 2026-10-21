@@ -6,51 +6,27 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension EdgeCacheMethods {
-    /// Marks cache entries associated with source images as deleted so they are revalidated in the foreground on the
-    /// next request. Provide `projectIdOrName` and between 1 and 8 entries in `srcImages`; you can optionally set
-    /// `revalidationDeadlineSeconds`. Use this operation cautiously because foreground revalidation can send many
-    /// concurrent requests to the origin; prefer source image invalidation for routine use.
+extension EdgeCacheMethods {
+    /// Marks cache entries associated with source images as deleted so they are revalidated in the foreground on the next request. Provide `projectIdOrName` and between 1 and 8 entries in `srcImages`; you can optionally set `revalidationDeadlineSeconds`. Use this operation cautiously because foreground revalidation can send many concurrent requests to the origin; prefer source image invalidation for routine use.
     ///
-    /// Marks a source image as deleted, causing cache entries associated with that source image to be revalidated in
-    /// the foreground on the next request. Use this method with caution because one source image can be associated with
-    /// many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede
-    /// problem. This method is for advanced use cases and is not recommended; prefer using `invalidateBySrcImage`
-    /// instead.
+    /// Marks a source image as deleted, causing cache entries associated with that source image to be revalidated in the foreground on the next request. Use this method with caution because one source image can be associated with many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede problem. This method is for advanced use cases and is not recommended; prefer using `invalidateBySrcImage` instead.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func dangerouslyDeleteBySrcImages(
-        config: ClientConfig,
-        projectIdOrName: String,
-        srcImages: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        revalidationDeadlineSeconds: Int? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func dangerouslyDeleteBySrcImages(config: ClientConfig, projectIdOrName: String, srcImages: [String], teamId: String? = nil, slug: String? = nil, revalidationDeadlineSeconds: Int? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         try validateItems("srcImages", srcImages, min: 1, max: 8)
 
-        if let revalidationDeadlineSeconds {
-            try validateRange(
-                "revalidationDeadlineSeconds",
-                Double(revalidationDeadlineSeconds),
-                min: 0,
-                max: 31_536_000
-            )
+        if let revalidationDeadlineSeconds = revalidationDeadlineSeconds {
+            try validateRange("revalidationDeadlineSeconds", Double(revalidationDeadlineSeconds), min: 0, max: 31536000)
         }
 
-        let requestBody = DangerouslyDeleteBySrcImagesRequestBody(
-            srcImages: srcImages,
-            revalidationDeadlineSeconds: revalidationDeadlineSeconds
-        )
+        let requestBody = DangerouslyDeleteBySrcImagesRequestBody(srcImages: srcImages, revalidationDeadlineSeconds: revalidationDeadlineSeconds)
 
-        return try await (sdkRequest("POST", "/v1/edge-cache/dangerously-delete-by-src-images", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/edge-cache/dangerously-delete-by-src-images", config: config, query: [
             SdkQueryParameter("projectIdOrName", value: projectIdOrName),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .empty, operationId: "dangerouslyDeleteBySrcImages", options: requestOptions))
-            .data
+        ], body: requestBody, decoder: .empty, operationId: "dangerouslyDeleteBySrcImages", options: requestOptions)).data
     }
 }

@@ -3,21 +3,16 @@
 
 import Foundation
 
-/// Teams domain models
-public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX8758bbb072: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+// Teams domain models
+public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX8758bbb072: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let gitlab =
-        UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX8758bbb072(rawValue: "gitlab")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let gitlab = UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX8758bbb072(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -44,21 +39,17 @@ public enum UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXc71930
 }
 
 /// The NSNB preference for the team.
-public struct UpdateTeamRequestNsnbConfigVariant0Preference: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateTeamRequestNsnbConfigVariant0Preference: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let autoApproval = UpdateTeamRequestNsnbConfigVariant0Preference(rawValue: "auto-approval")
     public static let manualApproval = UpdateTeamRequestNsnbConfigVariant0Preference(rawValue: "manual-approval")
     public static let block = UpdateTeamRequestNsnbConfigVariant0Preference(rawValue: "block")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -67,22 +58,16 @@ public struct UpdateTeamRequestNsnbConfigVariant0Preference: RawRepresentable, H
     }
 }
 
-public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXe8fceff53c: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXe8fceff53c: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let github =
-        UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXe8fceff53c(rawValue: "github")
-    public static let bitbucket =
-        UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXe8fceff53c(rawValue: "bitbucket")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let github = UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXe8fceff53c(rawValue: "github")
+    public static let bitbucket = UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXe8fceff53c(rawValue: "bitbucket")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -91,22 +76,16 @@ public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXe8fc
     }
 }
 
-public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX919ba0edf7: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX919ba0edf7: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let production =
-        UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX919ba0edf7(rawValue: "production")
-    public static let preview =
-        UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX919ba0edf7(rawValue: "preview")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let production = UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX919ba0edf7(rawValue: "production")
+    public static let preview = UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX919ba0edf7(rawValue: "preview")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Projects domain models
+// Projects domain models
 public indirect enum RemoveProjectEnvResponseItemContentHint {
     case removeProjectEnvResponseItemContentHintVariant0(RemoveProjectEnvResponseItemContentHintVariant0)
     case removeProjectEnvResponseItemContentHintVariant1(RemoveProjectEnvResponseItemContentHintVariant1)
@@ -25,89 +25,49 @@ public indirect enum RemoveProjectEnvResponseItemContentHint {
 }
 
 extension RemoveProjectEnvResponseItemContentHint: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
-            if let value = Self.decodeLossless2(from: container, raw) {
-                self = value; return
-            }
-            if let value = Self.decodeLossless3(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless3(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        if let value = Self.decodeGroup2(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for RemoveProjectEnvResponseItemContentHint"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        if let value = Self.decodeGroup2(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for RemoveProjectEnvResponseItemContentHint")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
-        if try encodeGroup2(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup2(to: encoder) { return }
     }
 }
 
 extension RemoveProjectEnvResponseItemContentHint {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant0(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant1(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant2(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant3.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant3.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant3(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant4.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant4.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant4(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant5.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant5.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant5(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant6.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant6.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant6(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant7.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant7.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant7(value)
         }
         return nil
@@ -116,52 +76,28 @@ extension RemoveProjectEnvResponseItemContentHint {
 
 extension RemoveProjectEnvResponseItemContentHint {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant8.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant8.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant8(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant9.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant9.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant9(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant10.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant10.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant10(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant11.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant11.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant11(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant12.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant12.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant12(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant13.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant13.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant13(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant14.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant14.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant14(value)
         }
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant15.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant15.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant15(value)
         }
         return nil
@@ -170,10 +106,7 @@ extension RemoveProjectEnvResponseItemContentHint {
 
 extension RemoveProjectEnvResponseItemContentHint {
     static func decodeLossless3(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant16.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(RemoveProjectEnvResponseItemContentHintVariant16.self), sdkKeepsEveryKey(value, of: raw) {
             return .removeProjectEnvResponseItemContentHintVariant16(value)
         }
         return nil
@@ -185,62 +118,62 @@ extension RemoveProjectEnvResponseItemContentHint {
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant0.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant0(value)
+            return             .removeProjectEnvResponseItemContentHintVariant0(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant1.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant1(value)
+            return             .removeProjectEnvResponseItemContentHintVariant1(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant2.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant2(value)
+            return             .removeProjectEnvResponseItemContentHintVariant2(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant3.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant3(value)
+            return             .removeProjectEnvResponseItemContentHintVariant3(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant4.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant4(value)
+            return             .removeProjectEnvResponseItemContentHintVariant4(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant5.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant5(value)
+            return             .removeProjectEnvResponseItemContentHintVariant5(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant6.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant6(value)
+            return             .removeProjectEnvResponseItemContentHintVariant6(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant7.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant7(value)
+            return             .removeProjectEnvResponseItemContentHintVariant7(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant8.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant8(value)
+            return             .removeProjectEnvResponseItemContentHintVariant8(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant9.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant9(value)
+            return             .removeProjectEnvResponseItemContentHintVariant9(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant10.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant10(value)
+            return             .removeProjectEnvResponseItemContentHintVariant10(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant11.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant11(value)
+            return             .removeProjectEnvResponseItemContentHintVariant11(value)
         }
         return nil
     }
@@ -251,27 +184,27 @@ extension RemoveProjectEnvResponseItemContentHint {
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant12.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant12(value)
+            return             .removeProjectEnvResponseItemContentHintVariant12(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant13.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant13(value)
+            return             .removeProjectEnvResponseItemContentHintVariant13(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant14.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant14(value)
+            return             .removeProjectEnvResponseItemContentHintVariant14(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant15.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant15(value)
+            return             .removeProjectEnvResponseItemContentHintVariant15(value)
         }
         if let value = try? container.decode(
             RemoveProjectEnvResponseItemContentHintVariant16.self
         ) {
-            return .removeProjectEnvResponseItemContentHintVariant16(value)
+            return             .removeProjectEnvResponseItemContentHintVariant16(value)
         }
         return nil
     }
@@ -327,78 +260,42 @@ public struct RemoveProjectEnvResponseItemContentHintVariant15: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant15 {
-    init(from decoder: Decoder) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant15 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.integrationConfigurationId) else {
-            throw SdkValidationError(
-                field: "integrationConfigurationId",
-                code: "required",
-                message: "Validation failed for 'integrationConfigurationId': value is required"
-            )
+            throw SdkValidationError(field: "integrationConfigurationId", code: "required", message: "Validation failed for 'integrationConfigurationId': value is required")
         }
         guard container.contains(.integrationId) else {
-            throw SdkValidationError(
-                field: "integrationId",
-                code: "required",
-                message: "Validation failed for 'integrationId': value is required"
-            )
+            throw SdkValidationError(field: "integrationId", code: "required", message: "Validation failed for 'integrationId': value is required")
         }
         guard container.contains(.integrationProductId) else {
-            throw SdkValidationError(
-                field: "integrationProductId",
-                code: "required",
-                message: "Validation failed for 'integrationProductId': value is required"
-            )
+            throw SdkValidationError(field: "integrationProductId", code: "required", message: "Validation failed for 'integrationProductId': value is required")
         }
         guard container.contains(.storeId) else {
-            throw SdkValidationError(
-                field: "storeId",
-                code: "required",
-                message: "Validation failed for 'storeId': value is required"
-            )
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
-        integrationId = try container.sdkDecodeRequired(.integrationId)
-        integrationProductId = try container.sdkDecodeRequired(.integrationProductId)
-        storeId = try container.sdkDecodeRequired(.storeId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            RemoveProjectEnvResponseItemContentHintVariant15Type.allCases.map(\.rawValue)
-        )
+        self.integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
+        self.integrationId = try container.sdkDecodeRequired(.integrationId)
+        self.integrationProductId = try container.sdkDecodeRequired(.integrationProductId)
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant15Type.allCases.map(\.rawValue))
     }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant15 {
-    init(
-        integrationConfigurationId: String,
-        integrationId: String,
-        integrationProductId: String,
-        storeId: String,
-        type: RemoveProjectEnvResponseItemContentHintVariant15Type
-    ) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant15 {
+    public init(integrationConfigurationId: String, integrationId: String, integrationProductId: String, storeId: String, type: RemoveProjectEnvResponseItemContentHintVariant15Type) throws {
         (self.integrationConfigurationId, self.integrationId) = (integrationConfigurationId, integrationId)
         (self.integrationProductId, self.storeId) = (integrationProductId, storeId)
         self.type = type
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            RemoveProjectEnvResponseItemContentHintVariant15Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant15Type.allCases.map(\.rawValue))
     }
 }
 
@@ -411,46 +308,28 @@ public struct RemoveProjectEnvResponseItemContentHintVariant14: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant14 {
-    init(from decoder: Decoder) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant14 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.storeId) else {
-            throw SdkValidationError(
-                field: "storeId",
-                code: "required",
-                message: "Validation failed for 'storeId': value is required"
-            )
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        storeId = try container.sdkDecodeRequired(.storeId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            RemoveProjectEnvResponseItemContentHintVariant14Type.allCases.map(\.rawValue)
-        )
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant14Type.allCases.map(\.rawValue))
     }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant14 {
-    init(storeId: String, type: RemoveProjectEnvResponseItemContentHintVariant14Type) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant14 {
+    public init(storeId: String, type: RemoveProjectEnvResponseItemContentHintVariant14Type) throws {
         (self.storeId, self.type) = (storeId, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            RemoveProjectEnvResponseItemContentHintVariant14Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant14Type.allCases.map(\.rawValue))
     }
 }
 
@@ -463,46 +342,28 @@ public struct RemoveProjectEnvResponseItemContentHintVariant2: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant2 {
-    init(from decoder: Decoder) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.storeId) else {
-            throw SdkValidationError(
-                field: "storeId",
-                code: "required",
-                message: "Validation failed for 'storeId': value is required"
-            )
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        storeId = try container.sdkDecodeRequired(.storeId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            RemoveProjectEnvResponseItemContentHintVariant2Type.allCases.map(\.rawValue)
-        )
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant2Type.allCases.map(\.rawValue))
     }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant2 {
-    init(storeId: String, type: RemoveProjectEnvResponseItemContentHintVariant2Type) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant2 {
+    public init(storeId: String, type: RemoveProjectEnvResponseItemContentHintVariant2Type) throws {
         (self.storeId, self.type) = (storeId, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            RemoveProjectEnvResponseItemContentHintVariant2Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant2Type.allCases.map(\.rawValue))
     }
 }
 
@@ -515,46 +376,28 @@ public struct RemoveProjectEnvResponseItemContentHintVariant9: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant9 {
-    init(from decoder: Decoder) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant9 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.storeId) else {
-            throw SdkValidationError(
-                field: "storeId",
-                code: "required",
-                message: "Validation failed for 'storeId': value is required"
-            )
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        storeId = try container.sdkDecodeRequired(.storeId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            RemoveProjectEnvResponseItemContentHintVariant9Type.allCases.map(\.rawValue)
-        )
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant9Type.allCases.map(\.rawValue))
     }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant9 {
-    init(storeId: String, type: RemoveProjectEnvResponseItemContentHintVariant9Type) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant9 {
+    public init(storeId: String, type: RemoveProjectEnvResponseItemContentHintVariant9Type) throws {
         (self.storeId, self.type) = (storeId, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            RemoveProjectEnvResponseItemContentHintVariant9Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant9Type.allCases.map(\.rawValue))
     }
 }
 
@@ -567,45 +410,27 @@ public struct RemoveProjectEnvResponseItemContentHintVariant5: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant5 {
-    init(from decoder: Decoder) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant5 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.storeId) else {
-            throw SdkValidationError(
-                field: "storeId",
-                code: "required",
-                message: "Validation failed for 'storeId': value is required"
-            )
+            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        storeId = try container.sdkDecodeRequired(.storeId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            RemoveProjectEnvResponseItemContentHintVariant5Type.allCases.map(\.rawValue)
-        )
+        self.storeId = try container.sdkDecodeRequired(.storeId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant5Type.allCases.map(\.rawValue))
     }
 }
 
-public extension RemoveProjectEnvResponseItemContentHintVariant5 {
-    init(storeId: String, type: RemoveProjectEnvResponseItemContentHintVariant5Type) throws {
+extension RemoveProjectEnvResponseItemContentHintVariant5 {
+    public init(storeId: String, type: RemoveProjectEnvResponseItemContentHintVariant5Type) throws {
         (self.storeId, self.type) = (storeId, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            RemoveProjectEnvResponseItemContentHintVariant5Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, RemoveProjectEnvResponseItemContentHintVariant5Type.allCases.map(\.rawValue))
     }
 }

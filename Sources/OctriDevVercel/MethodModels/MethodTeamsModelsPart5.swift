@@ -7,16 +7,16 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical teams operation model declarations
-public extension GetTeamAccessRequestResponseGithub {
-    init(from decoder: Decoder) throws {
+// Canonical teams operation model declarations
+extension GetTeamAccessRequestResponseGithub {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        login = try container.sdkDecodeIfPresent(.login)
+        self.login = try container.sdkDecodeIfPresent(.login)
     }
 }
 
-public extension GetTeamAccessRequestResponseGithub {
-    init(login: String? = nil) {
+extension GetTeamAccessRequestResponseGithub {
+    public init(login: String? = nil) {
         self.init()
         self.login = login
     }
@@ -30,27 +30,21 @@ public struct UpdateTeamMemberResponse: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateTeamMemberResponse {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamMemberResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
+        self.id = try container.sdkDecodeRequired(.id)
     }
 }
 
-public extension UpdateTeamMemberResponse {
-    init(id: String) {
+extension UpdateTeamMemberResponse {
+    public init(id: String) {
         self.id = id
     }
 }
@@ -74,51 +68,33 @@ public struct GetTeamMembersResponsePagination: Codable {
         case prev
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetTeamMembersResponsePagination {
-    init(from decoder: Decoder) throws {
+extension GetTeamMembersResponsePagination {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.count) else {
-            throw SdkValidationError(
-                field: "count",
-                code: "required",
-                message: "Validation failed for 'count': value is required"
-            )
+            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
         }
         guard container.contains(.hasNext) else {
-            throw SdkValidationError(
-                field: "hasNext",
-                code: "required",
-                message: "Validation failed for 'hasNext': value is required"
-            )
+            throw SdkValidationError(field: "hasNext", code: "required", message: "Validation failed for 'hasNext': value is required")
         }
         guard container.contains(.next) else {
-            throw SdkValidationError(
-                field: "next",
-                code: "required",
-                message: "Validation failed for 'next': value is required"
-            )
+            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
         }
         guard container.contains(.prev) else {
-            throw SdkValidationError(
-                field: "prev",
-                code: "required",
-                message: "Validation failed for 'prev': value is required"
-            )
+            throw SdkValidationError(field: "prev", code: "required", message: "Validation failed for 'prev': value is required")
         }
-        count = try container.sdkDecodeRequired(.count)
-        hasNext = try container.sdkDecodeRequired(.hasNext)
-        next = try container.sdkDecodeNullable(.next)
-        prev = try container.sdkDecodeNullable(.prev)
+        self.count = try container.sdkDecodeRequired(.count)
+        self.hasNext = try container.sdkDecodeRequired(.hasNext)
+        self.next = try container.sdkDecodeNullable(.next)
+        self.prev = try container.sdkDecodeNullable(.prev)
     }
 }
 
-public extension GetTeamMembersResponsePagination {
-    init(count: Double, hasNext: Bool, next: Double?, prev: Double?) {
+extension GetTeamMembersResponsePagination {
+    public init(count: Double, hasNext: Bool, next: Double?, prev: Double?) {
         (self.count, self.hasNext) = (count, hasNext)
         (self.next, self.prev) = (next, prev)
     }
@@ -142,27 +118,22 @@ public struct CreateTeamRequestBodyAttribution: Codable {
     }
 
     init() {
-        (sessionReferrer, landingPage, pageBeforeConversionPage, utm) = (nil, nil, nil, nil)
+        (self.sessionReferrer, self.landingPage, self.pageBeforeConversionPage, self.utm) = (nil, nil, nil, nil)
     }
 }
 
-public extension CreateTeamRequestBodyAttribution {
-    init(from decoder: Decoder) throws {
+extension CreateTeamRequestBodyAttribution {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        sessionReferrer = try container.sdkDecodeIfPresent(.sessionReferrer)
-        landingPage = try container.sdkDecodeIfPresent(.landingPage)
-        pageBeforeConversionPage = try container.sdkDecodeIfPresent(.pageBeforeConversionPage)
-        utm = try container.sdkDecodeIfPresent(.utm)
+        self.sessionReferrer = try container.sdkDecodeIfPresent(.sessionReferrer)
+        self.landingPage = try container.sdkDecodeIfPresent(.landingPage)
+        self.pageBeforeConversionPage = try container.sdkDecodeIfPresent(.pageBeforeConversionPage)
+        self.utm = try container.sdkDecodeIfPresent(.utm)
     }
 }
 
-public extension CreateTeamRequestBodyAttribution {
-    init(
-        sessionReferrer: String? = nil,
-        landingPage: String? = nil,
-        pageBeforeConversionPage: String? = nil,
-        utm: CreateTeamRequestBodyAttributionUtm? = nil
-    ) {
+extension CreateTeamRequestBodyAttribution {
+    public init(sessionReferrer: String? = nil, landingPage: String? = nil, pageBeforeConversionPage: String? = nil, utm: CreateTeamRequestBodyAttributionUtm? = nil) {
         self.init()
         (self.sessionReferrer, self.landingPage) = (sessionReferrer, landingPage)
         (self.pageBeforeConversionPage, self.utm) = (pageBeforeConversionPage, utm)
@@ -179,27 +150,21 @@ public struct UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection: Cod
         case deploymentType
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.deploymentType) else {
-            throw SdkValidationError(
-                field: "deploymentType",
-                code: "required",
-                message: "Validation failed for 'deploymentType': value is required"
-            )
+            throw SdkValidationError(field: "deploymentType", code: "required", message: "Validation failed for 'deploymentType': value is required")
         }
-        deploymentType = try container.sdkDecodeRequired(.deploymentType)
+        self.deploymentType = try container.sdkDecodeRequired(.deploymentType)
     }
 }
 
-public extension UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection {
-    init(deploymentType: UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtectionX915f56c5a3) {
+extension UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection {
+    public init(deploymentType: UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtectionX915f56c5a3) {
         self.deploymentType = deploymentType
     }
 }

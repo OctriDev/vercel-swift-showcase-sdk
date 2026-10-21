@@ -6,38 +6,24 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let basicFloor =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "basic-floor")
-    public static let buildTimeoutFailure =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "build-timeout-failure")
-    public static let enospcFailure =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "enospc-failure")
-    public static let enterpriseFloor =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "enterprise-floor")
-    public static let highPeakDisk =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "high-peak-disk")
-    public static let highPeakMemory =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "high-peak-memory")
-    public static let longBuildDuration =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "long-build-duration")
-    public static let oomFailure =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "oom-failure")
-    public static let shortBuildDuration =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "short-build-duration")
-    public static let sustainedHighCpu =
-        DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "sustained-high-cpu")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let basicFloor = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "basic-floor")
+    public static let buildTimeoutFailure = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "build-timeout-failure")
+    public static let enospcFailure = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "enospc-failure")
+    public static let enterpriseFloor = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "enterprise-floor")
+    public static let highPeakDisk = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "high-peak-disk")
+    public static let highPeakMemory = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "high-peak-memory")
+    public static let longBuildDuration = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "long-build-duration")
+    public static let oomFailure = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "oom-failure")
+    public static let shortBuildDuration = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "short-build-duration")
+    public static let sustainedHighCpu = DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason(rawValue: "sustained-high-cpu")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -46,26 +32,18 @@ public struct DeleteProjectAvatarResponseResourceConfigBuildMachineElasticReason
     }
 }
 
-public struct UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let performance =
-        UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType(rawValue: "performance")
-    public static let performanceXl =
-        UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType(rawValue: "performance_xl")
-    public static let standard =
-        UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType(rawValue: "standard")
-    public static let standardLegacy =
-        UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType(rawValue: "standard_legacy")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let performance = UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType(rawValue: "performance")
+    public static let performanceXl = UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType(rawValue: "performance_xl")
+    public static let standard = UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType(rawValue: "standard")
+    public static let standardLegacy = UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType(rawValue: "standard_legacy")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -91,19 +69,15 @@ public enum GetVercelCiInvocationResponseInvocationRunConclusionResultVariant2: 
     }
 }
 
-public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitXcd2947f4d4: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitXcd2947f4d4: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let unknown = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitXcd2947f4d4(rawValue: "*")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -113,23 +87,17 @@ public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitXcd29
 }
 
 /// The type of matching to perform
-public struct DeleteProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct DeleteProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let endsWith =
-        DeleteProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "endsWith")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let endsWith = DeleteProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "endsWith")
     public static let equals = DeleteProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "equals")
-    public static let startsWith =
-        DeleteProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "startsWith")
+    public static let startsWith = DeleteProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType(rawValue: "startsWith")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -138,21 +106,16 @@ public struct DeleteProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType
     }
 }
 
-public struct UpdateProjectRequestBodyResourceConfigBuildMachineSelection: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct UpdateProjectRequestBodyResourceConfigBuildMachineSelection: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let elastic = UpdateProjectRequestBodyResourceConfigBuildMachineSelection(rawValue: "elastic")
     public static let fixed = UpdateProjectRequestBodyResourceConfigBuildMachineSelection(rawValue: "fixed")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -161,22 +124,16 @@ public struct UpdateProjectRequestBodyResourceConfigBuildMachineSelection: RawRe
     }
 }
 
-public struct UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let skipNamespaceQueue =
-        UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
-    public static let waitForNamespaceQueue =
-        UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let skipNamespaceQueue = UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
+    public static let waitForNamespaceQueue = UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -185,22 +142,17 @@ public struct UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration:
     }
 }
 
-public struct UpdateFirewallConfigRequestBodyVariant1ValueActionMitigateAction: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateFirewallConfigRequestBodyVariant1ValueActionMitigateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let deny = UpdateFirewallConfigRequestBodyVariant1ValueActionMitigateAction(rawValue: "deny")
-    public static let challenge =
-        UpdateFirewallConfigRequestBodyVariant1ValueActionMitigateAction(rawValue: "challenge")
+    public static let challenge = UpdateFirewallConfigRequestBodyVariant1ValueActionMitigateAction(rawValue: "challenge")
     public static let log = UpdateFirewallConfigRequestBodyVariant1ValueActionMitigateAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -211,33 +163,24 @@ public struct UpdateFirewallConfigRequestBodyVariant1ValueActionMitigateAction: 
 
 /// Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate
 /// behavior on it.
-public struct CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let apiTriggerGitDeploy =
-        CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "api-trigger-git-deploy")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let apiTriggerGitDeploy = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "api-trigger-git-deploy")
     public static let cli = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "cli")
-    public static let cloneRepo =
-        CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "clone/repo")
+    public static let cloneRepo = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "clone/repo")
     public static let drop = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "drop")
     public static let git = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "git")
-    public static let gitDeployHook =
-        CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "git-deploy-hook")
+    public static let gitDeployHook = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "git-deploy-hook")
     public static let `import` = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "import")
-    public static let importRepo =
-        CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "import/repo")
-    public static let redeploy =
-        CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "redeploy")
+    public static let importRepo = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "import/repo")
+    public static let redeploy = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "redeploy")
     public static let v0Web = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "v0-web")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -249,21 +192,17 @@ public struct CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource
 /// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production
 /// traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning
 /// production traffic - PROMOTED: has seen production traffic
-public struct GetDeploymentsResponseDeploymentsItemReadySubstate: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentsResponseDeploymentsItemReadySubstate: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let promoted = GetDeploymentsResponseDeploymentsItemReadySubstate(rawValue: "PROMOTED")
     public static let rolling = GetDeploymentsResponseDeploymentsItemReadySubstate(rawValue: "ROLLING")
     public static let staged = GetDeploymentsResponseDeploymentsItemReadySubstate(rawValue: "STAGED")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

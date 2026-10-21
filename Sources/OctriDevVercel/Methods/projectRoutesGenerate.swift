@@ -6,42 +6,22 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectRoutesMethods {
-    /// Generates a suggested routing-rule configuration from a natural-language description. Provide the request in
-    /// `prompt`, which can be up to 2000 characters, and optionally include `currentRoute` as context. Review the
-    /// suggested route before saving it with a routing-rule operation.
+extension ProjectRoutesMethods {
+    /// Generates a suggested routing-rule configuration from a natural-language description. Provide the request in `prompt`, which can be up to 2000 characters, and optionally include `currentRoute` as context. Review the suggested route before saving it with a routing-rule operation.
     ///
-    /// Generate a routing rule configuration from a natural language description. Returns a suggested route
-    /// configuration that can be reviewed and saved.
+    /// Generate a routing rule configuration from a natural language description. Returns a suggested route configuration that can be reviewed and saved.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func generateRoute(
-        config: ClientConfig,
-        projectId: String,
-        prompt: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        currentRoute: GenerateRouteRequestBodyCurrentRoute? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GenerateRouteResponse {
+    public static func generateRoute(config: ClientConfig, projectId: String, prompt: String, teamId: String? = nil, slug: String? = nil, currentRoute: GenerateRouteRequestBodyCurrentRoute? = nil, requestOptions: RequestOptions? = nil) async throws -> GenerateRouteResponse {
         try validateLength("prompt", prompt, max: 2000)
 
         let requestBody = GenerateRouteRequestBody(prompt: prompt, currentRoute: currentRoute)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/routes/generate"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "generateRoute",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/routes/generate"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "generateRoute", options: requestOptions)).data
     }
 }

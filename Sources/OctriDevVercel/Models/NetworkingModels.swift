@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Networking domain models
+// Networking domain models
 /// Metadata about any projects associated with the Network.
 public struct NetworkProjects: Codable {
     /// Required `number` value serialized in the `count` wire field.
@@ -16,35 +16,25 @@ public struct NetworkProjects: Codable {
         case ids
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension NetworkProjects {
-    init(from decoder: Decoder) throws {
+extension NetworkProjects {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.count) else {
-            throw SdkValidationError(
-                field: "count",
-                code: "required",
-                message: "Validation failed for 'count': value is required"
-            )
+            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
         }
         guard container.contains(.ids) else {
-            throw SdkValidationError(
-                field: "ids",
-                code: "required",
-                message: "Validation failed for 'ids': value is required"
-            )
+            throw SdkValidationError(field: "ids", code: "required", message: "Validation failed for 'ids': value is required")
         }
-        count = try container.sdkDecodeRequired(.count)
-        ids = try container.sdkDecodeRequired(.ids)
+        self.count = try container.sdkDecodeRequired(.count)
+        self.ids = try container.sdkDecodeRequired(.ids)
     }
 }
 
-public extension NetworkProjects {
-    init(count: Double, ids: [String]) {
+extension NetworkProjects {
+    public init(count: Double, ids: [String]) {
         (self.count, self.ids) = (count, ids)
     }
 }
@@ -58,27 +48,21 @@ public struct NetworkPeeringConnections: Codable {
         case count
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension NetworkPeeringConnections {
-    init(from decoder: Decoder) throws {
+extension NetworkPeeringConnections {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.count) else {
-            throw SdkValidationError(
-                field: "count",
-                code: "required",
-                message: "Validation failed for 'count': value is required"
-            )
+            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
         }
-        count = try container.sdkDecodeRequired(.count)
+        self.count = try container.sdkDecodeRequired(.count)
     }
 }
 
-public extension NetworkPeeringConnections {
-    init(count: Double) {
+extension NetworkPeeringConnections {
+    public init(count: Double) {
         self.count = count
     }
 }
@@ -150,46 +134,30 @@ public struct PrivateLinkEndpoint: Codable {
         case vpcEndpointId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension PrivateLinkEndpoint {
-    init(from decoder: Decoder) throws {
+extension PrivateLinkEndpoint {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        awsServiceName = try container.sdkDecodeRequired(.awsServiceName)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        endpointId = try container.sdkDecodeRequired(.endpointId)
-        name = try container.sdkDecodeRequired(.name)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        status = try container.sdkDecodeRequired(.status)
-        teamId = try container.sdkDecodeRequired(.teamId)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        vercelRegion = try container.sdkDecodeRequired(.vercelRegion)
-        awsDnsEntries = try container.sdkDecodeIfPresent(.awsDnsEntries)
-        privateDnsNames = try container.sdkDecodeIfPresent(.privateDnsNames)
-        statusMessage = try container.sdkDecodeIfPresent(.statusMessage)
-        vpcEndpointId = try container.sdkDecodeIfPresent(.vpcEndpointId)
+        self.awsServiceName = try container.sdkDecodeRequired(.awsServiceName)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.endpointId = try container.sdkDecodeRequired(.endpointId)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.vercelRegion = try container.sdkDecodeRequired(.vercelRegion)
+        self.awsDnsEntries = try container.sdkDecodeIfPresent(.awsDnsEntries)
+        self.privateDnsNames = try container.sdkDecodeIfPresent(.privateDnsNames)
+        self.statusMessage = try container.sdkDecodeIfPresent(.statusMessage)
+        self.vpcEndpointId = try container.sdkDecodeIfPresent(.vpcEndpointId)
     }
 }
 
-public extension PrivateLinkEndpoint {
-    init(
-        awsServiceName: String,
-        createdAt: Double,
-        endpointId: String,
-        name: String,
-        projectId: String,
-        status: PrivateLinkEndpointStatus,
-        teamId: String,
-        updatedAt: Double,
-        vercelRegion: String,
-        awsDnsEntries: [String]? = nil,
-        privateDnsNames: [String]? = nil,
-        statusMessage: String? = nil,
-        vpcEndpointId: String? = nil
-    ) {
+extension PrivateLinkEndpoint {
+    public init(awsServiceName: String, createdAt: Double, endpointId: String, name: String, projectId: String, status: PrivateLinkEndpointStatus, teamId: String, updatedAt: Double, vercelRegion: String, awsDnsEntries: [String]? = nil, privateDnsNames: [String]? = nil, statusMessage: String? = nil, vpcEndpointId: String? = nil) {
         (self.awsServiceName, self.createdAt) = (awsServiceName, createdAt)
         (self.endpointId, self.name) = (endpointId, name)
         (self.projectId, self.status) = (projectId, status)
@@ -209,27 +177,21 @@ public struct NetworkHostedZones: Codable {
         case count
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension NetworkHostedZones {
-    init(from decoder: Decoder) throws {
+extension NetworkHostedZones {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.count) else {
-            throw SdkValidationError(
-                field: "count",
-                code: "required",
-                message: "Validation failed for 'count': value is required"
-            )
+            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
         }
-        count = try container.sdkDecodeRequired(.count)
+        self.count = try container.sdkDecodeRequired(.count)
     }
 }
 
-public extension NetworkHostedZones {
-    init(count: Double) {
+extension NetworkHostedZones {
+    public init(count: Double) {
         self.count = count
     }
 }
@@ -285,50 +247,32 @@ public struct Network: Codable {
         case vpcId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension Network {
-    init(from decoder: Decoder) throws {
+extension Network {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        awsAccountId = try container.sdkDecodeRequired(.awsAccountId)
-        awsRegion = try container.sdkDecodeRequired(.awsRegion)
-        cidr = try container.sdkDecodeRequired(.cidr)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        status = try container.sdkDecodeRequired(.status)
-        teamId = try container.sdkDecodeRequired(.teamId)
-        awsAvailabilityZoneIds = try container.sdkDecodeIfPresent(.awsAvailabilityZoneIds)
-        egressIpAddresses = try container.sdkDecodeIfPresent(.egressIpAddresses)
-        hostedZones = try container.sdkDecodeIfPresent(.hostedZones)
-        peeringConnections = try container.sdkDecodeIfPresent(.peeringConnections)
-        projects = try container.sdkDecodeIfPresent(.projects)
-        region = try container.sdkDecodeIfPresent(.region)
-        vpcId = try container.sdkDecodeIfPresent(.vpcId)
+        self.awsAccountId = try container.sdkDecodeRequired(.awsAccountId)
+        self.awsRegion = try container.sdkDecodeRequired(.awsRegion)
+        self.cidr = try container.sdkDecodeRequired(.cidr)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
+        self.awsAvailabilityZoneIds = try container.sdkDecodeIfPresent(.awsAvailabilityZoneIds)
+        self.egressIpAddresses = try container.sdkDecodeIfPresent(.egressIpAddresses)
+        self.hostedZones = try container.sdkDecodeIfPresent(.hostedZones)
+        self.peeringConnections = try container.sdkDecodeIfPresent(.peeringConnections)
+        self.projects = try container.sdkDecodeIfPresent(.projects)
+        self.region = try container.sdkDecodeIfPresent(.region)
+        self.vpcId = try container.sdkDecodeIfPresent(.vpcId)
     }
 }
 
-public extension Network {
-    init(
-        awsAccountId: String,
-        awsRegion: String,
-        cidr: String,
-        createdAt: Double,
-        id: String,
-        name: String,
-        status: NetworkStatus,
-        teamId: String,
-        awsAvailabilityZoneIds: [String]? = nil,
-        egressIpAddresses: [String]? = nil,
-        hostedZones: NetworkHostedZones? = nil,
-        peeringConnections: NetworkPeeringConnections? = nil,
-        projects: NetworkProjects? = nil,
-        region: String? = nil,
-        vpcId: String? = nil
-    ) {
+extension Network {
+    public init(awsAccountId: String, awsRegion: String, cidr: String, createdAt: Double, id: String, name: String, status: NetworkStatus, teamId: String, awsAvailabilityZoneIds: [String]? = nil, egressIpAddresses: [String]? = nil, hostedZones: NetworkHostedZones? = nil, peeringConnections: NetworkPeeringConnections? = nil, projects: NetworkProjects? = nil, region: String? = nil, vpcId: String? = nil) {
         (self.awsAccountId, self.awsRegion) = (awsAccountId, awsRegion)
         (self.cidr, self.createdAt) = (cidr, createdAt)
         (self.id, self.name) = (id, name)
@@ -348,10 +292,7 @@ public extension Network {
 public struct PrivateLinkEndpointStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let available = PrivateLinkEndpointStatus(rawValue: "available")
     public static let creating = PrivateLinkEndpointStatus(rawValue: "creating")
     public static let deleting = PrivateLinkEndpointStatus(rawValue: "deleting")
@@ -362,7 +303,7 @@ public struct PrivateLinkEndpointStatus: RawRepresentable, Hashable, Codable, Se
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -375,10 +316,7 @@ public struct PrivateLinkEndpointStatus: RawRepresentable, Hashable, Codable, Se
 public struct NetworkStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let createInProgress = NetworkStatus(rawValue: "create_in_progress")
     public static let deleteInProgress = NetworkStatus(rawValue: "delete_in_progress")
     public static let error = NetworkStatus(rawValue: "error")
@@ -386,7 +324,7 @@ public struct NetworkStatus: RawRepresentable, Hashable, Codable, Sendable, SdkW
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

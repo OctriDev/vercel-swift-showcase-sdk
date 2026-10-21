@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Teams domain models
+// Teams domain models
 public indirect enum UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX2f6a27b491 {
     case updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb(
         UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb
@@ -14,39 +14,29 @@ public indirect enum UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0
 }
 
 extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX2f6a27b491: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX2f6a27b491"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX2f6a27b491")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX2f6a27b491 {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb(value)
         }
-        if let value = try? container
-            .decode(UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605(value)
         }
         return nil
@@ -58,12 +48,12 @@ extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX2f6a27b4
         if let value = try? container.decode(
             UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb.self
         ) {
-            return .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb(value)
+            return             .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb(value)
         }
         if let value = try? container.decode(
             UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605.self
         ) {
-            return .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605(value)
+            return             .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605(value)
         }
         return nil
     }
@@ -73,10 +63,8 @@ extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX2f6a27b4
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb(value): try container
-            .encode(value); return true
-        case let .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605(value): try container
-            .encode(value); return true
+        case let .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb(value): try container.encode(value); return true
+        case let .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605(value): try container.encode(value); return true
         }
     }
 }
@@ -92,40 +80,26 @@ public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4
         case repo
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.provider) else {
-            throw SdkValidationError(
-                field: "provider",
-                code: "required",
-                message: "Validation failed for 'provider': value is required"
-            )
+            throw SdkValidationError(field: "provider", code: "required", message: "Validation failed for 'provider': value is required")
         }
         guard container.contains(.org) else {
-            throw SdkValidationError(
-                field: "org",
-                code: "required",
-                message: "Validation failed for 'org': value is required"
-            )
+            throw SdkValidationError(field: "org", code: "required", message: "Validation failed for 'org': value is required")
         }
-        provider = try container.sdkDecodeRequired(.provider)
-        org = try container.sdkDecodeRequired(.org)
-        repo = try container.sdkDecodeIfPresent(.repo)
+        self.provider = try container.sdkDecodeRequired(.provider)
+        self.org = try container.sdkDecodeRequired(.org)
+        self.repo = try container.sdkDecodeIfPresent(.repo)
     }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb {
-    init(
-        provider: UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXe8fceff53c,
-        org: String,
-        repo: String? = nil
-    ) {
+extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb {
+    public init(provider: UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXe8fceff53c, org: String, repo: String? = nil) {
         (self.provider, self.org) = (provider, org)
         self.repo = repo
     }
@@ -140,46 +114,28 @@ public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX01d5
         case environmentId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX01d5dd705b {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX01d5dd705b {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.environmentId) else {
-            throw SdkValidationError(
-                field: "environmentId",
-                code: "required",
-                message: "Validation failed for 'environmentId': value is required"
-            )
+            throw SdkValidationError(field: "environmentId", code: "required", message: "Validation failed for 'environmentId': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        environmentId = try container.sdkDecodeRequired(.environmentId)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXc719301468.allCases.map(\.rawValue)
-        )
+        self.type = try container.sdkDecodeRequired(.type)
+        self.environmentId = try container.sdkDecodeRequired(.environmentId)
+            try sdkValidateRawEnum("type", self.type, UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXc719301468.allCases.map(\.rawValue))
     }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX01d5dd705b {
-    init(type: UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXc719301468, environmentId: String) throws {
+extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX01d5dd705b {
+    public init(type: UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXc719301468, environmentId: String) throws {
         (self.type, self.environmentId) = (type, environmentId)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXc719301468.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXc719301468.allCases.map(\.rawValue))
     }
 }
 
@@ -194,40 +150,26 @@ public struct UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad
         case project
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605 {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.provider) else {
-            throw SdkValidationError(
-                field: "provider",
-                code: "required",
-                message: "Validation failed for 'provider': value is required"
-            )
+            throw SdkValidationError(field: "provider", code: "required", message: "Validation failed for 'provider': value is required")
         }
         guard container.contains(.namespace) else {
-            throw SdkValidationError(
-                field: "namespace",
-                code: "required",
-                message: "Validation failed for 'namespace': value is required"
-            )
+            throw SdkValidationError(field: "namespace", code: "required", message: "Validation failed for 'namespace': value is required")
         }
-        provider = try container.sdkDecodeRequired(.provider)
-        namespace = try container.sdkDecodeRequired(.namespace)
-        project = try container.sdkDecodeIfPresent(.project)
+        self.provider = try container.sdkDecodeRequired(.provider)
+        self.namespace = try container.sdkDecodeRequired(.namespace)
+        self.project = try container.sdkDecodeIfPresent(.project)
     }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605 {
-    init(
-        provider: UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX8758bbb072,
-        namespace: String,
-        project: String? = nil
-    ) {
+extension UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605 {
+    public init(provider: UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX8758bbb072, namespace: String, project: String? = nil) {
         (self.provider, self.namespace) = (provider, namespace)
         self.project = project
     }
@@ -243,39 +185,29 @@ public indirect enum UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesV
 }
 
 extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX910611e89c: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX910611e89c"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX910611e89c")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX910611e89c {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b(value)
         }
-        if let value = try? container
-            .decode(UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX5b071ed950.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX5b071ed950.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX5b071ed950(value)
         }
         return nil
@@ -287,12 +219,12 @@ extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX910611e8
         if let value = try? container.decode(
             UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b.self
         ) {
-            return .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b(value)
+            return             .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b(value)
         }
         if let value = try? container.decode(
             UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX5b071ed950.self
         ) {
-            return .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX5b071ed950(value)
+            return             .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX5b071ed950(value)
         }
         return nil
     }
@@ -302,10 +234,8 @@ extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX910611e8
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b(value): try container
-            .encode(value); return true
-        case let .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX5b071ed950(value): try container
-            .encode(value); return true
+        case let .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b(value): try container.encode(value); return true
+        case let .updateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX5b071ed950(value): try container.encode(value); return true
         }
     }
 }
@@ -319,57 +249,34 @@ public struct UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34
         case target
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.target) else {
-            throw SdkValidationError(
-                field: "target",
-                code: "required",
-                message: "Validation failed for 'target': value is required"
-            )
+            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        target = try container.sdkDecodeRequired(.target)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX2415b48317.allCases.map(\.rawValue)
-        )
+        self.type = try container.sdkDecodeRequired(.type)
+        self.target = try container.sdkDecodeRequired(.target)
+            try sdkValidateRawEnum("type", self.type, UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX2415b48317.allCases.map(\.rawValue))
     }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b {
-    init(
-        type: UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX2415b48317,
-        target: UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX82f7565e77
-    ) throws {
+extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b {
+    public init(type: UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX2415b48317, target: UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX82f7565e77) throws {
         (self.type, self.target) = (type, target)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX2415b48317.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX2415b48317.allCases.map(\.rawValue))
     }
 }
 
-public typealias UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX4066d12af0 =
-    [UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX910611e89c]
+public typealias UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX4066d12af0 = [UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX910611e89c]
 
-public typealias UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX968da05902 =
-    [UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8]
+public typealias UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX968da05902 = [UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8]
 
 public struct UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVariant0Item: Codable {
     public var enabled: Bool
@@ -382,47 +289,29 @@ public struct UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVariant0
         case sources
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVariant0Item {
-    init(from decoder: Decoder) throws {
+extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVariant0Item {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
         guard container.contains(.environments) else {
-            throw SdkValidationError(
-                field: "environments",
-                code: "required",
-                message: "Validation failed for 'environments': value is required"
-            )
+            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
         }
         guard container.contains(.sources) else {
-            throw SdkValidationError(
-                field: "sources",
-                code: "required",
-                message: "Validation failed for 'sources': value is required"
-            )
+            throw SdkValidationError(field: "sources", code: "required", message: "Validation failed for 'sources': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
-        environments = try container.sdkDecodeRequired(.environments)
-        sources = try container.sdkDecodeRequired(.sources)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.environments = try container.sdkDecodeRequired(.environments)
+        self.sources = try container.sdkDecodeRequired(.sources)
     }
 }
 
-public extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVariant0Item {
-    init(
-        enabled: Bool,
-        environments: UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX4066d12af0,
-        sources: UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX968da05902
-    ) {
+extension UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVariant0Item {
+    public init(enabled: Bool, environments: UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX4066d12af0, sources: UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX968da05902) {
         (self.enabled, self.environments) = (enabled, environments)
         self.sources = sources
     }
@@ -436,21 +325,15 @@ public indirect enum UpdateTeamRequestDeploymentPolicyVariant0GitSources {
 }
 
 extension UpdateTeamRequestDeploymentPolicyVariant0GitSources: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateTeamRequestDeploymentPolicyVariant0GitSources"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateTeamRequestDeploymentPolicyVariant0GitSources")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -459,11 +342,9 @@ extension UpdateTeamRequestDeploymentPolicyVariant0GitSources {
         if let value = try? container.decode(
             [UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0Item].self
         ) {
-            return .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItemList(value)
+            return             .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItemList(value)
         }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -472,8 +353,7 @@ extension UpdateTeamRequestDeploymentPolicyVariant0GitSources {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItemList(value): try container
-            .encode(value); return true
+        case let .updateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItemList(value): try container.encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }
     }
@@ -496,27 +376,20 @@ public enum UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd21b7d
     }
 }
 
-public struct UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let git = UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8(rawValue: "git")
     public static let cli = UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8(rawValue: "cli")
-    public static let restApi =
-        UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8(rawValue: "rest-api")
-    public static let deployHook =
-        UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8(rawValue: "deploy-hook")
-    public static let integration =
-        UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8(rawValue: "integration")
+    public static let restApi = UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8(rawValue: "rest-api")
+    public static let deployHook = UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8(rawValue: "deploy-hook")
+    public static let integration = UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8(rawValue: "integration")
     public static let v0 = UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX7549926cb8(rawValue: "v0")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -542,22 +415,16 @@ public enum UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarXb38564
     }
 }
 
-public struct UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX82f7565e77: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX82f7565e77: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let production =
-        UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX82f7565e77(rawValue: "production")
-    public static let preview =
-        UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX82f7565e77(rawValue: "preview")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let production = UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX82f7565e77(rawValue: "production")
+    public static let preview = UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX82f7565e77(rawValue: "preview")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

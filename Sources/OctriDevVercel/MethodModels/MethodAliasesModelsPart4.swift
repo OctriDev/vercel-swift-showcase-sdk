@@ -7,88 +7,51 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical aliases operation model declarations
-public extension ListAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant0 {
-    init(from decoder: Decoder) throws {
+// Canonical aliases operation model declarations
+extension ListAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.createdBy) else {
-            throw SdkValidationError(
-                field: "createdBy",
-                code: "required",
-                message: "Validation failed for 'createdBy': value is required"
-            )
+            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
         }
         guard container.contains(.scope) else {
-            throw SdkValidationError(
-                field: "scope",
-                code: "required",
-                message: "Validation failed for 'scope': value is required"
-            )
+            throw SdkValidationError(field: "scope", code: "required", message: "Validation failed for 'scope': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        createdBy = try container.sdkDecodeRequired(.createdBy)
-        scope = try container.sdkDecodeRequired(.scope)
-        expires = try container.sdkDecodeIfPresent(.expires)
-        try sdkValidateRawEnum(
-            "scope",
-            scope,
-            ListAliasesForDeploymentResponseAliasesItemProtectionBypassVaXb081357889.allCases.map(\.rawValue)
-        )
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.createdBy = try container.sdkDecodeRequired(.createdBy)
+        self.scope = try container.sdkDecodeRequired(.scope)
+        self.expires = try container.sdkDecodeIfPresent(.expires)
+            try sdkValidateRawEnum("scope", self.scope, ListAliasesForDeploymentResponseAliasesItemProtectionBypassVaXb081357889.allCases.map(\.rawValue))
     }
 }
 
-public extension ListAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant0 {
-    init(
-        createdAt: Double,
-        createdBy: String,
-        scope: ListAliasesForDeploymentResponseAliasesItemProtectionBypassVaXb081357889,
-        expires: Double? = nil
-    ) throws {
+extension ListAliasesForDeploymentResponseAliasesItemProtectionBypassValueVariant0 {
+    public init(createdAt: Double, createdBy: String, scope: ListAliasesForDeploymentResponseAliasesItemProtectionBypassVaXb081357889, expires: Double? = nil) throws {
         (self.createdAt, self.createdBy) = (createdAt, createdBy)
         (self.scope, self.expires) = (scope, expires)
-        try sdkValidateRawEnum(
-            "scope",
-            self.scope,
-            ListAliasesForDeploymentResponseAliasesItemProtectionBypassVaXb081357889.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("scope", self.scope, ListAliasesForDeploymentResponseAliasesItemProtectionBypassVaXb081357889.allCases.map(\.rawValue))
     }
 }
 
 public indirect enum GetAliasResponseMicrofrontendsApplications {
-    case getAliasResponseMicrofrontendsApplicationsVariant0ItemList(
-        [GetAliasResponseMicrofrontendsApplicationsVariant0Item]
-    )
-    case getAliasResponseMicrofrontendsApplicationsVariant1ItemList(
-        [GetAliasResponseMicrofrontendsApplicationsVariant1Item]
-    )
-    case getAliasResponseMicrofrontendsApplicationsVariant2ItemList(
-        [GetAliasResponseMicrofrontendsApplicationsVariant2Item]
-    )
+    case getAliasResponseMicrofrontendsApplicationsVariant0ItemList([GetAliasResponseMicrofrontendsApplicationsVariant0Item])
+    case getAliasResponseMicrofrontendsApplicationsVariant1ItemList([GetAliasResponseMicrofrontendsApplicationsVariant1Item])
+    case getAliasResponseMicrofrontendsApplicationsVariant2ItemList([GetAliasResponseMicrofrontendsApplicationsVariant2Item])
 }
 
 extension GetAliasResponseMicrofrontendsApplications: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetAliasResponseMicrofrontendsApplications"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetAliasResponseMicrofrontendsApplications")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -97,17 +60,17 @@ extension GetAliasResponseMicrofrontendsApplications {
         if let value = try? container.decode(
             [GetAliasResponseMicrofrontendsApplicationsVariant0Item].self
         ) {
-            return .getAliasResponseMicrofrontendsApplicationsVariant0ItemList(value)
+            return             .getAliasResponseMicrofrontendsApplicationsVariant0ItemList(value)
         }
         if let value = try? container.decode(
             [GetAliasResponseMicrofrontendsApplicationsVariant1Item].self
         ) {
-            return .getAliasResponseMicrofrontendsApplicationsVariant1ItemList(value)
+            return             .getAliasResponseMicrofrontendsApplicationsVariant1ItemList(value)
         }
         if let value = try? container.decode(
             [GetAliasResponseMicrofrontendsApplicationsVariant2Item].self
         ) {
-            return .getAliasResponseMicrofrontendsApplicationsVariant2ItemList(value)
+            return             .getAliasResponseMicrofrontendsApplicationsVariant2ItemList(value)
         }
         return nil
     }
@@ -117,12 +80,9 @@ extension GetAliasResponseMicrofrontendsApplications {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getAliasResponseMicrofrontendsApplicationsVariant0ItemList(value): try container
-            .encode(value); return true
-        case let .getAliasResponseMicrofrontendsApplicationsVariant1ItemList(value): try container
-            .encode(value); return true
-        case let .getAliasResponseMicrofrontendsApplicationsVariant2ItemList(value): try container
-            .encode(value); return true
+        case let .getAliasResponseMicrofrontendsApplicationsVariant0ItemList(value): try container.encode(value); return true
+        case let .getAliasResponseMicrofrontendsApplicationsVariant1ItemList(value): try container.encode(value); return true
+        case let .getAliasResponseMicrofrontendsApplicationsVariant2ItemList(value): try container.encode(value); return true
         }
     }
 }
@@ -134,27 +94,21 @@ public struct ListAliasesResponseAliasesItemMicrofrontendsDefaultApp: Codable {
         case projectId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAliasesResponseAliasesItemMicrofrontendsDefaultApp {
-    init(from decoder: Decoder) throws {
+extension ListAliasesResponseAliasesItemMicrofrontendsDefaultApp {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
-        projectId = try container.sdkDecodeRequired(.projectId)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
     }
 }
 
-public extension ListAliasesResponseAliasesItemMicrofrontendsDefaultApp {
-    init(projectId: String) {
+extension ListAliasesResponseAliasesItemMicrofrontendsDefaultApp {
+    public init(projectId: String) {
         self.projectId = projectId
     }
 }
@@ -172,43 +126,27 @@ public struct PatchUrlProtectionBypassRequestBodyVariant0: Codable {
     }
 
     init() {
-        (ttl, revoke) = (nil, nil)
+        (self.ttl, self.revoke) = (nil, nil)
     }
 }
 
-public extension PatchUrlProtectionBypassRequestBodyVariant0 {
-    init(from decoder: Decoder) throws {
+extension PatchUrlProtectionBypassRequestBodyVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        ttl = try container.sdkDecodeIfPresent(.ttl)
-        revoke = try container.sdkDecodeIfPresent(.revoke)
-        if let value = ttl {
-            try validateRange(
-                "ttl",
-                Double(value),
-                min: nil,
-                max: 63_072_000,
-                exclusiveMin: nil,
-                exclusiveMax: nil,
-                multipleOf: nil
-            )
+        self.ttl = try container.sdkDecodeIfPresent(.ttl)
+        self.revoke = try container.sdkDecodeIfPresent(.revoke)
+        if let value = self.ttl {
+            try validateRange("ttl", Double(value), min: nil, max: 63072000, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
         }
     }
 }
 
-public extension PatchUrlProtectionBypassRequestBodyVariant0 {
-    init(ttl: Double? = nil, revoke: PatchUrlProtectionBypassRequestBodyVariant0Revoke? = nil) throws {
+extension PatchUrlProtectionBypassRequestBodyVariant0 {
+    public init(ttl: Double? = nil, revoke: PatchUrlProtectionBypassRequestBodyVariant0Revoke? = nil) throws {
         self.init()
         (self.ttl, self.revoke) = (ttl, revoke)
         if let value = self.ttl {
-            try validateRange(
-                "ttl",
-                Double(value),
-                min: nil,
-                max: 63_072_000,
-                exclusiveMin: nil,
-                exclusiveMax: nil,
-                multipleOf: nil
-            )
+            try validateRange("ttl", Double(value), min: nil, max: 63072000, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
         }
     }
 }
@@ -219,32 +157,22 @@ public indirect enum PatchUrlProtectionBypassRequestBodyVariant1ScopeVariant0 {
 }
 
 extension PatchUrlProtectionBypassRequestBodyVariant1ScopeVariant0: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for PatchUrlProtectionBypassRequestBodyVariant1ScopeVariant0"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for PatchUrlProtectionBypassRequestBodyVariant1ScopeVariant0")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension PatchUrlProtectionBypassRequestBodyVariant1ScopeVariant0 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(JSONValue.self) {
-            return .jsonValue(value)
-        }
-        if let value = try? container.decode(JSONValue.self) {
-            return .jsonValue1(value)
-        }
+        if let value = try? container.decode(JSONValue.self) { return .jsonValue(value) }
+        if let value = try? container.decode(JSONValue.self) { return .jsonValue1(value) }
         return nil
     }
 }
@@ -289,39 +217,26 @@ public struct ListAliasesResponseAliasesItemMicrofrontendsApplicationsVariant2It
         case fallbackHost
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAliasesResponseAliasesItemMicrofrontendsApplicationsVariant2Item {
-    init(from decoder: Decoder) throws {
+extension ListAliasesResponseAliasesItemMicrofrontendsApplicationsVariant2Item {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
-        projectId = try container.sdkDecodeRequired(.projectId)
-        branchAlias = try container.sdkDecodeIfPresent(.branchAlias)
-        branchDeploymentId = try container.sdkDecodeIfPresent(.branchDeploymentId)
-        deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
-        fallbackDeploymentId = try container.sdkDecodeIfPresent(.fallbackDeploymentId)
-        fallbackHost = try container.sdkDecodeIfPresent(.fallbackHost)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.branchAlias = try container.sdkDecodeIfPresent(.branchAlias)
+        self.branchDeploymentId = try container.sdkDecodeIfPresent(.branchDeploymentId)
+        self.deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
+        self.fallbackDeploymentId = try container.sdkDecodeIfPresent(.fallbackDeploymentId)
+        self.fallbackHost = try container.sdkDecodeIfPresent(.fallbackHost)
     }
 }
 
-public extension ListAliasesResponseAliasesItemMicrofrontendsApplicationsVariant2Item {
-    init(
-        projectId: String,
-        branchAlias: String? = nil,
-        branchDeploymentId: String? = nil,
-        deploymentId: String? = nil,
-        fallbackDeploymentId: String? = nil,
-        fallbackHost: String? = nil
-    ) {
+extension ListAliasesResponseAliasesItemMicrofrontendsApplicationsVariant2Item {
+    public init(projectId: String, branchAlias: String? = nil, branchDeploymentId: String? = nil, deploymentId: String? = nil, fallbackDeploymentId: String? = nil, fallbackHost: String? = nil) {
         (self.projectId, self.branchAlias) = (projectId, branchAlias)
         (self.branchDeploymentId, self.deploymentId) = (branchDeploymentId, deploymentId)
         (self.fallbackDeploymentId, self.fallbackHost) = (fallbackDeploymentId, fallbackHost)
@@ -382,84 +297,47 @@ public struct ListAliasesResponseAliasesItem: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAliasesResponseAliasesItem {
-    init(from decoder: Decoder) throws {
+extension ListAliasesResponseAliasesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.alias) else {
-            throw SdkValidationError(
-                field: "alias",
-                code: "required",
-                message: "Validation failed for 'alias': value is required"
-            )
+            throw SdkValidationError(field: "alias", code: "required", message: "Validation failed for 'alias': value is required")
         }
         guard container.contains(.created) else {
-            throw SdkValidationError(
-                field: "created",
-                code: "required",
-                message: "Validation failed for 'created': value is required"
-            )
+            throw SdkValidationError(field: "created", code: "required", message: "Validation failed for 'created': value is required")
         }
         guard container.contains(.deploymentId) else {
-            throw SdkValidationError(
-                field: "deploymentId",
-                code: "required",
-                message: "Validation failed for 'deploymentId': value is required"
-            )
+            throw SdkValidationError(field: "deploymentId", code: "required", message: "Validation failed for 'deploymentId': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.uid) else {
-            throw SdkValidationError(
-                field: "uid",
-                code: "required",
-                message: "Validation failed for 'uid': value is required"
-            )
+            throw SdkValidationError(field: "uid", code: "required", message: "Validation failed for 'uid': value is required")
         }
-        alias = try container.sdkDecodeRequired(.alias)
-        created = try container.sdkDecodeRequired(.created)
-        deploymentId = try container.sdkDecodeNullable(.deploymentId)
-        projectId = try container.sdkDecodeNullable(.projectId)
-        uid = try container.sdkDecodeRequired(.uid)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        creator = try container.sdkDecodeIfPresent(.creator)
-        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        deployment = try container.sdkDecodeIfPresent(.deployment)
-        microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
-        protectionBypass = try container.sdkDecodeIfPresent(.protectionBypass)
-        redirect = try container.sdkDecodeIfPresent(.redirect)
-        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        try sdkValidateDateTime("created", sdkWireString(created))
+        self.alias = try container.sdkDecodeRequired(.alias)
+        self.created = try container.sdkDecodeRequired(.created)
+        self.deploymentId = try container.sdkDecodeNullable(.deploymentId)
+        self.projectId = try container.sdkDecodeNullable(.projectId)
+        self.uid = try container.sdkDecodeRequired(.uid)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.creator = try container.sdkDecodeIfPresent(.creator)
+        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        self.deployment = try container.sdkDecodeIfPresent(.deployment)
+        self.microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
+        self.protectionBypass = try container.sdkDecodeIfPresent(.protectionBypass)
+        self.redirect = try container.sdkDecodeIfPresent(.redirect)
+        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+            try sdkValidateDateTime("created", sdkWireString(self.created))
     }
 }
 
-public extension ListAliasesResponseAliasesItem {
-    init(
-        alias: String,
-        created: Date,
-        deploymentId: String?,
-        projectId: String?,
-        uid: String,
-        createdAt: Double? = nil,
-        creator: ListAliasesResponseAliasesItemCreator? = nil,
-        deletedAt: Double? = nil,
-        deployment: ListAliasesResponseAliasesItemDeployment? = nil,
-        microfrontends: ListAliasesResponseAliasesItemMicrofrontends? = nil,
-        protectionBypass: [String: ListAliasesResponseAliasesItemProtectionBypassValue]? = nil,
-        redirect: String? = nil,
-        redirectStatusCode: Double? = nil,
-        updatedAt: Double? = nil
-    ) throws {
+extension ListAliasesResponseAliasesItem {
+    public init(alias: String, created: Date, deploymentId: String?, projectId: String?, uid: String, createdAt: Double? = nil, creator: ListAliasesResponseAliasesItemCreator? = nil, deletedAt: Double? = nil, deployment: ListAliasesResponseAliasesItemDeployment? = nil, microfrontends: ListAliasesResponseAliasesItemMicrofrontends? = nil, protectionBypass: [String: ListAliasesResponseAliasesItemProtectionBypassValue]? = nil, redirect: String? = nil, redirectStatusCode: Double? = nil, updatedAt: Double? = nil) throws {
         (self.alias, self.created) = (alias, created)
         (self.deploymentId, self.projectId) = (deploymentId, projectId)
         (self.uid, self.createdAt) = (uid, createdAt)
@@ -467,7 +345,7 @@ public extension ListAliasesResponseAliasesItem {
         (self.deployment, self.microfrontends) = (deployment, microfrontends)
         (self.protectionBypass, self.redirect) = (protectionBypass, redirect)
         (self.redirectStatusCode, self.updatedAt) = (redirectStatusCode, updatedAt)
-        try sdkValidateDateTime("created", sdkWireString(self.created))
+            try sdkValidateDateTime("created", sdkWireString(self.created))
     }
 }
 
@@ -483,55 +361,33 @@ public struct GetAliasResponseProtectionBypassValueVariant2: Codable {
         case scope
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetAliasResponseProtectionBypassValueVariant2 {
-    init(from decoder: Decoder) throws {
+extension GetAliasResponseProtectionBypassValueVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.createdBy) else {
-            throw SdkValidationError(
-                field: "createdBy",
-                code: "required",
-                message: "Validation failed for 'createdBy': value is required"
-            )
+            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
         }
         guard container.contains(.scope) else {
-            throw SdkValidationError(
-                field: "scope",
-                code: "required",
-                message: "Validation failed for 'scope': value is required"
-            )
+            throw SdkValidationError(field: "scope", code: "required", message: "Validation failed for 'scope': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        createdBy = try container.sdkDecodeRequired(.createdBy)
-        scope = try container.sdkDecodeRequired(.scope)
-        try sdkValidateRawEnum(
-            "scope",
-            scope,
-            GetAliasResponseProtectionBypassValueVariant2Scope.allCases.map(\.rawValue)
-        )
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.createdBy = try container.sdkDecodeRequired(.createdBy)
+        self.scope = try container.sdkDecodeRequired(.scope)
+            try sdkValidateRawEnum("scope", self.scope, GetAliasResponseProtectionBypassValueVariant2Scope.allCases.map(\.rawValue))
     }
 }
 
-public extension GetAliasResponseProtectionBypassValueVariant2 {
-    init(createdAt: Double, createdBy: String, scope: GetAliasResponseProtectionBypassValueVariant2Scope) throws {
+extension GetAliasResponseProtectionBypassValueVariant2 {
+    public init(createdAt: Double, createdBy: String, scope: GetAliasResponseProtectionBypassValueVariant2Scope) throws {
         (self.createdAt, self.createdBy) = (createdAt, createdBy)
         self.scope = scope
-        try sdkValidateRawEnum(
-            "scope",
-            self.scope,
-            GetAliasResponseProtectionBypassValueVariant2Scope.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("scope", self.scope, GetAliasResponseProtectionBypassValueVariant2Scope.allCases.map(\.rawValue))
     }
 }
 
@@ -543,27 +399,21 @@ public struct PatchUrlProtectionBypassRequestBodyVariant1: Codable {
         case scope
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension PatchUrlProtectionBypassRequestBodyVariant1 {
-    init(from decoder: Decoder) throws {
+extension PatchUrlProtectionBypassRequestBodyVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.scope) else {
-            throw SdkValidationError(
-                field: "scope",
-                code: "required",
-                message: "Validation failed for 'scope': value is required"
-            )
+            throw SdkValidationError(field: "scope", code: "required", message: "Validation failed for 'scope': value is required")
         }
-        scope = try container.sdkDecodeRequired(.scope)
+        self.scope = try container.sdkDecodeRequired(.scope)
     }
 }
 
-public extension PatchUrlProtectionBypassRequestBodyVariant1 {
-    init(scope: PatchUrlProtectionBypassRequestBodyVariant1Scope) {
+extension PatchUrlProtectionBypassRequestBodyVariant1 {
+    public init(scope: PatchUrlProtectionBypassRequestBodyVariant1Scope) {
         self.scope = scope
     }
 }
@@ -598,26 +448,20 @@ public struct GetAliasResponseMicrofrontendsApplicationsVariant2Item: Codable {
         case fallbackHost
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetAliasResponseMicrofrontendsApplicationsVariant2Item {
-    init(from decoder: Decoder) throws {
+extension GetAliasResponseMicrofrontendsApplicationsVariant2Item {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
-        projectId = try container.sdkDecodeRequired(.projectId)
-        branchAlias = try container.sdkDecodeIfPresent(.branchAlias)
-        branchDeploymentId = try container.sdkDecodeIfPresent(.branchDeploymentId)
-        deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
-        fallbackDeploymentId = try container.sdkDecodeIfPresent(.fallbackDeploymentId)
-        fallbackHost = try container.sdkDecodeIfPresent(.fallbackHost)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.branchAlias = try container.sdkDecodeIfPresent(.branchAlias)
+        self.branchDeploymentId = try container.sdkDecodeIfPresent(.branchDeploymentId)
+        self.deploymentId = try container.sdkDecodeIfPresent(.deploymentId)
+        self.fallbackDeploymentId = try container.sdkDecodeIfPresent(.fallbackDeploymentId)
+        self.fallbackHost = try container.sdkDecodeIfPresent(.fallbackHost)
     }
 }

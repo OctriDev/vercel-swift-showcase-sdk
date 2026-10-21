@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Drains domain models
+// Drains domain models
 public indirect enum TestDrainRequestDelivery {
     case testDrainRequestDeliveryVariant0(TestDrainRequestDeliveryVariant0)
     case testDrainRequestDeliveryVariant1(TestDrainRequestDeliveryVariant1)
@@ -11,26 +11,18 @@ public indirect enum TestDrainRequestDelivery {
 }
 
 extension TestDrainRequestDelivery: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for TestDrainRequestDelivery"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for TestDrainRequestDelivery")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -51,18 +43,9 @@ extension TestDrainRequestDelivery {
 
 extension TestDrainRequestDelivery {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container
-            .decode(TestDrainRequestDeliveryVariant0.self) {
-            return .testDrainRequestDeliveryVariant0(value)
-        }
-        if let value = try? container
-            .decode(TestDrainRequestDeliveryVariant1.self) {
-            return .testDrainRequestDeliveryVariant1(value)
-        }
-        if let value = try? container
-            .decode(TestDrainRequestDeliveryVariant2.self) {
-            return .testDrainRequestDeliveryVariant2(value)
-        }
+        if let value = try? container.decode(TestDrainRequestDeliveryVariant0.self) { return .testDrainRequestDeliveryVariant0(value) }
+        if let value = try? container.decode(TestDrainRequestDeliveryVariant1.self) { return .testDrainRequestDeliveryVariant1(value) }
+        if let value = try? container.decode(TestDrainRequestDeliveryVariant2.self) { return .testDrainRequestDeliveryVariant2(value) }
         return nil
     }
 }
@@ -85,27 +68,21 @@ public struct TestDrainRequestDeliveryVariant1Endpoint: Codable {
         case traces
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TestDrainRequestDeliveryVariant1Endpoint {
-    init(from decoder: Decoder) throws {
+extension TestDrainRequestDeliveryVariant1Endpoint {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.traces) else {
-            throw SdkValidationError(
-                field: "traces",
-                code: "required",
-                message: "Validation failed for 'traces': value is required"
-            )
+            throw SdkValidationError(field: "traces", code: "required", message: "Validation failed for 'traces': value is required")
         }
-        traces = try container.sdkDecodeRequired(.traces)
+        self.traces = try container.sdkDecodeRequired(.traces)
     }
 }
 
-public extension TestDrainRequestDeliveryVariant1Endpoint {
-    init(traces: String) {
+extension TestDrainRequestDeliveryVariant1Endpoint {
+    public init(traces: String) {
         self.traces = traces
     }
 }
@@ -133,87 +110,47 @@ public struct TestDrainRequestDeliveryVariant2: Codable {
         case objectAcl
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TestDrainRequestDeliveryVariant2 {
-    init(from decoder: Decoder) throws {
+extension TestDrainRequestDeliveryVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.endpoint) else {
-            throw SdkValidationError(
-                field: "endpoint",
-                code: "required",
-                message: "Validation failed for 'endpoint': value is required"
-            )
+            throw SdkValidationError(field: "endpoint", code: "required", message: "Validation failed for 'endpoint': value is required")
         }
         guard container.contains(.encoding) else {
-            throw SdkValidationError(
-                field: "encoding",
-                code: "required",
-                message: "Validation failed for 'encoding': value is required"
-            )
+            throw SdkValidationError(field: "encoding", code: "required", message: "Validation failed for 'encoding': value is required")
         }
         guard container.contains(.compression) else {
-            throw SdkValidationError(
-                field: "compression",
-                code: "required",
-                message: "Validation failed for 'compression': value is required"
-            )
+            throw SdkValidationError(field: "compression", code: "required", message: "Validation failed for 'compression': value is required")
         }
         guard container.contains(.fileStructure) else {
-            throw SdkValidationError(
-                field: "fileStructure",
-                code: "required",
-                message: "Validation failed for 'fileStructure': value is required"
-            )
+            throw SdkValidationError(field: "fileStructure", code: "required", message: "Validation failed for 'fileStructure': value is required")
         }
         guard container.contains(.roleArn) else {
-            throw SdkValidationError(
-                field: "roleArn",
-                code: "required",
-                message: "Validation failed for 'roleArn': value is required"
-            )
+            throw SdkValidationError(field: "roleArn", code: "required", message: "Validation failed for 'roleArn': value is required")
         }
         guard container.contains(.region) else {
-            throw SdkValidationError(
-                field: "region",
-                code: "required",
-                message: "Validation failed for 'region': value is required"
-            )
+            throw SdkValidationError(field: "region", code: "required", message: "Validation failed for 'region': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        endpoint = try container.sdkDecodeRequired(.endpoint)
-        encoding = try container.sdkDecodeRequired(.encoding)
-        compression = try container.sdkDecodeRequired(.compression)
-        fileStructure = try container.sdkDecodeRequired(.fileStructure)
-        roleArn = try container.sdkDecodeRequired(.roleArn)
-        region = try container.sdkDecodeRequired(.region)
-        serverSideEncryption = try container.sdkDecodeIfPresent(.serverSideEncryption)
-        objectAcl = try container.sdkDecodeIfPresent(.objectAcl)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.endpoint = try container.sdkDecodeRequired(.endpoint)
+        self.encoding = try container.sdkDecodeRequired(.encoding)
+        self.compression = try container.sdkDecodeRequired(.compression)
+        self.fileStructure = try container.sdkDecodeRequired(.fileStructure)
+        self.roleArn = try container.sdkDecodeRequired(.roleArn)
+        self.region = try container.sdkDecodeRequired(.region)
+        self.serverSideEncryption = try container.sdkDecodeIfPresent(.serverSideEncryption)
+        self.objectAcl = try container.sdkDecodeIfPresent(.objectAcl)
     }
 }
 
-public extension TestDrainRequestDeliveryVariant2 {
-    init(
-        type: String,
-        endpoint: String,
-        encoding: TestDrainRequestDeliveryVariant2Encoding,
-        compression: TestDrainRequestDeliveryVariant2Compression,
-        fileStructure: TestDrainRequestDeliveryVariant2FileStructure,
-        roleArn: String,
-        region: String,
-        serverSideEncryption: TestDrainRequestDeliveryVariant2ServerSideEncryption? = nil,
-        objectAcl: TestDrainRequestDeliveryVariant2ObjectAcl? = nil
-    ) {
+extension TestDrainRequestDeliveryVariant2 {
+    public init(type: String, endpoint: String, encoding: TestDrainRequestDeliveryVariant2Encoding, compression: TestDrainRequestDeliveryVariant2Compression, fileStructure: TestDrainRequestDeliveryVariant2FileStructure, roleArn: String, region: String, serverSideEncryption: TestDrainRequestDeliveryVariant2ServerSideEncryption? = nil, objectAcl: TestDrainRequestDeliveryVariant2ObjectAcl? = nil) {
         (self.type, self.endpoint) = (type, endpoint)
         (self.encoding, self.compression) = (encoding, compression)
         (self.fileStructure, self.roleArn) = (fileStructure, roleArn)
@@ -237,58 +174,34 @@ public struct TestDrainRequestDeliveryVariant1: Codable {
         case secret
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TestDrainRequestDeliveryVariant1 {
-    init(from decoder: Decoder) throws {
+extension TestDrainRequestDeliveryVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.endpoint) else {
-            throw SdkValidationError(
-                field: "endpoint",
-                code: "required",
-                message: "Validation failed for 'endpoint': value is required"
-            )
+            throw SdkValidationError(field: "endpoint", code: "required", message: "Validation failed for 'endpoint': value is required")
         }
         guard container.contains(.encoding) else {
-            throw SdkValidationError(
-                field: "encoding",
-                code: "required",
-                message: "Validation failed for 'encoding': value is required"
-            )
+            throw SdkValidationError(field: "encoding", code: "required", message: "Validation failed for 'encoding': value is required")
         }
         guard container.contains(.headers) else {
-            throw SdkValidationError(
-                field: "headers",
-                code: "required",
-                message: "Validation failed for 'headers': value is required"
-            )
+            throw SdkValidationError(field: "headers", code: "required", message: "Validation failed for 'headers': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        endpoint = try container.sdkDecodeRequired(.endpoint)
-        encoding = try container.sdkDecodeRequired(.encoding)
-        headers = try container.sdkDecodeRequired(.headers)
-        secret = try container.sdkDecodeIfPresent(.secret)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.endpoint = try container.sdkDecodeRequired(.endpoint)
+        self.encoding = try container.sdkDecodeRequired(.encoding)
+        self.headers = try container.sdkDecodeRequired(.headers)
+        self.secret = try container.sdkDecodeIfPresent(.secret)
     }
 }
 
-public extension TestDrainRequestDeliveryVariant1 {
-    init(
-        type: String,
-        endpoint: TestDrainRequestDeliveryVariant1Endpoint,
-        encoding: TestDrainRequestDeliveryVariant1Encoding,
-        headers: [String: String],
-        secret: String? = nil
-    ) {
+extension TestDrainRequestDeliveryVariant1 {
+    public init(type: String, endpoint: TestDrainRequestDeliveryVariant1Endpoint, encoding: TestDrainRequestDeliveryVariant1Encoding, headers: [String: String], secret: String? = nil) {
         (self.type, self.endpoint) = (type, endpoint)
         (self.encoding, self.headers) = (encoding, headers)
         self.secret = secret
@@ -312,79 +225,50 @@ public struct TestDrainRequestDeliveryVariant0: Codable {
         case secret
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TestDrainRequestDeliveryVariant0 {
-    init(from decoder: Decoder) throws {
+extension TestDrainRequestDeliveryVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.endpoint) else {
-            throw SdkValidationError(
-                field: "endpoint",
-                code: "required",
-                message: "Validation failed for 'endpoint': value is required"
-            )
+            throw SdkValidationError(field: "endpoint", code: "required", message: "Validation failed for 'endpoint': value is required")
         }
         guard container.contains(.encoding) else {
-            throw SdkValidationError(
-                field: "encoding",
-                code: "required",
-                message: "Validation failed for 'encoding': value is required"
-            )
+            throw SdkValidationError(field: "encoding", code: "required", message: "Validation failed for 'encoding': value is required")
         }
         guard container.contains(.headers) else {
-            throw SdkValidationError(
-                field: "headers",
-                code: "required",
-                message: "Validation failed for 'headers': value is required"
-            )
+            throw SdkValidationError(field: "headers", code: "required", message: "Validation failed for 'headers': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        endpoint = try container.sdkDecodeRequired(.endpoint)
-        encoding = try container.sdkDecodeRequired(.encoding)
-        headers = try container.sdkDecodeRequired(.headers)
-        compression = try container.sdkDecodeIfPresent(.compression)
-        secret = try container.sdkDecodeIfPresent(.secret)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.endpoint = try container.sdkDecodeRequired(.endpoint)
+        self.encoding = try container.sdkDecodeRequired(.encoding)
+        self.headers = try container.sdkDecodeRequired(.headers)
+        self.compression = try container.sdkDecodeIfPresent(.compression)
+        self.secret = try container.sdkDecodeIfPresent(.secret)
     }
 }
 
-public extension TestDrainRequestDeliveryVariant0 {
-    init(
-        type: String,
-        endpoint: String,
-        encoding: TestDrainRequestDeliveryVariant0Encoding,
-        headers: [String: String],
-        compression: TestDrainRequestDeliveryVariant0Compression? = nil,
-        secret: String? = nil
-    ) {
+extension TestDrainRequestDeliveryVariant0 {
+    public init(type: String, endpoint: String, encoding: TestDrainRequestDeliveryVariant0Encoding, headers: [String: String], compression: TestDrainRequestDeliveryVariant0Compression? = nil, secret: String? = nil) {
         (self.type, self.endpoint) = (type, endpoint)
         (self.encoding, self.headers) = (encoding, headers)
         (self.compression, self.secret) = (compression, secret)
     }
 }
 
-public struct TestDrainRequestDeliveryVariant2Compression: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct TestDrainRequestDeliveryVariant2Compression: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let none = TestDrainRequestDeliveryVariant2Compression(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -393,20 +277,16 @@ public struct TestDrainRequestDeliveryVariant2Compression: RawRepresentable, Has
     }
 }
 
-public struct TestDrainRequestDeliveryVariant1Encoding: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct TestDrainRequestDeliveryVariant1Encoding: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let proto = TestDrainRequestDeliveryVariant1Encoding(rawValue: "proto")
     public static let json = TestDrainRequestDeliveryVariant1Encoding(rawValue: "json")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -415,19 +295,15 @@ public struct TestDrainRequestDeliveryVariant1Encoding: RawRepresentable, Hashab
     }
 }
 
-public struct TestDrainRequestDeliveryVariant2FileStructure: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct TestDrainRequestDeliveryVariant2FileStructure: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let hive = TestDrainRequestDeliveryVariant2FileStructure(rawValue: "hive")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -436,21 +312,17 @@ public struct TestDrainRequestDeliveryVariant2FileStructure: RawRepresentable, H
     }
 }
 
-public struct TestDrainRequestDeliveryVariant2ServerSideEncryption: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct TestDrainRequestDeliveryVariant2ServerSideEncryption: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let aes256 = TestDrainRequestDeliveryVariant2ServerSideEncryption(rawValue: "AES256")
     public static let awsKms = TestDrainRequestDeliveryVariant2ServerSideEncryption(rawValue: "aws:kms")
     public static let awsKmsDsse = TestDrainRequestDeliveryVariant2ServerSideEncryption(rawValue: "aws:kms:dsse")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -459,22 +331,17 @@ public struct TestDrainRequestDeliveryVariant2ServerSideEncryption: RawRepresent
     }
 }
 
-public struct TestDrainRequestDeliveryVariant2ObjectAcl: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct TestDrainRequestDeliveryVariant2ObjectAcl: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let `private` = TestDrainRequestDeliveryVariant2ObjectAcl(rawValue: "private")
     public static let bucketOwnerRead = TestDrainRequestDeliveryVariant2ObjectAcl(rawValue: "bucket-owner-read")
-    public static let bucketOwnerFullControl =
-        TestDrainRequestDeliveryVariant2ObjectAcl(rawValue: "bucket-owner-full-control")
+    public static let bucketOwnerFullControl = TestDrainRequestDeliveryVariant2ObjectAcl(rawValue: "bucket-owner-full-control")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -483,20 +350,16 @@ public struct TestDrainRequestDeliveryVariant2ObjectAcl: RawRepresentable, Hasha
     }
 }
 
-public struct TestDrainRequestDeliveryVariant0Encoding: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct TestDrainRequestDeliveryVariant0Encoding: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let json = TestDrainRequestDeliveryVariant0Encoding(rawValue: "json")
     public static let ndjson = TestDrainRequestDeliveryVariant0Encoding(rawValue: "ndjson")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -505,20 +368,16 @@ public struct TestDrainRequestDeliveryVariant0Encoding: RawRepresentable, Hashab
     }
 }
 
-public struct TestDrainRequestDeliveryVariant2Encoding: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct TestDrainRequestDeliveryVariant2Encoding: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let json = TestDrainRequestDeliveryVariant2Encoding(rawValue: "json")
     public static let ndjson = TestDrainRequestDeliveryVariant2Encoding(rawValue: "ndjson")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -527,20 +386,16 @@ public struct TestDrainRequestDeliveryVariant2Encoding: RawRepresentable, Hashab
     }
 }
 
-public struct TestDrainRequestDeliveryVariant0Compression: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct TestDrainRequestDeliveryVariant0Compression: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let gzip = TestDrainRequestDeliveryVariant0Compression(rawValue: "gzip")
     public static let none = TestDrainRequestDeliveryVariant0Compression(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

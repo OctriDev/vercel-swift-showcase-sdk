@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    /// Creates an OIDC token for a project identified by its ID or name. Provide the project identifier and optionally
-    /// specify a `source` to identify what is calling the endpoint. The response contains the generated token.
+extension ProjectsMethods {
+    /// Creates an OIDC token for a project identified by its ID or name. Provide the project identifier and optionally specify a `source` to identify what is calling the endpoint. The response contains the generated token.
     ///
     /// Generates an OIDC token for the project and returns it.
     ///
@@ -17,34 +16,18 @@ public extension ProjectsMethods {
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - source: The source that is calling the endpoint.
-    static func getProjectToken(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        source: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetProjectTokenResponse {
+    public static func getProjectToken(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, source: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectTokenResponse {
         try validateLength("idOrName", idOrName, max: 150)
 
-        if let source {
+        if let source = source {
             try validateLength("source", source, max: 150)
         }
 
         let requestBody = GetProjectTokenRequestBody(source: source)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/token"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "getProjectToken",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/token"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "getProjectToken", options: requestOptions)).data
     }
 }

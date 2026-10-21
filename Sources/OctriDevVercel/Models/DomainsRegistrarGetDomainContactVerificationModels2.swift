@@ -3,13 +3,14 @@
 
 import Foundation
 
-/// DomainsRegistrarGet domain models
+// DomainsRegistrarGet domain models
 public indirect enum GetDomainContactVerificationResponse {
     case contactVerified(ContactVerified)
     case contactPendingVerification(ContactPendingVerification)
 }
 
 extension GetDomainContactVerificationResponse: Codable {
+
     private enum CodingKeys: String, CodingKey {
         case discriminator = "verified"
     }
@@ -17,29 +18,21 @@ extension GetDomainContactVerificationResponse: Codable {
     public init(from decoder: Decoder) throws {
         let tagged = try decoder.container(keyedBy: CodingKeys.self)
         let discriminator = try tagged.decode(Bool.self, forKey: .discriminator).description
-        if let value = try Self.decodeGroup1(discriminator, from: decoder) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            forKey: .discriminator,
-            in: tagged,
-            debugDescription: "Unknown discriminator for GetDomainContactVerificationResponse"
-        )
+        if let value = try Self.decodeGroup1(discriminator, from: decoder) { self = value; return }
+        throw DecodingError.dataCorruptedError(forKey: .discriminator, in: tagged, debugDescription: "Unknown discriminator for GetDomainContactVerificationResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetDomainContactVerificationResponse {
     static func decodeGroup1(_ discriminator: String, from decoder: Decoder) throws -> Self? {
         switch discriminator {
-        case "true": try .contactVerified(ContactVerified(from: decoder))
-        case "false": try .contactPendingVerification(ContactPendingVerification(from: decoder))
-        default: nil
+        case "true": return .contactVerified(try ContactVerified(from: decoder))
+        case "false": return .contactPendingVerification(try ContactPendingVerification(from: decoder))
+        default: return nil
         }
     }
 }

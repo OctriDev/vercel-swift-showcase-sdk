@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// ProjectsGet domain models
+// ProjectsGet domain models
 public enum GetProjectsResponseEnvItemContentHintVariant8Type: String, CaseIterable, Codable {
     case postgresUrlNonPooling = "postgres-url-non-pooling"
     public init(from decoder: Decoder) throws {

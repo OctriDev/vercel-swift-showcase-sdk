@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Integrations domain models
+// Integrations domain models
 public indirect enum CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation {
     case createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(
         CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286
@@ -12,21 +12,15 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreCapabilitiesSecret
 }
 
 extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -35,11 +29,9 @@ extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation {
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286.self
         ) {
-            return .createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(value)
+            return             .createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(value)
         }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
         return nil
     }
 }
@@ -48,8 +40,7 @@ extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(value): try container
-            .encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(value): try container.encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         }
     }
@@ -63,21 +54,15 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreProductCapabilitie
 }
 
 extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c1908a: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c1908a"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c1908a")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -86,11 +71,9 @@ extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c190
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6.self
         ) {
-            return .createIntegrationStoreDirectResponseStoreProductCapabilitiesSx98f9e6b8a6(value)
+            return             .createIntegrationStoreDirectResponseStoreProductCapabilitiesSx98f9e6b8a6(value)
         }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
         return nil
     }
 }
@@ -99,8 +82,7 @@ extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c190
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreProductCapabilitiesSx98f9e6b8a6(value): try container
-            .encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreProductCapabilitiesSx98f9e6b8a6(value): try container.encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         }
     }
@@ -114,21 +96,15 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreProductIntegration
 }
 
 extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053ec: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053ec"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053ec")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -137,11 +113,9 @@ extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488.self
         ) {
-            return .createIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488(value)
+            return             .createIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488(value)
         }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
         return nil
     }
 }
@@ -150,8 +124,7 @@ extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488(value): try container
-            .encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488(value): try container.encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         }
     }
@@ -166,28 +139,22 @@ public struct CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5
         case customRotationWarning
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286 {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.maxDelayHours) else {
-            throw SdkValidationError(
-                field: "maxDelayHours",
-                code: "required",
-                message: "Validation failed for 'maxDelayHours': value is required"
-            )
+            throw SdkValidationError(field: "maxDelayHours", code: "required", message: "Validation failed for 'maxDelayHours': value is required")
         }
-        maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
-        customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
+        self.maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
+        self.customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286 {
-    init(maxDelayHours: Double, customRotationWarning: String? = nil) {
+extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286 {
+    public init(maxDelayHours: Double, customRotationWarning: String? = nil) {
         (self.maxDelayHours, self.customRotationWarning) = (maxDelayHours, customRotationWarning)
     }
 }
@@ -201,28 +168,22 @@ public struct CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b0
         case customRotationWarning
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488 {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.maxDelayHours) else {
-            throw SdkValidationError(
-                field: "maxDelayHours",
-                code: "required",
-                message: "Validation failed for 'maxDelayHours': value is required"
-            )
+            throw SdkValidationError(field: "maxDelayHours", code: "required", message: "Validation failed for 'maxDelayHours': value is required")
         }
-        maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
-        customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
+        self.maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
+        self.customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488 {
-    init(maxDelayHours: Double, customRotationWarning: String? = nil) {
+extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488 {
+    public init(maxDelayHours: Double, customRotationWarning: String? = nil) {
         (self.maxDelayHours, self.customRotationWarning) = (maxDelayHours, customRotationWarning)
     }
 }
@@ -236,28 +197,22 @@ public struct CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9
         case customRotationWarning
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6 {
-    init(from decoder: Decoder) throws {
+extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.maxDelayHours) else {
-            throw SdkValidationError(
-                field: "maxDelayHours",
-                code: "required",
-                message: "Validation failed for 'maxDelayHours': value is required"
-            )
+            throw SdkValidationError(field: "maxDelayHours", code: "required", message: "Validation failed for 'maxDelayHours': value is required")
         }
-        maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
-        customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
+        self.maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
+        self.customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
     }
 }
 
-public extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6 {
-    init(maxDelayHours: Double, customRotationWarning: String? = nil) {
+extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6 {
+    public init(maxDelayHours: Double, customRotationWarning: String? = nil) {
         (self.maxDelayHours, self.customRotationWarning) = (maxDelayHours, customRotationWarning)
     }
 }

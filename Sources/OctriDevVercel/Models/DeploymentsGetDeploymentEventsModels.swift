@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Deployments domain models
+// Deployments domain models
 public indirect enum GetDeploymentEventsResponseItem {
     case getDeploymentEventsResponseItemVariant0(GetDeploymentEventsResponseItemVariant0)
     case getDeploymentEventsResponseItemVariant1(GetDeploymentEventsResponseItemVariant1)
@@ -13,59 +13,36 @@ public indirect enum GetDeploymentEventsResponseItem {
 }
 
 extension GetDeploymentEventsResponseItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetDeploymentEventsResponseItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDeploymentEventsResponseItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetDeploymentEventsResponseItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .getDeploymentEventsResponseItemVariant0(value)
         }
-        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .getDeploymentEventsResponseItemVariant1(value)
         }
-        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .getDeploymentEventsResponseItemVariant2(value)
         }
-        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant3.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant3.self), sdkKeepsEveryKey(value, of: raw) {
             return .getDeploymentEventsResponseItemVariant3(value)
         }
-        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant4.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetDeploymentEventsResponseItemVariant4.self), sdkKeepsEveryKey(value, of: raw) {
             return .getDeploymentEventsResponseItemVariant4(value)
         }
         return nil
@@ -77,27 +54,27 @@ extension GetDeploymentEventsResponseItem {
         if let value = try? container.decode(
             GetDeploymentEventsResponseItemVariant0.self
         ) {
-            return .getDeploymentEventsResponseItemVariant0(value)
+            return             .getDeploymentEventsResponseItemVariant0(value)
         }
         if let value = try? container.decode(
             GetDeploymentEventsResponseItemVariant1.self
         ) {
-            return .getDeploymentEventsResponseItemVariant1(value)
+            return             .getDeploymentEventsResponseItemVariant1(value)
         }
         if let value = try? container.decode(
             GetDeploymentEventsResponseItemVariant2.self
         ) {
-            return .getDeploymentEventsResponseItemVariant2(value)
+            return             .getDeploymentEventsResponseItemVariant2(value)
         }
         if let value = try? container.decode(
             GetDeploymentEventsResponseItemVariant3.self
         ) {
-            return .getDeploymentEventsResponseItemVariant3(value)
+            return             .getDeploymentEventsResponseItemVariant3(value)
         }
         if let value = try? container.decode(
             GetDeploymentEventsResponseItemVariant4.self
         ) {
-            return .getDeploymentEventsResponseItemVariant4(value)
+            return             .getDeploymentEventsResponseItemVariant4(value)
         }
         return nil
     }
@@ -135,48 +112,30 @@ public struct GetDeploymentEventsResponseItemVariant0PayloadInfo: Codable {
         case step
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentEventsResponseItemVariant0PayloadInfo {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentEventsResponseItemVariant0PayloadInfo {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        name = try container.sdkDecodeRequired(.name)
-        type = try container.sdkDecodeRequired(.type)
-        entrypoint = try container.sdkDecodeIfPresent(.entrypoint)
-        path = try container.sdkDecodeIfPresent(.path)
-        readyState = try container.sdkDecodeIfPresent(.readyState)
-        serviceName = try container.sdkDecodeIfPresent(.serviceName)
-        step = try container.sdkDecodeIfPresent(.step)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.entrypoint = try container.sdkDecodeIfPresent(.entrypoint)
+        self.path = try container.sdkDecodeIfPresent(.path)
+        self.readyState = try container.sdkDecodeIfPresent(.readyState)
+        self.serviceName = try container.sdkDecodeIfPresent(.serviceName)
+        self.step = try container.sdkDecodeIfPresent(.step)
     }
 }
 
-public extension GetDeploymentEventsResponseItemVariant0PayloadInfo {
-    init(
-        name: String,
-        type: String,
-        entrypoint: String? = nil,
-        path: String? = nil,
-        readyState: String? = nil,
-        serviceName: String? = nil,
-        step: String? = nil
-    ) {
+extension GetDeploymentEventsResponseItemVariant0PayloadInfo {
+    public init(name: String, type: String, entrypoint: String? = nil, path: String? = nil, readyState: String? = nil, serviceName: String? = nil, step: String? = nil) {
         (self.name, self.type) = (name, type)
         (self.entrypoint, self.path) = (entrypoint, path)
         (self.readyState, self.serviceName) = (readyState, serviceName)
@@ -193,35 +152,25 @@ public struct GetDeploymentEventsResponseItemVariant4AliasError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentEventsResponseItemVariant4AliasError {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentEventsResponseItemVariant4AliasError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension GetDeploymentEventsResponseItemVariant4AliasError {
-    init(code: String, message: String) {
+extension GetDeploymentEventsResponseItemVariant4AliasError {
+    public init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -251,68 +200,39 @@ public struct GetDeploymentEventsResponseItemVariant0Payload: Codable {
         case text
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentEventsResponseItemVariant0Payload {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentEventsResponseItemVariant0Payload {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.date) else {
-            throw SdkValidationError(
-                field: "date",
-                code: "required",
-                message: "Validation failed for 'date': value is required"
-            )
+            throw SdkValidationError(field: "date", code: "required", message: "Validation failed for 'date': value is required")
         }
         guard container.contains(.deploymentId) else {
-            throw SdkValidationError(
-                field: "deploymentId",
-                code: "required",
-                message: "Validation failed for 'deploymentId': value is required"
-            )
+            throw SdkValidationError(field: "deploymentId", code: "required", message: "Validation failed for 'deploymentId': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.serial) else {
-            throw SdkValidationError(
-                field: "serial",
-                code: "required",
-                message: "Validation failed for 'serial': value is required"
-            )
+            throw SdkValidationError(field: "serial", code: "required", message: "Validation failed for 'serial': value is required")
         }
-        date = try container.sdkDecodeRequired(.date)
-        deploymentId = try container.sdkDecodeRequired(.deploymentId)
-        id = try container.sdkDecodeRequired(.id)
-        serial = try container.sdkDecodeRequired(.serial)
-        created = try container.sdkDecodeIfPresent(.created)
-        info = try container.sdkDecodeIfPresent(.info)
-        proxy = try container.sdkDecodeIfPresent(.proxy)
-        requestId = try container.sdkDecodeIfPresent(.requestId)
-        statusCode = try container.sdkDecodeIfPresent(.statusCode)
-        text = try container.sdkDecodeIfPresent(.text)
+        self.date = try container.sdkDecodeRequired(.date)
+        self.deploymentId = try container.sdkDecodeRequired(.deploymentId)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.serial = try container.sdkDecodeRequired(.serial)
+        self.created = try container.sdkDecodeIfPresent(.created)
+        self.info = try container.sdkDecodeIfPresent(.info)
+        self.proxy = try container.sdkDecodeIfPresent(.proxy)
+        self.requestId = try container.sdkDecodeIfPresent(.requestId)
+        self.statusCode = try container.sdkDecodeIfPresent(.statusCode)
+        self.text = try container.sdkDecodeIfPresent(.text)
     }
 }
 
-public extension GetDeploymentEventsResponseItemVariant0Payload {
-    init(
-        date: Double,
-        deploymentId: String,
-        id: String,
-        serial: String,
-        created: Double? = nil,
-        info: GetDeploymentEventsResponseItemVariant0PayloadInfo? = nil,
-        proxy: GetDeploymentEventsResponseItemVariant0PayloadProxy? = nil,
-        requestId: String? = nil,
-        statusCode: Double? = nil,
-        text: String? = nil
-    ) {
+extension GetDeploymentEventsResponseItemVariant0Payload {
+    public init(date: Double, deploymentId: String, id: String, serial: String, created: Double? = nil, info: GetDeploymentEventsResponseItemVariant0PayloadInfo? = nil, proxy: GetDeploymentEventsResponseItemVariant0PayloadProxy? = nil, requestId: String? = nil, statusCode: Double? = nil, text: String? = nil) {
         (self.date, self.deploymentId) = (date, deploymentId)
         (self.id, self.serial) = (id, serial)
         (self.created, self.info) = (created, info)
@@ -344,87 +264,47 @@ public struct GetDeploymentEventsResponseItemVariant3: Codable {
         case text
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentEventsResponseItemVariant3 {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentEventsResponseItemVariant3 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.created) else {
-            throw SdkValidationError(
-                field: "created",
-                code: "required",
-                message: "Validation failed for 'created': value is required"
-            )
+            throw SdkValidationError(field: "created", code: "required", message: "Validation failed for 'created': value is required")
         }
         guard container.contains(.date) else {
-            throw SdkValidationError(
-                field: "date",
-                code: "required",
-                message: "Validation failed for 'date': value is required"
-            )
+            throw SdkValidationError(field: "date", code: "required", message: "Validation failed for 'date': value is required")
         }
         guard container.contains(.deploymentId) else {
-            throw SdkValidationError(
-                field: "deploymentId",
-                code: "required",
-                message: "Validation failed for 'deploymentId': value is required"
-            )
+            throw SdkValidationError(field: "deploymentId", code: "required", message: "Validation failed for 'deploymentId': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.info) else {
-            throw SdkValidationError(
-                field: "info",
-                code: "required",
-                message: "Validation failed for 'info': value is required"
-            )
+            throw SdkValidationError(field: "info", code: "required", message: "Validation failed for 'info': value is required")
         }
         guard container.contains(.serial) else {
-            throw SdkValidationError(
-                field: "serial",
-                code: "required",
-                message: "Validation failed for 'serial': value is required"
-            )
+            throw SdkValidationError(field: "serial", code: "required", message: "Validation failed for 'serial': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        created = try container.sdkDecodeRequired(.created)
-        date = try container.sdkDecodeRequired(.date)
-        deploymentId = try container.sdkDecodeRequired(.deploymentId)
-        id = try container.sdkDecodeRequired(.id)
-        info = try container.sdkDecodeRequired(.info)
-        serial = try container.sdkDecodeRequired(.serial)
-        type = try container.sdkDecodeRequired(.type)
-        level = try container.sdkDecodeIfPresent(.level)
-        text = try container.sdkDecodeIfPresent(.text)
+        self.created = try container.sdkDecodeRequired(.created)
+        self.date = try container.sdkDecodeRequired(.date)
+        self.deploymentId = try container.sdkDecodeRequired(.deploymentId)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.info = try container.sdkDecodeRequired(.info)
+        self.serial = try container.sdkDecodeRequired(.serial)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.level = try container.sdkDecodeIfPresent(.level)
+        self.text = try container.sdkDecodeIfPresent(.text)
     }
 }
 
-public extension GetDeploymentEventsResponseItemVariant3 {
-    init(
-        created: Double,
-        date: Double,
-        deploymentId: String,
-        id: String,
-        info: GetDeploymentEventsResponseItemVariant3Info,
-        serial: String,
-        type: GetDeploymentEventsResponseItemVariant3Type,
-        level: GetDeploymentEventsResponseItemVariant3Level? = nil,
-        text: String? = nil
-    ) {
+extension GetDeploymentEventsResponseItemVariant3 {
+    public init(created: Double, date: Double, deploymentId: String, id: String, info: GetDeploymentEventsResponseItemVariant3Info, serial: String, type: GetDeploymentEventsResponseItemVariant3Type, level: GetDeploymentEventsResponseItemVariant3Level? = nil, text: String? = nil) {
         (self.created, self.date) = (created, date)
         (self.deploymentId, self.id) = (deploymentId, id)
         (self.info, self.serial) = (info, serial)
@@ -458,68 +338,39 @@ public struct GetDeploymentEventsResponseItemVariant2Payload: Codable {
         case text
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentEventsResponseItemVariant2Payload {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentEventsResponseItemVariant2Payload {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.date) else {
-            throw SdkValidationError(
-                field: "date",
-                code: "required",
-                message: "Validation failed for 'date': value is required"
-            )
+            throw SdkValidationError(field: "date", code: "required", message: "Validation failed for 'date': value is required")
         }
         guard container.contains(.deploymentId) else {
-            throw SdkValidationError(
-                field: "deploymentId",
-                code: "required",
-                message: "Validation failed for 'deploymentId': value is required"
-            )
+            throw SdkValidationError(field: "deploymentId", code: "required", message: "Validation failed for 'deploymentId': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.serial) else {
-            throw SdkValidationError(
-                field: "serial",
-                code: "required",
-                message: "Validation failed for 'serial': value is required"
-            )
+            throw SdkValidationError(field: "serial", code: "required", message: "Validation failed for 'serial': value is required")
         }
-        date = try container.sdkDecodeRequired(.date)
-        deploymentId = try container.sdkDecodeRequired(.deploymentId)
-        id = try container.sdkDecodeRequired(.id)
-        serial = try container.sdkDecodeRequired(.serial)
-        created = try container.sdkDecodeIfPresent(.created)
-        info = try container.sdkDecodeIfPresent(.info)
-        proxy = try container.sdkDecodeIfPresent(.proxy)
-        requestId = try container.sdkDecodeIfPresent(.requestId)
-        statusCode = try container.sdkDecodeIfPresent(.statusCode)
-        text = try container.sdkDecodeIfPresent(.text)
+        self.date = try container.sdkDecodeRequired(.date)
+        self.deploymentId = try container.sdkDecodeRequired(.deploymentId)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.serial = try container.sdkDecodeRequired(.serial)
+        self.created = try container.sdkDecodeIfPresent(.created)
+        self.info = try container.sdkDecodeIfPresent(.info)
+        self.proxy = try container.sdkDecodeIfPresent(.proxy)
+        self.requestId = try container.sdkDecodeIfPresent(.requestId)
+        self.statusCode = try container.sdkDecodeIfPresent(.statusCode)
+        self.text = try container.sdkDecodeIfPresent(.text)
     }
 }
 
-public extension GetDeploymentEventsResponseItemVariant2Payload {
-    init(
-        date: Double,
-        deploymentId: String,
-        id: String,
-        serial: String,
-        created: Double? = nil,
-        info: GetDeploymentEventsResponseItemVariant2PayloadInfo? = nil,
-        proxy: GetDeploymentEventsResponseItemVariant2PayloadProxy? = nil,
-        requestId: String? = nil,
-        statusCode: Double? = nil,
-        text: String? = nil
-    ) {
+extension GetDeploymentEventsResponseItemVariant2Payload {
+    public init(date: Double, deploymentId: String, id: String, serial: String, created: Double? = nil, info: GetDeploymentEventsResponseItemVariant2PayloadInfo? = nil, proxy: GetDeploymentEventsResponseItemVariant2PayloadProxy? = nil, requestId: String? = nil, statusCode: Double? = nil, text: String? = nil) {
         (self.date, self.deploymentId) = (date, deploymentId)
         (self.id, self.serial) = (id, serial)
         (self.created, self.info) = (created, info)
@@ -541,37 +392,27 @@ public struct GetDeploymentEventsResponseItemVariant4AliasWarning: Codable {
         case link
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentEventsResponseItemVariant4AliasWarning {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentEventsResponseItemVariant4AliasWarning {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
-        action = try container.sdkDecodeIfPresent(.action)
-        link = try container.sdkDecodeIfPresent(.link)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
+        self.action = try container.sdkDecodeIfPresent(.action)
+        self.link = try container.sdkDecodeIfPresent(.link)
     }
 }
 
-public extension GetDeploymentEventsResponseItemVariant4AliasWarning {
-    init(code: String, message: String, action: String? = nil, link: String? = nil) {
+extension GetDeploymentEventsResponseItemVariant4AliasWarning {
+    public init(code: String, message: String, action: String? = nil, link: String? = nil) {
         (self.code, self.message) = (code, message)
         (self.action, self.link) = (action, link)
     }
@@ -596,34 +437,24 @@ public struct GetDeploymentEventsResponseItemVariant1Info: Codable {
         case step
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDeploymentEventsResponseItemVariant1Info {
-    init(from decoder: Decoder) throws {
+extension GetDeploymentEventsResponseItemVariant1Info {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        name = try container.sdkDecodeRequired(.name)
-        type = try container.sdkDecodeRequired(.type)
-        entrypoint = try container.sdkDecodeIfPresent(.entrypoint)
-        path = try container.sdkDecodeIfPresent(.path)
-        readyState = try container.sdkDecodeIfPresent(.readyState)
-        serviceName = try container.sdkDecodeIfPresent(.serviceName)
-        step = try container.sdkDecodeIfPresent(.step)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.entrypoint = try container.sdkDecodeIfPresent(.entrypoint)
+        self.path = try container.sdkDecodeIfPresent(.path)
+        self.readyState = try container.sdkDecodeIfPresent(.readyState)
+        self.serviceName = try container.sdkDecodeIfPresent(.serviceName)
+        self.step = try container.sdkDecodeIfPresent(.step)
     }
 }

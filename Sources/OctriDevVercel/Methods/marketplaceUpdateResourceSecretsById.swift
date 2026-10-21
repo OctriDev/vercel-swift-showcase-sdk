@@ -6,82 +6,32 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension MarketplaceMethods {
-    /// Replaces the secrets for a resource connected to an installation. Existing connected projects may continue using
-    /// old secrets because they are not redeployed automatically, while new project connections use the updated
-    /// secrets. Set `partial` to `true` to overwrite only the supplied secrets rather than replacing all secrets.
+extension MarketplaceMethods {
+    /// Replaces the secrets for a resource connected to an installation. Existing connected projects may continue using old secrets because they are not redeployed automatically, while new project connections use the updated secrets. Set `partial` to `true` to overwrite only the supplied secrets rather than replacing all secrets.
     ///
-    /// This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are
-    /// updated with the new secrets. The old secrets may still be used by existing connected projects because they are
-    /// not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project
-    /// connections will use the new secrets. Use cases for this endpoint: - Resetting the credentials of a database in
-    /// the partner. If the user requests the credentials to be updated in the partner’s application, the partner post
-    /// the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.
+    /// This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets. Use cases for this endpoint: - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.
     ///
     /// - Parameters:
     /// - partial: If true, will only overwrite the provided secrets instead of
     ///   replacing all secrets.
-    static func updateResourceSecretsById(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        resourceId: String,
-        secrets: [UpdateResourceSecretsByIdRequestBodySecretsItem],
-        partial: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func updateResourceSecretsById(config: ClientConfig, integrationConfigurationId: String, resourceId: String, secrets: [UpdateResourceSecretsByIdRequestBodySecretsItem], partial: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         let requestBody = UpdateResourceSecretsByIdRequestBody(secrets: secrets, partial: partial)
 
-        return try await (sdkRequest(
-            "PUT",
-            [
-                "/v1/installations/",
-                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
-                "/resources/",
-                sdkEncodePathSegment(sdkWireString(resourceId)),
-                "/secrets",
-            ].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .empty,
-            operationId: "updateResourceSecretsById",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PUT", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(resourceId)), "/secrets"].joined(), config: config, body: requestBody, decoder: .empty, operationId: "updateResourceSecretsById", options: requestOptions)).data
     }
 
-    /// Creates one or more experimentation items for an integration resource. Supply an `items` array whose entries
-    /// identify each item with `id`, `slug`, and `origin`; each item can also include category and descriptive
-    /// metadata.
+    /// Creates one or more experimentation items for an integration resource. Supply an `items` array whose entries identify each item with `id`, `slug`, and `origin`; each item can also include category and descriptive metadata.
     ///
     /// Create one or multiple experimentation items
-    static func createInstallationsByIntegrationConfigurationIdResourcesByResXbbc2de5410(
-        config: ClientConfig,
-        integrationConfigurationId: String,
-        resourceId: String,
-        items: CreateInstallationsByIntegrationConfigurationIdResourcesByResX289ad42237,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func createInstallationsByIntegrationConfigurationIdResourcesByResXbbc2de5410(config: ClientConfig, integrationConfigurationId: String, resourceId: String, items: CreateInstallationsByIntegrationConfigurationIdResourcesByResX289ad42237, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         try validateItems("items", items, max: 50)
 
         let requestBody = CreateInstallationsByIntegrationConfigurationIdResourcesByResX3878d01814(items: items)
 
-        return try await (sdkRequest(
-            "POST",
-            [
-                "/v1/installations/",
-                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
-                "/resources/",
-                sdkEncodePathSegment(sdkWireString(resourceId)),
-                "/experimentation/items",
-            ].joined(),
-            config: config,
-            body: requestBody,
-            decoder: .empty,
-            operationId: """
-            createInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentat\
-            ionItems
-            """,
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(resourceId)), "/experimentation/items"].joined(), config: config, body: requestBody, decoder: .empty, operationId: """
+    createInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentat\
+    ionItems
+    """, options: requestOptions)).data
     }
 
     private struct CreateInstallationsByIntegrationConfigurationIdResourcesByResX3878d01814: Encodable {
@@ -89,7 +39,7 @@ public extension MarketplaceMethods {
 
         func encode(to encoder: Encoder) throws {
             var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-            try keyedContainer.encode(items, forKey: SdkCodingKey("items"))
+            try keyedContainer.encode(self.items, forKey: SdkCodingKey("items"))
         }
     }
 }

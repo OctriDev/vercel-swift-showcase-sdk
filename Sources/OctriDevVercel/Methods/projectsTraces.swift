@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    /// Retrieves the OpenTelemetry trace associated with a Vercel CLI request. Provide the project identifier and
-    /// request identifier to locate the trace. The response includes the trace spans and identifier, and may include
-    /// resource data and a root span identifier.
+extension ProjectsMethods {
+    /// Retrieves the OpenTelemetry trace associated with a Vercel CLI request. Provide the project identifier and request identifier to locate the trace. The response includes the trace spans and identifier, and may include resource data and a root span identifier.
     ///
     /// Returns the OTEL trace for a given Vercel CLI request.
     ///
@@ -18,19 +16,12 @@ public extension ProjectsMethods {
     /// - requestId: The Vercel CLI request ID associated with the trace
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getProjectTrace(
-        config: ClientConfig,
-        projectId: String,
-        requestId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetProjectTraceResponse {
+    public static func getProjectTrace(config: ClientConfig, projectId: String, requestId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectTraceResponse {
         try validateLength("projectId", projectId, max: 150)
 
         try validateLength("requestId", requestId, max: 256)
 
-        return try await (sdkRequest("GET", "/v1/projects/traces", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/projects/traces", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("requestId", value: requestId),
             SdkQueryParameter("teamId", value: teamId),
@@ -38,29 +29,19 @@ public extension ProjectsMethods {
         ], decoder: .json, operationId: "getProjectTrace", options: requestOptions)).data
     }
 
-    /// Creates a short-lived HS256 JWT scoped to a deployment hostname. Supply the project identifier and deployment
-    /// hostname in the request body to define the token scope. The Vercel CLI presents the token to the proxy with
-    /// requests it wants traced.
+    /// Creates a short-lived HS256 JWT scoped to a deployment hostname. Supply the project identifier and deployment hostname in the request body to define the token scope. The Vercel CLI presents the token to the proxy with requests it wants traced.
     ///
-    /// Mints a short-lived HS256 JWT scoped to a deployment hostname. The Vercel CLI presents this JWT to the Vercel
-    /// proxy on requests it wants traced.
+    /// Mints a short-lived HS256 JWT scoped to a deployment hostname. The Vercel CLI presents this JWT to the Vercel proxy on requests it wants traced.
     ///
     /// - Parameters:
     /// - projectId: The project ID the deployment belongs to.
     /// - hostname: The deployment hostname to scope the trace session to.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func createTraceSession(
-        config: ClientConfig,
-        projectId: String,
-        hostname: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateTraceSessionResponse {
+    public static func createTraceSession(config: ClientConfig, projectId: String, hostname: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateTraceSessionResponse {
         let requestBody = CreateTraceSessionRequestBody(projectId: projectId, hostname: hostname)
 
-        return try await (sdkRequest("POST", "/v1/projects/traces/session", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/projects/traces/session", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createTraceSession", options: requestOptions)).data

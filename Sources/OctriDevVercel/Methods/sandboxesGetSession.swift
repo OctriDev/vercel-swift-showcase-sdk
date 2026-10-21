@@ -6,67 +6,34 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    /// Retrieves details for a specific sandbox session, including its status, resource configuration, and exposed
-    /// routes. Use `sessionId` to identify the session to inspect. The response includes the session object and its
-    /// routes.
+extension SandboxesMethods {
+    /// Retrieves details for a specific sandbox session, including its status, resource configuration, and exposed routes. Use `sessionId` to identify the session to inspect. The response includes the session object and its routes.
     ///
-    /// Retrieves detailed information about a specific session, including its current status, resource configuration,
-    /// and exposed routes.
+    /// Retrieves detailed information about a specific session, including its current status, resource configuration, and exposed routes.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session to retrieve.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getSession(
-        config: ClientConfig,
-        sessionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetSessionResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getSession",
-            options: requestOptions
-        )).data
+    public static func getSession(config: ClientConfig, sessionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetSessionResponse {
+        return try (await sdkRequest("GET", ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getSession", options: requestOptions)).data
     }
 
-    /// Lists commands executed in a session, including their current status, exit codes, and execution times. Use
-    /// `sessionId` to select the session; results are ordered from most recent to oldest.
+    /// Lists commands executed in a session, including their current status, exit codes, and execution times. Use `sessionId` to select the session; results are ordered from most recent to oldest.
     ///
-    /// Retrieves a list of all commands that have been executed in a session, including their current status, exit
-    /// codes, and execution times, ordered from the most recent to the oldest.
+    /// Retrieves a list of all commands that have been executed in a session, including their current status, exit codes, and execution times, ordered from the most recent to the oldest.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session to list commands for.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listSessionCommands(
-        config: ClientConfig,
-        sessionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListSessionCommandsResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/cmd"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listSessionCommands",
-            options: requestOptions
-        )).data
+    public static func listSessionCommands(config: ClientConfig, sessionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListSessionCommandsResponse {
+        return try (await sdkRequest("GET", ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/cmd"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listSessionCommands", options: requestOptions)).data
     }
 }

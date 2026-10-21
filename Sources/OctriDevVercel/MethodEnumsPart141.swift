@@ -6,19 +6,15 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct GetFirewallConfigResponseRulesetsVariant0ItemActionMitigateLoX68d972b0ef: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetFirewallConfigResponseRulesetsVariant0ItemActionMitigateLoX68d972b0ef: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let unknown = GetFirewallConfigResponseRulesetsVariant0ItemActionMitigateLoX68d972b0ef(rawValue: "*")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -27,20 +23,15 @@ public struct GetFirewallConfigResponseRulesetsVariant0ItemActionMitigateLoX68d9
     }
 }
 
-public struct DeleteProjectAvatarResponseTrustedSourcesProjectsValueCustomAXf387136339: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct DeleteProjectAvatarResponseTrustedSourcesProjectsValueCustomAXf387136339: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let allCustom =
-        DeleteProjectAvatarResponseTrustedSourcesProjectsValueCustomAXf387136339(rawValue: "all-custom")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let allCustom = DeleteProjectAvatarResponseTrustedSourcesProjectsValueCustomAXf387136339(rawValue: "all-custom")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -67,14 +58,10 @@ public enum ListVercelCiInvocationsResponseInvocationsItemCompletedConcluX906b21
 }
 
 /// Framework slug, when the service has one (omitted otherwise).
-public struct UpdateProjectResponseServicesItemFramework: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateProjectResponseServicesItemFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let actixWeb = UpdateProjectResponseServicesItemFramework(rawValue: "actix-web")
     public static let angular = UpdateProjectResponseServicesItemFramework(rawValue: "angular")
     public static let ash = UpdateProjectResponseServicesItemFramework(rawValue: "ash")
@@ -141,8 +128,7 @@ public struct UpdateProjectResponseServicesItemFramework: RawRepresentable, Hash
     public static let sveltekit = UpdateProjectResponseServicesItemFramework(rawValue: "sveltekit")
     public static let sveltekit1 = UpdateProjectResponseServicesItemFramework(rawValue: "sveltekit-1")
     public static let tanstackStart = UpdateProjectResponseServicesItemFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable =
-        UpdateProjectResponseServicesItemFramework(rawValue: "tanstack-start-lovable")
+    public static let tanstackStartLovable = UpdateProjectResponseServicesItemFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = UpdateProjectResponseServicesItemFramework(rawValue: "umijs")
     public static let vite = UpdateProjectResponseServicesItemFramework(rawValue: "vite")
     public static let vitepress = UpdateProjectResponseServicesItemFramework(rawValue: "vitepress")
@@ -153,7 +139,7 @@ public struct UpdateProjectResponseServicesItemFramework: RawRepresentable, Hash
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -165,23 +151,17 @@ public struct UpdateProjectResponseServicesItemFramework: RawRepresentable, Hash
 /// When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the
 /// setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from
 /// project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
-public struct CancelDeploymentResponseConfigResourceConfigElasticConcurrency: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CancelDeploymentResponseConfigResourceConfigElasticConcurrency: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let projectSetting =
-        CancelDeploymentResponseConfigResourceConfigElasticConcurrency(rawValue: "PROJECT_SETTING")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let projectSetting = CancelDeploymentResponseConfigResourceConfigElasticConcurrency(rawValue: "PROJECT_SETTING")
     public static let skipQueue = CancelDeploymentResponseConfigResourceConfigElasticConcurrency(rawValue: "SKIP_QUEUE")
-    public static let teamSetting =
-        CancelDeploymentResponseConfigResourceConfigElasticConcurrency(rawValue: "TEAM_SETTING")
+    public static let teamSetting = CancelDeploymentResponseConfigResourceConfigElasticConcurrency(rawValue: "TEAM_SETTING")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -190,20 +170,16 @@ public struct CancelDeploymentResponseConfigResourceConfigElasticConcurrency: Ra
     }
 }
 
-public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsXssAction: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsXssAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let deny = CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsXssAction(rawValue: "deny")
     public static let log = CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsXssAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -212,23 +188,17 @@ public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsXssA
     }
 }
 
-public struct GenerateRouteResponseRouteActionsItemSubType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GenerateRouteResponseRouteActionsItemSubType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let responseHeaders = GenerateRouteResponseRouteActionsItemSubType(rawValue: "response-headers")
-    public static let transformRequestHeader =
-        GenerateRouteResponseRouteActionsItemSubType(rawValue: "transform-request-header")
-    public static let transformRequestQuery =
-        GenerateRouteResponseRouteActionsItemSubType(rawValue: "transform-request-query")
+    public static let transformRequestHeader = GenerateRouteResponseRouteActionsItemSubType(rawValue: "transform-request-header")
+    public static let transformRequestQuery = GenerateRouteResponseRouteActionsItemSubType(rawValue: "transform-request-query")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

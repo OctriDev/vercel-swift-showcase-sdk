@@ -3,15 +3,11 @@
 
 import Foundation
 
-/// Connect domain models
+// Connect domain models
 extension ConnectEnvironment {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue1(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue1(value) }
         return nil
     }
 }
@@ -43,51 +39,33 @@ public struct ConnectConnectorUpdatedByVariant1: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorUpdatedByVariant1 {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdatedByVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.environment) else {
-            throw SdkValidationError(
-                field: "environment",
-                code: "required",
-                message: "Validation failed for 'environment': value is required"
-            )
+            throw SdkValidationError(field: "environment", code: "required", message: "Validation failed for 'environment': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        environment = try container.sdkDecodeRequired(.environment)
-        id = try container.sdkDecodeRequired(.id)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum("type", type, ConnectConnectorUpdatedByVariant1Type.allCases.map(\.rawValue))
+        self.environment = try container.sdkDecodeRequired(.environment)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, ConnectConnectorUpdatedByVariant1Type.allCases.map(\.rawValue))
     }
 }
 
-public extension ConnectConnectorUpdatedByVariant1 {
-    init(
-        environment: ConnectConnectorUpdatedByVariant1Environment,
-        id: String,
-        type: ConnectConnectorUpdatedByVariant1Type
-    ) throws {
+extension ConnectConnectorUpdatedByVariant1 {
+    public init(environment: ConnectConnectorUpdatedByVariant1Environment, id: String, type: ConnectConnectorUpdatedByVariant1Type) throws {
         (self.environment, self.id) = (environment, id)
         self.type = type
-        try sdkValidateRawEnum("type", self.type, ConnectConnectorUpdatedByVariant1Type.allCases.map(\.rawValue))
+            try sdkValidateRawEnum("type", self.type, ConnectConnectorUpdatedByVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -100,27 +78,21 @@ public struct ConnectConnectorUpdateDataVariant0RefreshTokens: Codable {
         case enabled
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorUpdateDataVariant0RefreshTokens {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataVariant0RefreshTokens {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
     }
 }
 
-public extension ConnectConnectorUpdateDataVariant0RefreshTokens {
-    init(enabled: Bool) {
+extension ConnectConnectorUpdateDataVariant0RefreshTokens {
+    public init(enabled: Bool) {
         self.enabled = enabled
     }
 }
@@ -139,42 +111,32 @@ public struct ConnectErrorError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectErrorError {
-    init(from decoder: Decoder) throws {
+extension ConnectErrorError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-public extension ConnectErrorError {
-    init(code: String, message: String) {
+extension ConnectErrorError {
+    public init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
 
-public extension ConnectErrorError {
-    func encode(to encoder: Encoder) throws {
+extension ConnectErrorError {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(code, forKey: .code)
@@ -194,28 +156,22 @@ public struct ConnectConnectorUpdateDataVariant0UserAuthorization: Codable {
         case scopes
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorUpdateDataVariant0UserAuthorization {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataVariant0UserAuthorization {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
-        scopes = try container.sdkDecodeIfPresent(.scopes)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.scopes = try container.sdkDecodeIfPresent(.scopes)
     }
 }
 
-public extension ConnectConnectorUpdateDataVariant0UserAuthorization {
-    init(enabled: Bool, scopes: [String]? = nil) {
+extension ConnectConnectorUpdateDataVariant0UserAuthorization {
+    public init(enabled: Bool, scopes: [String]? = nil) {
         (self.enabled, self.scopes) = (enabled, scopes)
     }
 }
@@ -229,27 +185,21 @@ public struct ConnectPagination: Codable {
         case next
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectPagination {
-    init(from decoder: Decoder) throws {
+extension ConnectPagination {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.next) else {
-            throw SdkValidationError(
-                field: "next",
-                code: "required",
-                message: "Validation failed for 'next': value is required"
-            )
+            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
         }
-        next = try container.sdkDecodeNullable(.next)
+        self.next = try container.sdkDecodeNullable(.next)
     }
 }
 
-public extension ConnectPagination {
-    init(next: String?) {
+extension ConnectPagination {
+    public init(next: String?) {
         self.next = next
     }
 }
@@ -279,57 +229,34 @@ public struct ConnectConnectorUpdateDataVariant2: Codable {
     }
 
     init() {
-        (appId, appSlug, appName, clientId, owner) = (nil, nil, nil, nil, nil)
-        extras = nil
+        (self.appId, self.appSlug, self.appName, self.clientId, self.owner) = (nil, nil, nil, nil, nil)
+        self.extras = nil
     }
 }
 
-public extension ConnectConnectorUpdateDataVariant2 {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        appId = try container.sdkDecodeIfPresent(.appId)
-        appSlug = try container.sdkDecodeIfPresent(.appSlug)
-        appName = try container.sdkDecodeIfPresent(.appName)
-        clientId = try container.sdkDecodeIfPresent(.clientId)
-        owner = try container.sdkDecodeIfPresent(.owner)
-        extras = try container.sdkDecodeIfPresent(.extras)
-        if let value = appId {
-            try validateRange(
-                "appId",
-                Double(value),
-                min: nil,
-                max: nil,
-                exclusiveMin: 0,
-                exclusiveMax: nil,
-                multipleOf: nil
-            )
+        self.appId = try container.sdkDecodeIfPresent(.appId)
+        self.appSlug = try container.sdkDecodeIfPresent(.appSlug)
+        self.appName = try container.sdkDecodeIfPresent(.appName)
+        self.clientId = try container.sdkDecodeIfPresent(.clientId)
+        self.owner = try container.sdkDecodeIfPresent(.owner)
+        self.extras = try container.sdkDecodeIfPresent(.extras)
+        if let value = self.appId {
+            try validateRange("appId", Double(value), min: nil, max: nil, exclusiveMin: 0, exclusiveMax: nil, multipleOf: nil)
         }
     }
 }
 
-public extension ConnectConnectorUpdateDataVariant2 {
-    init(
-        appId: Int? = nil,
-        appSlug: String? = nil,
-        appName: String? = nil,
-        clientId: String? = nil,
-        owner: ConnectConnectorUpdateDataVariant2Owner? = nil,
-        extras: [String: JSONValue]? = nil
-    ) throws {
+extension ConnectConnectorUpdateDataVariant2 {
+    public init(appId: Int? = nil, appSlug: String? = nil, appName: String? = nil, clientId: String? = nil, owner: ConnectConnectorUpdateDataVariant2Owner? = nil, extras: [String: JSONValue]? = nil) throws {
         self.init()
         (self.appId, self.appSlug) = (appId, appSlug)
         (self.appName, self.clientId) = (appName, clientId)
         (self.owner, self.extras) = (owner, extras)
         if let value = self.appId {
-            try validateRange(
-                "appId",
-                Double(value),
-                min: nil,
-                max: nil,
-                exclusiveMin: 0,
-                exclusiveMax: nil,
-                multipleOf: nil
-            )
+            try validateRange("appId", Double(value), min: nil, max: nil, exclusiveMin: 0, exclusiveMax: nil, multipleOf: nil)
         }
     }
 }
@@ -349,29 +276,23 @@ public struct ConnectConnectorUpdateDataVariant5SlackTeam: Codable {
         case domain
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorUpdateDataVariant5SlackTeam {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataVariant5SlackTeam {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeIfPresent(.name)
-        domain = try container.sdkDecodeIfPresent(.domain)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeIfPresent(.name)
+        self.domain = try container.sdkDecodeIfPresent(.domain)
     }
 }
 
-public extension ConnectConnectorUpdateDataVariant5SlackTeam {
-    init(id: String, name: String? = nil, domain: String? = nil) {
+extension ConnectConnectorUpdateDataVariant5SlackTeam {
+    public init(id: String, name: String? = nil, domain: String? = nil) {
         (self.id, self.name) = (id, name)
         self.domain = domain
     }
@@ -393,21 +314,21 @@ public struct ConnectConnectorCreateDataVariant9: Codable {
     }
 
     init() {
-        (clientName, accountIdentifier, extras) = (nil, nil, nil)
+        (self.clientName, self.accountIdentifier, self.extras) = (nil, nil, nil)
     }
 }
 
-public extension ConnectConnectorCreateDataVariant9 {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorCreateDataVariant9 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        clientName = try container.sdkDecodeIfPresent(.clientName)
-        accountIdentifier = try container.sdkDecodeIfPresent(.accountIdentifier)
-        extras = try container.sdkDecodeIfPresent(.extras)
+        self.clientName = try container.sdkDecodeIfPresent(.clientName)
+        self.accountIdentifier = try container.sdkDecodeIfPresent(.accountIdentifier)
+        self.extras = try container.sdkDecodeIfPresent(.extras)
     }
 }
 
-public extension ConnectConnectorCreateDataVariant9 {
-    init(clientName: String? = nil, accountIdentifier: String? = nil, extras: [String: JSONValue]? = nil) {
+extension ConnectConnectorCreateDataVariant9 {
+    public init(clientName: String? = nil, accountIdentifier: String? = nil, extras: [String: JSONValue]? = nil) {
         self.init()
         (self.clientName, self.accountIdentifier) = (clientName, accountIdentifier)
         self.extras = extras
@@ -436,65 +357,37 @@ public struct ConnectProjectConnection: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectProjectConnection {
-    init(from decoder: Decoder) throws {
+extension ConnectProjectConnection {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.connectorId) else {
-            throw SdkValidationError(
-                field: "connectorId",
-                code: "required",
-                message: "Validation failed for 'connectorId': value is required"
-            )
+            throw SdkValidationError(field: "connectorId", code: "required", message: "Validation failed for 'connectorId': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.enabledEnvironments) else {
-            throw SdkValidationError(
-                field: "enabledEnvironments",
-                code: "required",
-                message: "Validation failed for 'enabledEnvironments': value is required"
-            )
+            throw SdkValidationError(field: "enabledEnvironments", code: "required", message: "Validation failed for 'enabledEnvironments': value is required")
         }
         guard container.contains(.project) else {
-            throw SdkValidationError(
-                field: "project",
-                code: "required",
-                message: "Validation failed for 'project': value is required"
-            )
+            throw SdkValidationError(field: "project", code: "required", message: "Validation failed for 'project': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        connectorId = try container.sdkDecodeRequired(.connectorId)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        enabledEnvironments = try container.sdkDecodeRequired(.enabledEnvironments)
-        project = try container.sdkDecodeRequired(.project)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.connectorId = try container.sdkDecodeRequired(.connectorId)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.enabledEnvironments = try container.sdkDecodeRequired(.enabledEnvironments)
+        self.project = try container.sdkDecodeRequired(.project)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
     }
 }
 
-public extension ConnectProjectConnection {
-    init(
-        connectorId: String,
-        createdAt: Double,
-        enabledEnvironments: [ConnectProjectConnectionEnabledEnvironmentsItem],
-        project: ConnectProjectConnectionProject,
-        updatedAt: Double
-    ) {
+extension ConnectProjectConnection {
+    public init(connectorId: String, createdAt: Double, enabledEnvironments: [ConnectProjectConnectionEnabledEnvironmentsItem], project: ConnectProjectConnectionProject, updatedAt: Double) {
         (self.connectorId, self.createdAt) = (connectorId, createdAt)
         (self.enabledEnvironments, self.project) = (enabledEnvironments, project)
         self.updatedAt = updatedAt
@@ -534,57 +427,34 @@ public struct ConnectConnectorAppTokens: Codable {
         case supportsResources
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorAppTokens {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorAppTokens {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.crossInstallation) else {
-            throw SdkValidationError(
-                field: "crossInstallation",
-                code: "required",
-                message: "Validation failed for 'crossInstallation': value is required"
-            )
+            throw SdkValidationError(field: "crossInstallation", code: "required", message: "Validation failed for 'crossInstallation': value is required")
         }
         guard container.contains(.isStaticCredential) else {
-            throw SdkValidationError(
-                field: "isStaticCredential",
-                code: "required",
-                message: "Validation failed for 'isStaticCredential': value is required"
-            )
+            throw SdkValidationError(field: "isStaticCredential", code: "required", message: "Validation failed for 'isStaticCredential': value is required")
         }
         guard container.contains(.supportsRefinement) else {
-            throw SdkValidationError(
-                field: "supportsRefinement",
-                code: "required",
-                message: "Validation failed for 'supportsRefinement': value is required"
-            )
+            throw SdkValidationError(field: "supportsRefinement", code: "required", message: "Validation failed for 'supportsRefinement': value is required")
         }
-        crossInstallation = try container.sdkDecodeRequired(.crossInstallation)
-        isStaticCredential = try container.sdkDecodeRequired(.isStaticCredential)
-        supportsRefinement = try container.sdkDecodeRequired(.supportsRefinement)
-        permissionsUrl = try container.sdkDecodeIfPresent(.permissionsUrl)
-        requiresReinstallation = try container.sdkDecodeIfPresent(.requiresReinstallation)
-        scopes = try container.sdkDecodeIfPresent(.scopes)
-        supportedAuthorizationDetails = try container.sdkDecodeIfPresent(.supportedAuthorizationDetails)
-        supportsResources = try container.sdkDecodeIfPresent(.supportsResources)
+        self.crossInstallation = try container.sdkDecodeRequired(.crossInstallation)
+        self.isStaticCredential = try container.sdkDecodeRequired(.isStaticCredential)
+        self.supportsRefinement = try container.sdkDecodeRequired(.supportsRefinement)
+        self.permissionsUrl = try container.sdkDecodeIfPresent(.permissionsUrl)
+        self.requiresReinstallation = try container.sdkDecodeIfPresent(.requiresReinstallation)
+        self.scopes = try container.sdkDecodeIfPresent(.scopes)
+        self.supportedAuthorizationDetails = try container.sdkDecodeIfPresent(.supportedAuthorizationDetails)
+        self.supportsResources = try container.sdkDecodeIfPresent(.supportsResources)
     }
 }
 
-public extension ConnectConnectorAppTokens {
-    init(
-        crossInstallation: Bool,
-        isStaticCredential: Bool,
-        supportsRefinement: Bool,
-        permissionsUrl: String? = nil,
-        requiresReinstallation: Bool? = nil,
-        scopes: [String]? = nil,
-        supportedAuthorizationDetails: [String]? = nil,
-        supportsResources: Bool? = nil
-    ) {
+extension ConnectConnectorAppTokens {
+    public init(crossInstallation: Bool, isStaticCredential: Bool, supportsRefinement: Bool, permissionsUrl: String? = nil, requiresReinstallation: Bool? = nil, scopes: [String]? = nil, supportedAuthorizationDetails: [String]? = nil, supportsResources: Bool? = nil) {
         (self.crossInstallation, self.isStaticCredential) = (crossInstallation, isStaticCredential)
         (self.supportsRefinement, self.permissionsUrl) = (supportsRefinement, permissionsUrl)
         (self.requiresReinstallation, self.scopes) = (requiresReinstallation, scopes)
@@ -606,20 +476,20 @@ public struct ConnectConnectorUpdateDataVariant4: Codable {
     }
 
     init() {
-        (consumerKey, loginHost) = (nil, nil)
+        (self.consumerKey, self.loginHost) = (nil, nil)
     }
 }
 
-public extension ConnectConnectorUpdateDataVariant4 {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataVariant4 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        consumerKey = try container.sdkDecodeIfPresent(.consumerKey)
-        loginHost = try container.sdkDecodeIfPresent(.loginHost)
+        self.consumerKey = try container.sdkDecodeIfPresent(.consumerKey)
+        self.loginHost = try container.sdkDecodeIfPresent(.loginHost)
     }
 }
 
-public extension ConnectConnectorUpdateDataVariant4 {
-    init(consumerKey: String? = nil, loginHost: String? = nil) {
+extension ConnectConnectorUpdateDataVariant4 {
+    public init(consumerKey: String? = nil, loginHost: String? = nil) {
         self.init()
         (self.consumerKey, self.loginHost) = (consumerKey, loginHost)
     }
@@ -634,7 +504,5 @@ public struct ConnectError: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

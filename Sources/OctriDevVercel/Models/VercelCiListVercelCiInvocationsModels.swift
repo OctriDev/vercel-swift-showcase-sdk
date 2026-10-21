@@ -3,37 +3,25 @@
 
 import Foundation
 
-/// VercelCi domain models
+// VercelCi domain models
 public indirect enum ListVercelCiInvocationsResponseInvocationsItemSource {
-    case listVercelCiInvocationsResponseInvocationsItemSourceVariant0(
-        ListVercelCiInvocationsResponseInvocationsItemSourceVariant0
-    )
-    case listVercelCiInvocationsResponseInvocationsItemSourceVariant1(
-        ListVercelCiInvocationsResponseInvocationsItemSourceVariant1
-    )
+    case listVercelCiInvocationsResponseInvocationsItemSourceVariant0(ListVercelCiInvocationsResponseInvocationsItemSourceVariant0)
+    case listVercelCiInvocationsResponseInvocationsItemSourceVariant1(ListVercelCiInvocationsResponseInvocationsItemSourceVariant1)
 }
 
 extension ListVercelCiInvocationsResponseInvocationsItemSource: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ListVercelCiInvocationsResponseInvocationsItemSource"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListVercelCiInvocationsResponseInvocationsItemSource")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -56,12 +44,12 @@ extension ListVercelCiInvocationsResponseInvocationsItemSource {
         if let value = try? container.decode(
             ListVercelCiInvocationsResponseInvocationsItemSourceVariant0.self
         ) {
-            return .listVercelCiInvocationsResponseInvocationsItemSourceVariant0(value)
+            return             .listVercelCiInvocationsResponseInvocationsItemSourceVariant0(value)
         }
         if let value = try? container.decode(
             ListVercelCiInvocationsResponseInvocationsItemSourceVariant1.self
         ) {
-            return .listVercelCiInvocationsResponseInvocationsItemSourceVariant1(value)
+            return             .listVercelCiInvocationsResponseInvocationsItemSourceVariant1(value)
         }
         return nil
     }
@@ -71,10 +59,8 @@ extension ListVercelCiInvocationsResponseInvocationsItemSource {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .listVercelCiInvocationsResponseInvocationsItemSourceVariant0(value): try container
-            .encode(value); return true
-        case let .listVercelCiInvocationsResponseInvocationsItemSourceVariant1(value): try container
-            .encode(value); return true
+        case let .listVercelCiInvocationsResponseInvocationsItemSourceVariant0(value): try container.encode(value); return true
+        case let .listVercelCiInvocationsResponseInvocationsItemSourceVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -92,68 +78,37 @@ public struct ListVercelCiInvocationsResponseInvocationsItemSourceVariant1: Coda
         case deploymentTargetSlug
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant1 {
-    init(from decoder: Decoder) throws {
+extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.deploymentId) else {
-            throw SdkValidationError(
-                field: "deploymentId",
-                code: "required",
-                message: "Validation failed for 'deploymentId': value is required"
-            )
+            throw SdkValidationError(field: "deploymentId", code: "required", message: "Validation failed for 'deploymentId': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.deploymentTargetSlug) else {
-            throw SdkValidationError(
-                field: "deploymentTargetSlug",
-                code: "required",
-                message: "Validation failed for 'deploymentTargetSlug': value is required"
-            )
+            throw SdkValidationError(field: "deploymentTargetSlug", code: "required", message: "Validation failed for 'deploymentTargetSlug': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        deploymentId = try container.sdkDecodeRequired(.deploymentId)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        deploymentTargetSlug = try container.sdkDecodeRequired(.deploymentTargetSlug)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type.allCases.map(\.rawValue)
-        )
+        self.type = try container.sdkDecodeRequired(.type)
+        self.deploymentId = try container.sdkDecodeRequired(.deploymentId)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.deploymentTargetSlug = try container.sdkDecodeRequired(.deploymentTargetSlug)
+            try sdkValidateRawEnum("type", self.type, ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type.allCases.map(\.rawValue))
     }
 }
 
-public extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant1 {
-    init(
-        type: ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type,
-        deploymentId: String,
-        projectId: String,
-        deploymentTargetSlug: String
-    ) throws {
+extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant1 {
+    public init(type: ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type, deploymentId: String, projectId: String, deploymentTargetSlug: String) throws {
         (self.type, self.deploymentId) = (type, deploymentId)
         (self.projectId, self.deploymentTargetSlug) = (projectId, deploymentTargetSlug)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, ListVercelCiInvocationsResponseInvocationsItemSourceVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -164,38 +119,24 @@ public struct ListVercelCiInvocationsResponseInvocationsItemSourceVariant0: Coda
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant0 {
-    init(from decoder: Decoder) throws {
+extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type.allCases.map(\.rawValue)
-        )
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type.allCases.map(\.rawValue))
     }
 }
 
-public extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant0 {
-    init(type: ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type) throws {
+extension ListVercelCiInvocationsResponseInvocationsItemSourceVariant0 {
+    public init(type: ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type) throws {
         self.type = type
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, ListVercelCiInvocationsResponseInvocationsItemSourceVariant0Type.allCases.map(\.rawValue))
     }
 }
 

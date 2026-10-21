@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Connect domain models
+// Connect domain models
 /// Environments enabled for a connector project connection.
 public struct ConnectUpsertProjectConnectionRequest: Codable {
     /// One or more built-in environment names or stable custom environment IDs that belong to the project.
@@ -14,29 +14,23 @@ public struct ConnectUpsertProjectConnectionRequest: Codable {
         case environments
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectUpsertProjectConnectionRequest {
-    init(from decoder: Decoder) throws {
+extension ConnectUpsertProjectConnectionRequest {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.environments) else {
-            throw SdkValidationError(
-                field: "environments",
-                code: "required",
-                message: "Validation failed for 'environments': value is required"
-            )
+            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
         }
-        environments = try container.sdkDecodeRequired(.environments)
-        try validateItems("environments", environments, min: 1, max: nil)
+        self.environments = try container.sdkDecodeRequired(.environments)
+            try validateItems("environments", self.environments, min: 1, max: nil)
     }
 }
 
-public extension ConnectUpsertProjectConnectionRequest {
-    init(environments: [String]) throws {
+extension ConnectUpsertProjectConnectionRequest {
+    public init(environments: [String]) throws {
         self.environments = environments
-        try validateItems("environments", self.environments, min: 1, max: nil)
+            try validateItems("environments", self.environments, min: 1, max: nil)
     }
 }

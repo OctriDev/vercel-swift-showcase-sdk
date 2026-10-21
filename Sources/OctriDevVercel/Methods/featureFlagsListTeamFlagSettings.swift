@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension FeatureFlagsMethods {
-    /// Lists feature flag settings for projects in a team. Use `limit` to control the maximum number of settings
-    /// returned and `cursor` to continue through the results.
+extension FeatureFlagsMethods {
+    /// Lists feature flag settings for projects in a team. Use `limit` to control the maximum number of settings returned and `cursor` to continue through the results.
     ///
     /// Retrieve feature flag settings for projects in a team.
     ///
@@ -17,30 +16,15 @@ public extension FeatureFlagsMethods {
     /// - limit: Maximum number of settings to return.
     /// - cursor: Pagination cursor to continue from.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listTeamFlagSettings(
-        config: ClientConfig,
-        teamId: String,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListTeamFlagSettingsResponse {
-        if let limit {
+    public static func listTeamFlagSettings(config: ClientConfig, teamId: String, limit: Int? = nil, cursor: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListTeamFlagSettingsResponse {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/feature-flags/settings"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("limit", value: limit),
-                SdkQueryParameter("cursor", value: cursor),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listTeamFlagSettings",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/feature-flags/settings"].joined(), config: config, query: [
+            SdkQueryParameter("limit", value: limit),
+            SdkQueryParameter("cursor", value: cursor),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listTeamFlagSettings", options: requestOptions)).data
     }
 }

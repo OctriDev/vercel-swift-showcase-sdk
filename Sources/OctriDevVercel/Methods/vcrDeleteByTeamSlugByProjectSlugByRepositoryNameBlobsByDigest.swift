@@ -6,27 +6,17 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Rejects attempts to delete a blob from a Docker Registry repository because blob deletion is intentionally
-    /// unsupported. Use the team, project, repository, and digest path components to identify the blob involved in the
-    /// request. The operation follows the behavior of most public registries.
+extension VcrMethods {
+    /// Rejects attempts to delete a blob from a Docker Registry repository because blob deletion is intentionally unsupported. Use the team, project, repository, and digest path components to identify the blob involved in the request. The operation follows the behavior of most public registries.
     ///
-    /// DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported.
-    /// Matches the behaviour of most public registries.
+    /// DELETE /v2/:teamSlug/:projectSlug/:repositoryName/blobs/:digest Blob deletion is intentionally not supported. Matches the behaviour of most public registries.
     ///
     /// - Parameters:
     /// - teamSlug: Single Docker repository team slug component.
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - digest: Content-addressable digest (algorithm:hex).
-    static func deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(
-        config: ClientConfig,
-        teamSlug: String,
-        projectSlug: String,
-        repositoryName: String,
-        digest: String,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, digest: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -39,22 +29,6 @@ public extension VcrMethods {
         try validateLength("digest", digest, max: 255)
         try sdkValidatePattern("digest", digest, sdkPatternf55d8ca4ed38)
 
-        return try await (sdkRequest(
-            "DELETE",
-            [
-                "/v2/",
-                sdkEncodePathSegment(sdkWireString(teamSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(projectSlug)),
-                "/",
-                sdkEncodePathSegment(sdkWireString(repositoryName)),
-                "/blobs/",
-                sdkEncodePathSegment(sdkWireString(digest)),
-            ].joined(),
-            config: config,
-            decoder: .empty,
-            operationId: "deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/blobs/", sdkEncodePathSegment(sdkWireString(digest))].joined(), config: config, decoder: .empty, operationId: "deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest", options: requestOptions)).data
     }
 }

@@ -3,12 +3,12 @@
 
 import Foundation
 
-/// Connect domain models
-public extension ConnectCreateConnectorRequestTriggerDestinationVariant1 {
-    init(branch: String, projectId: String? = nil, path: String? = nil) throws {
+// Connect domain models
+extension ConnectCreateConnectorRequestTriggerDestinationVariant1 {
+    public init(branch: String, projectId: String? = nil, path: String? = nil) throws {
         (self.branch, self.projectId) = (branch, projectId)
         self.path = path
-        try validateLength("branch", self.branch, min: 1, max: 250)
+            try validateLength("branch", self.branch, min: 1, max: 250)
         if let value = self.projectId {
             try validateLength("projectId", value, min: 1, max: nil)
         }
@@ -28,28 +28,22 @@ public struct ConnectConnectorCreateDataRequestVariant4: Codable {
         case phoneNumbers
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant4 {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorCreateDataRequestVariant4 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.apiToken) else {
-            throw SdkValidationError(
-                field: "apiToken",
-                code: "required",
-                message: "Validation failed for 'apiToken': value is required"
-            )
+            throw SdkValidationError(field: "apiToken", code: "required", message: "Validation failed for 'apiToken': value is required")
         }
-        apiToken = try container.sdkDecodeRequired(.apiToken)
-        phoneNumbers = try container.sdkDecodeIfPresent(.phoneNumbers)
+        self.apiToken = try container.sdkDecodeRequired(.apiToken)
+        self.phoneNumbers = try container.sdkDecodeIfPresent(.phoneNumbers)
     }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant4 {
-    init(apiToken: String, phoneNumbers: [String]? = nil) {
+extension ConnectConnectorCreateDataRequestVariant4 {
+    public init(apiToken: String, phoneNumbers: [String]? = nil) {
         (self.apiToken, self.phoneNumbers) = (apiToken, phoneNumbers)
     }
 }
@@ -87,57 +81,34 @@ public struct ConnectConnectorCreateResultAppTokens: Codable {
         case supportsResources
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorCreateResultAppTokens {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorCreateResultAppTokens {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.crossInstallation) else {
-            throw SdkValidationError(
-                field: "crossInstallation",
-                code: "required",
-                message: "Validation failed for 'crossInstallation': value is required"
-            )
+            throw SdkValidationError(field: "crossInstallation", code: "required", message: "Validation failed for 'crossInstallation': value is required")
         }
         guard container.contains(.isStaticCredential) else {
-            throw SdkValidationError(
-                field: "isStaticCredential",
-                code: "required",
-                message: "Validation failed for 'isStaticCredential': value is required"
-            )
+            throw SdkValidationError(field: "isStaticCredential", code: "required", message: "Validation failed for 'isStaticCredential': value is required")
         }
         guard container.contains(.supportsRefinement) else {
-            throw SdkValidationError(
-                field: "supportsRefinement",
-                code: "required",
-                message: "Validation failed for 'supportsRefinement': value is required"
-            )
+            throw SdkValidationError(field: "supportsRefinement", code: "required", message: "Validation failed for 'supportsRefinement': value is required")
         }
-        crossInstallation = try container.sdkDecodeRequired(.crossInstallation)
-        isStaticCredential = try container.sdkDecodeRequired(.isStaticCredential)
-        supportsRefinement = try container.sdkDecodeRequired(.supportsRefinement)
-        permissionsUrl = try container.sdkDecodeIfPresent(.permissionsUrl)
-        requiresReinstallation = try container.sdkDecodeIfPresent(.requiresReinstallation)
-        scopes = try container.sdkDecodeIfPresent(.scopes)
-        supportedAuthorizationDetails = try container.sdkDecodeIfPresent(.supportedAuthorizationDetails)
-        supportsResources = try container.sdkDecodeIfPresent(.supportsResources)
+        self.crossInstallation = try container.sdkDecodeRequired(.crossInstallation)
+        self.isStaticCredential = try container.sdkDecodeRequired(.isStaticCredential)
+        self.supportsRefinement = try container.sdkDecodeRequired(.supportsRefinement)
+        self.permissionsUrl = try container.sdkDecodeIfPresent(.permissionsUrl)
+        self.requiresReinstallation = try container.sdkDecodeIfPresent(.requiresReinstallation)
+        self.scopes = try container.sdkDecodeIfPresent(.scopes)
+        self.supportedAuthorizationDetails = try container.sdkDecodeIfPresent(.supportedAuthorizationDetails)
+        self.supportsResources = try container.sdkDecodeIfPresent(.supportsResources)
     }
 }
 
-public extension ConnectConnectorCreateResultAppTokens {
-    init(
-        crossInstallation: Bool,
-        isStaticCredential: Bool,
-        supportsRefinement: Bool,
-        permissionsUrl: String? = nil,
-        requiresReinstallation: Bool? = nil,
-        scopes: [String]? = nil,
-        supportedAuthorizationDetails: [String]? = nil,
-        supportsResources: Bool? = nil
-    ) {
+extension ConnectConnectorCreateResultAppTokens {
+    public init(crossInstallation: Bool, isStaticCredential: Bool, supportsRefinement: Bool, permissionsUrl: String? = nil, requiresReinstallation: Bool? = nil, scopes: [String]? = nil, supportedAuthorizationDetails: [String]? = nil, supportsResources: Bool? = nil) {
         (self.crossInstallation, self.isStaticCredential) = (crossInstallation, isStaticCredential)
         (self.supportsRefinement, self.permissionsUrl) = (supportsRefinement, permissionsUrl)
         (self.requiresReinstallation, self.scopes) = (requiresReinstallation, scopes)
@@ -166,20 +137,16 @@ public enum ConnectConnectorCreateResultUpdatedByVariant0Type: String, CaseItera
 
 /// Which subject the connector issues tokens for. Defaults to \"app\" (connector-level keys). \"user\"
 /// connectors store no connector-level values; each user supplies their own key during authorization.
-public struct ConnectConnectorCreateDataRequestVariant1SubjectType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ConnectConnectorCreateDataRequestVariant1SubjectType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let app = ConnectConnectorCreateDataRequestVariant1SubjectType(rawValue: "app")
     public static let user = ConnectConnectorCreateDataRequestVariant1SubjectType(rawValue: "user")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -208,20 +175,16 @@ public enum ConnectConnectorCreateResultUpdatedByVariant1Type: String, CaseItera
 
 /// How the connector row was originally created. New create paths stamp this explicitly; older rows may omit
 /// it.
-public struct ConnectConnectorCreateResultCreationMode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ConnectConnectorCreateResultCreationMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let managed = ConnectConnectorCreateResultCreationMode(rawValue: "managed")
     public static let manual = ConnectConnectorCreateResultCreationMode(rawValue: "manual")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -231,23 +194,17 @@ public struct ConnectConnectorCreateResultCreationMode: RawRepresentable, Hashab
 }
 
 /// Required enumerated value serialized in the `environment` wire field.
-public struct ConnectConnectorCreateResultUpdatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreateResultUpdatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let development =
-        ConnectConnectorCreateResultUpdatedByVariant1EnvironmentVariant1(rawValue: "development")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let development = ConnectConnectorCreateResultUpdatedByVariant1EnvironmentVariant1(rawValue: "development")
     public static let preview = ConnectConnectorCreateResultUpdatedByVariant1EnvironmentVariant1(rawValue: "preview")
-    public static let production =
-        ConnectConnectorCreateResultUpdatedByVariant1EnvironmentVariant1(rawValue: "production")
+    public static let production = ConnectConnectorCreateResultUpdatedByVariant1EnvironmentVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -257,23 +214,17 @@ public struct ConnectConnectorCreateResultUpdatedByVariant1EnvironmentVariant1: 
 }
 
 /// Required enumerated value serialized in the `environment` wire field.
-public struct ConnectConnectorCreateResultCreatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreateResultCreatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let development =
-        ConnectConnectorCreateResultCreatedByVariant1EnvironmentVariant1(rawValue: "development")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let development = ConnectConnectorCreateResultCreatedByVariant1EnvironmentVariant1(rawValue: "development")
     public static let preview = ConnectConnectorCreateResultCreatedByVariant1EnvironmentVariant1(rawValue: "preview")
-    public static let production =
-        ConnectConnectorCreateResultCreatedByVariant1EnvironmentVariant1(rawValue: "production")
+    public static let production = ConnectConnectorCreateResultCreatedByVariant1EnvironmentVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -283,20 +234,16 @@ public struct ConnectConnectorCreateResultCreatedByVariant1EnvironmentVariant1: 
 }
 
 /// Where Slack exposes the shortcut.
-public struct ConnectConnectorCreateDataRequestVariant7ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ConnectConnectorCreateDataRequestVariant7ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let global = ConnectConnectorCreateDataRequestVariant7ShortcutsItemType(rawValue: "global")
     public static let message = ConnectConnectorCreateDataRequestVariant7ShortcutsItemType(rawValue: "message")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -306,19 +253,15 @@ public struct ConnectConnectorCreateDataRequestVariant7ShortcutsItemType: RawRep
 }
 
 /// Required enumerated value serialized in the `supportsIcon` wire field.
-public struct ConnectConnectorCreateResultSupportsIconVariant1: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ConnectConnectorCreateResultSupportsIconVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let maybe = ConnectConnectorCreateResultSupportsIconVariant1(rawValue: "maybe")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -331,10 +274,7 @@ public struct ConnectConnectorCreateResultSupportsIconVariant1: RawRepresentable
 public struct ConnectConnectorCreateResultType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let apiKey = ConnectConnectorCreateResultType(rawValue: "api-key")
     public static let awsAlpha = ConnectConnectorCreateResultType(rawValue: "aws-alpha")
     public static let custom = ConnectConnectorCreateResultType(rawValue: "custom")
@@ -355,7 +295,7 @@ public struct ConnectConnectorCreateResultType: RawRepresentable, Hashable, Coda
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -365,20 +305,16 @@ public struct ConnectConnectorCreateResultType: RawRepresentable, Hashable, Coda
 }
 
 /// Intended key use: signing or encryption.
-public struct ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let sig = ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItemUse(rawValue: "sig")
     public static let enc = ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItemUse(rawValue: "enc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -424,14 +360,10 @@ public enum ConnectConnectorCreateResultCreatedByVariant0Type: String, CaseItera
 }
 
 /// GitHub App owner type.
-public struct ConnectConnectorCreateDataRequestVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ConnectConnectorCreateDataRequestVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let user = ConnectConnectorCreateDataRequestVariant2OwnerType(rawValue: "user")
     public static let organization = ConnectConnectorCreateDataRequestVariant2OwnerType(rawValue: "organization")
     public static let user2 = ConnectConnectorCreateDataRequestVariant2OwnerType(rawValue: "User")
@@ -439,7 +371,7 @@ public struct ConnectConnectorCreateDataRequestVariant2OwnerType: RawRepresentab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

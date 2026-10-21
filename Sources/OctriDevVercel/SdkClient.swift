@@ -21,7 +21,7 @@ public enum SdkOptional<Value: Codable>: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self = try container.decodeNil() ? .null : .value(container.decode(Value.self))
+        self = container.decodeNil() ? .null : .value(try container.decode(Value.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -37,9 +37,7 @@ public enum SdkOptional<Value: Codable>: Codable {
     /// The wrapped value, or nil for an explicit JSON null. Lets callers read a
     /// nullable field's payload without matching the enum by hand.
     public var valueOrNil: Value? {
-        if case let .value(value) = self {
-            return value
-        }
+        if case let .value(value) = self { return value }
         return nil
     }
 }
@@ -50,14 +48,10 @@ public enum SdkOptional<Value: Codable>: Codable {
 /// the wrapped value with no extra nesting.
 public final class SdkBox<Value: Codable>: Codable {
     public let value: Value
-    public init(_ value: Value) {
-        self.value = value
-    }
-
+    public init(_ value: Value) { self.value = value }
     public init(from decoder: Decoder) throws {
         value = try Value(from: decoder)
     }
-
     public func encode(to encoder: Encoder) throws {
         try value.encode(to: encoder)
     }
@@ -65,58 +59,51 @@ public final class SdkBox<Value: Codable>: Codable {
 
 // MARK: - Request Layer
 
-let requestIdHeaders = ["x-request-id", "openai-request-id", "x-amzn-requestid"]
-let idempotentMethods: Set<String> = ["GET", "HEAD", "PUT", "DELETE", "OPTIONS"]
-let alwaysRetryableStatuses: Set<Int> = [429, 503]
-let idempotencyKeyOperations: Set<String> = []
-/// A request to an operation that declares its own server goes there, unless the
-/// consumer configured a base URL.
-let operationServers: [String: String] = [:]
+internal let requestIdHeaders = ["x-request-id", "openai-request-id", "x-amzn-requestid"]
+internal let idempotentMethods: Set<String> = ["GET", "HEAD", "PUT", "DELETE", "OPTIONS"]
+internal let alwaysRetryableStatuses: Set<Int> = [429, 503]
+internal let idempotencyKeyOperations: Set<String> = []
+// A request to an operation that declares its own server goes there, unless the
+// consumer configured a base URL.
+internal let operationServers: [String: String] = [:]
 
 // The body flag that switches an operation's response to a stream: the stream
 // method sends it, the plain method drops it (its decoder cannot read events).
 
-struct SdkStreamSelector {
+internal struct SdkStreamSelector {
     let name: String
     let value: JSONValue
     let streaming: Bool
 }
 
-let sdkStreamSelectors: [String: SdkStreamSelector] = [:]
+internal let sdkStreamSelectors: [String: SdkStreamSelector] = [:]
 
 // The 2xx body field that marks a failed call, per operation, and the field
 // carrying its error code.
 
-struct SdkErrorEnvelope {
+internal struct SdkErrorEnvelope {
     let field: String
     let equals: JSONValue
     let code: String
 }
 
-let sdkErrorEnvelopes: [String: SdkErrorEnvelope] = [:]
+internal let sdkErrorEnvelopes: [String: SdkErrorEnvelope] = [:]
 
 /// A 2xx JSON body decoded into `T`. An error envelope that reports a failed
 /// call is an SdkApiError, and a body that does not fit `T` an SdkResponseDecodeError.
-func sdkDecodeResponse<T: Decodable>(_: T.Type, _ raw: SdkRawResponse, operationId: String) throws -> T {
+internal func sdkDecodeResponse<T: Decodable>(_: T.Type, _ raw: SdkRawResponse, operationId: String) throws -> T {
     try sdkRaiseErrorEnvelope(raw, operationId: operationId)
-    return try sdkDecodeBody(
-        raw.body,
-        statusCode: raw.statusCode,
-        headers: raw.headers,
-        requestId: raw.requestId ?? ""
-    ) {
+    return try sdkDecodeBody(raw.body, statusCode: raw.statusCode, headers: raw.headers, requestId: raw.requestId ?? "") {
         try sdkJsonDecoder().decode(T.self, from: raw.body)
     }
 }
 
 /// Fails a 2xx response whose error envelope reports a failed call.
-func sdkRaiseErrorEnvelope(_ raw: SdkRawResponse, operationId: String) throws {
+internal func sdkRaiseErrorEnvelope(_ raw: SdkRawResponse, operationId: String) throws {
     guard let envelope = sdkErrorEnvelopes[operationId],
           case let .object(fields)? = try? sdkJsonDecoder().decode(JSONValue.self, from: raw.body),
           fields[envelope.field] == envelope.equals
-    else {
-        return
-    }
+    else { return }
     var code: String?
     if case let .string(value)? = fields[envelope.code] {
         code = value
@@ -152,9 +139,7 @@ func sdkDecodeBody<T>(
 func sdkWithStreamSelector(_ data: Data, operationId: String, contentType: String) throws -> Data {
     guard let selector = sdkStreamSelectors[operationId], contentType.contains("json"),
           case var .object(fields) = try sdkJsonDecoder().decode(JSONValue.self, from: data)
-    else {
-        return data
-    }
+    else { return data }
     if selector.streaming {
         fields[selector.name] = selector.value
     } else if fields[selector.name] == selector.value {
@@ -165,9 +150,7 @@ func sdkWithStreamSelector(_ data: Data, operationId: String, contentType: Strin
 
 /// The multipart form of `sdkWithStreamSelector`, over the parts a method built.
 public func sdkSelectStreamPart(_ parts: inout [SdkMultipartField], operationId: String) {
-    guard let selector = sdkStreamSelectors[operationId] else {
-        return
-    }
+    guard let selector = sdkStreamSelectors[operationId] else { return }
     let text: String = switch selector.value {
     case let .string(value): value
     case let .bool(value): String(value)
@@ -232,16 +215,12 @@ public struct SdkMultipartField: Sendable {
         Self(name: name, data: file.data, filename: file.filename, contentType: file.contentType)
     }
 
-    public static func scalar(_ name: String, _ value: some Any) -> Self {
+    public static func scalar<T>(_ name: String, _ value: T) -> Self {
         Self(name: name, data: Data(sdkWireString(value).utf8), filename: nil, contentType: nil)
     }
 
-    public static func json(
-        _ name: String,
-        _ value: some Encodable,
-        contentType: String = "application/json"
-    ) throws -> Self {
-        try Self(name: name, data: sdkJsonEncoder().encode(value), filename: nil, contentType: contentType)
+    public static func json<T: Encodable>(_ name: String, _ value: T, contentType: String = "application/json") throws -> Self {
+        Self(name: name, data: try sdkJsonEncoder().encode(value), filename: nil, contentType: contentType)
     }
 }
 
@@ -258,16 +237,11 @@ public func sdkEncodeMultipart(_ fields: [SdkMultipartField]) -> SdkEncodedMulti
         body.appendStr("--\(boundary)\r\n")
         var disposition = "Content-Disposition: form-data; name=\"\(name)\""
         if let filename = field.filename {
-            let safeFilename = filename.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(
-                of: "\"",
-                with: "\\\""
-            )
+            let safeFilename = filename.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")
             disposition += "; filename=\"\(safeFilename)\""
         }
         body.appendStr("\(disposition)\r\n")
-        if let contentType = field.contentType {
-            body.appendStr("Content-Type: \(contentType)\r\n")
-        }
+        if let contentType = field.contentType { body.appendStr("Content-Type: \(contentType)\r\n") }
         body.appendStr("\r\n")
         body.append(field.data)
         body.appendStr("\r\n")
@@ -282,7 +256,7 @@ public struct SdkQueryParameter: Sendable {
     /// The pairs an object parameter sends under its members' names.
     var memberPairs: [(name: String, value: String)] = []
 
-    public init(_ name: String, value: (some Any)?) {
+    public init<T>(_ name: String, value: T?) {
         self.name = name
         // A JSON null has no query form; it is omitted like an absent value.
         if case .null? = value as? JSONValue {
@@ -297,15 +271,14 @@ public struct SdkQueryParameter: Sendable {
         values = value.map { [$0.rawValue] } ?? []
     }
 
-    public init(_ name: String, values source: [some Any]?, style: String = "form", explode: Bool = true) {
+    public init<T>(_ name: String, values source: [T]?, style: String = "form", explode: Bool = true) {
         self.name = name
         let items = source?.map { sdkWireString($0) } ?? []
         let delimiter = style == "spaceDelimited" ? " " : (style == "pipeDelimited" ? "|" : ",")
         values = explode ? items : (items.isEmpty ? [] : [items.joined(separator: delimiter)])
     }
 
-    public init<T: RawRepresentable>(_ name: String, values source: [T]?, style: String = "form", explode: Bool = true)
-        where T.RawValue == String {
+    public init<T: RawRepresentable>(_ name: String, values source: [T]?, style: String = "form", explode: Bool = true) where T.RawValue == String {
         self.name = name
         let items = source?.map(\.rawValue) ?? []
         let delimiter = style == "spaceDelimited" ? " " : (style == "pipeDelimited" ? "|" : ",")
@@ -315,7 +288,7 @@ public struct SdkQueryParameter: Sendable {
     /// An object parameter in its declared style: `name[member]` pairs
     /// (deepObject), one pair per member (exploded form), or its members and
     /// values joined. A value that is not an object goes out alone.
-    public init(_ name: String, object source: (some Encodable)?, style: String = "form", explode: Bool = true) throws {
+    public init<T: Encodable>(_ name: String, object source: T?, style: String = "form", explode: Bool = true) throws {
         self.name = name
         let wire = try sdkParameterJson(source)
         guard case let .object(members)? = wire else {
@@ -339,7 +312,7 @@ public struct SdkQueryParameter: Sendable {
 
 /// An object query value's pairs: `name[member]` (deepObject), one pair per
 /// member (exploded form), or its members and values joined.
-func sdkObjectQueryPairs(
+internal func sdkObjectQueryPairs(
     _ name: String,
     _ members: [String: JSONValue],
     style: String,
@@ -362,9 +335,7 @@ func sdkObjectQueryPairs(
             joined += [key, sdkSimpleValue(member, explode: false)]
         }
     }
-    if !joined.isEmpty {
-        pairs.append((name, joined.joined(separator: delimiter)))
-    }
+    if !joined.isEmpty { pairs.append((name, joined.joined(separator: delimiter))) }
     return pairs
 }
 
@@ -384,13 +355,11 @@ public func sdkPathSegment(_ name: String, _ items: [String], style: String, exp
 /// A path parameter by its JSON form: an object is its "k,v" pairs, or "k=v"
 /// members when exploded. A decoded JSON object keeps no member order, so
 /// members go out sorted.
-public func sdkPathSegment(_ name: String, value: some Encodable, style: String, explode: Bool) throws -> String {
+public func sdkPathSegment<T: Encodable>(_ name: String, value: T, style: String, explode: Bool) throws -> String {
     switch try sdkParameterJson(value) {
     case let .object(members):
         let pairs = members.sorted { $0.key < $1.key }.compactMap { member -> (String, String)? in
-            if case .null = member.value {
-                return nil
-            }
+            if case .null = member.value { return nil }
             return (member.key, member.value.sdkWireValue)
         }
         return sdkStyledPathSegment(name, pairs, keyed: true, style: style, explode: explode)
@@ -401,14 +370,12 @@ public func sdkPathSegment(_ name: String, value: some Encodable, style: String,
     }
 }
 
-func sdkStyledPathSegment(
+internal func sdkStyledPathSegment(
     _ name: String, _ pairs: [(String, String)], keyed: Bool, style: String, explode: Bool
 ) -> String {
     let texts = pairs.flatMap { pair -> [String] in
         let (key, item) = (sdkEncodePathSegment(pair.0), sdkEncodePathSegment(pair.1))
-        if !explode {
-            return keyed ? [key, item] : [item]
-        }
+        if !explode { return keyed ? [key, item] : [item] }
         return keyed || style == "matrix" ? ["\(key)=\(item)"] : [item]
     }
     switch style {
@@ -455,9 +422,9 @@ extension SdkOptional: SdkWireConvertible {
     public var sdkWireValue: String {
         switch self {
         case .null:
-            ""
+            return ""
         case let .value(wrapped):
-            sdkWireString(wrapped)
+            return sdkWireString(wrapped)
         }
     }
 }
@@ -497,12 +464,10 @@ extension Array: SdkWireConvertible {
 /// invisible, and `String(describing:)` would put the struct itself —
 /// `PurposeEnum(rawValue: "assistants")` — into a form field.
 public extension SdkWireConvertible where Self: RawRepresentable, Self.RawValue == String {
-    var sdkWireValue: String {
-        rawValue
-    }
+    var sdkWireValue: String { rawValue }
 }
 
-public func sdkWireString(_ value: some Any) -> String {
+public func sdkWireString<T>(_ value: T) -> String {
     if let convertible = value as? SdkWireConvertible {
         return convertible.sdkWireValue
     }
@@ -546,7 +511,7 @@ public func sdkJsonEncoder() -> JSONEncoder {
     return encoder
 }
 
-let sdkJsonSequenceMediaTypes: Set<String> = [
+internal let sdkJsonSequenceMediaTypes: Set<String> = [
     "application/x-ndjson",
     "application/ndjson",
     "application/jsonl",
@@ -558,12 +523,12 @@ let sdkJsonSequenceMediaTypes: Set<String> = [
 /// Encodes a request body for its media type: one JSON record per line under a
 /// JSON sequence type, each also starting with RS under a JSON text sequence;
 /// any other body as one JSON value.
-func sdkEncodeBody(_ body: some Encodable, contentType: String) throws -> Data {
+func sdkEncodeBody<B: Encodable>(_ body: B, contentType: String) throws -> Data {
     let mediaType = contentType.split(separator: ";", maxSplits: 1).first?
         .trimmingCharacters(in: .whitespaces).lowercased() ?? ""
     if mediaType == "application/x-www-form-urlencoded",
        let fields = try JSONSerialization.jsonObject(with: sdkJsonEncoder().encode(body)) as? [String: Any] {
-        return try Data(sdkEncodeForm(fields).utf8)
+        return Data(try sdkEncodeForm(fields).utf8)
     }
     guard sdkJsonSequenceMediaTypes.contains(mediaType) else {
         return try sdkJsonEncoder().encode(body)
@@ -572,7 +537,7 @@ func sdkEncodeBody(_ body: some Encodable, contentType: String) throws -> Data {
     var data = Data()
     for record in body as? [any Encodable] ?? [body] {
         data.append(separator)
-        try data.append(sdkJsonEncoder().encode(record))
+        data.append(try sdkJsonEncoder().encode(record))
         data.append(0x0A)
     }
     return data
@@ -581,8 +546,8 @@ func sdkEncodeBody(_ body: some Encodable, contentType: String) throws -> Data {
 /// Encodes a structured request body for its media type: multipart form data as
 /// a part per field under a fresh boundary, any other type as `sdkEncodeBody`.
 /// A model writes its `files` fields as base64 text, sent as their bytes.
-func sdkEncodeStructuredBody(
-    _ body: some Encodable,
+func sdkEncodeStructuredBody<B: Encodable>(
+    _ body: B,
     contentType: String,
     files: Set<String> = []
 ) throws -> (data: Data, contentType: String) {
@@ -590,7 +555,7 @@ func sdkEncodeStructuredBody(
         .trimmingCharacters(in: .whitespaces).lowercased() ?? ""
     guard mediaType == "multipart/form-data",
           let fields = try JSONSerialization.jsonObject(with: sdkJsonEncoder().encode(body)) as? [String: Any] else {
-        return try (sdkEncodeBody(body, contentType: contentType), contentType)
+        return (try sdkEncodeBody(body, contentType: contentType), contentType)
     }
     var parts: [SdkMultipartField] = []
     for (name, value) in fields.sorted(by: { $0.key < $1.key }) {
@@ -612,4 +577,4 @@ func sdkEncodeStructuredBody(
     return (multipart.data, multipart.contentType)
 }
 
-let sdkFormUnreserved = CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~")
+internal let sdkFormUnreserved = CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~")

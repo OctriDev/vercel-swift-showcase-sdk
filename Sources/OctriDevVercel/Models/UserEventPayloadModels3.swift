@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 extension UserEventPayload {
     static func decodeLossless44(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
         if let value = try? container.decode(UserEventPayloadVariant345.self), sdkKeepsEveryKey(value, of: raw) {
@@ -567,44 +567,18 @@ extension UserEventPayload {
 
 extension UserEventPayload {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String: JSONValue].self) {
-            return .jsonValue(value)
-        }
-        if let value = try? container.decode(UserEventPayloadVariant1.self) {
-            return .userEventPayloadVariant1(value)
-        }
-        if let value = try? container.decode(UserEventPayloadVariant2.self) {
-            return .userEventPayloadVariant2(value)
-        }
-        if let value = try? container.decode(UserEventPayloadVariant3.self) {
-            return .userEventPayloadVariant3(value)
-        }
-        if let value = try? container.decode(UserEventPayloadVariant4.self) {
-            return .userEventPayloadVariant4(value)
-        }
-        if let value = try? container.decode(UserEventPayloadVariant5.self) {
-            return .userEventPayloadVariant5(value)
-        }
-        if let value = try? container.decode(UserEventPayloadVariant6.self) {
-            return .userEventPayloadVariant6(value)
-        }
-        if let value = try? container.decode(UserEventPayloadVariant7.self) {
-            return .userEventPayloadVariant7(value)
-        }
-        if let value = try? container.decode(UserEventPayloadVariant8.self) {
-            return .userEventPayloadVariant8(value)
-        }
-        if let value = try? container.decode(UserEventPayloadVariant9.self) {
-            return .userEventPayloadVariant9(value)
-        }
-        if let value = try? container
-            .decode(UserEventPayloadVariant10.self) {
-            return .userEventPayloadVariant10(value)
-        }
-        if let value = try? container
-            .decode(UserEventPayloadVariant11.self) {
-            return .userEventPayloadVariant11(value)
-        }
+        if let value = try? container.decode([String: JSONValue].self) { return .jsonValue(value) }
+        if let value = try? container.decode(UserEventPayloadVariant1.self) { return .userEventPayloadVariant1(value) }
+        if let value = try? container.decode(UserEventPayloadVariant2.self) { return .userEventPayloadVariant2(value) }
+        if let value = try? container.decode(UserEventPayloadVariant3.self) { return .userEventPayloadVariant3(value) }
+        if let value = try? container.decode(UserEventPayloadVariant4.self) { return .userEventPayloadVariant4(value) }
+        if let value = try? container.decode(UserEventPayloadVariant5.self) { return .userEventPayloadVariant5(value) }
+        if let value = try? container.decode(UserEventPayloadVariant6.self) { return .userEventPayloadVariant6(value) }
+        if let value = try? container.decode(UserEventPayloadVariant7.self) { return .userEventPayloadVariant7(value) }
+        if let value = try? container.decode(UserEventPayloadVariant8.self) { return .userEventPayloadVariant8(value) }
+        if let value = try? container.decode(UserEventPayloadVariant9.self) { return .userEventPayloadVariant9(value) }
+        if let value = try? container.decode(UserEventPayloadVariant10.self) { return .userEventPayloadVariant10(value) }
+        if let value = try? container.decode(UserEventPayloadVariant11.self) { return .userEventPayloadVariant11(value) }
         return nil
     }
 }

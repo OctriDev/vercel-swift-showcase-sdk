@@ -3,48 +3,34 @@
 
 import Foundation
 
-/// Security domain models
+// Security domain models
 public indirect enum GetConditionalBypassResponse {
     case getConditionalBypassResponseVariant0(GetConditionalBypassResponseVariant0)
     case getConditionalBypassResponseVariant1(GetConditionalBypassResponseVariant1)
 }
 
 extension GetConditionalBypassResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetConditionalBypassResponse"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConditionalBypassResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetConditionalBypassResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetConditionalBypassResponseVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetConditionalBypassResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .getConditionalBypassResponseVariant0(value)
         }
-        if let value = try? container.decode(GetConditionalBypassResponseVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetConditionalBypassResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .getConditionalBypassResponseVariant1(value)
         }
         return nil
@@ -56,12 +42,12 @@ extension GetConditionalBypassResponse {
         if let value = try? container.decode(
             GetConditionalBypassResponseVariant0.self
         ) {
-            return .getConditionalBypassResponseVariant0(value)
+            return             .getConditionalBypassResponseVariant0(value)
         }
         if let value = try? container.decode(
             GetConditionalBypassResponseVariant1.self
         ) {
-            return .getConditionalBypassResponseVariant1(value)
+            return             .getConditionalBypassResponseVariant1(value)
         }
         return nil
     }
@@ -84,35 +70,23 @@ public indirect enum GetConditionalBypassResponseVariant1ResultItemConditionGrou
 }
 
 extension GetConditionalBypassResponseVariant1ResultItemConditionGroupIXa6f5e3671d: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetConditionalBypassResponseVariant1ResultItemConditionGroupIXa6f5e3671d"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConditionalBypassResponseVariant1ResultItemConditionGroupIXa6f5e3671d")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetConditionalBypassResponseVariant1ResultItemConditionGroupIXa6f5e3671d {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode([String].self) {
-            return .stringList(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode([String].self) { return .stringList(value) }
         return nil
     }
 }
@@ -152,44 +126,28 @@ public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIXd8e2
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConditionalBypassResponseVariant1ResultItemConditionGroupIXd8e23c8b93 {
-    init(from decoder: Decoder) throws {
+extension GetConditionalBypassResponseVariant1ResultItemConditionGroupIXd8e23c8b93 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.op) else {
-            throw SdkValidationError(
-                field: "op",
-                code: "required",
-                message: "Validation failed for 'op': value is required"
-            )
+            throw SdkValidationError(field: "op", code: "required", message: "Validation failed for 'op': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        op = try container.sdkDecodeRequired(.op)
-        type = try container.sdkDecodeRequired(.type)
-        key = try container.sdkDecodeIfPresent(.key)
-        neg = try container.sdkDecodeIfPresent(.neg)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.op = try container.sdkDecodeRequired(.op)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.key = try container.sdkDecodeIfPresent(.key)
+        self.neg = try container.sdkDecodeIfPresent(.neg)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension GetConditionalBypassResponseVariant1ResultItemConditionGroupIXd8e23c8b93 {
-    init(
-        op: GetConditionalBypassResponseVariant1ResultItemConditionGroupIXb7920873e1,
-        type: GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3,
-        key: String? = nil,
-        neg: Bool? = nil,
-        value: GetConditionalBypassResponseVariant1ResultItemConditionGroupIXa6f5e3671d? = nil
-    ) {
+extension GetConditionalBypassResponseVariant1ResultItemConditionGroupIXd8e23c8b93 {
+    public init(op: GetConditionalBypassResponseVariant1ResultItemConditionGroupIXb7920873e1, type: GetConditionalBypassResponseVariant1ResultItemConditionGroupIX6a184f76e3, key: String? = nil, neg: Bool? = nil, value: GetConditionalBypassResponseVariant1ResultItemConditionGroupIXa6f5e3671d? = nil) {
         (self.op, self.type) = (op, type)
         (self.key, self.neg) = (key, neg)
         self.value = value
@@ -205,38 +163,25 @@ public struct GetConditionalBypassResponseVariant1: Codable {
         case result
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConditionalBypassResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetConditionalBypassResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.pagination) else {
-            throw SdkValidationError(
-                field: "pagination",
-                code: "required",
-                message: "Validation failed for 'pagination': value is required"
-            )
+            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
         }
         guard container.contains(.result) else {
-            throw SdkValidationError(
-                field: "result",
-                code: "required",
-                message: "Validation failed for 'result': value is required"
-            )
+            throw SdkValidationError(field: "result", code: "required", message: "Validation failed for 'result': value is required")
         }
-        pagination = try container.sdkDecodeRequired(.pagination)
-        result = try container.sdkDecodeRequired(.result)
+        self.pagination = try container.sdkDecodeRequired(.pagination)
+        self.result = try container.sdkDecodeRequired(.result)
     }
 }
 
-public extension GetConditionalBypassResponseVariant1 {
-    init(
-        pagination: GetConditionalBypassResponseVariant1Pagination,
-        result: [GetConditionalBypassResponseVariant1ResultItem]
-    ) {
+extension GetConditionalBypassResponseVariant1 {
+    public init(pagination: GetConditionalBypassResponseVariant1Pagination, result: [GetConditionalBypassResponseVariant1ResultItem]) {
         (self.pagination, self.result) = (pagination, result)
     }
 }
@@ -248,35 +193,23 @@ public indirect enum GetConditionalBypassResponseVariant0ResultItemConditionsIte
 }
 
 extension GetConditionalBypassResponseVariant0ResultItemConditionsItemValue: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetConditionalBypassResponseVariant0ResultItemConditionsItemValue"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConditionalBypassResponseVariant0ResultItemConditionsItemValue")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetConditionalBypassResponseVariant0ResultItemConditionsItemValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode([String].self) {
-            return .stringList(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode([String].self) { return .stringList(value) }
         return nil
     }
 }
@@ -308,27 +241,21 @@ public struct GetConditionalBypassResponseVariant0: Codable {
         case result
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConditionalBypassResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension GetConditionalBypassResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.result) else {
-            throw SdkValidationError(
-                field: "result",
-                code: "required",
-                message: "Validation failed for 'result': value is required"
-            )
+            throw SdkValidationError(field: "result", code: "required", message: "Validation failed for 'result': value is required")
         }
-        result = try container.sdkDecodeRequired(.result)
+        self.result = try container.sdkDecodeRequired(.result)
     }
 }
 
-public extension GetConditionalBypassResponseVariant0 {
-    init(result: [GetConditionalBypassResponseVariant0ResultItem]) {
+extension GetConditionalBypassResponseVariant0 {
+    public init(result: [GetConditionalBypassResponseVariant0ResultItem]) {
         self.result = result
     }
 }
@@ -340,27 +267,21 @@ public struct GetConditionalBypassResponseVariant1Pagination: Codable {
         case next
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConditionalBypassResponseVariant1Pagination {
-    init(from decoder: Decoder) throws {
+extension GetConditionalBypassResponseVariant1Pagination {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.next) else {
-            throw SdkValidationError(
-                field: "next",
-                code: "required",
-                message: "Validation failed for 'next': value is required"
-            )
+            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
         }
-        next = try container.sdkDecodeNullable(.next)
+        self.next = try container.sdkDecodeNullable(.next)
     }
 }
 
-public extension GetConditionalBypassResponseVariant1Pagination {
-    init(next: String?) {
+extension GetConditionalBypassResponseVariant1Pagination {
+    public init(next: String?) {
         self.next = next
     }
 }
@@ -380,44 +301,28 @@ public struct GetConditionalBypassResponseVariant0ResultItemConditionsItem: Coda
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConditionalBypassResponseVariant0ResultItemConditionsItem {
-    init(from decoder: Decoder) throws {
+extension GetConditionalBypassResponseVariant0ResultItemConditionsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.op) else {
-            throw SdkValidationError(
-                field: "op",
-                code: "required",
-                message: "Validation failed for 'op': value is required"
-            )
+            throw SdkValidationError(field: "op", code: "required", message: "Validation failed for 'op': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        op = try container.sdkDecodeRequired(.op)
-        type = try container.sdkDecodeRequired(.type)
-        key = try container.sdkDecodeIfPresent(.key)
-        neg = try container.sdkDecodeIfPresent(.neg)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.op = try container.sdkDecodeRequired(.op)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.key = try container.sdkDecodeIfPresent(.key)
+        self.neg = try container.sdkDecodeIfPresent(.neg)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension GetConditionalBypassResponseVariant0ResultItemConditionsItem {
-    init(
-        op: GetConditionalBypassResponseVariant0ResultItemConditionsItemOp,
-        type: GetConditionalBypassResponseVariant0ResultItemConditionsItemType,
-        key: String? = nil,
-        neg: Bool? = nil,
-        value: GetConditionalBypassResponseVariant0ResultItemConditionsItemValue? = nil
-    ) {
+extension GetConditionalBypassResponseVariant0ResultItemConditionsItem {
+    public init(op: GetConditionalBypassResponseVariant0ResultItemConditionsItemOp, type: GetConditionalBypassResponseVariant0ResultItemConditionsItemType, key: String? = nil, neg: Bool? = nil, value: GetConditionalBypassResponseVariant0ResultItemConditionsItemValue? = nil) {
         (self.op, self.type) = (op, type)
         (self.key, self.neg) = (key, neg)
         self.value = value
@@ -431,33 +336,26 @@ public struct GetConditionalBypassResponseVariant0ResultItem: Codable {
         case conditions
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConditionalBypassResponseVariant0ResultItem {
-    init(from decoder: Decoder) throws {
+extension GetConditionalBypassResponseVariant0ResultItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.conditions) else {
-            throw SdkValidationError(
-                field: "conditions",
-                code: "required",
-                message: "Validation failed for 'conditions': value is required"
-            )
+            throw SdkValidationError(field: "conditions", code: "required", message: "Validation failed for 'conditions': value is required")
         }
-        conditions = try container.sdkDecodeRequired(.conditions)
+        self.conditions = try container.sdkDecodeRequired(.conditions)
     }
 }
 
-public extension GetConditionalBypassResponseVariant0ResultItem {
-    init(conditions: [GetConditionalBypassResponseVariant0ResultItemConditionsItem]) {
+extension GetConditionalBypassResponseVariant0ResultItem {
+    public init(conditions: [GetConditionalBypassResponseVariant0ResultItemConditionsItem]) {
         self.conditions = conditions
     }
 }
 
-public typealias GetConditionalBypassResponseVariant1ResultItemConditionGroupList =
-    [GetConditionalBypassResponseVariant1ResultItemConditionGroupItem]
+public typealias GetConditionalBypassResponseVariant1ResultItemConditionGroupList = [GetConditionalBypassResponseVariant1ResultItemConditionGroupItem]
 
 public struct GetConditionalBypassResponseVariant1ResultItem: Codable {
     public var conditionGroup: GetConditionalBypassResponseVariant1ResultItemConditionGroupList
@@ -468,41 +366,30 @@ public struct GetConditionalBypassResponseVariant1ResultItem: Codable {
         case domain
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConditionalBypassResponseVariant1ResultItem {
-    init(from decoder: Decoder) throws {
+extension GetConditionalBypassResponseVariant1ResultItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.conditionGroup) else {
-            throw SdkValidationError(
-                field: "conditionGroup",
-                code: "required",
-                message: "Validation failed for 'conditionGroup': value is required"
-            )
+            throw SdkValidationError(field: "conditionGroup", code: "required", message: "Validation failed for 'conditionGroup': value is required")
         }
         guard container.contains(.domain) else {
-            throw SdkValidationError(
-                field: "domain",
-                code: "required",
-                message: "Validation failed for 'domain': value is required"
-            )
+            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
         }
-        conditionGroup = try container.sdkDecodeRequired(.conditionGroup)
-        domain = try container.sdkDecodeRequired(.domain)
+        self.conditionGroup = try container.sdkDecodeRequired(.conditionGroup)
+        self.domain = try container.sdkDecodeRequired(.domain)
     }
 }
 
-public extension GetConditionalBypassResponseVariant1ResultItem {
-    init(conditionGroup: GetConditionalBypassResponseVariant1ResultItemConditionGroupList, domain: String) {
+extension GetConditionalBypassResponseVariant1ResultItem {
+    public init(conditionGroup: GetConditionalBypassResponseVariant1ResultItemConditionGroupList, domain: String) {
         (self.conditionGroup, self.domain) = (conditionGroup, domain)
     }
 }
 
-public typealias GetConditionalBypassResponseVariant1ResultItemConditionGroupIX7c005827a6 =
-    [GetConditionalBypassResponseVariant1ResultItemConditionGroupIXd8e23c8b93]
+public typealias GetConditionalBypassResponseVariant1ResultItemConditionGroupIX7c005827a6 = [GetConditionalBypassResponseVariant1ResultItemConditionGroupIXd8e23c8b93]
 
 public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupItem: Codable {
     public var conditions: GetConditionalBypassResponseVariant1ResultItemConditionGroupIX7c005827a6
@@ -511,39 +398,29 @@ public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupItem: 
         case conditions
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetConditionalBypassResponseVariant1ResultItemConditionGroupItem {
-    init(from decoder: Decoder) throws {
+extension GetConditionalBypassResponseVariant1ResultItemConditionGroupItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.conditions) else {
-            throw SdkValidationError(
-                field: "conditions",
-                code: "required",
-                message: "Validation failed for 'conditions': value is required"
-            )
+            throw SdkValidationError(field: "conditions", code: "required", message: "Validation failed for 'conditions': value is required")
         }
-        conditions = try container.sdkDecodeRequired(.conditions)
+        self.conditions = try container.sdkDecodeRequired(.conditions)
     }
 }
 
-public extension GetConditionalBypassResponseVariant1ResultItemConditionGroupItem {
-    init(conditions: GetConditionalBypassResponseVariant1ResultItemConditionGroupIX7c005827a6) {
+extension GetConditionalBypassResponseVariant1ResultItemConditionGroupItem {
+    public init(conditions: GetConditionalBypassResponseVariant1ResultItemConditionGroupIX7c005827a6) {
         self.conditions = conditions
     }
 }
 
-public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIXb7920873e1: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIXb7920873e1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let eq = GetConditionalBypassResponseVariant1ResultItemConditionGroupIXb7920873e1(rawValue: "eq")
     public static let ex = GetConditionalBypassResponseVariant1ResultItemConditionGroupIXb7920873e1(rawValue: "ex")
     public static let gt = GetConditionalBypassResponseVariant1ResultItemConditionGroupIXb7920873e1(rawValue: "gt")
@@ -562,7 +439,7 @@ public struct GetConditionalBypassResponseVariant1ResultItemConditionGroupIXb792
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AliasesMethods {
-    struct ListAliasesOptions: Codable {
+extension AliasesMethods {
+    public struct ListAliasesOptions: Codable {
         public var domain: ListAliasesParameter?
         public var from: Double?
         public var limit: Double?
@@ -21,12 +21,9 @@ public extension AliasesMethods {
         public init() {}
     }
 
-    /// Lists aliases for the authenticated user or team, with optional filters for domain, project, creation time, or
-    /// rollback deployment. Use `limit` to control the number of aliases returned, and inspect `pagination` for the
-    /// previous and next page values.
+    /// Lists aliases for the authenticated user or team, with optional filters for domain, project, creation time, or rollback deployment. Use `limit` to control the number of aliases returned, and inspect `pagination` for the previous and next page values.
     ///
-    /// Retrieves a list of aliases for the authenticated User or Team. When `domain` is provided, only aliases for that
-    /// domain will be returned. When `projectId` is provided, it will only return the given project aliases.
+    /// Retrieves a list of aliases for the authenticated User or Team. When `domain` is provided, only aliases for that domain will be returned. When `projectId` is provided, it will only return the given project aliases.
     ///
     /// - Parameters:
     /// - domain: Get only aliases of the given domain name
@@ -39,12 +36,8 @@ public extension AliasesMethods {
     ///   deployment
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listAliases(
-        config: ClientConfig,
-        options: ListAliasesOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListAliasesResponse {
-        try await (sdkRequest("GET", "/v4/aliases", config: config, query: [
+    public static func listAliases(config: ClientConfig, options: ListAliasesOptions, requestOptions: RequestOptions? = nil) async throws -> ListAliasesResponse {
+        return try (await sdkRequest("GET", "/v4/aliases", config: config, query: [
             SdkQueryParameter("domain", value: options.domain),
             SdkQueryParameter("from", value: options.from),
             SdkQueryParameter("limit", value: options.limit),

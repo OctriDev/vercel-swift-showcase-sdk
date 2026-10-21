@@ -8,9 +8,8 @@ import Foundation
 #endif
 public enum CertsMethods {}
 
-public extension CertsMethods {
-    /// Retrieves a certificate by its identifier. Use `teamId` or `slug` to specify the team context for the request.
-    /// The response includes the certificate's common names, renewal setting, and creation and expiration timestamps.
+extension CertsMethods {
+    /// Retrieves a certificate by its identifier. Use `teamId` or `slug` to specify the team context for the request. The response includes the certificate's common names, renewal setting, and creation and expiration timestamps.
     ///
     /// Get cert by id
     ///
@@ -18,29 +17,14 @@ public extension CertsMethods {
     /// - id: The cert id
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getCertById(
-        config: ClientConfig,
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetCertByIdResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v8/certs/", sdkEncodePathSegment(sdkWireString(id))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getCertById",
-            options: requestOptions
-        )).data
+    public static func getCertById(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetCertByIdResponse {
+        return try (await sdkRequest("GET", ["/v8/certs/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getCertById", options: requestOptions)).data
     }
 
-    /// Deletes a certificate identified by its certificate ID. Use `teamId` or `slug` to scope the request to a team.
-    /// The response object confirms the removal.
+    /// Deletes a certificate identified by its certificate ID. Use `teamId` or `slug` to scope the request to a team. The response object confirms the removal.
     ///
     /// Remove cert
     ///
@@ -48,24 +32,10 @@ public extension CertsMethods {
     /// - id: The cert id to remove
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func removeCert(
-        config: ClientConfig,
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v8/certs/", sdkEncodePathSegment(sdkWireString(id))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "removeCert",
-            options: requestOptions
-        )).data
+    public static func removeCert(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try (await sdkRequest("DELETE", ["/v8/certs/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "removeCert", options: requestOptions)).data
     }
 }

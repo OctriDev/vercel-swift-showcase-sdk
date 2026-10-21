@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Connect domain models
+// Connect domain models
 /// Page of connectors connected to a project.
 public struct ConnectProjectConnectorConnectionList: Codable {
     /// Connector connections in this page.
@@ -16,35 +16,25 @@ public struct ConnectProjectConnectorConnectionList: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectProjectConnectorConnectionList {
-    init(from decoder: Decoder) throws {
+extension ConnectProjectConnectorConnectionList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.connectors) else {
-            throw SdkValidationError(
-                field: "connectors",
-                code: "required",
-                message: "Validation failed for 'connectors': value is required"
-            )
+            throw SdkValidationError(field: "connectors", code: "required", message: "Validation failed for 'connectors': value is required")
         }
         guard container.contains(.pagination) else {
-            throw SdkValidationError(
-                field: "pagination",
-                code: "required",
-                message: "Validation failed for 'pagination': value is required"
-            )
+            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
         }
-        connectors = try container.sdkDecodeRequired(.connectors)
-        pagination = try container.sdkDecodeRequired(.pagination)
+        self.connectors = try container.sdkDecodeRequired(.connectors)
+        self.pagination = try container.sdkDecodeRequired(.pagination)
     }
 }
 
-public extension ConnectProjectConnectorConnectionList {
-    init(connectors: [ConnectProjectConnection], pagination: ConnectPagination) {
+extension ConnectProjectConnectorConnectionList {
+    public init(connectors: [ConnectProjectConnection], pagination: ConnectPagination) {
         (self.connectors, self.pagination) = (connectors, pagination)
     }
 }

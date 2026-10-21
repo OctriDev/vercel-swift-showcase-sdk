@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    /// Retrieves project information using the project's ID or name. Use the `teamId` or `slug` query parameter to make
-    /// the request on behalf of a team.
+extension ProjectsMethods {
+    /// Retrieves project information using the project's ID or name. Use the `teamId` or `slug` query parameter to make the request on behalf of a team.
     ///
     /// Get the information for a specific project by passing either the project `id` or `name` in the URL.
     ///
@@ -16,24 +15,10 @@ public extension ProjectsMethods {
     /// - idOrName: The unique project identifier or the project name
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getProjects(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetProjectsResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getProjects",
-            options: requestOptions
-        )).data
+    public static func getProjects(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectsResponse {
+        return try (await sdkRequest("GET", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getProjects", options: requestOptions)).data
     }
 }

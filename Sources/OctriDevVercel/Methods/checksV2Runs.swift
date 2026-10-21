@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ChecksV2Methods {
-    /// Lists all runs associated with a project check. Use the project and check identifiers to select the check whose
-    /// run history you need. The response groups the results in a `runs` array.
+extension ChecksV2Methods {
+    /// Lists all runs associated with a project check. Use the project and check identifiers to select the check whose run history you need. The response groups the results in a `runs` array.
     ///
     /// List all runs associated with a given check.
     ///
@@ -16,31 +15,10 @@ public extension ChecksV2Methods {
     /// - checkId: The ID of the resource that will be updated.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listCheckRuns(
-        config: ClientConfig,
-        projectIdOrName: String,
-        checkId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListCheckRunsResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v2/projects/",
-                sdkEncodePathSegment(sdkWireString(projectIdOrName)),
-                "/checks/",
-                sdkEncodePathSegment(sdkWireString(checkId)),
-                "/runs",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listCheckRuns",
-            options: requestOptions
-        )).data
+    public static func listCheckRuns(config: ClientConfig, projectIdOrName: String, checkId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListCheckRunsResponse {
+        return try (await sdkRequest("GET", ["/v2/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/checks/", sdkEncodePathSegment(sdkWireString(checkId)), "/runs"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listCheckRuns", options: requestOptions)).data
     }
 }

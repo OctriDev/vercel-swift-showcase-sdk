@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical accessGroups operation model declarations
+// Canonical accessGroups operation model declarations
 public struct ReadAccessGroupProjectResponse: Codable {
     public var accessGroupId: String
     public var createdAt: String
@@ -25,74 +25,41 @@ public struct ReadAccessGroupProjectResponse: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ReadAccessGroupProjectResponse {
-    init(from decoder: Decoder) throws {
+extension ReadAccessGroupProjectResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.accessGroupId) else {
-            throw SdkValidationError(
-                field: "accessGroupId",
-                code: "required",
-                message: "Validation failed for 'accessGroupId': value is required"
-            )
+            throw SdkValidationError(field: "accessGroupId", code: "required", message: "Validation failed for 'accessGroupId': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(
-                field: "role",
-                code: "required",
-                message: "Validation failed for 'role': value is required"
-            )
+            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
         }
         guard container.contains(.teamId) else {
-            throw SdkValidationError(
-                field: "teamId",
-                code: "required",
-                message: "Validation failed for 'teamId': value is required"
-            )
+            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        role = try container.sdkDecodeRequired(.role)
-        teamId = try container.sdkDecodeRequired(.teamId)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.role = try container.sdkDecodeRequired(.role)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
     }
 }
 
-public extension ReadAccessGroupProjectResponse {
-    init(
-        accessGroupId: String,
-        createdAt: String,
-        projectId: String,
-        role: ReadAccessGroupProjectResponseRole,
-        teamId: String,
-        updatedAt: String
-    ) {
+extension ReadAccessGroupProjectResponse {
+    public init(accessGroupId: String, createdAt: String, projectId: String, role: ReadAccessGroupProjectResponseRole, teamId: String, updatedAt: String) {
         (self.accessGroupId, self.createdAt) = (accessGroupId, createdAt)
         (self.projectId, self.role) = (projectId, role)
         (self.teamId, self.updatedAt) = (teamId, updatedAt)
@@ -108,35 +75,25 @@ public struct ListAccessGroupMembersResponse: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAccessGroupMembersResponse {
-    init(from decoder: Decoder) throws {
+extension ListAccessGroupMembersResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.members) else {
-            throw SdkValidationError(
-                field: "members",
-                code: "required",
-                message: "Validation failed for 'members': value is required"
-            )
+            throw SdkValidationError(field: "members", code: "required", message: "Validation failed for 'members': value is required")
         }
         guard container.contains(.pagination) else {
-            throw SdkValidationError(
-                field: "pagination",
-                code: "required",
-                message: "Validation failed for 'pagination': value is required"
-            )
+            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
         }
-        members = try container.sdkDecodeRequired(.members)
-        pagination = try container.sdkDecodeRequired(.pagination)
+        self.members = try container.sdkDecodeRequired(.members)
+        self.pagination = try container.sdkDecodeRequired(.pagination)
     }
 }
 
-public extension ListAccessGroupMembersResponse {
-    init(members: [ListAccessGroupMembersResponseMembersItem], pagination: ListAccessGroupMembersResponsePagination) {
+extension ListAccessGroupMembersResponse {
+    public init(members: [ListAccessGroupMembersResponseMembersItem], pagination: ListAccessGroupMembersResponsePagination) {
         (self.members, self.pagination) = (members, pagination)
     }
 }
@@ -160,62 +117,36 @@ public struct ListAccessGroupMembersResponseMembersItem: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAccessGroupMembersResponseMembersItem {
-    init(from decoder: Decoder) throws {
+extension ListAccessGroupMembersResponseMembersItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.email) else {
-            throw SdkValidationError(
-                field: "email",
-                code: "required",
-                message: "Validation failed for 'email': value is required"
-            )
+            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
         }
         guard container.contains(.teamRole) else {
-            throw SdkValidationError(
-                field: "teamRole",
-                code: "required",
-                message: "Validation failed for 'teamRole': value is required"
-            )
+            throw SdkValidationError(field: "teamRole", code: "required", message: "Validation failed for 'teamRole': value is required")
         }
         guard container.contains(.uid) else {
-            throw SdkValidationError(
-                field: "uid",
-                code: "required",
-                message: "Validation failed for 'uid': value is required"
-            )
+            throw SdkValidationError(field: "uid", code: "required", message: "Validation failed for 'uid': value is required")
         }
         guard container.contains(.username) else {
-            throw SdkValidationError(
-                field: "username",
-                code: "required",
-                message: "Validation failed for 'username': value is required"
-            )
+            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
         }
-        email = try container.sdkDecodeRequired(.email)
-        teamRole = try container.sdkDecodeRequired(.teamRole)
-        uid = try container.sdkDecodeRequired(.uid)
-        username = try container.sdkDecodeRequired(.username)
-        avatar = try container.sdkDecodeIfPresent(.avatar)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        name = try container.sdkDecodeIfPresent(.name)
+        self.email = try container.sdkDecodeRequired(.email)
+        self.teamRole = try container.sdkDecodeRequired(.teamRole)
+        self.uid = try container.sdkDecodeRequired(.uid)
+        self.username = try container.sdkDecodeRequired(.username)
+        self.avatar = try container.sdkDecodeIfPresent(.avatar)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.name = try container.sdkDecodeIfPresent(.name)
     }
 }
 
-public extension ListAccessGroupMembersResponseMembersItem {
-    init(
-        email: String,
-        teamRole: ListAccessGroupMembersResponseMembersItemTeamRole,
-        uid: String,
-        username: String,
-        avatar: String? = nil,
-        createdAt: String? = nil,
-        name: String? = nil
-    ) {
+extension ListAccessGroupMembersResponseMembersItem {
+    public init(email: String, teamRole: ListAccessGroupMembersResponseMembersItemTeamRole, uid: String, username: String, avatar: String? = nil, createdAt: String? = nil, name: String? = nil) {
         (self.email, self.teamRole) = (email, teamRole)
         (self.uid, self.username) = (uid, username)
         (self.avatar, self.createdAt) = (avatar, createdAt)
@@ -240,74 +171,41 @@ public struct UpdateAccessGroupProjectResponse: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateAccessGroupProjectResponse {
-    init(from decoder: Decoder) throws {
+extension UpdateAccessGroupProjectResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.accessGroupId) else {
-            throw SdkValidationError(
-                field: "accessGroupId",
-                code: "required",
-                message: "Validation failed for 'accessGroupId': value is required"
-            )
+            throw SdkValidationError(field: "accessGroupId", code: "required", message: "Validation failed for 'accessGroupId': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(
-                field: "role",
-                code: "required",
-                message: "Validation failed for 'role': value is required"
-            )
+            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
         }
         guard container.contains(.teamId) else {
-            throw SdkValidationError(
-                field: "teamId",
-                code: "required",
-                message: "Validation failed for 'teamId': value is required"
-            )
+            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        role = try container.sdkDecodeRequired(.role)
-        teamId = try container.sdkDecodeRequired(.teamId)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.role = try container.sdkDecodeRequired(.role)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
     }
 }
 
-public extension UpdateAccessGroupProjectResponse {
-    init(
-        accessGroupId: String,
-        createdAt: String,
-        projectId: String,
-        role: UpdateAccessGroupProjectResponseRole,
-        teamId: String,
-        updatedAt: String
-    ) {
+extension UpdateAccessGroupProjectResponse {
+    public init(accessGroupId: String, createdAt: String, projectId: String, role: UpdateAccessGroupProjectResponseRole, teamId: String, updatedAt: String) {
         (self.accessGroupId, self.createdAt) = (accessGroupId, createdAt)
         (self.projectId, self.role) = (projectId, role)
         (self.teamId, self.updatedAt) = (teamId, updatedAt)
@@ -323,35 +221,25 @@ public struct ListAccessGroupsResponseVariant1Pagination: Codable {
         case next
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAccessGroupsResponseVariant1Pagination {
-    init(from decoder: Decoder) throws {
+extension ListAccessGroupsResponseVariant1Pagination {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.count) else {
-            throw SdkValidationError(
-                field: "count",
-                code: "required",
-                message: "Validation failed for 'count': value is required"
-            )
+            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
         }
         guard container.contains(.next) else {
-            throw SdkValidationError(
-                field: "next",
-                code: "required",
-                message: "Validation failed for 'next': value is required"
-            )
+            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
         }
-        count = try container.sdkDecodeRequired(.count)
-        next = try container.sdkDecodeNullable(.next)
+        self.count = try container.sdkDecodeRequired(.count)
+        self.next = try container.sdkDecodeNullable(.next)
     }
 }
 
-public extension ListAccessGroupsResponseVariant1Pagination {
-    init(count: Double, next: String?) {
+extension ListAccessGroupsResponseVariant1Pagination {
+    public init(count: Double, next: String?) {
         (self.count, self.next) = (count, next)
     }
 }
@@ -373,74 +261,41 @@ public struct CreateAccessGroupProjectResponse: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateAccessGroupProjectResponse {
-    init(from decoder: Decoder) throws {
+extension CreateAccessGroupProjectResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.accessGroupId) else {
-            throw SdkValidationError(
-                field: "accessGroupId",
-                code: "required",
-                message: "Validation failed for 'accessGroupId': value is required"
-            )
+            throw SdkValidationError(field: "accessGroupId", code: "required", message: "Validation failed for 'accessGroupId': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(
-                field: "role",
-                code: "required",
-                message: "Validation failed for 'role': value is required"
-            )
+            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
         }
         guard container.contains(.teamId) else {
-            throw SdkValidationError(
-                field: "teamId",
-                code: "required",
-                message: "Validation failed for 'teamId': value is required"
-            )
+            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        role = try container.sdkDecodeRequired(.role)
-        teamId = try container.sdkDecodeRequired(.teamId)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.role = try container.sdkDecodeRequired(.role)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
     }
 }
 
-public extension CreateAccessGroupProjectResponse {
-    init(
-        accessGroupId: String,
-        createdAt: String,
-        projectId: String,
-        role: CreateAccessGroupProjectResponseRole,
-        teamId: String,
-        updatedAt: String
-    ) {
+extension CreateAccessGroupProjectResponse {
+    public init(accessGroupId: String, createdAt: String, projectId: String, role: CreateAccessGroupProjectResponseRole, teamId: String, updatedAt: String) {
         (self.accessGroupId, self.createdAt) = (accessGroupId, createdAt)
         (self.projectId, self.role) = (projectId, role)
         (self.teamId, self.updatedAt) = (teamId, updatedAt)
@@ -462,65 +317,37 @@ public struct ListAccessGroupProjectsResponseProjectsItem: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAccessGroupProjectsResponseProjectsItem {
-    init(from decoder: Decoder) throws {
+extension ListAccessGroupProjectsResponseProjectsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.project) else {
-            throw SdkValidationError(
-                field: "project",
-                code: "required",
-                message: "Validation failed for 'project': value is required"
-            )
+            throw SdkValidationError(field: "project", code: "required", message: "Validation failed for 'project': value is required")
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(
-                field: "projectId",
-                code: "required",
-                message: "Validation failed for 'projectId': value is required"
-            )
+            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(
-                field: "role",
-                code: "required",
-                message: "Validation failed for 'role': value is required"
-            )
+            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        project = try container.sdkDecodeRequired(.project)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        role = try container.sdkDecodeRequired(.role)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.project = try container.sdkDecodeRequired(.project)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.role = try container.sdkDecodeRequired(.role)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
     }
 }
 
-public extension ListAccessGroupProjectsResponseProjectsItem {
-    init(
-        createdAt: String,
-        project: ListAccessGroupProjectsResponseProjectsItemProject,
-        projectId: String,
-        role: ListAccessGroupProjectsResponseProjectsItemRole,
-        updatedAt: String
-    ) {
+extension ListAccessGroupProjectsResponseProjectsItem {
+    public init(createdAt: String, project: ListAccessGroupProjectsResponseProjectsItemProject, projectId: String, role: ListAccessGroupProjectsResponseProjectsItemRole, updatedAt: String) {
         (self.createdAt, self.project) = (createdAt, project)
         (self.projectId, self.role) = (projectId, role)
         self.updatedAt = updatedAt
@@ -536,38 +363,25 @@ public struct ListAccessGroupsResponseVariant1: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAccessGroupsResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension ListAccessGroupsResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.accessGroups) else {
-            throw SdkValidationError(
-                field: "accessGroups",
-                code: "required",
-                message: "Validation failed for 'accessGroups': value is required"
-            )
+            throw SdkValidationError(field: "accessGroups", code: "required", message: "Validation failed for 'accessGroups': value is required")
         }
         guard container.contains(.pagination) else {
-            throw SdkValidationError(
-                field: "pagination",
-                code: "required",
-                message: "Validation failed for 'pagination': value is required"
-            )
+            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
         }
-        accessGroups = try container.sdkDecodeRequired(.accessGroups)
-        pagination = try container.sdkDecodeRequired(.pagination)
+        self.accessGroups = try container.sdkDecodeRequired(.accessGroups)
+        self.pagination = try container.sdkDecodeRequired(.pagination)
     }
 }
 
-public extension ListAccessGroupsResponseVariant1 {
-    init(
-        accessGroups: [ListAccessGroupsResponseVariant1AccessGroupsItem],
-        pagination: ListAccessGroupsResponseVariant1Pagination
-    ) {
+extension ListAccessGroupsResponseVariant1 {
+    public init(accessGroups: [ListAccessGroupsResponseVariant1AccessGroupsItem], pagination: ListAccessGroupsResponseVariant1Pagination) {
         (self.accessGroups, self.pagination) = (accessGroups, pagination)
     }
 }
@@ -615,23 +429,21 @@ public struct UpdateAccessGroupResponse: Codable {
         case teamRoles
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateAccessGroupResponse {
-    init(from decoder: Decoder) throws {
+extension UpdateAccessGroupResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        entitlements = try container.sdkDecodeRequired(.entitlements)
-        membersCount = try container.sdkDecodeRequired(.membersCount)
-        name = try container.sdkDecodeRequired(.name)
-        projectsCount = try container.sdkDecodeRequired(.projectsCount)
-        teamId = try container.sdkDecodeRequired(.teamId)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+        self.accessGroupId = try container.sdkDecodeRequired(.accessGroupId)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.entitlements = try container.sdkDecodeRequired(.entitlements)
+        self.membersCount = try container.sdkDecodeRequired(.membersCount)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.projectsCount = try container.sdkDecodeRequired(.projectsCount)
+        self.teamId = try container.sdkDecodeRequired(.teamId)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
     }
 }

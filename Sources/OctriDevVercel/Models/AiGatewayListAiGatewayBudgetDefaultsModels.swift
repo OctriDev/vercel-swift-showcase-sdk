@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// AiGateway domain models
+// AiGateway domain models
 /// Typed representation of the `AiGatewayBudgetDefaultList` API schema.
 public struct AiGatewayBudgetDefaultList: Codable {
     /// Required array value serialized in the `defaults` wire field.
@@ -13,27 +13,21 @@ public struct AiGatewayBudgetDefaultList: Codable {
         case defaults
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AiGatewayBudgetDefaultList {
-    init(from decoder: Decoder) throws {
+extension AiGatewayBudgetDefaultList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.defaults) else {
-            throw SdkValidationError(
-                field: "defaults",
-                code: "required",
-                message: "Validation failed for 'defaults': value is required"
-            )
+            throw SdkValidationError(field: "defaults", code: "required", message: "Validation failed for 'defaults': value is required")
         }
-        defaults = try container.sdkDecodeRequired(.defaults)
+        self.defaults = try container.sdkDecodeRequired(.defaults)
     }
 }
 
-public extension AiGatewayBudgetDefaultList {
-    init(defaults: [AiGatewayBudgetDefault]) {
+extension AiGatewayBudgetDefaultList {
+    public init(defaults: [AiGatewayBudgetDefault]) {
         self.defaults = defaults
     }
 }

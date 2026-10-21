@@ -6,49 +6,25 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Schedules a VCR repository image for deletion. The image disappears from list and retrieve results immediately,
-    /// while its manifest, blobs, tags, and database record are reclaimed asynchronously. The cleanup is performed
-    /// through the `VcrManifestRemoved` event.
+extension VcrMethods {
+    /// Schedules a VCR repository image for deletion. The image disappears from list and retrieve results immediately, while its manifest, blobs, tags, and database record are reclaimed asynchronously. The cleanup is performed through the `VcrManifestRemoved` event.
     ///
-    /// Schedule an image for deletion. The image is marked so it disappears from list/get immediately; subscriber-vcr
-    /// reclaims the manifest, blobs, tags and row asynchronously via the VcrManifestRemoved event.
+    /// Schedule an image for deletion. The image is marked so it disappears from list/get immediately; subscriber-vcr reclaims the manifest, blobs, tags and row asynchronously via the VcrManifestRemoved event.
     ///
     /// - Parameters:
     /// - projectId: Project ID or name (slug) within the authenticated team. IDs
     ///   take precedence over names. Missing or empty values return HTTP 400.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteRepositoryImage(
-        config: ClientConfig,
-        idOrName: String,
-        imageId: String,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> JSONValue {
+    public static func deleteRepositoryImage(config: ClientConfig, idOrName: String, imageId: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> JSONValue {
         try validateLength("idOrName", idOrName, max: 255)
 
         try validateLength("imageId", imageId, max: 255)
 
-        return try await (sdkRequest(
-            "DELETE",
-            [
-                "/v1/vcr/repository/",
-                sdkEncodePathSegment(sdkWireString(idOrName)),
-                "/images/",
-                sdkEncodePathSegment(sdkWireString(imageId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "deleteRepositoryImage",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/images/", sdkEncodePathSegment(sdkWireString(imageId))].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "deleteRepositoryImage", options: requestOptions)).data
     }
 }

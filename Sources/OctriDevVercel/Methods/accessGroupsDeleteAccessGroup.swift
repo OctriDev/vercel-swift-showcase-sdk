@@ -6,33 +6,18 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AccessGroupsMethods {
-    /// Deletes an access group. Use `idOrName` to identify the group and `teamId` or `slug` to select the team for the
-    /// request.
+extension AccessGroupsMethods {
+    /// Deletes an access group. Use `idOrName` to identify the group and `teamId` or `slug` to select the team for the request.
     ///
     /// Allows to delete an access group
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteAccessGroup(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .empty,
-            operationId: "deleteAccessGroup",
-            options: requestOptions
-        )).data
+    public static func deleteAccessGroup(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try (await sdkRequest("DELETE", ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .empty, operationId: "deleteAccessGroup", options: requestOptions)).data
     }
 }

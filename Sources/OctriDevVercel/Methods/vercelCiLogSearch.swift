@@ -6,14 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VercelCiMethods {
-    /// Searches task logs across multiple invocation attempts and returns only invocations and tasks with matching
-    /// lines. Supply up to 50 unique invocation attempts in `invocation` and a search string in `search`; matching is
-    /// case-insensitive. When more than 1,000 lines match, the response keeps the newest lines.
+extension VercelCiMethods {
+    /// Searches task logs across multiple invocation attempts and returns only invocations and tasks with matching lines. Supply up to 50 unique invocation attempts in `invocation` and a search string in `search`; matching is case-insensitive. When more than 1,000 lines match, the response keeps the newest lines.
     ///
-    /// Searches the task logs of up to 50 invocation attempts at once, for example the most recent runs of a branch
-    /// from `GET /v2/vercel-ci/invocations`. Only invocations and tasks with matching lines are returned. When more
-    /// than 1000 lines match, the newest are kept.
+    /// Searches the task logs of up to 50 invocation attempts at once, for example the most recent runs of a branch from `GET /v2/vercel-ci/invocations`. Only invocations and tasks with matching lines are returned. When more than 1000 lines match, the newest are kept.
     ///
     /// - Parameters:
     /// - invocation: Invocation attempts to search, as \"<invocationId>:<attempt>\"
@@ -22,24 +18,16 @@ public extension VercelCiMethods {
     /// - level: Only return log lines with one of these levels.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func searchVercelCiLogs(
-        config: ClientConfig,
-        invocation: [String],
-        search: String,
-        level: [SearchVercelCiLogsParameterItem]? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SearchVercelCiLogsResponse {
+    public static func searchVercelCiLogs(config: ClientConfig, invocation: [String], search: String, level: [SearchVercelCiLogsParameterItem]? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SearchVercelCiLogsResponse {
         try validateItems("invocation", invocation, min: 1, max: 50)
 
         try validateLength("search", search, max: 256)
 
-        if let level {
+        if let level = level {
             try validateItems("level", level, min: 1)
         }
 
-        return try await (sdkRequest("GET", "/v1/vercel-ci/log-search", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/vercel-ci/log-search", config: config, query: [
             SdkQueryParameter("invocation", values: invocation, style: "form", explode: true),
             SdkQueryParameter("search", value: search),
             SdkQueryParameter("level", values: level, style: "form", explode: true),

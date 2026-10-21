@@ -15,11 +15,11 @@ struct UpdateTeamMemberRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(confirmed, forKey: SdkCodingKey("confirmed"))
-        try keyedContainer.encodeIfPresent(role, forKey: SdkCodingKey("role"))
-        try keyedContainer.encodeIfPresent(teamPermissions, forKey: SdkCodingKey("teamPermissions"))
-        try keyedContainer.encodeIfPresent(projects, forKey: SdkCodingKey("projects"))
-        try keyedContainer.encodeIfPresent(joinedFrom, forKey: SdkCodingKey("joinedFrom"))
+        try keyedContainer.encodeIfPresent(self.confirmed, forKey: SdkCodingKey("confirmed"))
+        try keyedContainer.encodeIfPresent(self.role, forKey: SdkCodingKey("role"))
+        try keyedContainer.encodeIfPresent(self.teamPermissions, forKey: SdkCodingKey("teamPermissions"))
+        try keyedContainer.encodeIfPresent(self.projects, forKey: SdkCodingKey("projects"))
+        try keyedContainer.encodeIfPresent(self.joinedFrom, forKey: SdkCodingKey("joinedFrom"))
     }
 }
 
@@ -56,88 +56,67 @@ struct UpdateTeamRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(avatar, forKey: SdkCodingKey("avatar"))
-        try keyedContainer.encodeIfPresent(description, forKey: SdkCodingKey("description"))
-        try keyedContainer.encodeIfPresent(emailDomain, forKey: SdkCodingKey("emailDomain"))
-        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(previewDeploymentSuffix, forKey: SdkCodingKey("previewDeploymentSuffix"))
-        try keyedContainer.encodeIfPresent(regenerateInviteCode, forKey: SdkCodingKey("regenerateInviteCode"))
-        try keyedContainer.encodeIfPresent(saml, forKey: SdkCodingKey("saml"))
-        try keyedContainer.encodeIfPresent(slug2, forKey: SdkCodingKey("slug"))
-        try keyedContainer.encodeIfPresent(enablePreviewFeedback, forKey: SdkCodingKey("enablePreviewFeedback"))
-        try keyedContainer.encodeIfPresent(enableProductionFeedback, forKey: SdkCodingKey("enableProductionFeedback"))
-        try keyedContainer.encodeIfPresent(
-            sensitiveEnvironmentVariablePolicy,
-            forKey: SdkCodingKey("sensitiveEnvironmentVariablePolicy")
-        )
-        try keyedContainer.encodeIfPresent(
-            disjunctiveProductionSecretPolicy,
-            forKey: SdkCodingKey("disjunctiveProductionSecretPolicy")
-        )
-        try keyedContainer.encodeIfPresent(remoteCaching, forKey: SdkCodingKey("remoteCaching"))
-        try keyedContainer.encodeIfPresent(hideIpAddresses, forKey: SdkCodingKey("hideIpAddresses"))
-        try keyedContainer.encodeIfPresent(
-            hideIpAddressesInLogDrains,
-            forKey: SdkCodingKey("hideIpAddressesInLogDrains")
-        )
-        try keyedContainer.encodeIfPresent(dpAccessRequestsMode, forKey: SdkCodingKey("dpAccessRequestsMode"))
-        try keyedContainer.encodeIfPresent(requireVerifiedCommits, forKey: SdkCodingKey("requireVerifiedCommits"))
-        try keyedContainer.encodeIfPresent(
-            disableRepositoryDispatchEvents,
-            forKey: SdkCodingKey("disableRepositoryDispatchEvents")
-        )
-        try keyedContainer.encodeIfPresent(
-            defaultDeploymentProtection,
-            forKey: SdkCodingKey("defaultDeploymentProtection")
-        )
-        try keyedContainer.encodeIfPresent(defaultPassport, forKey: SdkCodingKey("defaultPassport"))
-        try keyedContainer.encodeIfPresent(defaultExpirationSettings, forKey: SdkCodingKey("defaultExpirationSettings"))
-        try keyedContainer.encodeIfPresent(deploymentPolicy, forKey: SdkCodingKey("deploymentPolicy"))
-        try keyedContainer.encodeIfPresent(
-            strictDeploymentProtectionSettings,
-            forKey: SdkCodingKey("strictDeploymentProtectionSettings")
-        )
-        try keyedContainer.encodeIfPresent(strictShareableLinks, forKey: SdkCodingKey("strictShareableLinks"))
-        try keyedContainer.encodeIfPresent(
-            strictPasswordProtectionSettings,
-            forKey: SdkCodingKey("strictPasswordProtectionSettings")
-        )
-        try keyedContainer.encodeIfPresent(strictConnectors, forKey: SdkCodingKey("strictConnectors"))
-        try keyedContainer.encodeIfPresent(nsnbConfig, forKey: SdkCodingKey("nsnbConfig"))
-        try keyedContainer.encodeIfPresent(defaultProjectJobs, forKey: SdkCodingKey("defaultProjectJobs"))
-        try keyedContainer.encodeIfPresent(resourceConfig, forKey: SdkCodingKey("resourceConfig"))
+        try keyedContainer.encodeIfPresent(self.avatar, forKey: SdkCodingKey("avatar"))
+        try keyedContainer.encodeIfPresent(self.description, forKey: SdkCodingKey("description"))
+        try keyedContainer.encodeIfPresent(self.emailDomain, forKey: SdkCodingKey("emailDomain"))
+        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.previewDeploymentSuffix, forKey: SdkCodingKey("previewDeploymentSuffix"))
+        try keyedContainer.encodeIfPresent(self.regenerateInviteCode, forKey: SdkCodingKey("regenerateInviteCode"))
+        try keyedContainer.encodeIfPresent(self.saml, forKey: SdkCodingKey("saml"))
+        try keyedContainer.encodeIfPresent(self.slug2, forKey: SdkCodingKey("slug"))
+        try keyedContainer.encodeIfPresent(self.enablePreviewFeedback, forKey: SdkCodingKey("enablePreviewFeedback"))
+        try keyedContainer.encodeIfPresent(self.enableProductionFeedback, forKey: SdkCodingKey("enableProductionFeedback"))
+        try keyedContainer.encodeIfPresent(self.sensitiveEnvironmentVariablePolicy, forKey: SdkCodingKey("sensitiveEnvironmentVariablePolicy"))
+        try keyedContainer.encodeIfPresent(self.disjunctiveProductionSecretPolicy, forKey: SdkCodingKey("disjunctiveProductionSecretPolicy"))
+        try keyedContainer.encodeIfPresent(self.remoteCaching, forKey: SdkCodingKey("remoteCaching"))
+        try keyedContainer.encodeIfPresent(self.hideIpAddresses, forKey: SdkCodingKey("hideIpAddresses"))
+        try keyedContainer.encodeIfPresent(self.hideIpAddressesInLogDrains, forKey: SdkCodingKey("hideIpAddressesInLogDrains"))
+        try keyedContainer.encodeIfPresent(self.dpAccessRequestsMode, forKey: SdkCodingKey("dpAccessRequestsMode"))
+        try keyedContainer.encodeIfPresent(self.requireVerifiedCommits, forKey: SdkCodingKey("requireVerifiedCommits"))
+        try keyedContainer.encodeIfPresent(self.disableRepositoryDispatchEvents, forKey: SdkCodingKey("disableRepositoryDispatchEvents"))
+        try keyedContainer.encodeIfPresent(self.defaultDeploymentProtection, forKey: SdkCodingKey("defaultDeploymentProtection"))
+        try keyedContainer.encodeIfPresent(self.defaultPassport, forKey: SdkCodingKey("defaultPassport"))
+        try keyedContainer.encodeIfPresent(self.defaultExpirationSettings, forKey: SdkCodingKey("defaultExpirationSettings"))
+        try keyedContainer.encodeIfPresent(self.deploymentPolicy, forKey: SdkCodingKey("deploymentPolicy"))
+        try keyedContainer.encodeIfPresent(self.strictDeploymentProtectionSettings, forKey: SdkCodingKey("strictDeploymentProtectionSettings"))
+        try keyedContainer.encodeIfPresent(self.strictShareableLinks, forKey: SdkCodingKey("strictShareableLinks"))
+        try keyedContainer.encodeIfPresent(self.strictPasswordProtectionSettings, forKey: SdkCodingKey("strictPasswordProtectionSettings"))
+        try keyedContainer.encodeIfPresent(self.strictConnectors, forKey: SdkCodingKey("strictConnectors"))
+        try keyedContainer.encodeIfPresent(self.nsnbConfig, forKey: SdkCodingKey("nsnbConfig"))
+        try keyedContainer.encodeIfPresent(self.defaultProjectJobs, forKey: SdkCodingKey("defaultProjectJobs"))
+        try keyedContainer.encodeIfPresent(self.resourceConfig, forKey: SdkCodingKey("resourceConfig"))
     }
 
     init(options: TeamsMethods.UpdateTeamOptions) {
-        avatar = options.avatar
-        description = options.description
-        emailDomain = options.emailDomain
-        name = options.name
-        previewDeploymentSuffix = options.previewDeploymentSuffix
-        regenerateInviteCode = options.regenerateInviteCode
-        saml = options.saml
-        slug2 = options.slug2
-        enablePreviewFeedback = options.enablePreviewFeedback
-        enableProductionFeedback = options.enableProductionFeedback
-        sensitiveEnvironmentVariablePolicy = options.sensitiveEnvironmentVariablePolicy
-        disjunctiveProductionSecretPolicy = options.disjunctiveProductionSecretPolicy
-        remoteCaching = options.remoteCaching
-        hideIpAddresses = options.hideIpAddresses
-        hideIpAddressesInLogDrains = options.hideIpAddressesInLogDrains
-        dpAccessRequestsMode = options.dpAccessRequestsMode
-        requireVerifiedCommits = options.requireVerifiedCommits
-        disableRepositoryDispatchEvents = options.disableRepositoryDispatchEvents
-        defaultDeploymentProtection = options.defaultDeploymentProtection
-        defaultPassport = options.defaultPassport
-        defaultExpirationSettings = options.defaultExpirationSettings
-        deploymentPolicy = options.deploymentPolicy
-        strictDeploymentProtectionSettings = options.strictDeploymentProtectionSettings
-        strictShareableLinks = options.strictShareableLinks
-        strictPasswordProtectionSettings = options.strictPasswordProtectionSettings
-        strictConnectors = options.strictConnectors
-        nsnbConfig = options.nsnbConfig
-        defaultProjectJobs = options.defaultProjectJobs
-        resourceConfig = options.resourceConfig
+        self.avatar = options.avatar
+        self.description = options.description
+        self.emailDomain = options.emailDomain
+        self.name = options.name
+        self.previewDeploymentSuffix = options.previewDeploymentSuffix
+        self.regenerateInviteCode = options.regenerateInviteCode
+        self.saml = options.saml
+        self.slug2 = options.slug2
+        self.enablePreviewFeedback = options.enablePreviewFeedback
+        self.enableProductionFeedback = options.enableProductionFeedback
+        self.sensitiveEnvironmentVariablePolicy = options.sensitiveEnvironmentVariablePolicy
+        self.disjunctiveProductionSecretPolicy = options.disjunctiveProductionSecretPolicy
+        self.remoteCaching = options.remoteCaching
+        self.hideIpAddresses = options.hideIpAddresses
+        self.hideIpAddressesInLogDrains = options.hideIpAddressesInLogDrains
+        self.dpAccessRequestsMode = options.dpAccessRequestsMode
+        self.requireVerifiedCommits = options.requireVerifiedCommits
+        self.disableRepositoryDispatchEvents = options.disableRepositoryDispatchEvents
+        self.defaultDeploymentProtection = options.defaultDeploymentProtection
+        self.defaultPassport = options.defaultPassport
+        self.defaultExpirationSettings = options.defaultExpirationSettings
+        self.deploymentPolicy = options.deploymentPolicy
+        self.strictDeploymentProtectionSettings = options.strictDeploymentProtectionSettings
+        self.strictShareableLinks = options.strictShareableLinks
+        self.strictPasswordProtectionSettings = options.strictPasswordProtectionSettings
+        self.strictConnectors = options.strictConnectors
+        self.nsnbConfig = options.nsnbConfig
+        self.defaultProjectJobs = options.defaultProjectJobs
+        self.resourceConfig = options.resourceConfig
     }
 }
 
@@ -148,9 +127,9 @@ struct CreateTeamRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(slug, forKey: SdkCodingKey("slug"))
-        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(attribution, forKey: SdkCodingKey("attribution"))
+        try keyedContainer.encode(self.slug, forKey: SdkCodingKey("slug"))
+        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.attribution, forKey: SdkCodingKey("attribution"))
     }
 }
 
@@ -159,7 +138,7 @@ struct PostTeamDsyncRolesRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(roles, forKey: SdkCodingKey("roles"))
+        try keyedContainer.encode(self.roles, forKey: SdkCodingKey("roles"))
     }
 }
 
@@ -168,7 +147,7 @@ struct DeleteTeamRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(reasons, forKey: SdkCodingKey("reasons"))
+        try keyedContainer.encodeIfPresent(self.reasons, forKey: SdkCodingKey("reasons"))
     }
 }
 
@@ -179,12 +158,9 @@ struct UpdateMicrofrontendsGroupRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(fallbackEnvironment, forKey: SdkCodingKey("fallbackEnvironment"))
-        try keyedContainer.encodeIfPresent(
-            enablePolyrepoBranchRouting,
-            forKey: SdkCodingKey("enablePolyrepoBranchRouting")
-        )
+        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.fallbackEnvironment, forKey: SdkCodingKey("fallbackEnvironment"))
+        try keyedContainer.encodeIfPresent(self.enablePolyrepoBranchRouting, forKey: SdkCodingKey("enablePolyrepoBranchRouting"))
     }
 }
 
@@ -194,8 +170,8 @@ struct CreateRepositoryRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
     }
 }
 
@@ -205,8 +181,8 @@ struct AddRepositoryPermissionRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(teamId2, forKey: SdkCodingKey("teamId"))
-        try keyedContainer.encodeIfPresent(teamSlug, forKey: SdkCodingKey("teamSlug"))
+        try keyedContainer.encodeIfPresent(self.teamId2, forKey: SdkCodingKey("teamId"))
+        try keyedContainer.encodeIfPresent(self.teamSlug, forKey: SdkCodingKey("teamSlug"))
     }
 }
 
@@ -216,19 +192,18 @@ struct RemoveRepositoryPermissionRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(teamId2, forKey: SdkCodingKey("teamId"))
-        try keyedContainer.encodeIfPresent(teamSlug, forKey: SdkCodingKey("teamSlug"))
+        try keyedContainer.encodeIfPresent(self.teamId2, forKey: SdkCodingKey("teamId"))
+        try keyedContainer.encodeIfPresent(self.teamSlug, forKey: SdkCodingKey("teamSlug"))
     }
 }
 
-public typealias CreateVercelCiTaskConfigurationPullRequestTasksList =
-    [CreateVercelCiTaskConfigurationPullRequestRequestBodyTasksItem]
+public typealias CreateVercelCiTaskConfigurationPullRequestTasksList = [CreateVercelCiTaskConfigurationPullRequestRequestBodyTasksItem]
 
 struct UpdateVercelCiRepositorySettingsRequestBody: Encodable {
     let ciEnabled: Bool
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(ciEnabled, forKey: SdkCodingKey("ciEnabled"))
+        try keyedContainer.encode(self.ciEnabled, forKey: SdkCodingKey("ciEnabled"))
     }
 }

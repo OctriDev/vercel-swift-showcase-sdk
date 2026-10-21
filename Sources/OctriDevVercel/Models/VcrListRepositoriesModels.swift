@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Vcr domain models
+// Vcr domain models
 /// A paginated list of Vercel Container Registry repositories.
 public struct VcrRepositoryList: Codable {
     /// Required array value serialized in the `repositories` wire field.
@@ -16,28 +16,22 @@ public struct VcrRepositoryList: Codable {
         case nextCursor
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrRepositoryList {
-    init(from decoder: Decoder) throws {
+extension VcrRepositoryList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.repositories) else {
-            throw SdkValidationError(
-                field: "repositories",
-                code: "required",
-                message: "Validation failed for 'repositories': value is required"
-            )
+            throw SdkValidationError(field: "repositories", code: "required", message: "Validation failed for 'repositories': value is required")
         }
-        repositories = try container.sdkDecodeRequired(.repositories)
-        nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+        self.repositories = try container.sdkDecodeRequired(.repositories)
+        self.nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
     }
 }
 
-public extension VcrRepositoryList {
-    init(repositories: [VcrRepository], nextCursor: String? = nil) {
+extension VcrRepositoryList {
+    public init(repositories: [VcrRepository], nextCursor: String? = nil) {
         (self.repositories, self.nextCursor) = (repositories, nextCursor)
     }
 }

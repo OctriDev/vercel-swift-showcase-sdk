@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Connect domain models
+// Connect domain models
 public indirect enum ConnectConnectorUpdateDataRequest {
     case connectConnectorUpdateDataRequestVariant0(ConnectConnectorUpdateDataRequestVariant0)
     case connectConnectorUpdateDataRequestVariant1(ConnectConnectorUpdateDataRequestVariant1)
@@ -20,80 +20,46 @@ public indirect enum ConnectConnectorUpdateDataRequest {
 }
 
 extension ConnectConnectorUpdateDataRequest: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
-            if let value = Self.decodeLossless2(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ConnectConnectorUpdateDataRequest"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectConnectorUpdateDataRequest")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension ConnectConnectorUpdateDataRequest {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant0(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant1(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant2(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant3.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant3.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant3(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant4.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant4.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant4(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant5.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant5.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant5(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant6.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant6.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant6(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant7.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant7.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant7(value)
         }
         return nil
@@ -102,22 +68,13 @@ extension ConnectConnectorUpdateDataRequest {
 
 extension ConnectConnectorUpdateDataRequest {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant8.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant8.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant8(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant9.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant9.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant9(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant10.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant10.self), sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataRequestVariant10(value)
         }
         return nil
@@ -129,61 +86,59 @@ extension ConnectConnectorUpdateDataRequest {
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant0.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant0(value)
+            return             .connectConnectorUpdateDataRequestVariant0(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant1.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant1(value)
+            return             .connectConnectorUpdateDataRequestVariant1(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant2.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant2(value)
+            return             .connectConnectorUpdateDataRequestVariant2(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant3.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant3(value)
+            return             .connectConnectorUpdateDataRequestVariant3(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant4.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant4(value)
+            return             .connectConnectorUpdateDataRequestVariant4(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant5.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant5(value)
+            return             .connectConnectorUpdateDataRequestVariant5(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant6.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant6(value)
+            return             .connectConnectorUpdateDataRequestVariant6(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant7.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant7(value)
+            return             .connectConnectorUpdateDataRequestVariant7(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant8.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant8(value)
+            return             .connectConnectorUpdateDataRequestVariant8(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant9.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant9(value)
+            return             .connectConnectorUpdateDataRequestVariant9(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant10.self
         ) {
-            return .connectConnectorUpdateDataRequestVariant10(value)
+            return             .connectConnectorUpdateDataRequestVariant10(value)
         }
-        if let value = try? container.decode([String: JSONValue].self) {
-            return .jsonValue(value)
-        }
+        if let value = try? container.decode([String: JSONValue].self) { return .jsonValue(value) }
         return nil
     }
 }
@@ -239,62 +194,37 @@ public struct ConnectConnectorUpdateDataRequestVariant0JwtBearer: Codable {
     }
 
     init() {
-        (enabled, scopes, sub, iss, aud) = (nil, nil, nil, nil, nil)
-        (additionalClaims, ttl, useClientCredentials) = (nil, nil, nil)
+        (self.enabled, self.scopes, self.sub, self.iss, self.aud) = (nil, nil, nil, nil, nil)
+        (self.additionalClaims, self.ttl, self.useClientCredentials) = (nil, nil, nil)
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant0JwtBearer {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataRequestVariant0JwtBearer {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        enabled = try container.sdkDecodeIfPresent(.enabled)
-        scopes = try container.sdkDecodeIfPresent(.scopes)
-        sub = try container.sdkDecodeIfPresent(.sub)
-        iss = try container.sdkDecodeIfPresent(.iss)
-        aud = try container.sdkDecodeIfPresent(.aud)
-        additionalClaims = try container.sdkDecodeIfPresent(.additionalClaims)
-        ttl = try container.sdkDecodeIfPresent(.ttl)
-        useClientCredentials = try container.sdkDecodeIfPresent(.useClientCredentials)
-        if let value = ttl {
-            try validateRange(
-                "ttl",
-                Double(value),
-                min: nil,
-                max: nil,
-                exclusiveMin: 0,
-                exclusiveMax: nil,
-                multipleOf: nil
-            )
+        self.enabled = try container.sdkDecodeIfPresent(.enabled)
+        self.scopes = try container.sdkDecodeIfPresent(.scopes)
+        self.sub = try container.sdkDecodeIfPresent(.sub)
+        self.iss = try container.sdkDecodeIfPresent(.iss)
+        self.aud = try container.sdkDecodeIfPresent(.aud)
+        self.additionalClaims = try container.sdkDecodeIfPresent(.additionalClaims)
+        self.ttl = try container.sdkDecodeIfPresent(.ttl)
+        self.useClientCredentials = try container.sdkDecodeIfPresent(.useClientCredentials)
+        if let value = self.ttl {
+            try validateRange("ttl", Double(value), min: nil, max: nil, exclusiveMin: 0, exclusiveMax: nil, multipleOf: nil)
         }
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant0JwtBearer {
-    init(
-        enabled: Bool? = nil,
-        scopes: [String]? = nil,
-        sub: String? = nil,
-        iss: String? = nil,
-        aud: String? = nil,
-        additionalClaims: [String: JSONValue]? = nil,
-        ttl: Double? = nil,
-        useClientCredentials: Bool? = nil
-    ) throws {
+extension ConnectConnectorUpdateDataRequestVariant0JwtBearer {
+    public init(enabled: Bool? = nil, scopes: [String]? = nil, sub: String? = nil, iss: String? = nil, aud: String? = nil, additionalClaims: [String: JSONValue]? = nil, ttl: Double? = nil, useClientCredentials: Bool? = nil) throws {
         self.init()
         (self.enabled, self.scopes) = (enabled, scopes)
         (self.sub, self.iss) = (sub, iss)
         (self.aud, self.additionalClaims) = (aud, additionalClaims)
         (self.ttl, self.useClientCredentials) = (ttl, useClientCredentials)
         if let value = self.ttl {
-            try validateRange(
-                "ttl",
-                Double(value),
-                min: nil,
-                max: nil,
-                exclusiveMin: 0,
-                exclusiveMax: nil,
-                multipleOf: nil
-            )
+            try validateRange("ttl", Double(value), min: nil, max: nil, exclusiveMin: 0, exclusiveMax: nil, multipleOf: nil)
         }
     }
 }
@@ -317,35 +247,24 @@ public struct ConnectConnectorUpdateResult: Codable {
         case serviceSync
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorUpdateResult {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateResult {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.connector) else {
-            throw SdkValidationError(
-                field: "connector",
-                code: "required",
-                message: "Validation failed for 'connector': value is required"
-            )
+            throw SdkValidationError(field: "connector", code: "required", message: "Validation failed for 'connector': value is required")
         }
-        connector = try container.sdkDecodeRequired(.connector)
-        reconsentNeeded = try container.sdkDecodeIfPresent(.reconsentNeeded)
-        reinstallNeeded = try container.sdkDecodeIfPresent(.reinstallNeeded)
-        serviceSync = try container.sdkDecodeIfPresent(.serviceSync)
+        self.connector = try container.sdkDecodeRequired(.connector)
+        self.reconsentNeeded = try container.sdkDecodeIfPresent(.reconsentNeeded)
+        self.reinstallNeeded = try container.sdkDecodeIfPresent(.reinstallNeeded)
+        self.serviceSync = try container.sdkDecodeIfPresent(.serviceSync)
     }
 }
 
-public extension ConnectConnectorUpdateResult {
-    init(
-        connector: ConnectConnector,
-        reconsentNeeded: ConnectReconsent? = nil,
-        reinstallNeeded: Bool? = nil,
-        serviceSync: ConnectServiceSync? = nil
-    ) {
+extension ConnectConnectorUpdateResult {
+    public init(connector: ConnectConnector, reconsentNeeded: ConnectReconsent? = nil, reinstallNeeded: Bool? = nil, serviceSync: ConnectServiceSync? = nil) {
         (self.connector, self.reconsentNeeded) = (connector, reconsentNeeded)
         (self.reinstallNeeded, self.serviceSync) = (reinstallNeeded, serviceSync)
     }
@@ -399,69 +318,40 @@ public struct ConnectConnectorUpdateDataRequestVariant3Application: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant3Application {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataRequestVariant3Application {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.clientId) else {
-            throw SdkValidationError(
-                field: "clientId",
-                code: "required",
-                message: "Validation failed for 'clientId': value is required"
-            )
+            throw SdkValidationError(field: "clientId", code: "required", message: "Validation failed for 'clientId': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        clientId = try container.sdkDecodeRequired(.clientId)
-        name = try container.sdkDecodeRequired(.name)
-        description = try container.sdkDecodeIfPresent(.description)
-        developer = try container.sdkDecodeIfPresent(.developer)
-        developerUrl = try container.sdkDecodeIfPresent(.developerUrl)
-        imageUrl = try container.sdkDecodeIfPresent(.imageUrl)
-        redirectUris = try container.sdkDecodeIfPresent(.redirectUris)
-        distribution = try container.sdkDecodeIfPresent(.distribution)
-        webhookResourceTypes = try container.sdkDecodeIfPresent(.webhookResourceTypes)
-        webhookUrl = try container.sdkDecodeIfPresent(.webhookUrl)
-        webhookEnabled = try container.sdkDecodeIfPresent(.webhookEnabled)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.clientId = try container.sdkDecodeRequired(.clientId)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.developer = try container.sdkDecodeIfPresent(.developer)
+        self.developerUrl = try container.sdkDecodeIfPresent(.developerUrl)
+        self.imageUrl = try container.sdkDecodeIfPresent(.imageUrl)
+        self.redirectUris = try container.sdkDecodeIfPresent(.redirectUris)
+        self.distribution = try container.sdkDecodeIfPresent(.distribution)
+        self.webhookResourceTypes = try container.sdkDecodeIfPresent(.webhookResourceTypes)
+        self.webhookUrl = try container.sdkDecodeIfPresent(.webhookUrl)
+        self.webhookEnabled = try container.sdkDecodeIfPresent(.webhookEnabled)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant3Application {
-    init(
-        id: String,
-        clientId: String,
-        name: String,
-        description: String? = nil,
-        developer: String? = nil,
-        developerUrl: String? = nil,
-        imageUrl: String? = nil,
-        redirectUris: [String]? = nil,
-        distribution: String? = nil,
-        webhookResourceTypes: [String]? = nil,
-        webhookUrl: String? = nil,
-        webhookEnabled: Bool? = nil,
-        createdAt: String? = nil,
-        updatedAt: String? = nil
-    ) {
+extension ConnectConnectorUpdateDataRequestVariant3Application {
+    public init(id: String, clientId: String, name: String, description: String? = nil, developer: String? = nil, developerUrl: String? = nil, imageUrl: String? = nil, redirectUris: [String]? = nil, distribution: String? = nil, webhookResourceTypes: [String]? = nil, webhookUrl: String? = nil, webhookEnabled: Bool? = nil, createdAt: String? = nil, updatedAt: String? = nil) {
         (self.id, self.clientId) = (id, clientId)
         (self.name, self.description) = (name, description)
         (self.developer, self.developerUrl) = (developer, developerUrl)
@@ -483,19 +373,19 @@ public struct ConnectConnectorUpdateDataRequestVariant0ForwardedClaims: Codable 
     }
 
     init() {
-        idToken = nil
+        self.idToken = nil
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant0ForwardedClaims {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataRequestVariant0ForwardedClaims {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        idToken = try container.sdkDecodeIfPresent(.idToken)
+        self.idToken = try container.sdkDecodeIfPresent(.idToken)
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant0ForwardedClaims {
-    init(idToken: [String]? = nil) {
+extension ConnectConnectorUpdateDataRequestVariant0ForwardedClaims {
+    public init(idToken: [String]? = nil) {
         self.init()
         self.idToken = idToken
     }
@@ -510,27 +400,21 @@ public struct ConnectReconsent: Codable {
         case scope
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectReconsent {
-    init(from decoder: Decoder) throws {
+extension ConnectReconsent {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.scope) else {
-            throw SdkValidationError(
-                field: "scope",
-                code: "required",
-                message: "Validation failed for 'scope': value is required"
-            )
+            throw SdkValidationError(field: "scope", code: "required", message: "Validation failed for 'scope': value is required")
         }
-        scope = try container.sdkDecodeRequired(.scope)
+        self.scope = try container.sdkDecodeRequired(.scope)
     }
 }
 
-public extension ConnectReconsent {
-    init(scope: ConnectReconsentScope) {
+extension ConnectReconsent {
+    public init(scope: ConnectReconsentScope) {
         self.scope = scope
     }
 }
@@ -552,35 +436,24 @@ public struct ConnectConnectorUpdateDataRequestVariant1ToUpdateItem: Codable {
         case expiresAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant1ToUpdateItem {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataRequestVariant1ToUpdateItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        value = try container.sdkDecodeIfPresent(.value)
-        scope = try container.sdkDecodeIfPresent(.scope)
-        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.value = try container.sdkDecodeIfPresent(.value)
+        self.scope = try container.sdkDecodeIfPresent(.scope)
+        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant1ToUpdateItem {
-    init(
-        id: String,
-        value: String? = nil,
-        scope: String? = nil,
-        expiresAt: ConnectConnectorUpdateDataRequestVariant1ToUpdateItemExpiresAt? = nil
-    ) {
+extension ConnectConnectorUpdateDataRequestVariant1ToUpdateItem {
+    public init(id: String, value: String? = nil, scope: String? = nil, expiresAt: ConnectConnectorUpdateDataRequestVariant1ToUpdateItemExpiresAt? = nil) {
         (self.id, self.value) = (id, value)
         (self.scope, self.expiresAt) = (scope, expiresAt)
     }
@@ -597,20 +470,20 @@ public struct ConnectConnectorUpdateDataRequestVariant8: Codable {
     }
 
     init() {
-        (apiToken, phoneNumbers) = (nil, nil)
+        (self.apiToken, self.phoneNumbers) = (nil, nil)
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant8 {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorUpdateDataRequestVariant8 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        apiToken = try container.sdkDecodeIfPresent(.apiToken)
-        phoneNumbers = try container.sdkDecodeIfPresent(.phoneNumbers)
+        self.apiToken = try container.sdkDecodeIfPresent(.apiToken)
+        self.phoneNumbers = try container.sdkDecodeIfPresent(.phoneNumbers)
     }
 }
 
-public extension ConnectConnectorUpdateDataRequestVariant8 {
-    init(apiToken: String? = nil, phoneNumbers: [String]? = nil) {
+extension ConnectConnectorUpdateDataRequestVariant8 {
+    public init(apiToken: String? = nil, phoneNumbers: [String]? = nil) {
         self.init()
         (self.apiToken, self.phoneNumbers) = (apiToken, phoneNumbers)
     }

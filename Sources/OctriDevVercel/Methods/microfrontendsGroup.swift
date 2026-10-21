@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension MicrofrontendsMethods {
-    /// Creates a microfrontends group and attaches multiple projects in one request. Provide `groupName`, a
-    /// `defaultApp` with a project ID, and `otherApplications` with the additional project IDs and optional routes.
+extension MicrofrontendsMethods {
+    /// Creates a microfrontends group and attaches multiple projects in one request. Provide `groupName`, a `defaultApp` with a project ID, and `otherApplications` with the additional project IDs and optional routes.
     ///
     /// Creates a microfrontends group and attaches multiple projects in a single request.
     ///
@@ -20,33 +19,12 @@ public extension MicrofrontendsMethods {
     ///   new microfrontend group
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func createMicrofrontendsGroupWithApplications(
-        config: ClientConfig,
-        groupName: String,
-        defaultApp: CreateMicrofrontendsGroupWithApplicationsRequestBodyDefaultApp,
-        otherApplications: CreateMicrofrontendsGroupWithApplicationsOtherApplicationsList,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateMicrofrontendsGroupWithApplicationsResponse {
-        let requestBody = CreateMicrofrontendsGroupWithApplicationsRequestBody(
-            groupName: groupName,
-            defaultApp: defaultApp,
-            otherApplications: otherApplications
-        )
+    public static func createMicrofrontendsGroupWithApplications(config: ClientConfig, groupName: String, defaultApp: CreateMicrofrontendsGroupWithApplicationsRequestBodyDefaultApp, otherApplications: CreateMicrofrontendsGroupWithApplicationsOtherApplicationsList, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateMicrofrontendsGroupWithApplicationsResponse {
+        let requestBody = CreateMicrofrontendsGroupWithApplicationsRequestBody(groupName: groupName, defaultApp: defaultApp, otherApplications: otherApplications)
 
-        return try await (sdkRequest(
-            "POST",
-            "/v1/microfrontends/group",
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "createMicrofrontendsGroupWithApplications",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", "/v1/microfrontends/group", config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "createMicrofrontendsGroupWithApplications", options: requestOptions)).data
     }
 }

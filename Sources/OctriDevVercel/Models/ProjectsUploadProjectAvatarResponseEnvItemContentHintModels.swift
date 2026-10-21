@@ -3,68 +3,68 @@
 
 import Foundation
 
-/// ProjectsUpload domain models
+// ProjectsUpload domain models
 extension UploadProjectAvatarResponseEnvItemContentHint {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant0.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant0(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant0(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant1.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant1(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant1(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant2.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant2(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant2(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant3.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant3(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant3(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant4.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant4(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant4(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant5.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant5(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant5(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant6.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant6(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant6(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant7.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant7(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant7(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant8.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant8(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant8(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant9.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant9(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant9(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant10.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant10(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant10(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant11.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant11(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant11(value)
         }
         return nil
     }
@@ -75,27 +75,27 @@ extension UploadProjectAvatarResponseEnvItemContentHint {
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant12.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant12(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant12(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant13.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant13(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant13(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant14.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant14(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant14(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant15.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant15(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant15(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseEnvItemContentHintVariant16.self
         ) {
-            return .uploadProjectAvatarResponseEnvItemContentHintVariant16(value)
+            return             .uploadProjectAvatarResponseEnvItemContentHintVariant16(value)
         }
         return nil
     }
@@ -115,10 +115,8 @@ extension UploadProjectAvatarResponseEnvItemContentHint {
         case let .uploadProjectAvatarResponseEnvItemContentHintVariant7(value): try container.encode(value); return true
         case let .uploadProjectAvatarResponseEnvItemContentHintVariant8(value): try container.encode(value); return true
         case let .uploadProjectAvatarResponseEnvItemContentHintVariant9(value): try container.encode(value); return true
-        case let .uploadProjectAvatarResponseEnvItemContentHintVariant10(value): try container
-            .encode(value); return true
-        case let .uploadProjectAvatarResponseEnvItemContentHintVariant11(value): try container
-            .encode(value); return true
+        case let .uploadProjectAvatarResponseEnvItemContentHintVariant10(value): try container.encode(value); return true
+        case let .uploadProjectAvatarResponseEnvItemContentHintVariant11(value): try container.encode(value); return true
         default: return false
         }
     }
@@ -128,16 +126,11 @@ extension UploadProjectAvatarResponseEnvItemContentHint {
     func encodeGroup2(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .uploadProjectAvatarResponseEnvItemContentHintVariant12(value): try container
-            .encode(value); return true
-        case let .uploadProjectAvatarResponseEnvItemContentHintVariant13(value): try container
-            .encode(value); return true
-        case let .uploadProjectAvatarResponseEnvItemContentHintVariant14(value): try container
-            .encode(value); return true
-        case let .uploadProjectAvatarResponseEnvItemContentHintVariant15(value): try container
-            .encode(value); return true
-        case let .uploadProjectAvatarResponseEnvItemContentHintVariant16(value): try container
-            .encode(value); return true
+        case let .uploadProjectAvatarResponseEnvItemContentHintVariant12(value): try container.encode(value); return true
+        case let .uploadProjectAvatarResponseEnvItemContentHintVariant13(value): try container.encode(value); return true
+        case let .uploadProjectAvatarResponseEnvItemContentHintVariant14(value): try container.encode(value); return true
+        case let .uploadProjectAvatarResponseEnvItemContentHintVariant15(value): try container.encode(value); return true
+        case let .uploadProjectAvatarResponseEnvItemContentHintVariant16(value): try container.encode(value); return true
         default: return false
         }
     }
@@ -149,41 +142,27 @@ public indirect enum UploadProjectAvatarResponseExpiration {
 }
 
 extension UploadProjectAvatarResponseExpiration: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UploadProjectAvatarResponseExpiration"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UploadProjectAvatarResponseExpiration")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UploadProjectAvatarResponseExpiration {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UploadProjectAvatarResponseExpirationVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseExpirationVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseExpirationVariant0(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseExpirationVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseExpirationVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseExpirationVariant1(value)
         }
         return nil
@@ -195,12 +174,12 @@ extension UploadProjectAvatarResponseExpiration {
         if let value = try? container.decode(
             UploadProjectAvatarResponseExpirationVariant0.self
         ) {
-            return .uploadProjectAvatarResponseExpirationVariant0(value)
+            return             .uploadProjectAvatarResponseExpirationVariant0(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseExpirationVariant1.self
         ) {
-            return .uploadProjectAvatarResponseExpirationVariant1(value)
+            return             .uploadProjectAvatarResponseExpirationVariant1(value)
         }
         return nil
     }
@@ -222,43 +201,27 @@ public indirect enum UploadProjectAvatarResponseInternalRoutesItem {
 }
 
 extension UploadProjectAvatarResponseInternalRoutesItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UploadProjectAvatarResponseInternalRoutesItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UploadProjectAvatarResponseInternalRoutesItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UploadProjectAvatarResponseInternalRoutesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UploadProjectAvatarResponseInternalRoutesItemVariant0.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseInternalRoutesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseInternalRoutesItemVariant0(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseInternalRoutesItemVariant1.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseInternalRoutesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseInternalRoutesItemVariant1(value)
         }
         return nil
@@ -270,12 +233,12 @@ extension UploadProjectAvatarResponseInternalRoutesItem {
         if let value = try? container.decode(
             UploadProjectAvatarResponseInternalRoutesItemVariant0.self
         ) {
-            return .uploadProjectAvatarResponseInternalRoutesItemVariant0(value)
+            return             .uploadProjectAvatarResponseInternalRoutesItemVariant0(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseInternalRoutesItemVariant1.self
         ) {
-            return .uploadProjectAvatarResponseInternalRoutesItemVariant1(value)
+            return             .uploadProjectAvatarResponseInternalRoutesItemVariant1(value)
         }
         return nil
     }
@@ -303,77 +266,45 @@ public indirect enum UploadProjectAvatarResponseLink {
 }
 
 extension UploadProjectAvatarResponseLink: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UploadProjectAvatarResponseLink"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UploadProjectAvatarResponseLink")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UploadProjectAvatarResponseLink {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseLinkVariant0(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseLinkVariant1(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseLinkVariant2(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant3.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant3.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseLinkVariant3(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant4.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant4.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseLinkVariant4(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant5.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant5.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseLinkVariant5(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant6.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant6.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseLinkVariant6(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant7.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseLinkVariant7.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseLinkVariant7(value)
         }
         return nil
@@ -385,42 +316,42 @@ extension UploadProjectAvatarResponseLink {
         if let value = try? container.decode(
             UploadProjectAvatarResponseLinkVariant0.self
         ) {
-            return .uploadProjectAvatarResponseLinkVariant0(value)
+            return             .uploadProjectAvatarResponseLinkVariant0(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseLinkVariant1.self
         ) {
-            return .uploadProjectAvatarResponseLinkVariant1(value)
+            return             .uploadProjectAvatarResponseLinkVariant1(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseLinkVariant2.self
         ) {
-            return .uploadProjectAvatarResponseLinkVariant2(value)
+            return             .uploadProjectAvatarResponseLinkVariant2(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseLinkVariant3.self
         ) {
-            return .uploadProjectAvatarResponseLinkVariant3(value)
+            return             .uploadProjectAvatarResponseLinkVariant3(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseLinkVariant4.self
         ) {
-            return .uploadProjectAvatarResponseLinkVariant4(value)
+            return             .uploadProjectAvatarResponseLinkVariant4(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseLinkVariant5.self
         ) {
-            return .uploadProjectAvatarResponseLinkVariant5(value)
+            return             .uploadProjectAvatarResponseLinkVariant5(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseLinkVariant6.self
         ) {
-            return .uploadProjectAvatarResponseLinkVariant6(value)
+            return             .uploadProjectAvatarResponseLinkVariant6(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseLinkVariant7.self
         ) {
-            return .uploadProjectAvatarResponseLinkVariant7(value)
+            return             .uploadProjectAvatarResponseLinkVariant7(value)
         }
         return nil
     }
@@ -449,47 +380,30 @@ public indirect enum UploadProjectAvatarResponseMicrofrontends {
 }
 
 extension UploadProjectAvatarResponseMicrofrontends: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UploadProjectAvatarResponseMicrofrontends"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UploadProjectAvatarResponseMicrofrontends")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UploadProjectAvatarResponseMicrofrontends {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UploadProjectAvatarResponseMicrofrontendsVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseMicrofrontendsVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseMicrofrontendsVariant0(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseMicrofrontendsVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseMicrofrontendsVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseMicrofrontendsVariant1(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseMicrofrontendsVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseMicrofrontendsVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseMicrofrontendsVariant2(value)
         }
         return nil
@@ -501,17 +415,17 @@ extension UploadProjectAvatarResponseMicrofrontends {
         if let value = try? container.decode(
             UploadProjectAvatarResponseMicrofrontendsVariant0.self
         ) {
-            return .uploadProjectAvatarResponseMicrofrontendsVariant0(value)
+            return             .uploadProjectAvatarResponseMicrofrontendsVariant0(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseMicrofrontendsVariant1.self
         ) {
-            return .uploadProjectAvatarResponseMicrofrontendsVariant1(value)
+            return             .uploadProjectAvatarResponseMicrofrontendsVariant1(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseMicrofrontendsVariant2.self
         ) {
-            return .uploadProjectAvatarResponseMicrofrontendsVariant2(value)
+            return             .uploadProjectAvatarResponseMicrofrontendsVariant2(value)
         }
         return nil
     }
@@ -534,41 +448,27 @@ public indirect enum UploadProjectAvatarResponseTrustedIps {
 }
 
 extension UploadProjectAvatarResponseTrustedIps: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UploadProjectAvatarResponseTrustedIps"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UploadProjectAvatarResponseTrustedIps")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UploadProjectAvatarResponseTrustedIps {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UploadProjectAvatarResponseTrustedIpsVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseTrustedIpsVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseTrustedIpsVariant0(value)
         }
-        if let value = try? container.decode(UploadProjectAvatarResponseTrustedIpsVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UploadProjectAvatarResponseTrustedIpsVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .uploadProjectAvatarResponseTrustedIpsVariant1(value)
         }
         return nil
@@ -580,12 +480,12 @@ extension UploadProjectAvatarResponseTrustedIps {
         if let value = try? container.decode(
             UploadProjectAvatarResponseTrustedIpsVariant0.self
         ) {
-            return .uploadProjectAvatarResponseTrustedIpsVariant0(value)
+            return             .uploadProjectAvatarResponseTrustedIpsVariant0(value)
         }
         if let value = try? container.decode(
             UploadProjectAvatarResponseTrustedIpsVariant1.self
         ) {
-            return .uploadProjectAvatarResponseTrustedIpsVariant1(value)
+            return             .uploadProjectAvatarResponseTrustedIpsVariant1(value)
         }
         return nil
     }

@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// DomainsRegistrarNot domain models
+// DomainsRegistrarNot domain models
 /// Typed representation of the `NotAuthorizedForScope` API schema.
 public struct NotAuthorizedForScope: Codable {
     /// Required enumerated value serialized in the `status` wire field.
@@ -19,47 +19,33 @@ public struct NotAuthorizedForScope: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension NotAuthorizedForScope {
-    init(from decoder: Decoder) throws {
+extension NotAuthorizedForScope {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
-        try sdkValidateRawEnum("code", code, NotAuthorizedForScopeCode.allCases.map(\.rawValue))
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
+            try sdkValidateRawEnum("code", self.code, NotAuthorizedForScopeCode.allCases.map(\.rawValue))
     }
 }
 
-public extension NotAuthorizedForScope {
-    init(status: Int, code: NotAuthorizedForScopeCode, message: String) throws {
+extension NotAuthorizedForScope {
+    public init(status: Int, code: NotAuthorizedForScopeCode, message: String) throws {
         (self.status, self.code) = (status, code)
         self.message = message
-        try sdkValidateRawEnum("code", self.code, NotAuthorizedForScopeCode.allCases.map(\.rawValue))
+            try sdkValidateRawEnum("code", self.code, NotAuthorizedForScopeCode.allCases.map(\.rawValue))
     }
 }
 
@@ -78,43 +64,29 @@ public struct NotFound: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension NotFound {
-    init(from decoder: Decoder) throws {
+extension NotFound {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        status = try container.sdkDecodeRequired(.status)
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension NotFound {
-    init(status: Int, code: NotFoundCode, message: String) {
+extension NotFound {
+    public init(status: Int, code: NotFoundCode, message: String) {
         (self.status, self.code) = (status, code)
         self.message = message
     }
@@ -142,15 +114,12 @@ public enum NotAuthorizedForScopeCode: String, CaseIterable, Codable {
 public struct NotFoundCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let notFound = NotFoundCode(rawValue: "not_found")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

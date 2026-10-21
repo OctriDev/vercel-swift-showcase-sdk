@@ -6,21 +6,17 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct DeleteProjectAvatarResponseSecurityManagedRulesOwaspAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct DeleteProjectAvatarResponseSecurityManagedRulesOwaspAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let challenge = DeleteProjectAvatarResponseSecurityManagedRulesOwaspAction(rawValue: "challenge")
     public static let deny = DeleteProjectAvatarResponseSecurityManagedRulesOwaspAction(rawValue: "deny")
     public static let log = DeleteProjectAvatarResponseSecurityManagedRulesOwaspAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -29,21 +25,17 @@ public struct DeleteProjectAvatarResponseSecurityManagedRulesOwaspAction: RawRep
     }
 }
 
-public struct UpdateMicrofrontendsResponseEnvItemTargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseEnvItemTargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = UpdateMicrofrontendsResponseEnvItemTargetVariant0Item(rawValue: "development")
     public static let preview = UpdateMicrofrontendsResponseEnvItemTargetVariant0Item(rawValue: "preview")
     public static let production = UpdateMicrofrontendsResponseEnvItemTargetVariant0Item(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -52,25 +44,19 @@ public struct UpdateMicrofrontendsResponseEnvItemTargetVariant0Item: RawRepresen
     }
 }
 
-public struct GetDrainsResponseDrainsVariant0ItemDisabledReason: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainsResponseDrainsVariant0ItemDisabledReason: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let accountPlanDowngrade =
-        GetDrainsResponseDrainsVariant0ItemDisabledReason(rawValue: "account-plan-downgrade")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let accountPlanDowngrade = GetDrainsResponseDrainsVariant0ItemDisabledReason(rawValue: "account-plan-downgrade")
     public static let disabledByAdmin = GetDrainsResponseDrainsVariant0ItemDisabledReason(rawValue: "disabled-by-admin")
     public static let disabledByOwner = GetDrainsResponseDrainsVariant0ItemDisabledReason(rawValue: "disabled-by-owner")
-    public static let featureNotAvailable =
-        GetDrainsResponseDrainsVariant0ItemDisabledReason(rawValue: "feature-not-available")
+    public static let featureNotAvailable = GetDrainsResponseDrainsVariant0ItemDisabledReason(rawValue: "feature-not-available")
     public static let limitsExceeded = GetDrainsResponseDrainsVariant0ItemDisabledReason(rawValue: "limits-exceeded")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -79,20 +65,15 @@ public struct GetDrainsResponseDrainsVariant0ItemDisabledReason: RawRepresentabl
     }
 }
 
-public struct ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleXa96beea2ee: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleXa96beea2ee: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let entity =
-        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleXa96beea2ee(rawValue: "entity")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let entity = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleXa96beea2ee(rawValue: "entity")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -101,22 +82,17 @@ public struct ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleXa96b
     }
 }
 
-public struct UpdateSharedEnvVariableResponseFailedItemErrorTargetVariant1: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateSharedEnvVariableResponseFailedItemErrorTargetVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let development =
-        UpdateSharedEnvVariableResponseFailedItemErrorTargetVariant1(rawValue: "development")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let development = UpdateSharedEnvVariableResponseFailedItemErrorTargetVariant1(rawValue: "development")
     public static let preview = UpdateSharedEnvVariableResponseFailedItemErrorTargetVariant1(rawValue: "preview")
     public static let production = UpdateSharedEnvVariableResponseFailedItemErrorTargetVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -126,21 +102,17 @@ public struct UpdateSharedEnvVariableResponseFailedItemErrorTargetVariant1: RawR
 }
 
 /// The project role of the member that will be added. \"null\" will remove this project level role.
-public struct UpdateTeamMemberRequestBodyProjectsItemRole: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateTeamMemberRequestBodyProjectsItemRole: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let admin = UpdateTeamMemberRequestBodyProjectsItemRole(rawValue: "ADMIN")
     public static let projectViewer = UpdateTeamMemberRequestBodyProjectsItemRole(rawValue: "PROJECT_VIEWER")
     public static let projectDeveloper = UpdateTeamMemberRequestBodyProjectsItemRole(rawValue: "PROJECT_DEVELOPER")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -186,20 +158,16 @@ public enum GetAliasResponseProtectionBypassValueVariant2Scope: String, CaseIter
 /// Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain
 /// (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery
 /// type when project tracing is computed; absent on configs persisted before this field existed.
-public struct GetProjectsResponseTracingSamplingRulesItemDestination: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetProjectsResponseTracingSamplingRulesItemDestination: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let external = GetProjectsResponseTracingSamplingRulesItemDestination(rawValue: "external")
     public static let `internal` = GetProjectsResponseTracingSamplingRulesItemDestination(rawValue: "internal")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -228,10 +196,7 @@ public enum ListVercelCiInvocationsResponseInvocationsItemStatusVariant0: String
 public struct CreateProjectCheckResponseSourceKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let gitProvider = CreateProjectCheckResponseSourceKind(rawValue: "git-provider")
     public static let integration = CreateProjectCheckResponseSourceKind(rawValue: "integration")
     public static let vercel = CreateProjectCheckResponseSourceKind(rawValue: "vercel")
@@ -239,7 +204,7 @@ public struct CreateProjectCheckResponseSourceKind: RawRepresentable, Hashable, 
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

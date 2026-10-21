@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Vcr domain models
+// Vcr domain models
 /// An image enriched with its tags and VHS-readiness status, as returned when listing a repository's images.
 public struct VcrImageListItem: Codable {
     /// ISO 8601 timestamp of when the image was created.
@@ -49,42 +49,28 @@ public struct VcrImageListItem: Codable {
         case pushedBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrImageListItem {
-    init(from decoder: Decoder) throws {
+extension VcrImageListItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        kind = try container.sdkDecodeRequired(.kind)
-        manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
-        repositoryId = try container.sdkDecodeRequired(.repositoryId)
-        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        status = try container.sdkDecodeNullable(.status)
-        tags = try container.sdkDecodeRequired(.tags)
-        arch = try container.sdkDecodeIfPresent(.arch)
-        platform = try container.sdkDecodeIfPresent(.platform)
-        pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
+        self.repositoryId = try container.sdkDecodeRequired(.repositoryId)
+        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        self.status = try container.sdkDecodeNullable(.status)
+        self.tags = try container.sdkDecodeRequired(.tags)
+        self.arch = try container.sdkDecodeIfPresent(.arch)
+        self.platform = try container.sdkDecodeIfPresent(.platform)
+        self.pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
     }
 }
 
-public extension VcrImageListItem {
-    init(
-        createdAt: String,
-        id: String,
-        kind: VcrImageListItemKind,
-        manifestDigest: String,
-        repositoryId: String,
-        sizeInBytes: Double,
-        status: VcrImageListItemStatus?,
-        tags: [String],
-        arch: String? = nil,
-        platform: String? = nil,
-        pushedBy: String? = nil
-    ) {
+extension VcrImageListItem {
+    public init(createdAt: String, id: String, kind: VcrImageListItemKind, manifestDigest: String, repositoryId: String, sizeInBytes: Double, status: VcrImageListItemStatus?, tags: [String], arch: String? = nil, platform: String? = nil, pushedBy: String? = nil) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.kind, self.manifestDigest) = (kind, manifestDigest)
         (self.repositoryId, self.sizeInBytes) = (repositoryId, sizeInBytes)
@@ -106,28 +92,22 @@ public struct VcrImageList: Codable {
         case nextCursor
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrImageList {
-    init(from decoder: Decoder) throws {
+extension VcrImageList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.images) else {
-            throw SdkValidationError(
-                field: "images",
-                code: "required",
-                message: "Validation failed for 'images': value is required"
-            )
+            throw SdkValidationError(field: "images", code: "required", message: "Validation failed for 'images': value is required")
         }
-        images = try container.sdkDecodeRequired(.images)
-        nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+        self.images = try container.sdkDecodeRequired(.images)
+        self.nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
     }
 }
 
-public extension VcrImageList {
-    init(images: [VcrImageListItem], nextCursor: String? = nil) {
+extension VcrImageList {
+    public init(images: [VcrImageListItem], nextCursor: String? = nil) {
         (self.images, self.nextCursor) = (images, nextCursor)
     }
 }
@@ -136,17 +116,14 @@ public extension VcrImageList {
 public struct VcrImageListItemKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let attestation = VcrImageListItemKind(rawValue: "attestation")
     public static let index = VcrImageListItemKind(rawValue: "index")
     public static let manifest = VcrImageListItemKind(rawValue: "manifest")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -159,10 +136,7 @@ public struct VcrImageListItemKind: RawRepresentable, Hashable, Codable, Sendabl
 public struct VcrImageListItemStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let errored = VcrImageListItemStatus(rawValue: "errored")
     public static let preparing = VcrImageListItemStatus(rawValue: "preparing")
     public static let ready = VcrImageListItemStatus(rawValue: "ready")
@@ -170,7 +144,7 @@ public struct VcrImageListItemStatus: RawRepresentable, Hashable, Codable, Senda
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

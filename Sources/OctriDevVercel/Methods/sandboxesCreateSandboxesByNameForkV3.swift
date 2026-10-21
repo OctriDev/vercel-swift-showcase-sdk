@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    struct CreateSandboxesByNameForkV3Options: Codable {
+extension SandboxesMethods {
+    public struct CreateSandboxesByNameForkV3Options: Codable {
         public var name: String
         public var projectId: String?
         public var teamId: String?
@@ -33,19 +33,9 @@ public extension SandboxesMethods {
         }
     }
 
-    /// Forks a named sandbox into a new named sandbox, copying its configuration and environment variables. Supply
-    /// `name` to identify the source and `projectId` unless you authenticate with an OIDC token; request fields
-    /// override values copied from the source. If the source has a snapshot, the fork starts from it; otherwise, it
-    /// starts from the source runtime or image, with seven-day snapshot expiration and a one-snapshot retention limit
-    /// by default.
+    /// Forks a named sandbox into a new named sandbox, copying its configuration and environment variables. Supply `name` to identify the source and `projectId` unless you authenticate with an OIDC token; request fields override values copied from the source. If the source has a snapshot, the fork starts from it; otherwise, it starts from the source runtime or image, with seven-day snapshot expiration and a one-snapshot retention limit by default.
     ///
-    /// Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports,
-    /// tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side
-    /// fork — environment variables are copied from the source automatically (`interactive` is not). When the source
-    /// has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided
-    /// in the request body overrides the value copied from the source. Unlike v2, when neither the body nor the source
-    /// provides a value, snapshots expire after 7 days by default and persistent sandboxes keep only their most recent
-    /// snapshot (`keepLastSnapshots: null` disables the limit).
+    /// Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports, tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side fork — environment variables are copied from the source automatically (`interactive` is not). When the source has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided in the request body overrides the value copied from the source. Unlike v2, when neither the body nor the source provides a value, snapshots expire after 7 days by default and persistent sandboxes keep only their most recent snapshot (`keepLastSnapshots: null` disables the limit).
     ///
     /// - Parameters:
     /// - name: Name of the source sandbox to fork.
@@ -82,11 +72,7 @@ public extension SandboxesMethods {
     ///   the last snapshot (evicted snapshots are deleted). Set to null to disable
     ///   the limit.
     /// - tags: Key-value tags to associate with the sandbox. Maximum 5 tags.
-    static func createSandboxesByNameForkV3(
-        config: ClientConfig,
-        options: CreateSandboxesByNameForkV3Options,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateSandboxesByNameForkV3Response {
+    public static func createSandboxesByNameForkV3(config: ClientConfig, options: CreateSandboxesByNameForkV3Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesByNameForkV3Response {
         try validateLength("name", options.name, max: 128)
         try sdkValidatePattern("name", options.name, sdkPatterna828669d9fe5)
 
@@ -121,19 +107,10 @@ public extension SandboxesMethods {
 
         let requestBody = CreateSandboxesByNameForkV3RequestBody(options: options)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v3/sandboxes/", sdkEncodePathSegment(sdkWireString(options.name)), "/fork"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("projectId", value: options.projectId),
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "createSandboxesByNameForkV3",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v3/sandboxes/", sdkEncodePathSegment(sdkWireString(options.name)), "/fork"].joined(), config: config, query: [
+            SdkQueryParameter("projectId", value: options.projectId),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "createSandboxesByNameForkV3", options: requestOptions)).data
     }
 }

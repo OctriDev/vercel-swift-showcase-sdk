@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Projects domain models
+// Projects domain models
 public enum FilterProjectEnvsResponseVariant2EnvsItemContentHintVariant9Type: String, CaseIterable, Codable {
     case postgresPrismaUrl = "postgres-prisma-url"
     public init(from decoder: Decoder) throws {
@@ -125,20 +125,16 @@ public enum FilterProjectEnvsResponseVariant0ContentHintVariant14Type: String, C
 
 /// User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and
 /// callers fall back to existing `type` behavior.
-public struct FilterProjectEnvsResponseVariant0Visibility: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant0Visibility: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let config = FilterProjectEnvsResponseVariant0Visibility(rawValue: "config")
     public static let secret = FilterProjectEnvsResponseVariant0Visibility(rawValue: "secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -164,21 +160,17 @@ public enum FilterProjectEnvsResponseVariant0ContentHintVariant0Type: String, Ca
     }
 }
 
-public struct FilterProjectEnvsResponseVariant0TargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant0TargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = FilterProjectEnvsResponseVariant0TargetVariant0Item(rawValue: "development")
     public static let preview = FilterProjectEnvsResponseVariant0TargetVariant0Item(rawValue: "preview")
     public static let production = FilterProjectEnvsResponseVariant0TargetVariant0Item(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -189,20 +181,16 @@ public struct FilterProjectEnvsResponseVariant0TargetVariant0Item: RawRepresenta
 
 /// User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and
 /// callers fall back to existing `type` behavior.
-public struct FilterProjectEnvsResponseVariant2EnvsItemVisibility: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant2EnvsItemVisibility: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let config = FilterProjectEnvsResponseVariant2EnvsItemVisibility(rawValue: "config")
     public static let secret = FilterProjectEnvsResponseVariant2EnvsItemVisibility(rawValue: "secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -313,21 +301,16 @@ public enum FilterProjectEnvsResponseVariant0ContentHintVariant7Type: String, Ca
     }
 }
 
-public struct FilterProjectEnvsResponseVariant0SecurityIssuesItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant0SecurityIssuesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let flagsSecretNeedsSplit =
-        FilterProjectEnvsResponseVariant0SecurityIssuesItem(rawValue: "flags-secret-needs-split")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let flagsSecretNeedsSplit = FilterProjectEnvsResponseVariant0SecurityIssuesItem(rawValue: "flags-secret-needs-split")
     public static let readableSecret = FilterProjectEnvsResponseVariant0SecurityIssuesItem(rawValue: "readable-secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

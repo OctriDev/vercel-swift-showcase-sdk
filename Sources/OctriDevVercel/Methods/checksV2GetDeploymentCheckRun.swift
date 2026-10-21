@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ChecksV2Methods {
-    /// Retrieves a single check run for a deployment. Use the deployment and check run identifiers to select the
-    /// record. The response includes the run details and supports both runs backed by a project-level check and Vercel
-    /// CI runs without a parent check.
+extension ChecksV2Methods {
+    /// Retrieves a single check run for a deployment. Use the deployment and check run identifiers to select the record. The response includes the run details and supports both runs backed by a project-level check and Vercel CI runs without a parent check.
     ///
     /// Return a detailed response for a single check run.
     ///
@@ -17,34 +15,14 @@ public extension ChecksV2Methods {
     /// - checkRunId: The ID of the resource that will be updated.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getDeploymentCheckRun(
-        config: ClientConfig,
-        deploymentId: String,
-        checkRunId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetDeploymentCheckRunResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v2/deployments/",
-                sdkEncodePathSegment(sdkWireString(deploymentId)),
-                "/check-runs/",
-                sdkEncodePathSegment(sdkWireString(checkRunId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getDeploymentCheckRun",
-            options: requestOptions
-        )).data
+    public static func getDeploymentCheckRun(config: ClientConfig, deploymentId: String, checkRunId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDeploymentCheckRunResponse {
+        return try (await sdkRequest("GET", ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/check-runs/", sdkEncodePathSegment(sdkWireString(checkRunId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getDeploymentCheckRun", options: requestOptions)).data
     }
 
-    struct UpdateDeploymentCheckRunOptions: Codable {
+    public struct UpdateDeploymentCheckRunOptions: Codable {
         public var deploymentId: String
         public var checkRunId: String
         public var teamId: String?
@@ -63,20 +41,14 @@ public extension ChecksV2Methods {
         }
     }
 
-    /// Updates a check run's status and related metadata for a deployment. Supply only the fields you want to change;
-    /// `status` and `conclusion` are limited to their documented values, and `externalUrl` accepts the specified URL
-    /// formats. The response returns the updated check run.
+    /// Updates a check run's status and related metadata for a deployment. Supply only the fields you want to change; `status` and `conclusion` are limited to their documented values, and `externalUrl` accepts the specified URL formats. The response returns the updated check run.
     ///
     /// Update an existing check run for a deployment.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func updateDeploymentCheckRun(
-        config: ClientConfig,
-        options: UpdateDeploymentCheckRunOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateDeploymentCheckRunResponse {
+    public static func updateDeploymentCheckRun(config: ClientConfig, options: UpdateDeploymentCheckRunOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateDeploymentCheckRunResponse {
         if let externalUrl = options.externalUrl {
             try sdkValidatePattern("externalUrl", externalUrl, sdkPattern72c75bbf2232)
             try sdkValidateUri("externalUrl", externalUrl)
@@ -84,23 +56,9 @@ public extension ChecksV2Methods {
 
         let requestBody = UpdateDeploymentCheckRunRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v2/deployments/",
-                sdkEncodePathSegment(sdkWireString(options.deploymentId)),
-                "/check-runs/",
-                sdkEncodePathSegment(sdkWireString(options.checkRunId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateDeploymentCheckRun",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(options.deploymentId)), "/check-runs/", sdkEncodePathSegment(sdkWireString(options.checkRunId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "updateDeploymentCheckRun", options: requestOptions)).data
     }
 }

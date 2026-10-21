@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// ChecksV2 domain models
+// ChecksV2 domain models
 public enum CreateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX20ece244a8: String, CaseIterable, Codable {
     case invocation
     public init(from decoder: Decoder) throws {
@@ -38,19 +38,15 @@ public enum CreateDeploymentCheckRunResponseVariant1SourceVariant1Origin: String
     }
 }
 
-public struct CreateDeploymentCheckRunResponseVariant0SourceVariant0Kind: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateDeploymentCheckRunResponseVariant0SourceVariant0Kind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let integration = CreateDeploymentCheckRunResponseVariant0SourceVariant0Kind(rawValue: "integration")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -59,24 +55,19 @@ public struct CreateDeploymentCheckRunResponseVariant0SourceVariant0Kind: RawRep
     }
 }
 
-public struct CreateDeploymentCheckRunResponseVariant0Blocks: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateDeploymentCheckRunResponseVariant0Blocks: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let buildStart = CreateDeploymentCheckRunResponseVariant0Blocks(rawValue: "build-start")
     public static let deploymentAlias = CreateDeploymentCheckRunResponseVariant0Blocks(rawValue: "deployment-alias")
-    public static let deploymentPromotion =
-        CreateDeploymentCheckRunResponseVariant0Blocks(rawValue: "deployment-promotion")
+    public static let deploymentPromotion = CreateDeploymentCheckRunResponseVariant0Blocks(rawValue: "deployment-promotion")
     public static let deploymentStart = CreateDeploymentCheckRunResponseVariant0Blocks(rawValue: "deployment-start")
     public static let none = CreateDeploymentCheckRunResponseVariant0Blocks(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -85,19 +76,15 @@ public struct CreateDeploymentCheckRunResponseVariant0Blocks: RawRepresentable, 
     }
 }
 
-public struct CreateDeploymentCheckRunResponseVariant0SourceVariant4Origin: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateDeploymentCheckRunResponseVariant0SourceVariant4Origin: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let api = CreateDeploymentCheckRunResponseVariant0SourceVariant4Origin(rawValue: "api")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -123,21 +110,17 @@ public enum CreateDeploymentCheckRunResponseVariant0SourceVariant4SelectiXee43bc
     }
 }
 
-public struct CreateDeploymentCheckRunResponseVariant0SourceVariant2Provider: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateDeploymentCheckRunResponseVariant0SourceVariant2Provider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bitbucket = CreateDeploymentCheckRunResponseVariant0SourceVariant2Provider(rawValue: "bitbucket")
     public static let github = CreateDeploymentCheckRunResponseVariant0SourceVariant2Provider(rawValue: "github")
     public static let gitlab = CreateDeploymentCheckRunResponseVariant0SourceVariant2Provider(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -146,14 +129,10 @@ public struct CreateDeploymentCheckRunResponseVariant0SourceVariant2Provider: Ra
     }
 }
 
-public struct CreateDeploymentCheckRunResponseVariant1Conclusion: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateDeploymentCheckRunResponseVariant1Conclusion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let canceled = CreateDeploymentCheckRunResponseVariant1Conclusion(rawValue: "canceled")
     public static let failed = CreateDeploymentCheckRunResponseVariant1Conclusion(rawValue: "failed")
     public static let neutral = CreateDeploymentCheckRunResponseVariant1Conclusion(rawValue: "neutral")
@@ -163,7 +142,7 @@ public struct CreateDeploymentCheckRunResponseVariant1Conclusion: RawRepresentab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -172,20 +151,15 @@ public struct CreateDeploymentCheckRunResponseVariant1Conclusion: RawRepresentab
     }
 }
 
-public struct CreateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX5571aea4a2: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX5571aea4a2: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let turborepo =
-        CreateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX5571aea4a2(rawValue: "Turborepo")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let turborepo = CreateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX5571aea4a2(rawValue: "Turborepo")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -194,20 +168,15 @@ public struct CreateDeploymentCheckRunResponseVariant0SourceVariant4SelectiX5571
     }
 }
 
-public struct CreateDeploymentCheckRunResponseVariant0SourceVariant3SubKind: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateDeploymentCheckRunResponseVariant0SourceVariant3SubKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let vercelNativeCheck =
-        CreateDeploymentCheckRunResponseVariant0SourceVariant3SubKind(rawValue: "vercel-native-check")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let vercelNativeCheck = CreateDeploymentCheckRunResponseVariant0SourceVariant3SubKind(rawValue: "vercel-native-check")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

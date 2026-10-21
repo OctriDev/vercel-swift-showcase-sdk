@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// FeatureFlags domain models
+// FeatureFlags domain models
 public enum FlagEnvironmentsValueRulesItemConditionsItemLhsVariant1Type: String, CaseIterable, Codable {
     case entity
     public init(from decoder: Decoder) throws {
@@ -21,19 +21,15 @@ public enum FlagEnvironmentsValueRulesItemConditionsItemLhsVariant1Type: String,
     }
 }
 
-public struct FlagEnvironmentsValueFallthroughVariant2BaseType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FlagEnvironmentsValueFallthroughVariant2BaseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let entity = FlagEnvironmentsValueFallthroughVariant2BaseType(rawValue: "entity")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -42,14 +38,10 @@ public struct FlagEnvironmentsValueFallthroughVariant2BaseType: RawRepresentable
     }
 }
 
-public struct FlagEnvironmentsValueRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FlagEnvironmentsValueRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let contains = FlagEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!contains")
     public static let endsWith = FlagEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!endsWith")
     public static let eq = FlagEnvironmentsValueRulesItemConditionsItemCmp(rawValue: "!eq")
@@ -76,7 +68,7 @@ public struct FlagEnvironmentsValueRulesItemConditionsItemCmp: RawRepresentable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -106,16 +98,13 @@ public enum FlagEnvironmentsValueFallthroughVariant3Type: String, CaseIterable, 
 public struct FlagState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let active = FlagState(rawValue: "active")
     public static let archived = FlagState(rawValue: "archived")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -159,20 +148,15 @@ public enum SegmentDataRulesItemConditionsItemLhsVariant0Type: String, CaseItera
     }
 }
 
-public struct FlagEnvironmentsValueRulesItemConditionsItemRhsVariant3Type: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct FlagEnvironmentsValueRulesItemConditionsItemRhsVariant3Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let regex = FlagEnvironmentsValueRulesItemConditionsItemRhsVariant3Type(rawValue: "regex")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -216,19 +200,15 @@ public enum FlagEnvironmentsValueRulesItemOutcomeVariant1Type: String, CaseItera
     }
 }
 
-public struct FlagEnvironmentsValuePausedOutcomeType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FlagEnvironmentsValuePausedOutcomeType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let variant = FlagEnvironmentsValuePausedOutcomeType(rawValue: "variant")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -259,15 +239,12 @@ public enum SegmentDataRulesItemConditionsItemLhsVariant1Type: String, CaseItera
 public struct SegmentTypeName: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let segment = SegmentTypeName(rawValue: "segment")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -297,10 +274,7 @@ public enum FlagEnvironmentsValueRulesItemOutcomeVariant2Type: String, CaseItera
 public struct SegmentDataRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let contains = SegmentDataRulesItemConditionsItemCmp(rawValue: "!contains")
     public static let endsWith = SegmentDataRulesItemConditionsItemCmp(rawValue: "!endsWith")
     public static let eq = SegmentDataRulesItemConditionsItemCmp(rawValue: "!eq")
@@ -327,7 +301,7 @@ public struct SegmentDataRulesItemConditionsItemCmp: RawRepresentable, Hashable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -336,19 +310,15 @@ public struct SegmentDataRulesItemConditionsItemCmp: RawRepresentable, Hashable,
     }
 }
 
-public struct FlagEnvironmentsValueFallthroughVariant1BaseType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FlagEnvironmentsValueFallthroughVariant1BaseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let entity = FlagEnvironmentsValueFallthroughVariant1BaseType(rawValue: "entity")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -395,16 +365,13 @@ public enum FlagEnvironmentsValueRulesItemOutcomeVariant3Type: String, CaseItera
 public struct MarketplaceFlagCategory: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let experiment = MarketplaceFlagCategory(rawValue: "experiment")
     public static let flag = MarketplaceFlagCategory(rawValue: "flag")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -435,10 +402,7 @@ public enum MarketplaceFlagTypeName: String, CaseIterable, Codable {
 public struct FlagKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let boolean = FlagKind(rawValue: "boolean")
     public static let json = FlagKind(rawValue: "json")
     public static let number = FlagKind(rawValue: "number")
@@ -446,7 +410,7 @@ public struct FlagKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireCo
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -456,19 +420,15 @@ public struct FlagKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireCo
 }
 
 /// Required enumerated value serialized in the `type` wire field.
-public struct SegmentDataRulesItemOutcomeVariant1BaseType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct SegmentDataRulesItemOutcomeVariant1BaseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let entity = SegmentDataRulesItemOutcomeVariant1BaseType(rawValue: "entity")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -529,19 +489,15 @@ public enum FlagEnvironmentsValueFallthroughVariant2Type: String, CaseIterable, 
     }
 }
 
-public struct FlagEnvironmentsValueRulesItemOutcomeVariant2BaseType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FlagEnvironmentsValueRulesItemOutcomeVariant2BaseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let entity = FlagEnvironmentsValueRulesItemOutcomeVariant2BaseType(rawValue: "entity")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -554,16 +510,13 @@ public struct FlagEnvironmentsValueRulesItemOutcomeVariant2BaseType: RawRepresen
 public struct MarketplaceFlagState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let active = MarketplaceFlagState(rawValue: "active")
     public static let archived = MarketplaceFlagState(rawValue: "archived")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -573,20 +526,16 @@ public struct MarketplaceFlagState: RawRepresentable, Hashable, Codable, Sendabl
 }
 
 /// Required enumerated value serialized in the `type` wire field.
-public struct SegmentDataRulesItemConditionsItemRhsVariant2Type: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct SegmentDataRulesItemConditionsItemRhsVariant2Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let list = SegmentDataRulesItemConditionsItemRhsVariant2Type(rawValue: "list")
     public static let listInline = SegmentDataRulesItemConditionsItemRhsVariant2Type(rawValue: "list/inline")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

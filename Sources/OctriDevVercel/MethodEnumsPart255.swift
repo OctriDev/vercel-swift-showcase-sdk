@@ -13,9 +13,9 @@ struct CreateSdkKeyRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(sdkKeyType, forKey: SdkCodingKey("sdkKeyType"))
-        try keyedContainer.encode(environment, forKey: SdkCodingKey("environment"))
-        try keyedContainer.encodeIfPresent(label, forKey: SdkCodingKey("label"))
+        try keyedContainer.encode(self.sdkKeyType, forKey: SdkCodingKey("sdkKeyType"))
+        try keyedContainer.encode(self.environment, forKey: SdkCodingKey("environment"))
+        try keyedContainer.encodeIfPresent(self.label, forKey: SdkCodingKey("label"))
     }
 }
 
@@ -26,9 +26,9 @@ struct ConnectIntegrationResourceToProjectRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encodeIfPresent(envVarEnvironments, forKey: SdkCodingKey("envVarEnvironments"))
-        try keyedContainer.encodeIfPresent(makeEnvVarsSensitive, forKey: SdkCodingKey("makeEnvVarsSensitive"))
+        try keyedContainer.encode(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encodeIfPresent(self.envVarEnvironments, forKey: SdkCodingKey("envVarEnvironments"))
+        try keyedContainer.encodeIfPresent(self.makeEnvVarsSensitive, forKey: SdkCodingKey("makeEnvVarsSensitive"))
     }
 }
 
@@ -46,34 +46,33 @@ struct CreateIntegrationStoreDirectRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encode(integrationConfigurationId, forKey: SdkCodingKey("integrationConfigurationId"))
-        try keyedContainer.encode(integrationProductIdOrSlug, forKey: SdkCodingKey("integrationProductIdOrSlug"))
-        try keyedContainer.encodeIfPresent(metadata, forKey: SdkCodingKey("metadata"))
-        try keyedContainer.encodeIfPresent(externalId, forKey: SdkCodingKey("externalId"))
-        try keyedContainer.encodeIfPresent(protocolSettings, forKey: SdkCodingKey("protocolSettings"))
-        try keyedContainer.encodeIfPresent(source, forKey: SdkCodingKey("source"))
-        try keyedContainer.encodeIfPresent(billingPlanId, forKey: SdkCodingKey("billingPlanId"))
-        try keyedContainer.encodeIfPresent(paymentMethodId, forKey: SdkCodingKey("paymentMethodId"))
-        try keyedContainer.encodeIfPresent(prepaymentAmountCents, forKey: SdkCodingKey("prepaymentAmountCents"))
+        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(self.integrationConfigurationId, forKey: SdkCodingKey("integrationConfigurationId"))
+        try keyedContainer.encode(self.integrationProductIdOrSlug, forKey: SdkCodingKey("integrationProductIdOrSlug"))
+        try keyedContainer.encodeIfPresent(self.metadata, forKey: SdkCodingKey("metadata"))
+        try keyedContainer.encodeIfPresent(self.externalId, forKey: SdkCodingKey("externalId"))
+        try keyedContainer.encodeIfPresent(self.protocolSettings, forKey: SdkCodingKey("protocolSettings"))
+        try keyedContainer.encodeIfPresent(self.source, forKey: SdkCodingKey("source"))
+        try keyedContainer.encodeIfPresent(self.billingPlanId, forKey: SdkCodingKey("billingPlanId"))
+        try keyedContainer.encodeIfPresent(self.paymentMethodId, forKey: SdkCodingKey("paymentMethodId"))
+        try keyedContainer.encodeIfPresent(self.prepaymentAmountCents, forKey: SdkCodingKey("prepaymentAmountCents"))
     }
 
     init(options: IntegrationsMethods.CreateIntegrationStoreDirectOptions) {
-        name = options.name
-        integrationConfigurationId = options.integrationConfigurationId
-        integrationProductIdOrSlug = options.integrationProductIdOrSlug
-        metadata = options.metadata
-        externalId = options.externalId
-        protocolSettings = options.protocolSettings
-        source = options.source
-        billingPlanId = options.billingPlanId
-        paymentMethodId = options.paymentMethodId
-        prepaymentAmountCents = options.prepaymentAmountCents
+        self.name = options.name
+        self.integrationConfigurationId = options.integrationConfigurationId
+        self.integrationProductIdOrSlug = options.integrationProductIdOrSlug
+        self.metadata = options.metadata
+        self.externalId = options.externalId
+        self.protocolSettings = options.protocolSettings
+        self.source = options.source
+        self.billingPlanId = options.billingPlanId
+        self.paymentMethodId = options.paymentMethodId
+        self.prepaymentAmountCents = options.prepaymentAmountCents
     }
 }
 
-public typealias CreateInstallationsByIntegrationConfigurationIdResourcesByResX289ad42237 =
-    [CreateInstallationsByIntegrationConfigurationIdResourcesByResX5f59c02dae]
+public typealias CreateInstallationsByIntegrationConfigurationIdResourcesByResX289ad42237 = [CreateInstallationsByIntegrationConfigurationIdResourcesByResX5f59c02dae]
 
 struct UpdateInstallationRequestBody: Encodable {
     var status: UpdateInstallationRequestBodyStatus?
@@ -83,10 +82,10 @@ struct UpdateInstallationRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(status, forKey: SdkCodingKey("status"))
-        try keyedContainer.encodeIfPresent(externalId, forKey: SdkCodingKey("externalId"))
-        try keyedContainer.encodeIfPresent(billingPlan, forKey: SdkCodingKey("billingPlan"))
-        try keyedContainer.encodeIfPresent(notification, forKey: SdkCodingKey("notification"))
+        try keyedContainer.encodeIfPresent(self.status, forKey: SdkCodingKey("status"))
+        try keyedContainer.encodeIfPresent(self.externalId, forKey: SdkCodingKey("externalId"))
+        try keyedContainer.encodeIfPresent(self.billingPlan, forKey: SdkCodingKey("billingPlan"))
+        try keyedContainer.encodeIfPresent(self.notification, forKey: SdkCodingKey("notification"))
     }
 }
 
@@ -96,8 +95,8 @@ struct RotateInstallationCredentialRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(clientSecret, forKey: SdkCodingKey("client_secret"))
-        try keyedContainer.encodeIfPresent(clientId, forKey: SdkCodingKey("client_id"))
+        try keyedContainer.encode(self.clientSecret, forKey: SdkCodingKey("client_secret"))
+        try keyedContainer.encodeIfPresent(self.clientId, forKey: SdkCodingKey("client_id"))
     }
 }
 
@@ -108,9 +107,9 @@ struct RevokeInstallationCredentialRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(token, forKey: SdkCodingKey("token"))
-        try keyedContainer.encode(clientSecret, forKey: SdkCodingKey("client_secret"))
-        try keyedContainer.encodeIfPresent(clientId, forKey: SdkCodingKey("client_id"))
+        try keyedContainer.encode(self.token, forKey: SdkCodingKey("token"))
+        try keyedContainer.encode(self.clientSecret, forKey: SdkCodingKey("client_secret"))
+        try keyedContainer.encodeIfPresent(self.clientId, forKey: SdkCodingKey("client_id"))
     }
 }
 
@@ -119,7 +118,7 @@ struct CreateEventRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(event, forKey: SdkCodingKey("event"))
+        try keyedContainer.encode(self.event, forKey: SdkCodingKey("event"))
     }
 }
 
@@ -137,29 +136,29 @@ struct ImportResourceRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(productId, forKey: SdkCodingKey("productId"))
-        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encode(status, forKey: SdkCodingKey("status"))
-        try keyedContainer.encodeIfPresent(ownership, forKey: SdkCodingKey("ownership"))
-        try keyedContainer.encodeIfPresent(metadata, forKey: SdkCodingKey("metadata"))
-        try keyedContainer.encodeIfPresent(billingPlan, forKey: SdkCodingKey("billingPlan"))
-        try keyedContainer.encodeIfPresent(notification, forKey: SdkCodingKey("notification"))
-        try keyedContainer.encodeIfPresent(extras, forKey: SdkCodingKey("extras"))
-        try keyedContainer.encodeIfPresent(secrets, forKey: SdkCodingKey("secrets"))
-        try keyedContainer.encodeIfPresent(customClaims, forKey: SdkCodingKey("customClaims"))
+        try keyedContainer.encode(self.productId, forKey: SdkCodingKey("productId"))
+        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(self.status, forKey: SdkCodingKey("status"))
+        try keyedContainer.encodeIfPresent(self.ownership, forKey: SdkCodingKey("ownership"))
+        try keyedContainer.encodeIfPresent(self.metadata, forKey: SdkCodingKey("metadata"))
+        try keyedContainer.encodeIfPresent(self.billingPlan, forKey: SdkCodingKey("billingPlan"))
+        try keyedContainer.encodeIfPresent(self.notification, forKey: SdkCodingKey("notification"))
+        try keyedContainer.encodeIfPresent(self.extras, forKey: SdkCodingKey("extras"))
+        try keyedContainer.encodeIfPresent(self.secrets, forKey: SdkCodingKey("secrets"))
+        try keyedContainer.encodeIfPresent(self.customClaims, forKey: SdkCodingKey("customClaims"))
     }
 
     init(options: MarketplaceMethods.ImportResourceOptions) {
-        productId = options.productId
-        name = options.name
-        status = options.status
-        ownership = options.ownership
-        metadata = options.metadata
-        billingPlan = options.billingPlan
-        notification = options.notification
-        extras = options.extras
-        secrets = options.secrets
-        customClaims = options.customClaims
+        self.productId = options.productId
+        self.name = options.name
+        self.status = options.status
+        self.ownership = options.ownership
+        self.metadata = options.metadata
+        self.billingPlan = options.billingPlan
+        self.notification = options.notification
+        self.extras = options.extras
+        self.secrets = options.secrets
+        self.customClaims = options.customClaims
     }
 }
 
@@ -176,27 +175,27 @@ struct UpdateResourceRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(ownership, forKey: SdkCodingKey("ownership"))
-        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(status, forKey: SdkCodingKey("status"))
-        try keyedContainer.encodeIfPresent(metadata, forKey: SdkCodingKey("metadata"))
-        try keyedContainer.encodeIfPresent(billingPlan, forKey: SdkCodingKey("billingPlan"))
-        try keyedContainer.encodeIfPresent(notification, forKey: SdkCodingKey("notification"))
-        try keyedContainer.encodeIfPresent(extras, forKey: SdkCodingKey("extras"))
-        try keyedContainer.encodeIfPresent(secrets, forKey: SdkCodingKey("secrets"))
-        try keyedContainer.encodeIfPresent(customClaims, forKey: SdkCodingKey("customClaims"))
+        try keyedContainer.encodeIfPresent(self.ownership, forKey: SdkCodingKey("ownership"))
+        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.status, forKey: SdkCodingKey("status"))
+        try keyedContainer.encodeIfPresent(self.metadata, forKey: SdkCodingKey("metadata"))
+        try keyedContainer.encodeIfPresent(self.billingPlan, forKey: SdkCodingKey("billingPlan"))
+        try keyedContainer.encodeIfPresent(self.notification, forKey: SdkCodingKey("notification"))
+        try keyedContainer.encodeIfPresent(self.extras, forKey: SdkCodingKey("extras"))
+        try keyedContainer.encodeIfPresent(self.secrets, forKey: SdkCodingKey("secrets"))
+        try keyedContainer.encodeIfPresent(self.customClaims, forKey: SdkCodingKey("customClaims"))
     }
 
     init(options: MarketplaceMethods.UpdateResourceOptions) {
-        ownership = options.ownership
-        name = options.name
-        status = options.status
-        metadata = options.metadata
-        billingPlan = options.billingPlan
-        notification = options.notification
-        extras = options.extras
-        secrets = options.secrets
-        customClaims = options.customClaims
+        self.ownership = options.ownership
+        self.name = options.name
+        self.status = options.status
+        self.metadata = options.metadata
+        self.billingPlan = options.billingPlan
+        self.notification = options.notification
+        self.extras = options.extras
+        self.secrets = options.secrets
+        self.customClaims = options.customClaims
     }
 }
 
@@ -209,10 +208,10 @@ struct SubmitBillingDataRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(timestamp, forKey: SdkCodingKey("timestamp"))
-        try keyedContainer.encode(eod, forKey: SdkCodingKey("eod"))
-        try keyedContainer.encode(period, forKey: SdkCodingKey("period"))
-        try keyedContainer.encode(billing, forKey: SdkCodingKey("billing"))
-        try keyedContainer.encode(usage, forKey: SdkCodingKey("usage"))
+        try keyedContainer.encode(self.timestamp, forKey: SdkCodingKey("timestamp"))
+        try keyedContainer.encode(self.eod, forKey: SdkCodingKey("eod"))
+        try keyedContainer.encode(self.period, forKey: SdkCodingKey("period"))
+        try keyedContainer.encode(self.billing, forKey: SdkCodingKey("billing"))
+        try keyedContainer.encode(self.usage, forKey: SdkCodingKey("usage"))
     }
 }

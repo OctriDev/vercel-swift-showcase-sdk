@@ -3,48 +3,32 @@
 
 import Foundation
 
-/// ChecksV2 domain models
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X3740a48ce7 {
-    init(kind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b) throws {
+// ChecksV2 domain models
+extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X3740a48ce7 {
+    public init(kind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b) throws {
         self.kind = kind
-        try sdkValidateRawEnum(
-            "kind",
-            self.kind,
-            ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("kind", self.kind, ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7376b.allCases.map(\.rawValue))
     }
 }
 
 public indirect enum ListDeploymentCheckRunsResponseRunsItemVariant1Source {
-    case listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0(
-        ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0
-    )
-    case listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1(
-        ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1
-    )
+    case listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0(ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0)
+    case listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1(ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1)
 }
 
 extension ListDeploymentCheckRunsResponseRunsItemVariant1Source: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ListDeploymentCheckRunsResponseRunsItemVariant1Source"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListDeploymentCheckRunsResponseRunsItemVariant1Source")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -67,12 +51,12 @@ extension ListDeploymentCheckRunsResponseRunsItemVariant1Source {
         if let value = try? container.decode(
             ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0.self
         ) {
-            return .listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0(value)
+            return             .listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0(value)
         }
         if let value = try? container.decode(
             ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1.self
         ) {
-            return .listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1(value)
+            return             .listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1(value)
         }
         return nil
     }
@@ -82,10 +66,8 @@ extension ListDeploymentCheckRunsResponseRunsItemVariant1Source {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0(value): try container
-            .encode(value); return true
-        case let .listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1(value): try container
-            .encode(value); return true
+        case let .listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0(value): try container.encode(value); return true
+        case let .listDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1(value): try container.encode(value); return true
         }
     }
 }
@@ -101,23 +83,20 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant3: Cod
     }
 
     init() {
-        (origin, subKind) = (nil, nil)
+        (self.origin, self.subKind) = (nil, nil)
     }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant3 {
-    init(from decoder: Decoder) throws {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant3 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        origin = try container.sdkDecodeIfPresent(.origin)
-        subKind = try container.sdkDecodeIfPresent(.subKind)
+        self.origin = try container.sdkDecodeIfPresent(.origin)
+        self.subKind = try container.sdkDecodeIfPresent(.subKind)
     }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant3 {
-    init(
-        origin: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant3Origin? = nil,
-        subKind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant3SubKind? = nil
-    ) {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant3 {
+    public init(origin: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant3Origin? = nil, subKind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant3SubKind? = nil) {
         self.init()
         (self.origin, self.subKind) = (origin, subKind)
     }
@@ -136,51 +115,33 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant0ExpectationRef: Cod
         case jobRunAttempt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0ExpectationRef {
-    init(from decoder: Decoder) throws {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0ExpectationRef {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.invocationAttempt) else {
-            throw SdkValidationError(
-                field: "invocationAttempt",
-                code: "required",
-                message: "Validation failed for 'invocationAttempt': value is required"
-            )
+            throw SdkValidationError(field: "invocationAttempt", code: "required", message: "Validation failed for 'invocationAttempt': value is required")
         }
         guard container.contains(.invocationId) else {
-            throw SdkValidationError(
-                field: "invocationId",
-                code: "required",
-                message: "Validation failed for 'invocationId': value is required"
-            )
+            throw SdkValidationError(field: "invocationId", code: "required", message: "Validation failed for 'invocationId': value is required")
         }
         guard container.contains(.jobDefinitionId) else {
-            throw SdkValidationError(
-                field: "jobDefinitionId",
-                code: "required",
-                message: "Validation failed for 'jobDefinitionId': value is required"
-            )
+            throw SdkValidationError(field: "jobDefinitionId", code: "required", message: "Validation failed for 'jobDefinitionId': value is required")
         }
         guard container.contains(.jobRunAttempt) else {
-            throw SdkValidationError(
-                field: "jobRunAttempt",
-                code: "required",
-                message: "Validation failed for 'jobRunAttempt': value is required"
-            )
+            throw SdkValidationError(field: "jobRunAttempt", code: "required", message: "Validation failed for 'jobRunAttempt': value is required")
         }
-        invocationAttempt = try container.sdkDecodeRequired(.invocationAttempt)
-        invocationId = try container.sdkDecodeRequired(.invocationId)
-        jobDefinitionId = try container.sdkDecodeRequired(.jobDefinitionId)
-        jobRunAttempt = try container.sdkDecodeRequired(.jobRunAttempt)
+        self.invocationAttempt = try container.sdkDecodeRequired(.invocationAttempt)
+        self.invocationId = try container.sdkDecodeRequired(.invocationId)
+        self.jobDefinitionId = try container.sdkDecodeRequired(.jobDefinitionId)
+        self.jobRunAttempt = try container.sdkDecodeRequired(.jobRunAttempt)
     }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0ExpectationRef {
-    init(invocationAttempt: Double, invocationId: String, jobDefinitionId: String, jobRunAttempt: Double) {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0ExpectationRef {
+    public init(invocationAttempt: Double, invocationId: String, jobDefinitionId: String, jobRunAttempt: Double) {
         (self.invocationAttempt, self.invocationId) = (invocationAttempt, invocationId)
         (self.jobDefinitionId, self.jobRunAttempt) = (jobDefinitionId, jobRunAttempt)
     }
@@ -201,51 +162,31 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant0: Cod
         case resourceId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant0 {
-    init(from decoder: Decoder) throws {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.integrationConfigurationId) else {
-            throw SdkValidationError(
-                field: "integrationConfigurationId",
-                code: "required",
-                message: "Validation failed for 'integrationConfigurationId': value is required"
-            )
+            throw SdkValidationError(field: "integrationConfigurationId", code: "required", message: "Validation failed for 'integrationConfigurationId': value is required")
         }
         guard container.contains(.integrationId) else {
-            throw SdkValidationError(
-                field: "integrationId",
-                code: "required",
-                message: "Validation failed for 'integrationId': value is required"
-            )
+            throw SdkValidationError(field: "integrationId", code: "required", message: "Validation failed for 'integrationId': value is required")
         }
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
-        integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
-        integrationId = try container.sdkDecodeRequired(.integrationId)
-        kind = try container.sdkDecodeRequired(.kind)
-        externalResourceId = try container.sdkDecodeIfPresent(.externalResourceId)
-        resourceId = try container.sdkDecodeIfPresent(.resourceId)
+        self.integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
+        self.integrationId = try container.sdkDecodeRequired(.integrationId)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.externalResourceId = try container.sdkDecodeIfPresent(.externalResourceId)
+        self.resourceId = try container.sdkDecodeIfPresent(.resourceId)
     }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant0 {
-    init(
-        integrationConfigurationId: String,
-        integrationId: String,
-        kind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant0Kind,
-        externalResourceId: String? = nil,
-        resourceId: String? = nil
-    ) {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant0 {
+    public init(integrationConfigurationId: String, integrationId: String, kind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant0Kind, externalResourceId: String? = nil, resourceId: String? = nil) {
         (self.integrationConfigurationId, self.integrationId) = (integrationConfigurationId, integrationId)
         (self.kind, self.externalResourceId) = (kind, externalResourceId)
         self.resourceId = resourceId
@@ -261,46 +202,28 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X8e50
         case kind
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X8e50cd0f39 {
-    init(from decoder: Decoder) throws {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X8e50cd0f39 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.job) else {
-            throw SdkValidationError(
-                field: "job",
-                code: "required",
-                message: "Validation failed for 'job': value is required"
-            )
+            throw SdkValidationError(field: "job", code: "required", message: "Validation failed for 'job': value is required")
         }
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
-        job = try container.sdkDecodeRequired(.job)
-        kind = try container.sdkDecodeRequired(.kind)
-        try sdkValidateRawEnum(
-            "kind",
-            kind,
-            ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xad7527b57a.allCases.map(\.rawValue)
-        )
+        self.job = try container.sdkDecodeRequired(.job)
+        self.kind = try container.sdkDecodeRequired(.kind)
+            try sdkValidateRawEnum("kind", self.kind, ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xad7527b57a.allCases.map(\.rawValue))
     }
 }
 
-public extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X8e50cd0f39 {
-    init(job: String, kind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xad7527b57a) throws {
+extension ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X8e50cd0f39 {
+    public init(job: String, kind: ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xad7527b57a) throws {
         (self.job, self.kind) = (job, kind)
-        try sdkValidateRawEnum(
-            "kind",
-            self.kind,
-            ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xad7527b57a.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("kind", self.kind, ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xad7527b57a.allCases.map(\.rawValue))
     }
 }
 
@@ -321,20 +244,15 @@ public enum ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xad7527
     }
 }
 
-public struct ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1SubKind: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1SubKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let vercelCiSentinel =
-        ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1SubKind(rawValue: "vercel-ci-sentinel")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let vercelCiSentinel = ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1SubKind(rawValue: "vercel-ci-sentinel")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -343,20 +261,15 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant1SubKi
     }
 }
 
-public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4SubKind: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4SubKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let vercelCiCheck =
-        ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4SubKind(rawValue: "vercel-ci-check")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let vercelCiCheck = ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4SubKind(rawValue: "vercel-ci-check")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -365,22 +278,17 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4SubKi
     }
 }
 
-public struct ListDeploymentCheckRunsResponseRunsItemVariant1Requires: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListDeploymentCheckRunsResponseRunsItemVariant1Requires: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let buildReady = ListDeploymentCheckRunsResponseRunsItemVariant1Requires(rawValue: "build-ready")
-    public static let deploymentUrl =
-        ListDeploymentCheckRunsResponseRunsItemVariant1Requires(rawValue: "deployment-url")
+    public static let deploymentUrl = ListDeploymentCheckRunsResponseRunsItemVariant1Requires(rawValue: "deployment-url")
     public static let none = ListDeploymentCheckRunsResponseRunsItemVariant1Requires(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -389,21 +297,17 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant1Requires: RawRepres
     }
 }
 
-public struct ListDeploymentCheckRunsResponseRunsItemVariant1Status: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListDeploymentCheckRunsResponseRunsItemVariant1Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let completed = ListDeploymentCheckRunsResponseRunsItemVariant1Status(rawValue: "completed")
     public static let queued = ListDeploymentCheckRunsResponseRunsItemVariant1Status(rawValue: "queued")
     public static let running = ListDeploymentCheckRunsResponseRunsItemVariant1Status(rawValue: "running")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -412,20 +316,15 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant1Status: RawRepresen
     }
 }
 
-public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant2Kind: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant2Kind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let gitProvider =
-        ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant2Kind(rawValue: "git-provider")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let gitProvider = ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant2Kind(rawValue: "git-provider")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -434,26 +333,19 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant2Kind:
     }
 }
 
-public struct ListDeploymentCheckRunsResponseRunsItemVariant1Blocks: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListDeploymentCheckRunsResponseRunsItemVariant1Blocks: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let buildStart = ListDeploymentCheckRunsResponseRunsItemVariant1Blocks(rawValue: "build-start")
-    public static let deploymentAlias =
-        ListDeploymentCheckRunsResponseRunsItemVariant1Blocks(rawValue: "deployment-alias")
-    public static let deploymentPromotion =
-        ListDeploymentCheckRunsResponseRunsItemVariant1Blocks(rawValue: "deployment-promotion")
-    public static let deploymentStart =
-        ListDeploymentCheckRunsResponseRunsItemVariant1Blocks(rawValue: "deployment-start")
+    public static let deploymentAlias = ListDeploymentCheckRunsResponseRunsItemVariant1Blocks(rawValue: "deployment-alias")
+    public static let deploymentPromotion = ListDeploymentCheckRunsResponseRunsItemVariant1Blocks(rawValue: "deployment-promotion")
+    public static let deploymentStart = ListDeploymentCheckRunsResponseRunsItemVariant1Blocks(rawValue: "deployment-start")
     public static let none = ListDeploymentCheckRunsResponseRunsItemVariant1Blocks(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -479,20 +371,15 @@ public enum ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4Xbc38d7
     }
 }
 
-public struct ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0SubKind: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0SubKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let vercelCi =
-        ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0SubKind(rawValue: "vercel-ci")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let vercelCi = ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0SubKind(rawValue: "vercel-ci")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -501,20 +388,15 @@ public struct ListDeploymentCheckRunsResponseRunsItemVariant1SourceVariant0SubKi
     }
 }
 
-public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X599aef4fd2: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X599aef4fd2: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let turborepo =
-        ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X599aef4fd2(rawValue: "Turborepo")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let turborepo = ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X599aef4fd2(rawValue: "Turborepo")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -540,21 +422,17 @@ public enum ListDeploymentCheckRunsResponseRunsItemVariant0SourceVariant4X821561
     }
 }
 
-public struct ListDeploymentCheckRunsResponseRunsItemVariant0Status: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListDeploymentCheckRunsResponseRunsItemVariant0Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let completed = ListDeploymentCheckRunsResponseRunsItemVariant0Status(rawValue: "completed")
     public static let queued = ListDeploymentCheckRunsResponseRunsItemVariant0Status(rawValue: "queued")
     public static let running = ListDeploymentCheckRunsResponseRunsItemVariant0Status(rawValue: "running")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

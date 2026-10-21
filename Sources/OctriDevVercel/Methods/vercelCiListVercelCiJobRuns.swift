@@ -6,86 +6,32 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VercelCiMethods {
-    /// Lists the runs for a job definition in a specific invocation attempt. Use `invocationId`, `attempt`, and
-    /// `jobDefinitionId` to select the job whose run history you want to inspect. Each result includes the run attempt
-    /// number and creation time, with start and completion details when available.
+extension VercelCiMethods {
+    /// Lists the runs for a job definition in a specific invocation attempt. Use `invocationId`, `attempt`, and `jobDefinitionId` to select the job whose run history you want to inspect. Each result includes the run attempt number and creation time, with start and completion details when available.
     ///
     /// List Job Runs
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listVercelCiJobRuns(
-        config: ClientConfig,
-        invocationId: String,
-        attempt: String,
-        jobDefinitionId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListVercelCiJobRunsResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/vercel-ci/invocations/",
-                sdkEncodePathSegment(sdkWireString(invocationId)),
-                "/attempts/",
-                sdkEncodePathSegment(sdkWireString(attempt)),
-                "/job-definitions/",
-                sdkEncodePathSegment(sdkWireString(jobDefinitionId)),
-                "/runs",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listVercelCiJobRuns",
-            options: requestOptions
-        )).data
+    public static func listVercelCiJobRuns(config: ClientConfig, invocationId: String, attempt: String, jobDefinitionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiJobRunsResponse {
+        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(attempt)), "/job-definitions/", sdkEncodePathSegment(sdkWireString(jobDefinitionId)), "/runs"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listVercelCiJobRuns", options: requestOptions)).data
     }
 
-    /// Retrieves a specific run attempt for a job definition. Use `invocationId`, `attempt`, `jobDefinitionId`, and
-    /// `runAttempt` to identify the run. The response contains the run's creation time and any available start and
-    /// completion details.
+    /// Retrieves a specific run attempt for a job definition. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to identify the run. The response contains the run's creation time and any available start and completion details.
     ///
     /// Get Job Run
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getVercelCiJobRun(
-        config: ClientConfig,
-        invocationId: String,
-        attempt: String,
-        jobDefinitionId: String,
-        runAttempt: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetVercelCiJobRunResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/vercel-ci/invocations/",
-                sdkEncodePathSegment(sdkWireString(invocationId)),
-                "/attempts/",
-                sdkEncodePathSegment(sdkWireString(attempt)),
-                "/job-definitions/",
-                sdkEncodePathSegment(sdkWireString(jobDefinitionId)),
-                "/runs/",
-                sdkEncodePathSegment(sdkWireString(runAttempt)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getVercelCiJobRun",
-            options: requestOptions
-        )).data
+    public static func getVercelCiJobRun(config: ClientConfig, invocationId: String, attempt: String, jobDefinitionId: String, runAttempt: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiJobRunResponse {
+        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(attempt)), "/job-definitions/", sdkEncodePathSegment(sdkWireString(jobDefinitionId)), "/runs/", sdkEncodePathSegment(sdkWireString(runAttempt))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getVercelCiJobRun", options: requestOptions)).data
     }
 }

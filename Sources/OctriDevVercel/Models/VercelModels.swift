@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Vercel domain models
+// Vercel domain models
 /// Typed representation of the `VercelForbiddenError` API schema.
 public struct VercelForbiddenError: Codable {
     /// Required object value serialized in the `error` wire field.
@@ -13,27 +13,21 @@ public struct VercelForbiddenError: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VercelForbiddenError {
-    init(from decoder: Decoder) throws {
+extension VercelForbiddenError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension VercelForbiddenError {
-    init(error: VercelForbiddenErrorError) {
+extension VercelForbiddenError {
+    public init(error: VercelForbiddenErrorError) {
         self.error = error
     }
 }
@@ -50,35 +44,25 @@ public struct VercelForbiddenErrorError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VercelForbiddenErrorError {
-    init(from decoder: Decoder) throws {
+extension VercelForbiddenErrorError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension VercelForbiddenErrorError {
-    init(code: String, message: String) {
+extension VercelForbiddenErrorError {
+    public init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -95,35 +79,25 @@ public struct VercelBadRequestErrorError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VercelBadRequestErrorError {
-    init(from decoder: Decoder) throws {
+extension VercelBadRequestErrorError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension VercelBadRequestErrorError {
-    init(code: String, message: String) {
+extension VercelBadRequestErrorError {
+    public init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -137,27 +111,21 @@ public struct VercelNotFoundError: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VercelNotFoundError {
-    init(from decoder: Decoder) throws {
+extension VercelNotFoundError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension VercelNotFoundError {
-    init(error: VercelNotFoundErrorError) {
+extension VercelNotFoundError {
+    public init(error: VercelNotFoundErrorError) {
         self.error = error
     }
 }
@@ -174,35 +142,25 @@ public struct VercelNotFoundErrorError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VercelNotFoundErrorError {
-    init(from decoder: Decoder) throws {
+extension VercelNotFoundErrorError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension VercelNotFoundErrorError {
-    init(code: String, message: String) {
+extension VercelNotFoundErrorError {
+    public init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -216,27 +174,21 @@ public struct VercelRateLimitError: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VercelRateLimitError {
-    init(from decoder: Decoder) throws {
+extension VercelRateLimitError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension VercelRateLimitError {
-    init(error: VercelRateLimitErrorError) {
+extension VercelRateLimitError {
+    public init(error: VercelRateLimitErrorError) {
         self.error = error
     }
 }
@@ -253,35 +205,25 @@ public struct VercelBaseError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VercelBaseError {
-    init(from decoder: Decoder) throws {
+extension VercelBaseError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension VercelBaseError {
-    init(code: String, message: String) {
+extension VercelBaseError {
+    public init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -295,27 +237,21 @@ public struct VercelBadRequestError: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VercelBadRequestError {
-    init(from decoder: Decoder) throws {
+extension VercelBadRequestError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.error) else {
-            throw SdkValidationError(
-                field: "error",
-                code: "required",
-                message: "Validation failed for 'error': value is required"
-            )
+            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
         }
-        error = try container.sdkDecodeRequired(.error)
+        self.error = try container.sdkDecodeRequired(.error)
     }
 }
 
-public extension VercelBadRequestError {
-    init(error: VercelBadRequestErrorError) {
+extension VercelBadRequestError {
+    public init(error: VercelBadRequestErrorError) {
         self.error = error
     }
 }
@@ -335,36 +271,26 @@ public struct VercelRateLimitErrorError: Codable {
         case limit
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VercelRateLimitErrorError {
-    init(from decoder: Decoder) throws {
+extension VercelRateLimitErrorError {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
-        limit = try container.sdkDecodeIfPresent(.limit)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
+        self.limit = try container.sdkDecodeIfPresent(.limit)
     }
 }
 
-public extension VercelRateLimitErrorError {
-    init(code: String, message: String, limit: RateLimitNotice? = nil) {
+extension VercelRateLimitErrorError {
+    public init(code: String, message: String, limit: RateLimitNotice? = nil) {
         (self.code, self.message) = (code, message)
         self.limit = limit
     }

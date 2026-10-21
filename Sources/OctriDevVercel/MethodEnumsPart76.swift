@@ -6,22 +6,16 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX16c3174e50: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX16c3174e50: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let create =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX16c3174e50(rawValue: "create")
-    public static let update =
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX16c3174e50(rawValue: "update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX16c3174e50(rawValue: "create")
+    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX16c3174e50(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -65,24 +59,18 @@ public enum ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant7Ty
     }
 }
 
-public struct GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X0a723102f1: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X0a723102f1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let challenge =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X0a723102f1(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let challenge = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X0a723102f1(rawValue: "challenge")
     public static let deny = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X0a723102f1(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X0a723102f1(rawValue: "log")
-    public static let rateLimit =
-        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X0a723102f1(rawValue: "rate_limit")
+    public static let rateLimit = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X0a723102f1(rawValue: "rate_limit")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -91,22 +79,16 @@ public struct GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X0a72
     }
 }
 
-public struct UpdateMicrofrontendsResponseSecurityRulesetsValueRateLimitAlgo: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseSecurityRulesetsValueRateLimitAlgo: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let fixedWindow =
-        UpdateMicrofrontendsResponseSecurityRulesetsValueRateLimitAlgo(rawValue: "fixed_window")
-    public static let tokenBucket =
-        UpdateMicrofrontendsResponseSecurityRulesetsValueRateLimitAlgo(rawValue: "token_bucket")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let fixedWindow = UpdateMicrofrontendsResponseSecurityRulesetsValueRateLimitAlgo(rawValue: "fixed_window")
+    public static let tokenBucket = UpdateMicrofrontendsResponseSecurityRulesetsValueRateLimitAlgo(rawValue: "token_bucket")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -115,26 +97,18 @@ public struct UpdateMicrofrontendsResponseSecurityRulesetsValueRateLimitAlgo: Ra
     }
 }
 
-public struct ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let canceled =
-        ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230(rawValue: "canceled")
-    public static let failed =
-        ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230(rawValue: "failed")
-    public static let skipped =
-        ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230(rawValue: "skipped")
-    public static let succeeded =
-        ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230(rawValue: "succeeded")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let canceled = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230(rawValue: "canceled")
+    public static let failed = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230(rawValue: "failed")
+    public static let skipped = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230(rawValue: "skipped")
+    public static let succeeded = ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56dac03230(rawValue: "succeeded")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -144,24 +118,18 @@ public struct ListProjectsResponseVariant1ProjectsItemLatestDeploymentsItemX56da
 }
 
 /// Specify if the password will apply to every Deployment Target or just Preview
-public struct UpdateProjectRequestBodyPasswordProtectionDeploymentType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateProjectRequestBodyPasswordProtectionDeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let all = UpdateProjectRequestBodyPasswordProtectionDeploymentType(rawValue: "all")
     public static let preview = UpdateProjectRequestBodyPasswordProtectionDeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews =
-        UpdateProjectRequestBodyPasswordProtectionDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
-    public static let allExceptCustomDomains =
-        UpdateProjectRequestBodyPasswordProtectionDeploymentType(rawValue: "all_except_custom_domains")
+    public static let prodDeploymentUrlsAndAllPreviews = UpdateProjectRequestBodyPasswordProtectionDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let allExceptCustomDomains = UpdateProjectRequestBodyPasswordProtectionDeploymentType(rawValue: "all_except_custom_domains")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -170,21 +138,16 @@ public struct UpdateProjectRequestBodyPasswordProtectionDeploymentType: RawRepre
     }
 }
 
-public struct AcceptProjectTransferRequestResponsePartnerCallsItemResultStatus: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct AcceptProjectTransferRequestResponsePartnerCallsItemResultStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let errored = AcceptProjectTransferRequestResponsePartnerCallsItemResultStatus(rawValue: "errored")
-    public static let fulfilled =
-        AcceptProjectTransferRequestResponsePartnerCallsItemResultStatus(rawValue: "fulfilled")
+    public static let fulfilled = AcceptProjectTransferRequestResponsePartnerCallsItemResultStatus(rawValue: "fulfilled")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -197,10 +160,7 @@ public struct AcceptProjectTransferRequestResponsePartnerCallsItemResultStatus: 
 public struct CreateLogDrainResponseSourcesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let build = CreateLogDrainResponseSourcesItem(rawValue: "build")
     public static let edge = CreateLogDrainResponseSourcesItem(rawValue: "edge")
     public static let external = CreateLogDrainResponseSourcesItem(rawValue: "external")
@@ -211,7 +171,7 @@ public struct CreateLogDrainResponseSourcesItem: RawRepresentable, Hashable, Cod
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -220,14 +180,10 @@ public struct CreateLogDrainResponseSourcesItem: RawRepresentable, Hashable, Cod
     }
 }
 
-public struct CreateProjectResponseTargetsValueReadyState: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateProjectResponseTargetsValueReadyState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let blocked = CreateProjectResponseTargetsValueReadyState(rawValue: "BLOCKED")
     public static let building = CreateProjectResponseTargetsValueReadyState(rawValue: "BUILDING")
     public static let canceled = CreateProjectResponseTargetsValueReadyState(rawValue: "CANCELED")
@@ -238,7 +194,7 @@ public struct CreateProjectResponseTargetsValueReadyState: RawRepresentable, Has
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

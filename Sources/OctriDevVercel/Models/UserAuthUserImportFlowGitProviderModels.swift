@@ -3,15 +3,12 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 /// Optional enumerated value serialized in the `importFlowGitProvider` wire field.
 public struct AuthUserImportFlowGitProvider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bitbucket = AuthUserImportFlowGitProvider(rawValue: "bitbucket")
     public static let cursorOrigin = AuthUserImportFlowGitProvider(rawValue: "cursor-origin")
     public static let github = AuthUserImportFlowGitProvider(rawValue: "github")
@@ -22,7 +19,7 @@ public struct AuthUserImportFlowGitProvider: RawRepresentable, Hashable, Codable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -32,21 +29,17 @@ public struct AuthUserImportFlowGitProvider: RawRepresentable, Hashable, Codable
 }
 
 /// Required enumerated value serialized in the `blockReason` wire field.
-public struct AuthUserFeatureBlocksSpeedInsightsFreeBlockReason: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct AuthUserFeatureBlocksSpeedInsightsFreeBlockReason: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let adminOverride = AuthUserFeatureBlocksSpeedInsightsFreeBlockReason(rawValue: "admin_override")
     public static let hardBlocked = AuthUserFeatureBlocksSpeedInsightsFreeBlockReason(rawValue: "hard_blocked")
     public static let limitsExceeded = AuthUserFeatureBlocksSpeedInsightsFreeBlockReason(rawValue: "limits_exceeded")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -56,20 +49,16 @@ public struct AuthUserFeatureBlocksSpeedInsightsFreeBlockReason: RawRepresentabl
 }
 
 /// Optional enumerated value serialized in the `viewPreference` wire field.
-public struct AuthUserActiveDashboardViewsItemViewPreference: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct AuthUserActiveDashboardViewsItemViewPreference: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let cards = AuthUserActiveDashboardViewsItemViewPreference(rawValue: "cards")
     public static let list = AuthUserActiveDashboardViewsItemViewPreference(rawValue: "list")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

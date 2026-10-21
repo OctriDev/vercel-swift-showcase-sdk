@@ -3,72 +3,40 @@
 
 import Foundation
 
-/// AiGateway domain models
-public extension AiGatewayBudgetDefault {
-    init(from decoder: Decoder) throws {
+// AiGateway domain models
+extension AiGatewayBudgetDefault {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.active) else {
-            throw SdkValidationError(
-                field: "active",
-                code: "required",
-                message: "Validation failed for 'active': value is required"
-            )
+            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.limitAmount) else {
-            throw SdkValidationError(
-                field: "limitAmount",
-                code: "required",
-                message: "Validation failed for 'limitAmount': value is required"
-            )
+            throw SdkValidationError(field: "limitAmount", code: "required", message: "Validation failed for 'limitAmount': value is required")
         }
         guard container.contains(.refreshPeriod) else {
-            throw SdkValidationError(
-                field: "refreshPeriod",
-                code: "required",
-                message: "Validation failed for 'refreshPeriod': value is required"
-            )
+            throw SdkValidationError(field: "refreshPeriod", code: "required", message: "Validation failed for 'refreshPeriod': value is required")
         }
         guard container.contains(.scopeType) else {
-            throw SdkValidationError(
-                field: "scopeType",
-                code: "required",
-                message: "Validation failed for 'scopeType': value is required"
-            )
+            throw SdkValidationError(field: "scopeType", code: "required", message: "Validation failed for 'scopeType': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        active = try container.sdkDecodeRequired(.active)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        limitAmount = try container.sdkDecodeRequired(.limitAmount)
-        refreshPeriod = try container.sdkDecodeRequired(.refreshPeriod)
-        scopeType = try container.sdkDecodeRequired(.scopeType)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        alertThresholds = try container.sdkDecodeIfPresent(.alertThresholds)
+        self.active = try container.sdkDecodeRequired(.active)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.limitAmount = try container.sdkDecodeRequired(.limitAmount)
+        self.refreshPeriod = try container.sdkDecodeRequired(.refreshPeriod)
+        self.scopeType = try container.sdkDecodeRequired(.scopeType)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.alertThresholds = try container.sdkDecodeIfPresent(.alertThresholds)
     }
 }
 
-public extension AiGatewayBudgetDefault {
-    init(
-        active: Bool,
-        createdAt: Double,
-        limitAmount: Double,
-        refreshPeriod: AiGatewayBudgetDefaultRefreshPeriod,
-        scopeType: AiGatewayBudgetDefaultScopeType,
-        updatedAt: Double,
-        alertThresholds: [Double]? = nil
-    ) {
+extension AiGatewayBudgetDefault {
+    public init(active: Bool, createdAt: Double, limitAmount: Double, refreshPeriod: AiGatewayBudgetDefaultRefreshPeriod, scopeType: AiGatewayBudgetDefaultScopeType, updatedAt: Double, alertThresholds: [Double]? = nil) {
         (self.active, self.createdAt) = (active, createdAt)
         (self.limitAmount, self.refreshPeriod) = (limitAmount, refreshPeriod)
         (self.scopeType, self.updatedAt) = (scopeType, updatedAt)
@@ -88,31 +56,25 @@ public struct AiGatewayEvaluationFallbackConditionVariant1: Codable {
         case question
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AiGatewayEvaluationFallbackConditionVariant1 {
-    init(from decoder: Decoder) throws {
+extension AiGatewayEvaluationFallbackConditionVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.probabilityBetween) else {
-            throw SdkValidationError(
-                field: "probabilityBetween",
-                code: "required",
-                message: "Validation failed for 'probabilityBetween': value is required"
-            )
+            throw SdkValidationError(field: "probabilityBetween", code: "required", message: "Validation failed for 'probabilityBetween': value is required")
         }
-        probabilityBetween = try container.sdkDecodeRequired(.probabilityBetween)
-        question = try container.sdkDecodeIfPresent(.question)
-        try validateItems("probabilityBetween", probabilityBetween, min: 2, max: 2)
+        self.probabilityBetween = try container.sdkDecodeRequired(.probabilityBetween)
+        self.question = try container.sdkDecodeIfPresent(.question)
+            try validateItems("probabilityBetween", self.probabilityBetween, min: 2, max: 2)
     }
 }
 
-public extension AiGatewayEvaluationFallbackConditionVariant1 {
-    init(probabilityBetween: [Double], question: String? = nil) throws {
+extension AiGatewayEvaluationFallbackConditionVariant1 {
+    public init(probabilityBetween: [Double], question: String? = nil) throws {
         (self.probabilityBetween, self.question) = (probabilityBetween, question)
-        try validateItems("probabilityBetween", self.probabilityBetween, min: 2, max: 2)
+            try validateItems("probabilityBetween", self.probabilityBetween, min: 2, max: 2)
     }
 }
 
@@ -159,86 +121,47 @@ public struct AiGatewayRule: Codable {
         case updatedBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AiGatewayRule {
-    init(from decoder: Decoder) throws {
+extension AiGatewayRule {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
         guard container.contains(.ownerId) else {
-            throw SdkValidationError(
-                field: "ownerId",
-                code: "required",
-                message: "Validation failed for 'ownerId': value is required"
-            )
+            throw SdkValidationError(field: "ownerId", code: "required", message: "Validation failed for 'ownerId': value is required")
         }
         guard container.contains(.ruleId) else {
-            throw SdkValidationError(
-                field: "ruleId",
-                code: "required",
-                message: "Validation failed for 'ruleId': value is required"
-            )
+            throw SdkValidationError(field: "ruleId", code: "required", message: "Validation failed for 'ruleId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        enabled = try container.sdkDecodeRequired(.enabled)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        ruleId = try container.sdkDecodeRequired(.ruleId)
-        type = try container.sdkDecodeRequired(.type)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        action = try container.sdkDecodeIfPresent(.action)
-        createdBy = try container.sdkDecodeIfPresent(.createdBy)
-        deleted = try container.sdkDecodeIfPresent(.deleted)
-        description = try container.sdkDecodeIfPresent(.description)
-        match = try container.sdkDecodeIfPresent(.match)
-        updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.ruleId = try container.sdkDecodeRequired(.ruleId)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.action = try container.sdkDecodeIfPresent(.action)
+        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
+        self.deleted = try container.sdkDecodeIfPresent(.deleted)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.match = try container.sdkDecodeIfPresent(.match)
+        self.updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
     }
 }
 
-public extension AiGatewayRule {
-    init(
-        createdAt: Double,
-        enabled: Bool,
-        ownerId: String,
-        ruleId: String,
-        type: AiGatewayRuleType,
-        updatedAt: Double,
-        action: AiGatewayRuleAction? = nil,
-        createdBy: String? = nil,
-        deleted: Bool? = nil,
-        description: String? = nil,
-        match: AiGatewayRuleMatch? = nil,
-        updatedBy: String? = nil
-    ) {
+extension AiGatewayRule {
+    public init(createdAt: Double, enabled: Bool, ownerId: String, ruleId: String, type: AiGatewayRuleType, updatedAt: Double, action: AiGatewayRuleAction? = nil, createdBy: String? = nil, deleted: Bool? = nil, description: String? = nil, match: AiGatewayRuleMatch? = nil, updatedBy: String? = nil) {
         (self.createdAt, self.enabled) = (createdAt, enabled)
         (self.ownerId, self.ruleId) = (ownerId, ruleId)
         (self.type, self.updatedAt) = (type, updatedAt)
@@ -257,27 +180,21 @@ public struct AiGatewayEvaluationFallbackConditionVariant4: Codable {
         case atLeast
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AiGatewayEvaluationFallbackConditionVariant4 {
-    init(from decoder: Decoder) throws {
+extension AiGatewayEvaluationFallbackConditionVariant4 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.atLeast) else {
-            throw SdkValidationError(
-                field: "atLeast",
-                code: "required",
-                message: "Validation failed for 'atLeast': value is required"
-            )
+            throw SdkValidationError(field: "atLeast", code: "required", message: "Validation failed for 'atLeast': value is required")
         }
-        atLeast = try container.sdkDecodeRequired(.atLeast)
+        self.atLeast = try container.sdkDecodeRequired(.atLeast)
     }
 }
 
-public extension AiGatewayEvaluationFallbackConditionVariant4 {
-    init(atLeast: AiGatewayEvaluationFallbackConditionVariant4AtLeast) {
+extension AiGatewayEvaluationFallbackConditionVariant4 {
+    public init(atLeast: AiGatewayEvaluationFallbackConditionVariant4AtLeast) {
         self.atLeast = atLeast
     }
 }
@@ -292,19 +209,19 @@ public struct AiGatewayRuleMatch: Codable {
     }
 
     init() {
-        model = nil
+        self.model = nil
     }
 }
 
-public extension AiGatewayRuleMatch {
-    init(from decoder: Decoder) throws {
+extension AiGatewayRuleMatch {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        model = try container.sdkDecodeIfPresent(.model)
+        self.model = try container.sdkDecodeIfPresent(.model)
     }
 }
 
-public extension AiGatewayRuleMatch {
-    init(model: String? = nil) {
+extension AiGatewayRuleMatch {
+    public init(model: String? = nil) {
         self.init()
         self.model = model
     }
@@ -324,28 +241,22 @@ public struct AiGatewayVirtualModelConfigModelsItemVariant1: Codable {
         case intelligence
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AiGatewayVirtualModelConfigModelsItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension AiGatewayVirtualModelConfigModelsItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
-        slug = try container.sdkDecodeRequired(.slug)
-        intelligence = try container.sdkDecodeIfPresent(.intelligence)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.intelligence = try container.sdkDecodeIfPresent(.intelligence)
     }
 }
 
-public extension AiGatewayVirtualModelConfigModelsItemVariant1 {
-    init(slug: String, intelligence: Double? = nil) {
+extension AiGatewayVirtualModelConfigModelsItemVariant1 {
+    public init(slug: String, intelligence: Double? = nil) {
         (self.slug, self.intelligence) = (slug, intelligence)
     }
 }
@@ -460,137 +371,72 @@ public struct AiGatewayVirtualModelConfig: Codable {
         case zeroDataRetention
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AiGatewayVirtualModelConfig {
-    init(from decoder: Decoder) throws {
+extension AiGatewayVirtualModelConfig {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.deleted) else {
-            throw SdkValidationError(
-                field: "deleted",
-                code: "required",
-                message: "Validation failed for 'deleted': value is required"
-            )
+            throw SdkValidationError(field: "deleted", code: "required", message: "Validation failed for 'deleted': value is required")
         }
         guard container.contains(.kind) else {
-            throw SdkValidationError(
-                field: "kind",
-                code: "required",
-                message: "Validation failed for 'kind': value is required"
-            )
+            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
         }
         guard container.contains(.ownerId) else {
-            throw SdkValidationError(
-                field: "ownerId",
-                code: "required",
-                message: "Validation failed for 'ownerId': value is required"
-            )
+            throw SdkValidationError(field: "ownerId", code: "required", message: "Validation failed for 'ownerId': value is required")
         }
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
         guard container.contains(.virtualModelSlug) else {
-            throw SdkValidationError(
-                field: "virtualModelSlug",
-                code: "required",
-                message: "Validation failed for 'virtualModelSlug': value is required"
-            )
+            throw SdkValidationError(field: "virtualModelSlug", code: "required", message: "Validation failed for 'virtualModelSlug': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        deleted = try container.sdkDecodeRequired(.deleted)
-        kind = try container.sdkDecodeRequired(.kind)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        status = try container.sdkDecodeRequired(.status)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        virtualModelSlug = try container.sdkDecodeRequired(.virtualModelSlug)
-        allowFallbackFromFast = try container.sdkDecodeIfPresent(.allowFallbackFromFast)
-        baseUrl = try container.sdkDecodeIfPresent(.baseUrl)
-        byokCredentialIds = try container.sdkDecodeIfPresent(.byokCredentialIds)
-        caching = try container.sdkDecodeIfPresent(.caching)
-        createdBy = try container.sdkDecodeIfPresent(.createdBy)
-        description = try container.sdkDecodeIfPresent(.description)
-        disallowPromptTraining = try container.sdkDecodeIfPresent(.disallowPromptTraining)
-        displayName = try container.sdkDecodeIfPresent(.displayName)
-        has = try container.sdkDecodeIfPresent(.has)
-        hipaaCompliant = try container.sdkDecodeIfPresent(.hipaaCompliant)
-        inferenceRegion = try container.sdkDecodeIfPresent(.inferenceRegion)
-        instanceId = try container.sdkDecodeIfPresent(.instanceId)
-        models = try container.sdkDecodeIfPresent(.models)
-        modelSlug = try container.sdkDecodeIfPresent(.modelSlug)
-        observabilityTags = try container.sdkDecodeIfPresent(.observabilityTags)
-        providerOnly = try container.sdkDecodeIfPresent(.providerOnly)
-        providerOptions = try container.sdkDecodeIfPresent(.providerOptions)
-        providerOrder = try container.sdkDecodeIfPresent(.providerOrder)
-        providerTimeouts = try container.sdkDecodeIfPresent(.providerTimeouts)
-        selector = try container.sdkDecodeIfPresent(.selector)
-        selectorOptions = try container.sdkDecodeIfPresent(.selectorOptions)
-        serviceTier = try container.sdkDecodeIfPresent(.serviceTier)
-        sort = try container.sdkDecodeIfPresent(.sort)
-        speed = try container.sdkDecodeIfPresent(.speed)
-        updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
-        visibility = try container.sdkDecodeIfPresent(.visibility)
-        zeroDataRetention = try container.sdkDecodeIfPresent(.zeroDataRetention)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.deleted = try container.sdkDecodeRequired(.deleted)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.virtualModelSlug = try container.sdkDecodeRequired(.virtualModelSlug)
+        self.allowFallbackFromFast = try container.sdkDecodeIfPresent(.allowFallbackFromFast)
+        self.baseUrl = try container.sdkDecodeIfPresent(.baseUrl)
+        self.byokCredentialIds = try container.sdkDecodeIfPresent(.byokCredentialIds)
+        self.caching = try container.sdkDecodeIfPresent(.caching)
+        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.disallowPromptTraining = try container.sdkDecodeIfPresent(.disallowPromptTraining)
+        self.displayName = try container.sdkDecodeIfPresent(.displayName)
+        self.has = try container.sdkDecodeIfPresent(.has)
+        self.hipaaCompliant = try container.sdkDecodeIfPresent(.hipaaCompliant)
+        self.inferenceRegion = try container.sdkDecodeIfPresent(.inferenceRegion)
+        self.instanceId = try container.sdkDecodeIfPresent(.instanceId)
+        self.models = try container.sdkDecodeIfPresent(.models)
+        self.modelSlug = try container.sdkDecodeIfPresent(.modelSlug)
+        self.observabilityTags = try container.sdkDecodeIfPresent(.observabilityTags)
+        self.providerOnly = try container.sdkDecodeIfPresent(.providerOnly)
+        self.providerOptions = try container.sdkDecodeIfPresent(.providerOptions)
+        self.providerOrder = try container.sdkDecodeIfPresent(.providerOrder)
+        self.providerTimeouts = try container.sdkDecodeIfPresent(.providerTimeouts)
+        self.selector = try container.sdkDecodeIfPresent(.selector)
+        self.selectorOptions = try container.sdkDecodeIfPresent(.selectorOptions)
+        self.serviceTier = try container.sdkDecodeIfPresent(.serviceTier)
+        self.sort = try container.sdkDecodeIfPresent(.sort)
+        self.speed = try container.sdkDecodeIfPresent(.speed)
+        self.updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
+        self.visibility = try container.sdkDecodeIfPresent(.visibility)
+        self.zeroDataRetention = try container.sdkDecodeIfPresent(.zeroDataRetention)
     }
 }
 
-public extension AiGatewayVirtualModelConfig {
-    init(
-        createdAt: Double,
-        deleted: Bool,
-        kind: String,
-        ownerId: String,
-        status: String,
-        updatedAt: Double,
-        virtualModelSlug: String,
-        allowFallbackFromFast: Bool? = nil,
-        baseUrl: String? = nil,
-        byokCredentialIds: [String]? = nil,
-        caching: AiGatewayVirtualModelConfigCaching? = nil,
-        createdBy: String? = nil,
-        description: String? = nil,
-        disallowPromptTraining: Bool? = nil,
-        displayName: String? = nil,
-        has: [AiGatewayVirtualModelConfigHasItem]? = nil,
-        hipaaCompliant: Bool? = nil,
-        inferenceRegion: AiGatewayVirtualModelConfigInferenceRegion? = nil,
-        instanceId: String? = nil,
-        models: [AiGatewayVirtualModelConfigModelsItem]? = nil,
-        modelSlug: String? = nil,
-        observabilityTags: [String]? = nil,
-        providerOnly: [String]? = nil,
-        providerOptions: [String: AiGatewayProviderOptionBag]? = nil,
-        providerOrder: [String]? = nil,
-        providerTimeouts: AiGatewayVirtualModelConfigProviderTimeouts? = nil,
-        selector: AiGatewayVirtualModelConfigSelector? = nil,
-        selectorOptions: AiGatewayVirtualModelConfigSelectorOptions? = nil,
-        serviceTier: AiGatewayVirtualModelConfigServiceTier? = nil,
-        sort: AiGatewayVirtualModelConfigSort? = nil,
-        speed: AiGatewayVirtualModelConfigSpeed? = nil,
-        updatedBy: String? = nil,
-        visibility: String? = nil,
-        zeroDataRetention: Bool? = nil
-    ) {
+extension AiGatewayVirtualModelConfig {
+    public init(createdAt: Double, deleted: Bool, kind: String, ownerId: String, status: String, updatedAt: Double, virtualModelSlug: String, allowFallbackFromFast: Bool? = nil, baseUrl: String? = nil, byokCredentialIds: [String]? = nil, caching: AiGatewayVirtualModelConfigCaching? = nil, createdBy: String? = nil, description: String? = nil, disallowPromptTraining: Bool? = nil, displayName: String? = nil, has: [AiGatewayVirtualModelConfigHasItem]? = nil, hipaaCompliant: Bool? = nil, inferenceRegion: AiGatewayVirtualModelConfigInferenceRegion? = nil, instanceId: String? = nil, models: [AiGatewayVirtualModelConfigModelsItem]? = nil, modelSlug: String? = nil, observabilityTags: [String]? = nil, providerOnly: [String]? = nil, providerOptions: [String: AiGatewayProviderOptionBag]? = nil, providerOrder: [String]? = nil, providerTimeouts: AiGatewayVirtualModelConfigProviderTimeouts? = nil, selector: AiGatewayVirtualModelConfigSelector? = nil, selectorOptions: AiGatewayVirtualModelConfigSelectorOptions? = nil, serviceTier: AiGatewayVirtualModelConfigServiceTier? = nil, sort: AiGatewayVirtualModelConfigSort? = nil, speed: AiGatewayVirtualModelConfigSpeed? = nil, updatedBy: String? = nil, visibility: String? = nil, zeroDataRetention: Bool? = nil) {
         (self.createdAt, self.deleted) = (createdAt, deleted)
         (self.kind, self.ownerId) = (kind, ownerId)
         (self.status, self.updatedAt) = (status, updatedAt)
@@ -627,6 +473,6 @@ public struct AiGatewayVirtualModelConfigInferenceRegionProvidersValue: Codable 
     }
 
     init() {
-        (geoRegion, providerRegion, scope) = (nil, nil, nil)
+        (self.geoRegion, self.providerRegion, self.scope) = (nil, nil, nil)
     }
 }

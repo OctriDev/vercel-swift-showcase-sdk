@@ -3,21 +3,17 @@
 
 import Foundation
 
-/// Drains domain models
-public struct GetDrainResponseVariant1ProjectAccessVariant1ManagedBy: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+// Drains domain models
+public struct GetDrainResponseVariant1ProjectAccessVariant1ManagedBy: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let drain = GetDrainResponseVariant1ProjectAccessVariant1ManagedBy(rawValue: "drain")
     public static let integration = GetDrainResponseVariant1ProjectAccessVariant1ManagedBy(rawValue: "integration")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -26,14 +22,10 @@ public struct GetDrainResponseVariant1ProjectAccessVariant1ManagedBy: RawReprese
     }
 }
 
-public struct GetDrainResponseVariant0FilterV2FilterVariant0LogSourcesItem: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct GetDrainResponseVariant0FilterV2FilterVariant0LogSourcesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let build = GetDrainResponseVariant0FilterV2FilterVariant0LogSourcesItem(rawValue: "build")
     public static let edge = GetDrainResponseVariant0FilterV2FilterVariant0LogSourcesItem(rawValue: "edge")
     public static let external = GetDrainResponseVariant0FilterV2FilterVariant0LogSourcesItem(rawValue: "external")
@@ -44,7 +36,7 @@ public struct GetDrainResponseVariant0FilterV2FilterVariant0LogSourcesItem: RawR
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -54,19 +46,15 @@ public struct GetDrainResponseVariant0FilterV2FilterVariant0LogSourcesItem: RawR
 }
 
 /// Informational marker for a system-owned default drain.
-public struct GetDrainResponseVariant1SourceVariant0DefaultFor: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant1SourceVariant0DefaultFor: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let eveTracing = GetDrainResponseVariant1SourceVariant0DefaultFor(rawValue: "eve-tracing")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -75,20 +63,16 @@ public struct GetDrainResponseVariant1SourceVariant0DefaultFor: RawRepresentable
     }
 }
 
-public struct GetDrainResponseVariant0DeliveryVariant1Encoding: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant0DeliveryVariant1Encoding: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let json = GetDrainResponseVariant0DeliveryVariant1Encoding(rawValue: "json")
     public static let proto = GetDrainResponseVariant0DeliveryVariant1Encoding(rawValue: "proto")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -97,19 +81,15 @@ public struct GetDrainResponseVariant0DeliveryVariant1Encoding: RawRepresentable
     }
 }
 
-public struct GetDrainResponseVariant0DeliveryVariant3Compression: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant0DeliveryVariant3Compression: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let none = GetDrainResponseVariant0DeliveryVariant3Compression(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -118,20 +98,16 @@ public struct GetDrainResponseVariant0DeliveryVariant3Compression: RawRepresenta
     }
 }
 
-public struct GetDrainResponseVariant1DeliveryVariant0Compression: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant1DeliveryVariant0Compression: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let gzip = GetDrainResponseVariant1DeliveryVariant0Compression(rawValue: "gzip")
     public static let none = GetDrainResponseVariant1DeliveryVariant0Compression(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -140,19 +116,15 @@ public struct GetDrainResponseVariant1DeliveryVariant0Compression: RawRepresenta
     }
 }
 
-public struct GetDrainResponseVariant0SamplingItemType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant0SamplingItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let headSampling = GetDrainResponseVariant0SamplingItemType(rawValue: "head_sampling")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -161,20 +133,16 @@ public struct GetDrainResponseVariant0SamplingItemType: RawRepresentable, Hashab
     }
 }
 
-public struct GetDrainResponseVariant0DeliveryVariant3Encoding: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant0DeliveryVariant3Encoding: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let json = GetDrainResponseVariant0DeliveryVariant3Encoding(rawValue: "json")
     public static let ndjson = GetDrainResponseVariant0DeliveryVariant3Encoding(rawValue: "ndjson")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -184,7 +152,7 @@ public struct GetDrainResponseVariant0DeliveryVariant3Encoding: RawRepresentable
 }
 
 public enum GetDrainResponseVariant0DeliveryVariant4Type: String, CaseIterable, Codable {
-    case `internal`
+    case `internal` = "internal"
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawValue = try container.decode(String.self)
@@ -200,20 +168,16 @@ public enum GetDrainResponseVariant0DeliveryVariant4Type: String, CaseIterable, 
     }
 }
 
-public struct GetDrainResponseVariant1ProjectAccessVariant0ManagedBy: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant1ProjectAccessVariant0ManagedBy: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let drain = GetDrainResponseVariant1ProjectAccessVariant0ManagedBy(rawValue: "drain")
     public static let integration = GetDrainResponseVariant1ProjectAccessVariant0ManagedBy(rawValue: "integration")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -222,20 +186,16 @@ public struct GetDrainResponseVariant1ProjectAccessVariant0ManagedBy: RawReprese
     }
 }
 
-public struct GetDrainResponseVariant1DeliveryVariant0Encoding: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant1DeliveryVariant0Encoding: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let json = GetDrainResponseVariant1DeliveryVariant0Encoding(rawValue: "json")
     public static let ndjson = GetDrainResponseVariant1DeliveryVariant0Encoding(rawValue: "ndjson")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -261,20 +221,16 @@ public enum GetDrainResponseVariant0SourceVariant1Kind: String, CaseIterable, Co
     }
 }
 
-public struct GetDrainResponseVariant1DeliveryVariant3Encoding: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant1DeliveryVariant3Encoding: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let json = GetDrainResponseVariant1DeliveryVariant3Encoding(rawValue: "json")
     public static let ndjson = GetDrainResponseVariant1DeliveryVariant3Encoding(rawValue: "ndjson")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -286,17 +242,14 @@ public struct GetDrainResponseVariant1DeliveryVariant3Encoding: RawRepresentable
 public struct GetDrainResponseVariant1Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let disabled = GetDrainResponseVariant1Status(rawValue: "disabled")
     public static let enabled = GetDrainResponseVariant1Status(rawValue: "enabled")
     public static let errored = GetDrainResponseVariant1Status(rawValue: "errored")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -305,20 +258,15 @@ public struct GetDrainResponseVariant1Status: RawRepresentable, Hashable, Codabl
     }
 }
 
-public struct GetDrainResponseVariant0DeliveryVariant0SecretVariant1Kind: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant0DeliveryVariant0SecretVariant1Kind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let integrationSecret =
-        GetDrainResponseVariant0DeliveryVariant0SecretVariant1Kind(rawValue: "INTEGRATION_SECRET")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let integrationSecret = GetDrainResponseVariant0DeliveryVariant0SecretVariant1Kind(rawValue: "INTEGRATION_SECRET")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -378,20 +326,16 @@ public enum GetDrainResponseVariant0DeliveryVariant3Type: String, CaseIterable, 
     }
 }
 
-public struct GetDrainResponseVariant0DeliveryVariant0Encoding: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant0DeliveryVariant0Encoding: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let json = GetDrainResponseVariant0DeliveryVariant0Encoding(rawValue: "json")
     public static let ndjson = GetDrainResponseVariant0DeliveryVariant0Encoding(rawValue: "ndjson")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -417,19 +361,15 @@ public enum GetDrainResponseVariant1FilterV2FilterVariant0Type: String, CaseIter
     }
 }
 
-public struct GetDrainResponseVariant1SamplingItemType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant1SamplingItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let headSampling = GetDrainResponseVariant1SamplingItemType(rawValue: "head_sampling")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -472,19 +412,13 @@ public enum GetDrainResponseVariant1ProjectAccessVariant1Access: String, CaseIte
     }
 }
 
-public struct GetDrainResponseVariant1DeliveryVariant3ObjectAcl: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant1DeliveryVariant3ObjectAcl: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let authenticatedRead =
-        GetDrainResponseVariant1DeliveryVariant3ObjectAcl(rawValue: "authenticated-read")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let authenticatedRead = GetDrainResponseVariant1DeliveryVariant3ObjectAcl(rawValue: "authenticated-read")
     public static let awsExecRead = GetDrainResponseVariant1DeliveryVariant3ObjectAcl(rawValue: "aws-exec-read")
-    public static let bucketOwnerFullControl =
-        GetDrainResponseVariant1DeliveryVariant3ObjectAcl(rawValue: "bucket-owner-full-control")
+    public static let bucketOwnerFullControl = GetDrainResponseVariant1DeliveryVariant3ObjectAcl(rawValue: "bucket-owner-full-control")
     public static let bucketOwnerRead = GetDrainResponseVariant1DeliveryVariant3ObjectAcl(rawValue: "bucket-owner-read")
     public static let `private` = GetDrainResponseVariant1DeliveryVariant3ObjectAcl(rawValue: "private")
     public static let publicRead = GetDrainResponseVariant1DeliveryVariant3ObjectAcl(rawValue: "public-read")
@@ -492,7 +426,7 @@ public struct GetDrainResponseVariant1DeliveryVariant3ObjectAcl: RawRepresentabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -501,22 +435,16 @@ public struct GetDrainResponseVariant1DeliveryVariant3ObjectAcl: RawRepresentabl
     }
 }
 
-public struct GetDrainResponseVariant1FilterV2FilterVariant0DeploymentEnvironmentsItem: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetDrainResponseVariant1FilterV2FilterVariant0DeploymentEnvironmentsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let preview =
-        GetDrainResponseVariant1FilterV2FilterVariant0DeploymentEnvironmentsItem(rawValue: "preview")
-    public static let production =
-        GetDrainResponseVariant1FilterV2FilterVariant0DeploymentEnvironmentsItem(rawValue: "production")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let preview = GetDrainResponseVariant1FilterV2FilterVariant0DeploymentEnvironmentsItem(rawValue: "preview")
+    public static let production = GetDrainResponseVariant1FilterV2FilterVariant0DeploymentEnvironmentsItem(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -525,20 +453,15 @@ public struct GetDrainResponseVariant1FilterV2FilterVariant0DeploymentEnvironmen
     }
 }
 
-public struct GetDrainResponseVariant0DeliveryVariant4Target: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant0DeliveryVariant4Target: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let vercelOtelTracesDb =
-        GetDrainResponseVariant0DeliveryVariant4Target(rawValue: "vercel-otel-traces-db")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let vercelOtelTracesDb = GetDrainResponseVariant0DeliveryVariant4Target(rawValue: "vercel-otel-traces-db")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -547,20 +470,15 @@ public struct GetDrainResponseVariant0DeliveryVariant4Target: RawRepresentable, 
     }
 }
 
-public struct GetDrainResponseVariant1DeliveryVariant0SecretVariant1Kind: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDrainResponseVariant1DeliveryVariant0SecretVariant1Kind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let integrationSecret =
-        GetDrainResponseVariant1DeliveryVariant0SecretVariant1Kind(rawValue: "INTEGRATION_SECRET")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let integrationSecret = GetDrainResponseVariant1DeliveryVariant0SecretVariant1Kind(rawValue: "INTEGRATION_SECRET")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

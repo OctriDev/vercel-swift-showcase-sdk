@@ -6,36 +6,19 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension IntegrationsMethods {
-    /// Lists the products available for an integration configuration. Use `id` to select the configuration, and use
-    /// `teamId` or `slug` when making the request on behalf of a team. Each product includes a `metadataSchema`
-    /// describing its required and optional metadata fields.
+extension IntegrationsMethods {
+    /// Lists the products available for an integration configuration. Use `id` to select the configuration, and use `teamId` or `slug` when making the request on behalf of a team. Each product includes a `metadataSchema` describing its required and optional metadata fields.
     ///
-    /// Returns products available for an integration configuration. Each product includes a `metadataSchema` field with
-    /// the JSON Schema for required and optional metadata fields.
+    /// Returns products available for an integration configuration. Each product includes a `metadataSchema` field with the JSON Schema for required and optional metadata fields.
     ///
     /// - Parameters:
     /// - id: ID of the integration configuration
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getConfigurationProducts(
-        config: ClientConfig,
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetConfigurationProductsResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/integrations/configuration/", sdkEncodePathSegment(sdkWireString(id)), "/products"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getConfigurationProducts",
-            options: requestOptions
-        )).data
+    public static func getConfigurationProducts(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetConfigurationProductsResponse {
+        return try (await sdkRequest("GET", ["/v1/integrations/configuration/", sdkEncodePathSegment(sdkWireString(id)), "/products"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getConfigurationProducts", options: requestOptions)).data
     }
 }

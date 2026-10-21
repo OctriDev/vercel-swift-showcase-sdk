@@ -3,48 +3,34 @@
 
 import Foundation
 
-/// Sandboxes domain models
+// Sandboxes domain models
 public indirect enum GetSessionCommandLogsResponse {
     case getSessionCommandLogsResponseVariant0(GetSessionCommandLogsResponseVariant0)
     case getSessionCommandLogsResponseVariant1(GetSessionCommandLogsResponseVariant1)
 }
 
 extension GetSessionCommandLogsResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetSessionCommandLogsResponse"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetSessionCommandLogsResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetSessionCommandLogsResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetSessionCommandLogsResponseVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetSessionCommandLogsResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .getSessionCommandLogsResponseVariant0(value)
         }
-        if let value = try? container.decode(GetSessionCommandLogsResponseVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(GetSessionCommandLogsResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .getSessionCommandLogsResponseVariant1(value)
         }
         return nil
@@ -56,12 +42,12 @@ extension GetSessionCommandLogsResponse {
         if let value = try? container.decode(
             GetSessionCommandLogsResponseVariant0.self
         ) {
-            return .getSessionCommandLogsResponseVariant0(value)
+            return             .getSessionCommandLogsResponseVariant0(value)
         }
         if let value = try? container.decode(
             GetSessionCommandLogsResponseVariant1.self
         ) {
-            return .getSessionCommandLogsResponseVariant1(value)
+            return             .getSessionCommandLogsResponseVariant1(value)
         }
         return nil
     }
@@ -86,35 +72,25 @@ public struct GetSessionCommandLogsResponseVariant0: Codable {
         case stream
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetSessionCommandLogsResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension GetSessionCommandLogsResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.data) else {
-            throw SdkValidationError(
-                field: "data",
-                code: "required",
-                message: "Validation failed for 'data': value is required"
-            )
+            throw SdkValidationError(field: "data", code: "required", message: "Validation failed for 'data': value is required")
         }
         guard container.contains(.stream) else {
-            throw SdkValidationError(
-                field: "stream",
-                code: "required",
-                message: "Validation failed for 'stream': value is required"
-            )
+            throw SdkValidationError(field: "stream", code: "required", message: "Validation failed for 'stream': value is required")
         }
-        data = try container.sdkDecodeRequired(.data)
-        stream = try container.sdkDecodeRequired(.stream)
+        self.data = try container.sdkDecodeRequired(.data)
+        self.stream = try container.sdkDecodeRequired(.stream)
     }
 }
 
-public extension GetSessionCommandLogsResponseVariant0 {
-    init(data: GetSessionCommandLogsResponseVariant0Data, stream: String) {
+extension GetSessionCommandLogsResponseVariant0 {
+    public init(data: GetSessionCommandLogsResponseVariant0Data, stream: String) {
         (self.data, self.stream) = (data, stream)
     }
 }
@@ -128,35 +104,25 @@ public struct GetSessionCommandLogsResponseVariant1: Codable {
         case stream
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetSessionCommandLogsResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetSessionCommandLogsResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.data) else {
-            throw SdkValidationError(
-                field: "data",
-                code: "required",
-                message: "Validation failed for 'data': value is required"
-            )
+            throw SdkValidationError(field: "data", code: "required", message: "Validation failed for 'data': value is required")
         }
         guard container.contains(.stream) else {
-            throw SdkValidationError(
-                field: "stream",
-                code: "required",
-                message: "Validation failed for 'stream': value is required"
-            )
+            throw SdkValidationError(field: "stream", code: "required", message: "Validation failed for 'stream': value is required")
         }
-        data = try container.sdkDecodeRequired(.data)
-        stream = try container.sdkDecodeRequired(.stream)
+        self.data = try container.sdkDecodeRequired(.data)
+        self.stream = try container.sdkDecodeRequired(.stream)
     }
 }
 
-public extension GetSessionCommandLogsResponseVariant1 {
-    init(data: String, stream: String) {
+extension GetSessionCommandLogsResponseVariant1 {
+    public init(data: String, stream: String) {
         (self.data, self.stream) = (data, stream)
     }
 }
@@ -170,58 +136,38 @@ public struct GetSessionCommandLogsResponseVariant0Data: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetSessionCommandLogsResponseVariant0Data {
-    init(from decoder: Decoder) throws {
+extension GetSessionCommandLogsResponseVariant0Data {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(
-                field: "code",
-                code: "required",
-                message: "Validation failed for 'code': value is required"
-            )
+            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(
-                field: "message",
-                code: "required",
-                message: "Validation failed for 'message': value is required"
-            )
+            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
         }
-        code = try container.sdkDecodeRequired(.code)
-        message = try container.sdkDecodeRequired(.message)
+        self.code = try container.sdkDecodeRequired(.code)
+        self.message = try container.sdkDecodeRequired(.message)
     }
 }
 
-public extension GetSessionCommandLogsResponseVariant0Data {
-    init(
-        code: GetSessionCommandLogsResponseVariant0DataCode,
-        message: GetSessionCommandLogsResponseVariant0DataMessage
-    ) {
+extension GetSessionCommandLogsResponseVariant0Data {
+    public init(code: GetSessionCommandLogsResponseVariant0DataCode, message: GetSessionCommandLogsResponseVariant0DataMessage) {
         (self.code, self.message) = (code, message)
     }
 }
 
-public struct GetSessionCommandLogsResponseVariant0DataMessage: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetSessionCommandLogsResponseVariant0DataMessage: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let sandboxStreamWasClosedAndIsNotAcceptingCommands =
-        GetSessionCommandLogsResponseVariant0DataMessage(
-            rawValue: "Sandbox stream was closed and is not accepting commands."
-        )
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let sandboxStreamWasClosedAndIsNotAcceptingCommands = GetSessionCommandLogsResponseVariant0DataMessage(rawValue: "Sandbox stream was closed and is not accepting commands.")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -230,20 +176,15 @@ public struct GetSessionCommandLogsResponseVariant0DataMessage: RawRepresentable
     }
 }
 
-public struct GetSessionCommandLogsResponseVariant0DataCode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetSessionCommandLogsResponseVariant0DataCode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let sandboxStreamClosed =
-        GetSessionCommandLogsResponseVariant0DataCode(rawValue: "sandbox_stream_closed")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let sandboxStreamClosed = GetSessionCommandLogsResponseVariant0DataCode(rawValue: "sandbox_stream_closed")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

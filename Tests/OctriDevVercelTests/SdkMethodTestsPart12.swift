@@ -53,10 +53,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try VercelCiMethods.GetVercelCiTaskLogsOptions(
-            invocationId: decoded("\"invocation-1\""),
-            attempt: decoded("\"attempt\"")
-        )
+        var options = try VercelCiMethods.GetVercelCiTaskLogsOptions(invocationId: decoded("\"invocation-1\""), attempt: decoded("\"attempt\""))
         options.task = try decoded("[\"task\"]")
         options.conclusion = try decoded("[\"succeeded\"]")
         options.level = try decoded("[\"trace\"]")
@@ -82,14 +79,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try VercelCiMethods.GetVercelCiTaskRunLogsOptions(
-            invocationId: decoded("\"invocation-1\""),
-            attempt: decoded("\"attempt\""),
-            jobDefinitionId: decoded("\"jobDefinition-1\""),
-            runAttempt: decoded("\"runAttempt\""),
-            taskDefinitionId: decoded("\"taskDefinition-1\""),
-            taskRunAttempt: decoded("\"taskRunAttempt\"")
-        )
+        var options = try VercelCiMethods.GetVercelCiTaskRunLogsOptions(invocationId: decoded("\"invocation-1\""), attempt: decoded("\"attempt\""), jobDefinitionId: decoded("\"jobDefinition-1\""), runAttempt: decoded("\"runAttempt\""), taskDefinitionId: decoded("\"taskDefinition-1\""), taskRunAttempt: decoded("\"taskRunAttempt\""))
         options.follow = try decoded("0")
         options.since = try decoded("1")
         options.level = try decoded("[\"trace\"]")
@@ -188,8 +178,7 @@ extension SdkMethodTests {
         )
     }
 
-    func testHeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestHeadBXe0e46572adReachesMockAndDecodesResponse(
-    ) async throws {
+    func testHeadByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestHeadBXe0e46572adReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -203,8 +192,7 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testHeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenXe7ab62fd58ReachesMockAndDecodesResponse(
-    ) async throws {
+    func testHeadByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenXe7ab62fd58ReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -218,8 +206,7 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testHeadInstallationsByIntegrationConfigurationIdResourcesByResouX216b7b0610ReachesMockAndDecodesResponse(
-    ) async throws {
+    func testHeadInstallationsByIntegrationConfigurationIdResourcesByResouX216b7b0610ReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -236,13 +223,7 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try MarketplaceMethods.ImportResourceOptions(
-            integrationConfigurationId: decoded("\"integrationConfiguration-1\""),
-            resourceId: decoded("\"resource-1\""),
-            productId: decoded("\"product-1\""),
-            name: decoded("\"Example Name\""),
-            status: decoded("\"ready\"")
-        )
+        var options = try MarketplaceMethods.ImportResourceOptions(integrationConfigurationId: decoded("\"integrationConfiguration-1\""), resourceId: decoded("\"resource-1\""), productId: decoded("\"product-1\""), name: decoded("\"Example Name\""), status: decoded("\"ready\""))
         options.ownership = try decoded("\"owned\"")
         options.metadata = try decoded("{}")
         options.billingPlan = try decoded(sdkMethodFixture292Value1)
@@ -529,8 +510,7 @@ extension SdkMethodTests {
         )
     }
 
-    func testListAiGatewayVirtualModelConfigsListAiGatewayVirtualModelConfigsReachesMockAndDecodesResponse(
-    ) async throws {
+    func testListAiGatewayVirtualModelConfigsListAiGatewayVirtualModelConfigsReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }

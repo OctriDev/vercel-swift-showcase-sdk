@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension NetworkingMethods {
-    /// Updates the name of a Secure Compute network. Supply the new `name` in the request body; the network's other
-    /// configuration is not changed by this operation. A 200 response returns the updated network object.
+extension NetworkingMethods {
+    /// Updates the name of a Secure Compute network. Supply the new `name` in the request body; the network's other configuration is not changed by this operation. A 200 response returns the updated network object.
     ///
     /// Allows to update a Secure Compute network.
     ///
@@ -17,36 +16,18 @@ public extension NetworkingMethods {
     /// - name: The name of the Secure Compute network
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func updateNetwork(
-        config: ClientConfig,
-        networkId: String,
-        name: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> Network {
+    public static func updateNetwork(config: ClientConfig, networkId: String, name: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> Network {
         try validateLength("name", name, max: 255)
 
         let requestBody = UpdateNetworkRequestBody(name: name)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/connect/networks/", sdkEncodePathSegment(sdkWireString(networkId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateNetwork",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/connect/networks/", sdkEncodePathSegment(sdkWireString(networkId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateNetwork", options: requestOptions)).data
     }
 
-    /// Retrieves a Secure Compute network by its identifier. Use `networkId` to select the network and the optional
-    /// team parameters to make the request on behalf of a team. The response includes network configuration, status,
-    /// and associated-resource metadata.
+    /// Retrieves a Secure Compute network by its identifier. Use `networkId` to select the network and the optional team parameters to make the request on behalf of a team. The response includes network configuration, status, and associated-resource metadata.
     ///
     /// Allows to read a Secure Compute network.
     ///
@@ -54,24 +35,10 @@ public extension NetworkingMethods {
     /// - networkId: The unique identifier of the Secure Compute network
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func readNetwork(
-        config: ClientConfig,
-        networkId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> Network {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/connect/networks/", sdkEncodePathSegment(sdkWireString(networkId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "readNetwork",
-            options: requestOptions
-        )).data
+    public static func readNetwork(config: ClientConfig, networkId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> Network {
+        return try (await sdkRequest("GET", ["/v1/connect/networks/", sdkEncodePathSegment(sdkWireString(networkId))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "readNetwork", options: requestOptions)).data
     }
 }

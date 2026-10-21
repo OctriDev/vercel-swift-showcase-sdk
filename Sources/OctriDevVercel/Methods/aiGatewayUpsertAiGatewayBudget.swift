@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AiGatewayMethods {
-    struct UpsertAiGatewayBudgetOptions: Codable {
+extension AiGatewayMethods {
+    public struct UpsertAiGatewayBudgetOptions: Codable {
         public var scopeType: UpsertAiGatewayBudgetRequestBodyScopeType
         public var limitAmount: Double
         public var teamId: String?
@@ -24,9 +24,7 @@ public extension AiGatewayMethods {
         }
     }
 
-    /// Creates or updates an AI Gateway budget for a team, project, or user scope. Supply `scopeType` and
-    /// `limitAmount`, and include `projectId` or `userId` when the selected scope requires it. The response contains
-    /// the saved budget and its current spend and configuration.
+    /// Creates or updates an AI Gateway budget for a team, project, or user scope. Supply `scopeType` and `limitAmount`, and include `projectId` or `userId` when the selected scope requires it. The response contains the saved budget and its current spend and configuration.
     ///
     /// Create or update a team-, project-, or user-scope AI Gateway budget.
     ///
@@ -37,16 +35,12 @@ public extension AiGatewayMethods {
     /// - projectId: Required when scopeType is "project".
     /// - userId: Required when scopeType is "user".
     /// - includeByokInQuota: Whether BYOK usage counts toward this budget.
-    static func upsertAiGatewayBudget(
-        config: ClientConfig,
-        options: UpsertAiGatewayBudgetOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AiGatewayBudget {
+    public static func upsertAiGatewayBudget(config: ClientConfig, options: UpsertAiGatewayBudgetOptions, requestOptions: RequestOptions? = nil) async throws -> AiGatewayBudget {
         try validateRange("limitAmount", Double(options.limitAmount), min: 1)
 
         let requestBody = UpsertAiGatewayBudgetRequestBody(options: options)
 
-        return try await (sdkRequest("PUT", "/ai-gateway/budgets", config: config, query: [
+        return try (await sdkRequest("PUT", "/ai-gateway/budgets", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "upsertAiGatewayBudget", options: requestOptions)).data

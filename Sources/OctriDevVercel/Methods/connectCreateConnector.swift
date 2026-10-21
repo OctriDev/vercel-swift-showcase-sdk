@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ConnectMethods {
-    struct CreateConnectorOptions: Codable {
+extension ConnectMethods {
+    public struct CreateConnectorOptions: Codable {
         public var data: ConnectConnectorCreateDataRequest
         public var teamId: String?
         public var slug: String?
@@ -35,12 +35,9 @@ public extension ConnectMethods {
         }
     }
 
-    /// Creates a connector with provider configuration or a service connection method, and can optionally link it to a
-    /// project. Choose either full configuration with `type` or preset configuration with `service` and
-    /// `connectionMethod`; supply `data` for the provider configuration.
+    /// Creates a connector with provider configuration or a service connection method, and can optionally link it to a project. Choose either full configuration with `type` or preset configuration with `service` and `connectionMethod`; supply `data` for the provider configuration.
     ///
-    /// Create a connector and optionally link it to a project. Use `type` with complete provider data, or use `service`
-    /// with `connectionMethod` so Connect can supply the type, endpoints, templates, and defaults.
+    /// Create a connector and optionally link it to a project. Use `type` with complete provider data, or use `service` with `connectionMethod` so Connect can supply the type, endpoints, templates, and defaults.
     ///
     /// - Parameters:
     /// - data: Provider configuration for the selected connector type or connection
@@ -111,11 +108,7 @@ public extension ConnectMethods {
     ///   the resulting set as triggerDestinations. Replace the complete set with
     ///   PATCH /v1/connect/connectors/{connector}/trigger-destinations.
     /// - events: Default trigger events for this connector.
-    static func createConnector(
-        config: ClientConfig,
-        options: CreateConnectorOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ConnectConnectorCreateResult {
+    public static func createConnector(config: ClientConfig, options: CreateConnectorOptions, requestOptions: RequestOptions? = nil) async throws -> ConnectConnectorCreateResult {
         if let icon = options.icon {
             try sdkValidatePattern("icon", icon, sdkPatternd52cc03c09dc)
         }
@@ -142,29 +135,9 @@ public extension ConnectMethods {
 
         let requestBody = CreateConnectorRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "POST",
-            "/v1/connect/connectors",
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "createConnector",
-            options: requestOptions,
-            errors: [
-                "400": ConnectError.self,
-                "401": ConnectError.self,
-                "403": ConnectError.self,
-                "404": ConnectError.self,
-                "409": ConnectError.self,
-                "410": ConnectError.self,
-                "422": ConnectError.self,
-                "500": ConnectError.self,
-                "502": ConnectError.self,
-            ]
-        )).data
+        return try (await sdkRequest("POST", "/v1/connect/connectors", config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "createConnector", options: requestOptions, errors: ["400": ConnectError.self, "401": ConnectError.self, "403": ConnectError.self, "404": ConnectError.self, "409": ConnectError.self, "410": ConnectError.self, "422": ConnectError.self, "500": ConnectError.self, "502": ConnectError.self])).data
     }
 }

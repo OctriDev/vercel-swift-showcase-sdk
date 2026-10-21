@@ -6,68 +6,35 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension GlobalConfigMethods {
-    /// Retrieves the schema associated with a Global Config. Use `edgeConfigId` to select the config and `teamId` or
-    /// `slug` to make the request on behalf of a team when needed.
+extension GlobalConfigMethods {
+    /// Retrieves the schema associated with a Global Config. Use `edgeConfigId` to select the config and `teamId` or `slug` to make the request on behalf of a team when needed.
     ///
     /// Returns the schema of a Global Config.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getEdgeConfigSchema(
-        config: ClientConfig,
-        edgeConfigId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/schema"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getEdgeConfigSchema",
-            options: requestOptions
-        )).data
+    public static func getEdgeConfigSchema(config: ClientConfig, edgeConfigId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+        return try (await sdkRequest("GET", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/schema"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getEdgeConfigSchema", options: requestOptions)).data
     }
 
-    /// Updates the schema for a Global Config. Supply the required `definition` object; use `dryRun` to request a
-    /// schema update without applying it, if supported by the API.
+    /// Updates the schema for a Global Config. Supply the required `definition` object; use `dryRun` to request a schema update without applying it, if supported by the API.
     ///
     /// Update a Global Config's schema.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func patchEdgeConfigSchema(
-        config: ClientConfig,
-        edgeConfigId: String,
-        definition: JSONValue,
-        dryRun: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
+    public static func patchEdgeConfigSchema(config: ClientConfig, edgeConfigId: String, definition: JSONValue, dryRun: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
         let requestBody = PatchEdgeConfigSchemaRequestBody(definition: definition)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/schema"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("dryRun", value: dryRun),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "patchEdgeConfigSchema",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/schema"].joined(), config: config, query: [
+            SdkQueryParameter("dryRun", value: dryRun),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "patchEdgeConfigSchema", options: requestOptions)).data
     }
 }

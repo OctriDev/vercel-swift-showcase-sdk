@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Teams domain models
+// Teams domain models
 /// The member was successfully added to the team.
 public struct InvitedTeamMember: Codable {
     /// The email of the invited user.
@@ -34,60 +34,35 @@ public struct InvitedTeamMember: Codable {
         case teamRoles
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension InvitedTeamMember {
-    init(from decoder: Decoder) throws {
+extension InvitedTeamMember {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.email) else {
-            throw SdkValidationError(
-                field: "email",
-                code: "required",
-                message: "Validation failed for 'email': value is required"
-            )
+            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(
-                field: "role",
-                code: "required",
-                message: "Validation failed for 'role': value is required"
-            )
+            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
         }
         guard container.contains(.uid) else {
-            throw SdkValidationError(
-                field: "uid",
-                code: "required",
-                message: "Validation failed for 'uid': value is required"
-            )
+            throw SdkValidationError(field: "uid", code: "required", message: "Validation failed for 'uid': value is required")
         }
         guard container.contains(.username) else {
-            throw SdkValidationError(
-                field: "username",
-                code: "required",
-                message: "Validation failed for 'username': value is required"
-            )
+            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
         }
-        email = try container.sdkDecodeRequired(.email)
-        role = try container.sdkDecodeRequired(.role)
-        uid = try container.sdkDecodeRequired(.uid)
-        username = try container.sdkDecodeRequired(.username)
-        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+        self.email = try container.sdkDecodeRequired(.email)
+        self.role = try container.sdkDecodeRequired(.role)
+        self.uid = try container.sdkDecodeRequired(.uid)
+        self.username = try container.sdkDecodeRequired(.username)
+        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
     }
 }
 
-public extension InvitedTeamMember {
-    init(
-        email: String,
-        role: InvitedTeamMemberRole,
-        uid: String,
-        username: String,
-        teamPermissions: [InvitedTeamMemberTeamPermissionsItem]? = nil,
-        teamRoles: [InvitedTeamMemberTeamRolesItem]? = nil
-    ) {
+extension InvitedTeamMember {
+    public init(email: String, role: InvitedTeamMemberRole, uid: String, username: String, teamPermissions: [InvitedTeamMemberTeamPermissionsItem]? = nil, teamRoles: [InvitedTeamMemberTeamRolesItem]? = nil) {
         (self.email, self.role) = (email, role)
         (self.uid, self.username) = (uid, username)
         (self.teamPermissions, self.teamRoles) = (teamPermissions, teamRoles)
@@ -98,24 +73,18 @@ public extension InvitedTeamMember {
 public struct InvitedTeamMemberTeamPermissionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let aiGatewayBudgetManager = InvitedTeamMemberTeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
     public static let aiGatewayCredits = InvitedTeamMemberTeamPermissionsItem(rawValue: "AiGatewayCredits")
     public static let aiGatewaySettings = InvitedTeamMemberTeamPermissionsItem(rawValue: "AiGatewaySettings")
-    public static let aiGatewayTranscriptsManager =
-        InvitedTeamMemberTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
-    public static let aiGatewayTranscriptsViewer =
-        InvitedTeamMemberTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
+    public static let aiGatewayTranscriptsManager = InvitedTeamMemberTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
+    public static let aiGatewayTranscriptsViewer = InvitedTeamMemberTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
     public static let aiGatewayUser = InvitedTeamMemberTeamPermissionsItem(rawValue: "AiGatewayUser")
     public static let connectorManager = InvitedTeamMemberTeamPermissionsItem(rawValue: "ConnectorManager")
     public static let createProject = InvitedTeamMemberTeamPermissionsItem(rawValue: "CreateProject")
     public static let envVariableManager = InvitedTeamMemberTeamPermissionsItem(rawValue: "EnvVariableManager")
     public static let environmentManager = InvitedTeamMemberTeamPermissionsItem(rawValue: "EnvironmentManager")
-    public static let fullProductionDeployment =
-        InvitedTeamMemberTeamPermissionsItem(rawValue: "FullProductionDeployment")
+    public static let fullProductionDeployment = InvitedTeamMemberTeamPermissionsItem(rawValue: "FullProductionDeployment")
     public static let integrationManager = InvitedTeamMemberTeamPermissionsItem(rawValue: "IntegrationManager")
     public static let orgAdmin = InvitedTeamMemberTeamPermissionsItem(rawValue: "OrgAdmin")
     public static let orgViewer = InvitedTeamMemberTeamPermissionsItem(rawValue: "OrgViewer")
@@ -127,7 +96,7 @@ public struct InvitedTeamMemberTeamPermissionsItem: RawRepresentable, Hashable, 
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -140,10 +109,7 @@ public struct InvitedTeamMemberTeamPermissionsItem: RawRepresentable, Hashable, 
 public struct InvitedTeamMemberRole: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let billing = InvitedTeamMemberRole(rawValue: "BILLING")
     public static let contributor = InvitedTeamMemberRole(rawValue: "CONTRIBUTOR")
     public static let developer = InvitedTeamMemberRole(rawValue: "DEVELOPER")
@@ -155,7 +121,7 @@ public struct InvitedTeamMemberRole: RawRepresentable, Hashable, Codable, Sendab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -168,10 +134,7 @@ public struct InvitedTeamMemberRole: RawRepresentable, Hashable, Codable, Sendab
 public struct InvitedTeamMemberTeamRolesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let billing = InvitedTeamMemberTeamRolesItem(rawValue: "BILLING")
     public static let contributor = InvitedTeamMemberTeamRolesItem(rawValue: "CONTRIBUTOR")
     public static let developer = InvitedTeamMemberTeamRolesItem(rawValue: "DEVELOPER")
@@ -183,7 +146,7 @@ public struct InvitedTeamMemberTeamRolesItem: RawRepresentable, Hashable, Codabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

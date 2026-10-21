@@ -6,32 +6,18 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension IntegrationsMethods {
-    /// Searches for Git repositories linked to a namespace for a supported provider. Use `namespaceId` and `provider`
-    /// to narrow the search, or omit them to let the API infer values from the authenticated user; `query` can filter
-    /// the repositories. Supply `host` when using a custom Git host.
+extension IntegrationsMethods {
+    /// Searches for Git repositories linked to a namespace for a supported provider. Use `namespaceId` and `provider` to narrow the search, or omit them to let the API infer values from the authenticated user; `query` can filter the repositories. Supply `host` when using a custom Git host.
     ///
-    /// Lists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be
-    /// obtained via the `git-namespaces` endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the
-    /// provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.
+    /// Lists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be obtained via the `git-namespaces` endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.
     ///
     /// - Parameters:
     /// - host: The custom Git host if using a custom Git provider, like GitHub
     ///   Enterprise Server
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func searchRepo(
-        config: ClientConfig,
-        query: String? = nil,
-        namespaceId: SearchRepoParameter? = nil,
-        provider: SearchRepoParameterXaa5a111b? = nil,
-        installationId: String? = nil,
-        host: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SearchRepoResponse {
-        try await (sdkRequest("GET", "/v1/integrations/search-repo", config: config, query: [
+    public static func searchRepo(config: ClientConfig, query: String? = nil, namespaceId: SearchRepoParameter? = nil, provider: SearchRepoParameterXaa5a111b? = nil, installationId: String? = nil, host: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SearchRepoResponse {
+        return try (await sdkRequest("GET", "/v1/integrations/search-repo", config: config, query: [
             SdkQueryParameter("query", value: query),
             SdkQueryParameter("namespaceId", value: namespaceId),
             SdkQueryParameter("provider", value: provider),

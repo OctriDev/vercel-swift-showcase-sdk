@@ -6,54 +6,37 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension BulkRedirectsMethods {
-    /// Lists the version history for a project's bulk redirects. Supply `projectId` to identify the project and use the
-    /// Team parameters to perform the request on behalf of a Team.
+extension BulkRedirectsMethods {
+    /// Lists the version history for a project's bulk redirects. Supply `projectId` to identify the project and use the Team parameters to perform the request on behalf of a Team.
     ///
     /// Get the version history for a project's bulk redirects
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getVersions(
-        config: ClientConfig,
-        projectId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetVersionsResponse {
-        try await (sdkRequest("GET", "/v1/bulk-redirects/versions", config: config, query: [
+    public static func getVersions(config: ClientConfig, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVersionsResponse {
+        return try (await sdkRequest("GET", "/v1/bulk-redirects/versions", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "getVersions", options: requestOptions)).data
     }
 
-    /// Changes a bulk redirect version by promoting staging, restoring a previous production version, or discarding a
-    /// version. Supply the version `id` and an `action`; the response contains the updated version details.
+    /// Changes a bulk redirect version by promoting staging, restoring a previous production version, or discarding a version. Supply the version `id` and an `action`; the response contains the updated version details.
     ///
     /// Update a version by promoting staging to production or restoring a previous production version
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func updateVersion(
-        config: ClientConfig,
-        projectId: String,
-        id: String,
-        action: UpdateVersionRequestBodyAction,
-        teamId: String? = nil,
-        slug: String? = nil,
-        name: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateVersionResponse {
-        if let name {
+    public static func updateVersion(config: ClientConfig, projectId: String, id: String, action: UpdateVersionRequestBodyAction, teamId: String? = nil, slug: String? = nil, name: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateVersionResponse {
+        if let name = name {
             try validateLength("name", name, max: 256)
         }
 
         let requestBody = UpdateVersionRequestBody(id: id, action: action, name: name)
 
-        return try await (sdkRequest("POST", "/v1/bulk-redirects/versions", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/bulk-redirects/versions", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),

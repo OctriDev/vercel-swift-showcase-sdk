@@ -3,23 +3,18 @@
 
 import Foundation
 
-/// Teams domain models
+// Teams domain models
 /// Required enumerated value serialized in the `target` wire field.
-public struct TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0Target: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0Target: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let preview = TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0Target(rawValue: "preview")
-    public static let production =
-        TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0Target(rawValue: "production")
+    public static let production = TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0Target(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -32,19 +27,15 @@ public struct TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0Target: 
 public struct TeamDefaultPassportDeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let all = TeamDefaultPassportDeploymentType(rawValue: "all")
     public static let allExceptCustomDomains = TeamDefaultPassportDeploymentType(rawValue: "all_except_custom_domains")
     public static let preview = TeamDefaultPassportDeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews =
-        TeamDefaultPassportDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let prodDeploymentUrlsAndAllPreviews = TeamDefaultPassportDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -57,10 +48,7 @@ public struct TeamDefaultPassportDeploymentType: RawRepresentable, Hashable, Cod
 public struct TeamResourceConfigBuildMachineDefault: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let basic = TeamResourceConfigBuildMachineDefault(rawValue: "basic")
     public static let elastic = TeamResourceConfigBuildMachineDefault(rawValue: "elastic")
     public static let enhanced = TeamResourceConfigBuildMachineDefault(rawValue: "enhanced")
@@ -69,7 +57,7 @@ public struct TeamResourceConfigBuildMachineDefault: RawRepresentable, Hashable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -82,24 +70,18 @@ public struct TeamResourceConfigBuildMachineDefault: RawRepresentable, Hashable,
 public struct TeamDefaultRolesTeamPermissionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let aiGatewayBudgetManager = TeamDefaultRolesTeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
     public static let aiGatewayCredits = TeamDefaultRolesTeamPermissionsItem(rawValue: "AiGatewayCredits")
     public static let aiGatewaySettings = TeamDefaultRolesTeamPermissionsItem(rawValue: "AiGatewaySettings")
-    public static let aiGatewayTranscriptsManager =
-        TeamDefaultRolesTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
-    public static let aiGatewayTranscriptsViewer =
-        TeamDefaultRolesTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
+    public static let aiGatewayTranscriptsManager = TeamDefaultRolesTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
+    public static let aiGatewayTranscriptsViewer = TeamDefaultRolesTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
     public static let aiGatewayUser = TeamDefaultRolesTeamPermissionsItem(rawValue: "AiGatewayUser")
     public static let connectorManager = TeamDefaultRolesTeamPermissionsItem(rawValue: "ConnectorManager")
     public static let createProject = TeamDefaultRolesTeamPermissionsItem(rawValue: "CreateProject")
     public static let envVariableManager = TeamDefaultRolesTeamPermissionsItem(rawValue: "EnvVariableManager")
     public static let environmentManager = TeamDefaultRolesTeamPermissionsItem(rawValue: "EnvironmentManager")
-    public static let fullProductionDeployment =
-        TeamDefaultRolesTeamPermissionsItem(rawValue: "FullProductionDeployment")
+    public static let fullProductionDeployment = TeamDefaultRolesTeamPermissionsItem(rawValue: "FullProductionDeployment")
     public static let integrationManager = TeamDefaultRolesTeamPermissionsItem(rawValue: "IntegrationManager")
     public static let orgAdmin = TeamDefaultRolesTeamPermissionsItem(rawValue: "OrgAdmin")
     public static let orgViewer = TeamDefaultRolesTeamPermissionsItem(rawValue: "OrgViewer")
@@ -111,7 +93,7 @@ public struct TeamDefaultRolesTeamPermissionsItem: RawRepresentable, Hashable, C
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -160,17 +142,14 @@ public enum TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant0Type: Stri
 public struct TeamBillingPlan: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let enterprise = TeamBillingPlan(rawValue: "enterprise")
     public static let hobby = TeamBillingPlan(rawValue: "hobby")
     public static let pro = TeamBillingPlan(rawValue: "pro")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -180,20 +159,16 @@ public struct TeamBillingPlan: RawRepresentable, Hashable, Codable, Sendable, Sd
 }
 
 /// Required enumerated value serialized in the `provider` wire field.
-public struct TeamDeploymentPolicyGitSourcesItemSourcesItemVariant0Provider: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct TeamDeploymentPolicyGitSourcesItemSourcesItemVariant0Provider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bitbucket = TeamDeploymentPolicyGitSourcesItemSourcesItemVariant0Provider(rawValue: "bitbucket")
     public static let github = TeamDeploymentPolicyGitSourcesItemSourcesItemVariant0Provider(rawValue: "github")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -206,17 +181,14 @@ public struct TeamDeploymentPolicyGitSourcesItemSourcesItemVariant0Provider: Raw
 public struct TeamDisjunctiveProductionSecretPolicy: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let `default` = TeamDisjunctiveProductionSecretPolicy(rawValue: "default")
     public static let off = TeamDisjunctiveProductionSecretPolicy(rawValue: "off")
     public static let on = TeamDisjunctiveProductionSecretPolicy(rawValue: "on")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -229,16 +201,13 @@ public struct TeamDisjunctiveProductionSecretPolicy: RawRepresentable, Hashable,
 public struct TeamDefaultContinuousUsageKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let metered = TeamDefaultContinuousUsageKind(rawValue: "metered")
     public static let unmetered = TeamDefaultContinuousUsageKind(rawValue: "unmetered")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

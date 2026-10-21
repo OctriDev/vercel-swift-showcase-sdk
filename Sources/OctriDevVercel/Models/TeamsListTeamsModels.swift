@@ -3,13 +3,14 @@
 
 import Foundation
 
-/// Teams domain models
+// Teams domain models
 public indirect enum ListTeamsResponseTeamsItem {
     case team(Team)
     case teamLimited(TeamLimited)
 }
 
 extension ListTeamsResponseTeamsItem: Codable {
+
     private enum CodingKeys: String, CodingKey {
         case discriminator = "limited"
     }
@@ -17,29 +18,21 @@ extension ListTeamsResponseTeamsItem: Codable {
     public init(from decoder: Decoder) throws {
         let tagged = try decoder.container(keyedBy: CodingKeys.self)
         let discriminator = try tagged.decode(Bool.self, forKey: .discriminator).description
-        if let value = try Self.decodeGroup1(discriminator, from: decoder) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            forKey: .discriminator,
-            in: tagged,
-            debugDescription: "Unknown discriminator for ListTeamsResponseTeamsItem"
-        )
+        if let value = try Self.decodeGroup1(discriminator, from: decoder) { self = value; return }
+        throw DecodingError.dataCorruptedError(forKey: .discriminator, in: tagged, debugDescription: "Unknown discriminator for ListTeamsResponseTeamsItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension ListTeamsResponseTeamsItem {
     static func decodeGroup1(_ discriminator: String, from decoder: Decoder) throws -> Self? {
         switch discriminator {
-        case "false": try .team(Team(from: decoder))
-        case "true": try .teamLimited(TeamLimited(from: decoder))
-        default: nil
+        case "false": return .team(try Team(from: decoder))
+        case "true": return .teamLimited(try TeamLimited(from: decoder))
+        default: return nil
         }
     }
 }
@@ -63,27 +56,21 @@ public struct TeamLimitedMembershipEntitlementsItem: Codable {
         case entitlement
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamLimitedMembershipEntitlementsItem {
-    init(from decoder: Decoder) throws {
+extension TeamLimitedMembershipEntitlementsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.entitlement) else {
-            throw SdkValidationError(
-                field: "entitlement",
-                code: "required",
-                message: "Validation failed for 'entitlement': value is required"
-            )
+            throw SdkValidationError(field: "entitlement", code: "required", message: "Validation failed for 'entitlement': value is required")
         }
-        entitlement = try container.sdkDecodeRequired(.entitlement)
+        self.entitlement = try container.sdkDecodeRequired(.entitlement)
     }
 }
 
-public extension TeamLimitedMembershipEntitlementsItem {
-    init(entitlement: String) {
+extension TeamLimitedMembershipEntitlementsItem {
+    public init(entitlement: String) {
         self.entitlement = entitlement
     }
 }
@@ -127,49 +114,31 @@ public struct TeamLimitedMembershipJoinedFrom: Codable {
         case ssoUserId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamLimitedMembershipJoinedFrom {
-    init(from decoder: Decoder) throws {
+extension TeamLimitedMembershipJoinedFrom {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.origin) else {
-            throw SdkValidationError(
-                field: "origin",
-                code: "required",
-                message: "Validation failed for 'origin': value is required"
-            )
+            throw SdkValidationError(field: "origin", code: "required", message: "Validation failed for 'origin': value is required")
         }
-        origin = try container.sdkDecodeRequired(.origin)
-        commitId = try container.sdkDecodeIfPresent(.commitId)
-        dsyncConnectedAt = try container.sdkDecodeIfPresent(.dsyncConnectedAt)
-        dsyncUserId = try container.sdkDecodeIfPresent(.dsyncUserId)
-        gitUserId = try container.sdkDecodeIfPresent(.gitUserId)
-        gitUserLogin = try container.sdkDecodeIfPresent(.gitUserLogin)
-        idpUserId = try container.sdkDecodeIfPresent(.idpUserId)
-        repoId = try container.sdkDecodeIfPresent(.repoId)
-        repoPath = try container.sdkDecodeIfPresent(.repoPath)
-        ssoConnectedAt = try container.sdkDecodeIfPresent(.ssoConnectedAt)
-        ssoUserId = try container.sdkDecodeIfPresent(.ssoUserId)
+        self.origin = try container.sdkDecodeRequired(.origin)
+        self.commitId = try container.sdkDecodeIfPresent(.commitId)
+        self.dsyncConnectedAt = try container.sdkDecodeIfPresent(.dsyncConnectedAt)
+        self.dsyncUserId = try container.sdkDecodeIfPresent(.dsyncUserId)
+        self.gitUserId = try container.sdkDecodeIfPresent(.gitUserId)
+        self.gitUserLogin = try container.sdkDecodeIfPresent(.gitUserLogin)
+        self.idpUserId = try container.sdkDecodeIfPresent(.idpUserId)
+        self.repoId = try container.sdkDecodeIfPresent(.repoId)
+        self.repoPath = try container.sdkDecodeIfPresent(.repoPath)
+        self.ssoConnectedAt = try container.sdkDecodeIfPresent(.ssoConnectedAt)
+        self.ssoUserId = try container.sdkDecodeIfPresent(.ssoUserId)
     }
 }
 
-public extension TeamLimitedMembershipJoinedFrom {
-    init(
-        origin: TeamLimitedMembershipJoinedFromOrigin,
-        commitId: String? = nil,
-        dsyncConnectedAt: Double? = nil,
-        dsyncUserId: String? = nil,
-        gitUserId: TeamLimitedMembershipJoinedFromGitUserId? = nil,
-        gitUserLogin: String? = nil,
-        idpUserId: String? = nil,
-        repoId: String? = nil,
-        repoPath: String? = nil,
-        ssoConnectedAt: Double? = nil,
-        ssoUserId: String? = nil
-    ) {
+extension TeamLimitedMembershipJoinedFrom {
+    public init(origin: TeamLimitedMembershipJoinedFromOrigin, commitId: String? = nil, dsyncConnectedAt: Double? = nil, dsyncUserId: String? = nil, gitUserId: TeamLimitedMembershipJoinedFromGitUserId? = nil, gitUserLogin: String? = nil, idpUserId: String? = nil, repoId: String? = nil, repoPath: String? = nil, ssoConnectedAt: Double? = nil, ssoUserId: String? = nil) {
         (self.origin, self.commitId) = (origin, commitId)
         (self.dsyncConnectedAt, self.dsyncUserId) = (dsyncConnectedAt, dsyncUserId)
         (self.gitUserId, self.gitUserLogin) = (gitUserId, gitUserLogin)
@@ -196,29 +165,23 @@ public struct TeamLimitedSaml: Codable {
         case directory
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamLimitedSaml {
-    init(from decoder: Decoder) throws {
+extension TeamLimitedSaml {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enforced) else {
-            throw SdkValidationError(
-                field: "enforced",
-                code: "required",
-                message: "Validation failed for 'enforced': value is required"
-            )
+            throw SdkValidationError(field: "enforced", code: "required", message: "Validation failed for 'enforced': value is required")
         }
-        enforced = try container.sdkDecodeRequired(.enforced)
-        connection = try container.sdkDecodeIfPresent(.connection)
-        directory = try container.sdkDecodeIfPresent(.directory)
+        self.enforced = try container.sdkDecodeRequired(.enforced)
+        self.connection = try container.sdkDecodeIfPresent(.connection)
+        self.directory = try container.sdkDecodeIfPresent(.directory)
     }
 }
 
-public extension TeamLimitedSaml {
-    init(enforced: Bool, connection: TeamLimitedSamlConnection? = nil, directory: TeamLimitedSamlDirectory? = nil) {
+extension TeamLimitedSaml {
+    public init(enforced: Bool, connection: TeamLimitedSamlConnection? = nil, directory: TeamLimitedSamlDirectory? = nil) {
         (self.enforced, self.connection) = (enforced, connection)
         self.directory = directory
     }
@@ -278,91 +241,49 @@ public struct TeamLimited: Codable {
         case saml
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamLimited {
-    init(from decoder: Decoder) throws {
+extension TeamLimited {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.avatar) else {
-            throw SdkValidationError(
-                field: "avatar",
-                code: "required",
-                message: "Validation failed for 'avatar': value is required"
-            )
+            throw SdkValidationError(field: "avatar", code: "required", message: "Validation failed for 'avatar': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.limited) else {
-            throw SdkValidationError(
-                field: "limited",
-                code: "required",
-                message: "Validation failed for 'limited': value is required"
-            )
+            throw SdkValidationError(field: "limited", code: "required", message: "Validation failed for 'limited': value is required")
         }
         guard container.contains(.limitedBy) else {
-            throw SdkValidationError(
-                field: "limitedBy",
-                code: "required",
-                message: "Validation failed for 'limitedBy': value is required"
-            )
+            throw SdkValidationError(field: "limitedBy", code: "required", message: "Validation failed for 'limitedBy': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.slug) else {
-            throw SdkValidationError(
-                field: "slug",
-                code: "required",
-                message: "Validation failed for 'slug': value is required"
-            )
+            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
         }
-        avatar = try container.sdkDecodeNullable(.avatar)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        id = try container.sdkDecodeRequired(.id)
-        limited = try container.sdkDecodeRequired(.limited)
-        limitedBy = try container.sdkDecodeRequired(.limitedBy)
-        name = try container.sdkDecodeNullable(.name)
-        slug = try container.sdkDecodeRequired(.slug)
-        membership = try container.sdkDecodeIfPresent(.membership)
-        orgRootTeamId = try container.sdkDecodeIfPresent(.orgRootTeamId)
-        parentId = try container.sdkDecodeIfPresent(.parentId)
-        saml = try container.sdkDecodeIfPresent(.saml)
+        self.avatar = try container.sdkDecodeNullable(.avatar)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.limited = try container.sdkDecodeRequired(.limited)
+        self.limitedBy = try container.sdkDecodeRequired(.limitedBy)
+        self.name = try container.sdkDecodeNullable(.name)
+        self.slug = try container.sdkDecodeRequired(.slug)
+        self.membership = try container.sdkDecodeIfPresent(.membership)
+        self.orgRootTeamId = try container.sdkDecodeIfPresent(.orgRootTeamId)
+        self.parentId = try container.sdkDecodeIfPresent(.parentId)
+        self.saml = try container.sdkDecodeIfPresent(.saml)
     }
 }
 
-public extension TeamLimited {
-    init(
-        avatar: String?,
-        createdAt: Double,
-        id: String,
-        limited: Bool,
-        limitedBy: [TeamLimitedLimitedByItem],
-        name: String?,
-        slug: String,
-        membership: TeamLimitedMembership? = nil,
-        orgRootTeamId: String? = nil,
-        parentId: String? = nil,
-        saml: TeamLimitedSaml? = nil
-    ) {
+extension TeamLimited {
+    public init(avatar: String?, createdAt: Double, id: String, limited: Bool, limitedBy: [TeamLimitedLimitedByItem], name: String?, slug: String, membership: TeamLimitedMembership? = nil, orgRootTeamId: String? = nil, parentId: String? = nil, saml: TeamLimitedSaml? = nil) {
         (self.avatar, self.createdAt) = (avatar, createdAt)
         (self.id, self.limited) = (id, limited)
         (self.limitedBy, self.name) = (limitedBy, name)
@@ -407,62 +328,36 @@ public struct TeamLimitedSamlConnection: Codable {
         case syncState
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamLimitedSamlConnection {
-    init(from decoder: Decoder) throws {
+extension TeamLimitedSamlConnection {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.connectedAt) else {
-            throw SdkValidationError(
-                field: "connectedAt",
-                code: "required",
-                message: "Validation failed for 'connectedAt': value is required"
-            )
+            throw SdkValidationError(field: "connectedAt", code: "required", message: "Validation failed for 'connectedAt': value is required")
         }
         guard container.contains(.state) else {
-            throw SdkValidationError(
-                field: "state",
-                code: "required",
-                message: "Validation failed for 'state': value is required"
-            )
+            throw SdkValidationError(field: "state", code: "required", message: "Validation failed for 'state': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.status) else {
-            throw SdkValidationError(
-                field: "status",
-                code: "required",
-                message: "Validation failed for 'status': value is required"
-            )
+            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
         }
-        connectedAt = try container.sdkDecodeRequired(.connectedAt)
-        state = try container.sdkDecodeRequired(.state)
-        type = try container.sdkDecodeRequired(.type)
-        status = try container.sdkDecodeRequired(.status)
-        lastReceivedWebhookEvent = try container.sdkDecodeIfPresent(.lastReceivedWebhookEvent)
-        lastSyncedAt = try container.sdkDecodeIfPresent(.lastSyncedAt)
-        syncState = try container.sdkDecodeIfPresent(.syncState)
+        self.connectedAt = try container.sdkDecodeRequired(.connectedAt)
+        self.state = try container.sdkDecodeRequired(.state)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.status = try container.sdkDecodeRequired(.status)
+        self.lastReceivedWebhookEvent = try container.sdkDecodeIfPresent(.lastReceivedWebhookEvent)
+        self.lastSyncedAt = try container.sdkDecodeIfPresent(.lastSyncedAt)
+        self.syncState = try container.sdkDecodeIfPresent(.syncState)
     }
 }
 
-public extension TeamLimitedSamlConnection {
-    init(
-        connectedAt: Double,
-        state: String,
-        type: String,
-        status: String,
-        lastReceivedWebhookEvent: Double? = nil,
-        lastSyncedAt: Double? = nil,
-        syncState: TeamLimitedSamlConnectionSyncState? = nil
-    ) {
+extension TeamLimitedSamlConnection {
+    public init(connectedAt: Double, state: String, type: String, status: String, lastReceivedWebhookEvent: Double? = nil, lastSyncedAt: Double? = nil, syncState: TeamLimitedSamlConnectionSyncState? = nil) {
         (self.connectedAt, self.state) = (connectedAt, state)
         (self.type, self.status) = (type, status)
         (self.lastReceivedWebhookEvent, self.lastSyncedAt) = (lastReceivedWebhookEvent, lastSyncedAt)
@@ -515,74 +410,42 @@ public struct TeamLimitedMembership: Codable {
         case uid
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamLimitedMembership {
-    init(from decoder: Decoder) throws {
+extension TeamLimitedMembership {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.confirmed) else {
-            throw SdkValidationError(
-                field: "confirmed",
-                code: "required",
-                message: "Validation failed for 'confirmed': value is required"
-            )
+            throw SdkValidationError(field: "confirmed", code: "required", message: "Validation failed for 'confirmed': value is required")
         }
         guard container.contains(.created) else {
-            throw SdkValidationError(
-                field: "created",
-                code: "required",
-                message: "Validation failed for 'created': value is required"
-            )
+            throw SdkValidationError(field: "created", code: "required", message: "Validation failed for 'created': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(
-                field: "role",
-                code: "required",
-                message: "Validation failed for 'role': value is required"
-            )
+            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
         }
-        confirmed = try container.sdkDecodeRequired(.confirmed)
-        created = try container.sdkDecodeRequired(.created)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        role = try container.sdkDecodeRequired(.role)
-        accessRequestedAt = try container.sdkDecodeIfPresent(.accessRequestedAt)
-        entitlements = try container.sdkDecodeIfPresent(.entitlements)
-        isOrgBackingTeamMembership = try container.sdkDecodeIfPresent(.isOrgBackingTeamMembership)
-        joinedFrom = try container.sdkDecodeIfPresent(.joinedFrom)
-        organizationId = try container.sdkDecodeIfPresent(.organizationId)
-        teamId = try container.sdkDecodeIfPresent(.teamId)
-        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
-        uid = try container.sdkDecodeIfPresent(.uid)
+        self.confirmed = try container.sdkDecodeRequired(.confirmed)
+        self.created = try container.sdkDecodeRequired(.created)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.role = try container.sdkDecodeRequired(.role)
+        self.accessRequestedAt = try container.sdkDecodeIfPresent(.accessRequestedAt)
+        self.entitlements = try container.sdkDecodeIfPresent(.entitlements)
+        self.isOrgBackingTeamMembership = try container.sdkDecodeIfPresent(.isOrgBackingTeamMembership)
+        self.joinedFrom = try container.sdkDecodeIfPresent(.joinedFrom)
+        self.organizationId = try container.sdkDecodeIfPresent(.organizationId)
+        self.teamId = try container.sdkDecodeIfPresent(.teamId)
+        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+        self.uid = try container.sdkDecodeIfPresent(.uid)
     }
 }
 
-public extension TeamLimitedMembership {
-    init(
-        confirmed: Bool,
-        created: Double,
-        createdAt: Double,
-        role: TeamLimitedMembershipRole,
-        accessRequestedAt: Double? = nil,
-        entitlements: [TeamLimitedMembershipEntitlementsItem]? = nil,
-        isOrgBackingTeamMembership: Bool? = nil,
-        joinedFrom: TeamLimitedMembershipJoinedFrom? = nil,
-        organizationId: String? = nil,
-        teamId: String? = nil,
-        teamPermissions: [TeamLimitedMembershipTeamPermissionsItem]? = nil,
-        teamRoles: [TeamLimitedMembershipTeamRolesItem]? = nil,
-        uid: String? = nil
-    ) {
+extension TeamLimitedMembership {
+    public init(confirmed: Bool, created: Double, createdAt: Double, role: TeamLimitedMembershipRole, accessRequestedAt: Double? = nil, entitlements: [TeamLimitedMembershipEntitlementsItem]? = nil, isOrgBackingTeamMembership: Bool? = nil, joinedFrom: TeamLimitedMembershipJoinedFrom? = nil, organizationId: String? = nil, teamId: String? = nil, teamPermissions: [TeamLimitedMembershipTeamPermissionsItem]? = nil, teamRoles: [TeamLimitedMembershipTeamRolesItem]? = nil, uid: String? = nil) {
         (self.confirmed, self.created) = (confirmed, created)
         (self.createdAt, self.role) = (createdAt, role)
         (self.accessRequestedAt, self.entitlements) = (accessRequestedAt, entitlements)
@@ -625,7 +488,5 @@ public struct TeamLimitedSamlDirectory: Codable {
         case syncState
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

@@ -6,44 +6,25 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension GlobalConfigMethods {
-    /// Lists backups of a Global Config. Use `next` to continue from a pagination cursor, `limit` to control the number
-    /// of results, and `metadata` to filter the backups. The response includes backup records and pagination
-    /// information.
+extension GlobalConfigMethods {
+    /// Lists backups of a Global Config. Use `next` to continue from a pagination cursor, `limit` to control the number of results, and `metadata` to filter the backups. The response includes backup records and pagination information.
     ///
     /// Returns backups of a Global Config.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getEdgeConfigBackups(
-        config: ClientConfig,
-        edgeConfigId: String,
-        next: String? = nil,
-        limit: Double? = nil,
-        metadata: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetEdgeConfigBackupsResponse {
-        if let limit {
+    public static func getEdgeConfigBackups(config: ClientConfig, edgeConfigId: String, next: String? = nil, limit: Double? = nil, metadata: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetEdgeConfigBackupsResponse {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 0, max: 50)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/backups"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("next", value: next),
-                SdkQueryParameter("limit", value: limit),
-                SdkQueryParameter("metadata", value: metadata),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getEdgeConfigBackups",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/backups"].joined(), config: config, query: [
+            SdkQueryParameter("next", value: next),
+            SdkQueryParameter("limit", value: limit),
+            SdkQueryParameter("metadata", value: metadata),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getEdgeConfigBackups", options: requestOptions)).data
     }
 }

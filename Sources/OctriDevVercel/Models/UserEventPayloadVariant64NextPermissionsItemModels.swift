@@ -3,92 +3,57 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 /// Required enumerated value serialized in the `nextPermissions[]` wire field.
-public struct UserEventPayloadVariant64NextPermissionsItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant64NextPermissionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let unknown = UserEventPayloadVariant64NextPermissionsItem(rawValue: "*")
-    public static let manageSpeedInsights =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "manage:speed-insights")
-    public static let manageWebAnalytics =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "manage:web-analytics")
-    public static let readWriteAiGatewayApiKey =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-api-key")
-    public static let readWriteAiGatewayBudgets =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-budgets")
-    public static let readWriteAiGatewayGuardrails =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-guardrails")
-    public static let readWriteAiGatewayPrivateModels =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-private-models")
-    public static let readWriteAiGatewayRules =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-rules")
-    public static let readWriteAiGatewayVirtualModelConfigs =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-virtual-model-configs")
+    public static let manageSpeedInsights = UserEventPayloadVariant64NextPermissionsItem(rawValue: "manage:speed-insights")
+    public static let manageWebAnalytics = UserEventPayloadVariant64NextPermissionsItem(rawValue: "manage:web-analytics")
+    public static let readWriteAiGatewayApiKey = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-api-key")
+    public static let readWriteAiGatewayBudgets = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-budgets")
+    public static let readWriteAiGatewayGuardrails = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-guardrails")
+    public static let readWriteAiGatewayPrivateModels = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-private-models")
+    public static let readWriteAiGatewayRules = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-rules")
+    public static let readWriteAiGatewayVirtualModelConfigs = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:ai-gateway-virtual-model-configs")
     public static let readWriteAlerts = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:alerts")
-    public static let readWriteAutomations =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:automations")
+    public static let readWriteAutomations = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:automations")
     public static let readWriteBilling = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:billing")
     public static let readWriteBlob = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:blob")
     public static let readWriteConnect = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:connect")
-    public static let readWriteDeployment =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:deployment")
+    public static let readWriteDeployment = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:deployment")
     public static let readWriteDomain = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:domain")
-    public static let readWriteDomainRegistrar =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:domain-registrar")
+    public static let readWriteDomainRegistrar = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:domain-registrar")
     public static let readWriteDrains = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:drains")
-    public static let readWriteEdgeCache =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:edge-cache")
-    public static let readWriteEdgeConfig =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:edge-config")
+    public static let readWriteEdgeCache = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:edge-cache")
+    public static let readWriteEdgeConfig = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:edge-config")
     public static let readWriteFirewall = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:firewall")
-    public static let readWriteIntegrationConfiguration =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:integration-configuration")
-    public static let readWriteIntegrationResource =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:integration-resource")
+    public static let readWriteIntegrationConfiguration = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:integration-configuration")
+    public static let readWriteIntegrationResource = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:integration-resource")
     public static let readWriteKms = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:kms")
-    public static let readWriteMessageboard =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:messageboard")
+    public static let readWriteMessageboard = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:messageboard")
     public static let readWriteProject = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project")
-    public static let readWriteProjectEnvVars =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-env-vars")
-    public static let readWriteProjectEnvVarsNonProduction =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-env-vars-non-production")
-    public static let readWriteProjectEnvVarsProduction =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-env-vars-production")
-    public static let readWriteProjectFlagsNonProduction =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-flags-non-production")
-    public static let readWriteProjectFlagsProduction =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-flags-production")
-    public static let readWriteProjectMembers =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-members")
-    public static let readWriteProjectProtectionBypass =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-protection-bypass")
-    public static let readWriteProjectTrustedSources =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-trusted-sources")
-    public static let readWriteRemoteCache =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:remote-cache")
+    public static let readWriteProjectEnvVars = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-env-vars")
+    public static let readWriteProjectEnvVarsNonProduction = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-env-vars-non-production")
+    public static let readWriteProjectEnvVarsProduction = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-env-vars-production")
+    public static let readWriteProjectFlagsNonProduction = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-flags-non-production")
+    public static let readWriteProjectFlagsProduction = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-flags-production")
+    public static let readWriteProjectMembers = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-members")
+    public static let readWriteProjectProtectionBypass = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-protection-bypass")
+    public static let readWriteProjectTrustedSources = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:project-trusted-sources")
+    public static let readWriteRemoteCache = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:remote-cache")
     public static let readWriteSandbox = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:sandbox")
     public static let readWriteSchedule = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:schedule")
-    public static let readWriteTeamMembers =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:team-members")
+    public static let readWriteTeamMembers = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:team-members")
     public static let readWriteVcr = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read-write:vcr")
     public static let readAccessGroup = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:access-group")
-    public static let readAiGatewayBudgets =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-budgets")
-    public static let readAiGatewayGuardrails =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-guardrails")
-    public static let readAiGatewayPrivateModels =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-private-models")
-    public static let readAiGatewayRules =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-rules")
-    public static let readAiGatewayVirtualModelConfigs =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-virtual-model-configs")
+    public static let readAiGatewayBudgets = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-budgets")
+    public static let readAiGatewayGuardrails = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-guardrails")
+    public static let readAiGatewayPrivateModels = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-private-models")
+    public static let readAiGatewayRules = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-rules")
+    public static let readAiGatewayVirtualModelConfigs = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:ai-gateway-virtual-model-configs")
     public static let readAlerts = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:alerts")
     public static let readAuditLog = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:audit-log")
     public static let readAutomations = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:automations")
@@ -98,23 +63,17 @@ public struct UserEventPayloadVariant64NextPermissionsItem: RawRepresentable, Ha
     public static let readDomain = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:domain")
     public static let readEvent = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:event")
     public static let readFirewall = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:firewall")
-    public static let readIntegrationConfiguration =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:integration-configuration")
-    public static let readIntegrationResource =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:integration-resource")
+    public static let readIntegrationConfiguration = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:integration-configuration")
+    public static let readIntegrationResource = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:integration-resource")
     public static let readKms = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:kms")
     public static let readMessageboard = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:messageboard")
     public static let readMonitoring = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:monitoring")
     public static let readProject = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project")
-    public static let readProjectEnvVarsNonProduction =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project-env-vars-non-production")
-    public static let readProjectEnvVarsProduction =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project-env-vars-production")
+    public static let readProjectEnvVarsNonProduction = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project-env-vars-non-production")
+    public static let readProjectEnvVarsProduction = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project-env-vars-production")
     public static let readProjectFlags = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project-flags")
-    public static let readProjectMembers =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project-members")
-    public static let readProjectTrustedSources =
-        UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project-trusted-sources")
+    public static let readProjectMembers = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project-members")
+    public static let readProjectTrustedSources = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:project-trusted-sources")
     public static let readRemoteCache = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:remote-cache")
     public static let readSandbox = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:sandbox")
     public static let readSchedule = UserEventPayloadVariant64NextPermissionsItem(rawValue: "read:schedule")
@@ -128,7 +87,7 @@ public struct UserEventPayloadVariant64NextPermissionsItem: RawRepresentable, Ha
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -138,22 +97,16 @@ public struct UserEventPayloadVariant64NextPermissionsItem: RawRepresentable, Ha
 }
 
 /// Required enumerated value serialized in the `action` wire field.
-public struct UserEventPayloadVariant120JobVariant7NsnbSideEffectAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant120JobVariant7NsnbSideEffectAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let autoApprovedMember =
-        UserEventPayloadVariant120JobVariant7NsnbSideEffectAction(rawValue: "auto-approved-member")
-    public static let autoApprovedPendingInvite =
-        UserEventPayloadVariant120JobVariant7NsnbSideEffectAction(rawValue: "auto-approved-pending-invite")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let autoApprovedMember = UserEventPayloadVariant120JobVariant7NsnbSideEffectAction(rawValue: "auto-approved-member")
+    public static let autoApprovedPendingInvite = UserEventPayloadVariant120JobVariant7NsnbSideEffectAction(rawValue: "auto-approved-pending-invite")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -163,14 +116,10 @@ public struct UserEventPayloadVariant120JobVariant7NsnbSideEffectAction: RawRepr
 }
 
 /// The acive pricing plan the team is billed with
-public struct UserEventPayloadVariant381BudgetPricingPlan: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant381BudgetPricingPlan: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let flex = UserEventPayloadVariant381BudgetPricingPlan(rawValue: "flex")
     public static let legacy = UserEventPayloadVariant381BudgetPricingPlan(rawValue: "legacy")
     public static let platform = UserEventPayloadVariant381BudgetPricingPlan(rawValue: "platform")
@@ -179,7 +128,7 @@ public struct UserEventPayloadVariant381BudgetPricingPlan: RawRepresentable, Has
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -192,21 +141,16 @@ public struct UserEventPayloadVariant381BudgetPricingPlan: RawRepresentable, Has
 public struct UserEventPayloadVariant349TrustedIps: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let all = UserEventPayloadVariant349TrustedIps(rawValue: "all")
-    public static let allExceptCustomDomains =
-        UserEventPayloadVariant349TrustedIps(rawValue: "all_except_custom_domains")
+    public static let allExceptCustomDomains = UserEventPayloadVariant349TrustedIps(rawValue: "all_except_custom_domains")
     public static let preview = UserEventPayloadVariant349TrustedIps(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews =
-        UserEventPayloadVariant349TrustedIps(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let prodDeploymentUrlsAndAllPreviews = UserEventPayloadVariant349TrustedIps(rawValue: "prod_deployment_urls_and_all_previews")
     public static let production = UserEventPayloadVariant349TrustedIps(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -219,15 +163,12 @@ public struct UserEventPayloadVariant349TrustedIps: RawRepresentable, Hashable, 
 public struct UserEventPayloadVariant445ActorType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let admin = UserEventPayloadVariant445ActorType(rawValue: "admin")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -236,56 +177,33 @@ public struct UserEventPayloadVariant445ActorType: RawRepresentable, Hashable, C
     }
 }
 
-public struct UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let aiGatewayBudgetManager =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
-    public static let aiGatewayCredits =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayCredits")
-    public static let aiGatewaySettings =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewaySettings")
-    public static let aiGatewayTranscriptsManager =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
-    public static let aiGatewayTranscriptsViewer =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
-    public static let aiGatewayUser =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayUser")
-    public static let connectorManager =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "ConnectorManager")
-    public static let createProject =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "CreateProject")
-    public static let envVariableManager =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "EnvVariableManager")
-    public static let environmentManager =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "EnvironmentManager")
-    public static let fullProductionDeployment =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "FullProductionDeployment")
-    public static let integrationManager =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "IntegrationManager")
-    public static let orgAdmin =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "OrgAdmin")
-    public static let orgViewer =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "OrgViewer")
-    public static let usageViewer =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "UsageViewer")
-    public static let v0Builder =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "V0Builder")
-    public static let v0Chatter =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "V0Chatter")
-    public static let v0Viewer =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "V0Viewer")
-    public static let workflowDecryptor =
-        UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "WorkflowDecryptor")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let aiGatewayBudgetManager = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
+    public static let aiGatewayCredits = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayCredits")
+    public static let aiGatewaySettings = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewaySettings")
+    public static let aiGatewayTranscriptsManager = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
+    public static let aiGatewayTranscriptsViewer = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
+    public static let aiGatewayUser = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "AiGatewayUser")
+    public static let connectorManager = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "ConnectorManager")
+    public static let createProject = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "CreateProject")
+    public static let envVariableManager = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "EnvVariableManager")
+    public static let environmentManager = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "EnvironmentManager")
+    public static let fullProductionDeployment = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "FullProductionDeployment")
+    public static let integrationManager = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "IntegrationManager")
+    public static let orgAdmin = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "OrgAdmin")
+    public static let orgViewer = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "OrgViewer")
+    public static let usageViewer = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "UsageViewer")
+    public static let v0Builder = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "V0Builder")
+    public static let v0Chatter = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "V0Chatter")
+    public static let v0Viewer = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "V0Viewer")
+    public static let workflowDecryptor = UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem(rawValue: "WorkflowDecryptor")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -296,57 +214,33 @@ public struct UserEventPayloadVariant431PreviousValueVariant1TeamPermissionsItem
 
 /// Since February 2022 All the hashtag-vercel tags found in the commit message triggering the deploy. For
 /// example, #VERCEL_DO_SOMETHING
-public struct UserEventPayloadVariant120JobVariant0GitHashtagVercelItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant120JobVariant0GitHashtagVercelItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let vercelBuildMachineTurbo =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_MACHINE=TURBO")
-    public static let vercelBuildPrio1 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_1")
-    public static let vercelBuildPrio10 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_10")
-    public static let vercelBuildPrio2 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_2")
-    public static let vercelBuildPrio3 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_3")
-    public static let vercelBuildPrio4 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_4")
-    public static let vercelBuildPrio5 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_5")
-    public static let vercelBuildPrio6 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_6")
-    public static let vercelBuildPrio7 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_7")
-    public static let vercelBuildPrio8 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_8")
-    public static let vercelBuildPrio9 =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_9")
-    public static let vercelSddjAfterGetRepoForceCancel =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_AFTER_GET_REPO_FORCE_CANCEL")
-    public static let vercelSddjAfterGetRepoForceError =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_AFTER_GET_REPO_FORCE_ERROR")
-    public static let vercelSddjAfterVerifyForceCancel =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_AFTER_VERIFY_FORCE_CANCEL")
-    public static let vercelSddjAfterVerifyForceError =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_AFTER_VERIFY_FORCE_ERROR")
-    public static let vercelSddjBeforeBuildJobQueuedError =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(
-            rawValue: "#VERCEL_SDDJ_BEFORE_BUILD_JOB_QUEUED_ERROR"
-        )
-    public static let vercelSddjForceGitForkError =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_FORCE_GIT_FORK_ERROR")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let vercelBuildMachineTurbo = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_MACHINE=TURBO")
+    public static let vercelBuildPrio1 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_1")
+    public static let vercelBuildPrio10 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_10")
+    public static let vercelBuildPrio2 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_2")
+    public static let vercelBuildPrio3 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_3")
+    public static let vercelBuildPrio4 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_4")
+    public static let vercelBuildPrio5 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_5")
+    public static let vercelBuildPrio6 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_6")
+    public static let vercelBuildPrio7 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_7")
+    public static let vercelBuildPrio8 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_8")
+    public static let vercelBuildPrio9 = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_BUILD_PRIO_9")
+    public static let vercelSddjAfterGetRepoForceCancel = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_AFTER_GET_REPO_FORCE_CANCEL")
+    public static let vercelSddjAfterGetRepoForceError = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_AFTER_GET_REPO_FORCE_ERROR")
+    public static let vercelSddjAfterVerifyForceCancel = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_AFTER_VERIFY_FORCE_CANCEL")
+    public static let vercelSddjAfterVerifyForceError = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_AFTER_VERIFY_FORCE_ERROR")
+    public static let vercelSddjBeforeBuildJobQueuedError = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_BEFORE_BUILD_JOB_QUEUED_ERROR")
+    public static let vercelSddjForceGitForkError = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SDDJ_FORCE_GIT_FORK_ERROR")
     public static let vercelSkip = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_SKIP")
-    public static let vercelV0Message =
-        UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_V0_MESSAGE")
+    public static let vercelV0Message = UserEventPayloadVariant120JobVariant0GitHashtagVercelItem(rawValue: "#VERCEL_V0_MESSAGE")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -359,10 +253,7 @@ public struct UserEventPayloadVariant120JobVariant0GitHashtagVercelItem: RawRepr
 public struct UserEventPayloadVariant196QueryType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let dataEdit = UserEventPayloadVariant196QueryType(rawValue: "data-edit")
     public static let dataView = UserEventPayloadVariant196QueryType(rawValue: "data-view")
     public static let schema = UserEventPayloadVariant196QueryType(rawValue: "schema")
@@ -370,7 +261,7 @@ public struct UserEventPayloadVariant196QueryType: RawRepresentable, Hashable, C
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -380,20 +271,16 @@ public struct UserEventPayloadVariant196QueryType: RawRepresentable, Hashable, C
 }
 
 /// Present when `scope` is `'project'`.
-public struct UserEventPayloadVariant491ProjectScope: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant491ProjectScope: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let account = UserEventPayloadVariant491ProjectScope(rawValue: "account")
     public static let projectOnly = UserEventPayloadVariant491ProjectScope(rawValue: "project-only")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -403,21 +290,15 @@ public struct UserEventPayloadVariant491ProjectScope: RawRepresentable, Hashable
 }
 
 /// Required enumerated value serialized in the `origin` wire field.
-public struct UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let apple = UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin(rawValue: "apple")
     public static let bitbucket = UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin(rawValue: "bitbucket")
     public static let chatgpt = UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin(rawValue: "chatgpt")
     public static let email = UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin(rawValue: "email")
-    public static let emuRecovery =
-        UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin(rawValue: "emu-recovery")
+    public static let emuRecovery = UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin(rawValue: "emu-recovery")
     public static let github = UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin(rawValue: "github")
     public static let gitlab = UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin(rawValue: "gitlab")
     public static let google = UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin(rawValue: "google")
@@ -430,7 +311,7 @@ public struct UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin: RawRe
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -443,15 +324,12 @@ public struct UserEventPayloadVariant211FactorsVariant1ItemVariant0Origin: RawRe
 public struct UserEventPayloadVariant245Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let connectSrc = UserEventPayloadVariant245Type(rawValue: "connectSrc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

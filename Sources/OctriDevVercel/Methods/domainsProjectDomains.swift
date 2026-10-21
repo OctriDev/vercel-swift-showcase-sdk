@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DomainsMethods {
-    /// Lists project domains associated with an apex domain owned by the authenticated user's account. Use `limit` to
-    /// control the maximum number of results and `since` or `until` to filter by creation time using JavaScript
-    /// timestamps. The response includes pagination metadata and the matching project domains.
+extension DomainsMethods {
+    /// Lists project domains associated with an apex domain owned by the authenticated user's account. Use `limit` to control the maximum number of results and `since` or `until` to filter by creation time using JavaScript timestamps. The response includes pagination metadata and the matching project domains.
     ///
     /// List all project domains associated with an apex domain owned by the authenticated account.
     ///
@@ -20,30 +18,13 @@ public extension DomainsMethods {
     /// - until: Get project domains created before this JavaScript timestamp.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getDomainProjectDomains(
-        config: ClientConfig,
-        domain: String,
-        limit: Double? = nil,
-        since: Double? = nil,
-        until: Double? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetDomainProjectDomainsResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/project-domains"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("limit", value: limit),
-                SdkQueryParameter("since", value: since),
-                SdkQueryParameter("until", value: until),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getDomainProjectDomains",
-            options: requestOptions
-        )).data
+    public static func getDomainProjectDomains(config: ClientConfig, domain: String, limit: Double? = nil, since: Double? = nil, until: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainProjectDomainsResponse {
+        return try (await sdkRequest("GET", ["/v1/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/project-domains"].joined(), config: config, query: [
+            SdkQueryParameter("limit", value: limit),
+            SdkQueryParameter("since", value: since),
+            SdkQueryParameter("until", value: until),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getDomainProjectDomains", options: requestOptions)).data
     }
 }

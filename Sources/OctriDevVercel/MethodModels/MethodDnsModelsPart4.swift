@@ -7,103 +7,48 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical dns operation model declarations
-public extension CreateRecordRequestBodyVariant5 {
-    init(from decoder: Decoder) throws {
+// Canonical dns operation model declarations
+extension CreateRecordRequestBodyVariant5 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
         guard container.contains(.mxPriority) else {
-            throw SdkValidationError(
-                field: "mxPriority",
-                code: "required",
-                message: "Validation failed for 'mxPriority': value is required"
-            )
+            throw SdkValidationError(field: "mxPriority", code: "required", message: "Validation failed for 'mxPriority': value is required")
         }
-        name = try container.sdkDecodeRequired(.name)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeRequired(.value)
-        mxPriority = try container.sdkDecodeRequired(.mxPriority)
-        ttl = try container.sdkDecodeIfPresent(.ttl)
-        comment = try container.sdkDecodeIfPresent(.comment)
-        try sdkValidateRawEnum("type", type, CreateRecordRequestBodyVariant5Type.allCases.map(\.rawValue))
-        try validateRange(
-            "mxPriority",
-            Double(mxPriority),
-            min: 0,
-            max: 65535,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
-        if let value = ttl {
-            try validateRange(
-                "ttl",
-                Double(value),
-                min: 60,
-                max: 2_147_483_647,
-                exclusiveMin: nil,
-                exclusiveMax: nil,
-                multipleOf: nil
-            )
+        self.name = try container.sdkDecodeRequired(.name)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeRequired(.value)
+        self.mxPriority = try container.sdkDecodeRequired(.mxPriority)
+        self.ttl = try container.sdkDecodeIfPresent(.ttl)
+        self.comment = try container.sdkDecodeIfPresent(.comment)
+            try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant5Type.allCases.map(\.rawValue))
+            try validateRange("mxPriority", Double(self.mxPriority), min: 0, max: 65535, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        if let value = self.ttl {
+            try validateRange("ttl", Double(value), min: 60, max: 2147483647, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
         }
-        if let value = comment {
+        if let value = self.comment {
             try validateLength("comment", value, min: nil, max: 500)
         }
     }
 }
 
-public extension CreateRecordRequestBodyVariant5 {
-    init(
-        name: String,
-        type: CreateRecordRequestBodyVariant5Type,
-        value: String,
-        mxPriority: Double,
-        ttl: Double? = nil,
-        comment: String? = nil
-    ) throws {
+extension CreateRecordRequestBodyVariant5 {
+    public init(name: String, type: CreateRecordRequestBodyVariant5Type, value: String, mxPriority: Double, ttl: Double? = nil, comment: String? = nil) throws {
         (self.name, self.type) = (name, type)
         (self.value, self.mxPriority) = (value, mxPriority)
         (self.ttl, self.comment) = (ttl, comment)
-        try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant5Type.allCases.map(\.rawValue))
-        try validateRange(
-            "mxPriority",
-            Double(self.mxPriority),
-            min: 0,
-            max: 65535,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+            try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant5Type.allCases.map(\.rawValue))
+            try validateRange("mxPriority", Double(self.mxPriority), min: 0, max: 65535, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
         if let value = self.ttl {
-            try validateRange(
-                "ttl",
-                Double(value),
-                min: 60,
-                max: 2_147_483_647,
-                exclusiveMin: nil,
-                exclusiveMax: nil,
-                multipleOf: nil
-            )
+            try validateRange("ttl", Double(value), min: 60, max: 2147483647, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
         }
         if let value = self.comment {
             try validateLength("comment", value, min: nil, max: 500)

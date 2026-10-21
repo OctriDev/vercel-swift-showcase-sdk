@@ -8,63 +8,45 @@ import Foundation
 #endif
 public enum WebhooksMethods {}
 
-public extension WebhooksMethods {
-    /// Creates a webhook that sends selected events to a URL. Provide an HTTP or HTTPS `url` and at least one event in
-    /// `events`; you can optionally associate the webhook with 1 to 50 `projectIds`. The response includes the webhook
-    /// ID and secret used to sign payloads.
+extension WebhooksMethods {
+    /// Creates a webhook that sends selected events to a URL. Provide an HTTP or HTTPS `url` and at least one event in `events`; you can optionally associate the webhook with 1 to 50 `projectIds`. The response includes the webhook ID and secret used to sign payloads.
     ///
     /// Creates a webhook
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func createWebhook(
-        config: ClientConfig,
-        url: String,
-        events: [CreateWebhookRequestBodyEventsItem],
-        teamId: String? = nil,
-        slug: String? = nil,
-        projectIds: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CreateWebhookResponse {
+    public static func createWebhook(config: ClientConfig, url: String, events: [CreateWebhookRequestBodyEventsItem], teamId: String? = nil, slug: String? = nil, projectIds: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateWebhookResponse {
         try sdkValidatePattern("url", url, sdkPattern5baa1dcf5fbb)
         try sdkValidateUri("url", url)
 
         try validateItems("events", events, min: 1)
 
-        if let projectIds {
+        if let projectIds = projectIds {
             try validateItems("projectIds", projectIds, min: 1, max: 50)
         }
 
         let requestBody = CreateWebhookRequestBody(url: url, events: events, projectIds: projectIds)
 
-        return try await (sdkRequest("POST", "/v1/webhooks", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/webhooks", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createWebhook", options: requestOptions)).data
     }
 
-    /// Lists webhooks, optionally scoped to a project. Use `projectId` to retrieve webhooks associated with a specific
-    /// project; omit it to list webhooks without that project filter. The project identifier must match the documented
-    /// character pattern.
+    /// Lists webhooks, optionally scoped to a project. Use `projectId` to retrieve webhooks associated with a specific project; omit it to list webhooks without that project filter. The project identifier must match the documented character pattern.
     ///
     /// Get a list of webhooks
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getWebhooks(
-        config: ClientConfig,
-        projectId: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetWebhooksResponse {
-        if let projectId {
+    public static func getWebhooks(config: ClientConfig, projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetWebhooksResponse {
+        if let projectId = projectId {
             try sdkValidatePattern("projectId", projectId, sdkPatternc4ba70074ba8)
         }
 
-        return try await (sdkRequest("GET", "/v1/webhooks", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/webhooks", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),

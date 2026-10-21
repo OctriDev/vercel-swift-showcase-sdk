@@ -6,10 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DomainsRegistrarMethods {
-    /// Transfers a domain to the account from another registrar. Provide the losing registrar's `authCode`, the
-    /// transfer term in `years`, the `expectedPrice`, and registrant `contactInformation`; set `autoRenew` to control
-    /// future renewals. A 200 response includes the transfer order's `orderId` and links for related actions.
+extension DomainsRegistrarMethods {
+    /// Transfers a domain to the account from another registrar. Provide the losing registrar's `authCode`, the transfer term in `years`, the `expectedPrice`, and registrant `contactInformation`; set `autoRenew` to control future renewals. A 200 response includes the transfer order's `orderId` and links for related actions.
     ///
     /// Transfer a domain in from another registrar
     ///
@@ -23,69 +21,22 @@ public extension DomainsRegistrarMethods {
     ///   ar/update-auto-renew-for-a-domain) endpoint.
     /// - years: The number of years to renew the domain for once it is transferred
     ///   in. This must be a valid number of transfer years for the TLD.
-    static func transferInDomain(
-        config: ClientConfig,
-        domain: DomainName,
-        authCode: String,
-        autoRenew: Bool,
-        years: Double,
-        expectedPrice: Double,
-        contactInformation: TransferInDomainRequestBodyContactInformation,
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> TransferInDomainResponse {
+    public static func transferInDomain(config: ClientConfig, domain: DomainName, authCode: String, autoRenew: Bool, years: Double, expectedPrice: Double, contactInformation: TransferInDomainRequestBodyContactInformation, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> TransferInDomainResponse {
         try validateRange("expectedPrice", Double(expectedPrice), min: 0.01)
 
-        let requestBody = TransferInDomainRequestBody(
-            authCode: authCode,
-            autoRenew: autoRenew,
-            years: years,
-            expectedPrice: expectedPrice,
-            contactInformation: contactInformation
-        )
+        let requestBody = TransferInDomainRequestBody(authCode: authCode, autoRenew: autoRenew, years: years, expectedPrice: expectedPrice, contactInformation: contactInformation)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/transfer"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "transferInDomain",
-            options: requestOptions,
-            errors: ["401": Unauthorized.self, "429": TooManyRequests.self, "500": InternalServerError.self]
-        )).data
+        return try (await sdkRequest("POST", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/transfer"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], body: requestBody, decoder: .json, operationId: "transferInDomain", options: requestOptions, errors: ["401": Unauthorized.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 
-    /// Retrieves the transfer status for a domain. Use the status to check the progress or outcome of an incoming
-    /// domain transfer. The response reports the transfer's current state.
+    /// Retrieves the transfer status for a domain. Use the status to check the progress or outcome of an incoming domain transfer. The response reports the transfer's current state.
     ///
     /// Get the transfer status for a domain
-    static func getDomainTransferIn(
-        config: ClientConfig,
-        domain: DomainName,
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetDomainTransferInResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/transfer"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            decoder: .json,
-            operationId: "getDomainTransferIn",
-            options: requestOptions,
-            errors: [
-                "400": HttpApiDecodeError.self,
-                "401": Unauthorized.self,
-                "404": NotFound.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+    public static func getDomainTransferIn(config: ClientConfig, domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainTransferInResponse {
+        return try (await sdkRequest("GET", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/transfer"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], decoder: .json, operationId: "getDomainTransferIn", options: requestOptions, errors: ["400": HttpApiDecodeError.self, "401": Unauthorized.self, "404": NotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 }

@@ -6,35 +6,19 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension LogDrainsMethods {
-    /// Deletes an integration log drain by its identifier. When using an OAuth2 token, you can delete only a log drain
-    /// owned by the authenticated integration. Use `teamId` or `slug` to make the request on behalf of a team.
+extension LogDrainsMethods {
+    /// Deletes an integration log drain by its identifier. When using an OAuth2 token, you can delete only a log drain owned by the authenticated integration. Use `teamId` or `slug` to make the request on behalf of a team.
     ///
-    /// Deletes the Integration log drain with the provided `id`. When using an OAuth2 Token, the log drain can be
-    /// deleted only if the integration owns it.
+    /// Deletes the Integration log drain with the provided `id`. When using an OAuth2 Token, the log drain can be deleted only if the integration owns it.
     ///
     /// - Parameters:
     /// - id: ID of the log drain to be deleted
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteIntegrationLogDrain(
-        config: ClientConfig,
-        id: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v1/integrations/log-drains/", sdkEncodePathSegment(sdkWireString(id))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .empty,
-            operationId: "deleteIntegrationLogDrain",
-            options: requestOptions
-        )).data
+    public static func deleteIntegrationLogDrain(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+        return try (await sdkRequest("DELETE", ["/v1/integrations/log-drains/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .empty, operationId: "deleteIntegrationLogDrain", options: requestOptions)).data
     }
 }

@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AccessGroupsMethods {
-    /// Lists members of an access group, with optional search and cursor-based pagination. Use `search` to match
-    /// members by name, username, or email, and `next` to retrieve the next page.
+extension AccessGroupsMethods {
+    /// Lists members of an access group, with optional search and cursor-based pagination. Use `search` to match members by name, username, or email, and `next` to retrieve the next page.
     ///
     /// List members of an access group
     ///
@@ -19,34 +18,17 @@ public extension AccessGroupsMethods {
     /// - search: Search project members by their name, username, and email.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listAccessGroupMembers(
-        config: ClientConfig,
-        idOrName: String,
-        limit: Int? = nil,
-        next: String? = nil,
-        search: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListAccessGroupMembersResponse {
-        if let limit {
+    public static func listAccessGroupMembers(config: ClientConfig, idOrName: String, limit: Int? = nil, next: String? = nil, search: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListAccessGroupMembersResponse {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(idOrName)), "/members"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("limit", value: limit),
-                SdkQueryParameter("next", value: next),
-                SdkQueryParameter("search", value: search),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "listAccessGroupMembers",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(idOrName)), "/members"].joined(), config: config, query: [
+            SdkQueryParameter("limit", value: limit),
+            SdkQueryParameter("next", value: next),
+            SdkQueryParameter("search", value: search),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "listAccessGroupMembers", options: requestOptions)).data
     }
 }

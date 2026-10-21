@@ -7,14 +7,10 @@ import Foundation
     import FoundationNetworking
 #endif
 /// The framework that is being used for this project. When `null` is used no framework is selected
-public struct CreateDeploymentRequestBodyProjectSettingsFramework: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateDeploymentRequestBodyProjectSettingsFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let services = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "services")
     public static let container = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "container")
     public static let blitzjs = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "blitzjs")
@@ -57,8 +53,7 @@ public struct CreateDeploymentRequestBodyProjectSettingsFramework: RawRepresenta
     public static let hydrogen = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "hydrogen")
     public static let vite = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "vite")
     public static let tanstackStart = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable =
-        CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "tanstack-start-lovable")
+    public static let tanstackStartLovable = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "tanstack-start-lovable")
     public static let vitepress = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "vitepress")
     public static let vuepress = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "vuepress")
     public static let parcel = CreateDeploymentRequestBodyProjectSettingsFramework(rawValue: "parcel")
@@ -93,7 +88,7 @@ public struct CreateDeploymentRequestBodyProjectSettingsFramework: RawRepresenta
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -105,10 +100,7 @@ public struct CreateDeploymentRequestBodyProjectSettingsFramework: RawRepresenta
 public struct CreateProjectResponseFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let actixWeb = CreateProjectResponseFramework(rawValue: "actix-web")
     public static let angular = CreateProjectResponseFramework(rawValue: "angular")
     public static let ash = CreateProjectResponseFramework(rawValue: "ash")
@@ -186,7 +178,7 @@ public struct CreateProjectResponseFramework: RawRepresentable, Hashable, Codabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -195,22 +187,16 @@ public struct CreateProjectResponseFramework: RawRepresentable, Hashable, Codabl
     }
 }
 
-public struct GetConfigurationProductsResponseProductsItemProtocolsExperimeXf19ffdf779: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemProtocolsExperimeXf19ffdf779: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let disabled =
-        GetConfigurationProductsResponseProductsItemProtocolsExperimeXf19ffdf779(rawValue: "disabled")
-    public static let enabled =
-        GetConfigurationProductsResponseProductsItemProtocolsExperimeXf19ffdf779(rawValue: "enabled")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let disabled = GetConfigurationProductsResponseProductsItemProtocolsExperimeXf19ffdf779(rawValue: "disabled")
+    public static let enabled = GetConfigurationProductsResponseProductsItemProtocolsExperimeXf19ffdf779(rawValue: "enabled")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -219,22 +205,17 @@ public struct GetConfigurationProductsResponseProductsItemProtocolsExperimeXf19f
     }
 }
 
-public struct DeleteSharedEnvVariableResponseFailedItemErrorTargetVariant1: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct DeleteSharedEnvVariableResponseFailedItemErrorTargetVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let development =
-        DeleteSharedEnvVariableResponseFailedItemErrorTargetVariant1(rawValue: "development")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let development = DeleteSharedEnvVariableResponseFailedItemErrorTargetVariant1(rawValue: "development")
     public static let preview = DeleteSharedEnvVariableResponseFailedItemErrorTargetVariant1(rawValue: "preview")
     public static let production = DeleteSharedEnvVariableResponseFailedItemErrorTargetVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

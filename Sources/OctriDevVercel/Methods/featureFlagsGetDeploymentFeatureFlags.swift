@@ -6,33 +6,18 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension FeatureFlagsMethods {
-    /// Retrieves the feature flags associated with a deployment. Use `deploymentId` to identify the deployment whose
-    /// flags you need. The response includes the flags and status information for the deployment.
+extension FeatureFlagsMethods {
+    /// Retrieves the feature flags associated with a deployment. Use `deploymentId` to identify the deployment whose flags you need. The response includes the flags and status information for the deployment.
     ///
     /// Retrieve the feature flags of a deployment.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getDeploymentFeatureFlags(
-        config: ClientConfig,
-        deploymentId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetDeploymentFeatureFlagsResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/feature-flags"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getDeploymentFeatureFlags",
-            options: requestOptions
-        )).data
+    public static func getDeploymentFeatureFlags(config: ClientConfig, deploymentId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDeploymentFeatureFlagsResponse {
+        return try (await sdkRequest("GET", ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/feature-flags"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getDeploymentFeatureFlags", options: requestOptions)).data
     }
 }

@@ -6,21 +6,17 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct UpdateProjectResponseSecurityManagedRulesVercelRulesetAction: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateProjectResponseSecurityManagedRulesVercelRulesetAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let challenge = UpdateProjectResponseSecurityManagedRulesVercelRulesetAction(rawValue: "challenge")
     public static let deny = UpdateProjectResponseSecurityManagedRulesVercelRulesetAction(rawValue: "deny")
     public static let log = UpdateProjectResponseSecurityManagedRulesVercelRulesetAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -29,14 +25,10 @@ public struct UpdateProjectResponseSecurityManagedRulesVercelRulesetAction: RawR
     }
 }
 
-public struct UpdateProjectResponseSecurityRulesetsValueAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateProjectResponseSecurityRulesetsValueAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allow = UpdateProjectResponseSecurityRulesetsValueAction(rawValue: "allow")
     public static let bypass = UpdateProjectResponseSecurityRulesetsValueAction(rawValue: "bypass")
     public static let challenge = UpdateProjectResponseSecurityRulesetsValueAction(rawValue: "challenge")
@@ -47,7 +39,7 @@ public struct UpdateProjectResponseSecurityRulesetsValueAction: RawRepresentable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -56,19 +48,15 @@ public struct UpdateProjectResponseSecurityRulesetsValueAction: RawRepresentable
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemTargetsValueType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemTargetsValueType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let lambdas = ListProjectsResponseVariant2ProjectsItemTargetsValueType(rawValue: "LAMBDAS")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -77,24 +65,18 @@ public struct ListProjectsResponseVariant2ProjectsItemTargetsValueType: RawRepre
     }
 }
 
-public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant1ValueRXc17f637d55: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant1ValueRXc17f637d55: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let challenge =
-        GetSecurityFirewallConfigResponseActiveRulesetsVariant1ValueRXc17f637d55(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let challenge = GetSecurityFirewallConfigResponseActiveRulesetsVariant1ValueRXc17f637d55(rawValue: "challenge")
     public static let deny = GetSecurityFirewallConfigResponseActiveRulesetsVariant1ValueRXc17f637d55(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseActiveRulesetsVariant1ValueRXc17f637d55(rawValue: "log")
-    public static let rateLimit =
-        GetSecurityFirewallConfigResponseActiveRulesetsVariant1ValueRXc17f637d55(rawValue: "rate_limit")
+    public static let rateLimit = GetSecurityFirewallConfigResponseActiveRulesetsVariant1ValueRXc17f637d55(rawValue: "rate_limit")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -105,20 +87,16 @@ public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant1ValueRXc17f
 
 /// User-facing config/secret model. When set, authoritative for new code paths. Legacy rows omit this field and
 /// callers fall back to existing `type` behavior.
-public struct UploadProjectAvatarResponseEnvItemVisibility: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UploadProjectAvatarResponseEnvItemVisibility: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let config = UploadProjectAvatarResponseEnvItemVisibility(rawValue: "config")
     public static let secret = UploadProjectAvatarResponseEnvItemVisibility(rawValue: "secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -127,21 +105,17 @@ public struct UploadProjectAvatarResponseEnvItemVisibility: RawRepresentable, Ha
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemTargetsValueReadySubstate: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemTargetsValueReadySubstate: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let promoted = ListProjectsResponseVariant2ProjectsItemTargetsValueReadySubstate(rawValue: "PROMOTED")
     public static let rolling = ListProjectsResponseVariant2ProjectsItemTargetsValueReadySubstate(rawValue: "ROLLING")
     public static let staged = ListProjectsResponseVariant2ProjectsItemTargetsValueReadySubstate(rawValue: "STAGED")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -184,22 +158,17 @@ public enum CreateProjectEnvResponseCreatedVariant0ContentHintVariant9Type: Stri
     }
 }
 
-public struct PutFirewallConfigRequestBodyRulesetsVariant0ItemActionMitigateAction: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct PutFirewallConfigRequestBodyRulesetsVariant0ItemActionMitigateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let deny = PutFirewallConfigRequestBodyRulesetsVariant0ItemActionMitigateAction(rawValue: "deny")
-    public static let challenge =
-        PutFirewallConfigRequestBodyRulesetsVariant0ItemActionMitigateAction(rawValue: "challenge")
+    public static let challenge = PutFirewallConfigRequestBodyRulesetsVariant0ItemActionMitigateAction(rawValue: "challenge")
     public static let log = PutFirewallConfigRequestBodyRulesetsVariant0ItemActionMitigateAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -211,10 +180,7 @@ public struct PutFirewallConfigRequestBodyRulesetsVariant0ItemActionMitigateActi
 public struct UpdateProjectRequestBodyNodeVersion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let value26X = UpdateProjectRequestBodyNodeVersion(rawValue: "26.x")
     public static let value24X = UpdateProjectRequestBodyNodeVersion(rawValue: "24.x")
     public static let value22X = UpdateProjectRequestBodyNodeVersion(rawValue: "22.x")
@@ -227,7 +193,7 @@ public struct UpdateProjectRequestBodyNodeVersion: RawRepresentable, Hashable, C
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

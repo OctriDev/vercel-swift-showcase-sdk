@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Deployments domain models
+// Deployments domain models
 extension CancelDeploymentResponseGitSource {
     func encodeGroup2(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
@@ -26,41 +26,27 @@ public indirect enum CancelDeploymentResponseMicrofrontends {
 }
 
 extension CancelDeploymentResponseMicrofrontends: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseMicrofrontends"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseMicrofrontends")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseMicrofrontends {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CancelDeploymentResponseMicrofrontendsVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CancelDeploymentResponseMicrofrontendsVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .cancelDeploymentResponseMicrofrontendsVariant0(value)
         }
-        if let value = try? container.decode(CancelDeploymentResponseMicrofrontendsVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CancelDeploymentResponseMicrofrontendsVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .cancelDeploymentResponseMicrofrontendsVariant1(value)
         }
         return nil
@@ -72,12 +58,12 @@ extension CancelDeploymentResponseMicrofrontends {
         if let value = try? container.decode(
             CancelDeploymentResponseMicrofrontendsVariant0.self
         ) {
-            return .cancelDeploymentResponseMicrofrontendsVariant0(value)
+            return             .cancelDeploymentResponseMicrofrontendsVariant0(value)
         }
         if let value = try? container.decode(
             CancelDeploymentResponseMicrofrontendsVariant1.self
         ) {
-            return .cancelDeploymentResponseMicrofrontendsVariant1(value)
+            return             .cancelDeploymentResponseMicrofrontendsVariant1(value)
         }
         return nil
     }
@@ -100,47 +86,30 @@ public indirect enum CancelDeploymentResponseRoutesItem {
 }
 
 extension CancelDeploymentResponseRoutesItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseRoutesItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseRoutesItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseRoutesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CancelDeploymentResponseRoutesItemVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CancelDeploymentResponseRoutesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .cancelDeploymentResponseRoutesItemVariant0(value)
         }
-        if let value = try? container.decode(CancelDeploymentResponseRoutesItemVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CancelDeploymentResponseRoutesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .cancelDeploymentResponseRoutesItemVariant1(value)
         }
-        if let value = try? container.decode(CancelDeploymentResponseRoutesItemVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CancelDeploymentResponseRoutesItemVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .cancelDeploymentResponseRoutesItemVariant2(value)
         }
         return nil
@@ -152,17 +121,17 @@ extension CancelDeploymentResponseRoutesItem {
         if let value = try? container.decode(
             CancelDeploymentResponseRoutesItemVariant0.self
         ) {
-            return .cancelDeploymentResponseRoutesItemVariant0(value)
+            return             .cancelDeploymentResponseRoutesItemVariant0(value)
         }
         if let value = try? container.decode(
             CancelDeploymentResponseRoutesItemVariant1.self
         ) {
-            return .cancelDeploymentResponseRoutesItemVariant1(value)
+            return             .cancelDeploymentResponseRoutesItemVariant1(value)
         }
         if let value = try? container.decode(
             CancelDeploymentResponseRoutesItemVariant2.self
         ) {
-            return .cancelDeploymentResponseRoutesItemVariant2(value)
+            return             .cancelDeploymentResponseRoutesItemVariant2(value)
         }
         return nil
     }
@@ -185,41 +154,27 @@ public indirect enum CancelDeploymentResponseServicesItem {
 }
 
 extension CancelDeploymentResponseServicesItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseServicesItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseServicesItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseServicesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CancelDeploymentResponseServicesItemVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CancelDeploymentResponseServicesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .cancelDeploymentResponseServicesItemVariant0(value)
         }
-        if let value = try? container.decode(CancelDeploymentResponseServicesItemVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(CancelDeploymentResponseServicesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .cancelDeploymentResponseServicesItemVariant1(value)
         }
         return nil
@@ -231,12 +186,12 @@ extension CancelDeploymentResponseServicesItem {
         if let value = try? container.decode(
             CancelDeploymentResponseServicesItemVariant0.self
         ) {
-            return .cancelDeploymentResponseServicesItemVariant0(value)
+            return             .cancelDeploymentResponseServicesItemVariant0(value)
         }
         if let value = try? container.decode(
             CancelDeploymentResponseServicesItemVariant1.self
         ) {
-            return .cancelDeploymentResponseServicesItemVariant1(value)
+            return             .cancelDeploymentResponseServicesItemVariant1(value)
         }
         return nil
     }
@@ -260,33 +215,25 @@ public indirect enum CancelDeploymentResponseServicesItemVariant1RoutesItemVaria
 }
 
 extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX987891fb11: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX987891fb11"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX987891fb11")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX987891fb11 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             CancelDeploymentResponseServicesItemVariant1RoutesItemVariantXb5dda63620.self
         ) {
-            return .cancelDeploymentResponseServicesItemVariant1RoutesItemVariantXb5dda63620(value)
+            return             .cancelDeploymentResponseServicesItemVariant1RoutesItemVariantXb5dda63620(value)
         }
         return nil
     }
@@ -297,8 +244,7 @@ extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX987891fb
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .cancelDeploymentResponseServicesItemVariant1RoutesItemVariantXb5dda63620(value): try container
-            .encode(value); return true
+        case let .cancelDeploymentResponseServicesItemVariant1RoutesItemVariantXb5dda63620(value): try container.encode(value); return true
         }
     }
 }
@@ -309,32 +255,22 @@ public indirect enum CancelDeploymentResponseRoutesItemVariant0TransformsItemVar
 }
 
 extension CancelDeploymentResponseRoutesItemVariant0TransformsItemVariaXd38d3e5b7f: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseRoutesItemVariant0TransformsItemVariaXd38d3e5b7f"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseRoutesItemVariant0TransformsItemVariaXd38d3e5b7f")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseRoutesItemVariant0TransformsItemVariaXd38d3e5b7f {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -364,32 +300,22 @@ public indirect enum CancelDeploymentResponseServicesItemVariant0BuilderConfigMi
 }
 
 extension CancelDeploymentResponseServicesItemVariant0BuilderConfigMiddXd402447828: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant0BuilderConfigMiddXd402447828"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant0BuilderConfigMiddXd402447828")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseServicesItemVariant0BuilderConfigMiddXd402447828 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode([String].self) {
-            return .stringList(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode([String].self) { return .stringList(value) }
         return nil
     }
 }
@@ -410,32 +336,22 @@ public indirect enum CancelDeploymentResponseServicesItemVariant1RewritesItemHas
 }
 
 extension CancelDeploymentResponseServicesItemVariant1RewritesItemHasItX681f49329b: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant1RewritesItemHasItX681f49329b"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseServicesItemVariant1RewritesItemHasItX681f49329b")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseServicesItemVariant1RewritesItemHasItX681f49329b {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -470,40 +386,26 @@ public struct CancelDeploymentResponseServicesItemVariant1RoutesItemVariantXa732
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantXa7326a90f0 {
-    init(from decoder: Decoder) throws {
+extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantXa7326a90f0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        key = try container.sdkDecodeRequired(.key)
-        type = try container.sdkDecodeRequired(.type)
-        value = try container.sdkDecodeIfPresent(.value)
+        self.key = try container.sdkDecodeRequired(.key)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-public extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantXa7326a90f0 {
-    init(
-        key: String,
-        type: CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX7e54e09449,
-        value: CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX987891fb11? = nil
-    ) {
+extension CancelDeploymentResponseServicesItemVariant1RoutesItemVariantXa7326a90f0 {
+    public init(key: String, type: CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX7e54e09449, value: CancelDeploymentResponseServicesItemVariant1RoutesItemVariantX987891fb11? = nil) {
         (self.key, self.type) = (key, type)
         self.value = value
     }
@@ -515,32 +417,22 @@ public indirect enum CancelDeploymentResponseRoutesItemVariant0HasItemVariant1Va
 }
 
 extension CancelDeploymentResponseRoutesItemVariant0HasItemVariant1ValueVariant1Eq: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseRoutesItemVariant0HasItemVariant1ValueVariant1Eq"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseRoutesItemVariant0HasItemVariant1ValueVariant1Eq")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseRoutesItemVariant0HasItemVariant1ValueVariant1Eq {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -572,33 +464,25 @@ public indirect enum CancelDeploymentResponseRoutesItemVariant0MissingItemVarian
 }
 
 extension CancelDeploymentResponseRoutesItemVariant0MissingItemVariant1Value: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CancelDeploymentResponseRoutesItemVariant0MissingItemVariant1Value"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CancelDeploymentResponseRoutesItemVariant0MissingItemVariant1Value")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CancelDeploymentResponseRoutesItemVariant0MissingItemVariant1Value {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         if let value = try? container.decode(
             CancelDeploymentResponseRoutesItemVariant0MissingItemVariant1Xe0c3026b12.self
         ) {
-            return .cancelDeploymentResponseRoutesItemVariant0MissingItemVariant1Xe0c3026b12(value)
+            return             .cancelDeploymentResponseRoutesItemVariant0MissingItemVariant1Xe0c3026b12(value)
         }
         return nil
     }

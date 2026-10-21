@@ -3,33 +3,25 @@
 
 import Foundation
 
-/// Authentication domain models
+// Authentication domain models
 public indirect enum ListAuthTokensResponse {
     case listAuthTokensResponseVariant0(ListAuthTokensResponseVariant0)
     case listAuthTokensResponseVariant1(ListAuthTokensResponseVariant1)
 }
 
 extension ListAuthTokensResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ListAuthTokensResponse"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListAuthTokensResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -47,14 +39,8 @@ extension ListAuthTokensResponse {
 
 extension ListAuthTokensResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container
-            .decode(ListAuthTokensResponseVariant0.self) {
-            return .listAuthTokensResponseVariant0(value)
-        }
-        if let value = try? container
-            .decode(ListAuthTokensResponseVariant1.self) {
-            return .listAuthTokensResponseVariant1(value)
-        }
+        if let value = try? container.decode(ListAuthTokensResponseVariant0.self) { return .listAuthTokensResponseVariant0(value) }
+        if let value = try? container.decode(ListAuthTokensResponseVariant1.self) { return .listAuthTokensResponseVariant1(value) }
         return nil
     }
 }
@@ -78,35 +64,25 @@ public struct ListAuthTokensResponseVariant0: Codable {
         case tokens
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAuthTokensResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension ListAuthTokensResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.pagination) else {
-            throw SdkValidationError(
-                field: "pagination",
-                code: "required",
-                message: "Validation failed for 'pagination': value is required"
-            )
+            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
         }
         guard container.contains(.tokens) else {
-            throw SdkValidationError(
-                field: "tokens",
-                code: "required",
-                message: "Validation failed for 'tokens': value is required"
-            )
+            throw SdkValidationError(field: "tokens", code: "required", message: "Validation failed for 'tokens': value is required")
         }
-        pagination = try container.sdkDecodeRequired(.pagination)
-        tokens = try container.sdkDecodeRequired(.tokens)
+        self.pagination = try container.sdkDecodeRequired(.pagination)
+        self.tokens = try container.sdkDecodeRequired(.tokens)
     }
 }
 
-public extension ListAuthTokensResponseVariant0 {
-    init(pagination: ListAuthTokensResponseVariant0Pagination, tokens: [AuthToken]) {
+extension ListAuthTokensResponseVariant0 {
+    public init(pagination: ListAuthTokensResponseVariant0Pagination, tokens: [AuthToken]) {
         (self.pagination, self.tokens) = (pagination, tokens)
     }
 }
@@ -122,35 +98,25 @@ public struct ListAuthTokensResponseVariant1: Codable {
         case tokens
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAuthTokensResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension ListAuthTokensResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.pagination) else {
-            throw SdkValidationError(
-                field: "pagination",
-                code: "required",
-                message: "Validation failed for 'pagination': value is required"
-            )
+            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
         }
         guard container.contains(.tokens) else {
-            throw SdkValidationError(
-                field: "tokens",
-                code: "required",
-                message: "Validation failed for 'tokens': value is required"
-            )
+            throw SdkValidationError(field: "tokens", code: "required", message: "Validation failed for 'tokens': value is required")
         }
-        pagination = try container.sdkDecodeRequired(.pagination)
-        tokens = try container.sdkDecodeRequired(.tokens)
+        self.pagination = try container.sdkDecodeRequired(.pagination)
+        self.tokens = try container.sdkDecodeRequired(.tokens)
     }
 }
 
-public extension ListAuthTokensResponseVariant1 {
-    init(pagination: Pagination, tokens: [AuthToken]) {
+extension ListAuthTokensResponseVariant1 {
+    public init(pagination: Pagination, tokens: [AuthToken]) {
         (self.pagination, self.tokens) = (pagination, tokens)
     }
 }
@@ -166,43 +132,29 @@ public struct ListAuthTokensResponseVariant0Pagination: Codable {
         case prev
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ListAuthTokensResponseVariant0Pagination {
-    init(from decoder: Decoder) throws {
+extension ListAuthTokensResponseVariant0Pagination {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.count) else {
-            throw SdkValidationError(
-                field: "count",
-                code: "required",
-                message: "Validation failed for 'count': value is required"
-            )
+            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
         }
         guard container.contains(.next) else {
-            throw SdkValidationError(
-                field: "next",
-                code: "required",
-                message: "Validation failed for 'next': value is required"
-            )
+            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
         }
         guard container.contains(.prev) else {
-            throw SdkValidationError(
-                field: "prev",
-                code: "required",
-                message: "Validation failed for 'prev': value is required"
-            )
+            throw SdkValidationError(field: "prev", code: "required", message: "Validation failed for 'prev': value is required")
         }
-        count = try container.sdkDecodeRequired(.count)
-        next = try container.sdkDecodeNullable(.next)
-        prev = try container.sdkDecodeNullable(.prev)
+        self.count = try container.sdkDecodeRequired(.count)
+        self.next = try container.sdkDecodeNullable(.next)
+        self.prev = try container.sdkDecodeNullable(.prev)
     }
 }
 
-public extension ListAuthTokensResponseVariant0Pagination {
-    init(count: Double, next: String?, prev: String?) {
+extension ListAuthTokensResponseVariant0Pagination {
+    public init(count: Double, next: String?, prev: String?) {
         (self.count, self.next) = (count, next)
         self.prev = prev
     }

@@ -3,33 +3,25 @@
 
 import Foundation
 
-/// Sandboxes domain models
+// Sandboxes domain models
 public indirect enum StopSessionResponse {
     case stopSessionResponseVariant0(StopSessionResponseVariant0)
     case stopSessionResponseVariant1(StopSessionResponseVariant1)
 }
 
 extension StopSessionResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for StopSessionResponse"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for StopSessionResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -47,14 +39,8 @@ extension StopSessionResponse {
 
 extension StopSessionResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container
-            .decode(StopSessionResponseVariant0.self) {
-            return .stopSessionResponseVariant0(value)
-        }
-        if let value = try? container
-            .decode(StopSessionResponseVariant1.self) {
-            return .stopSessionResponseVariant1(value)
-        }
+        if let value = try? container.decode(StopSessionResponseVariant0.self) { return .stopSessionResponseVariant0(value) }
+        if let value = try? container.decode(StopSessionResponseVariant1.self) { return .stopSessionResponseVariant1(value) }
         return nil
     }
 }
@@ -78,27 +64,21 @@ public struct StopSessionResponseVariant0: Codable {
         case session
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension StopSessionResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension StopSessionResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.session) else {
-            throw SdkValidationError(
-                field: "session",
-                code: "required",
-                message: "Validation failed for 'session': value is required"
-            )
+            throw SdkValidationError(field: "session", code: "required", message: "Validation failed for 'session': value is required")
         }
-        session = try container.sdkDecodeRequired(.session)
+        self.session = try container.sdkDecodeRequired(.session)
     }
 }
 
-public extension StopSessionResponseVariant0 {
-    init(session: Session) {
+extension StopSessionResponseVariant0 {
+    public init(session: Session) {
         self.session = session
     }
 }
@@ -118,43 +98,29 @@ public struct StopSessionResponseVariant1: Codable {
         case snapshot
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension StopSessionResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension StopSessionResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.sandbox) else {
-            throw SdkValidationError(
-                field: "sandbox",
-                code: "required",
-                message: "Validation failed for 'sandbox': value is required"
-            )
+            throw SdkValidationError(field: "sandbox", code: "required", message: "Validation failed for 'sandbox': value is required")
         }
         guard container.contains(.session) else {
-            throw SdkValidationError(
-                field: "session",
-                code: "required",
-                message: "Validation failed for 'session': value is required"
-            )
+            throw SdkValidationError(field: "session", code: "required", message: "Validation failed for 'session': value is required")
         }
         guard container.contains(.snapshot) else {
-            throw SdkValidationError(
-                field: "snapshot",
-                code: "required",
-                message: "Validation failed for 'snapshot': value is required"
-            )
+            throw SdkValidationError(field: "snapshot", code: "required", message: "Validation failed for 'snapshot': value is required")
         }
-        sandbox = try container.sdkDecodeRequired(.sandbox)
-        session = try container.sdkDecodeRequired(.session)
-        snapshot = try container.sdkDecodeRequired(.snapshot)
+        self.sandbox = try container.sdkDecodeRequired(.sandbox)
+        self.session = try container.sdkDecodeRequired(.session)
+        self.snapshot = try container.sdkDecodeRequired(.snapshot)
     }
 }
 
-public extension StopSessionResponseVariant1 {
-    init(sandbox: NamedSandbox, session: Session, snapshot: Snapshot) {
+extension StopSessionResponseVariant1 {
+    public init(sandbox: NamedSandbox, session: Session, snapshot: Snapshot) {
         (self.sandbox, self.session) = (sandbox, session)
         self.snapshot = snapshot
     }

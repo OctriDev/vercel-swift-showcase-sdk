@@ -3,23 +3,11 @@
 
 import Foundation
 
-/// Teams domain models
-public extension Team {
-    init(from decoder: Decoder) throws {
+// Teams domain models
+extension Team {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        try self.init(
-            sdkRequiredFields: container.sdkDecodeNullable(.avatar),
-            billing: container.sdkDecodeNullable(.billing),
-            createdAt: container.sdkDecodeRequired(.createdAt),
-            creatorId: container.sdkDecodeRequired(.creatorId),
-            description: container.sdkDecodeNullable(.description),
-            id: container.sdkDecodeRequired(.id),
-            limited: container.sdkDecodeRequired(.limited),
-            name: container.sdkDecodeNullable(.name),
-            slug: container.sdkDecodeRequired(.slug),
-            stagingPrefix: container.sdkDecodeRequired(.stagingPrefix),
-            updatedAt: container.sdkDecodeRequired(.updatedAt)
-        )
+        self.init(sdkRequiredFields: try container.sdkDecodeNullable(.avatar), billing: try container.sdkDecodeNullable(.billing), createdAt: try container.sdkDecodeRequired(.createdAt), creatorId: try container.sdkDecodeRequired(.creatorId), description: try container.sdkDecodeNullable(.description), id: try container.sdkDecodeRequired(.id), limited: try container.sdkDecodeRequired(.limited), name: try container.sdkDecodeNullable(.name), slug: try container.sdkDecodeRequired(.slug), stagingPrefix: try container.sdkDecodeRequired(.stagingPrefix), updatedAt: try container.sdkDecodeRequired(.updatedAt))
         try sdkDecodeFieldsPart1(container)
         try sdkDecodeFieldsPart2(container)
         try sdkDecodeFieldsPart3(container)
@@ -28,72 +16,9 @@ public extension Team {
     }
 }
 
-public extension Team {
-    init(
-        avatar: String?,
-        billing: TeamBilling?,
-        createdAt: Double,
-        creatorId: String,
-        description: String?,
-        id: String,
-        limited: Bool,
-        name: String?,
-        slug: String,
-        stagingPrefix: String,
-        updatedAt: Double,
-        apiKeysInvalidatedAt: Double? = nil,
-        appTokensInvalidatedAt: Double? = nil,
-        connect: TeamConnect? = nil,
-        defaultContinuousUsageKind: TeamDefaultContinuousUsageKind? = nil,
-        defaultDeploymentProtection: TeamDefaultDeploymentProtection? = nil,
-        defaultExpirationSettings: TeamDefaultExpirationSettings? = nil,
-        defaultPassport: TeamDefaultPassport? = nil,
-        defaultProjectJobs: TeamDefaultProjectJobs? = nil,
-        defaultRoles: TeamDefaultRoles? = nil,
-        deploymentPolicy: TeamDeploymentPolicy? = nil,
-        deploymentStorageRollout: TeamDeploymentStorageRollout? = nil,
-        disableHardAutoBlocks: TeamDisableHardAutoBlocks? = nil,
-        disableRepositoryDispatchEvents: Bool? = nil,
-        disjunctiveProductionSecretPolicy: TeamDisjunctiveProductionSecretPolicy? = nil,
-        dpAccessRequestsMode: TeamDpAccessRequestsMode? = nil,
-        emailDomain: String? = nil,
-        enablePreviewFeedback: TeamEnablePreviewFeedback? = nil,
-        enableProductionFeedback: TeamEnableProductionFeedback? = nil,
-        hideIpAddresses: Bool? = nil,
-        hideIpAddressesInLogDrains: Bool? = nil,
-        integrationTokensInvalidatedAt: Double? = nil,
-        inviteCode: String? = nil,
-        ipBuckets: [TeamIpBucketsItem]? = nil,
-        membership: TeamMembership? = nil,
-        nsnbConfig: TeamNsnbConfig? = nil,
-        orgRootTeamId: String? = nil,
-        parentId: String? = nil,
-        personalAccessTokensInvalidatedAt: Double? = nil,
-        platform: Bool? = nil,
-        previewDeploymentSuffix: String? = nil,
-        remoteCaching: TeamRemoteCaching? = nil,
-        requireVerifiedCommits: Bool? = nil,
-        resourceConfig: TeamResourceConfig? = nil,
-        saml: TeamSaml? = nil,
-        sensitiveEnvironmentVariablePolicy: TeamSensitiveEnvironmentVariablePolicy? = nil,
-        strictConnectors: TeamStrictConnectors? = nil,
-        strictDeploymentProtectionSettings: TeamStrictDeploymentProtectionSettings? = nil,
-        strictPasswordProtectionSettings: TeamStrictPasswordProtectionSettings? = nil,
-        strictShareableLinks: TeamStrictShareableLinks? = nil
-    ) {
-        self.init(
-            sdkRequiredFields: avatar,
-            billing: billing,
-            createdAt: createdAt,
-            creatorId: creatorId,
-            description: description,
-            id: id,
-            limited: limited,
-            name: name,
-            slug: slug,
-            stagingPrefix: stagingPrefix,
-            updatedAt: updatedAt
-        )
+extension Team {
+    public init(avatar: String?, billing: TeamBilling?, createdAt: Double, creatorId: String, description: String?, id: String, limited: Bool, name: String?, slug: String, stagingPrefix: String, updatedAt: Double, apiKeysInvalidatedAt: Double? = nil, appTokensInvalidatedAt: Double? = nil, connect: TeamConnect? = nil, defaultContinuousUsageKind: TeamDefaultContinuousUsageKind? = nil, defaultDeploymentProtection: TeamDefaultDeploymentProtection? = nil, defaultExpirationSettings: TeamDefaultExpirationSettings? = nil, defaultPassport: TeamDefaultPassport? = nil, defaultProjectJobs: TeamDefaultProjectJobs? = nil, defaultRoles: TeamDefaultRoles? = nil, deploymentPolicy: TeamDeploymentPolicy? = nil, deploymentStorageRollout: TeamDeploymentStorageRollout? = nil, disableHardAutoBlocks: TeamDisableHardAutoBlocks? = nil, disableRepositoryDispatchEvents: Bool? = nil, disjunctiveProductionSecretPolicy: TeamDisjunctiveProductionSecretPolicy? = nil, dpAccessRequestsMode: TeamDpAccessRequestsMode? = nil, emailDomain: String? = nil, enablePreviewFeedback: TeamEnablePreviewFeedback? = nil, enableProductionFeedback: TeamEnableProductionFeedback? = nil, hideIpAddresses: Bool? = nil, hideIpAddressesInLogDrains: Bool? = nil, integrationTokensInvalidatedAt: Double? = nil, inviteCode: String? = nil, ipBuckets: [TeamIpBucketsItem]? = nil, membership: TeamMembership? = nil, nsnbConfig: TeamNsnbConfig? = nil, orgRootTeamId: String? = nil, parentId: String? = nil, personalAccessTokensInvalidatedAt: Double? = nil, platform: Bool? = nil, previewDeploymentSuffix: String? = nil, remoteCaching: TeamRemoteCaching? = nil, requireVerifiedCommits: Bool? = nil, resourceConfig: TeamResourceConfig? = nil, saml: TeamSaml? = nil, sensitiveEnvironmentVariablePolicy: TeamSensitiveEnvironmentVariablePolicy? = nil, strictConnectors: TeamStrictConnectors? = nil, strictDeploymentProtectionSettings: TeamStrictDeploymentProtectionSettings? = nil, strictPasswordProtectionSettings: TeamStrictPasswordProtectionSettings? = nil, strictShareableLinks: TeamStrictShareableLinks? = nil) {
+        self.init(sdkRequiredFields: avatar, billing: billing, createdAt: createdAt, creatorId: creatorId, description: description, id: id, limited: limited, name: name, slug: slug, stagingPrefix: stagingPrefix, updatedAt: updatedAt)
         sdkSet1(apiKeysInvalidatedAt, appTokensInvalidatedAt, connect, defaultContinuousUsageKind)
         sdkSet2(defaultDeploymentProtection, defaultExpirationSettings, defaultPassport, defaultProjectJobs)
         sdkSet3(defaultRoles, deploymentPolicy, deploymentStorageRollout, disableHardAutoBlocks)
@@ -107,8 +32,8 @@ public extension Team {
     }
 }
 
-public extension Team {
-    func encode(to encoder: Encoder) throws {
+extension Team {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(avatar, forKey: .avatar)
@@ -165,12 +90,7 @@ public extension Team {
 }
 
 extension Team {
-    mutating func sdkSet1(
-        _ apiKeysInvalidatedAt: Double?,
-        _ appTokensInvalidatedAt: Double?,
-        _ connect: TeamConnect?,
-        _ defaultContinuousUsageKind: TeamDefaultContinuousUsageKind?
-    ) {
+    mutating func sdkSet1(_ apiKeysInvalidatedAt: Double?, _ appTokensInvalidatedAt: Double?, _ connect: TeamConnect?, _ defaultContinuousUsageKind: TeamDefaultContinuousUsageKind?) {
         self.apiKeysInvalidatedAt = apiKeysInvalidatedAt
         self.appTokensInvalidatedAt = appTokensInvalidatedAt
         self.connect = connect
@@ -179,12 +99,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet2(
-        _ defaultDeploymentProtection: TeamDefaultDeploymentProtection?,
-        _ defaultExpirationSettings: TeamDefaultExpirationSettings?,
-        _ defaultPassport: TeamDefaultPassport?,
-        _ defaultProjectJobs: TeamDefaultProjectJobs?
-    ) {
+    mutating func sdkSet2(_ defaultDeploymentProtection: TeamDefaultDeploymentProtection?, _ defaultExpirationSettings: TeamDefaultExpirationSettings?, _ defaultPassport: TeamDefaultPassport?, _ defaultProjectJobs: TeamDefaultProjectJobs?) {
         self.defaultDeploymentProtection = defaultDeploymentProtection
         self.defaultExpirationSettings = defaultExpirationSettings
         self.defaultPassport = defaultPassport
@@ -193,12 +108,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet3(
-        _ defaultRoles: TeamDefaultRoles?,
-        _ deploymentPolicy: TeamDeploymentPolicy?,
-        _ deploymentStorageRollout: TeamDeploymentStorageRollout?,
-        _ disableHardAutoBlocks: TeamDisableHardAutoBlocks?
-    ) {
+    mutating func sdkSet3(_ defaultRoles: TeamDefaultRoles?, _ deploymentPolicy: TeamDeploymentPolicy?, _ deploymentStorageRollout: TeamDeploymentStorageRollout?, _ disableHardAutoBlocks: TeamDisableHardAutoBlocks?) {
         self.defaultRoles = defaultRoles
         self.deploymentPolicy = deploymentPolicy
         self.deploymentStorageRollout = deploymentStorageRollout
@@ -207,11 +117,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet4(
-        _ disableRepositoryDispatchEvents: Bool?,
-        _ disjunctiveProductionSecretPolicy: TeamDisjunctiveProductionSecretPolicy?,
-        _ dpAccessRequestsMode: TeamDpAccessRequestsMode?
-    ) {
+    mutating func sdkSet4(_ disableRepositoryDispatchEvents: Bool?, _ disjunctiveProductionSecretPolicy: TeamDisjunctiveProductionSecretPolicy?, _ dpAccessRequestsMode: TeamDpAccessRequestsMode?) {
         self.disableRepositoryDispatchEvents = disableRepositoryDispatchEvents
         self.disjunctiveProductionSecretPolicy = disjunctiveProductionSecretPolicy
         self.dpAccessRequestsMode = dpAccessRequestsMode
@@ -219,12 +125,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet5(
-        _ emailDomain: String?,
-        _ enablePreviewFeedback: TeamEnablePreviewFeedback?,
-        _ enableProductionFeedback: TeamEnableProductionFeedback?,
-        _ hideIpAddresses: Bool?
-    ) {
+    mutating func sdkSet5(_ emailDomain: String?, _ enablePreviewFeedback: TeamEnablePreviewFeedback?, _ enableProductionFeedback: TeamEnableProductionFeedback?, _ hideIpAddresses: Bool?) {
         self.emailDomain = emailDomain
         self.enablePreviewFeedback = enablePreviewFeedback
         self.enableProductionFeedback = enableProductionFeedback
@@ -233,13 +134,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet6(
-        _ hideIpAddressesInLogDrains: Bool?,
-        _ integrationTokensInvalidatedAt: Double?,
-        _ inviteCode: String?,
-        _ ipBuckets: [TeamIpBucketsItem]?,
-        _ membership: TeamMembership?
-    ) {
+    mutating func sdkSet6(_ hideIpAddressesInLogDrains: Bool?, _ integrationTokensInvalidatedAt: Double?, _ inviteCode: String?, _ ipBuckets: [TeamIpBucketsItem]?, _ membership: TeamMembership?) {
         self.hideIpAddressesInLogDrains = hideIpAddressesInLogDrains
         self.integrationTokensInvalidatedAt = integrationTokensInvalidatedAt
         self.inviteCode = inviteCode
@@ -249,13 +144,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet7(
-        _ nsnbConfig: TeamNsnbConfig?,
-        _ orgRootTeamId: String?,
-        _ parentId: String?,
-        _ personalAccessTokensInvalidatedAt: Double?,
-        _ platform: Bool?
-    ) {
+    mutating func sdkSet7(_ nsnbConfig: TeamNsnbConfig?, _ orgRootTeamId: String?, _ parentId: String?, _ personalAccessTokensInvalidatedAt: Double?, _ platform: Bool?) {
         self.nsnbConfig = nsnbConfig
         self.orgRootTeamId = orgRootTeamId
         self.parentId = parentId
@@ -265,13 +154,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet8(
-        _ previewDeploymentSuffix: String?,
-        _ remoteCaching: TeamRemoteCaching?,
-        _ requireVerifiedCommits: Bool?,
-        _ resourceConfig: TeamResourceConfig?,
-        _ saml: TeamSaml?
-    ) {
+    mutating func sdkSet8(_ previewDeploymentSuffix: String?, _ remoteCaching: TeamRemoteCaching?, _ requireVerifiedCommits: Bool?, _ resourceConfig: TeamResourceConfig?, _ saml: TeamSaml?) {
         self.previewDeploymentSuffix = previewDeploymentSuffix
         self.remoteCaching = remoteCaching
         self.requireVerifiedCommits = requireVerifiedCommits
@@ -281,11 +164,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet9(
-        _ sensitiveEnvironmentVariablePolicy: TeamSensitiveEnvironmentVariablePolicy?,
-        _ strictConnectors: TeamStrictConnectors?,
-        _ strictDeploymentProtectionSettings: TeamStrictDeploymentProtectionSettings?
-    ) {
+    mutating func sdkSet9(_ sensitiveEnvironmentVariablePolicy: TeamSensitiveEnvironmentVariablePolicy?, _ strictConnectors: TeamStrictConnectors?, _ strictDeploymentProtectionSettings: TeamStrictDeploymentProtectionSettings?) {
         self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
         self.strictConnectors = strictConnectors
         self.strictDeploymentProtectionSettings = strictDeploymentProtectionSettings
@@ -293,10 +172,7 @@ extension Team {
 }
 
 extension Team {
-    mutating func sdkSet10(
-        _ strictPasswordProtectionSettings: TeamStrictPasswordProtectionSettings?,
-        _ strictShareableLinks: TeamStrictShareableLinks?
-    ) {
+    mutating func sdkSet10(_ strictPasswordProtectionSettings: TeamStrictPasswordProtectionSettings?, _ strictShareableLinks: TeamStrictShareableLinks?) {
         self.strictPasswordProtectionSettings = strictPasswordProtectionSettings
         self.strictShareableLinks = strictShareableLinks
     }
@@ -304,60 +180,60 @@ extension Team {
 
 extension Team {
     mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        apiKeysInvalidatedAt = try container.sdkDecodeIfPresent(.apiKeysInvalidatedAt)
-        appTokensInvalidatedAt = try container.sdkDecodeIfPresent(.appTokensInvalidatedAt)
-        connect = try container.sdkDecodeIfPresent(.connect)
-        defaultContinuousUsageKind = try container.sdkDecodeIfPresent(.defaultContinuousUsageKind)
-        defaultDeploymentProtection = try container.sdkDecodeIfPresent(.defaultDeploymentProtection)
-        defaultExpirationSettings = try container.sdkDecodeIfPresent(.defaultExpirationSettings)
-        defaultPassport = try container.sdkDecodeIfPresent(.defaultPassport)
-        defaultProjectJobs = try container.sdkDecodeIfPresent(.defaultProjectJobs)
-        defaultRoles = try container.sdkDecodeIfPresent(.defaultRoles)
-        deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
-        deploymentStorageRollout = try container.sdkDecodeIfPresent(.deploymentStorageRollout)
-        disableHardAutoBlocks = try container.sdkDecodeIfPresent(.disableHardAutoBlocks)
+        self.apiKeysInvalidatedAt = try container.sdkDecodeIfPresent(.apiKeysInvalidatedAt)
+        self.appTokensInvalidatedAt = try container.sdkDecodeIfPresent(.appTokensInvalidatedAt)
+        self.connect = try container.sdkDecodeIfPresent(.connect)
+        self.defaultContinuousUsageKind = try container.sdkDecodeIfPresent(.defaultContinuousUsageKind)
+        self.defaultDeploymentProtection = try container.sdkDecodeIfPresent(.defaultDeploymentProtection)
+        self.defaultExpirationSettings = try container.sdkDecodeIfPresent(.defaultExpirationSettings)
+        self.defaultPassport = try container.sdkDecodeIfPresent(.defaultPassport)
+        self.defaultProjectJobs = try container.sdkDecodeIfPresent(.defaultProjectJobs)
+        self.defaultRoles = try container.sdkDecodeIfPresent(.defaultRoles)
+        self.deploymentPolicy = try container.sdkDecodeIfPresent(.deploymentPolicy)
+        self.deploymentStorageRollout = try container.sdkDecodeIfPresent(.deploymentStorageRollout)
+        self.disableHardAutoBlocks = try container.sdkDecodeIfPresent(.disableHardAutoBlocks)
     }
 }
 
 extension Team {
     mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        disableRepositoryDispatchEvents = try container.sdkDecodeIfPresent(.disableRepositoryDispatchEvents)
-        disjunctiveProductionSecretPolicy = try container.sdkDecodeIfPresent(.disjunctiveProductionSecretPolicy)
-        dpAccessRequestsMode = try container.sdkDecodeIfPresent(.dpAccessRequestsMode)
-        emailDomain = try container.sdkDecodeIfPresent(.emailDomain)
-        enablePreviewFeedback = try container.sdkDecodeIfPresent(.enablePreviewFeedback)
-        enableProductionFeedback = try container.sdkDecodeIfPresent(.enableProductionFeedback)
-        hideIpAddresses = try container.sdkDecodeIfPresent(.hideIpAddresses)
-        hideIpAddressesInLogDrains = try container.sdkDecodeIfPresent(.hideIpAddressesInLogDrains)
-        integrationTokensInvalidatedAt = try container.sdkDecodeIfPresent(.integrationTokensInvalidatedAt)
-        inviteCode = try container.sdkDecodeIfPresent(.inviteCode)
-        ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
-        membership = try container.sdkDecodeIfPresent(.membership)
+        self.disableRepositoryDispatchEvents = try container.sdkDecodeIfPresent(.disableRepositoryDispatchEvents)
+        self.disjunctiveProductionSecretPolicy = try container.sdkDecodeIfPresent(.disjunctiveProductionSecretPolicy)
+        self.dpAccessRequestsMode = try container.sdkDecodeIfPresent(.dpAccessRequestsMode)
+        self.emailDomain = try container.sdkDecodeIfPresent(.emailDomain)
+        self.enablePreviewFeedback = try container.sdkDecodeIfPresent(.enablePreviewFeedback)
+        self.enableProductionFeedback = try container.sdkDecodeIfPresent(.enableProductionFeedback)
+        self.hideIpAddresses = try container.sdkDecodeIfPresent(.hideIpAddresses)
+        self.hideIpAddressesInLogDrains = try container.sdkDecodeIfPresent(.hideIpAddressesInLogDrains)
+        self.integrationTokensInvalidatedAt = try container.sdkDecodeIfPresent(.integrationTokensInvalidatedAt)
+        self.inviteCode = try container.sdkDecodeIfPresent(.inviteCode)
+        self.ipBuckets = try container.sdkDecodeIfPresent(.ipBuckets)
+        self.membership = try container.sdkDecodeIfPresent(.membership)
     }
 }
 
 extension Team {
     mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        nsnbConfig = try container.sdkDecodeIfPresent(.nsnbConfig)
-        orgRootTeamId = try container.sdkDecodeIfPresent(.orgRootTeamId)
-        parentId = try container.sdkDecodeIfPresent(.parentId)
-        personalAccessTokensInvalidatedAt = try container.sdkDecodeIfPresent(.personalAccessTokensInvalidatedAt)
-        platform = try container.sdkDecodeIfPresent(.platform)
-        previewDeploymentSuffix = try container.sdkDecodeIfPresent(.previewDeploymentSuffix)
-        remoteCaching = try container.sdkDecodeIfPresent(.remoteCaching)
-        requireVerifiedCommits = try container.sdkDecodeIfPresent(.requireVerifiedCommits)
-        resourceConfig = try container.sdkDecodeIfPresent(.resourceConfig)
-        saml = try container.sdkDecodeIfPresent(.saml)
-        sensitiveEnvironmentVariablePolicy = try container.sdkDecodeIfPresent(.sensitiveEnvironmentVariablePolicy)
-        strictConnectors = try container.sdkDecodeIfPresent(.strictConnectors)
+        self.nsnbConfig = try container.sdkDecodeIfPresent(.nsnbConfig)
+        self.orgRootTeamId = try container.sdkDecodeIfPresent(.orgRootTeamId)
+        self.parentId = try container.sdkDecodeIfPresent(.parentId)
+        self.personalAccessTokensInvalidatedAt = try container.sdkDecodeIfPresent(.personalAccessTokensInvalidatedAt)
+        self.platform = try container.sdkDecodeIfPresent(.platform)
+        self.previewDeploymentSuffix = try container.sdkDecodeIfPresent(.previewDeploymentSuffix)
+        self.remoteCaching = try container.sdkDecodeIfPresent(.remoteCaching)
+        self.requireVerifiedCommits = try container.sdkDecodeIfPresent(.requireVerifiedCommits)
+        self.resourceConfig = try container.sdkDecodeIfPresent(.resourceConfig)
+        self.saml = try container.sdkDecodeIfPresent(.saml)
+        self.sensitiveEnvironmentVariablePolicy = try container.sdkDecodeIfPresent(.sensitiveEnvironmentVariablePolicy)
+        self.strictConnectors = try container.sdkDecodeIfPresent(.strictConnectors)
     }
 }
 
 extension Team {
     mutating func sdkDecodeFieldsPart4(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        strictDeploymentProtectionSettings = try container.sdkDecodeIfPresent(.strictDeploymentProtectionSettings)
-        strictPasswordProtectionSettings = try container.sdkDecodeIfPresent(.strictPasswordProtectionSettings)
-        strictShareableLinks = try container.sdkDecodeIfPresent(.strictShareableLinks)
+        self.strictDeploymentProtectionSettings = try container.sdkDecodeIfPresent(.strictDeploymentProtectionSettings)
+        self.strictPasswordProtectionSettings = try container.sdkDecodeIfPresent(.strictPasswordProtectionSettings)
+        self.strictShareableLinks = try container.sdkDecodeIfPresent(.strictShareableLinks)
     }
 }
 
@@ -371,19 +247,19 @@ public struct TeamResourceConfigBuildEntitlements: Codable {
     }
 
     init() {
-        enhancedBuilds = nil
+        self.enhancedBuilds = nil
     }
 }
 
-public extension TeamResourceConfigBuildEntitlements {
-    init(from decoder: Decoder) throws {
+extension TeamResourceConfigBuildEntitlements {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        enhancedBuilds = try container.sdkDecodeIfPresent(.enhancedBuilds)
+        self.enhancedBuilds = try container.sdkDecodeIfPresent(.enhancedBuilds)
     }
 }
 
-public extension TeamResourceConfigBuildEntitlements {
-    init(enhancedBuilds: Bool? = nil) {
+extension TeamResourceConfigBuildEntitlements {
+    public init(enhancedBuilds: Bool? = nil) {
         self.init()
         self.enhancedBuilds = enhancedBuilds
     }
@@ -398,27 +274,21 @@ public struct TeamDefaultDeploymentProtectionSsoProtection: Codable {
         case deploymentType
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamDefaultDeploymentProtectionSsoProtection {
-    init(from decoder: Decoder) throws {
+extension TeamDefaultDeploymentProtectionSsoProtection {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.deploymentType) else {
-            throw SdkValidationError(
-                field: "deploymentType",
-                code: "required",
-                message: "Validation failed for 'deploymentType': value is required"
-            )
+            throw SdkValidationError(field: "deploymentType", code: "required", message: "Validation failed for 'deploymentType': value is required")
         }
-        deploymentType = try container.sdkDecodeRequired(.deploymentType)
+        self.deploymentType = try container.sdkDecodeRequired(.deploymentType)
     }
 }
 
-public extension TeamDefaultDeploymentProtectionSsoProtection {
-    init(deploymentType: String) {
+extension TeamDefaultDeploymentProtectionSsoProtection {
+    public init(deploymentType: String) {
         self.deploymentType = deploymentType
     }
 }
@@ -438,47 +308,29 @@ public struct TeamDeploymentPolicyGitSourcesItem: Codable {
         case sources
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamDeploymentPolicyGitSourcesItem {
-    init(from decoder: Decoder) throws {
+extension TeamDeploymentPolicyGitSourcesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
         guard container.contains(.environments) else {
-            throw SdkValidationError(
-                field: "environments",
-                code: "required",
-                message: "Validation failed for 'environments': value is required"
-            )
+            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
         }
         guard container.contains(.sources) else {
-            throw SdkValidationError(
-                field: "sources",
-                code: "required",
-                message: "Validation failed for 'sources': value is required"
-            )
+            throw SdkValidationError(field: "sources", code: "required", message: "Validation failed for 'sources': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
-        environments = try container.sdkDecodeRequired(.environments)
-        sources = try container.sdkDecodeRequired(.sources)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.environments = try container.sdkDecodeRequired(.environments)
+        self.sources = try container.sdkDecodeRequired(.sources)
     }
 }
 
-public extension TeamDeploymentPolicyGitSourcesItem {
-    init(
-        enabled: Bool,
-        environments: [TeamDeploymentPolicyGitSourcesItemEnvironmentsItem],
-        sources: [TeamDeploymentPolicyGitSourcesItemSourcesItem]
-    ) {
+extension TeamDeploymentPolicyGitSourcesItem {
+    public init(enabled: Bool, environments: [TeamDeploymentPolicyGitSourcesItemEnvironmentsItem], sources: [TeamDeploymentPolicyGitSourcesItemSourcesItem]) {
         (self.enabled, self.environments) = (enabled, environments)
         self.sources = sources
     }
@@ -496,35 +348,25 @@ public struct TeamStrictShareableLinks: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamStrictShareableLinks {
-    init(from decoder: Decoder) throws {
+extension TeamStrictShareableLinks {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
     }
 }
 
-public extension TeamStrictShareableLinks {
-    init(enabled: Bool, updatedAt: Double) {
+extension TeamStrictShareableLinks {
+    public init(enabled: Bool, updatedAt: Double) {
         (self.enabled, self.updatedAt) = (enabled, updatedAt)
     }
 }
@@ -541,49 +383,28 @@ public struct TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0:
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0 {
-    init(from decoder: Decoder) throws {
+extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.target) else {
-            throw SdkValidationError(
-                field: "target",
-                code: "required",
-                message: "Validation failed for 'target': value is required"
-            )
+            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        target = try container.sdkDecodeRequired(.target)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0Type.allCases.map(\.rawValue)
-        )
+        self.target = try container.sdkDecodeRequired(.target)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0Type.allCases.map(\.rawValue))
     }
 }
 
-public extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0 {
-    init(
-        target: TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0Target,
-        type: TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0Type
-    ) throws {
+extension TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0 {
+    public init(target: TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0Target, type: TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0Type) throws {
         (self.target, self.type) = (target, type)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, TeamDeploymentPolicyDeploymentSourcesItemEnvironmentsItemVariant0Type.allCases.map(\.rawValue))
     }
 }
 
@@ -599,34 +420,20 @@ public struct TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1: Codabl
         case type
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.environmentId) else {
-            throw SdkValidationError(
-                field: "environmentId",
-                code: "required",
-                message: "Validation failed for 'environmentId': value is required"
-            )
+            throw SdkValidationError(field: "environmentId", code: "required", message: "Validation failed for 'environmentId': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        environmentId = try container.sdkDecodeRequired(.environmentId)
-        type = try container.sdkDecodeRequired(.type)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1Type.allCases.map(\.rawValue)
-        )
+        self.environmentId = try container.sdkDecodeRequired(.environmentId)
+        self.type = try container.sdkDecodeRequired(.type)
+            try sdkValidateRawEnum("type", self.type, TeamDeploymentPolicyGitSourcesItemEnvironmentsItemVariant1Type.allCases.map(\.rawValue))
     }
 }

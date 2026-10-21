@@ -6,11 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SandboxesMethods {
-    /// Creates a drive with the specified name or retrieves the existing drive with that name in the project. Use
-    /// `projectId` to associate the drive with a project unless your Vercel OIDC token is scoped to one; configure its
-    /// size with `maxSizeBytes` and storage location with `region`. The response includes the drive object and its
-    /// identifier.
+extension SandboxesMethods {
+    /// Creates a drive with the specified name or retrieves the existing drive with that name in the project. Use `projectId` to associate the drive with a project unless your Vercel OIDC token is scoped to one; configure its size with `maxSizeBytes` and storage location with `region`. The response includes the drive object and its identifier.
     ///
     /// Gets an existing drive by project and name, or creates it when it does not exist.
     ///
@@ -25,33 +22,15 @@ public extension SandboxesMethods {
     ///   bytes. Defaults to 1 TiB when omitted (1 GiB for Hobby). The maximum quota
     ///   is 16 TiB. Request a quota above 16 TiB at https://vercel.com/help.
     /// - region: Region where the drive is stored. Defaults to iad1.
-    static func getOrCreateDrive(
-        config: ClientConfig,
-        name: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        projectId: String? = nil,
-        maxSizeBytes: Int? = nil,
-        region: GetOrCreateDriveRequestBodyRegion? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetOrCreateDriveResponse {
+    public static func getOrCreateDrive(config: ClientConfig, name: String, teamId: String? = nil, slug: String? = nil, projectId: String? = nil, maxSizeBytes: Int? = nil, region: GetOrCreateDriveRequestBodyRegion? = nil, requestOptions: RequestOptions? = nil) async throws -> GetOrCreateDriveResponse {
         try validateLength("name", name, max: 64)
         try sdkValidatePattern("name", name, sdkPatterna828669d9fe5)
 
         let requestBody = GetOrCreateDriveRequestBody(projectId: projectId, maxSizeBytes: maxSizeBytes, region: region)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v2/sandboxes/drives/", sdkEncodePathSegment(sdkWireString(name))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "getOrCreateDrive",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v2/sandboxes/drives/", sdkEncodePathSegment(sdkWireString(name))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "getOrCreateDrive", options: requestOptions)).data
     }
 }

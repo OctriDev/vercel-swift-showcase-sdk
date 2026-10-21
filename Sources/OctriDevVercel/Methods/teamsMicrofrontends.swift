@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension TeamsMethods {
-    /// Updates the settings of a microfrontends group in a team. Supply any of `name`, `fallbackEnvironment`, or
-    /// `enablePolyrepoBranchRouting` to change that setting; fields you omit are not specified for update.
+extension TeamsMethods {
+    /// Updates the settings of a microfrontends group in a team. Supply any of `name`, `fallbackEnvironment`, or `enablePolyrepoBranchRouting` to change that setting; fields you omit are not specified for update.
     ///
     /// Updates a microfrontends group's settings.
     ///
@@ -21,38 +20,11 @@ public extension TeamsMethods {
     ///   from the default app.
     /// - enablePolyrepoBranchRouting: Whether Preview Deployments can link to
     ///   branches with the same name in other Git repositories.
-    static func updateMicrofrontendsGroup(
-        config: ClientConfig,
-        groupId: String,
-        teamId: String,
-        slug: String? = nil,
-        name: String? = nil,
-        fallbackEnvironment: String? = nil,
-        enablePolyrepoBranchRouting: Bool? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateMicrofrontendsGroupResponse {
-        let requestBody = UpdateMicrofrontendsGroupRequestBody(
-            name: name,
-            fallbackEnvironment: fallbackEnvironment,
-            enablePolyrepoBranchRouting: enablePolyrepoBranchRouting
-        )
+    public static func updateMicrofrontendsGroup(config: ClientConfig, groupId: String, teamId: String, slug: String? = nil, name: String? = nil, fallbackEnvironment: String? = nil, enablePolyrepoBranchRouting: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateMicrofrontendsGroupResponse {
+        let requestBody = UpdateMicrofrontendsGroupRequestBody(name: name, fallbackEnvironment: fallbackEnvironment, enablePolyrepoBranchRouting: enablePolyrepoBranchRouting)
 
-        return try await (sdkRequest(
-            "PATCH",
-            [
-                "/v1/teams/",
-                sdkEncodePathSegment(sdkWireString(teamId)),
-                "/microfrontends/",
-                sdkEncodePathSegment(sdkWireString(groupId)),
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateMicrofrontendsGroup",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/microfrontends/", sdkEncodePathSegment(sdkWireString(groupId))].joined(), config: config, query: [
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateMicrofrontendsGroup", options: requestOptions)).data
     }
 }

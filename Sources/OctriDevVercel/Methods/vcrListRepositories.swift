@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VcrMethods {
-    /// Lists container registry repositories for a project in the authenticated team. Supply `projectId` to select the
-    /// project; use `cursor` to continue through paginated results and `limit` to control the page size.
+extension VcrMethods {
+    /// Lists container registry repositories for a project in the authenticated team. Supply `projectId` to select the project; use `cursor` to continue through paginated results and `limit` to control the page size.
     ///
     /// List container registry repositories for a project.
     ///
@@ -18,24 +17,16 @@ public extension VcrMethods {
     /// - cursor: Opaque pagination cursor returned by a previous list response.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listRepositories(
-        config: ClientConfig,
-        projectId: String,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> VcrRepositoryList {
-        if let limit {
+    public static func listRepositories(config: ClientConfig, projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> VcrRepositoryList {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1, max: 1000)
         }
 
-        if let cursor {
+        if let cursor = cursor {
             try validateLength("cursor", cursor, max: 1024)
         }
 
-        return try await (sdkRequest("GET", "/v1/vcr/repository", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/vcr/repository", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("limit", value: limit),
             SdkQueryParameter("cursor", value: cursor),
@@ -44,8 +35,7 @@ public extension VcrMethods {
         ], decoder: .json, operationId: "listRepositories", options: requestOptions)).data
     }
 
-    /// Lists container registry repositories for a project in the authenticated team. Supply `projectId` to select the
-    /// project; use `cursor` to continue through paginated results and `limit` to control the page size.
+    /// Lists container registry repositories for a project in the authenticated team. Supply `projectId` to select the project; use `cursor` to continue through paginated results and `limit` to control the page size.
     ///
     /// List container registry repositories for a project.
     ///
@@ -55,42 +45,17 @@ public extension VcrMethods {
     /// - cursor: Opaque pagination cursor returned by a previous list response.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listRepositoriesPaginated(
-        config: ClientConfig,
-        projectId: String,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<VcrRepository, Swift.Error> {
-        AsyncThrowingStream<VcrRepository, Swift.Error> { (continuation: AsyncThrowingStream<
-            VcrRepository,
-            Swift.Error
-        >.Continuation) in
+    public static func listRepositoriesPaginated(config: ClientConfig, projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<VcrRepository, Swift.Error> {
+        return AsyncThrowingStream<VcrRepository, Swift.Error> { (continuation: AsyncThrowingStream<VcrRepository, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listRepositories(
-                            config: config,
-                            projectId: projectId,
-                            limit: limit,
-                            cursor: pageCursor,
-                            teamId: teamId,
-                            slug: slug,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listRepositories(config: config, projectId: projectId, limit: limit, cursor: pageCursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
                         let pageItems = pageResponse.repositories
-                        if pageItems.isEmpty {
-                            break
-                        }
-                        for item in pageItems {
-                            continuation.yield(item)
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
+                        for item in pageItems { continuation.yield(item) }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {
@@ -103,54 +68,25 @@ public extension VcrMethods {
         }
     }
 
-    struct ListRepositoriesPage {
+    public struct ListRepositoriesPage {
         public let data: VcrRepositoryList
         public let items: [VcrRepository]
         public let hasMore: Bool
     }
 
-    static func listRepositoriesPages(
-        config: ClientConfig,
-        projectId: String,
-        limit: Int? = nil,
-        cursor: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) -> AsyncThrowingStream<ListRepositoriesPage, Swift.Error> {
-        AsyncThrowingStream<ListRepositoriesPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<
-            ListRepositoriesPage,
-            Swift.Error
-        >.Continuation) in
+    public static func listRepositoriesPages(config: ClientConfig, projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<ListRepositoriesPage, Swift.Error> {
+        return AsyncThrowingStream<ListRepositoriesPage, Swift.Error> { (pageContinuation: AsyncThrowingStream<ListRepositoriesPage, Swift.Error>.Continuation) in
             let task = _Concurrency.Task {
                 do {
                     var pageCursor = cursor
                     while true {
-                        let pageResponse = try await listRepositories(
-                            config: config,
-                            projectId: projectId,
-                            limit: limit,
-                            cursor: pageCursor,
-                            teamId: teamId,
-                            slug: slug,
-                            requestOptions: requestOptions
-                        )
+                        let pageResponse = try await listRepositories(config: config, projectId: projectId, limit: limit, cursor: pageCursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
                         let pageItems = pageResponse.repositories
-                        if pageItems.isEmpty {
-                            break
-                        }
+                        if pageItems.isEmpty { break }
                         let hasMore = pageResponse.nextCursor != nil
-                        pageContinuation.yield(ListRepositoriesPage(
-                            data: pageResponse,
-                            items: pageItems,
-                            hasMore: hasMore
-                        ))
-                        if !hasMore {
-                            break
-                        }
-                        guard let nextCursor = pageResponse.nextCursor else {
-                            break
-                        }
+                        pageContinuation.yield(ListRepositoriesPage(data: pageResponse, items: pageItems, hasMore: hasMore))
+                        if !hasMore { break }
+                        guard let nextCursor = pageResponse.nextCursor else { break }
                         pageCursor = nextCursor
                     }
                 } catch {

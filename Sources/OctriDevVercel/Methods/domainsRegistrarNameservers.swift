@@ -6,38 +6,15 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension DomainsRegistrarMethods {
-    /// Updates the nameservers assigned to a domain. Provide `nameservers` as an array of valid nameserver values, or
-    /// pass an empty array to use Vercel's default nameservers. A 204 response confirms the change and contains no
-    /// response body.
+extension DomainsRegistrarMethods {
+    /// Updates the nameservers assigned to a domain. Provide `nameservers` as an array of valid nameserver values, or pass an empty array to use Vercel's default nameservers. A 204 response confirms the change and contains no response body.
     ///
     /// Update the nameservers for a domain. Pass an empty array to use Vercel's default nameservers.
-    static func updateDomainNameservers(
-        config: ClientConfig,
-        domain: DomainName,
-        nameservers: [Nameserver],
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func updateDomainNameservers(config: ClientConfig, domain: DomainName, nameservers: [Nameserver], teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         let requestBody = UpdateDomainNameserversRequestBody(nameservers: nameservers)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/nameservers"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-            ],
-            body: requestBody,
-            decoder: .empty,
-            operationId: "updateDomainNameservers",
-            options: requestOptions,
-            errors: [
-                "401": Unauthorized.self,
-                "404": DomainNotFound.self,
-                "429": TooManyRequests.self,
-                "500": InternalServerError.self,
-            ]
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/nameservers"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+        ], body: requestBody, decoder: .empty, operationId: "updateDomainNameservers", options: requestOptions, errors: ["401": Unauthorized.self, "404": DomainNotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
     }
 }

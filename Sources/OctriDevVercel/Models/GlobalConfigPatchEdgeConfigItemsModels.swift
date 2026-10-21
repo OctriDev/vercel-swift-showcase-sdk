@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// GlobalConfig domain models
+// GlobalConfig domain models
 public indirect enum PatchEdgeConfigItemsRequestItemsItem {
     case patchEdgeConfigItemsRequestItemsItemVariant0(PatchEdgeConfigItemsRequestItemsItemVariant0)
     case patchEdgeConfigItemsRequestItemsItemVariant1(PatchEdgeConfigItemsRequestItemsItemVariant1)
@@ -12,53 +12,33 @@ public indirect enum PatchEdgeConfigItemsRequestItemsItem {
 }
 
 extension PatchEdgeConfigItemsRequestItemsItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for PatchEdgeConfigItemsRequestItemsItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for PatchEdgeConfigItemsRequestItemsItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension PatchEdgeConfigItemsRequestItemsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .patchEdgeConfigItemsRequestItemsItemVariant0(value)
         }
-        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .patchEdgeConfigItemsRequestItemsItemVariant1(value)
         }
-        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant2.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant2.self), sdkKeepsEveryKey(value, of: raw) {
             return .patchEdgeConfigItemsRequestItemsItemVariant2(value)
         }
-        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant3.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(PatchEdgeConfigItemsRequestItemsItemVariant3.self), sdkKeepsEveryKey(value, of: raw) {
             return .patchEdgeConfigItemsRequestItemsItemVariant3(value)
         }
         return nil
@@ -70,22 +50,22 @@ extension PatchEdgeConfigItemsRequestItemsItem {
         if let value = try? container.decode(
             PatchEdgeConfigItemsRequestItemsItemVariant0.self
         ) {
-            return .patchEdgeConfigItemsRequestItemsItemVariant0(value)
+            return             .patchEdgeConfigItemsRequestItemsItemVariant0(value)
         }
         if let value = try? container.decode(
             PatchEdgeConfigItemsRequestItemsItemVariant1.self
         ) {
-            return .patchEdgeConfigItemsRequestItemsItemVariant1(value)
+            return             .patchEdgeConfigItemsRequestItemsItemVariant1(value)
         }
         if let value = try? container.decode(
             PatchEdgeConfigItemsRequestItemsItemVariant2.self
         ) {
-            return .patchEdgeConfigItemsRequestItemsItemVariant2(value)
+            return             .patchEdgeConfigItemsRequestItemsItemVariant2(value)
         }
         if let value = try? container.decode(
             PatchEdgeConfigItemsRequestItemsItemVariant3.self
         ) {
-            return .patchEdgeConfigItemsRequestItemsItemVariant3(value)
+            return             .patchEdgeConfigItemsRequestItemsItemVariant3(value)
         }
         return nil
     }
@@ -116,51 +96,36 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant3: Codable {
         case description
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension PatchEdgeConfigItemsRequestItemsItemVariant3 {
-    init(from decoder: Decoder) throws {
+extension PatchEdgeConfigItemsRequestItemsItemVariant3 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.operation) else {
-            throw SdkValidationError(
-                field: "operation",
-                code: "required",
-                message: "Validation failed for 'operation': value is required"
-            )
+            throw SdkValidationError(field: "operation", code: "required", message: "Validation failed for 'operation': value is required")
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
-        operation = try container.sdkDecodeRequired(.operation)
-        key = try container.sdkDecodeRequired(.key)
-        value = try container.sdkDecodeIfPresent(.value)
-        description = try container.sdkDecodeIfPresent(.description)
-        try validateLength("key", key, min: nil, max: 256)
-        try sdkValidatePattern("key", key, sdkPattern8b2444202961)
-        if let value = description {
+        self.operation = try container.sdkDecodeRequired(.operation)
+        self.key = try container.sdkDecodeRequired(.key)
+        self.value = try container.sdkDecodeIfPresent(.value)
+        self.description = try container.sdkDecodeIfPresent(.description)
+            try validateLength("key", self.key, min: nil, max: 256)
+            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+        if let value = self.description {
             try validateLength("description", value, min: nil, max: 512)
         }
     }
 }
 
-public extension PatchEdgeConfigItemsRequestItemsItemVariant3 {
-    init(
-        operation: PatchEdgeConfigItemsRequestItemsItemVariant3Operation,
-        key: String,
-        value: JSONValue? = nil,
-        description: String? = nil
-    ) throws {
+extension PatchEdgeConfigItemsRequestItemsItemVariant3 {
+    public init(operation: PatchEdgeConfigItemsRequestItemsItemVariant3Operation, key: String, value: JSONValue? = nil, description: String? = nil) throws {
         (self.operation, self.key) = (operation, key)
         (self.value, self.description) = (value, description)
-        try validateLength("key", self.key, min: nil, max: 256)
-        try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+            try validateLength("key", self.key, min: nil, max: 256)
+            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
         if let value = self.description {
             try validateLength("description", value, min: nil, max: 512)
         }
@@ -180,58 +145,39 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant2: Codable {
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension PatchEdgeConfigItemsRequestItemsItemVariant2 {
-    init(from decoder: Decoder) throws {
+extension PatchEdgeConfigItemsRequestItemsItemVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.operation) else {
-            throw SdkValidationError(
-                field: "operation",
-                code: "required",
-                message: "Validation failed for 'operation': value is required"
-            )
+            throw SdkValidationError(field: "operation", code: "required", message: "Validation failed for 'operation': value is required")
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
         guard container.contains(.description) else {
-            throw SdkValidationError(
-                field: "description",
-                code: "required",
-                message: "Validation failed for 'description': value is required"
-            )
+            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
         }
-        operation = try container.sdkDecodeRequired(.operation)
-        key = try container.sdkDecodeRequired(.key)
-        description = try container.sdkDecodeNullable(.description)
-        value = try container.sdkDecodeIfPresent(.value)
-        try validateLength("key", key, min: nil, max: 256)
-        try sdkValidatePattern("key", key, sdkPattern8b2444202961)
-        if let value = description {
+        self.operation = try container.sdkDecodeRequired(.operation)
+        self.key = try container.sdkDecodeRequired(.key)
+        self.description = try container.sdkDecodeNullable(.description)
+        self.value = try container.sdkDecodeIfPresent(.value)
+            try validateLength("key", self.key, min: nil, max: 256)
+            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+        if let value = self.description {
             try validateLength("description", value, min: nil, max: 512)
         }
     }
 }
 
-public extension PatchEdgeConfigItemsRequestItemsItemVariant2 {
-    init(
-        operation: PatchEdgeConfigItemsRequestItemsItemVariant2Operation,
-        key: String,
-        description: String?,
-        value: JSONValue? = nil
-    ) throws {
+extension PatchEdgeConfigItemsRequestItemsItemVariant2 {
+    public init(operation: PatchEdgeConfigItemsRequestItemsItemVariant2Operation, key: String, description: String?, value: JSONValue? = nil) throws {
         (self.operation, self.key) = (operation, key)
         (self.description, self.value) = (description, value)
-        try validateLength("key", self.key, min: nil, max: 256)
-        try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+            try validateLength("key", self.key, min: nil, max: 256)
+            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
         if let value = self.description {
             try validateLength("description", value, min: nil, max: 512)
         }
@@ -251,58 +197,39 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant1: Codable {
         case description
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension PatchEdgeConfigItemsRequestItemsItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension PatchEdgeConfigItemsRequestItemsItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.operation) else {
-            throw SdkValidationError(
-                field: "operation",
-                code: "required",
-                message: "Validation failed for 'operation': value is required"
-            )
+            throw SdkValidationError(field: "operation", code: "required", message: "Validation failed for 'operation': value is required")
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        operation = try container.sdkDecodeRequired(.operation)
-        key = try container.sdkDecodeRequired(.key)
-        value = try container.sdkDecodeRequired(.value)
-        description = try container.sdkDecodeIfPresent(.description)
-        try validateLength("key", key, min: nil, max: 256)
-        try sdkValidatePattern("key", key, sdkPattern8b2444202961)
-        if let value = description {
+        self.operation = try container.sdkDecodeRequired(.operation)
+        self.key = try container.sdkDecodeRequired(.key)
+        self.value = try container.sdkDecodeRequired(.value)
+        self.description = try container.sdkDecodeIfPresent(.description)
+            try validateLength("key", self.key, min: nil, max: 256)
+            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+        if let value = self.description {
             try validateLength("description", value, min: nil, max: 512)
         }
     }
 }
 
-public extension PatchEdgeConfigItemsRequestItemsItemVariant1 {
-    init(
-        operation: PatchEdgeConfigItemsRequestItemsItemVariant1Operation,
-        key: String,
-        value: JSONValue,
-        description: String? = nil
-    ) throws {
+extension PatchEdgeConfigItemsRequestItemsItemVariant1 {
+    public init(operation: PatchEdgeConfigItemsRequestItemsItemVariant1Operation, key: String, value: JSONValue, description: String? = nil) throws {
         (self.operation, self.key) = (operation, key)
         (self.value, self.description) = (value, description)
-        try validateLength("key", self.key, min: nil, max: 256)
-        try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+            try validateLength("key", self.key, min: nil, max: 256)
+            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
         if let value = self.description {
             try validateLength("description", value, min: nil, max: 512)
         }
@@ -322,78 +249,55 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant0: Codable {
         case description
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension PatchEdgeConfigItemsRequestItemsItemVariant0 {
-    init(from decoder: Decoder) throws {
+extension PatchEdgeConfigItemsRequestItemsItemVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.operation) else {
-            throw SdkValidationError(
-                field: "operation",
-                code: "required",
-                message: "Validation failed for 'operation': value is required"
-            )
+            throw SdkValidationError(field: "operation", code: "required", message: "Validation failed for 'operation': value is required")
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        operation = try container.sdkDecodeRequired(.operation)
-        key = try container.sdkDecodeRequired(.key)
-        value = try container.sdkDecodeRequired(.value)
-        description = try container.sdkDecodeIfPresent(.description)
-        try validateLength("key", key, min: nil, max: 256)
-        try sdkValidatePattern("key", key, sdkPattern8b2444202961)
-        if let value = description {
-            try validateLength("description", value, min: nil, max: 512)
-        }
-    }
-}
-
-public extension PatchEdgeConfigItemsRequestItemsItemVariant0 {
-    init(
-        operation: PatchEdgeConfigItemsRequestItemsItemVariant0Operation,
-        key: String,
-        value: JSONValue,
-        description: String? = nil
-    ) throws {
-        (self.operation, self.key) = (operation, key)
-        (self.value, self.description) = (value, description)
-        try validateLength("key", self.key, min: nil, max: 256)
-        try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+        self.operation = try container.sdkDecodeRequired(.operation)
+        self.key = try container.sdkDecodeRequired(.key)
+        self.value = try container.sdkDecodeRequired(.value)
+        self.description = try container.sdkDecodeIfPresent(.description)
+            try validateLength("key", self.key, min: nil, max: 256)
+            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
         if let value = self.description {
             try validateLength("description", value, min: nil, max: 512)
         }
     }
 }
 
-public struct PatchEdgeConfigItemsRequestItemsItemVariant1Operation: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+extension PatchEdgeConfigItemsRequestItemsItemVariant0 {
+    public init(operation: PatchEdgeConfigItemsRequestItemsItemVariant0Operation, key: String, value: JSONValue, description: String? = nil) throws {
+        (self.operation, self.key) = (operation, key)
+        (self.value, self.description) = (value, description)
+            try validateLength("key", self.key, min: nil, max: 256)
+            try sdkValidatePattern("key", self.key, sdkPattern8b2444202961)
+        if let value = self.description {
+            try validateLength("description", value, min: nil, max: 512)
+        }
+    }
+}
+
+public struct PatchEdgeConfigItemsRequestItemsItemVariant1Operation: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let update = PatchEdgeConfigItemsRequestItemsItemVariant1Operation(rawValue: "update")
     public static let upsert = PatchEdgeConfigItemsRequestItemsItemVariant1Operation(rawValue: "upsert")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -402,20 +306,16 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant1Operation: RawRepresen
     }
 }
 
-public struct PatchEdgeConfigItemsRequestItemsItemVariant2Operation: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct PatchEdgeConfigItemsRequestItemsItemVariant2Operation: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let update = PatchEdgeConfigItemsRequestItemsItemVariant2Operation(rawValue: "update")
     public static let upsert = PatchEdgeConfigItemsRequestItemsItemVariant2Operation(rawValue: "upsert")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -424,19 +324,15 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant2Operation: RawRepresen
     }
 }
 
-public struct PatchEdgeConfigItemsRequestItemsItemVariant3Operation: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct PatchEdgeConfigItemsRequestItemsItemVariant3Operation: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let delete = PatchEdgeConfigItemsRequestItemsItemVariant3Operation(rawValue: "delete")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -445,19 +341,15 @@ public struct PatchEdgeConfigItemsRequestItemsItemVariant3Operation: RawRepresen
     }
 }
 
-public struct PatchEdgeConfigItemsRequestItemsItemVariant0Operation: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct PatchEdgeConfigItemsRequestItemsItemVariant0Operation: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let create = PatchEdgeConfigItemsRequestItemsItemVariant0Operation(rawValue: "create")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

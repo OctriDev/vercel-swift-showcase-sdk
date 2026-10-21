@@ -6,28 +6,17 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension IntegrationsMethods {
-    /// Lists integration configurations for the authenticated user or team. Set `view` to `account` or `project` to
-    /// choose the configuration scope, and use the optional filters to narrow results by installation type,
-    /// integration, or team. The `project` view excludes configurations generated for the authorization flow.
+extension IntegrationsMethods {
+    /// Lists integration configurations for the authenticated user or team. Set `view` to `account` or `project` to choose the configuration scope, and use the optional filters to narrow results by installation type, integration, or team. The `project` view excludes configurations generated for the authorization flow.
     ///
-    /// Allows to retrieve all configurations for an authenticated integration. When the `project` view is used,
-    /// configurations generated for the authorization flow will be filtered out of the results.
+    /// Allows to retrieve all configurations for an authenticated integration. When the `project` view is used, configurations generated for the authorization flow will be filtered out of the results.
     ///
     /// - Parameters:
     /// - integrationIdOrSlug: ID of the integration
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getConfigurations(
-        config: ClientConfig,
-        view: GetConfigurationsParameter,
-        installationType: GetConfigurationsParameterX528534bd? = nil,
-        integrationIdOrSlug: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetConfigurationsResponse {
-        try await (sdkRequest("GET", "/v1/integrations/configurations", config: config, query: [
+    public static func getConfigurations(config: ClientConfig, view: GetConfigurationsParameter, installationType: GetConfigurationsParameterX528534bd? = nil, integrationIdOrSlug: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetConfigurationsResponse {
+        return try (await sdkRequest("GET", "/v1/integrations/configurations", config: config, query: [
             SdkQueryParameter("view", value: view),
             SdkQueryParameter("installationType", value: installationType),
             SdkQueryParameter("integrationIdOrSlug", value: integrationIdOrSlug),

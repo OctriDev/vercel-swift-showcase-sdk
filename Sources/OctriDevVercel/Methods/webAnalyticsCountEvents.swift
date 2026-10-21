@@ -6,13 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension WebAnalyticsMethods {
-    /// Counts custom events for a project since Web Analytics was enabled; the count covers production data only. Use
-    /// `since` and `until` to select a date range, and `filter` to restrict results by supported dimensions, including
-    /// `eventName` and event data. The date bounds accept timestamps in milliseconds or valid date strings.
+extension WebAnalyticsMethods {
+    /// Counts custom events for a project since Web Analytics was enabled; the count covers production data only. Use `since` and `until` to select a date range, and `filter` to restrict results by supported dimensions, including `eventName` and event data. The date bounds accept timestamps in milliseconds or valid date strings.
     ///
-    /// Counts the number of custom events on a project (production only), since Web Analytics was enabled. Results can
-    /// be filtered on supported dimensions.
+    /// Counts the number of custom events on a project (production only), since Web Analytics was enabled. Results can be filtered on supported dimensions.
     ///
     /// - Parameters:
     /// - projectId: The project identifier or the project name
@@ -34,21 +31,12 @@ public extension WebAnalyticsMethods {
     ///   such as startswith are supported by the OData parser.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func countEvents(
-        config: ClientConfig,
-        projectId: String,
-        since: CountEventsParameter? = nil,
-        until: CountEventsParameterX1c5616a1? = nil,
-        filter: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> CountEventsResponse {
-        if let filter {
+    public static func countEvents(config: ClientConfig, projectId: String, since: CountEventsParameter? = nil, until: CountEventsParameterX1c5616a1? = nil, filter: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CountEventsResponse {
+        if let filter = filter {
             try validateLength("filter", filter, max: 2048)
         }
 
-        return try await (sdkRequest("GET", "/v1/query/web-analytics/events/count", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/query/web-analytics/events/count", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("since", value: since),
             SdkQueryParameter("until", value: until),

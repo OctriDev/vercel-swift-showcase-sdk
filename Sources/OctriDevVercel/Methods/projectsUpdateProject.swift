@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    struct UpdateProjectOptions: Codable {
+extension ProjectsMethods {
+    public struct UpdateProjectOptions: Codable {
         public var idOrName: String
         public var teamId: String?
         public var slug: String?
@@ -62,9 +62,7 @@ public extension ProjectsMethods {
         }
     }
 
-    /// Updates configuration fields for a project identified by its ID or name. Submit the settings you want to change;
-    /// supported build and install commands can be set to `null` for automatic detection. The response contains the
-    /// updated project object.
+    /// Updates configuration fields for a project identified by its ID or name. Submit the settings you want to change; supported build and install commands can be set to `null` for automatic detection. The response contains the updated project object.
     ///
     /// Update the fields of a project using either its `name` or `id`.
     ///
@@ -145,11 +143,7 @@ public extension ProjectsMethods {
     /// - dismissedToasts: An array of objects representing a Dismissed Toast in
     ///   regards to a Project. Objects are either merged with existing toasts (on key
     ///   match), or added to the `dimissedToasts` array.`
-    static func updateProject(
-        config: ClientConfig,
-        options: UpdateProjectOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateProjectResponse {
+    public static func updateProject(config: ClientConfig, options: UpdateProjectOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateProjectResponse {
         if let buildCommand = options.buildCommand?.valueOrNil {
             try validateLength("buildCommand", buildCommand, max: 256)
         }
@@ -208,18 +202,9 @@ public extension ProjectsMethods {
 
         let requestBody = UpdateProjectRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v9/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateProject",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "updateProject", options: requestOptions)).data
     }
 }

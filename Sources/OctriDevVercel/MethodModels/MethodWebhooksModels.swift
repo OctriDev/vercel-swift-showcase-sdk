@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical webhooks operation model declarations
+// Canonical webhooks operation model declarations
 public struct GetWebhooksResponseVariant0ItemProjectsMetadataItem: Codable {
     public var id: String
     public var name: String
@@ -21,42 +21,27 @@ public struct GetWebhooksResponseVariant0ItemProjectsMetadataItem: Codable {
         case latestDeployment
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetWebhooksResponseVariant0ItemProjectsMetadataItem {
-    init(from decoder: Decoder) throws {
+extension GetWebhooksResponseVariant0ItemProjectsMetadataItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        framework = try container.sdkDecodeIfPresent(.framework)
-        latestDeployment = try container.sdkDecodeIfPresent(.latestDeployment)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.framework = try container.sdkDecodeIfPresent(.framework)
+        self.latestDeployment = try container.sdkDecodeIfPresent(.latestDeployment)
     }
 }
 
-public extension GetWebhooksResponseVariant0ItemProjectsMetadataItem {
-    init(
-        id: String,
-        name: String,
-        framework: GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework? = nil,
-        latestDeployment: String? = nil
-    ) {
+extension GetWebhooksResponseVariant0ItemProjectsMetadataItem {
+    public init(id: String, name: String, framework: GetWebhooksResponseVariant0ItemProjectsMetadataItemFramework? = nil, latestDeployment: String? = nil) {
         (self.id, self.name) = (id, name)
         (self.framework, self.latestDeployment) = (framework, latestDeployment)
     }
@@ -97,78 +82,43 @@ public struct GetWebhookResponse: Codable {
         case projectIds
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetWebhookResponse {
-    init(from decoder: Decoder) throws {
+extension GetWebhookResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.events) else {
-            throw SdkValidationError(
-                field: "events",
-                code: "required",
-                message: "Validation failed for 'events': value is required"
-            )
+            throw SdkValidationError(field: "events", code: "required", message: "Validation failed for 'events': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.ownerId) else {
-            throw SdkValidationError(
-                field: "ownerId",
-                code: "required",
-                message: "Validation failed for 'ownerId': value is required"
-            )
+            throw SdkValidationError(field: "ownerId", code: "required", message: "Validation failed for 'ownerId': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        events = try container.sdkDecodeRequired(.events)
-        id = try container.sdkDecodeRequired(.id)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        url = try container.sdkDecodeRequired(.url)
-        alertRuleIds = try container.sdkDecodeIfPresent(.alertRuleIds)
-        projectIds = try container.sdkDecodeIfPresent(.projectIds)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.events = try container.sdkDecodeRequired(.events)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.url = try container.sdkDecodeRequired(.url)
+        self.alertRuleIds = try container.sdkDecodeIfPresent(.alertRuleIds)
+        self.projectIds = try container.sdkDecodeIfPresent(.projectIds)
     }
 }
 
-public extension GetWebhookResponse {
-    init(
-        createdAt: Double,
-        events: [GetWebhookResponseEventsItem],
-        id: String,
-        ownerId: String,
-        updatedAt: Double,
-        url: String,
-        alertRuleIds: [String]? = nil,
-        projectIds: [String]? = nil
-    ) {
+extension GetWebhookResponse {
+    public init(createdAt: Double, events: [GetWebhookResponseEventsItem], id: String, ownerId: String, updatedAt: Double, url: String, alertRuleIds: [String]? = nil, projectIds: [String]? = nil) {
         (self.createdAt, self.events) = (createdAt, events)
         (self.id, self.ownerId) = (id, ownerId)
         (self.updatedAt, self.url) = (updatedAt, url)
@@ -214,87 +164,47 @@ public struct CreateWebhookResponse: Codable {
         case projectIds
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateWebhookResponse {
-    init(from decoder: Decoder) throws {
+extension CreateWebhookResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.events) else {
-            throw SdkValidationError(
-                field: "events",
-                code: "required",
-                message: "Validation failed for 'events': value is required"
-            )
+            throw SdkValidationError(field: "events", code: "required", message: "Validation failed for 'events': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.ownerId) else {
-            throw SdkValidationError(
-                field: "ownerId",
-                code: "required",
-                message: "Validation failed for 'ownerId': value is required"
-            )
+            throw SdkValidationError(field: "ownerId", code: "required", message: "Validation failed for 'ownerId': value is required")
         }
         guard container.contains(.secret) else {
-            throw SdkValidationError(
-                field: "secret",
-                code: "required",
-                message: "Validation failed for 'secret': value is required"
-            )
+            throw SdkValidationError(field: "secret", code: "required", message: "Validation failed for 'secret': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        events = try container.sdkDecodeRequired(.events)
-        id = try container.sdkDecodeRequired(.id)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        secret = try container.sdkDecodeRequired(.secret)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        url = try container.sdkDecodeRequired(.url)
-        alertRuleIds = try container.sdkDecodeIfPresent(.alertRuleIds)
-        projectIds = try container.sdkDecodeIfPresent(.projectIds)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.events = try container.sdkDecodeRequired(.events)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.secret = try container.sdkDecodeRequired(.secret)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.url = try container.sdkDecodeRequired(.url)
+        self.alertRuleIds = try container.sdkDecodeIfPresent(.alertRuleIds)
+        self.projectIds = try container.sdkDecodeIfPresent(.projectIds)
     }
 }
 
-public extension CreateWebhookResponse {
-    init(
-        createdAt: Double,
-        events: [CreateWebhookResponseEventsItem],
-        id: String,
-        ownerId: String,
-        secret: String,
-        updatedAt: Double,
-        url: String,
-        alertRuleIds: [String]? = nil,
-        projectIds: [String]? = nil
-    ) {
+extension CreateWebhookResponse {
+    public init(createdAt: Double, events: [CreateWebhookResponseEventsItem], id: String, ownerId: String, secret: String, updatedAt: Double, url: String, alertRuleIds: [String]? = nil, projectIds: [String]? = nil) {
         (self.createdAt, self.events) = (createdAt, events)
         (self.id, self.ownerId) = (id, ownerId)
         (self.secret, self.updatedAt) = (secret, updatedAt)
@@ -340,87 +250,47 @@ public struct GetWebhooksResponseVariant0Item: Codable {
         case projectIds
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetWebhooksResponseVariant0Item {
-    init(from decoder: Decoder) throws {
+extension GetWebhooksResponseVariant0Item {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.events) else {
-            throw SdkValidationError(
-                field: "events",
-                code: "required",
-                message: "Validation failed for 'events': value is required"
-            )
+            throw SdkValidationError(field: "events", code: "required", message: "Validation failed for 'events': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.ownerId) else {
-            throw SdkValidationError(
-                field: "ownerId",
-                code: "required",
-                message: "Validation failed for 'ownerId': value is required"
-            )
+            throw SdkValidationError(field: "ownerId", code: "required", message: "Validation failed for 'ownerId': value is required")
         }
         guard container.contains(.projectsMetadata) else {
-            throw SdkValidationError(
-                field: "projectsMetadata",
-                code: "required",
-                message: "Validation failed for 'projectsMetadata': value is required"
-            )
+            throw SdkValidationError(field: "projectsMetadata", code: "required", message: "Validation failed for 'projectsMetadata': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        events = try container.sdkDecodeRequired(.events)
-        id = try container.sdkDecodeRequired(.id)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        projectsMetadata = try container.sdkDecodeNullable(.projectsMetadata)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        url = try container.sdkDecodeRequired(.url)
-        alertRuleIds = try container.sdkDecodeIfPresent(.alertRuleIds)
-        projectIds = try container.sdkDecodeIfPresent(.projectIds)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.events = try container.sdkDecodeRequired(.events)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.projectsMetadata = try container.sdkDecodeNullable(.projectsMetadata)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.url = try container.sdkDecodeRequired(.url)
+        self.alertRuleIds = try container.sdkDecodeIfPresent(.alertRuleIds)
+        self.projectIds = try container.sdkDecodeIfPresent(.projectIds)
     }
 }
 
-public extension GetWebhooksResponseVariant0Item {
-    init(
-        createdAt: Double,
-        events: [GetWebhooksResponseVariant0ItemEventsItem],
-        id: String,
-        ownerId: String,
-        projectsMetadata: [GetWebhooksResponseVariant0ItemProjectsMetadataItem]?,
-        updatedAt: Double,
-        url: String,
-        alertRuleIds: [String]? = nil,
-        projectIds: [String]? = nil
-    ) {
+extension GetWebhooksResponseVariant0Item {
+    public init(createdAt: Double, events: [GetWebhooksResponseVariant0ItemEventsItem], id: String, ownerId: String, projectsMetadata: [GetWebhooksResponseVariant0ItemProjectsMetadataItem]?, updatedAt: Double, url: String, alertRuleIds: [String]? = nil, projectIds: [String]? = nil) {
         (self.createdAt, self.events) = (createdAt, events)
         (self.id, self.ownerId) = (id, ownerId)
         (self.projectsMetadata, self.updatedAt) = (projectsMetadata, updatedAt)
@@ -435,34 +305,22 @@ public indirect enum GetWebhooksResponse {
 }
 
 extension GetWebhooksResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetWebhooksResponse"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetWebhooksResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetWebhooksResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container
-            .decode([GetWebhooksResponseVariant0Item].self) {
-            return .getWebhooksResponseVariant0ItemList(value)
-        }
-        if let value = try? container
-            .decode([GetWebhooksResponseVariant1Item].self) {
-            return .getWebhooksResponseVariant1ItemList(value)
-        }
+        if let value = try? container.decode([GetWebhooksResponseVariant0Item].self) { return .getWebhooksResponseVariant0ItemList(value) }
+        if let value = try? container.decode([GetWebhooksResponseVariant1Item].self) { return .getWebhooksResponseVariant1ItemList(value) }
         return nil
     }
 }
@@ -512,78 +370,43 @@ public struct GetWebhooksResponseVariant1Item: Codable {
         case projectIds
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetWebhooksResponseVariant1Item {
-    init(from decoder: Decoder) throws {
+extension GetWebhooksResponseVariant1Item {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.events) else {
-            throw SdkValidationError(
-                field: "events",
-                code: "required",
-                message: "Validation failed for 'events': value is required"
-            )
+            throw SdkValidationError(field: "events", code: "required", message: "Validation failed for 'events': value is required")
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.ownerId) else {
-            throw SdkValidationError(
-                field: "ownerId",
-                code: "required",
-                message: "Validation failed for 'ownerId': value is required"
-            )
+            throw SdkValidationError(field: "ownerId", code: "required", message: "Validation failed for 'ownerId': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
         guard container.contains(.url) else {
-            throw SdkValidationError(
-                field: "url",
-                code: "required",
-                message: "Validation failed for 'url': value is required"
-            )
+            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
         }
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        events = try container.sdkDecodeRequired(.events)
-        id = try container.sdkDecodeRequired(.id)
-        ownerId = try container.sdkDecodeRequired(.ownerId)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        url = try container.sdkDecodeRequired(.url)
-        alertRuleIds = try container.sdkDecodeIfPresent(.alertRuleIds)
-        projectIds = try container.sdkDecodeIfPresent(.projectIds)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.events = try container.sdkDecodeRequired(.events)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.ownerId = try container.sdkDecodeRequired(.ownerId)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.url = try container.sdkDecodeRequired(.url)
+        self.alertRuleIds = try container.sdkDecodeIfPresent(.alertRuleIds)
+        self.projectIds = try container.sdkDecodeIfPresent(.projectIds)
     }
 }
 
-public extension GetWebhooksResponseVariant1Item {
-    init(
-        createdAt: Double,
-        events: [GetWebhooksResponseVariant1ItemEventsItem],
-        id: String,
-        ownerId: String,
-        updatedAt: Double,
-        url: String,
-        alertRuleIds: [String]? = nil,
-        projectIds: [String]? = nil
-    ) {
+extension GetWebhooksResponseVariant1Item {
+    public init(createdAt: Double, events: [GetWebhooksResponseVariant1ItemEventsItem], id: String, ownerId: String, updatedAt: Double, url: String, alertRuleIds: [String]? = nil, projectIds: [String]? = nil) {
         (self.createdAt, self.events) = (createdAt, events)
         (self.id, self.ownerId) = (id, ownerId)
         (self.updatedAt, self.url) = (updatedAt, url)

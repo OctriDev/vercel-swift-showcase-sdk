@@ -10,14 +10,9 @@ import Foundation
 public struct CreateWebhookResponseEventsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let aiGatewayAutoReloadLimitReached =
-        CreateWebhookResponseEventsItem(rawValue: "ai-gateway.auto-reload.limit-reached")
-    public static let aiGatewayBalanceDepleted =
-        CreateWebhookResponseEventsItem(rawValue: "ai-gateway.balance-depleted")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let aiGatewayAutoReloadLimitReached = CreateWebhookResponseEventsItem(rawValue: "ai-gateway.auto-reload.limit-reached")
+    public static let aiGatewayBalanceDepleted = CreateWebhookResponseEventsItem(rawValue: "ai-gateway.balance-depleted")
     public static let alertsTriggered = CreateWebhookResponseEventsItem(rawValue: "alerts.triggered")
     public static let botidAnomaly = CreateWebhookResponseEventsItem(rawValue: "botid.anomaly")
     public static let budgetReached = CreateWebhookResponseEventsItem(rawValue: "budget.reached")
@@ -31,32 +26,25 @@ public struct CreateWebhookResponseEventsItem: RawRepresentable, Hashable, Codab
     public static let commentUpdated = CreateWebhookResponseEventsItem(rawValue: "comment.updated")
     public static let deployment = CreateWebhookResponseEventsItem(rawValue: "deployment")
     public static let deploymentCanceled = CreateWebhookResponseEventsItem(rawValue: "deployment-canceled")
-    public static let deploymentCheckRerequested =
-        CreateWebhookResponseEventsItem(rawValue: "deployment-check-rerequested")
-    public static let deploymentChecksCompleted =
-        CreateWebhookResponseEventsItem(rawValue: "deployment-checks-completed")
+    public static let deploymentCheckRerequested = CreateWebhookResponseEventsItem(rawValue: "deployment-check-rerequested")
+    public static let deploymentChecksCompleted = CreateWebhookResponseEventsItem(rawValue: "deployment-checks-completed")
     public static let deploymentError = CreateWebhookResponseEventsItem(rawValue: "deployment-error")
     public static let deploymentPrepared = CreateWebhookResponseEventsItem(rawValue: "deployment-prepared")
     public static let deploymentReady = CreateWebhookResponseEventsItem(rawValue: "deployment-ready")
     public static let deploymentBlocked = CreateWebhookResponseEventsItem(rawValue: "deployment.blocked")
     public static let deploymentBuildRequested = CreateWebhookResponseEventsItem(rawValue: "deployment.build-requested")
     public static let deploymentCanceled2 = CreateWebhookResponseEventsItem(rawValue: "deployment.canceled")
-    public static let deploymentCheckRerequested2 =
-        CreateWebhookResponseEventsItem(rawValue: "deployment.check-rerequested")
+    public static let deploymentCheckRerequested2 = CreateWebhookResponseEventsItem(rawValue: "deployment.check-rerequested")
     public static let deploymentCheckrunCancel = CreateWebhookResponseEventsItem(rawValue: "deployment.checkrun.cancel")
     public static let deploymentCheckrunStart = CreateWebhookResponseEventsItem(rawValue: "deployment.checkrun.start")
     public static let deploymentChecksFailed = CreateWebhookResponseEventsItem(rawValue: "deployment.checks.failed")
-    public static let deploymentChecksSucceeded =
-        CreateWebhookResponseEventsItem(rawValue: "deployment.checks.succeeded")
+    public static let deploymentChecksSucceeded = CreateWebhookResponseEventsItem(rawValue: "deployment.checks.succeeded")
     public static let deploymentCleanup = CreateWebhookResponseEventsItem(rawValue: "deployment.cleanup")
     public static let deploymentCreated = CreateWebhookResponseEventsItem(rawValue: "deployment.created")
     public static let deploymentError2 = CreateWebhookResponseEventsItem(rawValue: "deployment.error")
-    public static let deploymentIntegrationActionCancel =
-        CreateWebhookResponseEventsItem(rawValue: "deployment.integration.action.cancel")
-    public static let deploymentIntegrationActionCleanup =
-        CreateWebhookResponseEventsItem(rawValue: "deployment.integration.action.cleanup")
-    public static let deploymentIntegrationActionStart =
-        CreateWebhookResponseEventsItem(rawValue: "deployment.integration.action.start")
+    public static let deploymentIntegrationActionCancel = CreateWebhookResponseEventsItem(rawValue: "deployment.integration.action.cancel")
+    public static let deploymentIntegrationActionCleanup = CreateWebhookResponseEventsItem(rawValue: "deployment.integration.action.cleanup")
+    public static let deploymentIntegrationActionStart = CreateWebhookResponseEventsItem(rawValue: "deployment.integration.action.start")
     public static let deploymentPromoted = CreateWebhookResponseEventsItem(rawValue: "deployment.promoted")
     public static let deploymentReady2 = CreateWebhookResponseEventsItem(rawValue: "deployment.ready")
     public static let deploymentRollback = CreateWebhookResponseEventsItem(rawValue: "deployment.rollback")
@@ -64,28 +52,23 @@ public struct CreateWebhookResponseEventsItem: RawRepresentable, Hashable, Codab
     public static let domainCreated = CreateWebhookResponseEventsItem(rawValue: "domain-created")
     public static let domainAutoRenewChanged = CreateWebhookResponseEventsItem(rawValue: "domain.auto-renew.changed")
     public static let domainCertificateAdd = CreateWebhookResponseEventsItem(rawValue: "domain.certificate.add")
-    public static let domainCertificateAddFailed =
-        CreateWebhookResponseEventsItem(rawValue: "domain.certificate.add.failed")
+    public static let domainCertificateAddFailed = CreateWebhookResponseEventsItem(rawValue: "domain.certificate.add.failed")
     public static let domainCertificateDeleted = CreateWebhookResponseEventsItem(rawValue: "domain.certificate.deleted")
     public static let domainCertificateRenew = CreateWebhookResponseEventsItem(rawValue: "domain.certificate.renew")
-    public static let domainCertificateRenewFailed =
-        CreateWebhookResponseEventsItem(rawValue: "domain.certificate.renew.failed")
+    public static let domainCertificateRenewFailed = CreateWebhookResponseEventsItem(rawValue: "domain.certificate.renew.failed")
     public static let domainCreated2 = CreateWebhookResponseEventsItem(rawValue: "domain.created")
     public static let domainDnsRecordsChanged = CreateWebhookResponseEventsItem(rawValue: "domain.dns.records.changed")
     public static let domainRenewal = CreateWebhookResponseEventsItem(rawValue: "domain.renewal")
     public static let domainRenewalFailed = CreateWebhookResponseEventsItem(rawValue: "domain.renewal.failed")
-    public static let domainTransferInCompleted =
-        CreateWebhookResponseEventsItem(rawValue: "domain.transfer-in.completed")
+    public static let domainTransferInCompleted = CreateWebhookResponseEventsItem(rawValue: "domain.transfer-in.completed")
     public static let domainTransferInFailed = CreateWebhookResponseEventsItem(rawValue: "domain.transfer-in.failed")
     public static let domainTransferInStarted = CreateWebhookResponseEventsItem(rawValue: "domain.transfer-in.started")
     public static let edgeConfigCreated = CreateWebhookResponseEventsItem(rawValue: "edge-config.created")
     public static let edgeConfigDeleted = CreateWebhookResponseEventsItem(rawValue: "edge-config.deleted")
     public static let edgeConfigItemsUpdated = CreateWebhookResponseEventsItem(rawValue: "edge-config.items.updated")
     public static let firewallAttack = CreateWebhookResponseEventsItem(rawValue: "firewall.attack")
-    public static let firewallCustomRuleAnomaly =
-        CreateWebhookResponseEventsItem(rawValue: "firewall.custom-rule-anomaly")
-    public static let firewallSystemRuleAnomaly =
-        CreateWebhookResponseEventsItem(rawValue: "firewall.system-rule-anomaly")
+    public static let firewallCustomRuleAnomaly = CreateWebhookResponseEventsItem(rawValue: "firewall.custom-rule-anomaly")
+    public static let firewallSystemRuleAnomaly = CreateWebhookResponseEventsItem(rawValue: "firewall.system-rule-anomaly")
     public static let flagCreated = CreateWebhookResponseEventsItem(rawValue: "flag.created")
     public static let flagDeleted = CreateWebhookResponseEventsItem(rawValue: "flag.deleted")
     public static let flagSegmentCreated = CreateWebhookResponseEventsItem(rawValue: "flag.segment.created")
@@ -94,33 +77,20 @@ public struct CreateWebhookResponseEventsItem: RawRepresentable, Hashable, Codab
     public static let flagUpdated = CreateWebhookResponseEventsItem(rawValue: "flag.updated")
     public static let functionArchivalRequired = CreateWebhookResponseEventsItem(rawValue: "function.archival-required")
     public static let functionRemovalRequired = CreateWebhookResponseEventsItem(rawValue: "function.removal-required")
-    public static let integrationConfigurationPermissionUpdated =
-        CreateWebhookResponseEventsItem(rawValue: "integration-configuration-permission-updated")
-    public static let integrationConfigurationRemoved =
-        CreateWebhookResponseEventsItem(rawValue: "integration-configuration-removed")
-    public static let integrationConfigurationScopeChangeConfirmed =
-        CreateWebhookResponseEventsItem(rawValue: "integration-configuration-scope-change-confirmed")
-    public static let integrationConfigurationPermissionUpgraded =
-        CreateWebhookResponseEventsItem(rawValue: "integration-configuration.permission-upgraded")
-    public static let integrationConfigurationRemoved2 =
-        CreateWebhookResponseEventsItem(rawValue: "integration-configuration.removed")
-    public static let integrationConfigurationScopeChangeConfirmed2 =
-        CreateWebhookResponseEventsItem(rawValue: "integration-configuration.scope-change-confirmed")
-    public static let integrationConfigurationTransferred =
-        CreateWebhookResponseEventsItem(rawValue: "integration-configuration.transferred")
-    public static let integrationResourceProjectConnected =
-        CreateWebhookResponseEventsItem(rawValue: "integration-resource.project-connected")
-    public static let integrationResourceProjectDisconnected =
-        CreateWebhookResponseEventsItem(rawValue: "integration-resource.project-disconnected")
-    public static let marketplaceInvoiceCreated =
-        CreateWebhookResponseEventsItem(rawValue: "marketplace.invoice.created")
-    public static let marketplaceInvoiceNotpaid =
-        CreateWebhookResponseEventsItem(rawValue: "marketplace.invoice.notpaid")
-    public static let marketplaceInvoiceOverdue =
-        CreateWebhookResponseEventsItem(rawValue: "marketplace.invoice.overdue")
+    public static let integrationConfigurationPermissionUpdated = CreateWebhookResponseEventsItem(rawValue: "integration-configuration-permission-updated")
+    public static let integrationConfigurationRemoved = CreateWebhookResponseEventsItem(rawValue: "integration-configuration-removed")
+    public static let integrationConfigurationScopeChangeConfirmed = CreateWebhookResponseEventsItem(rawValue: "integration-configuration-scope-change-confirmed")
+    public static let integrationConfigurationPermissionUpgraded = CreateWebhookResponseEventsItem(rawValue: "integration-configuration.permission-upgraded")
+    public static let integrationConfigurationRemoved2 = CreateWebhookResponseEventsItem(rawValue: "integration-configuration.removed")
+    public static let integrationConfigurationScopeChangeConfirmed2 = CreateWebhookResponseEventsItem(rawValue: "integration-configuration.scope-change-confirmed")
+    public static let integrationConfigurationTransferred = CreateWebhookResponseEventsItem(rawValue: "integration-configuration.transferred")
+    public static let integrationResourceProjectConnected = CreateWebhookResponseEventsItem(rawValue: "integration-resource.project-connected")
+    public static let integrationResourceProjectDisconnected = CreateWebhookResponseEventsItem(rawValue: "integration-resource.project-disconnected")
+    public static let marketplaceInvoiceCreated = CreateWebhookResponseEventsItem(rawValue: "marketplace.invoice.created")
+    public static let marketplaceInvoiceNotpaid = CreateWebhookResponseEventsItem(rawValue: "marketplace.invoice.notpaid")
+    public static let marketplaceInvoiceOverdue = CreateWebhookResponseEventsItem(rawValue: "marketplace.invoice.overdue")
     public static let marketplaceInvoicePaid = CreateWebhookResponseEventsItem(rawValue: "marketplace.invoice.paid")
-    public static let marketplaceInvoiceRefunded =
-        CreateWebhookResponseEventsItem(rawValue: "marketplace.invoice.refunded")
+    public static let marketplaceInvoiceRefunded = CreateWebhookResponseEventsItem(rawValue: "marketplace.invoice.refunded")
     public static let marketplaceMemberChanged = CreateWebhookResponseEventsItem(rawValue: "marketplace.member.changed")
     public static let messageCreated = CreateWebhookResponseEventsItem(rawValue: "message.created")
     public static let messageDeleted = CreateWebhookResponseEventsItem(rawValue: "message.deleted")
@@ -129,12 +99,9 @@ public struct CreateWebhookResponseEventsItem: RawRepresentable, Hashable, Codab
     public static let messageReactionRemoved = CreateWebhookResponseEventsItem(rawValue: "message.reaction-removed")
     public static let messageUpdated = CreateWebhookResponseEventsItem(rawValue: "message.updated")
     public static let observabilityAnomaly = CreateWebhookResponseEventsItem(rawValue: "observability.anomaly")
-    public static let observabilityAnomalyError =
-        CreateWebhookResponseEventsItem(rawValue: "observability.anomaly-error")
-    public static let observabilityErrorAnomaly =
-        CreateWebhookResponseEventsItem(rawValue: "observability.error-anomaly")
-    public static let observabilityUsageAnomaly =
-        CreateWebhookResponseEventsItem(rawValue: "observability.usage-anomaly")
+    public static let observabilityAnomalyError = CreateWebhookResponseEventsItem(rawValue: "observability.anomaly-error")
+    public static let observabilityErrorAnomaly = CreateWebhookResponseEventsItem(rawValue: "observability.error-anomaly")
+    public static let observabilityUsageAnomaly = CreateWebhookResponseEventsItem(rawValue: "observability.usage-anomaly")
     public static let projectCreated = CreateWebhookResponseEventsItem(rawValue: "project-created")
     public static let projectRemoved = CreateWebhookResponseEventsItem(rawValue: "project-removed")
     public static let projectCreated2 = CreateWebhookResponseEventsItem(rawValue: "project.created")
@@ -144,29 +111,22 @@ public struct CreateWebhookResponseEventsItem: RawRepresentable, Hashable, Codab
     public static let projectDomainUnverified = CreateWebhookResponseEventsItem(rawValue: "project.domain.unverified")
     public static let projectDomainUpdated = CreateWebhookResponseEventsItem(rawValue: "project.domain.updated")
     public static let projectDomainVerified = CreateWebhookResponseEventsItem(rawValue: "project.domain.verified")
-    public static let projectEnvVariableCreated =
-        CreateWebhookResponseEventsItem(rawValue: "project.env-variable.created")
-    public static let projectEnvVariableDeleted =
-        CreateWebhookResponseEventsItem(rawValue: "project.env-variable.deleted")
-    public static let projectEnvVariableUpdated =
-        CreateWebhookResponseEventsItem(rawValue: "project.env-variable.updated")
+    public static let projectEnvVariableCreated = CreateWebhookResponseEventsItem(rawValue: "project.env-variable.created")
+    public static let projectEnvVariableDeleted = CreateWebhookResponseEventsItem(rawValue: "project.env-variable.deleted")
+    public static let projectEnvVariableUpdated = CreateWebhookResponseEventsItem(rawValue: "project.env-variable.updated")
     public static let projectRemoved2 = CreateWebhookResponseEventsItem(rawValue: "project.removed")
     public static let projectRenamed = CreateWebhookResponseEventsItem(rawValue: "project.renamed")
-    public static let projectRollingReleaseAborted =
-        CreateWebhookResponseEventsItem(rawValue: "project.rolling-release.aborted")
-    public static let projectRollingReleaseApproved =
-        CreateWebhookResponseEventsItem(rawValue: "project.rolling-release.approved")
-    public static let projectRollingReleaseCompleted =
-        CreateWebhookResponseEventsItem(rawValue: "project.rolling-release.completed")
-    public static let projectRollingReleaseStarted =
-        CreateWebhookResponseEventsItem(rawValue: "project.rolling-release.started")
+    public static let projectRollingReleaseAborted = CreateWebhookResponseEventsItem(rawValue: "project.rolling-release.aborted")
+    public static let projectRollingReleaseApproved = CreateWebhookResponseEventsItem(rawValue: "project.rolling-release.approved")
+    public static let projectRollingReleaseCompleted = CreateWebhookResponseEventsItem(rawValue: "project.rolling-release.completed")
+    public static let projectRollingReleaseStarted = CreateWebhookResponseEventsItem(rawValue: "project.rolling-release.started")
     public static let testWebhook = CreateWebhookResponseEventsItem(rawValue: "test-webhook")
     public static let threadResolved = CreateWebhookResponseEventsItem(rawValue: "thread.resolved")
     public static let threadUnresolved = CreateWebhookResponseEventsItem(rawValue: "thread.unresolved")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -178,10 +138,7 @@ public struct CreateWebhookResponseEventsItem: RawRepresentable, Hashable, Codab
 public struct UpdateMicrofrontendsResponseFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let actixWeb = UpdateMicrofrontendsResponseFramework(rawValue: "actix-web")
     public static let angular = UpdateMicrofrontendsResponseFramework(rawValue: "angular")
     public static let ash = UpdateMicrofrontendsResponseFramework(rawValue: "ash")
@@ -259,7 +216,7 @@ public struct UpdateMicrofrontendsResponseFramework: RawRepresentable, Hashable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

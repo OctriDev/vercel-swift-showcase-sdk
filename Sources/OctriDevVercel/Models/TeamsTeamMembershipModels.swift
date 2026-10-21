@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Teams domain models
+// Teams domain models
 /// The membership of the authenticated User in relation to the Team.
 public struct TeamMembership: Codable {
     /// Required enumerated value serialized in the `confirmed` wire field.
@@ -49,74 +49,42 @@ public struct TeamMembership: Codable {
         case uid
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamMembership {
-    init(from decoder: Decoder) throws {
+extension TeamMembership {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.confirmed) else {
-            throw SdkValidationError(
-                field: "confirmed",
-                code: "required",
-                message: "Validation failed for 'confirmed': value is required"
-            )
+            throw SdkValidationError(field: "confirmed", code: "required", message: "Validation failed for 'confirmed': value is required")
         }
         guard container.contains(.created) else {
-            throw SdkValidationError(
-                field: "created",
-                code: "required",
-                message: "Validation failed for 'created': value is required"
-            )
+            throw SdkValidationError(field: "created", code: "required", message: "Validation failed for 'created': value is required")
         }
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(
-                field: "createdAt",
-                code: "required",
-                message: "Validation failed for 'createdAt': value is required"
-            )
+            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
         }
         guard container.contains(.role) else {
-            throw SdkValidationError(
-                field: "role",
-                code: "required",
-                message: "Validation failed for 'role': value is required"
-            )
+            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
         }
-        confirmed = try container.sdkDecodeRequired(.confirmed)
-        created = try container.sdkDecodeRequired(.created)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        role = try container.sdkDecodeRequired(.role)
-        accessRequestedAt = try container.sdkDecodeIfPresent(.accessRequestedAt)
-        entitlements = try container.sdkDecodeIfPresent(.entitlements)
-        isOrgBackingTeamMembership = try container.sdkDecodeIfPresent(.isOrgBackingTeamMembership)
-        joinedFrom = try container.sdkDecodeIfPresent(.joinedFrom)
-        organizationId = try container.sdkDecodeIfPresent(.organizationId)
-        teamId = try container.sdkDecodeIfPresent(.teamId)
-        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
-        uid = try container.sdkDecodeIfPresent(.uid)
+        self.confirmed = try container.sdkDecodeRequired(.confirmed)
+        self.created = try container.sdkDecodeRequired(.created)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.role = try container.sdkDecodeRequired(.role)
+        self.accessRequestedAt = try container.sdkDecodeIfPresent(.accessRequestedAt)
+        self.entitlements = try container.sdkDecodeIfPresent(.entitlements)
+        self.isOrgBackingTeamMembership = try container.sdkDecodeIfPresent(.isOrgBackingTeamMembership)
+        self.joinedFrom = try container.sdkDecodeIfPresent(.joinedFrom)
+        self.organizationId = try container.sdkDecodeIfPresent(.organizationId)
+        self.teamId = try container.sdkDecodeIfPresent(.teamId)
+        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+        self.uid = try container.sdkDecodeIfPresent(.uid)
     }
 }
 
-public extension TeamMembership {
-    init(
-        confirmed: Bool,
-        created: Double,
-        createdAt: Double,
-        role: TeamMembershipRole,
-        accessRequestedAt: Double? = nil,
-        entitlements: [TeamMembershipEntitlementsItem]? = nil,
-        isOrgBackingTeamMembership: Bool? = nil,
-        joinedFrom: TeamMembershipJoinedFrom? = nil,
-        organizationId: String? = nil,
-        teamId: String? = nil,
-        teamPermissions: [TeamMembershipTeamPermissionsItem]? = nil,
-        teamRoles: [TeamMembershipTeamRolesItem]? = nil,
-        uid: String? = nil
-    ) {
+extension TeamMembership {
+    public init(confirmed: Bool, created: Double, createdAt: Double, role: TeamMembershipRole, accessRequestedAt: Double? = nil, entitlements: [TeamMembershipEntitlementsItem]? = nil, isOrgBackingTeamMembership: Bool? = nil, joinedFrom: TeamMembershipJoinedFrom? = nil, organizationId: String? = nil, teamId: String? = nil, teamPermissions: [TeamMembershipTeamPermissionsItem]? = nil, teamRoles: [TeamMembershipTeamRolesItem]? = nil, uid: String? = nil) {
         (self.confirmed, self.created) = (confirmed, created)
         (self.createdAt, self.role) = (createdAt, role)
         (self.accessRequestedAt, self.entitlements) = (accessRequestedAt, entitlements)
@@ -133,32 +101,22 @@ public indirect enum TeamDisableHardAutoBlocks {
 }
 
 extension TeamDisableHardAutoBlocks: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for TeamDisableHardAutoBlocks"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for TeamDisableHardAutoBlocks")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension TeamDisableHardAutoBlocks {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
         return nil
     }
 }
@@ -194,35 +152,25 @@ public struct TeamStrictConnectors: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamStrictConnectors {
-    init(from decoder: Decoder) throws {
+extension TeamStrictConnectors {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(
-                field: "updatedAt",
-                code: "required",
-                message: "Validation failed for 'updatedAt': value is required"
-            )
+            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
     }
 }
 
-public extension TeamStrictConnectors {
-    init(enabled: Bool, updatedAt: Double) {
+extension TeamStrictConnectors {
+    public init(enabled: Bool, updatedAt: Double) {
         (self.enabled, self.updatedAt) = (enabled, updatedAt)
     }
 }
@@ -250,35 +198,23 @@ public struct TeamDefaultExpirationSettings: Codable {
     }
 
     init() {
-        (deploymentsToKeep, expirationDays, expirationDaysCanceled, expirationDaysErrored, expirationDaysProduction) = (
-            nil,
-            nil,
-            nil,
-            nil,
-            nil
-        )
+        (self.deploymentsToKeep, self.expirationDays, self.expirationDaysCanceled, self.expirationDaysErrored, self.expirationDaysProduction) = (nil, nil, nil, nil, nil)
     }
 }
 
-public extension TeamDefaultExpirationSettings {
-    init(from decoder: Decoder) throws {
+extension TeamDefaultExpirationSettings {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        deploymentsToKeep = try container.sdkDecodeIfPresent(.deploymentsToKeep)
-        expirationDays = try container.sdkDecodeIfPresent(.expirationDays)
-        expirationDaysCanceled = try container.sdkDecodeIfPresent(.expirationDaysCanceled)
-        expirationDaysErrored = try container.sdkDecodeIfPresent(.expirationDaysErrored)
-        expirationDaysProduction = try container.sdkDecodeIfPresent(.expirationDaysProduction)
+        self.deploymentsToKeep = try container.sdkDecodeIfPresent(.deploymentsToKeep)
+        self.expirationDays = try container.sdkDecodeIfPresent(.expirationDays)
+        self.expirationDaysCanceled = try container.sdkDecodeIfPresent(.expirationDaysCanceled)
+        self.expirationDaysErrored = try container.sdkDecodeIfPresent(.expirationDaysErrored)
+        self.expirationDaysProduction = try container.sdkDecodeIfPresent(.expirationDaysProduction)
     }
 }
 
-public extension TeamDefaultExpirationSettings {
-    init(
-        deploymentsToKeep: Double? = nil,
-        expirationDays: Double? = nil,
-        expirationDaysCanceled: Double? = nil,
-        expirationDaysErrored: Double? = nil,
-        expirationDaysProduction: Double? = nil
-    ) {
+extension TeamDefaultExpirationSettings {
+    public init(deploymentsToKeep: Double? = nil, expirationDays: Double? = nil, expirationDaysCanceled: Double? = nil, expirationDaysErrored: Double? = nil, expirationDaysProduction: Double? = nil) {
         self.init()
         (self.deploymentsToKeep, self.expirationDays) = (deploymentsToKeep, expirationDays)
         self.expirationDaysCanceled = expirationDaysCanceled
@@ -296,27 +232,21 @@ public struct TeamBilling: Codable {
         case plan
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamBilling {
-    init(from decoder: Decoder) throws {
+extension TeamBilling {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.plan) else {
-            throw SdkValidationError(
-                field: "plan",
-                code: "required",
-                message: "Validation failed for 'plan': value is required"
-            )
+            throw SdkValidationError(field: "plan", code: "required", message: "Validation failed for 'plan': value is required")
         }
-        plan = try container.sdkDecodeRequired(.plan)
+        self.plan = try container.sdkDecodeRequired(.plan)
     }
 }
 
-public extension TeamBilling {
-    init(plan: TeamBillingPlan) {
+extension TeamBilling {
+    public init(plan: TeamBillingPlan) {
         self.plan = plan
     }
 }
@@ -334,23 +264,20 @@ public struct TeamDefaultRoles: Codable {
     }
 
     init() {
-        (teamPermissions, teamRoles) = (nil, nil)
+        (self.teamPermissions, self.teamRoles) = (nil, nil)
     }
 }
 
-public extension TeamDefaultRoles {
-    init(from decoder: Decoder) throws {
+extension TeamDefaultRoles {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
     }
 }
 
-public extension TeamDefaultRoles {
-    init(
-        teamPermissions: [TeamDefaultRolesTeamPermissionsItem]? = nil,
-        teamRoles: [TeamDefaultRolesTeamRolesItem]? = nil
-    ) {
+extension TeamDefaultRoles {
+    public init(teamPermissions: [TeamDefaultRolesTeamPermissionsItem]? = nil, teamRoles: [TeamDefaultRolesTeamRolesItem]? = nil) {
         self.init()
         (self.teamPermissions, self.teamRoles) = (teamPermissions, teamRoles)
     }
@@ -368,31 +295,22 @@ public struct TeamSamlRolesValueVariant1: Codable {
         case teamPermissions
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TeamSamlRolesValueVariant1 {
-    init(from decoder: Decoder) throws {
+extension TeamSamlRolesValueVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.teamRoles) else {
-            throw SdkValidationError(
-                field: "teamRoles",
-                code: "required",
-                message: "Validation failed for 'teamRoles': value is required"
-            )
+            throw SdkValidationError(field: "teamRoles", code: "required", message: "Validation failed for 'teamRoles': value is required")
         }
-        teamRoles = try container.sdkDecodeRequired(.teamRoles)
-        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        self.teamRoles = try container.sdkDecodeRequired(.teamRoles)
+        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
     }
 }
 
-public extension TeamSamlRolesValueVariant1 {
-    init(
-        teamRoles: [TeamSamlRolesValueVariant1TeamRolesItem],
-        teamPermissions: [TeamSamlRolesValueVariant1TeamPermissionsItem]? = nil
-    ) {
+extension TeamSamlRolesValueVariant1 {
+    public init(teamRoles: [TeamSamlRolesValueVariant1TeamRolesItem], teamPermissions: [TeamSamlRolesValueVariant1TeamPermissionsItem]? = nil) {
         (self.teamRoles, self.teamPermissions) = (teamRoles, teamPermissions)
     }
 }
@@ -529,19 +447,7 @@ public struct Team: Codable {
     /// Keys the schema admits beside the declared fields.
     public var additionalProperties: [String: JSONValue] = [:]
 
-    init(
-        sdkRequiredFields avatar: String?,
-        billing: TeamBilling?,
-        createdAt: Double,
-        creatorId: String,
-        description: String?,
-        id: String,
-        limited: Bool,
-        name: String?,
-        slug: String,
-        stagingPrefix: String,
-        updatedAt: Double
-    ) {
+    init(sdkRequiredFields avatar: String?, billing: TeamBilling?, createdAt: Double, creatorId: String, description: String?, id: String, limited: Bool, name: String?, slug: String, stagingPrefix: String, updatedAt: Double) {
         (self.avatar, self.billing) = (avatar, billing)
         (self.createdAt, self.creatorId) = (createdAt, creatorId)
         (self.description, self.id) = (description, id)

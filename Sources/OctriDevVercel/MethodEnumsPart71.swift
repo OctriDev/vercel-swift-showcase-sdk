@@ -6,20 +6,15 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct ListProjectsResponseVariant1ProjectsItemInternalRoutesItemVarX676e3db025: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant1ProjectsItemInternalRoutesItemVarX676e3db025: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let xVercelIpCountry =
-        ListProjectsResponseVariant1ProjectsItemInternalRoutesItemVarX676e3db025(rawValue: "x-vercel-ip-country")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let xVercelIpCountry = ListProjectsResponseVariant1ProjectsItemInternalRoutesItemVarX676e3db025(rawValue: "x-vercel-ip-country")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -32,16 +27,13 @@ public struct ListProjectsResponseVariant1ProjectsItemInternalRoutesItemVarX676e
 public struct ListDrivesParameterX8d16c3eb: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let asc = ListDrivesParameterX8d16c3eb(rawValue: "asc")
     public static let desc = ListDrivesParameterX8d16c3eb(rawValue: "desc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -50,19 +42,15 @@ public struct ListDrivesParameterX8d16c3eb: RawRepresentable, Hashable, Codable,
     }
 }
 
-public struct UploadProjectAvatarResponseTargetsValueType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UploadProjectAvatarResponseTargetsValueType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let lambdas = UploadProjectAvatarResponseTargetsValueType(rawValue: "LAMBDAS")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -72,20 +60,16 @@ public struct UploadProjectAvatarResponseTargetsValueType: RawRepresentable, Has
 }
 
 /// What to do when the gate trips: pause the rollout, or roll it back.
-public struct GetRollingReleaseConfigResponseRollingReleaseGateAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetRollingReleaseConfigResponseRollingReleaseGateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let pause = GetRollingReleaseConfigResponseRollingReleaseGateAction(rawValue: "pause")
     public static let rollback = GetRollingReleaseConfigResponseRollingReleaseGateAction(rawValue: "rollback")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -95,20 +79,16 @@ public struct GetRollingReleaseConfigResponseRollingReleaseGateAction: RawRepres
 }
 
 /// What to do when the gate trips: pause the rollout, or roll it back.
-public struct UploadProjectAvatarResponseRollingReleaseGateAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UploadProjectAvatarResponseRollingReleaseGateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let pause = UploadProjectAvatarResponseRollingReleaseGateAction(rawValue: "pause")
     public static let rollback = UploadProjectAvatarResponseRollingReleaseGateAction(rawValue: "rollback")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -117,21 +97,17 @@ public struct UploadProjectAvatarResponseRollingReleaseGateAction: RawRepresenta
     }
 }
 
-public struct CreateProjectEnvRequestBodyVariant0TargetItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateProjectEnvRequestBodyVariant0TargetItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let production = CreateProjectEnvRequestBodyVariant0TargetItem(rawValue: "production")
     public static let preview = CreateProjectEnvRequestBodyVariant0TargetItem(rawValue: "preview")
     public static let development = CreateProjectEnvRequestBodyVariant0TargetItem(rawValue: "development")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -141,23 +117,17 @@ public struct CreateProjectEnvRequestBodyVariant0TargetItem: RawRepresentable, H
 }
 
 /// The type of matching to perform
-public struct UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let endsWith =
-        UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType(rawValue: "endsWith")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let endsWith = UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType(rawValue: "endsWith")
     public static let equals = UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType(rawValue: "equals")
-    public static let startsWith =
-        UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType(rawValue: "startsWith")
+    public static let startsWith = UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType(rawValue: "startsWith")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -166,14 +136,10 @@ public struct UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType
     }
 }
 
-public struct ListProjectsResponseVariant0ItemTargetsValueReadyState: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemTargetsValueReadyState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let blocked = ListProjectsResponseVariant0ItemTargetsValueReadyState(rawValue: "BLOCKED")
     public static let building = ListProjectsResponseVariant0ItemTargetsValueReadyState(rawValue: "BUILDING")
     public static let canceled = ListProjectsResponseVariant0ItemTargetsValueReadyState(rawValue: "CANCELED")
@@ -184,7 +150,7 @@ public struct ListProjectsResponseVariant0ItemTargetsValueReadyState: RawReprese
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -193,22 +159,16 @@ public struct ListProjectsResponseVariant0ItemTargetsValueReadyState: RawReprese
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuiX2521cd95c3: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuiX2521cd95c3: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let skipNamespaceQueue =
-        GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuiX2521cd95c3(rawValue: "SKIP_NAMESPACE_QUEUE")
-    public static let waitForNamespaceQueue =
-        GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuiX2521cd95c3(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let skipNamespaceQueue = GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuiX2521cd95c3(rawValue: "SKIP_NAMESPACE_QUEUE")
+    public static let waitForNamespaceQueue = GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuiX2521cd95c3(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -221,17 +181,14 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuiX2521
 public struct CreateCustomEnvironmentResponseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = CreateCustomEnvironmentResponseType(rawValue: "development")
     public static let preview = CreateCustomEnvironmentResponseType(rawValue: "preview")
     public static let production = CreateCustomEnvironmentResponseType(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -240,21 +197,16 @@ public struct CreateCustomEnvironmentResponseType: RawRepresentable, Hashable, C
     }
 }
 
-public struct UpdateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsXb18078bcec: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UpdateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsXb18078bcec: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let list = UpdateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsXb18078bcec(rawValue: "list")
-    public static let listInline =
-        UpdateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsXb18078bcec(rawValue: "list/inline")
+    public static let listInline = UpdateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsXb18078bcec(rawValue: "list/inline")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

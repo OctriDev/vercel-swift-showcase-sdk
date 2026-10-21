@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Shared domain models
+// Shared domain models
 public indirect enum GlobalConfigItemValue {
     case stringValue(String)
     case doubleValue(Double)
@@ -13,41 +13,25 @@ public indirect enum GlobalConfigItemValue {
 }
 
 extension GlobalConfigItemValue: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GlobalConfigItemValue"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GlobalConfigItemValue")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GlobalConfigItemValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode([String: GlobalConfigItemValue?].self) {
-            return .dictionary(value)
-        }
-        if let value = try? container.decode([GlobalConfigItemValue?].self) {
-            return .globalConfigItemValueList(value)
-        }
-        if let value = try? container.decode(Bool.self) {
-            return .boolValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode([String: GlobalConfigItemValue?].self) { return .dictionary(value) }
+        if let value = try? container.decode([GlobalConfigItemValue?].self) { return .globalConfigItemValueList(value) }
+        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
         return nil
     }
 }
@@ -93,43 +77,29 @@ public struct Pagination: Codable {
         case prev
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension Pagination {
-    init(from decoder: Decoder) throws {
+extension Pagination {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.count) else {
-            throw SdkValidationError(
-                field: "count",
-                code: "required",
-                message: "Validation failed for 'count': value is required"
-            )
+            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
         }
         guard container.contains(.next) else {
-            throw SdkValidationError(
-                field: "next",
-                code: "required",
-                message: "Validation failed for 'next': value is required"
-            )
+            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
         }
         guard container.contains(.prev) else {
-            throw SdkValidationError(
-                field: "prev",
-                code: "required",
-                message: "Validation failed for 'prev': value is required"
-            )
+            throw SdkValidationError(field: "prev", code: "required", message: "Validation failed for 'prev': value is required")
         }
-        count = try container.sdkDecodeRequired(.count)
-        next = try container.sdkDecodeNullable(.next)
-        prev = try container.sdkDecodeNullable(.prev)
+        self.count = try container.sdkDecodeRequired(.count)
+        self.next = try container.sdkDecodeNullable(.next)
+        self.prev = try container.sdkDecodeNullable(.prev)
     }
 }
 
-public extension Pagination {
-    init(count: Double, next: Double?, prev: Double?) {
+extension Pagination {
+    public init(count: Double, next: Double?, prev: Double?) {
         (self.count, self.next) = (count, next)
         self.prev = prev
     }
@@ -140,10 +110,7 @@ public extension Pagination {
 public struct ACLAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let create = ACLAction(rawValue: "create")
     public static let delete = ACLAction(rawValue: "delete")
     public static let list = ACLAction(rawValue: "list")
@@ -152,7 +119,7 @@ public struct ACLAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireC
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

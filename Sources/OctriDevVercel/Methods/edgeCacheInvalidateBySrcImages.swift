@@ -6,30 +6,20 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension EdgeCacheMethods {
-    /// Invalidates source images, marking them stale so their transformed images are revalidated in the background on
-    /// the next request. Use `projectIdOrName` to scope the operation and supply the image sources in `srcImages`. The
-    /// request can include between 1 and 8 source images.
+extension EdgeCacheMethods {
+    /// Invalidates source images, marking them stale so their transformed images are revalidated in the background on the next request. Use `projectIdOrName` to scope the operation and supply the image sources in `srcImages`. The request can include between 1 and 8 source images.
     ///
-    /// Marks a source image as stale, causing its corresponding transformed images to be revalidated in the background
-    /// on the next request.
+    /// Marks a source image as stale, causing its corresponding transformed images to be revalidated in the background on the next request.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func invalidateBySrcImages(
-        config: ClientConfig,
-        projectIdOrName: String,
-        srcImages: [String],
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> SdkEmptyResponse {
+    public static func invalidateBySrcImages(config: ClientConfig, projectIdOrName: String, srcImages: [String], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
         try validateItems("srcImages", srcImages, min: 1, max: 8)
 
         let requestBody = InvalidateBySrcImagesRequestBody(srcImages: srcImages)
 
-        return try await (sdkRequest("POST", "/v1/edge-cache/invalidate-by-src-images", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/edge-cache/invalidate-by-src-images", config: config, query: [
             SdkQueryParameter("projectIdOrName", value: projectIdOrName),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),

@@ -14,10 +14,10 @@ struct CreateNetworkRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(cidr, forKey: SdkCodingKey("cidr"))
-        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encode(region, forKey: SdkCodingKey("region"))
-        try keyedContainer.encodeIfPresent(awsAvailabilityZoneIds, forKey: SdkCodingKey("awsAvailabilityZoneIds"))
+        try keyedContainer.encode(self.cidr, forKey: SdkCodingKey("cidr"))
+        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(self.region, forKey: SdkCodingKey("region"))
+        try keyedContainer.encodeIfPresent(self.awsAvailabilityZoneIds, forKey: SdkCodingKey("awsAvailabilityZoneIds"))
     }
 }
 
@@ -26,7 +26,7 @@ struct UpdateNetworkRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
     }
 }
 
@@ -39,11 +39,11 @@ struct CreatePrivateLinkEndpointRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encode(vercelRegion, forKey: SdkCodingKey("vercelRegion"))
-        try keyedContainer.encode(awsServiceName, forKey: SdkCodingKey("awsServiceName"))
-        try keyedContainer.encodeIfPresent(enablePrivateDns, forKey: SdkCodingKey("enablePrivateDns"))
+        try keyedContainer.encode(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(self.vercelRegion, forKey: SdkCodingKey("vercelRegion"))
+        try keyedContainer.encode(self.awsServiceName, forKey: SdkCodingKey("awsServiceName"))
+        try keyedContainer.encodeIfPresent(self.enablePrivateDns, forKey: SdkCodingKey("enablePrivateDns"))
     }
 }
 
@@ -53,8 +53,8 @@ struct UpdatePrivateLinkEndpointRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(enablePrivateDns, forKey: SdkCodingKey("enablePrivateDns"))
+        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.enablePrivateDns, forKey: SdkCodingKey("enablePrivateDns"))
     }
 }
 
@@ -64,13 +64,12 @@ struct UpdateStaticIpsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(builds, forKey: SdkCodingKey("builds"))
-        try keyedContainer.encodeIfPresent(regions, forKey: SdkCodingKey("regions"))
+        try keyedContainer.encodeIfPresent(self.builds, forKey: SdkCodingKey("builds"))
+        try keyedContainer.encodeIfPresent(self.regions, forKey: SdkCodingKey("regions"))
     }
 }
 
-public typealias CreateConnectorAuthorizationRequestAuthorizationDetailsList =
-    [CreateConnectorAuthorizationRequestRequestBodyAuthorizationDetailsItem]
+public typealias CreateConnectorAuthorizationRequestAuthorizationDetailsList = [CreateConnectorAuthorizationRequestRequestBodyAuthorizationDetailsItem]
 
 struct CreateConnectorRequestBody: Encodable {
     let data: ConnectConnectorCreateDataRequest
@@ -95,47 +94,47 @@ struct CreateConnectorRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(data, forKey: SdkCodingKey("data"))
-        try keyedContainer.encodeIfPresent(icon, forKey: SdkCodingKey("icon"))
-        try keyedContainer.encodeIfPresent(backgroundColor, forKey: SdkCodingKey("backgroundColor"))
-        try keyedContainer.encodeIfPresent(accentColor, forKey: SdkCodingKey("accentColor"))
-        try keyedContainer.encodeIfPresent(type, forKey: SdkCodingKey("type"))
-        try keyedContainer.encodeIfPresent(service, forKey: SdkCodingKey("service"))
-        try keyedContainer.encodeIfPresent(connectionMethod, forKey: SdkCodingKey("connectionMethod"))
-        try keyedContainer.encodeIfPresent(params, forKey: SdkCodingKey("params"))
-        try keyedContainer.encodeIfPresent(target, forKey: SdkCodingKey("target"))
-        try keyedContainer.encodeIfPresent(uid, forKey: SdkCodingKey("uid"))
-        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encodeIfPresent(environments, forKey: SdkCodingKey("environments"))
-        try keyedContainer.encodeIfPresent(triggers, forKey: SdkCodingKey("triggers"))
-        try keyedContainer.encodeIfPresent(triggerType, forKey: SdkCodingKey("triggerType"))
-        try keyedContainer.encodeIfPresent(triggerVerificationInput, forKey: SdkCodingKey("triggerVerificationInput"))
-        try keyedContainer.encodeIfPresent(triggerRegistrationInput, forKey: SdkCodingKey("triggerRegistrationInput"))
-        try keyedContainer.encodeIfPresent(triggerDestination, forKey: SdkCodingKey("triggerDestination"))
-        try keyedContainer.encodeIfPresent(events, forKey: SdkCodingKey("events"))
+        try keyedContainer.encode(self.data, forKey: SdkCodingKey("data"))
+        try keyedContainer.encodeIfPresent(self.icon, forKey: SdkCodingKey("icon"))
+        try keyedContainer.encodeIfPresent(self.backgroundColor, forKey: SdkCodingKey("backgroundColor"))
+        try keyedContainer.encodeIfPresent(self.accentColor, forKey: SdkCodingKey("accentColor"))
+        try keyedContainer.encodeIfPresent(self.type, forKey: SdkCodingKey("type"))
+        try keyedContainer.encodeIfPresent(self.service, forKey: SdkCodingKey("service"))
+        try keyedContainer.encodeIfPresent(self.connectionMethod, forKey: SdkCodingKey("connectionMethod"))
+        try keyedContainer.encodeIfPresent(self.params, forKey: SdkCodingKey("params"))
+        try keyedContainer.encodeIfPresent(self.target, forKey: SdkCodingKey("target"))
+        try keyedContainer.encodeIfPresent(self.uid, forKey: SdkCodingKey("uid"))
+        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encodeIfPresent(self.environments, forKey: SdkCodingKey("environments"))
+        try keyedContainer.encodeIfPresent(self.triggers, forKey: SdkCodingKey("triggers"))
+        try keyedContainer.encodeIfPresent(self.triggerType, forKey: SdkCodingKey("triggerType"))
+        try keyedContainer.encodeIfPresent(self.triggerVerificationInput, forKey: SdkCodingKey("triggerVerificationInput"))
+        try keyedContainer.encodeIfPresent(self.triggerRegistrationInput, forKey: SdkCodingKey("triggerRegistrationInput"))
+        try keyedContainer.encodeIfPresent(self.triggerDestination, forKey: SdkCodingKey("triggerDestination"))
+        try keyedContainer.encodeIfPresent(self.events, forKey: SdkCodingKey("events"))
     }
 
     init(options: ConnectMethods.CreateConnectorOptions) {
-        data = options.data
-        icon = options.icon
-        backgroundColor = options.backgroundColor
-        accentColor = options.accentColor
-        type = options.type
-        service = options.service
-        connectionMethod = options.connectionMethod
-        params = options.params
-        target = options.target
-        uid = options.uid
-        name = options.name
-        projectId = options.projectId
-        environments = options.environments
-        triggers = options.triggers
-        triggerType = options.triggerType
-        triggerVerificationInput = options.triggerVerificationInput
-        triggerRegistrationInput = options.triggerRegistrationInput
-        triggerDestination = options.triggerDestination
-        events = options.events
+        self.data = options.data
+        self.icon = options.icon
+        self.backgroundColor = options.backgroundColor
+        self.accentColor = options.accentColor
+        self.type = options.type
+        self.service = options.service
+        self.connectionMethod = options.connectionMethod
+        self.params = options.params
+        self.target = options.target
+        self.uid = options.uid
+        self.name = options.name
+        self.projectId = options.projectId
+        self.environments = options.environments
+        self.triggers = options.triggers
+        self.triggerType = options.triggerType
+        self.triggerVerificationInput = options.triggerVerificationInput
+        self.triggerRegistrationInput = options.triggerRegistrationInput
+        self.triggerDestination = options.triggerDestination
+        self.events = options.events
     }
 }
 
@@ -153,29 +152,29 @@ struct UpdateConnectorRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(triggers, forKey: SdkCodingKey("triggers"))
-        try keyedContainer.encodeIfPresent(triggerVerificationInput, forKey: SdkCodingKey("triggerVerificationInput"))
-        try keyedContainer.encodeIfPresent(triggerRegistrationInput, forKey: SdkCodingKey("triggerRegistrationInput"))
-        try keyedContainer.encodeIfPresent(events, forKey: SdkCodingKey("events"))
-        try keyedContainer.encodeIfPresent(data, forKey: SdkCodingKey("data"))
-        try keyedContainer.encodeIfPresent(icon, forKey: SdkCodingKey("icon"))
-        try keyedContainer.encodeIfPresent(backgroundColor, forKey: SdkCodingKey("backgroundColor"))
-        try keyedContainer.encodeIfPresent(accentColor, forKey: SdkCodingKey("accentColor"))
-        try keyedContainer.encodeIfPresent(uid, forKey: SdkCodingKey("uid"))
-        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(self.triggers, forKey: SdkCodingKey("triggers"))
+        try keyedContainer.encodeIfPresent(self.triggerVerificationInput, forKey: SdkCodingKey("triggerVerificationInput"))
+        try keyedContainer.encodeIfPresent(self.triggerRegistrationInput, forKey: SdkCodingKey("triggerRegistrationInput"))
+        try keyedContainer.encodeIfPresent(self.events, forKey: SdkCodingKey("events"))
+        try keyedContainer.encodeIfPresent(self.data, forKey: SdkCodingKey("data"))
+        try keyedContainer.encodeIfPresent(self.icon, forKey: SdkCodingKey("icon"))
+        try keyedContainer.encodeIfPresent(self.backgroundColor, forKey: SdkCodingKey("backgroundColor"))
+        try keyedContainer.encodeIfPresent(self.accentColor, forKey: SdkCodingKey("accentColor"))
+        try keyedContainer.encodeIfPresent(self.uid, forKey: SdkCodingKey("uid"))
+        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
     }
 
     init(options: ConnectMethods.UpdateConnectorOptions) {
-        triggers = options.triggers
-        triggerVerificationInput = options.triggerVerificationInput
-        triggerRegistrationInput = options.triggerRegistrationInput
-        events = options.events
-        data = options.data
-        icon = options.icon
-        backgroundColor = options.backgroundColor
-        accentColor = options.accentColor
-        uid = options.uid
-        name = options.name
+        self.triggers = options.triggers
+        self.triggerVerificationInput = options.triggerVerificationInput
+        self.triggerRegistrationInput = options.triggerRegistrationInput
+        self.events = options.events
+        self.data = options.data
+        self.icon = options.icon
+        self.backgroundColor = options.backgroundColor
+        self.accentColor = options.accentColor
+        self.uid = options.uid
+        self.name = options.name
     }
 }
 
@@ -184,7 +183,7 @@ struct ReplaceConnectorTriggerDestinationsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(destinations, forKey: SdkCodingKey("destinations"))
+        try keyedContainer.encode(self.destinations, forKey: SdkCodingKey("destinations"))
     }
 }
 
@@ -193,6 +192,6 @@ struct UpsertConnectorProjectConnectionRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(environments, forKey: SdkCodingKey("environments"))
+        try keyedContainer.encode(self.environments, forKey: SdkCodingKey("environments"))
     }
 }

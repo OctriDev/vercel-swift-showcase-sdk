@@ -3,22 +3,18 @@
 
 import Foundation
 
-/// User domain models
+// User domain models
 /// Optional enumerated value serialized in the `env` wire field.
-public struct UserEventPayloadVariant438SamplingItemEnv: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant438SamplingItemEnv: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let preview = UserEventPayloadVariant438SamplingItemEnv(rawValue: "preview")
     public static let production = UserEventPayloadVariant438SamplingItemEnv(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -28,84 +24,55 @@ public struct UserEventPayloadVariant438SamplingItemEnv: RawRepresentable, Hasha
 }
 
 /// Required enumerated value serialized in the `permissions[]` wire field.
-public struct UserEventPayloadVariant62PermissionsItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant62PermissionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let unknown = UserEventPayloadVariant62PermissionsItem(rawValue: "*")
     public static let manageSpeedInsights = UserEventPayloadVariant62PermissionsItem(rawValue: "manage:speed-insights")
     public static let manageWebAnalytics = UserEventPayloadVariant62PermissionsItem(rawValue: "manage:web-analytics")
-    public static let readWriteAiGatewayApiKey =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-api-key")
-    public static let readWriteAiGatewayBudgets =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-budgets")
-    public static let readWriteAiGatewayGuardrails =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-guardrails")
-    public static let readWriteAiGatewayPrivateModels =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-private-models")
-    public static let readWriteAiGatewayRules =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-rules")
-    public static let readWriteAiGatewayVirtualModelConfigs =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-virtual-model-configs")
+    public static let readWriteAiGatewayApiKey = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-api-key")
+    public static let readWriteAiGatewayBudgets = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-budgets")
+    public static let readWriteAiGatewayGuardrails = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-guardrails")
+    public static let readWriteAiGatewayPrivateModels = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-private-models")
+    public static let readWriteAiGatewayRules = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-rules")
+    public static let readWriteAiGatewayVirtualModelConfigs = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:ai-gateway-virtual-model-configs")
     public static let readWriteAlerts = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:alerts")
-    public static let readWriteAutomations =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:automations")
+    public static let readWriteAutomations = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:automations")
     public static let readWriteBilling = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:billing")
     public static let readWriteBlob = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:blob")
     public static let readWriteConnect = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:connect")
     public static let readWriteDeployment = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:deployment")
     public static let readWriteDomain = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:domain")
-    public static let readWriteDomainRegistrar =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:domain-registrar")
+    public static let readWriteDomainRegistrar = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:domain-registrar")
     public static let readWriteDrains = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:drains")
     public static let readWriteEdgeCache = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:edge-cache")
     public static let readWriteEdgeConfig = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:edge-config")
     public static let readWriteFirewall = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:firewall")
-    public static let readWriteIntegrationConfiguration =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:integration-configuration")
-    public static let readWriteIntegrationResource =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:integration-resource")
+    public static let readWriteIntegrationConfiguration = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:integration-configuration")
+    public static let readWriteIntegrationResource = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:integration-resource")
     public static let readWriteKms = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:kms")
-    public static let readWriteMessageboard =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:messageboard")
+    public static let readWriteMessageboard = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:messageboard")
     public static let readWriteProject = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project")
-    public static let readWriteProjectEnvVars =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-env-vars")
-    public static let readWriteProjectEnvVarsNonProduction =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-env-vars-non-production")
-    public static let readWriteProjectEnvVarsProduction =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-env-vars-production")
-    public static let readWriteProjectFlagsNonProduction =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-flags-non-production")
-    public static let readWriteProjectFlagsProduction =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-flags-production")
-    public static let readWriteProjectMembers =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-members")
-    public static let readWriteProjectProtectionBypass =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-protection-bypass")
-    public static let readWriteProjectTrustedSources =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-trusted-sources")
-    public static let readWriteRemoteCache =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:remote-cache")
+    public static let readWriteProjectEnvVars = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-env-vars")
+    public static let readWriteProjectEnvVarsNonProduction = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-env-vars-non-production")
+    public static let readWriteProjectEnvVarsProduction = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-env-vars-production")
+    public static let readWriteProjectFlagsNonProduction = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-flags-non-production")
+    public static let readWriteProjectFlagsProduction = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-flags-production")
+    public static let readWriteProjectMembers = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-members")
+    public static let readWriteProjectProtectionBypass = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-protection-bypass")
+    public static let readWriteProjectTrustedSources = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:project-trusted-sources")
+    public static let readWriteRemoteCache = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:remote-cache")
     public static let readWriteSandbox = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:sandbox")
     public static let readWriteSchedule = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:schedule")
-    public static let readWriteTeamMembers =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:team-members")
+    public static let readWriteTeamMembers = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:team-members")
     public static let readWriteVcr = UserEventPayloadVariant62PermissionsItem(rawValue: "read-write:vcr")
     public static let readAccessGroup = UserEventPayloadVariant62PermissionsItem(rawValue: "read:access-group")
-    public static let readAiGatewayBudgets =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read:ai-gateway-budgets")
-    public static let readAiGatewayGuardrails =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read:ai-gateway-guardrails")
-    public static let readAiGatewayPrivateModels =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read:ai-gateway-private-models")
+    public static let readAiGatewayBudgets = UserEventPayloadVariant62PermissionsItem(rawValue: "read:ai-gateway-budgets")
+    public static let readAiGatewayGuardrails = UserEventPayloadVariant62PermissionsItem(rawValue: "read:ai-gateway-guardrails")
+    public static let readAiGatewayPrivateModels = UserEventPayloadVariant62PermissionsItem(rawValue: "read:ai-gateway-private-models")
     public static let readAiGatewayRules = UserEventPayloadVariant62PermissionsItem(rawValue: "read:ai-gateway-rules")
-    public static let readAiGatewayVirtualModelConfigs =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read:ai-gateway-virtual-model-configs")
+    public static let readAiGatewayVirtualModelConfigs = UserEventPayloadVariant62PermissionsItem(rawValue: "read:ai-gateway-virtual-model-configs")
     public static let readAlerts = UserEventPayloadVariant62PermissionsItem(rawValue: "read:alerts")
     public static let readAuditLog = UserEventPayloadVariant62PermissionsItem(rawValue: "read:audit-log")
     public static let readAutomations = UserEventPayloadVariant62PermissionsItem(rawValue: "read:automations")
@@ -115,22 +82,17 @@ public struct UserEventPayloadVariant62PermissionsItem: RawRepresentable, Hashab
     public static let readDomain = UserEventPayloadVariant62PermissionsItem(rawValue: "read:domain")
     public static let readEvent = UserEventPayloadVariant62PermissionsItem(rawValue: "read:event")
     public static let readFirewall = UserEventPayloadVariant62PermissionsItem(rawValue: "read:firewall")
-    public static let readIntegrationConfiguration =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read:integration-configuration")
-    public static let readIntegrationResource =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read:integration-resource")
+    public static let readIntegrationConfiguration = UserEventPayloadVariant62PermissionsItem(rawValue: "read:integration-configuration")
+    public static let readIntegrationResource = UserEventPayloadVariant62PermissionsItem(rawValue: "read:integration-resource")
     public static let readKms = UserEventPayloadVariant62PermissionsItem(rawValue: "read:kms")
     public static let readMessageboard = UserEventPayloadVariant62PermissionsItem(rawValue: "read:messageboard")
     public static let readMonitoring = UserEventPayloadVariant62PermissionsItem(rawValue: "read:monitoring")
     public static let readProject = UserEventPayloadVariant62PermissionsItem(rawValue: "read:project")
-    public static let readProjectEnvVarsNonProduction =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read:project-env-vars-non-production")
-    public static let readProjectEnvVarsProduction =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read:project-env-vars-production")
+    public static let readProjectEnvVarsNonProduction = UserEventPayloadVariant62PermissionsItem(rawValue: "read:project-env-vars-non-production")
+    public static let readProjectEnvVarsProduction = UserEventPayloadVariant62PermissionsItem(rawValue: "read:project-env-vars-production")
     public static let readProjectFlags = UserEventPayloadVariant62PermissionsItem(rawValue: "read:project-flags")
     public static let readProjectMembers = UserEventPayloadVariant62PermissionsItem(rawValue: "read:project-members")
-    public static let readProjectTrustedSources =
-        UserEventPayloadVariant62PermissionsItem(rawValue: "read:project-trusted-sources")
+    public static let readProjectTrustedSources = UserEventPayloadVariant62PermissionsItem(rawValue: "read:project-trusted-sources")
     public static let readRemoteCache = UserEventPayloadVariant62PermissionsItem(rawValue: "read:remote-cache")
     public static let readSandbox = UserEventPayloadVariant62PermissionsItem(rawValue: "read:sandbox")
     public static let readSchedule = UserEventPayloadVariant62PermissionsItem(rawValue: "read:schedule")
@@ -144,7 +106,7 @@ public struct UserEventPayloadVariant62PermissionsItem: RawRepresentable, Hashab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -172,20 +134,16 @@ public enum UserEventPayloadVariant120JobVariant6Type: String, CaseIterable, Cod
 }
 
 /// Required enumerated value serialized in the `ceilingMode` wire field.
-public struct UserEventPayloadVariant38RetentionCeilingMode: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant38RetentionCeilingMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let days = UserEventPayloadVariant38RetentionCeilingMode(rawValue: "days")
     public static let untilRequested = UserEventPayloadVariant38RetentionCeilingMode(rawValue: "until-requested")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -198,16 +156,13 @@ public struct UserEventPayloadVariant38RetentionCeilingMode: RawRepresentable, H
 public struct UserEventPayloadVariant462Outcome: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let accountMatched = UserEventPayloadVariant462Outcome(rawValue: "account-matched")
     public static let linkingRequired = UserEventPayloadVariant462Outcome(rawValue: "linking-required")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -220,16 +175,13 @@ public struct UserEventPayloadVariant462Outcome: RawRepresentable, Hashable, Cod
 public struct UserEventPayloadVariant387Access: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let `private` = UserEventPayloadVariant387Access(rawValue: "private")
     public static let `public` = UserEventPayloadVariant387Access(rawValue: "public")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -242,17 +194,14 @@ public struct UserEventPayloadVariant387Access: RawRepresentable, Hashable, Coda
 public struct UserEventPayloadVariant409NewPlan: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let enterprise = UserEventPayloadVariant409NewPlan(rawValue: "enterprise")
     public static let hobby = UserEventPayloadVariant409NewPlan(rawValue: "hobby")
     public static let pro = UserEventPayloadVariant409NewPlan(rawValue: "pro")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -262,22 +211,16 @@ public struct UserEventPayloadVariant409NewPlan: RawRepresentable, Hashable, Cod
 }
 
 /// Required enumerated value serialized in the `envId` wire field.
-public struct UserEventPayloadVariant279ProjectNewConnectConfigurationsItemX06984cf6bc: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UserEventPayloadVariant279ProjectNewConnectConfigurationsItemX06984cf6bc: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let preview =
-        UserEventPayloadVariant279ProjectNewConnectConfigurationsItemX06984cf6bc(rawValue: "preview")
-    public static let production =
-        UserEventPayloadVariant279ProjectNewConnectConfigurationsItemX06984cf6bc(rawValue: "production")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let preview = UserEventPayloadVariant279ProjectNewConnectConfigurationsItemX06984cf6bc(rawValue: "preview")
+    public static let production = UserEventPayloadVariant279ProjectNewConnectConfigurationsItemX06984cf6bc(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -286,17 +229,11 @@ public struct UserEventPayloadVariant279ProjectNewConnectConfigurationsItemX0698
     }
 }
 
-public struct UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let accountUpdate =
-        UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "account-update")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let accountUpdate = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "account-update")
     public static let bitbucket = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "bitbucket")
     public static let dsync = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "dsync")
     public static let feedback = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "feedback")
@@ -305,27 +242,20 @@ public struct UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin: RawRe
     public static let `import` = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "import")
     public static let link = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "link")
     public static let mail = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "mail")
-    public static let nsnbAutoApprove =
-        UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-auto-approve")
-    public static let nsnbHobbyUpgrade =
-        UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-hobby-upgrade")
+    public static let nsnbAutoApprove = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-auto-approve")
+    public static let nsnbHobbyUpgrade = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-hobby-upgrade")
     public static let nsnbInvite = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-invite")
-    public static let nsnbRedeploy =
-        UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-redeploy")
-    public static let nsnbRedeployAttributionCard =
-        UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-redeploy-attribution-card")
-    public static let nsnbRequestAccess =
-        UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-request-access")
-    public static let nsnbViewerUpgrade =
-        UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-viewer-upgrade")
-    public static let organizationTeams =
-        UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "organization-teams")
+    public static let nsnbRedeploy = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-redeploy")
+    public static let nsnbRedeployAttributionCard = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-redeploy-attribution-card")
+    public static let nsnbRequestAccess = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-request-access")
+    public static let nsnbViewerUpgrade = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "nsnb-viewer-upgrade")
+    public static let organizationTeams = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "organization-teams")
     public static let saml = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "saml")
     public static let teams = UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin(rawValue: "teams")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -335,21 +265,17 @@ public struct UserEventPayloadVariant252RemovedUsersValueJoinedFromOrigin: RawRe
 }
 
 /// Required enumerated value serialized in the `oldTarget[]` wire field.
-public struct UserEventPayloadVariant173UpdateDiffOldTargetItem: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant173UpdateDiffOldTargetItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = UserEventPayloadVariant173UpdateDiffOldTargetItem(rawValue: "development")
     public static let preview = UserEventPayloadVariant173UpdateDiffOldTargetItem(rawValue: "preview")
     public static let production = UserEventPayloadVariant173UpdateDiffOldTargetItem(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -362,10 +288,7 @@ public struct UserEventPayloadVariant173UpdateDiffOldTargetItem: RawRepresentabl
 public struct UserEventPayloadVariant2Action: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let archived = UserEventPayloadVariant2Action(rawValue: "archived")
     public static let created = UserEventPayloadVariant2Action(rawValue: "created")
     public static let deleted = UserEventPayloadVariant2Action(rawValue: "deleted")
@@ -374,7 +297,7 @@ public struct UserEventPayloadVariant2Action: RawRepresentable, Hashable, Codabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -387,28 +310,19 @@ public struct UserEventPayloadVariant2Action: RawRepresentable, Hashable, Codabl
 /// permitted here. Callers should run their raw reason through `toAllowListedReadyStateReasonInternal` from
 /// `@api/events` before assigning. This keeps abuse / moderation / admin reasons out of the public activity
 /// log.
-public struct UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let earlyIgnoreStep =
-        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "EARLY_IGNORE_STEP")
-    public static let ignoreStep =
-        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "IGNORE_STEP")
-    public static let namespacePruned =
-        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "NAMESPACE_PRUNED")
-    public static let unaffectedProject =
-        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "UNAFFECTED_PROJECT")
-    public static let unverifiedCommit =
-        UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "UNVERIFIED_COMMIT")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let earlyIgnoreStep = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "EARLY_IGNORE_STEP")
+    public static let ignoreStep = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "IGNORE_STEP")
+    public static let namespacePruned = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "NAMESPACE_PRUNED")
+    public static let unaffectedProject = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "UNAFFECTED_PROJECT")
+    public static let unverifiedCommit = UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInternal(rawValue: "UNVERIFIED_COMMIT")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -421,16 +335,13 @@ public struct UserEventPayloadVariant51DeploymentAllowListedReadyStateReasonInte
 public struct UserEventPayloadVariant107SubjectType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let app = UserEventPayloadVariant107SubjectType(rawValue: "app")
     public static let user = UserEventPayloadVariant107SubjectType(rawValue: "user")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -443,15 +354,12 @@ public struct UserEventPayloadVariant107SubjectType: RawRepresentable, Hashable,
 public struct UserEventPayloadVariant259Scope: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let project = UserEventPayloadVariant259Scope(rawValue: "project")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -479,20 +387,16 @@ public enum UserEventPayloadVariant120JobVariant3Type: String, CaseIterable, Cod
 }
 
 /// Required enumerated value serialized in the `createDeployments` wire field.
-public struct UserEventPayloadVariant302CreateDeployments: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UserEventPayloadVariant302CreateDeployments: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let disabled = UserEventPayloadVariant302CreateDeployments(rawValue: "disabled")
     public static let enabled = UserEventPayloadVariant302CreateDeployments(rawValue: "enabled")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -505,17 +409,14 @@ public struct UserEventPayloadVariant302CreateDeployments: RawRepresentable, Has
 public struct UserEventPayloadVariant429Enabled: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let `default` = UserEventPayloadVariant429Enabled(rawValue: "default")
     public static let off = UserEventPayloadVariant429Enabled(rawValue: "off")
     public static let on = UserEventPayloadVariant429Enabled(rawValue: "on")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -8,34 +8,24 @@ import Foundation
 #endif
 /// Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate
 /// behavior on it.
-public struct ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let apiTriggerGitDeploy =
-        ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "api-trigger-git-deploy")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let apiTriggerGitDeploy = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "api-trigger-git-deploy")
     public static let cli = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "cli")
-    public static let cloneRepo =
-        ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "clone/repo")
+    public static let cloneRepo = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "clone/repo")
     public static let drop = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "drop")
     public static let git = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "git")
-    public static let gitDeployHook =
-        ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "git-deploy-hook")
-    public static let `import` =
-        ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "import")
-    public static let importRepo =
-        ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "import/repo")
-    public static let redeploy =
-        ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "redeploy")
+    public static let gitDeployHook = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "git-deploy-hook")
+    public static let `import` = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "import")
+    public static let importRepo = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "import/repo")
+    public static let redeploy = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "redeploy")
     public static let v0Web = ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource(rawValue: "v0-web")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -47,16 +37,13 @@ public struct ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSo
 public struct GetFirewallConfigResponseCrsXssAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let deny = GetFirewallConfigResponseCrsXssAction(rawValue: "deny")
     public static let log = GetFirewallConfigResponseCrsXssAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -65,20 +52,15 @@ public struct GetFirewallConfigResponseCrsXssAction: RawRepresentable, Hashable,
     }
 }
 
-public struct ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX921dce5479: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX921dce5479: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let allCustom =
-        ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX921dce5479(rawValue: "all-custom")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let allCustom = ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX921dce5479(rawValue: "all-custom")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -87,25 +69,18 @@ public struct ListProjectsResponseVariant1ProjectsItemTrustedSourcesProjectX921d
     }
 }
 
-public struct CreateProjectRequestBodyResourceConfigFunctionDefaultMemoryType: RawRepresentable, Hashable, Codable,
-    Sendable, SdkWireConvertible {
+public struct CreateProjectRequestBodyResourceConfigFunctionDefaultMemoryType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let standardLegacy =
-        CreateProjectRequestBodyResourceConfigFunctionDefaultMemoryType(rawValue: "standard_legacy")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let standardLegacy = CreateProjectRequestBodyResourceConfigFunctionDefaultMemoryType(rawValue: "standard_legacy")
     public static let standard = CreateProjectRequestBodyResourceConfigFunctionDefaultMemoryType(rawValue: "standard")
-    public static let performance =
-        CreateProjectRequestBodyResourceConfigFunctionDefaultMemoryType(rawValue: "performance")
-    public static let performanceXl =
-        CreateProjectRequestBodyResourceConfigFunctionDefaultMemoryType(rawValue: "performance_xl")
+    public static let performance = CreateProjectRequestBodyResourceConfigFunctionDefaultMemoryType(rawValue: "performance")
+    public static let performanceXl = CreateProjectRequestBodyResourceConfigFunctionDefaultMemoryType(rawValue: "performance_xl")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -131,28 +106,22 @@ public enum ListLogDrainsResponseVariant1DrainsVariant0ItemFilterV2FilterXeb6c2e
     }
 }
 
-public struct CreateStorageStoresBlobResponseStoreStatus: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct CreateStorageStoresBlobResponseStoreStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let available = CreateStorageStoresBlobResponseStoreStatus(rawValue: "available")
     public static let error = CreateStorageStoresBlobResponseStoreStatus(rawValue: "error")
     public static let initializing = CreateStorageStoresBlobResponseStoreStatus(rawValue: "initializing")
-    public static let limitsExceededSuspended =
-        CreateStorageStoresBlobResponseStoreStatus(rawValue: "limits-exceeded-suspended")
-    public static let limitsExceededSuspendedStoreCount =
-        CreateStorageStoresBlobResponseStoreStatus(rawValue: "limits-exceeded-suspended-store-count")
+    public static let limitsExceededSuspended = CreateStorageStoresBlobResponseStoreStatus(rawValue: "limits-exceeded-suspended")
+    public static let limitsExceededSuspendedStoreCount = CreateStorageStoresBlobResponseStoreStatus(rawValue: "limits-exceeded-suspended-store-count")
     public static let onboarding = CreateStorageStoresBlobResponseStoreStatus(rawValue: "onboarding")
     public static let suspended = CreateStorageStoresBlobResponseStoreStatus(rawValue: "suspended")
     public static let uninstalled = CreateStorageStoresBlobResponseStoreStatus(rawValue: "uninstalled")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -195,24 +164,18 @@ public enum ListProjectsResponseVariant2ProjectsItemEnvItemContentHintVariant6Ty
     }
 }
 
-public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemAcX736c56828f: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemAcX736c56828f: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let challenge =
-        GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemAcX736c56828f(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let challenge = GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemAcX736c56828f(rawValue: "challenge")
     public static let deny = GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemAcX736c56828f(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemAcX736c56828f(rawValue: "log")
-    public static let rateLimit =
-        GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemAcX736c56828f(rawValue: "rate_limit")
+    public static let rateLimit = GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemAcX736c56828f(rawValue: "rate_limit")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -224,17 +187,14 @@ public struct GetSecurityFirewallConfigResponseActiveRulesetsVariant0ItemAcX736c
 public struct SubmitInvoiceRequestBodyTestResult: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let paid = SubmitInvoiceRequestBodyTestResult(rawValue: "paid")
     public static let notpaid = SubmitInvoiceRequestBodyTestResult(rawValue: "notpaid")
     public static let overdue = SubmitInvoiceRequestBodyTestResult(rawValue: "overdue")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

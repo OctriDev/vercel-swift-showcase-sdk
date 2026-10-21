@@ -6,12 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ConnectMethods {
-    /// Retrieves a connector by its stable ID or team-scoped UID. Use a dashboard or team requester, or a deployment's
-    /// project OIDC token; project requesters can read only connectors linked to their project and environment.
+extension ConnectMethods {
+    /// Retrieves a connector by its stable ID or team-scoped UID. Use a dashboard or team requester, or a deployment's project OIDC token; project requesters can read only connectors linked to their project and environment.
     ///
-    /// Get the connector by ID. Accepts a dashboard/team requester or a deployment's project OIDC token; project
-    /// requesters may only read connectors linked to their project and environment.
+    /// Get the connector by ID. Accepts a dashboard/team requester or a deployment's project OIDC token; project requesters may only read connectors linked to their project and environment.
     ///
     /// - Parameters:
     /// - connector: Stable connector ID or URL-encoded team-scoped UID. Examples:
@@ -24,33 +22,10 @@ public extension ConnectMethods {
     ///   If both are omitted, Vercel uses the team associated with the token or the
     ///   authenticated user's default team. The request returns 401 if no team can be
     ///   selected.
-    static func getConnector(
-        config: ClientConfig,
-        connector: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ConnectConnector {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/connect/connectors/", sdkEncodePathSegment(sdkWireString(connector))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getConnector",
-            options: requestOptions,
-            errors: [
-                "400": ConnectError.self,
-                "401": ConnectError.self,
-                "403": ConnectError.self,
-                "404": ConnectError.self,
-                "409": ConnectError.self,
-                "410": ConnectError.self,
-                "422": ConnectError.self,
-            ]
-        )).data
+    public static func getConnector(config: ClientConfig, connector: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectConnector {
+        return try (await sdkRequest("GET", ["/v1/connect/connectors/", sdkEncodePathSegment(sdkWireString(connector))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getConnector", options: requestOptions, errors: ["400": ConnectError.self, "401": ConnectError.self, "403": ConnectError.self, "404": ConnectError.self, "409": ConnectError.self, "410": ConnectError.self, "422": ConnectError.self])).data
     }
 }

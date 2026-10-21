@@ -3,24 +3,20 @@
 
 import Foundation
 
-/// Integrations domain models
+// Integrations domain models
 /// Defines the installation type. - 'external' integrations are installed via the existing integrations flow -
 /// 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store
 /// creation process - if undefined, assume 'external'
-public struct GetConfigurationResponseVariant0InstallationType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant0InstallationType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let external = GetConfigurationResponseVariant0InstallationType(rawValue: "external")
     public static let marketplace = GetConfigurationResponseVariant0InstallationType(rawValue: "marketplace")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -31,20 +27,15 @@ public struct GetConfigurationResponseVariant0InstallationType: RawRepresentable
 
 /// Source defines where the configuration was installed from. It is used to analyze user engagement for
 /// integration installations in product metrics.
-public struct GetConfigurationResponseVariant1Source: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant1Source: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let backoffice = GetConfigurationResponseVariant1Source(rawValue: "backoffice")
     public static let cli = GetConfigurationResponseVariant1Source(rawValue: "cli")
     public static let deployButton = GetConfigurationResponseVariant1Source(rawValue: "deploy-button")
     public static let external = GetConfigurationResponseVariant1Source(rawValue: "external")
-    public static let importRecommendedIntegrations =
-        GetConfigurationResponseVariant1Source(rawValue: "import-recommended-integrations")
+    public static let importRecommendedIntegrations = GetConfigurationResponseVariant1Source(rawValue: "import-recommended-integrations")
     public static let marketplace = GetConfigurationResponseVariant1Source(rawValue: "marketplace")
     public static let oauth = GetConfigurationResponseVariant1Source(rawValue: "oauth")
     public static let organization = GetConfigurationResponseVariant1Source(rawValue: "organization")
@@ -53,7 +44,7 @@ public struct GetConfigurationResponseVariant1Source: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -65,16 +56,12 @@ public struct GetConfigurationResponseVariant1Source: RawRepresentable, Hashable
 public struct GetConfigurationResponseVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let integrationConfiguration =
-        GetConfigurationResponseVariant0Type(rawValue: "integration-configuration")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let integrationConfiguration = GetConfigurationResponseVariant0Type(rawValue: "integration-configuration")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -85,20 +72,15 @@ public struct GetConfigurationResponseVariant0Type: RawRepresentable, Hashable, 
 
 /// Source defines where the configuration was installed from. It is used to analyze user engagement for
 /// integration installations in product metrics.
-public struct GetConfigurationResponseVariant2Source: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant2Source: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let backoffice = GetConfigurationResponseVariant2Source(rawValue: "backoffice")
     public static let cli = GetConfigurationResponseVariant2Source(rawValue: "cli")
     public static let deployButton = GetConfigurationResponseVariant2Source(rawValue: "deploy-button")
     public static let external = GetConfigurationResponseVariant2Source(rawValue: "external")
-    public static let importRecommendedIntegrations =
-        GetConfigurationResponseVariant2Source(rawValue: "import-recommended-integrations")
+    public static let importRecommendedIntegrations = GetConfigurationResponseVariant2Source(rawValue: "import-recommended-integrations")
     public static let marketplace = GetConfigurationResponseVariant2Source(rawValue: "marketplace")
     public static let oauth = GetConfigurationResponseVariant2Source(rawValue: "oauth")
     public static let organization = GetConfigurationResponseVariant2Source(rawValue: "organization")
@@ -107,7 +89,7 @@ public struct GetConfigurationResponseVariant2Source: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -119,20 +101,16 @@ public struct GetConfigurationResponseVariant2Source: RawRepresentable, Hashable
 /// Defines the installation type. - 'external' integrations are installed via the existing integrations flow -
 /// 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store
 /// creation process - if undefined, assume 'external'
-public struct GetConfigurationResponseVariant1InstallationType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant1InstallationType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let external = GetConfigurationResponseVariant1InstallationType(rawValue: "external")
     public static let marketplace = GetConfigurationResponseVariant1InstallationType(rawValue: "marketplace")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -141,22 +119,16 @@ public struct GetConfigurationResponseVariant1InstallationType: RawRepresentable
     }
 }
 
-public struct GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanScope: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanScope: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let installation =
-        GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanScope(rawValue: "installation")
-    public static let resource =
-        GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanScope(rawValue: "resource")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let installation = GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanScope(rawValue: "installation")
+    public static let resource = GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanScope(rawValue: "resource")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -165,22 +137,16 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan
     }
 }
 
-public struct GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanType: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let prepayment =
-        GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanType(rawValue: "prepayment")
-    public static let subscription =
-        GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanType(rawValue: "subscription")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let prepayment = GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanType(rawValue: "prepayment")
+    public static let subscription = GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanType(rawValue: "subscription")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -190,14 +156,10 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan
 }
 
 /// The configuration status. Optional. If not defined, assume 'ready'.
-public struct GetConfigurationResponseVariant2Status: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant2Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let error = GetConfigurationResponseVariant2Status(rawValue: "error")
     public static let onboarding = GetConfigurationResponseVariant2Status(rawValue: "onboarding")
     public static let pending = GetConfigurationResponseVariant2Status(rawValue: "pending")
@@ -208,7 +170,7 @@ public struct GetConfigurationResponseVariant2Status: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -220,16 +182,12 @@ public struct GetConfigurationResponseVariant2Status: RawRepresentable, Hashable
 public struct GetConfigurationResponseVariant2Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let integrationConfiguration =
-        GetConfigurationResponseVariant2Type(rawValue: "integration-configuration")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let integrationConfiguration = GetConfigurationResponseVariant2Type(rawValue: "integration-configuration")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -272,28 +230,20 @@ public enum GetConfigurationResponseVariant0TransferRequestVariant0Kind: String,
     }
 }
 
-public struct GetConfigurationResponseVariant0DisabledReason: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant0DisabledReason: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let accountPlanDowngrade =
-        GetConfigurationResponseVariant0DisabledReason(rawValue: "account-plan-downgrade")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let accountPlanDowngrade = GetConfigurationResponseVariant0DisabledReason(rawValue: "account-plan-downgrade")
     public static let disabledByAdmin = GetConfigurationResponseVariant0DisabledReason(rawValue: "disabled-by-admin")
     public static let disabledByOwner = GetConfigurationResponseVariant0DisabledReason(rawValue: "disabled-by-owner")
-    public static let featureNotAvailable =
-        GetConfigurationResponseVariant0DisabledReason(rawValue: "feature-not-available")
-    public static let originalOwnerLeftTheTeam =
-        GetConfigurationResponseVariant0DisabledReason(rawValue: "original-owner-left-the-team")
-    public static let originalOwnerRoleDowngraded =
-        GetConfigurationResponseVariant0DisabledReason(rawValue: "original-owner-role-downgraded")
+    public static let featureNotAvailable = GetConfigurationResponseVariant0DisabledReason(rawValue: "feature-not-available")
+    public static let originalOwnerLeftTheTeam = GetConfigurationResponseVariant0DisabledReason(rawValue: "original-owner-left-the-team")
+    public static let originalOwnerRoleDowngraded = GetConfigurationResponseVariant0DisabledReason(rawValue: "original-owner-role-downgraded")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -303,14 +253,10 @@ public struct GetConfigurationResponseVariant0DisabledReason: RawRepresentable, 
 }
 
 /// The configuration status. Optional. If not defined, assume 'ready'.
-public struct GetConfigurationResponseVariant0Status: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant0Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let error = GetConfigurationResponseVariant0Status(rawValue: "error")
     public static let onboarding = GetConfigurationResponseVariant0Status(rawValue: "onboarding")
     public static let pending = GetConfigurationResponseVariant0Status(rawValue: "pending")
@@ -321,7 +267,7 @@ public struct GetConfigurationResponseVariant0Status: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -330,28 +276,20 @@ public struct GetConfigurationResponseVariant0Status: RawRepresentable, Hashable
     }
 }
 
-public struct GetConfigurationResponseVariant2DisabledReason: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant2DisabledReason: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let accountPlanDowngrade =
-        GetConfigurationResponseVariant2DisabledReason(rawValue: "account-plan-downgrade")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let accountPlanDowngrade = GetConfigurationResponseVariant2DisabledReason(rawValue: "account-plan-downgrade")
     public static let disabledByAdmin = GetConfigurationResponseVariant2DisabledReason(rawValue: "disabled-by-admin")
     public static let disabledByOwner = GetConfigurationResponseVariant2DisabledReason(rawValue: "disabled-by-owner")
-    public static let featureNotAvailable =
-        GetConfigurationResponseVariant2DisabledReason(rawValue: "feature-not-available")
-    public static let originalOwnerLeftTheTeam =
-        GetConfigurationResponseVariant2DisabledReason(rawValue: "original-owner-left-the-team")
-    public static let originalOwnerRoleDowngraded =
-        GetConfigurationResponseVariant2DisabledReason(rawValue: "original-owner-role-downgraded")
+    public static let featureNotAvailable = GetConfigurationResponseVariant2DisabledReason(rawValue: "feature-not-available")
+    public static let originalOwnerLeftTheTeam = GetConfigurationResponseVariant2DisabledReason(rawValue: "original-owner-left-the-team")
+    public static let originalOwnerRoleDowngraded = GetConfigurationResponseVariant2DisabledReason(rawValue: "original-owner-role-downgraded")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -362,20 +300,15 @@ public struct GetConfigurationResponseVariant2DisabledReason: RawRepresentable, 
 
 /// Source defines where the configuration was installed from. It is used to analyze user engagement for
 /// integration installations in product metrics.
-public struct GetConfigurationResponseVariant0Source: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant0Source: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let backoffice = GetConfigurationResponseVariant0Source(rawValue: "backoffice")
     public static let cli = GetConfigurationResponseVariant0Source(rawValue: "cli")
     public static let deployButton = GetConfigurationResponseVariant0Source(rawValue: "deploy-button")
     public static let external = GetConfigurationResponseVariant0Source(rawValue: "external")
-    public static let importRecommendedIntegrations =
-        GetConfigurationResponseVariant0Source(rawValue: "import-recommended-integrations")
+    public static let importRecommendedIntegrations = GetConfigurationResponseVariant0Source(rawValue: "import-recommended-integrations")
     public static let marketplace = GetConfigurationResponseVariant0Source(rawValue: "marketplace")
     public static let oauth = GetConfigurationResponseVariant0Source(rawValue: "oauth")
     public static let organization = GetConfigurationResponseVariant0Source(rawValue: "organization")
@@ -384,7 +317,7 @@ public struct GetConfigurationResponseVariant0Source: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -394,20 +327,16 @@ public struct GetConfigurationResponseVariant0Source: RawRepresentable, Hashable
 }
 
 /// A string representing the permission for projects. Possible values are `all` or `selected`.
-public struct GetConfigurationResponseVariant0ProjectSelection: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant0ProjectSelection: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let all = GetConfigurationResponseVariant0ProjectSelection(rawValue: "all")
     public static let selected = GetConfigurationResponseVariant0ProjectSelection(rawValue: "selected")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -419,20 +348,16 @@ public struct GetConfigurationResponseVariant0ProjectSelection: RawRepresentable
 /// Defines the installation type. - 'external' integrations are installed via the existing integrations flow -
 /// 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store
 /// creation process - if undefined, assume 'external'
-public struct GetConfigurationResponseVariant2InstallationType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant2InstallationType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let external = GetConfigurationResponseVariant2InstallationType(rawValue: "external")
     public static let marketplace = GetConfigurationResponseVariant2InstallationType(rawValue: "marketplace")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -442,14 +367,10 @@ public struct GetConfigurationResponseVariant2InstallationType: RawRepresentable
 }
 
 /// The configuration status. Optional. If not defined, assume 'ready'.
-public struct GetConfigurationResponseVariant1Status: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant1Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let error = GetConfigurationResponseVariant1Status(rawValue: "error")
     public static let onboarding = GetConfigurationResponseVariant1Status(rawValue: "onboarding")
     public static let pending = GetConfigurationResponseVariant1Status(rawValue: "pending")
@@ -460,7 +381,7 @@ public struct GetConfigurationResponseVariant1Status: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -469,28 +390,20 @@ public struct GetConfigurationResponseVariant1Status: RawRepresentable, Hashable
     }
 }
 
-public struct GetConfigurationResponseVariant1DisabledReason: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant1DisabledReason: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let accountPlanDowngrade =
-        GetConfigurationResponseVariant1DisabledReason(rawValue: "account-plan-downgrade")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let accountPlanDowngrade = GetConfigurationResponseVariant1DisabledReason(rawValue: "account-plan-downgrade")
     public static let disabledByAdmin = GetConfigurationResponseVariant1DisabledReason(rawValue: "disabled-by-admin")
     public static let disabledByOwner = GetConfigurationResponseVariant1DisabledReason(rawValue: "disabled-by-owner")
-    public static let featureNotAvailable =
-        GetConfigurationResponseVariant1DisabledReason(rawValue: "feature-not-available")
-    public static let originalOwnerLeftTheTeam =
-        GetConfigurationResponseVariant1DisabledReason(rawValue: "original-owner-left-the-team")
-    public static let originalOwnerRoleDowngraded =
-        GetConfigurationResponseVariant1DisabledReason(rawValue: "original-owner-role-downgraded")
+    public static let featureNotAvailable = GetConfigurationResponseVariant1DisabledReason(rawValue: "feature-not-available")
+    public static let originalOwnerLeftTheTeam = GetConfigurationResponseVariant1DisabledReason(rawValue: "original-owner-left-the-team")
+    public static let originalOwnerRoleDowngraded = GetConfigurationResponseVariant1DisabledReason(rawValue: "original-owner-role-downgraded")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -499,21 +412,17 @@ public struct GetConfigurationResponseVariant1DisabledReason: RawRepresentable, 
     }
 }
 
-public struct GetConfigurationResponseVariant0NotificationLevel: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetConfigurationResponseVariant0NotificationLevel: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let error = GetConfigurationResponseVariant0NotificationLevel(rawValue: "error")
     public static let info = GetConfigurationResponseVariant0NotificationLevel(rawValue: "info")
     public static let warn = GetConfigurationResponseVariant0NotificationLevel(rawValue: "warn")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -525,16 +434,12 @@ public struct GetConfigurationResponseVariant0NotificationLevel: RawRepresentabl
 public struct GetConfigurationResponseVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let integrationConfiguration =
-        GetConfigurationResponseVariant1Type(rawValue: "integration-configuration")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let integrationConfiguration = GetConfigurationResponseVariant1Type(rawValue: "integration-configuration")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

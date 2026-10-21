@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension AliasesMethods {
-    /// Retrieves an alias by its hostname or alias ID. Use `projectId` to restrict the result to an alias assigned to a
-    /// specific project, or use `since` and `until` to filter by creation time.
+extension AliasesMethods {
+    /// Retrieves an alias by its hostname or alias ID. Use `projectId` to restrict the result to an alias assigned to a specific project, or use `since` and `until` to filter by creation time.
     ///
     /// Retrieves an Alias for the given host name or alias ID.
     ///
@@ -22,32 +21,14 @@ public extension AliasesMethods {
     ///   timestamp
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getAlias(
-        config: ClientConfig,
-        idOrAlias: String,
-        from: Double? = nil,
-        projectId: String? = nil,
-        since: Double? = nil,
-        until: Double? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetAliasResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v4/aliases/", sdkEncodePathSegment(sdkWireString(idOrAlias))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("from", value: from),
-                SdkQueryParameter("projectId", value: projectId),
-                SdkQueryParameter("since", value: since),
-                SdkQueryParameter("until", value: until),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getAlias",
-            options: requestOptions
-        )).data
+    public static func getAlias(config: ClientConfig, idOrAlias: String, from: Double? = nil, projectId: String? = nil, since: Double? = nil, until: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetAliasResponse {
+        return try (await sdkRequest("GET", ["/v4/aliases/", sdkEncodePathSegment(sdkWireString(idOrAlias))].joined(), config: config, query: [
+            SdkQueryParameter("from", value: from),
+            SdkQueryParameter("projectId", value: projectId),
+            SdkQueryParameter("since", value: since),
+            SdkQueryParameter("until", value: until),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getAlias", options: requestOptions)).data
     }
 }

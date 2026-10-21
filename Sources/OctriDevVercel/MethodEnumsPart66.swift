@@ -6,21 +6,17 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct UpdateProjectResponseSecurityManagedRulesOwaspAction: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UpdateProjectResponseSecurityManagedRulesOwaspAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let challenge = UpdateProjectResponseSecurityManagedRulesOwaspAction(rawValue: "challenge")
     public static let deny = UpdateProjectResponseSecurityManagedRulesOwaspAction(rawValue: "deny")
     public static let log = UpdateProjectResponseSecurityManagedRulesOwaspAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -46,14 +42,10 @@ public enum GetVercelCiInvocationResponseInvocationJobDefinitionsCreatedSX869b56
     }
 }
 
-public struct GetVercelCiRepositorySettingsParameter: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetVercelCiRepositorySettingsParameter: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bitbucket = GetVercelCiRepositorySettingsParameter(rawValue: "bitbucket")
     public static let cursorOrigin = GetVercelCiRepositorySettingsParameter(rawValue: "cursor-origin")
     public static let github = GetVercelCiRepositorySettingsParameter(rawValue: "github")
@@ -62,7 +54,7 @@ public struct GetVercelCiRepositorySettingsParameter: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -74,15 +66,12 @@ public struct GetVercelCiRepositorySettingsParameter: RawRepresentable, Hashable
 public struct CreateFlagResponseTypeName: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let flag = CreateFlagResponseTypeName(rawValue: "flag")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -91,21 +80,17 @@ public struct CreateFlagResponseTypeName: RawRepresentable, Hashable, Codable, S
     }
 }
 
-public struct UploadProjectAvatarResponseTargetsValueReadySubstate: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct UploadProjectAvatarResponseTargetsValueReadySubstate: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let promoted = UploadProjectAvatarResponseTargetsValueReadySubstate(rawValue: "PROMOTED")
     public static let rolling = UploadProjectAvatarResponseTargetsValueReadySubstate(rawValue: "ROLLING")
     public static let staged = UploadProjectAvatarResponseTargetsValueReadySubstate(rawValue: "STAGED")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -152,15 +137,12 @@ public enum RemoveProjectEnvResponseVariant1ContentHintVariant4Type: String, Cas
 public struct GetFlagSettingsResponseTypeName: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let settings = GetFlagSettingsResponseTypeName(rawValue: "settings")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -187,16 +169,11 @@ public enum ListProjectsResponseVariant2ProjectsItemCreatorVariant0ViaVariant1Ty
 }
 
 /// The source of the deployment.
-public struct GetDeploymentsResponseDeploymentsItemSource: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct GetDeploymentsResponseDeploymentsItemSource: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let apiTriggerGitDeploy =
-        GetDeploymentsResponseDeploymentsItemSource(rawValue: "api-trigger-git-deploy")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let apiTriggerGitDeploy = GetDeploymentsResponseDeploymentsItemSource(rawValue: "api-trigger-git-deploy")
     public static let cli = GetDeploymentsResponseDeploymentsItemSource(rawValue: "cli")
     public static let cloneRepo = GetDeploymentsResponseDeploymentsItemSource(rawValue: "clone/repo")
     public static let drop = GetDeploymentsResponseDeploymentsItemSource(rawValue: "drop")
@@ -209,7 +186,7 @@ public struct GetDeploymentsResponseDeploymentsItemSource: RawRepresentable, Has
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -218,23 +195,17 @@ public struct GetDeploymentsResponseDeploymentsItemSource: RawRepresentable, Has
     }
 }
 
-public struct GetSecurityFirewallConfigResponseDraftManagedRulesBotProtectionAction: RawRepresentable, Hashable,
-    Codable,
-    Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseDraftManagedRulesBotProtectionAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let challenge =
-        GetSecurityFirewallConfigResponseDraftManagedRulesBotProtectionAction(rawValue: "challenge")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let challenge = GetSecurityFirewallConfigResponseDraftManagedRulesBotProtectionAction(rawValue: "challenge")
     public static let deny = GetSecurityFirewallConfigResponseDraftManagedRulesBotProtectionAction(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseDraftManagedRulesBotProtectionAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

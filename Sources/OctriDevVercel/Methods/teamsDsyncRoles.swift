@@ -6,37 +6,20 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension TeamsMethods {
-    /// Updates Directory Sync role mappings for a team, associating directory groups with team roles or access groups.
-    /// Identify the team with `teamId` or `slug` and provide the mappings in `roles`.
+extension TeamsMethods {
+    /// Updates Directory Sync role mappings for a team, associating directory groups with team roles or access groups. Identify the team with `teamId` or `slug` and provide the mappings in `roles`.
     ///
-    /// Update the Directory Sync role mappings for a Team. This endpoint allows updating the mapping between directory
-    /// groups and team roles or access groups.
+    /// Update the Directory Sync role mappings for a Team. This endpoint allows updating the mapping between directory groups and team roles or access groups.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - roles: Directory groups to role or access group mappings.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func postTeamDsyncRoles(
-        config: ClientConfig,
-        teamId: String,
-        roles: [String: PostTeamDsyncRolesRequestBodyRolesValue],
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> PostTeamDsyncRolesResponse {
+    public static func postTeamDsyncRoles(config: ClientConfig, teamId: String, roles: [String: PostTeamDsyncRolesRequestBodyRolesValue], slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> PostTeamDsyncRolesResponse {
         let requestBody = PostTeamDsyncRolesRequestBody(roles: roles)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/dsync-roles"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "postTeamDsyncRoles",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/dsync-roles"].joined(), config: config, query: [
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "postTeamDsyncRoles", options: requestOptions)).data
     }
 }

@@ -6,13 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension RollingReleaseMethods {
-    /// Starts a rolling release for a project's canary deployment. Supply `canaryDeploymentId` to identify the
-    /// deployment to roll out; if that deployment already has an active rolling release, the endpoint returns its
-    /// current state without side effects. The response includes the rolling release information.
+extension RollingReleaseMethods {
+    /// Starts a rolling release for a project's canary deployment. Supply `canaryDeploymentId` to identify the deployment to roll out; if that deployment already has an active rolling release, the endpoint returns its current state without side effects. The response includes the rolling release information.
     ///
-    /// Start a rolling release for a deployment. If a rolling release is already active for the same canary deployment,
-    /// returns the current state without side effects.
+    /// Start a rolling release for a deployment. If a rolling release is already active for the same canary deployment, returns the current state without side effects.
     ///
     /// - Parameters:
     /// - idOrName: Project ID or project name (URL-encoded)
@@ -20,28 +17,12 @@ public extension RollingReleaseMethods {
     ///   release for
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func startRollingRelease(
-        config: ClientConfig,
-        idOrName: String,
-        canaryDeploymentId: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> StartRollingReleaseResponse {
+    public static func startRollingRelease(config: ClientConfig, idOrName: String, canaryDeploymentId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> StartRollingReleaseResponse {
         let requestBody = StartRollingReleaseRequestBody(canaryDeploymentId: canaryDeploymentId)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/start"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "startRollingRelease",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release/start"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "startRollingRelease", options: requestOptions)).data
     }
 }

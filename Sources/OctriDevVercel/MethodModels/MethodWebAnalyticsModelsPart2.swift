@@ -7,39 +7,29 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical webAnalytics operation model declarations
+// Canonical webAnalytics operation model declarations
 public indirect enum CountPageviewsParameterX9935b237 {
     case doubleValue(Double)
     case stringValue(String)
 }
 
 extension CountPageviewsParameterX9935b237: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CountPageviewsParameterX9935b237"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CountPageviewsParameterX9935b237")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CountPageviewsParameterX9935b237 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -69,32 +59,22 @@ public indirect enum AggregateEventsResponseQueryGroupByItem {
 }
 
 extension AggregateEventsResponseQueryGroupByItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AggregateEventsResponseQueryGroupByItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregateEventsResponseQueryGroupByItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AggregateEventsResponseQueryGroupByItem {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue1(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue1(value) }
         return nil
     }
 }
@@ -120,36 +100,26 @@ public struct CountPageviewsResponseQuery: Codable {
         case filter
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CountPageviewsResponseQuery {
-    init(from decoder: Decoder) throws {
+extension CountPageviewsResponseQuery {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.since) else {
-            throw SdkValidationError(
-                field: "since",
-                code: "required",
-                message: "Validation failed for 'since': value is required"
-            )
+            throw SdkValidationError(field: "since", code: "required", message: "Validation failed for 'since': value is required")
         }
         guard container.contains(.until) else {
-            throw SdkValidationError(
-                field: "until",
-                code: "required",
-                message: "Validation failed for 'until': value is required"
-            )
+            throw SdkValidationError(field: "until", code: "required", message: "Validation failed for 'until': value is required")
         }
-        since = try container.sdkDecodeRequired(.since)
-        until = try container.sdkDecodeRequired(.until)
-        filter = try container.sdkDecodeIfPresent(.filter)
+        self.since = try container.sdkDecodeRequired(.since)
+        self.until = try container.sdkDecodeRequired(.until)
+        self.filter = try container.sdkDecodeIfPresent(.filter)
     }
 }
 
-public extension CountPageviewsResponseQuery {
-    init(since: String, until: String, filter: String? = nil) {
+extension CountPageviewsResponseQuery {
+    public init(since: String, until: String, filter: String? = nil) {
         (self.since, self.until) = (since, until)
         self.filter = filter
     }
@@ -161,21 +131,15 @@ public indirect enum AggregatePageviewsResponseData {
 }
 
 extension AggregatePageviewsResponseData: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AggregatePageviewsResponseData"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregatePageviewsResponseData")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -184,12 +148,12 @@ extension AggregatePageviewsResponseData {
         if let value = try? container.decode(
             [AggregatePageviewsResponseDataVariant0Item].self
         ) {
-            return .aggregatePageviewsResponseDataVariant0ItemList(value)
+            return             .aggregatePageviewsResponseDataVariant0ItemList(value)
         }
         if let value = try? container.decode(
             [AggregatePageviewsResponseDataVariant1Item].self
         ) {
-            return .aggregatePageviewsResponseDataVariant1ItemList(value)
+            return             .aggregatePageviewsResponseDataVariant1ItemList(value)
         }
         return nil
     }
@@ -220,51 +184,31 @@ public struct AggregatePageviewsResponseQuery: Codable {
         case groupBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AggregatePageviewsResponseQuery {
-    init(from decoder: Decoder) throws {
+extension AggregatePageviewsResponseQuery {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.limit) else {
-            throw SdkValidationError(
-                field: "limit",
-                code: "required",
-                message: "Validation failed for 'limit': value is required"
-            )
+            throw SdkValidationError(field: "limit", code: "required", message: "Validation failed for 'limit': value is required")
         }
         guard container.contains(.since) else {
-            throw SdkValidationError(
-                field: "since",
-                code: "required",
-                message: "Validation failed for 'since': value is required"
-            )
+            throw SdkValidationError(field: "since", code: "required", message: "Validation failed for 'since': value is required")
         }
         guard container.contains(.until) else {
-            throw SdkValidationError(
-                field: "until",
-                code: "required",
-                message: "Validation failed for 'until': value is required"
-            )
+            throw SdkValidationError(field: "until", code: "required", message: "Validation failed for 'until': value is required")
         }
-        limit = try container.sdkDecodeRequired(.limit)
-        since = try container.sdkDecodeRequired(.since)
-        until = try container.sdkDecodeRequired(.until)
-        filter = try container.sdkDecodeIfPresent(.filter)
-        groupBy = try container.sdkDecodeIfPresent(.groupBy)
+        self.limit = try container.sdkDecodeRequired(.limit)
+        self.since = try container.sdkDecodeRequired(.since)
+        self.until = try container.sdkDecodeRequired(.until)
+        self.filter = try container.sdkDecodeIfPresent(.filter)
+        self.groupBy = try container.sdkDecodeIfPresent(.groupBy)
     }
 }
 
-public extension AggregatePageviewsResponseQuery {
-    init(
-        limit: Double,
-        since: String,
-        until: String,
-        filter: String? = nil,
-        groupBy: [AggregatePageviewsResponseQueryGroupByItem]? = nil
-    ) {
+extension AggregatePageviewsResponseQuery {
+    public init(limit: Double, since: String, until: String, filter: String? = nil, groupBy: [AggregatePageviewsResponseQueryGroupByItem]? = nil) {
         (self.limit, self.since) = (limit, since)
         (self.until, self.filter) = (until, filter)
         self.groupBy = groupBy
@@ -318,61 +262,38 @@ public struct AggregateEventsResponseDataVariant1Item: Codable {
         case visitorId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AggregateEventsResponseDataVariant1Item {
-    init(from decoder: Decoder) throws {
+extension AggregateEventsResponseDataVariant1Item {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        browserName = try container.sdkDecodeRequired(.browserName)
-        country = try container.sdkDecodeRequired(.country)
-        deviceType = try container.sdkDecodeRequired(.deviceType)
-        environment = try container.sdkDecodeRequired(.environment)
-        eventData = try container.sdkDecodeRequired(.eventData)
-        eventName = try container.sdkDecodeRequired(.eventName)
-        flags = try container.sdkDecodeRequired(.flags)
-        osName = try container.sdkDecodeRequired(.osName)
-        projectId = try container.sdkDecodeRequired(.projectId)
-        projectName = try container.sdkDecodeRequired(.projectName)
-        referrerHostname = try container.sdkDecodeRequired(.referrerHostname)
-        requestHostname = try container.sdkDecodeRequired(.requestHostname)
-        requestPath = try container.sdkDecodeRequired(.requestPath)
-        route = try container.sdkDecodeRequired(.route)
-        utmCampaign = try container.sdkDecodeRequired(.utmCampaign)
-        utmContent = try container.sdkDecodeRequired(.utmContent)
-        utmMedium = try container.sdkDecodeRequired(.utmMedium)
-        utmSource = try container.sdkDecodeRequired(.utmSource)
-        utmTerm = try container.sdkDecodeRequired(.utmTerm)
-        visitorId = try container.sdkDecodeRequired(.visitorId)
+        self.browserName = try container.sdkDecodeRequired(.browserName)
+        self.country = try container.sdkDecodeRequired(.country)
+        self.deviceType = try container.sdkDecodeRequired(.deviceType)
+        self.environment = try container.sdkDecodeRequired(.environment)
+        self.eventData = try container.sdkDecodeRequired(.eventData)
+        self.eventName = try container.sdkDecodeRequired(.eventName)
+        self.flags = try container.sdkDecodeRequired(.flags)
+        self.osName = try container.sdkDecodeRequired(.osName)
+        self.projectId = try container.sdkDecodeRequired(.projectId)
+        self.projectName = try container.sdkDecodeRequired(.projectName)
+        self.referrerHostname = try container.sdkDecodeRequired(.referrerHostname)
+        self.requestHostname = try container.sdkDecodeRequired(.requestHostname)
+        self.requestPath = try container.sdkDecodeRequired(.requestPath)
+        self.route = try container.sdkDecodeRequired(.route)
+        self.utmCampaign = try container.sdkDecodeRequired(.utmCampaign)
+        self.utmContent = try container.sdkDecodeRequired(.utmContent)
+        self.utmMedium = try container.sdkDecodeRequired(.utmMedium)
+        self.utmSource = try container.sdkDecodeRequired(.utmSource)
+        self.utmTerm = try container.sdkDecodeRequired(.utmTerm)
+        self.visitorId = try container.sdkDecodeRequired(.visitorId)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-public extension AggregateEventsResponseDataVariant1Item {
-    init(
-        browserName: String,
-        country: String,
-        deviceType: String,
-        environment: String,
-        eventData: String,
-        eventName: String,
-        flags: String,
-        osName: String,
-        projectId: String,
-        projectName: String,
-        referrerHostname: String,
-        requestHostname: String,
-        requestPath: String,
-        route: String,
-        utmCampaign: String,
-        utmContent: String,
-        utmMedium: String,
-        utmSource: String,
-        utmTerm: String,
-        visitorId: String
-    ) {
+extension AggregateEventsResponseDataVariant1Item {
+    public init(browserName: String, country: String, deviceType: String, environment: String, eventData: String, eventName: String, flags: String, osName: String, projectId: String, projectName: String, referrerHostname: String, requestHostname: String, requestPath: String, route: String, utmCampaign: String, utmContent: String, utmMedium: String, utmSource: String, utmTerm: String, visitorId: String) {
         (self.browserName, self.country) = (browserName, country)
         (self.deviceType, self.environment) = (deviceType, environment)
         (self.eventData, self.eventName) = (eventData, eventName)
@@ -386,8 +307,8 @@ public extension AggregateEventsResponseDataVariant1Item {
     }
 }
 
-public extension AggregateEventsResponseDataVariant1Item {
-    func encode(to encoder: Encoder) throws {
+extension AggregateEventsResponseDataVariant1Item {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(browserName, forKey: .browserName)
@@ -424,36 +345,26 @@ public struct CountEventsResponseQuery: Codable {
         case filter
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CountEventsResponseQuery {
-    init(from decoder: Decoder) throws {
+extension CountEventsResponseQuery {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.since) else {
-            throw SdkValidationError(
-                field: "since",
-                code: "required",
-                message: "Validation failed for 'since': value is required"
-            )
+            throw SdkValidationError(field: "since", code: "required", message: "Validation failed for 'since': value is required")
         }
         guard container.contains(.until) else {
-            throw SdkValidationError(
-                field: "until",
-                code: "required",
-                message: "Validation failed for 'until': value is required"
-            )
+            throw SdkValidationError(field: "until", code: "required", message: "Validation failed for 'until': value is required")
         }
-        since = try container.sdkDecodeRequired(.since)
-        until = try container.sdkDecodeRequired(.until)
-        filter = try container.sdkDecodeIfPresent(.filter)
+        self.since = try container.sdkDecodeRequired(.since)
+        self.until = try container.sdkDecodeRequired(.until)
+        self.filter = try container.sdkDecodeIfPresent(.filter)
     }
 }
 
-public extension CountEventsResponseQuery {
-    init(since: String, until: String, filter: String? = nil) {
+extension CountEventsResponseQuery {
+    public init(since: String, until: String, filter: String? = nil) {
         (self.since, self.until) = (since, until)
         self.filter = filter
     }
@@ -465,32 +376,22 @@ public indirect enum CountEventsParameterX1c5616a1 {
 }
 
 extension CountEventsParameterX1c5616a1: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CountEventsParameterX1c5616a1"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CountEventsParameterX1c5616a1")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CountEventsParameterX1c5616a1 {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -561,42 +462,36 @@ public struct AggregateEventsResponseDataVariant0Item: Codable {
         case visitorId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AggregateEventsResponseDataVariant0Item {
-    init(from decoder: Decoder) throws {
+extension AggregateEventsResponseDataVariant0Item {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.timestamp) else {
-            throw SdkValidationError(
-                field: "timestamp",
-                code: "required",
-                message: "Validation failed for 'timestamp': value is required"
-            )
+            throw SdkValidationError(field: "timestamp", code: "required", message: "Validation failed for 'timestamp': value is required")
         }
-        timestamp = try container.sdkDecodeRequired(.timestamp)
-        browserName = try container.sdkDecodeIfPresent(.browserName)
-        country = try container.sdkDecodeIfPresent(.country)
-        deviceType = try container.sdkDecodeIfPresent(.deviceType)
-        environment = try container.sdkDecodeIfPresent(.environment)
-        eventData = try container.sdkDecodeIfPresent(.eventData)
-        eventName = try container.sdkDecodeIfPresent(.eventName)
-        flags = try container.sdkDecodeIfPresent(.flags)
-        osName = try container.sdkDecodeIfPresent(.osName)
-        projectId = try container.sdkDecodeIfPresent(.projectId)
-        projectName = try container.sdkDecodeIfPresent(.projectName)
-        referrerHostname = try container.sdkDecodeIfPresent(.referrerHostname)
-        requestHostname = try container.sdkDecodeIfPresent(.requestHostname)
-        requestPath = try container.sdkDecodeIfPresent(.requestPath)
-        route = try container.sdkDecodeIfPresent(.route)
-        utmCampaign = try container.sdkDecodeIfPresent(.utmCampaign)
-        utmContent = try container.sdkDecodeIfPresent(.utmContent)
-        utmMedium = try container.sdkDecodeIfPresent(.utmMedium)
-        utmSource = try container.sdkDecodeIfPresent(.utmSource)
-        utmTerm = try container.sdkDecodeIfPresent(.utmTerm)
-        visitorId = try container.sdkDecodeIfPresent(.visitorId)
-        try sdkValidateDateTime("timestamp", sdkWireString(timestamp))
+        self.timestamp = try container.sdkDecodeRequired(.timestamp)
+        self.browserName = try container.sdkDecodeIfPresent(.browserName)
+        self.country = try container.sdkDecodeIfPresent(.country)
+        self.deviceType = try container.sdkDecodeIfPresent(.deviceType)
+        self.environment = try container.sdkDecodeIfPresent(.environment)
+        self.eventData = try container.sdkDecodeIfPresent(.eventData)
+        self.eventName = try container.sdkDecodeIfPresent(.eventName)
+        self.flags = try container.sdkDecodeIfPresent(.flags)
+        self.osName = try container.sdkDecodeIfPresent(.osName)
+        self.projectId = try container.sdkDecodeIfPresent(.projectId)
+        self.projectName = try container.sdkDecodeIfPresent(.projectName)
+        self.referrerHostname = try container.sdkDecodeIfPresent(.referrerHostname)
+        self.requestHostname = try container.sdkDecodeIfPresent(.requestHostname)
+        self.requestPath = try container.sdkDecodeIfPresent(.requestPath)
+        self.route = try container.sdkDecodeIfPresent(.route)
+        self.utmCampaign = try container.sdkDecodeIfPresent(.utmCampaign)
+        self.utmContent = try container.sdkDecodeIfPresent(.utmContent)
+        self.utmMedium = try container.sdkDecodeIfPresent(.utmMedium)
+        self.utmSource = try container.sdkDecodeIfPresent(.utmSource)
+        self.utmTerm = try container.sdkDecodeIfPresent(.utmTerm)
+        self.visitorId = try container.sdkDecodeIfPresent(.visitorId)
+            try sdkValidateDateTime("timestamp", sdkWireString(self.timestamp))
     }
 }

@@ -6,74 +6,34 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    /// Uploads an image to use as the avatar for a project identified by its ID or name. Send the raw image bytes and
-    /// declare the image type with the `Content-Type` header; accepted formats are JPG, PNG, and SVG. SVG images are
-    /// sanitized and optimized before storage, and the response returns the updated project.
+extension ProjectsMethods {
+    /// Uploads an image to use as the avatar for a project identified by its ID or name. Send the raw image bytes and declare the image type with the `Content-Type` header; accepted formats are JPG, PNG, and SVG. SVG images are sanitized and optimized before storage, and the response returns the updated project.
     ///
-    /// Upload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a
-    /// JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized
-    /// server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value. The actual
-    /// upload pipeline (validation, sanitization, S3 write, conditional `updateProject`, and event emission) lives in
-    /// the shared `@api/project-avatar-upload` helper so it can be reused by background workers.
+    /// Upload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value. The actual upload pipeline (validation, sanitization, S3 write, conditional `updateProject`, and event emission) lives in the shared `@api/project-avatar-upload` helper so it can be reused by background workers.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func uploadProjectAvatar(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        body: Data? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UploadProjectAvatarResponse {
-        try await (sdkRequest(
-            "POST",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/avatar"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            rawBody: body,
-            contentType: "application/octet-stream",
-            decoder: .json,
-            operationId: "uploadProjectAvatar",
-            options: requestOptions
-        )).data
+    public static func uploadProjectAvatar(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, body: Data? = nil, requestOptions: RequestOptions? = nil) async throws -> UploadProjectAvatarResponse {
+        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/avatar"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], rawBody: body, contentType: "application/octet-stream", decoder: .json, operationId: "uploadProjectAvatar", options: requestOptions)).data
     }
 
-    /// Removes the avatar assignment from a project identified by its ID or name. This clears the project's avatar
-    /// field so a later production deployment can run avatar auto-detection again, but it does not delete the stored
-    /// image. The response returns the updated project.
+    /// Removes the avatar assignment from a project identified by its ID or name. This clears the project's avatar field so a later production deployment can run avatar auto-detection again, but it does not delete the stored image. The response returns the updated project.
     ///
-    /// Remove the avatar of the project identified by `idOrName`. Deletes the chosen avatar field so the next
-    /// production deploy can run auto-detection again. Does not delete the stored image.
+    /// Remove the avatar of the project identified by `idOrName`. Deletes the chosen avatar field so the next production deploy can run auto-detection again. Does not delete the stored image.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func deleteProjectAvatar(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteProjectAvatarResponse {
-        try await (sdkRequest(
-            "DELETE",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/avatar"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "deleteProjectAvatar",
-            options: requestOptions
-        )).data
+    public static func deleteProjectAvatar(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteProjectAvatarResponse {
+        return try (await sdkRequest("DELETE", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/avatar"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "deleteProjectAvatar", options: requestOptions)).data
     }
 }

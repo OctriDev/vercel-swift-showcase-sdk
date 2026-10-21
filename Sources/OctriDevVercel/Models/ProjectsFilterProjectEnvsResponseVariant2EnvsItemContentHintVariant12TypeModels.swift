@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Projects domain models
+// Projects domain models
 public enum FilterProjectEnvsResponseVariant2EnvsItemContentHintVariant12Type: String, CaseIterable, Codable {
     case postgresPassword = "postgres-password"
     public init(from decoder: Decoder) throws {
@@ -191,22 +191,17 @@ public enum FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant6Type: St
     }
 }
 
-public struct FilterProjectEnvsResponseVariant2EnvsItemTargetVariant0Item: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant2EnvsItemTargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = FilterProjectEnvsResponseVariant2EnvsItemTargetVariant0Item(rawValue: "development")
     public static let preview = FilterProjectEnvsResponseVariant2EnvsItemTargetVariant0Item(rawValue: "preview")
     public static let production = FilterProjectEnvsResponseVariant2EnvsItemTargetVariant0Item(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -215,21 +210,17 @@ public struct FilterProjectEnvsResponseVariant2EnvsItemTargetVariant0Item: RawRe
     }
 }
 
-public struct FilterProjectEnvsResponseVariant2EnvsItemTargetVariant1: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant2EnvsItemTargetVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = FilterProjectEnvsResponseVariant2EnvsItemTargetVariant1(rawValue: "development")
     public static let preview = FilterProjectEnvsResponseVariant2EnvsItemTargetVariant1(rawValue: "preview")
     public static let production = FilterProjectEnvsResponseVariant2EnvsItemTargetVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -238,21 +229,17 @@ public struct FilterProjectEnvsResponseVariant2EnvsItemTargetVariant1: RawRepres
     }
 }
 
-public struct FilterProjectEnvsResponseVariant1EnvsItemTargetVariant1: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant1EnvsItemTargetVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = FilterProjectEnvsResponseVariant1EnvsItemTargetVariant1(rawValue: "development")
     public static let preview = FilterProjectEnvsResponseVariant1EnvsItemTargetVariant1(rawValue: "preview")
     public static let production = FilterProjectEnvsResponseVariant1EnvsItemTargetVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -278,14 +265,10 @@ public enum FilterProjectEnvsResponseVariant2EnvsItemContentHintVariant10Type: S
     }
 }
 
-public struct FilterProjectEnvsResponseVariant1EnvsItemType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant1EnvsItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let encrypted = FilterProjectEnvsResponseVariant1EnvsItemType(rawValue: "encrypted")
     public static let plain = FilterProjectEnvsResponseVariant1EnvsItemType(rawValue: "plain")
     public static let secret = FilterProjectEnvsResponseVariant1EnvsItemType(rawValue: "secret")
@@ -294,7 +277,7 @@ public struct FilterProjectEnvsResponseVariant1EnvsItemType: RawRepresentable, H
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -303,22 +286,17 @@ public struct FilterProjectEnvsResponseVariant1EnvsItemType: RawRepresentable, H
     }
 }
 
-public struct FilterProjectEnvsResponseVariant1EnvsItemTargetVariant0Item: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant1EnvsItemTargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let development = FilterProjectEnvsResponseVariant1EnvsItemTargetVariant0Item(rawValue: "development")
     public static let preview = FilterProjectEnvsResponseVariant1EnvsItemTargetVariant0Item(rawValue: "preview")
     public static let production = FilterProjectEnvsResponseVariant1EnvsItemTargetVariant0Item(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -344,23 +322,16 @@ public enum FilterProjectEnvsResponseVariant2EnvsItemContentHintVariant3Type: St
     }
 }
 
-public struct FilterProjectEnvsResponseVariant2EnvsItemSecurityIssuesItem: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant2EnvsItemSecurityIssuesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let flagsSecretNeedsSplit =
-        FilterProjectEnvsResponseVariant2EnvsItemSecurityIssuesItem(rawValue: "flags-secret-needs-split")
-    public static let readableSecret =
-        FilterProjectEnvsResponseVariant2EnvsItemSecurityIssuesItem(rawValue: "readable-secret")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let flagsSecretNeedsSplit = FilterProjectEnvsResponseVariant2EnvsItemSecurityIssuesItem(rawValue: "flags-secret-needs-split")
+    public static let readableSecret = FilterProjectEnvsResponseVariant2EnvsItemSecurityIssuesItem(rawValue: "readable-secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -369,14 +340,10 @@ public struct FilterProjectEnvsResponseVariant2EnvsItemSecurityIssuesItem: RawRe
     }
 }
 
-public struct FilterProjectEnvsResponseVariant2EnvsItemType: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant2EnvsItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let encrypted = FilterProjectEnvsResponseVariant2EnvsItemType(rawValue: "encrypted")
     public static let plain = FilterProjectEnvsResponseVariant2EnvsItemType(rawValue: "plain")
     public static let secret = FilterProjectEnvsResponseVariant2EnvsItemType(rawValue: "secret")
@@ -385,7 +352,7 @@ public struct FilterProjectEnvsResponseVariant2EnvsItemType: RawRepresentable, H
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -411,23 +378,16 @@ public enum FilterProjectEnvsResponseVariant1EnvsItemContentHintVariant10Type: S
     }
 }
 
-public struct FilterProjectEnvsResponseVariant1EnvsItemSecurityIssuesItem: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct FilterProjectEnvsResponseVariant1EnvsItemSecurityIssuesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let flagsSecretNeedsSplit =
-        FilterProjectEnvsResponseVariant1EnvsItemSecurityIssuesItem(rawValue: "flags-secret-needs-split")
-    public static let readableSecret =
-        FilterProjectEnvsResponseVariant1EnvsItemSecurityIssuesItem(rawValue: "readable-secret")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let flagsSecretNeedsSplit = FilterProjectEnvsResponseVariant1EnvsItemSecurityIssuesItem(rawValue: "flags-secret-needs-split")
+    public static let readableSecret = FilterProjectEnvsResponseVariant1EnvsItemSecurityIssuesItem(rawValue: "readable-secret")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

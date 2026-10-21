@@ -3,36 +3,9 @@
 
 import Foundation
 
-/// User domain models
-public extension AuthUser {
-    init(
-        avatar: String?,
-        billing: [String: JSONValue]?,
-        createdAt: Double,
-        defaultTeamId: String?,
-        email: String,
-        hasTrialAvailable: Bool,
-        id: String,
-        name: String?,
-        resourceConfig: AuthUserResourceConfig,
-        softBlock: AuthUserSoftBlock?,
-        stagingPrefix: String,
-        username: String,
-        accountUpdateContext: AuthUserAccountUpdateContext? = nil,
-        activeDashboardViews: [AuthUserActiveDashboardViewsItem]? = nil,
-        dataCache: AuthUserDataCache? = nil,
-        dismissedToasts: [AuthUserDismissedToastsItem]? = nil,
-        favoriteProjectsAndSpaces: [AuthUserFavoriteProjectsAndSpacesItem]? = nil,
-        featureBlocks: AuthUserFeatureBlocks? = nil,
-        importFlowGitNamespace: AuthUserImportFlowGitNamespace? = nil,
-        importFlowGitNamespaceId: AuthUserImportFlowGitNamespaceId? = nil,
-        importFlowGitProvider: AuthUserImportFlowGitProvider? = nil,
-        isAccountUpdateRequired: Bool? = nil,
-        isEnterpriseManaged: Bool? = nil,
-        preferredScopesAndGitNamespaces: [AuthUserPreferredScopesAndGitNamespacesItem]? = nil,
-        remoteCaching: AuthUserRemoteCaching? = nil,
-        shouldShowEnterpriseManagedWelcome: Bool? = nil
-    ) {
+// User domain models
+extension AuthUser {
+    public init(avatar: String?, billing: [String: JSONValue]?, createdAt: Double, defaultTeamId: String?, email: String, hasTrialAvailable: Bool, id: String, name: String?, resourceConfig: AuthUserResourceConfig, softBlock: AuthUserSoftBlock?, stagingPrefix: String, username: String, accountUpdateContext: AuthUserAccountUpdateContext? = nil, activeDashboardViews: [AuthUserActiveDashboardViewsItem]? = nil, dataCache: AuthUserDataCache? = nil, dismissedToasts: [AuthUserDismissedToastsItem]? = nil, favoriteProjectsAndSpaces: [AuthUserFavoriteProjectsAndSpacesItem]? = nil, featureBlocks: AuthUserFeatureBlocks? = nil, importFlowGitNamespace: AuthUserImportFlowGitNamespace? = nil, importFlowGitNamespaceId: AuthUserImportFlowGitNamespaceId? = nil, importFlowGitProvider: AuthUserImportFlowGitProvider? = nil, isAccountUpdateRequired: Bool? = nil, isEnterpriseManaged: Bool? = nil, preferredScopesAndGitNamespaces: [AuthUserPreferredScopesAndGitNamespacesItem]? = nil, remoteCaching: AuthUserRemoteCaching? = nil, shouldShowEnterpriseManagedWelcome: Bool? = nil) {
         (self.avatar, self.billing) = (avatar, billing)
         (self.createdAt, self.defaultTeamId) = (createdAt, defaultTeamId)
         (self.email, self.hasTrialAvailable) = (email, hasTrialAvailable)
@@ -170,102 +143,50 @@ public struct AuthUserResourceConfig: Codable {
     }
 
     init() {
-        (awsAccountIds, awsAccountType, blobStores, buildEntitlements, buildQueue) = (nil, nil, nil, nil, nil)
-        (
-            bulkRedirectsFreeLimitOverride,
-            cfZoneName,
-            concurrentBuilds,
-            cronJobsPerProject,
-            customEnvironmentsPerProject
-        ) = (nil, nil, nil, nil, nil)
-        (
-            edgeConfigs,
-            edgeConfigSize,
-            edgeFunctionExecutionTimeoutMs,
-            edgeFunctionMaxSizeBytes,
-            elasticConcurrencyEnabled
-        ) = (nil, nil, nil, nil, nil)
-        (
-            flagsExplorerOverridesThreshold,
-            flagsExplorerUnlimitedOverrides,
-            imageOptimizationType,
-            integrationStores,
-            kvDatabases
-        ) = (nil, nil, nil, nil, nil)
-        (microfrontendGroupsPerTeam, microfrontendProjectsPerGroup, nodeType, postgresDatabases, security) = (
-            nil,
-            nil,
-            nil,
-            nil,
-            nil
-        )
-        (serverlessFunctionMaxDuration, serverlessFunctionMaxMemorySize) = (nil, nil)
+        (self.awsAccountIds, self.awsAccountType, self.blobStores, self.buildEntitlements, self.buildQueue) = (nil, nil, nil, nil, nil)
+        (self.bulkRedirectsFreeLimitOverride, self.cfZoneName, self.concurrentBuilds, self.cronJobsPerProject, self.customEnvironmentsPerProject) = (nil, nil, nil, nil, nil)
+        (self.edgeConfigs, self.edgeConfigSize, self.edgeFunctionExecutionTimeoutMs, self.edgeFunctionMaxSizeBytes, self.elasticConcurrencyEnabled) = (nil, nil, nil, nil, nil)
+        (self.flagsExplorerOverridesThreshold, self.flagsExplorerUnlimitedOverrides, self.imageOptimizationType, self.integrationStores, self.kvDatabases) = (nil, nil, nil, nil, nil)
+        (self.microfrontendGroupsPerTeam, self.microfrontendProjectsPerGroup, self.nodeType, self.postgresDatabases, self.security) = (nil, nil, nil, nil, nil)
+        (self.serverlessFunctionMaxDuration, self.serverlessFunctionMaxMemorySize) = (nil, nil)
     }
 }
 
-public extension AuthUserResourceConfig {
-    init(from decoder: Decoder) throws {
+extension AuthUserResourceConfig {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        awsAccountIds = try container.sdkDecodeIfPresent(.awsAccountIds)
-        awsAccountType = try container.sdkDecodeIfPresent(.awsAccountType)
-        blobStores = try container.sdkDecodeIfPresent(.blobStores)
-        buildEntitlements = try container.sdkDecodeIfPresent(.buildEntitlements)
-        buildQueue = try container.sdkDecodeIfPresent(.buildQueue)
-        bulkRedirectsFreeLimitOverride = try container.sdkDecodeIfPresent(.bulkRedirectsFreeLimitOverride)
-        cfZoneName = try container.sdkDecodeIfPresent(.cfZoneName)
-        concurrentBuilds = try container.sdkDecodeIfPresent(.concurrentBuilds)
-        cronJobsPerProject = try container.sdkDecodeIfPresent(.cronJobsPerProject)
-        customEnvironmentsPerProject = try container.sdkDecodeIfPresent(.customEnvironmentsPerProject)
-        edgeConfigs = try container.sdkDecodeIfPresent(.edgeConfigs)
-        edgeConfigSize = try container.sdkDecodeIfPresent(.edgeConfigSize)
-        edgeFunctionExecutionTimeoutMs = try container.sdkDecodeIfPresent(.edgeFunctionExecutionTimeoutMs)
-        edgeFunctionMaxSizeBytes = try container.sdkDecodeIfPresent(.edgeFunctionMaxSizeBytes)
-        elasticConcurrencyEnabled = try container.sdkDecodeIfPresent(.elasticConcurrencyEnabled)
-        flagsExplorerOverridesThreshold = try container.sdkDecodeIfPresent(.flagsExplorerOverridesThreshold)
-        flagsExplorerUnlimitedOverrides = try container.sdkDecodeIfPresent(.flagsExplorerUnlimitedOverrides)
-        imageOptimizationType = try container.sdkDecodeIfPresent(.imageOptimizationType)
-        integrationStores = try container.sdkDecodeIfPresent(.integrationStores)
-        kvDatabases = try container.sdkDecodeIfPresent(.kvDatabases)
-        microfrontendGroupsPerTeam = try container.sdkDecodeIfPresent(.microfrontendGroupsPerTeam)
-        microfrontendProjectsPerGroup = try container.sdkDecodeIfPresent(.microfrontendProjectsPerGroup)
-        nodeType = try container.sdkDecodeIfPresent(.nodeType)
-        postgresDatabases = try container.sdkDecodeIfPresent(.postgresDatabases)
-        security = try container.sdkDecodeIfPresent(.security)
-        serverlessFunctionMaxDuration = try container.sdkDecodeIfPresent(.serverlessFunctionMaxDuration)
-        serverlessFunctionMaxMemorySize = try container.sdkDecodeIfPresent(.serverlessFunctionMaxMemorySize)
+        self.awsAccountIds = try container.sdkDecodeIfPresent(.awsAccountIds)
+        self.awsAccountType = try container.sdkDecodeIfPresent(.awsAccountType)
+        self.blobStores = try container.sdkDecodeIfPresent(.blobStores)
+        self.buildEntitlements = try container.sdkDecodeIfPresent(.buildEntitlements)
+        self.buildQueue = try container.sdkDecodeIfPresent(.buildQueue)
+        self.bulkRedirectsFreeLimitOverride = try container.sdkDecodeIfPresent(.bulkRedirectsFreeLimitOverride)
+        self.cfZoneName = try container.sdkDecodeIfPresent(.cfZoneName)
+        self.concurrentBuilds = try container.sdkDecodeIfPresent(.concurrentBuilds)
+        self.cronJobsPerProject = try container.sdkDecodeIfPresent(.cronJobsPerProject)
+        self.customEnvironmentsPerProject = try container.sdkDecodeIfPresent(.customEnvironmentsPerProject)
+        self.edgeConfigs = try container.sdkDecodeIfPresent(.edgeConfigs)
+        self.edgeConfigSize = try container.sdkDecodeIfPresent(.edgeConfigSize)
+        self.edgeFunctionExecutionTimeoutMs = try container.sdkDecodeIfPresent(.edgeFunctionExecutionTimeoutMs)
+        self.edgeFunctionMaxSizeBytes = try container.sdkDecodeIfPresent(.edgeFunctionMaxSizeBytes)
+        self.elasticConcurrencyEnabled = try container.sdkDecodeIfPresent(.elasticConcurrencyEnabled)
+        self.flagsExplorerOverridesThreshold = try container.sdkDecodeIfPresent(.flagsExplorerOverridesThreshold)
+        self.flagsExplorerUnlimitedOverrides = try container.sdkDecodeIfPresent(.flagsExplorerUnlimitedOverrides)
+        self.imageOptimizationType = try container.sdkDecodeIfPresent(.imageOptimizationType)
+        self.integrationStores = try container.sdkDecodeIfPresent(.integrationStores)
+        self.kvDatabases = try container.sdkDecodeIfPresent(.kvDatabases)
+        self.microfrontendGroupsPerTeam = try container.sdkDecodeIfPresent(.microfrontendGroupsPerTeam)
+        self.microfrontendProjectsPerGroup = try container.sdkDecodeIfPresent(.microfrontendProjectsPerGroup)
+        self.nodeType = try container.sdkDecodeIfPresent(.nodeType)
+        self.postgresDatabases = try container.sdkDecodeIfPresent(.postgresDatabases)
+        self.security = try container.sdkDecodeIfPresent(.security)
+        self.serverlessFunctionMaxDuration = try container.sdkDecodeIfPresent(.serverlessFunctionMaxDuration)
+        self.serverlessFunctionMaxMemorySize = try container.sdkDecodeIfPresent(.serverlessFunctionMaxMemorySize)
     }
 }
 
-public extension AuthUserResourceConfig {
-    init(
-        awsAccountIds: [String]? = nil,
-        awsAccountType: String? = nil,
-        blobStores: Double? = nil,
-        buildEntitlements: AuthUserResourceConfigBuildEntitlements? = nil,
-        buildQueue: AuthUserResourceConfigBuildQueue? = nil,
-        bulkRedirectsFreeLimitOverride: Double? = nil,
-        cfZoneName: String? = nil,
-        concurrentBuilds: Double? = nil,
-        cronJobsPerProject: Double? = nil,
-        customEnvironmentsPerProject: Double? = nil,
-        edgeConfigs: Double? = nil,
-        edgeConfigSize: Double? = nil,
-        edgeFunctionExecutionTimeoutMs: Double? = nil,
-        edgeFunctionMaxSizeBytes: Double? = nil,
-        elasticConcurrencyEnabled: Bool? = nil,
-        flagsExplorerOverridesThreshold: Double? = nil,
-        flagsExplorerUnlimitedOverrides: Bool? = nil,
-        imageOptimizationType: String? = nil,
-        integrationStores: Double? = nil,
-        kvDatabases: Double? = nil,
-        microfrontendGroupsPerTeam: Double? = nil,
-        microfrontendProjectsPerGroup: Double? = nil,
-        nodeType: String? = nil,
-        postgresDatabases: Double? = nil,
-        security: AuthUserResourceConfigSecurity? = nil,
-        serverlessFunctionMaxDuration: Double? = nil,
-        serverlessFunctionMaxMemorySize: Double? = nil
-    ) {
+extension AuthUserResourceConfig {
+    public init(awsAccountIds: [String]? = nil, awsAccountType: String? = nil, blobStores: Double? = nil, buildEntitlements: AuthUserResourceConfigBuildEntitlements? = nil, buildQueue: AuthUserResourceConfigBuildQueue? = nil, bulkRedirectsFreeLimitOverride: Double? = nil, cfZoneName: String? = nil, concurrentBuilds: Double? = nil, cronJobsPerProject: Double? = nil, customEnvironmentsPerProject: Double? = nil, edgeConfigs: Double? = nil, edgeConfigSize: Double? = nil, edgeFunctionExecutionTimeoutMs: Double? = nil, edgeFunctionMaxSizeBytes: Double? = nil, elasticConcurrencyEnabled: Bool? = nil, flagsExplorerOverridesThreshold: Double? = nil, flagsExplorerUnlimitedOverrides: Bool? = nil, imageOptimizationType: String? = nil, integrationStores: Double? = nil, kvDatabases: Double? = nil, microfrontendGroupsPerTeam: Double? = nil, microfrontendProjectsPerGroup: Double? = nil, nodeType: String? = nil, postgresDatabases: Double? = nil, security: AuthUserResourceConfigSecurity? = nil, serverlessFunctionMaxDuration: Double? = nil, serverlessFunctionMaxMemorySize: Double? = nil) {
         self.init()
         (self.awsAccountIds, self.awsAccountType) = (awsAccountIds, awsAccountType)
         (self.blobStores, self.buildEntitlements) = (blobStores, buildEntitlements)
@@ -308,49 +229,30 @@ public struct AuthUserAccountUpdateContext: Codable {
         case organization
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthUserAccountUpdateContext {
-    init(from decoder: Decoder) throws {
+extension AuthUserAccountUpdateContext {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.canOptOut) else {
-            throw SdkValidationError(
-                field: "canOptOut",
-                code: "required",
-                message: "Validation failed for 'canOptOut': value is required"
-            )
+            throw SdkValidationError(field: "canOptOut", code: "required", message: "Validation failed for 'canOptOut': value is required")
         }
         guard container.contains(.managedTeams) else {
-            throw SdkValidationError(
-                field: "managedTeams",
-                code: "required",
-                message: "Validation failed for 'managedTeams': value is required"
-            )
+            throw SdkValidationError(field: "managedTeams", code: "required", message: "Validation failed for 'managedTeams': value is required")
         }
         guard container.contains(.verifiedEmuDomains) else {
-            throw SdkValidationError(
-                field: "verifiedEmuDomains",
-                code: "required",
-                message: "Validation failed for 'verifiedEmuDomains': value is required"
-            )
+            throw SdkValidationError(field: "verifiedEmuDomains", code: "required", message: "Validation failed for 'verifiedEmuDomains': value is required")
         }
-        canOptOut = try container.sdkDecodeRequired(.canOptOut)
-        managedTeams = try container.sdkDecodeRequired(.managedTeams)
-        verifiedEmuDomains = try container.sdkDecodeRequired(.verifiedEmuDomains)
-        organization = try container.sdkDecodeIfPresent(.organization)
+        self.canOptOut = try container.sdkDecodeRequired(.canOptOut)
+        self.managedTeams = try container.sdkDecodeRequired(.managedTeams)
+        self.verifiedEmuDomains = try container.sdkDecodeRequired(.verifiedEmuDomains)
+        self.organization = try container.sdkDecodeIfPresent(.organization)
     }
 }
 
-public extension AuthUserAccountUpdateContext {
-    init(
-        canOptOut: Bool,
-        managedTeams: [AuthUserAccountUpdateContextManagedTeamsItem],
-        verifiedEmuDomains: [String],
-        organization: AuthUserAccountUpdateContextOrganization? = nil
-    ) {
+extension AuthUserAccountUpdateContext {
+    public init(canOptOut: Bool, managedTeams: [AuthUserAccountUpdateContextManagedTeamsItem], verifiedEmuDomains: [String], organization: AuthUserAccountUpdateContextOrganization? = nil) {
         (self.canOptOut, self.managedTeams) = (canOptOut, managedTeams)
         (self.verifiedEmuDomains, self.organization) = (verifiedEmuDomains, organization)
     }
@@ -368,35 +270,25 @@ public struct AuthUserPreferredScopesAndGitNamespacesItem: Codable {
         case scopeId
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthUserPreferredScopesAndGitNamespacesItem {
-    init(from decoder: Decoder) throws {
+extension AuthUserPreferredScopesAndGitNamespacesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.gitNamespaceId) else {
-            throw SdkValidationError(
-                field: "gitNamespaceId",
-                code: "required",
-                message: "Validation failed for 'gitNamespaceId': value is required"
-            )
+            throw SdkValidationError(field: "gitNamespaceId", code: "required", message: "Validation failed for 'gitNamespaceId': value is required")
         }
         guard container.contains(.scopeId) else {
-            throw SdkValidationError(
-                field: "scopeId",
-                code: "required",
-                message: "Validation failed for 'scopeId': value is required"
-            )
+            throw SdkValidationError(field: "scopeId", code: "required", message: "Validation failed for 'scopeId': value is required")
         }
-        gitNamespaceId = try container.sdkDecodeNullable(.gitNamespaceId)
-        scopeId = try container.sdkDecodeRequired(.scopeId)
+        self.gitNamespaceId = try container.sdkDecodeNullable(.gitNamespaceId)
+        self.scopeId = try container.sdkDecodeRequired(.scopeId)
     }
 }
 
-public extension AuthUserPreferredScopesAndGitNamespacesItem {
-    init(gitNamespaceId: AuthUserPreferredScopesAndGitNamespacesItemGitNamespaceId?, scopeId: String) {
+extension AuthUserPreferredScopesAndGitNamespacesItem {
+    public init(gitNamespaceId: AuthUserPreferredScopesAndGitNamespacesItemGitNamespaceId?, scopeId: String) {
         (self.gitNamespaceId, self.scopeId) = (gitNamespaceId, scopeId)
     }
 }
@@ -419,35 +311,24 @@ public struct AuthUserActiveDashboardViewsItem: Codable {
         case viewPreference
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthUserActiveDashboardViewsItem {
-    init(from decoder: Decoder) throws {
+extension AuthUserActiveDashboardViewsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.scopeId) else {
-            throw SdkValidationError(
-                field: "scopeId",
-                code: "required",
-                message: "Validation failed for 'scopeId': value is required"
-            )
+            throw SdkValidationError(field: "scopeId", code: "required", message: "Validation failed for 'scopeId': value is required")
         }
-        scopeId = try container.sdkDecodeRequired(.scopeId)
-        favoritesViewPreference = try container.sdkDecodeIfPresent(.favoritesViewPreference)
-        recentsViewPreference = try container.sdkDecodeIfPresent(.recentsViewPreference)
-        viewPreference = try container.sdkDecodeIfPresent(.viewPreference)
+        self.scopeId = try container.sdkDecodeRequired(.scopeId)
+        self.favoritesViewPreference = try container.sdkDecodeIfPresent(.favoritesViewPreference)
+        self.recentsViewPreference = try container.sdkDecodeIfPresent(.recentsViewPreference)
+        self.viewPreference = try container.sdkDecodeIfPresent(.viewPreference)
     }
 }
 
-public extension AuthUserActiveDashboardViewsItem {
-    init(
-        scopeId: String,
-        favoritesViewPreference: AuthUserActiveDashboardViewsItemFavoritesViewPreference? = nil,
-        recentsViewPreference: AuthUserActiveDashboardViewsItemRecentsViewPreference? = nil,
-        viewPreference: AuthUserActiveDashboardViewsItemViewPreference? = nil
-    ) {
+extension AuthUserActiveDashboardViewsItem {
+    public init(scopeId: String, favoritesViewPreference: AuthUserActiveDashboardViewsItemFavoritesViewPreference? = nil, recentsViewPreference: AuthUserActiveDashboardViewsItemRecentsViewPreference? = nil, viewPreference: AuthUserActiveDashboardViewsItemViewPreference? = nil) {
         (self.scopeId, self.favoritesViewPreference) = (scopeId, favoritesViewPreference)
         (self.recentsViewPreference, self.viewPreference) = (recentsViewPreference, viewPreference)
     }
@@ -463,19 +344,19 @@ public struct AuthUserDataCache: Codable {
     }
 
     init() {
-        excessBillingEnabled = nil
+        self.excessBillingEnabled = nil
     }
 }
 
-public extension AuthUserDataCache {
-    init(from decoder: Decoder) throws {
+extension AuthUserDataCache {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        excessBillingEnabled = try container.sdkDecodeIfPresent(.excessBillingEnabled)
+        self.excessBillingEnabled = try container.sdkDecodeIfPresent(.excessBillingEnabled)
     }
 }
 
-public extension AuthUserDataCache {
-    init(excessBillingEnabled: Bool? = nil) {
+extension AuthUserDataCache {
+    public init(excessBillingEnabled: Bool? = nil) {
         self.init()
         self.excessBillingEnabled = excessBillingEnabled
     }
@@ -487,32 +368,22 @@ public indirect enum AuthUserPreferredScopesAndGitNamespacesItemGitNamespaceId {
 }
 
 extension AuthUserPreferredScopesAndGitNamespacesItemGitNamespaceId: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AuthUserPreferredScopesAndGitNamespacesItemGitNamespaceId"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AuthUserPreferredScopesAndGitNamespacesItemGitNamespaceId")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension AuthUserPreferredScopesAndGitNamespacesItemGitNamespaceId {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
         return nil
     }
 }
@@ -551,29 +422,23 @@ public struct AuthUserFeatureBlocksWebAnalytics: Codable {
         case blockedUntil
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AuthUserFeatureBlocksWebAnalytics {
-    init(from decoder: Decoder) throws {
+extension AuthUserFeatureBlocksWebAnalytics {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.isCurrentlyBlocked) else {
-            throw SdkValidationError(
-                field: "isCurrentlyBlocked",
-                code: "required",
-                message: "Validation failed for 'isCurrentlyBlocked': value is required"
-            )
+            throw SdkValidationError(field: "isCurrentlyBlocked", code: "required", message: "Validation failed for 'isCurrentlyBlocked': value is required")
         }
-        isCurrentlyBlocked = try container.sdkDecodeRequired(.isCurrentlyBlocked)
-        blockedFrom = try container.sdkDecodeIfPresent(.blockedFrom)
-        blockedUntil = try container.sdkDecodeIfPresent(.blockedUntil)
+        self.isCurrentlyBlocked = try container.sdkDecodeRequired(.isCurrentlyBlocked)
+        self.blockedFrom = try container.sdkDecodeIfPresent(.blockedFrom)
+        self.blockedUntil = try container.sdkDecodeIfPresent(.blockedUntil)
     }
 }
 
-public extension AuthUserFeatureBlocksWebAnalytics {
-    init(isCurrentlyBlocked: Bool, blockedFrom: Double? = nil, blockedUntil: Double? = nil) {
+extension AuthUserFeatureBlocksWebAnalytics {
+    public init(isCurrentlyBlocked: Bool, blockedFrom: Double? = nil, blockedUntil: Double? = nil) {
         (self.isCurrentlyBlocked, self.blockedFrom) = (isCurrentlyBlocked, blockedFrom)
         self.blockedUntil = blockedUntil
     }
@@ -585,20 +450,14 @@ public indirect enum AuthUserImportFlowGitNamespace {
 }
 
 extension AuthUserImportFlowGitNamespace: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for AuthUserImportFlowGitNamespace"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AuthUserImportFlowGitNamespace")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }

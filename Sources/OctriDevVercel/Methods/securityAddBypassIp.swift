@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SecurityMethods {
-    struct AddBypassIpOptions: Codable {
+extension SecurityMethods {
+    public struct AddBypassIpOptions: Codable {
         public var projectId: String
         public var teamId: String?
         public var slug: String?
@@ -23,8 +23,7 @@ public extension SecurityMethods {
         }
     }
 
-    /// Creates a system bypass rule for a project. Supply either `domain` to scope the rule to a domain or
-    /// `projectScope` to apply it across project domains; you can also set a source IP, expiry, and note.
+    /// Creates a system bypass rule for a project. Supply either `domain` to scope the rule to a domain or `projectScope` to apply it across project domains; you can also set a source IP, expiry, and note.
     ///
     /// Create new system bypass rules
     ///
@@ -34,11 +33,7 @@ public extension SecurityMethods {
     /// - projectScope: If the specified bypass will apply to all domains for a
     ///   project.
     /// - ttl: Time to live in milliseconds
-    static func addBypassIp(
-        config: ClientConfig,
-        options: AddBypassIpOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> AddBypassIpResponse {
+    public static func addBypassIp(config: ClientConfig, options: AddBypassIpOptions, requestOptions: RequestOptions? = nil) async throws -> AddBypassIpResponse {
         if let domain = options.domain {
             try validateLength("domain", domain, max: 2544)
             try sdkValidatePattern("domain", domain, sdkPattern87c88ec08859)
@@ -50,7 +45,7 @@ public extension SecurityMethods {
 
         let requestBody = AddBypassIpRequestBody(options: options)
 
-        return try await (sdkRequest("POST", "/v1/security/firewall/bypass", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/security/firewall/bypass", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),

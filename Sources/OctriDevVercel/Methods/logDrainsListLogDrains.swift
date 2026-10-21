@@ -6,32 +6,20 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension LogDrainsMethods {
-    /// Lists log drains owned by the authenticated account. Use `projectId` or `projectIdOrName` to scope the list to a
-    /// project, and `includeMetadata` to control whether project metadata is included; this deprecated operation
-    /// requires an account AccessToken.
+extension LogDrainsMethods {
+    /// Lists log drains owned by the authenticated account. Use `projectId` or `projectIdOrName` to scope the list to a project, and `includeMetadata` to control whether project metadata is included; this deprecated operation requires an account AccessToken.
     ///
-    /// Retrieves a list of all the Log Drains owned by the account. This endpoint must be called with an account
-    /// AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated account can
-    /// be accessed.
+    /// Retrieves a list of all the Log Drains owned by the account. This endpoint must be called with an account AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated account can be accessed.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func listLogDrains(
-        config: ClientConfig,
-        projectId: String? = nil,
-        projectIdOrName: String? = nil,
-        includeMetadata: Bool? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ListLogDrainsResponse {
-        if let projectId {
+    public static func listLogDrains(config: ClientConfig, projectId: String? = nil, projectIdOrName: String? = nil, includeMetadata: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListLogDrainsResponse {
+        if let projectId = projectId {
             try sdkValidatePattern("projectId", projectId, sdkPatternc4ba70074ba8)
         }
 
-        return try await (sdkRequest("GET", "/v1/log-drains", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/log-drains", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("projectIdOrName", value: projectIdOrName),
             SdkQueryParameter("includeMetadata", value: includeMetadata),

@@ -3,48 +3,34 @@
 
 import Foundation
 
-/// RollingRelease domain models
+// RollingRelease domain models
 public indirect enum UpdateRollingReleaseConfigResponse {
     case updateRollingReleaseConfigResponseVariant0(UpdateRollingReleaseConfigResponseVariant0)
     case updateRollingReleaseConfigResponseVariant1(UpdateRollingReleaseConfigResponseVariant1)
 }
 
 extension UpdateRollingReleaseConfigResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for UpdateRollingReleaseConfigResponse"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateRollingReleaseConfigResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension UpdateRollingReleaseConfigResponse {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateRollingReleaseConfigResponseVariant0.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateRollingReleaseConfigResponseVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateRollingReleaseConfigResponseVariant0(value)
         }
-        if let value = try? container.decode(UpdateRollingReleaseConfigResponseVariant1.self), sdkKeepsEveryKey(
-            value,
-            of: raw
-        ) {
+        if let value = try? container.decode(UpdateRollingReleaseConfigResponseVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .updateRollingReleaseConfigResponseVariant1(value)
         }
         return nil
@@ -56,12 +42,12 @@ extension UpdateRollingReleaseConfigResponse {
         if let value = try? container.decode(
             UpdateRollingReleaseConfigResponseVariant0.self
         ) {
-            return .updateRollingReleaseConfigResponseVariant0(value)
+            return             .updateRollingReleaseConfigResponseVariant0(value)
         }
         if let value = try? container.decode(
             UpdateRollingReleaseConfigResponseVariant1.self
         ) {
-            return .updateRollingReleaseConfigResponseVariant1(value)
+            return             .updateRollingReleaseConfigResponseVariant1(value)
         }
         return nil
     }
@@ -99,37 +85,30 @@ public struct UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem
         case requireApproval
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem {
-    init(from decoder: Decoder) throws {
+extension UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.targetPercentage) else {
-            throw SdkValidationError(
-                field: "targetPercentage",
-                code: "required",
-                message: "Validation failed for 'targetPercentage': value is required"
-            )
+            throw SdkValidationError(field: "targetPercentage", code: "required", message: "Validation failed for 'targetPercentage': value is required")
         }
-        targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
-        duration = try container.sdkDecodeIfPresent(.duration)
-        linearShift = try container.sdkDecodeIfPresent(.linearShift)
-        requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
+        self.targetPercentage = try container.sdkDecodeRequired(.targetPercentage)
+        self.duration = try container.sdkDecodeIfPresent(.duration)
+        self.linearShift = try container.sdkDecodeIfPresent(.linearShift)
+        self.requireApproval = try container.sdkDecodeIfPresent(.requireApproval)
     }
 }
 
-public extension UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem {
-    init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
+extension UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem {
+    public init(targetPercentage: Double, duration: Double? = nil, linearShift: Bool? = nil, requireApproval: Bool? = nil) {
         (self.targetPercentage, self.duration) = (targetPercentage, duration)
         (self.linearShift, self.requireApproval) = (linearShift, requireApproval)
     }
 }
 
-public typealias UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList =
-    [UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem]
+public typealias UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList = [UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesItem]
 
 public struct UpdateRollingReleaseConfigResponseVariant1RollingRelease: Codable {
     public var stages: UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList?
@@ -139,19 +118,19 @@ public struct UpdateRollingReleaseConfigResponseVariant1RollingRelease: Codable 
     }
 
     init() {
-        stages = nil
+        self.stages = nil
     }
 }
 
-public extension UpdateRollingReleaseConfigResponseVariant1RollingRelease {
-    init(from decoder: Decoder) throws {
+extension UpdateRollingReleaseConfigResponseVariant1RollingRelease {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        stages = try container.sdkDecodeIfPresent(.stages)
+        self.stages = try container.sdkDecodeIfPresent(.stages)
     }
 }
 
-public extension UpdateRollingReleaseConfigResponseVariant1RollingRelease {
-    init(stages: UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList? = nil) {
+extension UpdateRollingReleaseConfigResponseVariant1RollingRelease {
+    public init(stages: UpdateRollingReleaseConfigResponseVariant1RollingReleaseStagesList? = nil) {
         self.init()
         self.stages = stages
     }
@@ -164,27 +143,21 @@ public struct UpdateRollingReleaseConfigResponseVariant1: Codable {
         case rollingRelease
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateRollingReleaseConfigResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension UpdateRollingReleaseConfigResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.rollingRelease) else {
-            throw SdkValidationError(
-                field: "rollingRelease",
-                code: "required",
-                message: "Validation failed for 'rollingRelease': value is required"
-            )
+            throw SdkValidationError(field: "rollingRelease", code: "required", message: "Validation failed for 'rollingRelease': value is required")
         }
-        rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+        self.rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
     }
 }
 
-public extension UpdateRollingReleaseConfigResponseVariant1 {
-    init(rollingRelease: UpdateRollingReleaseConfigResponseVariant1RollingRelease?) {
+extension UpdateRollingReleaseConfigResponseVariant1 {
+    public init(rollingRelease: UpdateRollingReleaseConfigResponseVariant1RollingRelease?) {
         self.rollingRelease = rollingRelease
     }
 }
@@ -196,27 +169,21 @@ public struct UpdateRollingReleaseConfigResponseVariant0: Codable {
         case rollingRelease
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension UpdateRollingReleaseConfigResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension UpdateRollingReleaseConfigResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.rollingRelease) else {
-            throw SdkValidationError(
-                field: "rollingRelease",
-                code: "required",
-                message: "Validation failed for 'rollingRelease': value is required"
-            )
+            throw SdkValidationError(field: "rollingRelease", code: "required", message: "Validation failed for 'rollingRelease': value is required")
         }
-        rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
+        self.rollingRelease = try container.sdkDecodeNullable(.rollingRelease)
     }
 }
 
-public extension UpdateRollingReleaseConfigResponseVariant0 {
-    init(rollingRelease: JSONValue?) {
+extension UpdateRollingReleaseConfigResponseVariant0 {
+    public init(rollingRelease: JSONValue?) {
         self.rollingRelease = rollingRelease
     }
 }

@@ -8,38 +8,22 @@ import Foundation
 #endif
 public enum AccessGroupsMethods {}
 
-public extension AccessGroupsMethods {
-    /// Retrieves an access group by its ID or name. Use `idOrName` to identify the group and `teamId` or `slug` to
-    /// select the team for the request.
+extension AccessGroupsMethods {
+    /// Retrieves an access group by its ID or name. Use `idOrName` to identify the group and `teamId` or `slug` to select the team for the request.
     ///
     /// Allows to read an access group
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func readAccessGroup(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> ReadAccessGroupResponse {
-        try await (sdkRequest(
-            "GET",
-            ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "readAccessGroup",
-            options: requestOptions
-        )).data
+    public static func readAccessGroup(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ReadAccessGroupResponse {
+        return try (await sdkRequest("GET", ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "readAccessGroup", options: requestOptions)).data
     }
 
-    /// Updates an access group's metadata, members, or project roles. Supply only the fields you want to change; `name`
-    /// is limited to 50 characters and `projects` associates projects with roles.
+    /// Updates an access group's metadata, members, or project roles. Supply only the fields you want to change; `name` is limited to 50 characters and `projects` associates projects with roles.
     ///
     /// Allows to update an access group metadata
     ///
@@ -49,41 +33,17 @@ public extension AccessGroupsMethods {
     /// - name: The name of the access group
     /// - membersToAdd: List of members to add to the access group.
     /// - membersToRemove: List of members to remove from the access group.
-    static func updateAccessGroup(
-        config: ClientConfig,
-        idOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        name: String? = nil,
-        projects: [UpdateAccessGroupRequestBodyProjectsItem]? = nil,
-        membersToAdd: [String]? = nil,
-        membersToRemove: [String]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateAccessGroupResponse {
-        if let name {
+    public static func updateAccessGroup(config: ClientConfig, idOrName: String, teamId: String? = nil, slug: String? = nil, name: String? = nil, projects: [UpdateAccessGroupRequestBodyProjectsItem]? = nil, membersToAdd: [String]? = nil, membersToRemove: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateAccessGroupResponse {
+        if let name = name {
             try validateLength("name", name, max: 50)
             try sdkValidatePattern("name", name, sdkPattern3195b0c37ff2)
         }
 
-        let requestBody = UpdateAccessGroupRequestBody(
-            name: name,
-            projects: projects,
-            membersToAdd: membersToAdd,
-            membersToRemove: membersToRemove
-        )
+        let requestBody = UpdateAccessGroupRequestBody(name: name, projects: projects, membersToAdd: membersToAdd, membersToRemove: membersToRemove)
 
-        return try await (sdkRequest(
-            "POST",
-            ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateAccessGroup",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", ["/v1/access-groups/", sdkEncodePathSegment(sdkWireString(idOrName))].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "updateAccessGroup", options: requestOptions)).data
     }
 }

@@ -3,47 +3,9 @@
 
 import Foundation
 
-/// Connect domain models
-public extension ConnectConnectorCreateDataRequestVariant0ServerConfig {
-    init(
-        issuer: String? = nil,
-        authorizationEndpoint: String? = nil,
-        tokenEndpoint: String? = nil,
-        userinfoEndpoint: String? = nil,
-        jwksUri: String? = nil,
-        jwks: ConnectConnectorCreateDataRequestVariant0ServerConfigJwks? = nil,
-        revocationEndpoint: String? = nil,
-        introspectionEndpoint: String? = nil,
-        endSessionEndpoint: String? = nil,
-        deviceAuthorizationEndpoint: String? = nil,
-        registrationEndpoint: String? = nil,
-        responseTypesSupported: [String]? = nil,
-        tokenEndpointAuthMethodsSupported: [String]? = nil,
-        tokenEndpointAuthSigningAlgValuesSupported: [String]? = nil,
-        scopesSupported: [String]? = nil,
-        grantTypesSupported: [String]? = nil,
-        authorizationGrantProfilesSupported: [String]? = nil,
-        identityChainingRequestedTokenTypesSupported: [String]? = nil,
-        responseModesSupported: [String]? = nil,
-        subjectTypesSupported: [String]? = nil,
-        idTokenSigningAlgValuesSupported: [String]? = nil,
-        idTokenEncryptionAlgValuesSupported: [String]? = nil,
-        idTokenEncryptionEncValuesSupported: [String]? = nil,
-        claimTypesSupported: [String]? = nil,
-        claimsSupported: [String]? = nil,
-        codeChallengeMethodsSupported: [String]? = nil,
-        promptValuesSupported: [String]? = nil,
-        claimsParameterSupported: Bool? = nil,
-        requestParameterSupported: Bool? = nil,
-        requestUriParameterSupported: Bool? = nil,
-        requireRequestUriRegistration: Bool? = nil,
-        serviceDocumentation: String? = nil,
-        opPolicyUri: String? = nil,
-        opTosUri: String? = nil,
-        logoUri: String? = nil,
-        clientIdMetadataDocumentSupported: Bool? = nil,
-        authorizationDetailsTypesSupported: [String]? = nil
-    ) {
+// Connect domain models
+extension ConnectConnectorCreateDataRequestVariant0ServerConfig {
+    public init(issuer: String? = nil, authorizationEndpoint: String? = nil, tokenEndpoint: String? = nil, userinfoEndpoint: String? = nil, jwksUri: String? = nil, jwks: ConnectConnectorCreateDataRequestVariant0ServerConfigJwks? = nil, revocationEndpoint: String? = nil, introspectionEndpoint: String? = nil, endSessionEndpoint: String? = nil, deviceAuthorizationEndpoint: String? = nil, registrationEndpoint: String? = nil, responseTypesSupported: [String]? = nil, tokenEndpointAuthMethodsSupported: [String]? = nil, tokenEndpointAuthSigningAlgValuesSupported: [String]? = nil, scopesSupported: [String]? = nil, grantTypesSupported: [String]? = nil, authorizationGrantProfilesSupported: [String]? = nil, identityChainingRequestedTokenTypesSupported: [String]? = nil, responseModesSupported: [String]? = nil, subjectTypesSupported: [String]? = nil, idTokenSigningAlgValuesSupported: [String]? = nil, idTokenEncryptionAlgValuesSupported: [String]? = nil, idTokenEncryptionEncValuesSupported: [String]? = nil, claimTypesSupported: [String]? = nil, claimsSupported: [String]? = nil, codeChallengeMethodsSupported: [String]? = nil, promptValuesSupported: [String]? = nil, claimsParameterSupported: Bool? = nil, requestParameterSupported: Bool? = nil, requestUriParameterSupported: Bool? = nil, requireRequestUriRegistration: Bool? = nil, serviceDocumentation: String? = nil, opPolicyUri: String? = nil, opTosUri: String? = nil, logoUri: String? = nil, clientIdMetadataDocumentSupported: Bool? = nil, authorizationDetailsTypesSupported: [String]? = nil) {
         self.init()
         (self.issuer, self.authorizationEndpoint) = (issuer, authorizationEndpoint)
         (self.tokenEndpoint, self.userinfoEndpoint) = (tokenEndpoint, userinfoEndpoint)
@@ -77,8 +39,8 @@ public extension ConnectConnectorCreateDataRequestVariant0ServerConfig {
     }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant0ServerConfig {
-    func encode(to encoder: Encoder) throws {
+extension ConnectConnectorCreateDataRequestVariant0ServerConfig {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(issuer, forKey: .issuer)
@@ -94,17 +56,11 @@ public extension ConnectConnectorCreateDataRequestVariant0ServerConfig {
         try container.encodeIfPresent(registrationEndpoint, forKey: .registrationEndpoint)
         try container.encodeIfPresent(responseTypesSupported, forKey: .responseTypesSupported)
         try container.encodeIfPresent(tokenEndpointAuthMethodsSupported, forKey: .tokenEndpointAuthMethodsSupported)
-        try container.encodeIfPresent(
-            tokenEndpointAuthSigningAlgValuesSupported,
-            forKey: .tokenEndpointAuthSigningAlgValuesSupported
-        )
+        try container.encodeIfPresent(tokenEndpointAuthSigningAlgValuesSupported, forKey: .tokenEndpointAuthSigningAlgValuesSupported)
         try container.encodeIfPresent(scopesSupported, forKey: .scopesSupported)
         try container.encodeIfPresent(grantTypesSupported, forKey: .grantTypesSupported)
         try container.encodeIfPresent(authorizationGrantProfilesSupported, forKey: .authorizationGrantProfilesSupported)
-        try container.encodeIfPresent(
-            identityChainingRequestedTokenTypesSupported,
-            forKey: .identityChainingRequestedTokenTypesSupported
-        )
+        try container.encodeIfPresent(identityChainingRequestedTokenTypesSupported, forKey: .identityChainingRequestedTokenTypesSupported)
         try container.encodeIfPresent(responseModesSupported, forKey: .responseModesSupported)
         try container.encodeIfPresent(subjectTypesSupported, forKey: .subjectTypesSupported)
         try container.encodeIfPresent(idTokenSigningAlgValuesSupported, forKey: .idTokenSigningAlgValuesSupported)
@@ -159,89 +115,45 @@ public struct ConnectConnectorCreateDataRequestVariant2: Codable {
         case extras
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant2 {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorCreateDataRequestVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.appId) else {
-            throw SdkValidationError(
-                field: "appId",
-                code: "required",
-                message: "Validation failed for 'appId': value is required"
-            )
+            throw SdkValidationError(field: "appId", code: "required", message: "Validation failed for 'appId': value is required")
         }
         guard container.contains(.appSlug) else {
-            throw SdkValidationError(
-                field: "appSlug",
-                code: "required",
-                message: "Validation failed for 'appSlug': value is required"
-            )
+            throw SdkValidationError(field: "appSlug", code: "required", message: "Validation failed for 'appSlug': value is required")
         }
         guard container.contains(.appName) else {
-            throw SdkValidationError(
-                field: "appName",
-                code: "required",
-                message: "Validation failed for 'appName': value is required"
-            )
+            throw SdkValidationError(field: "appName", code: "required", message: "Validation failed for 'appName': value is required")
         }
         guard container.contains(.clientId) else {
-            throw SdkValidationError(
-                field: "clientId",
-                code: "required",
-                message: "Validation failed for 'clientId': value is required"
-            )
+            throw SdkValidationError(field: "clientId", code: "required", message: "Validation failed for 'clientId': value is required")
         }
-        appId = try container.sdkDecodeRequired(.appId)
-        appSlug = try container.sdkDecodeRequired(.appSlug)
-        appName = try container.sdkDecodeRequired(.appName)
-        clientId = try container.sdkDecodeRequired(.clientId)
-        owner = try container.sdkDecodeIfPresent(.owner)
-        clientSecret = try container.sdkDecodeIfPresent(.clientSecret)
-        privateKeyPem = try container.sdkDecodeIfPresent(.privateKeyPem)
-        webhookSecret = try container.sdkDecodeIfPresent(.webhookSecret)
-        extras = try container.sdkDecodeIfPresent(.extras)
-        try validateRange(
-            "appId",
-            Double(appId),
-            min: nil,
-            max: nil,
-            exclusiveMin: 0,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+        self.appId = try container.sdkDecodeRequired(.appId)
+        self.appSlug = try container.sdkDecodeRequired(.appSlug)
+        self.appName = try container.sdkDecodeRequired(.appName)
+        self.clientId = try container.sdkDecodeRequired(.clientId)
+        self.owner = try container.sdkDecodeIfPresent(.owner)
+        self.clientSecret = try container.sdkDecodeIfPresent(.clientSecret)
+        self.privateKeyPem = try container.sdkDecodeIfPresent(.privateKeyPem)
+        self.webhookSecret = try container.sdkDecodeIfPresent(.webhookSecret)
+        self.extras = try container.sdkDecodeIfPresent(.extras)
+            try validateRange("appId", Double(self.appId), min: nil, max: nil, exclusiveMin: 0, exclusiveMax: nil, multipleOf: nil)
     }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant2 {
-    init(
-        appId: Int,
-        appSlug: String,
-        appName: String,
-        clientId: String,
-        owner: ConnectConnectorCreateDataRequestVariant2Owner? = nil,
-        clientSecret: String? = nil,
-        privateKeyPem: String? = nil,
-        webhookSecret: String? = nil,
-        extras: [String: JSONValue]? = nil
-    ) throws {
+extension ConnectConnectorCreateDataRequestVariant2 {
+    public init(appId: Int, appSlug: String, appName: String, clientId: String, owner: ConnectConnectorCreateDataRequestVariant2Owner? = nil, clientSecret: String? = nil, privateKeyPem: String? = nil, webhookSecret: String? = nil, extras: [String: JSONValue]? = nil) throws {
         (self.appId, self.appSlug) = (appId, appSlug)
         (self.appName, self.clientId) = (appName, clientId)
         (self.owner, self.clientSecret) = (owner, clientSecret)
         (self.privateKeyPem, self.webhookSecret) = (privateKeyPem, webhookSecret)
         self.extras = extras
-        try validateRange(
-            "appId",
-            Double(self.appId),
-            min: nil,
-            max: nil,
-            exclusiveMin: 0,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+            try validateRange("appId", Double(self.appId), min: nil, max: nil, exclusiveMin: 0, exclusiveMax: nil, multipleOf: nil)
     }
 }
 
@@ -251,32 +163,22 @@ public indirect enum ConnectConnectorCreateResultUpdatedByVariant1Environment {
 }
 
 extension ConnectConnectorCreateResultUpdatedByVariant1Environment: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ConnectConnectorCreateResultUpdatedByVariant1Environment"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectConnectorCreateResultUpdatedByVariant1Environment")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension ConnectConnectorCreateResultUpdatedByVariant1Environment {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue1(value)
-        }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue1(value) }
         return nil
     }
 }
@@ -303,28 +205,22 @@ public struct ConnectConnectorCreateDataRequestVariant0UserAuthorization: Codabl
         case scopes
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant0UserAuthorization {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorCreateDataRequestVariant0UserAuthorization {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(
-                field: "enabled",
-                code: "required",
-                message: "Validation failed for 'enabled': value is required"
-            )
+            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
         }
-        enabled = try container.sdkDecodeRequired(.enabled)
-        scopes = try container.sdkDecodeIfPresent(.scopes)
+        self.enabled = try container.sdkDecodeRequired(.enabled)
+        self.scopes = try container.sdkDecodeIfPresent(.scopes)
     }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant0UserAuthorization {
-    init(enabled: Bool, scopes: [String]? = nil) {
+extension ConnectConnectorCreateDataRequestVariant0UserAuthorization {
+    public init(enabled: Bool, scopes: [String]? = nil) {
         (self.enabled, self.scopes) = (enabled, scopes)
     }
 }
@@ -377,69 +273,40 @@ public struct ConnectConnectorCreateDataRequestVariant3Application: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant3Application {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorCreateDataRequestVariant3Application {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.clientId) else {
-            throw SdkValidationError(
-                field: "clientId",
-                code: "required",
-                message: "Validation failed for 'clientId': value is required"
-            )
+            throw SdkValidationError(field: "clientId", code: "required", message: "Validation failed for 'clientId': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        clientId = try container.sdkDecodeRequired(.clientId)
-        name = try container.sdkDecodeRequired(.name)
-        description = try container.sdkDecodeIfPresent(.description)
-        developer = try container.sdkDecodeIfPresent(.developer)
-        developerUrl = try container.sdkDecodeIfPresent(.developerUrl)
-        imageUrl = try container.sdkDecodeIfPresent(.imageUrl)
-        redirectUris = try container.sdkDecodeIfPresent(.redirectUris)
-        distribution = try container.sdkDecodeIfPresent(.distribution)
-        webhookResourceTypes = try container.sdkDecodeIfPresent(.webhookResourceTypes)
-        webhookUrl = try container.sdkDecodeIfPresent(.webhookUrl)
-        webhookEnabled = try container.sdkDecodeIfPresent(.webhookEnabled)
-        createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        self.id = try container.sdkDecodeRequired(.id)
+        self.clientId = try container.sdkDecodeRequired(.clientId)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.description = try container.sdkDecodeIfPresent(.description)
+        self.developer = try container.sdkDecodeIfPresent(.developer)
+        self.developerUrl = try container.sdkDecodeIfPresent(.developerUrl)
+        self.imageUrl = try container.sdkDecodeIfPresent(.imageUrl)
+        self.redirectUris = try container.sdkDecodeIfPresent(.redirectUris)
+        self.distribution = try container.sdkDecodeIfPresent(.distribution)
+        self.webhookResourceTypes = try container.sdkDecodeIfPresent(.webhookResourceTypes)
+        self.webhookUrl = try container.sdkDecodeIfPresent(.webhookUrl)
+        self.webhookEnabled = try container.sdkDecodeIfPresent(.webhookEnabled)
+        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
     }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant3Application {
-    init(
-        id: String,
-        clientId: String,
-        name: String,
-        description: String? = nil,
-        developer: String? = nil,
-        developerUrl: String? = nil,
-        imageUrl: String? = nil,
-        redirectUris: [String]? = nil,
-        distribution: String? = nil,
-        webhookResourceTypes: [String]? = nil,
-        webhookUrl: String? = nil,
-        webhookEnabled: Bool? = nil,
-        createdAt: String? = nil,
-        updatedAt: String? = nil
-    ) {
+extension ConnectConnectorCreateDataRequestVariant3Application {
+    public init(id: String, clientId: String, name: String, description: String? = nil, developer: String? = nil, developerUrl: String? = nil, imageUrl: String? = nil, redirectUris: [String]? = nil, distribution: String? = nil, webhookResourceTypes: [String]? = nil, webhookUrl: String? = nil, webhookEnabled: Bool? = nil, createdAt: String? = nil, updatedAt: String? = nil) {
         (self.id, self.clientId) = (id, clientId)
         (self.name, self.description) = (name, description)
         (self.developer, self.developerUrl) = (developer, developerUrl)
@@ -467,48 +334,38 @@ public struct ConnectConnectorCreateDataRequestVariant7SlashCommandsItem: Codabl
         case shouldEscape
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant7SlashCommandsItem {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorCreateDataRequestVariant7SlashCommandsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.command) else {
-            throw SdkValidationError(
-                field: "command",
-                code: "required",
-                message: "Validation failed for 'command': value is required"
-            )
+            throw SdkValidationError(field: "command", code: "required", message: "Validation failed for 'command': value is required")
         }
         guard container.contains(.description) else {
-            throw SdkValidationError(
-                field: "description",
-                code: "required",
-                message: "Validation failed for 'description': value is required"
-            )
+            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
         }
-        command = try container.sdkDecodeRequired(.command)
-        description = try container.sdkDecodeRequired(.description)
-        usageHint = try container.sdkDecodeIfPresent(.usageHint)
-        shouldEscape = try container.sdkDecodeIfPresent(.shouldEscape)
-        try validateLength("command", command, min: nil, max: 32)
-        try sdkValidatePattern("command", command, sdkPatternb8e174432b45)
-        try validateLength("description", description, min: nil, max: 2000)
-        if let value = usageHint {
+        self.command = try container.sdkDecodeRequired(.command)
+        self.description = try container.sdkDecodeRequired(.description)
+        self.usageHint = try container.sdkDecodeIfPresent(.usageHint)
+        self.shouldEscape = try container.sdkDecodeIfPresent(.shouldEscape)
+            try validateLength("command", self.command, min: nil, max: 32)
+            try sdkValidatePattern("command", self.command, sdkPatternb8e174432b45)
+            try validateLength("description", self.description, min: nil, max: 2000)
+        if let value = self.usageHint {
             try validateLength("usageHint", value, min: nil, max: 1000)
         }
     }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant7SlashCommandsItem {
-    init(command: String, description: String, usageHint: String? = nil, shouldEscape: Bool? = nil) throws {
+extension ConnectConnectorCreateDataRequestVariant7SlashCommandsItem {
+    public init(command: String, description: String, usageHint: String? = nil, shouldEscape: Bool? = nil) throws {
         (self.command, self.description) = (command, description)
         (self.usageHint, self.shouldEscape) = (usageHint, shouldEscape)
-        try validateLength("command", self.command, min: nil, max: 32)
-        try sdkValidatePattern("command", self.command, sdkPatternb8e174432b45)
-        try validateLength("description", self.description, min: nil, max: 2000)
+            try validateLength("command", self.command, min: nil, max: 32)
+            try sdkValidatePattern("command", self.command, sdkPatternb8e174432b45)
+            try validateLength("description", self.description, min: nil, max: 2000)
         if let value = self.usageHint {
             try validateLength("usageHint", value, min: nil, max: 1000)
         }
@@ -537,46 +394,34 @@ public struct ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItem:
         case alg
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItem {
-    init(from decoder: Decoder) throws {
+extension ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.kty) else {
-            throw SdkValidationError(
-                field: "kty",
-                code: "required",
-                message: "Validation failed for 'kty': value is required"
-            )
+            throw SdkValidationError(field: "kty", code: "required", message: "Validation failed for 'kty': value is required")
         }
-        kty = try container.sdkDecodeRequired(.kty)
-        kid = try container.sdkDecodeIfPresent(.kid)
-        use = try container.sdkDecodeIfPresent(.use)
-        keyOps = try container.sdkDecodeIfPresent(.keyOps)
-        alg = try container.sdkDecodeIfPresent(.alg)
+        self.kty = try container.sdkDecodeRequired(.kty)
+        self.kid = try container.sdkDecodeIfPresent(.kid)
+        self.use = try container.sdkDecodeIfPresent(.use)
+        self.keyOps = try container.sdkDecodeIfPresent(.keyOps)
+        self.alg = try container.sdkDecodeIfPresent(.alg)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItem {
-    init(
-        kty: String,
-        kid: String? = nil,
-        use: ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItemUse? = nil,
-        keyOps: [String]? = nil,
-        alg: String? = nil
-    ) {
+extension ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItem {
+    public init(kty: String, kid: String? = nil, use: ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItemUse? = nil, keyOps: [String]? = nil, alg: String? = nil) {
         (self.kty, self.kid) = (kty, kid)
         (self.use, self.keyOps) = (use, keyOps)
         self.alg = alg
     }
 }
 
-public extension ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItem {
-    func encode(to encoder: Encoder) throws {
+extension ConnectConnectorCreateDataRequestVariant0ServerConfigJwksKeysItem {
+    public func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(kty, forKey: .kty)
@@ -602,29 +447,23 @@ public struct ConnectCreateConnectorRequestTriggerDestinationVariant1: Codable {
         case path
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ConnectCreateConnectorRequestTriggerDestinationVariant1 {
-    init(from decoder: Decoder) throws {
+extension ConnectCreateConnectorRequestTriggerDestinationVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.branch) else {
-            throw SdkValidationError(
-                field: "branch",
-                code: "required",
-                message: "Validation failed for 'branch': value is required"
-            )
+            throw SdkValidationError(field: "branch", code: "required", message: "Validation failed for 'branch': value is required")
         }
-        branch = try container.sdkDecodeRequired(.branch)
-        projectId = try container.sdkDecodeIfPresent(.projectId)
-        path = try container.sdkDecodeIfPresent(.path)
-        try validateLength("branch", branch, min: 1, max: 250)
-        if let value = projectId {
+        self.branch = try container.sdkDecodeRequired(.branch)
+        self.projectId = try container.sdkDecodeIfPresent(.projectId)
+        self.path = try container.sdkDecodeIfPresent(.path)
+            try validateLength("branch", self.branch, min: 1, max: 250)
+        if let value = self.projectId {
             try validateLength("projectId", value, min: 1, max: nil)
         }
-        if let value = path {
+        if let value = self.path {
             try validateLength("path", value, min: 1, max: 2048)
         }
     }

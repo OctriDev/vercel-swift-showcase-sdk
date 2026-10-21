@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ProjectsMethods {
-    struct UpdateMicrofrontendsOptions: Codable {
+extension ProjectsMethods {
+    public struct UpdateMicrofrontendsOptions: Codable {
         public var projectId: String
         public var teamId: String?
         public var slug: String?
@@ -23,9 +23,7 @@ public extension ProjectsMethods {
         }
     }
 
-    /// Updates the microfrontends settings for a project. Use the optional fields to change the project's group,
-    /// enablement, default application, route, or observability routing configuration. The two routing options can only
-    /// be set for child applications.
+    /// Updates the microfrontends settings for a project. Use the optional fields to change the project's group, enablement, default application, route, or observability routing configuration. The two routing options can only be set for child applications.
     ///
     /// Update the microfrontends settings for a project.
     ///
@@ -45,25 +43,12 @@ public extension ProjectsMethods {
     ///   applications.
     /// - doNotRouteWithMicrofrontendsRouting: Whether domains in this project
     ///   should route as a microfrontend. Can only be set for child applications.
-    static func updateMicrofrontends(
-        config: ClientConfig,
-        options: UpdateMicrofrontendsOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> UpdateMicrofrontendsResponse {
+    public static func updateMicrofrontends(config: ClientConfig, options: UpdateMicrofrontendsOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateMicrofrontendsResponse {
         let requestBody = UpdateMicrofrontendsRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "PATCH",
-            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectId)), "/microfrontends"].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: options.teamId),
-                SdkQueryParameter("slug", value: options.slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "updateMicrofrontends",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("PATCH", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectId)), "/microfrontends"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], body: requestBody, decoder: .json, operationId: "updateMicrofrontends", options: requestOptions)).data
     }
 }

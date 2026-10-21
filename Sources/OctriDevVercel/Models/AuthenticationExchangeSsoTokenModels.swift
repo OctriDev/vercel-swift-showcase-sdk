@@ -3,33 +3,25 @@
 
 import Foundation
 
-/// Authentication domain models
+// Authentication domain models
 public indirect enum ExchangeSsoTokenResponse {
     case exchangeSsoTokenResponseVariant0(ExchangeSsoTokenResponseVariant0)
     case exchangeSsoTokenResponseVariant1(ExchangeSsoTokenResponseVariant1)
 }
 
 extension ExchangeSsoTokenResponse: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for ExchangeSsoTokenResponse"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ExchangeSsoTokenResponse")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
@@ -47,14 +39,8 @@ extension ExchangeSsoTokenResponse {
 
 extension ExchangeSsoTokenResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container
-            .decode(ExchangeSsoTokenResponseVariant0.self) {
-            return .exchangeSsoTokenResponseVariant0(value)
-        }
-        if let value = try? container
-            .decode(ExchangeSsoTokenResponseVariant1.self) {
-            return .exchangeSsoTokenResponseVariant1(value)
-        }
+        if let value = try? container.decode(ExchangeSsoTokenResponseVariant0.self) { return .exchangeSsoTokenResponseVariant0(value) }
+        if let value = try? container.decode(ExchangeSsoTokenResponseVariant1.self) { return .exchangeSsoTokenResponseVariant1(value) }
         return nil
     }
 }
@@ -84,51 +70,31 @@ public struct ExchangeSsoTokenResponseVariant0: Codable {
         case refreshToken = "refresh_token"
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ExchangeSsoTokenResponseVariant0 {
-    init(from decoder: Decoder) throws {
+extension ExchangeSsoTokenResponseVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.accessToken) else {
-            throw SdkValidationError(
-                field: "access_token",
-                code: "required",
-                message: "Validation failed for 'access_token': value is required"
-            )
+            throw SdkValidationError(field: "access_token", code: "required", message: "Validation failed for 'access_token': value is required")
         }
         guard container.contains(.idToken) else {
-            throw SdkValidationError(
-                field: "id_token",
-                code: "required",
-                message: "Validation failed for 'id_token': value is required"
-            )
+            throw SdkValidationError(field: "id_token", code: "required", message: "Validation failed for 'id_token': value is required")
         }
         guard container.contains(.tokenType) else {
-            throw SdkValidationError(
-                field: "token_type",
-                code: "required",
-                message: "Validation failed for 'token_type': value is required"
-            )
+            throw SdkValidationError(field: "token_type", code: "required", message: "Validation failed for 'token_type': value is required")
         }
-        accessToken = try container.sdkDecodeNullable(.accessToken)
-        idToken = try container.sdkDecodeRequired(.idToken)
-        tokenType = try container.sdkDecodeNullable(.tokenType)
-        expiresIn = try container.sdkDecodeIfPresent(.expiresIn)
-        refreshToken = try container.sdkDecodeIfPresent(.refreshToken)
+        self.accessToken = try container.sdkDecodeNullable(.accessToken)
+        self.idToken = try container.sdkDecodeRequired(.idToken)
+        self.tokenType = try container.sdkDecodeNullable(.tokenType)
+        self.expiresIn = try container.sdkDecodeIfPresent(.expiresIn)
+        self.refreshToken = try container.sdkDecodeIfPresent(.refreshToken)
     }
 }
 
-public extension ExchangeSsoTokenResponseVariant0 {
-    init(
-        accessToken: String?,
-        idToken: String,
-        tokenType: String?,
-        expiresIn: Double? = nil,
-        refreshToken: String? = nil
-    ) {
+extension ExchangeSsoTokenResponseVariant0 {
+    public init(accessToken: String?, idToken: String, tokenType: String?, expiresIn: Double? = nil, refreshToken: String? = nil) {
         (self.accessToken, self.idToken) = (accessToken, idToken)
         (self.tokenType, self.expiresIn) = (tokenType, expiresIn)
         self.refreshToken = refreshToken
@@ -150,59 +116,37 @@ public struct ExchangeSsoTokenResponseVariant1: Codable {
         case tokenType = "token_type"
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension ExchangeSsoTokenResponseVariant1 {
-    init(from decoder: Decoder) throws {
+extension ExchangeSsoTokenResponseVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.accessToken) else {
-            throw SdkValidationError(
-                field: "access_token",
-                code: "required",
-                message: "Validation failed for 'access_token': value is required"
-            )
+            throw SdkValidationError(field: "access_token", code: "required", message: "Validation failed for 'access_token': value is required")
         }
         guard container.contains(.expiresIn) else {
-            throw SdkValidationError(
-                field: "expires_in",
-                code: "required",
-                message: "Validation failed for 'expires_in': value is required"
-            )
+            throw SdkValidationError(field: "expires_in", code: "required", message: "Validation failed for 'expires_in': value is required")
         }
         guard container.contains(.idToken) else {
-            throw SdkValidationError(
-                field: "id_token",
-                code: "required",
-                message: "Validation failed for 'id_token': value is required"
-            )
+            throw SdkValidationError(field: "id_token", code: "required", message: "Validation failed for 'id_token': value is required")
         }
         guard container.contains(.refreshToken) else {
-            throw SdkValidationError(
-                field: "refresh_token",
-                code: "required",
-                message: "Validation failed for 'refresh_token': value is required"
-            )
+            throw SdkValidationError(field: "refresh_token", code: "required", message: "Validation failed for 'refresh_token': value is required")
         }
         guard container.contains(.tokenType) else {
-            throw SdkValidationError(
-                field: "token_type",
-                code: "required",
-                message: "Validation failed for 'token_type': value is required"
-            )
+            throw SdkValidationError(field: "token_type", code: "required", message: "Validation failed for 'token_type': value is required")
         }
-        accessToken = try container.sdkDecodeRequired(.accessToken)
-        expiresIn = try container.sdkDecodeRequired(.expiresIn)
-        idToken = try container.sdkDecodeRequired(.idToken)
-        refreshToken = try container.sdkDecodeRequired(.refreshToken)
-        tokenType = try container.sdkDecodeRequired(.tokenType)
+        self.accessToken = try container.sdkDecodeRequired(.accessToken)
+        self.expiresIn = try container.sdkDecodeRequired(.expiresIn)
+        self.idToken = try container.sdkDecodeRequired(.idToken)
+        self.refreshToken = try container.sdkDecodeRequired(.refreshToken)
+        self.tokenType = try container.sdkDecodeRequired(.tokenType)
     }
 }
 
-public extension ExchangeSsoTokenResponseVariant1 {
-    init(accessToken: String, expiresIn: Double, idToken: String, refreshToken: String, tokenType: String) {
+extension ExchangeSsoTokenResponseVariant1 {
+    public init(accessToken: String, expiresIn: Double, idToken: String, refreshToken: String, tokenType: String) {
         (self.accessToken, self.expiresIn) = (accessToken, expiresIn)
         (self.idToken, self.refreshToken) = (idToken, refreshToken)
         self.tokenType = tokenType

@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension ObservabilityMethods {
-    struct CreateObservabilityQueryOptions: Codable {
+extension ObservabilityMethods {
+    public struct CreateObservabilityQueryOptions: Codable {
         public var metric: String
         public var scope: [String: JSONValue]
         public var aggregation: String?
@@ -27,8 +27,7 @@ public extension ObservabilityMethods {
         }
     }
 
-    /// Runs an Observability query for a metric and an owner or project scope. Provide `metric` and `scope`, then use
-    /// optional aggregation, grouping, filtering, and time settings to shape the results.
+    /// Runs an Observability query for a metric and an owner or project scope. Provide `metric` and `scope`, then use optional aggregation, grouping, filtering, and time settings to shape the results.
     ///
     /// - Parameters:
     /// - metric: Metric id
@@ -59,21 +58,9 @@ public extension ObservabilityMethods {
     ///   calendar buckets (1d/1mo) to that zone's day/month boundaries.
     ///   startTime/endTime and all output timestamps are always UTC. No effect on
     ///   sub-day granularities.
-    static func createObservabilityQuery(
-        config: ClientConfig,
-        options: CreateObservabilityQueryOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> [String: JSONValue] {
+    public static func createObservabilityQuery(config: ClientConfig, options: CreateObservabilityQueryOptions, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
         let requestBody = CreateObservabilityQueryRequestBody(options: options)
 
-        return try await (sdkRequest(
-            "POST",
-            "/v2/observability/query",
-            config: config,
-            body: requestBody,
-            decoder: .json,
-            operationId: "createObservabilityQuery",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("POST", "/v2/observability/query", config: config, body: requestBody, decoder: .json, operationId: "createObservabilityQuery", options: requestOptions)).data
     }
 }

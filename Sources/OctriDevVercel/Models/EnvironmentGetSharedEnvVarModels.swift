@@ -3,50 +3,34 @@
 
 import Foundation
 
-/// Environment domain models
+// Environment domain models
 public indirect enum GetSharedEnvVarResponseLastEditedByPrincipal {
     case getSharedEnvVarResponseLastEditedByPrincipalVariant0(GetSharedEnvVarResponseLastEditedByPrincipalVariant0)
     case getSharedEnvVarResponseLastEditedByPrincipalVariant1(GetSharedEnvVarResponseLastEditedByPrincipalVariant1)
 }
 
 extension GetSharedEnvVarResponseLastEditedByPrincipal: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetSharedEnvVarResponseLastEditedByPrincipal"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetSharedEnvVarResponseLastEditedByPrincipal")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetSharedEnvVarResponseLastEditedByPrincipal {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetSharedEnvVarResponseLastEditedByPrincipalVariant0.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(GetSharedEnvVarResponseLastEditedByPrincipalVariant0.self), sdkKeepsEveryKey(value, of: raw) {
             return .getSharedEnvVarResponseLastEditedByPrincipalVariant0(value)
         }
-        if let value = try? container.decode(GetSharedEnvVarResponseLastEditedByPrincipalVariant1.self),
-           sdkKeepsEveryKey(
-               value,
-               of: raw
-           ) {
+        if let value = try? container.decode(GetSharedEnvVarResponseLastEditedByPrincipalVariant1.self), sdkKeepsEveryKey(value, of: raw) {
             return .getSharedEnvVarResponseLastEditedByPrincipalVariant1(value)
         }
         return nil
@@ -58,12 +42,12 @@ extension GetSharedEnvVarResponseLastEditedByPrincipal {
         if let value = try? container.decode(
             GetSharedEnvVarResponseLastEditedByPrincipalVariant0.self
         ) {
-            return .getSharedEnvVarResponseLastEditedByPrincipalVariant0(value)
+            return             .getSharedEnvVarResponseLastEditedByPrincipalVariant0(value)
         }
         if let value = try? container.decode(
             GetSharedEnvVarResponseLastEditedByPrincipalVariant1.self
         ) {
-            return .getSharedEnvVarResponseLastEditedByPrincipalVariant1(value)
+            return             .getSharedEnvVarResponseLastEditedByPrincipalVariant1(value)
         }
         return nil
     }
@@ -94,61 +78,34 @@ public struct GetSharedEnvVarResponseLastEditedByPrincipalVariant1: Codable {
         case avatar
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetSharedEnvVarResponseLastEditedByPrincipalVariant1 {
-    init(from decoder: Decoder) throws {
+extension GetSharedEnvVarResponseLastEditedByPrincipalVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(
-                field: "name",
-                code: "required",
-                message: "Validation failed for 'name': value is required"
-            )
+            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        name = try container.sdkDecodeRequired(.name)
-        type = try container.sdkDecodeRequired(.type)
-        avatar = try container.sdkDecodeIfPresent(.avatar)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            GetSharedEnvVarResponseLastEditedByPrincipalVariant1Type.allCases.map(\.rawValue)
-        )
+        self.id = try container.sdkDecodeRequired(.id)
+        self.name = try container.sdkDecodeRequired(.name)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.avatar = try container.sdkDecodeIfPresent(.avatar)
+            try sdkValidateRawEnum("type", self.type, GetSharedEnvVarResponseLastEditedByPrincipalVariant1Type.allCases.map(\.rawValue))
     }
 }
 
-public extension GetSharedEnvVarResponseLastEditedByPrincipalVariant1 {
-    init(
-        id: String,
-        name: String,
-        type: GetSharedEnvVarResponseLastEditedByPrincipalVariant1Type,
-        avatar: String? = nil
-    ) throws {
+extension GetSharedEnvVarResponseLastEditedByPrincipalVariant1 {
+    public init(id: String, name: String, type: GetSharedEnvVarResponseLastEditedByPrincipalVariant1Type, avatar: String? = nil) throws {
         (self.id, self.name) = (id, name)
         (self.type, self.avatar) = (type, avatar)
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            GetSharedEnvVarResponseLastEditedByPrincipalVariant1Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, GetSharedEnvVarResponseLastEditedByPrincipalVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -169,64 +126,36 @@ public struct GetSharedEnvVarResponseLastEditedByPrincipalVariant0: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetSharedEnvVarResponseLastEditedByPrincipalVariant0 {
-    init(from decoder: Decoder) throws {
+extension GetSharedEnvVarResponseLastEditedByPrincipalVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(
-                field: "id",
-                code: "required",
-                message: "Validation failed for 'id': value is required"
-            )
+            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.username) else {
-            throw SdkValidationError(
-                field: "username",
-                code: "required",
-                message: "Validation failed for 'username': value is required"
-            )
+            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
         }
-        id = try container.sdkDecodeRequired(.id)
-        type = try container.sdkDecodeRequired(.type)
-        username = try container.sdkDecodeRequired(.username)
-        avatar = try container.sdkDecodeIfPresent(.avatar)
-        name = try container.sdkDecodeIfPresent(.name)
-        try sdkValidateRawEnum(
-            "type",
-            type,
-            GetSharedEnvVarResponseLastEditedByPrincipalVariant0Type.allCases.map(\.rawValue)
-        )
+        self.id = try container.sdkDecodeRequired(.id)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.username = try container.sdkDecodeRequired(.username)
+        self.avatar = try container.sdkDecodeIfPresent(.avatar)
+        self.name = try container.sdkDecodeIfPresent(.name)
+            try sdkValidateRawEnum("type", self.type, GetSharedEnvVarResponseLastEditedByPrincipalVariant0Type.allCases.map(\.rawValue))
     }
 }
 
-public extension GetSharedEnvVarResponseLastEditedByPrincipalVariant0 {
-    init(
-        id: String,
-        type: GetSharedEnvVarResponseLastEditedByPrincipalVariant0Type,
-        username: String,
-        avatar: String? = nil,
-        name: String? = nil
-    ) throws {
+extension GetSharedEnvVarResponseLastEditedByPrincipalVariant0 {
+    public init(id: String, type: GetSharedEnvVarResponseLastEditedByPrincipalVariant0Type, username: String, avatar: String? = nil, name: String? = nil) throws {
         (self.id, self.type) = (id, type)
         (self.username, self.avatar) = (username, avatar)
         self.name = name
-        try sdkValidateRawEnum(
-            "type",
-            self.type,
-            GetSharedEnvVarResponseLastEditedByPrincipalVariant0Type.allCases.map(\.rawValue)
-        )
+            try sdkValidateRawEnum("type", self.type, GetSharedEnvVarResponseLastEditedByPrincipalVariant0Type.allCases.map(\.rawValue))
     }
 }
 

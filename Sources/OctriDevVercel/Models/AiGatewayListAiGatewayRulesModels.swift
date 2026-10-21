@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// AiGateway domain models
+// AiGateway domain models
 /// Typed representation of the `AiGatewayRuleList` API schema.
 public struct AiGatewayRuleList: Codable {
     /// Required `string` value serialized in the `nextCursor` wire field.
@@ -16,35 +16,25 @@ public struct AiGatewayRuleList: Codable {
         case rules
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension AiGatewayRuleList {
-    init(from decoder: Decoder) throws {
+extension AiGatewayRuleList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.nextCursor) else {
-            throw SdkValidationError(
-                field: "nextCursor",
-                code: "required",
-                message: "Validation failed for 'nextCursor': value is required"
-            )
+            throw SdkValidationError(field: "nextCursor", code: "required", message: "Validation failed for 'nextCursor': value is required")
         }
         guard container.contains(.rules) else {
-            throw SdkValidationError(
-                field: "rules",
-                code: "required",
-                message: "Validation failed for 'rules': value is required"
-            )
+            throw SdkValidationError(field: "rules", code: "required", message: "Validation failed for 'rules': value is required")
         }
-        nextCursor = try container.sdkDecodeNullable(.nextCursor)
-        rules = try container.sdkDecodeRequired(.rules)
+        self.nextCursor = try container.sdkDecodeNullable(.nextCursor)
+        self.rules = try container.sdkDecodeRequired(.rules)
     }
 }
 
-public extension AiGatewayRuleList {
-    init(nextCursor: String?, rules: [AiGatewayRule]) {
+extension AiGatewayRuleList {
+    public init(nextCursor: String?, rules: [AiGatewayRule]) {
         (self.nextCursor, self.rules) = (nextCursor, rules)
     }
 }

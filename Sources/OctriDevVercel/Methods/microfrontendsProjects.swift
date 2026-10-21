@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension MicrofrontendsMethods {
-    /// Retrieves the production microfrontends configuration for a project. Identify the project with `projectIdOrName`
-    /// and use `teamId` or `slug` to scope the request to a team when needed.
+extension MicrofrontendsMethods {
+    /// Retrieves the production microfrontends configuration for a project. Identify the project with `projectIdOrName` and use `teamId` or `slug` to scope the request to a team when needed.
     ///
     /// Get the microfrontends config for a project by ID or name.
     ///
@@ -16,28 +15,10 @@ public extension MicrofrontendsMethods {
     /// - projectIdOrName: The name or ID of the project
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getMicrofrontendsConfigForProject(
-        config: ClientConfig,
-        projectIdOrName: String,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetMicrofrontendsConfigForProjectResponse {
-        try await (sdkRequest(
-            "GET",
-            [
-                "/v1/microfrontends/projects/",
-                sdkEncodePathSegment(sdkWireString(projectIdOrName)),
-                "/production-mfe-config",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getMicrofrontendsConfigForProject",
-            options: requestOptions
-        )).data
+    public static func getMicrofrontendsConfigForProject(config: ClientConfig, projectIdOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetMicrofrontendsConfigForProjectResponse {
+        return try (await sdkRequest("GET", ["/v1/microfrontends/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/production-mfe-config"].joined(), config: config, query: [
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getMicrofrontendsConfigForProject", options: requestOptions)).data
     }
 }

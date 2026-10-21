@@ -6,34 +6,20 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension BillingMethods {
-    /// Submits a credit purchase for a Vercel team using the default payment method on file; the purchase is charged
-    /// immediately through a Stripe invoice. Set `item.creditType` to `v0`, `gateway`, or `agent` and provide a
-    /// positive integer `item.amount`. You can use the `source` query parameter to identify the caller; it defaults to
-    /// `api` when omitted.
+extension BillingMethods {
+    /// Submits a credit purchase for a Vercel team using the default payment method on file; the purchase is charged immediately through a Stripe invoice. Set `item.creditType` to `v0`, `gateway`, or `agent` and provide a positive integer `item.amount`. You can use the `source` query parameter to identify the caller; it defaults to `api` when omitted.
     ///
-    /// Purchases credits for a Vercel team using the default payment method on file. The purchase is charged
-    /// immediately via Stripe invoice. Supported credit types are `v0`, `gateway`, and `agent`. The `amount` field
-    /// specifies the number of credits to purchase and must be a positive integer. An optional `source` query parameter
-    /// can be provided to identify the caller. Defaults to `api` if not specified. This is only available for Owner,
-    /// Member, Developer, Security, and Billing roles for the supplied team.
+    /// Purchases credits for a Vercel team using the default payment method on file. The purchase is charged immediately via Stripe invoice. Supported credit types are `v0`, `gateway`, and `agent`. The `amount` field specifies the number of credits to purchase and must be a positive integer. An optional `source` query parameter can be provided to identify the caller. Defaults to `api` if not specified. This is only available for Owner, Member, Developer, Security, and Billing roles for the supplied team.
     ///
     /// - Parameters:
     /// - source: The source of the purchase request. Defaults to `api` if not
     ///   specified.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func buyCredits(
-        config: ClientConfig,
-        item: BuyCreditsRequestBodyItem,
-        source: String? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> BuyCreditsResponse {
+    public static func buyCredits(config: ClientConfig, item: BuyCreditsRequestBodyItem, source: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> BuyCreditsResponse {
         let requestBody = BuyCreditsRequestBody(item: item)
 
-        return try await (sdkRequest("POST", "/v1/billing/buy", config: config, query: [
+        return try (await sdkRequest("POST", "/v1/billing/buy", config: config, query: [
             SdkQueryParameter("source", value: source),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),

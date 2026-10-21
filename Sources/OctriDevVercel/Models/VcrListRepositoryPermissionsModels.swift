@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Vcr domain models
+// Vcr domain models
 /// A paginated list of Vercel Container Registry repository permissions.
 public struct VcrRepositoryPermissionList: Codable {
     /// Required array value serialized in the `permissions` wire field.
@@ -16,28 +16,22 @@ public struct VcrRepositoryPermissionList: Codable {
         case nextCursor
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrRepositoryPermissionList {
-    init(from decoder: Decoder) throws {
+extension VcrRepositoryPermissionList {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.permissions) else {
-            throw SdkValidationError(
-                field: "permissions",
-                code: "required",
-                message: "Validation failed for 'permissions': value is required"
-            )
+            throw SdkValidationError(field: "permissions", code: "required", message: "Validation failed for 'permissions': value is required")
         }
-        permissions = try container.sdkDecodeRequired(.permissions)
-        nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+        self.permissions = try container.sdkDecodeRequired(.permissions)
+        self.nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
     }
 }
 
-public extension VcrRepositoryPermissionList {
-    init(permissions: [VcrRepositoryPermission], nextCursor: String? = nil) {
+extension VcrRepositoryPermissionList {
+    public init(permissions: [VcrRepositoryPermission], nextCursor: String? = nil) {
         (self.permissions, self.nextCursor) = (permissions, nextCursor)
     }
 }

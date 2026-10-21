@@ -3,15 +3,12 @@
 
 import Foundation
 
-/// Sandboxes domain models
+// Sandboxes domain models
 /// Required enumerated value serialized in the `mode` wire field.
 public struct NamedSandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = NamedSandboxNetworkPolicyMode(rawValue: "allow-all")
     public static let custom = NamedSandboxNetworkPolicyMode(rawValue: "custom")
     public static let defaultAllow = NamedSandboxNetworkPolicyMode(rawValue: "default-allow")
@@ -20,7 +17,7 @@ public struct NamedSandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -33,17 +30,14 @@ public struct NamedSandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable
 public struct SnapshotStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let created = SnapshotStatus(rawValue: "created")
     public static let deleted = SnapshotStatus(rawValue: "deleted")
     public static let failed = SnapshotStatus(rawValue: "failed")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -56,10 +50,7 @@ public struct SnapshotStatus: RawRepresentable, Hashable, Codable, Sendable, Sdk
 public struct SessionStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let aborted = SessionStatus(rawValue: "aborted")
     public static let failed = SessionStatus(rawValue: "failed")
     public static let pending = SessionStatus(rawValue: "pending")
@@ -70,7 +61,7 @@ public struct SessionStatus: RawRepresentable, Hashable, Codable, Sendable, SdkW
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -83,17 +74,14 @@ public struct SessionStatus: RawRepresentable, Hashable, Codable, Sendable, SdkW
 public struct NamedSandboxStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let running = NamedSandboxStatus(rawValue: "running")
     public static let stopped = NamedSandboxStatus(rawValue: "stopped")
     public static let stopping = NamedSandboxStatus(rawValue: "stopping")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -106,16 +94,13 @@ public struct NamedSandboxStatus: RawRepresentable, Hashable, Codable, Sendable,
 public struct SnapshotArchitecture: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let amd64 = SnapshotArchitecture(rawValue: "amd64")
     public static let arm64 = SnapshotArchitecture(rawValue: "arm64")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -128,16 +113,13 @@ public struct SnapshotArchitecture: RawRepresentable, Hashable, Codable, Sendabl
 public struct NamedSandboxArchitecture: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let amd64 = NamedSandboxArchitecture(rawValue: "amd64")
     public static let arm64 = NamedSandboxArchitecture(rawValue: "arm64")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -150,10 +132,7 @@ public struct NamedSandboxArchitecture: RawRepresentable, Hashable, Codable, Sen
 public struct NamedSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let arn1 = NamedSandboxFailoverRegionsItem(rawValue: "arn1")
     public static let bom1 = NamedSandboxFailoverRegionsItem(rawValue: "bom1")
     public static let cdg1 = NamedSandboxFailoverRegionsItem(rawValue: "cdg1")
@@ -176,7 +155,7 @@ public struct NamedSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -189,16 +168,13 @@ public struct NamedSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codab
 public struct SessionArchitecture: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let amd64 = SessionArchitecture(rawValue: "amd64")
     public static let arm64 = SessionArchitecture(rawValue: "arm64")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -212,17 +188,14 @@ public struct SessionArchitecture: RawRepresentable, Hashable, Codable, Sendable
 public struct SandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let allowAll = SandboxNetworkPolicyMode(rawValue: "allow-all")
     public static let custom = SandboxNetworkPolicyMode(rawValue: "custom")
     public static let denyAll = SandboxNetworkPolicyMode(rawValue: "deny-all")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -235,16 +208,13 @@ public struct SandboxNetworkPolicyMode: RawRepresentable, Hashable, Codable, Sen
 public struct SnapshotCreationMethod: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let automatic = SnapshotCreationMethod(rawValue: "automatic")
     public static let manual = SnapshotCreationMethod(rawValue: "manual")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -256,17 +226,14 @@ public struct SnapshotCreationMethod: RawRepresentable, Hashable, Codable, Senda
 public struct NamedSandboxMountsValueMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let readOnly = NamedSandboxMountsValueMode(rawValue: "read-only")
     public static let readWrite = NamedSandboxMountsValueMode(rawValue: "read-write")
     public static let snapshot = NamedSandboxMountsValueMode(rawValue: "snapshot")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

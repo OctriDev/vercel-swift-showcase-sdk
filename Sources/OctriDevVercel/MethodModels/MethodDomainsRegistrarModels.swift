@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-/// Canonical domainsRegistrar operation model declarations
+// Canonical domainsRegistrar operation model declarations
 public struct GetTldPriceResponse: Codable {
     /// The number of years the returned price is for.
     public var years: Double
@@ -22,56 +22,33 @@ public struct GetTldPriceResponse: Codable {
         case transferPrice
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetTldPriceResponse {
-    init(from decoder: Decoder) throws {
+extension GetTldPriceResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.years) else {
-            throw SdkValidationError(
-                field: "years",
-                code: "required",
-                message: "Validation failed for 'years': value is required"
-            )
+            throw SdkValidationError(field: "years", code: "required", message: "Validation failed for 'years': value is required")
         }
         guard container.contains(.purchasePrice) else {
-            throw SdkValidationError(
-                field: "purchasePrice",
-                code: "required",
-                message: "Validation failed for 'purchasePrice': value is required"
-            )
+            throw SdkValidationError(field: "purchasePrice", code: "required", message: "Validation failed for 'purchasePrice': value is required")
         }
         guard container.contains(.renewalPrice) else {
-            throw SdkValidationError(
-                field: "renewalPrice",
-                code: "required",
-                message: "Validation failed for 'renewalPrice': value is required"
-            )
+            throw SdkValidationError(field: "renewalPrice", code: "required", message: "Validation failed for 'renewalPrice': value is required")
         }
         guard container.contains(.transferPrice) else {
-            throw SdkValidationError(
-                field: "transferPrice",
-                code: "required",
-                message: "Validation failed for 'transferPrice': value is required"
-            )
+            throw SdkValidationError(field: "transferPrice", code: "required", message: "Validation failed for 'transferPrice': value is required")
         }
-        years = try container.sdkDecodeRequired(.years)
-        purchasePrice = try container.sdkDecodeRequired(.purchasePrice)
-        renewalPrice = try container.sdkDecodeRequired(.renewalPrice)
-        transferPrice = try container.sdkDecodeRequired(.transferPrice)
+        self.years = try container.sdkDecodeRequired(.years)
+        self.purchasePrice = try container.sdkDecodeRequired(.purchasePrice)
+        self.renewalPrice = try container.sdkDecodeRequired(.renewalPrice)
+        self.transferPrice = try container.sdkDecodeRequired(.transferPrice)
     }
 }
 
-public extension GetTldPriceResponse {
-    init(
-        years: Double,
-        purchasePrice: GetTldPriceResponsePurchasePrice,
-        renewalPrice: GetTldPriceResponseRenewalPrice,
-        transferPrice: GetTldPriceResponseTransferPrice
-    ) {
+extension GetTldPriceResponse {
+    public init(years: Double, purchasePrice: GetTldPriceResponsePurchasePrice, renewalPrice: GetTldPriceResponseRenewalPrice, transferPrice: GetTldPriceResponseTransferPrice) {
         (self.years, self.purchasePrice) = (years, purchasePrice)
         (self.renewalPrice, self.transferPrice) = (renewalPrice, transferPrice)
     }
@@ -83,32 +60,22 @@ public indirect enum GetBulkPriceResponseResultsItemTransferPrice {
 }
 
 extension GetBulkPriceResponseResultsItemTransferPrice: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetBulkPriceResponseResultsItemTransferPrice"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetBulkPriceResponseResultsItemTransferPrice")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetBulkPriceResponseResultsItemTransferPrice {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -138,32 +105,22 @@ public indirect enum GetBulkPriceResponseResultsItemRenewalPrice {
 }
 
 extension GetBulkPriceResponseResultsItemRenewalPrice: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for GetBulkPriceResponseResultsItemRenewalPrice"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetBulkPriceResponseResultsItemRenewalPrice")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension GetBulkPriceResponseResultsItemRenewalPrice {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) {
-            return .doubleValue(value)
-        }
-        if let value = try? container.decode(String.self) {
-            return .stringValue(value)
-        }
+        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) { return .stringValue(value) }
         return nil
     }
 }
@@ -208,79 +165,39 @@ public struct BuyDomainsRequestBodyDomainsItem: Codable {
         case languageCode
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension BuyDomainsRequestBodyDomainsItem {
-    init(from decoder: Decoder) throws {
+extension BuyDomainsRequestBodyDomainsItem {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.domainName) else {
-            throw SdkValidationError(
-                field: "domainName",
-                code: "required",
-                message: "Validation failed for 'domainName': value is required"
-            )
+            throw SdkValidationError(field: "domainName", code: "required", message: "Validation failed for 'domainName': value is required")
         }
         guard container.contains(.autoRenew) else {
-            throw SdkValidationError(
-                field: "autoRenew",
-                code: "required",
-                message: "Validation failed for 'autoRenew': value is required"
-            )
+            throw SdkValidationError(field: "autoRenew", code: "required", message: "Validation failed for 'autoRenew': value is required")
         }
         guard container.contains(.years) else {
-            throw SdkValidationError(
-                field: "years",
-                code: "required",
-                message: "Validation failed for 'years': value is required"
-            )
+            throw SdkValidationError(field: "years", code: "required", message: "Validation failed for 'years': value is required")
         }
         guard container.contains(.expectedPrice) else {
-            throw SdkValidationError(
-                field: "expectedPrice",
-                code: "required",
-                message: "Validation failed for 'expectedPrice': value is required"
-            )
+            throw SdkValidationError(field: "expectedPrice", code: "required", message: "Validation failed for 'expectedPrice': value is required")
         }
-        domainName = try container.sdkDecodeRequired(.domainName)
-        autoRenew = try container.sdkDecodeRequired(.autoRenew)
-        years = try container.sdkDecodeRequired(.years)
-        expectedPrice = try container.sdkDecodeRequired(.expectedPrice)
-        languageCode = try container.sdkDecodeIfPresent(.languageCode)
-        try validateRange(
-            "expectedPrice",
-            Double(expectedPrice),
-            min: 0.01,
-            max: nil,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+        self.domainName = try container.sdkDecodeRequired(.domainName)
+        self.autoRenew = try container.sdkDecodeRequired(.autoRenew)
+        self.years = try container.sdkDecodeRequired(.years)
+        self.expectedPrice = try container.sdkDecodeRequired(.expectedPrice)
+        self.languageCode = try container.sdkDecodeIfPresent(.languageCode)
+            try validateRange("expectedPrice", Double(self.expectedPrice), min: 0.01, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
     }
 }
 
-public extension BuyDomainsRequestBodyDomainsItem {
-    init(
-        domainName: DomainName,
-        autoRenew: Bool,
-        years: Double,
-        expectedPrice: Double,
-        languageCode: String? = nil
-    ) throws {
+extension BuyDomainsRequestBodyDomainsItem {
+    public init(domainName: DomainName, autoRenew: Bool, years: Double, expectedPrice: Double, languageCode: String? = nil) throws {
         (self.domainName, self.autoRenew) = (domainName, autoRenew)
         (self.years, self.expectedPrice) = (years, expectedPrice)
         self.languageCode = languageCode
-        try validateRange(
-            "expectedPrice",
-            Double(self.expectedPrice),
-            min: 0.01,
-            max: nil,
-            exclusiveMin: nil,
-            exclusiveMax: nil,
-            multipleOf: nil
-        )
+            try validateRange("expectedPrice", Double(self.expectedPrice), min: 0.01, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
     }
 }
 
@@ -292,6 +209,7 @@ public indirect enum BuySingleDomainResponseXcbfc3451 {
 }
 
 extension BuySingleDomainResponseXcbfc3451: Codable {
+
     private enum CodingKeys: String, CodingKey {
         case discriminator = "code"
     }
@@ -299,16 +217,12 @@ extension BuySingleDomainResponseXcbfc3451: Codable {
     public init(from decoder: Decoder) throws {
         let tagged = try decoder.container(keyedBy: CodingKeys.self)
         let discriminator = try tagged.decode(String.self, forKey: .discriminator)
-        if let value = try Self.decodeGroup1(discriminator, from: decoder) {
-            self = value; return
-        }
+        if let value = try Self.decodeGroup1(discriminator, from: decoder) { self = value; return }
         self = try .unknown(tag: discriminator, raw: JSONValue(from: decoder))
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
         if case let .unknown(_, raw) = self {
             var container = encoder.singleValueContainer()
             try container.encode(raw)
@@ -319,9 +233,9 @@ extension BuySingleDomainResponseXcbfc3451: Codable {
 extension BuySingleDomainResponseXcbfc3451 {
     static func decodeGroup1(_ discriminator: String, from decoder: Decoder) throws -> Self? {
         switch discriminator {
-        case "forbidden": try .forbidden(Forbidden(from: decoder))
-        case "not_authorized_for_scope": try .notAuthorizedForScope(NotAuthorizedForScope(from: decoder))
-        default: nil
+        case "forbidden": return .forbidden(try Forbidden(from: decoder))
+        case "not_authorized_for_scope": return .notAuthorizedForScope(try NotAuthorizedForScope(from: decoder))
+        default: return nil
         }
     }
 }
@@ -378,45 +292,30 @@ public struct RenewDomainRequestBodyContactInformation: Codable {
         case fax
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension RenewDomainRequestBodyContactInformation {
-    init(from decoder: Decoder) throws {
+extension RenewDomainRequestBodyContactInformation {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        firstName = try container.sdkDecodeRequired(.firstName)
-        lastName = try container.sdkDecodeRequired(.lastName)
-        email = try container.sdkDecodeRequired(.email)
-        phone = try container.sdkDecodeRequired(.phone)
-        address1 = try container.sdkDecodeRequired(.address1)
-        city = try container.sdkDecodeRequired(.city)
-        state = try container.sdkDecodeRequired(.state)
+        self.firstName = try container.sdkDecodeRequired(.firstName)
+        self.lastName = try container.sdkDecodeRequired(.lastName)
+        self.email = try container.sdkDecodeRequired(.email)
+        self.phone = try container.sdkDecodeRequired(.phone)
+        self.address1 = try container.sdkDecodeRequired(.address1)
+        self.city = try container.sdkDecodeRequired(.city)
+        self.state = try container.sdkDecodeRequired(.state)
         self.zip = try container.sdkDecodeRequired(.zip)
-        country = try container.sdkDecodeRequired(.country)
-        address2 = try container.sdkDecodeIfPresent(.address2)
-        companyName = try container.sdkDecodeIfPresent(.companyName)
-        fax = try container.sdkDecodeIfPresent(.fax)
+        self.country = try container.sdkDecodeRequired(.country)
+        self.address2 = try container.sdkDecodeIfPresent(.address2)
+        self.companyName = try container.sdkDecodeIfPresent(.companyName)
+        self.fax = try container.sdkDecodeIfPresent(.fax)
         try sdkValidateConstraints()
     }
 }
 
-public extension RenewDomainRequestBodyContactInformation {
-    init(
-        firstName: NonEmptyTrimmedString,
-        lastName: NonEmptyTrimmedString,
-        email: EmailAddress,
-        phone: E164PhoneNumber,
-        address1: NonEmptyTrimmedString,
-        city: NonEmptyTrimmedString,
-        state: NonEmptyTrimmedString,
-        zip: NonEmptyTrimmedString,
-        country: CountryCode,
-        address2: NonEmptyTrimmedString? = nil,
-        companyName: NonEmptyTrimmedString? = nil,
-        fax: E164PhoneNumber? = nil
-    ) throws {
+extension RenewDomainRequestBodyContactInformation {
+    public init(firstName: NonEmptyTrimmedString, lastName: NonEmptyTrimmedString, email: EmailAddress, phone: E164PhoneNumber, address1: NonEmptyTrimmedString, city: NonEmptyTrimmedString, state: NonEmptyTrimmedString, zip: NonEmptyTrimmedString, country: CountryCode, address2: NonEmptyTrimmedString? = nil, companyName: NonEmptyTrimmedString? = nil, fax: E164PhoneNumber? = nil) throws {
         (self.firstName, self.lastName) = (firstName, lastName)
         (self.email, self.phone) = (email, phone)
         (self.address1, self.city) = (address1, city)
@@ -429,30 +328,30 @@ public extension RenewDomainRequestBodyContactInformation {
 
 extension RenewDomainRequestBodyContactInformation {
     func sdkValidateConstraints() throws {
-        try validateLength("firstName", sdkWireString(firstName), min: 1, max: nil)
-        try sdkValidatePattern("firstName", sdkWireString(firstName), sdkPattern57e24ace5e05)
-        try validateLength("lastName", sdkWireString(lastName), min: 1, max: nil)
-        try sdkValidatePattern("lastName", sdkWireString(lastName), sdkPattern57e24ace5e05)
-        try validateLength("email", sdkWireString(email), min: 1, max: nil)
-        try validateLength("phone", sdkWireString(phone), min: 1, max: nil)
-        try sdkValidatePattern("phone", sdkWireString(phone), sdkPatternb0127dc2a0a3)
-        try validateLength("address1", sdkWireString(address1), min: 1, max: nil)
-        try sdkValidatePattern("address1", sdkWireString(address1), sdkPattern57e24ace5e05)
-        try validateLength("city", sdkWireString(city), min: 1, max: nil)
-        try sdkValidatePattern("city", sdkWireString(city), sdkPattern57e24ace5e05)
-        try validateLength("state", sdkWireString(state), min: 1, max: nil)
-        try sdkValidatePattern("state", sdkWireString(state), sdkPattern57e24ace5e05)
-        try validateLength("zip", sdkWireString(self.zip), min: 1, max: nil)
-        try sdkValidatePattern("zip", sdkWireString(self.zip), sdkPattern57e24ace5e05)
-        if let value = address2 {
+            try validateLength("firstName", sdkWireString(self.firstName), min: 1, max: nil)
+            try sdkValidatePattern("firstName", sdkWireString(self.firstName), sdkPattern57e24ace5e05)
+            try validateLength("lastName", sdkWireString(self.lastName), min: 1, max: nil)
+            try sdkValidatePattern("lastName", sdkWireString(self.lastName), sdkPattern57e24ace5e05)
+            try validateLength("email", sdkWireString(self.email), min: 1, max: nil)
+            try validateLength("phone", sdkWireString(self.phone), min: 1, max: nil)
+            try sdkValidatePattern("phone", sdkWireString(self.phone), sdkPatternb0127dc2a0a3)
+            try validateLength("address1", sdkWireString(self.address1), min: 1, max: nil)
+            try sdkValidatePattern("address1", sdkWireString(self.address1), sdkPattern57e24ace5e05)
+            try validateLength("city", sdkWireString(self.city), min: 1, max: nil)
+            try sdkValidatePattern("city", sdkWireString(self.city), sdkPattern57e24ace5e05)
+            try validateLength("state", sdkWireString(self.state), min: 1, max: nil)
+            try sdkValidatePattern("state", sdkWireString(self.state), sdkPattern57e24ace5e05)
+            try validateLength("zip", sdkWireString(self.zip), min: 1, max: nil)
+            try sdkValidatePattern("zip", sdkWireString(self.zip), sdkPattern57e24ace5e05)
+        if let value = self.address2 {
             try validateLength("address2", sdkWireString(value), min: 1, max: nil)
             try sdkValidatePattern("address2", sdkWireString(value), sdkPattern57e24ace5e05)
         }
-        if let value = companyName {
+        if let value = self.companyName {
             try validateLength("companyName", sdkWireString(value), min: 1, max: nil)
             try sdkValidatePattern("companyName", sdkWireString(value), sdkPattern57e24ace5e05)
         }
-        if let value = fax {
+        if let value = self.fax {
             try validateLength("fax", sdkWireString(value), min: 1, max: nil)
             try sdkValidatePattern("fax", sdkWireString(value), sdkPatternb0127dc2a0a3)
         }
@@ -466,27 +365,21 @@ public struct GetDomainAuthCodeResponse: Codable {
         case authCode
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension GetDomainAuthCodeResponse {
-    init(from decoder: Decoder) throws {
+extension GetDomainAuthCodeResponse {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.authCode) else {
-            throw SdkValidationError(
-                field: "authCode",
-                code: "required",
-                message: "Validation failed for 'authCode': value is required"
-            )
+            throw SdkValidationError(field: "authCode", code: "required", message: "Validation failed for 'authCode': value is required")
         }
-        authCode = try container.sdkDecodeRequired(.authCode)
+        self.authCode = try container.sdkDecodeRequired(.authCode)
     }
 }
 
-public extension GetDomainAuthCodeResponse {
-    init(authCode: String) {
+extension GetDomainAuthCodeResponse {
+    public init(authCode: String) {
         self.authCode = authCode
     }
 }
@@ -500,35 +393,25 @@ public struct TransferInDomainResponseLinksValue: Codable {
         case method
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension TransferInDomainResponseLinksValue {
-    init(from decoder: Decoder) throws {
+extension TransferInDomainResponseLinksValue {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.href) else {
-            throw SdkValidationError(
-                field: "href",
-                code: "required",
-                message: "Validation failed for 'href': value is required"
-            )
+            throw SdkValidationError(field: "href", code: "required", message: "Validation failed for 'href': value is required")
         }
         guard container.contains(.method) else {
-            throw SdkValidationError(
-                field: "method",
-                code: "required",
-                message: "Validation failed for 'method': value is required"
-            )
+            throw SdkValidationError(field: "method", code: "required", message: "Validation failed for 'method': value is required")
         }
-        href = try container.sdkDecodeRequired(.href)
-        method = try container.sdkDecodeRequired(.method)
+        self.href = try container.sdkDecodeRequired(.href)
+        self.method = try container.sdkDecodeRequired(.method)
     }
 }
 
-public extension TransferInDomainResponseLinksValue {
-    init(href: String, method: TransferInDomainResponseLinksValueMethod) {
+extension TransferInDomainResponseLinksValue {
+    public init(href: String, method: TransferInDomainResponseLinksValueMethod) {
         (self.href, self.method) = (href, method)
     }
 }
@@ -541,6 +424,7 @@ public indirect enum BuyDomainsResponseX57a275b1 {
 }
 
 extension BuyDomainsResponseX57a275b1: Codable {
+
     private enum CodingKeys: String, CodingKey {
         case discriminator = "code"
     }
@@ -548,16 +432,12 @@ extension BuyDomainsResponseX57a275b1: Codable {
     public init(from decoder: Decoder) throws {
         let tagged = try decoder.container(keyedBy: CodingKeys.self)
         let discriminator = try tagged.decode(String.self, forKey: .discriminator)
-        if let value = try Self.decodeGroup1(discriminator, from: decoder) {
-            self = value; return
-        }
+        if let value = try Self.decodeGroup1(discriminator, from: decoder) { self = value; return }
         self = try .unknown(tag: discriminator, raw: JSONValue(from: decoder))
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
         if case let .unknown(_, raw) = self {
             var container = encoder.singleValueContainer()
             try container.encode(raw)
@@ -568,9 +448,9 @@ extension BuyDomainsResponseX57a275b1: Codable {
 extension BuyDomainsResponseX57a275b1 {
     static func decodeGroup1(_ discriminator: String, from decoder: Decoder) throws -> Self? {
         switch discriminator {
-        case "forbidden": try .forbidden(Forbidden(from: decoder))
-        case "not_authorized_for_scope": try .notAuthorizedForScope(NotAuthorizedForScope(from: decoder))
-        default: nil
+        case "forbidden": return .forbidden(try Forbidden(from: decoder))
+        case "not_authorized_for_scope": return .notAuthorizedForScope(try NotAuthorizedForScope(from: decoder))
+        default: return nil
         }
     }
 }
@@ -631,7 +511,5 @@ public struct BuySingleDomainRequestBodyContactInformation: Codable {
         case additional
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }

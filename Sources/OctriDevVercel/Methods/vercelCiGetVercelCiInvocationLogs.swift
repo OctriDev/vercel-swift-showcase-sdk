@@ -6,9 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension VercelCiMethods {
-    /// Retrieves log lines for a specific invocation attempt. Use `level` to filter the results to one or more log
-    /// levels, such as `warn` or `error`. Each returned line includes its level, timestamp, and message.
+extension VercelCiMethods {
+    /// Retrieves log lines for a specific invocation attempt. Use `level` to filter the results to one or more log levels, such as `warn` or `error`. Each returned line includes its level, timestamp, and message.
     ///
     /// Get Invocation Logs
     ///
@@ -16,37 +15,15 @@ public extension VercelCiMethods {
     /// - level: Only return log lines with one of these levels.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func getVercelCiInvocationLogs(
-        config: ClientConfig,
-        invocationId: String,
-        attempt: String,
-        level: [GetVercelCiInvocationLogsParameterItem]? = nil,
-        teamId: String? = nil,
-        slug: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetVercelCiInvocationLogsResponse {
-        if let level {
+    public static func getVercelCiInvocationLogs(config: ClientConfig, invocationId: String, attempt: String, level: [GetVercelCiInvocationLogsParameterItem]? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiInvocationLogsResponse {
+        if let level = level {
             try validateItems("level", level, min: 1)
         }
 
-        return try await (sdkRequest(
-            "GET",
-            [
-                "/v1/vercel-ci/invocations/",
-                sdkEncodePathSegment(sdkWireString(invocationId)),
-                "/attempts/",
-                sdkEncodePathSegment(sdkWireString(attempt)),
-                "/logs",
-            ].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("level", values: level, style: "form", explode: true),
-                SdkQueryParameter("teamId", value: teamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            decoder: .json,
-            operationId: "getVercelCiInvocationLogs",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(attempt)), "/logs"].joined(), config: config, query: [
+            SdkQueryParameter("level", values: level, style: "form", explode: true),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getVercelCiInvocationLogs", options: requestOptions)).data
     }
 }

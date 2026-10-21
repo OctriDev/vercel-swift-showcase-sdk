@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension SecurityMethods {
-    struct RemoveBypassIpOptions: Codable {
+extension SecurityMethods {
+    public struct RemoveBypassIpOptions: Codable {
         public var projectId: String
         public var teamId: String?
         public var slug: String?
@@ -22,19 +22,14 @@ public extension SecurityMethods {
         }
     }
 
-    /// Deletes system bypass rules for a project. Specify either `domain` or `projectScope` to identify the scope of
-    /// the rules to remove, and optionally narrow the selection with source details.
+    /// Deletes system bypass rules for a project. Specify either `domain` or `projectScope` to identify the scope of the rules to remove, and optionally narrow the selection with source details.
     ///
     /// Remove system bypass rules
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    static func removeBypassIp(
-        config: ClientConfig,
-        options: RemoveBypassIpOptions,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> RemoveBypassIpResponse {
+    public static func removeBypassIp(config: ClientConfig, options: RemoveBypassIpOptions, requestOptions: RequestOptions? = nil) async throws -> RemoveBypassIpResponse {
         if let domain = options.domain {
             try validateLength("domain", domain, max: 2544)
             try sdkValidatePattern("domain", domain, sdkPattern87c88ec08859)
@@ -46,40 +41,29 @@ public extension SecurityMethods {
 
         let requestBody = RemoveBypassIpRequestBody(options: options)
 
-        return try await (sdkRequest("DELETE", "/v1/security/firewall/bypass", config: config, query: [
+        return try (await sdkRequest("DELETE", "/v1/security/firewall/bypass", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "removeBypassIp", options: requestOptions)).data
     }
 
-    /// Lists conditional firewall bypass rules for a project. Use `projectId` to select the project and optionally
-    /// filter by `slug` or `domain`; `limit` and `offset` control the returned results. The response includes the rules
-    /// and may include pagination metadata.
+    /// Lists conditional firewall bypass rules for a project. Use `projectId` to select the project and optionally filter by `slug` or `domain`; `limit` and `offset` control the returned results. The response includes the rules and may include pagination metadata.
     ///
     /// Retrieve conditional firewall bypass rules for a project.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
-    static func getConditionalBypass(
-        config: ClientConfig,
-        projectId: String,
-        slug: String? = nil,
-        domain: String? = nil,
-        limit: Double? = nil,
-        offset: String? = nil,
-        teamId: String? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> GetConditionalBypassResponse {
-        if let limit {
+    public static func getConditionalBypass(config: ClientConfig, projectId: String, slug: String? = nil, domain: String? = nil, limit: Double? = nil, offset: String? = nil, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetConditionalBypassResponse {
+        if let limit = limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        if let offset {
+        if let offset = offset {
             try validateLength("offset", offset, max: 512)
         }
 
-        return try await (sdkRequest("GET", "/v1/security/firewall/bypass/rules", config: config, query: [
+        return try (await sdkRequest("GET", "/v1/security/firewall/bypass/rules", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("slug", value: slug),
             SdkQueryParameter("domain", value: domain),

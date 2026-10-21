@@ -6,14 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public extension TeamsMethods {
-    /// Deletes a team under the authenticated user's account. Identify the team with `teamId` and optionally provide
-    /// `newDefaultTeamId` to select a replacement default team. Enterprise teams can be deleted only in test billing
-    /// mode and when they are not linked to an organization.
+extension TeamsMethods {
+    /// Deletes a team under the authenticated user's account. Identify the team with `teamId` and optionally provide `newDefaultTeamId` to select a replacement default team. Enterprise teams can be deleted only in test billing mode and when they are not linked to an organization.
     ///
-    /// Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional
-    /// array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and
-    /// when not linked to an organization.
+    /// Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and when not linked to an organization.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
@@ -21,28 +17,12 @@ public extension TeamsMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     /// - reasons: Optional array of objects that describe the reason why the team
     ///   is being deleted.
-    static func deleteTeam(
-        config: ClientConfig,
-        teamId: String,
-        newDefaultTeamId: String? = nil,
-        slug: String? = nil,
-        reasons: [DeleteTeamRequestBodyReasonsItem]? = nil,
-        requestOptions: RequestOptions? = nil
-    ) async throws -> DeleteTeamResponse {
+    public static func deleteTeam(config: ClientConfig, teamId: String, newDefaultTeamId: String? = nil, slug: String? = nil, reasons: [DeleteTeamRequestBodyReasonsItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteTeamResponse {
         let requestBody = DeleteTeamRequestBody(reasons: reasons)
 
-        return try await (sdkRequest(
-            "DELETE",
-            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId))].joined(),
-            config: config,
-            query: [
-                SdkQueryParameter("newDefaultTeamId", value: newDefaultTeamId),
-                SdkQueryParameter("slug", value: slug),
-            ],
-            body: requestBody,
-            decoder: .json,
-            operationId: "deleteTeam",
-            options: requestOptions
-        )).data
+        return try (await sdkRequest("DELETE", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId))].joined(), config: config, query: [
+            SdkQueryParameter("newDefaultTeamId", value: newDefaultTeamId),
+            SdkQueryParameter("slug", value: slug),
+        ], body: requestBody, decoder: .json, operationId: "deleteTeam", options: requestOptions)).data
     }
 }

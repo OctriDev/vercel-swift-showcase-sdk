@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Security domain models
+// Security domain models
 public indirect enum CreateConditionalBypassRequestConditionGroupItemConditionsItem {
     case createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(
         CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0
@@ -20,49 +20,37 @@ public indirect enum CreateConditionalBypassRequestConditionGroupItemConditionsI
 }
 
 extension CreateConditionalBypassRequestConditionGroupItemConditionsItem: Codable {
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) {
-                self = value; return
-            }
+            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
         }
-        if let value = Self.decodeGroup1(from: container) {
-            self = value; return
-        }
-        throw DecodingError.dataCorruptedError(
-            in: container,
-            debugDescription: "No variant matched for CreateConditionalBypassRequestConditionGroupItemConditionsItem"
-        )
+        if let value = Self.decodeGroup1(from: container) { self = value; return }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateConditionalBypassRequestConditionGroupItemConditionsItem")
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) {
-            return
-        }
+        if try encodeGroup1(to: encoder) { return }
     }
 }
 
 extension CreateConditionalBypassRequestConditionGroupItemConditionsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container
-            .decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value)
         }
-        if let value = try? container
-            .decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value)
         }
-        if let value = try? container
-            .decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value)
         }
-        if let value = try? container
-            .decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3.self),
-            sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value)
         }
         return nil
@@ -74,22 +62,22 @@ extension CreateConditionalBypassRequestConditionGroupItemConditionsItem {
         if let value = try? container.decode(
             CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0.self
         ) {
-            return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value)
+            return             .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value)
         }
         if let value = try? container.decode(
             CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1.self
         ) {
-            return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value)
+            return             .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value)
         }
         if let value = try? container.decode(
             CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2.self
         ) {
-            return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value)
+            return             .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value)
         }
         if let value = try? container.decode(
             CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3.self
         ) {
-            return .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value)
+            return             .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value)
         }
         return nil
     }
@@ -99,14 +87,10 @@ extension CreateConditionalBypassRequestConditionGroupItemConditionsItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value): try container
-            .encode(value); return true
-        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value): try container
-            .encode(value); return true
-        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value): try container
-            .encode(value); return true
-        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value): try container
-            .encode(value); return true
+        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant0(value): try container.encode(value); return true
+        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant1(value): try container.encode(value); return true
+        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant2(value): try container.encode(value); return true
+        case let .createConditionalBypassRequestConditionGroupItemConditionsItemVariant3(value): try container.encode(value); return true
         }
     }
 }
@@ -124,64 +108,41 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2 {
-    init(from decoder: Decoder) throws {
+extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.op) else {
-            throw SdkValidationError(
-                field: "op",
-                code: "required",
-                message: "Validation failed for 'op': value is required"
-            )
+            throw SdkValidationError(field: "op", code: "required", message: "Validation failed for 'op': value is required")
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        op = try container.sdkDecodeRequired(.op)
-        key = try container.sdkDecodeRequired(.key)
-        value = try container.sdkDecodeRequired(.value)
-        try validateLength("key", key, min: nil, max: 128)
-        try sdkValidatePattern("key", key, sdkPattern95a85591ddd9)
-        try validateLength("value", value, min: nil, max: 500)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.op = try container.sdkDecodeRequired(.op)
+        self.key = try container.sdkDecodeRequired(.key)
+        self.value = try container.sdkDecodeRequired(.value)
+            try validateLength("key", self.key, min: nil, max: 128)
+            try sdkValidatePattern("key", self.key, sdkPattern95a85591ddd9)
+            try validateLength("value", self.value, min: nil, max: 500)
     }
 }
 
-public extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2 {
-    init(
-        type: CreateConditionalBypassRequestConditionGroupItemConditionsIteX3bbc0edc04,
-        op: CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2Op,
-        key: String,
-        value: String
-    ) throws {
+extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2 {
+    public init(type: CreateConditionalBypassRequestConditionGroupItemConditionsIteX3bbc0edc04, op: CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2Op, key: String, value: String) throws {
         (self.type, self.op) = (type, op)
         (self.key, self.value) = (key, value)
-        try validateLength("key", self.key, min: nil, max: 128)
-        try sdkValidatePattern("key", self.key, sdkPattern95a85591ddd9)
-        try validateLength("value", self.value, min: nil, max: 500)
+            try validateLength("key", self.key, min: nil, max: 128)
+            try sdkValidatePattern("key", self.key, sdkPattern95a85591ddd9)
+            try validateLength("value", self.value, min: nil, max: 500)
     }
 }
 
@@ -196,51 +157,33 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
         case value
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1 {
-    init(from decoder: Decoder) throws {
+extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.op) else {
-            throw SdkValidationError(
-                field: "op",
-                code: "required",
-                message: "Validation failed for 'op': value is required"
-            )
+            throw SdkValidationError(field: "op", code: "required", message: "Validation failed for 'op': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        op = try container.sdkDecodeRequired(.op)
-        value = try container.sdkDecodeRequired(.value)
-        try validateLength("value", value, min: nil, max: 500)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.op = try container.sdkDecodeRequired(.op)
+        self.value = try container.sdkDecodeRequired(.value)
+            try validateLength("value", self.value, min: nil, max: 500)
     }
 }
 
-public extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1 {
-    init(
-        type: CreateConditionalBypassRequestConditionGroupItemConditionsIteXd847a82ee8,
-        op: CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1Op,
-        value: String
-    ) throws {
+extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1 {
+    public init(type: CreateConditionalBypassRequestConditionGroupItemConditionsIteXd847a82ee8, op: CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1Op, value: String) throws {
         (self.type, self.op) = (type, op)
         self.value = value
-        try validateLength("value", self.value, min: nil, max: 500)
+            try validateLength("value", self.value, min: nil, max: 500)
     }
 }
 
@@ -255,53 +198,35 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
         case key
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3 {
-    init(from decoder: Decoder) throws {
+extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.op) else {
-            throw SdkValidationError(
-                field: "op",
-                code: "required",
-                message: "Validation failed for 'op': value is required"
-            )
+            throw SdkValidationError(field: "op", code: "required", message: "Validation failed for 'op': value is required")
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(
-                field: "key",
-                code: "required",
-                message: "Validation failed for 'key': value is required"
-            )
+            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        op = try container.sdkDecodeRequired(.op)
-        key = try container.sdkDecodeRequired(.key)
-        try validateLength("key", key, min: nil, max: 128)
-        try sdkValidatePattern("key", key, sdkPattern95a85591ddd9)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.op = try container.sdkDecodeRequired(.op)
+        self.key = try container.sdkDecodeRequired(.key)
+            try validateLength("key", self.key, min: nil, max: 128)
+            try sdkValidatePattern("key", self.key, sdkPattern95a85591ddd9)
     }
 }
 
-public extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3 {
-    init(
-        type: CreateConditionalBypassRequestConditionGroupItemConditionsIteX0fbf586c88,
-        op: CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3Op,
-        key: String
-    ) throws {
+extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3 {
+    public init(type: CreateConditionalBypassRequestConditionGroupItemConditionsIteX0fbf586c88, op: CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3Op, key: String) throws {
         (self.type, self.op) = (type, op)
         self.key = key
-        try validateLength("key", self.key, min: nil, max: 128)
-        try sdkValidatePattern("key", self.key, sdkPattern95a85591ddd9)
+            try validateLength("key", self.key, min: nil, max: 128)
+            try sdkValidatePattern("key", self.key, sdkPattern95a85591ddd9)
     }
 }
 
@@ -318,69 +243,46 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
         case key
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0 {
-    init(from decoder: Decoder) throws {
+extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0 {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(
-                field: "type",
-                code: "required",
-                message: "Validation failed for 'type': value is required"
-            )
+            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
         }
         guard container.contains(.op) else {
-            throw SdkValidationError(
-                field: "op",
-                code: "required",
-                message: "Validation failed for 'op': value is required"
-            )
+            throw SdkValidationError(field: "op", code: "required", message: "Validation failed for 'op': value is required")
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(
-                field: "value",
-                code: "required",
-                message: "Validation failed for 'value': value is required"
-            )
+            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
         }
-        type = try container.sdkDecodeRequired(.type)
-        op = try container.sdkDecodeRequired(.op)
-        value = try container.sdkDecodeRequired(.value)
-        key = try container.sdkDecodeIfPresent(.key)
-        try validateLength("value", value, min: nil, max: 500)
+        self.type = try container.sdkDecodeRequired(.type)
+        self.op = try container.sdkDecodeRequired(.op)
+        self.value = try container.sdkDecodeRequired(.value)
+        self.key = try container.sdkDecodeIfPresent(.key)
+            try validateLength("value", self.value, min: nil, max: 500)
     }
 }
 
-public extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0 {
-    init(
-        type: CreateConditionalBypassRequestConditionGroupItemConditionsIteX57e062b334,
-        op: CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0Op,
-        value: String,
-        key: CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda? = nil
-    ) throws {
+extension CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0 {
+    public init(type: CreateConditionalBypassRequestConditionGroupItemConditionsIteX57e062b334, op: CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0Op, value: String, key: CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda? = nil) throws {
         (self.type, self.op) = (type, op)
         (self.value, self.key) = (value, key)
-        try validateLength("value", self.value, min: nil, max: 500)
+            try validateLength("value", self.value, min: nil, max: 500)
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteXd847a82ee8: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteXd847a82ee8: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let path = CreateConditionalBypassRequestConditionGroupItemConditionsIteXd847a82ee8(rawValue: "path")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -389,19 +291,15 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteXd847
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3Op: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3Op: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let ex = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant3Op(rawValue: "ex")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -410,20 +308,15 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX3bbc0edc04: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX3bbc0edc04: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let header =
-        CreateConditionalBypassRequestConditionGroupItemConditionsIteX3bbc0edc04(rawValue: "header")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let header = CreateConditionalBypassRequestConditionGroupItemConditionsIteX3bbc0edc04(rawValue: "header")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -432,14 +325,10 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX3bbc
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0Op: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0Op: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let eq = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0Op(rawValue: "eq")
     public static let pre = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0Op(rawValue: "pre")
     public static let suf = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant0Op(rawValue: "suf")
@@ -447,7 +336,7 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -456,20 +345,15 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let userAgent =
-        CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda(rawValue: "user-agent")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let userAgent = CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845683dda(rawValue: "user-agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -478,20 +362,15 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX2845
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX0fbf586c88: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX0fbf586c88: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let header =
-        CreateConditionalBypassRequestConditionGroupItemConditionsIteX0fbf586c88(rawValue: "header")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let header = CreateConditionalBypassRequestConditionGroupItemConditionsIteX0fbf586c88(rawValue: "header")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -500,20 +379,15 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX0fbf
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX57e062b334: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX57e062b334: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let userAgent =
-        CreateConditionalBypassRequestConditionGroupItemConditionsIteX57e062b334(rawValue: "user_agent")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let userAgent = CreateConditionalBypassRequestConditionGroupItemConditionsIteX57e062b334(rawValue: "user_agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -522,14 +396,10 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsIteX57e0
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2Op: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2Op: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let eq = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2Op(rawValue: "eq")
     public static let pre = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2Op(rawValue: "pre")
     public static let suf = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant2Op(rawValue: "suf")
@@ -537,7 +407,7 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -546,14 +416,10 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
     }
 }
 
-public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1Op: RawRepresentable, Hashable,
-    Codable, Sendable, SdkWireConvertible {
+public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1Op: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let eq = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1Op(rawValue: "eq")
     public static let pre = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1Op(rawValue: "pre")
     public static let suf = CreateConditionalBypassRequestConditionGroupItemConditionsItemVariant1Op(rawValue: "suf")
@@ -561,7 +427,7 @@ public struct CreateConditionalBypassRequestConditionGroupItemConditionsItemVari
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

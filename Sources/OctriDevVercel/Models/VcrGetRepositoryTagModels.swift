@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Vcr domain models
+// Vcr domain models
 /// A tag pointing at an image in a Vercel Container Registry repository, enriched with the backing image's metadata
 /// and VHS-readiness status.
 public struct VcrTag: Codable {
@@ -51,42 +51,28 @@ public struct VcrTag: Codable {
         case pushedBy
     }
 
-    private init(sdkCopy value: Self) {
-        self = value
-    }
+    private init(sdkCopy value: Self) { self = value }
 }
 
-public extension VcrTag {
-    init(from decoder: Decoder) throws {
+extension VcrTag {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        createdAt = try container.sdkDecodeRequired(.createdAt)
-        imageId = try container.sdkDecodeRequired(.imageId)
-        kind = try container.sdkDecodeRequired(.kind)
-        manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
-        sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
-        status = try container.sdkDecodeNullable(.status)
-        tag = try container.sdkDecodeRequired(.tag)
-        updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        arch = try container.sdkDecodeIfPresent(.arch)
-        platform = try container.sdkDecodeIfPresent(.platform)
-        pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
+        self.createdAt = try container.sdkDecodeRequired(.createdAt)
+        self.imageId = try container.sdkDecodeRequired(.imageId)
+        self.kind = try container.sdkDecodeRequired(.kind)
+        self.manifestDigest = try container.sdkDecodeRequired(.manifestDigest)
+        self.sizeInBytes = try container.sdkDecodeRequired(.sizeInBytes)
+        self.status = try container.sdkDecodeNullable(.status)
+        self.tag = try container.sdkDecodeRequired(.tag)
+        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        self.arch = try container.sdkDecodeIfPresent(.arch)
+        self.platform = try container.sdkDecodeIfPresent(.platform)
+        self.pushedBy = try container.sdkDecodeIfPresent(.pushedBy)
     }
 }
 
-public extension VcrTag {
-    init(
-        createdAt: String,
-        imageId: String,
-        kind: VcrTagKind,
-        manifestDigest: String,
-        sizeInBytes: Double,
-        status: VcrTagStatus?,
-        tag: String,
-        updatedAt: String,
-        arch: String? = nil,
-        platform: String? = nil,
-        pushedBy: String? = nil
-    ) {
+extension VcrTag {
+    public init(createdAt: String, imageId: String, kind: VcrTagKind, manifestDigest: String, sizeInBytes: Double, status: VcrTagStatus?, tag: String, updatedAt: String, arch: String? = nil, platform: String? = nil, pushedBy: String? = nil) {
         (self.createdAt, self.imageId) = (createdAt, imageId)
         (self.kind, self.manifestDigest) = (kind, manifestDigest)
         (self.sizeInBytes, self.status) = (sizeInBytes, status)
@@ -100,10 +86,7 @@ public extension VcrTag {
 public struct VcrTagStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let errored = VcrTagStatus(rawValue: "errored")
     public static let preparing = VcrTagStatus(rawValue: "preparing")
     public static let ready = VcrTagStatus(rawValue: "ready")
@@ -111,7 +94,7 @@ public struct VcrTagStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWi
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -124,17 +107,14 @@ public struct VcrTagStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWi
 public struct VcrTagKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let attestation = VcrTagKind(rawValue: "attestation")
     public static let index = VcrTagKind(rawValue: "index")
     public static let manifest = VcrTagKind(rawValue: "manifest")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

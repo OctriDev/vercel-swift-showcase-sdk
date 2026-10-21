@@ -3,20 +3,16 @@
 
 import Foundation
 
-/// ChecksV2 domain models
-public struct ListCheckRunsResponseRunsItemVariant0SourceVariant1Kind: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+// ChecksV2 domain models
+public struct ListCheckRunsResponseRunsItemVariant0SourceVariant1Kind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let webhook = ListCheckRunsResponseRunsItemVariant0SourceVariant1Kind(rawValue: "webhook")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -25,21 +21,17 @@ public struct ListCheckRunsResponseRunsItemVariant0SourceVariant1Kind: RawRepres
     }
 }
 
-public struct ListCheckRunsResponseRunsItemVariant0Requires: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListCheckRunsResponseRunsItemVariant0Requires: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let buildReady = ListCheckRunsResponseRunsItemVariant0Requires(rawValue: "build-ready")
     public static let deploymentUrl = ListCheckRunsResponseRunsItemVariant0Requires(rawValue: "deployment-url")
     public static let none = ListCheckRunsResponseRunsItemVariant0Requires(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -48,22 +40,17 @@ public struct ListCheckRunsResponseRunsItemVariant0Requires: RawRepresentable, H
     }
 }
 
-public struct ListCheckRunsResponseRunsItemVariant0SourceVariant2Provider: RawRepresentable, Hashable, Codable,
-    Sendable,
-    SdkWireConvertible {
+public struct ListCheckRunsResponseRunsItemVariant0SourceVariant2Provider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let bitbucket = ListCheckRunsResponseRunsItemVariant0SourceVariant2Provider(rawValue: "bitbucket")
     public static let github = ListCheckRunsResponseRunsItemVariant0SourceVariant2Provider(rawValue: "github")
     public static let gitlab = ListCheckRunsResponseRunsItemVariant0SourceVariant2Provider(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -72,14 +59,10 @@ public struct ListCheckRunsResponseRunsItemVariant0SourceVariant2Provider: RawRe
     }
 }
 
-public struct ListCheckRunsResponseRunsItemVariant0Conclusion: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListCheckRunsResponseRunsItemVariant0Conclusion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let canceled = ListCheckRunsResponseRunsItemVariant0Conclusion(rawValue: "canceled")
     public static let failed = ListCheckRunsResponseRunsItemVariant0Conclusion(rawValue: "failed")
     public static let neutral = ListCheckRunsResponseRunsItemVariant0Conclusion(rawValue: "neutral")
@@ -89,7 +72,7 @@ public struct ListCheckRunsResponseRunsItemVariant0Conclusion: RawRepresentable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -98,20 +81,15 @@ public struct ListCheckRunsResponseRunsItemVariant0Conclusion: RawRepresentable,
     }
 }
 
-public struct ListCheckRunsResponseRunsItemVariant0SourceVariant4SubKind: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListCheckRunsResponseRunsItemVariant0SourceVariant4SubKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let vercelCiCheck =
-        ListCheckRunsResponseRunsItemVariant0SourceVariant4SubKind(rawValue: "vercel-ci-check")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let vercelCiCheck = ListCheckRunsResponseRunsItemVariant0SourceVariant4SubKind(rawValue: "vercel-ci-check")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -120,24 +98,19 @@ public struct ListCheckRunsResponseRunsItemVariant0SourceVariant4SubKind: RawRep
     }
 }
 
-public struct ListCheckRunsResponseRunsItemVariant0Blocks: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListCheckRunsResponseRunsItemVariant0Blocks: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let buildStart = ListCheckRunsResponseRunsItemVariant0Blocks(rawValue: "build-start")
     public static let deploymentAlias = ListCheckRunsResponseRunsItemVariant0Blocks(rawValue: "deployment-alias")
-    public static let deploymentPromotion =
-        ListCheckRunsResponseRunsItemVariant0Blocks(rawValue: "deployment-promotion")
+    public static let deploymentPromotion = ListCheckRunsResponseRunsItemVariant0Blocks(rawValue: "deployment-promotion")
     public static let deploymentStart = ListCheckRunsResponseRunsItemVariant0Blocks(rawValue: "deployment-start")
     public static let none = ListCheckRunsResponseRunsItemVariant0Blocks(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -146,20 +119,15 @@ public struct ListCheckRunsResponseRunsItemVariant0Blocks: RawRepresentable, Has
     }
 }
 
-public struct ListCheckRunsResponseRunsItemVariant0SourceVariant3SubKind: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListCheckRunsResponseRunsItemVariant0SourceVariant3SubKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let vercelNativeCheck =
-        ListCheckRunsResponseRunsItemVariant0SourceVariant3SubKind(rawValue: "vercel-native-check")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let vercelNativeCheck = ListCheckRunsResponseRunsItemVariant0SourceVariant3SubKind(rawValue: "vercel-native-check")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -168,20 +136,15 @@ public struct ListCheckRunsResponseRunsItemVariant0SourceVariant3SubKind: RawRep
     }
 }
 
-public struct ListCheckRunsResponseRunsItemVariant1SourceVariant1SubKind: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListCheckRunsResponseRunsItemVariant1SourceVariant1SubKind: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    public static let vercelCiSentinel =
-        ListCheckRunsResponseRunsItemVariant1SourceVariant1SubKind(rawValue: "vercel-ci-sentinel")
+    public init(rawValue: String) { self.rawValue = rawValue }
+    public static let vercelCiSentinel = ListCheckRunsResponseRunsItemVariant1SourceVariant1SubKind(rawValue: "vercel-ci-sentinel")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -190,19 +153,15 @@ public struct ListCheckRunsResponseRunsItemVariant1SourceVariant1SubKind: RawRep
     }
 }
 
-public struct ListCheckRunsResponseRunsItemVariant0SourceVariant4Origin: RawRepresentable, Hashable, Codable, Sendable,
-    SdkWireConvertible {
+public struct ListCheckRunsResponseRunsItemVariant0SourceVariant4Origin: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
+    public init(rawValue: String) { self.rawValue = rawValue }
     public static let api = ListCheckRunsResponseRunsItemVariant0SourceVariant4Origin(rawValue: "api")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(rawValue: container.decode(String.self))
+        self.init(rawValue: try container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
