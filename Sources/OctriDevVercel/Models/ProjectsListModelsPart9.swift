@@ -3,9 +3,13 @@
 
 import Foundation
 
-// ProjectsList domain models
-extension ListProjectsResponseItemInternalRoutesItemVariant1 {
-    public init(has: [ListProjectsResponseItemInternalRoutesItemVariant1HasItem], mitigate: ListProjectsResponseItemInternalRoutesItemVariant1Mitigate, src: String? = nil) {
+/// ProjectsList domain models
+public extension ListProjectsResponseItemInternalRoutesItemVariant1 {
+    init(
+        has: [ListProjectsResponseItemInternalRoutesItemVariant1HasItem],
+        mitigate: ListProjectsResponseItemInternalRoutesItemVariant1Mitigate,
+        src: String? = nil
+    ) {
         (self.has, self.mitigate) = (has, mitigate)
         self.src = src
     }
@@ -28,15 +32,20 @@ public enum ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1Typ
     }
 }
 
-public struct ListProjectsResponseItemInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseItemInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let blockLegalCwc = ListProjectsResponseItemInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let blockLegalCwc =
+        ListProjectsResponseItemInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -79,15 +88,20 @@ public enum ListProjectsResponseItemEnvItemContentHintVariant4Type: String, Case
     }
 }
 
-public struct ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let xVercelIpCountry = ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let xVercelIpCountry =
+        ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

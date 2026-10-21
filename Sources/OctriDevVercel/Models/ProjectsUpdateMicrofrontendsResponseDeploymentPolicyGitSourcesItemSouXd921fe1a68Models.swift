@@ -3,17 +3,23 @@
 
 import Foundation
 
-// ProjectsUpdate domain models
-public struct UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+/// ProjectsUpdate domain models
+public struct UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let bitbucket = UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68(rawValue: "bitbucket")
-    public static let github = UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68(rawValue: "github")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let bitbucket =
+        UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68(rawValue: "bitbucket")
+    public static let github =
+        UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXd921fe1a68(rawValue: "github")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -90,15 +96,20 @@ public enum UpdateMicrofrontendsResponseCreatorVariant0Type: String, CaseIterabl
     }
 }
 
-public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let xVercelIpCountry = UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let xVercelIpCountry =
+        UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -107,15 +118,20 @@ public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1HasItemVaria
     }
 }
 
-public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let blockLegalCwc = UpdateMicrofrontendsResponseInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let blockLegalCwc =
+        UpdateMicrofrontendsResponseInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -158,15 +174,20 @@ public enum UpdateMicrofrontendsResponseEnvItemContentHintVariant11Type: String,
     }
 }
 
-public struct UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXe2935f43cc: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXe2935f43cc: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let gitlab = UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXe2935f43cc(rawValue: "gitlab")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let gitlab =
+        UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSouXe2935f43cc(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -260,16 +281,22 @@ public enum UpdateMicrofrontendsResponseEnvItemContentHintVariant10Type: String,
     }
 }
 
-public struct UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesXb2bc62342b: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesXb2bc62342b: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let preview = UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesXb2bc62342b(rawValue: "preview")
-    public static let production = UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesXb2bc62342b(rawValue: "production")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let preview =
+        UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesXb2bc62342b(rawValue: "preview")
+    public static let production =
+        UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesXb2bc62342b(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -295,16 +322,20 @@ public enum UpdateMicrofrontendsResponseLinkVariant1Type: String, CaseIterable, 
     }
 }
 
-public struct UpdateMicrofrontendsResponseTrustedIpsVariant0ProtectionMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateMicrofrontendsResponseTrustedIpsVariant0ProtectionMode: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let additional = UpdateMicrofrontendsResponseTrustedIpsVariant0ProtectionMode(rawValue: "additional")
     public static let exclusive = UpdateMicrofrontendsResponseTrustedIpsVariant0ProtectionMode(rawValue: "exclusive")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

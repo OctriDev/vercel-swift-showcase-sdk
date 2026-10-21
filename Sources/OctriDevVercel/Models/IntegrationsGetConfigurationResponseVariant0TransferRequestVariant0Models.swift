@@ -3,47 +3,89 @@
 
 import Foundation
 
-// Integrations domain models
-extension GetConfigurationResponseVariant0TransferRequestVariant0 {
-    public init(from decoder: Decoder) throws {
+/// Integrations domain models
+public extension GetConfigurationResponseVariant0TransferRequestVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
         }
         guard container.contains(.expiresAt) else {
-            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
+            throw SdkValidationError(
+                field: "expiresAt",
+                code: "required",
+                message: "Validation failed for 'expiresAt': value is required"
+            )
         }
         guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
         }
         guard container.contains(.requester) else {
-            throw SdkValidationError(field: "requester", code: "required", message: "Validation failed for 'requester': value is required")
+            throw SdkValidationError(
+                field: "requester",
+                code: "required",
+                message: "Validation failed for 'requester': value is required"
+            )
         }
         guard container.contains(.requestId) else {
-            throw SdkValidationError(field: "requestId", code: "required", message: "Validation failed for 'requestId': value is required")
+            throw SdkValidationError(
+                field: "requestId",
+                code: "required",
+                message: "Validation failed for 'requestId': value is required"
+            )
         }
         guard container.contains(.transferId) else {
-            throw SdkValidationError(field: "transferId", code: "required", message: "Validation failed for 'transferId': value is required")
+            throw SdkValidationError(
+                field: "transferId",
+                code: "required",
+                message: "Validation failed for 'transferId': value is required"
+            )
         }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.requester = try container.sdkDecodeRequired(.requester)
-        self.requestId = try container.sdkDecodeRequired(.requestId)
-        self.transferId = try container.sdkDecodeRequired(.transferId)
-        self.approvedAt = try container.sdkDecodeIfPresent(.approvedAt)
-        self.approvedBy = try container.sdkDecodeIfPresent(.approvedBy)
-        self.authorizationId = try container.sdkDecodeIfPresent(.authorizationId)
-        self.billingPlan = try container.sdkDecodeIfPresent(.billingPlan)
-        self.discardedAt = try container.sdkDecodeIfPresent(.discardedAt)
-        self.discardedBy = try container.sdkDecodeIfPresent(.discardedBy)
-        self.metadata = try container.sdkDecodeIfPresent(.metadata)
-            try sdkValidateRawEnum("kind", self.kind, GetConfigurationResponseVariant0TransferRequestVariant0Kind.allCases.map(\.rawValue))
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        kind = try container.sdkDecodeRequired(.kind)
+        requester = try container.sdkDecodeRequired(.requester)
+        requestId = try container.sdkDecodeRequired(.requestId)
+        transferId = try container.sdkDecodeRequired(.transferId)
+        approvedAt = try container.sdkDecodeIfPresent(.approvedAt)
+        approvedBy = try container.sdkDecodeIfPresent(.approvedBy)
+        authorizationId = try container.sdkDecodeIfPresent(.authorizationId)
+        billingPlan = try container.sdkDecodeIfPresent(.billingPlan)
+        discardedAt = try container.sdkDecodeIfPresent(.discardedAt)
+        discardedBy = try container.sdkDecodeIfPresent(.discardedBy)
+        metadata = try container.sdkDecodeIfPresent(.metadata)
+        try sdkValidateRawEnum(
+            "kind",
+            kind,
+            GetConfigurationResponseVariant0TransferRequestVariant0Kind.allCases.map(\.rawValue)
+        )
     }
 }
 
-extension GetConfigurationResponseVariant0TransferRequestVariant0 {
-    public init(createdAt: Double, expiresAt: Double, kind: GetConfigurationResponseVariant0TransferRequestVariant0Kind, requester: GetConfigurationResponseVariant0TransferRequestVariant0Requester, requestId: String, transferId: String, approvedAt: Double? = nil, approvedBy: String? = nil, authorizationId: String? = nil, billingPlan: GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan? = nil, discardedAt: Double? = nil, discardedBy: String? = nil, metadata: [String: JSONValue]? = nil) throws {
+public extension GetConfigurationResponseVariant0TransferRequestVariant0 {
+    init(
+        createdAt: Double,
+        expiresAt: Double,
+        kind: GetConfigurationResponseVariant0TransferRequestVariant0Kind,
+        requester: GetConfigurationResponseVariant0TransferRequestVariant0Requester,
+        requestId: String,
+        transferId: String,
+        approvedAt: Double? = nil,
+        approvedBy: String? = nil,
+        authorizationId: String? = nil,
+        billingPlan: GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan? = nil,
+        discardedAt: Double? = nil,
+        discardedBy: String? = nil,
+        metadata: [String: JSONValue]? = nil
+    ) throws {
         (self.createdAt, self.expiresAt) = (createdAt, expiresAt)
         (self.kind, self.requester) = (kind, requester)
         (self.requestId, self.transferId) = (requestId, transferId)
@@ -51,7 +93,11 @@ extension GetConfigurationResponseVariant0TransferRequestVariant0 {
         (self.authorizationId, self.billingPlan) = (authorizationId, billingPlan)
         (self.discardedAt, self.discardedBy) = (discardedAt, discardedBy)
         self.metadata = metadata
-            try sdkValidateRawEnum("kind", self.kind, GetConfigurationResponseVariant0TransferRequestVariant0Kind.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "kind",
+            self.kind,
+            GetConfigurationResponseVariant0TransferRequestVariant0Kind.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -64,22 +110,28 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant1Requester: 
         case email
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationResponseVariant0TransferRequestVariant1Requester {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        self.name = try container.sdkDecodeRequired(.name)
-        self.email = try container.sdkDecodeIfPresent(.email)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationResponseVariant0TransferRequestVariant1Requester {
-    public init(name: String, email: String? = nil) {
+public extension GetConfigurationResponseVariant0TransferRequestVariant1Requester {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        name = try container.sdkDecodeRequired(.name)
+        email = try container.sdkDecodeIfPresent(.email)
+    }
+}
+
+public extension GetConfigurationResponseVariant0TransferRequestVariant1Requester {
+    init(name: String, email: String? = nil) {
         (self.name, self.email) = (name, email)
     }
 }
@@ -177,39 +229,65 @@ public struct GetConfigurationResponseVariant1: Codable {
         case teamId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.integrationId = try container.sdkDecodeRequired(.integrationId)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.scopes = try container.sdkDecodeRequired(.scopes)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.userId = try container.sdkDecodeRequired(.userId)
-        self.acceptedPoliciesInheritedFromInstallationId = try container.sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
-        self.completedAt = try container.sdkDecodeIfPresent(.completedAt)
-        self.customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
-        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        self.deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
-        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        self.disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
-        self.externalId = try container.sdkDecodeIfPresent(.externalId)
-        self.installationType = try container.sdkDecodeIfPresent(.installationType)
-        self.projects = try container.sdkDecodeIfPresent(.projects)
-        self.source = try container.sdkDecodeIfPresent(.source)
-        self.status = try container.sdkDecodeIfPresent(.status)
-        self.teamId = try container.sdkDecodeIfPresent(.teamId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationResponseVariant1 {
-    public init(createdAt: Double, id: String, integrationId: String, ownerId: String, scopes: [String], slug: String, type: GetConfigurationResponseVariant1Type, updatedAt: Double, userId: String, acceptedPoliciesInheritedFromInstallationId: String? = nil, completedAt: Double? = nil, customerDeleteRequestedAt: Double? = nil, deletedAt: Double? = nil, deleteRequestedAt: Double? = nil, disabledAt: Double? = nil, disabledReason: GetConfigurationResponseVariant1DisabledReason? = nil, externalId: String? = nil, installationType: GetConfigurationResponseVariant1InstallationType? = nil, projects: [String]? = nil, source: GetConfigurationResponseVariant1Source? = nil, status: GetConfigurationResponseVariant1Status? = nil, teamId: String? = nil) {
+public extension GetConfigurationResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        id = try container.sdkDecodeRequired(.id)
+        integrationId = try container.sdkDecodeRequired(.integrationId)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        scopes = try container.sdkDecodeRequired(.scopes)
+        slug = try container.sdkDecodeRequired(.slug)
+        type = try container.sdkDecodeRequired(.type)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        userId = try container.sdkDecodeRequired(.userId)
+        acceptedPoliciesInheritedFromInstallationId = try container
+            .sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
+        completedAt = try container.sdkDecodeIfPresent(.completedAt)
+        customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
+        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
+        disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
+        disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
+        externalId = try container.sdkDecodeIfPresent(.externalId)
+        installationType = try container.sdkDecodeIfPresent(.installationType)
+        projects = try container.sdkDecodeIfPresent(.projects)
+        source = try container.sdkDecodeIfPresent(.source)
+        status = try container.sdkDecodeIfPresent(.status)
+        teamId = try container.sdkDecodeIfPresent(.teamId)
+    }
+}
+
+public extension GetConfigurationResponseVariant1 {
+    init(
+        createdAt: Double,
+        id: String,
+        integrationId: String,
+        ownerId: String,
+        scopes: [String],
+        slug: String,
+        type: GetConfigurationResponseVariant1Type,
+        updatedAt: Double,
+        userId: String,
+        acceptedPoliciesInheritedFromInstallationId: String? = nil,
+        completedAt: Double? = nil,
+        customerDeleteRequestedAt: Double? = nil,
+        deletedAt: Double? = nil,
+        deleteRequestedAt: Double? = nil,
+        disabledAt: Double? = nil,
+        disabledReason: GetConfigurationResponseVariant1DisabledReason? = nil,
+        externalId: String? = nil,
+        installationType: GetConfigurationResponseVariant1InstallationType? = nil,
+        projects: [String]? = nil,
+        source: GetConfigurationResponseVariant1Source? = nil,
+        status: GetConfigurationResponseVariant1Status? = nil,
+        teamId: String? = nil
+    ) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.integrationId, self.ownerId) = (integrationId, ownerId)
         (self.scopes, self.slug) = (scopes, slug)
@@ -252,54 +330,100 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant1: Codable {
         case discardedBy
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationResponseVariant0TransferRequestVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.expiresAt) else {
-            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
-        }
-        guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
-        }
-        guard container.contains(.requester) else {
-            throw SdkValidationError(field: "requester", code: "required", message: "Validation failed for 'requester': value is required")
-        }
-        guard container.contains(.requestId) else {
-            throw SdkValidationError(field: "requestId", code: "required", message: "Validation failed for 'requestId': value is required")
-        }
-        guard container.contains(.transferId) else {
-            throw SdkValidationError(field: "transferId", code: "required", message: "Validation failed for 'transferId': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.requester = try container.sdkDecodeRequired(.requester)
-        self.requestId = try container.sdkDecodeRequired(.requestId)
-        self.transferId = try container.sdkDecodeRequired(.transferId)
-        self.approvedAt = try container.sdkDecodeIfPresent(.approvedAt)
-        self.approvedBy = try container.sdkDecodeIfPresent(.approvedBy)
-        self.authorizationId = try container.sdkDecodeIfPresent(.authorizationId)
-        self.discardedAt = try container.sdkDecodeIfPresent(.discardedAt)
-        self.discardedBy = try container.sdkDecodeIfPresent(.discardedBy)
-            try sdkValidateRawEnum("kind", self.kind, GetConfigurationResponseVariant0TransferRequestVariant1Kind.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationResponseVariant0TransferRequestVariant1 {
-    public init(createdAt: Double, expiresAt: Double, kind: GetConfigurationResponseVariant0TransferRequestVariant1Kind, requester: GetConfigurationResponseVariant0TransferRequestVariant1Requester, requestId: String, transferId: String, approvedAt: Double? = nil, approvedBy: String? = nil, authorizationId: String? = nil, discardedAt: Double? = nil, discardedBy: String? = nil) throws {
+public extension GetConfigurationResponseVariant0TransferRequestVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.expiresAt) else {
+            throw SdkValidationError(
+                field: "expiresAt",
+                code: "required",
+                message: "Validation failed for 'expiresAt': value is required"
+            )
+        }
+        guard container.contains(.kind) else {
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
+        }
+        guard container.contains(.requester) else {
+            throw SdkValidationError(
+                field: "requester",
+                code: "required",
+                message: "Validation failed for 'requester': value is required"
+            )
+        }
+        guard container.contains(.requestId) else {
+            throw SdkValidationError(
+                field: "requestId",
+                code: "required",
+                message: "Validation failed for 'requestId': value is required"
+            )
+        }
+        guard container.contains(.transferId) else {
+            throw SdkValidationError(
+                field: "transferId",
+                code: "required",
+                message: "Validation failed for 'transferId': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        kind = try container.sdkDecodeRequired(.kind)
+        requester = try container.sdkDecodeRequired(.requester)
+        requestId = try container.sdkDecodeRequired(.requestId)
+        transferId = try container.sdkDecodeRequired(.transferId)
+        approvedAt = try container.sdkDecodeIfPresent(.approvedAt)
+        approvedBy = try container.sdkDecodeIfPresent(.approvedBy)
+        authorizationId = try container.sdkDecodeIfPresent(.authorizationId)
+        discardedAt = try container.sdkDecodeIfPresent(.discardedAt)
+        discardedBy = try container.sdkDecodeIfPresent(.discardedBy)
+        try sdkValidateRawEnum(
+            "kind",
+            kind,
+            GetConfigurationResponseVariant0TransferRequestVariant1Kind.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetConfigurationResponseVariant0TransferRequestVariant1 {
+    init(
+        createdAt: Double,
+        expiresAt: Double,
+        kind: GetConfigurationResponseVariant0TransferRequestVariant1Kind,
+        requester: GetConfigurationResponseVariant0TransferRequestVariant1Requester,
+        requestId: String,
+        transferId: String,
+        approvedAt: Double? = nil,
+        approvedBy: String? = nil,
+        authorizationId: String? = nil,
+        discardedAt: Double? = nil,
+        discardedBy: String? = nil
+    ) throws {
         (self.createdAt, self.expiresAt) = (createdAt, expiresAt)
         (self.kind, self.requester) = (kind, requester)
         (self.requestId, self.transferId) = (requestId, transferId)
         (self.approvedAt, self.approvedBy) = (approvedAt, approvedBy)
         (self.authorizationId, self.discardedAt) = (authorizationId, discardedAt)
         self.discardedBy = discardedBy
-            try sdkValidateRawEnum("kind", self.kind, GetConfigurationResponseVariant0TransferRequestVariant1Kind.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "kind",
+            self.kind,
+            GetConfigurationResponseVariant0TransferRequestVariant1Kind.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -312,44 +436,62 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant0Requester: 
         case email
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationResponseVariant0TransferRequestVariant0Requester {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        self.name = try container.sdkDecodeRequired(.name)
-        self.email = try container.sdkDecodeIfPresent(.email)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationResponseVariant0TransferRequestVariant0Requester {
-    public init(name: String, email: String? = nil) {
+public extension GetConfigurationResponseVariant0TransferRequestVariant0Requester {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        name = try container.sdkDecodeRequired(.name)
+        email = try container.sdkDecodeIfPresent(.email)
+    }
+}
+
+public extension GetConfigurationResponseVariant0TransferRequestVariant0Requester {
+    init(name: String, email: String? = nil) {
         (self.name, self.email) = (name, email)
     }
 }
 
 public indirect enum GetConfigurationResponseVariant0TransferRequest {
-    case getConfigurationResponseVariant0TransferRequestVariant0(GetConfigurationResponseVariant0TransferRequestVariant0)
-    case getConfigurationResponseVariant0TransferRequestVariant1(GetConfigurationResponseVariant0TransferRequestVariant1)
+    case getConfigurationResponseVariant0TransferRequestVariant0(
+        GetConfigurationResponseVariant0TransferRequestVariant0
+    )
+    case getConfigurationResponseVariant0TransferRequestVariant1(
+        GetConfigurationResponseVariant0TransferRequestVariant1
+    )
 }
 
 extension GetConfigurationResponseVariant0TransferRequest: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConfigurationResponseVariant0TransferRequest")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetConfigurationResponseVariant0TransferRequest"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -372,12 +514,12 @@ extension GetConfigurationResponseVariant0TransferRequest {
         if let value = try? container.decode(
             GetConfigurationResponseVariant0TransferRequestVariant0.self
         ) {
-            return             .getConfigurationResponseVariant0TransferRequestVariant0(value)
+            return .getConfigurationResponseVariant0TransferRequestVariant0(value)
         }
         if let value = try? container.decode(
             GetConfigurationResponseVariant0TransferRequestVariant1.self
         ) {
-            return             .getConfigurationResponseVariant0TransferRequestVariant1(value)
+            return .getConfigurationResponseVariant0TransferRequestVariant1(value)
         }
         return nil
     }
@@ -387,8 +529,10 @@ extension GetConfigurationResponseVariant0TransferRequest {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getConfigurationResponseVariant0TransferRequestVariant0(value): try container.encode(value); return true
-        case let .getConfigurationResponseVariant0TransferRequestVariant1(value): try container.encode(value); return true
+        case let .getConfigurationResponseVariant0TransferRequestVariant0(value): try container
+            .encode(value); return true
+        case let .getConfigurationResponseVariant0TransferRequestVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -412,36 +556,62 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan
         case scope
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.description = try container.sdkDecodeRequired(.description)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.paymentMethodRequired = try container.sdkDecodeIfPresent(.paymentMethodRequired)
-        self.preauthorizationAmount = try container.sdkDecodeIfPresent(.preauthorizationAmount)
-        self.scope = try container.sdkDecodeIfPresent(.scope)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan {
-    public init(description: String, id: String, name: String, type: GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanType, paymentMethodRequired: Bool? = nil, preauthorizationAmount: Double? = nil, scope: GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanScope? = nil) {
+public extension GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.description) else {
+            throw SdkValidationError(
+                field: "description",
+                code: "required",
+                message: "Validation failed for 'description': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        description = try container.sdkDecodeRequired(.description)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        type = try container.sdkDecodeRequired(.type)
+        paymentMethodRequired = try container.sdkDecodeIfPresent(.paymentMethodRequired)
+        preauthorizationAmount = try container.sdkDecodeIfPresent(.preauthorizationAmount)
+        scope = try container.sdkDecodeIfPresent(.scope)
+    }
+}
+
+public extension GetConfigurationResponseVariant0TransferRequestVariant0BillingPlan {
+    init(
+        description: String,
+        id: String,
+        name: String,
+        type: GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanType,
+        paymentMethodRequired: Bool? = nil,
+        preauthorizationAmount: Double? = nil,
+        scope: GetConfigurationResponseVariant0TransferRequestVariant0BillingPlanScope? = nil
+    ) {
         (self.description, self.id) = (description, id)
         (self.name, self.type) = (name, type)
         self.paymentMethodRequired = paymentMethodRequired

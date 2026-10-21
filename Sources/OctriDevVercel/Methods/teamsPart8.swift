@@ -6,26 +6,47 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension TeamsMethods {
-    /// Updates Directory Sync role mappings for a team, associating directory groups with team roles or access groups. Identify the team with `teamId` or `slug` and provide the mappings in `roles`.
+public extension TeamsMethods {
+    /// Updates Directory Sync role mappings for a team, associating directory groups with team roles or access groups.
+    /// Identify the team with `teamId` or `slug` and provide the mappings in `roles`.
     ///
-    /// Update the Directory Sync role mappings for a Team. This endpoint allows updating the mapping between directory groups and team roles or access groups.
+    /// Update the Directory Sync role mappings for a Team. This endpoint allows updating the mapping between directory
+    /// groups and team roles or access groups.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - roles: Directory groups to role or access group mappings.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func postTeamDsyncRoles(config: ClientConfig, teamId: String, roles: [String: PostTeamDsyncRolesRequestBodyRolesValue], slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> PostTeamDsyncRolesResponse {
+    static func postTeamDsyncRoles(
+        config: ClientConfig,
+        teamId: String,
+        roles: [String: PostTeamDsyncRolesRequestBodyRolesValue],
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> PostTeamDsyncRolesResponse {
         let requestBody = PostTeamDsyncRolesRequestBody(roles: roles)
 
-        return try (await sdkRequest("POST", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/dsync-roles"].joined(), config: config, query: [
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "postTeamDsyncRoles", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/dsync-roles"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "postTeamDsyncRoles",
+            options: requestOptions
+        )).data
     }
 
-    /// Deletes a team under the authenticated user's account. Identify the team with `teamId` and optionally provide `newDefaultTeamId` to select a replacement default team. Enterprise teams can be deleted only in test billing mode and when they are not linked to an organization.
+    /// Deletes a team under the authenticated user's account. Identify the team with `teamId` and optionally provide
+    /// `newDefaultTeamId` to select a replacement default team. Enterprise teams can be deleted only in test billing
+    /// mode and when they are not linked to an organization.
     ///
-    /// Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and when not linked to an organization.
+    /// Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional
+    /// array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and
+    /// when not linked to an organization.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
@@ -33,12 +54,28 @@ extension TeamsMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     /// - reasons: Optional array of objects that describe the reason why the team
     ///   is being deleted.
-    public static func deleteTeam(config: ClientConfig, teamId: String, newDefaultTeamId: String? = nil, slug: String? = nil, reasons: [DeleteTeamRequestBodyReasonsItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteTeamResponse {
+    static func deleteTeam(
+        config: ClientConfig,
+        teamId: String,
+        newDefaultTeamId: String? = nil,
+        slug: String? = nil,
+        reasons: [DeleteTeamRequestBodyReasonsItem]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteTeamResponse {
         let requestBody = DeleteTeamRequestBody(reasons: reasons)
 
-        return try (await sdkRequest("DELETE", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId))].joined(), config: config, query: [
-            SdkQueryParameter("newDefaultTeamId", value: newDefaultTeamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "deleteTeam", options: requestOptions)).data
+        return try await (sdkRequest(
+            "DELETE",
+            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("newDefaultTeamId", value: newDefaultTeamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "deleteTeam",
+            options: requestOptions
+        )).data
     }
 }

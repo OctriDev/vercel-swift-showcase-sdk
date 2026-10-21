@@ -11,7 +11,7 @@ struct CreateSandboxesSessionsBySessionIdSnapshotV2RequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.expiration, forKey: SdkCodingKey("expiration"))
+        try keyedContainer.encodeIfPresent(expiration, forKey: SdkCodingKey("expiration"))
     }
 }
 
@@ -34,39 +34,39 @@ struct CreateSandboxesByNameForkV2RequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.networkPolicy, forKey: SdkCodingKey("networkPolicy"))
-        try keyedContainer.encodeIfPresent(self.resources, forKey: SdkCodingKey("resources"))
-        try keyedContainer.encodeIfPresent(self.ports, forKey: SdkCodingKey("ports"))
-        try keyedContainer.encodeIfPresent(self.image, forKey: SdkCodingKey("image"))
-        try keyedContainer.encodeIfPresent(self.timeout, forKey: SdkCodingKey("timeout"))
-        try keyedContainer.encodeIfPresent(self.env, forKey: SdkCodingKey("env"))
-        try keyedContainer.encodeIfPresent(self.mounts, forKey: SdkCodingKey("mounts"))
-        try keyedContainer.encodeIfPresent(self.region, forKey: SdkCodingKey("region"))
-        try keyedContainer.encodeIfPresent(self.failoverRegions, forKey: SdkCodingKey("failoverRegions"))
-        try keyedContainer.encodeIfPresent(self.networkId, forKey: SdkCodingKey("networkId"))
-        try keyedContainer.encodeIfPresent(self.name2, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.persistent, forKey: SdkCodingKey("persistent"))
-        try keyedContainer.encodeIfPresent(self.snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
-        try keyedContainer.encodeIfPresent(self.keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
-        try keyedContainer.encodeIfPresent(self.tags, forKey: SdkCodingKey("tags"))
+        try keyedContainer.encodeIfPresent(networkPolicy, forKey: SdkCodingKey("networkPolicy"))
+        try keyedContainer.encodeIfPresent(resources, forKey: SdkCodingKey("resources"))
+        try keyedContainer.encodeIfPresent(ports, forKey: SdkCodingKey("ports"))
+        try keyedContainer.encodeIfPresent(image, forKey: SdkCodingKey("image"))
+        try keyedContainer.encodeIfPresent(timeout, forKey: SdkCodingKey("timeout"))
+        try keyedContainer.encodeIfPresent(env, forKey: SdkCodingKey("env"))
+        try keyedContainer.encodeIfPresent(mounts, forKey: SdkCodingKey("mounts"))
+        try keyedContainer.encodeIfPresent(region, forKey: SdkCodingKey("region"))
+        try keyedContainer.encodeIfPresent(failoverRegions, forKey: SdkCodingKey("failoverRegions"))
+        try keyedContainer.encodeIfPresent(networkId, forKey: SdkCodingKey("networkId"))
+        try keyedContainer.encodeIfPresent(name2, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(persistent, forKey: SdkCodingKey("persistent"))
+        try keyedContainer.encodeIfPresent(snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
+        try keyedContainer.encodeIfPresent(keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
+        try keyedContainer.encodeIfPresent(tags, forKey: SdkCodingKey("tags"))
     }
 
     init(options: SandboxesMethods.CreateSandboxesByNameForkV2Options) {
-        self.networkPolicy = options.networkPolicy
-        self.resources = options.resources
-        self.ports = options.ports
-        self.image = options.image
-        self.timeout = options.timeout
-        self.env = options.env
-        self.mounts = options.mounts
-        self.region = options.region
-        self.failoverRegions = options.failoverRegions
-        self.networkId = options.networkId
-        self.name2 = options.name2
-        self.persistent = options.persistent
-        self.snapshotExpiration = options.snapshotExpiration
-        self.keepLastSnapshots = options.keepLastSnapshots
-        self.tags = options.tags
+        networkPolicy = options.networkPolicy
+        resources = options.resources
+        ports = options.ports
+        image = options.image
+        timeout = options.timeout
+        env = options.env
+        mounts = options.mounts
+        region = options.region
+        failoverRegions = options.failoverRegions
+        networkId = options.networkId
+        name2 = options.name2
+        persistent = options.persistent
+        snapshotExpiration = options.snapshotExpiration
+        keepLastSnapshots = options.keepLastSnapshots
+        tags = options.tags
     }
 }
 
@@ -92,45 +92,45 @@ struct CreateSandboxesV3RequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.networkPolicy, forKey: SdkCodingKey("networkPolicy"))
-        try keyedContainer.encodeIfPresent(self.architecture, forKey: SdkCodingKey("architecture"))
-        try keyedContainer.encodeIfPresent(self.resources, forKey: SdkCodingKey("resources"))
-        try keyedContainer.encodeIfPresent(self.source, forKey: SdkCodingKey("source"))
-        try keyedContainer.encodeIfPresent(self.projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encodeIfPresent(self.ports, forKey: SdkCodingKey("ports"))
-        try keyedContainer.encodeIfPresent(self.image, forKey: SdkCodingKey("image"))
-        try keyedContainer.encodeIfPresent(self.timeout, forKey: SdkCodingKey("timeout"))
-        try keyedContainer.encodeIfPresent(self.env, forKey: SdkCodingKey("env"))
-        try keyedContainer.encodeIfPresent(self.mounts, forKey: SdkCodingKey("mounts"))
-        try keyedContainer.encodeIfPresent(self.region, forKey: SdkCodingKey("region"))
-        try keyedContainer.encodeIfPresent(self.failoverRegions, forKey: SdkCodingKey("failoverRegions"))
-        try keyedContainer.encodeIfPresent(self.networkId, forKey: SdkCodingKey("networkId"))
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.persistent, forKey: SdkCodingKey("persistent"))
-        try keyedContainer.encodeIfPresent(self.snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
-        try keyedContainer.encodeIfPresent(self.keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
-        try keyedContainer.encodeIfPresent(self.tags, forKey: SdkCodingKey("tags"))
+        try keyedContainer.encodeIfPresent(networkPolicy, forKey: SdkCodingKey("networkPolicy"))
+        try keyedContainer.encodeIfPresent(architecture, forKey: SdkCodingKey("architecture"))
+        try keyedContainer.encodeIfPresent(resources, forKey: SdkCodingKey("resources"))
+        try keyedContainer.encodeIfPresent(source, forKey: SdkCodingKey("source"))
+        try keyedContainer.encodeIfPresent(projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encodeIfPresent(ports, forKey: SdkCodingKey("ports"))
+        try keyedContainer.encodeIfPresent(image, forKey: SdkCodingKey("image"))
+        try keyedContainer.encodeIfPresent(timeout, forKey: SdkCodingKey("timeout"))
+        try keyedContainer.encodeIfPresent(env, forKey: SdkCodingKey("env"))
+        try keyedContainer.encodeIfPresent(mounts, forKey: SdkCodingKey("mounts"))
+        try keyedContainer.encodeIfPresent(region, forKey: SdkCodingKey("region"))
+        try keyedContainer.encodeIfPresent(failoverRegions, forKey: SdkCodingKey("failoverRegions"))
+        try keyedContainer.encodeIfPresent(networkId, forKey: SdkCodingKey("networkId"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(persistent, forKey: SdkCodingKey("persistent"))
+        try keyedContainer.encodeIfPresent(snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
+        try keyedContainer.encodeIfPresent(keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
+        try keyedContainer.encodeIfPresent(tags, forKey: SdkCodingKey("tags"))
     }
 
     init(options: SandboxesMethods.CreateSandboxesV3Options) {
-        self.networkPolicy = options.networkPolicy
-        self.architecture = options.architecture
-        self.resources = options.resources
-        self.source = options.source
-        self.projectId = options.projectId
-        self.ports = options.ports
-        self.image = options.image
-        self.timeout = options.timeout
-        self.env = options.env
-        self.mounts = options.mounts
-        self.region = options.region
-        self.failoverRegions = options.failoverRegions
-        self.networkId = options.networkId
-        self.name = options.name
-        self.persistent = options.persistent
-        self.snapshotExpiration = options.snapshotExpiration
-        self.keepLastSnapshots = options.keepLastSnapshots
-        self.tags = options.tags
+        networkPolicy = options.networkPolicy
+        architecture = options.architecture
+        resources = options.resources
+        source = options.source
+        projectId = options.projectId
+        ports = options.ports
+        image = options.image
+        timeout = options.timeout
+        env = options.env
+        mounts = options.mounts
+        region = options.region
+        failoverRegions = options.failoverRegions
+        networkId = options.networkId
+        name = options.name
+        persistent = options.persistent
+        snapshotExpiration = options.snapshotExpiration
+        keepLastSnapshots = options.keepLastSnapshots
+        tags = options.tags
     }
 }
 
@@ -139,7 +139,7 @@ struct CreateSandboxesSessionsBySessionIdSnapshotV3RequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.expiration, forKey: SdkCodingKey("expiration"))
+        try keyedContainer.encodeIfPresent(expiration, forKey: SdkCodingKey("expiration"))
     }
 }
 
@@ -162,38 +162,38 @@ struct CreateSandboxesByNameForkV3RequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.networkPolicy, forKey: SdkCodingKey("networkPolicy"))
-        try keyedContainer.encodeIfPresent(self.resources, forKey: SdkCodingKey("resources"))
-        try keyedContainer.encodeIfPresent(self.ports, forKey: SdkCodingKey("ports"))
-        try keyedContainer.encodeIfPresent(self.image, forKey: SdkCodingKey("image"))
-        try keyedContainer.encodeIfPresent(self.timeout, forKey: SdkCodingKey("timeout"))
-        try keyedContainer.encodeIfPresent(self.env, forKey: SdkCodingKey("env"))
-        try keyedContainer.encodeIfPresent(self.mounts, forKey: SdkCodingKey("mounts"))
-        try keyedContainer.encodeIfPresent(self.region, forKey: SdkCodingKey("region"))
-        try keyedContainer.encodeIfPresent(self.failoverRegions, forKey: SdkCodingKey("failoverRegions"))
-        try keyedContainer.encodeIfPresent(self.networkId, forKey: SdkCodingKey("networkId"))
-        try keyedContainer.encodeIfPresent(self.name2, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.persistent, forKey: SdkCodingKey("persistent"))
-        try keyedContainer.encodeIfPresent(self.snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
-        try keyedContainer.encodeIfPresent(self.keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
-        try keyedContainer.encodeIfPresent(self.tags, forKey: SdkCodingKey("tags"))
+        try keyedContainer.encodeIfPresent(networkPolicy, forKey: SdkCodingKey("networkPolicy"))
+        try keyedContainer.encodeIfPresent(resources, forKey: SdkCodingKey("resources"))
+        try keyedContainer.encodeIfPresent(ports, forKey: SdkCodingKey("ports"))
+        try keyedContainer.encodeIfPresent(image, forKey: SdkCodingKey("image"))
+        try keyedContainer.encodeIfPresent(timeout, forKey: SdkCodingKey("timeout"))
+        try keyedContainer.encodeIfPresent(env, forKey: SdkCodingKey("env"))
+        try keyedContainer.encodeIfPresent(mounts, forKey: SdkCodingKey("mounts"))
+        try keyedContainer.encodeIfPresent(region, forKey: SdkCodingKey("region"))
+        try keyedContainer.encodeIfPresent(failoverRegions, forKey: SdkCodingKey("failoverRegions"))
+        try keyedContainer.encodeIfPresent(networkId, forKey: SdkCodingKey("networkId"))
+        try keyedContainer.encodeIfPresent(name2, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(persistent, forKey: SdkCodingKey("persistent"))
+        try keyedContainer.encodeIfPresent(snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
+        try keyedContainer.encodeIfPresent(keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
+        try keyedContainer.encodeIfPresent(tags, forKey: SdkCodingKey("tags"))
     }
 
     init(options: SandboxesMethods.CreateSandboxesByNameForkV3Options) {
-        self.networkPolicy = options.networkPolicy
-        self.resources = options.resources
-        self.ports = options.ports
-        self.image = options.image
-        self.timeout = options.timeout
-        self.env = options.env
-        self.mounts = options.mounts
-        self.region = options.region
-        self.failoverRegions = options.failoverRegions
-        self.networkId = options.networkId
-        self.name2 = options.name2
-        self.persistent = options.persistent
-        self.snapshotExpiration = options.snapshotExpiration
-        self.keepLastSnapshots = options.keepLastSnapshots
-        self.tags = options.tags
+        networkPolicy = options.networkPolicy
+        resources = options.resources
+        ports = options.ports
+        image = options.image
+        timeout = options.timeout
+        env = options.env
+        mounts = options.mounts
+        region = options.region
+        failoverRegions = options.failoverRegions
+        networkId = options.networkId
+        name2 = options.name2
+        persistent = options.persistent
+        snapshotExpiration = options.snapshotExpiration
+        keepLastSnapshots = options.keepLastSnapshots
+        tags = options.tags
     }
 }

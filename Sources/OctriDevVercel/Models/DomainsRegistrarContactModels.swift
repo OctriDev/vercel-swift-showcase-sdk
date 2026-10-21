@@ -3,7 +3,7 @@
 
 import Foundation
 
-// DomainsRegistrarContact domain models
+/// DomainsRegistrarContact domain models
 /// The registrant contact has been verified.
 public struct ContactVerified: Codable {
     /// Required enumerated value serialized in the `verified` wire field.
@@ -13,21 +13,27 @@ public struct ContactVerified: Codable {
         case verified
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ContactVerified {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.verified) else {
-            throw SdkValidationError(field: "verified", code: "required", message: "Validation failed for 'verified': value is required")
-        }
-        self.verified = try container.sdkDecodeRequired(.verified)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ContactVerified {
-    public init(verified: Bool) {
+public extension ContactVerified {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.verified) else {
+            throw SdkValidationError(
+                field: "verified",
+                code: "required",
+                message: "Validation failed for 'verified': value is required"
+            )
+        }
+        verified = try container.sdkDecodeRequired(.verified)
+    }
+}
+
+public extension ContactVerified {
+    init(verified: Bool) {
         self.verified = verified
     }
 }
@@ -48,29 +54,43 @@ public struct ContactPendingVerification: Codable {
         case email
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ContactPendingVerification {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.verified) else {
-            throw SdkValidationError(field: "verified", code: "required", message: "Validation failed for 'verified': value is required")
-        }
-        guard container.contains(.verifyBy) else {
-            throw SdkValidationError(field: "verifyBy", code: "required", message: "Validation failed for 'verifyBy': value is required")
-        }
-        guard container.contains(.email) else {
-            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
-        }
-        self.verified = try container.sdkDecodeRequired(.verified)
-        self.verifyBy = try container.sdkDecodeRequired(.verifyBy)
-        self.email = try container.sdkDecodeRequired(.email)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ContactPendingVerification {
-    public init(verified: Bool, verifyBy: DateFromString, email: String) {
+public extension ContactPendingVerification {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.verified) else {
+            throw SdkValidationError(
+                field: "verified",
+                code: "required",
+                message: "Validation failed for 'verified': value is required"
+            )
+        }
+        guard container.contains(.verifyBy) else {
+            throw SdkValidationError(
+                field: "verifyBy",
+                code: "required",
+                message: "Validation failed for 'verifyBy': value is required"
+            )
+        }
+        guard container.contains(.email) else {
+            throw SdkValidationError(
+                field: "email",
+                code: "required",
+                message: "Validation failed for 'email': value is required"
+            )
+        }
+        verified = try container.sdkDecodeRequired(.verified)
+        verifyBy = try container.sdkDecodeRequired(.verifyBy)
+        email = try container.sdkDecodeRequired(.email)
+    }
+}
+
+public extension ContactPendingVerification {
+    init(verified: Bool, verifyBy: DateFromString, email: String) {
         (self.verified, self.verifyBy) = (verified, verifyBy)
         self.email = email
     }

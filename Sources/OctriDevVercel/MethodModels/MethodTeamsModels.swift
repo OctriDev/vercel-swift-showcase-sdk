@@ -7,32 +7,40 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical teams operation model declarations
+/// Canonical teams operation model declarations
 public indirect enum PostTeamDsyncRolesRequestBodyRolesValue {
     case stringValue(String)
     case postTeamDsyncRolesRequestBodyRolesValueVariant1(PostTeamDsyncRolesRequestBodyRolesValueVariant1)
 }
 
 extension PostTeamDsyncRolesRequestBodyRolesValue: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for PostTeamDsyncRolesRequestBodyRolesValue")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for PostTeamDsyncRolesRequestBodyRolesValue"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension PostTeamDsyncRolesRequestBodyRolesValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         if let value = try? container.decode(
             PostTeamDsyncRolesRequestBodyRolesValueVariant1.self
         ) {
-            return             .postTeamDsyncRolesRequestBodyRolesValueVariant1(value)
+            return .postTeamDsyncRolesRequestBodyRolesValueVariant1(value)
         }
         return nil
     }
@@ -56,19 +64,19 @@ public struct RequestAccessToTeamResponseGithub: Codable {
     }
 
     init() {
-        self.login = nil
+        login = nil
     }
 }
 
-extension RequestAccessToTeamResponseGithub {
-    public init(from decoder: Decoder) throws {
+public extension RequestAccessToTeamResponseGithub {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.login = try container.sdkDecodeIfPresent(.login)
+        login = try container.sdkDecodeIfPresent(.login)
     }
 }
 
-extension RequestAccessToTeamResponseGithub {
-    public init(login: String? = nil) {
+public extension RequestAccessToTeamResponseGithub {
+    init(login: String? = nil) {
         self.init()
         self.login = login
     }
@@ -88,22 +96,28 @@ public struct DeleteTeamResponse: Codable {
         case newDefaultTeamIdError
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteTeamResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.newDefaultTeamIdError = try container.sdkDecodeIfPresent(.newDefaultTeamIdError)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension DeleteTeamResponse {
-    public init(id: String, newDefaultTeamIdError: Bool? = nil) {
+public extension DeleteTeamResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        newDefaultTeamIdError = try container.sdkDecodeIfPresent(.newDefaultTeamIdError)
+    }
+}
+
+public extension DeleteTeamResponse {
+    init(id: String, newDefaultTeamIdError: Bool? = nil) {
         (self.id, self.newDefaultTeamIdError) = (id, newDefaultTeamIdError)
     }
 }
@@ -116,21 +130,27 @@ public struct RemoveTeamMemberResponse: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RemoveTeamMemberResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RemoveTeamMemberResponse {
-    public init(id: String) {
+public extension RemoveTeamMemberResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+    }
+}
+
+public extension RemoveTeamMemberResponse {
+    init(id: String) {
         self.id = id
     }
 }
@@ -145,21 +165,27 @@ public struct UpdateTeamRequestBodyStrictDeploymentProtectionSettings: Codable {
         case enabled
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateTeamRequestBodyStrictDeploymentProtectionSettings {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.enabled) else {
-            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
-        }
-        self.enabled = try container.sdkDecodeRequired(.enabled)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateTeamRequestBodyStrictDeploymentProtectionSettings {
-    public init(enabled: Bool) {
+public extension UpdateTeamRequestBodyStrictDeploymentProtectionSettings {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.enabled) else {
+            throw SdkValidationError(
+                field: "enabled",
+                code: "required",
+                message: "Validation failed for 'enabled': value is required"
+            )
+        }
+        enabled = try container.sdkDecodeRequired(.enabled)
+    }
+}
+
+public extension UpdateTeamRequestBodyStrictDeploymentProtectionSettings {
+    init(enabled: Bool) {
         self.enabled = enabled
     }
 }
@@ -171,21 +197,27 @@ public struct UpdateMicrofrontendsGroupResponse: Codable {
         case updatedMicrofrontendsGroup
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateMicrofrontendsGroupResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.updatedMicrofrontendsGroup) else {
-            throw SdkValidationError(field: "updatedMicrofrontendsGroup", code: "required", message: "Validation failed for 'updatedMicrofrontendsGroup': value is required")
-        }
-        self.updatedMicrofrontendsGroup = try container.sdkDecodeRequired(.updatedMicrofrontendsGroup)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateMicrofrontendsGroupResponse {
-    public init(updatedMicrofrontendsGroup: UpdateMicrofrontendsGroupResponseUpdatedMicrofrontendsGroup) {
+public extension UpdateMicrofrontendsGroupResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.updatedMicrofrontendsGroup) else {
+            throw SdkValidationError(
+                field: "updatedMicrofrontendsGroup",
+                code: "required",
+                message: "Validation failed for 'updatedMicrofrontendsGroup': value is required"
+            )
+        }
+        updatedMicrofrontendsGroup = try container.sdkDecodeRequired(.updatedMicrofrontendsGroup)
+    }
+}
+
+public extension UpdateMicrofrontendsGroupResponse {
+    init(updatedMicrofrontendsGroup: UpdateMicrofrontendsGroupResponseUpdatedMicrofrontendsGroup) {
         self.updatedMicrofrontendsGroup = updatedMicrofrontendsGroup
     }
 }
@@ -201,19 +233,19 @@ public struct UpdateTeamRequestBodyRemoteCaching: Codable {
     }
 
     init() {
-        self.enabled = nil
+        enabled = nil
     }
 }
 
-extension UpdateTeamRequestBodyRemoteCaching {
-    public init(from decoder: Decoder) throws {
+public extension UpdateTeamRequestBodyRemoteCaching {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.enabled = try container.sdkDecodeIfPresent(.enabled)
+        enabled = try container.sdkDecodeIfPresent(.enabled)
     }
 }
 
-extension UpdateTeamRequestBodyRemoteCaching {
-    public init(enabled: Bool? = nil) {
+public extension UpdateTeamRequestBodyRemoteCaching {
+    init(enabled: Bool? = nil) {
         self.init()
         self.enabled = enabled
     }
@@ -230,26 +262,40 @@ public struct GetTeamMembersResponse: Codable {
         case emailInviteCodes
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetTeamMembersResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.members) else {
-            throw SdkValidationError(field: "members", code: "required", message: "Validation failed for 'members': value is required")
-        }
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        self.members = try container.sdkDecodeRequired(.members)
-        self.pagination = try container.sdkDecodeRequired(.pagination)
-        self.emailInviteCodes = try container.sdkDecodeIfPresent(.emailInviteCodes)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetTeamMembersResponse {
-    public init(members: [GetTeamMembersResponseMembersItem], pagination: GetTeamMembersResponsePagination, emailInviteCodes: [GetTeamMembersResponseEmailInviteCodesItem]? = nil) {
+public extension GetTeamMembersResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.members) else {
+            throw SdkValidationError(
+                field: "members",
+                code: "required",
+                message: "Validation failed for 'members': value is required"
+            )
+        }
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        members = try container.sdkDecodeRequired(.members)
+        pagination = try container.sdkDecodeRequired(.pagination)
+        emailInviteCodes = try container.sdkDecodeIfPresent(.emailInviteCodes)
+    }
+}
+
+public extension GetTeamMembersResponse {
+    init(
+        members: [GetTeamMembersResponseMembersItem],
+        pagination: GetTeamMembersResponsePagination,
+        emailInviteCodes: [GetTeamMembersResponseEmailInviteCodesItem]? = nil
+    ) {
         (self.members, self.pagination) = (members, pagination)
         self.emailInviteCodes = emailInviteCodes
     }
@@ -287,25 +333,36 @@ public struct GetTeamAccessRequestResponse: Codable {
         case teamSlug
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetTeamAccessRequestResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.accessRequestedAt = try container.sdkDecodeRequired(.accessRequestedAt)
-        self.bitbucket = try container.sdkDecodeNullable(.bitbucket)
-        self.confirmed = try container.sdkDecodeRequired(.confirmed)
-        self.github = try container.sdkDecodeNullable(.github)
-        self.gitlab = try container.sdkDecodeNullable(.gitlab)
-        self.joinedFrom = try container.sdkDecodeRequired(.joinedFrom)
-        self.teamName = try container.sdkDecodeRequired(.teamName)
-        self.teamSlug = try container.sdkDecodeRequired(.teamSlug)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetTeamAccessRequestResponse {
-    public init(accessRequestedAt: Double, bitbucket: GetTeamAccessRequestResponseBitbucket?, confirmed: Bool, github: GetTeamAccessRequestResponseGithub?, gitlab: GetTeamAccessRequestResponseGitlab?, joinedFrom: GetTeamAccessRequestResponseJoinedFrom, teamName: String, teamSlug: String) {
+public extension GetTeamAccessRequestResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        accessRequestedAt = try container.sdkDecodeRequired(.accessRequestedAt)
+        bitbucket = try container.sdkDecodeNullable(.bitbucket)
+        confirmed = try container.sdkDecodeRequired(.confirmed)
+        github = try container.sdkDecodeNullable(.github)
+        gitlab = try container.sdkDecodeNullable(.gitlab)
+        joinedFrom = try container.sdkDecodeRequired(.joinedFrom)
+        teamName = try container.sdkDecodeRequired(.teamName)
+        teamSlug = try container.sdkDecodeRequired(.teamSlug)
+    }
+}
+
+public extension GetTeamAccessRequestResponse {
+    init(
+        accessRequestedAt: Double,
+        bitbucket: GetTeamAccessRequestResponseBitbucket?,
+        confirmed: Bool,
+        github: GetTeamAccessRequestResponseGithub?,
+        gitlab: GetTeamAccessRequestResponseGitlab?,
+        joinedFrom: GetTeamAccessRequestResponseJoinedFrom,
+        teamName: String,
+        teamSlug: String
+    ) {
         (self.accessRequestedAt, self.bitbucket) = (accessRequestedAt, bitbucket)
         (self.confirmed, self.github) = (confirmed, github)
         (self.gitlab, self.joinedFrom) = (gitlab, joinedFrom)
@@ -325,26 +382,36 @@ public struct GetTeamMembersResponseMembersItemProjectsItem: Codable {
         case role
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetTeamMembersResponseMembersItemProjectsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.role = try container.sdkDecodeIfPresent(.role)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetTeamMembersResponseMembersItemProjectsItem {
-    public init(id: String, name: String, role: GetTeamMembersResponseMembersItemProjectsItemRole? = nil) {
+public extension GetTeamMembersResponseMembersItemProjectsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        role = try container.sdkDecodeIfPresent(.role)
+    }
+}
+
+public extension GetTeamMembersResponseMembersItemProjectsItem {
+    init(id: String, name: String, role: GetTeamMembersResponseMembersItemProjectsItemRole? = nil) {
         (self.id, self.name) = (id, name)
         self.role = role
     }
@@ -363,28 +430,38 @@ public struct InviteUserToTeamRequestBodyItemProjectsItem: Codable {
         case role
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension InviteUserToTeamRequestBodyItemProjectsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        guard container.contains(.role) else {
-            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
-        }
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.role = try container.sdkDecodeRequired(.role)
-            try validateLength("projectId", self.projectId, min: nil, max: 64)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension InviteUserToTeamRequestBodyItemProjectsItem {
-    public init(projectId: String, role: InviteUserToTeamRequestBodyItemProjectsItemRole) throws {
+public extension InviteUserToTeamRequestBodyItemProjectsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
+        }
+        guard container.contains(.role) else {
+            throw SdkValidationError(
+                field: "role",
+                code: "required",
+                message: "Validation failed for 'role': value is required"
+            )
+        }
+        projectId = try container.sdkDecodeRequired(.projectId)
+        role = try container.sdkDecodeRequired(.role)
+        try validateLength("projectId", projectId, min: nil, max: 64)
+    }
+}
+
+public extension InviteUserToTeamRequestBodyItemProjectsItem {
+    init(projectId: String, role: InviteUserToTeamRequestBodyItemProjectsItemRole) throws {
         (self.projectId, self.role) = (projectId, role)
-            try validateLength("projectId", self.projectId, min: nil, max: 64)
+        try validateLength("projectId", self.projectId, min: nil, max: 64)
     }
 }
 
@@ -397,25 +474,26 @@ public struct GetTeamMembersResponseMembersItemGithub: Codable {
     }
 
     init() {
-        self.login = nil
+        login = nil
     }
 }
 
-extension GetTeamMembersResponseMembersItemGithub {
-    public init(from decoder: Decoder) throws {
+public extension GetTeamMembersResponseMembersItemGithub {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.login = try container.sdkDecodeIfPresent(.login)
+        login = try container.sdkDecodeIfPresent(.login)
     }
 }
 
-extension GetTeamMembersResponseMembersItemGithub {
-    public init(login: String? = nil) {
+public extension GetTeamMembersResponseMembersItemGithub {
+    init(login: String? = nil) {
         self.init()
         self.login = login
     }
 }
 
-public typealias GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsList = [GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem]
+public typealias GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsList =
+    [GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem]
 
 public struct GetTeamMembersResponseEmailInviteCodesItem: Codable {
     public var id: String
@@ -444,34 +522,56 @@ public struct GetTeamMembersResponseEmailInviteCodesItem: Codable {
         case teamRoles
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetTeamMembersResponseEmailInviteCodesItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.isDSyncUser) else {
-            throw SdkValidationError(field: "isDSyncUser", code: "required", message: "Validation failed for 'isDSyncUser': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.isDSyncUser = try container.sdkDecodeRequired(.isDSyncUser)
-        self.accessGroups = try container.sdkDecodeIfPresent(.accessGroups)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.email = try container.sdkDecodeIfPresent(.email)
-        self.entitlements = try container.sdkDecodeIfPresent(.entitlements)
-        self.expired = try container.sdkDecodeIfPresent(.expired)
-        self.projects = try container.sdkDecodeIfPresent(.projects)
-        self.role = try container.sdkDecodeIfPresent(.role)
-        self.teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
-        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetTeamMembersResponseEmailInviteCodesItem {
-    public init(id: String, isDSyncUser: Bool, accessGroups: [String]? = nil, createdAt: Double? = nil, email: String? = nil, entitlements: [String]? = nil, expired: Bool? = nil, projects: [String: String]? = nil, role: GetTeamMembersResponseEmailInviteCodesItemRole? = nil, teamPermissions: GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsList? = nil, teamRoles: [GetTeamMembersResponseEmailInviteCodesItemTeamRolesItem]? = nil) {
+public extension GetTeamMembersResponseEmailInviteCodesItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.isDSyncUser) else {
+            throw SdkValidationError(
+                field: "isDSyncUser",
+                code: "required",
+                message: "Validation failed for 'isDSyncUser': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        isDSyncUser = try container.sdkDecodeRequired(.isDSyncUser)
+        accessGroups = try container.sdkDecodeIfPresent(.accessGroups)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        email = try container.sdkDecodeIfPresent(.email)
+        entitlements = try container.sdkDecodeIfPresent(.entitlements)
+        expired = try container.sdkDecodeIfPresent(.expired)
+        projects = try container.sdkDecodeIfPresent(.projects)
+        role = try container.sdkDecodeIfPresent(.role)
+        teamPermissions = try container.sdkDecodeIfPresent(.teamPermissions)
+        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    }
+}
+
+public extension GetTeamMembersResponseEmailInviteCodesItem {
+    init(
+        id: String,
+        isDSyncUser: Bool,
+        accessGroups: [String]? = nil,
+        createdAt: Double? = nil,
+        email: String? = nil,
+        entitlements: [String]? = nil,
+        expired: Bool? = nil,
+        projects: [String: String]? = nil,
+        role: GetTeamMembersResponseEmailInviteCodesItemRole? = nil,
+        teamPermissions: GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsList? = nil,
+        teamRoles: [GetTeamMembersResponseEmailInviteCodesItemTeamRolesItem]? = nil
+    ) {
         (self.id, self.isDSyncUser) = (id, isDSyncUser)
         (self.accessGroups, self.createdAt) = (accessGroups, createdAt)
         (self.email, self.entitlements) = (email, entitlements)
@@ -508,25 +608,31 @@ public struct RequestAccessToTeamResponseJoinedFrom: Codable {
         case ssoUserId
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension RequestAccessToTeamResponseJoinedFrom {
-    public init(from decoder: Decoder) throws {
+public extension RequestAccessToTeamResponseJoinedFrom {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.origin) else {
-            throw SdkValidationError(field: "origin", code: "required", message: "Validation failed for 'origin': value is required")
+            throw SdkValidationError(
+                field: "origin",
+                code: "required",
+                message: "Validation failed for 'origin': value is required"
+            )
         }
-        self.origin = try container.sdkDecodeRequired(.origin)
-        self.commitId = try container.sdkDecodeIfPresent(.commitId)
-        self.dsyncConnectedAt = try container.sdkDecodeIfPresent(.dsyncConnectedAt)
-        self.dsyncUserId = try container.sdkDecodeIfPresent(.dsyncUserId)
-        self.gitUserId = try container.sdkDecodeIfPresent(.gitUserId)
-        self.gitUserLogin = try container.sdkDecodeIfPresent(.gitUserLogin)
-        self.idpUserId = try container.sdkDecodeIfPresent(.idpUserId)
-        self.repoId = try container.sdkDecodeIfPresent(.repoId)
-        self.repoPath = try container.sdkDecodeIfPresent(.repoPath)
-        self.ssoConnectedAt = try container.sdkDecodeIfPresent(.ssoConnectedAt)
-        self.ssoUserId = try container.sdkDecodeIfPresent(.ssoUserId)
+        origin = try container.sdkDecodeRequired(.origin)
+        commitId = try container.sdkDecodeIfPresent(.commitId)
+        dsyncConnectedAt = try container.sdkDecodeIfPresent(.dsyncConnectedAt)
+        dsyncUserId = try container.sdkDecodeIfPresent(.dsyncUserId)
+        gitUserId = try container.sdkDecodeIfPresent(.gitUserId)
+        gitUserLogin = try container.sdkDecodeIfPresent(.gitUserLogin)
+        idpUserId = try container.sdkDecodeIfPresent(.idpUserId)
+        repoId = try container.sdkDecodeIfPresent(.repoId)
+        repoPath = try container.sdkDecodeIfPresent(.repoPath)
+        ssoConnectedAt = try container.sdkDecodeIfPresent(.ssoConnectedAt)
+        ssoUserId = try container.sdkDecodeIfPresent(.ssoUserId)
     }
 }

@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Connect domain models
+/// Connect domain models
 /// Page of connectors.
 public struct ConnectConnectorList: Codable {
     /// Connectors in this page.
@@ -16,25 +16,35 @@ public struct ConnectConnectorList: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectConnectorList {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.connectors) else {
-            throw SdkValidationError(field: "connectors", code: "required", message: "Validation failed for 'connectors': value is required")
-        }
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        self.connectors = try container.sdkDecodeRequired(.connectors)
-        self.pagination = try container.sdkDecodeRequired(.pagination)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectConnectorList {
-    public init(connectors: [ConnectConnector], pagination: ConnectPagination) {
+public extension ConnectConnectorList {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.connectors) else {
+            throw SdkValidationError(
+                field: "connectors",
+                code: "required",
+                message: "Validation failed for 'connectors': value is required"
+            )
+        }
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        connectors = try container.sdkDecodeRequired(.connectors)
+        pagination = try container.sdkDecodeRequired(.pagination)
+    }
+}
+
+public extension ConnectConnectorList {
+    init(connectors: [ConnectConnector], pagination: ConnectPagination) {
         (self.connectors, self.pagination) = (connectors, pagination)
     }
 }

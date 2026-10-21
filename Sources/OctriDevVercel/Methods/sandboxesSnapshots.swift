@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    /// Lists snapshots for a project, with results paginated by an opaque cursor. Filter by project and sandbox name, and use `limit` and `cursor` to control pagination. Results are sorted by creation time in the selected direction.
+public extension SandboxesMethods {
+    /// Lists snapshots for a project, with results paginated by an opaque cursor. Filter by project and sandbox name,
+    /// and use `limit` and `cursor` to control pagination. Results are sorted by creation time in the selected
+    /// direction.
     ///
     /// Retrieves a paginated list of snapshots for a specific project.
     ///
@@ -22,17 +24,27 @@ extension SandboxesMethods {
     /// - sortOrder: Sort direction for results by creation time.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listSessionSnapshots(config: ClientConfig, project: String? = nil, name: String? = nil, limit: Double? = nil, cursor: String? = nil, sortOrder: ListSessionSnapshotsParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListSessionSnapshotsResponse {
-        if let name = name {
+    static func listSessionSnapshots(
+        config: ClientConfig,
+        project: String? = nil,
+        name: String? = nil,
+        limit: Double? = nil,
+        cursor: String? = nil,
+        sortOrder: ListSessionSnapshotsParameter? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListSessionSnapshotsResponse {
+        if let name {
             try validateLength("name", name, max: 128)
             try sdkValidatePattern("name", name, sdkPatterna828669d9fe5)
         }
 
-        if let limit = limit {
+        if let limit {
             try validateRange("limit", Double(limit), min: 1, max: 50)
         }
 
-        return try (await sdkRequest("GET", "/v2/sandboxes/snapshots", config: config, query: [
+        return try await (sdkRequest("GET", "/v2/sandboxes/snapshots", config: config, query: [
             SdkQueryParameter("project", value: project),
             SdkQueryParameter("name", value: name),
             SdkQueryParameter("limit", value: limit),

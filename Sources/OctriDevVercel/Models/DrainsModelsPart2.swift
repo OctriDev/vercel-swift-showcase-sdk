@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Drains domain models
+/// Drains domain models
 extension GetDrainsResponseDrainsItemDelivery2 {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
@@ -23,27 +23,41 @@ public indirect enum GetDrainsResponseDrainsItemFilterV2Filter {
 }
 
 extension GetDrainsResponseDrainsItemFilterV2Filter: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDrainsResponseDrainsItemFilterV2Filter")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetDrainsResponseDrainsItemFilterV2Filter"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetDrainsResponseDrainsItemFilterV2Filter {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetDrainsResponseDrainsItemFilterV2FilterVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemFilterV2FilterVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemFilterV2FilterVariant0(value)
         }
-        if let value = try? container.decode(GetDrainsResponseDrainsItemFilterV2FilterVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemFilterV2FilterVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemFilterV2FilterVariant1(value)
         }
         return nil
@@ -55,12 +69,12 @@ extension GetDrainsResponseDrainsItemFilterV2Filter {
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemFilterV2FilterVariant0.self
         ) {
-            return             .getDrainsResponseDrainsItemFilterV2FilterVariant0(value)
+            return .getDrainsResponseDrainsItemFilterV2FilterVariant0(value)
         }
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemFilterV2FilterVariant1.self
         ) {
-            return             .getDrainsResponseDrainsItemFilterV2FilterVariant1(value)
+            return .getDrainsResponseDrainsItemFilterV2FilterVariant1(value)
         }
         return nil
     }
@@ -82,27 +96,41 @@ public indirect enum GetDrainsResponseDrainsItemFilterV2Filter2 {
 }
 
 extension GetDrainsResponseDrainsItemFilterV2Filter2: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDrainsResponseDrainsItemFilterV2Filter2")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetDrainsResponseDrainsItemFilterV2Filter2"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetDrainsResponseDrainsItemFilterV2Filter2 {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetDrainsResponseDrainsItemFilterV2Filter2Variant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemFilterV2Filter2Variant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemFilterV2Filter2Variant0(value)
         }
-        if let value = try? container.decode(GetDrainsResponseDrainsItemFilterV2Filter2Variant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemFilterV2Filter2Variant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemFilterV2Filter2Variant1(value)
         }
         return nil
@@ -114,12 +142,12 @@ extension GetDrainsResponseDrainsItemFilterV2Filter2 {
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemFilterV2Filter2Variant0.self
         ) {
-            return             .getDrainsResponseDrainsItemFilterV2Filter2Variant0(value)
+            return .getDrainsResponseDrainsItemFilterV2Filter2Variant0(value)
         }
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemFilterV2Filter2Variant1.self
         ) {
-            return             .getDrainsResponseDrainsItemFilterV2Filter2Variant1(value)
+            return .getDrainsResponseDrainsItemFilterV2Filter2Variant1(value)
         }
         return nil
     }
@@ -141,27 +169,41 @@ public indirect enum GetDrainsResponseDrainsItemProjectAccess {
 }
 
 extension GetDrainsResponseDrainsItemProjectAccess: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDrainsResponseDrainsItemProjectAccess")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetDrainsResponseDrainsItemProjectAccess"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetDrainsResponseDrainsItemProjectAccess {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetDrainsResponseDrainsItemProjectAccessVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemProjectAccessVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemProjectAccessVariant0(value)
         }
-        if let value = try? container.decode(GetDrainsResponseDrainsItemProjectAccessVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemProjectAccessVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemProjectAccessVariant1(value)
         }
         return nil
@@ -173,12 +215,12 @@ extension GetDrainsResponseDrainsItemProjectAccess {
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemProjectAccessVariant0.self
         ) {
-            return             .getDrainsResponseDrainsItemProjectAccessVariant0(value)
+            return .getDrainsResponseDrainsItemProjectAccessVariant0(value)
         }
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemProjectAccessVariant1.self
         ) {
-            return             .getDrainsResponseDrainsItemProjectAccessVariant1(value)
+            return .getDrainsResponseDrainsItemProjectAccessVariant1(value)
         }
         return nil
     }
@@ -200,27 +242,41 @@ public indirect enum GetDrainsResponseDrainsItemSource {
 }
 
 extension GetDrainsResponseDrainsItemSource: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDrainsResponseDrainsItemSource")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetDrainsResponseDrainsItemSource"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetDrainsResponseDrainsItemSource {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetDrainsResponseDrainsItemSourceVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemSourceVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemSourceVariant0(value)
         }
-        if let value = try? container.decode(GetDrainsResponseDrainsItemSourceVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemSourceVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemSourceVariant1(value)
         }
         return nil
@@ -232,12 +288,12 @@ extension GetDrainsResponseDrainsItemSource {
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemSourceVariant0.self
         ) {
-            return             .getDrainsResponseDrainsItemSourceVariant0(value)
+            return .getDrainsResponseDrainsItemSourceVariant0(value)
         }
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemSourceVariant1.self
         ) {
-            return             .getDrainsResponseDrainsItemSourceVariant1(value)
+            return .getDrainsResponseDrainsItemSourceVariant1(value)
         }
         return nil
     }
@@ -259,27 +315,41 @@ public indirect enum GetDrainsResponseDrainsItemSource2 {
 }
 
 extension GetDrainsResponseDrainsItemSource2: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetDrainsResponseDrainsItemSource2")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetDrainsResponseDrainsItemSource2"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetDrainsResponseDrainsItemSource2 {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetDrainsResponseDrainsItemSource2Variant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemSource2Variant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemSource2Variant0(value)
         }
-        if let value = try? container.decode(GetDrainsResponseDrainsItemSource2Variant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetDrainsResponseDrainsItemSource2Variant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getDrainsResponseDrainsItemSource2Variant1(value)
         }
         return nil
@@ -291,12 +361,12 @@ extension GetDrainsResponseDrainsItemSource2 {
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemSource2Variant0.self
         ) {
-            return             .getDrainsResponseDrainsItemSource2Variant0(value)
+            return .getDrainsResponseDrainsItemSource2Variant0(value)
         }
         if let value = try? container.decode(
             GetDrainsResponseDrainsItemSource2Variant1.self
         ) {
-            return             .getDrainsResponseDrainsItemSource2Variant1(value)
+            return .getDrainsResponseDrainsItemSource2Variant1(value)
         }
         return nil
     }
@@ -319,18 +389,26 @@ public indirect enum TestDrainRequestDelivery {
 }
 
 extension TestDrainRequestDelivery: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for TestDrainRequestDelivery")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for TestDrainRequestDelivery"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -351,9 +429,18 @@ extension TestDrainRequestDelivery {
 
 extension TestDrainRequestDelivery {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(TestDrainRequestDeliveryVariant0.self) { return .testDrainRequestDeliveryVariant0(value) }
-        if let value = try? container.decode(TestDrainRequestDeliveryVariant1.self) { return .testDrainRequestDeliveryVariant1(value) }
-        if let value = try? container.decode(TestDrainRequestDeliveryVariant2.self) { return .testDrainRequestDeliveryVariant2(value) }
+        if let value = try? container
+            .decode(TestDrainRequestDeliveryVariant0.self) {
+            return .testDrainRequestDeliveryVariant0(value)
+        }
+        if let value = try? container
+            .decode(TestDrainRequestDeliveryVariant1.self) {
+            return .testDrainRequestDeliveryVariant1(value)
+        }
+        if let value = try? container
+            .decode(TestDrainRequestDeliveryVariant2.self) {
+            return .testDrainRequestDeliveryVariant2(value)
+        }
         return nil
     }
 }
@@ -376,30 +463,41 @@ public indirect enum UpdateDrainRequestDelivery {
 }
 
 extension UpdateDrainRequestDelivery: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateDrainRequestDelivery")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateDrainRequestDelivery"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateDrainRequestDelivery {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateDrainRequestDeliveryVariant0(value)
         }
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateDrainRequestDeliveryVariant1(value)
         }
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant2.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateDrainRequestDeliveryVariant2(value)
         }
         return nil
@@ -408,9 +506,18 @@ extension UpdateDrainRequestDelivery {
 
 extension UpdateDrainRequestDelivery {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant0.self) { return .updateDrainRequestDeliveryVariant0(value) }
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant1.self) { return .updateDrainRequestDeliveryVariant1(value) }
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant2.self) { return .updateDrainRequestDeliveryVariant2(value) }
+        if let value = try? container
+            .decode(UpdateDrainRequestDeliveryVariant0.self) {
+            return .updateDrainRequestDeliveryVariant0(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainRequestDeliveryVariant1.self) {
+            return .updateDrainRequestDeliveryVariant1(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainRequestDeliveryVariant2.self) {
+            return .updateDrainRequestDeliveryVariant2(value)
+        }
         return nil
     }
 }
@@ -432,22 +539,33 @@ public indirect enum UpdateDrainRequestFilter {
 }
 
 extension UpdateDrainRequestFilter: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateDrainRequestFilter")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateDrainRequestFilter"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateDrainRequestFilter {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(UpdateDrainRequestFilterVariant1.self) { return .updateDrainRequestFilterVariant1(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainRequestFilterVariant1.self) {
+            return .updateDrainRequestFilterVariant1(value)
+        }
         return nil
     }
 }

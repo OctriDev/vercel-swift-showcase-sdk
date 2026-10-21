@@ -3,7 +3,7 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 public indirect enum UserEventPayload {
     case jsonValue([String: JSONValue])
     case userEventPayloadVariant1(UserEventPayloadVariant1)
@@ -502,18 +502,24 @@ public indirect enum UserEventPayload {
 }
 
 extension UserEventPayload: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
             for decode in Self.losslessDecoders {
-                if let value = decode(container, raw) { self = value; return }
+                if let value = decode(container, raw) {
+                    self = value; return
+                }
             }
         }
         for decode in Self.groupDecoders {
-            if let value = decode(container) { self = value; return }
+            if let value = decode(container) {
+                self = value; return
+            }
         }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UserEventPayload")
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UserEventPayload"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {

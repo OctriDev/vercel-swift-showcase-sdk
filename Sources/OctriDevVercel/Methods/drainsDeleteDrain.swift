@@ -6,32 +6,62 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DrainsMethods {
-    /// Deletes a specific Drain identified by its path parameter. Use `teamId` or `slug` to perform the request on behalf of a team. The successful response has no content.
+public extension DrainsMethods {
+    /// Deletes a specific Drain identified by its path parameter. Use `teamId` or `slug` to perform the request on
+    /// behalf of a team. The successful response has no content.
     ///
     /// Delete a specific Drain by passing the drain id in the URL.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteDrain(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/v1/drains/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "deleteDrain", options: requestOptions)).data
+    static func deleteDrain(
+        config: ClientConfig,
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            ["/v1/drains/", sdkEncodePathSegment(sdkWireString(id))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "deleteDrain",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves a Drain by its identifier. Use `id` in the path to select the Drain, and use `teamId` or `slug` to make the request on behalf of a team.
+    /// Retrieves a Drain by its identifier. Use `id` in the path to select the Drain, and use `teamId` or `slug` to
+    /// make the request on behalf of a team.
     ///
     /// Get the information for a specific Drain by passing the drain id in the URL.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getDrain(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDrainResponse {
-        return try (await sdkRequest("GET", ["/v1/drains/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getDrain", options: requestOptions)).data
+    static func getDrain(
+        config: ClientConfig,
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDrainResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/drains/", sdkEncodePathSegment(sdkWireString(id))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getDrain",
+            options: requestOptions
+        )).data
     }
 }

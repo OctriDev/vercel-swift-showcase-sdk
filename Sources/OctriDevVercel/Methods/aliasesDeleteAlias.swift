@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AliasesMethods {
-    /// Deletes an alias by its ID or alias name. Use `teamId` or `slug` to specify the team context for the request. A successful response confirms that the alias was removed.
+public extension AliasesMethods {
+    /// Deletes an alias by its ID or alias name. Use `teamId` or `slug` to specify the team context for the request. A
+    /// successful response confirms that the alias was removed.
     ///
     /// Delete an Alias with the specified ID.
     ///
@@ -15,10 +16,24 @@ extension AliasesMethods {
     /// - aliasId: The ID or alias that will be removed
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteAlias(config: ClientConfig, aliasId: DeleteAliasParameter, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteAliasResponse {
-        return try (await sdkRequest("DELETE", ["/v2/aliases/", sdkEncodePathSegment(sdkWireString(aliasId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "deleteAlias", options: requestOptions)).data
+    static func deleteAlias(
+        config: ClientConfig,
+        aliasId: DeleteAliasParameter,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteAliasResponse {
+        try await (sdkRequest(
+            "DELETE",
+            ["/v2/aliases/", sdkEncodePathSegment(sdkWireString(aliasId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "deleteAlias",
+            options: requestOptions
+        )).data
     }
 }

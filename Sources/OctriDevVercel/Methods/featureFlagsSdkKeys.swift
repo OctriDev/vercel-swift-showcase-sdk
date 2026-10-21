@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    /// Lists the SDK keys for a project. Use `projectIdOrName` to select the project whose keys you want to inspect. The response contains safe key metadata and does not include cleartext secrets.
+public extension FeatureFlagsMethods {
+    /// Lists the SDK keys for a project. Use `projectIdOrName` to select the project whose keys you want to inspect.
+    /// The response contains safe key metadata and does not include cleartext secrets.
     ///
     /// Gets all SDK keys for a project.
     ///
@@ -15,14 +16,30 @@ extension FeatureFlagsMethods {
     /// - projectIdOrName: The project id or name
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getSdkKeys(config: ClientConfig, projectIdOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetSdkKeysResponse {
-        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/sdk-keys"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getSdkKeys", options: requestOptions)).data
+    static func getSdkKeys(
+        config: ClientConfig,
+        projectIdOrName: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetSdkKeysResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/sdk-keys"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getSdkKeys",
+            options: requestOptions
+        )).data
     }
 
-    /// Creates an SDK key for a project. Supply `sdkKeyType` and `environment` in the request body, and optionally provide a `label` to identify the key. The response includes the cleartext key value, which is disclosed only when the key is created.
+    /// Creates an SDK key for a project. Supply `sdkKeyType` and `environment` in the request body, and optionally
+    /// provide a `label` to identify the key. The response includes the cleartext key value, which is disclosed only
+    /// when the key is created.
     ///
     /// Creates an SDK key.
     ///
@@ -30,12 +47,30 @@ extension FeatureFlagsMethods {
     /// - projectIdOrName: The project id or name
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func createSdkKey(config: ClientConfig, projectIdOrName: String, sdkKeyType: CreateSdkKeyRequestBodySdkKeyType, environment: String, teamId: String? = nil, slug: String? = nil, label: String? = nil, requestOptions: RequestOptions? = nil) async throws -> FlagsSdkKeyWithSecrets {
+    static func createSdkKey(
+        config: ClientConfig,
+        projectIdOrName: String,
+        sdkKeyType: CreateSdkKeyRequestBodySdkKeyType,
+        environment: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        label: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> FlagsSdkKeyWithSecrets {
         let requestBody = CreateSdkKeyRequestBody(sdkKeyType: sdkKeyType, environment: environment, label: label)
 
-        return try (await sdkRequest("PUT", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/sdk-keys"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "createSdkKey", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PUT",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/sdk-keys"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "createSdkKey",
+            options: requestOptions
+        )).data
     }
 }

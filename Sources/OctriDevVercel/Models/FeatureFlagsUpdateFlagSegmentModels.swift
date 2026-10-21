@@ -3,25 +3,37 @@
 
 import Foundation
 
-// FeatureFlags domain models
+/// FeatureFlags domain models
 public indirect enum UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs {
-    case updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0(UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0)
-    case updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant1(UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant1)
+    case updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0(
+        UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0
+    )
+    case updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant1(
+        UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant1
+    )
 }
 
 extension UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -44,12 +56,12 @@ extension UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs {
         if let value = try? container.decode(
             UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0.self
         ) {
-            return             .updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0(value)
+            return .updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0(value)
         }
         if let value = try? container.decode(
             UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant1.self
         ) {
-            return             .updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant1(value)
+            return .updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant1(value)
         }
         return nil
     }
@@ -59,33 +71,47 @@ extension UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0(value): try container.encode(value); return true
-        case let .updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant1(value): try container.encode(value); return true
+        case let .updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0(value): try container
+            .encode(value); return true
+        case let .updateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
 
 public indirect enum UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs {
-    case updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0(UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0)
-    case updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant1(UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant1)
+    case updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0(
+        UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0
+    )
+    case updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant1(
+        UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant1
+    )
     case stringValue(String)
     case doubleValue(Double)
     case boolValue(Bool)
 }
 
 extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -108,16 +134,22 @@ extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs {
         if let value = try? container.decode(
             UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0.self
         ) {
-            return             .updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0(value)
+            return .updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0(value)
         }
         if let value = try? container.decode(
             UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant1.self
         ) {
-            return             .updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant1(value)
+            return .updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant1(value)
         }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
         return nil
     }
 }
@@ -126,8 +158,10 @@ extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0(value): try container.encode(value); return true
-        case let .updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant1(value): try container.encode(value); return true
+        case let .updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0(value): try container
+            .encode(value); return true
+        case let .updateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant1(value): try container
+            .encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         case let .doubleValue(value): try container.encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
@@ -150,27 +184,43 @@ public indirect enum UpdateFlagSegmentRequestDataRulesItemOutcome {
 }
 
 extension UpdateFlagSegmentRequestDataRulesItemOutcome: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateFlagSegmentRequestDataRulesItemOutcome")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateFlagSegmentRequestDataRulesItemOutcome"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateFlagSegmentRequestDataRulesItemOutcome {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateFlagSegmentRequestDataRulesItemOutcomeVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFlagSegmentRequestDataRulesItemOutcomeVariant0.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .updateFlagSegmentRequestDataRulesItemOutcomeVariant0(value)
         }
-        if let value = try? container.decode(UpdateFlagSegmentRequestDataRulesItemOutcomeVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFlagSegmentRequestDataRulesItemOutcomeVariant1.self),
+           sdkKeepsEveryKey(
+               value,
+               of: raw
+           ) {
             return .updateFlagSegmentRequestDataRulesItemOutcomeVariant1(value)
         }
         return nil
@@ -182,12 +232,12 @@ extension UpdateFlagSegmentRequestDataRulesItemOutcome {
         if let value = try? container.decode(
             UpdateFlagSegmentRequestDataRulesItemOutcomeVariant0.self
         ) {
-            return             .updateFlagSegmentRequestDataRulesItemOutcomeVariant0(value)
+            return .updateFlagSegmentRequestDataRulesItemOutcomeVariant0(value)
         }
         if let value = try? container.decode(
             UpdateFlagSegmentRequestDataRulesItemOutcomeVariant1.self
         ) {
-            return             .updateFlagSegmentRequestDataRulesItemOutcomeVariant1(value)
+            return .updateFlagSegmentRequestDataRulesItemOutcomeVariant1(value)
         }
         return nil
     }
@@ -209,18 +259,26 @@ public indirect enum UpdateFlagSegmentResponse {
 }
 
 extension UpdateFlagSegmentResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateFlagSegmentResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateFlagSegmentResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -238,8 +296,13 @@ extension UpdateFlagSegmentResponse {
 
 extension UpdateFlagSegmentResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UpdateFlagSegmentResponseVariant0.self) { return .updateFlagSegmentResponseVariant0(value) }
-        if let value = try? container.decode(Segment.self) { return .segment(value) }
+        if let value = try? container
+            .decode(UpdateFlagSegmentResponseVariant0.self) {
+            return .updateFlagSegmentResponseVariant0(value)
+        }
+        if let value = try? container.decode(Segment.self) {
+            return .segment(value)
+        }
         return nil
     }
 }
@@ -261,21 +324,27 @@ public struct UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0: Co
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0 {
-    public init(type: JSONValue) {
+public extension UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+    }
+}
+
+public extension UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsVariant0 {
+    init(type: JSONValue) {
         self.type = type
     }
 }
@@ -291,23 +360,29 @@ public struct UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantX6313
         case note
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantX6313db80ed {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.value = try container.sdkDecodeRequired(.value)
-        self.label = try container.sdkDecodeIfPresent(.label)
-        self.note = try container.sdkDecodeIfPresent(.note)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantX6313db80ed {
-    public init(value: String, label: String? = nil, note: String? = nil) {
+public extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantX6313db80ed {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        value = try container.sdkDecodeRequired(.value)
+        label = try container.sdkDecodeIfPresent(.label)
+        note = try container.sdkDecodeIfPresent(.note)
+    }
+}
+
+public extension UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariantX6313db80ed {
+    init(value: String, label: String? = nil, note: String? = nil) {
         (self.value, self.label) = (value, label)
         self.note = note
     }
@@ -320,24 +395,38 @@ public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLhsVar
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLhsVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLX50ce6c60de.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLhsVariant0 {
-    public init(type: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLX50ce6c60de) throws {
+public extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLhsVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLX50ce6c60de.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLhsVariant0 {
+    init(type: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLX50ce6c60de) throws {
         self.type = type
-            try sdkValidateRawEnum("type", self.type, UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLX50ce6c60de.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLX50ce6c60de.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -352,23 +441,29 @@ public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX579c
         case note
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX579c112e44 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.value = try container.sdkDecodeRequired(.value)
-        self.label = try container.sdkDecodeIfPresent(.label)
-        self.note = try container.sdkDecodeIfPresent(.note)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX579c112e44 {
-    public init(value: String, label: String? = nil, note: String? = nil) {
+public extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX579c112e44 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        value = try container.sdkDecodeRequired(.value)
+        label = try container.sdkDecodeIfPresent(.label)
+        note = try container.sdkDecodeIfPresent(.note)
+    }
+}
+
+public extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX579c112e44 {
+    init(value: String, label: String? = nil, note: String? = nil) {
         (self.value, self.label) = (value, label)
         self.note = note
     }
@@ -387,29 +482,39 @@ public indirect enum UpdateFlagSegmentResponseVariant0DataRulesItemConditionsIte
 }
 
 extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant2.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant2.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant2(value)
         }
-        if let value = try? container.decode(UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3(value)
         }
         return nil
@@ -418,19 +523,25 @@ extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs {
 
 extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         if let value = try? container.decode(
             UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant2.self
         ) {
-            return             .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant2(value)
+            return .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant2(value)
         }
         if let value = try? container.decode(
             UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3.self
         ) {
-            return             .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3(value)
+            return .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
         return nil
     }
 }
@@ -441,8 +552,10 @@ extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs {
         switch self {
         case let .stringValue(value): try container.encode(value); return true
         case let .doubleValue(value): try container.encode(value); return true
-        case let .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant2(value): try container.encode(value); return true
-        case let .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3(value): try container.encode(value); return true
+        case let .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant2(value): try container
+            .encode(value); return true
+        case let .updateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant3(value): try container
+            .encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         }
     }
@@ -457,7 +570,8 @@ extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs: SdkNu
     }
 }
 
-public typealias UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX8bcf7462bd = [UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX1556c80358]
+public typealias UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX8bcf7462bd =
+    [UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX1556c80358]
 
 public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVariant2: Codable {
     public var items: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX8bcf7462bd
@@ -468,5 +582,7 @@ public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhsVar
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

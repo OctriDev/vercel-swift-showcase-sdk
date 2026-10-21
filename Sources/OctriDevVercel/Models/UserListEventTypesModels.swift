@@ -3,7 +3,7 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 /// Response returned by the List Event Types endpoint.
 public struct ListEventTypesResponse: Codable {
     /// Required array value serialized in the `categories` wire field.
@@ -16,25 +16,35 @@ public struct ListEventTypesResponse: Codable {
         case types
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListEventTypesResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.categories) else {
-            throw SdkValidationError(field: "categories", code: "required", message: "Validation failed for 'categories': value is required")
-        }
-        guard container.contains(.types) else {
-            throw SdkValidationError(field: "types", code: "required", message: "Validation failed for 'types': value is required")
-        }
-        self.categories = try container.sdkDecodeRequired(.categories)
-        self.types = try container.sdkDecodeRequired(.types)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListEventTypesResponse {
-    public init(categories: [ListEventTypesResponseCategoriesItem], types: [ListEventType]) {
+public extension ListEventTypesResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.categories) else {
+            throw SdkValidationError(
+                field: "categories",
+                code: "required",
+                message: "Validation failed for 'categories': value is required"
+            )
+        }
+        guard container.contains(.types) else {
+            throw SdkValidationError(
+                field: "types",
+                code: "required",
+                message: "Validation failed for 'types': value is required"
+            )
+        }
+        categories = try container.sdkDecodeRequired(.categories)
+        types = try container.sdkDecodeRequired(.types)
+    }
+}
+
+public extension ListEventTypesResponse {
+    init(categories: [ListEventTypesResponseCategoriesItem], types: [ListEventType]) {
         (self.categories, self.types) = (categories, types)
     }
 }
@@ -62,31 +72,51 @@ public struct ListEventType: Codable {
         case replacedBy
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListEventType {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.categories) else {
-            throw SdkValidationError(field: "categories", code: "required", message: "Validation failed for 'categories': value is required")
-        }
-        guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        self.categories = try container.sdkDecodeRequired(.categories)
-        self.description = try container.sdkDecodeRequired(.description)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.deprecated = try container.sdkDecodeIfPresent(.deprecated)
-        self.replacedBy = try container.sdkDecodeIfPresent(.replacedBy)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListEventType {
-    public init(categories: [ListEventTypeCategoriesItem], description: String, name: ListEventTypeName, deprecated: Bool? = nil, replacedBy: [ListEventTypeReplacedByItem]? = nil) {
+public extension ListEventType {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.categories) else {
+            throw SdkValidationError(
+                field: "categories",
+                code: "required",
+                message: "Validation failed for 'categories': value is required"
+            )
+        }
+        guard container.contains(.description) else {
+            throw SdkValidationError(
+                field: "description",
+                code: "required",
+                message: "Validation failed for 'description': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        categories = try container.sdkDecodeRequired(.categories)
+        description = try container.sdkDecodeRequired(.description)
+        name = try container.sdkDecodeRequired(.name)
+        deprecated = try container.sdkDecodeIfPresent(.deprecated)
+        replacedBy = try container.sdkDecodeIfPresent(.replacedBy)
+    }
+}
+
+public extension ListEventType {
+    init(
+        categories: [ListEventTypeCategoriesItem],
+        description: String,
+        name: ListEventTypeName,
+        deprecated: Bool? = nil,
+        replacedBy: [ListEventTypeReplacedByItem]? = nil
+    ) {
         (self.categories, self.description) = (categories, description)
         (self.name, self.deprecated) = (name, deprecated)
         self.replacedBy = replacedBy
@@ -105,34 +135,48 @@ public struct ListEventTypesResponseCategoriesItem: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListEventTypesResponseCategoriesItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.label) else {
-            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        self.label = try container.sdkDecodeRequired(.label)
-        self.name = try container.sdkDecodeRequired(.name)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListEventTypesResponseCategoriesItem {
-    public init(label: String, name: ListEventTypesResponseCategoriesItemName) {
+public extension ListEventTypesResponseCategoriesItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.label) else {
+            throw SdkValidationError(
+                field: "label",
+                code: "required",
+                message: "Validation failed for 'label': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        label = try container.sdkDecodeRequired(.label)
+        name = try container.sdkDecodeRequired(.name)
+    }
+}
+
+public extension ListEventTypesResponseCategoriesItem {
+    init(label: String, name: ListEventTypesResponseCategoriesItemName) {
         (self.label, self.name) = (label, name)
     }
 }
 
 /// Required enumerated value serialized in the `name` wire field.
-public struct ListEventTypesResponseCategoriesItemName: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListEventTypesResponseCategoriesItemName: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let account = ListEventTypesResponseCategoriesItemName(rawValue: "account")
     public static let ai = ListEventTypesResponseCategoriesItemName(rawValue: "ai")
     public static let aiGateway = ListEventTypesResponseCategoriesItemName(rawValue: "ai-gateway")
@@ -159,7 +203,7 @@ public struct ListEventTypesResponseCategoriesItemName: RawRepresentable, Hashab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -172,11 +216,13 @@ public struct ListEventTypesResponseCategoriesItemName: RawRepresentable, Hashab
 public struct ListEventTypeReplacedByItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -192,9 +238,11 @@ public extension ListEventTypeReplacedByItem {
     static let accessGroupUpdated = ListEventTypeReplacedByItem(rawValue: "access-group-updated")
     static let accessGroupUserAdded = ListEventTypeReplacedByItem(rawValue: "access-group-user-added")
     static let accessGroupUserRemoved = ListEventTypeReplacedByItem(rawValue: "access-group-user-removed")
-    static let adminAgenticProvisioningAccountUnlinked = ListEventTypeReplacedByItem(rawValue: "admin-agentic-provisioning-account-unlinked")
+    static let adminAgenticProvisioningAccountUnlinked =
+        ListEventTypeReplacedByItem(rawValue: "admin-agentic-provisioning-account-unlinked")
     static let adminPlanUpdated = ListEventTypeReplacedByItem(rawValue: "admin-plan-updated")
-    static let adminPreviewDeploymentSuffixClear = ListEventTypeReplacedByItem(rawValue: "admin-preview-deployment-suffix-clear")
+    static let adminPreviewDeploymentSuffixClear =
+        ListEventTypeReplacedByItem(rawValue: "admin-preview-deployment-suffix-clear")
     static let adminSamlIdpMaterialDeleted = ListEventTypeReplacedByItem(rawValue: "admin-saml-idp-material-deleted")
     static let adminSamlIdpMaterialSet = ListEventTypeReplacedByItem(rawValue: "admin-saml-idp-material-set")
     static let adminSamlSpSigningKeyCreated = ListEventTypeReplacedByItem(rawValue: "admin-saml-sp-signing-key-created")
@@ -206,62 +254,97 @@ public extension ListEventTypeReplacedByItem {
     static let adminUserDelete = ListEventTypeReplacedByItem(rawValue: "admin-user-delete")
     static let adminUserPrimaryEmailUpdated = ListEventTypeReplacedByItem(rawValue: "admin-user-primary-email-updated")
     static let adminUsernameUpdated = ListEventTypeReplacedByItem(rawValue: "admin-username-updated")
-    static let agenticProvisioningAccountBlocked = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-blocked")
-    static let agenticProvisioningAccountLinked = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-linked")
-    static let agenticProvisioningAccountRelinked = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-relinked")
-    static let agenticProvisioningAccountUnlinked = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-unlinked")
-    static let agenticProvisioningCredentialsRotated = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-credentials-rotated")
-    static let agenticProvisioningPlanChanged = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-plan-changed")
-    static let agenticProvisioningTeamCreated = ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-team-created")
+    static let agenticProvisioningAccountBlocked =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-blocked")
+    static let agenticProvisioningAccountLinked =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-linked")
+    static let agenticProvisioningAccountRelinked =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-relinked")
+    static let agenticProvisioningAccountUnlinked =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-account-unlinked")
+    static let agenticProvisioningCredentialsRotated =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-credentials-rotated")
+    static let agenticProvisioningPlanChanged =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-plan-changed")
+    static let agenticProvisioningTeamCreated =
+        ListEventTypeReplacedByItem(rawValue: "agentic-provisioning-team-created")
     static let aiAlertInvestigation = ListEventTypeReplacedByItem(rawValue: "ai-alert-investigation")
     static let aiCodeReview = ListEventTypeReplacedByItem(rawValue: "ai-code-review")
     static let aiGatewayAccessPolicyCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-created")
     static let aiGatewayAccessPolicyDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-deleted")
-    static let aiGatewayAccessPolicyMemberAdded = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-member-added")
-    static let aiGatewayAccessPolicyMemberRemoved = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-member-removed")
+    static let aiGatewayAccessPolicyMemberAdded =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-member-added")
+    static let aiGatewayAccessPolicyMemberRemoved =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-member-removed")
     static let aiGatewayAccessPolicyUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-access-policy-updated")
     static let aiGatewayApiKeyCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-api-key-created")
     static let aiGatewayApiKeyDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-api-key-deleted")
     static let aiGatewayApiKeyQuotaUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-api-key-quota-updated")
     static let aiGatewayAutoReloadUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-auto-reload-updated")
-    static let aiGatewayBudgetDefaultUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-budget-default-updated")
-    static let aiGatewayByokCredentialCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-created")
-    static let aiGatewayByokCredentialDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-deleted")
-    static let aiGatewayByokCredentialUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-updated")
-    static let aiGatewayByokModelMappingsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-model-mappings-updated")
+    static let aiGatewayBudgetDefaultUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-budget-default-updated")
+    static let aiGatewayByokCredentialCreated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-created")
+    static let aiGatewayByokCredentialDeleted =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-deleted")
+    static let aiGatewayByokCredentialUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-credential-updated")
+    static let aiGatewayByokModelMappingsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-byok-model-mappings-updated")
     static let aiGatewayCreditsPurchased = ListEventTypeReplacedByItem(rawValue: "ai-gateway-credits-purchased")
     static let aiGatewayGuardrailsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-guardrails-updated")
-    static let aiGatewayHipaaComplianceToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-hipaa-compliance-toggled")
-    static let aiGatewayInferenceRegionsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-inference-regions-updated")
-    static let aiGatewayModelAllowlistModelsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-allowlist-models-updated")
-    static let aiGatewayModelAllowlistToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-allowlist-toggled")
-    static let aiGatewayModelCatalogAlertSettingsUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
+    static let aiGatewayHipaaComplianceToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-hipaa-compliance-toggled")
+    static let aiGatewayInferenceRegionsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-inference-regions-updated")
+    static let aiGatewayModelAllowlistModelsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-allowlist-models-updated")
+    static let aiGatewayModelAllowlistToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-allowlist-toggled")
+    static let aiGatewayModelCatalogAlertSettingsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
     static let aiGatewayPrivateModelCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-model-created")
     static let aiGatewayPrivateModelDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-model-deleted")
     static let aiGatewayPrivateModelUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-model-updated")
-    static let aiGatewayPrivateProviderCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-created")
-    static let aiGatewayPrivateProviderDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-deleted")
-    static let aiGatewayPrivateProviderUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-updated")
-    static let aiGatewayPromptTrainingOptOutToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
-    static let aiGatewayProviderAllowlistProvidersUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-provider-allowlist-providers-updated")
-    static let aiGatewayProviderAllowlistToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-provider-allowlist-toggled")
+    static let aiGatewayPrivateProviderCreated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-created")
+    static let aiGatewayPrivateProviderDeleted =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-deleted")
+    static let aiGatewayPrivateProviderUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-private-provider-updated")
+    static let aiGatewayPromptTrainingOptOutToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
+    static let aiGatewayProviderAllowlistProvidersUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-provider-allowlist-providers-updated")
+    static let aiGatewayProviderAllowlistToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-provider-allowlist-toggled")
     static let aiGatewayRuleCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-rule-created")
     static let aiGatewayRuleDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-rule-deleted")
     static let aiGatewayRuleUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-rule-updated")
     static let aiGatewayScopeBudgetUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-scope-budget-updated")
-    static let aiGatewayTranscriptsDefaultDisabled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-default-disabled")
-    static let aiGatewayTranscriptsDefaultEnabled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-default-enabled")
+    static let aiGatewayTranscriptsDefaultDisabled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-default-disabled")
+    static let aiGatewayTranscriptsDefaultEnabled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-default-enabled")
     static let aiGatewayTranscriptsDisabled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-disabled")
     static let aiGatewayTranscriptsEnabled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-enabled")
-    static let aiGatewayTranscriptsRetentionUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-retention-updated")
-    static let aiGatewayVirtualModelConfigArchived = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-archived")
-    static let aiGatewayVirtualModelConfigCreated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-created")
-    static let aiGatewayVirtualModelConfigDeleted = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-deleted")
-    static let aiGatewayVirtualModelConfigRestored = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-restored")
-    static let aiGatewayVirtualModelConfigUpdated = ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-updated")
-    static let aiGatewayZeroDataRetentionToggled = ListEventTypeReplacedByItem(rawValue: "ai-gateway-zero-data-retention-toggled")
+    static let aiGatewayTranscriptsRetentionUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-transcripts-retention-updated")
+    static let aiGatewayVirtualModelConfigArchived =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-archived")
+    static let aiGatewayVirtualModelConfigCreated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-created")
+    static let aiGatewayVirtualModelConfigDeleted =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-deleted")
+    static let aiGatewayVirtualModelConfigRestored =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-restored")
+    static let aiGatewayVirtualModelConfigUpdated =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-virtual-model-config-updated")
+    static let aiGatewayZeroDataRetentionToggled =
+        ListEventTypeReplacedByItem(rawValue: "ai-gateway-zero-data-retention-toggled")
     static let aiOmniagent = ListEventTypeReplacedByItem(rawValue: "ai-omniagent")
-    static let alertInvestigationProjectAllowlistUpdated = ListEventTypeReplacedByItem(rawValue: "alert-investigation-project-allowlist-updated")
+    static let alertInvestigationProjectAllowlistUpdated =
+        ListEventTypeReplacedByItem(rawValue: "alert-investigation-project-allowlist-updated")
     static let alertRuleCreated = ListEventTypeReplacedByItem(rawValue: "alert-rule-created")
     static let alertRuleDeleted = ListEventTypeReplacedByItem(rawValue: "alert-rule-deleted")
     static let alertRuleUpdated = ListEventTypeReplacedByItem(rawValue: "alert-rule-updated")
@@ -275,13 +358,16 @@ public extension ListEventTypeReplacedByItem {
     static let aliasInviteJoined = ListEventTypeReplacedByItem(rawValue: "alias-invite-joined")
     static let aliasInviteRevoked = ListEventTypeReplacedByItem(rawValue: "alias-invite-revoked")
     static let aliasProtectionBypassCreated = ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-created")
-    static let aliasProtectionBypassException = ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-exception")
-    static let aliasProtectionBypassRegenerated = ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-regenerated")
+    static let aliasProtectionBypassException =
+        ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-exception")
+    static let aliasProtectionBypassRegenerated =
+        ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-regenerated")
     static let aliasProtectionBypassRevoked = ListEventTypeReplacedByItem(rawValue: "alias-protection-bypass-revoked")
     static let aliasSystem = ListEventTypeReplacedByItem(rawValue: "alias-system")
     static let aliasUserScopedAccessDenied = ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-denied")
     static let aliasUserScopedAccessGranted = ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-granted")
-    static let aliasUserScopedAccessRequested = ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-requested")
+    static let aliasUserScopedAccessRequested =
+        ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-requested")
     static let aliasUserScopedAccessRevoked = ListEventTypeReplacedByItem(rawValue: "alias-user-scoped-access-revoked")
     static let aliasesAssigned = ListEventTypeReplacedByItem(rawValue: "aliases-assigned")
     static let attackModeDisabled = ListEventTypeReplacedByItem(rawValue: "attack-mode-disabled")
@@ -306,14 +392,16 @@ public extension ListEventTypeReplacedByItem {
     static let codeOwnersConfigUpdated = ListEventTypeReplacedByItem(rawValue: "code-owners-config-updated")
     static let complianceDocumentDownloaded = ListEventTypeReplacedByItem(rawValue: "compliance-document-downloaded")
     static let complianceDocumentPreviewed = ListEventTypeReplacedByItem(rawValue: "compliance-document-previewed")
-    static let complianceDocumentsBulkDownloaded = ListEventTypeReplacedByItem(rawValue: "compliance-documents-bulk-downloaded")
+    static let complianceDocumentsBulkDownloaded =
+        ListEventTypeReplacedByItem(rawValue: "compliance-documents-bulk-downloaded")
     static let concurrentBuildsUpdate = ListEventTypeReplacedByItem(rawValue: "concurrent-builds-update")
     static let connectAttachProject = ListEventTypeReplacedByItem(rawValue: "connect-attach-project")
     static let connectBitbucket = ListEventTypeReplacedByItem(rawValue: "connect-bitbucket")
     static let connectBitbucketApp = ListEventTypeReplacedByItem(rawValue: "connect-bitbucket-app")
     static let connectConfigurationCreated = ListEventTypeReplacedByItem(rawValue: "connect-configuration-created")
     static let connectConfigurationDeleted = ListEventTypeReplacedByItem(rawValue: "connect-configuration-deleted")
-    static let connectConfigurationLinkUpdated = ListEventTypeReplacedByItem(rawValue: "connect-configuration-link-updated")
+    static let connectConfigurationLinkUpdated =
+        ListEventTypeReplacedByItem(rawValue: "connect-configuration-link-updated")
     static let connectConfigurationLinked = ListEventTypeReplacedByItem(rawValue: "connect-configuration-linked")
     static let connectConfigurationUnlinked = ListEventTypeReplacedByItem(rawValue: "connect-configuration-unlinked")
     static let connectConfigurationUpdated = ListEventTypeReplacedByItem(rawValue: "connect-configuration-updated")
@@ -329,12 +417,14 @@ public extension ListEventTypeReplacedByItem {
     static let connectImportTokens = ListEventTypeReplacedByItem(rawValue: "connect-import-tokens")
     static let connectRevokeAllTokens = ListEventTypeReplacedByItem(rawValue: "connect-revoke-all-tokens")
     static let connectUpdateConnector = ListEventTypeReplacedByItem(rawValue: "connect-update-connector")
-    static let connectUpdateTriggerDestinations = ListEventTypeReplacedByItem(rawValue: "connect-update-trigger-destinations")
+    static let connectUpdateTriggerDestinations =
+        ListEventTypeReplacedByItem(rawValue: "connect-update-trigger-destinations")
     static let connectUpsertInstallation = ListEventTypeReplacedByItem(rawValue: "connect-upsert-installation")
     static let customAlertCreated = ListEventTypeReplacedByItem(rawValue: "custom-alert-created")
     static let customAlertDeleted = ListEventTypeReplacedByItem(rawValue: "custom-alert-deleted")
     static let customAlertUpdated = ListEventTypeReplacedByItem(rawValue: "custom-alert-updated")
-    static let customEnvironmentsSettingsUpdated = ListEventTypeReplacedByItem(rawValue: "custom-environments-settings-updated")
+    static let customEnvironmentsSettingsUpdated =
+        ListEventTypeReplacedByItem(rawValue: "custom-environments-settings-updated")
     static let customMetricMetadataDeleted = ListEventTypeReplacedByItem(rawValue: "custom-metric-metadata-deleted")
     static let customMetricMetadataUpdated = ListEventTypeReplacedByItem(rawValue: "custom-metric-metadata-updated")
     static let customSuffixClear = ListEventTypeReplacedByItem(rawValue: "custom-suffix-clear")

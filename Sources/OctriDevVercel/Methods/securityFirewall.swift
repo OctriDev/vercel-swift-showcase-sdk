@@ -6,15 +6,27 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SecurityMethods {
-    /// Retrieves the active and draft firewall configurations for a project, along with its configuration versions. Use this operation to inspect the current WAF settings and review available versions before changing or activating a configuration.
+public extension SecurityMethods {
+    /// Retrieves the active and draft firewall configurations for a project, along with its configuration versions. Use
+    /// this operation to inspect the current WAF settings and review available versions before changing or activating a
+    /// configuration.
     ///
     /// Lists WAF configs for a project
-    public static func getSecurityFirewallConfig(config: ClientConfig, requestOptions: RequestOptions? = nil) async throws -> GetSecurityFirewallConfigResponse {
-        return try (await sdkRequest("GET", "/v1/security/firewall/config", config: config, decoder: .json, operationId: "getSecurityFirewallConfig", options: requestOptions)).data
+    static func getSecurityFirewallConfig(
+        config: ClientConfig,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetSecurityFirewallConfigResponse {
+        try await (sdkRequest(
+            "GET",
+            "/v1/security/firewall/config",
+            config: config,
+            decoder: .json,
+            operationId: "getSecurityFirewallConfig",
+            options: requestOptions
+        )).data
     }
 
-    public struct PutFirewallConfigOptions: Codable {
+    struct PutFirewallConfigOptions: Codable {
         public var projectId: String
         public var firewallEnabled: Bool
         public var teamId: String?
@@ -33,18 +45,25 @@ extension SecurityMethods {
         }
     }
 
-    /// Replaces the firewall configuration for a project, creating a configuration if one does not already exist. Supply `firewallEnabled` and any firewall settings you want applied, including rules, rulesets, IP rules, or managed rules.
+    /// Replaces the firewall configuration for a project, creating a configuration if one does not already exist.
+    /// Supply `firewallEnabled` and any firewall settings you want applied, including rules, rulesets, IP rules, or
+    /// managed rules.
     ///
-    /// Set the firewall configuration to provided rules and settings. Creates or overwrite the existing firewall configuration.
+    /// Set the firewall configuration to provided rules and settings. Creates or overwrite the existing firewall
+    /// configuration.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - crs: Custom Ruleset
-    public static func putFirewallConfig(config: ClientConfig, options: PutFirewallConfigOptions, requestOptions: RequestOptions? = nil) async throws -> PutFirewallConfigResponse {
+    static func putFirewallConfig(
+        config: ClientConfig,
+        options: PutFirewallConfigOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> PutFirewallConfigResponse {
         let requestBody = PutFirewallConfigRequestBody(options: options)
 
-        return try (await sdkRequest("PUT", "/v1/security/firewall/config", config: config, query: [
+        return try await (sdkRequest("PUT", "/v1/security/firewall/config", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),

@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsList domain models
+/// ProjectsList domain models
 public enum ListProjectsResponseItemCreatorVariant3Type: String, CaseIterable, Codable {
     case system
     public init(from decoder: Decoder) throws {

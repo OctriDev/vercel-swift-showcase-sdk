@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension KmsMethods {
-    /// Activates a pending signing key so the issuer begins signing with it. Optionally set `revokePreviousAfterHours` to control how long the previously active key remains in use after activation. Use the key identifier returned when the signing key was created.
+public extension KmsMethods {
+    /// Activates a pending signing key so the issuer begins signing with it. Optionally set `revokePreviousAfterHours`
+    /// to control how long the previously active key remains in use after activation. Use the key identifier returned
+    /// when the signing key was created.
     ///
     /// Activate a pending signing key so the issuer starts signing with it.
     ///
@@ -19,16 +21,39 @@ extension KmsMethods {
     /// - revokePreviousAfterHours: How many hours after activation the
     ///   previously-active key should stop being used. Defaults to a 1 hour grace
     ///   period so already-issued tokens keep verifying.
-    public static func activateKmsSigningKey(config: ClientConfig, issuerId: String, keyId: String, teamId: String? = nil, slug: String? = nil, revokePreviousAfterHours: Double? = nil, requestOptions: RequestOptions? = nil) async throws -> ActivateKmsSigningKeyResponse {
-        if let revokePreviousAfterHours = revokePreviousAfterHours {
+    static func activateKmsSigningKey(
+        config: ClientConfig,
+        issuerId: String,
+        keyId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        revokePreviousAfterHours: Double? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ActivateKmsSigningKeyResponse {
+        if let revokePreviousAfterHours {
             try validateRange("revokePreviousAfterHours", Double(revokePreviousAfterHours), min: 0)
         }
 
         let requestBody = ActivateKmsSigningKeyRequestBody(revokePreviousAfterHours: revokePreviousAfterHours)
 
-        return try (await sdkRequest("POST", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/keys/", sdkEncodePathSegment(sdkWireString(keyId)), "/activate"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "activateKmsSigningKey", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            [
+                "/v1/kms/issuers/",
+                sdkEncodePathSegment(sdkWireString(issuerId)),
+                "/keys/",
+                sdkEncodePathSegment(sdkWireString(keyId)),
+                "/activate",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "activateKmsSigningKey",
+            options: requestOptions
+        )).data
     }
 }

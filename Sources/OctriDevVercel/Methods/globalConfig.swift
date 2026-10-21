@@ -8,35 +8,49 @@ import Foundation
 #endif
 public enum GlobalConfigMethods {}
 
-extension GlobalConfigMethods {
-    /// Lists all Global Configs available to the authenticated user. Use `teamId` or `slug` to perform the request on behalf of a team. Each result includes its identifier, name, digest, item count, size, and timestamps.
+public extension GlobalConfigMethods {
+    /// Lists all Global Configs available to the authenticated user. Use `teamId` or `slug` to perform the request on
+    /// behalf of a team. Each result includes its identifier, name, digest, item count, size, and timestamps.
     ///
     /// Returns all Global Configs.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getEdgeConfigs(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [GetEdgeConfigsResponseItem] {
-        return try (await sdkRequest("GET", "/v1/global-config", config: config, query: [
+    static func getEdgeConfigs(
+        config: ClientConfig,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [GetEdgeConfigsResponseItem] {
+        try await (sdkRequest("GET", "/v1/global-config", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "getEdgeConfigs", options: requestOptions)).data
     }
 
-    /// Creates a Global Config for the authenticated user or specified team. Supply a `slug` that is at most 64 characters and contains only letters, numbers, underscores, or hyphens; you can also provide initial `items`.
+    /// Creates a Global Config for the authenticated user or specified team. Supply a `slug` that is at most 64
+    /// characters and contains only letters, numbers, underscores, or hyphens; you can also provide initial `items`.
     ///
     /// Creates a Global Config.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug2: The Team slug to perform the request on behalf of.
-    public static func createEdgeConfig(config: ClientConfig, slug: String, teamId: String? = nil, slug2: String? = nil, items: [String: JSONValue]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateEdgeConfigResponse {
+    static func createEdgeConfig(
+        config: ClientConfig,
+        slug: String,
+        teamId: String? = nil,
+        slug2: String? = nil,
+        items: [String: JSONValue]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateEdgeConfigResponse {
         try validateLength("slug", slug, max: 64)
         try sdkValidatePattern("slug", slug, sdkPattern8b2444202961)
 
         let requestBody = CreateEdgeConfigRequestBody(slug: slug, items: items)
 
-        return try (await sdkRequest("POST", "/v1/global-config", config: config, query: [
+        return try await (sdkRequest("POST", "/v1/global-config", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug2),
         ], body: requestBody, decoder: .json, operationId: "createEdgeConfig", options: requestOptions)).data

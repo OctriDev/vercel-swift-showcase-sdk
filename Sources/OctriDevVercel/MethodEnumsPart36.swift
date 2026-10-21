@@ -6,16 +6,20 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct ListLogDrainsResponseVariant1DrainsVariant1ItemDeliveryVarianX41893a2465: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListLogDrainsResponseVariant1DrainsVariant1ItemDeliveryVarianX41893a2465: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let gzip = ListLogDrainsResponseVariant1DrainsVariant1ItemDeliveryVarianX41893a2465(rawValue: "gzip")
     public static let none = ListLogDrainsResponseVariant1DrainsVariant1ItemDeliveryVarianX41893a2465(rawValue: "none")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -24,16 +28,22 @@ public struct ListLogDrainsResponseVariant1DrainsVariant1ItemDeliveryVarianX4189
     }
 }
 
-public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX2746480dbb: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX2746480dbb: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let create = GetConfigurationProductsResponseProductsItemMetadataSchemaProX2746480dbb(rawValue: "create")
-    public static let update = GetConfigurationProductsResponseProductsItemMetadataSchemaProX2746480dbb(rawValue: "update")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let create =
+        GetConfigurationProductsResponseProductsItemMetadataSchemaProX2746480dbb(rawValue: "create")
+    public static let update =
+        GetConfigurationProductsResponseProductsItemMetadataSchemaProX2746480dbb(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -42,16 +52,20 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX2746
     }
 }
 
-public struct UploadProjectAvatarResponseTracingSamplingRulesItemEnv: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseTracingSamplingRulesItemEnv: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let preview = UploadProjectAvatarResponseTracingSamplingRulesItemEnv(rawValue: "preview")
     public static let production = UploadProjectAvatarResponseTracingSamplingRulesItemEnv(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -60,10 +74,14 @@ public struct UploadProjectAvatarResponseTracingSamplingRulesItemEnv: RawReprese
     }
 }
 
-public struct UpsertAiGatewayBudgetRequestBodyRefreshPeriod: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpsertAiGatewayBudgetRequestBodyRefreshPeriod: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let daily = UpsertAiGatewayBudgetRequestBodyRefreshPeriod(rawValue: "daily")
     public static let weekly = UpsertAiGatewayBudgetRequestBodyRefreshPeriod(rawValue: "weekly")
     public static let monthly = UpsertAiGatewayBudgetRequestBodyRefreshPeriod(rawValue: "monthly")
@@ -71,7 +89,7 @@ public struct UpsertAiGatewayBudgetRequestBodyRefreshPeriod: RawRepresentable, H
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -81,10 +99,14 @@ public struct UpsertAiGatewayBudgetRequestBodyRefreshPeriod: RawRepresentable, H
 }
 
 /// The time period to keep non-production deployments for
-public struct UpdateTeamRequestBodyDefaultExpirationSettingsExpiration: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamRequestBodyDefaultExpirationSettingsExpiration: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let value3y = UpdateTeamRequestBodyDefaultExpirationSettingsExpiration(rawValue: "3y")
     public static let value2y = UpdateTeamRequestBodyDefaultExpirationSettingsExpiration(rawValue: "2y")
     public static let value1y = UpdateTeamRequestBodyDefaultExpirationSettingsExpiration(rawValue: "1y")
@@ -99,7 +121,7 @@ public struct UpdateTeamRequestBodyDefaultExpirationSettingsExpiration: RawRepre
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -111,14 +133,17 @@ public struct UpdateTeamRequestBodyDefaultExpirationSettingsExpiration: RawRepre
 public struct UpdateProjectResponseTargetsValuePlan: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let enterprise = UpdateProjectResponseTargetsValuePlan(rawValue: "enterprise")
     public static let hobby = UpdateProjectResponseTargetsValuePlan(rawValue: "hobby")
     public static let pro = UpdateProjectResponseTargetsValuePlan(rawValue: "pro")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -127,10 +152,14 @@ public struct UpdateProjectResponseTargetsValuePlan: RawRepresentable, Hashable,
     }
 }
 
-public struct UpdateProjectResponseSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateProjectResponseSandboxFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let arn1 = UpdateProjectResponseSandboxFailoverRegionsItem(rawValue: "arn1")
     public static let bom1 = UpdateProjectResponseSandboxFailoverRegionsItem(rawValue: "bom1")
     public static let cdg1 = UpdateProjectResponseSandboxFailoverRegionsItem(rawValue: "cdg1")
@@ -153,7 +182,7 @@ public struct UpdateProjectResponseSandboxFailoverRegionsItem: RawRepresentable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -162,17 +191,21 @@ public struct UpdateProjectResponseSandboxFailoverRegionsItem: RawRepresentable,
     }
 }
 
-public struct UploadProjectAvatarResponseEnvItemTargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseEnvItemTargetVariant0Item: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = UploadProjectAvatarResponseEnvItemTargetVariant0Item(rawValue: "development")
     public static let preview = UploadProjectAvatarResponseEnvItemTargetVariant0Item(rawValue: "preview")
     public static let production = UploadProjectAvatarResponseEnvItemTargetVariant0Item(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -184,7 +217,10 @@ public struct UploadProjectAvatarResponseEnvItemTargetVariant0Item: RawRepresent
 public struct GetRuntimeLogsResponseSource: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let delimiter = GetRuntimeLogsResponseSource(rawValue: "delimiter")
     public static let edgeFunction = GetRuntimeLogsResponseSource(rawValue: "edge-function")
     public static let edgeMiddleware = GetRuntimeLogsResponseSource(rawValue: "edge-middleware")
@@ -193,7 +229,7 @@ public struct GetRuntimeLogsResponseSource: RawRepresentable, Hashable, Codable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

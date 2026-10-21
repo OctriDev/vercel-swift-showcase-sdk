@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension KmsMethods {
-    public struct CreateKmsSigningKeyOptions: Codable {
+public extension KmsMethods {
+    struct CreateKmsSigningKeyOptions: Codable {
         public var issuerId: String
         public var teamId: String?
         public var slug: String?
@@ -22,9 +22,12 @@ extension KmsMethods {
         }
     }
 
-    /// Creates a signing key for a KMS issuer. Use `activation` to choose automatic or manual activation, and optionally configure the grace period before the previous key is revoked. For manual activation, use the activate endpoint after the new key is ready.
+    /// Creates a signing key for a KMS issuer. Use `activation` to choose automatic or manual activation, and
+    /// optionally configure the grace period before the previous key is revoked. For manual activation, use the
+    /// activate endpoint after the new key is ready.
     ///
-    /// Create a new signing key for a KMS issuer. Depending on the activation mode, the key is activated automatically once its public key has propagated, or manually via the activate endpoint.
+    /// Create a new signing key for a KMS issuer. Depending on the activation mode, the key is activated automatically
+    /// once its public key has propagated, or manually via the activate endpoint.
     ///
     /// - Parameters:
     /// - issuerId: The ID of the issuer.
@@ -43,7 +46,11 @@ extension KmsMethods {
     /// - importKeyId: The key id to use as the imported key's JWT/JWKS `kid`. Only
     ///   allowed when `importKey` is provided. Not required to be unique; the
     ///   addressable key id is the server-minted `keyId` returned in the response.
-    public static func createKmsSigningKey(config: ClientConfig, options: CreateKmsSigningKeyOptions, requestOptions: RequestOptions? = nil) async throws -> CreateKmsSigningKeyResponse {
+    static func createKmsSigningKey(
+        config: ClientConfig,
+        options: CreateKmsSigningKeyOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateKmsSigningKeyResponse {
         if let revokePreviousAfterHours = options.revokePreviousAfterHours {
             try validateRange("revokePreviousAfterHours", Double(revokePreviousAfterHours), min: 0)
         }
@@ -55,9 +62,18 @@ extension KmsMethods {
 
         let requestBody = CreateKmsSigningKeyRequestBody(options: options)
 
-        return try (await sdkRequest("POST", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(options.issuerId)), "/keys"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], body: requestBody, decoder: .json, operationId: "createKmsSigningKey", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(options.issuerId)), "/keys"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "createKmsSigningKey",
+            options: requestOptions
+        )).data
     }
 }

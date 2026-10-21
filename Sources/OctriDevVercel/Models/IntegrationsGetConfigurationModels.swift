@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Integrations domain models
+/// Integrations domain models
 public indirect enum GetConfigurationResponse {
     case getConfigurationResponseVariant0(GetConfigurationResponseVariant0)
     case getConfigurationResponseVariant1(GetConfigurationResponseVariant1)
@@ -11,18 +11,26 @@ public indirect enum GetConfigurationResponse {
 }
 
 extension GetConfigurationResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConfigurationResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetConfigurationResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -43,9 +51,18 @@ extension GetConfigurationResponse {
 
 extension GetConfigurationResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(GetConfigurationResponseVariant0.self) { return .getConfigurationResponseVariant0(value) }
-        if let value = try? container.decode(GetConfigurationResponseVariant1.self) { return .getConfigurationResponseVariant1(value) }
-        if let value = try? container.decode(GetConfigurationResponseVariant2.self) { return .getConfigurationResponseVariant2(value) }
+        if let value = try? container
+            .decode(GetConfigurationResponseVariant0.self) {
+            return .getConfigurationResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(GetConfigurationResponseVariant1.self) {
+            return .getConfigurationResponseVariant1(value)
+        }
+        if let value = try? container
+            .decode(GetConfigurationResponseVariant2.self) {
+            return .getConfigurationResponseVariant2(value)
+        }
         return nil
     }
 }
@@ -74,27 +91,42 @@ public struct GetConfigurationResponseVariant0Notification: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationResponseVariant0Notification {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.level) else {
-            throw SdkValidationError(field: "level", code: "required", message: "Validation failed for 'level': value is required")
-        }
-        guard container.contains(.title) else {
-            throw SdkValidationError(field: "title", code: "required", message: "Validation failed for 'title': value is required")
-        }
-        self.level = try container.sdkDecodeRequired(.level)
-        self.title = try container.sdkDecodeRequired(.title)
-        self.href = try container.sdkDecodeIfPresent(.href)
-        self.message = try container.sdkDecodeIfPresent(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationResponseVariant0Notification {
-    public init(level: GetConfigurationResponseVariant0NotificationLevel, title: String, href: String? = nil, message: String? = nil) {
+public extension GetConfigurationResponseVariant0Notification {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.level) else {
+            throw SdkValidationError(
+                field: "level",
+                code: "required",
+                message: "Validation failed for 'level': value is required"
+            )
+        }
+        guard container.contains(.title) else {
+            throw SdkValidationError(
+                field: "title",
+                code: "required",
+                message: "Validation failed for 'title': value is required"
+            )
+        }
+        level = try container.sdkDecodeRequired(.level)
+        title = try container.sdkDecodeRequired(.title)
+        href = try container.sdkDecodeIfPresent(.href)
+        message = try container.sdkDecodeIfPresent(.message)
+    }
+}
+
+public extension GetConfigurationResponseVariant0Notification {
+    init(
+        level: GetConfigurationResponseVariant0NotificationLevel,
+        title: String,
+        href: String? = nil,
+        message: String? = nil
+    ) {
         (self.level, self.title) = (level, title)
         (self.href, self.message) = (href, message)
     }
@@ -195,44 +227,74 @@ public struct GetConfigurationResponseVariant2: Codable {
     }
 
     init() {
-        (self.acceptedPoliciesInheritedFromInstallationId, self.completedAt, self.createdAt, self.customerDeleteRequestedAt, self.deletedAt) = (nil, nil, nil, nil, nil)
-        (self.deleteRequestedAt, self.disabledAt, self.disabledReason, self.externalId, self.id) = (nil, nil, nil, nil, nil)
-        (self.installationType, self.integrationId, self.ownerId, self.projects, self.scopes) = (nil, nil, nil, nil, nil)
-        (self.slug, self.source, self.status, self.teamId, self.type) = (nil, nil, nil, nil, nil)
-        (self.updatedAt, self.userId) = (nil, nil)
+        (acceptedPoliciesInheritedFromInstallationId, completedAt, createdAt, customerDeleteRequestedAt, deletedAt) = (
+            nil,
+            nil,
+            nil,
+            nil,
+            nil
+        )
+        (deleteRequestedAt, disabledAt, disabledReason, externalId, id) = (nil, nil, nil, nil, nil)
+        (installationType, integrationId, ownerId, projects, scopes) = (nil, nil, nil, nil, nil)
+        (slug, source, status, teamId, type) = (nil, nil, nil, nil, nil)
+        (updatedAt, userId) = (nil, nil)
     }
 }
 
-extension GetConfigurationResponseVariant2 {
-    public init(from decoder: Decoder) throws {
+public extension GetConfigurationResponseVariant2 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.acceptedPoliciesInheritedFromInstallationId = try container.sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
-        self.completedAt = try container.sdkDecodeIfPresent(.completedAt)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
-        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        self.deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
-        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        self.disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
-        self.externalId = try container.sdkDecodeIfPresent(.externalId)
-        self.id = try container.sdkDecodeIfPresent(.id)
-        self.installationType = try container.sdkDecodeIfPresent(.installationType)
-        self.integrationId = try container.sdkDecodeIfPresent(.integrationId)
-        self.ownerId = try container.sdkDecodeIfPresent(.ownerId)
-        self.projects = try container.sdkDecodeIfPresent(.projects)
-        self.scopes = try container.sdkDecodeIfPresent(.scopes)
-        self.slug = try container.sdkDecodeIfPresent(.slug)
-        self.source = try container.sdkDecodeIfPresent(.source)
-        self.status = try container.sdkDecodeIfPresent(.status)
-        self.teamId = try container.sdkDecodeIfPresent(.teamId)
-        self.type = try container.sdkDecodeIfPresent(.type)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        self.userId = try container.sdkDecodeIfPresent(.userId)
+        acceptedPoliciesInheritedFromInstallationId = try container
+            .sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
+        completedAt = try container.sdkDecodeIfPresent(.completedAt)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
+        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
+        disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
+        disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
+        externalId = try container.sdkDecodeIfPresent(.externalId)
+        id = try container.sdkDecodeIfPresent(.id)
+        installationType = try container.sdkDecodeIfPresent(.installationType)
+        integrationId = try container.sdkDecodeIfPresent(.integrationId)
+        ownerId = try container.sdkDecodeIfPresent(.ownerId)
+        projects = try container.sdkDecodeIfPresent(.projects)
+        scopes = try container.sdkDecodeIfPresent(.scopes)
+        slug = try container.sdkDecodeIfPresent(.slug)
+        source = try container.sdkDecodeIfPresent(.source)
+        status = try container.sdkDecodeIfPresent(.status)
+        teamId = try container.sdkDecodeIfPresent(.teamId)
+        type = try container.sdkDecodeIfPresent(.type)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        userId = try container.sdkDecodeIfPresent(.userId)
     }
 }
 
-extension GetConfigurationResponseVariant2 {
-    public init(acceptedPoliciesInheritedFromInstallationId: String? = nil, completedAt: Double? = nil, createdAt: Double? = nil, customerDeleteRequestedAt: Double? = nil, deletedAt: Double? = nil, deleteRequestedAt: Double? = nil, disabledAt: Double? = nil, disabledReason: GetConfigurationResponseVariant2DisabledReason? = nil, externalId: String? = nil, id: String? = nil, installationType: GetConfigurationResponseVariant2InstallationType? = nil, integrationId: String? = nil, ownerId: String? = nil, projects: [String]? = nil, scopes: [String]? = nil, slug: String? = nil, source: GetConfigurationResponseVariant2Source? = nil, status: GetConfigurationResponseVariant2Status? = nil, teamId: String? = nil, type: GetConfigurationResponseVariant2Type? = nil, updatedAt: Double? = nil, userId: String? = nil) {
+public extension GetConfigurationResponseVariant2 {
+    init(
+        acceptedPoliciesInheritedFromInstallationId: String? = nil,
+        completedAt: Double? = nil,
+        createdAt: Double? = nil,
+        customerDeleteRequestedAt: Double? = nil,
+        deletedAt: Double? = nil,
+        deleteRequestedAt: Double? = nil,
+        disabledAt: Double? = nil,
+        disabledReason: GetConfigurationResponseVariant2DisabledReason? = nil,
+        externalId: String? = nil,
+        id: String? = nil,
+        installationType: GetConfigurationResponseVariant2InstallationType? = nil,
+        integrationId: String? = nil,
+        ownerId: String? = nil,
+        projects: [String]? = nil,
+        scopes: [String]? = nil,
+        slug: String? = nil,
+        source: GetConfigurationResponseVariant2Source? = nil,
+        status: GetConfigurationResponseVariant2Status? = nil,
+        teamId: String? = nil,
+        type: GetConfigurationResponseVariant2Type? = nil,
+        updatedAt: Double? = nil,
+        userId: String? = nil
+    ) {
         self.init()
         self.acceptedPoliciesInheritedFromInstallationId = acceptedPoliciesInheritedFromInstallationId
         (self.completedAt, self.createdAt) = (completedAt, createdAt)
@@ -351,43 +413,73 @@ public struct GetConfigurationResponseVariant0: Codable {
         case teamId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationResponseVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.integrationId = try container.sdkDecodeRequired(.integrationId)
-        self.notification = try container.sdkDecodeRequired(.notification)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.projectSelection = try container.sdkDecodeRequired(.projectSelection)
-        self.scopes = try container.sdkDecodeRequired(.scopes)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.transferRequest = try container.sdkDecodeRequired(.transferRequest)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.userId = try container.sdkDecodeRequired(.userId)
-        self.acceptedPoliciesInheritedFromInstallationId = try container.sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
-        self.canConfigureOpenTelemetry = try container.sdkDecodeIfPresent(.canConfigureOpenTelemetry)
-        self.completedAt = try container.sdkDecodeIfPresent(.completedAt)
-        self.customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
-        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        self.deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
-        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        self.disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
-        self.externalId = try container.sdkDecodeIfPresent(.externalId)
-        self.installationType = try container.sdkDecodeIfPresent(.installationType)
-        self.projects = try container.sdkDecodeIfPresent(.projects)
-        self.source = try container.sdkDecodeIfPresent(.source)
-        self.status = try container.sdkDecodeIfPresent(.status)
-        self.teamId = try container.sdkDecodeIfPresent(.teamId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationResponseVariant0 {
-    public init(createdAt: Double, id: String, integrationId: String, notification: GetConfigurationResponseVariant0Notification, ownerId: String, projectSelection: GetConfigurationResponseVariant0ProjectSelection, scopes: [String], slug: String, transferRequest: GetConfigurationResponseVariant0TransferRequest, type: GetConfigurationResponseVariant0Type, updatedAt: Double, userId: String, acceptedPoliciesInheritedFromInstallationId: String? = nil, canConfigureOpenTelemetry: Bool? = nil, completedAt: Double? = nil, customerDeleteRequestedAt: Double? = nil, deletedAt: Double? = nil, deleteRequestedAt: Double? = nil, disabledAt: Double? = nil, disabledReason: GetConfigurationResponseVariant0DisabledReason? = nil, externalId: String? = nil, installationType: GetConfigurationResponseVariant0InstallationType? = nil, projects: [String]? = nil, source: GetConfigurationResponseVariant0Source? = nil, status: GetConfigurationResponseVariant0Status? = nil, teamId: String? = nil) {
+public extension GetConfigurationResponseVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        id = try container.sdkDecodeRequired(.id)
+        integrationId = try container.sdkDecodeRequired(.integrationId)
+        notification = try container.sdkDecodeRequired(.notification)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        projectSelection = try container.sdkDecodeRequired(.projectSelection)
+        scopes = try container.sdkDecodeRequired(.scopes)
+        slug = try container.sdkDecodeRequired(.slug)
+        transferRequest = try container.sdkDecodeRequired(.transferRequest)
+        type = try container.sdkDecodeRequired(.type)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        userId = try container.sdkDecodeRequired(.userId)
+        acceptedPoliciesInheritedFromInstallationId = try container
+            .sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
+        canConfigureOpenTelemetry = try container.sdkDecodeIfPresent(.canConfigureOpenTelemetry)
+        completedAt = try container.sdkDecodeIfPresent(.completedAt)
+        customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
+        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
+        disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
+        disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
+        externalId = try container.sdkDecodeIfPresent(.externalId)
+        installationType = try container.sdkDecodeIfPresent(.installationType)
+        projects = try container.sdkDecodeIfPresent(.projects)
+        source = try container.sdkDecodeIfPresent(.source)
+        status = try container.sdkDecodeIfPresent(.status)
+        teamId = try container.sdkDecodeIfPresent(.teamId)
+    }
+}
+
+public extension GetConfigurationResponseVariant0 {
+    init(
+        createdAt: Double,
+        id: String,
+        integrationId: String,
+        notification: GetConfigurationResponseVariant0Notification,
+        ownerId: String,
+        projectSelection: GetConfigurationResponseVariant0ProjectSelection,
+        scopes: [String],
+        slug: String,
+        transferRequest: GetConfigurationResponseVariant0TransferRequest,
+        type: GetConfigurationResponseVariant0Type,
+        updatedAt: Double,
+        userId: String,
+        acceptedPoliciesInheritedFromInstallationId: String? = nil,
+        canConfigureOpenTelemetry: Bool? = nil,
+        completedAt: Double? = nil,
+        customerDeleteRequestedAt: Double? = nil,
+        deletedAt: Double? = nil,
+        deleteRequestedAt: Double? = nil,
+        disabledAt: Double? = nil,
+        disabledReason: GetConfigurationResponseVariant0DisabledReason? = nil,
+        externalId: String? = nil,
+        installationType: GetConfigurationResponseVariant0InstallationType? = nil,
+        projects: [String]? = nil,
+        source: GetConfigurationResponseVariant0Source? = nil,
+        status: GetConfigurationResponseVariant0Status? = nil,
+        teamId: String? = nil
+    ) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.integrationId, self.notification) = (integrationId, notification)
         (self.ownerId, self.projectSelection) = (ownerId, projectSelection)
@@ -436,5 +528,7 @@ public struct GetConfigurationResponseVariant0TransferRequestVariant0: Codable {
         case metadata
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

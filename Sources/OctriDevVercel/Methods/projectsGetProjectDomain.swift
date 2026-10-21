@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    /// Retrieves a domain associated with a project. Use the project identifier or name and the domain name to identify the domain and inspect its configuration and verification status.
+public extension ProjectsMethods {
+    /// Retrieves a domain associated with a project. Use the project identifier or name and the domain name to identify
+    /// the domain and inspect its configuration and verification status.
     ///
     /// Get project domain by project id/name and domain name.
     ///
@@ -16,10 +17,30 @@ extension ProjectsMethods {
     /// - domain: The project domain name
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getProjectDomain(config: ClientConfig, idOrName: String, domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectDomainResponse {
-        return try (await sdkRequest("GET", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getProjectDomain", options: requestOptions)).data
+    static func getProjectDomain(
+        config: ClientConfig,
+        idOrName: String,
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetProjectDomainResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v9/projects/",
+                sdkEncodePathSegment(sdkWireString(idOrName)),
+                "/domains/",
+                sdkEncodePathSegment(sdkWireString(domain)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getProjectDomain",
+            options: requestOptions
+        )).data
     }
 }

@@ -3,25 +3,33 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 public indirect enum GetAuthUserResponseUser {
     case authUser(AuthUser)
     case authUserLimited(AuthUserLimited)
 }
 
 extension GetAuthUserResponseUser: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetAuthUserResponseUser")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetAuthUserResponseUser"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -39,8 +47,12 @@ extension GetAuthUserResponseUser {
 
 extension GetAuthUserResponseUser {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(AuthUser.self) { return .authUser(value) }
-        if let value = try? container.decode(AuthUserLimited.self) { return .authUserLimited(value) }
+        if let value = try? container.decode(AuthUser.self) {
+            return .authUser(value)
+        }
+        if let value = try? container.decode(AuthUserLimited.self) {
+            return .authUserLimited(value)
+        }
         return nil
     }
 }
@@ -553,18 +565,24 @@ public indirect enum UserEventPayload {
 }
 
 extension UserEventPayload: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
             for decode in Self.losslessDecoders {
-                if let value = decode(container, raw) { self = value; return }
+                if let value = decode(container, raw) {
+                    self = value; return
+                }
             }
         }
         for decode in Self.groupDecoders {
-            if let value = decode(container) { self = value; return }
+            if let value = decode(container) {
+                self = value; return
+            }
         }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UserEventPayload")
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UserEventPayload"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {

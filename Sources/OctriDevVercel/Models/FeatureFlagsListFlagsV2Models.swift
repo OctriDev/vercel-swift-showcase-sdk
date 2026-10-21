@@ -3,7 +3,7 @@
 
 import Foundation
 
-// FeatureFlags domain models
+/// FeatureFlags domain models
 public indirect enum ListFlagsV2ResponseDataItem {
     case flag(Flag)
     case marketplaceFlag(MarketplaceFlag)
@@ -12,7 +12,6 @@ public indirect enum ListFlagsV2ResponseDataItem {
 }
 
 extension ListFlagsV2ResponseDataItem: Codable {
-
     private enum CodingKeys: String, CodingKey {
         case discriminator = "typeName"
     }
@@ -20,12 +19,16 @@ extension ListFlagsV2ResponseDataItem: Codable {
     public init(from decoder: Decoder) throws {
         let tagged = try decoder.container(keyedBy: CodingKeys.self)
         let discriminator = try tagged.decode(String.self, forKey: .discriminator)
-        if let value = try Self.decodeGroup1(discriminator, from: decoder) { self = value; return }
+        if let value = try Self.decodeGroup1(discriminator, from: decoder) {
+            self = value; return
+        }
         self = try .unknown(tag: discriminator, raw: JSONValue(from: decoder))
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
         if case let .unknown(_, raw) = self {
             var container = encoder.singleValueContainer()
             try container.encode(raw)
@@ -36,9 +39,9 @@ extension ListFlagsV2ResponseDataItem: Codable {
 extension ListFlagsV2ResponseDataItem {
     static func decodeGroup1(_ discriminator: String, from decoder: Decoder) throws -> Self? {
         switch discriminator {
-        case "flag": return .flag(try Flag(from: decoder))
-        case "marketplaceFlag": return .marketplaceFlag(try MarketplaceFlag(from: decoder))
-        default: return nil
+        case "flag": try .flag(Flag(from: decoder))
+        case "marketplaceFlag": try .marketplaceFlag(MarketplaceFlag(from: decoder))
+        default: nil
         }
     }
 }

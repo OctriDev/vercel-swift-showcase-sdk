@@ -11,7 +11,8 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ProjectsMethods.UpdateMicrofrontendsOptions(projectId: decoded("\"prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB\""))
+        var options = try ProjectsMethods
+            .UpdateMicrofrontendsOptions(projectId: decoded("\"prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB\""))
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.microfrontendsGroupId = try decoded("\"mfe_12HKQaOmR5t5Uy6vdcQsNIiZgHGB\"")
@@ -77,7 +78,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testUpdateObservabilityConfigurationProjectUpdateObservabilityConX2a9e862e36ReachesMockAndDecodesResponse() async throws {
+    func testUpdateObservabilityConfigurationProjectUpdateObservabilityConX2a9e862e36ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -126,7 +128,8 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ProjectsMethods.UpdateProjectOptions(idOrName: decoded("\"prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB\""))
+        var options = try ProjectsMethods
+            .UpdateProjectOptions(idOrName: decoded("\"prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB\""))
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.autoExposeSystemEnvs = try decoded("false")
@@ -192,7 +195,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ChecksV2Methods.UpdateProjectCheckOptions(projectIdOrName: decoded("\"Example Name\""), checkId: decoded("\"check-1\""))
+        var options = try ChecksV2Methods.UpdateProjectCheckOptions(
+            projectIdOrName: decoded("\"Example Name\""),
+            checkId: decoded("\"check-1\"")
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.name = try decoded("\"Example Name\"")
@@ -261,7 +267,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testUpdateProjectsRollbackDescriptionUpdateProjectsRollbackDescriptionReachesMockAndDecodesResponse() async throws {
+    func testUpdateProjectsRollbackDescriptionUpdateProjectsRollbackDescriptionReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -308,7 +315,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try MarketplaceMethods.UpdateResourceOptions(integrationConfigurationId: decoded("\"integrationConfiguration-1\""), resourceId: decoded("\"resource-1\""))
+        var options = try MarketplaceMethods.UpdateResourceOptions(
+            integrationConfigurationId: decoded("\"integrationConfiguration-1\""),
+            resourceId: decoded("\"resource-1\"")
+        )
         options.ownership = try decoded("\"owned\"")
         options.name = try decoded("\"Example Name\"")
         options.status = try decoded("\"ready\"")

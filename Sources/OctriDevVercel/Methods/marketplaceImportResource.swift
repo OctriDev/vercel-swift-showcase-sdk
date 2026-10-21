@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension MarketplaceMethods {
-    public struct ImportResourceOptions: Codable {
+public extension MarketplaceMethods {
+    struct ImportResourceOptions: Codable {
         public var integrationConfigurationId: String
         public var resourceId: String
         public var productId: String
@@ -21,7 +21,13 @@ extension MarketplaceMethods {
         public var secrets: [ImportResourceRequestBodySecretsItem]?
         public var customClaims: ImportResourceRequestBodyCustomClaims?
 
-        public init(integrationConfigurationId: String, resourceId: String, productId: String, name: String, status: ImportResourceRequestBodyStatus) {
+        public init(
+            integrationConfigurationId: String,
+            resourceId: String,
+            productId: String,
+            name: String,
+            status: ImportResourceRequestBodyStatus
+        ) {
             self.integrationConfigurationId = integrationConfigurationId
             self.resourceId = resourceId
             self.productId = productId
@@ -30,16 +36,40 @@ extension MarketplaceMethods {
         }
     }
 
-    /// Imports or upserts a resource into an integration installation, including resources created independently in the provider's system. Use this operation to synchronize an existing resource to Vercel; for a user-initiated import, call it before redirecting the user back to Vercel.
+    /// Imports or upserts a resource into an integration installation, including resources created independently in the
+    /// provider's system. Use this operation to synchronize an existing resource to Vercel; for a user-initiated
+    /// import, call it before redirecting the user back to Vercel.
     ///
-    /// This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be independently created on the partner's side and need to be synchronized to Vercel. When importing as part of the user-initiated import flow, call this endpoint before redirecting the user back to Vercel. See the [Import existing resources flow](https://vercel.com/docs/integrations/create-integration/marketplace-flows#import-existing-resources-flow) for the full contract.
+    /// This endpoint imports (upserts) a resource to Vercel's installation. This may be needed if resources can be
+    /// independently created on the partner's side and need to be synchronized to Vercel. When importing as part of the
+    /// user-initiated import flow, call this endpoint before redirecting the user back to Vercel. See the [Import
+    /// existing resources
+    /// flow](https://vercel.com/docs/integrations/create-integration/marketplace-flows#import-existing-resources-flow)
+    /// for the full contract.
     ///
     /// - Parameters:
     /// - customClaims: Custom claims embedded in the resource tokens Vercel mints
     ///   for this resource.
-    public static func importResource(config: ClientConfig, options: ImportResourceOptions, requestOptions: RequestOptions? = nil) async throws -> ImportResourceResponse {
+    static func importResource(
+        config: ClientConfig,
+        options: ImportResourceOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ImportResourceResponse {
         let requestBody = ImportResourceRequestBody(options: options)
 
-        return try (await sdkRequest("PUT", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(options.resourceId))].joined(), config: config, body: requestBody, decoder: .json, operationId: "importResource", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PUT",
+            [
+                "/v1/installations/",
+                sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)),
+                "/resources/",
+                sdkEncodePathSegment(sdkWireString(options.resourceId)),
+            ].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "importResource",
+            options: requestOptions
+        )).data
     }
 }

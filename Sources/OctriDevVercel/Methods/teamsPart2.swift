@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension TeamsMethods {
-    public struct GetTeamMembersOptions: Codable {
+public extension TeamsMethods {
+    struct GetTeamMembersOptions: Codable {
         public var teamId: String
         public var limit: Double?
         public var since: Double?
@@ -23,7 +23,9 @@ extension TeamsMethods {
         }
     }
 
-    /// Lists team members and pending email invitations for the specified team. Use the query filters to search members, select a team role, or restrict results by membership timestamps or project eligibility. The response includes pagination metadata for navigating the results.
+    /// Lists team members and pending email invitations for the specified team. Use the query filters to search
+    /// members, select a team role, or restrict results by membership timestamps or project eligibility. The response
+    /// includes pagination metadata for navigating the results.
     ///
     /// Get a paginated list of team members for the provided team.
     ///
@@ -38,20 +40,32 @@ extension TeamsMethods {
     /// - eligibleMembersForProjectId: Include team members who are eligible to be
     ///   members of the specified project.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getTeamMembers(config: ClientConfig, options: GetTeamMembersOptions, requestOptions: RequestOptions? = nil) async throws -> GetTeamMembersResponse {
+    static func getTeamMembers(
+        config: ClientConfig,
+        options: GetTeamMembersOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetTeamMembersResponse {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1)
         }
 
-        return try (await sdkRequest("GET", ["/v3/teams/", sdkEncodePathSegment(sdkWireString(options.teamId)), "/members"].joined(), config: config, query: [
-            SdkQueryParameter("limit", value: options.limit),
-            SdkQueryParameter("since", value: options.since),
-            SdkQueryParameter("until", value: options.until),
-            SdkQueryParameter("search", value: options.search),
-            SdkQueryParameter("role", value: options.role),
-            SdkQueryParameter("excludeProject", value: options.excludeProject),
-            SdkQueryParameter("eligibleMembersForProjectId", value: options.eligibleMembersForProjectId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], decoder: .json, operationId: "getTeamMembers", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v3/teams/", sdkEncodePathSegment(sdkWireString(options.teamId)), "/members"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("limit", value: options.limit),
+                SdkQueryParameter("since", value: options.since),
+                SdkQueryParameter("until", value: options.until),
+                SdkQueryParameter("search", value: options.search),
+                SdkQueryParameter("role", value: options.role),
+                SdkQueryParameter("excludeProject", value: options.excludeProject),
+                SdkQueryParameter("eligibleMembersForProjectId", value: options.eligibleMembersForProjectId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            decoder: .json,
+            operationId: "getTeamMembers",
+            options: requestOptions
+        )).data
     }
 }

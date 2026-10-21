@@ -6,30 +6,47 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AiGatewayMethods {
-    /// Updates a virtual model configuration for a team. Specify `teamId` or `slug` to perform the request in that team's context. A 200 response returns the updated configuration.
+public extension AiGatewayMethods {
+    /// Updates a virtual model configuration for a team. Specify `teamId` or `slug` to perform the request in that
+    /// team's context. A 200 response returns the updated configuration.
     ///
     /// Update a virtual model config
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func updateAiGatewayVirtualModelConfig(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayVirtualModelConfig {
-        return try (await sdkRequest("PATCH", "/ai-gateway/virtual-model-configs", config: config, query: [
+    static func updateAiGatewayVirtualModelConfig(
+        config: ClientConfig,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayVirtualModelConfig {
+        try await (sdkRequest("PATCH", "/ai-gateway/virtual-model-configs", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "updateAiGatewayVirtualModelConfig", options: requestOptions)).data
     }
 
-    /// Deletes a virtual model configuration by its slug using a soft delete. Specify `virtualModelSlug` to identify the configuration and optionally use `ownerId`, `teamId`, or `slug` to select the owner context.
+    /// Deletes a virtual model configuration by its slug using a soft delete. Specify `virtualModelSlug` to identify
+    /// the configuration and optionally use `ownerId`, `teamId`, or `slug` to select the owner context.
     ///
     /// Delete a virtual model config (soft delete)
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteAiGatewayVirtualModelConfig(config: ClientConfig, virtualModelSlug: String, ownerId: String? = nil, updatedBy: String? = nil, actingIp: String? = nil, actingUserAgent: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", "/ai-gateway/virtual-model-configs", config: config, query: [
+    static func deleteAiGatewayVirtualModelConfig(
+        config: ClientConfig,
+        virtualModelSlug: String,
+        ownerId: String? = nil,
+        updatedBy: String? = nil,
+        actingIp: String? = nil,
+        actingUserAgent: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest("DELETE", "/ai-gateway/virtual-model-configs", config: config, query: [
             SdkQueryParameter("virtualModelSlug", value: virtualModelSlug),
             SdkQueryParameter("ownerId", value: ownerId),
             SdkQueryParameter("updatedBy", value: updatedBy),

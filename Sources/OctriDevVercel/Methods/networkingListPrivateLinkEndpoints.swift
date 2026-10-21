@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension NetworkingMethods {
-    /// Lists PrivateLink endpoints associated with a project. Supply `projectId` to scope the results, and use the optional team parameters to make the request on behalf of a team. Each result includes the endpoint's status and connection details.
+public extension NetworkingMethods {
+    /// Lists PrivateLink endpoints associated with a project. Supply `projectId` to scope the results, and use the
+    /// optional team parameters to make the request on behalf of a team. Each result includes the endpoint's status and
+    /// connection details.
     ///
     /// Lists all PrivateLink endpoints for a project.
     ///
@@ -15,15 +17,23 @@ extension NetworkingMethods {
     /// - projectId: The project ID to list PrivateLink endpoints for.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listPrivateLinkEndpoints(config: ClientConfig, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [PrivateLinkEndpoint] {
-        return try (await sdkRequest("GET", "/v1/networking/privatelink/endpoints", config: config, query: [
+    static func listPrivateLinkEndpoints(
+        config: ClientConfig,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [PrivateLinkEndpoint] {
+        try await (sdkRequest("GET", "/v1/networking/privatelink/endpoints", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "listPrivateLinkEndpoints", options: requestOptions)).data
     }
 
-    /// Retrieves a PrivateLink endpoint for a project. Supply `projectId` and `endpointId` to identify the endpoint, and use the optional team parameters to make the request on behalf of a team. The response includes endpoint status, service configuration, and available DNS names.
+    /// Retrieves a PrivateLink endpoint for a project. Supply `projectId` and `endpointId` to identify the endpoint,
+    /// and use the optional team parameters to make the request on behalf of a team. The response includes endpoint
+    /// status, service configuration, and available DNS names.
     ///
     /// Reads a single PrivateLink endpoint.
     ///
@@ -32,11 +42,26 @@ extension NetworkingMethods {
     /// - projectId: The project ID the PrivateLink endpoint belongs to.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func readPrivateLinkEndpoint(config: ClientConfig, endpointId: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> PrivateLinkEndpoint {
-        return try (await sdkRequest("GET", ["/v1/networking/privatelink/endpoints/", sdkEncodePathSegment(sdkWireString(endpointId))].joined(), config: config, query: [
-            SdkQueryParameter("projectId", value: projectId),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "readPrivateLinkEndpoint", options: requestOptions)).data
+    static func readPrivateLinkEndpoint(
+        config: ClientConfig,
+        endpointId: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> PrivateLinkEndpoint {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/networking/privatelink/endpoints/", sdkEncodePathSegment(sdkWireString(endpointId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: projectId),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "readPrivateLinkEndpoint",
+            options: requestOptions
+        )).data
     }
 }

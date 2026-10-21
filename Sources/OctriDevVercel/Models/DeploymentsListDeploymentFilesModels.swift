@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Deployments domain models
+/// Deployments domain models
 /// A deployment file tree entry
 public struct FileTree: Codable {
     /// The file "mode" indicating file type and permissions.
@@ -32,32 +32,53 @@ public struct FileTree: Codable {
         case uid
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension FileTree {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.mode) else {
-            throw SdkValidationError(field: "mode", code: "required", message: "Validation failed for 'mode': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.mode = try container.sdkDecodeRequired(.mode)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.children = try container.sdkDecodeIfPresent(.children)
-        self.contentType = try container.sdkDecodeIfPresent(.contentType)
-        self.uid = try container.sdkDecodeIfPresent(.uid)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension FileTree {
-    public init(mode: Double, name: String, type: FileTreeType, children: [FileTree]? = nil, contentType: String? = nil, uid: String? = nil) {
+public extension FileTree {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.mode) else {
+            throw SdkValidationError(
+                field: "mode",
+                code: "required",
+                message: "Validation failed for 'mode': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        mode = try container.sdkDecodeRequired(.mode)
+        name = try container.sdkDecodeRequired(.name)
+        type = try container.sdkDecodeRequired(.type)
+        children = try container.sdkDecodeIfPresent(.children)
+        contentType = try container.sdkDecodeIfPresent(.contentType)
+        uid = try container.sdkDecodeIfPresent(.uid)
+    }
+}
+
+public extension FileTree {
+    init(
+        mode: Double,
+        name: String,
+        type: FileTreeType,
+        children: [FileTree]? = nil,
+        contentType: String? = nil,
+        uid: String? = nil
+    ) {
         (self.mode, self.name) = (mode, name)
         (self.type, self.children) = (type, children)
         (self.contentType, self.uid) = (contentType, uid)
@@ -68,7 +89,10 @@ extension FileTree {
 public struct FileTreeType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let directory = FileTreeType(rawValue: "directory")
     public static let file = FileTreeType(rawValue: "file")
     public static let invalid = FileTreeType(rawValue: "invalid")
@@ -78,7 +102,7 @@ public struct FileTreeType: RawRepresentable, Hashable, Codable, Sendable, SdkWi
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

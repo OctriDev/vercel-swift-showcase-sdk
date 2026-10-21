@@ -11,7 +11,7 @@ struct UpdateSharedEnvVariableRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.updates, forKey: SdkCodingKey("updates"))
+        try keyedContainer.encode(updates, forKey: SdkCodingKey("updates"))
     }
 }
 
@@ -20,7 +20,7 @@ struct DeleteSharedEnvVariableRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.ids, forKey: SdkCodingKey("ids"))
+        try keyedContainer.encode(ids, forKey: SdkCodingKey("ids"))
     }
 }
 
@@ -32,10 +32,10 @@ struct CreateCustomEnvironmentRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.slug2, forKey: SdkCodingKey("slug"))
-        try keyedContainer.encodeIfPresent(self.description, forKey: SdkCodingKey("description"))
-        try keyedContainer.encodeIfPresent(self.branchMatcher, forKey: SdkCodingKey("branchMatcher"))
-        try keyedContainer.encodeIfPresent(self.copyEnvVarsFrom, forKey: SdkCodingKey("copyEnvVarsFrom"))
+        try keyedContainer.encodeIfPresent(slug2, forKey: SdkCodingKey("slug"))
+        try keyedContainer.encodeIfPresent(description, forKey: SdkCodingKey("description"))
+        try keyedContainer.encodeIfPresent(branchMatcher, forKey: SdkCodingKey("branchMatcher"))
+        try keyedContainer.encodeIfPresent(copyEnvVarsFrom, forKey: SdkCodingKey("copyEnvVarsFrom"))
     }
 }
 
@@ -46,9 +46,9 @@ struct UpdateCustomEnvironmentRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.slug2, forKey: SdkCodingKey("slug"))
-        try keyedContainer.encodeIfPresent(self.description, forKey: SdkCodingKey("description"))
-        try keyedContainer.encodeIfPresent(self.branchMatcher, forKey: SdkCodingKey("branchMatcher"))
+        try keyedContainer.encodeIfPresent(slug2, forKey: SdkCodingKey("slug"))
+        try keyedContainer.encodeIfPresent(description, forKey: SdkCodingKey("description"))
+        try keyedContainer.encodeIfPresent(branchMatcher, forKey: SdkCodingKey("branchMatcher"))
     }
 }
 
@@ -57,7 +57,10 @@ struct RemoveCustomEnvironmentRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.deleteUnassignedEnvironmentVariables, forKey: SdkCodingKey("deleteUnassignedEnvironmentVariables"))
+        try keyedContainer.encodeIfPresent(
+            deleteUnassignedEnvironmentVariables,
+            forKey: SdkCodingKey("deleteUnassignedEnvironmentVariables")
+        )
     }
 }
 
@@ -66,7 +69,7 @@ struct RequestDeleteRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.reasons, forKey: SdkCodingKey("reasons"))
+        try keyedContainer.encodeIfPresent(reasons, forKey: SdkCodingKey("reasons"))
     }
 }
 
@@ -84,29 +87,29 @@ struct CreateFlagRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.slug, forKey: SdkCodingKey("slug"))
-        try keyedContainer.encode(self.kind, forKey: SdkCodingKey("kind"))
-        try keyedContainer.encode(self.environments, forKey: SdkCodingKey("environments"))
-        try keyedContainer.encodeIfPresent(self.variants, forKey: SdkCodingKey("variants"))
-        try keyedContainer.encodeIfPresent(self.seed, forKey: SdkCodingKey("seed"))
-        try keyedContainer.encodeIfPresent(self.description, forKey: SdkCodingKey("description"))
-        try keyedContainer.encodeIfPresent(self.state, forKey: SdkCodingKey("state"))
-        try keyedContainer.encodeIfPresent(self.maintainerIds, forKey: SdkCodingKey("maintainerIds"))
-        try keyedContainer.encodeIfPresent(self.permanent, forKey: SdkCodingKey("permanent"))
-        try keyedContainer.encodeIfPresent(self.tags, forKey: SdkCodingKey("tags"))
+        try keyedContainer.encode(slug, forKey: SdkCodingKey("slug"))
+        try keyedContainer.encode(kind, forKey: SdkCodingKey("kind"))
+        try keyedContainer.encode(environments, forKey: SdkCodingKey("environments"))
+        try keyedContainer.encodeIfPresent(variants, forKey: SdkCodingKey("variants"))
+        try keyedContainer.encodeIfPresent(seed, forKey: SdkCodingKey("seed"))
+        try keyedContainer.encodeIfPresent(description, forKey: SdkCodingKey("description"))
+        try keyedContainer.encodeIfPresent(state, forKey: SdkCodingKey("state"))
+        try keyedContainer.encodeIfPresent(maintainerIds, forKey: SdkCodingKey("maintainerIds"))
+        try keyedContainer.encodeIfPresent(permanent, forKey: SdkCodingKey("permanent"))
+        try keyedContainer.encodeIfPresent(tags, forKey: SdkCodingKey("tags"))
     }
 
     init(options: FeatureFlagsMethods.CreateFlagOptions) {
-        self.slug = options.slug
-        self.kind = options.kind
-        self.environments = options.environments
-        self.variants = options.variants
-        self.seed = options.seed
-        self.description = options.description
-        self.state = options.state
-        self.maintainerIds = options.maintainerIds
-        self.permanent = options.permanent
-        self.tags = options.tags
+        slug = options.slug
+        kind = options.kind
+        environments = options.environments
+        variants = options.variants
+        seed = options.seed
+        description = options.description
+        state = options.state
+        maintainerIds = options.maintainerIds
+        permanent = options.permanent
+        tags = options.tags
     }
 }
 
@@ -124,29 +127,29 @@ struct UpdateFlagRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.createdBy, forKey: SdkCodingKey("createdBy"))
-        try keyedContainer.encodeIfPresent(self.message, forKey: SdkCodingKey("message"))
-        try keyedContainer.encodeIfPresent(self.variants, forKey: SdkCodingKey("variants"))
-        try keyedContainer.encodeIfPresent(self.environments, forKey: SdkCodingKey("environments"))
-        try keyedContainer.encodeIfPresent(self.seed, forKey: SdkCodingKey("seed"))
-        try keyedContainer.encodeIfPresent(self.description, forKey: SdkCodingKey("description"))
-        try keyedContainer.encodeIfPresent(self.state, forKey: SdkCodingKey("state"))
-        try keyedContainer.encodeIfPresent(self.maintainerIds, forKey: SdkCodingKey("maintainerIds"))
-        try keyedContainer.encodeIfPresent(self.permanent, forKey: SdkCodingKey("permanent"))
-        try keyedContainer.encodeIfPresent(self.tags, forKey: SdkCodingKey("tags"))
+        try keyedContainer.encodeIfPresent(createdBy, forKey: SdkCodingKey("createdBy"))
+        try keyedContainer.encodeIfPresent(message, forKey: SdkCodingKey("message"))
+        try keyedContainer.encodeIfPresent(variants, forKey: SdkCodingKey("variants"))
+        try keyedContainer.encodeIfPresent(environments, forKey: SdkCodingKey("environments"))
+        try keyedContainer.encodeIfPresent(seed, forKey: SdkCodingKey("seed"))
+        try keyedContainer.encodeIfPresent(description, forKey: SdkCodingKey("description"))
+        try keyedContainer.encodeIfPresent(state, forKey: SdkCodingKey("state"))
+        try keyedContainer.encodeIfPresent(maintainerIds, forKey: SdkCodingKey("maintainerIds"))
+        try keyedContainer.encodeIfPresent(permanent, forKey: SdkCodingKey("permanent"))
+        try keyedContainer.encodeIfPresent(tags, forKey: SdkCodingKey("tags"))
     }
 
     init(options: FeatureFlagsMethods.UpdateFlagOptions) {
-        self.createdBy = options.createdBy
-        self.message = options.message
-        self.variants = options.variants
-        self.environments = options.environments
-        self.seed = options.seed
-        self.description = options.description
-        self.state = options.state
-        self.maintainerIds = options.maintainerIds
-        self.permanent = options.permanent
-        self.tags = options.tags
+        createdBy = options.createdBy
+        message = options.message
+        variants = options.variants
+        environments = options.environments
+        seed = options.seed
+        description = options.description
+        state = options.state
+        maintainerIds = options.maintainerIds
+        permanent = options.permanent
+        tags = options.tags
     }
 }
 
@@ -157,9 +160,9 @@ struct UpdateFlagSettingsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.enabled, forKey: SdkCodingKey("enabled"))
-        try keyedContainer.encodeIfPresent(self.entities, forKey: SdkCodingKey("entities"))
-        try keyedContainer.encodeIfPresent(self.environments, forKey: SdkCodingKey("environments"))
+        try keyedContainer.encodeIfPresent(enabled, forKey: SdkCodingKey("enabled"))
+        try keyedContainer.encodeIfPresent(entities, forKey: SdkCodingKey("entities"))
+        try keyedContainer.encodeIfPresent(environments, forKey: SdkCodingKey("environments"))
     }
 }
 
@@ -173,21 +176,21 @@ struct CreateFlagSegmentRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.slug, forKey: SdkCodingKey("slug"))
-        try keyedContainer.encode(self.label, forKey: SdkCodingKey("label"))
-        try keyedContainer.encode(self.data, forKey: SdkCodingKey("data"))
-        try keyedContainer.encode(self.hint, forKey: SdkCodingKey("hint"))
-        try keyedContainer.encodeIfPresent(self.createdBy, forKey: SdkCodingKey("createdBy"))
-        try keyedContainer.encodeIfPresent(self.description, forKey: SdkCodingKey("description"))
+        try keyedContainer.encode(slug, forKey: SdkCodingKey("slug"))
+        try keyedContainer.encode(label, forKey: SdkCodingKey("label"))
+        try keyedContainer.encode(data, forKey: SdkCodingKey("data"))
+        try keyedContainer.encode(hint, forKey: SdkCodingKey("hint"))
+        try keyedContainer.encodeIfPresent(createdBy, forKey: SdkCodingKey("createdBy"))
+        try keyedContainer.encodeIfPresent(description, forKey: SdkCodingKey("description"))
     }
 
     init(options: FeatureFlagsMethods.CreateFlagSegmentOptions) {
-        self.slug = options.slug
-        self.label = options.label
-        self.data = options.data
-        self.hint = options.hint
-        self.createdBy = options.createdBy
-        self.description = options.description
+        slug = options.slug
+        label = options.label
+        data = options.data
+        hint = options.hint
+        createdBy = options.createdBy
+        description = options.description
     }
 }
 
@@ -200,18 +203,18 @@ struct UpdateFlagSegmentRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.operations, forKey: SdkCodingKey("operations"))
-        try keyedContainer.encodeIfPresent(self.label, forKey: SdkCodingKey("label"))
-        try keyedContainer.encodeIfPresent(self.description, forKey: SdkCodingKey("description"))
-        try keyedContainer.encodeIfPresent(self.data, forKey: SdkCodingKey("data"))
-        try keyedContainer.encodeIfPresent(self.hint, forKey: SdkCodingKey("hint"))
+        try keyedContainer.encodeIfPresent(operations, forKey: SdkCodingKey("operations"))
+        try keyedContainer.encodeIfPresent(label, forKey: SdkCodingKey("label"))
+        try keyedContainer.encodeIfPresent(description, forKey: SdkCodingKey("description"))
+        try keyedContainer.encodeIfPresent(data, forKey: SdkCodingKey("data"))
+        try keyedContainer.encodeIfPresent(hint, forKey: SdkCodingKey("hint"))
     }
 
     init(options: FeatureFlagsMethods.UpdateFlagSegmentOptions) {
-        self.operations = options.operations
-        self.label = options.label
-        self.description = options.description
-        self.data = options.data
-        self.hint = options.hint
+        operations = options.operations
+        label = options.label
+        description = options.description
+        data = options.data
+        hint = options.hint
     }
 }

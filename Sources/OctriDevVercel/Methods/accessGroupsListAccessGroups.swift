@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AccessGroupsMethods {
-    public struct ListAccessGroupsOptions: Codable {
+public extension AccessGroupsMethods {
+    struct ListAccessGroupsOptions: Codable {
         public var projectId: String?
         public var search: String?
         public var membersLimit: Int?
@@ -20,7 +20,8 @@ extension AccessGroupsMethods {
         public init() {}
     }
 
-    /// Lists access groups, with optional filters for project and group name. Use `membersLimit` and `projectsLimit` to control how many associated members and projects are included, and `next` to continue through paginated results.
+    /// Lists access groups, with optional filters for project and group name. Use `membersLimit` and `projectsLimit` to
+    /// control how many associated members and projects are included, and `next` to continue through paginated results.
     ///
     /// List access groups
     ///
@@ -33,7 +34,11 @@ extension AccessGroupsMethods {
     /// - next: Continuation cursor to retrieve the next page of results.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listAccessGroups(config: ClientConfig, options: ListAccessGroupsOptions, requestOptions: RequestOptions? = nil) async throws -> ListAccessGroupsResponse {
+    static func listAccessGroups(
+        config: ClientConfig,
+        options: ListAccessGroupsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListAccessGroupsResponse {
         if let membersLimit = options.membersLimit {
             try validateRange("membersLimit", Double(membersLimit), min: 1, max: 100)
         }
@@ -46,7 +51,7 @@ extension AccessGroupsMethods {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        return try (await sdkRequest("GET", "/v1/access-groups", config: config, query: [
+        return try await (sdkRequest("GET", "/v1/access-groups", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("search", value: options.search),
             SdkQueryParameter("membersLimit", value: options.membersLimit),

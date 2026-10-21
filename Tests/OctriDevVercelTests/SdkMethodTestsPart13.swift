@@ -159,7 +159,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testListConnectorProjectConnectionsListConnectorProjectConnections400ReachesMockAndDecodesResponse() async throws {
+    func testListConnectorProjectConnectionsListConnectorProjectConnections400ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient(statusPrefix: "/__mockStatus/400") else {
             return
         }
@@ -170,12 +171,12 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.listConnectorProjectConnections(
-            connector: decoded("\"connector\""),
-            limit: decoded("1"),
-            cursor: decoded("\"cursor\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-            slug: decoded("\"my-team-url-slug\"")
-        )
+                connector: decoded("\"connector\""),
+                limit: decoded("1"),
+                cursor: decoded("\"cursor\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+                slug: decoded("\"my-team-url-slug\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -240,8 +241,8 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.listConnectors(
-            options: options
-        )
+                options: options
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -492,7 +493,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try FeatureFlagsMethods.ListFlagVersionsOptions(projectIdOrName: decoded("\"Example Name\""), flagIdOrSlug: decoded("\"flagIdOrSlug\""))
+        var options = try FeatureFlagsMethods.ListFlagVersionsOptions(
+            projectIdOrName: decoded("\"Example Name\""),
+            flagIdOrSlug: decoded("\"flagIdOrSlug\"")
+        )
         options.limit = try decoded("20")
         options.cursor = try decoded("\"cursor\"")
         options.environment = try decoded("\"environment\"")

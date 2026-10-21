@@ -3,7 +3,7 @@
 
 import Foundation
 
-// AiGateway domain models
+/// AiGateway domain models
 /// Paged requests only: `source: 'default'` rows per scope type across the whole `scopeType`-filtered list,
 /// independent of the page and of `includeDefaultCovered`.
 public struct AiGatewayBudgetListDefaultCoveredCounts: Codable {
@@ -23,33 +23,51 @@ public struct AiGatewayBudgetListDefaultCoveredCounts: Codable {
         case user
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayBudgetListDefaultCoveredCounts {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.apiKey) else {
-            throw SdkValidationError(field: "api-key", code: "required", message: "Validation failed for 'api-key': value is required")
-        }
-        guard container.contains(.project) else {
-            throw SdkValidationError(field: "project", code: "required", message: "Validation failed for 'project': value is required")
-        }
-        guard container.contains(.team) else {
-            throw SdkValidationError(field: "team", code: "required", message: "Validation failed for 'team': value is required")
-        }
-        guard container.contains(.user) else {
-            throw SdkValidationError(field: "user", code: "required", message: "Validation failed for 'user': value is required")
-        }
-        self.apiKey = try container.sdkDecodeRequired(.apiKey)
-        self.project = try container.sdkDecodeRequired(.project)
-        self.team = try container.sdkDecodeRequired(.team)
-        self.user = try container.sdkDecodeRequired(.user)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayBudgetListDefaultCoveredCounts {
-    public init(apiKey: Double, project: Double, team: Double, user: Double) {
+public extension AiGatewayBudgetListDefaultCoveredCounts {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.apiKey) else {
+            throw SdkValidationError(
+                field: "api-key",
+                code: "required",
+                message: "Validation failed for 'api-key': value is required"
+            )
+        }
+        guard container.contains(.project) else {
+            throw SdkValidationError(
+                field: "project",
+                code: "required",
+                message: "Validation failed for 'project': value is required"
+            )
+        }
+        guard container.contains(.team) else {
+            throw SdkValidationError(
+                field: "team",
+                code: "required",
+                message: "Validation failed for 'team': value is required"
+            )
+        }
+        guard container.contains(.user) else {
+            throw SdkValidationError(
+                field: "user",
+                code: "required",
+                message: "Validation failed for 'user': value is required"
+            )
+        }
+        apiKey = try container.sdkDecodeRequired(.apiKey)
+        project = try container.sdkDecodeRequired(.project)
+        team = try container.sdkDecodeRequired(.team)
+        user = try container.sdkDecodeRequired(.user)
+    }
+}
+
+public extension AiGatewayBudgetListDefaultCoveredCounts {
+    init(apiKey: Double, project: Double, team: Double, user: Double) {
         (self.apiKey, self.project) = (apiKey, project)
         (self.team, self.user) = (team, user)
     }
@@ -72,23 +90,33 @@ public struct AiGatewayBudgetList: Codable {
         case nextCursor
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayBudgetList {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.budgets) else {
-            throw SdkValidationError(field: "budgets", code: "required", message: "Validation failed for 'budgets': value is required")
-        }
-        self.budgets = try container.sdkDecodeRequired(.budgets)
-        self.defaultCoveredCounts = try container.sdkDecodeIfPresent(.defaultCoveredCounts)
-        self.nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayBudgetList {
-    public init(budgets: [AiGatewayBudget], defaultCoveredCounts: AiGatewayBudgetListDefaultCoveredCounts? = nil, nextCursor: String? = nil) {
+public extension AiGatewayBudgetList {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.budgets) else {
+            throw SdkValidationError(
+                field: "budgets",
+                code: "required",
+                message: "Validation failed for 'budgets': value is required"
+            )
+        }
+        budgets = try container.sdkDecodeRequired(.budgets)
+        defaultCoveredCounts = try container.sdkDecodeIfPresent(.defaultCoveredCounts)
+        nextCursor = try container.sdkDecodeIfPresent(.nextCursor)
+    }
+}
+
+public extension AiGatewayBudgetList {
+    init(
+        budgets: [AiGatewayBudget],
+        defaultCoveredCounts: AiGatewayBudgetListDefaultCoveredCounts? = nil,
+        nextCursor: String? = nil
+    ) {
         (self.budgets, self.defaultCoveredCounts) = (budgets, defaultCoveredCounts)
         self.nextCursor = nextCursor
     }

@@ -6,10 +6,14 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    /// Retrieves a named sandbox, its current session, and its exposed routes. Set `resume` to true to create a new sandbox instance from the most recent snapshot when the named sandbox is stopped; it defaults to false. The response indicates whether the sandbox resumed and includes sandbox and session details.
+public extension SandboxesMethods {
+    /// Retrieves a named sandbox, its current session, and its exposed routes. Set `resume` to true to create a new
+    /// sandbox instance from the most recent snapshot when the named sandbox is stopped; it defaults to false. The
+    /// response indicates whether the sandbox resumed and includes sandbox and session details.
     ///
-    /// Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and resume is true, a new sandbox will be created from the most recent snapshot. Returns 404 if the named sandbox or its configuration no longer exists.
+    /// Retrieves a named sandbox by name, including its current sandbox and routes. If the sandbox is stopped and
+    /// resume is true, a new sandbox will be created from the most recent snapshot. Returns 404 if the named sandbox or
+    /// its configuration no longer exists.
     ///
     /// - Parameters:
     /// - name: Name for the sandbox. Must be unique per project and URL-safe
@@ -19,15 +23,31 @@ extension SandboxesMethods {
     ///   creating a new instance from its snapshot. Defaults to false.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getNamedSandbox(config: ClientConfig, name: String, projectId: String? = nil, resume: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetNamedSandboxResponse {
+    static func getNamedSandbox(
+        config: ClientConfig,
+        name: String,
+        projectId: String? = nil,
+        resume: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetNamedSandboxResponse {
         try validateLength("name", name, max: 128)
         try sdkValidatePattern("name", name, sdkPatterna828669d9fe5)
 
-        return try (await sdkRequest("GET", ["/v2/sandboxes/", sdkEncodePathSegment(sdkWireString(name))].joined(), config: config, query: [
-            SdkQueryParameter("projectId", value: projectId),
-            SdkQueryParameter("resume", value: resume),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getNamedSandbox", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v2/sandboxes/", sdkEncodePathSegment(sdkWireString(name))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: projectId),
+                SdkQueryParameter("resume", value: resume),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getNamedSandbox",
+            options: requestOptions
+        )).data
     }
 }

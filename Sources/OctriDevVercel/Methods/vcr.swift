@@ -8,11 +8,24 @@ import Foundation
 #endif
 public enum VcrMethods {}
 
-extension VcrMethods {
-    /// Checks whether the Docker Registry API v2 is supported. Send valid credentials in the `Authorization` header to receive a successful response and proceed with registry requests. Without credentials, the registry returns an authentication challenge for the Docker client.
+public extension VcrMethods {
+    /// Checks whether the Docker Registry API v2 is supported. Send valid credentials in the `Authorization` header to
+    /// receive a successful response and proceed with registry requests. Without credentials, the registry returns an
+    /// authentication challenge for the Docker client.
     ///
-    /// GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
-    public static func getRoot(config: ClientConfig, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try (await sdkRequest("GET", "/v2/", config: config, decoder: .json, operationId: "getRoot", options: requestOptions)).data
+    /// GET /v2/ Docker Registry v2 version check. Returns a 401 challenge when no credentials are provided, prompting
+    /// the Docker client to send auth. With valid credentials, returns 200 so the client can proceed.
+    static func getRoot(
+        config: ClientConfig,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await (sdkRequest(
+            "GET",
+            "/v2/",
+            config: config,
+            decoder: .json,
+            operationId: "getRoot",
+            options: requestOptions
+        )).data
     }
 }

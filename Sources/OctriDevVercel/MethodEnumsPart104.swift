@@ -7,10 +7,14 @@ import Foundation
     import FoundationNetworking
 #endif
 /// Framework slug, when the service has one (omitted otherwise).
-public struct GetProjectsResponseServicesItemFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetProjectsResponseServicesItemFramework: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let actixWeb = GetProjectsResponseServicesItemFramework(rawValue: "actix-web")
     public static let angular = GetProjectsResponseServicesItemFramework(rawValue: "angular")
     public static let ash = GetProjectsResponseServicesItemFramework(rawValue: "ash")
@@ -77,7 +81,8 @@ public struct GetProjectsResponseServicesItemFramework: RawRepresentable, Hashab
     public static let sveltekit = GetProjectsResponseServicesItemFramework(rawValue: "sveltekit")
     public static let sveltekit1 = GetProjectsResponseServicesItemFramework(rawValue: "sveltekit-1")
     public static let tanstackStart = GetProjectsResponseServicesItemFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable = GetProjectsResponseServicesItemFramework(rawValue: "tanstack-start-lovable")
+    public static let tanstackStartLovable =
+        GetProjectsResponseServicesItemFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = GetProjectsResponseServicesItemFramework(rawValue: "umijs")
     public static let vite = GetProjectsResponseServicesItemFramework(rawValue: "vite")
     public static let vitepress = GetProjectsResponseServicesItemFramework(rawValue: "vitepress")
@@ -88,7 +93,7 @@ public struct GetProjectsResponseServicesItemFramework: RawRepresentable, Hashab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -114,21 +119,30 @@ public enum ListLogDrainsResponseVariant1DrainsVariant1ItemProjectAccessVX283ca1
     }
 }
 
-public struct GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let allow = GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "allow")
-    public static let bypass = GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "bypass")
-    public static let challenge = GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "challenge")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let allow =
+        GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "allow")
+    public static let bypass =
+        GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "bypass")
+    public static let challenge =
+        GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "challenge")
     public static let deny = GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "log")
-    public static let rateLimit = GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "rate_limit")
-    public static let redirect = GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "redirect")
+    public static let rateLimit =
+        GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "rate_limit")
+    public static let redirect =
+        GetSecurityFirewallConfigResponseDraftRulesetsVariant0ItemActXa28cc5122e(rawValue: "redirect")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -174,13 +188,16 @@ public enum ListProjectsResponseVariant1ProjectsItemLinkVariant2Type: String, Ca
 public struct GetFirewallConfigResponseCrsSdAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let deny = GetFirewallConfigResponseCrsSdAction(rawValue: "deny")
     public static let log = GetFirewallConfigResponseCrsSdAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

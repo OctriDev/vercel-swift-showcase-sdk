@@ -6,10 +6,12 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    /// Removes a domain from a project. Set `removeRedirects` to also remove project domains that redirect to the domain being deleted.
+public extension ProjectsMethods {
+    /// Removes a domain from a project. Set `removeRedirects` to also remove project domains that redirect to the
+    /// domain being deleted.
     ///
-    /// Remove a domain from a project by passing the domain name and by specifying the project by either passing the project `id` or `name` in the URL.
+    /// Remove a domain from a project by passing the domain name and by specifying the project by either passing the
+    /// project `id` or `name` in the URL.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name
@@ -18,12 +20,34 @@ extension ProjectsMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     /// - removeRedirects: Whether to remove all domains from this project that
     ///   redirect to the domain being removed.
-    public static func removeProjectDomain(config: ClientConfig, idOrName: String, domain: String, teamId: String? = nil, slug: String? = nil, removeRedirects: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
+    static func removeProjectDomain(
+        config: ClientConfig,
+        idOrName: String,
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        removeRedirects: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
         let requestBody = RemoveProjectDomainRequestBody(removeRedirects: removeRedirects)
 
-        return try (await sdkRequest("DELETE", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "removeProjectDomain", options: requestOptions)).data
+        return try await (sdkRequest(
+            "DELETE",
+            [
+                "/v9/projects/",
+                sdkEncodePathSegment(sdkWireString(idOrName)),
+                "/domains/",
+                sdkEncodePathSegment(sdkWireString(domain)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "removeProjectDomain",
+            options: requestOptions
+        )).data
     }
 }

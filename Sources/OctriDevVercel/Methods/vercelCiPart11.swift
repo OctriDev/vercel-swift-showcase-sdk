@@ -6,23 +6,54 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VercelCiMethods {
-    /// Lists the task runs for a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to select the job run, and use `taskRunAttempt` to filter the results by task run attempt. Each result includes task identifiers, the attempt number, creation time, and available start, completion, and deployment binding details.
+public extension VercelCiMethods {
+    /// Lists the task runs for a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to select
+    /// the job run, and use `taskRunAttempt` to filter the results by task run attempt. Each result includes task
+    /// identifiers, the attempt number, creation time, and available start, completion, and deployment binding details.
     ///
     /// List Task Runs
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listVercelCiTaskRuns(config: ClientConfig, invocationId: String, attempt: String, jobDefinitionId: String, runAttempt: String, taskRunAttempt: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiTaskRunsResponse {
-        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(attempt)), "/job-definitions/", sdkEncodePathSegment(sdkWireString(jobDefinitionId)), "/runs/", sdkEncodePathSegment(sdkWireString(runAttempt)), "/task-runs"].joined(), config: config, query: [
-            SdkQueryParameter("taskRunAttempt", value: taskRunAttempt),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listVercelCiTaskRuns", options: requestOptions)).data
+    static func listVercelCiTaskRuns(
+        config: ClientConfig,
+        invocationId: String,
+        attempt: String,
+        jobDefinitionId: String,
+        runAttempt: String,
+        taskRunAttempt: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiTaskRunsResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/vercel-ci/invocations/",
+                sdkEncodePathSegment(sdkWireString(invocationId)),
+                "/attempts/",
+                sdkEncodePathSegment(sdkWireString(attempt)),
+                "/job-definitions/",
+                sdkEncodePathSegment(sdkWireString(jobDefinitionId)),
+                "/runs/",
+                sdkEncodePathSegment(sdkWireString(runAttempt)),
+                "/task-runs",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("taskRunAttempt", value: taskRunAttempt),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listVercelCiTaskRuns",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves log lines for a specific invocation attempt. Use `level` to filter the results to one or more log levels, such as `warn` or `error`. Each returned line includes its level, timestamp, and message.
+    /// Retrieves log lines for a specific invocation attempt. Use `level` to filter the results to one or more log
+    /// levels, such as `warn` or `error`. Each returned line includes its level, timestamp, and message.
     ///
     /// Get Invocation Logs
     ///
@@ -30,15 +61,37 @@ extension VercelCiMethods {
     /// - level: Only return log lines with one of these levels.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getVercelCiInvocationLogs(config: ClientConfig, invocationId: String, attempt: String, level: [GetVercelCiInvocationLogsParameterItem]? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiInvocationLogsResponse {
-        if let level = level {
+    static func getVercelCiInvocationLogs(
+        config: ClientConfig,
+        invocationId: String,
+        attempt: String,
+        level: [GetVercelCiInvocationLogsParameterItem]? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiInvocationLogsResponse {
+        if let level {
             try validateItems("level", level, min: 1)
         }
 
-        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(attempt)), "/logs"].joined(), config: config, query: [
-            SdkQueryParameter("level", values: level, style: "form", explode: true),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getVercelCiInvocationLogs", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            [
+                "/v1/vercel-ci/invocations/",
+                sdkEncodePathSegment(sdkWireString(invocationId)),
+                "/attempts/",
+                sdkEncodePathSegment(sdkWireString(attempt)),
+                "/logs",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("level", values: level, style: "form", explode: true),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getVercelCiInvocationLogs",
+            options: requestOptions
+        )).data
     }
 }

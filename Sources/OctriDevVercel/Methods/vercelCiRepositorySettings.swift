@@ -6,16 +6,26 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VercelCiMethods {
-    /// Retrieves Vercel CI settings for a connected repository. Identify the repository with `provider`, `organizationId`, and `repository`; use `teamId` or `slug` to make the request on behalf of a team. The response includes whether Vercel CI is enabled and the associated timestamps.
+public extension VercelCiMethods {
+    /// Retrieves Vercel CI settings for a connected repository. Identify the repository with `provider`,
+    /// `organizationId`, and `repository`; use `teamId` or `slug` to make the request on behalf of a team. The response
+    /// includes whether Vercel CI is enabled and the associated timestamps.
     ///
     /// Get Repository Settings
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getVercelCiRepositorySettings(config: ClientConfig, provider: GetVercelCiRepositorySettingsParameter, organizationId: String, repository: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiRepositorySettingsResponse {
-        return try (await sdkRequest("GET", "/v1/vercel-ci/repository-settings", config: config, query: [
+    static func getVercelCiRepositorySettings(
+        config: ClientConfig,
+        provider: GetVercelCiRepositorySettingsParameter,
+        organizationId: String,
+        repository: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiRepositorySettingsResponse {
+        try await (sdkRequest("GET", "/v1/vercel-ci/repository-settings", config: config, query: [
             SdkQueryParameter("provider", value: provider),
             SdkQueryParameter("organizationId", value: organizationId),
             SdkQueryParameter("repository", value: repository),
@@ -24,22 +34,34 @@ extension VercelCiMethods {
         ], decoder: .json, operationId: "getVercelCiRepositorySettings", options: requestOptions)).data
     }
 
-    /// Updates the Vercel CI enabled state for a connected repository. Identify the repository with `provider`, `organizationId`, and `repository`, then set `ciEnabled` in the request body. Use `teamId` or `slug` to perform the request on behalf of a team.
+    /// Updates the Vercel CI enabled state for a connected repository. Identify the repository with `provider`,
+    /// `organizationId`, and `repository`, then set `ciEnabled` in the request body. Use `teamId` or `slug` to perform
+    /// the request on behalf of a team.
     ///
     /// Update Repository Settings
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func updateVercelCiRepositorySettings(config: ClientConfig, provider: UpdateVercelCiRepositorySettingsParameter, organizationId: String, repository: String, ciEnabled: Bool, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateVercelCiRepositorySettingsResponse {
+    static func updateVercelCiRepositorySettings(
+        config: ClientConfig,
+        provider: UpdateVercelCiRepositorySettingsParameter,
+        organizationId: String,
+        repository: String,
+        ciEnabled: Bool,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateVercelCiRepositorySettingsResponse {
         let requestBody = UpdateVercelCiRepositorySettingsRequestBody(ciEnabled: ciEnabled)
 
-        return try (await sdkRequest("PATCH", "/v1/vercel-ci/repository-settings", config: config, query: [
+        return try await (sdkRequest("PATCH", "/v1/vercel-ci/repository-settings", config: config, query: [
             SdkQueryParameter("provider", value: provider),
             SdkQueryParameter("organizationId", value: organizationId),
             SdkQueryParameter("repository", value: repository),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "updateVercelCiRepositorySettings", options: requestOptions)).data
+        ], body: requestBody, decoder: .json, operationId: "updateVercelCiRepositorySettings", options: requestOptions))
+            .data
     }
 }

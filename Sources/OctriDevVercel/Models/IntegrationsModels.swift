@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Integrations domain models
+/// Integrations domain models
 public indirect enum CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation {
     case createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(
         CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286
@@ -12,15 +12,21 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreCapabilitiesSecret
 }
 
 extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -29,9 +35,11 @@ extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation {
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286.self
         ) {
-            return             .createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(value)
+            return .createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
         return nil
     }
 }
@@ -40,7 +48,8 @@ extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(value): try container.encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286(value): try container
+            .encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         }
     }
@@ -54,15 +63,21 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreProductCapabilitie
 }
 
 extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c1908a: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c1908a")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c1908a"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -71,9 +86,11 @@ extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c190
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX98f9e6b8a6.self
         ) {
-            return             .createIntegrationStoreDirectResponseStoreProductCapabilitiesSx98f9e6b8a6(value)
+            return .createIntegrationStoreDirectResponseStoreProductCapabilitiesSx98f9e6b8a6(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
         return nil
     }
 }
@@ -82,7 +99,8 @@ extension CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSX1e94c190
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreProductCapabilitiesSx98f9e6b8a6(value): try container.encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreProductCapabilitiesSx98f9e6b8a6(value): try container
+            .encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         }
     }
@@ -96,15 +114,21 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreProductIntegration
 }
 
 extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053ec: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053ec")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053ec"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -113,9 +137,11 @@ extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488.self
         ) {
-            return             .createIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488(value)
+            return .createIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
         return nil
     }
 }
@@ -124,7 +150,8 @@ extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaXfd0e7053
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488(value): try container.encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488(value): try container
+            .encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         }
     }
@@ -137,18 +164,26 @@ public indirect enum GetConfigurationResponse {
 }
 
 extension GetConfigurationResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConfigurationResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetConfigurationResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -169,9 +204,18 @@ extension GetConfigurationResponse {
 
 extension GetConfigurationResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(GetConfigurationResponseVariant0.self) { return .getConfigurationResponseVariant0(value) }
-        if let value = try? container.decode(GetConfigurationResponseVariant1.self) { return .getConfigurationResponseVariant1(value) }
-        if let value = try? container.decode(GetConfigurationResponseVariant2.self) { return .getConfigurationResponseVariant2(value) }
+        if let value = try? container
+            .decode(GetConfigurationResponseVariant0.self) {
+            return .getConfigurationResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(GetConfigurationResponseVariant1.self) {
+            return .getConfigurationResponseVariant1(value)
+        }
+        if let value = try? container
+            .decode(GetConfigurationResponseVariant2.self) {
+            return .getConfigurationResponseVariant2(value)
+        }
         return nil
     }
 }
@@ -196,22 +240,28 @@ public struct CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5
         case customRotationWarning
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.maxDelayHours) else {
-            throw SdkValidationError(field: "maxDelayHours", code: "required", message: "Validation failed for 'maxDelayHours': value is required")
-        }
-        self.maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
-        self.customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286 {
-    public init(maxDelayHours: Double, customRotationWarning: String? = nil) {
+public extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.maxDelayHours) else {
+            throw SdkValidationError(
+                field: "maxDelayHours",
+                code: "required",
+                message: "Validation failed for 'maxDelayHours': value is required"
+            )
+        }
+        maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
+        customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
+    }
+}
+
+public extension CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRoX35d5bf3286 {
+    init(maxDelayHours: Double, customRotationWarning: String? = nil) {
         (self.maxDelayHours, self.customRotationWarning) = (maxDelayHours, customRotationWarning)
     }
 }
@@ -229,27 +279,42 @@ public struct GetConfigurationResponseVariant0Notification: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationResponseVariant0Notification {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.level) else {
-            throw SdkValidationError(field: "level", code: "required", message: "Validation failed for 'level': value is required")
-        }
-        guard container.contains(.title) else {
-            throw SdkValidationError(field: "title", code: "required", message: "Validation failed for 'title': value is required")
-        }
-        self.level = try container.sdkDecodeRequired(.level)
-        self.title = try container.sdkDecodeRequired(.title)
-        self.href = try container.sdkDecodeIfPresent(.href)
-        self.message = try container.sdkDecodeIfPresent(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationResponseVariant0Notification {
-    public init(level: GetConfigurationResponseVariant0NotificationLevel, title: String, href: String? = nil, message: String? = nil) {
+public extension GetConfigurationResponseVariant0Notification {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.level) else {
+            throw SdkValidationError(
+                field: "level",
+                code: "required",
+                message: "Validation failed for 'level': value is required"
+            )
+        }
+        guard container.contains(.title) else {
+            throw SdkValidationError(
+                field: "title",
+                code: "required",
+                message: "Validation failed for 'title': value is required"
+            )
+        }
+        level = try container.sdkDecodeRequired(.level)
+        title = try container.sdkDecodeRequired(.title)
+        href = try container.sdkDecodeIfPresent(.href)
+        message = try container.sdkDecodeIfPresent(.message)
+    }
+}
+
+public extension GetConfigurationResponseVariant0Notification {
+    init(
+        level: GetConfigurationResponseVariant0NotificationLevel,
+        title: String,
+        href: String? = nil,
+        message: String? = nil
+    ) {
         (self.level, self.title) = (level, title)
         (self.href, self.message) = (href, message)
     }
@@ -264,22 +329,28 @@ public struct CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b0
         case customRotationWarning
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.maxDelayHours) else {
-            throw SdkValidationError(field: "maxDelayHours", code: "required", message: "Validation failed for 'maxDelayHours': value is required")
-        }
-        self.maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
-        self.customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488 {
-    public init(maxDelayHours: Double, customRotationWarning: String? = nil) {
+public extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.maxDelayHours) else {
+            throw SdkValidationError(
+                field: "maxDelayHours",
+                code: "required",
+                message: "Validation failed for 'maxDelayHours': value is required"
+            )
+        }
+        maxDelayHours = try container.sdkDecodeRequired(.maxDelayHours)
+        customRotationWarning = try container.sdkDecodeIfPresent(.customRotationWarning)
+    }
+}
+
+public extension CreateIntegrationStoreDirectResponseStoreProductIntegrationCaX09b092b488 {
+    init(maxDelayHours: Double, customRotationWarning: String? = nil) {
         (self.maxDelayHours, self.customRotationWarning) = (maxDelayHours, customRotationWarning)
     }
 }
@@ -379,44 +450,74 @@ public struct GetConfigurationResponseVariant2: Codable {
     }
 
     init() {
-        (self.acceptedPoliciesInheritedFromInstallationId, self.completedAt, self.createdAt, self.customerDeleteRequestedAt, self.deletedAt) = (nil, nil, nil, nil, nil)
-        (self.deleteRequestedAt, self.disabledAt, self.disabledReason, self.externalId, self.id) = (nil, nil, nil, nil, nil)
-        (self.installationType, self.integrationId, self.ownerId, self.projects, self.scopes) = (nil, nil, nil, nil, nil)
-        (self.slug, self.source, self.status, self.teamId, self.type) = (nil, nil, nil, nil, nil)
-        (self.updatedAt, self.userId) = (nil, nil)
+        (acceptedPoliciesInheritedFromInstallationId, completedAt, createdAt, customerDeleteRequestedAt, deletedAt) = (
+            nil,
+            nil,
+            nil,
+            nil,
+            nil
+        )
+        (deleteRequestedAt, disabledAt, disabledReason, externalId, id) = (nil, nil, nil, nil, nil)
+        (installationType, integrationId, ownerId, projects, scopes) = (nil, nil, nil, nil, nil)
+        (slug, source, status, teamId, type) = (nil, nil, nil, nil, nil)
+        (updatedAt, userId) = (nil, nil)
     }
 }
 
-extension GetConfigurationResponseVariant2 {
-    public init(from decoder: Decoder) throws {
+public extension GetConfigurationResponseVariant2 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.acceptedPoliciesInheritedFromInstallationId = try container.sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
-        self.completedAt = try container.sdkDecodeIfPresent(.completedAt)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
-        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        self.deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
-        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        self.disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
-        self.externalId = try container.sdkDecodeIfPresent(.externalId)
-        self.id = try container.sdkDecodeIfPresent(.id)
-        self.installationType = try container.sdkDecodeIfPresent(.installationType)
-        self.integrationId = try container.sdkDecodeIfPresent(.integrationId)
-        self.ownerId = try container.sdkDecodeIfPresent(.ownerId)
-        self.projects = try container.sdkDecodeIfPresent(.projects)
-        self.scopes = try container.sdkDecodeIfPresent(.scopes)
-        self.slug = try container.sdkDecodeIfPresent(.slug)
-        self.source = try container.sdkDecodeIfPresent(.source)
-        self.status = try container.sdkDecodeIfPresent(.status)
-        self.teamId = try container.sdkDecodeIfPresent(.teamId)
-        self.type = try container.sdkDecodeIfPresent(.type)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        self.userId = try container.sdkDecodeIfPresent(.userId)
+        acceptedPoliciesInheritedFromInstallationId = try container
+            .sdkDecodeIfPresent(.acceptedPoliciesInheritedFromInstallationId)
+        completedAt = try container.sdkDecodeIfPresent(.completedAt)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        customerDeleteRequestedAt = try container.sdkDecodeIfPresent(.customerDeleteRequestedAt)
+        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        deleteRequestedAt = try container.sdkDecodeIfPresent(.deleteRequestedAt)
+        disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
+        disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
+        externalId = try container.sdkDecodeIfPresent(.externalId)
+        id = try container.sdkDecodeIfPresent(.id)
+        installationType = try container.sdkDecodeIfPresent(.installationType)
+        integrationId = try container.sdkDecodeIfPresent(.integrationId)
+        ownerId = try container.sdkDecodeIfPresent(.ownerId)
+        projects = try container.sdkDecodeIfPresent(.projects)
+        scopes = try container.sdkDecodeIfPresent(.scopes)
+        slug = try container.sdkDecodeIfPresent(.slug)
+        source = try container.sdkDecodeIfPresent(.source)
+        status = try container.sdkDecodeIfPresent(.status)
+        teamId = try container.sdkDecodeIfPresent(.teamId)
+        type = try container.sdkDecodeIfPresent(.type)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        userId = try container.sdkDecodeIfPresent(.userId)
     }
 }
 
-extension GetConfigurationResponseVariant2 {
-    public init(acceptedPoliciesInheritedFromInstallationId: String? = nil, completedAt: Double? = nil, createdAt: Double? = nil, customerDeleteRequestedAt: Double? = nil, deletedAt: Double? = nil, deleteRequestedAt: Double? = nil, disabledAt: Double? = nil, disabledReason: GetConfigurationResponseVariant2DisabledReason? = nil, externalId: String? = nil, id: String? = nil, installationType: GetConfigurationResponseVariant2InstallationType? = nil, integrationId: String? = nil, ownerId: String? = nil, projects: [String]? = nil, scopes: [String]? = nil, slug: String? = nil, source: GetConfigurationResponseVariant2Source? = nil, status: GetConfigurationResponseVariant2Status? = nil, teamId: String? = nil, type: GetConfigurationResponseVariant2Type? = nil, updatedAt: Double? = nil, userId: String? = nil) {
+public extension GetConfigurationResponseVariant2 {
+    init(
+        acceptedPoliciesInheritedFromInstallationId: String? = nil,
+        completedAt: Double? = nil,
+        createdAt: Double? = nil,
+        customerDeleteRequestedAt: Double? = nil,
+        deletedAt: Double? = nil,
+        deleteRequestedAt: Double? = nil,
+        disabledAt: Double? = nil,
+        disabledReason: GetConfigurationResponseVariant2DisabledReason? = nil,
+        externalId: String? = nil,
+        id: String? = nil,
+        installationType: GetConfigurationResponseVariant2InstallationType? = nil,
+        integrationId: String? = nil,
+        ownerId: String? = nil,
+        projects: [String]? = nil,
+        scopes: [String]? = nil,
+        slug: String? = nil,
+        source: GetConfigurationResponseVariant2Source? = nil,
+        status: GetConfigurationResponseVariant2Status? = nil,
+        teamId: String? = nil,
+        type: GetConfigurationResponseVariant2Type? = nil,
+        updatedAt: Double? = nil,
+        userId: String? = nil
+    ) {
         self.init()
         self.acceptedPoliciesInheritedFromInstallationId = acceptedPoliciesInheritedFromInstallationId
         (self.completedAt, self.createdAt) = (completedAt, createdAt)

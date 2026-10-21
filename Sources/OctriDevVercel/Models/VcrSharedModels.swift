@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Vcr domain models
+/// Vcr domain models
 /// A team's access grant to a Vercel Container Registry repository.
 public struct VcrRepositoryPermission: Codable {
     /// ISO 8601 timestamp of when the permission was created.
@@ -26,33 +26,51 @@ public struct VcrRepositoryPermission: Codable {
         case teamSlug
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension VcrRepositoryPermission {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.repositoryId) else {
-            throw SdkValidationError(field: "repositoryId", code: "required", message: "Validation failed for 'repositoryId': value is required")
-        }
-        guard container.contains(.teamId) else {
-            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
-        }
-        guard container.contains(.teamSlug) else {
-            throw SdkValidationError(field: "teamSlug", code: "required", message: "Validation failed for 'teamSlug': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.repositoryId = try container.sdkDecodeRequired(.repositoryId)
-        self.teamId = try container.sdkDecodeRequired(.teamId)
-        self.teamSlug = try container.sdkDecodeRequired(.teamSlug)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension VcrRepositoryPermission {
-    public init(createdAt: String, repositoryId: String, teamId: String, teamSlug: String) {
+public extension VcrRepositoryPermission {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.repositoryId) else {
+            throw SdkValidationError(
+                field: "repositoryId",
+                code: "required",
+                message: "Validation failed for 'repositoryId': value is required"
+            )
+        }
+        guard container.contains(.teamId) else {
+            throw SdkValidationError(
+                field: "teamId",
+                code: "required",
+                message: "Validation failed for 'teamId': value is required"
+            )
+        }
+        guard container.contains(.teamSlug) else {
+            throw SdkValidationError(
+                field: "teamSlug",
+                code: "required",
+                message: "Validation failed for 'teamSlug': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        repositoryId = try container.sdkDecodeRequired(.repositoryId)
+        teamId = try container.sdkDecodeRequired(.teamId)
+        teamSlug = try container.sdkDecodeRequired(.teamSlug)
+    }
+}
+
+public extension VcrRepositoryPermission {
+    init(createdAt: String, repositoryId: String, teamId: String, teamSlug: String) {
         (self.createdAt, self.repositoryId) = (createdAt, repositoryId)
         (self.teamId, self.teamSlug) = (teamId, teamSlug)
     }
@@ -88,43 +106,69 @@ public struct VcrRepository: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension VcrRepository {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        guard container.contains(.`public`) else {
-            throw SdkValidationError(field: "public", code: "required", message: "Validation failed for 'public': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.`public` = try container.sdkDecodeRequired(.`public`)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension VcrRepository {
-    public init(createdAt: String, id: String, name: String, projectId: String, `public`: Bool, updatedAt: String) {
+public extension VcrRepository {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
+        }
+        guard container.contains(.public) else {
+            throw SdkValidationError(
+                field: "public",
+                code: "required",
+                message: "Validation failed for 'public': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        self.public = try container.sdkDecodeRequired(.public)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+    }
+}
+
+public extension VcrRepository {
+    init(createdAt: String, id: String, name: String, projectId: String, public: Bool, updatedAt: String) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.name, self.projectId) = (name, projectId)
-        (self.`public`, self.updatedAt) = (`public`, updatedAt)
+        (self.public, self.updatedAt) = (`public`, updatedAt)
     }
 }

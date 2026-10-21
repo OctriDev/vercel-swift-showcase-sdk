@@ -3,32 +3,40 @@
 
 import Foundation
 
-// Sandboxes domain models
+/// Sandboxes domain models
 public indirect enum UpdateSandboxRequestKeepLastSnapshots {
     case stringValue(String)
     case updateSandboxRequestKeepLastSnapshotsVariant1(UpdateSandboxRequestKeepLastSnapshotsVariant1)
 }
 
 extension UpdateSandboxRequestKeepLastSnapshots: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateSandboxRequestKeepLastSnapshots")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateSandboxRequestKeepLastSnapshots"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateSandboxRequestKeepLastSnapshots {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         if let value = try? container.decode(
             UpdateSandboxRequestKeepLastSnapshotsVariant1.self
         ) {
-            return             .updateSandboxRequestKeepLastSnapshotsVariant1(value)
+            return .updateSandboxRequestKeepLastSnapshotsVariant1(value)
         }
         return nil
     }
@@ -50,27 +58,41 @@ public indirect enum UpdateSandboxRequestNetworkPolicy {
 }
 
 extension UpdateSandboxRequestNetworkPolicy: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateSandboxRequestNetworkPolicy")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateSandboxRequestNetworkPolicy"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateSandboxRequestNetworkPolicy {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateSandboxRequestNetworkPolicyVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateSandboxRequestNetworkPolicyVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateSandboxRequestNetworkPolicyVariant0(value)
         }
-        if let value = try? container.decode(UpdateSandboxRequestNetworkPolicyVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateSandboxRequestNetworkPolicyVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateSandboxRequestNetworkPolicyVariant1(value)
         }
         return nil
@@ -82,12 +104,12 @@ extension UpdateSandboxRequestNetworkPolicy {
         if let value = try? container.decode(
             UpdateSandboxRequestNetworkPolicyVariant0.self
         ) {
-            return             .updateSandboxRequestNetworkPolicyVariant0(value)
+            return .updateSandboxRequestNetworkPolicyVariant0(value)
         }
         if let value = try? container.decode(
             UpdateSandboxRequestNetworkPolicyVariant1.self
         ) {
-            return             .updateSandboxRequestNetworkPolicyVariant1(value)
+            return .updateSandboxRequestNetworkPolicyVariant1(value)
         }
         return nil
     }
@@ -109,18 +131,26 @@ public indirect enum UpdateSandboxResponse {
 }
 
 extension UpdateSandboxResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateSandboxResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateSandboxResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -138,8 +168,14 @@ extension UpdateSandboxResponse {
 
 extension UpdateSandboxResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UpdateSandboxResponseVariant0.self) { return .updateSandboxResponseVariant0(value) }
-        if let value = try? container.decode(UpdateSandboxResponseVariant1.self) { return .updateSandboxResponseVariant1(value) }
+        if let value = try? container
+            .decode(UpdateSandboxResponseVariant0.self) {
+            return .updateSandboxResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(UpdateSandboxResponseVariant1.self) {
+            return .updateSandboxResponseVariant1(value)
+        }
         return nil
     }
 }
@@ -170,33 +206,51 @@ public struct UpdateSandboxResponseVariant1: Codable {
         case session
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateSandboxResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.resumed) else {
-            throw SdkValidationError(field: "resumed", code: "required", message: "Validation failed for 'resumed': value is required")
-        }
-        guard container.contains(.routes) else {
-            throw SdkValidationError(field: "routes", code: "required", message: "Validation failed for 'routes': value is required")
-        }
-        guard container.contains(.sandbox) else {
-            throw SdkValidationError(field: "sandbox", code: "required", message: "Validation failed for 'sandbox': value is required")
-        }
-        guard container.contains(.session) else {
-            throw SdkValidationError(field: "session", code: "required", message: "Validation failed for 'session': value is required")
-        }
-        self.resumed = try container.sdkDecodeRequired(.resumed)
-        self.routes = try container.sdkDecodeRequired(.routes)
-        self.sandbox = try container.sdkDecodeRequired(.sandbox)
-        self.session = try container.sdkDecodeRequired(.session)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateSandboxResponseVariant1 {
-    public init(resumed: Bool, routes: [SandboxPublicRoute], sandbox: NamedSandbox, session: Session) {
+public extension UpdateSandboxResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.resumed) else {
+            throw SdkValidationError(
+                field: "resumed",
+                code: "required",
+                message: "Validation failed for 'resumed': value is required"
+            )
+        }
+        guard container.contains(.routes) else {
+            throw SdkValidationError(
+                field: "routes",
+                code: "required",
+                message: "Validation failed for 'routes': value is required"
+            )
+        }
+        guard container.contains(.sandbox) else {
+            throw SdkValidationError(
+                field: "sandbox",
+                code: "required",
+                message: "Validation failed for 'sandbox': value is required"
+            )
+        }
+        guard container.contains(.session) else {
+            throw SdkValidationError(
+                field: "session",
+                code: "required",
+                message: "Validation failed for 'session': value is required"
+            )
+        }
+        resumed = try container.sdkDecodeRequired(.resumed)
+        routes = try container.sdkDecodeRequired(.routes)
+        sandbox = try container.sdkDecodeRequired(.sandbox)
+        session = try container.sdkDecodeRequired(.session)
+    }
+}
+
+public extension UpdateSandboxResponseVariant1 {
+    init(resumed: Bool, routes: [SandboxPublicRoute], sandbox: NamedSandbox, session: Session) {
         (self.resumed, self.routes) = (resumed, routes)
         (self.sandbox, self.session) = (sandbox, session)
     }
@@ -214,20 +268,23 @@ public struct UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX29a3
     }
 
     init() {
-        (self.key, self.value) = (nil, nil)
+        (key, value) = (nil, nil)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX29a3a38f03 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX29a3a38f03 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.key = try container.sdkDecodeIfPresent(.key)
-        self.value = try container.sdkDecodeIfPresent(.value)
+        key = try container.sdkDecodeIfPresent(.key)
+        value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX29a3a38f03 {
-    public init(key: UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXeee6912d12? = nil, value: UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX7b8599b007? = nil) {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX29a3a38f03 {
+    init(
+        key: UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXeee6912d12? = nil,
+        value: UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItX7b8599b007? = nil
+    ) {
         self.init()
         (self.key, self.value) = (key, value)
     }
@@ -265,25 +322,37 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0: Codable {
         case injectionRules
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateSandboxRequestNetworkPolicyVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.mode) else {
-            throw SdkValidationError(field: "mode", code: "required", message: "Validation failed for 'mode': value is required")
-        }
-        self.mode = try container.sdkDecodeRequired(.mode)
-        self.allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
-        self.allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
-        self.deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
-        self.injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant0 {
-    public init(mode: UpdateSandboxRequestNetworkPolicyVariant0Mode, allowedDomains: [String]? = nil, allowedCidrs: [String]? = nil, deniedCidrs: [String]? = nil, injectionRules: [UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem]? = nil) {
+public extension UpdateSandboxRequestNetworkPolicyVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.mode) else {
+            throw SdkValidationError(
+                field: "mode",
+                code: "required",
+                message: "Validation failed for 'mode': value is required"
+            )
+        }
+        mode = try container.sdkDecodeRequired(.mode)
+        allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
+        allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
+        deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
+        injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
+    }
+}
+
+public extension UpdateSandboxRequestNetworkPolicyVariant0 {
+    init(
+        mode: UpdateSandboxRequestNetworkPolicyVariant0Mode,
+        allowedDomains: [String]? = nil,
+        allowedCidrs: [String]? = nil,
+        deniedCidrs: [String]? = nil,
+        injectionRules: [UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem]? = nil
+    ) {
         (self.mode, self.allowedDomains) = (mode, allowedDomains)
         (self.allowedCidrs, self.deniedCidrs) = (allowedCidrs, deniedCidrs)
         self.injectionRules = injectionRules
@@ -304,20 +373,20 @@ public struct UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItemMat
     }
 
     init() {
-        (self.exact, self.startsWith) = (nil, nil)
+        (exact, startsWith) = (nil, nil)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItemMatchPath {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItemMatchPath {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.exact = try container.sdkDecodeIfPresent(.exact)
-        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        exact = try container.sdkDecodeIfPresent(.exact)
+        startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItemMatchPath {
-    public init(exact: String? = nil, startsWith: String? = nil) {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItemMatchPath {
+    init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -340,26 +409,40 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem: Codab
         case match
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.domain) else {
-            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
-        }
-        guard container.contains(.headers) else {
-            throw SdkValidationError(field: "headers", code: "required", message: "Validation failed for 'headers': value is required")
-        }
-        self.domain = try container.sdkDecodeRequired(.domain)
-        self.headers = try container.sdkDecodeRequired(.headers)
-        self.match = try container.sdkDecodeIfPresent(.match)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem {
-    public init(domain: String, headers: [String: String], match: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatch? = nil) {
+public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.domain) else {
+            throw SdkValidationError(
+                field: "domain",
+                code: "required",
+                message: "Validation failed for 'domain': value is required"
+            )
+        }
+        guard container.contains(.headers) else {
+            throw SdkValidationError(
+                field: "headers",
+                code: "required",
+                message: "Validation failed for 'headers': value is required"
+            )
+        }
+        domain = try container.sdkDecodeRequired(.domain)
+        headers = try container.sdkDecodeRequired(.headers)
+        match = try container.sdkDecodeIfPresent(.match)
+    }
+}
+
+public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItem {
+    init(
+        domain: String,
+        headers: [String: String],
+        match: UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMatch? = nil
+    ) {
         (self.domain, self.headers) = (domain, headers)
         self.match = match
     }
@@ -379,20 +462,20 @@ public struct UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXeee6
     }
 
     init() {
-        (self.exact, self.startsWith) = (nil, nil)
+        (exact, startsWith) = (nil, nil)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXeee6912d12 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXeee6912d12 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.exact = try container.sdkDecodeIfPresent(.exact)
-        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        exact = try container.sdkDecodeIfPresent(.exact)
+        startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXeee6912d12 {
-    public init(exact: String? = nil, startsWith: String? = nil) {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXeee6912d12 {
+    init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -412,20 +495,20 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX0f7a
     }
 
     init() {
-        (self.exact, self.startsWith) = (nil, nil)
+        (exact, startsWith) = (nil, nil)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX0f7ae38277 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX0f7ae38277 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.exact = try container.sdkDecodeIfPresent(.exact)
-        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        exact = try container.sdkDecodeIfPresent(.exact)
+        startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX0f7ae38277 {
-    public init(exact: String? = nil, startsWith: String? = nil) {
+public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX0f7ae38277 {
+    init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -445,20 +528,20 @@ public struct UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX84f3
     }
 
     init() {
-        (self.exact, self.startsWith) = (nil, nil)
+        (exact, startsWith) = (nil, nil)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX84f32877e1 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX84f32877e1 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.exact = try container.sdkDecodeIfPresent(.exact)
-        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        exact = try container.sdkDecodeIfPresent(.exact)
+        startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX84f32877e1 {
-    public init(exact: String? = nil, startsWith: String? = nil) {
+public extension UpdateSandboxRequestNetworkPolicyVariant0InjectionRulesItemMaX84f32877e1 {
+    init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -478,20 +561,20 @@ public struct UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXc806
     }
 
     init() {
-        (self.exact, self.startsWith) = (nil, nil)
+        (exact, startsWith) = (nil, nil)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXc8063ac59a {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXc8063ac59a {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.exact = try container.sdkDecodeIfPresent(.exact)
-        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        exact = try container.sdkDecodeIfPresent(.exact)
+        startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXc8063ac59a {
-    public init(exact: String? = nil, startsWith: String? = nil) {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXc8063ac59a {
+    init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -505,19 +588,19 @@ public struct UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXf7f6
     }
 
     init() {
-        self.headers = nil
+        headers = nil
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXf7f6361470 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXf7f6361470 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.headers = try container.sdkDecodeIfPresent(.headers)
+        headers = try container.sdkDecodeIfPresent(.headers)
     }
 }
 
-extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXf7f6361470 {
-    public init(headers: [String: String]? = nil) {
+public extension UpdateSandboxRequestNetworkPolicyVariant1AllowVariant1ValueItXf7f6361470 {
+    init(headers: [String: String]? = nil) {
         self.init()
         self.headers = headers
     }

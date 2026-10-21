@@ -6,30 +6,45 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AiGatewayMethods {
-    /// Updates a routing rule's enabled state, action, or description for the authenticated team. Use `teamId` or `slug` to select the team context when needed. A 200 response returns the updated rule and its current configuration.
+public extension AiGatewayMethods {
+    /// Updates a routing rule's enabled state, action, or description for the authenticated team. Use `teamId` or
+    /// `slug` to select the team context when needed. A 200 response returns the updated rule and its current
+    /// configuration.
     ///
     /// Update a routing rule (enabled, action, or description)
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func updateAiGatewayRule(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AiGatewayRule {
-        return try (await sdkRequest("PATCH", "/ai-gateway/rules", config: config, query: [
+    static func updateAiGatewayRule(
+        config: ClientConfig,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AiGatewayRule {
+        try await (sdkRequest("PATCH", "/ai-gateway/rules", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "updateAiGatewayRule", options: requestOptions)).data
     }
 
-    /// Deletes a routing rule from the authenticated team's active rules; deletion is soft, so the rule is not necessarily permanently removed. Supply the rule's `ruleId` and use `teamId` or `slug` to select the team context when needed.
+    /// Deletes a routing rule from the authenticated team's active rules; deletion is soft, so the rule is not
+    /// necessarily permanently removed. Supply the rule's `ruleId` and use `teamId` or `slug` to select the team
+    /// context when needed.
     ///
     /// Delete a routing rule (soft delete)
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteAiGatewayRule(config: ClientConfig, ruleId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", "/ai-gateway/rules", config: config, query: [
+    static func deleteAiGatewayRule(
+        config: ClientConfig,
+        ruleId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest("DELETE", "/ai-gateway/rules", config: config, query: [
             SdkQueryParameter("ruleId", value: ruleId),
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),

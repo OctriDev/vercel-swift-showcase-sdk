@@ -3,56 +3,85 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 /// Required enumerated value serialized in the `permissions[]` wire field.
-public struct UserEventPayloadVariant66PermissionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UserEventPayloadVariant66PermissionsItem: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let manageSpeedInsights = UserEventPayloadVariant66PermissionsItem(rawValue: "manage:speed-insights")
     public static let manageWebAnalytics = UserEventPayloadVariant66PermissionsItem(rawValue: "manage:web-analytics")
-    public static let readWriteAiGatewayApiKey = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-api-key")
-    public static let readWriteAiGatewayBudgets = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-budgets")
-    public static let readWriteAiGatewayGuardrails = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-guardrails")
-    public static let readWriteAiGatewayPrivateModels = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-private-models")
-    public static let readWriteAiGatewayRules = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-rules")
-    public static let readWriteAiGatewayVirtualModelConfigs = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-virtual-model-configs")
+    public static let readWriteAiGatewayApiKey =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-api-key")
+    public static let readWriteAiGatewayBudgets =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-budgets")
+    public static let readWriteAiGatewayGuardrails =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-guardrails")
+    public static let readWriteAiGatewayPrivateModels =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-private-models")
+    public static let readWriteAiGatewayRules =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-rules")
+    public static let readWriteAiGatewayVirtualModelConfigs =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:ai-gateway-virtual-model-configs")
     public static let readWriteAlerts = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:alerts")
-    public static let readWriteAutomations = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:automations")
+    public static let readWriteAutomations =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:automations")
     public static let readWriteBilling = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:billing")
     public static let readWriteBlob = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:blob")
     public static let readWriteConnect = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:connect")
     public static let readWriteDeployment = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:deployment")
     public static let readWriteDomain = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:domain")
-    public static let readWriteDomainRegistrar = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:domain-registrar")
+    public static let readWriteDomainRegistrar =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:domain-registrar")
     public static let readWriteDrains = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:drains")
     public static let readWriteEdgeCache = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:edge-cache")
     public static let readWriteEdgeConfig = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:edge-config")
     public static let readWriteFirewall = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:firewall")
-    public static let readWriteIntegrationConfiguration = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:integration-configuration")
-    public static let readWriteIntegrationResource = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:integration-resource")
+    public static let readWriteIntegrationConfiguration =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:integration-configuration")
+    public static let readWriteIntegrationResource =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:integration-resource")
     public static let readWriteKms = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:kms")
-    public static let readWriteMessageboard = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:messageboard")
+    public static let readWriteMessageboard =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:messageboard")
     public static let readWriteProject = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project")
-    public static let readWriteProjectEnvVars = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-env-vars")
-    public static let readWriteProjectEnvVarsNonProduction = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-env-vars-non-production")
-    public static let readWriteProjectEnvVarsProduction = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-env-vars-production")
-    public static let readWriteProjectFlagsNonProduction = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-flags-non-production")
-    public static let readWriteProjectFlagsProduction = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-flags-production")
-    public static let readWriteProjectMembers = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-members")
-    public static let readWriteProjectProtectionBypass = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-protection-bypass")
-    public static let readWriteProjectTrustedSources = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-trusted-sources")
-    public static let readWriteRemoteCache = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:remote-cache")
+    public static let readWriteProjectEnvVars =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-env-vars")
+    public static let readWriteProjectEnvVarsNonProduction =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-env-vars-non-production")
+    public static let readWriteProjectEnvVarsProduction =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-env-vars-production")
+    public static let readWriteProjectFlagsNonProduction =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-flags-non-production")
+    public static let readWriteProjectFlagsProduction =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-flags-production")
+    public static let readWriteProjectMembers =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-members")
+    public static let readWriteProjectProtectionBypass =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-protection-bypass")
+    public static let readWriteProjectTrustedSources =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:project-trusted-sources")
+    public static let readWriteRemoteCache =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:remote-cache")
     public static let readWriteSandbox = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:sandbox")
     public static let readWriteSchedule = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:schedule")
-    public static let readWriteTeamMembers = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:team-members")
+    public static let readWriteTeamMembers =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:team-members")
     public static let readWriteVcr = UserEventPayloadVariant66PermissionsItem(rawValue: "read-write:vcr")
     public static let readAccessGroup = UserEventPayloadVariant66PermissionsItem(rawValue: "read:access-group")
-    public static let readAiGatewayBudgets = UserEventPayloadVariant66PermissionsItem(rawValue: "read:ai-gateway-budgets")
-    public static let readAiGatewayGuardrails = UserEventPayloadVariant66PermissionsItem(rawValue: "read:ai-gateway-guardrails")
-    public static let readAiGatewayPrivateModels = UserEventPayloadVariant66PermissionsItem(rawValue: "read:ai-gateway-private-models")
+    public static let readAiGatewayBudgets =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read:ai-gateway-budgets")
+    public static let readAiGatewayGuardrails =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read:ai-gateway-guardrails")
+    public static let readAiGatewayPrivateModels =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read:ai-gateway-private-models")
     public static let readAiGatewayRules = UserEventPayloadVariant66PermissionsItem(rawValue: "read:ai-gateway-rules")
-    public static let readAiGatewayVirtualModelConfigs = UserEventPayloadVariant66PermissionsItem(rawValue: "read:ai-gateway-virtual-model-configs")
+    public static let readAiGatewayVirtualModelConfigs =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read:ai-gateway-virtual-model-configs")
     public static let readAlerts = UserEventPayloadVariant66PermissionsItem(rawValue: "read:alerts")
     public static let readAuditLog = UserEventPayloadVariant66PermissionsItem(rawValue: "read:audit-log")
     public static let readAutomations = UserEventPayloadVariant66PermissionsItem(rawValue: "read:automations")
@@ -62,17 +91,22 @@ public struct UserEventPayloadVariant66PermissionsItem: RawRepresentable, Hashab
     public static let readDomain = UserEventPayloadVariant66PermissionsItem(rawValue: "read:domain")
     public static let readEvent = UserEventPayloadVariant66PermissionsItem(rawValue: "read:event")
     public static let readFirewall = UserEventPayloadVariant66PermissionsItem(rawValue: "read:firewall")
-    public static let readIntegrationConfiguration = UserEventPayloadVariant66PermissionsItem(rawValue: "read:integration-configuration")
-    public static let readIntegrationResource = UserEventPayloadVariant66PermissionsItem(rawValue: "read:integration-resource")
+    public static let readIntegrationConfiguration =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read:integration-configuration")
+    public static let readIntegrationResource =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read:integration-resource")
     public static let readKms = UserEventPayloadVariant66PermissionsItem(rawValue: "read:kms")
     public static let readMessageboard = UserEventPayloadVariant66PermissionsItem(rawValue: "read:messageboard")
     public static let readMonitoring = UserEventPayloadVariant66PermissionsItem(rawValue: "read:monitoring")
     public static let readProject = UserEventPayloadVariant66PermissionsItem(rawValue: "read:project")
-    public static let readProjectEnvVarsNonProduction = UserEventPayloadVariant66PermissionsItem(rawValue: "read:project-env-vars-non-production")
-    public static let readProjectEnvVarsProduction = UserEventPayloadVariant66PermissionsItem(rawValue: "read:project-env-vars-production")
+    public static let readProjectEnvVarsNonProduction =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read:project-env-vars-non-production")
+    public static let readProjectEnvVarsProduction =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read:project-env-vars-production")
     public static let readProjectFlags = UserEventPayloadVariant66PermissionsItem(rawValue: "read:project-flags")
     public static let readProjectMembers = UserEventPayloadVariant66PermissionsItem(rawValue: "read:project-members")
-    public static let readProjectTrustedSources = UserEventPayloadVariant66PermissionsItem(rawValue: "read:project-trusted-sources")
+    public static let readProjectTrustedSources =
+        UserEventPayloadVariant66PermissionsItem(rawValue: "read:project-trusted-sources")
     public static let readRemoteCache = UserEventPayloadVariant66PermissionsItem(rawValue: "read:remote-cache")
     public static let readSandbox = UserEventPayloadVariant66PermissionsItem(rawValue: "read:sandbox")
     public static let readSchedule = UserEventPayloadVariant66PermissionsItem(rawValue: "read:schedule")
@@ -85,7 +119,7 @@ public struct UserEventPayloadVariant66PermissionsItem: RawRepresentable, Hashab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -98,11 +132,13 @@ public struct UserEventPayloadVariant66PermissionsItem: RawRepresentable, Hashab
 public struct UserEventType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -118,7 +154,8 @@ public extension UserEventType {
     static let accessGroupUpdated = UserEventType(rawValue: "access-group-updated")
     static let accessGroupUserAdded = UserEventType(rawValue: "access-group-user-added")
     static let accessGroupUserRemoved = UserEventType(rawValue: "access-group-user-removed")
-    static let adminAgenticProvisioningAccountUnlinked = UserEventType(rawValue: "admin-agentic-provisioning-account-unlinked")
+    static let adminAgenticProvisioningAccountUnlinked =
+        UserEventType(rawValue: "admin-agentic-provisioning-account-unlinked")
     static let adminPlanUpdated = UserEventType(rawValue: "admin-plan-updated")
     static let adminPreviewDeploymentSuffixClear = UserEventType(rawValue: "admin-preview-deployment-suffix-clear")
     static let adminSamlIdpMaterialDeleted = UserEventType(rawValue: "admin-saml-idp-material-deleted")
@@ -136,7 +173,8 @@ public extension UserEventType {
     static let agenticProvisioningAccountLinked = UserEventType(rawValue: "agentic-provisioning-account-linked")
     static let agenticProvisioningAccountRelinked = UserEventType(rawValue: "agentic-provisioning-account-relinked")
     static let agenticProvisioningAccountUnlinked = UserEventType(rawValue: "agentic-provisioning-account-unlinked")
-    static let agenticProvisioningCredentialsRotated = UserEventType(rawValue: "agentic-provisioning-credentials-rotated")
+    static let agenticProvisioningCredentialsRotated =
+        UserEventType(rawValue: "agentic-provisioning-credentials-rotated")
     static let agenticProvisioningPlanChanged = UserEventType(rawValue: "agentic-provisioning-plan-changed")
     static let agenticProvisioningTeamCreated = UserEventType(rawValue: "agentic-provisioning-team-created")
     static let aiAlertInvestigation = UserEventType(rawValue: "ai-alert-investigation")
@@ -159,17 +197,21 @@ public extension UserEventType {
     static let aiGatewayGuardrailsUpdated = UserEventType(rawValue: "ai-gateway-guardrails-updated")
     static let aiGatewayHipaaComplianceToggled = UserEventType(rawValue: "ai-gateway-hipaa-compliance-toggled")
     static let aiGatewayInferenceRegionsUpdated = UserEventType(rawValue: "ai-gateway-inference-regions-updated")
-    static let aiGatewayModelAllowlistModelsUpdated = UserEventType(rawValue: "ai-gateway-model-allowlist-models-updated")
+    static let aiGatewayModelAllowlistModelsUpdated =
+        UserEventType(rawValue: "ai-gateway-model-allowlist-models-updated")
     static let aiGatewayModelAllowlistToggled = UserEventType(rawValue: "ai-gateway-model-allowlist-toggled")
-    static let aiGatewayModelCatalogAlertSettingsUpdated = UserEventType(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
+    static let aiGatewayModelCatalogAlertSettingsUpdated =
+        UserEventType(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
     static let aiGatewayPrivateModelCreated = UserEventType(rawValue: "ai-gateway-private-model-created")
     static let aiGatewayPrivateModelDeleted = UserEventType(rawValue: "ai-gateway-private-model-deleted")
     static let aiGatewayPrivateModelUpdated = UserEventType(rawValue: "ai-gateway-private-model-updated")
     static let aiGatewayPrivateProviderCreated = UserEventType(rawValue: "ai-gateway-private-provider-created")
     static let aiGatewayPrivateProviderDeleted = UserEventType(rawValue: "ai-gateway-private-provider-deleted")
     static let aiGatewayPrivateProviderUpdated = UserEventType(rawValue: "ai-gateway-private-provider-updated")
-    static let aiGatewayPromptTrainingOptOutToggled = UserEventType(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
-    static let aiGatewayProviderAllowlistProvidersUpdated = UserEventType(rawValue: "ai-gateway-provider-allowlist-providers-updated")
+    static let aiGatewayPromptTrainingOptOutToggled =
+        UserEventType(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
+    static let aiGatewayProviderAllowlistProvidersUpdated =
+        UserEventType(rawValue: "ai-gateway-provider-allowlist-providers-updated")
     static let aiGatewayProviderAllowlistToggled = UserEventType(rawValue: "ai-gateway-provider-allowlist-toggled")
     static let aiGatewayRuleCreated = UserEventType(rawValue: "ai-gateway-rule-created")
     static let aiGatewayRuleDeleted = UserEventType(rawValue: "ai-gateway-rule-deleted")
@@ -179,7 +221,8 @@ public extension UserEventType {
     static let aiGatewayTranscriptsDefaultEnabled = UserEventType(rawValue: "ai-gateway-transcripts-default-enabled")
     static let aiGatewayTranscriptsDisabled = UserEventType(rawValue: "ai-gateway-transcripts-disabled")
     static let aiGatewayTranscriptsEnabled = UserEventType(rawValue: "ai-gateway-transcripts-enabled")
-    static let aiGatewayTranscriptsRetentionUpdated = UserEventType(rawValue: "ai-gateway-transcripts-retention-updated")
+    static let aiGatewayTranscriptsRetentionUpdated =
+        UserEventType(rawValue: "ai-gateway-transcripts-retention-updated")
     static let aiGatewayVirtualModelConfigArchived = UserEventType(rawValue: "ai-gateway-virtual-model-config-archived")
     static let aiGatewayVirtualModelConfigCreated = UserEventType(rawValue: "ai-gateway-virtual-model-config-created")
     static let aiGatewayVirtualModelConfigDeleted = UserEventType(rawValue: "ai-gateway-virtual-model-config-deleted")
@@ -187,7 +230,8 @@ public extension UserEventType {
     static let aiGatewayVirtualModelConfigUpdated = UserEventType(rawValue: "ai-gateway-virtual-model-config-updated")
     static let aiGatewayZeroDataRetentionToggled = UserEventType(rawValue: "ai-gateway-zero-data-retention-toggled")
     static let aiOmniagent = UserEventType(rawValue: "ai-omniagent")
-    static let alertInvestigationProjectAllowlistUpdated = UserEventType(rawValue: "alert-investigation-project-allowlist-updated")
+    static let alertInvestigationProjectAllowlistUpdated =
+        UserEventType(rawValue: "alert-investigation-project-allowlist-updated")
     static let alertRuleCreated = UserEventType(rawValue: "alert-rule-created")
     static let alertRuleDeleted = UserEventType(rawValue: "alert-rule-deleted")
     static let alertRuleUpdated = UserEventType(rawValue: "alert-rule-updated")
@@ -287,7 +331,8 @@ public extension UserEventType {
     static let deploymentPolicyBlocked = UserEventType(rawValue: "deployment-policy-blocked")
     static let deploymentProtectionAccessRequests = UserEventType(rawValue: "deployment-protection-access-requests")
     static let deploymentUndeleted = UserEventType(rawValue: "deployment-undeleted")
-    static let disabledIntegrationInstallationRemoved = UserEventType(rawValue: "disabled-integration-installation-removed")
+    static let disabledIntegrationInstallationRemoved =
+        UserEventType(rawValue: "disabled-integration-installation-removed")
     static let disconnectBitbucketApp = UserEventType(rawValue: "disconnect-bitbucket-app")
     static let disconnectGithub = UserEventType(rawValue: "disconnect-github")
     static let disconnectGithubCustomHost = UserEventType(rawValue: "disconnect-github-custom-host")
@@ -321,9 +366,11 @@ public extension UserEventType {
     static let drainDisabled = UserEventType(rawValue: "drain-disabled")
     static let drainEnabled = UserEventType(rawValue: "drain-enabled")
     static let drainUpdated = UserEventType(rawValue: "drain-updated")
-    static let edgeCacheDangerouslyDeleteBySrcImages = UserEventType(rawValue: "edge-cache-dangerously-delete-by-src-images")
+    static let edgeCacheDangerouslyDeleteBySrcImages =
+        UserEventType(rawValue: "edge-cache-dangerously-delete-by-src-images")
     static let edgeCacheDangerouslyDeleteByTags = UserEventType(rawValue: "edge-cache-dangerously-delete-by-tags")
-    static let edgeCacheDangerouslyDeleteImmutableStatic = UserEventType(rawValue: "edge-cache-dangerously-delete-immutable-static")
+    static let edgeCacheDangerouslyDeleteImmutableStatic =
+        UserEventType(rawValue: "edge-cache-dangerously-delete-immutable-static")
     static let edgeCacheInvalidateBySrcImages = UserEventType(rawValue: "edge-cache-invalidate-by-src-images")
     static let edgeCacheInvalidateByTags = UserEventType(rawValue: "edge-cache-invalidate-by-tags")
     static let edgeCachePurgeAll = UserEventType(rawValue: "edge-cache-purge-all")
@@ -406,18 +453,26 @@ public extension UserEventType {
     static let globalConfigTransferOut = UserEventType(rawValue: "global-config-transfer-out")
     static let globalConfigUpdated = UserEventType(rawValue: "global-config-updated")
     static let instantRollbackCreated = UserEventType(rawValue: "instant-rollback-created")
-    static let integrationConfigurationCredentialRevoked = UserEventType(rawValue: "integration-configuration-credential-revoked")
-    static let integrationConfigurationCredentialRotated = UserEventType(rawValue: "integration-configuration-credential-rotated")
+    static let integrationConfigurationCredentialRevoked =
+        UserEventType(rawValue: "integration-configuration-credential-revoked")
+    static let integrationConfigurationCredentialRotated =
+        UserEventType(rawValue: "integration-configuration-credential-rotated")
     static let integrationConfigurationOwnerChanged = UserEventType(rawValue: "integration-configuration-owner-changed")
-    static let integrationConfigurationScopeChangeConfirmed = UserEventType(rawValue: "integration-configuration-scope-change-confirmed")
-    static let integrationConfigurationTransferInSuccess = UserEventType(rawValue: "integration-configuration-transfer-in-success")
-    static let integrationConfigurationTransferOutSuccess = UserEventType(rawValue: "integration-configuration-transfer-out-success")
+    static let integrationConfigurationScopeChangeConfirmed =
+        UserEventType(rawValue: "integration-configuration-scope-change-confirmed")
+    static let integrationConfigurationTransferInSuccess =
+        UserEventType(rawValue: "integration-configuration-transfer-in-success")
+    static let integrationConfigurationTransferOutSuccess =
+        UserEventType(rawValue: "integration-configuration-transfer-out-success")
     static let integrationConfigurationsDisabled = UserEventType(rawValue: "integration-configurations-disabled")
-    static let integrationInstallationBillingPlanUpdated = UserEventType(rawValue: "integration-installation-billing-plan-updated")
+    static let integrationInstallationBillingPlanUpdated =
+        UserEventType(rawValue: "integration-installation-billing-plan-updated")
     static let integrationInstallationCompleted = UserEventType(rawValue: "integration-installation-completed")
-    static let integrationInstallationPermissionUpdated = UserEventType(rawValue: "integration-installation-permission-updated")
+    static let integrationInstallationPermissionUpdated =
+        UserEventType(rawValue: "integration-installation-permission-updated")
     static let integrationInstallationRemoved = UserEventType(rawValue: "integration-installation-removed")
-    static let integrationResourceRedisCommandExecuted = UserEventType(rawValue: "integration-resource-redis-command-executed")
+    static let integrationResourceRedisCommandExecuted =
+        UserEventType(rawValue: "integration-resource-redis-command-executed")
     static let integrationResourceSqlQueryExecuted = UserEventType(rawValue: "integration-resource-sql-query-executed")
     static let integrationScopeChanged = UserEventType(rawValue: "integration-scope-changed")
     static let invoiceModified = UserEventType(rawValue: "invoice-modified")
@@ -440,5 +495,6 @@ public extension UserEventType {
     static let loginConnectionLinked = UserEventType(rawValue: "login-connection-linked")
     static let loginConnectionUnlinked = UserEventType(rawValue: "login-connection-unlinked")
     static let manualDeploymentPromotionCreated = UserEventType(rawValue: "manual-deployment-promotion-created")
-    static let marketplaceAutoCardCollectionUpdated = UserEventType(rawValue: "marketplace-auto-card-collection-updated")
+    static let marketplaceAutoCardCollectionUpdated =
+        UserEventType(rawValue: "marketplace-auto-card-collection-updated")
 }

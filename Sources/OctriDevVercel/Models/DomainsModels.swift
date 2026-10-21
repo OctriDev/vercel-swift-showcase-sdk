@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Domains domain models
+/// Domains domain models
 public indirect enum UpdateDomainsResponse {
     case updateDomainsResponseVariant0(UpdateDomainsResponseVariant0)
     case updateDomainsResponseVariant1(UpdateDomainsResponseVariant1)
@@ -11,18 +11,26 @@ public indirect enum UpdateDomainsResponse {
 }
 
 extension UpdateDomainsResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateDomainsResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateDomainsResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -43,9 +51,18 @@ extension UpdateDomainsResponse {
 
 extension UpdateDomainsResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UpdateDomainsResponseVariant0.self) { return .updateDomainsResponseVariant0(value) }
-        if let value = try? container.decode(UpdateDomainsResponseVariant1.self) { return .updateDomainsResponseVariant1(value) }
-        if let value = try? container.decode(UpdateDomainsResponseVariant2.self) { return .updateDomainsResponseVariant2(value) }
+        if let value = try? container
+            .decode(UpdateDomainsResponseVariant0.self) {
+            return .updateDomainsResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(UpdateDomainsResponseVariant1.self) {
+            return .updateDomainsResponseVariant1(value)
+        }
+        if let value = try? container
+            .decode(UpdateDomainsResponseVariant2.self) {
+            return .updateDomainsResponseVariant2(value)
+        }
         return nil
     }
 }
@@ -70,25 +87,35 @@ public struct UpdateDomainsResponseVariant1: Codable {
         case token
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateDomainsResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.moved) else {
-            throw SdkValidationError(field: "moved", code: "required", message: "Validation failed for 'moved': value is required")
-        }
-        guard container.contains(.token) else {
-            throw SdkValidationError(field: "token", code: "required", message: "Validation failed for 'token': value is required")
-        }
-        self.moved = try container.sdkDecodeRequired(.moved)
-        self.token = try container.sdkDecodeRequired(.token)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateDomainsResponseVariant1 {
-    public init(moved: Bool, token: String) {
+public extension UpdateDomainsResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.moved) else {
+            throw SdkValidationError(
+                field: "moved",
+                code: "required",
+                message: "Validation failed for 'moved': value is required"
+            )
+        }
+        guard container.contains(.token) else {
+            throw SdkValidationError(
+                field: "token",
+                code: "required",
+                message: "Validation failed for 'token': value is required"
+            )
+        }
+        moved = try container.sdkDecodeRequired(.moved)
+        token = try container.sdkDecodeRequired(.token)
+    }
+}
+
+public extension UpdateDomainsResponseVariant1 {
+    init(moved: Bool, token: String) {
         (self.moved, self.token) = (moved, token)
     }
 }
@@ -100,21 +127,27 @@ public struct UpdateDomainsResponseVariant0: Codable {
         case moved
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateDomainsResponseVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.moved) else {
-            throw SdkValidationError(field: "moved", code: "required", message: "Validation failed for 'moved': value is required")
-        }
-        self.moved = try container.sdkDecodeRequired(.moved)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateDomainsResponseVariant0 {
-    public init(moved: Bool) {
+public extension UpdateDomainsResponseVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.moved) else {
+            throw SdkValidationError(
+                field: "moved",
+                code: "required",
+                message: "Validation failed for 'moved': value is required"
+            )
+        }
+        moved = try container.sdkDecodeRequired(.moved)
+    }
+}
+
+public extension UpdateDomainsResponseVariant0 {
+    init(moved: Bool) {
         self.moved = moved
     }
 }
@@ -132,24 +165,35 @@ public struct UpdateDomainsResponseVariant2: Codable {
         case zone
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateDomainsResponseVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.echMode) else {
-            throw SdkValidationError(field: "echMode", code: "required", message: "Validation failed for 'echMode': value is required")
-        }
-        self.echMode = try container.sdkDecodeRequired(.echMode)
-        self.customNameservers = try container.sdkDecodeIfPresent(.customNameservers)
-        self.renew = try container.sdkDecodeIfPresent(.renew)
-        self.zone = try container.sdkDecodeIfPresent(.zone)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateDomainsResponseVariant2 {
-    public init(echMode: UpdateDomainsResponseVariant2EchMode, customNameservers: [String]? = nil, renew: Bool? = nil, zone: Bool? = nil) {
+public extension UpdateDomainsResponseVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.echMode) else {
+            throw SdkValidationError(
+                field: "echMode",
+                code: "required",
+                message: "Validation failed for 'echMode': value is required"
+            )
+        }
+        echMode = try container.sdkDecodeRequired(.echMode)
+        customNameservers = try container.sdkDecodeIfPresent(.customNameservers)
+        renew = try container.sdkDecodeIfPresent(.renew)
+        zone = try container.sdkDecodeIfPresent(.zone)
+    }
+}
+
+public extension UpdateDomainsResponseVariant2 {
+    init(
+        echMode: UpdateDomainsResponseVariant2EchMode,
+        customNameservers: [String]? = nil,
+        renew: Bool? = nil,
+        zone: Bool? = nil
+    ) {
         (self.echMode, self.customNameservers) = (echMode, customNameservers)
         (self.renew, self.zone) = (renew, zone)
     }
@@ -158,14 +202,17 @@ extension UpdateDomainsResponseVariant2 {
 public struct UpdateDomainsResponseVariant2EchMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let auto = UpdateDomainsResponseVariant2EchMode(rawValue: "auto")
     public static let disabled = UpdateDomainsResponseVariant2EchMode(rawValue: "disabled")
     public static let enabled = UpdateDomainsResponseVariant2EchMode(rawValue: "enabled")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

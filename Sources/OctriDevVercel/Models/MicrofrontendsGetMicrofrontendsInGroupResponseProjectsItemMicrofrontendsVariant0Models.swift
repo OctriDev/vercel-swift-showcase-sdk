@@ -3,38 +3,61 @@
 
 import Foundation
 
-// Microfrontends domain models
-extension GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsVariant0 {
-    public init(from decoder: Decoder) throws {
+/// Microfrontends domain models
+public extension GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
-            throw SdkValidationError(field: "enabled", code: "required", message: "Validation failed for 'enabled': value is required")
+            throw SdkValidationError(
+                field: "enabled",
+                code: "required",
+                message: "Validation failed for 'enabled': value is required"
+            )
         }
         guard container.contains(.groupIds) else {
-            throw SdkValidationError(field: "groupIds", code: "required", message: "Validation failed for 'groupIds': value is required")
+            throw SdkValidationError(
+                field: "groupIds",
+                code: "required",
+                message: "Validation failed for 'groupIds': value is required"
+            )
         }
         guard container.contains(.isDefaultApp) else {
-            throw SdkValidationError(field: "isDefaultApp", code: "required", message: "Validation failed for 'isDefaultApp': value is required")
+            throw SdkValidationError(
+                field: "isDefaultApp",
+                code: "required",
+                message: "Validation failed for 'isDefaultApp': value is required"
+            )
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
         }
-        self.enabled = try container.sdkDecodeRequired(.enabled)
-        self.groupIds = try container.sdkDecodeRequired(.groupIds)
-        self.isDefaultApp = try container.sdkDecodeRequired(.isDefaultApp)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.defaultRoute = try container.sdkDecodeIfPresent(.defaultRoute)
-        self.freeProjectForLegacyLimits = try container.sdkDecodeIfPresent(.freeProjectForLegacyLimits)
-            try validateItems("groupIds", self.groupIds, min: 1, max: nil)
+        enabled = try container.sdkDecodeRequired(.enabled)
+        groupIds = try container.sdkDecodeRequired(.groupIds)
+        isDefaultApp = try container.sdkDecodeRequired(.isDefaultApp)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        defaultRoute = try container.sdkDecodeIfPresent(.defaultRoute)
+        freeProjectForLegacyLimits = try container.sdkDecodeIfPresent(.freeProjectForLegacyLimits)
+        try validateItems("groupIds", groupIds, min: 1, max: nil)
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsVariant0 {
-    public init(enabled: Bool, groupIds: [String], isDefaultApp: Bool, updatedAt: Double, defaultRoute: String? = nil, freeProjectForLegacyLimits: Bool? = nil) throws {
+public extension GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsVariant0 {
+    init(
+        enabled: Bool,
+        groupIds: [String],
+        isDefaultApp: Bool,
+        updatedAt: Double,
+        defaultRoute: String? = nil,
+        freeProjectForLegacyLimits: Bool? = nil
+    ) throws {
         (self.enabled, self.groupIds) = (enabled, groupIds)
         (self.isDefaultApp, self.updatedAt) = (isDefaultApp, updatedAt)
         (self.defaultRoute, self.freeProjectForLegacyLimits) = (defaultRoute, freeProjectForLegacyLimits)
-            try validateItems("groupIds", self.groupIds, min: 1, max: nil)
+        try validateItems("groupIds", self.groupIds, min: 1, max: nil)
     }
 }
 
@@ -50,22 +73,28 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX44a0
         case clientId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX44a0353511 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.clientId = try container.sdkDecodeIfPresent(.clientId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX44a0353511 {
-    public init(id: String, clientId: String? = nil) {
+public extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX44a0353511 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        clientId = try container.sdkDecodeIfPresent(.clientId)
+    }
+}
+
+public extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX44a0353511 {
+    init(id: String, clientId: String? = nil) {
         (self.id, self.clientId) = (id, clientId)
     }
 }
@@ -85,34 +114,52 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemLinkVariant6DeployHook
         case createdAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant6DeployHooksItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.ref) else {
-            throw SdkValidationError(field: "ref", code: "required", message: "Validation failed for 'ref': value is required")
-        }
-        guard container.contains(.url) else {
-            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.ref = try container.sdkDecodeRequired(.ref)
-        self.url = try container.sdkDecodeRequired(.url)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant6DeployHooksItem {
-    public init(id: String, name: String, ref: String, url: String, createdAt: Double? = nil) {
+public extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant6DeployHooksItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.ref) else {
+            throw SdkValidationError(
+                field: "ref",
+                code: "required",
+                message: "Validation failed for 'ref': value is required"
+            )
+        }
+        guard container.contains(.url) else {
+            throw SdkValidationError(
+                field: "url",
+                code: "required",
+                message: "Validation failed for 'url': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        ref = try container.sdkDecodeRequired(.ref)
+        url = try container.sdkDecodeRequired(.url)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+    }
+}
+
+public extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant6DeployHooksItem {
+    init(id: String, name: String, ref: String, url: String, createdAt: Double? = nil) {
         (self.id, self.name) = (id, name)
         (self.ref, self.url) = (ref, url)
         self.createdAt = createdAt
@@ -128,28 +175,46 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVari
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant7 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.storeId) else {
-            throw SdkValidationError(field: "storeId", code: "required", message: "Validation failed for 'storeId': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.storeId = try container.sdkDecodeRequired(.storeId)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHinXa74d2ddaab.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant7 {
-    public init(storeId: String, type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHinXa74d2ddaab) throws {
+public extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant7 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.storeId) else {
+            throw SdkValidationError(
+                field: "storeId",
+                code: "required",
+                message: "Validation failed for 'storeId': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        storeId = try container.sdkDecodeRequired(.storeId)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHinXa74d2ddaab.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintVariant7 {
+    init(storeId: String, type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHinXa74d2ddaab) throws {
         (self.storeId, self.type) = (storeId, type)
-            try sdkValidateRawEnum("type", self.type, GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHinXa74d2ddaab.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHinXa74d2ddaab.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -163,29 +228,39 @@ public indirect enum GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesI
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteX3d627d047d: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteX3d627d047d")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteX3d627d047d"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteX3d627d047d {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXabd402398a.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXabd402398a.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXabd402398a(value)
         }
-        if let value = try? container.decode(GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXef50e06e20.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXef50e06e20.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXef50e06e20(value)
         }
         return nil
@@ -197,12 +272,12 @@ extension GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteX3d627d04
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXabd402398a.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXabd402398a(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXabd402398a(value)
         }
         if let value = try? container.decode(
             GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXef50e06e20.self
         ) {
-            return             .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXef50e06e20(value)
+            return .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXef50e06e20(value)
         }
         return nil
     }
@@ -212,8 +287,10 @@ extension GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteX3d627d04
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXabd402398a(value): try container.encode(value); return true
-        case let .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXef50e06e20(value): try container.encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXabd402398a(value): try container
+            .encode(value); return true
+        case let .getMicrofrontendsInGroupResponseProjectsItemInternalRoutesIteXef50e06e20(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -227,32 +304,51 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX4ae3
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX4ae3cc7903 {
-    public init(from decoder: Decoder) throws {
+public extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX4ae3cc7903 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.environmentId) else {
-            throw SdkValidationError(field: "environmentId", code: "required", message: "Validation failed for 'environmentId': value is required")
+            throw SdkValidationError(
+                field: "environmentId",
+                code: "required",
+                message: "Validation failed for 'environmentId': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
-        self.environmentId = try container.sdkDecodeRequired(.environmentId)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX95c501e7a6.allCases.map(\.rawValue))
+        environmentId = try container.sdkDecodeRequired(.environmentId)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX95c501e7a6.allCases.map(\.rawValue)
+        )
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX4ae3cc7903 {
-    public init(environmentId: String, type: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX95c501e7a6) throws {
+public extension GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX4ae3cc7903 {
+    init(environmentId: String, type: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX95c501e7a6) throws {
         (self.environmentId, self.type) = (environmentId, type)
-            try sdkValidateRawEnum("type", self.type, GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX95c501e7a6.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGX95c501e7a6.allCases.map(\.rawValue)
+        )
     }
 }
 
-public typealias GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1DeployHooksList = [GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1DeployHooksItem]
+public typealias GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1DeployHooksList =
+    [GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1DeployHooksItem]
 
 public struct GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1: Codable {
     public var deployHooks: GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1DeployHooksList
@@ -283,55 +379,98 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1: Codable 
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.deployHooks) else {
-            throw SdkValidationError(field: "deployHooks", code: "required", message: "Validation failed for 'deployHooks': value is required")
-        }
-        guard container.contains(.gitCredentialId) else {
-            throw SdkValidationError(field: "gitCredentialId", code: "required", message: "Validation failed for 'gitCredentialId': value is required")
-        }
-        guard container.contains(.org) else {
-            throw SdkValidationError(field: "org", code: "required", message: "Validation failed for 'org': value is required")
-        }
-        guard container.contains(.productionBranch) else {
-            throw SdkValidationError(field: "productionBranch", code: "required", message: "Validation failed for 'productionBranch': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.deployHooks = try container.sdkDecodeRequired(.deployHooks)
-        self.gitCredentialId = try container.sdkDecodeRequired(.gitCredentialId)
-        self.org = try container.sdkDecodeRequired(.org)
-        self.productionBranch = try container.sdkDecodeRequired(.productionBranch)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.repo = try container.sdkDecodeIfPresent(.repo)
-        self.repoId = try container.sdkDecodeIfPresent(.repoId)
-        self.repoOwnerId = try container.sdkDecodeIfPresent(.repoOwnerId)
-        self.sourceless = try container.sdkDecodeIfPresent(.sourceless)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-            try sdkValidateRawEnum("type", self.type, GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1 {
-    public init(deployHooks: GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1DeployHooksList, gitCredentialId: String, org: String, productionBranch: String, type: GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1Type, createdAt: Double? = nil, repo: String? = nil, repoId: Double? = nil, repoOwnerId: Double? = nil, sourceless: Bool? = nil, updatedAt: Double? = nil) throws {
+public extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.deployHooks) else {
+            throw SdkValidationError(
+                field: "deployHooks",
+                code: "required",
+                message: "Validation failed for 'deployHooks': value is required"
+            )
+        }
+        guard container.contains(.gitCredentialId) else {
+            throw SdkValidationError(
+                field: "gitCredentialId",
+                code: "required",
+                message: "Validation failed for 'gitCredentialId': value is required"
+            )
+        }
+        guard container.contains(.org) else {
+            throw SdkValidationError(
+                field: "org",
+                code: "required",
+                message: "Validation failed for 'org': value is required"
+            )
+        }
+        guard container.contains(.productionBranch) else {
+            throw SdkValidationError(
+                field: "productionBranch",
+                code: "required",
+                message: "Validation failed for 'productionBranch': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        deployHooks = try container.sdkDecodeRequired(.deployHooks)
+        gitCredentialId = try container.sdkDecodeRequired(.gitCredentialId)
+        org = try container.sdkDecodeRequired(.org)
+        productionBranch = try container.sdkDecodeRequired(.productionBranch)
+        type = try container.sdkDecodeRequired(.type)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        repo = try container.sdkDecodeIfPresent(.repo)
+        repoId = try container.sdkDecodeIfPresent(.repoId)
+        repoOwnerId = try container.sdkDecodeIfPresent(.repoOwnerId)
+        sourceless = try container.sdkDecodeIfPresent(.sourceless)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1Type.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1 {
+    init(
+        deployHooks: GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1DeployHooksList,
+        gitCredentialId: String,
+        org: String,
+        productionBranch: String,
+        type: GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1Type,
+        createdAt: Double? = nil,
+        repo: String? = nil,
+        repoId: Double? = nil,
+        repoOwnerId: Double? = nil,
+        sourceless: Bool? = nil,
+        updatedAt: Double? = nil
+    ) throws {
         (self.deployHooks, self.gitCredentialId) = (deployHooks, gitCredentialId)
         (self.org, self.productionBranch) = (org, productionBranch)
         (self.type, self.createdAt) = (type, createdAt)
         (self.repo, self.repoId) = (repo, repoId)
         (self.repoOwnerId, self.sourceless) = (repoOwnerId, sourceless)
         self.updatedAt = updatedAt
-            try sdkValidateRawEnum("type", self.type, GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            GetMicrofrontendsInGroupResponseProjectsItemLinkVariant1Type.allCases.map(\.rawValue)
+        )
     }
 }
 
-public typealias GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX84838a45dd = [GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantXf4d07b0b5c]
+public typealias GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX84838a45dd =
+    [GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantXf4d07b0b5c]
 
 public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant0: Codable {
     public var addresses: GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX84838a45dd
@@ -344,29 +483,47 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant0: Co
         case protectionMode
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.addresses) else {
-            throw SdkValidationError(field: "addresses", code: "required", message: "Validation failed for 'addresses': value is required")
-        }
-        guard container.contains(.deploymentType) else {
-            throw SdkValidationError(field: "deploymentType", code: "required", message: "Validation failed for 'deploymentType': value is required")
-        }
-        guard container.contains(.protectionMode) else {
-            throw SdkValidationError(field: "protectionMode", code: "required", message: "Validation failed for 'protectionMode': value is required")
-        }
-        self.addresses = try container.sdkDecodeRequired(.addresses)
-        self.deploymentType = try container.sdkDecodeRequired(.deploymentType)
-        self.protectionMode = try container.sdkDecodeRequired(.protectionMode)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant0 {
-    public init(addresses: GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX84838a45dd, deploymentType: GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21, protectionMode: GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantXda7e4061db) {
+public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.addresses) else {
+            throw SdkValidationError(
+                field: "addresses",
+                code: "required",
+                message: "Validation failed for 'addresses': value is required"
+            )
+        }
+        guard container.contains(.deploymentType) else {
+            throw SdkValidationError(
+                field: "deploymentType",
+                code: "required",
+                message: "Validation failed for 'deploymentType': value is required"
+            )
+        }
+        guard container.contains(.protectionMode) else {
+            throw SdkValidationError(
+                field: "protectionMode",
+                code: "required",
+                message: "Validation failed for 'protectionMode': value is required"
+            )
+        }
+        addresses = try container.sdkDecodeRequired(.addresses)
+        deploymentType = try container.sdkDecodeRequired(.deploymentType)
+        protectionMode = try container.sdkDecodeRequired(.protectionMode)
+    }
+}
+
+public extension GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariant0 {
+    init(
+        addresses: GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX84838a45dd,
+        deploymentType: GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantX6d9aa5ca21,
+        protectionMode: GetMicrofrontendsInGroupResponseProjectsItemTrustedIpsVariantXda7e4061db
+    ) {
         (self.addresses, self.deploymentType) = (addresses, deploymentType)
         self.protectionMode = protectionMode
     }
@@ -381,25 +538,38 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItXfc27
         case previousValue
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItXfc271acbdb {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.currentValue) else {
-            throw SdkValidationError(field: "currentValue", code: "required", message: "Validation failed for 'currentValue': value is required")
-        }
-        guard container.contains(.previousValue) else {
-            throw SdkValidationError(field: "previousValue", code: "required", message: "Validation failed for 'previousValue': value is required")
-        }
-        self.currentValue = try container.sdkDecodeRequired(.currentValue)
-        self.previousValue = try container.sdkDecodeRequired(.previousValue)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItXfc271acbdb {
-    public init(currentValue: GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItX2839bde837, previousValue: GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItXbf06082106) {
+public extension GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItXfc271acbdb {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.currentValue) else {
+            throw SdkValidationError(
+                field: "currentValue",
+                code: "required",
+                message: "Validation failed for 'currentValue': value is required"
+            )
+        }
+        guard container.contains(.previousValue) else {
+            throw SdkValidationError(
+                field: "previousValue",
+                code: "required",
+                message: "Validation failed for 'previousValue': value is required"
+            )
+        }
+        currentValue = try container.sdkDecodeRequired(.currentValue)
+        previousValue = try container.sdkDecodeRequired(.previousValue)
+    }
+}
+
+public extension GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItXfc271acbdb {
+    init(
+        currentValue: GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItX2839bde837,
+        previousValue: GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItXbf06082106
+    ) {
         (self.currentValue, self.previousValue) = (currentValue, previousValue)
     }
 }
@@ -413,25 +583,35 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX3991
         case integrationId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX3991654cc9 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.configurationId) else {
-            throw SdkValidationError(field: "configurationId", code: "required", message: "Validation failed for 'configurationId': value is required")
-        }
-        guard container.contains(.integrationId) else {
-            throw SdkValidationError(field: "integrationId", code: "required", message: "Validation failed for 'integrationId': value is required")
-        }
-        self.configurationId = try container.sdkDecodeRequired(.configurationId)
-        self.integrationId = try container.sdkDecodeRequired(.integrationId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX3991654cc9 {
-    public init(configurationId: String, integrationId: String) {
+public extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX3991654cc9 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.configurationId) else {
+            throw SdkValidationError(
+                field: "configurationId",
+                code: "required",
+                message: "Validation failed for 'configurationId': value is required"
+            )
+        }
+        guard container.contains(.integrationId) else {
+            throw SdkValidationError(
+                field: "integrationId",
+                code: "required",
+                message: "Validation failed for 'integrationId': value is required"
+            )
+        }
+        configurationId = try container.sdkDecodeRequired(.configurationId)
+        integrationId = try container.sdkDecodeRequired(.integrationId)
+    }
+}
+
+public extension GetMicrofrontendsInGroupResponseProjectsItemCreatorVariant0ViX3991654cc9 {
+    init(configurationId: String, integrationId: String) {
         (self.configurationId, self.integrationId) = (configurationId, integrationId)
     }
 }

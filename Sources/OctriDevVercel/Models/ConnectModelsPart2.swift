@@ -3,13 +3,19 @@
 
 import Foundation
 
-// Connect domain models
+/// Connect domain models
 extension ConnectConnectorCreateResultUpdatedBy {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ConnectConnectorCreateResultUpdatedByVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorCreateResultUpdatedByVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorCreateResultUpdatedByVariant0(value)
         }
-        if let value = try? container.decode(ConnectConnectorCreateResultUpdatedByVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorCreateResultUpdatedByVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorCreateResultUpdatedByVariant1(value)
         }
         return nil
@@ -21,12 +27,12 @@ extension ConnectConnectorCreateResultUpdatedBy {
         if let value = try? container.decode(
             ConnectConnectorCreateResultUpdatedByVariant0.self
         ) {
-            return             .connectConnectorCreateResultUpdatedByVariant0(value)
+            return .connectConnectorCreateResultUpdatedByVariant0(value)
         }
         if let value = try? container.decode(
             ConnectConnectorCreateResultUpdatedByVariant1.self
         ) {
-            return             .connectConnectorCreateResultUpdatedByVariant1(value)
+            return .connectConnectorCreateResultUpdatedByVariant1(value)
         }
         return nil
     }
@@ -58,46 +64,64 @@ public indirect enum ConnectConnectorUpdateData {
 }
 
 extension ConnectConnectorUpdateData: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless2(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectConnectorUpdateData")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ConnectConnectorUpdateData"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ConnectConnectorUpdateData {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant0(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant1(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant2.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant2(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant3.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant3(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant4.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant4.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant4(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant5.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant5.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant5(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant6.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant6.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant6(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant7.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant7.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant7(value)
         }
         return nil
@@ -106,13 +130,18 @@ extension ConnectConnectorUpdateData {
 
 extension ConnectConnectorUpdateData {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant8.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant8.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant8(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant9.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant9.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .connectConnectorUpdateDataVariant9(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant10.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataVariant10.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataVariant10(value)
         }
         return nil
@@ -121,22 +150,54 @@ extension ConnectConnectorUpdateData {
 
 extension ConnectConnectorUpdateData {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant0.self) { return .connectConnectorUpdateDataVariant0(value) }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant1.self) { return .connectConnectorUpdateDataVariant1(value) }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant2.self) { return .connectConnectorUpdateDataVariant2(value) }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant3.self) { return .connectConnectorUpdateDataVariant3(value) }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant4.self) { return .connectConnectorUpdateDataVariant4(value) }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant5.self) { return .connectConnectorUpdateDataVariant5(value) }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant6.self) { return .connectConnectorUpdateDataVariant6(value) }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant7.self) { return .connectConnectorUpdateDataVariant7(value) }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant8.self) { return .connectConnectorUpdateDataVariant8(value) }
-        if let value = try? container.decode(ConnectConnectorUpdateDataVariant9.self) { return .connectConnectorUpdateDataVariant9(value) }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant0.self) {
+            return .connectConnectorUpdateDataVariant0(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant1.self) {
+            return .connectConnectorUpdateDataVariant1(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant2.self) {
+            return .connectConnectorUpdateDataVariant2(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant3.self) {
+            return .connectConnectorUpdateDataVariant3(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant4.self) {
+            return .connectConnectorUpdateDataVariant4(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant5.self) {
+            return .connectConnectorUpdateDataVariant5(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant6.self) {
+            return .connectConnectorUpdateDataVariant6(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant7.self) {
+            return .connectConnectorUpdateDataVariant7(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant8.self) {
+            return .connectConnectorUpdateDataVariant8(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdateDataVariant9.self) {
+            return .connectConnectorUpdateDataVariant9(value)
+        }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataVariant10.self
         ) {
-            return             .connectConnectorUpdateDataVariant10(value)
+            return .connectConnectorUpdateDataVariant10(value)
         }
-        if let value = try? container.decode([String: JSONValue].self) { return .jsonValue(value) }
+        if let value = try? container.decode([String: JSONValue].self) {
+            return .jsonValue(value)
+        }
         return nil
     }
 }
@@ -177,46 +238,80 @@ public indirect enum ConnectConnectorUpdateDataRequest {
 }
 
 extension ConnectConnectorUpdateDataRequest: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless2(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectConnectorUpdateDataRequest")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ConnectConnectorUpdateDataRequest"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ConnectConnectorUpdateDataRequest {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant0(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant1(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant2(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant3(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant4.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant4.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant4(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant5.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant5.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant5(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant6.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant6.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant6(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant7.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant7.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant7(value)
         }
         return nil
@@ -225,13 +320,22 @@ extension ConnectConnectorUpdateDataRequest {
 
 extension ConnectConnectorUpdateDataRequest {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant8.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant8.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant8(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant9.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant9.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant9(value)
         }
-        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant10.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectConnectorUpdateDataRequestVariant10.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectConnectorUpdateDataRequestVariant10(value)
         }
         return nil
@@ -243,59 +347,61 @@ extension ConnectConnectorUpdateDataRequest {
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant0.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant0(value)
+            return .connectConnectorUpdateDataRequestVariant0(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant1.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant1(value)
+            return .connectConnectorUpdateDataRequestVariant1(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant2.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant2(value)
+            return .connectConnectorUpdateDataRequestVariant2(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant3.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant3(value)
+            return .connectConnectorUpdateDataRequestVariant3(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant4.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant4(value)
+            return .connectConnectorUpdateDataRequestVariant4(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant5.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant5(value)
+            return .connectConnectorUpdateDataRequestVariant5(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant6.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant6(value)
+            return .connectConnectorUpdateDataRequestVariant6(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant7.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant7(value)
+            return .connectConnectorUpdateDataRequestVariant7(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant8.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant8(value)
+            return .connectConnectorUpdateDataRequestVariant8(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant9.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant9(value)
+            return .connectConnectorUpdateDataRequestVariant9(value)
         }
         if let value = try? container.decode(
             ConnectConnectorUpdateDataRequestVariant10.self
         ) {
-            return             .connectConnectorUpdateDataRequestVariant10(value)
+            return .connectConnectorUpdateDataRequestVariant10(value)
         }
-        if let value = try? container.decode([String: JSONValue].self) { return .jsonValue(value) }
+        if let value = try? container.decode([String: JSONValue].self) {
+            return .jsonValue(value)
+        }
         return nil
     }
 }
@@ -326,18 +432,26 @@ public indirect enum ConnectConnectorUpdatedBy {
 }
 
 extension ConnectConnectorUpdatedBy: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectConnectorUpdatedBy")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ConnectConnectorUpdatedBy"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -355,8 +469,14 @@ extension ConnectConnectorUpdatedBy {
 
 extension ConnectConnectorUpdatedBy {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(ConnectConnectorUpdatedByVariant0.self) { return .connectConnectorUpdatedByVariant0(value) }
-        if let value = try? container.decode(ConnectConnectorUpdatedByVariant1.self) { return .connectConnectorUpdatedByVariant1(value) }
+        if let value = try? container
+            .decode(ConnectConnectorUpdatedByVariant0.self) {
+            return .connectConnectorUpdatedByVariant0(value)
+        }
+        if let value = try? container
+            .decode(ConnectConnectorUpdatedByVariant1.self) {
+            return .connectConnectorUpdatedByVariant1(value)
+        }
         return nil
     }
 }
@@ -372,24 +492,38 @@ extension ConnectConnectorUpdatedBy {
 }
 
 public indirect enum ConnectCreateConnectorRequestTriggerDestination {
-    case connectCreateConnectorRequestTriggerDestinationVariant0(ConnectCreateConnectorRequestTriggerDestinationVariant0)
-    case connectCreateConnectorRequestTriggerDestinationVariant1(ConnectCreateConnectorRequestTriggerDestinationVariant1)
-    case connectCreateConnectorRequestTriggerDestinationVariant2(ConnectCreateConnectorRequestTriggerDestinationVariant2)
+    case connectCreateConnectorRequestTriggerDestinationVariant0(
+        ConnectCreateConnectorRequestTriggerDestinationVariant0
+    )
+    case connectCreateConnectorRequestTriggerDestinationVariant1(
+        ConnectCreateConnectorRequestTriggerDestinationVariant1
+    )
+    case connectCreateConnectorRequestTriggerDestinationVariant2(
+        ConnectCreateConnectorRequestTriggerDestinationVariant2
+    )
 }
 
 extension ConnectCreateConnectorRequestTriggerDestination: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectCreateConnectorRequestTriggerDestination")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ConnectCreateConnectorRequestTriggerDestination"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 

@@ -6,25 +6,43 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    /// Stops a running session and releases its allocated resources, terminating all processes within it. This action cannot be undone, and the stopped session cannot be restarted.
+public extension SandboxesMethods {
+    /// Stops a running session and releases its allocated resources, terminating all processes within it. This action
+    /// cannot be undone, and the stopped session cannot be restarted.
     ///
-    /// Stops a running session and releases its allocated resources. All running processes within the session will be terminated. This action cannot be undone. A stopped session cannot be restarted.
+    /// Stops a running session and releases its allocated resources. All running processes within the session will be
+    /// terminated. This action cannot be undone. A stopped session cannot be restarted.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session to stop.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func stopSession(config: ClientConfig, sessionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> StopSessionResponse {
-        return try (await sdkRequest("POST", ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/stop"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "stopSession", options: requestOptions)).data
+    static func stopSession(
+        config: ClientConfig,
+        sessionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> StopSessionResponse {
+        try await (sdkRequest(
+            "POST",
+            ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/stop"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "stopSession",
+            options: requestOptions
+        )).data
     }
 
-    /// Extends the maximum execution time of a running session. Supply the additional duration in milliseconds; the session must be active, and the resulting timeout cannot exceed your account's maximum allowed limit.
+    /// Extends the maximum execution time of a running session. Supply the additional duration in milliseconds; the
+    /// session must be active, and the resulting timeout cannot exceed your account's maximum allowed limit.
     ///
-    /// Extends the maximum execution time of a running session. The session must be active and able to accept commands. The total timeout cannot exceed the maximum allowed limit for your account.
+    /// Extends the maximum execution time of a running session. The session must be active and able to accept commands.
+    /// The total timeout cannot exceed the maximum allowed limit for your account.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session to extend the timeout for.
@@ -32,14 +50,30 @@ extension SandboxesMethods {
     ///   timeout. Must be at least 1000ms (1 second).
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func extendSessionTimeout(config: ClientConfig, sessionId: String, duration: Double, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ExtendSessionTimeoutResponse {
+    static func extendSessionTimeout(
+        config: ClientConfig,
+        sessionId: String,
+        duration: Double,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ExtendSessionTimeoutResponse {
         try validateRange("duration", Double(duration), min: 1000)
 
         let requestBody = ExtendSessionTimeoutRequestBody(duration: duration)
 
-        return try (await sdkRequest("POST", ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/extend-timeout"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "extendSessionTimeout", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v2/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/extend-timeout"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "extendSessionTimeout",
+            options: requestOptions
+        )).data
     }
 }

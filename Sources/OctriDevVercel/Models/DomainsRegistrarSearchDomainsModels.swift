@@ -3,34 +3,48 @@
 
 import Foundation
 
-// DomainsRegistrar domain models
+/// DomainsRegistrar domain models
 public indirect enum SearchDomainsResponseResultsItem {
     case searchDomainsResponseResultsItemVariant0(SearchDomainsResponseResultsItemVariant0)
     case searchDomainsResponseResultsItemVariant1(SearchDomainsResponseResultsItemVariant1)
 }
 
 extension SearchDomainsResponseResultsItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for SearchDomainsResponseResultsItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for SearchDomainsResponseResultsItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension SearchDomainsResponseResultsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(SearchDomainsResponseResultsItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(SearchDomainsResponseResultsItemVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .searchDomainsResponseResultsItemVariant0(value)
         }
-        if let value = try? container.decode(SearchDomainsResponseResultsItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(SearchDomainsResponseResultsItemVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .searchDomainsResponseResultsItemVariant1(value)
         }
         return nil
@@ -42,12 +56,12 @@ extension SearchDomainsResponseResultsItem {
         if let value = try? container.decode(
             SearchDomainsResponseResultsItemVariant0.self
         ) {
-            return             .searchDomainsResponseResultsItemVariant0(value)
+            return .searchDomainsResponseResultsItemVariant0(value)
         }
         if let value = try? container.decode(
             SearchDomainsResponseResultsItemVariant1.self
         ) {
-            return             .searchDomainsResponseResultsItemVariant1(value)
+            return .searchDomainsResponseResultsItemVariant1(value)
         }
         return nil
     }
@@ -74,25 +88,35 @@ public struct SearchDomainsResponseResultsItemVariant0: Codable {
         case available
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SearchDomainsResponseResultsItemVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.domain) else {
-            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
-        }
-        guard container.contains(.available) else {
-            throw SdkValidationError(field: "available", code: "required", message: "Validation failed for 'available': value is required")
-        }
-        self.domain = try container.sdkDecodeRequired(.domain)
-        self.available = try container.sdkDecodeRequired(.available)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SearchDomainsResponseResultsItemVariant0 {
-    public init(domain: DomainName, available: Bool) {
+public extension SearchDomainsResponseResultsItemVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.domain) else {
+            throw SdkValidationError(
+                field: "domain",
+                code: "required",
+                message: "Validation failed for 'domain': value is required"
+            )
+        }
+        guard container.contains(.available) else {
+            throw SdkValidationError(
+                field: "available",
+                code: "required",
+                message: "Validation failed for 'available': value is required"
+            )
+        }
+        domain = try container.sdkDecodeRequired(.domain)
+        available = try container.sdkDecodeRequired(.available)
+    }
+}
+
+public extension SearchDomainsResponseResultsItemVariant0 {
+    init(domain: DomainName, available: Bool) {
         (self.domain, self.available) = (domain, available)
     }
 }
@@ -115,41 +139,67 @@ public struct SearchDomainsResponseResultsItemVariant1: Codable {
         case premium
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SearchDomainsResponseResultsItemVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.domain) else {
-            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
-        }
-        guard container.contains(.available) else {
-            throw SdkValidationError(field: "available", code: "required", message: "Validation failed for 'available': value is required")
-        }
-        guard container.contains(.years) else {
-            throw SdkValidationError(field: "years", code: "required", message: "Validation failed for 'years': value is required")
-        }
-        guard container.contains(.price) else {
-            throw SdkValidationError(field: "price", code: "required", message: "Validation failed for 'price': value is required")
-        }
-        guard container.contains(.renewalPrice) else {
-            throw SdkValidationError(field: "renewalPrice", code: "required", message: "Validation failed for 'renewalPrice': value is required")
-        }
-        guard container.contains(.premium) else {
-            throw SdkValidationError(field: "premium", code: "required", message: "Validation failed for 'premium': value is required")
-        }
-        self.domain = try container.sdkDecodeRequired(.domain)
-        self.available = try container.sdkDecodeRequired(.available)
-        self.years = try container.sdkDecodeRequired(.years)
-        self.price = try container.sdkDecodeRequired(.price)
-        self.renewalPrice = try container.sdkDecodeRequired(.renewalPrice)
-        self.premium = try container.sdkDecodeRequired(.premium)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SearchDomainsResponseResultsItemVariant1 {
-    public init(domain: DomainName, available: Bool, years: Double, price: Double, renewalPrice: Double, premium: Bool) {
+public extension SearchDomainsResponseResultsItemVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.domain) else {
+            throw SdkValidationError(
+                field: "domain",
+                code: "required",
+                message: "Validation failed for 'domain': value is required"
+            )
+        }
+        guard container.contains(.available) else {
+            throw SdkValidationError(
+                field: "available",
+                code: "required",
+                message: "Validation failed for 'available': value is required"
+            )
+        }
+        guard container.contains(.years) else {
+            throw SdkValidationError(
+                field: "years",
+                code: "required",
+                message: "Validation failed for 'years': value is required"
+            )
+        }
+        guard container.contains(.price) else {
+            throw SdkValidationError(
+                field: "price",
+                code: "required",
+                message: "Validation failed for 'price': value is required"
+            )
+        }
+        guard container.contains(.renewalPrice) else {
+            throw SdkValidationError(
+                field: "renewalPrice",
+                code: "required",
+                message: "Validation failed for 'renewalPrice': value is required"
+            )
+        }
+        guard container.contains(.premium) else {
+            throw SdkValidationError(
+                field: "premium",
+                code: "required",
+                message: "Validation failed for 'premium': value is required"
+            )
+        }
+        domain = try container.sdkDecodeRequired(.domain)
+        available = try container.sdkDecodeRequired(.available)
+        years = try container.sdkDecodeRequired(.years)
+        price = try container.sdkDecodeRequired(.price)
+        renewalPrice = try container.sdkDecodeRequired(.renewalPrice)
+        premium = try container.sdkDecodeRequired(.premium)
+    }
+}
+
+public extension SearchDomainsResponseResultsItemVariant1 {
+    init(domain: DomainName, available: Bool, years: Double, price: Double, renewalPrice: Double, premium: Bool) {
         (self.domain, self.available) = (domain, available)
         (self.years, self.price) = (years, price)
         (self.renewalPrice, self.premium) = (renewalPrice, premium)

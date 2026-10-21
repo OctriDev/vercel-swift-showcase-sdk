@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical integrations operation model declarations
+/// Canonical integrations operation model declarations
 public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX43a0ecc7c9: Codable {
     public var type: GetConfigurationProductsResponseProductsItemMetadataSchemaProX796da315d9
     public var uiControl: GetConfigurationProductsResponseProductsItemMetadataSchemaProXb22647cbe0
@@ -45,44 +45,75 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX43a0
         case uiReadOnly = "ui:read-only"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX43a0ecc7c9 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.uiControl) else {
-            throw SdkValidationError(field: "ui:control", code: "required", message: "Validation failed for 'ui:control': value is required")
-        }
-        guard container.contains(.uiOptions) else {
-            throw SdkValidationError(field: "ui:options", code: "required", message: "Validation failed for 'ui:options': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.uiControl = try container.sdkDecodeRequired(.uiControl)
-        self.uiOptions = try container.sdkDecodeRequired(.uiOptions)
-        self.`default` = try container.sdkDecodeIfPresent(.`default`)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.maxLength = try container.sdkDecodeIfPresent(.maxLength)
-        self.minLength = try container.sdkDecodeIfPresent(.minLength)
-        self.pattern = try container.sdkDecodeIfPresent(.pattern)
-        self.uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
-        self.uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
-        self.uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
-        self.uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
-        self.uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
-        self.uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
-        self.uiPlaceholder = try container.sdkDecodeIfPresent(.uiPlaceholder)
-        self.uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX43a0ecc7c9 {
-    public init(type: GetConfigurationProductsResponseProductsItemMetadataSchemaProX796da315d9, uiControl: GetConfigurationProductsResponseProductsItemMetadataSchemaProXb22647cbe0, uiOptions: GetConfigurationProductsResponseProductsItemMetadataSchemaProX6f1a76beae, `default`: String? = nil, description: String? = nil, maxLength: Double? = nil, minLength: Double? = nil, pattern: String? = nil, uiDescription: GetConfigurationProductsResponseProductsItemMetadataSchemaProX04d2f022ae? = nil, uiDisabled: GetConfigurationProductsResponseProductsItemMetadataSchemaProX21829b0191? = nil, uiFormattedValue: GetConfigurationProductsResponseProductsItemMetadataSchemaProXd31dbfb015? = nil, uiHidden: GetConfigurationProductsResponseProductsItemMetadataSchemaProXdfa3b1b7d0? = nil, uiLabel: String? = nil, uiPaidOnly: Bool? = nil, uiPlaceholder: String? = nil, uiReadOnly: GetConfigurationProductsResponseProductsItemMetadataSchemaProXbcd1c8f638? = nil) {
+public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX43a0ecc7c9 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.uiControl) else {
+            throw SdkValidationError(
+                field: "ui:control",
+                code: "required",
+                message: "Validation failed for 'ui:control': value is required"
+            )
+        }
+        guard container.contains(.uiOptions) else {
+            throw SdkValidationError(
+                field: "ui:options",
+                code: "required",
+                message: "Validation failed for 'ui:options': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        uiControl = try container.sdkDecodeRequired(.uiControl)
+        uiOptions = try container.sdkDecodeRequired(.uiOptions)
+        self.default = try container.sdkDecodeIfPresent(.default)
+        description = try container.sdkDecodeIfPresent(.description)
+        maxLength = try container.sdkDecodeIfPresent(.maxLength)
+        minLength = try container.sdkDecodeIfPresent(.minLength)
+        pattern = try container.sdkDecodeIfPresent(.pattern)
+        uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
+        uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
+        uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
+        uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
+        uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
+        uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
+        uiPlaceholder = try container.sdkDecodeIfPresent(.uiPlaceholder)
+        uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
+    }
+}
+
+public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX43a0ecc7c9 {
+    init(
+        type: GetConfigurationProductsResponseProductsItemMetadataSchemaProX796da315d9,
+        uiControl: GetConfigurationProductsResponseProductsItemMetadataSchemaProXb22647cbe0,
+        uiOptions: GetConfigurationProductsResponseProductsItemMetadataSchemaProX6f1a76beae,
+        default: String? = nil,
+        description: String? = nil,
+        maxLength: Double? = nil,
+        minLength: Double? = nil,
+        pattern: String? = nil,
+        uiDescription: GetConfigurationProductsResponseProductsItemMetadataSchemaProX04d2f022ae? = nil,
+        uiDisabled: GetConfigurationProductsResponseProductsItemMetadataSchemaProX21829b0191? = nil,
+        uiFormattedValue: GetConfigurationProductsResponseProductsItemMetadataSchemaProXd31dbfb015? = nil,
+        uiHidden: GetConfigurationProductsResponseProductsItemMetadataSchemaProXdfa3b1b7d0? = nil,
+        uiLabel: String? = nil,
+        uiPaidOnly: Bool? = nil,
+        uiPlaceholder: String? = nil,
+        uiReadOnly: GetConfigurationProductsResponseProductsItemMetadataSchemaProXbcd1c8f638? = nil
+    ) {
         (self.type, self.uiControl) = (type, uiControl)
-        (self.uiOptions, self.`default`) = (uiOptions, `default`)
+        (self.uiOptions, self.default) = (uiOptions, `default`)
         (self.description, self.maxLength) = (description, maxLength)
         (self.minLength, self.pattern) = (minLength, pattern)
         (self.uiDescription, self.uiDisabled) = (uiDescription, uiDisabled)
@@ -119,36 +150,58 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX1308
         case uiReadOnly = "ui:read-only"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX1308c0ecd7 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.uiControl) else {
-            throw SdkValidationError(field: "ui:control", code: "required", message: "Validation failed for 'ui:control': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.uiControl = try container.sdkDecodeRequired(.uiControl)
-        self.`default` = try container.sdkDecodeIfPresent(.`default`)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
-        self.uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
-        self.uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
-        self.uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
-        self.uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
-        self.uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
-        self.uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX1308c0ecd7 {
-    public init(type: GetConfigurationProductsResponseProductsItemMetadataSchemaProXca28777f6b, uiControl: GetConfigurationProductsResponseProductsItemMetadataSchemaProXc9363cc502, `default`: Bool? = nil, description: String? = nil, uiDescription: GetConfigurationProductsResponseProductsItemMetadataSchemaProX8a3ea879e5? = nil, uiDisabled: GetConfigurationProductsResponseProductsItemMetadataSchemaProX1eed637cec? = nil, uiFormattedValue: GetConfigurationProductsResponseProductsItemMetadataSchemaProXba2036b9f9? = nil, uiHidden: GetConfigurationProductsResponseProductsItemMetadataSchemaProX776352d413? = nil, uiLabel: String? = nil, uiPaidOnly: Bool? = nil, uiReadOnly: GetConfigurationProductsResponseProductsItemMetadataSchemaProXd14d96d049? = nil) {
+public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX1308c0ecd7 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.uiControl) else {
+            throw SdkValidationError(
+                field: "ui:control",
+                code: "required",
+                message: "Validation failed for 'ui:control': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        uiControl = try container.sdkDecodeRequired(.uiControl)
+        self.default = try container.sdkDecodeIfPresent(.default)
+        description = try container.sdkDecodeIfPresent(.description)
+        uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
+        uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
+        uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
+        uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
+        uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
+        uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
+        uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
+    }
+}
+
+public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX1308c0ecd7 {
+    init(
+        type: GetConfigurationProductsResponseProductsItemMetadataSchemaProXca28777f6b,
+        uiControl: GetConfigurationProductsResponseProductsItemMetadataSchemaProXc9363cc502,
+        default: Bool? = nil,
+        description: String? = nil,
+        uiDescription: GetConfigurationProductsResponseProductsItemMetadataSchemaProX8a3ea879e5? = nil,
+        uiDisabled: GetConfigurationProductsResponseProductsItemMetadataSchemaProX1eed637cec? = nil,
+        uiFormattedValue: GetConfigurationProductsResponseProductsItemMetadataSchemaProXba2036b9f9? = nil,
+        uiHidden: GetConfigurationProductsResponseProductsItemMetadataSchemaProX776352d413? = nil,
+        uiLabel: String? = nil,
+        uiPaidOnly: Bool? = nil,
+        uiReadOnly: GetConfigurationProductsResponseProductsItemMetadataSchemaProXd14d96d049? = nil
+    ) {
         (self.type, self.uiControl) = (type, uiControl)
-        (self.`default`, self.description) = (`default`, description)
+        (self.default, self.description) = (`default`, description)
         (self.uiDescription, self.uiDisabled) = (uiDescription, uiDisabled)
         (self.uiFormattedValue, self.uiHidden) = (uiFormattedValue, uiHidden)
         (self.uiLabel, self.uiPaidOnly) = (uiLabel, uiPaidOnly)
@@ -191,47 +244,81 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX703c
         case uiReadOnly = "ui:read-only"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX703cea82fe {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.items) else {
-            throw SdkValidationError(field: "items", code: "required", message: "Validation failed for 'items': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.uiControl) else {
-            throw SdkValidationError(field: "ui:control", code: "required", message: "Validation failed for 'ui:control': value is required")
-        }
-        guard container.contains(.uiSteps) else {
-            throw SdkValidationError(field: "ui:steps", code: "required", message: "Validation failed for 'ui:steps': value is required")
-        }
-        self.items = try container.sdkDecodeRequired(.items)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.uiControl = try container.sdkDecodeRequired(.uiControl)
-        self.uiSteps = try container.sdkDecodeRequired(.uiSteps)
-        self.`default` = try container.sdkDecodeIfPresent(.`default`)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.maxItems = try container.sdkDecodeIfPresent(.maxItems)
-        self.minItems = try container.sdkDecodeIfPresent(.minItems)
-        self.uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
-        self.uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
-        self.uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
-        self.uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
-        self.uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
-        self.uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
-        self.uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX703cea82fe {
-    public init(items: GetConfigurationProductsResponseProductsItemMetadataSchemaProX3ccc74125e, type: GetConfigurationProductsResponseProductsItemMetadataSchemaProXabc7b32afb, uiControl: GetConfigurationProductsResponseProductsItemMetadataSchemaProX51ca6126b1, uiSteps: [Double], `default`: [Double]? = nil, description: String? = nil, maxItems: Double? = nil, minItems: Double? = nil, uiDescription: GetConfigurationProductsResponseProductsItemMetadataSchemaProX7d0d50ab31? = nil, uiDisabled: GetConfigurationProductsResponseProductsItemMetadataSchemaProX82aced1f7f? = nil, uiFormattedValue: GetConfigurationProductsResponseProductsItemMetadataSchemaProX6d29560888? = nil, uiHidden: GetConfigurationProductsResponseProductsItemMetadataSchemaProXeb3fa79c78? = nil, uiLabel: String? = nil, uiPaidOnly: Bool? = nil, uiReadOnly: GetConfigurationProductsResponseProductsItemMetadataSchemaProX79785b2a8b? = nil) {
+public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX703cea82fe {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.items) else {
+            throw SdkValidationError(
+                field: "items",
+                code: "required",
+                message: "Validation failed for 'items': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.uiControl) else {
+            throw SdkValidationError(
+                field: "ui:control",
+                code: "required",
+                message: "Validation failed for 'ui:control': value is required"
+            )
+        }
+        guard container.contains(.uiSteps) else {
+            throw SdkValidationError(
+                field: "ui:steps",
+                code: "required",
+                message: "Validation failed for 'ui:steps': value is required"
+            )
+        }
+        items = try container.sdkDecodeRequired(.items)
+        type = try container.sdkDecodeRequired(.type)
+        uiControl = try container.sdkDecodeRequired(.uiControl)
+        uiSteps = try container.sdkDecodeRequired(.uiSteps)
+        self.default = try container.sdkDecodeIfPresent(.default)
+        description = try container.sdkDecodeIfPresent(.description)
+        maxItems = try container.sdkDecodeIfPresent(.maxItems)
+        minItems = try container.sdkDecodeIfPresent(.minItems)
+        uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
+        uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
+        uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
+        uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
+        uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
+        uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
+        uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
+    }
+}
+
+public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX703cea82fe {
+    init(
+        items: GetConfigurationProductsResponseProductsItemMetadataSchemaProX3ccc74125e,
+        type: GetConfigurationProductsResponseProductsItemMetadataSchemaProXabc7b32afb,
+        uiControl: GetConfigurationProductsResponseProductsItemMetadataSchemaProX51ca6126b1,
+        uiSteps: [Double],
+        default: [Double]? = nil,
+        description: String? = nil,
+        maxItems: Double? = nil,
+        minItems: Double? = nil,
+        uiDescription: GetConfigurationProductsResponseProductsItemMetadataSchemaProX7d0d50ab31? = nil,
+        uiDisabled: GetConfigurationProductsResponseProductsItemMetadataSchemaProX82aced1f7f? = nil,
+        uiFormattedValue: GetConfigurationProductsResponseProductsItemMetadataSchemaProX6d29560888? = nil,
+        uiHidden: GetConfigurationProductsResponseProductsItemMetadataSchemaProXeb3fa79c78? = nil,
+        uiLabel: String? = nil,
+        uiPaidOnly: Bool? = nil,
+        uiReadOnly: GetConfigurationProductsResponseProductsItemMetadataSchemaProX79785b2a8b? = nil
+    ) {
         (self.items, self.type) = (items, type)
         (self.uiControl, self.uiSteps) = (uiControl, uiSteps)
-        (self.`default`, self.description) = (`default`, description)
+        (self.default, self.description) = (`default`, description)
         (self.maxItems, self.minItems) = (maxItems, minItems)
         (self.uiDescription, self.uiDisabled) = (uiDescription, uiDisabled)
         (self.uiFormattedValue, self.uiHidden) = (uiFormattedValue, uiHidden)
@@ -249,15 +336,21 @@ public indirect enum CreateIntegrationStoreDirectResponseStoreProductMetadataSch
 }
 
 extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2247c622f5: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2247c622f5")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2247c622f5"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -266,10 +359,14 @@ extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2247c622
         if let value = try? container.decode(
             CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX8656d6a42f.self
         ) {
-            return             .createIntegrationStoreDirectResponseStoreProductMetadataSchemX8656d6a42f(value)
+            return .createIntegrationStoreDirectResponseStoreProductMetadataSchemX8656d6a42f(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -278,7 +375,8 @@ extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2247c622
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemX8656d6a42f(value): try container.encode(value); return true
+        case let .createIntegrationStoreDirectResponseStoreProductMetadataSchemX8656d6a42f(value): try container
+            .encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }
@@ -294,15 +392,21 @@ public indirect enum GetConfigurationProductsResponseProductsItemMetadataSchemaP
 }
 
 extension GetConfigurationProductsResponseProductsItemMetadataSchemaProXa5fcfbd5c1: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProXa5fcfbd5c1")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetConfigurationProductsResponseProductsItemMetadataSchemaProXa5fcfbd5c1"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -311,10 +415,14 @@ extension GetConfigurationProductsResponseProductsItemMetadataSchemaProXa5fcfbd5
         if let value = try? container.decode(
             GetConfigurationProductsResponseProductsItemMetadataSchemaProX99351889cb.self
         ) {
-            return             .getConfigurationProductsResponseProductsItemMetadataSchemaProX99351889cb(value)
+            return .getConfigurationProductsResponseProductsItemMetadataSchemaProX99351889cb(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -323,7 +431,8 @@ extension GetConfigurationProductsResponseProductsItemMetadataSchemaProXa5fcfbd5
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProX99351889cb(value): try container.encode(value); return true
+        case let .getConfigurationProductsResponseProductsItemMetadataSchemaProX99351889cb(value): try container
+            .encode(value); return true
         case let .boolValue(value): try container.encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }
@@ -337,21 +446,27 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX55b8
         case expr
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX55b8845f20 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.expr) else {
-            throw SdkValidationError(field: "expr", code: "required", message: "Validation failed for 'expr': value is required")
-        }
-        self.expr = try container.sdkDecodeRequired(.expr)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX55b8845f20 {
-    public init(expr: String) {
+public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX55b8845f20 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.expr) else {
+            throw SdkValidationError(
+                field: "expr",
+                code: "required",
+                message: "Validation failed for 'expr': value is required"
+            )
+        }
+        expr = try container.sdkDecodeRequired(.expr)
+    }
+}
+
+public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX55b8845f20 {
+    init(expr: String) {
         self.expr = expr
     }
 }
@@ -371,35 +486,52 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf281
         case hidden
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf281d6425f {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.label) else {
-            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.label = try container.sdkDecodeRequired(.label)
-        self.value = try container.sdkDecodeRequired(.value)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.disabled = try container.sdkDecodeIfPresent(.disabled)
-        self.hidden = try container.sdkDecodeIfPresent(.hidden)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf281d6425f {
-    public init(label: String, value: String, description: String? = nil, disabled: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7ea68085fa? = nil, hidden: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7fd1399016? = nil) {
+public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf281d6425f {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.label) else {
+            throw SdkValidationError(
+                field: "label",
+                code: "required",
+                message: "Validation failed for 'label': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        label = try container.sdkDecodeRequired(.label)
+        value = try container.sdkDecodeRequired(.value)
+        description = try container.sdkDecodeIfPresent(.description)
+        disabled = try container.sdkDecodeIfPresent(.disabled)
+        hidden = try container.sdkDecodeIfPresent(.hidden)
+    }
+}
+
+public extension CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXf281d6425f {
+    init(
+        label: String,
+        value: String,
+        description: String? = nil,
+        disabled: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7ea68085fa? = nil,
+        hidden: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX7fd1399016? = nil
+    ) {
         (self.label, self.value) = (label, value)
         (self.description, self.disabled) = (description, disabled)
         self.hidden = hidden
     }
 }
 
-public typealias GetConfigurationProductsResponseProductsItemMetadataSchemaProX773c987ff0 = [GetConfigurationProductsResponseProductsItemMetadataSchemaProX2a15392619]
+public typealias GetConfigurationProductsResponseProductsItemMetadataSchemaProX773c987ff0 =
+    [GetConfigurationProductsResponseProductsItemMetadataSchemaProX2a15392619]
 
 public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX3116487756: Codable {
     public var type: GetConfigurationProductsResponseProductsItemMetadataSchemaProXfe57d8a5eb
@@ -438,36 +570,50 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX3116
         case uiReadOnly = "ui:read-only"
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX3116487756 {
-    public init(from decoder: Decoder) throws {
+public extension GetConfigurationProductsResponseProductsItemMetadataSchemaProX3116487756 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
         guard container.contains(.uiControl) else {
-            throw SdkValidationError(field: "ui:control", code: "required", message: "Validation failed for 'ui:control': value is required")
+            throw SdkValidationError(
+                field: "ui:control",
+                code: "required",
+                message: "Validation failed for 'ui:control': value is required"
+            )
         }
         guard container.contains(.uiOptions) else {
-            throw SdkValidationError(field: "ui:options", code: "required", message: "Validation failed for 'ui:options': value is required")
+            throw SdkValidationError(
+                field: "ui:options",
+                code: "required",
+                message: "Validation failed for 'ui:options': value is required"
+            )
         }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.uiControl = try container.sdkDecodeRequired(.uiControl)
-        self.uiOptions = try container.sdkDecodeRequired(.uiOptions)
-        self.`default` = try container.sdkDecodeIfPresent(.`default`)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.maxLength = try container.sdkDecodeIfPresent(.maxLength)
-        self.minLength = try container.sdkDecodeIfPresent(.minLength)
-        self.pattern = try container.sdkDecodeIfPresent(.pattern)
-        self.uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
-        self.uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
-        self.uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
-        self.uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
-        self.uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
-        self.uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
-        self.uiPlaceholder = try container.sdkDecodeIfPresent(.uiPlaceholder)
-        self.uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
+        type = try container.sdkDecodeRequired(.type)
+        uiControl = try container.sdkDecodeRequired(.uiControl)
+        uiOptions = try container.sdkDecodeRequired(.uiOptions)
+        self.default = try container.sdkDecodeIfPresent(.default)
+        description = try container.sdkDecodeIfPresent(.description)
+        maxLength = try container.sdkDecodeIfPresent(.maxLength)
+        minLength = try container.sdkDecodeIfPresent(.minLength)
+        pattern = try container.sdkDecodeIfPresent(.pattern)
+        uiDescription = try container.sdkDecodeIfPresent(.uiDescription)
+        uiDisabled = try container.sdkDecodeIfPresent(.uiDisabled)
+        uiFormattedValue = try container.sdkDecodeIfPresent(.uiFormattedValue)
+        uiHidden = try container.sdkDecodeIfPresent(.uiHidden)
+        uiLabel = try container.sdkDecodeIfPresent(.uiLabel)
+        uiPaidOnly = try container.sdkDecodeIfPresent(.uiPaidOnly)
+        uiPlaceholder = try container.sdkDecodeIfPresent(.uiPlaceholder)
+        uiReadOnly = try container.sdkDecodeIfPresent(.uiReadOnly)
     }
 }

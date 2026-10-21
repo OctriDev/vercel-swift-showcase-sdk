@@ -6,10 +6,15 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ArtifactsMethods {
-    /// Records artifact cache usage events for a team or user. Send an array of events, each with a `sessionId`, `source`, `hash`, and `event`; include `duration` for `HIT` events. Use the client headers to identify the CI environment and whether the client is interactive.
+public extension ArtifactsMethods {
+    /// Records artifact cache usage events for a team or user. Send an array of events, each with a `sessionId`,
+    /// `source`, `hash`, and `event`; include `duration` for `HIT` events. Use the client headers to identify the CI
+    /// environment and whether the client is interactive.
     ///
-    /// Records an artifacts cache usage event. The body of this request is an array of cache usage events. The supported event types are `HIT` and `MISS`. The source is either `LOCAL` the cache event was on the users filesystem cache or `REMOTE` if the cache event is for a remote cache. When the event is a `HIT` the request also accepts a number `duration` which is the time taken to generate the artifact in the cache.
+    /// Records an artifacts cache usage event. The body of this request is an array of cache usage events. The
+    /// supported event types are `HIT` and `MISS`. The source is either `LOCAL` the cache event was on the users
+    /// filesystem cache or `REMOTE` if the cache event is for a remote cache. When the event is a `HIT` the request
+    /// also accepts a number `duration` which is the time taken to generate the artifact in the cache.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
@@ -18,19 +23,30 @@ extension ArtifactsMethods {
     ///   where this artifact is downloaded.
     /// - xArtifactClientInteractive: 1 if the client is an interactive shell.
     ///   Otherwise 0
-    public static func recordEvents(config: ClientConfig, body: [RecordEventsRequestBodyItem], teamId: String? = nil, slug: String? = nil, xArtifactClientCi: String? = nil, xArtifactClientInteractive: Int? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        if let xArtifactClientCi = xArtifactClientCi {
+    static func recordEvents(
+        config: ClientConfig,
+        body: [RecordEventsRequestBodyItem],
+        teamId: String? = nil,
+        slug: String? = nil,
+        xArtifactClientCi: String? = nil,
+        xArtifactClientInteractive: Int? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        if let xArtifactClientCi {
             try validateLength("x-artifact-client-ci", xArtifactClientCi, max: 50)
         }
 
-        if let xArtifactClientInteractive = xArtifactClientInteractive {
+        if let xArtifactClientInteractive {
             try validateRange("x-artifact-client-interactive", Double(xArtifactClientInteractive), min: 0, max: 1)
         }
 
-        return try (await sdkRequest("POST", "/v8/artifacts/events", config: config, query: [
+        return try await (sdkRequest("POST", "/v8/artifacts/events", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
-        ], rawBody: (try sdkEncodeBody(body, contentType: "application/json")), decoder: .empty, operationId: "recordEvents", extraHeaders: sdkHeaders([
+        ], rawBody: sdkEncodeBody(
+            body,
+            contentType: "application/json"
+        ), decoder: .empty, operationId: "recordEvents", extraHeaders: sdkHeaders([
             ("x-artifact-client-ci", sdkHeaderValue(xArtifactClientCi)),
             ("x-artifact-client-interactive", sdkHeaderValue(xArtifactClientInteractive)),
         ]), options: requestOptions)).data

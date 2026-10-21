@@ -3,25 +3,33 @@
 
 import Foundation
 
-// Security domain models
+/// Security domain models
 public indirect enum AddBypassIpResponse {
     case addBypassIpResponseVariant0(AddBypassIpResponseVariant0)
     case addBypassIpResponseVariant1(AddBypassIpResponseVariant1)
 }
 
 extension AddBypassIpResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AddBypassIpResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AddBypassIpResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -39,8 +47,14 @@ extension AddBypassIpResponse {
 
 extension AddBypassIpResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(AddBypassIpResponseVariant0.self) { return .addBypassIpResponseVariant0(value) }
-        if let value = try? container.decode(AddBypassIpResponseVariant1.self) { return .addBypassIpResponseVariant1(value) }
+        if let value = try? container
+            .decode(AddBypassIpResponseVariant0.self) {
+            return .addBypassIpResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(AddBypassIpResponseVariant1.self) {
+            return .addBypassIpResponseVariant1(value)
+        }
         return nil
     }
 }
@@ -66,29 +80,43 @@ public struct AddBypassIpResponseVariant0: Codable {
         case result
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AddBypassIpResponseVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.ok) else {
-            throw SdkValidationError(field: "ok", code: "required", message: "Validation failed for 'ok': value is required")
-        }
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        guard container.contains(.result) else {
-            throw SdkValidationError(field: "result", code: "required", message: "Validation failed for 'result': value is required")
-        }
-        self.ok = try container.sdkDecodeRequired(.ok)
-        self.pagination = try container.sdkDecodeNullable(.pagination)
-        self.result = try container.sdkDecodeRequired(.result)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AddBypassIpResponseVariant0 {
-    public init(ok: Bool, pagination: JSONValue?, result: [AddBypassIpResponseVariant0ResultItem]) {
+public extension AddBypassIpResponseVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.ok) else {
+            throw SdkValidationError(
+                field: "ok",
+                code: "required",
+                message: "Validation failed for 'ok': value is required"
+            )
+        }
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        guard container.contains(.result) else {
+            throw SdkValidationError(
+                field: "result",
+                code: "required",
+                message: "Validation failed for 'result': value is required"
+            )
+        }
+        ok = try container.sdkDecodeRequired(.ok)
+        pagination = try container.sdkDecodeNullable(.pagination)
+        result = try container.sdkDecodeRequired(.result)
+    }
+}
+
+public extension AddBypassIpResponseVariant0 {
+    init(ok: Bool, pagination: JSONValue?, result: [AddBypassIpResponseVariant0ResultItem]) {
         (self.ok, self.pagination) = (ok, pagination)
         self.result = result
     }
@@ -103,22 +131,28 @@ public struct AddBypassIpResponseVariant1: Codable {
         case result
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AddBypassIpResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.ok) else {
-            throw SdkValidationError(field: "ok", code: "required", message: "Validation failed for 'ok': value is required")
-        }
-        self.ok = try container.sdkDecodeRequired(.ok)
-        self.result = try container.sdkDecodeIfPresent(.result)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AddBypassIpResponseVariant1 {
-    public init(ok: Bool, result: [AddBypassIpResponseVariant1ResultItem]? = nil) {
+public extension AddBypassIpResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.ok) else {
+            throw SdkValidationError(
+                field: "ok",
+                code: "required",
+                message: "Validation failed for 'ok': value is required"
+            )
+        }
+        ok = try container.sdkDecodeRequired(.ok)
+        result = try container.sdkDecodeIfPresent(.result)
+    }
+}
+
+public extension AddBypassIpResponseVariant1 {
+    init(ok: Bool, result: [AddBypassIpResponseVariant1ResultItem]? = nil) {
         (self.ok, self.result) = (ok, result)
     }
 }
@@ -156,52 +190,97 @@ public struct AddBypassIpResponseVariant1ResultItem: Codable {
         case projectId = "ProjectId"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AddBypassIpResponseVariant1ResultItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "CreatedAt", code: "required", message: "Validation failed for 'CreatedAt': value is required")
-        }
-        guard container.contains(.domain) else {
-            throw SdkValidationError(field: "Domain", code: "required", message: "Validation failed for 'Domain': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "Id", code: "required", message: "Validation failed for 'Id': value is required")
-        }
-        guard container.contains(.ip) else {
-            throw SdkValidationError(field: "Ip", code: "required", message: "Validation failed for 'Ip': value is required")
-        }
-        guard container.contains(.ownerId) else {
-            throw SdkValidationError(field: "OwnerId", code: "required", message: "Validation failed for 'OwnerId': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "UpdatedAt", code: "required", message: "Validation failed for 'UpdatedAt': value is required")
-        }
-        guard container.contains(.updatedAtHour) else {
-            throw SdkValidationError(field: "UpdatedAtHour", code: "required", message: "Validation failed for 'UpdatedAtHour': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.domain = try container.sdkDecodeRequired(.domain)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.ip = try container.sdkDecodeRequired(.ip)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.updatedAtHour = try container.sdkDecodeRequired(.updatedAtHour)
-        self.action = try container.sdkDecodeIfPresent(.action)
-        self.actorId = try container.sdkDecodeIfPresent(.actorId)
-        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
-        self.isProjectRule = try container.sdkDecodeIfPresent(.isProjectRule)
-        self.note = try container.sdkDecodeIfPresent(.note)
-        self.projectId = try container.sdkDecodeIfPresent(.projectId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AddBypassIpResponseVariant1ResultItem {
-    public init(createdAt: String, domain: String, id: String, ip: String, ownerId: String, updatedAt: String, updatedAtHour: String, action: AddBypassIpResponseVariant1ResultItemAction? = nil, actorId: String? = nil, deletedAt: String? = nil, expiresAt: Double? = nil, isProjectRule: Bool? = nil, note: String? = nil, projectId: String? = nil) {
+public extension AddBypassIpResponseVariant1ResultItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "CreatedAt",
+                code: "required",
+                message: "Validation failed for 'CreatedAt': value is required"
+            )
+        }
+        guard container.contains(.domain) else {
+            throw SdkValidationError(
+                field: "Domain",
+                code: "required",
+                message: "Validation failed for 'Domain': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "Id",
+                code: "required",
+                message: "Validation failed for 'Id': value is required"
+            )
+        }
+        guard container.contains(.ip) else {
+            throw SdkValidationError(
+                field: "Ip",
+                code: "required",
+                message: "Validation failed for 'Ip': value is required"
+            )
+        }
+        guard container.contains(.ownerId) else {
+            throw SdkValidationError(
+                field: "OwnerId",
+                code: "required",
+                message: "Validation failed for 'OwnerId': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "UpdatedAt",
+                code: "required",
+                message: "Validation failed for 'UpdatedAt': value is required"
+            )
+        }
+        guard container.contains(.updatedAtHour) else {
+            throw SdkValidationError(
+                field: "UpdatedAtHour",
+                code: "required",
+                message: "Validation failed for 'UpdatedAtHour': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        domain = try container.sdkDecodeRequired(.domain)
+        id = try container.sdkDecodeRequired(.id)
+        ip = try container.sdkDecodeRequired(.ip)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        updatedAtHour = try container.sdkDecodeRequired(.updatedAtHour)
+        action = try container.sdkDecodeIfPresent(.action)
+        actorId = try container.sdkDecodeIfPresent(.actorId)
+        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        isProjectRule = try container.sdkDecodeIfPresent(.isProjectRule)
+        note = try container.sdkDecodeIfPresent(.note)
+        projectId = try container.sdkDecodeIfPresent(.projectId)
+    }
+}
+
+public extension AddBypassIpResponseVariant1ResultItem {
+    init(
+        createdAt: String,
+        domain: String,
+        id: String,
+        ip: String,
+        ownerId: String,
+        updatedAt: String,
+        updatedAtHour: String,
+        action: AddBypassIpResponseVariant1ResultItemAction? = nil,
+        actorId: String? = nil,
+        deletedAt: String? = nil,
+        expiresAt: Double? = nil,
+        isProjectRule: Bool? = nil,
+        note: String? = nil,
+        projectId: String? = nil
+    ) {
         (self.createdAt, self.domain) = (createdAt, domain)
         (self.id, self.ip) = (id, ip)
         (self.ownerId, self.updatedAt) = (ownerId, updatedAt)
@@ -231,42 +310,76 @@ public struct AddBypassIpResponseVariant0ResultItem: Codable {
         case ip = "Ip"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AddBypassIpResponseVariant0ResultItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.domain) else {
-            throw SdkValidationError(field: "Domain", code: "required", message: "Validation failed for 'Domain': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "Id", code: "required", message: "Validation failed for 'Id': value is required")
-        }
-        guard container.contains(.isProjectRule) else {
-            throw SdkValidationError(field: "IsProjectRule", code: "required", message: "Validation failed for 'IsProjectRule': value is required")
-        }
-        guard container.contains(.note) else {
-            throw SdkValidationError(field: "Note", code: "required", message: "Validation failed for 'Note': value is required")
-        }
-        guard container.contains(.ownerId) else {
-            throw SdkValidationError(field: "OwnerId", code: "required", message: "Validation failed for 'OwnerId': value is required")
-        }
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "ProjectId", code: "required", message: "Validation failed for 'ProjectId': value is required")
-        }
-        self.domain = try container.sdkDecodeRequired(.domain)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.isProjectRule = try container.sdkDecodeRequired(.isProjectRule)
-        self.note = try container.sdkDecodeRequired(.note)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.ip = try container.sdkDecodeIfPresent(.ip)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AddBypassIpResponseVariant0ResultItem {
-    public init(domain: String, id: String, isProjectRule: Bool, note: String, ownerId: String, projectId: String, ip: String? = nil) {
+public extension AddBypassIpResponseVariant0ResultItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.domain) else {
+            throw SdkValidationError(
+                field: "Domain",
+                code: "required",
+                message: "Validation failed for 'Domain': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "Id",
+                code: "required",
+                message: "Validation failed for 'Id': value is required"
+            )
+        }
+        guard container.contains(.isProjectRule) else {
+            throw SdkValidationError(
+                field: "IsProjectRule",
+                code: "required",
+                message: "Validation failed for 'IsProjectRule': value is required"
+            )
+        }
+        guard container.contains(.note) else {
+            throw SdkValidationError(
+                field: "Note",
+                code: "required",
+                message: "Validation failed for 'Note': value is required"
+            )
+        }
+        guard container.contains(.ownerId) else {
+            throw SdkValidationError(
+                field: "OwnerId",
+                code: "required",
+                message: "Validation failed for 'OwnerId': value is required"
+            )
+        }
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "ProjectId",
+                code: "required",
+                message: "Validation failed for 'ProjectId': value is required"
+            )
+        }
+        domain = try container.sdkDecodeRequired(.domain)
+        id = try container.sdkDecodeRequired(.id)
+        isProjectRule = try container.sdkDecodeRequired(.isProjectRule)
+        note = try container.sdkDecodeRequired(.note)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        ip = try container.sdkDecodeIfPresent(.ip)
+    }
+}
+
+public extension AddBypassIpResponseVariant0ResultItem {
+    init(
+        domain: String,
+        id: String,
+        isProjectRule: Bool,
+        note: String,
+        ownerId: String,
+        projectId: String,
+        ip: String? = nil
+    ) {
         (self.domain, self.id) = (domain, id)
         (self.isProjectRule, self.note) = (isProjectRule, note)
         (self.ownerId, self.projectId) = (ownerId, projectId)
@@ -274,16 +387,20 @@ extension AddBypassIpResponseVariant0ResultItem {
     }
 }
 
-public struct AddBypassIpResponseVariant1ResultItemAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AddBypassIpResponseVariant1ResultItemAction: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let block = AddBypassIpResponseVariant1ResultItemAction(rawValue: "block")
     public static let bypass = AddBypassIpResponseVariant1ResultItemAction(rawValue: "bypass")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

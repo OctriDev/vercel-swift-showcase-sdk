@@ -3,14 +3,14 @@
 
 import Foundation
 
-// Connect domain models
-extension ConnectConnectorUpdateDataRequestVariant5SlashCommandsItem {
-    public init(command: String, description: String, usageHint: String? = nil, shouldEscape: Bool? = nil) throws {
+/// Connect domain models
+public extension ConnectConnectorUpdateDataRequestVariant5SlashCommandsItem {
+    init(command: String, description: String, usageHint: String? = nil, shouldEscape: Bool? = nil) throws {
         (self.command, self.description) = (command, description)
         (self.usageHint, self.shouldEscape) = (usageHint, shouldEscape)
-            try validateLength("command", self.command, min: nil, max: 32)
-            try sdkValidatePattern("command", self.command, sdkPatternb8e174432b45)
-            try validateLength("description", self.description, min: nil, max: 2000)
+        try validateLength("command", self.command, min: nil, max: 32)
+        try sdkValidatePattern("command", self.command, sdkPatternb8e174432b45)
+        try validateLength("description", self.description, min: nil, max: 2000)
         if let value = self.usageHint {
             try validateLength("usageHint", value, min: nil, max: 1000)
         }
@@ -29,20 +29,20 @@ public struct ConnectConnectorUpdateDataRequestVariant6: Codable {
     }
 
     init() {
-        (self.accountIdentifier, self.defaultSessionRole) = (nil, nil)
+        (accountIdentifier, defaultSessionRole) = (nil, nil)
     }
 }
 
-extension ConnectConnectorUpdateDataRequestVariant6 {
-    public init(from decoder: Decoder) throws {
+public extension ConnectConnectorUpdateDataRequestVariant6 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.accountIdentifier = try container.sdkDecodeIfPresent(.accountIdentifier)
-        self.defaultSessionRole = try container.sdkDecodeIfPresent(.defaultSessionRole)
+        accountIdentifier = try container.sdkDecodeIfPresent(.accountIdentifier)
+        defaultSessionRole = try container.sdkDecodeIfPresent(.defaultSessionRole)
     }
 }
 
-extension ConnectConnectorUpdateDataRequestVariant6 {
-    public init(accountIdentifier: String? = nil, defaultSessionRole: String? = nil) {
+public extension ConnectConnectorUpdateDataRequestVariant6 {
+    init(accountIdentifier: String? = nil, defaultSessionRole: String? = nil) {
         self.init()
         (self.accountIdentifier, self.defaultSessionRole) = (accountIdentifier, defaultSessionRole)
     }
@@ -84,29 +84,40 @@ public struct ConnectConnectorUpdateDataRequestVariant3: Codable {
     }
 
     init() {
-        (self.appId, self.appName, self.clientId, self.clientSecret, self.webhookSecret) = (nil, nil, nil, nil, nil)
-        (self.appScopes, self.userScopes, self.ownerOrganization, self.application, self.extras) = (nil, nil, nil, nil, nil)
+        (appId, appName, clientId, clientSecret, webhookSecret) = (nil, nil, nil, nil, nil)
+        (appScopes, userScopes, ownerOrganization, application, extras) = (nil, nil, nil, nil, nil)
     }
 }
 
-extension ConnectConnectorUpdateDataRequestVariant3 {
-    public init(from decoder: Decoder) throws {
+public extension ConnectConnectorUpdateDataRequestVariant3 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.appId = try container.sdkDecodeIfPresent(.appId)
-        self.appName = try container.sdkDecodeIfPresent(.appName)
-        self.clientId = try container.sdkDecodeIfPresent(.clientId)
-        self.clientSecret = try container.sdkDecodeIfPresent(.clientSecret)
-        self.webhookSecret = try container.sdkDecodeIfPresent(.webhookSecret)
-        self.appScopes = try container.sdkDecodeIfPresent(.appScopes)
-        self.userScopes = try container.sdkDecodeIfPresent(.userScopes)
-        self.ownerOrganization = try container.sdkDecodeIfPresent(.ownerOrganization)
-        self.application = try container.sdkDecodeIfPresent(.application)
-        self.extras = try container.sdkDecodeIfPresent(.extras)
+        appId = try container.sdkDecodeIfPresent(.appId)
+        appName = try container.sdkDecodeIfPresent(.appName)
+        clientId = try container.sdkDecodeIfPresent(.clientId)
+        clientSecret = try container.sdkDecodeIfPresent(.clientSecret)
+        webhookSecret = try container.sdkDecodeIfPresent(.webhookSecret)
+        appScopes = try container.sdkDecodeIfPresent(.appScopes)
+        userScopes = try container.sdkDecodeIfPresent(.userScopes)
+        ownerOrganization = try container.sdkDecodeIfPresent(.ownerOrganization)
+        application = try container.sdkDecodeIfPresent(.application)
+        extras = try container.sdkDecodeIfPresent(.extras)
     }
 }
 
-extension ConnectConnectorUpdateDataRequestVariant3 {
-    public init(appId: String? = nil, appName: String? = nil, clientId: String? = nil, clientSecret: String? = nil, webhookSecret: String? = nil, appScopes: [String]? = nil, userScopes: [String]? = nil, ownerOrganization: ConnectConnectorUpdateDataRequestVariant3OwnerOrganization? = nil, application: ConnectConnectorUpdateDataRequestVariant3Application? = nil, extras: [String: JSONValue]? = nil) {
+public extension ConnectConnectorUpdateDataRequestVariant3 {
+    init(
+        appId: String? = nil,
+        appName: String? = nil,
+        clientId: String? = nil,
+        clientSecret: String? = nil,
+        webhookSecret: String? = nil,
+        appScopes: [String]? = nil,
+        userScopes: [String]? = nil,
+        ownerOrganization: ConnectConnectorUpdateDataRequestVariant3OwnerOrganization? = nil,
+        application: ConnectConnectorUpdateDataRequestVariant3Application? = nil,
+        extras: [String: JSONValue]? = nil
+    ) {
         self.init()
         (self.appId, self.appName) = (appId, appName)
         (self.clientId, self.clientSecret) = (clientId, clientSecret)
@@ -133,21 +144,21 @@ public struct ConnectConnectorUpdateDataRequestVariant9: Codable {
     }
 
     init() {
-        (self.apiKeyId, self.apiSecretKey, self.phoneNumbers) = (nil, nil, nil)
+        (apiKeyId, apiSecretKey, phoneNumbers) = (nil, nil, nil)
     }
 }
 
-extension ConnectConnectorUpdateDataRequestVariant9 {
-    public init(from decoder: Decoder) throws {
+public extension ConnectConnectorUpdateDataRequestVariant9 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.apiKeyId = try container.sdkDecodeIfPresent(.apiKeyId)
-        self.apiSecretKey = try container.sdkDecodeIfPresent(.apiSecretKey)
-        self.phoneNumbers = try container.sdkDecodeIfPresent(.phoneNumbers)
+        apiKeyId = try container.sdkDecodeIfPresent(.apiKeyId)
+        apiSecretKey = try container.sdkDecodeIfPresent(.apiSecretKey)
+        phoneNumbers = try container.sdkDecodeIfPresent(.phoneNumbers)
     }
 }
 
-extension ConnectConnectorUpdateDataRequestVariant9 {
-    public init(apiKeyId: String? = nil, apiSecretKey: String? = nil, phoneNumbers: [String]? = nil) {
+public extension ConnectConnectorUpdateDataRequestVariant9 {
+    init(apiKeyId: String? = nil, apiSecretKey: String? = nil, phoneNumbers: [String]? = nil) {
         self.init()
         (self.apiKeyId, self.apiSecretKey) = (apiKeyId, apiSecretKey)
         self.phoneNumbers = phoneNumbers
@@ -155,16 +166,20 @@ extension ConnectConnectorUpdateDataRequestVariant9 {
 }
 
 /// Where Slack exposes the shortcut.
-public struct ConnectConnectorUpdateDataRequestVariant5ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdateDataRequestVariant5ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let global = ConnectConnectorUpdateDataRequestVariant5ShortcutsItemType(rawValue: "global")
     public static let message = ConnectConnectorUpdateDataRequestVariant5ShortcutsItemType(rawValue: "message")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -177,12 +192,15 @@ public struct ConnectConnectorUpdateDataRequestVariant5ShortcutsItemType: RawRep
 public struct ConnectReconsentScope: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let user = ConnectReconsentScope(rawValue: "user")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -192,16 +210,20 @@ public struct ConnectReconsentScope: RawRepresentable, Hashable, Codable, Sendab
 }
 
 /// Intended key use: signing or encryption.
-public struct ConnectConnectorUpdateDataRequestVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdateDataRequestVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let sig = ConnectConnectorUpdateDataRequestVariant0ServerConfigJwksKeysItemUse(rawValue: "sig")
     public static let enc = ConnectConnectorUpdateDataRequestVariant0ServerConfigJwksKeysItemUse(rawValue: "enc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -211,10 +233,14 @@ public struct ConnectConnectorUpdateDataRequestVariant0ServerConfigJwksKeysItemU
 }
 
 /// GitHub App owner type.
-public struct ConnectConnectorUpdateDataRequestVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdateDataRequestVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let user = ConnectConnectorUpdateDataRequestVariant2OwnerType(rawValue: "user")
     public static let organization = ConnectConnectorUpdateDataRequestVariant2OwnerType(rawValue: "organization")
     public static let user2 = ConnectConnectorUpdateDataRequestVariant2OwnerType(rawValue: "User")
@@ -222,7 +248,7 @@ public struct ConnectConnectorUpdateDataRequestVariant2OwnerType: RawRepresentab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -236,13 +262,16 @@ public struct ConnectConnectorUpdateDataRequestVariant2OwnerType: RawRepresentab
 public struct ConnectServiceSyncStatus: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let done = ConnectServiceSyncStatus(rawValue: "done")
     public static let required = ConnectServiceSyncStatus(rawValue: "required")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

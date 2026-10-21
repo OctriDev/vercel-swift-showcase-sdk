@@ -3,25 +3,37 @@
 
 import Foundation
 
-// Deployments domain models
+/// Deployments domain models
 public indirect enum UpdateIntegrationDeploymentActionRequestOutcomesItem {
-    case updateIntegrationDeploymentActionRequestOutcomesItemVariant0(UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0)
-    case updateIntegrationDeploymentActionRequestOutcomesItemVariant1(UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1)
+    case updateIntegrationDeploymentActionRequestOutcomesItemVariant0(
+        UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0
+    )
+    case updateIntegrationDeploymentActionRequestOutcomesItemVariant1(
+        UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1
+    )
 }
 
 extension UpdateIntegrationDeploymentActionRequestOutcomesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateIntegrationDeploymentActionRequestOutcomesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateIntegrationDeploymentActionRequestOutcomesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -44,12 +56,12 @@ extension UpdateIntegrationDeploymentActionRequestOutcomesItem {
         if let value = try? container.decode(
             UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0.self
         ) {
-            return             .updateIntegrationDeploymentActionRequestOutcomesItemVariant0(value)
+            return .updateIntegrationDeploymentActionRequestOutcomesItemVariant0(value)
         }
         if let value = try? container.decode(
             UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1.self
         ) {
-            return             .updateIntegrationDeploymentActionRequestOutcomesItemVariant1(value)
+            return .updateIntegrationDeploymentActionRequestOutcomesItemVariant1(value)
         }
         return nil
     }
@@ -59,13 +71,16 @@ extension UpdateIntegrationDeploymentActionRequestOutcomesItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateIntegrationDeploymentActionRequestOutcomesItemVariant0(value): try container.encode(value); return true
-        case let .updateIntegrationDeploymentActionRequestOutcomesItemVariant1(value): try container.encode(value); return true
+        case let .updateIntegrationDeploymentActionRequestOutcomesItemVariant0(value): try container
+            .encode(value); return true
+        case let .updateIntegrationDeploymentActionRequestOutcomesItemVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
 
-public typealias UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsList = [UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsItem]
+public typealias UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsList =
+    [UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsItem]
 
 public struct UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0: Codable {
     public var kind: String
@@ -76,30 +91,41 @@ public struct UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0: Coda
         case secrets
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
-        }
-        guard container.contains(.secrets) else {
-            throw SdkValidationError(field: "secrets", code: "required", message: "Validation failed for 'secrets': value is required")
-        }
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.secrets = try container.sdkDecodeRequired(.secrets)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0 {
-    public init(kind: String, secrets: UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsList) {
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.kind) else {
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
+        }
+        guard container.contains(.secrets) else {
+            throw SdkValidationError(
+                field: "secrets",
+                code: "required",
+                message: "Validation failed for 'secrets': value is required"
+            )
+        }
+        kind = try container.sdkDecodeRequired(.kind)
+        secrets = try container.sdkDecodeRequired(.secrets)
+    }
+}
+
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0 {
+    init(kind: String, secrets: UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsList) {
         (self.kind, self.secrets) = (kind, secrets)
     }
 }
 
-public typealias UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX45efc63131 = [UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXf6ff4d9c93]
+public typealias UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX45efc63131 =
+    [UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXf6ff4d9c93]
 
 /// Claim rules applied after the resource’s own rules when this deployment mints a resource token. Reserved claims
 /// cannot be set.
@@ -113,25 +139,35 @@ public struct UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1: Coda
         case claimRules
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
-        }
-        guard container.contains(.claimRules) else {
-            throw SdkValidationError(field: "claimRules", code: "required", message: "Validation failed for 'claimRules': value is required")
-        }
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.claimRules = try container.sdkDecodeRequired(.claimRules)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1 {
-    public init(kind: String, claimRules: UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX45efc63131) {
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.kind) else {
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
+        }
+        guard container.contains(.claimRules) else {
+            throw SdkValidationError(
+                field: "claimRules",
+                code: "required",
+                message: "Validation failed for 'claimRules': value is required"
+            )
+        }
+        kind = try container.sdkDecodeRequired(.kind)
+        claimRules = try container.sdkDecodeRequired(.claimRules)
+    }
+}
+
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1 {
+    init(kind: String, claimRules: UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX45efc63131) {
         (self.kind, self.claimRules) = (kind, claimRules)
     }
 }
@@ -148,22 +184,31 @@ public struct UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXf6ff
         case when
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXf6ff4d9c93 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.claims) else {
-            throw SdkValidationError(field: "claims", code: "required", message: "Validation failed for 'claims': value is required")
-        }
-        self.claims = try container.sdkDecodeRequired(.claims)
-        self.when = try container.sdkDecodeIfPresent(.when)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXf6ff4d9c93 {
-    public init(claims: [String: UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXbeba43d07d?], when: UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX216833dd70? = nil) {
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXf6ff4d9c93 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.claims) else {
+            throw SdkValidationError(
+                field: "claims",
+                code: "required",
+                message: "Validation failed for 'claims': value is required"
+            )
+        }
+        claims = try container.sdkDecodeRequired(.claims)
+        when = try container.sdkDecodeIfPresent(.when)
+    }
+}
+
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXf6ff4d9c93 {
+    init(
+        claims: [String: UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXbeba43d07d?],
+        when: UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX216833dd70? = nil
+    ) {
         (self.claims, self.when) = (claims, when)
     }
 }
@@ -177,25 +222,35 @@ public struct UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0Secret
         case value
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.name = try container.sdkDecodeRequired(.name)
-        self.value = try container.sdkDecodeRequired(.value)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsItem {
-    public init(name: String, value: String) {
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        name = try container.sdkDecodeRequired(.name)
+        value = try container.sdkDecodeRequired(.value)
+    }
+}
+
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant0SecretsItem {
+    init(name: String, value: String) {
         (self.name, self.value) = (name, value)
     }
 }
@@ -208,24 +263,38 @@ public indirect enum UpdateIntegrationDeploymentActionRequestOutcomesItemVariant
 }
 
 extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXbeba43d07d: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXbeba43d07d")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXbeba43d07d"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CXbeba43d07d {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
-        if let value = try? container.decode([String].self) { return .stringList(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
+        if let value = try? container.decode([String].self) {
+            return .stringList(value)
+        }
         return nil
     }
 }
@@ -264,26 +333,26 @@ public struct UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX2168
     }
 
     init() {
-        (self.role, self.environment) = (nil, nil)
+        (role, environment) = (nil, nil)
     }
 }
 
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX216833dd70 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX216833dd70 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.role = try container.sdkDecodeIfPresent(.role)
-        self.environment = try container.sdkDecodeIfPresent(.environment)
-        if let value = self.role {
+        role = try container.sdkDecodeIfPresent(.role)
+        environment = try container.sdkDecodeIfPresent(.environment)
+        if let value = role {
             try validateItems("role", value, min: 1, max: 32)
         }
-        if let value = self.environment {
+        if let value = environment {
             try validateItems("environment", value, min: 1, max: 32)
         }
     }
 }
 
-extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX216833dd70 {
-    public init(role: [String]? = nil, environment: [String]? = nil) throws {
+public extension UpdateIntegrationDeploymentActionRequestOutcomesItemVariant1CX216833dd70 {
+    init(role: [String]? = nil, environment: [String]? = nil) throws {
         self.init()
         (self.role, self.environment) = (role, environment)
         if let value = self.role {

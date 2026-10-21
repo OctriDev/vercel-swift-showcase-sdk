@@ -6,7 +6,7 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension TeamsMethods {
+public extension TeamsMethods {
     /// Deletes an active team invite code. Use `teamId` and `inviteId` to identify the team and invite code to remove.
     ///
     /// Delete an active Team invite code.
@@ -14,7 +14,24 @@ extension TeamsMethods {
     /// - Parameters:
     /// - inviteId: The Team invite code ID.
     /// - teamId: The Team identifier to perform the request on behalf of.
-    public static func deleteTeamInviteCode(config: ClientConfig, inviteId: String, teamId: String, requestOptions: RequestOptions? = nil) async throws -> DeleteTeamInviteCodeResponse {
-        return try (await sdkRequest("DELETE", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/invites/", sdkEncodePathSegment(sdkWireString(inviteId))].joined(), config: config, decoder: .json, operationId: "deleteTeamInviteCode", options: requestOptions)).data
+    static func deleteTeamInviteCode(
+        config: ClientConfig,
+        inviteId: String,
+        teamId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteTeamInviteCodeResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/teams/",
+                sdkEncodePathSegment(sdkWireString(teamId)),
+                "/invites/",
+                sdkEncodePathSegment(sdkWireString(inviteId)),
+            ].joined(),
+            config: config,
+            decoder: .json,
+            operationId: "deleteTeamInviteCode",
+            options: requestOptions
+        )).data
     }
 }

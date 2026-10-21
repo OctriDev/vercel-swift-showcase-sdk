@@ -6,22 +6,41 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AiGatewayMethods {
-    /// Deletes a virtual model configuration identified by its path slug using a soft delete. Specify `vmcSlug` to select the configuration, and optionally use `ownerId`, `teamId`, or `slug` to scope the operation.
+public extension AiGatewayMethods {
+    /// Deletes a virtual model configuration identified by its path slug using a soft delete. Specify `vmcSlug` to
+    /// select the configuration, and optionally use `ownerId`, `teamId`, or `slug` to scope the operation.
     ///
     /// Delete a virtual model config by path slug (soft delete)
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteAiGatewayVirtualModelConfigBySlug(config: ClientConfig, vmcSlug: String, ownerId: String? = nil, updatedBy: String? = nil, actingIp: String? = nil, actingUserAgent: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/ai-gateway/virtual-model-configs/", sdkEncodePathSegment(sdkWireString(vmcSlug))].joined(), config: config, query: [
-            SdkQueryParameter("ownerId", value: ownerId),
-            SdkQueryParameter("updatedBy", value: updatedBy),
-            SdkQueryParameter("actingIp", value: actingIp),
-            SdkQueryParameter("actingUserAgent", value: actingUserAgent),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "deleteAiGatewayVirtualModelConfigBySlug", options: requestOptions)).data
+    static func deleteAiGatewayVirtualModelConfigBySlug(
+        config: ClientConfig,
+        vmcSlug: String,
+        ownerId: String? = nil,
+        updatedBy: String? = nil,
+        actingIp: String? = nil,
+        actingUserAgent: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            ["/ai-gateway/virtual-model-configs/", sdkEncodePathSegment(sdkWireString(vmcSlug))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("ownerId", value: ownerId),
+                SdkQueryParameter("updatedBy", value: updatedBy),
+                SdkQueryParameter("actingIp", value: actingIp),
+                SdkQueryParameter("actingUserAgent", value: actingUserAgent),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "deleteAiGatewayVirtualModelConfigBySlug",
+            options: requestOptions
+        )).data
     }
 }
