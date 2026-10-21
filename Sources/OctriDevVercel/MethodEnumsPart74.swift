@@ -52,7 +52,7 @@ public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseMaX97e8
 }
 
 /// The time period to keep canceled deployments for
-public struct UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled: RawRepresentable, Hashable, Codable,
+public struct UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled: RawRepresentable, Hashable, Codable,
     Sendable, SdkWireConvertible {
     public let rawValue: String
 
@@ -60,16 +60,16 @@ public struct UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled:
         self.rawValue = rawValue
     }
 
-    public static let value1y = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "1y")
-    public static let value6m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "6m")
-    public static let value3m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "3m")
-    public static let value2m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "2m")
-    public static let value1m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "1m")
-    public static let value2w = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "2w")
-    public static let value1w = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "1w")
-    public static let value1d = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "1d")
+    public static let value1y = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "1y")
+    public static let value6m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "6m")
+    public static let value3m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "3m")
+    public static let value2m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "2m")
+    public static let value1m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "1m")
+    public static let value2w = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "2w")
+    public static let value1w = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "1w")
+    public static let value1d = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "1d")
     public static let unlimited =
-        UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "unlimited")
+        UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled(rawValue: "unlimited")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

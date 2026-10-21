@@ -171,9 +171,9 @@ public extension CreateTeamRequestBodyAttribution {
 
 /// Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your
 /// team
-public struct UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtection: Codable {
+public struct UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection: Codable {
     /// Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
-    public var deploymentType: UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtectioX09d316c015
+    public var deploymentType: UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtectionX915f56c5a3
 
     enum CodingKeys: String, CodingKey {
         case deploymentType
@@ -184,7 +184,7 @@ public struct UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtection: Co
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtection {
+public extension UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.deploymentType) else {
@@ -198,8 +198,8 @@ public extension UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtection 
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtection {
-    init(deploymentType: UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtectioX09d316c015) {
+public extension UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection {
+    init(deploymentType: UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtectionX915f56c5a3) {
         self.deploymentType = deploymentType
     }
 }

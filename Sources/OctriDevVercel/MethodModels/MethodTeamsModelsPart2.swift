@@ -32,9 +32,9 @@ public extension RequestAccessToTeamResponseJoinedFrom {
 }
 
 /// Allows to protect project deployments with a password
-public struct UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtection: Codable {
+public struct UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProtection: Codable {
     /// Specify if the password will apply to every Deployment Target or just Preview
-    public var deploymentType: UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtX2423a4fceb
+    public var deploymentType: UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProteXc514d44a1c
     /// The password that will be used to protect Project Deployments
     public var password: String?
 
@@ -48,7 +48,7 @@ public struct UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtectio
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtection {
+public extension UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProtection {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.deploymentType) else {
@@ -66,9 +66,9 @@ public extension UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtec
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtection {
+public extension UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProtection {
     init(
-        deploymentType: UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtX2423a4fceb,
+        deploymentType: UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProteXc514d44a1c,
         password: String? = nil
     ) throws {
         (self.deploymentType, self.password) = (deploymentType, password)
@@ -79,9 +79,9 @@ public extension UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtec
 }
 
 /// Default Passport configuration for new projects.
-public struct UpdateTeamsRequestBodyDefaultPassport: Codable {
+public struct UpdateTeamRequestBodyDefaultPassport: Codable {
     public var connectorId: String
-    public var deploymentType: UpdateTeamsRequestBodyDefaultPassportDeploymentType?
+    public var deploymentType: UpdateTeamRequestBodyDefaultPassportDeploymentType?
 
     enum CodingKeys: String, CodingKey {
         case connectorId
@@ -93,7 +93,7 @@ public struct UpdateTeamsRequestBodyDefaultPassport: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultPassport {
+public extension UpdateTeamRequestBodyDefaultPassport {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.connectorId) else {
@@ -108,8 +108,8 @@ public extension UpdateTeamsRequestBodyDefaultPassport {
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultPassport {
-    init(connectorId: String, deploymentType: UpdateTeamsRequestBodyDefaultPassportDeploymentType? = nil) {
+public extension UpdateTeamRequestBodyDefaultPassport {
+    init(connectorId: String, deploymentType: UpdateTeamRequestBodyDefaultPassportDeploymentType? = nil) {
         (self.connectorId, self.deploymentType) = (connectorId, deploymentType)
     }
 }
@@ -202,7 +202,7 @@ public extension DeleteTeamInviteCodeResponse {
 }
 
 /// When enabled, adding, changing, or removing project password protection requires Owner role.
-public struct UpdateTeamsRequestBodyStrictPasswordProtectionSettings: Codable {
+public struct UpdateTeamRequestBodyStrictPasswordProtectionSettings: Codable {
     /// Enable or disable requiring Owner role to change project password protection.
     /// - Example: true
     public var enabled: Bool
@@ -216,7 +216,7 @@ public struct UpdateTeamsRequestBodyStrictPasswordProtectionSettings: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodyStrictPasswordProtectionSettings {
+public extension UpdateTeamRequestBodyStrictPasswordProtectionSettings {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
@@ -230,7 +230,7 @@ public extension UpdateTeamsRequestBodyStrictPasswordProtectionSettings {
     }
 }
 
-public extension UpdateTeamsRequestBodyStrictPasswordProtectionSettings {
+public extension UpdateTeamRequestBodyStrictPasswordProtectionSettings {
     init(enabled: Bool) {
         self.enabled = enabled
     }
@@ -268,12 +268,12 @@ public extension PostTeamDsyncRolesResponse {
     }
 }
 
-public struct UpdateTeamsRequestBodySaml: Codable {
+public struct UpdateTeamRequestBodySaml: Codable {
     /// Require that members of the team use SAML Single Sign-On.
     /// - Example: true
     public var enforced: Bool?
     /// Directory groups to role or access group mappings.
-    public var roles: [String: UpdateTeamsRequestBodySamlRolesValue]?
+    public var roles: [String: UpdateTeamRequestBodySamlRolesValue]?
 
     enum CodingKeys: String, CodingKey {
         case enforced
@@ -285,7 +285,7 @@ public struct UpdateTeamsRequestBodySaml: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodySaml {
+public extension UpdateTeamRequestBodySaml {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         enforced = try container.sdkDecodeIfPresent(.enforced)
@@ -293,8 +293,8 @@ public extension UpdateTeamsRequestBodySaml {
     }
 }
 
-public extension UpdateTeamsRequestBodySaml {
-    init(enforced: Bool? = nil, roles: [String: UpdateTeamsRequestBodySamlRolesValue]? = nil) {
+public extension UpdateTeamRequestBodySaml {
+    init(enforced: Bool? = nil, roles: [String: UpdateTeamRequestBodySamlRolesValue]? = nil) {
         self.init()
         (self.enforced, self.roles) = (enforced, roles)
     }
@@ -407,10 +407,10 @@ public extension RequestAccessToTeamResponseGitlab {
 }
 
 /// Build machine configuration.
-public struct UpdateTeamsRequestBodyResourceConfigBuildMachine: Codable {
+public struct UpdateTeamRequestBodyResourceConfigBuildMachine: Codable {
     /// Default build machine type for new builds: standard, enhanced, turbo, or elastic.
     /// - Example: "standard"
-    public var `default`: UpdateTeamsRequestBodyResourceConfigBuildMachineDefault?
+    public var `default`: UpdateTeamRequestBodyResourceConfigBuildMachineDefault?
 
     enum CodingKeys: String, CodingKey {
         case `default`
@@ -421,22 +421,22 @@ public struct UpdateTeamsRequestBodyResourceConfigBuildMachine: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodyResourceConfigBuildMachine {
+public extension UpdateTeamRequestBodyResourceConfigBuildMachine {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.default = try container.sdkDecodeIfPresent(.default)
     }
 }
 
-public extension UpdateTeamsRequestBodyResourceConfigBuildMachine {
-    init(default: UpdateTeamsRequestBodyResourceConfigBuildMachineDefault? = nil) {
+public extension UpdateTeamRequestBodyResourceConfigBuildMachine {
+    init(default: UpdateTeamRequestBodyResourceConfigBuildMachineDefault? = nil) {
         self.init()
         self.default = `default`
     }
 }
 
 /// When enabled, creating shareable links requires Owner role.
-public struct UpdateTeamsRequestBodyStrictShareableLinks: Codable {
+public struct UpdateTeamRequestBodyStrictShareableLinks: Codable {
     /// Enable or disable requiring Owner role to create shareable links.
     /// - Example: true
     public var enabled: Bool
@@ -450,7 +450,7 @@ public struct UpdateTeamsRequestBodyStrictShareableLinks: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodyStrictShareableLinks {
+public extension UpdateTeamRequestBodyStrictShareableLinks {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
@@ -464,7 +464,7 @@ public extension UpdateTeamsRequestBodyStrictShareableLinks {
     }
 }
 
-public extension UpdateTeamsRequestBodyStrictShareableLinks {
+public extension UpdateTeamRequestBodyStrictShareableLinks {
     init(enabled: Bool) {
         self.enabled = enabled
     }

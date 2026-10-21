@@ -218,8 +218,8 @@ public extension TeamsNamespace {
     ///
     /// Update the information of a Team specified by the `teamId` parameter. The request body should contain the
     /// information that will be updated on the Team.
-    func update(options: TeamsMethods.UpdateTeamsOptions, requestOptions: RequestOptions? = nil) async throws -> Team {
-        try await TeamsMethods.updateTeams(config: config, options: options, requestOptions: requestOptions)
+    func update(options: TeamsMethods.UpdateTeamOptions, requestOptions: RequestOptions? = nil) async throws -> Team {
+        try await TeamsMethods.updateTeam(config: config, options: options, requestOptions: requestOptions)
     }
 
     /// Lists teams that the authenticated user belongs to, with pagination metadata. Use `limit` to cap the number of

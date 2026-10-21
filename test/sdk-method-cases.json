@@ -43745,63 +43745,9 @@
       }
     },
     {
-      "id": "updateTeamMember:updateTeamMember",
-      "operationId": "updateTeamMember",
-      "methodName": "updateTeamMember",
-      "namespace": [
-        "teams"
-      ],
-      "mode": "normal",
-      "owner": null,
-      "arguments": {
-        "uid": "ndfasllgPyCtREAqxxdyFKb",
-        "teamId": "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-        "confirmed": true,
-        "role": "VIEWER",
-        "teamPermissions": [
-          "CreateProject",
-          "FullProductionDeployment"
-        ],
-        "projects": [
-          {
-            "projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK",
-            "role": "ADMIN"
-          }
-        ],
-        "joinedFrom": {
-          "ssoUserId": null
-        }
-      },
-      "wireNames": {
-        "uid": "uid",
-        "teamId": "teamId",
-        "confirmed": "confirmed",
-        "role": "role",
-        "teamPermissions": "teamPermissions",
-        "projects": "projects",
-        "joinedFrom": "joinedFrom"
-      },
-      "argumentOrder": [
-        "uid",
-        "teamId",
-        "confirmed",
-        "role",
-        "teamPermissions",
-        "projects",
-        "joinedFrom"
-      ],
-      "response": {
-        "kind": "json",
-        "expected": {
-          "id": "id-1"
-        },
-        "byteLength": 0
-      }
-    },
-    {
-      "id": "updateTeams:updateTeams",
-      "operationId": "updateTeams",
-      "methodName": "updateTeams",
+      "id": "updateTeam:updateTeam",
+      "operationId": "updateTeam",
+      "methodName": "updateTeam",
       "namespace": [
         "teams"
       ],
@@ -44226,6 +44172,60 @@
             "updatedAt": 1
           },
           "updatedAt": 1611796915677
+        },
+        "byteLength": 0
+      }
+    },
+    {
+      "id": "updateTeamMember:updateTeamMember",
+      "operationId": "updateTeamMember",
+      "methodName": "updateTeamMember",
+      "namespace": [
+        "teams"
+      ],
+      "mode": "normal",
+      "owner": null,
+      "arguments": {
+        "uid": "ndfasllgPyCtREAqxxdyFKb",
+        "teamId": "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+        "confirmed": true,
+        "role": "VIEWER",
+        "teamPermissions": [
+          "CreateProject",
+          "FullProductionDeployment"
+        ],
+        "projects": [
+          {
+            "projectId": "prj_ndlgr43fadlPyCtREAqxxdyFK",
+            "role": "ADMIN"
+          }
+        ],
+        "joinedFrom": {
+          "ssoUserId": null
+        }
+      },
+      "wireNames": {
+        "uid": "uid",
+        "teamId": "teamId",
+        "confirmed": "confirmed",
+        "role": "role",
+        "teamPermissions": "teamPermissions",
+        "projects": "projects",
+        "joinedFrom": "joinedFrom"
+      },
+      "argumentOrder": [
+        "uid",
+        "teamId",
+        "confirmed",
+        "role",
+        "teamPermissions",
+        "projects",
+        "joinedFrom"
+      ],
+      "response": {
+        "kind": "json",
+        "expected": {
+          "id": "id-1"
         },
         "byteLength": 0
       }

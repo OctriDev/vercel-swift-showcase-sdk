@@ -7,3 +7,94 @@ import Foundation
     import FoundationNetworking
 #endif
 public enum ProjectsMethods {}
+
+public extension ProjectsMethods {
+    struct ListProjectsOptions: Codable {
+        public var from: String?
+        public var since: Double?
+        public var until: Double?
+        public var gitForkProtection: ListProjectsParameterX98724903?
+        public var limit: String?
+        public var search: String?
+        public var repo: String?
+        public var repoId: String?
+        public var repoUrl: String?
+        public var excludeRepos: String?
+        public var edgeConfigId: String?
+        public var edgeConfigTokenId: String?
+        public var deprecated: Bool?
+        public var elasticConcurrencyEnabled: ListProjectsParameter?
+        public var staticIpsEnabled: ListProjectsParameterX316aaec8?
+        public var buildMachineTypes: String?
+        public var buildQueueConfiguration: ListProjectsParameterX45942550?
+        public var teamId: String?
+        public var slug: String?
+
+        public init() {}
+    }
+
+    /// Lists projects belonging to the authenticated user or a team, with pagination and filters for project updates,
+    /// repositories, configuration, and build settings. Use `from`, `since`, and `until` to filter by update time, or
+    /// `search` to match project names. The `teamId` or `slug` query parameter scopes the request to a team.
+    ///
+    /// Allows to retrieve the list of projects of the authenticated user or team. The list will be paginated and the
+    /// provided query parameters allow filtering the returned projects.
+    ///
+    /// - Parameters:
+    /// - from: Query only projects updated after the given timestamp or
+    ///   continuation token.
+    /// - since: Query only projects updated after this JavaScript timestamp.
+    /// - until: Query only projects updated before this JavaScript timestamp.
+    /// - gitForkProtection: Specifies whether PRs from Git forks should require a
+    ///   team member's authorization before it can be deployed
+    /// - limit: Limit the number of projects returned
+    /// - search: Search projects by the name field
+    /// - repo: Filter results by repo. Also used for project count
+    /// - repoId: Filter results by Repository ID.
+    /// - repoUrl: Filter results by Repository URL.
+    /// - excludeRepos: Filter results by excluding those projects that belong to a
+    ///   repo
+    /// - edgeConfigId: Filter results by connected Global Config ID
+    /// - edgeConfigTokenId: Filter results by connected Global Config Token ID
+    /// - elasticConcurrencyEnabled: Filter results by projects with elastic
+    ///   concurrency enabled
+    /// - staticIpsEnabled: Filter results by projects with Static IPs enabled
+    /// - buildMachineTypes: Filter results by effective build machine types.
+    ///   Accepts comma-separated values. Use \"elastic\" for projects with elastic
+    ///   selection and \"default\" for projects without a build machine type set.
+    /// - buildQueueConfiguration: Filter results by build queue configuration.
+    ///   SKIP_NAMESPACE_QUEUE includes projects without a configuration set.
+    /// - teamId: The Team identifier to perform the request on behalf of.
+    /// - slug: The Team slug to perform the request on behalf of.
+    static func listProjects(
+        config: ClientConfig,
+        options: ListProjectsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListProjectsResponse {
+        if let search = options.search {
+            try validateLength("search", search, max: 100)
+        }
+
+        return try await (sdkRequest("GET", "/v10/projects", config: config, query: [
+            SdkQueryParameter("from", value: options.from),
+            SdkQueryParameter("since", value: options.since),
+            SdkQueryParameter("until", value: options.until),
+            SdkQueryParameter("gitForkProtection", value: options.gitForkProtection),
+            SdkQueryParameter("limit", value: options.limit),
+            SdkQueryParameter("search", value: options.search),
+            SdkQueryParameter("repo", value: options.repo),
+            SdkQueryParameter("repoId", value: options.repoId),
+            SdkQueryParameter("repoUrl", value: options.repoUrl),
+            SdkQueryParameter("excludeRepos", value: options.excludeRepos),
+            SdkQueryParameter("edgeConfigId", value: options.edgeConfigId),
+            SdkQueryParameter("edgeConfigTokenId", value: options.edgeConfigTokenId),
+            SdkQueryParameter("deprecated", value: options.deprecated),
+            SdkQueryParameter("elasticConcurrencyEnabled", value: options.elasticConcurrencyEnabled),
+            SdkQueryParameter("staticIpsEnabled", value: options.staticIpsEnabled),
+            SdkQueryParameter("buildMachineTypes", value: options.buildMachineTypes),
+            SdkQueryParameter("buildQueueConfiguration", value: options.buildQueueConfiguration),
+            SdkQueryParameter("teamId", value: options.teamId),
+            SdkQueryParameter("slug", value: options.slug),
+        ], decoder: .json, operationId: "listProjects", options: requestOptions)).data
+    }
+}

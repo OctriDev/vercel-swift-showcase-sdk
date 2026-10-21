@@ -16,9 +16,9 @@ public extension RequestAccessToTeamResponseBitbucket {
 }
 
 /// Resource configuration for the team.
-public struct UpdateTeamsRequestBodyResourceConfig: Codable {
+public struct UpdateTeamRequestBodyResourceConfig: Codable {
     /// Build machine configuration.
-    public var buildMachine: UpdateTeamsRequestBodyResourceConfigBuildMachine?
+    public var buildMachine: UpdateTeamRequestBodyResourceConfigBuildMachine?
 
     enum CodingKeys: String, CodingKey {
         case buildMachine
@@ -29,15 +29,15 @@ public struct UpdateTeamsRequestBodyResourceConfig: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodyResourceConfig {
+public extension UpdateTeamRequestBodyResourceConfig {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         buildMachine = try container.sdkDecodeIfPresent(.buildMachine)
     }
 }
 
-public extension UpdateTeamsRequestBodyResourceConfig {
-    init(buildMachine: UpdateTeamsRequestBodyResourceConfigBuildMachine? = nil) {
+public extension UpdateTeamRequestBodyResourceConfig {
+    init(buildMachine: UpdateTeamRequestBodyResourceConfigBuildMachine? = nil) {
         self.init()
         self.buildMachine = buildMachine
     }
@@ -495,12 +495,12 @@ public extension CreateTeamResponse {
     }
 }
 
-public indirect enum UpdateTeamsRequestBodySamlRolesValue {
+public indirect enum UpdateTeamRequestBodySamlRolesValue {
     case stringValue(String)
-    case updateTeamsRequestBodySamlRolesValueVariant1(UpdateTeamsRequestBodySamlRolesValueVariant1)
+    case updateTeamRequestBodySamlRolesValueVariant1(UpdateTeamRequestBodySamlRolesValueVariant1)
 }
 
-extension UpdateTeamsRequestBodySamlRolesValue: Codable {
+extension UpdateTeamRequestBodySamlRolesValue: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let value = Self.decodeGroup1(from: container) {
@@ -508,7 +508,7 @@ extension UpdateTeamsRequestBodySamlRolesValue: Codable {
         }
         throw DecodingError.dataCorruptedError(
             in: container,
-            debugDescription: "No variant matched for UpdateTeamsRequestBodySamlRolesValue"
+            debugDescription: "No variant matched for UpdateTeamRequestBodySamlRolesValue"
         )
     }
 
@@ -519,31 +519,31 @@ extension UpdateTeamsRequestBodySamlRolesValue: Codable {
     }
 }
 
-extension UpdateTeamsRequestBodySamlRolesValue {
+extension UpdateTeamRequestBodySamlRolesValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
         if let value = try? container.decode(String.self) {
             return .stringValue(value)
         }
         if let value = try? container.decode(
-            UpdateTeamsRequestBodySamlRolesValueVariant1.self
+            UpdateTeamRequestBodySamlRolesValueVariant1.self
         ) {
-            return .updateTeamsRequestBodySamlRolesValueVariant1(value)
+            return .updateTeamRequestBodySamlRolesValueVariant1(value)
         }
         return nil
     }
 }
 
-extension UpdateTeamsRequestBodySamlRolesValue {
+extension UpdateTeamRequestBodySamlRolesValue {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .updateTeamsRequestBodySamlRolesValueVariant1(value): try container.encode(value); return true
+        case let .updateTeamRequestBodySamlRolesValueVariant1(value): try container.encode(value); return true
         }
     }
 }
 
-public struct UpdateTeamsRequestBodySamlRolesValueVariant1: Codable {
+public struct UpdateTeamRequestBodySamlRolesValueVariant1: Codable {
     public var accessGroupId: String
 
     enum CodingKeys: String, CodingKey {
@@ -555,7 +555,7 @@ public struct UpdateTeamsRequestBodySamlRolesValueVariant1: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodySamlRolesValueVariant1 {
+public extension UpdateTeamRequestBodySamlRolesValueVariant1 {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.accessGroupId) else {
@@ -570,7 +570,7 @@ public extension UpdateTeamsRequestBodySamlRolesValueVariant1 {
     }
 }
 
-public extension UpdateTeamsRequestBodySamlRolesValueVariant1 {
+public extension UpdateTeamRequestBodySamlRolesValueVariant1 {
     init(accessGroupId: String) throws {
         self.accessGroupId = accessGroupId
         try sdkValidatePattern("accessGroupId", self.accessGroupId, sdkPatterna8176f509876)
@@ -578,12 +578,12 @@ public extension UpdateTeamsRequestBodySamlRolesValueVariant1 {
 }
 
 /// Default deployment protection settings for new projects.
-public struct UpdateTeamsRequestBodyDefaultDeploymentProtection: Codable {
+public struct UpdateTeamRequestBodyDefaultDeploymentProtection: Codable {
     /// Allows to protect project deployments with a password
-    public var passwordProtection: UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtection?
+    public var passwordProtection: UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProtection?
     /// Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on
     /// your team
-    public var ssoProtection: UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtection?
+    public var ssoProtection: UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection?
 
     enum CodingKeys: String, CodingKey {
         case passwordProtection
@@ -595,7 +595,7 @@ public struct UpdateTeamsRequestBodyDefaultDeploymentProtection: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultDeploymentProtection {
+public extension UpdateTeamRequestBodyDefaultDeploymentProtection {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         passwordProtection = try container.sdkDecodeIfPresent(.passwordProtection)
@@ -603,10 +603,10 @@ public extension UpdateTeamsRequestBodyDefaultDeploymentProtection {
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultDeploymentProtection {
+public extension UpdateTeamRequestBodyDefaultDeploymentProtection {
     init(
-        passwordProtection: UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtection? = nil,
-        ssoProtection: UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtection? = nil
+        passwordProtection: UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProtection? = nil,
+        ssoProtection: UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection? = nil
     ) {
         self.init()
         (self.passwordProtection, self.ssoProtection) = (passwordProtection, ssoProtection)

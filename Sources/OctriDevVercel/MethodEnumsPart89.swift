@@ -78,7 +78,7 @@ public struct UpdateFirewallConfigRequestBodyVariant0ValueActionMitigateAction: 
 }
 
 /// Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
-public struct UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtectioX09d316c015: RawRepresentable, Hashable,
+public struct UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtectionX915f56c5a3: RawRepresentable, Hashable,
     Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
@@ -86,15 +86,15 @@ public struct UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtectioX09d3
         self.rawValue = rawValue
     }
 
-    public static let all = UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtectioX09d316c015(rawValue: "all")
+    public static let all = UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtectionX915f56c5a3(rawValue: "all")
     public static let preview =
-        UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtectioX09d316c015(rawValue: "preview")
+        UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtectionX915f56c5a3(rawValue: "preview")
     public static let prodDeploymentUrlsAndAllPreviews =
-        UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtectioX09d316c015(
+        UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtectionX915f56c5a3(
             rawValue: "prod_deployment_urls_and_all_previews"
         )
     public static let allExceptCustomDomains =
-        UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtectioX09d316c015(rawValue: "all_except_custom_domains")
+        UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtectionX915f56c5a3(rawValue: "all_except_custom_domains")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

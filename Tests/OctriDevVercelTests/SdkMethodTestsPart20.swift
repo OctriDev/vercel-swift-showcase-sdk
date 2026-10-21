@@ -6,44 +6,19 @@ import Foundation
 import XCTest
 
 extension SdkMethodTests {
-    func testUpdateTeamsUpdateTeamsReachesMockAndDecodesResponse() async throws {
+    func testUpdateTeamMemberUpdateTeamMemberReachesMockAndDecodesResponse() async throws {
         guard let client = configuredClient() else {
             return
         }
         _ = client
-        var options = try TeamsMethods.UpdateTeamsOptions(teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""))
-        options.slug = try decoded("\"my-team-url-slug\"")
-        options.avatar = try decoded("\"a\"")
-        options.description = try decoded("\"Our mission is to make cloud computing accessible to everyone\"")
-        options.emailDomain = try decoded("\"example.com\"")
-        options.name = try decoded("\"My Team\"")
-        options.previewDeploymentSuffix = try decoded("\"example.dev\"")
-        options.regenerateInviteCode = try decoded("true")
-        options.saml = try decoded("{\"enforced\":true,\"roles\":{\"key\":\"OWNER\"}}")
-        options.slug2 = try decoded("\"my-team\"")
-        options.enablePreviewFeedback = try decoded("\"on\"")
-        options.enableProductionFeedback = try decoded("\"on\"")
-        options.sensitiveEnvironmentVariablePolicy = try decoded("\"on\"")
-        options.disjunctiveProductionSecretPolicy = try decoded("\"on\"")
-        options.remoteCaching = try decoded("{\"enabled\":true}")
-        options.hideIpAddresses = try decoded("false")
-        options.hideIpAddressesInLogDrains = try decoded("false")
-        options.dpAccessRequestsMode = try decoded("\"none\"")
-        options.requireVerifiedCommits = try decoded("true")
-        options.disableRepositoryDispatchEvents = try decoded("false")
-        options.defaultDeploymentProtection = try decoded(sdkMethodFixture472Value1)
-        options.defaultPassport = try decoded("{\"connectorId\":\"connector-1\",\"deploymentType\":\"all\"}")
-        options.defaultExpirationSettings = try decoded(sdkMethodFixture472Value2)
-        options.deploymentPolicy = try decoded(sdkMethodFixture472Value3)
-        options.strictDeploymentProtectionSettings = try decoded("{\"enabled\":true}")
-        options.strictShareableLinks = try decoded("{\"enabled\":true}")
-        options.strictPasswordProtectionSettings = try decoded("{\"enabled\":true}")
-        options.strictConnectors = try decoded("{\"enabled\":true}")
-        options.nsnbConfig = try decoded("{\"preference\":\"auto-approval\"}")
-        options.defaultProjectJobs = try decoded(sdkMethodFixture472Value4)
-        options.resourceConfig = try decoded("{\"buildMachine\":{\"default\":\"standard\"}}")
-        let actual = try await client.teams.update(
-            options: options
+        let actual = try await client.teams.updateMember(
+            uid: decoded("\"ndfasllgPyCtREAqxxdyFKb\""),
+            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+            confirmed: decoded("true"),
+            role: decoded("\"VIEWER\""),
+            teamPermissions: decoded("[\"CreateProject\",\"FullProductionDeployment\"]"),
+            projects: decoded("[{\"projectId\":\"prj_ndlgr43fadlPyCtREAqxxdyFK\",\"role\":\"ADMIN\"}]"),
+            joinedFrom: decoded("{\"ssoUserId\":null}")
         )
         let expected = try JSONSerialization.jsonObject(
             with: Data(sdkMethodFixture472Expected.utf8),

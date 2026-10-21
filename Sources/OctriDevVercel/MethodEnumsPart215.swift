@@ -6,7 +6,7 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct UpdateTeamsRequestBodyDefaultPassportDeploymentType: RawRepresentable, Hashable, Codable, Sendable,
+public struct UpdateTeamRequestBodyDefaultPassportDeploymentType: RawRepresentable, Hashable, Codable, Sendable,
     SdkWireConvertible {
     public let rawValue: String
 
@@ -14,12 +14,12 @@ public struct UpdateTeamsRequestBodyDefaultPassportDeploymentType: RawRepresenta
         self.rawValue = rawValue
     }
 
-    public static let all = UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "all")
-    public static let preview = UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "preview")
+    public static let all = UpdateTeamRequestBodyDefaultPassportDeploymentType(rawValue: "all")
+    public static let preview = UpdateTeamRequestBodyDefaultPassportDeploymentType(rawValue: "preview")
     public static let prodDeploymentUrlsAndAllPreviews =
-        UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+        UpdateTeamRequestBodyDefaultPassportDeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
     public static let allExceptCustomDomains =
-        UpdateTeamsRequestBodyDefaultPassportDeploymentType(rawValue: "all_except_custom_domains")
+        UpdateTeamRequestBodyDefaultPassportDeploymentType(rawValue: "all_except_custom_domains")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

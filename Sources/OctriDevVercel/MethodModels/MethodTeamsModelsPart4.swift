@@ -8,19 +8,19 @@ import Foundation
 #endif
 
 /// Canonical teams operation model declarations
-public struct UpdateTeamsRequestBodyDefaultExpirationSettings: Codable {
+public struct UpdateTeamRequestBodyDefaultExpirationSettings: Codable {
     /// The time period to keep non-production deployments for
     /// - Example: "1y"
-    public var expiration: UpdateTeamsRequestBodyDefaultExpirationSettingsExpiration?
+    public var expiration: UpdateTeamRequestBodyDefaultExpirationSettingsExpiration?
     /// The time period to keep production deployments for
     /// - Example: "1y"
-    public var expirationProduction: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction?
+    public var expirationProduction: UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction?
     /// The time period to keep canceled deployments for
     /// - Example: "1y"
-    public var expirationCanceled: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled?
+    public var expirationCanceled: UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled?
     /// The time period to keep errored deployments for
     /// - Example: "1y"
-    public var expirationErrored: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored?
+    public var expirationErrored: UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored?
     /// When true, opts a Pro team out of the upcoming deployment-storage retention reduce. Does not change
     /// expiration settings. Unmetered teams also require acknowledgeStorageBilling.
     public var keepCurrentRetention: Bool?
@@ -49,7 +49,7 @@ public struct UpdateTeamsRequestBodyDefaultExpirationSettings: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultExpirationSettings {
+public extension UpdateTeamRequestBodyDefaultExpirationSettings {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         expiration = try container.sdkDecodeIfPresent(.expiration)
@@ -61,12 +61,12 @@ public extension UpdateTeamsRequestBodyDefaultExpirationSettings {
     }
 }
 
-public extension UpdateTeamsRequestBodyDefaultExpirationSettings {
+public extension UpdateTeamRequestBodyDefaultExpirationSettings {
     init(
-        expiration: UpdateTeamsRequestBodyDefaultExpirationSettingsExpiration? = nil,
-        expirationProduction: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction? = nil,
-        expirationCanceled: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationCanceled? = nil,
-        expirationErrored: UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored? = nil,
+        expiration: UpdateTeamRequestBodyDefaultExpirationSettingsExpiration? = nil,
+        expirationProduction: UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction? = nil,
+        expirationCanceled: UpdateTeamRequestBodyDefaultExpirationSettingsExpirationCanceled? = nil,
+        expirationErrored: UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored? = nil,
         keepCurrentRetention: Bool? = nil,
         acknowledgeStorageBilling: Bool? = nil
     ) {
@@ -229,7 +229,7 @@ extension GetTeamMembersResponseMembersItemJoinedFromGitUserId: SdkNumericValueC
 }
 
 /// When enabled, creating and managing connectors requires Owner role.
-public struct UpdateTeamsRequestBodyStrictConnectors: Codable {
+public struct UpdateTeamRequestBodyStrictConnectors: Codable {
     /// Enable or disable requiring Owner role to manage connectors.
     /// - Example: true
     public var enabled: Bool
@@ -243,7 +243,7 @@ public struct UpdateTeamsRequestBodyStrictConnectors: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodyStrictConnectors {
+public extension UpdateTeamRequestBodyStrictConnectors {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
@@ -257,7 +257,7 @@ public extension UpdateTeamsRequestBodyStrictConnectors {
     }
 }
 
-public extension UpdateTeamsRequestBodyStrictConnectors {
+public extension UpdateTeamRequestBodyStrictConnectors {
     init(enabled: Bool) {
         self.enabled = enabled
     }

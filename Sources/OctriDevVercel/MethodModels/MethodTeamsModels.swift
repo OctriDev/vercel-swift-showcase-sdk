@@ -156,7 +156,7 @@ public extension RemoveTeamMemberResponse {
 }
 
 /// When enabled, deployment protection settings require stricter permissions (owner-only).
-public struct UpdateTeamsRequestBodyStrictDeploymentProtectionSettings: Codable {
+public struct UpdateTeamRequestBodyStrictDeploymentProtectionSettings: Codable {
     /// Enable or disable strict deployment protection settings.
     /// - Example: true
     public var enabled: Bool
@@ -170,7 +170,7 @@ public struct UpdateTeamsRequestBodyStrictDeploymentProtectionSettings: Codable 
     }
 }
 
-public extension UpdateTeamsRequestBodyStrictDeploymentProtectionSettings {
+public extension UpdateTeamRequestBodyStrictDeploymentProtectionSettings {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.enabled) else {
@@ -184,7 +184,7 @@ public extension UpdateTeamsRequestBodyStrictDeploymentProtectionSettings {
     }
 }
 
-public extension UpdateTeamsRequestBodyStrictDeploymentProtectionSettings {
+public extension UpdateTeamRequestBodyStrictDeploymentProtectionSettings {
     init(enabled: Bool) {
         self.enabled = enabled
     }
@@ -223,7 +223,7 @@ public extension UpdateMicrofrontendsGroupResponse {
 }
 
 /// Whether or not remote caching is enabled for the team
-public struct UpdateTeamsRequestBodyRemoteCaching: Codable {
+public struct UpdateTeamRequestBodyRemoteCaching: Codable {
     /// Enable or disable remote caching for the team.
     /// - Example: true
     public var enabled: Bool?
@@ -237,14 +237,14 @@ public struct UpdateTeamsRequestBodyRemoteCaching: Codable {
     }
 }
 
-public extension UpdateTeamsRequestBodyRemoteCaching {
+public extension UpdateTeamRequestBodyRemoteCaching {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         enabled = try container.sdkDecodeIfPresent(.enabled)
     }
 }
 
-public extension UpdateTeamsRequestBodyRemoteCaching {
+public extension UpdateTeamRequestBodyRemoteCaching {
     init(enabled: Bool? = nil) {
         self.init()
         self.enabled = enabled

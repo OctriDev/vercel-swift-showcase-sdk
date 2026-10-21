@@ -7,3 +7,31 @@ import Foundation
     import FoundationNetworking
 #endif
 public enum TeamsMethods {}
+
+public extension TeamsMethods {
+    /// Retrieves information about the specified team, including its billing plan, creation details, and team
+    /// configuration. Use the team identifier to select the team; you can also supply its slug as request context.
+    ///
+    /// Get information for the Team specified by the `teamId` parameter.
+    ///
+    /// - Parameters:
+    /// - teamId: The Team identifier to perform the request on behalf of.
+    static func getTeams(
+        config: ClientConfig,
+        teamId: String,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> Team {
+        try await (sdkRequest(
+            "GET",
+            ["/v2/teams/", sdkEncodePathSegment(sdkWireString(teamId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getTeams",
+            options: requestOptions
+        )).data
+    }
+}

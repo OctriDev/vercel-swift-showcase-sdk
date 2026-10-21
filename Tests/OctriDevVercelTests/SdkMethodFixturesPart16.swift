@@ -638,17 +638,19 @@ let sdkMethodFixture470Expected = String(
     encoding: .utf8
 )!
 
-let sdkMethodFixture471Expected = String(
+let sdkMethodFixture471Value1 = String(
     data: Data(base64Encoded: [
-        "eyJpZCI6ImlkLTEifQ==",
+        "eyJwYXNzd29yZFByb3RlY3Rpb24iOnsiZGVwbG95bWVudFR5cGUiOiJhbGwiLCJwYXNzd29yZCI6InBh",
+        "c3N3b3JkIn0sInNzb1Byb3RlY3Rpb24iOnsiZGVwbG95bWVudFR5cGUiOiJwcmV2aWV3In19",
     ].joined())!,
     encoding: .utf8
 )!
 
-let sdkMethodFixture472Value1 = String(
+let sdkMethodFixture471Value2 = String(
     data: Data(base64Encoded: [
-        "eyJwYXNzd29yZFByb3RlY3Rpb24iOnsiZGVwbG95bWVudFR5cGUiOiJhbGwiLCJwYXNzd29yZCI6InBh",
-        "c3N3b3JkIn0sInNzb1Byb3RlY3Rpb24iOnsiZGVwbG95bWVudFR5cGUiOiJwcmV2aWV3In19",
+        "eyJleHBpcmF0aW9uIjoiMXkiLCJleHBpcmF0aW9uUHJvZHVjdGlvbiI6IjF5IiwiZXhwaXJhdGlvbkNh",
+        "bmNlbGVkIjoiMXkiLCJleHBpcmF0aW9uRXJyb3JlZCI6IjF5Iiwia2VlcEN1cnJlbnRSZXRlbnRpb24i",
+        "OmZhbHNlLCJhY2tub3dsZWRnZVN0b3JhZ2VCaWxsaW5nIjpmYWxzZX0=",
     ].joined())!,
     encoding: .utf8
 )!

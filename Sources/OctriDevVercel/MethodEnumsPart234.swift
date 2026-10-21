@@ -193,7 +193,7 @@ public struct GetProjectsResponseAliasItemDeploymentChecksState: RawRepresentabl
 }
 
 /// The time period to keep errored deployments for
-public struct UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored: RawRepresentable, Hashable, Codable,
+public struct UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored: RawRepresentable, Hashable, Codable,
     Sendable, SdkWireConvertible {
     public let rawValue: String
 
@@ -201,16 +201,15 @@ public struct UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored: 
         self.rawValue = rawValue
     }
 
-    public static let value1y = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "1y")
-    public static let value6m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "6m")
-    public static let value3m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "3m")
-    public static let value2m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "2m")
-    public static let value1m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "1m")
-    public static let value2w = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "2w")
-    public static let value1w = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "1w")
-    public static let value1d = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "1d")
-    public static let unlimited =
-        UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "unlimited")
+    public static let value1y = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "1y")
+    public static let value6m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "6m")
+    public static let value3m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "3m")
+    public static let value2m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "2m")
+    public static let value1m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "1m")
+    public static let value2w = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "2w")
+    public static let value1w = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "1w")
+    public static let value1d = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "1d")
+    public static let unlimited = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationErrored(rawValue: "unlimited")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

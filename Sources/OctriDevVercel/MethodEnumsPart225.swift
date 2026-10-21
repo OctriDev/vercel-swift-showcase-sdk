@@ -160,7 +160,7 @@ public struct GetFirewallConfigResponseLogHeadersVariant1: RawRepresentable, Has
 }
 
 /// Default build machine type for new builds: standard, enhanced, turbo, or elastic.
-public struct UpdateTeamsRequestBodyResourceConfigBuildMachineDefault: RawRepresentable, Hashable, Codable, Sendable,
+public struct UpdateTeamRequestBodyResourceConfigBuildMachineDefault: RawRepresentable, Hashable, Codable, Sendable,
     SdkWireConvertible {
     public let rawValue: String
 
@@ -168,11 +168,11 @@ public struct UpdateTeamsRequestBodyResourceConfigBuildMachineDefault: RawRepres
         self.rawValue = rawValue
     }
 
-    public static let basic = UpdateTeamsRequestBodyResourceConfigBuildMachineDefault(rawValue: "basic")
-    public static let enhanced = UpdateTeamsRequestBodyResourceConfigBuildMachineDefault(rawValue: "enhanced")
-    public static let turbo = UpdateTeamsRequestBodyResourceConfigBuildMachineDefault(rawValue: "turbo")
-    public static let standard = UpdateTeamsRequestBodyResourceConfigBuildMachineDefault(rawValue: "standard")
-    public static let elastic = UpdateTeamsRequestBodyResourceConfigBuildMachineDefault(rawValue: "elastic")
+    public static let basic = UpdateTeamRequestBodyResourceConfigBuildMachineDefault(rawValue: "basic")
+    public static let enhanced = UpdateTeamRequestBodyResourceConfigBuildMachineDefault(rawValue: "enhanced")
+    public static let turbo = UpdateTeamRequestBodyResourceConfigBuildMachineDefault(rawValue: "turbo")
+    public static let standard = UpdateTeamRequestBodyResourceConfigBuildMachineDefault(rawValue: "standard")
+    public static let elastic = UpdateTeamRequestBodyResourceConfigBuildMachineDefault(rawValue: "elastic")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

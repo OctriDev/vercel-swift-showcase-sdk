@@ -5,16 +5,7 @@ import Foundation
 @testable import OctriDevVercel
 import XCTest
 
-let sdkMethodFixture472Value2 = String(
-    data: Data(base64Encoded: [
-        "eyJleHBpcmF0aW9uIjoiMXkiLCJleHBpcmF0aW9uUHJvZHVjdGlvbiI6IjF5IiwiZXhwaXJhdGlvbkNh",
-        "bmNlbGVkIjoiMXkiLCJleHBpcmF0aW9uRXJyb3JlZCI6IjF5Iiwia2VlcEN1cnJlbnRSZXRlbnRpb24i",
-        "OmZhbHNlLCJhY2tub3dsZWRnZVN0b3JhZ2VCaWxsaW5nIjpmYWxzZX0=",
-    ].joined())!,
-    encoding: .utf8
-)!
-
-let sdkMethodFixture472Value3 = String(
+let sdkMethodFixture471Value3 = String(
     data: Data(base64Encoded: [
         "eyJnaXRTb3VyY2VzIjpbeyJlbmFibGVkIjpmYWxzZSwiZW52aXJvbm1lbnRzIjpbeyJ0eXBlIjoic3lz",
         "dGVtIiwidGFyZ2V0IjoicHJvZHVjdGlvbiJ9XSwic291cmNlcyI6W3sicHJvdmlkZXIiOiJnaXRodWIi",
@@ -25,7 +16,7 @@ let sdkMethodFixture472Value3 = String(
     encoding: .utf8
 )!
 
-let sdkMethodFixture472Value4 = String(
+let sdkMethodFixture471Value4 = String(
     data: Data(base64Encoded: [
         "eyJsaW50Ijp7InRhcmdldHMiOlsidGFyZ2V0cyJdfSwidHlwZWNoZWNrIjp7InRhcmdldHMiOlsidGFy",
         "Z2V0cyJdfX0=",
@@ -33,7 +24,7 @@ let sdkMethodFixture472Value4 = String(
     encoding: .utf8
 )!
 
-let sdkMethodFixture472Expected = String(
+let sdkMethodFixture471Expected = String(
     data: Data(base64Encoded: [
         "eyJhcGlLZXlzSW52YWxpZGF0ZWRBdCI6MSwiYXBwVG9rZW5zSW52YWxpZGF0ZWRBdCI6MSwiYXZhdGFy",
         "IjoiYSIsImJpbGxpbmciOnsicGxhbiI6ImVudGVycHJpc2UifSwiY29ubmVjdCI6eyJlbmFibGVkIjpm",
@@ -100,6 +91,13 @@ let sdkMethodFixture472Expected = String(
         "cmljdFBhc3N3b3JkUHJvdGVjdGlvblNldHRpbmdzIjp7ImVuYWJsZWQiOmZhbHNlLCJ1cGRhdGVkQXQi",
         "OjF9LCJzdHJpY3RTaGFyZWFibGVMaW5rcyI6eyJlbmFibGVkIjpmYWxzZSwidXBkYXRlZEF0IjoxfSwi",
         "dXBkYXRlZEF0IjoxNjExNzk2OTE1Njc3fQ==",
+    ].joined())!,
+    encoding: .utf8
+)!
+
+let sdkMethodFixture472Expected = String(
+    data: Data(base64Encoded: [
+        "eyJpZCI6ImlkLTEifQ==",
     ].joined())!,
     encoding: .utf8
 )!
