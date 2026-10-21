@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsGet domain models
+/// ProjectsGet domain models
 public indirect enum GetProjectsResponseCreator {
     case getProjectsResponseCreatorVariant0(GetProjectsResponseCreatorVariant0)
     case getProjectsResponseCreatorVariant1(GetProjectsResponseCreatorVariant1)
@@ -12,33 +12,45 @@ public indirect enum GetProjectsResponseCreator {
 }
 
 extension GetProjectsResponseCreator: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetProjectsResponseCreator")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetProjectsResponseCreator"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetProjectsResponseCreator {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetProjectsResponseCreatorVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseCreatorVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseCreatorVariant0(value)
         }
-        if let value = try? container.decode(GetProjectsResponseCreatorVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseCreatorVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseCreatorVariant1(value)
         }
-        if let value = try? container.decode(GetProjectsResponseCreatorVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseCreatorVariant2.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseCreatorVariant2(value)
         }
-        if let value = try? container.decode(GetProjectsResponseCreatorVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseCreatorVariant3.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseCreatorVariant3(value)
         }
         return nil
@@ -47,10 +59,22 @@ extension GetProjectsResponseCreator {
 
 extension GetProjectsResponseCreator {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(GetProjectsResponseCreatorVariant0.self) { return .getProjectsResponseCreatorVariant0(value) }
-        if let value = try? container.decode(GetProjectsResponseCreatorVariant1.self) { return .getProjectsResponseCreatorVariant1(value) }
-        if let value = try? container.decode(GetProjectsResponseCreatorVariant2.self) { return .getProjectsResponseCreatorVariant2(value) }
-        if let value = try? container.decode(GetProjectsResponseCreatorVariant3.self) { return .getProjectsResponseCreatorVariant3(value) }
+        if let value = try? container
+            .decode(GetProjectsResponseCreatorVariant0.self) {
+            return .getProjectsResponseCreatorVariant0(value)
+        }
+        if let value = try? container
+            .decode(GetProjectsResponseCreatorVariant1.self) {
+            return .getProjectsResponseCreatorVariant1(value)
+        }
+        if let value = try? container
+            .decode(GetProjectsResponseCreatorVariant2.self) {
+            return .getProjectsResponseCreatorVariant2(value)
+        }
+        if let value = try? container
+            .decode(GetProjectsResponseCreatorVariant3.self) {
+            return .getProjectsResponseCreatorVariant3(value)
+        }
         return nil
     }
 }
@@ -77,29 +101,39 @@ public indirect enum GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnv
 }
 
 extension GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirXd17408fc55.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirXd17408fc55.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirXd17408fc55(value)
         }
-        if let value = try? container.decode(GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirX9a695670f9.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirX9a695670f9.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirX9a695670f9(value)
         }
         return nil
@@ -111,12 +145,12 @@ extension GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsIt
         if let value = try? container.decode(
             GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirXd17408fc55.self
         ) {
-            return             .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirXd17408fc55(value)
+            return .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirXd17408fc55(value)
         }
         if let value = try? container.decode(
             GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirX9a695670f9.self
         ) {
-            return             .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirX9a695670f9(value)
+            return .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirX9a695670f9(value)
         }
         return nil
     }
@@ -126,8 +160,10 @@ extension GetProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsIt
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirXd17408fc55(value): try container.encode(value); return true
-        case let .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirX9a695670f9(value): try container.encode(value); return true
+        case let .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirXd17408fc55(value): try container
+            .encode(value); return true
+        case let .getProjectsResponseDeploymentPolicyDeploymentSourcesItemEnvirX9a695670f9(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -142,29 +178,39 @@ public indirect enum GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmen
 }
 
 extension GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsXb458be4cad.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsXb458be4cad.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsXb458be4cad(value)
         }
-        if let value = try? container.decode(GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsX3788c49c07.self),
-           sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container
+            .decode(GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsX3788c49c07.self),
+            sdkKeepsEveryKey(value, of: raw) {
             return .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsX3788c49c07(value)
         }
         return nil
@@ -176,12 +222,12 @@ extension GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsItem {
         if let value = try? container.decode(
             GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsXb458be4cad.self
         ) {
-            return             .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsXb458be4cad(value)
+            return .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsXb458be4cad(value)
         }
         if let value = try? container.decode(
             GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsX3788c49c07.self
         ) {
-            return             .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsX3788c49c07(value)
+            return .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsX3788c49c07(value)
         }
         return nil
     }
@@ -191,8 +237,10 @@ extension GetProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsXb458be4cad(value): try container.encode(value); return true
-        case let .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsX3788c49c07(value): try container.encode(value); return true
+        case let .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsXb458be4cad(value): try container
+            .encode(value); return true
+        case let .getProjectsResponseDeploymentPolicyGitSourcesItemEnvironmentsX3788c49c07(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -207,18 +255,26 @@ public indirect enum GetProjectsResponseDeploymentPolicyGitSourcesItemSourcesIte
 }
 
 extension GetProjectsResponseDeploymentPolicyGitSourcesItemSourcesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetProjectsResponseDeploymentPolicyGitSourcesItemSourcesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetProjectsResponseDeploymentPolicyGitSourcesItemSourcesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -241,12 +297,12 @@ extension GetProjectsResponseDeploymentPolicyGitSourcesItemSourcesItem {
         if let value = try? container.decode(
             GetProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant0.self
         ) {
-            return             .getProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant0(value)
+            return .getProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant0(value)
         }
         if let value = try? container.decode(
             GetProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant1.self
         ) {
-            return             .getProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant1(value)
+            return .getProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant1(value)
         }
         return nil
     }
@@ -256,8 +312,10 @@ extension GetProjectsResponseDeploymentPolicyGitSourcesItemSourcesItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .getProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant0(value): try container.encode(value); return true
-        case let .getProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant1(value): try container.encode(value); return true
+        case let .getProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant0(value): try container
+            .encode(value); return true
+        case let .getProjectsResponseDeploymentPolicyGitSourcesItemSourcesItemVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -270,28 +328,40 @@ public indirect enum GetProjectsResponseDismissedToastsItemValue {
 }
 
 extension GetProjectsResponseDismissedToastsItemValue: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetProjectsResponseDismissedToastsItemValue")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetProjectsResponseDismissedToastsItemValue"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetProjectsResponseDismissedToastsItemValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         if let value = try? container.decode(
             GetProjectsResponseDismissedToastsItemValueVariant2.self
         ) {
-            return             .getProjectsResponseDismissedToastsItemValueVariant2(value)
+            return .getProjectsResponseDismissedToastsItemValueVariant2(value)
         }
-        if let value = try? container.decode(Bool.self) { return .boolValue(value) }
+        if let value = try? container.decode(Bool.self) {
+            return .boolValue(value)
+        }
         return nil
     }
 }
@@ -338,49 +408,89 @@ public indirect enum GetProjectsResponseEnvItemContentHint {
 }
 
 extension GetProjectsResponseEnvItemContentHint: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless3(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless2(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless3(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        if let value = Self.decodeGroup2(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetProjectsResponseEnvItemContentHint")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        if let value = Self.decodeGroup2(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetProjectsResponseEnvItemContentHint"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-        if try encodeGroup2(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
+        if try encodeGroup2(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetProjectsResponseEnvItemContentHint {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant0(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant1(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant2(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant3(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant4.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant4.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant4(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant5.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant5.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant5(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant6.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant6.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant6(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant7.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant7.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant7(value)
         }
         return nil
@@ -389,28 +499,52 @@ extension GetProjectsResponseEnvItemContentHint {
 
 extension GetProjectsResponseEnvItemContentHint {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant8.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant8.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant8(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant9.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant9.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant9(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant10.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant10.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant10(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant11.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant11.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant11(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant12.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant12.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant12(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant13.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant13.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant13(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant14.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant14.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant14(value)
         }
-        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant15.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetProjectsResponseEnvItemContentHintVariant15.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getProjectsResponseEnvItemContentHintVariant15(value)
         }
         return nil

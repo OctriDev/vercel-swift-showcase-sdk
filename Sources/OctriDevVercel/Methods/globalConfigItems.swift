@@ -6,38 +6,70 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension GlobalConfigMethods {
-    /// Lists all items in a Global Config. Use the `edgeConfigId` path parameter to select the config; it must begin with the `ecfg_` prefix.
+public extension GlobalConfigMethods {
+    /// Lists all items in a Global Config. Use the `edgeConfigId` path parameter to select the config; it must begin
+    /// with the `ecfg_` prefix.
     ///
     /// Returns all items of a Global Config.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getEdgeConfigItems(config: ClientConfig, edgeConfigId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [GlobalConfigItem] {
+    static func getEdgeConfigItems(
+        config: ClientConfig,
+        edgeConfigId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [GlobalConfigItem] {
         try sdkValidatePattern("edgeConfigId", edgeConfigId, sdkPatterncb86996207cb)
 
-        return try (await sdkRequest("GET", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/items"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getEdgeConfigItems", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/items"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getEdgeConfigItems",
+            options: requestOptions
+        )).data
     }
 
-    /// Updates multiple items in a Global Config in one request. Supply the required `items` array with the item operations to apply; the `edgeConfigId` must begin with the `ecfg_` prefix.
+    /// Updates multiple items in a Global Config in one request. Supply the required `items` array with the item
+    /// operations to apply; the `edgeConfigId` must begin with the `ecfg_` prefix.
     ///
     /// Update multiple Global Config Items in batch.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func patchEdgeConfigItems(config: ClientConfig, edgeConfigId: String, items: [PatchEdgeConfigItemsRequestItemsItem], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> PatchEdgeConfigItemsResponse {
+    static func patchEdgeConfigItems(
+        config: ClientConfig,
+        edgeConfigId: String,
+        items: [PatchEdgeConfigItemsRequestItemsItem],
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> PatchEdgeConfigItemsResponse {
         try sdkValidatePattern("edgeConfigId", edgeConfigId, sdkPatterncb86996207cb)
 
         let requestBody = PatchEdgeConfigItemsRequestBody(items: items)
 
-        return try (await sdkRequest("PATCH", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/items"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "patchEdgeConfigItems", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/items"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "patchEdgeConfigItems",
+            options: requestOptions
+        )).data
     }
 }

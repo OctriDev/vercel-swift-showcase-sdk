@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical artifacts operation model declarations
+/// Canonical artifacts operation model declarations
 public struct UploadArtifactResponse: Codable {
     public var urls: [String]
 
@@ -15,28 +15,30 @@ public struct UploadArtifactResponse: Codable {
         case urls
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UploadArtifactResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.urls) else {
-            throw SdkValidationError(field: "urls", code: "required", message: "Validation failed for 'urls': value is required")
-        }
-        self.urls = try container.sdkDecodeRequired(.urls)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UploadArtifactResponse {
-    public init(urls: [String]) {
+public extension UploadArtifactResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.urls) else {
+            throw SdkValidationError(
+                field: "urls",
+                code: "required",
+                message: "Validation failed for 'urls': value is required"
+            )
+        }
+        urls = try container.sdkDecodeRequired(.urls)
+    }
+}
+
+public extension UploadArtifactResponse {
+    init(urls: [String]) {
         self.urls = urls
     }
 }
-
-
-
-
 
 public struct RecordEventsRequestBodyItem: Codable {
     /// A UUID (universally unique identifer) for the session that generated this event.
@@ -62,34 +64,58 @@ public struct RecordEventsRequestBodyItem: Codable {
         case duration
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RecordEventsRequestBodyItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.sessionId) else {
-            throw SdkValidationError(field: "sessionId", code: "required", message: "Validation failed for 'sessionId': value is required")
-        }
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        guard container.contains(.event) else {
-            throw SdkValidationError(field: "event", code: "required", message: "Validation failed for 'event': value is required")
-        }
-        guard container.contains(.hash) else {
-            throw SdkValidationError(field: "hash", code: "required", message: "Validation failed for 'hash': value is required")
-        }
-        self.sessionId = try container.sdkDecodeRequired(.sessionId)
-        self.source = try container.sdkDecodeRequired(.source)
-        self.event = try container.sdkDecodeRequired(.event)
-        self.hash = try container.sdkDecodeRequired(.hash)
-        self.duration = try container.sdkDecodeIfPresent(.duration)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RecordEventsRequestBodyItem {
-    public init(sessionId: String, source: RecordEventsRequestBodyItemSource, event: RecordEventsRequestBodyItemEvent, hash: String, duration: Double? = nil) {
+public extension RecordEventsRequestBodyItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.sessionId) else {
+            throw SdkValidationError(
+                field: "sessionId",
+                code: "required",
+                message: "Validation failed for 'sessionId': value is required"
+            )
+        }
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        guard container.contains(.event) else {
+            throw SdkValidationError(
+                field: "event",
+                code: "required",
+                message: "Validation failed for 'event': value is required"
+            )
+        }
+        guard container.contains(.hash) else {
+            throw SdkValidationError(
+                field: "hash",
+                code: "required",
+                message: "Validation failed for 'hash': value is required"
+            )
+        }
+        sessionId = try container.sdkDecodeRequired(.sessionId)
+        source = try container.sdkDecodeRequired(.source)
+        event = try container.sdkDecodeRequired(.event)
+        hash = try container.sdkDecodeRequired(.hash)
+        duration = try container.sdkDecodeIfPresent(.duration)
+    }
+}
+
+public extension RecordEventsRequestBodyItem {
+    init(
+        sessionId: String,
+        source: RecordEventsRequestBodyItemSource,
+        event: RecordEventsRequestBodyItemEvent,
+        hash: String,
+        duration: Double? = nil
+    ) {
         (self.sessionId, self.source) = (sessionId, source)
         (self.event, self.hash) = (event, hash)
         self.duration = duration
@@ -103,21 +129,27 @@ public struct DeleteAllArtifactsResponse: Codable {
         case deletedCount
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteAllArtifactsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.deletedCount) else {
-            throw SdkValidationError(field: "deletedCount", code: "required", message: "Validation failed for 'deletedCount': value is required")
-        }
-        self.deletedCount = try container.sdkDecodeRequired(.deletedCount)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension DeleteAllArtifactsResponse {
-    public init(deletedCount: Double) {
+public extension DeleteAllArtifactsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.deletedCount) else {
+            throw SdkValidationError(
+                field: "deletedCount",
+                code: "required",
+                message: "Validation failed for 'deletedCount': value is required"
+            )
+        }
+        deletedCount = try container.sdkDecodeRequired(.deletedCount)
+    }
+}
+
+public extension DeleteAllArtifactsResponse {
+    init(deletedCount: Double) {
         self.deletedCount = deletedCount
     }
 }
@@ -128,27 +160,37 @@ public indirect enum ArtifactQueryResponseValue {
 }
 
 extension ArtifactQueryResponseValue: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ArtifactQueryResponseValue")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ArtifactQueryResponseValue"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ArtifactQueryResponseValue {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ArtifactQueryResponseValueVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ArtifactQueryResponseValueVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .artifactQueryResponseValueVariant0(value)
         }
-        if let value = try? container.decode(ArtifactQueryResponseValueVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ArtifactQueryResponseValueVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .artifactQueryResponseValueVariant1(value)
         }
         return nil
@@ -157,8 +199,14 @@ extension ArtifactQueryResponseValue {
 
 extension ArtifactQueryResponseValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(ArtifactQueryResponseValueVariant0.self) { return .artifactQueryResponseValueVariant0(value) }
-        if let value = try? container.decode(ArtifactQueryResponseValueVariant1.self) { return .artifactQueryResponseValueVariant1(value) }
+        if let value = try? container
+            .decode(ArtifactQueryResponseValueVariant0.self) {
+            return .artifactQueryResponseValueVariant0(value)
+        }
+        if let value = try? container
+            .decode(ArtifactQueryResponseValueVariant1.self) {
+            return .artifactQueryResponseValueVariant1(value)
+        }
         return nil
     }
 }
@@ -188,28 +236,38 @@ public struct ArtifactQueryResponseValueVariant0: Codable {
         case tag
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ArtifactQueryResponseValueVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.size) else {
-            throw SdkValidationError(field: "size", code: "required", message: "Validation failed for 'size': value is required")
-        }
-        guard container.contains(.taskDurationMs) else {
-            throw SdkValidationError(field: "taskDurationMs", code: "required", message: "Validation failed for 'taskDurationMs': value is required")
-        }
-        self.size = try container.sdkDecodeRequired(.size)
-        self.taskDurationMs = try container.sdkDecodeRequired(.taskDurationMs)
-        self.dirtyHash = try container.sdkDecodeIfPresent(.dirtyHash)
-        self.sha = try container.sdkDecodeIfPresent(.sha)
-        self.tag = try container.sdkDecodeIfPresent(.tag)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ArtifactQueryResponseValueVariant0 {
-    public init(size: Double, taskDurationMs: Double, dirtyHash: String? = nil, sha: String? = nil, tag: String? = nil) {
+public extension ArtifactQueryResponseValueVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.size) else {
+            throw SdkValidationError(
+                field: "size",
+                code: "required",
+                message: "Validation failed for 'size': value is required"
+            )
+        }
+        guard container.contains(.taskDurationMs) else {
+            throw SdkValidationError(
+                field: "taskDurationMs",
+                code: "required",
+                message: "Validation failed for 'taskDurationMs': value is required"
+            )
+        }
+        size = try container.sdkDecodeRequired(.size)
+        taskDurationMs = try container.sdkDecodeRequired(.taskDurationMs)
+        dirtyHash = try container.sdkDecodeIfPresent(.dirtyHash)
+        sha = try container.sdkDecodeIfPresent(.sha)
+        tag = try container.sdkDecodeIfPresent(.tag)
+    }
+}
+
+public extension ArtifactQueryResponseValueVariant0 {
+    init(size: Double, taskDurationMs: Double, dirtyHash: String? = nil, sha: String? = nil, tag: String? = nil) {
         (self.size, self.taskDurationMs) = (size, taskDurationMs)
         (self.dirtyHash, self.sha) = (dirtyHash, sha)
         self.tag = tag
@@ -223,21 +281,27 @@ public struct ArtifactQueryResponseValueVariant1: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ArtifactQueryResponseValueVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.error) else {
-            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
-        }
-        self.error = try container.sdkDecodeRequired(.error)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ArtifactQueryResponseValueVariant1 {
-    public init(error: ArtifactQueryResponseValueVariant1Error) {
+public extension ArtifactQueryResponseValueVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.error) else {
+            throw SdkValidationError(
+                field: "error",
+                code: "required",
+                message: "Validation failed for 'error': value is required"
+            )
+        }
+        error = try container.sdkDecodeRequired(.error)
+    }
+}
+
+public extension ArtifactQueryResponseValueVariant1 {
+    init(error: ArtifactQueryResponseValueVariant1Error) {
         self.error = error
     }
 }
@@ -249,21 +313,27 @@ public struct ArtifactQueryResponseValueVariant1Error: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ArtifactQueryResponseValueVariant1Error {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        self.message = try container.sdkDecodeRequired(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ArtifactQueryResponseValueVariant1Error {
-    public init(message: String) {
+public extension ArtifactQueryResponseValueVariant1Error {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        message = try container.sdkDecodeRequired(.message)
+    }
+}
+
+public extension ArtifactQueryResponseValueVariant1Error {
+    init(message: String) {
         self.message = message
     }
 }

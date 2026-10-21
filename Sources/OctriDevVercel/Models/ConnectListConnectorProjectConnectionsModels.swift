@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Connect domain models
+/// Connect domain models
 /// Page of projects connected to a connector.
 public struct ConnectConnectorProjectConnectionList: Codable {
     /// Cursor for the next page.
@@ -16,25 +16,35 @@ public struct ConnectConnectorProjectConnectionList: Codable {
         case projects
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectConnectorProjectConnectionList {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        guard container.contains(.projects) else {
-            throw SdkValidationError(field: "projects", code: "required", message: "Validation failed for 'projects': value is required")
-        }
-        self.pagination = try container.sdkDecodeRequired(.pagination)
-        self.projects = try container.sdkDecodeRequired(.projects)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectConnectorProjectConnectionList {
-    public init(pagination: ConnectPagination, projects: [ConnectProjectConnection]) {
+public extension ConnectConnectorProjectConnectionList {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        guard container.contains(.projects) else {
+            throw SdkValidationError(
+                field: "projects",
+                code: "required",
+                message: "Validation failed for 'projects': value is required"
+            )
+        }
+        pagination = try container.sdkDecodeRequired(.pagination)
+        projects = try container.sdkDecodeRequired(.projects)
+    }
+}
+
+public extension ConnectConnectorProjectConnectionList {
+    init(pagination: ConnectPagination, projects: [ConnectProjectConnection]) {
         (self.pagination, self.projects) = (pagination, projects)
     }
 }

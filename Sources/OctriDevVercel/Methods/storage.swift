@@ -7,27 +7,78 @@ import Foundation
     import FoundationNetworking
 #endif
 public enum StorageMethods {
-    /// Retrieves a storage store by its identifier. Use `skip-metadata` to control whether project metadata is included and `include-guides` to control whether guides are included in the response.
-    public static func getStorageStoresById(config: ClientConfig, id: String, skipMetadata: Bool? = nil, includeGuides: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> GetStorageStoresByIdResponse {
-        return try (await sdkRequest("GET", ["/storage/stores/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
-            SdkQueryParameter("skip-metadata", value: skipMetadata),
-            SdkQueryParameter("include-guides", value: includeGuides),
-        ], decoder: .json, operationId: "getStorageStoresById", options: requestOptions)).data
+    /// Retrieves a storage store by its identifier. Use `skip-metadata` to control whether project metadata is included
+    /// and `include-guides` to control whether guides are included in the response.
+    public static func getStorageStoresById(
+        config: ClientConfig,
+        id: String,
+        skipMetadata: Bool? = nil,
+        includeGuides: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetStorageStoresByIdResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/storage/stores/", sdkEncodePathSegment(sdkWireString(id))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("skip-metadata", value: skipMetadata),
+                SdkQueryParameter("include-guides", value: includeGuides),
+            ],
+            decoder: .json,
+            operationId: "getStorageStoresById",
+            options: requestOptions
+        )).data
     }
-    /// Creates a Blob store with a name and optional region, access setting, and project association. Choose a supported region and set `access` to `public` or `private`; access defaults to public when omitted. The response includes the created store and its configuration.
-    public static func createStorageStoresBlob(config: ClientConfig, name: String, region: CreateStorageStoresBlobRequestBodyRegion? = nil, access: CreateStorageStoresBlobRequestBodyAccess? = nil, projectId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateStorageStoresBlobResponse {
+
+    /// Creates a Blob store with a name and optional region, access setting, and project association. Choose a
+    /// supported region and set `access` to `public` or `private`; access defaults to public when omitted. The response
+    /// includes the created store and its configuration.
+    public static func createStorageStoresBlob(
+        config: ClientConfig,
+        name: String,
+        region: CreateStorageStoresBlobRequestBodyRegion? = nil,
+        access: CreateStorageStoresBlobRequestBodyAccess? = nil,
+        projectId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateStorageStoresBlobResponse {
         try validateLength("name", name, max: 70)
 
-        if let projectId = projectId {
+        if let projectId {
             try validateLength("projectId", projectId, max: 50)
         }
 
-        let requestBody = CreateStorageStoresBlobRequestBody(name: name, region: region, access: access, projectId: projectId)
+        let requestBody = CreateStorageStoresBlobRequestBody(
+            name: name,
+            region: region,
+            access: access,
+            projectId: projectId
+        )
 
-        return try (await sdkRequest("POST", "/storage/stores/blob", config: config, body: requestBody, decoder: .json, operationId: "createStorageStoresBlob", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            "/storage/stores/blob",
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "createStorageStoresBlob",
+            options: requestOptions
+        )).data
     }
-    /// Deletes a Blob store by its identifier. Use the returned identifier to confirm which store was deleted. The store must be accessible to the authenticated user.
-    public static func deleteStorageStoresBlobById(config: ClientConfig, id: String, requestOptions: RequestOptions? = nil) async throws -> DeleteStorageStoresBlobByIdResponse {
-        return try (await sdkRequest("DELETE", ["/storage/stores/blob/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, decoder: .json, operationId: "deleteStorageStoresBlobById", options: requestOptions)).data
+
+    /// Deletes a Blob store by its identifier. Use the returned identifier to confirm which store was deleted. The
+    /// store must be accessible to the authenticated user.
+    public static func deleteStorageStoresBlobById(
+        config: ClientConfig,
+        id: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteStorageStoresBlobByIdResponse {
+        try await (sdkRequest(
+            "DELETE",
+            ["/storage/stores/blob/", sdkEncodePathSegment(sdkWireString(id))].joined(),
+            config: config,
+            decoder: .json,
+            operationId: "deleteStorageStoresBlobById",
+            options: requestOptions
+        )).data
     }
 }

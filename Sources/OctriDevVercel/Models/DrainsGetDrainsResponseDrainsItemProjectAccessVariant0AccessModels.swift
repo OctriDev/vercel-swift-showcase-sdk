@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Drains domain models
+/// Drains domain models
 public enum GetDrainsResponseDrainsItemProjectAccessVariant0Access: String, CaseIterable, Codable {
     case all
     public init(from decoder: Decoder) throws {

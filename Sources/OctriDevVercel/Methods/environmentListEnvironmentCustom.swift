@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension EnvironmentMethods {
-    /// Lists custom environments configured for a project. Use `gitBranch` to filter the results to environments associated with a specific Git branch.
+public extension EnvironmentMethods {
+    /// Lists custom environments configured for a project. Use `gitBranch` to filter the results to environments
+    /// associated with a specific Git branch.
     ///
     /// Retrieve custom environments for the project. Must not be named 'Production' or 'Preview'.
     ///
@@ -16,15 +17,31 @@ extension EnvironmentMethods {
     /// - gitBranch: Fetch custom environments for a specific git branch
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listEnvironmentCustom(config: ClientConfig, idOrName: String, gitBranch: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListEnvironmentCustomResponse {
-        return try (await sdkRequest("GET", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/custom-environments"].joined(), config: config, query: [
-            SdkQueryParameter("gitBranch", value: gitBranch),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listEnvironmentCustom", options: requestOptions)).data
+    static func listEnvironmentCustom(
+        config: ClientConfig,
+        idOrName: String,
+        gitBranch: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListEnvironmentCustomResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/custom-environments"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("gitBranch", value: gitBranch),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listEnvironmentCustom",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves a custom environment from a project by its identifier or slug. Use the project identifier or name together with `environmentSlugOrId` to select the environment.
+    /// Retrieves a custom environment from a project by its identifier or slug. Use the project identifier or name
+    /// together with `environmentSlugOrId` to select the environment.
     ///
     /// Retrieve a custom environment for the project. Must not be named 'Production' or 'Preview'.
     ///
@@ -34,10 +51,30 @@ extension EnvironmentMethods {
     ///   project
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getCustomEnvironment(config: ClientConfig, idOrName: String, environmentSlugOrId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetCustomEnvironmentResponse {
-        return try (await sdkRequest("GET", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/custom-environments/", sdkEncodePathSegment(sdkWireString(environmentSlugOrId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getCustomEnvironment", options: requestOptions)).data
+    static func getCustomEnvironment(
+        config: ClientConfig,
+        idOrName: String,
+        environmentSlugOrId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetCustomEnvironmentResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v9/projects/",
+                sdkEncodePathSegment(sdkWireString(idOrName)),
+                "/custom-environments/",
+                sdkEncodePathSegment(sdkWireString(environmentSlugOrId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getCustomEnvironment",
+            options: requestOptions
+        )).data
     }
 }

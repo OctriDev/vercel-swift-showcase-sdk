@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsCreate domain models
+/// ProjectsCreate domain models
 public enum CreateProjectEnvResponseCreatedItemContentHintVariant13Type: String, CaseIterable, Codable {
     case postgresDatabase = "postgres-database"
     public init(from decoder: Decoder) throws {

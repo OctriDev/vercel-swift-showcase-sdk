@@ -3,16 +3,21 @@
 
 import Foundation
 
-// ProjectsCreate domain models
-public struct CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXa4ea71e24a: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+/// ProjectsCreate domain models
+public struct CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXa4ea71e24a: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let gitlab = CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXa4ea71e24a(rawValue: "gitlab")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let gitlab =
+        CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXa4ea71e24a(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -21,16 +26,20 @@ public struct CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXa4ea
     }
 }
 
-public struct CreateProjectResponseTrustedIpsVariant0ProtectionMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectResponseTrustedIpsVariant0ProtectionMode: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let additional = CreateProjectResponseTrustedIpsVariant0ProtectionMode(rawValue: "additional")
     public static let exclusive = CreateProjectResponseTrustedIpsVariant0ProtectionMode(rawValue: "exclusive")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -56,15 +65,20 @@ public enum CreateProjectResponseEnvItemContentHintVariant7Type: String, CaseIte
     }
 }
 
-public struct CreateProjectResponseInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectResponseInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let xVercelIpCountry = CreateProjectResponseInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let xVercelIpCountry =
+        CreateProjectResponseInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -209,19 +223,25 @@ public enum CreateProjectResponseEnvItemContentHintVariant16Type: String, CaseIt
     }
 }
 
-public struct CreateProjectResponseTrustedIpsVariant1DeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectResponseTrustedIpsVariant1DeploymentType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let all = CreateProjectResponseTrustedIpsVariant1DeploymentType(rawValue: "all")
-    public static let allExceptCustomDomains = CreateProjectResponseTrustedIpsVariant1DeploymentType(rawValue: "all_except_custom_domains")
+    public static let allExceptCustomDomains =
+        CreateProjectResponseTrustedIpsVariant1DeploymentType(rawValue: "all_except_custom_domains")
     public static let preview = CreateProjectResponseTrustedIpsVariant1DeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews = CreateProjectResponseTrustedIpsVariant1DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let prodDeploymentUrlsAndAllPreviews =
+        CreateProjectResponseTrustedIpsVariant1DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
     public static let production = CreateProjectResponseTrustedIpsVariant1DeploymentType(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -264,19 +284,25 @@ public enum CreateProjectResponseEnvItemContentHintVariant3Type: String, CaseIte
     }
 }
 
-public struct CreateProjectResponseTrustedIpsVariant0DeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectResponseTrustedIpsVariant0DeploymentType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let all = CreateProjectResponseTrustedIpsVariant0DeploymentType(rawValue: "all")
-    public static let allExceptCustomDomains = CreateProjectResponseTrustedIpsVariant0DeploymentType(rawValue: "all_except_custom_domains")
+    public static let allExceptCustomDomains =
+        CreateProjectResponseTrustedIpsVariant0DeploymentType(rawValue: "all_except_custom_domains")
     public static let preview = CreateProjectResponseTrustedIpsVariant0DeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews = CreateProjectResponseTrustedIpsVariant0DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let prodDeploymentUrlsAndAllPreviews =
+        CreateProjectResponseTrustedIpsVariant0DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
     public static let production = CreateProjectResponseTrustedIpsVariant0DeploymentType(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -285,16 +311,22 @@ public struct CreateProjectResponseTrustedIpsVariant0DeploymentType: RawRepresen
     }
 }
 
-public struct CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX52f19be5b3: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX52f19be5b3: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let preview = CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX52f19be5b3(rawValue: "preview")
-    public static let production = CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX52f19be5b3(rawValue: "production")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let preview =
+        CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX52f19be5b3(rawValue: "preview")
+    public static let production =
+        CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmenX52f19be5b3(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -490,16 +522,22 @@ public enum CreateProjectResponseEnvItemContentHintVariant9Type: String, CaseIte
     }
 }
 
-public struct CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX5e71a16232: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX5e71a16232: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let preview = CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX5e71a16232(rawValue: "preview")
-    public static let production = CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX5e71a16232(rawValue: "production")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let preview =
+        CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX5e71a16232(rawValue: "preview")
+    public static let production =
+        CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX5e71a16232(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -508,15 +546,20 @@ public struct CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvX5e71
     }
 }
 
-public struct CreateProjectResponseInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectResponseInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let blockLegalCwc = CreateProjectResponseInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let blockLegalCwc =
+        CreateProjectResponseInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

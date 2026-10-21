@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Drains domain models
+/// Drains domain models
 public indirect enum UpdateDrainRequestDelivery {
     case updateDrainRequestDeliveryVariant0(UpdateDrainRequestDeliveryVariant0)
     case updateDrainRequestDeliveryVariant1(UpdateDrainRequestDeliveryVariant1)
@@ -11,30 +11,41 @@ public indirect enum UpdateDrainRequestDelivery {
 }
 
 extension UpdateDrainRequestDelivery: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateDrainRequestDelivery")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateDrainRequestDelivery"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateDrainRequestDelivery {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant0.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateDrainRequestDeliveryVariant0(value)
         }
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant1.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateDrainRequestDeliveryVariant1(value)
         }
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant2.self),
+           sdkKeepsEveryKey(value, of: raw) {
             return .updateDrainRequestDeliveryVariant2(value)
         }
         return nil
@@ -43,9 +54,18 @@ extension UpdateDrainRequestDelivery {
 
 extension UpdateDrainRequestDelivery {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant0.self) { return .updateDrainRequestDeliveryVariant0(value) }
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant1.self) { return .updateDrainRequestDeliveryVariant1(value) }
-        if let value = try? container.decode(UpdateDrainRequestDeliveryVariant2.self) { return .updateDrainRequestDeliveryVariant2(value) }
+        if let value = try? container
+            .decode(UpdateDrainRequestDeliveryVariant0.self) {
+            return .updateDrainRequestDeliveryVariant0(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainRequestDeliveryVariant1.self) {
+            return .updateDrainRequestDeliveryVariant1(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainRequestDeliveryVariant2.self) {
+            return .updateDrainRequestDeliveryVariant2(value)
+        }
         return nil
     }
 }
@@ -67,22 +87,33 @@ public indirect enum UpdateDrainRequestFilter {
 }
 
 extension UpdateDrainRequestFilter: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateDrainRequestFilter")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateDrainRequestFilter"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateDrainRequestFilter {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(UpdateDrainRequestFilterVariant1.self) { return .updateDrainRequestFilterVariant1(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainRequestFilterVariant1.self) {
+            return .updateDrainRequestFilterVariant1(value)
+        }
         return nil
     }
 }
@@ -105,18 +136,26 @@ public indirect enum UpdateDrainRequestSource {
 }
 
 extension UpdateDrainRequestSource: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateDrainRequestSource")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateDrainRequestSource"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -140,10 +179,22 @@ extension UpdateDrainRequestSource {
 
 extension UpdateDrainRequestSource {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UpdateDrainRequestSourceVariant0.self) { return .updateDrainRequestSourceVariant0(value) }
-        if let value = try? container.decode(UpdateDrainRequestSourceVariant1.self) { return .updateDrainRequestSourceVariant1(value) }
-        if let value = try? container.decode(UpdateDrainRequestSourceVariant2.self) { return .updateDrainRequestSourceVariant2(value) }
-        if let value = try? container.decode(UpdateDrainRequestSourceVariant3.self) { return .updateDrainRequestSourceVariant3(value) }
+        if let value = try? container
+            .decode(UpdateDrainRequestSourceVariant0.self) {
+            return .updateDrainRequestSourceVariant0(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainRequestSourceVariant1.self) {
+            return .updateDrainRequestSourceVariant1(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainRequestSourceVariant2.self) {
+            return .updateDrainRequestSourceVariant2(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainRequestSourceVariant3.self) {
+            return .updateDrainRequestSourceVariant3(value)
+        }
         return nil
     }
 }
@@ -166,18 +217,26 @@ public indirect enum UpdateDrainResponse {
 }
 
 extension UpdateDrainResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateDrainResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateDrainResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -195,8 +254,14 @@ extension UpdateDrainResponse {
 
 extension UpdateDrainResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(UpdateDrainResponseVariant0.self) { return .updateDrainResponseVariant0(value) }
-        if let value = try? container.decode(UpdateDrainResponseVariant1.self) { return .updateDrainResponseVariant1(value) }
+        if let value = try? container
+            .decode(UpdateDrainResponseVariant0.self) {
+            return .updateDrainResponseVariant0(value)
+        }
+        if let value = try? container
+            .decode(UpdateDrainResponseVariant1.self) {
+            return .updateDrainResponseVariant1(value)
+        }
         return nil
     }
 }
@@ -211,7 +276,8 @@ extension UpdateDrainResponse {
     }
 }
 
-public typealias UpdateDrainResponseVariant0FilterV2FilterVariant0DeploymentEnXf2cf37f6f9 = [UpdateDrainResponseVariant0FilterV2FilterVariant0DeploymentEnX3c3e08f318]
+public typealias UpdateDrainResponseVariant0FilterV2FilterVariant0DeploymentEnXf2cf37f6f9 =
+    [UpdateDrainResponseVariant0FilterV2FilterVariant0DeploymentEnX3c3e08f318]
 
 public struct UpdateDrainResponseVariant0FilterV2FilterVariant0Deployment: Codable {
     public var environments: UpdateDrainResponseVariant0FilterV2FilterVariant0DeploymentEnXf2cf37f6f9?
@@ -221,25 +287,26 @@ public struct UpdateDrainResponseVariant0FilterV2FilterVariant0Deployment: Codab
     }
 
     init() {
-        self.environments = nil
+        environments = nil
     }
 }
 
-extension UpdateDrainResponseVariant0FilterV2FilterVariant0Deployment {
-    public init(from decoder: Decoder) throws {
+public extension UpdateDrainResponseVariant0FilterV2FilterVariant0Deployment {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.environments = try container.sdkDecodeIfPresent(.environments)
+        environments = try container.sdkDecodeIfPresent(.environments)
     }
 }
 
-extension UpdateDrainResponseVariant0FilterV2FilterVariant0Deployment {
-    public init(environments: UpdateDrainResponseVariant0FilterV2FilterVariant0DeploymentEnXf2cf37f6f9? = nil) {
+public extension UpdateDrainResponseVariant0FilterV2FilterVariant0Deployment {
+    init(environments: UpdateDrainResponseVariant0FilterV2FilterVariant0DeploymentEnXf2cf37f6f9? = nil) {
         self.init()
         self.environments = environments
     }
 }
 
-public typealias UpdateDrainResponseVariant1FilterV2FilterVariant0DeploymentEnXaf5d3eda56 = [UpdateDrainResponseVariant1FilterV2FilterVariant0DeploymentEnX9eb84fd4ef]
+public typealias UpdateDrainResponseVariant1FilterV2FilterVariant0DeploymentEnXaf5d3eda56 =
+    [UpdateDrainResponseVariant1FilterV2FilterVariant0DeploymentEnX9eb84fd4ef]
 
 public struct UpdateDrainResponseVariant1FilterV2FilterVariant0Deployment: Codable {
     public var environments: UpdateDrainResponseVariant1FilterV2FilterVariant0DeploymentEnXaf5d3eda56?
@@ -249,19 +316,19 @@ public struct UpdateDrainResponseVariant1FilterV2FilterVariant0Deployment: Codab
     }
 
     init() {
-        self.environments = nil
+        environments = nil
     }
 }
 
-extension UpdateDrainResponseVariant1FilterV2FilterVariant0Deployment {
-    public init(from decoder: Decoder) throws {
+public extension UpdateDrainResponseVariant1FilterV2FilterVariant0Deployment {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.environments = try container.sdkDecodeIfPresent(.environments)
+        environments = try container.sdkDecodeIfPresent(.environments)
     }
 }
 
-extension UpdateDrainResponseVariant1FilterV2FilterVariant0Deployment {
-    public init(environments: UpdateDrainResponseVariant1FilterV2FilterVariant0DeploymentEnXaf5d3eda56? = nil) {
+public extension UpdateDrainResponseVariant1FilterV2FilterVariant0Deployment {
+    init(environments: UpdateDrainResponseVariant1FilterV2FilterVariant0DeploymentEnXaf5d3eda56? = nil) {
         self.init()
         self.environments = environments
     }
@@ -269,29 +336,39 @@ extension UpdateDrainResponseVariant1FilterV2FilterVariant0Deployment {
 
 public indirect enum UpdateDrainResponseVariant0DeliveryVariant0Secret {
     case stringValue(String)
-    case updateDrainResponseVariant0DeliveryVariant0SecretVariant1(UpdateDrainResponseVariant0DeliveryVariant0SecretVariant1)
+    case updateDrainResponseVariant0DeliveryVariant0SecretVariant1(
+        UpdateDrainResponseVariant0DeliveryVariant0SecretVariant1
+    )
 }
 
 extension UpdateDrainResponseVariant0DeliveryVariant0Secret: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateDrainResponseVariant0DeliveryVariant0Secret")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateDrainResponseVariant0DeliveryVariant0Secret"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateDrainResponseVariant0DeliveryVariant0Secret {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         if let value = try? container.decode(
             UpdateDrainResponseVariant0DeliveryVariant0SecretVariant1.self
         ) {
-            return             .updateDrainResponseVariant0DeliveryVariant0SecretVariant1(value)
+            return .updateDrainResponseVariant0DeliveryVariant0SecretVariant1(value)
         }
         return nil
     }
@@ -302,7 +379,8 @@ extension UpdateDrainResponseVariant0DeliveryVariant0Secret {
         var container = encoder.singleValueContainer()
         switch self {
         case let .stringValue(value): try container.encode(value); return true
-        case let .updateDrainResponseVariant0DeliveryVariant0SecretVariant1(value): try container.encode(value); return true
+        case let .updateDrainResponseVariant0DeliveryVariant0SecretVariant1(value): try container
+            .encode(value); return true
         }
     }
 }
@@ -327,26 +405,34 @@ public struct UpdateDrainResponseVariant1Schemas: Codable {
     }
 
     init() {
-        (self.aiGateway, self.analytics, self.auditLog, self.connect, self.log) = (nil, nil, nil, nil, nil)
-        (self.speedInsights, self.trace) = (nil, nil)
+        (aiGateway, analytics, auditLog, connect, log) = (nil, nil, nil, nil, nil)
+        (speedInsights, trace) = (nil, nil)
     }
 }
 
-extension UpdateDrainResponseVariant1Schemas {
-    public init(from decoder: Decoder) throws {
+public extension UpdateDrainResponseVariant1Schemas {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.aiGateway = try container.sdkDecodeIfPresent(.aiGateway)
-        self.analytics = try container.sdkDecodeIfPresent(.analytics)
-        self.auditLog = try container.sdkDecodeIfPresent(.auditLog)
-        self.connect = try container.sdkDecodeIfPresent(.connect)
-        self.log = try container.sdkDecodeIfPresent(.log)
-        self.speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
-        self.trace = try container.sdkDecodeIfPresent(.trace)
+        aiGateway = try container.sdkDecodeIfPresent(.aiGateway)
+        analytics = try container.sdkDecodeIfPresent(.analytics)
+        auditLog = try container.sdkDecodeIfPresent(.auditLog)
+        connect = try container.sdkDecodeIfPresent(.connect)
+        log = try container.sdkDecodeIfPresent(.log)
+        speedInsights = try container.sdkDecodeIfPresent(.speedInsights)
+        trace = try container.sdkDecodeIfPresent(.trace)
     }
 }
 
-extension UpdateDrainResponseVariant1Schemas {
-    public init(aiGateway: [String: JSONValue]? = nil, analytics: [String: JSONValue]? = nil, auditLog: [String: JSONValue]? = nil, connect: [String: JSONValue]? = nil, log: [String: JSONValue]? = nil, speedInsights: [String: JSONValue]? = nil, trace: [String: JSONValue]? = nil) {
+public extension UpdateDrainResponseVariant1Schemas {
+    init(
+        aiGateway: [String: JSONValue]? = nil,
+        analytics: [String: JSONValue]? = nil,
+        auditLog: [String: JSONValue]? = nil,
+        connect: [String: JSONValue]? = nil,
+        log: [String: JSONValue]? = nil,
+        speedInsights: [String: JSONValue]? = nil,
+        trace: [String: JSONValue]? = nil
+    ) {
         self.init()
         (self.aiGateway, self.analytics) = (aiGateway, analytics)
         (self.auditLog, self.connect) = (auditLog, connect)
@@ -402,38 +488,62 @@ public struct UpdateDrainResponseVariant1: Codable {
         case projectAccess
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateDrainResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.delivery = try container.sdkDecodeRequired(.delivery)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.schemas = try container.sdkDecodeRequired(.schemas)
-        self.source = try container.sdkDecodeRequired(.source)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
-        self.disabledBy = try container.sdkDecodeIfPresent(.disabledBy)
-        self.disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
-        self.firstErrorTimestamp = try container.sdkDecodeIfPresent(.firstErrorTimestamp)
-        self.projectIds = try container.sdkDecodeIfPresent(.projectIds)
-        self.sampling = try container.sdkDecodeIfPresent(.sampling)
-        self.status = try container.sdkDecodeIfPresent(.status)
-        self.teamId = try container.sdkDecodeIfPresent(.teamId)
-        self.filterV2 = try container.sdkDecodeIfPresent(.filterV2)
-        self.integrationConfigurationUri = try container.sdkDecodeIfPresent(.integrationConfigurationUri)
-        self.integrationIcon = try container.sdkDecodeIfPresent(.integrationIcon)
-        self.integrationWebsite = try container.sdkDecodeIfPresent(.integrationWebsite)
-        self.projectAccess = try container.sdkDecodeIfPresent(.projectAccess)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateDrainResponseVariant1 {
-    public init(createdAt: Double, delivery: UpdateDrainResponseVariant1Delivery, id: String, name: String, ownerId: String, schemas: UpdateDrainResponseVariant1Schemas, source: UpdateDrainResponseVariant1Source, updatedAt: Double, disabledAt: Double? = nil, disabledBy: String? = nil, disabledReason: UpdateDrainResponseVariant1DisabledReason? = nil, firstErrorTimestamp: Double? = nil, projectIds: [String]? = nil, sampling: [UpdateDrainResponseVariant1SamplingItem]? = nil, status: UpdateDrainResponseVariant1Status? = nil, teamId: String? = nil, filterV2: UpdateDrainResponseVariant1FilterV2? = nil, integrationConfigurationUri: String? = nil, integrationIcon: String? = nil, integrationWebsite: String? = nil, projectAccess: UpdateDrainResponseVariant1ProjectAccess? = nil) {
+public extension UpdateDrainResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        delivery = try container.sdkDecodeRequired(.delivery)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        schemas = try container.sdkDecodeRequired(.schemas)
+        source = try container.sdkDecodeRequired(.source)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        disabledAt = try container.sdkDecodeIfPresent(.disabledAt)
+        disabledBy = try container.sdkDecodeIfPresent(.disabledBy)
+        disabledReason = try container.sdkDecodeIfPresent(.disabledReason)
+        firstErrorTimestamp = try container.sdkDecodeIfPresent(.firstErrorTimestamp)
+        projectIds = try container.sdkDecodeIfPresent(.projectIds)
+        sampling = try container.sdkDecodeIfPresent(.sampling)
+        status = try container.sdkDecodeIfPresent(.status)
+        teamId = try container.sdkDecodeIfPresent(.teamId)
+        filterV2 = try container.sdkDecodeIfPresent(.filterV2)
+        integrationConfigurationUri = try container.sdkDecodeIfPresent(.integrationConfigurationUri)
+        integrationIcon = try container.sdkDecodeIfPresent(.integrationIcon)
+        integrationWebsite = try container.sdkDecodeIfPresent(.integrationWebsite)
+        projectAccess = try container.sdkDecodeIfPresent(.projectAccess)
+    }
+}
+
+public extension UpdateDrainResponseVariant1 {
+    init(
+        createdAt: Double,
+        delivery: UpdateDrainResponseVariant1Delivery,
+        id: String,
+        name: String,
+        ownerId: String,
+        schemas: UpdateDrainResponseVariant1Schemas,
+        source: UpdateDrainResponseVariant1Source,
+        updatedAt: Double,
+        disabledAt: Double? = nil,
+        disabledBy: String? = nil,
+        disabledReason: UpdateDrainResponseVariant1DisabledReason? = nil,
+        firstErrorTimestamp: Double? = nil,
+        projectIds: [String]? = nil,
+        sampling: [UpdateDrainResponseVariant1SamplingItem]? = nil,
+        status: UpdateDrainResponseVariant1Status? = nil,
+        teamId: String? = nil,
+        filterV2: UpdateDrainResponseVariant1FilterV2? = nil,
+        integrationConfigurationUri: String? = nil,
+        integrationIcon: String? = nil,
+        integrationWebsite: String? = nil,
+        projectAccess: UpdateDrainResponseVariant1ProjectAccess? = nil
+    ) {
         (self.createdAt, self.delivery) = (createdAt, delivery)
         (self.id, self.name) = (id, name)
         (self.ownerId, self.schemas) = (ownerId, schemas)
@@ -458,5 +568,7 @@ public struct UpdateDrainResponseVariant1SourceVariant0: Codable {
         case defaultFor
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

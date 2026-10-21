@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VercelCiMethods {
-    public struct ListVercelCiInvocationsOptions: Codable {
+public extension VercelCiMethods {
+    struct ListVercelCiInvocationsOptions: Codable {
         public var provider: ListVercelCiInvocationsParameter?
         public var repository: String?
         public var branchName: String?
@@ -27,7 +27,9 @@ extension VercelCiMethods {
         public init() {}
     }
 
-    /// Lists Vercel CI invocations for a team, with optional filters for repository, branch, commit, status, conclusion, source, author, and creation time. Use `cursor` to continue from a previous response and `limit` to set the page size. The response includes invocation records, repository details, and pagination metadata.
+    /// Lists Vercel CI invocations for a team, with optional filters for repository, branch, commit, status,
+    /// conclusion, source, author, and creation time. Use `cursor` to continue from a previous response and `limit` to
+    /// set the page size. The response includes invocation records, repository details, and pagination metadata.
     ///
     /// List Invocations
     ///
@@ -41,7 +43,11 @@ extension VercelCiMethods {
     /// - cursor: Pagination cursor from a previous response.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listVercelCiInvocations(config: ClientConfig, options: ListVercelCiInvocationsOptions, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiInvocationsResponse {
+    static func listVercelCiInvocations(
+        config: ClientConfig,
+        options: ListVercelCiInvocationsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiInvocationsResponse {
         if let status = options.status {
             try validateItems("status", status, min: 1)
         }
@@ -54,7 +60,7 @@ extension VercelCiMethods {
             try validateItems("source", source, min: 1)
         }
 
-        return try (await sdkRequest("GET", "/v2/vercel-ci/invocations", config: config, query: [
+        return try await (sdkRequest("GET", "/v2/vercel-ci/invocations", config: config, query: [
             SdkQueryParameter("provider", value: options.provider),
             SdkQueryParameter("repository", value: options.repository),
             SdkQueryParameter("branchName", value: options.branchName),

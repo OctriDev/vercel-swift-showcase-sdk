@@ -6,11 +6,32 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AuthenticationMethods {
-    /// Exchanges an integration authorization code or refresh token for an OIDC token response. Use the authorization-code flow after receiving a `code`, or the refresh flow with a `refresh_token`; each flow requires its corresponding `grant_type` and client credentials. Do not persist the returned `id_token`, because it expires.
+public extension AuthenticationMethods {
+    /// Exchanges an integration authorization code or refresh token for an OIDC token response. Use the
+    /// authorization-code flow after receiving a `code`, or the refresh flow with a `refresh_token`; each flow requires
+    /// its corresponding `grant_type` and client credentials. Do not persist the returned `id_token`, because it
+    /// expires.
     ///
-    /// During the autorization process, Vercel sends the user to the provider [redirectLoginUrl](https://vercel.com/docs/integrations/create-integration/submit-integration#redirect-login-url), that includes the OAuth authorization `code` parameter. The provider then calls the SSO Token Exchange endpoint with the sent code and receives the OIDC token. They log the user in based on this token and redirects the user back to the Vercel account using deep-link parameters included the redirectLoginUrl. Providers should not persist the returned `id_token` in a database since the token will expire. See [**Authentication with SSO**](https://vercel.com/docs/integrations/create-integration/marketplace-api#authentication-with-sso) for more details.
-    public static func exchangeSsoToken(config: ClientConfig, body: ExchangeSsoTokenRequestBody, requestOptions: RequestOptions? = nil) async throws -> ExchangeSsoTokenResponse {
-        return try (await sdkRequest("POST", "/v1/integrations/sso/token", config: config, rawBody: (try sdkEncodeBody(body, contentType: "application/json")), decoder: .json, operationId: "exchangeSsoToken", options: requestOptions)).data
+    /// During the autorization process, Vercel sends the user to the provider [redirectLoginUrl](https://vercel.com/docs/integrations/create-integration/submit-integration#redirect-login-url),
+    /// that includes the OAuth authorization `code` parameter. The provider then calls the SSO Token Exchange endpoint
+    /// with the sent code and receives the OIDC token. They log the user in based on this token and redirects the user
+    /// back to the Vercel account using deep-link parameters included the redirectLoginUrl. Providers should not
+    /// persist the returned `id_token` in a database since the token will expire. See [**Authentication with
+    /// SSO**](https://vercel.com/docs/integrations/create-integration/marketplace-api#authentication-with-sso) for more
+    /// details.
+    static func exchangeSsoToken(
+        config: ClientConfig,
+        body: ExchangeSsoTokenRequestBody,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ExchangeSsoTokenResponse {
+        try await (sdkRequest(
+            "POST",
+            "/v1/integrations/sso/token",
+            config: config,
+            rawBody: sdkEncodeBody(body, contentType: "application/json"),
+            decoder: .json,
+            operationId: "exchangeSsoToken",
+            options: requestOptions
+        )).data
     }
 }

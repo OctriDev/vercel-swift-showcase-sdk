@@ -3,7 +3,7 @@
 
 import Foundation
 
-// GlobalConfig domain models
+/// GlobalConfig domain models
 /// The Global Config.
 public struct GlobalConfigToken: Codable {
     /// Required `number` value serialized in the `createdAt` wire field.
@@ -36,38 +36,67 @@ public struct GlobalConfigToken: Codable {
         case token
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GlobalConfigToken {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.edgeConfigId) else {
-            throw SdkValidationError(field: "edgeConfigId", code: "required", message: "Validation failed for 'edgeConfigId': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.label) else {
-            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
-        }
-        guard container.contains(.partialToken) else {
-            throw SdkValidationError(field: "partialToken", code: "required", message: "Validation failed for 'partialToken': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.edgeConfigId = try container.sdkDecodeRequired(.edgeConfigId)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.label = try container.sdkDecodeRequired(.label)
-        self.partialToken = try container.sdkDecodeRequired(.partialToken)
-        self.token = try container.sdkDecodeIfPresent(.token)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GlobalConfigToken {
-    public init(createdAt: Double, edgeConfigId: String, id: String, label: String, partialToken: String, token: String? = nil) {
+public extension GlobalConfigToken {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.edgeConfigId) else {
+            throw SdkValidationError(
+                field: "edgeConfigId",
+                code: "required",
+                message: "Validation failed for 'edgeConfigId': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.label) else {
+            throw SdkValidationError(
+                field: "label",
+                code: "required",
+                message: "Validation failed for 'label': value is required"
+            )
+        }
+        guard container.contains(.partialToken) else {
+            throw SdkValidationError(
+                field: "partialToken",
+                code: "required",
+                message: "Validation failed for 'partialToken': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        edgeConfigId = try container.sdkDecodeRequired(.edgeConfigId)
+        id = try container.sdkDecodeRequired(.id)
+        label = try container.sdkDecodeRequired(.label)
+        partialToken = try container.sdkDecodeRequired(.partialToken)
+        token = try container.sdkDecodeIfPresent(.token)
+    }
+}
+
+public extension GlobalConfigToken {
+    init(
+        createdAt: Double,
+        edgeConfigId: String,
+        id: String,
+        label: String,
+        partialToken: String,
+        token: String? = nil
+    ) {
         (self.createdAt, self.edgeConfigId) = (createdAt, edgeConfigId)
         (self.id, self.label) = (id, label)
         (self.partialToken, self.token) = (partialToken, token)
@@ -98,38 +127,67 @@ public struct GlobalConfigItem: Codable {
         case description
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GlobalConfigItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.edgeConfigId) else {
-            throw SdkValidationError(field: "edgeConfigId", code: "required", message: "Validation failed for 'edgeConfigId': value is required")
-        }
-        guard container.contains(.key) else {
-            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.edgeConfigId = try container.sdkDecodeRequired(.edgeConfigId)
-        self.key = try container.sdkDecodeRequired(.key)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.value = try container.sdkDecodeNullable(.value)
-        self.description = try container.sdkDecodeIfPresent(.description)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GlobalConfigItem {
-    public init(createdAt: Double, edgeConfigId: String, key: String, updatedAt: Double, value: GlobalConfigItemValue?, description: String? = nil) {
+public extension GlobalConfigItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.edgeConfigId) else {
+            throw SdkValidationError(
+                field: "edgeConfigId",
+                code: "required",
+                message: "Validation failed for 'edgeConfigId': value is required"
+            )
+        }
+        guard container.contains(.key) else {
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        edgeConfigId = try container.sdkDecodeRequired(.edgeConfigId)
+        key = try container.sdkDecodeRequired(.key)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        value = try container.sdkDecodeNullable(.value)
+        description = try container.sdkDecodeIfPresent(.description)
+    }
+}
+
+public extension GlobalConfigItem {
+    init(
+        createdAt: Double,
+        edgeConfigId: String,
+        key: String,
+        updatedAt: Double,
+        value: GlobalConfigItemValue?,
+        description: String? = nil
+    ) {
         (self.createdAt, self.edgeConfigId) = (createdAt, edgeConfigId)
         (self.key, self.updatedAt) = (key, updatedAt)
         (self.value, self.description) = (value, description)

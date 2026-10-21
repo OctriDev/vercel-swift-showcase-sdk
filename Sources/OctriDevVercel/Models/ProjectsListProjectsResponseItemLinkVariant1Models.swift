@@ -3,16 +3,28 @@
 
 import Foundation
 
-// ProjectsList domain models
-extension ListProjectsResponseItemLinkVariant1 {
-    public init(deployHooks: [ListProjectsResponseItemLinkVariant1DeployHooksItem], gitCredentialId: String, org: String, productionBranch: String, type: ListProjectsResponseItemLinkVariant1Type, createdAt: Double? = nil, repo: String? = nil, repoId: Double? = nil, repoOwnerId: Double? = nil, sourceless: Bool? = nil, updatedAt: Double? = nil) throws {
+/// ProjectsList domain models
+public extension ListProjectsResponseItemLinkVariant1 {
+    init(
+        deployHooks: [ListProjectsResponseItemLinkVariant1DeployHooksItem],
+        gitCredentialId: String,
+        org: String,
+        productionBranch: String,
+        type: ListProjectsResponseItemLinkVariant1Type,
+        createdAt: Double? = nil,
+        repo: String? = nil,
+        repoId: Double? = nil,
+        repoOwnerId: Double? = nil,
+        sourceless: Bool? = nil,
+        updatedAt: Double? = nil
+    ) throws {
         (self.deployHooks, self.gitCredentialId) = (deployHooks, gitCredentialId)
         (self.org, self.productionBranch) = (org, productionBranch)
         (self.type, self.createdAt) = (type, createdAt)
         (self.repo, self.repoId) = (repo, repoId)
         (self.repoOwnerId, self.sourceless) = (repoOwnerId, sourceless)
         self.updatedAt = updatedAt
-            try sdkValidateRawEnum("type", self.type, ListProjectsResponseItemLinkVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, ListProjectsResponseItemLinkVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -46,32 +58,45 @@ public struct ListProjectsResponseItemSecurityFirewallRoutesItemHasItemValueVari
     }
 
     init() {
-        (self.eq, self.gt, self.gte, self.inc, self.list) = (nil, nil, nil, nil, nil)
-        (self.lt, self.lte, self.neq, self.ninc, self.pre) = (nil, nil, nil, nil, nil)
-        (self.re, self.suf) = (nil, nil)
+        (eq, gt, gte, inc, list) = (nil, nil, nil, nil, nil)
+        (lt, lte, neq, ninc, pre) = (nil, nil, nil, nil, nil)
+        (re, suf) = (nil, nil)
     }
 }
 
-extension ListProjectsResponseItemSecurityFirewallRoutesItemHasItemValueVariant1 {
-    public init(from decoder: Decoder) throws {
+public extension ListProjectsResponseItemSecurityFirewallRoutesItemHasItemValueVariant1 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.eq = try container.sdkDecodeIfPresent(.eq)
-        self.gt = try container.sdkDecodeIfPresent(.gt)
-        self.gte = try container.sdkDecodeIfPresent(.gte)
-        self.inc = try container.sdkDecodeIfPresent(.inc)
-        self.list = try container.sdkDecodeIfPresent(.list)
-        self.lt = try container.sdkDecodeIfPresent(.lt)
-        self.lte = try container.sdkDecodeIfPresent(.lte)
-        self.neq = try container.sdkDecodeIfPresent(.neq)
-        self.ninc = try container.sdkDecodeIfPresent(.ninc)
-        self.pre = try container.sdkDecodeIfPresent(.pre)
-        self.re = try container.sdkDecodeIfPresent(.re)
-        self.suf = try container.sdkDecodeIfPresent(.suf)
+        eq = try container.sdkDecodeIfPresent(.eq)
+        gt = try container.sdkDecodeIfPresent(.gt)
+        gte = try container.sdkDecodeIfPresent(.gte)
+        inc = try container.sdkDecodeIfPresent(.inc)
+        list = try container.sdkDecodeIfPresent(.list)
+        lt = try container.sdkDecodeIfPresent(.lt)
+        lte = try container.sdkDecodeIfPresent(.lte)
+        neq = try container.sdkDecodeIfPresent(.neq)
+        ninc = try container.sdkDecodeIfPresent(.ninc)
+        pre = try container.sdkDecodeIfPresent(.pre)
+        re = try container.sdkDecodeIfPresent(.re)
+        suf = try container.sdkDecodeIfPresent(.suf)
     }
 }
 
-extension ListProjectsResponseItemSecurityFirewallRoutesItemHasItemValueVariant1 {
-    public init(eq: String? = nil, gt: Double? = nil, gte: Double? = nil, inc: [String]? = nil, list: String? = nil, lt: Double? = nil, lte: Double? = nil, neq: String? = nil, ninc: [String]? = nil, pre: String? = nil, re: String? = nil, suf: String? = nil) {
+public extension ListProjectsResponseItemSecurityFirewallRoutesItemHasItemValueVariant1 {
+    init(
+        eq: String? = nil,
+        gt: Double? = nil,
+        gte: Double? = nil,
+        inc: [String]? = nil,
+        list: String? = nil,
+        lt: Double? = nil,
+        lte: Double? = nil,
+        neq: String? = nil,
+        ninc: [String]? = nil,
+        pre: String? = nil,
+        re: String? = nil,
+        suf: String? = nil
+    ) {
         self.init()
         (self.eq, self.gt) = (eq, gt)
         (self.gte, self.inc) = (gte, inc)
@@ -93,26 +118,40 @@ public struct ListProjectsResponseItemInternalRoutesItemVariant1: Codable {
         case src
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseItemInternalRoutesItemVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.has) else {
-            throw SdkValidationError(field: "has", code: "required", message: "Validation failed for 'has': value is required")
-        }
-        guard container.contains(.mitigate) else {
-            throw SdkValidationError(field: "mitigate", code: "required", message: "Validation failed for 'mitigate': value is required")
-        }
-        self.has = try container.sdkDecodeRequired(.has)
-        self.mitigate = try container.sdkDecodeRequired(.mitigate)
-        self.src = try container.sdkDecodeIfPresent(.src)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListProjectsResponseItemInternalRoutesItemVariant1 {
-    public init(has: [ListProjectsResponseItemInternalRoutesItemVariant1HasItem], mitigate: ListProjectsResponseItemInternalRoutesItemVariant1Mitigate, src: String? = nil) {
+public extension ListProjectsResponseItemInternalRoutesItemVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.has) else {
+            throw SdkValidationError(
+                field: "has",
+                code: "required",
+                message: "Validation failed for 'has': value is required"
+            )
+        }
+        guard container.contains(.mitigate) else {
+            throw SdkValidationError(
+                field: "mitigate",
+                code: "required",
+                message: "Validation failed for 'mitigate': value is required"
+            )
+        }
+        has = try container.sdkDecodeRequired(.has)
+        mitigate = try container.sdkDecodeRequired(.mitigate)
+        src = try container.sdkDecodeIfPresent(.src)
+    }
+}
+
+public extension ListProjectsResponseItemInternalRoutesItemVariant1 {
+    init(
+        has: [ListProjectsResponseItemInternalRoutesItemVariant1HasItem],
+        mitigate: ListProjectsResponseItemInternalRoutesItemVariant1Mitigate,
+        src: String? = nil
+    ) {
         (self.has, self.mitigate) = (has, mitigate)
         self.src = src
     }
@@ -135,15 +174,20 @@ public enum ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant1Typ
     }
 }
 
-public struct ListProjectsResponseItemInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseItemInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let blockLegalCwc = ListProjectsResponseItemInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let blockLegalCwc =
+        ListProjectsResponseItemInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -186,15 +230,20 @@ public enum ListProjectsResponseItemEnvItemContentHintVariant4Type: String, Case
     }
 }
 
-public struct ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let xVercelIpCountry = ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let xVercelIpCountry =
+        ListProjectsResponseItemInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

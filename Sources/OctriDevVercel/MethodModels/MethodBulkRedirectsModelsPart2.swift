@@ -7,36 +7,62 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical bulkRedirects operation model declarations
-extension GetVersionsResponseVersionsItem {
-    public init(from decoder: Decoder) throws {
+/// Canonical bulkRedirects operation model declarations
+public extension GetVersionsResponseVersionsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdBy) else {
-            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
+            throw SdkValidationError(
+                field: "createdBy",
+                code: "required",
+                message: "Validation failed for 'createdBy': value is required"
+            )
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
         }
         guard container.contains(.key) else {
-            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
         }
         guard container.contains(.lastModified) else {
-            throw SdkValidationError(field: "lastModified", code: "required", message: "Validation failed for 'lastModified': value is required")
+            throw SdkValidationError(
+                field: "lastModified",
+                code: "required",
+                message: "Validation failed for 'lastModified': value is required"
+            )
         }
-        self.createdBy = try container.sdkDecodeRequired(.createdBy)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.key = try container.sdkDecodeRequired(.key)
-        self.lastModified = try container.sdkDecodeRequired(.lastModified)
-        self.alias = try container.sdkDecodeIfPresent(.alias)
-        self.isLive = try container.sdkDecodeIfPresent(.isLive)
-        self.isStaging = try container.sdkDecodeIfPresent(.isStaging)
-        self.name = try container.sdkDecodeIfPresent(.name)
-        self.redirectCount = try container.sdkDecodeIfPresent(.redirectCount)
+        createdBy = try container.sdkDecodeRequired(.createdBy)
+        id = try container.sdkDecodeRequired(.id)
+        key = try container.sdkDecodeRequired(.key)
+        lastModified = try container.sdkDecodeRequired(.lastModified)
+        alias = try container.sdkDecodeIfPresent(.alias)
+        isLive = try container.sdkDecodeIfPresent(.isLive)
+        isStaging = try container.sdkDecodeIfPresent(.isStaging)
+        name = try container.sdkDecodeIfPresent(.name)
+        redirectCount = try container.sdkDecodeIfPresent(.redirectCount)
     }
 }
 
-extension GetVersionsResponseVersionsItem {
-    public init(createdBy: String, id: String, key: String, lastModified: Double, alias: String? = nil, isLive: Bool? = nil, isStaging: Bool? = nil, name: String? = nil, redirectCount: Double? = nil) {
+public extension GetVersionsResponseVersionsItem {
+    init(
+        createdBy: String,
+        id: String,
+        key: String,
+        lastModified: Double,
+        alias: String? = nil,
+        isLive: Bool? = nil,
+        isStaging: Bool? = nil,
+        name: String? = nil,
+        redirectCount: Double? = nil
+    ) {
         (self.createdBy, self.id) = (createdBy, id)
         (self.key, self.lastModified) = (key, lastModified)
         (self.alias, self.isLive) = (alias, isLive)
@@ -56,29 +82,43 @@ public struct GetRedirectsResponseVariant2Pagination: Codable {
         case perPage = "per_page"
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRedirectsResponseVariant2Pagination {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.numPages) else {
-            throw SdkValidationError(field: "numPages", code: "required", message: "Validation failed for 'numPages': value is required")
-        }
-        guard container.contains(.page) else {
-            throw SdkValidationError(field: "page", code: "required", message: "Validation failed for 'page': value is required")
-        }
-        guard container.contains(.perPage) else {
-            throw SdkValidationError(field: "per_page", code: "required", message: "Validation failed for 'per_page': value is required")
-        }
-        self.numPages = try container.sdkDecodeRequired(.numPages)
-        self.page = try container.sdkDecodeRequired(.page)
-        self.perPage = try container.sdkDecodeRequired(.perPage)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRedirectsResponseVariant2Pagination {
-    public init(numPages: Double, page: Double, perPage: Double) {
+public extension GetRedirectsResponseVariant2Pagination {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.numPages) else {
+            throw SdkValidationError(
+                field: "numPages",
+                code: "required",
+                message: "Validation failed for 'numPages': value is required"
+            )
+        }
+        guard container.contains(.page) else {
+            throw SdkValidationError(
+                field: "page",
+                code: "required",
+                message: "Validation failed for 'page': value is required"
+            )
+        }
+        guard container.contains(.perPage) else {
+            throw SdkValidationError(
+                field: "per_page",
+                code: "required",
+                message: "Validation failed for 'per_page': value is required"
+            )
+        }
+        numPages = try container.sdkDecodeRequired(.numPages)
+        page = try container.sdkDecodeRequired(.page)
+        perPage = try container.sdkDecodeRequired(.perPage)
+    }
+}
+
+public extension GetRedirectsResponseVariant2Pagination {
+    init(numPages: Double, page: Double, perPage: Double) {
         (self.numPages, self.page) = (numPages, page)
         self.perPage = perPage
     }
@@ -95,29 +135,47 @@ public struct GetRedirectsResponseVariant2: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRedirectsResponseVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        guard container.contains(.redirects) else {
-            throw SdkValidationError(field: "redirects", code: "required", message: "Validation failed for 'redirects': value is required")
-        }
-        guard container.contains(.version) else {
-            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
-        }
-        self.pagination = try container.sdkDecodeRequired(.pagination)
-        self.redirects = try container.sdkDecodeRequired(.redirects)
-        self.version = try container.sdkDecodeRequired(.version)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRedirectsResponseVariant2 {
-    public init(pagination: GetRedirectsResponseVariant2Pagination, redirects: [GetRedirectsResponseVariant2RedirectsItem], version: GetRedirectsResponseVariant2Version) {
+public extension GetRedirectsResponseVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        guard container.contains(.redirects) else {
+            throw SdkValidationError(
+                field: "redirects",
+                code: "required",
+                message: "Validation failed for 'redirects': value is required"
+            )
+        }
+        guard container.contains(.version) else {
+            throw SdkValidationError(
+                field: "version",
+                code: "required",
+                message: "Validation failed for 'version': value is required"
+            )
+        }
+        pagination = try container.sdkDecodeRequired(.pagination)
+        redirects = try container.sdkDecodeRequired(.redirects)
+        version = try container.sdkDecodeRequired(.version)
+    }
+}
+
+public extension GetRedirectsResponseVariant2 {
+    init(
+        pagination: GetRedirectsResponseVariant2Pagination,
+        redirects: [GetRedirectsResponseVariant2RedirectsItem],
+        version: GetRedirectsResponseVariant2Version
+    ) {
         (self.pagination, self.redirects) = (pagination, redirects)
         self.version = version
     }
@@ -144,31 +202,50 @@ public struct GetRedirectsResponseVariant1RedirectsItem: Codable {
         case statusCode
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRedirectsResponseVariant1RedirectsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.destination) else {
-            throw SdkValidationError(field: "destination", code: "required", message: "Validation failed for 'destination': value is required")
-        }
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        self.destination = try container.sdkDecodeRequired(.destination)
-        self.source = try container.sdkDecodeRequired(.source)
-        self.caseSensitive = try container.sdkDecodeIfPresent(.caseSensitive)
-        self.permanent = try container.sdkDecodeIfPresent(.permanent)
-        self.preserveQueryParams = try container.sdkDecodeIfPresent(.preserveQueryParams)
-        self.query = try container.sdkDecodeIfPresent(.query)
-        self.sensitive = try container.sdkDecodeIfPresent(.sensitive)
-        self.statusCode = try container.sdkDecodeIfPresent(.statusCode)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRedirectsResponseVariant1RedirectsItem {
-    public init(destination: String, source: String, caseSensitive: Bool? = nil, permanent: Bool? = nil, preserveQueryParams: Bool? = nil, query: Bool? = nil, sensitive: Bool? = nil, statusCode: Double? = nil) {
+public extension GetRedirectsResponseVariant1RedirectsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.destination) else {
+            throw SdkValidationError(
+                field: "destination",
+                code: "required",
+                message: "Validation failed for 'destination': value is required"
+            )
+        }
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        destination = try container.sdkDecodeRequired(.destination)
+        source = try container.sdkDecodeRequired(.source)
+        caseSensitive = try container.sdkDecodeIfPresent(.caseSensitive)
+        permanent = try container.sdkDecodeIfPresent(.permanent)
+        preserveQueryParams = try container.sdkDecodeIfPresent(.preserveQueryParams)
+        query = try container.sdkDecodeIfPresent(.query)
+        sensitive = try container.sdkDecodeIfPresent(.sensitive)
+        statusCode = try container.sdkDecodeIfPresent(.statusCode)
+    }
+}
+
+public extension GetRedirectsResponseVariant1RedirectsItem {
+    init(
+        destination: String,
+        source: String,
+        caseSensitive: Bool? = nil,
+        permanent: Bool? = nil,
+        preserveQueryParams: Bool? = nil,
+        query: Bool? = nil,
+        sensitive: Bool? = nil,
+        statusCode: Double? = nil
+    ) {
         (self.destination, self.source) = (destination, source)
         (self.caseSensitive, self.permanent) = (caseSensitive, permanent)
         (self.preserveQueryParams, self.query) = (preserveQueryParams, query)
@@ -196,27 +273,41 @@ public struct EditRedirectRequestBodyRedirect: Codable {
         case preserveQueryParams
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension EditRedirectRequestBodyRedirect {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        self.source = try container.sdkDecodeRequired(.source)
-        self.destination = try container.sdkDecodeIfPresent(.destination)
-        self.statusCode = try container.sdkDecodeIfPresent(.statusCode)
-        self.permanent = try container.sdkDecodeIfPresent(.permanent)
-        self.caseSensitive = try container.sdkDecodeIfPresent(.caseSensitive)
-        self.query = try container.sdkDecodeIfPresent(.query)
-        self.preserveQueryParams = try container.sdkDecodeIfPresent(.preserveQueryParams)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension EditRedirectRequestBodyRedirect {
-    public init(source: String, destination: String? = nil, statusCode: Double? = nil, permanent: Bool? = nil, caseSensitive: Bool? = nil, query: Bool? = nil, preserveQueryParams: Bool? = nil) {
+public extension EditRedirectRequestBodyRedirect {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        source = try container.sdkDecodeRequired(.source)
+        destination = try container.sdkDecodeIfPresent(.destination)
+        statusCode = try container.sdkDecodeIfPresent(.statusCode)
+        permanent = try container.sdkDecodeIfPresent(.permanent)
+        caseSensitive = try container.sdkDecodeIfPresent(.caseSensitive)
+        query = try container.sdkDecodeIfPresent(.query)
+        preserveQueryParams = try container.sdkDecodeIfPresent(.preserveQueryParams)
+    }
+}
+
+public extension EditRedirectRequestBodyRedirect {
+    init(
+        source: String,
+        destination: String? = nil,
+        statusCode: Double? = nil,
+        permanent: Bool? = nil,
+        caseSensitive: Bool? = nil,
+        query: Bool? = nil,
+        preserveQueryParams: Bool? = nil
+    ) {
         (self.source, self.destination) = (source, destination)
         (self.statusCode, self.permanent) = (statusCode, permanent)
         (self.caseSensitive, self.query) = (caseSensitive, query)
@@ -231,18 +322,26 @@ public indirect enum GetRedirectsResponse {
 }
 
 extension GetRedirectsResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetRedirectsResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetRedirectsResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
@@ -260,9 +359,17 @@ extension GetRedirectsResponse {
 
 extension GetRedirectsResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String: JSONValue].self) { return .jsonValue(value) }
-        if let value = try? container.decode(GetRedirectsResponseVariant1.self) { return .getRedirectsResponseVariant1(value) }
-        if let value = try? container.decode(GetRedirectsResponseVariant2.self) { return .getRedirectsResponseVariant2(value) }
+        if let value = try? container.decode([String: JSONValue].self) {
+            return .jsonValue(value)
+        }
+        if let value = try? container
+            .decode(GetRedirectsResponseVariant1.self) {
+            return .getRedirectsResponseVariant1(value)
+        }
+        if let value = try? container
+            .decode(GetRedirectsResponseVariant2.self) {
+            return .getRedirectsResponseVariant2(value)
+        }
         return nil
     }
 }
@@ -309,38 +416,66 @@ public struct RestoreRedirectsResponseVersion: Codable {
         case redirectCount
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RestoreRedirectsResponseVersion {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdBy) else {
-            throw SdkValidationError(field: "createdBy", code: "required", message: "Validation failed for 'createdBy': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.key) else {
-            throw SdkValidationError(field: "key", code: "required", message: "Validation failed for 'key': value is required")
-        }
-        guard container.contains(.lastModified) else {
-            throw SdkValidationError(field: "lastModified", code: "required", message: "Validation failed for 'lastModified': value is required")
-        }
-        self.createdBy = try container.sdkDecodeRequired(.createdBy)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.key = try container.sdkDecodeRequired(.key)
-        self.lastModified = try container.sdkDecodeRequired(.lastModified)
-        self.alias = try container.sdkDecodeIfPresent(.alias)
-        self.isLive = try container.sdkDecodeIfPresent(.isLive)
-        self.isStaging = try container.sdkDecodeIfPresent(.isStaging)
-        self.name = try container.sdkDecodeIfPresent(.name)
-        self.redirectCount = try container.sdkDecodeIfPresent(.redirectCount)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RestoreRedirectsResponseVersion {
-    public init(createdBy: String, id: String, key: String, lastModified: Double, alias: String? = nil, isLive: Bool? = nil, isStaging: Bool? = nil, name: String? = nil, redirectCount: Double? = nil) {
+public extension RestoreRedirectsResponseVersion {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdBy) else {
+            throw SdkValidationError(
+                field: "createdBy",
+                code: "required",
+                message: "Validation failed for 'createdBy': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.key) else {
+            throw SdkValidationError(
+                field: "key",
+                code: "required",
+                message: "Validation failed for 'key': value is required"
+            )
+        }
+        guard container.contains(.lastModified) else {
+            throw SdkValidationError(
+                field: "lastModified",
+                code: "required",
+                message: "Validation failed for 'lastModified': value is required"
+            )
+        }
+        createdBy = try container.sdkDecodeRequired(.createdBy)
+        id = try container.sdkDecodeRequired(.id)
+        key = try container.sdkDecodeRequired(.key)
+        lastModified = try container.sdkDecodeRequired(.lastModified)
+        alias = try container.sdkDecodeIfPresent(.alias)
+        isLive = try container.sdkDecodeIfPresent(.isLive)
+        isStaging = try container.sdkDecodeIfPresent(.isStaging)
+        name = try container.sdkDecodeIfPresent(.name)
+        redirectCount = try container.sdkDecodeIfPresent(.redirectCount)
+    }
+}
+
+public extension RestoreRedirectsResponseVersion {
+    init(
+        createdBy: String,
+        id: String,
+        key: String,
+        lastModified: Double,
+        alias: String? = nil,
+        isLive: Bool? = nil,
+        isStaging: Bool? = nil,
+        name: String? = nil,
+        redirectCount: Double? = nil
+    ) {
         (self.createdBy, self.id) = (createdBy, id)
         (self.key, self.lastModified) = (key, lastModified)
         (self.alias, self.isLive) = (alias, isLive)
@@ -358,25 +493,35 @@ public struct StageRedirectsResponse: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension StageRedirectsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.alias) else {
-            throw SdkValidationError(field: "alias", code: "required", message: "Validation failed for 'alias': value is required")
-        }
-        guard container.contains(.version) else {
-            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
-        }
-        self.alias = try container.sdkDecodeNullable(.alias)
-        self.version = try container.sdkDecodeRequired(.version)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension StageRedirectsResponse {
-    public init(alias: String?, version: StageRedirectsResponseVersion) {
+public extension StageRedirectsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.alias) else {
+            throw SdkValidationError(
+                field: "alias",
+                code: "required",
+                message: "Validation failed for 'alias': value is required"
+            )
+        }
+        guard container.contains(.version) else {
+            throw SdkValidationError(
+                field: "version",
+                code: "required",
+                message: "Validation failed for 'version': value is required"
+            )
+        }
+        alias = try container.sdkDecodeNullable(.alias)
+        version = try container.sdkDecodeRequired(.version)
+    }
+}
+
+public extension StageRedirectsResponse {
+    init(alias: String?, version: StageRedirectsResponseVersion) {
         (self.alias, self.version) = (alias, version)
     }
 }
@@ -402,31 +547,50 @@ public struct GetRedirectsResponseVariant2RedirectsItem: Codable {
         case statusCode
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRedirectsResponseVariant2RedirectsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.destination) else {
-            throw SdkValidationError(field: "destination", code: "required", message: "Validation failed for 'destination': value is required")
-        }
-        guard container.contains(.source) else {
-            throw SdkValidationError(field: "source", code: "required", message: "Validation failed for 'source': value is required")
-        }
-        self.destination = try container.sdkDecodeRequired(.destination)
-        self.source = try container.sdkDecodeRequired(.source)
-        self.caseSensitive = try container.sdkDecodeIfPresent(.caseSensitive)
-        self.permanent = try container.sdkDecodeIfPresent(.permanent)
-        self.preserveQueryParams = try container.sdkDecodeIfPresent(.preserveQueryParams)
-        self.query = try container.sdkDecodeIfPresent(.query)
-        self.sensitive = try container.sdkDecodeIfPresent(.sensitive)
-        self.statusCode = try container.sdkDecodeIfPresent(.statusCode)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRedirectsResponseVariant2RedirectsItem {
-    public init(destination: String, source: String, caseSensitive: Bool? = nil, permanent: Bool? = nil, preserveQueryParams: Bool? = nil, query: Bool? = nil, sensitive: Bool? = nil, statusCode: Double? = nil) {
+public extension GetRedirectsResponseVariant2RedirectsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.destination) else {
+            throw SdkValidationError(
+                field: "destination",
+                code: "required",
+                message: "Validation failed for 'destination': value is required"
+            )
+        }
+        guard container.contains(.source) else {
+            throw SdkValidationError(
+                field: "source",
+                code: "required",
+                message: "Validation failed for 'source': value is required"
+            )
+        }
+        destination = try container.sdkDecodeRequired(.destination)
+        source = try container.sdkDecodeRequired(.source)
+        caseSensitive = try container.sdkDecodeIfPresent(.caseSensitive)
+        permanent = try container.sdkDecodeIfPresent(.permanent)
+        preserveQueryParams = try container.sdkDecodeIfPresent(.preserveQueryParams)
+        query = try container.sdkDecodeIfPresent(.query)
+        sensitive = try container.sdkDecodeIfPresent(.sensitive)
+        statusCode = try container.sdkDecodeIfPresent(.statusCode)
+    }
+}
+
+public extension GetRedirectsResponseVariant2RedirectsItem {
+    init(
+        destination: String,
+        source: String,
+        caseSensitive: Bool? = nil,
+        permanent: Bool? = nil,
+        preserveQueryParams: Bool? = nil,
+        query: Bool? = nil,
+        sensitive: Bool? = nil,
+        statusCode: Double? = nil
+    ) {
         (self.destination, self.source) = (destination, source)
         (self.caseSensitive, self.permanent) = (caseSensitive, permanent)
         (self.preserveQueryParams, self.query) = (preserveQueryParams, query)
@@ -465,5 +629,7 @@ public struct StageRedirectsResponseVersion: Codable {
         case redirectCount
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

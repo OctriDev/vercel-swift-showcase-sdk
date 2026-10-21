@@ -6,34 +6,79 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension GlobalConfigMethods {
-    /// Retrieves a specific version of a Global Config from backup storage. Use `edgeConfigId` and `edgeConfigBackupVersionId` to select the Global Config and backup version. The response contains the backup data and its associated metadata.
+public extension GlobalConfigMethods {
+    /// Retrieves a specific version of a Global Config from backup storage. Use `edgeConfigId` and
+    /// `edgeConfigBackupVersionId` to select the Global Config and backup version. The response contains the backup
+    /// data and its associated metadata.
     ///
     /// Retrieves a specific version of a Global Config from backup storage.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getEdgeConfigBackup(config: ClientConfig, edgeConfigId: String, edgeConfigBackupVersionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetEdgeConfigBackupResponse {
-        return try (await sdkRequest("GET", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/backups/", sdkEncodePathSegment(sdkWireString(edgeConfigBackupVersionId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getEdgeConfigBackup", options: requestOptions)).data
+    static func getEdgeConfigBackup(
+        config: ClientConfig,
+        edgeConfigId: String,
+        edgeConfigBackupVersionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetEdgeConfigBackupResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/global-config/",
+                sdkEncodePathSegment(sdkWireString(edgeConfigId)),
+                "/backups/",
+                sdkEncodePathSegment(sdkWireString(edgeConfigBackupVersionId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getEdgeConfigBackup",
+            options: requestOptions
+        )).data
     }
 
-    /// Restores a specific backup version of a Global Config. Use `edgeConfigId` and `edgeConfigBackupVersionId` to select the Global Config and the version to restore. The response reports the resulting digest, previous digest, restored backup version, and status.
+    /// Restores a specific backup version of a Global Config. Use `edgeConfigId` and `edgeConfigBackupVersionId` to
+    /// select the Global Config and the version to restore. The response reports the resulting digest, previous digest,
+    /// restored backup version, and status.
     ///
     /// Restores a Global Config backup.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func restoreEdgeConfigBackup(config: ClientConfig, edgeConfigId: String, edgeConfigBackupVersionId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RestoreEdgeConfigBackupResponse {
+    static func restoreEdgeConfigBackup(
+        config: ClientConfig,
+        edgeConfigId: String,
+        edgeConfigBackupVersionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RestoreEdgeConfigBackupResponse {
         try sdkValidatePattern("edgeConfigId", edgeConfigId, sdkPatterncb86996207cb)
 
-        return try (await sdkRequest("POST", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/backups/", sdkEncodePathSegment(sdkWireString(edgeConfigBackupVersionId)), "/restore"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "restoreEdgeConfigBackup", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            [
+                "/v1/global-config/",
+                sdkEncodePathSegment(sdkWireString(edgeConfigId)),
+                "/backups/",
+                sdkEncodePathSegment(sdkWireString(edgeConfigBackupVersionId)),
+                "/restore",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "restoreEdgeConfigBackup",
+            options: requestOptions
+        )).data
     }
 }

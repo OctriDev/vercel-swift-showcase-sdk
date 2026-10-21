@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Connect domain models
+/// Connect domain models
 public indirect enum ConnectTriggerDestinationInput {
     case connectTriggerDestinationInputVariant0(ConnectTriggerDestinationInputVariant0)
     case connectTriggerDestinationInputVariant1(ConnectTriggerDestinationInputVariant1)
@@ -11,30 +11,47 @@ public indirect enum ConnectTriggerDestinationInput {
 }
 
 extension ConnectTriggerDestinationInput: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectTriggerDestinationInput")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ConnectTriggerDestinationInput"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ConnectTriggerDestinationInput {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(ConnectTriggerDestinationInputVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectTriggerDestinationInputVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectTriggerDestinationInputVariant0(value)
         }
-        if let value = try? container.decode(ConnectTriggerDestinationInputVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectTriggerDestinationInputVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectTriggerDestinationInputVariant1(value)
         }
-        if let value = try? container.decode(ConnectTriggerDestinationInputVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(ConnectTriggerDestinationInputVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .connectTriggerDestinationInputVariant2(value)
         }
         return nil
@@ -46,17 +63,17 @@ extension ConnectTriggerDestinationInput {
         if let value = try? container.decode(
             ConnectTriggerDestinationInputVariant0.self
         ) {
-            return             .connectTriggerDestinationInputVariant0(value)
+            return .connectTriggerDestinationInputVariant0(value)
         }
         if let value = try? container.decode(
             ConnectTriggerDestinationInputVariant1.self
         ) {
-            return             .connectTriggerDestinationInputVariant1(value)
+            return .connectTriggerDestinationInputVariant1(value)
         }
         if let value = try? container.decode(
             ConnectTriggerDestinationInputVariant2.self
         ) {
-            return             .connectTriggerDestinationInputVariant2(value)
+            return .connectTriggerDestinationInputVariant2(value)
         }
         return nil
     }
@@ -83,24 +100,30 @@ public struct ConnectReplaceTriggerDestinationsRequest: Codable {
         case destinations
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectReplaceTriggerDestinationsRequest {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.destinations) else {
-            throw SdkValidationError(field: "destinations", code: "required", message: "Validation failed for 'destinations': value is required")
-        }
-        self.destinations = try container.sdkDecodeRequired(.destinations)
-            try validateItems("destinations", self.destinations, min: nil, max: 3)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectReplaceTriggerDestinationsRequest {
-    public init(destinations: [ConnectTriggerDestinationInput]) throws {
+public extension ConnectReplaceTriggerDestinationsRequest {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.destinations) else {
+            throw SdkValidationError(
+                field: "destinations",
+                code: "required",
+                message: "Validation failed for 'destinations': value is required"
+            )
+        }
+        destinations = try container.sdkDecodeRequired(.destinations)
+        try validateItems("destinations", destinations, min: nil, max: 3)
+    }
+}
+
+public extension ConnectReplaceTriggerDestinationsRequest {
+    init(destinations: [ConnectTriggerDestinationInput]) throws {
         self.destinations = destinations
-            try validateItems("destinations", self.destinations, min: nil, max: 3)
+        try validateItems("destinations", self.destinations, min: nil, max: 3)
     }
 }
 
@@ -119,35 +142,45 @@ public struct ConnectTriggerDestinationInputVariant2: Codable {
         case path
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension ConnectTriggerDestinationInputVariant2 {
-    public init(from decoder: Decoder) throws {
+public extension ConnectTriggerDestinationInputVariant2 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
         }
         guard container.contains(.customEnvironmentId) else {
-            throw SdkValidationError(field: "customEnvironmentId", code: "required", message: "Validation failed for 'customEnvironmentId': value is required")
+            throw SdkValidationError(
+                field: "customEnvironmentId",
+                code: "required",
+                message: "Validation failed for 'customEnvironmentId': value is required"
+            )
         }
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.customEnvironmentId = try container.sdkDecodeRequired(.customEnvironmentId)
-        self.path = try container.sdkDecodeIfPresent(.path)
-            try validateLength("projectId", self.projectId, min: 1, max: nil)
-            try sdkValidatePattern("customEnvironmentId", self.customEnvironmentId, sdkPattern3041da8d5a8c)
-        if let value = self.path {
+        projectId = try container.sdkDecodeRequired(.projectId)
+        customEnvironmentId = try container.sdkDecodeRequired(.customEnvironmentId)
+        path = try container.sdkDecodeIfPresent(.path)
+        try validateLength("projectId", projectId, min: 1, max: nil)
+        try sdkValidatePattern("customEnvironmentId", customEnvironmentId, sdkPattern3041da8d5a8c)
+        if let value = path {
             try validateLength("path", value, min: 1, max: 2048)
         }
     }
 }
 
-extension ConnectTriggerDestinationInputVariant2 {
-    public init(projectId: String, customEnvironmentId: String, path: String? = nil) throws {
+public extension ConnectTriggerDestinationInputVariant2 {
+    init(projectId: String, customEnvironmentId: String, path: String? = nil) throws {
         (self.projectId, self.customEnvironmentId) = (projectId, customEnvironmentId)
         self.path = path
-            try validateLength("projectId", self.projectId, min: 1, max: nil)
-            try sdkValidatePattern("customEnvironmentId", self.customEnvironmentId, sdkPattern3041da8d5a8c)
+        try validateLength("projectId", self.projectId, min: 1, max: nil)
+        try sdkValidatePattern("customEnvironmentId", self.customEnvironmentId, sdkPattern3041da8d5a8c)
         if let value = self.path {
             try validateLength("path", value, min: 1, max: 2048)
         }
@@ -166,28 +199,34 @@ public struct ConnectTriggerDestinationInputVariant0: Codable {
         case path
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension ConnectTriggerDestinationInputVariant0 {
-    public init(from decoder: Decoder) throws {
+public extension ConnectTriggerDestinationInputVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
         }
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.path = try container.sdkDecodeIfPresent(.path)
-            try validateLength("projectId", self.projectId, min: 1, max: nil)
-        if let value = self.path {
+        projectId = try container.sdkDecodeRequired(.projectId)
+        path = try container.sdkDecodeIfPresent(.path)
+        try validateLength("projectId", projectId, min: 1, max: nil)
+        if let value = path {
             try validateLength("path", value, min: 1, max: 2048)
         }
     }
 }
 
-extension ConnectTriggerDestinationInputVariant0 {
-    public init(projectId: String, path: String? = nil) throws {
+public extension ConnectTriggerDestinationInputVariant0 {
+    init(projectId: String, path: String? = nil) throws {
         (self.projectId, self.path) = (projectId, path)
-            try validateLength("projectId", self.projectId, min: 1, max: nil)
+        try validateLength("projectId", self.projectId, min: 1, max: nil)
         if let value = self.path {
             try validateLength("path", value, min: 1, max: 2048)
         }
@@ -209,35 +248,45 @@ public struct ConnectTriggerDestinationInputVariant1: Codable {
         case path
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension ConnectTriggerDestinationInputVariant1 {
-    public init(from decoder: Decoder) throws {
+public extension ConnectTriggerDestinationInputVariant1 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
         }
         guard container.contains(.branch) else {
-            throw SdkValidationError(field: "branch", code: "required", message: "Validation failed for 'branch': value is required")
+            throw SdkValidationError(
+                field: "branch",
+                code: "required",
+                message: "Validation failed for 'branch': value is required"
+            )
         }
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.branch = try container.sdkDecodeRequired(.branch)
-        self.path = try container.sdkDecodeIfPresent(.path)
-            try validateLength("projectId", self.projectId, min: 1, max: nil)
-            try validateLength("branch", self.branch, min: 1, max: 250)
-        if let value = self.path {
+        projectId = try container.sdkDecodeRequired(.projectId)
+        branch = try container.sdkDecodeRequired(.branch)
+        path = try container.sdkDecodeIfPresent(.path)
+        try validateLength("projectId", projectId, min: 1, max: nil)
+        try validateLength("branch", branch, min: 1, max: 250)
+        if let value = path {
             try validateLength("path", value, min: 1, max: 2048)
         }
     }
 }
 
-extension ConnectTriggerDestinationInputVariant1 {
-    public init(projectId: String, branch: String, path: String? = nil) throws {
+public extension ConnectTriggerDestinationInputVariant1 {
+    init(projectId: String, branch: String, path: String? = nil) throws {
         (self.projectId, self.branch) = (projectId, branch)
         self.path = path
-            try validateLength("projectId", self.projectId, min: 1, max: nil)
-            try validateLength("branch", self.branch, min: 1, max: 250)
+        try validateLength("projectId", self.projectId, min: 1, max: nil)
+        try validateLength("branch", self.branch, min: 1, max: 250)
         if let value = self.path {
             try validateLength("path", value, min: 1, max: 2048)
         }

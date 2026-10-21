@@ -3,34 +3,48 @@
 
 import Foundation
 
-// Kms domain models
+/// Kms domain models
 public indirect enum GetKmsIssuerResponsePoliciesItem {
     case getKmsIssuerResponsePoliciesItemVariant0(GetKmsIssuerResponsePoliciesItemVariant0)
     case getKmsIssuerResponsePoliciesItemVariant1(GetKmsIssuerResponsePoliciesItemVariant1)
 }
 
 extension GetKmsIssuerResponsePoliciesItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetKmsIssuerResponsePoliciesItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetKmsIssuerResponsePoliciesItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetKmsIssuerResponsePoliciesItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(GetKmsIssuerResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetKmsIssuerResponsePoliciesItemVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getKmsIssuerResponsePoliciesItemVariant0(value)
         }
-        if let value = try? container.decode(GetKmsIssuerResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(GetKmsIssuerResponsePoliciesItemVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .getKmsIssuerResponsePoliciesItemVariant1(value)
         }
         return nil
@@ -42,12 +56,12 @@ extension GetKmsIssuerResponsePoliciesItem {
         if let value = try? container.decode(
             GetKmsIssuerResponsePoliciesItemVariant0.self
         ) {
-            return             .getKmsIssuerResponsePoliciesItemVariant0(value)
+            return .getKmsIssuerResponsePoliciesItemVariant0(value)
         }
         if let value = try? container.decode(
             GetKmsIssuerResponsePoliciesItemVariant1.self
         ) {
-            return             .getKmsIssuerResponsePoliciesItemVariant1(value)
+            return .getKmsIssuerResponsePoliciesItemVariant1(value)
         }
         return nil
     }
@@ -86,48 +100,82 @@ public struct GetKmsIssuerResponsePoliciesItemVariant0: Codable {
         case tokenClaims
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetKmsIssuerResponsePoliciesItemVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.environments) else {
-            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
-        }
-        guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
-        }
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        guard container.contains(.teamId) else {
-            throw SdkValidationError(field: "teamId", code: "required", message: "Validation failed for 'teamId': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.environments = try container.sdkDecodeRequired(.environments)
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.teamId = try container.sdkDecodeRequired(.teamId)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.tokenClaims = try container.sdkDecodeIfPresent(.tokenClaims)
-            try sdkValidateRawEnum("kind", self.kind, GetKmsIssuerResponsePoliciesItemVariant0Kind.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetKmsIssuerResponsePoliciesItemVariant0 {
-    public init(createdAt: String, environments: [String], kind: GetKmsIssuerResponsePoliciesItemVariant0Kind, projectId: String, teamId: String, updatedAt: String, tokenClaims: [String: JSONValue]? = nil) throws {
+public extension GetKmsIssuerResponsePoliciesItemVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.environments) else {
+            throw SdkValidationError(
+                field: "environments",
+                code: "required",
+                message: "Validation failed for 'environments': value is required"
+            )
+        }
+        guard container.contains(.kind) else {
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
+        }
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
+        }
+        guard container.contains(.teamId) else {
+            throw SdkValidationError(
+                field: "teamId",
+                code: "required",
+                message: "Validation failed for 'teamId': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        environments = try container.sdkDecodeRequired(.environments)
+        kind = try container.sdkDecodeRequired(.kind)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        teamId = try container.sdkDecodeRequired(.teamId)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        tokenClaims = try container.sdkDecodeIfPresent(.tokenClaims)
+        try sdkValidateRawEnum("kind", kind, GetKmsIssuerResponsePoliciesItemVariant0Kind.allCases.map(\.rawValue))
+    }
+}
+
+public extension GetKmsIssuerResponsePoliciesItemVariant0 {
+    init(
+        createdAt: String,
+        environments: [String],
+        kind: GetKmsIssuerResponsePoliciesItemVariant0Kind,
+        projectId: String,
+        teamId: String,
+        updatedAt: String,
+        tokenClaims: [String: JSONValue]? = nil
+    ) throws {
         (self.createdAt, self.environments) = (createdAt, environments)
         (self.kind, self.projectId) = (kind, projectId)
         (self.teamId, self.updatedAt) = (teamId, updatedAt)
         self.tokenClaims = tokenClaims
-            try sdkValidateRawEnum("kind", self.kind, GetKmsIssuerResponsePoliciesItemVariant0Kind.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("kind", self.kind, GetKmsIssuerResponsePoliciesItemVariant0Kind.allCases.map(\.rawValue))
     }
 }
 
@@ -146,39 +194,63 @@ public struct GetKmsIssuerResponsePoliciesItemVariant1: Codable {
         case tokenClaims
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetKmsIssuerResponsePoliciesItemVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.clientId) else {
-            throw SdkValidationError(field: "clientId", code: "required", message: "Validation failed for 'clientId': value is required")
-        }
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.clientId = try container.sdkDecodeRequired(.clientId)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.tokenClaims = try container.sdkDecodeIfPresent(.tokenClaims)
-            try sdkValidateRawEnum("kind", self.kind, GetKmsIssuerResponsePoliciesItemVariant1Kind.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetKmsIssuerResponsePoliciesItemVariant1 {
-    public init(clientId: String, createdAt: String, kind: GetKmsIssuerResponsePoliciesItemVariant1Kind, updatedAt: String, tokenClaims: [String: JSONValue]? = nil) throws {
+public extension GetKmsIssuerResponsePoliciesItemVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.clientId) else {
+            throw SdkValidationError(
+                field: "clientId",
+                code: "required",
+                message: "Validation failed for 'clientId': value is required"
+            )
+        }
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.kind) else {
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        clientId = try container.sdkDecodeRequired(.clientId)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        kind = try container.sdkDecodeRequired(.kind)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        tokenClaims = try container.sdkDecodeIfPresent(.tokenClaims)
+        try sdkValidateRawEnum("kind", kind, GetKmsIssuerResponsePoliciesItemVariant1Kind.allCases.map(\.rawValue))
+    }
+}
+
+public extension GetKmsIssuerResponsePoliciesItemVariant1 {
+    init(
+        clientId: String,
+        createdAt: String,
+        kind: GetKmsIssuerResponsePoliciesItemVariant1Kind,
+        updatedAt: String,
+        tokenClaims: [String: JSONValue]? = nil
+    ) throws {
         (self.clientId, self.createdAt) = (clientId, createdAt)
         (self.kind, self.updatedAt) = (kind, updatedAt)
         self.tokenClaims = tokenClaims
-            try sdkValidateRawEnum("kind", self.kind, GetKmsIssuerResponsePoliciesItemVariant1Kind.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("kind", self.kind, GetKmsIssuerResponsePoliciesItemVariant1Kind.allCases.map(\.rawValue))
     }
 }
 

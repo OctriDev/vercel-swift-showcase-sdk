@@ -3,28 +3,42 @@
 
 import Foundation
 
-// FeatureFlags domain models
-extension UpdateFlagSegmentResponseVariant0 {
-    public init(from decoder: Decoder) throws {
+/// FeatureFlags domain models
+public extension UpdateFlagSegmentResponseVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.data = try container.sdkDecodeRequired(.data)
-        self.hint = try container.sdkDecodeRequired(.hint)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.label = try container.sdkDecodeRequired(.label)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.typeName = try container.sdkDecodeRequired(.typeName)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.usedByFlags = try container.sdkDecodeIfPresent(.usedByFlags)
-        self.usedBySegments = try container.sdkDecodeIfPresent(.usedBySegments)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        data = try container.sdkDecodeRequired(.data)
+        hint = try container.sdkDecodeRequired(.hint)
+        id = try container.sdkDecodeRequired(.id)
+        label = try container.sdkDecodeRequired(.label)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        slug = try container.sdkDecodeRequired(.slug)
+        typeName = try container.sdkDecodeRequired(.typeName)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        createdBy = try container.sdkDecodeIfPresent(.createdBy)
+        description = try container.sdkDecodeIfPresent(.description)
+        usedByFlags = try container.sdkDecodeIfPresent(.usedByFlags)
+        usedBySegments = try container.sdkDecodeIfPresent(.usedBySegments)
     }
 }
 
-extension UpdateFlagSegmentResponseVariant0 {
-    public init(createdAt: Double, data: UpdateFlagSegmentResponseVariant0Data, hint: String, id: String, label: String, projectId: String, slug: String, typeName: UpdateFlagSegmentResponseVariant0TypeName, updatedAt: Double, createdBy: String? = nil, description: String? = nil, usedByFlags: [String]? = nil, usedBySegments: [String]? = nil) {
+public extension UpdateFlagSegmentResponseVariant0 {
+    init(
+        createdAt: Double,
+        data: UpdateFlagSegmentResponseVariant0Data,
+        hint: String,
+        id: String,
+        label: String,
+        projectId: String,
+        slug: String,
+        typeName: UpdateFlagSegmentResponseVariant0TypeName,
+        updatedAt: Double,
+        createdBy: String? = nil,
+        description: String? = nil,
+        usedByFlags: [String]? = nil,
+        usedBySegments: [String]? = nil
+    ) {
         (self.createdAt, self.data) = (createdAt, data)
         (self.hint, self.id) = (hint, id)
         (self.label, self.projectId) = (label, projectId)
@@ -48,42 +62,62 @@ public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItem: Coda
         case rhs
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.cmp) else {
-            throw SdkValidationError(field: "cmp", code: "required", message: "Validation failed for 'cmp': value is required")
-        }
-        guard container.contains(.lhs) else {
-            throw SdkValidationError(field: "lhs", code: "required", message: "Validation failed for 'lhs': value is required")
-        }
-        self.cmp = try container.sdkDecodeRequired(.cmp)
-        self.lhs = try container.sdkDecodeRequired(.lhs)
-        self.cmpOptions = try container.sdkDecodeIfPresent(.cmpOptions)
-        self.rhs = try container.sdkDecodeIfPresent(.rhs)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItem {
-    public init(cmp: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp, lhs: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLhs, cmpOptions: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmpOptions? = nil, rhs: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs? = nil) {
+public extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.cmp) else {
+            throw SdkValidationError(
+                field: "cmp",
+                code: "required",
+                message: "Validation failed for 'cmp': value is required"
+            )
+        }
+        guard container.contains(.lhs) else {
+            throw SdkValidationError(
+                field: "lhs",
+                code: "required",
+                message: "Validation failed for 'lhs': value is required"
+            )
+        }
+        cmp = try container.sdkDecodeRequired(.cmp)
+        lhs = try container.sdkDecodeRequired(.lhs)
+        cmpOptions = try container.sdkDecodeIfPresent(.cmpOptions)
+        rhs = try container.sdkDecodeIfPresent(.rhs)
+    }
+}
+
+public extension UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItem {
+    init(
+        cmp: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp,
+        lhs: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLhs,
+        cmpOptions: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmpOptions? = nil,
+        rhs: UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRhs? = nil
+    ) {
         (self.cmp, self.lhs) = (cmp, lhs)
         (self.cmpOptions, self.rhs) = (cmpOptions, rhs)
     }
 }
 
-public struct UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0Type: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let listInline = UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0Type(rawValue: "list/inline")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let listInline =
+        UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0Type(rawValue: "list/inline")
     public static let list = UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsVariant0Type(rawValue: "list")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -109,15 +143,20 @@ public enum UpdateFlagSegmentResponseVariant0DataRulesItemOutcomeVariant1Type: S
     }
 }
 
-public struct UpdateFlagSegmentResponseVariant0DataRulesItemOutcomeVariant1BaseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateFlagSegmentResponseVariant0DataRulesItemOutcomeVariant1BaseType: RawRepresentable, Hashable,
+    Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let entity = UpdateFlagSegmentResponseVariant0DataRulesItemOutcomeVariant1BaseType(rawValue: "entity")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -143,15 +182,19 @@ public enum UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLX4b04fa
     }
 }
 
-public struct UpdateFlagSegmentResponseVariant0TypeName: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateFlagSegmentResponseVariant0TypeName: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let segment = UpdateFlagSegmentResponseVariant0TypeName(rawValue: "segment")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -160,15 +203,20 @@ public struct UpdateFlagSegmentResponseVariant0TypeName: RawRepresentable, Hasha
     }
 }
 
-public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRXe2a6119c3d: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRXe2a6119c3d: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let regex = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRXe2a6119c3d(rawValue: "regex")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let regex =
+        UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRXe2a6119c3d(rawValue: "regex")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -177,16 +225,21 @@ public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRXe2a6
     }
 }
 
-public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX8b48b3ea27: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX8b48b3ea27: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let list = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX8b48b3ea27(rawValue: "list")
-    public static let listInline = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX8b48b3ea27(rawValue: "list/inline")
+    public static let listInline =
+        UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemRX8b48b3ea27(rawValue: "list/inline")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -212,23 +265,31 @@ public enum UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemLX50ce6c
     }
 }
 
-public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let contains = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "!contains")
     public static let endsWith = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "!endsWith")
     public static let eq = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "!eq")
     public static let ex = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "!ex")
     public static let oneOf = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "!oneOf")
     public static let regex = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "!regex")
-    public static let startsWith = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "!startsWith")
+    public static let startsWith =
+        UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "!startsWith")
     public static let after = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "after")
     public static let before = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "before")
     public static let contains2 = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "contains")
-    public static let containsAllOf = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "containsAllOf")
-    public static let containsAnyOf = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "containsAnyOf")
-    public static let containsNoneOf = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "containsNoneOf")
+    public static let containsAllOf =
+        UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "containsAllOf")
+    public static let containsAnyOf =
+        UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "containsAnyOf")
+    public static let containsNoneOf =
+        UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "containsNoneOf")
     public static let endsWith2 = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "endsWith")
     public static let eq2 = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "eq")
     public static let ex2 = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "ex")
@@ -238,11 +299,12 @@ public struct UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp: R
     public static let lte = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "lte")
     public static let oneOf2 = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "oneOf")
     public static let regex2 = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "regex")
-    public static let startsWith2 = UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "startsWith")
+    public static let startsWith2 =
+        UpdateFlagSegmentResponseVariant0DataRulesItemConditionsItemCmp(rawValue: "startsWith")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

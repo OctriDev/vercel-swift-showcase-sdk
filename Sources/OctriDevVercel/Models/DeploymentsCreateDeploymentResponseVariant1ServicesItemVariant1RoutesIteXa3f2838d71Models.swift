@@ -3,18 +3,25 @@
 
 import Foundation
 
-// Deployments domain models
-public struct CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteXa3f2838d71: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+/// Deployments domain models
+public struct CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteXa3f2838d71: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let cookie = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteXa3f2838d71(rawValue: "cookie")
-    public static let header = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteXa3f2838d71(rawValue: "header")
-    public static let query = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteXa3f2838d71(rawValue: "query")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let cookie =
+        CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteXa3f2838d71(rawValue: "cookie")
+    public static let header =
+        CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteXa3f2838d71(rawValue: "header")
+    public static let query =
+        CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteXa3f2838d71(rawValue: "query")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -23,20 +30,28 @@ public struct CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteXa3f2
     }
 }
 
-public struct CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let error = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "error")
-    public static let filesystem = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "filesystem")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let error =
+        CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "error")
+    public static let filesystem =
+        CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "filesystem")
     public static let hit = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "hit")
     public static let miss = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "miss")
-    public static let resource = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "resource")
-    public static let rewrite = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "rewrite")
+    public static let resource =
+        CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "resource")
+    public static let rewrite =
+        CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a375b41b0(rawValue: "rewrite")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -45,15 +60,19 @@ public struct CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX4a37
     }
 }
 
-public struct CreateDeploymentResponseVariant1GitSourceVariant16Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1GitSourceVariant16Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let bitbucket = CreateDeploymentResponseVariant1GitSourceVariant16Type(rawValue: "bitbucket")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -80,16 +99,20 @@ public enum CreateDeploymentResponseVariant1ServicesItemVariant0BuilderCoXc2bc6c
     }
 }
 
-public struct CreateDeploymentResponseVariant1GitRepoVariant4OwnerType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1GitRepoVariant4OwnerType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let team = CreateDeploymentResponseVariant1GitRepoVariant4OwnerType(rawValue: "team")
     public static let user = CreateDeploymentResponseVariant1GitRepoVariant4OwnerType(rawValue: "user")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -98,10 +121,14 @@ public struct CreateDeploymentResponseVariant1GitRepoVariant4OwnerType: RawRepre
     }
 }
 
-public struct CreateDeploymentResponseVariant1ChecksConclusion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1ChecksConclusion: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let canceled = CreateDeploymentResponseVariant1ChecksConclusion(rawValue: "canceled")
     public static let failed = CreateDeploymentResponseVariant1ChecksConclusion(rawValue: "failed")
     public static let skipped = CreateDeploymentResponseVariant1ChecksConclusion(rawValue: "skipped")
@@ -109,7 +136,7 @@ public struct CreateDeploymentResponseVariant1ChecksConclusion: RawRepresentable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -119,16 +146,20 @@ public struct CreateDeploymentResponseVariant1ChecksConclusion: RawRepresentable
 }
 
 /// Must be `http` or `https`.
-public struct CreateDeploymentResponseVariant1ImagesRemotePatternsItemProtocol: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1ImagesRemotePatternsItemProtocol: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let http = CreateDeploymentResponseVariant1ImagesRemotePatternsItemProtocol(rawValue: "http")
     public static let https = CreateDeploymentResponseVariant1ImagesRemotePatternsItemProtocol(rawValue: "https")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -154,15 +185,19 @@ public enum CreateDeploymentResponseVariant1GitRepoVariant4Type: String, CaseIte
     }
 }
 
-public struct CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX69c195e48b: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX69c195e48b: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let host = CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX69c195e48b(rawValue: "host")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -171,10 +206,14 @@ public struct CreateDeploymentResponseVariant1ServicesItemVariant1RoutesIteX69c1
     }
 }
 
-public struct CreateDeploymentResponseVariant1ProjectSettingsNodeVersion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1ProjectSettingsNodeVersion: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let value10X = CreateDeploymentResponseVariant1ProjectSettingsNodeVersion(rawValue: "10.x")
     public static let value12X = CreateDeploymentResponseVariant1ProjectSettingsNodeVersion(rawValue: "12.x")
     public static let value14X = CreateDeploymentResponseVariant1ProjectSettingsNodeVersion(rawValue: "14.x")
@@ -188,7 +227,7 @@ public struct CreateDeploymentResponseVariant1ProjectSettingsNodeVersion: RawRep
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -198,16 +237,20 @@ public struct CreateDeploymentResponseVariant1ProjectSettingsNodeVersion: RawRep
 }
 
 /// Whether the value is an opaque identifier or a URL.
-public struct CreateDeploymentResponseVariant1PlatformOriginType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1PlatformOriginType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let id = CreateDeploymentResponseVariant1PlatformOriginType(rawValue: "id")
     public static let url = CreateDeploymentResponseVariant1PlatformOriginType(rawValue: "url")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -234,15 +277,19 @@ public enum CreateDeploymentResponseVariant1FunctionsValueExperimentalTriXd34f62
     }
 }
 
-public struct CreateDeploymentResponseVariant1GitSourceVariant8Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1GitSourceVariant8Type: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let bitbucket = CreateDeploymentResponseVariant1GitSourceVariant8Type(rawValue: "bitbucket")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -251,15 +298,19 @@ public struct CreateDeploymentResponseVariant1GitSourceVariant8Type: RawRepresen
     }
 }
 
-public struct CreateDeploymentResponseVariant1FunctionsValueAffinityMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1FunctionsValueAffinityMode: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let strict = CreateDeploymentResponseVariant1FunctionsValueAffinityMode(rawValue: "strict")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -269,17 +320,22 @@ public struct CreateDeploymentResponseVariant1FunctionsValueAffinityMode: RawRep
 }
 
 /// The type of environment (production, preview, or development)
-public struct CreateDeploymentResponseVariant1CustomEnvironmentVariant0Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1CustomEnvironmentVariant0Type: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let development = CreateDeploymentResponseVariant1CustomEnvironmentVariant0Type(rawValue: "development")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let development =
+        CreateDeploymentResponseVariant1CustomEnvironmentVariant0Type(rawValue: "development")
     public static let preview = CreateDeploymentResponseVariant1CustomEnvironmentVariant0Type(rawValue: "preview")
     public static let production = CreateDeploymentResponseVariant1CustomEnvironmentVariant0Type(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -306,10 +362,14 @@ public enum CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoX0376da
     }
 }
 
-public struct CreateDeploymentResponseVariant1RoutesItemVariant1Handle: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1RoutesItemVariant1Handle: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let error = CreateDeploymentResponseVariant1RoutesItemVariant1Handle(rawValue: "error")
     public static let filesystem = CreateDeploymentResponseVariant1RoutesItemVariant1Handle(rawValue: "filesystem")
     public static let hit = CreateDeploymentResponseVariant1RoutesItemVariant1Handle(rawValue: "hit")
@@ -319,7 +379,7 @@ public struct CreateDeploymentResponseVariant1RoutesItemVariant1Handle: RawRepre
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -330,15 +390,20 @@ public struct CreateDeploymentResponseVariant1RoutesItemVariant1Handle: RawRepre
 
 /// Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no
 /// longer required.
-public struct CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX9756e2b458: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX9756e2b458: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let service = CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX9756e2b458(rawValue: "service")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let service =
+        CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX9756e2b458(rawValue: "service")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -347,15 +412,19 @@ public struct CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIX9756
     }
 }
 
-public struct CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIXcadc9ba323: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIXcadc9ba323: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let set = CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIXcadc9ba323(rawValue: "set")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -364,15 +433,20 @@ public struct CreateDeploymentResponseVariant1ServicesItemVariant1RewritesIXcadc
     }
 }
 
-public struct CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXa96a6221a4: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXa96a6221a4: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let strict = CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXa96a6221a4(rawValue: "strict")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let strict =
+        CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXa96a6221a4(rawValue: "strict")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -381,10 +455,14 @@ public struct CreateDeploymentResponseVariant1ServicesItemVariant1BuilderCoXa96a
     }
 }
 
-public struct CreateDeploymentResponseVariant1LambdasItemReadyState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1LambdasItemReadyState: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let building = CreateDeploymentResponseVariant1LambdasItemReadyState(rawValue: "BUILDING")
     public static let error = CreateDeploymentResponseVariant1LambdasItemReadyState(rawValue: "ERROR")
     public static let initializing = CreateDeploymentResponseVariant1LambdasItemReadyState(rawValue: "INITIALIZING")
@@ -392,7 +470,7 @@ public struct CreateDeploymentResponseVariant1LambdasItemReadyState: RawRepresen
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -403,10 +481,14 @@ public struct CreateDeploymentResponseVariant1LambdasItemReadyState: RawRepresen
 
 /// Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate
 /// behavior on it.
-public struct CreateDeploymentResponseVariant1Source: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1Source: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let apiTriggerGitDeploy = CreateDeploymentResponseVariant1Source(rawValue: "api-trigger-git-deploy")
     public static let cli = CreateDeploymentResponseVariant1Source(rawValue: "cli")
     public static let cloneRepo = CreateDeploymentResponseVariant1Source(rawValue: "clone/repo")
@@ -420,7 +502,7 @@ public struct CreateDeploymentResponseVariant1Source: RawRepresentable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -430,10 +512,14 @@ public struct CreateDeploymentResponseVariant1Source: RawRepresentable, Hashable
 }
 
 /// If set it overrides the `projectSettings.nodeVersion` for this deployment.
-public struct CreateDeploymentResponseVariant1NodeVersion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateDeploymentResponseVariant1NodeVersion: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let value10X = CreateDeploymentResponseVariant1NodeVersion(rawValue: "10.x")
     public static let value12X = CreateDeploymentResponseVariant1NodeVersion(rawValue: "12.x")
     public static let value14X = CreateDeploymentResponseVariant1NodeVersion(rawValue: "14.x")
@@ -447,7 +533,7 @@ public struct CreateDeploymentResponseVariant1NodeVersion: RawRepresentable, Has
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -3,38 +3,65 @@
 
 import Foundation
 
-// Drains domain models
-extension CreateDrainResponseVariant1DeliveryVariant0 {
-    public init(from decoder: Decoder) throws {
+/// Drains domain models
+public extension CreateDrainResponseVariant1DeliveryVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.encoding) else {
-            throw SdkValidationError(field: "encoding", code: "required", message: "Validation failed for 'encoding': value is required")
+            throw SdkValidationError(
+                field: "encoding",
+                code: "required",
+                message: "Validation failed for 'encoding': value is required"
+            )
         }
         guard container.contains(.endpoint) else {
-            throw SdkValidationError(field: "endpoint", code: "required", message: "Validation failed for 'endpoint': value is required")
+            throw SdkValidationError(
+                field: "endpoint",
+                code: "required",
+                message: "Validation failed for 'endpoint': value is required"
+            )
         }
         guard container.contains(.headers) else {
-            throw SdkValidationError(field: "headers", code: "required", message: "Validation failed for 'headers': value is required")
+            throw SdkValidationError(
+                field: "headers",
+                code: "required",
+                message: "Validation failed for 'headers': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
-        self.encoding = try container.sdkDecodeRequired(.encoding)
-        self.endpoint = try container.sdkDecodeRequired(.endpoint)
-        self.headers = try container.sdkDecodeRequired(.headers)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.compression = try container.sdkDecodeIfPresent(.compression)
-        self.secret = try container.sdkDecodeIfPresent(.secret)
-            try sdkValidateRawEnum("type", self.type, CreateDrainResponseVariant1DeliveryVariant0Type.allCases.map(\.rawValue))
+        encoding = try container.sdkDecodeRequired(.encoding)
+        endpoint = try container.sdkDecodeRequired(.endpoint)
+        headers = try container.sdkDecodeRequired(.headers)
+        type = try container.sdkDecodeRequired(.type)
+        compression = try container.sdkDecodeIfPresent(.compression)
+        secret = try container.sdkDecodeIfPresent(.secret)
+        try sdkValidateRawEnum("type", type, CreateDrainResponseVariant1DeliveryVariant0Type.allCases.map(\.rawValue))
     }
 }
 
-extension CreateDrainResponseVariant1DeliveryVariant0 {
-    public init(encoding: CreateDrainResponseVariant1DeliveryVariant0Encoding, endpoint: String, headers: [String: String], type: CreateDrainResponseVariant1DeliveryVariant0Type, compression: CreateDrainResponseVariant1DeliveryVariant0Compression? = nil, secret: CreateDrainResponseVariant1DeliveryVariant0Secret? = nil) throws {
+public extension CreateDrainResponseVariant1DeliveryVariant0 {
+    init(
+        encoding: CreateDrainResponseVariant1DeliveryVariant0Encoding,
+        endpoint: String,
+        headers: [String: String],
+        type: CreateDrainResponseVariant1DeliveryVariant0Type,
+        compression: CreateDrainResponseVariant1DeliveryVariant0Compression? = nil,
+        secret: CreateDrainResponseVariant1DeliveryVariant0Secret? = nil
+    ) throws {
         (self.encoding, self.endpoint) = (encoding, endpoint)
         (self.headers, self.type) = (headers, type)
         (self.compression, self.secret) = (compression, secret)
-            try sdkValidateRawEnum("type", self.type, CreateDrainResponseVariant1DeliveryVariant0Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            CreateDrainResponseVariant1DeliveryVariant0Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -51,27 +78,42 @@ public struct CreateDrainResponseVariant1SamplingItem: Codable {
         case requestPath
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateDrainResponseVariant1SamplingItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.rate) else {
-            throw SdkValidationError(field: "rate", code: "required", message: "Validation failed for 'rate': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.rate = try container.sdkDecodeRequired(.rate)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.env = try container.sdkDecodeIfPresent(.env)
-        self.requestPath = try container.sdkDecodeIfPresent(.requestPath)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateDrainResponseVariant1SamplingItem {
-    public init(rate: Double, type: CreateDrainResponseVariant1SamplingItemType, env: CreateDrainResponseVariant1SamplingItemEnv? = nil, requestPath: String? = nil) {
+public extension CreateDrainResponseVariant1SamplingItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.rate) else {
+            throw SdkValidationError(
+                field: "rate",
+                code: "required",
+                message: "Validation failed for 'rate': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        rate = try container.sdkDecodeRequired(.rate)
+        type = try container.sdkDecodeRequired(.type)
+        env = try container.sdkDecodeIfPresent(.env)
+        requestPath = try container.sdkDecodeIfPresent(.requestPath)
+    }
+}
+
+public extension CreateDrainResponseVariant1SamplingItem {
+    init(
+        rate: Double,
+        type: CreateDrainResponseVariant1SamplingItemType,
+        env: CreateDrainResponseVariant1SamplingItemEnv? = nil,
+        requestPath: String? = nil
+    ) {
         (self.rate, self.type) = (rate, type)
         (self.env, self.requestPath) = (env, requestPath)
     }
@@ -88,33 +130,51 @@ public struct CreateDrainResponseVariant0DeliveryVariant2: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateDrainResponseVariant0DeliveryVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.endpoint) else {
-            throw SdkValidationError(field: "endpoint", code: "required", message: "Validation failed for 'endpoint': value is required")
-        }
-        guard container.contains(.table) else {
-            throw SdkValidationError(field: "table", code: "required", message: "Validation failed for 'table': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.endpoint = try container.sdkDecodeRequired(.endpoint)
-        self.table = try container.sdkDecodeRequired(.table)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, CreateDrainResponseVariant0DeliveryVariant2Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateDrainResponseVariant0DeliveryVariant2 {
-    public init(endpoint: String, table: String, type: CreateDrainResponseVariant0DeliveryVariant2Type) throws {
+public extension CreateDrainResponseVariant0DeliveryVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.endpoint) else {
+            throw SdkValidationError(
+                field: "endpoint",
+                code: "required",
+                message: "Validation failed for 'endpoint': value is required"
+            )
+        }
+        guard container.contains(.table) else {
+            throw SdkValidationError(
+                field: "table",
+                code: "required",
+                message: "Validation failed for 'table': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        endpoint = try container.sdkDecodeRequired(.endpoint)
+        table = try container.sdkDecodeRequired(.table)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum("type", type, CreateDrainResponseVariant0DeliveryVariant2Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension CreateDrainResponseVariant0DeliveryVariant2 {
+    init(endpoint: String, table: String, type: CreateDrainResponseVariant0DeliveryVariant2Type) throws {
         (self.endpoint, self.table) = (endpoint, table)
         self.type = type
-            try sdkValidateRawEnum("type", self.type, CreateDrainResponseVariant0DeliveryVariant2Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            CreateDrainResponseVariant0DeliveryVariant2Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -124,27 +184,41 @@ public indirect enum CreateDrainResponseVariant1ProjectAccess {
 }
 
 extension CreateDrainResponseVariant1ProjectAccess: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateDrainResponseVariant1ProjectAccess")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateDrainResponseVariant1ProjectAccess"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateDrainResponseVariant1ProjectAccess {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateDrainResponseVariant1ProjectAccessVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateDrainResponseVariant1ProjectAccessVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createDrainResponseVariant1ProjectAccessVariant0(value)
         }
-        if let value = try? container.decode(CreateDrainResponseVariant1ProjectAccessVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateDrainResponseVariant1ProjectAccessVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createDrainResponseVariant1ProjectAccessVariant1(value)
         }
         return nil
@@ -156,12 +230,12 @@ extension CreateDrainResponseVariant1ProjectAccess {
         if let value = try? container.decode(
             CreateDrainResponseVariant1ProjectAccessVariant0.self
         ) {
-            return             .createDrainResponseVariant1ProjectAccessVariant0(value)
+            return .createDrainResponseVariant1ProjectAccessVariant0(value)
         }
         if let value = try? container.decode(
             CreateDrainResponseVariant1ProjectAccessVariant1.self
         ) {
-            return             .createDrainResponseVariant1ProjectAccessVariant1(value)
+            return .createDrainResponseVariant1ProjectAccessVariant1(value)
         }
         return nil
     }
@@ -186,25 +260,35 @@ public struct CreateDrainResponseVariant1FilterV2: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateDrainResponseVariant1FilterV2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.filter) else {
-            throw SdkValidationError(field: "filter", code: "required", message: "Validation failed for 'filter': value is required")
-        }
-        guard container.contains(.version) else {
-            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
-        }
-        self.filter = try container.sdkDecodeRequired(.filter)
-        self.version = try container.sdkDecodeRequired(.version)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateDrainResponseVariant1FilterV2 {
-    public init(filter: CreateDrainResponseVariant1FilterV2Filter, version: CreateDrainResponseVariant1FilterV2Version) {
+public extension CreateDrainResponseVariant1FilterV2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.filter) else {
+            throw SdkValidationError(
+                field: "filter",
+                code: "required",
+                message: "Validation failed for 'filter': value is required"
+            )
+        }
+        guard container.contains(.version) else {
+            throw SdkValidationError(
+                field: "version",
+                code: "required",
+                message: "Validation failed for 'version': value is required"
+            )
+        }
+        filter = try container.sdkDecodeRequired(.filter)
+        version = try container.sdkDecodeRequired(.version)
+    }
+}
+
+public extension CreateDrainResponseVariant1FilterV2 {
+    init(filter: CreateDrainResponseVariant1FilterV2Filter, version: CreateDrainResponseVariant1FilterV2Version) {
         (self.filter, self.version) = (filter, version)
     }
 }
@@ -226,35 +310,60 @@ public struct CreateDrainRequestDeliveryVariant0: Codable {
         case secret
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateDrainRequestDeliveryVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.endpoint) else {
-            throw SdkValidationError(field: "endpoint", code: "required", message: "Validation failed for 'endpoint': value is required")
-        }
-        guard container.contains(.encoding) else {
-            throw SdkValidationError(field: "encoding", code: "required", message: "Validation failed for 'encoding': value is required")
-        }
-        guard container.contains(.headers) else {
-            throw SdkValidationError(field: "headers", code: "required", message: "Validation failed for 'headers': value is required")
-        }
-        self.type = try container.sdkDecodeRequired(.type)
-        self.endpoint = try container.sdkDecodeRequired(.endpoint)
-        self.encoding = try container.sdkDecodeRequired(.encoding)
-        self.headers = try container.sdkDecodeRequired(.headers)
-        self.compression = try container.sdkDecodeIfPresent(.compression)
-        self.secret = try container.sdkDecodeIfPresent(.secret)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateDrainRequestDeliveryVariant0 {
-    public init(type: String, endpoint: String, encoding: CreateDrainRequestDeliveryVariant0Encoding, headers: [String: String], compression: CreateDrainRequestDeliveryVariant0Compression? = nil, secret: String? = nil) {
+public extension CreateDrainRequestDeliveryVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.endpoint) else {
+            throw SdkValidationError(
+                field: "endpoint",
+                code: "required",
+                message: "Validation failed for 'endpoint': value is required"
+            )
+        }
+        guard container.contains(.encoding) else {
+            throw SdkValidationError(
+                field: "encoding",
+                code: "required",
+                message: "Validation failed for 'encoding': value is required"
+            )
+        }
+        guard container.contains(.headers) else {
+            throw SdkValidationError(
+                field: "headers",
+                code: "required",
+                message: "Validation failed for 'headers': value is required"
+            )
+        }
+        type = try container.sdkDecodeRequired(.type)
+        endpoint = try container.sdkDecodeRequired(.endpoint)
+        encoding = try container.sdkDecodeRequired(.encoding)
+        headers = try container.sdkDecodeRequired(.headers)
+        compression = try container.sdkDecodeIfPresent(.compression)
+        secret = try container.sdkDecodeIfPresent(.secret)
+    }
+}
+
+public extension CreateDrainRequestDeliveryVariant0 {
+    init(
+        type: String,
+        endpoint: String,
+        encoding: CreateDrainRequestDeliveryVariant0Encoding,
+        headers: [String: String],
+        compression: CreateDrainRequestDeliveryVariant0Compression? = nil,
+        secret: String? = nil
+    ) {
         (self.type, self.endpoint) = (type, endpoint)
         (self.encoding, self.headers) = (encoding, headers)
         (self.compression, self.secret) = (compression, secret)
@@ -270,28 +379,45 @@ public struct CreateDrainResponseVariant0DeliveryVariant4: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateDrainResponseVariant0DeliveryVariant4 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.target) else {
-            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.target = try container.sdkDecodeRequired(.target)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, CreateDrainResponseVariant0DeliveryVariant4Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateDrainResponseVariant0DeliveryVariant4 {
-    public init(target: CreateDrainResponseVariant0DeliveryVariant4Target, type: CreateDrainResponseVariant0DeliveryVariant4Type) throws {
+public extension CreateDrainResponseVariant0DeliveryVariant4 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.target) else {
+            throw SdkValidationError(
+                field: "target",
+                code: "required",
+                message: "Validation failed for 'target': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        target = try container.sdkDecodeRequired(.target)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum("type", type, CreateDrainResponseVariant0DeliveryVariant4Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension CreateDrainResponseVariant0DeliveryVariant4 {
+    init(
+        target: CreateDrainResponseVariant0DeliveryVariant4Target,
+        type: CreateDrainResponseVariant0DeliveryVariant4Type
+    ) throws {
         (self.target, self.type) = (target, type)
-            try sdkValidateRawEnum("type", self.type, CreateDrainResponseVariant0DeliveryVariant4Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            CreateDrainResponseVariant0DeliveryVariant4Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -310,39 +436,67 @@ public struct CreateDrainResponseVariant1DeliveryVariant1: Codable {
         case secret
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateDrainResponseVariant1DeliveryVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.encoding) else {
-            throw SdkValidationError(field: "encoding", code: "required", message: "Validation failed for 'encoding': value is required")
-        }
-        guard container.contains(.endpoint) else {
-            throw SdkValidationError(field: "endpoint", code: "required", message: "Validation failed for 'endpoint': value is required")
-        }
-        guard container.contains(.headers) else {
-            throw SdkValidationError(field: "headers", code: "required", message: "Validation failed for 'headers': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.encoding = try container.sdkDecodeRequired(.encoding)
-        self.endpoint = try container.sdkDecodeRequired(.endpoint)
-        self.headers = try container.sdkDecodeRequired(.headers)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.secret = try container.sdkDecodeIfPresent(.secret)
-            try sdkValidateRawEnum("type", self.type, CreateDrainResponseVariant1DeliveryVariant1Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateDrainResponseVariant1DeliveryVariant1 {
-    public init(encoding: CreateDrainResponseVariant1DeliveryVariant1Encoding, endpoint: CreateDrainResponseVariant1DeliveryVariant1Endpoint, headers: [String: String], type: CreateDrainResponseVariant1DeliveryVariant1Type, secret: CreateDrainResponseVariant1DeliveryVariant1Secret? = nil) throws {
+public extension CreateDrainResponseVariant1DeliveryVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.encoding) else {
+            throw SdkValidationError(
+                field: "encoding",
+                code: "required",
+                message: "Validation failed for 'encoding': value is required"
+            )
+        }
+        guard container.contains(.endpoint) else {
+            throw SdkValidationError(
+                field: "endpoint",
+                code: "required",
+                message: "Validation failed for 'endpoint': value is required"
+            )
+        }
+        guard container.contains(.headers) else {
+            throw SdkValidationError(
+                field: "headers",
+                code: "required",
+                message: "Validation failed for 'headers': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        encoding = try container.sdkDecodeRequired(.encoding)
+        endpoint = try container.sdkDecodeRequired(.endpoint)
+        headers = try container.sdkDecodeRequired(.headers)
+        type = try container.sdkDecodeRequired(.type)
+        secret = try container.sdkDecodeIfPresent(.secret)
+        try sdkValidateRawEnum("type", type, CreateDrainResponseVariant1DeliveryVariant1Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension CreateDrainResponseVariant1DeliveryVariant1 {
+    init(
+        encoding: CreateDrainResponseVariant1DeliveryVariant1Encoding,
+        endpoint: CreateDrainResponseVariant1DeliveryVariant1Endpoint,
+        headers: [String: String],
+        type: CreateDrainResponseVariant1DeliveryVariant1Type,
+        secret: CreateDrainResponseVariant1DeliveryVariant1Secret? = nil
+    ) throws {
         (self.encoding, self.endpoint) = (encoding, endpoint)
         (self.headers, self.type) = (headers, type)
         self.secret = secret
-            try sdkValidateRawEnum("type", self.type, CreateDrainResponseVariant1DeliveryVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            CreateDrainResponseVariant1DeliveryVariant1Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -352,27 +506,41 @@ public indirect enum CreateDrainResponseVariant1FilterV2Filter {
 }
 
 extension CreateDrainResponseVariant1FilterV2Filter: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateDrainResponseVariant1FilterV2Filter")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateDrainResponseVariant1FilterV2Filter"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateDrainResponseVariant1FilterV2Filter {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(CreateDrainResponseVariant1FilterV2FilterVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateDrainResponseVariant1FilterV2FilterVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createDrainResponseVariant1FilterV2FilterVariant0(value)
         }
-        if let value = try? container.decode(CreateDrainResponseVariant1FilterV2FilterVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(CreateDrainResponseVariant1FilterV2FilterVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .createDrainResponseVariant1FilterV2FilterVariant1(value)
         }
         return nil
@@ -384,12 +552,12 @@ extension CreateDrainResponseVariant1FilterV2Filter {
         if let value = try? container.decode(
             CreateDrainResponseVariant1FilterV2FilterVariant0.self
         ) {
-            return             .createDrainResponseVariant1FilterV2FilterVariant0(value)
+            return .createDrainResponseVariant1FilterV2FilterVariant0(value)
         }
         if let value = try? container.decode(
             CreateDrainResponseVariant1FilterV2FilterVariant1.self
         ) {
-            return             .createDrainResponseVariant1FilterV2FilterVariant1(value)
+            return .createDrainResponseVariant1FilterV2FilterVariant1(value)
         }
         return nil
     }
@@ -420,5 +588,7 @@ public struct CreateDrainRequestDeliveryVariant1: Codable {
         case secret
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

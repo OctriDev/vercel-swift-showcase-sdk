@@ -3,7 +3,7 @@
 
 import Foundation
 
-// FeatureFlags domain models
+/// FeatureFlags domain models
 /// Representation of a Flags SDK key returned by CREATE. Includes cleartext secrets (`keyValue`, `tokenValue`,
 /// `connectionString`) which are only ever disclosed once, on creation.
 public struct FlagsSdkKeyWithSecrets: Codable {
@@ -49,29 +49,44 @@ public struct FlagsSdkKeyWithSecrets: Codable {
         case tokenValue
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension FlagsSdkKeyWithSecrets {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.createdBy = try container.sdkDecodeRequired(.createdBy)
-        self.environment = try container.sdkDecodeRequired(.environment)
-        self.hashKey = try container.sdkDecodeRequired(.hashKey)
-        self.partialKeyValue = try container.sdkDecodeRequired(.partialKeyValue)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.keyValue = try container.sdkDecodeRequired(.keyValue)
-        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        self.label = try container.sdkDecodeIfPresent(.label)
-        self.tokenValue = try container.sdkDecodeIfPresent(.tokenValue)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension FlagsSdkKeyWithSecrets {
-    public init(createdAt: Double, createdBy: String, environment: String, hashKey: String, partialKeyValue: String, projectId: String, type: FlagsSdkKeyWithSecretsType, updatedAt: Double, keyValue: String, deletedAt: Double? = nil, label: String? = nil, tokenValue: String? = nil) {
+public extension FlagsSdkKeyWithSecrets {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        createdBy = try container.sdkDecodeRequired(.createdBy)
+        environment = try container.sdkDecodeRequired(.environment)
+        hashKey = try container.sdkDecodeRequired(.hashKey)
+        partialKeyValue = try container.sdkDecodeRequired(.partialKeyValue)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        type = try container.sdkDecodeRequired(.type)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        keyValue = try container.sdkDecodeRequired(.keyValue)
+        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        label = try container.sdkDecodeIfPresent(.label)
+        tokenValue = try container.sdkDecodeIfPresent(.tokenValue)
+    }
+}
+
+public extension FlagsSdkKeyWithSecrets {
+    init(
+        createdAt: Double,
+        createdBy: String,
+        environment: String,
+        hashKey: String,
+        partialKeyValue: String,
+        projectId: String,
+        type: FlagsSdkKeyWithSecretsType,
+        updatedAt: Double,
+        keyValue: String,
+        deletedAt: Double? = nil,
+        label: String? = nil,
+        tokenValue: String? = nil
+    ) {
         (self.createdAt, self.createdBy) = (createdAt, createdBy)
         (self.environment, self.hashKey) = (environment, hashKey)
         (self.partialKeyValue, self.projectId) = (partialKeyValue, projectId)
@@ -85,14 +100,17 @@ extension FlagsSdkKeyWithSecrets {
 public struct FlagsSdkKeyWithSecretsType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let client = FlagsSdkKeyWithSecretsType(rawValue: "client")
     public static let mobile = FlagsSdkKeyWithSecretsType(rawValue: "mobile")
     public static let server = FlagsSdkKeyWithSecretsType(rawValue: "server")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

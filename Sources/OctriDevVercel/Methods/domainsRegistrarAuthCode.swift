@@ -6,13 +6,35 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsRegistrarMethods {
-    /// Retrieves the authorization code for a domain registered with the domain registrar. Use this code when transferring the domain from the registrar to another registrar. The domain must be eligible for transfer out before its code can be retrieved.
+public extension DomainsRegistrarMethods {
+    /// Retrieves the authorization code for a domain registered with the domain registrar. Use this code when
+    /// transferring the domain from the registrar to another registrar. The domain must be eligible for transfer out
+    /// before its code can be retrieved.
     ///
     /// Get the auth code for a domain. This is required to transfer a domain from Vercel to another registrar.
-    public static func getDomainAuthCode(config: ClientConfig, domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainAuthCodeResponse {
-        return try (await sdkRequest("GET", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/auth-code"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-        ], decoder: .json, operationId: "getDomainAuthCode", options: requestOptions, errors: ["401": Unauthorized.self, "404": DomainNotFound.self, "409": DomainCannotBeTransferedOutUntil.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
+    static func getDomainAuthCode(
+        config: ClientConfig,
+        domain: DomainName,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainAuthCodeResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/auth-code"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+            ],
+            decoder: .json,
+            operationId: "getDomainAuthCode",
+            options: requestOptions,
+            errors: [
+                "401": Unauthorized.self,
+                "404": DomainNotFound.self,
+                "409": DomainCannotBeTransferedOutUntil.self,
+                "429": TooManyRequests.self,
+                "500": InternalServerError.self,
+            ]
+        )).data
     }
 }

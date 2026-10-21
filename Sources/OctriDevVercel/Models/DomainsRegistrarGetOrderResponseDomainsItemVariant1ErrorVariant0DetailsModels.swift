@@ -3,19 +3,23 @@
 
 import Foundation
 
-// DomainsRegistrarGet domain models
-extension GetOrderResponseDomainsItemVariant1ErrorVariant0Details {
-    public init(from decoder: Decoder) throws {
+/// DomainsRegistrarGet domain models
+public extension GetOrderResponseDomainsItemVariant1ErrorVariant0Details {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.detectedLanguageCode) else {
-            throw SdkValidationError(field: "detectedLanguageCode", code: "required", message: "Validation failed for 'detectedLanguageCode': value is required")
+            throw SdkValidationError(
+                field: "detectedLanguageCode",
+                code: "required",
+                message: "Validation failed for 'detectedLanguageCode': value is required"
+            )
         }
-        self.detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
+        detectedLanguageCode = try container.sdkDecodeRequired(.detectedLanguageCode)
     }
 }
 
-extension GetOrderResponseDomainsItemVariant1ErrorVariant0Details {
-    public init(detectedLanguageCode: String) {
+public extension GetOrderResponseDomainsItemVariant1ErrorVariant0Details {
+    init(detectedLanguageCode: String) {
         self.detectedLanguageCode = detectedLanguageCode
     }
 }
@@ -27,34 +31,45 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant4: Codable {
         case code
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetOrderResponseDomainsItemVariant0ErrorVariant4 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
-        }
-        self.code = try container.sdkDecodeRequired(.code)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetOrderResponseDomainsItemVariant0ErrorVariant4 {
-    public init(code: GetOrderResponseDomainsItemVariant0ErrorVariant4Code) {
+public extension GetOrderResponseDomainsItemVariant0ErrorVariant4 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.code) else {
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
+        }
+        code = try container.sdkDecodeRequired(.code)
+    }
+}
+
+public extension GetOrderResponseDomainsItemVariant0ErrorVariant4 {
+    init(code: GetOrderResponseDomainsItemVariant0ErrorVariant4Code) {
         self.code = code
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant1ErrorVariant1Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant1ErrorVariant1Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let incorrectLanguageCode = GetOrderResponseDomainsItemVariant1ErrorVariant1Code(rawValue: "incorrect-language-code")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let incorrectLanguageCode =
+        GetOrderResponseDomainsItemVariant1ErrorVariant1Code(rawValue: "incorrect-language-code")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -63,15 +78,19 @@ public struct GetOrderResponseDomainsItemVariant1ErrorVariant1Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant0ErrorVariant9Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant0ErrorVariant9Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let invalidContact = GetOrderResponseDomainsItemVariant0ErrorVariant9Code(rawValue: "invalid-contact")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -80,10 +99,14 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant9Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant2Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant2Status: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let pending = GetOrderResponseDomainsItemVariant2Status(rawValue: "pending")
     public static let completed = GetOrderResponseDomainsItemVariant2Status(rawValue: "completed")
     public static let failed = GetOrderResponseDomainsItemVariant2Status(rawValue: "failed")
@@ -92,7 +115,7 @@ public struct GetOrderResponseDomainsItemVariant2Status: RawRepresentable, Hasha
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -118,15 +141,20 @@ public enum GetOrderResponseDomainsItemVariant0PurchaseType: String, CaseIterabl
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant0ErrorVariant4Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant0ErrorVariant4Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let claimsNoticeRequired = GetOrderResponseDomainsItemVariant0ErrorVariant4Code(rawValue: "claims-notice-required")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let claimsNoticeRequired =
+        GetOrderResponseDomainsItemVariant0ErrorVariant4Code(rawValue: "claims-notice-required")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -135,10 +163,14 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant4Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant0Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant0Status: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let pending = GetOrderResponseDomainsItemVariant0Status(rawValue: "pending")
     public static let completed = GetOrderResponseDomainsItemVariant0Status(rawValue: "completed")
     public static let failed = GetOrderResponseDomainsItemVariant0Status(rawValue: "failed")
@@ -147,7 +179,7 @@ public struct GetOrderResponseDomainsItemVariant0Status: RawRepresentable, Hasha
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -156,15 +188,20 @@ public struct GetOrderResponseDomainsItemVariant0Status: RawRepresentable, Hasha
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant2ErrorVariant3Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant2ErrorVariant3Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let incorrectAuthCode = GetOrderResponseDomainsItemVariant2ErrorVariant3Code(rawValue: "incorrect-auth-code")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let incorrectAuthCode =
+        GetOrderResponseDomainsItemVariant2ErrorVariant3Code(rawValue: "incorrect-auth-code")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -173,15 +210,20 @@ public struct GetOrderResponseDomainsItemVariant2ErrorVariant3Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant0ErrorVariant0Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant0ErrorVariant0Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let unsupportedLanguageCode = GetOrderResponseDomainsItemVariant0ErrorVariant0Code(rawValue: "unsupported-language-code")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let unsupportedLanguageCode =
+        GetOrderResponseDomainsItemVariant0ErrorVariant0Code(rawValue: "unsupported-language-code")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -193,12 +235,15 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant0Code: RawRepresent
 public struct GetOrderResponseErrorVariant1Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let tldOutage = GetOrderResponseErrorVariant1Code(rawValue: "tld-outage")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -207,15 +252,20 @@ public struct GetOrderResponseErrorVariant1Code: RawRepresentable, Hashable, Cod
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant1ErrorVariant5Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant1ErrorVariant5Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let cannotTransferInUntil = GetOrderResponseDomainsItemVariant1ErrorVariant5Code(rawValue: "cannot-transfer-in-until")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let cannotTransferInUntil =
+        GetOrderResponseDomainsItemVariant1ErrorVariant5Code(rawValue: "cannot-transfer-in-until")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -224,15 +274,20 @@ public struct GetOrderResponseDomainsItemVariant1ErrorVariant5Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant1ErrorVariant3Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant1ErrorVariant3Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let incorrectAuthCode = GetOrderResponseDomainsItemVariant1ErrorVariant3Code(rawValue: "incorrect-auth-code")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let incorrectAuthCode =
+        GetOrderResponseDomainsItemVariant1ErrorVariant3Code(rawValue: "incorrect-auth-code")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -258,15 +313,20 @@ public enum GetOrderResponseDomainsItemVariant1PurchaseType: String, CaseIterabl
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant0ErrorVariant5Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant0ErrorVariant5Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let cannotTransferInUntil = GetOrderResponseDomainsItemVariant0ErrorVariant5Code(rawValue: "cannot-transfer-in-until")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let cannotTransferInUntil =
+        GetOrderResponseDomainsItemVariant0ErrorVariant5Code(rawValue: "cannot-transfer-in-until")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -278,12 +338,15 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant5Code: RawRepresent
 public struct GetOrderResponseErrorVariant2Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let priceMismatch = GetOrderResponseErrorVariant2Code(rawValue: "price-mismatch")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -292,15 +355,20 @@ public struct GetOrderResponseErrorVariant2Code: RawRepresentable, Hashable, Cod
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant0ErrorVariant6Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant0ErrorVariant6Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let accountTransferRequired = GetOrderResponseDomainsItemVariant0ErrorVariant6Code(rawValue: "account-transfer-required")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let accountTransferRequired =
+        GetOrderResponseDomainsItemVariant0ErrorVariant6Code(rawValue: "account-transfer-required")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -309,26 +377,35 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant6Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let firstName = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "firstName")
-    public static let lastName = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "lastName")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let firstName =
+        GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "firstName")
+    public static let lastName =
+        GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "lastName")
     public static let email = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "email")
     public static let phone = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "phone")
-    public static let address1 = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "address1")
-    public static let address2 = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "address2")
+    public static let address1 =
+        GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "address1")
+    public static let address2 =
+        GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "address2")
     public static let city = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "city")
     public static let state = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "state")
     public static let zip = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "zip")
     public static let country = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "country")
-    public static let companyName = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "companyName")
+    public static let companyName =
+        GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "companyName")
     public static let fax = GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidField(rawValue: "fax")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -337,15 +414,20 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant9DetailsInvalidFiel
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant1ErrorVariant4Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant1ErrorVariant4Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let claimsNoticeRequired = GetOrderResponseDomainsItemVariant1ErrorVariant4Code(rawValue: "claims-notice-required")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let claimsNoticeRequired =
+        GetOrderResponseDomainsItemVariant1ErrorVariant4Code(rawValue: "claims-notice-required")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -354,15 +436,19 @@ public struct GetOrderResponseDomainsItemVariant1ErrorVariant4Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant1ErrorVariant9Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant1ErrorVariant9Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let invalidContact = GetOrderResponseDomainsItemVariant1ErrorVariant9Code(rawValue: "invalid-contact")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -371,15 +457,20 @@ public struct GetOrderResponseDomainsItemVariant1ErrorVariant9Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant2ErrorVariant8Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant2ErrorVariant8Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let unavailableLegal = GetOrderResponseDomainsItemVariant2ErrorVariant8Code(rawValue: "unavailable-legal")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let unavailableLegal =
+        GetOrderResponseDomainsItemVariant2ErrorVariant8Code(rawValue: "unavailable-legal")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -388,15 +479,20 @@ public struct GetOrderResponseDomainsItemVariant2ErrorVariant8Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant0ErrorVariant2Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant0ErrorVariant2Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let clientTransferProhibited = GetOrderResponseDomainsItemVariant0ErrorVariant2Code(rawValue: "client-transfer-prohibited")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let clientTransferProhibited =
+        GetOrderResponseDomainsItemVariant0ErrorVariant2Code(rawValue: "client-transfer-prohibited")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -405,10 +501,14 @@ public struct GetOrderResponseDomainsItemVariant0ErrorVariant2Code: RawRepresent
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant1Status: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant1Status: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let pending = GetOrderResponseDomainsItemVariant1Status(rawValue: "pending")
     public static let completed = GetOrderResponseDomainsItemVariant1Status(rawValue: "completed")
     public static let failed = GetOrderResponseDomainsItemVariant1Status(rawValue: "failed")
@@ -417,7 +517,7 @@ public struct GetOrderResponseDomainsItemVariant1Status: RawRepresentable, Hasha
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -426,15 +526,20 @@ public struct GetOrderResponseDomainsItemVariant1Status: RawRepresentable, Hasha
     }
 }
 
-public struct GetOrderResponseDomainsItemVariant2ErrorVariant4Code: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetOrderResponseDomainsItemVariant2ErrorVariant4Code: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let claimsNoticeRequired = GetOrderResponseDomainsItemVariant2ErrorVariant4Code(rawValue: "claims-notice-required")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let claimsNoticeRequired =
+        GetOrderResponseDomainsItemVariant2ErrorVariant4Code(rawValue: "claims-notice-required")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

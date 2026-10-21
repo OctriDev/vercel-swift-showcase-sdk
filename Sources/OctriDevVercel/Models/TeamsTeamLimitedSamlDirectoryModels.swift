@@ -3,30 +3,49 @@
 
 import Foundation
 
-// Teams domain models
-extension TeamLimitedSamlDirectory {
-    public init(from decoder: Decoder) throws {
+/// Teams domain models
+public extension TeamLimitedSamlDirectory {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.connectedAt) else {
-            throw SdkValidationError(field: "connectedAt", code: "required", message: "Validation failed for 'connectedAt': value is required")
+            throw SdkValidationError(
+                field: "connectedAt",
+                code: "required",
+                message: "Validation failed for 'connectedAt': value is required"
+            )
         }
         guard container.contains(.state) else {
-            throw SdkValidationError(field: "state", code: "required", message: "Validation failed for 'state': value is required")
+            throw SdkValidationError(
+                field: "state",
+                code: "required",
+                message: "Validation failed for 'state': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
-        self.connectedAt = try container.sdkDecodeRequired(.connectedAt)
-        self.state = try container.sdkDecodeRequired(.state)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.lastReceivedWebhookEvent = try container.sdkDecodeIfPresent(.lastReceivedWebhookEvent)
-        self.lastSyncedAt = try container.sdkDecodeIfPresent(.lastSyncedAt)
-        self.syncState = try container.sdkDecodeIfPresent(.syncState)
+        connectedAt = try container.sdkDecodeRequired(.connectedAt)
+        state = try container.sdkDecodeRequired(.state)
+        type = try container.sdkDecodeRequired(.type)
+        lastReceivedWebhookEvent = try container.sdkDecodeIfPresent(.lastReceivedWebhookEvent)
+        lastSyncedAt = try container.sdkDecodeIfPresent(.lastSyncedAt)
+        syncState = try container.sdkDecodeIfPresent(.syncState)
     }
 }
 
-extension TeamLimitedSamlDirectory {
-    public init(connectedAt: Double, state: String, type: String, lastReceivedWebhookEvent: Double? = nil, lastSyncedAt: Double? = nil, syncState: TeamLimitedSamlDirectorySyncState? = nil) {
+public extension TeamLimitedSamlDirectory {
+    init(
+        connectedAt: Double,
+        state: String,
+        type: String,
+        lastReceivedWebhookEvent: Double? = nil,
+        lastSyncedAt: Double? = nil,
+        syncState: TeamLimitedSamlDirectorySyncState? = nil
+    ) {
         (self.connectedAt, self.state) = (connectedAt, state)
         (self.type, self.lastReceivedWebhookEvent) = (type, lastReceivedWebhookEvent)
         (self.lastSyncedAt, self.syncState) = (lastSyncedAt, syncState)
@@ -39,22 +58,32 @@ public indirect enum TeamLimitedMembershipJoinedFromGitUserId {
 }
 
 extension TeamLimitedMembershipJoinedFromGitUserId: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for TeamLimitedMembershipJoinedFromGitUserId")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for TeamLimitedMembershipJoinedFromGitUserId"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension TeamLimitedMembershipJoinedFromGitUserId {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         return nil
     }
 }
@@ -82,14 +111,17 @@ extension TeamLimitedMembershipJoinedFromGitUserId: SdkNumericValueConvertible {
 public struct TeamLimitedLimitedByItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let invalidated = TeamLimitedLimitedByItem(rawValue: "invalidated")
     public static let mfa = TeamLimitedLimitedByItem(rawValue: "mfa")
     public static let scope = TeamLimitedLimitedByItem(rawValue: "scope")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -99,21 +131,29 @@ public struct TeamLimitedLimitedByItem: RawRepresentable, Hashable, Codable, Sen
 }
 
 /// Required enumerated value serialized in the `teamPermissions[]` wire field.
-public struct TeamLimitedMembershipTeamPermissionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct TeamLimitedMembershipTeamPermissionsItem: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let aiGatewayBudgetManager = TeamLimitedMembershipTeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let aiGatewayBudgetManager =
+        TeamLimitedMembershipTeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
     public static let aiGatewayCredits = TeamLimitedMembershipTeamPermissionsItem(rawValue: "AiGatewayCredits")
     public static let aiGatewaySettings = TeamLimitedMembershipTeamPermissionsItem(rawValue: "AiGatewaySettings")
-    public static let aiGatewayTranscriptsManager = TeamLimitedMembershipTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
-    public static let aiGatewayTranscriptsViewer = TeamLimitedMembershipTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
+    public static let aiGatewayTranscriptsManager =
+        TeamLimitedMembershipTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
+    public static let aiGatewayTranscriptsViewer =
+        TeamLimitedMembershipTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
     public static let aiGatewayUser = TeamLimitedMembershipTeamPermissionsItem(rawValue: "AiGatewayUser")
     public static let connectorManager = TeamLimitedMembershipTeamPermissionsItem(rawValue: "ConnectorManager")
     public static let createProject = TeamLimitedMembershipTeamPermissionsItem(rawValue: "CreateProject")
     public static let envVariableManager = TeamLimitedMembershipTeamPermissionsItem(rawValue: "EnvVariableManager")
     public static let environmentManager = TeamLimitedMembershipTeamPermissionsItem(rawValue: "EnvironmentManager")
-    public static let fullProductionDeployment = TeamLimitedMembershipTeamPermissionsItem(rawValue: "FullProductionDeployment")
+    public static let fullProductionDeployment =
+        TeamLimitedMembershipTeamPermissionsItem(rawValue: "FullProductionDeployment")
     public static let integrationManager = TeamLimitedMembershipTeamPermissionsItem(rawValue: "IntegrationManager")
     public static let orgAdmin = TeamLimitedMembershipTeamPermissionsItem(rawValue: "OrgAdmin")
     public static let orgViewer = TeamLimitedMembershipTeamPermissionsItem(rawValue: "OrgViewer")
@@ -125,7 +165,7 @@ public struct TeamLimitedMembershipTeamPermissionsItem: RawRepresentable, Hashab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -141,13 +181,16 @@ public struct TeamLimitedMembershipTeamPermissionsItem: RawRepresentable, Hashab
 public struct TeamLimitedSamlDirectorySyncState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let active = TeamLimitedSamlDirectorySyncState(rawValue: "ACTIVE")
     public static let setup = TeamLimitedSamlDirectorySyncState(rawValue: "SETUP")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -160,7 +203,10 @@ public struct TeamLimitedSamlDirectorySyncState: RawRepresentable, Hashable, Cod
 public struct TeamLimitedMembershipJoinedFromOrigin: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let accountUpdate = TeamLimitedMembershipJoinedFromOrigin(rawValue: "account-update")
     public static let bitbucket = TeamLimitedMembershipJoinedFromOrigin(rawValue: "bitbucket")
     public static let dsync = TeamLimitedMembershipJoinedFromOrigin(rawValue: "dsync")
@@ -174,7 +220,8 @@ public struct TeamLimitedMembershipJoinedFromOrigin: RawRepresentable, Hashable,
     public static let nsnbHobbyUpgrade = TeamLimitedMembershipJoinedFromOrigin(rawValue: "nsnb-hobby-upgrade")
     public static let nsnbInvite = TeamLimitedMembershipJoinedFromOrigin(rawValue: "nsnb-invite")
     public static let nsnbRedeploy = TeamLimitedMembershipJoinedFromOrigin(rawValue: "nsnb-redeploy")
-    public static let nsnbRedeployAttributionCard = TeamLimitedMembershipJoinedFromOrigin(rawValue: "nsnb-redeploy-attribution-card")
+    public static let nsnbRedeployAttributionCard =
+        TeamLimitedMembershipJoinedFromOrigin(rawValue: "nsnb-redeploy-attribution-card")
     public static let nsnbRequestAccess = TeamLimitedMembershipJoinedFromOrigin(rawValue: "nsnb-request-access")
     public static let nsnbViewerUpgrade = TeamLimitedMembershipJoinedFromOrigin(rawValue: "nsnb-viewer-upgrade")
     public static let organizationTeams = TeamLimitedMembershipJoinedFromOrigin(rawValue: "organization-teams")
@@ -183,7 +230,7 @@ public struct TeamLimitedMembershipJoinedFromOrigin: RawRepresentable, Hashable,
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -196,7 +243,10 @@ public struct TeamLimitedMembershipJoinedFromOrigin: RawRepresentable, Hashable,
 public struct TeamLimitedMembershipRole: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let billing = TeamLimitedMembershipRole(rawValue: "BILLING")
     public static let contributor = TeamLimitedMembershipRole(rawValue: "CONTRIBUTOR")
     public static let developer = TeamLimitedMembershipRole(rawValue: "DEVELOPER")
@@ -208,7 +258,7 @@ public struct TeamLimitedMembershipRole: RawRepresentable, Hashable, Codable, Se
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -224,13 +274,16 @@ public struct TeamLimitedMembershipRole: RawRepresentable, Hashable, Codable, Se
 public struct TeamLimitedSamlConnectionSyncState: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let active = TeamLimitedSamlConnectionSyncState(rawValue: "ACTIVE")
     public static let setup = TeamLimitedSamlConnectionSyncState(rawValue: "SETUP")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -243,7 +296,10 @@ public struct TeamLimitedSamlConnectionSyncState: RawRepresentable, Hashable, Co
 public struct TeamLimitedMembershipTeamRolesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let billing = TeamLimitedMembershipTeamRolesItem(rawValue: "BILLING")
     public static let contributor = TeamLimitedMembershipTeamRolesItem(rawValue: "CONTRIBUTOR")
     public static let developer = TeamLimitedMembershipTeamRolesItem(rawValue: "DEVELOPER")
@@ -255,7 +311,7 @@ public struct TeamLimitedMembershipTeamRolesItem: RawRepresentable, Hashable, Co
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

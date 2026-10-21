@@ -9,19 +9,50 @@ public class StorageNamespace {
         self.config = config
     }
 
-/// Retrieves a storage store by its identifier. Use `skip-metadata` to control whether project metadata is included and `include-guides` to control whether guides are included in the response.
-    public func getStoresById(id: String, skipMetadata: Bool? = nil, includeGuides: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> GetStorageStoresByIdResponse {
-        return try await StorageMethods.getStorageStoresById(config: config, id: id, skipMetadata: skipMetadata, includeGuides: includeGuides, requestOptions: requestOptions)
+    /// Retrieves a storage store by its identifier. Use `skip-metadata` to control whether project metadata is included
+    /// and `include-guides` to control whether guides are included in the response.
+    public func getStoresById(
+        id: String,
+        skipMetadata: Bool? = nil,
+        includeGuides: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetStorageStoresByIdResponse {
+        try await StorageMethods.getStorageStoresById(
+            config: config,
+            id: id,
+            skipMetadata: skipMetadata,
+            includeGuides: includeGuides,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a Blob store with a name and optional region, access setting, and project association. Choose a supported region and set `access` to `public` or `private`; access defaults to public when omitted. The response includes the created store and its configuration.
-    public func createStoresBlob(name: String, region: CreateStorageStoresBlobRequestBodyRegion? = nil, access: CreateStorageStoresBlobRequestBodyAccess? = nil, projectId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateStorageStoresBlobResponse {
-        return try await StorageMethods.createStorageStoresBlob(config: config, name: name, region: region, access: access, projectId: projectId, requestOptions: requestOptions)
+    /// Creates a Blob store with a name and optional region, access setting, and project association. Choose a
+    /// supported region and set `access` to `public` or `private`; access defaults to public when omitted. The response
+    /// includes the created store and its configuration.
+    public func createStoresBlob(
+        name: String,
+        region: CreateStorageStoresBlobRequestBodyRegion? = nil,
+        access: CreateStorageStoresBlobRequestBodyAccess? = nil,
+        projectId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateStorageStoresBlobResponse {
+        try await StorageMethods.createStorageStoresBlob(
+            config: config,
+            name: name,
+            region: region,
+            access: access,
+            projectId: projectId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a Blob store by its identifier. Use the returned identifier to confirm which store was deleted. The store must be accessible to the authenticated user.
-    public func deleteStoresBlobById(id: String, requestOptions: RequestOptions? = nil) async throws -> DeleteStorageStoresBlobByIdResponse {
-        return try await StorageMethods.deleteStorageStoresBlobById(config: config, id: id, requestOptions: requestOptions)
+    /// Deletes a Blob store by its identifier. Use the returned identifier to confirm which store was deleted. The
+    /// store must be accessible to the authenticated user.
+    public func deleteStoresBlobById(
+        id: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteStorageStoresBlobByIdResponse {
+        try await StorageMethods.deleteStorageStoresBlobById(config: config, id: id, requestOptions: requestOptions)
     }
 }
 
@@ -31,118 +62,308 @@ public class TeamsNamespace {
         self.config = config
     }
 
-/// Lists team members and pending email invitations for the specified team. Use the query filters to search members, select a team role, or restrict results by membership timestamps or project eligibility. The response includes pagination metadata for navigating the results.
+    /// Lists team members and pending email invitations for the specified team. Use the query filters to search
+    /// members, select a team role, or restrict results by membership timestamps or project eligibility. The response
+    /// includes pagination metadata for navigating the results.
     ///
     /// Get a paginated list of team members for the provided team.
-    public func getMembers(options: TeamsMethods.GetTeamMembersOptions, requestOptions: RequestOptions? = nil) async throws -> GetTeamMembersResponse {
-        return try await TeamsMethods.getTeamMembers(config: config, options: options, requestOptions: requestOptions)
+    public func getMembers(
+        options: TeamsMethods.GetTeamMembersOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetTeamMembersResponse {
+        try await TeamsMethods.getTeamMembers(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Invites one or more users to join the specified team by email. Each invitation requires an `email`; you can also assign a team role and project-specific roles. The authenticated user must be an `OWNER` to invite members.
+    /// Invites one or more users to join the specified team by email. Each invitation requires an `email`; you can also
+    /// assign a team role and project-specific roles. The authenticated user must be an `OWNER` to invite members.
     ///
-    /// Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user to be invited must be specified by email.
-    public func inviteUserTo(teamId: String, slug: String? = nil, body: [InviteUserToTeamRequestBodyItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> InvitedTeamMember {
-        return try await TeamsMethods.inviteUserToTeam(config: config, teamId: teamId, slug: slug, body: body, requestOptions: requestOptions)
+    /// Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to
+    /// successfully invoke this endpoint. The user to be invited must be specified by email.
+    public func inviteUserTo(
+        teamId: String,
+        slug: String? = nil,
+        body: [InviteUserToTeamRequestBodyItem]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> InvitedTeamMember {
+        try await TeamsMethods.inviteUserToTeam(
+            config: config,
+            teamId: teamId,
+            slug: slug,
+            body: body,
+            requestOptions: requestOptions
+        )
     }
 
-/// Submits a request for the authenticated user to join the specified team. Include `joinedFrom.origin` to identify where the request originated, and provide the relevant repository or Git account details when applicable. A team owner must approve the request, and no more than 100 users can have pending access requests at the same time.
+    /// Submits a request for the authenticated user to join the specified team. Include `joinedFrom.origin` to identify
+    /// where the request originated, and provide the relevant repository or Git account details when applicable. A team
+    /// owner must approve the request, and no more than 100 users can have pending access requests at the same time.
     ///
-    /// Request access to a team as a member. An owner has to approve the request. Only 100 users can request access to a team at the same time.
-    public func requestAccessTo(teamId: String, joinedFrom: RequestAccessToTeamRequestBodyJoinedFrom, requestOptions: RequestOptions? = nil) async throws -> RequestAccessToTeamResponse {
-        return try await TeamsMethods.requestAccessToTeam(config: config, teamId: teamId, joinedFrom: joinedFrom, requestOptions: requestOptions)
+    /// Request access to a team as a member. An owner has to approve the request. Only 100 users can request access to
+    /// a team at the same time.
+    public func requestAccessTo(
+        teamId: String,
+        joinedFrom: RequestAccessToTeamRequestBodyJoinedFrom,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RequestAccessToTeamResponse {
+        try await TeamsMethods.requestAccessToTeam(
+            config: config,
+            teamId: teamId,
+            joinedFrom: joinedFrom,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves the status of a user's request to join a team. Use `userId` to identify whose request to check; the endpoint returns the authenticated user's status when that path segment is not provided. A declined request is reported as not found.
+    /// Retrieves the status of a user's request to join a team. Use `userId` to identify whose request to check; the
+    /// endpoint returns the authenticated user's status when that path segment is not provided. A declined request is
+    /// reported as not found.
     ///
-    /// Check the status of a join request. It'll respond with a 404 if the request has been declined. If no `userId` path segment was provided, this endpoint will instead return the status of the authenticated user.
-    public func getAccessRequest(userId: String, teamId: String, requestOptions: RequestOptions? = nil) async throws -> GetTeamAccessRequestResponse {
-        return try await TeamsMethods.getTeamAccessRequest(config: config, userId: userId, teamId: teamId, requestOptions: requestOptions)
+    /// Check the status of a join request. It'll respond with a 404 if the request has been declined. If no `userId`
+    /// path segment was provided, this endpoint will instead return the status of the authenticated user.
+    public func getAccessRequest(
+        userId: String,
+        teamId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetTeamAccessRequestResponse {
+        try await TeamsMethods.getTeamAccessRequest(
+            config: config,
+            userId: userId,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Joins the authenticated user to a team using the team identifier and, when applicable, an invite code. Include `inviteCode` in the request body when joining with a code. The response identifies the team the user joined and the source of the join.
+    /// Joins the authenticated user to a team using the team identifier and, when applicable, an invite code. Include
+    /// `inviteCode` in the request body when joining with a code. The response identifies the team the user joined and
+    /// the source of the join.
     ///
     /// Join a team with a provided invite code or team ID.
-    public func join(teamId: String, inviteCode: String? = nil, requestOptions: RequestOptions? = nil) async throws -> JoinTeamResponse {
-        return try await TeamsMethods.joinTeam(config: config, teamId: teamId, inviteCode: inviteCode, requestOptions: requestOptions)
+    public func join(
+        teamId: String,
+        inviteCode: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> JoinTeamResponse {
+        try await TeamsMethods.joinTeam(
+            config: config,
+            teamId: teamId,
+            inviteCode: inviteCode,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates a member's membership on the specified team, including their team role, permissions, or project roles. You can also confirm an unconfirmed member by setting `confirmed` to `true`. The authenticated user must be a team owner, except when disconnecting their own SAML connection.
+    /// Updates a member's membership on the specified team, including their team role, permissions, or project roles.
+    /// You can also confirm an unconfirmed member by setting `confirmed` to `true`. The authenticated user must be a
+    /// team owner, except when disconnecting their own SAML connection.
     ///
-    /// Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an `OWNER` of the Team.
-    public func updateMember(uid: String, teamId: String, confirmed: Bool? = nil, role: String? = nil, teamPermissions: [UpdateTeamMemberRequestBodyTeamPermissionsItem]? = nil, projects: [UpdateTeamMemberRequestBodyProjectsItem]? = nil, joinedFrom: UpdateTeamMemberRequestBodyJoinedFrom? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateTeamMemberResponse {
-        return try await TeamsMethods.updateTeamMember(config: config, uid: uid, teamId: teamId, confirmed: confirmed, role: role, teamPermissions: teamPermissions, projects: projects, joinedFrom: joinedFrom, requestOptions: requestOptions)
+    /// Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the
+    /// member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an
+    /// `OWNER` of the Team.
+    public func updateMember(
+        uid: String,
+        teamId: String,
+        confirmed: Bool? = nil,
+        role: String? = nil,
+        teamPermissions: [UpdateTeamMemberRequestBodyTeamPermissionsItem]? = nil,
+        projects: [UpdateTeamMemberRequestBodyProjectsItem]? = nil,
+        joinedFrom: UpdateTeamMemberRequestBodyJoinedFrom? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateTeamMemberResponse {
+        try await TeamsMethods.updateTeamMember(
+            config: config,
+            uid: uid,
+            teamId: teamId,
+            confirmed: confirmed,
+            role: role,
+            teamPermissions: teamPermissions,
+            projects: projects,
+            joinedFrom: joinedFrom,
+            requestOptions: requestOptions
+        )
     }
 
-/// Removes a member from a team, dismisses a user's access request, or lets a member leave the team. Use `newDefaultTeamId` to set a replacement default team for the user. Directory Sync members can be removed when their directory email is absent or does not match a primary or verified secondary email.
+    /// Removes a member from a team, dismisses a user's access request, or lets a member leave the team. Use
+    /// `newDefaultTeamId` to set a replacement default team for the user. Directory Sync members can be removed when
+    /// their directory email is absent or does not match a primary or verified secondary email.
     ///
-    /// Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails.
-    public func removeMember(uid: String, teamId: String, newDefaultTeamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RemoveTeamMemberResponse {
-        return try await TeamsMethods.removeTeamMember(config: config, uid: uid, teamId: teamId, newDefaultTeamId: newDefaultTeamId, requestOptions: requestOptions)
+    /// Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync
+    /// members can be removed when their directory email is absent or does not match the user's primary or verified
+    /// secondary emails.
+    public func removeMember(
+        uid: String,
+        teamId: String,
+        newDefaultTeamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RemoveTeamMemberResponse {
+        try await TeamsMethods.removeTeamMember(
+            config: config,
+            uid: uid,
+            teamId: teamId,
+            newDefaultTeamId: newDefaultTeamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves information about the specified team, including its billing plan, creation details, and team configuration. Use the team identifier to select the team; you can also supply its slug as request context.
+    /// Retrieves information about the specified team, including its billing plan, creation details, and team
+    /// configuration. Use the team identifier to select the team; you can also supply its slug as request context.
     ///
     /// Get information for the Team specified by the `teamId` parameter.
     public func get(teamId: String, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> Team {
-        return try await TeamsMethods.getTeams(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
+        try await TeamsMethods.getTeams(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
     }
 }
 
-extension TeamsNamespace {
-/// Updates the specified team's information using the fields supplied in the request body. Include only the team properties you want to change, such as its name, slug, avatar, or feedback settings. The authenticated user must be a team owner to update the team.
+public extension TeamsNamespace {
+    /// Updates the specified team's information using the fields supplied in the request body. Include only the team
+    /// properties you want to change, such as its name, slug, avatar, or feedback settings. The authenticated user must
+    /// be a team owner to update the team.
     ///
-    /// Update the information of a Team specified by the `teamId` parameter. The request body should contain the information that will be updated on the Team.
-    public func update(options: TeamsMethods.UpdateTeamOptions, requestOptions: RequestOptions? = nil) async throws -> Team {
-        return try await TeamsMethods.updateTeam(config: config, options: options, requestOptions: requestOptions)
+    /// Update the information of a Team specified by the `teamId` parameter. The request body should contain the
+    /// information that will be updated on the Team.
+    func update(options: TeamsMethods.UpdateTeamOptions, requestOptions: RequestOptions? = nil) async throws -> Team {
+        try await TeamsMethods.updateTeam(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Lists teams that the authenticated user belongs to, with pagination metadata. Use `limit` to cap the number of teams and `since` or `until` to filter by creation time in milliseconds.
+    /// Lists teams that the authenticated user belongs to, with pagination metadata. Use `limit` to cap the number of
+    /// teams and `since` or `until` to filter by creation time in milliseconds.
     ///
     /// Get a paginated list of all the Teams the authenticated User is a member of.
-    public func list(limit: Double? = nil, since: Double? = nil, until: Double? = nil, requestOptions: RequestOptions? = nil) async throws -> ListTeamsResponse {
-        return try await TeamsMethods.listTeams(config: config, limit: limit, since: since, until: until, requestOptions: requestOptions)
+    func list(
+        limit: Double? = nil,
+        since: Double? = nil,
+        until: Double? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListTeamsResponse {
+        try await TeamsMethods.listTeams(
+            config: config,
+            limit: limit,
+            since: since,
+            until: until,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a new team under the authenticated user's account. Supply `slug` and optionally `name`; the team name is generated from the slug when you omit `name`. A successful response includes the created team's identifier and slug.
+    /// Creates a new team under the authenticated user's account. Supply `slug` and optionally `name`; the team name is
+    /// generated from the slug when you omit `name`. A successful response includes the created team's identifier and
+    /// slug.
     ///
-    /// Create a new Team under your account. You need to send a POST request with the desired Team slug, and optionally the Team name.
-    public func create(slug: String, name: String? = nil, attribution: CreateTeamRequestBodyAttribution? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateTeamResponse {
-        return try await TeamsMethods.createTeam(config: config, slug: slug, name: name, attribution: attribution, requestOptions: requestOptions)
+    /// Create a new Team under your account. You need to send a POST request with the desired Team slug, and optionally
+    /// the Team name.
+    func create(
+        slug: String,
+        name: String? = nil,
+        attribution: CreateTeamRequestBodyAttribution? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateTeamResponse {
+        try await TeamsMethods.createTeam(
+            config: config,
+            slug: slug,
+            name: name,
+            attribution: attribution,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates Directory Sync role mappings for a team, associating directory groups with team roles or access groups. Identify the team with `teamId` or `slug` and provide the mappings in `roles`.
+    /// Updates Directory Sync role mappings for a team, associating directory groups with team roles or access groups.
+    /// Identify the team with `teamId` or `slug` and provide the mappings in `roles`.
     ///
-    /// Update the Directory Sync role mappings for a Team. This endpoint allows updating the mapping between directory groups and team roles or access groups.
-    public func postDsyncRoles(teamId: String, roles: [String: PostTeamDsyncRolesRequestBodyRolesValue], slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> PostTeamDsyncRolesResponse {
-        return try await TeamsMethods.postTeamDsyncRoles(config: config, teamId: teamId, roles: roles, slug: slug, requestOptions: requestOptions)
+    /// Update the Directory Sync role mappings for a Team. This endpoint allows updating the mapping between directory
+    /// groups and team roles or access groups.
+    func postDsyncRoles(
+        teamId: String,
+        roles: [String: PostTeamDsyncRolesRequestBodyRolesValue],
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> PostTeamDsyncRolesResponse {
+        try await TeamsMethods.postTeamDsyncRoles(
+            config: config,
+            teamId: teamId,
+            roles: roles,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a team under the authenticated user's account. Identify the team with `teamId` and optionally provide `newDefaultTeamId` to select a replacement default team. Enterprise teams can be deleted only in test billing mode and when they are not linked to an organization.
+    /// Deletes a team under the authenticated user's account. Identify the team with `teamId` and optionally provide
+    /// `newDefaultTeamId` to select a replacement default team. Enterprise teams can be deleted only in test billing
+    /// mode and when they are not linked to an organization.
     ///
-    /// Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and when not linked to an organization.
-    public func delete(teamId: String, newDefaultTeamId: String? = nil, slug: String? = nil, reasons: [DeleteTeamRequestBodyReasonsItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteTeamResponse {
-        return try await TeamsMethods.deleteTeam(config: config, teamId: teamId, newDefaultTeamId: newDefaultTeamId, slug: slug, reasons: reasons, requestOptions: requestOptions)
+    /// Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional
+    /// array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and
+    /// when not linked to an organization.
+    func delete(
+        teamId: String,
+        newDefaultTeamId: String? = nil,
+        slug: String? = nil,
+        reasons: [DeleteTeamRequestBodyReasonsItem]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteTeamResponse {
+        try await TeamsMethods.deleteTeam(
+            config: config,
+            teamId: teamId,
+            newDefaultTeamId: newDefaultTeamId,
+            slug: slug,
+            reasons: reasons,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes an active team invite code. Use `teamId` and `inviteId` to identify the team and invite code to remove.
+    /// Deletes an active team invite code. Use `teamId` and `inviteId` to identify the team and invite code to remove.
     ///
     /// Delete an active Team invite code.
-    public func deleteInviteCode(inviteId: String, teamId: String, requestOptions: RequestOptions? = nil) async throws -> DeleteTeamInviteCodeResponse {
-        return try await TeamsMethods.deleteTeamInviteCode(config: config, inviteId: inviteId, teamId: teamId, requestOptions: requestOptions)
+    func deleteInviteCode(
+        inviteId: String,
+        teamId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteTeamInviteCodeResponse {
+        try await TeamsMethods.deleteTeamInviteCode(
+            config: config,
+            inviteId: inviteId,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates the settings of a microfrontends group in a team. Supply any of `name`, `fallbackEnvironment`, or `enablePolyrepoBranchRouting` to change that setting; fields you omit are not specified for update.
+    /// Updates the settings of a microfrontends group in a team. Supply any of `name`, `fallbackEnvironment`, or
+    /// `enablePolyrepoBranchRouting` to change that setting; fields you omit are not specified for update.
     ///
     /// Updates a microfrontends group's settings.
-    public func updateMicrofrontendsGroup(groupId: String, teamId: String, slug: String? = nil, name: String? = nil, fallbackEnvironment: String? = nil, enablePolyrepoBranchRouting: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateMicrofrontendsGroupResponse {
-        return try await TeamsMethods.updateMicrofrontendsGroup(config: config, groupId: groupId, teamId: teamId, slug: slug, name: name, fallbackEnvironment: fallbackEnvironment, enablePolyrepoBranchRouting: enablePolyrepoBranchRouting, requestOptions: requestOptions)
+    func updateMicrofrontendsGroup(
+        groupId: String,
+        teamId: String,
+        slug: String? = nil,
+        name: String? = nil,
+        fallbackEnvironment: String? = nil,
+        enablePolyrepoBranchRouting: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateMicrofrontendsGroupResponse {
+        try await TeamsMethods.updateMicrofrontendsGroup(
+            config: config,
+            groupId: groupId,
+            teamId: teamId,
+            slug: slug,
+            name: name,
+            fallbackEnvironment: fallbackEnvironment,
+            enablePolyrepoBranchRouting: enablePolyrepoBranchRouting,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a microfrontends group from the team associated with its group identifier. Use `groupId` and `teamId` to identify the group and team.
+    /// Deletes a microfrontends group from the team associated with its group identifier. Use `groupId` and `teamId` to
+    /// identify the group and team.
     ///
     /// Deletes a microfrontends group from the team associated with the group ID.
-    public func deleteMicrofrontendsGroup(groupId: String, teamId: String, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try await TeamsMethods.deleteMicrofrontendsGroup(config: config, groupId: groupId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func deleteMicrofrontendsGroup(
+        groupId: String,
+        teamId: String,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await TeamsMethods.deleteMicrofrontendsGroup(
+            config: config,
+            groupId: groupId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
@@ -152,59 +373,197 @@ public class VcrNamespace {
         self.config = config
     }
 
-/// Creates a container registry repository for a project. Supply `projectId` and `name` in the request body; the name must follow the allowed lowercase repository-name format. The `teamId` or `slug` query parameter selects the team to act on behalf of.
+    /// Creates a container registry repository for a project. Supply `projectId` and `name` in the request body; the
+    /// name must follow the allowed lowercase repository-name format. The `teamId` or `slug` query parameter selects
+    /// the team to act on behalf of.
     ///
     /// Create a container registry repository for a project.
-    public func createRepository(projectId: String, name: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateRepositoryResponse {
-        return try await VcrMethods.createRepository(config: config, projectId: projectId, name: name, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func createRepository(
+        projectId: String,
+        name: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateRepositoryResponse {
+        try await VcrMethods.createRepository(
+            config: config,
+            projectId: projectId,
+            name: name,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists container registry repositories for a project in the authenticated team. Supply `projectId` to select the project; use `cursor` to continue through paginated results and `limit` to control the page size.
+    /// Lists container registry repositories for a project in the authenticated team. Supply `projectId` to select the
+    /// project; use `cursor` to continue through paginated results and `limit` to control the page size.
     ///
     /// List container registry repositories for a project.
-    public func listRepositories(projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> VcrRepositoryList {
-        return try await VcrMethods.listRepositories(config: config, projectId: projectId, limit: limit, cursor: cursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func listRepositories(
+        projectId: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> VcrRepositoryList {
+        try await VcrMethods.listRepositories(
+            config: config,
+            projectId: projectId,
+            limit: limit,
+            cursor: cursor,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists container registry repositories for a project in the authenticated team. Supply `projectId` to select the project; use `cursor` to continue through paginated results and `limit` to control the page size.
+    /// Lists container registry repositories for a project in the authenticated team. Supply `projectId` to select the
+    /// project; use `cursor` to continue through paginated results and `limit` to control the page size.
     ///
     /// List container registry repositories for a project.
-    public func listRepositoriesPaginated(projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<VcrRepository, Swift.Error> {
-        return VcrMethods.listRepositoriesPaginated(config: config, projectId: projectId, limit: limit, cursor: cursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func listRepositoriesPaginated(
+        projectId: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) -> AsyncThrowingStream<VcrRepository, Swift.Error> {
+        VcrMethods.listRepositoriesPaginated(
+            config: config,
+            projectId: projectId,
+            limit: limit,
+            cursor: cursor,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves a container registry repository for a project by its identifier or name. Supply `projectId` to select the project; IDs take precedence over names when identifying the project.
+    /// Retrieves a container registry repository for a project by its identifier or name. Supply `projectId` to select
+    /// the project; IDs take precedence over names when identifying the project.
     ///
     /// Fetch a container registry repository for a project by ID or name.
-    public func getRepository(idOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRepositoryResponse {
-        return try await VcrMethods.getRepository(config: config, idOrName: idOrName, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func getRepository(
+        idOrName: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetRepositoryResponse {
+        try await VcrMethods.getRepository(
+            config: config,
+            idOrName: idOrName,
+            projectId: projectId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a container registry repository by scheduling it for removal. The repository disappears from list and get results immediately, while its images and associated data are reclaimed asynchronously.
+    /// Deletes a container registry repository by scheduling it for removal. The repository disappears from list and
+    /// get results immediately, while its images and associated data are reclaimed asynchronously.
     ///
-    /// Schedule a repository for deletion. The repository is marked so it disappears from list/get immediately; subscriber-vcr reclaims every image (manifests, blobs, tags and rows) and finally deletes the repository row asynchronously via the VcrRepositoryRemoved event.
-    public func deleteRepository(idOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> JSONValue {
-        return try await VcrMethods.deleteRepository(config: config, idOrName: idOrName, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Schedule a repository for deletion. The repository is marked so it disappears from list/get immediately;
+    /// subscriber-vcr reclaims every image (manifests, blobs, tags and rows) and finally deletes the repository row
+    /// asynchronously via the VcrRepositoryRemoved event.
+    public func deleteRepository(
+        idOrName: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> JSONValue {
+        try await VcrMethods.deleteRepository(
+            config: config,
+            idOrName: idOrName,
+            projectId: projectId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists images and their tags for a container registry repository. Supply `projectId` and `idOrName` to identify the repository, and use `untagged` to filter for images without tags. Use `cursor` to continue through paginated results.
+    /// Lists images and their tags for a container registry repository. Supply `projectId` and `idOrName` to identify
+    /// the repository, and use `untagged` to filter for images without tags. Use `cursor` to continue through paginated
+    /// results.
     ///
     /// List images for a container registry repository, including their tags.
-    public func listRepositoryImages(idOrName: String, projectId: String, limit: Int? = nil, cursor: String? = nil, untagged: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> VcrImageList {
-        return try await VcrMethods.listRepositoryImages(config: config, idOrName: idOrName, projectId: projectId, limit: limit, cursor: cursor, untagged: untagged, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func listRepositoryImages(
+        idOrName: String,
+        projectId: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        untagged: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> VcrImageList {
+        try await VcrMethods.listRepositoryImages(
+            config: config,
+            idOrName: idOrName,
+            projectId: projectId,
+            limit: limit,
+            cursor: cursor,
+            untagged: untagged,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists images and their tags for a container registry repository. Supply `projectId` and `idOrName` to identify the repository, and use `untagged` to filter for images without tags. Use `cursor` to continue through paginated results.
+    /// Lists images and their tags for a container registry repository. Supply `projectId` and `idOrName` to identify
+    /// the repository, and use `untagged` to filter for images without tags. Use `cursor` to continue through paginated
+    /// results.
     ///
     /// List images for a container registry repository, including their tags.
-    public func listRepositoryImagesPaginated(idOrName: String, projectId: String, limit: Int? = nil, cursor: String? = nil, untagged: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) -> AsyncThrowingStream<VcrImageListItem, Swift.Error> {
-        return VcrMethods.listRepositoryImagesPaginated(config: config, idOrName: idOrName, projectId: projectId, limit: limit, cursor: cursor, untagged: untagged, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func listRepositoryImagesPaginated(
+        idOrName: String,
+        projectId: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        untagged: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) -> AsyncThrowingStream<VcrImageListItem, Swift.Error> {
+        VcrMethods.listRepositoryImagesPaginated(
+            config: config,
+            idOrName: idOrName,
+            projectId: projectId,
+            limit: limit,
+            cursor: cursor,
+            untagged: untagged,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Grants a team access to a VCR repository, with sharing applied to the entire repository. Supply the repository and project identifiers, then identify the team using the request body. The response includes the permission grant and its creation time.
+    /// Grants a team access to a VCR repository, with sharing applied to the entire repository. Supply the repository
+    /// and project identifiers, then identify the team using the request body. The response includes the permission
+    /// grant and its creation time.
     ///
     /// Grant a team access to a VCR repository. Sharing applies to the whole repository.
-    public func addRepositoryPermission(idOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, teamId2: String? = nil, teamSlug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> AddRepositoryPermissionResponse {
-        return try await VcrMethods.addRepositoryPermission(config: config, idOrName: idOrName, projectId: projectId, teamId: teamId, slug: slug, teamId2: teamId2, teamSlug: teamSlug, requestOptions: requestOptions)
+    public func addRepositoryPermission(
+        idOrName: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        teamId2: String? = nil,
+        teamSlug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AddRepositoryPermissionResponse {
+        try await VcrMethods.addRepositoryPermission(
+            config: config,
+            idOrName: idOrName,
+            projectId: projectId,
+            teamId: teamId,
+            slug: slug,
+            teamId2: teamId2,
+            teamSlug: teamSlug,
+            requestOptions: requestOptions
+        )
     }
 }

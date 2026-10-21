@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ChecksV2 domain models
+/// ChecksV2 domain models
 public indirect enum UpdateProjectCheckResponseSource {
     case updateProjectCheckResponseSourceVariant0(UpdateProjectCheckResponseSourceVariant0)
     case updateProjectCheckResponseSourceVariant1(UpdateProjectCheckResponseSourceVariant1)
@@ -11,30 +11,47 @@ public indirect enum UpdateProjectCheckResponseSource {
 }
 
 extension UpdateProjectCheckResponseSource: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateProjectCheckResponseSource")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateProjectCheckResponseSource"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateProjectCheckResponseSource {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateProjectCheckResponseSourceVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateProjectCheckResponseSourceVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateProjectCheckResponseSourceVariant0(value)
         }
-        if let value = try? container.decode(UpdateProjectCheckResponseSourceVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateProjectCheckResponseSourceVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateProjectCheckResponseSourceVariant1(value)
         }
-        if let value = try? container.decode(UpdateProjectCheckResponseSourceVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateProjectCheckResponseSourceVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateProjectCheckResponseSourceVariant2(value)
         }
         return nil
@@ -46,17 +63,17 @@ extension UpdateProjectCheckResponseSource {
         if let value = try? container.decode(
             UpdateProjectCheckResponseSourceVariant0.self
         ) {
-            return             .updateProjectCheckResponseSourceVariant0(value)
+            return .updateProjectCheckResponseSourceVariant0(value)
         }
         if let value = try? container.decode(
             UpdateProjectCheckResponseSourceVariant1.self
         ) {
-            return             .updateProjectCheckResponseSourceVariant1(value)
+            return .updateProjectCheckResponseSourceVariant1(value)
         }
         if let value = try? container.decode(
             UpdateProjectCheckResponseSourceVariant2.self
         ) {
-            return             .updateProjectCheckResponseSourceVariant2(value)
+            return .updateProjectCheckResponseSourceVariant2(value)
         }
         return nil
     }
@@ -82,25 +99,31 @@ public struct UpdateProjectCheckResponseSourceVariant1: Codable {
         case webhookId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateProjectCheckResponseSourceVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
-        }
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.webhookId = try container.sdkDecodeIfPresent(.webhookId)
-            try sdkValidateRawEnum("kind", self.kind, UpdateProjectCheckResponseSourceVariant1Kind.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateProjectCheckResponseSourceVariant1 {
-    public init(kind: UpdateProjectCheckResponseSourceVariant1Kind, webhookId: String? = nil) throws {
+public extension UpdateProjectCheckResponseSourceVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.kind) else {
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
+        }
+        kind = try container.sdkDecodeRequired(.kind)
+        webhookId = try container.sdkDecodeIfPresent(.webhookId)
+        try sdkValidateRawEnum("kind", kind, UpdateProjectCheckResponseSourceVariant1Kind.allCases.map(\.rawValue))
+    }
+}
+
+public extension UpdateProjectCheckResponseSourceVariant1 {
+    init(kind: UpdateProjectCheckResponseSourceVariant1Kind, webhookId: String? = nil) throws {
         (self.kind, self.webhookId) = (kind, webhookId)
-            try sdkValidateRawEnum("kind", self.kind, UpdateProjectCheckResponseSourceVariant1Kind.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("kind", self.kind, UpdateProjectCheckResponseSourceVariant1Kind.allCases.map(\.rawValue))
     }
 }
 
@@ -119,36 +142,56 @@ public struct UpdateProjectCheckResponseSourceVariant0: Codable {
         case resourceId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateProjectCheckResponseSourceVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.integrationConfigurationId) else {
-            throw SdkValidationError(field: "integrationConfigurationId", code: "required", message: "Validation failed for 'integrationConfigurationId': value is required")
-        }
-        guard container.contains(.integrationId) else {
-            throw SdkValidationError(field: "integrationId", code: "required", message: "Validation failed for 'integrationId': value is required")
-        }
-        guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
-        }
-        self.integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
-        self.integrationId = try container.sdkDecodeRequired(.integrationId)
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.externalResourceId = try container.sdkDecodeIfPresent(.externalResourceId)
-        self.resourceId = try container.sdkDecodeIfPresent(.resourceId)
-            try sdkValidateRawEnum("kind", self.kind, UpdateProjectCheckResponseSourceVariant0Kind.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateProjectCheckResponseSourceVariant0 {
-    public init(integrationConfigurationId: String, integrationId: String, kind: UpdateProjectCheckResponseSourceVariant0Kind, externalResourceId: String? = nil, resourceId: String? = nil) throws {
+public extension UpdateProjectCheckResponseSourceVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.integrationConfigurationId) else {
+            throw SdkValidationError(
+                field: "integrationConfigurationId",
+                code: "required",
+                message: "Validation failed for 'integrationConfigurationId': value is required"
+            )
+        }
+        guard container.contains(.integrationId) else {
+            throw SdkValidationError(
+                field: "integrationId",
+                code: "required",
+                message: "Validation failed for 'integrationId': value is required"
+            )
+        }
+        guard container.contains(.kind) else {
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
+        }
+        integrationConfigurationId = try container.sdkDecodeRequired(.integrationConfigurationId)
+        integrationId = try container.sdkDecodeRequired(.integrationId)
+        kind = try container.sdkDecodeRequired(.kind)
+        externalResourceId = try container.sdkDecodeIfPresent(.externalResourceId)
+        resourceId = try container.sdkDecodeIfPresent(.resourceId)
+        try sdkValidateRawEnum("kind", kind, UpdateProjectCheckResponseSourceVariant0Kind.allCases.map(\.rawValue))
+    }
+}
+
+public extension UpdateProjectCheckResponseSourceVariant0 {
+    init(
+        integrationConfigurationId: String,
+        integrationId: String,
+        kind: UpdateProjectCheckResponseSourceVariant0Kind,
+        externalResourceId: String? = nil,
+        resourceId: String? = nil
+    ) throws {
         (self.integrationConfigurationId, self.integrationId) = (integrationConfigurationId, integrationId)
         (self.kind, self.externalResourceId) = (kind, externalResourceId)
         self.resourceId = resourceId
-            try sdkValidateRawEnum("kind", self.kind, UpdateProjectCheckResponseSourceVariant0Kind.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("kind", self.kind, UpdateProjectCheckResponseSourceVariant0Kind.allCases.map(\.rawValue))
     }
 }
 
@@ -163,47 +206,69 @@ public struct UpdateProjectCheckResponseSourceVariant2: Codable {
         case provider
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension UpdateProjectCheckResponseSourceVariant2 {
-    public init(from decoder: Decoder) throws {
+public extension UpdateProjectCheckResponseSourceVariant2 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.externalCheckName) else {
-            throw SdkValidationError(field: "externalCheckName", code: "required", message: "Validation failed for 'externalCheckName': value is required")
+            throw SdkValidationError(
+                field: "externalCheckName",
+                code: "required",
+                message: "Validation failed for 'externalCheckName': value is required"
+            )
         }
         guard container.contains(.kind) else {
-            throw SdkValidationError(field: "kind", code: "required", message: "Validation failed for 'kind': value is required")
+            throw SdkValidationError(
+                field: "kind",
+                code: "required",
+                message: "Validation failed for 'kind': value is required"
+            )
         }
         guard container.contains(.provider) else {
-            throw SdkValidationError(field: "provider", code: "required", message: "Validation failed for 'provider': value is required")
+            throw SdkValidationError(
+                field: "provider",
+                code: "required",
+                message: "Validation failed for 'provider': value is required"
+            )
         }
-        self.externalCheckName = try container.sdkDecodeRequired(.externalCheckName)
-        self.kind = try container.sdkDecodeRequired(.kind)
-        self.provider = try container.sdkDecodeRequired(.provider)
-            try sdkValidateRawEnum("kind", self.kind, UpdateProjectCheckResponseSourceVariant2Kind.allCases.map(\.rawValue))
+        externalCheckName = try container.sdkDecodeRequired(.externalCheckName)
+        kind = try container.sdkDecodeRequired(.kind)
+        provider = try container.sdkDecodeRequired(.provider)
+        try sdkValidateRawEnum("kind", kind, UpdateProjectCheckResponseSourceVariant2Kind.allCases.map(\.rawValue))
     }
 }
 
-extension UpdateProjectCheckResponseSourceVariant2 {
-    public init(externalCheckName: String, kind: UpdateProjectCheckResponseSourceVariant2Kind, provider: UpdateProjectCheckResponseSourceVariant2Provider) throws {
+public extension UpdateProjectCheckResponseSourceVariant2 {
+    init(
+        externalCheckName: String,
+        kind: UpdateProjectCheckResponseSourceVariant2Kind,
+        provider: UpdateProjectCheckResponseSourceVariant2Provider
+    ) throws {
         (self.externalCheckName, self.kind) = (externalCheckName, kind)
         self.provider = provider
-            try sdkValidateRawEnum("kind", self.kind, UpdateProjectCheckResponseSourceVariant2Kind.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("kind", self.kind, UpdateProjectCheckResponseSourceVariant2Kind.allCases.map(\.rawValue))
     }
 }
 
-public struct UpdateProjectCheckResponseSourceVariant2Provider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateProjectCheckResponseSourceVariant2Provider: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let bitbucket = UpdateProjectCheckResponseSourceVariant2Provider(rawValue: "bitbucket")
     public static let github = UpdateProjectCheckResponseSourceVariant2Provider(rawValue: "github")
     public static let gitlab = UpdateProjectCheckResponseSourceVariant2Provider(rawValue: "gitlab")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

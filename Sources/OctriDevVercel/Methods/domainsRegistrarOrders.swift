@@ -6,13 +6,34 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsRegistrarMethods {
-    /// Retrieves information about a domain order using its order ID. Use the response to inspect the domains included in the order and its current status. The status is one of `draft`, `purchasing`, `completed`, or `failed`.
+public extension DomainsRegistrarMethods {
+    /// Retrieves information about a domain order using its order ID. Use the response to inspect the domains included
+    /// in the order and its current status. The status is one of `draft`, `purchasing`, `completed`, or `failed`.
     ///
     /// Get information about a domain order by its ID
-    public static func getOrder(config: ClientConfig, orderId: OrderId, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetOrderResponse {
-        return try (await sdkRequest("GET", ["/v1/registrar/orders/", sdkEncodePathSegment(sdkWireString(orderId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-        ], decoder: .json, operationId: "getOrder", options: requestOptions, errors: ["400": HttpApiDecodeError.self, "401": Unauthorized.self, "404": NotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
+    static func getOrder(
+        config: ClientConfig,
+        orderId: OrderId,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetOrderResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/registrar/orders/", sdkEncodePathSegment(sdkWireString(orderId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+            ],
+            decoder: .json,
+            operationId: "getOrder",
+            options: requestOptions,
+            errors: [
+                "400": HttpApiDecodeError.self,
+                "401": Unauthorized.self,
+                "404": NotFound.self,
+                "429": TooManyRequests.self,
+                "500": InternalServerError.self,
+            ]
+        )).data
     }
 }

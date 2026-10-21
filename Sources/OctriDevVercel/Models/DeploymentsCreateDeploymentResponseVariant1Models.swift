@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Deployments domain models
+/// Deployments domain models
 /// Returns the newly created deployment object. Poll `readyState` to track build progress. See vercel.com for
 /// possible states.
 public struct CreateDeploymentResponseVariant1: Codable {
@@ -268,111 +268,208 @@ public struct CreateDeploymentResponseVariant1: Codable {
         case userConfiguredDeploymentId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateDeploymentResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.aliasAssigned = try container.sdkDecodeRequired(.aliasAssigned)
-        self.bootedAt = try container.sdkDecodeRequired(.bootedAt)
-        self.build = try container.sdkDecodeRequired(.build)
-        self.buildingAt = try container.sdkDecodeRequired(.buildingAt)
-        self.buildSkipped = try container.sdkDecodeRequired(.buildSkipped)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.createdIn = try container.sdkDecodeRequired(.createdIn)
-        self.creator = try container.sdkDecodeRequired(.creator)
-        self.duration = try container.sdkDecodeRequired(.duration)
-        self.env = try container.sdkDecodeRequired(.env)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.inspectorUrl = try container.sdkDecodeNullable(.inspectorUrl)
-        self.isInConcurrentBuildsQueue = try container.sdkDecodeRequired(.isInConcurrentBuildsQueue)
-        self.isInSystemBuildsQueue = try container.sdkDecodeRequired(.isInSystemBuildsQueue)
-        self.meta = try container.sdkDecodeRequired(.meta)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.plan = try container.sdkDecodeRequired(.plan)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.projectSettings = try container.sdkDecodeRequired(.projectSettings)
-        self.`public` = try container.sdkDecodeRequired(.`public`)
-        self.readyState = try container.sdkDecodeRequired(.readyState)
-        self.regions = try container.sdkDecodeRequired(.regions)
-        self.routes = try container.sdkDecodeNullable(.routes)
-        self.status = try container.sdkDecodeRequired(.status)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.url = try container.sdkDecodeRequired(.url)
-        self.version = try container.sdkDecodeRequired(.version)
-        self.alias = try container.sdkDecodeIfPresent(.alias)
-        self.aliasAssignedAt = try container.sdkDecodeIfPresent(.aliasAssignedAt)
-        self.aliasError = try container.sdkDecodeIfPresent(.aliasError)
-        self.aliasFinal = try container.sdkDecodeIfPresent(.aliasFinal)
-        self.aliasWarning = try container.sdkDecodeIfPresent(.aliasWarning)
-        self.alwaysRefuseToBuild = try container.sdkDecodeIfPresent(.alwaysRefuseToBuild)
-        self.atproto = try container.sdkDecodeIfPresent(.atproto)
-        self.attribution = try container.sdkDecodeIfPresent(.attribution)
-        self.autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
-        self.automaticAliases = try container.sdkDecodeIfPresent(.automaticAliases)
-        self.buildArtifactUrls = try container.sdkDecodeIfPresent(.buildArtifactUrls)
-        self.buildContainerFinishedAt = try container.sdkDecodeIfPresent(.buildContainerFinishedAt)
-        self.buildErrorAt = try container.sdkDecodeIfPresent(.buildErrorAt)
-        self.builds = try container.sdkDecodeIfPresent(.builds)
-        self.canceledAt = try container.sdkDecodeIfPresent(.canceledAt)
-        self.checks = try container.sdkDecodeIfPresent(.checks)
-        self.checksConclusion = try container.sdkDecodeIfPresent(.checksConclusion)
-        self.checksState = try container.sdkDecodeIfPresent(.checksState)
-        self.config = try container.sdkDecodeIfPresent(.config)
-        self.connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
-        self.connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
-        self.crons = try container.sdkDecodeIfPresent(.crons)
-        self.customEnvironment = try container.sdkDecodeIfPresent(.customEnvironment)
-        self.defaultRoute = try container.sdkDecodeIfPresent(.defaultRoute)
-        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        self.errorCode = try container.sdkDecodeIfPresent(.errorCode)
-        self.errorLink = try container.sdkDecodeIfPresent(.errorLink)
-        self.errorMessage = try container.sdkDecodeIfPresent(.errorMessage)
-        self.errorStep = try container.sdkDecodeIfPresent(.errorStep)
-        self.flags = try container.sdkDecodeIfPresent(.flags)
-        self.functions = try container.sdkDecodeIfPresent(.functions)
-        self.gitRepo = try container.sdkDecodeIfPresent(.gitRepo)
-        self.gitSource = try container.sdkDecodeIfPresent(.gitSource)
-        self.images = try container.sdkDecodeIfPresent(.images)
-        self.initReadyAt = try container.sdkDecodeIfPresent(.initReadyAt)
-        self.integrations = try container.sdkDecodeIfPresent(.integrations)
-        self.isFirstBranchDeployment = try container.sdkDecodeIfPresent(.isFirstBranchDeployment)
-        self.isInstantStatic = try container.sdkDecodeIfPresent(.isInstantStatic)
-        self.lambdas = try container.sdkDecodeIfPresent(.lambdas)
-        self.manualProvisioning = try container.sdkDecodeIfPresent(.manualProvisioning)
-        self.microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
-        self.monorepoManager = try container.sdkDecodeIfPresent(.monorepoManager)
-        self.nodeVersion = try container.sdkDecodeIfPresent(.nodeVersion)
-        self.oidcTokenClaims = try container.sdkDecodeIfPresent(.oidcTokenClaims)
-        self.oomReport = try container.sdkDecodeIfPresent(.oomReport)
-        self.originCacheRegion = try container.sdkDecodeIfPresent(.originCacheRegion)
-        self.passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
-        self.passiveRegions = try container.sdkDecodeIfPresent(.passiveRegions)
-        self.platform = try container.sdkDecodeIfPresent(.platform)
-        self.prebuilt = try container.sdkDecodeIfPresent(.prebuilt)
-        self.previewCommentsEnabled = try container.sdkDecodeIfPresent(.previewCommentsEnabled)
-        self.project = try container.sdkDecodeIfPresent(.project)
-        self.ready = try container.sdkDecodeIfPresent(.ready)
-        self.readyStateReason = try container.sdkDecodeIfPresent(.readyStateReason)
-        self.readySubstate = try container.sdkDecodeIfPresent(.readySubstate)
-        self.resourceConfig = try container.sdkDecodeIfPresent(.resourceConfig)
-        self.seatBlock = try container.sdkDecodeIfPresent(.seatBlock)
-        self.services = try container.sdkDecodeIfPresent(.services)
-        self.softDeletedByRetention = try container.sdkDecodeIfPresent(.softDeletedByRetention)
-        self.source = try container.sdkDecodeIfPresent(.source)
-        self.target = try container.sdkDecodeIfPresent(.target)
-        self.team = try container.sdkDecodeIfPresent(.team)
-        self.ttyBuildLogs = try container.sdkDecodeIfPresent(.ttyBuildLogs)
-        self.undeletedAt = try container.sdkDecodeIfPresent(.undeletedAt)
-        self.userAliases = try container.sdkDecodeIfPresent(.userAliases)
-        self.userConfiguredDeploymentId = try container.sdkDecodeIfPresent(.userConfiguredDeploymentId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateDeploymentResponseVariant1 {
-    public init(aliasAssigned: Bool, bootedAt: Double, build: CreateDeploymentResponseVariant1Build, buildingAt: Double, buildSkipped: Bool, createdAt: Double, createdIn: String, creator: CreateDeploymentResponseVariant1Creator, duration: CreateDeploymentResponseVariant1Duration, env: [String], id: String, inspectorUrl: String?, isInConcurrentBuildsQueue: Bool, isInSystemBuildsQueue: Bool, meta: [String: String], name: String, ownerId: String, plan: CreateDeploymentResponseVariant1Plan, projectId: String, projectSettings: CreateDeploymentResponseVariant1ProjectSettings, `public`: Bool, readyState: CreateDeploymentResponseVariant1ReadyState, regions: [String], routes: [CreateDeploymentResponseVariant1RoutesItem]?, status: CreateDeploymentResponseVariant1Status, type: CreateDeploymentResponseVariant1Type, url: String, version: Int, alias: [String]? = nil, aliasAssignedAt: CreateDeploymentResponseVariant1AliasAssignedAt? = nil, aliasError: CreateDeploymentResponseVariant1AliasError? = nil, aliasFinal: String? = nil, aliasWarning: CreateDeploymentResponseVariant1AliasWarning? = nil, alwaysRefuseToBuild: Bool? = nil, atproto: CreateDeploymentResponseVariant1Atproto? = nil, attribution: CreateDeploymentResponseVariant1Attribution? = nil, autoAssignCustomDomains: Bool? = nil, automaticAliases: [String]? = nil, buildArtifactUrls: [String]? = nil, buildContainerFinishedAt: Double? = nil, buildErrorAt: Double? = nil, builds: [CreateDeploymentResponseVariant1BuildsItem]? = nil, canceledAt: Double? = nil, checks: CreateDeploymentResponseVariant1Checks? = nil, checksConclusion: CreateDeploymentResponseVariant1ChecksConclusion? = nil, checksState: CreateDeploymentResponseVariant1ChecksState? = nil, config: CreateDeploymentResponseVariant1Config? = nil, connectBuildsEnabled: Bool? = nil, connectConfigurationId: String? = nil, crons: [CreateDeploymentResponseVariant1CronsItem]? = nil, customEnvironment: CreateDeploymentResponseVariant1CustomEnvironment? = nil, defaultRoute: String? = nil, deletedAt: Double? = nil, errorCode: String? = nil, errorLink: String? = nil, errorMessage: String? = nil, errorStep: String? = nil, flags: CreateDeploymentResponseVariant1Flags? = nil, functions: [String: CreateDeploymentResponseVariant1FunctionsValue]? = nil, gitRepo: CreateDeploymentResponseVariant1GitRepo? = nil, gitSource: CreateDeploymentResponseVariant1GitSource? = nil, images: CreateDeploymentResponseVariant1Images? = nil, initReadyAt: Double? = nil, integrations: CreateDeploymentResponseVariant1Integrations? = nil, isFirstBranchDeployment: Bool? = nil, isInstantStatic: Bool? = nil, lambdas: [CreateDeploymentResponseVariant1LambdasItem]? = nil, manualProvisioning: CreateDeploymentResponseVariant1ManualProvisioning? = nil, microfrontends: CreateDeploymentResponseVariant1Microfrontends? = nil, monorepoManager: String? = nil, nodeVersion: CreateDeploymentResponseVariant1NodeVersion? = nil, oidcTokenClaims: CreateDeploymentResponseVariant1OidcTokenClaims? = nil, oomReport: CreateDeploymentResponseVariant1OomReport? = nil, originCacheRegion: String? = nil, passiveConnectConfigurationId: String? = nil, passiveRegions: [String]? = nil, platform: CreateDeploymentResponseVariant1Platform? = nil, prebuilt: Bool? = nil, previewCommentsEnabled: Bool? = nil, project: CreateDeploymentResponseVariant1Project? = nil, ready: Double? = nil, readyStateReason: String? = nil, readySubstate: CreateDeploymentResponseVariant1ReadySubstate? = nil, resourceConfig: CreateDeploymentResponseVariant1ResourceConfig? = nil, seatBlock: CreateDeploymentResponseVariant1SeatBlock? = nil, services: [CreateDeploymentResponseVariant1ServicesItem]? = nil, softDeletedByRetention: Bool? = nil, source: CreateDeploymentResponseVariant1Source? = nil, target: CreateDeploymentResponseVariant1Target? = nil, team: CreateDeploymentResponseVariant1Team? = nil, ttyBuildLogs: Bool? = nil, undeletedAt: Double? = nil, userAliases: [String]? = nil, userConfiguredDeploymentId: String? = nil) {
+public extension CreateDeploymentResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        aliasAssigned = try container.sdkDecodeRequired(.aliasAssigned)
+        bootedAt = try container.sdkDecodeRequired(.bootedAt)
+        build = try container.sdkDecodeRequired(.build)
+        buildingAt = try container.sdkDecodeRequired(.buildingAt)
+        buildSkipped = try container.sdkDecodeRequired(.buildSkipped)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        createdIn = try container.sdkDecodeRequired(.createdIn)
+        creator = try container.sdkDecodeRequired(.creator)
+        duration = try container.sdkDecodeRequired(.duration)
+        env = try container.sdkDecodeRequired(.env)
+        id = try container.sdkDecodeRequired(.id)
+        inspectorUrl = try container.sdkDecodeNullable(.inspectorUrl)
+        isInConcurrentBuildsQueue = try container.sdkDecodeRequired(.isInConcurrentBuildsQueue)
+        isInSystemBuildsQueue = try container.sdkDecodeRequired(.isInSystemBuildsQueue)
+        meta = try container.sdkDecodeRequired(.meta)
+        name = try container.sdkDecodeRequired(.name)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        plan = try container.sdkDecodeRequired(.plan)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        projectSettings = try container.sdkDecodeRequired(.projectSettings)
+        self.public = try container.sdkDecodeRequired(.public)
+        readyState = try container.sdkDecodeRequired(.readyState)
+        regions = try container.sdkDecodeRequired(.regions)
+        routes = try container.sdkDecodeNullable(.routes)
+        status = try container.sdkDecodeRequired(.status)
+        type = try container.sdkDecodeRequired(.type)
+        url = try container.sdkDecodeRequired(.url)
+        version = try container.sdkDecodeRequired(.version)
+        alias = try container.sdkDecodeIfPresent(.alias)
+        aliasAssignedAt = try container.sdkDecodeIfPresent(.aliasAssignedAt)
+        aliasError = try container.sdkDecodeIfPresent(.aliasError)
+        aliasFinal = try container.sdkDecodeIfPresent(.aliasFinal)
+        aliasWarning = try container.sdkDecodeIfPresent(.aliasWarning)
+        alwaysRefuseToBuild = try container.sdkDecodeIfPresent(.alwaysRefuseToBuild)
+        atproto = try container.sdkDecodeIfPresent(.atproto)
+        attribution = try container.sdkDecodeIfPresent(.attribution)
+        autoAssignCustomDomains = try container.sdkDecodeIfPresent(.autoAssignCustomDomains)
+        automaticAliases = try container.sdkDecodeIfPresent(.automaticAliases)
+        buildArtifactUrls = try container.sdkDecodeIfPresent(.buildArtifactUrls)
+        buildContainerFinishedAt = try container.sdkDecodeIfPresent(.buildContainerFinishedAt)
+        buildErrorAt = try container.sdkDecodeIfPresent(.buildErrorAt)
+        builds = try container.sdkDecodeIfPresent(.builds)
+        canceledAt = try container.sdkDecodeIfPresent(.canceledAt)
+        checks = try container.sdkDecodeIfPresent(.checks)
+        checksConclusion = try container.sdkDecodeIfPresent(.checksConclusion)
+        checksState = try container.sdkDecodeIfPresent(.checksState)
+        config = try container.sdkDecodeIfPresent(.config)
+        connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
+        connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
+        crons = try container.sdkDecodeIfPresent(.crons)
+        customEnvironment = try container.sdkDecodeIfPresent(.customEnvironment)
+        defaultRoute = try container.sdkDecodeIfPresent(.defaultRoute)
+        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        errorCode = try container.sdkDecodeIfPresent(.errorCode)
+        errorLink = try container.sdkDecodeIfPresent(.errorLink)
+        errorMessage = try container.sdkDecodeIfPresent(.errorMessage)
+        errorStep = try container.sdkDecodeIfPresent(.errorStep)
+        flags = try container.sdkDecodeIfPresent(.flags)
+        functions = try container.sdkDecodeIfPresent(.functions)
+        gitRepo = try container.sdkDecodeIfPresent(.gitRepo)
+        gitSource = try container.sdkDecodeIfPresent(.gitSource)
+        images = try container.sdkDecodeIfPresent(.images)
+        initReadyAt = try container.sdkDecodeIfPresent(.initReadyAt)
+        integrations = try container.sdkDecodeIfPresent(.integrations)
+        isFirstBranchDeployment = try container.sdkDecodeIfPresent(.isFirstBranchDeployment)
+        isInstantStatic = try container.sdkDecodeIfPresent(.isInstantStatic)
+        lambdas = try container.sdkDecodeIfPresent(.lambdas)
+        manualProvisioning = try container.sdkDecodeIfPresent(.manualProvisioning)
+        microfrontends = try container.sdkDecodeIfPresent(.microfrontends)
+        monorepoManager = try container.sdkDecodeIfPresent(.monorepoManager)
+        nodeVersion = try container.sdkDecodeIfPresent(.nodeVersion)
+        oidcTokenClaims = try container.sdkDecodeIfPresent(.oidcTokenClaims)
+        oomReport = try container.sdkDecodeIfPresent(.oomReport)
+        originCacheRegion = try container.sdkDecodeIfPresent(.originCacheRegion)
+        passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
+        passiveRegions = try container.sdkDecodeIfPresent(.passiveRegions)
+        platform = try container.sdkDecodeIfPresent(.platform)
+        prebuilt = try container.sdkDecodeIfPresent(.prebuilt)
+        previewCommentsEnabled = try container.sdkDecodeIfPresent(.previewCommentsEnabled)
+        project = try container.sdkDecodeIfPresent(.project)
+        ready = try container.sdkDecodeIfPresent(.ready)
+        readyStateReason = try container.sdkDecodeIfPresent(.readyStateReason)
+        readySubstate = try container.sdkDecodeIfPresent(.readySubstate)
+        resourceConfig = try container.sdkDecodeIfPresent(.resourceConfig)
+        seatBlock = try container.sdkDecodeIfPresent(.seatBlock)
+        services = try container.sdkDecodeIfPresent(.services)
+        softDeletedByRetention = try container.sdkDecodeIfPresent(.softDeletedByRetention)
+        source = try container.sdkDecodeIfPresent(.source)
+        target = try container.sdkDecodeIfPresent(.target)
+        team = try container.sdkDecodeIfPresent(.team)
+        ttyBuildLogs = try container.sdkDecodeIfPresent(.ttyBuildLogs)
+        undeletedAt = try container.sdkDecodeIfPresent(.undeletedAt)
+        userAliases = try container.sdkDecodeIfPresent(.userAliases)
+        userConfiguredDeploymentId = try container.sdkDecodeIfPresent(.userConfiguredDeploymentId)
+    }
+}
+
+public extension CreateDeploymentResponseVariant1 {
+    init(
+        aliasAssigned: Bool,
+        bootedAt: Double,
+        build: CreateDeploymentResponseVariant1Build,
+        buildingAt: Double,
+        buildSkipped: Bool,
+        createdAt: Double,
+        createdIn: String,
+        creator: CreateDeploymentResponseVariant1Creator,
+        duration: CreateDeploymentResponseVariant1Duration,
+        env: [String],
+        id: String,
+        inspectorUrl: String?,
+        isInConcurrentBuildsQueue: Bool,
+        isInSystemBuildsQueue: Bool,
+        meta: [String: String],
+        name: String,
+        ownerId: String,
+        plan: CreateDeploymentResponseVariant1Plan,
+        projectId: String,
+        projectSettings: CreateDeploymentResponseVariant1ProjectSettings,
+        public: Bool,
+        readyState: CreateDeploymentResponseVariant1ReadyState,
+        regions: [String],
+        routes: [CreateDeploymentResponseVariant1RoutesItem]?,
+        status: CreateDeploymentResponseVariant1Status,
+        type: CreateDeploymentResponseVariant1Type,
+        url: String,
+        version: Int,
+        alias: [String]? = nil,
+        aliasAssignedAt: CreateDeploymentResponseVariant1AliasAssignedAt? = nil,
+        aliasError: CreateDeploymentResponseVariant1AliasError? = nil,
+        aliasFinal: String? = nil,
+        aliasWarning: CreateDeploymentResponseVariant1AliasWarning? = nil,
+        alwaysRefuseToBuild: Bool? = nil,
+        atproto: CreateDeploymentResponseVariant1Atproto? = nil,
+        attribution: CreateDeploymentResponseVariant1Attribution? = nil,
+        autoAssignCustomDomains: Bool? = nil,
+        automaticAliases: [String]? = nil,
+        buildArtifactUrls: [String]? = nil,
+        buildContainerFinishedAt: Double? = nil,
+        buildErrorAt: Double? = nil,
+        builds: [CreateDeploymentResponseVariant1BuildsItem]? = nil,
+        canceledAt: Double? = nil,
+        checks: CreateDeploymentResponseVariant1Checks? = nil,
+        checksConclusion: CreateDeploymentResponseVariant1ChecksConclusion? = nil,
+        checksState: CreateDeploymentResponseVariant1ChecksState? = nil,
+        config: CreateDeploymentResponseVariant1Config? = nil,
+        connectBuildsEnabled: Bool? = nil,
+        connectConfigurationId: String? = nil,
+        crons: [CreateDeploymentResponseVariant1CronsItem]? = nil,
+        customEnvironment: CreateDeploymentResponseVariant1CustomEnvironment? = nil,
+        defaultRoute: String? = nil,
+        deletedAt: Double? = nil,
+        errorCode: String? = nil,
+        errorLink: String? = nil,
+        errorMessage: String? = nil,
+        errorStep: String? = nil,
+        flags: CreateDeploymentResponseVariant1Flags? = nil,
+        functions: [String: CreateDeploymentResponseVariant1FunctionsValue]? = nil,
+        gitRepo: CreateDeploymentResponseVariant1GitRepo? = nil,
+        gitSource: CreateDeploymentResponseVariant1GitSource? = nil,
+        images: CreateDeploymentResponseVariant1Images? = nil,
+        initReadyAt: Double? = nil,
+        integrations: CreateDeploymentResponseVariant1Integrations? = nil,
+        isFirstBranchDeployment: Bool? = nil,
+        isInstantStatic: Bool? = nil,
+        lambdas: [CreateDeploymentResponseVariant1LambdasItem]? = nil,
+        manualProvisioning: CreateDeploymentResponseVariant1ManualProvisioning? = nil,
+        microfrontends: CreateDeploymentResponseVariant1Microfrontends? = nil,
+        monorepoManager: String? = nil,
+        nodeVersion: CreateDeploymentResponseVariant1NodeVersion? = nil,
+        oidcTokenClaims: CreateDeploymentResponseVariant1OidcTokenClaims? = nil,
+        oomReport: CreateDeploymentResponseVariant1OomReport? = nil,
+        originCacheRegion: String? = nil,
+        passiveConnectConfigurationId: String? = nil,
+        passiveRegions: [String]? = nil,
+        platform: CreateDeploymentResponseVariant1Platform? = nil,
+        prebuilt: Bool? = nil,
+        previewCommentsEnabled: Bool? = nil,
+        project: CreateDeploymentResponseVariant1Project? = nil,
+        ready: Double? = nil,
+        readyStateReason: String? = nil,
+        readySubstate: CreateDeploymentResponseVariant1ReadySubstate? = nil,
+        resourceConfig: CreateDeploymentResponseVariant1ResourceConfig? = nil,
+        seatBlock: CreateDeploymentResponseVariant1SeatBlock? = nil,
+        services: [CreateDeploymentResponseVariant1ServicesItem]? = nil,
+        softDeletedByRetention: Bool? = nil,
+        source: CreateDeploymentResponseVariant1Source? = nil,
+        target: CreateDeploymentResponseVariant1Target? = nil,
+        team: CreateDeploymentResponseVariant1Team? = nil,
+        ttyBuildLogs: Bool? = nil,
+        undeletedAt: Double? = nil,
+        userAliases: [String]? = nil,
+        userConfiguredDeploymentId: String? = nil
+    ) {
         (self.aliasAssigned, self.bootedAt) = (aliasAssigned, bootedAt)
         (self.build, self.buildingAt) = (build, buildingAt)
         (self.buildSkipped, self.createdAt) = (buildSkipped, createdAt)
@@ -383,7 +480,7 @@ extension CreateDeploymentResponseVariant1 {
         (self.isInSystemBuildsQueue, self.meta) = (isInSystemBuildsQueue, meta)
         (self.name, self.ownerId) = (name, ownerId)
         (self.plan, self.projectId) = (plan, projectId)
-        (self.projectSettings, self.`public`) = (projectSettings, `public`)
+        (self.projectSettings, self.public) = (projectSettings, `public`)
         (self.readyState, self.regions) = (readyState, regions)
         (self.routes, self.status) = (routes, status)
         (self.type, self.url) = (type, url)
@@ -442,21 +539,25 @@ public struct CreateDeploymentResponseVariant1ConfigResourceConfig: Codable {
     }
 
     init() {
-        (self.buildQueue, self.elasticConcurrency, self.buildMachine) = (nil, nil, nil)
+        (buildQueue, elasticConcurrency, buildMachine) = (nil, nil, nil)
     }
 }
 
-extension CreateDeploymentResponseVariant1ConfigResourceConfig {
-    public init(from decoder: Decoder) throws {
+public extension CreateDeploymentResponseVariant1ConfigResourceConfig {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.buildQueue = try container.sdkDecodeIfPresent(.buildQueue)
-        self.elasticConcurrency = try container.sdkDecodeIfPresent(.elasticConcurrency)
-        self.buildMachine = try container.sdkDecodeIfPresent(.buildMachine)
+        buildQueue = try container.sdkDecodeIfPresent(.buildQueue)
+        elasticConcurrency = try container.sdkDecodeIfPresent(.elasticConcurrency)
+        buildMachine = try container.sdkDecodeIfPresent(.buildMachine)
     }
 }
 
-extension CreateDeploymentResponseVariant1ConfigResourceConfig {
-    public init(buildQueue: CreateDeploymentResponseVariant1ConfigResourceConfigBuildQueue? = nil, elasticConcurrency: CreateDeploymentResponseVariant1ConfigResourceConfigElasticConcurrency? = nil, buildMachine: CreateDeploymentResponseVariant1ConfigResourceConfigBuildMachine? = nil) {
+public extension CreateDeploymentResponseVariant1ConfigResourceConfig {
+    init(
+        buildQueue: CreateDeploymentResponseVariant1ConfigResourceConfigBuildQueue? = nil,
+        elasticConcurrency: CreateDeploymentResponseVariant1ConfigResourceConfigElasticConcurrency? = nil,
+        buildMachine: CreateDeploymentResponseVariant1ConfigResourceConfigBuildMachine? = nil
+    ) {
         self.init()
         (self.buildQueue, self.elasticConcurrency) = (buildQueue, elasticConcurrency)
         self.buildMachine = buildMachine
@@ -479,30 +580,49 @@ public struct CreateDeploymentRequestGitSourceVariant3: Codable {
         case sha
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateDeploymentRequestGitSourceVariant3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.ref) else {
-            throw SdkValidationError(field: "ref", code: "required", message: "Validation failed for 'ref': value is required")
-        }
-        guard container.contains(.repoId) else {
-            throw SdkValidationError(field: "repoId", code: "required", message: "Validation failed for 'repoId': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.ref = try container.sdkDecodeRequired(.ref)
-        self.repoId = try container.sdkDecodeRequired(.repoId)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.sha = try container.sdkDecodeIfPresent(.sha)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateDeploymentRequestGitSourceVariant3 {
-    public init(ref: String, repoId: CreateDeploymentRequestGitSourceVariant3RepoId, type: CreateDeploymentRequestGitSourceVariant3Type, sha: String? = nil) {
+public extension CreateDeploymentRequestGitSourceVariant3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.ref) else {
+            throw SdkValidationError(
+                field: "ref",
+                code: "required",
+                message: "Validation failed for 'ref': value is required"
+            )
+        }
+        guard container.contains(.repoId) else {
+            throw SdkValidationError(
+                field: "repoId",
+                code: "required",
+                message: "Validation failed for 'repoId': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        ref = try container.sdkDecodeRequired(.ref)
+        repoId = try container.sdkDecodeRequired(.repoId)
+        type = try container.sdkDecodeRequired(.type)
+        sha = try container.sdkDecodeIfPresent(.sha)
+    }
+}
+
+public extension CreateDeploymentRequestGitSourceVariant3 {
+    init(
+        ref: String,
+        repoId: CreateDeploymentRequestGitSourceVariant3RepoId,
+        type: CreateDeploymentRequestGitSourceVariant3Type,
+        sha: String? = nil
+    ) {
         (self.ref, self.repoId) = (ref, repoId)
         (self.type, self.sha) = (type, sha)
     }

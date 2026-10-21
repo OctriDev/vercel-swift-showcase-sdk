@@ -6,15 +6,38 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsRegistrarMethods {
-    /// Updates whether a domain is set to renew automatically. Set `autoRenew` to `true` or `false` to enable or disable automatic renewal for the specified domain. A 204 response confirms the setting was updated and contains no response body.
+public extension DomainsRegistrarMethods {
+    /// Updates whether a domain is set to renew automatically. Set `autoRenew` to `true` or `false` to enable or
+    /// disable automatic renewal for the specified domain. A 204 response confirms the setting was updated and contains
+    /// no response body.
     ///
     /// Update the auto-renew setting for a domain
-    public static func updateDomainAutoRenew(config: ClientConfig, domain: DomainName, autoRenew: Bool, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func updateDomainAutoRenew(
+        config: ClientConfig,
+        domain: DomainName,
+        autoRenew: Bool,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         let requestBody = UpdateDomainAutoRenewRequestBody(autoRenew: autoRenew)
 
-        return try (await sdkRequest("PATCH", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/auto-renew"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-        ], body: requestBody, decoder: .empty, operationId: "updateDomainAutoRenew", options: requestOptions, errors: ["401": Unauthorized.self, "404": DomainNotFound.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
+        return try await (sdkRequest(
+            "PATCH",
+            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/auto-renew"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+            ],
+            body: requestBody,
+            decoder: .empty,
+            operationId: "updateDomainAutoRenew",
+            options: requestOptions,
+            errors: [
+                "401": Unauthorized.self,
+                "404": DomainNotFound.self,
+                "429": TooManyRequests.self,
+                "500": InternalServerError.self,
+            ]
+        )).data
     }
 }

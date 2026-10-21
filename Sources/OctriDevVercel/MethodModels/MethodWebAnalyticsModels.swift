@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical webAnalytics operation model declarations
+/// Canonical webAnalytics operation model declarations
 public struct AggregatePageviewsResponseDataVariant0Item: Codable {
     public var timestamp: Date
     public var browserName: String?
@@ -51,40 +51,66 @@ public struct AggregatePageviewsResponseDataVariant0Item: Codable {
         case visitorId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AggregatePageviewsResponseDataVariant0Item {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.timestamp) else {
-            throw SdkValidationError(field: "timestamp", code: "required", message: "Validation failed for 'timestamp': value is required")
-        }
-        self.timestamp = try container.sdkDecodeRequired(.timestamp)
-        self.browserName = try container.sdkDecodeIfPresent(.browserName)
-        self.country = try container.sdkDecodeIfPresent(.country)
-        self.deviceType = try container.sdkDecodeIfPresent(.deviceType)
-        self.environment = try container.sdkDecodeIfPresent(.environment)
-        self.flags = try container.sdkDecodeIfPresent(.flags)
-        self.osName = try container.sdkDecodeIfPresent(.osName)
-        self.projectId = try container.sdkDecodeIfPresent(.projectId)
-        self.projectName = try container.sdkDecodeIfPresent(.projectName)
-        self.referrerHostname = try container.sdkDecodeIfPresent(.referrerHostname)
-        self.requestHostname = try container.sdkDecodeIfPresent(.requestHostname)
-        self.requestPath = try container.sdkDecodeIfPresent(.requestPath)
-        self.route = try container.sdkDecodeIfPresent(.route)
-        self.utmCampaign = try container.sdkDecodeIfPresent(.utmCampaign)
-        self.utmContent = try container.sdkDecodeIfPresent(.utmContent)
-        self.utmMedium = try container.sdkDecodeIfPresent(.utmMedium)
-        self.utmSource = try container.sdkDecodeIfPresent(.utmSource)
-        self.utmTerm = try container.sdkDecodeIfPresent(.utmTerm)
-        self.visitorId = try container.sdkDecodeIfPresent(.visitorId)
-            try sdkValidateDateTime("timestamp", sdkWireString(self.timestamp))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AggregatePageviewsResponseDataVariant0Item {
-    public init(timestamp: Date, browserName: String? = nil, country: String? = nil, deviceType: String? = nil, environment: String? = nil, flags: String? = nil, osName: String? = nil, projectId: String? = nil, projectName: String? = nil, referrerHostname: String? = nil, requestHostname: String? = nil, requestPath: String? = nil, route: String? = nil, utmCampaign: String? = nil, utmContent: String? = nil, utmMedium: String? = nil, utmSource: String? = nil, utmTerm: String? = nil, visitorId: String? = nil) throws {
+public extension AggregatePageviewsResponseDataVariant0Item {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.timestamp) else {
+            throw SdkValidationError(
+                field: "timestamp",
+                code: "required",
+                message: "Validation failed for 'timestamp': value is required"
+            )
+        }
+        timestamp = try container.sdkDecodeRequired(.timestamp)
+        browserName = try container.sdkDecodeIfPresent(.browserName)
+        country = try container.sdkDecodeIfPresent(.country)
+        deviceType = try container.sdkDecodeIfPresent(.deviceType)
+        environment = try container.sdkDecodeIfPresent(.environment)
+        flags = try container.sdkDecodeIfPresent(.flags)
+        osName = try container.sdkDecodeIfPresent(.osName)
+        projectId = try container.sdkDecodeIfPresent(.projectId)
+        projectName = try container.sdkDecodeIfPresent(.projectName)
+        referrerHostname = try container.sdkDecodeIfPresent(.referrerHostname)
+        requestHostname = try container.sdkDecodeIfPresent(.requestHostname)
+        requestPath = try container.sdkDecodeIfPresent(.requestPath)
+        route = try container.sdkDecodeIfPresent(.route)
+        utmCampaign = try container.sdkDecodeIfPresent(.utmCampaign)
+        utmContent = try container.sdkDecodeIfPresent(.utmContent)
+        utmMedium = try container.sdkDecodeIfPresent(.utmMedium)
+        utmSource = try container.sdkDecodeIfPresent(.utmSource)
+        utmTerm = try container.sdkDecodeIfPresent(.utmTerm)
+        visitorId = try container.sdkDecodeIfPresent(.visitorId)
+        try sdkValidateDateTime("timestamp", sdkWireString(timestamp))
+    }
+}
+
+public extension AggregatePageviewsResponseDataVariant0Item {
+    init(
+        timestamp: Date,
+        browserName: String? = nil,
+        country: String? = nil,
+        deviceType: String? = nil,
+        environment: String? = nil,
+        flags: String? = nil,
+        osName: String? = nil,
+        projectId: String? = nil,
+        projectName: String? = nil,
+        referrerHostname: String? = nil,
+        requestHostname: String? = nil,
+        requestPath: String? = nil,
+        route: String? = nil,
+        utmCampaign: String? = nil,
+        utmContent: String? = nil,
+        utmMedium: String? = nil,
+        utmSource: String? = nil,
+        utmTerm: String? = nil,
+        visitorId: String? = nil
+    ) throws {
         (self.timestamp, self.browserName) = (timestamp, browserName)
         (self.country, self.deviceType) = (country, deviceType)
         (self.environment, self.flags) = (environment, flags)
@@ -95,7 +121,7 @@ extension AggregatePageviewsResponseDataVariant0Item {
         (self.utmContent, self.utmMedium) = (utmContent, utmMedium)
         (self.utmSource, self.utmTerm) = (utmSource, utmTerm)
         self.visitorId = visitorId
-            try sdkValidateDateTime("timestamp", sdkWireString(self.timestamp))
+        try sdkValidateDateTime("timestamp", sdkWireString(self.timestamp))
     }
 }
 
@@ -105,22 +131,32 @@ public indirect enum AggregatePageviewsParameterX4a2b85be {
 }
 
 extension AggregatePageviewsParameterX4a2b85be: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregatePageviewsParameterX4a2b85be")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AggregatePageviewsParameterX4a2b85be"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension AggregatePageviewsParameterX4a2b85be {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -150,22 +186,32 @@ public indirect enum AggregateEventsParameterItem {
 }
 
 extension AggregateEventsParameterItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregateEventsParameterItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AggregateEventsParameterItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension AggregateEventsParameterItem {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(JSONValue.self) { return .jsonValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(JSONValue.self) {
+            return .jsonValue(value)
+        }
         return nil
     }
 }
@@ -186,22 +232,32 @@ public indirect enum CountPageviewsParameter {
 }
 
 extension CountPageviewsParameter: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CountPageviewsParameter")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CountPageviewsParameter"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CountPageviewsParameter {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -268,36 +324,57 @@ public struct AggregatePageviewsResponseDataVariant1Item: Codable {
         case visitorId
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension AggregatePageviewsResponseDataVariant1Item {
-    public init(from decoder: Decoder) throws {
+public extension AggregatePageviewsResponseDataVariant1Item {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.browserName = try container.sdkDecodeRequired(.browserName)
-        self.country = try container.sdkDecodeRequired(.country)
-        self.deviceType = try container.sdkDecodeRequired(.deviceType)
-        self.environment = try container.sdkDecodeRequired(.environment)
-        self.flags = try container.sdkDecodeRequired(.flags)
-        self.osName = try container.sdkDecodeRequired(.osName)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.projectName = try container.sdkDecodeRequired(.projectName)
-        self.referrerHostname = try container.sdkDecodeRequired(.referrerHostname)
-        self.requestHostname = try container.sdkDecodeRequired(.requestHostname)
-        self.requestPath = try container.sdkDecodeRequired(.requestPath)
-        self.route = try container.sdkDecodeRequired(.route)
-        self.utmCampaign = try container.sdkDecodeRequired(.utmCampaign)
-        self.utmContent = try container.sdkDecodeRequired(.utmContent)
-        self.utmMedium = try container.sdkDecodeRequired(.utmMedium)
-        self.utmSource = try container.sdkDecodeRequired(.utmSource)
-        self.utmTerm = try container.sdkDecodeRequired(.utmTerm)
-        self.visitorId = try container.sdkDecodeRequired(.visitorId)
+        browserName = try container.sdkDecodeRequired(.browserName)
+        country = try container.sdkDecodeRequired(.country)
+        deviceType = try container.sdkDecodeRequired(.deviceType)
+        environment = try container.sdkDecodeRequired(.environment)
+        flags = try container.sdkDecodeRequired(.flags)
+        osName = try container.sdkDecodeRequired(.osName)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        projectName = try container.sdkDecodeRequired(.projectName)
+        referrerHostname = try container.sdkDecodeRequired(.referrerHostname)
+        requestHostname = try container.sdkDecodeRequired(.requestHostname)
+        requestPath = try container.sdkDecodeRequired(.requestPath)
+        route = try container.sdkDecodeRequired(.route)
+        utmCampaign = try container.sdkDecodeRequired(.utmCampaign)
+        utmContent = try container.sdkDecodeRequired(.utmContent)
+        utmMedium = try container.sdkDecodeRequired(.utmMedium)
+        utmSource = try container.sdkDecodeRequired(.utmSource)
+        utmTerm = try container.sdkDecodeRequired(.utmTerm)
+        visitorId = try container.sdkDecodeRequired(.visitorId)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-extension AggregatePageviewsResponseDataVariant1Item {
-    public init(browserName: String, country: String, deviceType: String, environment: String, flags: String, osName: String, projectId: String, projectName: String, referrerHostname: String, requestHostname: String, requestPath: String, route: String, utmCampaign: String, utmContent: String, utmMedium: String, utmSource: String, utmTerm: String, visitorId: String) {
+public extension AggregatePageviewsResponseDataVariant1Item {
+    init(
+        browserName: String,
+        country: String,
+        deviceType: String,
+        environment: String,
+        flags: String,
+        osName: String,
+        projectId: String,
+        projectName: String,
+        referrerHostname: String,
+        requestHostname: String,
+        requestPath: String,
+        route: String,
+        utmCampaign: String,
+        utmContent: String,
+        utmMedium: String,
+        utmSource: String,
+        utmTerm: String,
+        visitorId: String
+    ) {
         (self.browserName, self.country) = (browserName, country)
         (self.deviceType, self.environment) = (deviceType, environment)
         (self.flags, self.osName) = (flags, osName)
@@ -310,8 +387,8 @@ extension AggregatePageviewsResponseDataVariant1Item {
     }
 }
 
-extension AggregatePageviewsResponseDataVariant1Item {
-    public func encode(to encoder: Encoder) throws {
+public extension AggregatePageviewsResponseDataVariant1Item {
+    func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(browserName, forKey: .browserName)
@@ -346,29 +423,43 @@ public struct AggregateEventsResponse: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AggregateEventsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.data) else {
-            throw SdkValidationError(field: "data", code: "required", message: "Validation failed for 'data': value is required")
-        }
-        guard container.contains(.query) else {
-            throw SdkValidationError(field: "query", code: "required", message: "Validation failed for 'query': value is required")
-        }
-        guard container.contains(.version) else {
-            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
-        }
-        self.data = try container.sdkDecodeRequired(.data)
-        self.query = try container.sdkDecodeRequired(.query)
-        self.version = try container.sdkDecodeRequired(.version)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AggregateEventsResponse {
-    public init(data: AggregateEventsResponseData, query: AggregateEventsResponseQuery, version: Double) {
+public extension AggregateEventsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.data) else {
+            throw SdkValidationError(
+                field: "data",
+                code: "required",
+                message: "Validation failed for 'data': value is required"
+            )
+        }
+        guard container.contains(.query) else {
+            throw SdkValidationError(
+                field: "query",
+                code: "required",
+                message: "Validation failed for 'query': value is required"
+            )
+        }
+        guard container.contains(.version) else {
+            throw SdkValidationError(
+                field: "version",
+                code: "required",
+                message: "Validation failed for 'version': value is required"
+            )
+        }
+        data = try container.sdkDecodeRequired(.data)
+        query = try container.sdkDecodeRequired(.query)
+        version = try container.sdkDecodeRequired(.version)
+    }
+}
+
+public extension AggregateEventsResponse {
+    init(data: AggregateEventsResponseData, query: AggregateEventsResponseQuery, version: Double) {
         (self.data, self.query) = (data, query)
         self.version = version
     }
@@ -380,22 +471,32 @@ public indirect enum AggregateEventsParameter {
 }
 
 extension AggregateEventsParameter: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregateEventsParameter")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AggregateEventsParameter"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension AggregateEventsParameter {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -425,22 +526,32 @@ public indirect enum AggregatePageviewsParameter {
 }
 
 extension AggregatePageviewsParameter: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AggregatePageviewsParameter")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AggregatePageviewsParameter"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension AggregatePageviewsParameter {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -476,29 +587,43 @@ public struct CountPageviewsResponse: Codable {
         case version
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CountPageviewsResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.data) else {
-            throw SdkValidationError(field: "data", code: "required", message: "Validation failed for 'data': value is required")
-        }
-        guard container.contains(.query) else {
-            throw SdkValidationError(field: "query", code: "required", message: "Validation failed for 'query': value is required")
-        }
-        guard container.contains(.version) else {
-            throw SdkValidationError(field: "version", code: "required", message: "Validation failed for 'version': value is required")
-        }
-        self.data = try container.sdkDecodeRequired(.data)
-        self.query = try container.sdkDecodeRequired(.query)
-        self.version = try container.sdkDecodeRequired(.version)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CountPageviewsResponse {
-    public init(data: CountPageviewsResponseData, query: CountPageviewsResponseQuery, version: Double) {
+public extension CountPageviewsResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.data) else {
+            throw SdkValidationError(
+                field: "data",
+                code: "required",
+                message: "Validation failed for 'data': value is required"
+            )
+        }
+        guard container.contains(.query) else {
+            throw SdkValidationError(
+                field: "query",
+                code: "required",
+                message: "Validation failed for 'query': value is required"
+            )
+        }
+        guard container.contains(.version) else {
+            throw SdkValidationError(
+                field: "version",
+                code: "required",
+                message: "Validation failed for 'version': value is required"
+            )
+        }
+        data = try container.sdkDecodeRequired(.data)
+        query = try container.sdkDecodeRequired(.query)
+        version = try container.sdkDecodeRequired(.version)
+    }
+}
+
+public extension CountPageviewsResponse {
+    init(data: CountPageviewsResponseData, query: CountPageviewsResponseQuery, version: Double) {
         (self.data, self.query) = (data, query)
         self.version = version
     }

@@ -6,38 +6,77 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension GlobalConfigMethods {
-    /// Retrieves metadata for a specific Global Config token. Use `edgeConfigId` and `token` to identify the token whose metadata you need. The response includes a partially masked token representation and may include the full token for backwards compatibility.
+public extension GlobalConfigMethods {
+    /// Retrieves metadata for a specific Global Config token. Use `edgeConfigId` and `token` to identify the token
+    /// whose metadata you need. The response includes a partially masked token representation and may include the full
+    /// token for backwards compatibility.
     ///
     /// Return meta data about a Global Config token.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getEdgeConfigToken(config: ClientConfig, edgeConfigId: String, token: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GlobalConfigToken {
-        return try (await sdkRequest("GET", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/token/", sdkEncodePathSegment(sdkWireString(token))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getEdgeConfigToken", options: requestOptions)).data
+    static func getEdgeConfigToken(
+        config: ClientConfig,
+        edgeConfigId: String,
+        token: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GlobalConfigToken {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/global-config/",
+                sdkEncodePathSegment(sdkWireString(edgeConfigId)),
+                "/token/",
+                sdkEncodePathSegment(sdkWireString(token)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getEdgeConfigToken",
+            options: requestOptions
+        )).data
     }
 
-    /// Creates a token for an existing Global Config. Provide a `label` to identify the token, with a maximum length of 52 characters. The 201 response includes the new token and its ID.
+    /// Creates a token for an existing Global Config. Provide a `label` to identify the token, with a maximum length of
+    /// 52 characters. The 201 response includes the new token and its ID.
     ///
     /// Adds a token to an existing Global Config.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func createEdgeConfigToken(config: ClientConfig, edgeConfigId: String, label: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateEdgeConfigTokenResponse {
+    static func createEdgeConfigToken(
+        config: ClientConfig,
+        edgeConfigId: String,
+        label: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateEdgeConfigTokenResponse {
         try sdkValidatePattern("edgeConfigId", edgeConfigId, sdkPatterncb86996207cb)
 
         try validateLength("label", label, max: 52)
 
         let requestBody = CreateEdgeConfigTokenRequestBody(label: label)
 
-        return try (await sdkRequest("POST", ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/token"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "createEdgeConfigToken", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/global-config/", sdkEncodePathSegment(sdkWireString(edgeConfigId)), "/token"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "createEdgeConfigToken",
+            options: requestOptions
+        )).data
     }
 }

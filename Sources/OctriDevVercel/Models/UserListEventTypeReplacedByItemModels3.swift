@@ -3,7 +3,7 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 extension ListEventTypeReplacedByItem {
     static let allCasesPart3: [ListEventTypeReplacedByItem] = [
         .deploymentCheckCreated,
@@ -612,14 +612,14 @@ extension ListEventTypeReplacedByItem {
 extension ListEventTypeReplacedByItem: CaseIterable {
     public static var allCases: [ListEventTypeReplacedByItem] {
         allCasesPart1
-        +         allCasesPart2
-        +         allCasesPart3
-        +         allCasesPart4
-        +         allCasesPart5
-        +         allCasesPart6
-        +         allCasesPart7
-        +         allCasesPart8
-        +         allCasesPart9
-        +         allCasesPart10
+            + allCasesPart2
+            + allCasesPart3
+            + allCasesPart4
+            + allCasesPart5
+            + allCasesPart6
+            + allCasesPart7
+            + allCasesPart8
+            + allCasesPart9
+            + allCasesPart10
     }
 }

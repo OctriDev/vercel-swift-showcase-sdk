@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ConnectMethods {
-    public struct GetConnectorTokenOptions: Codable {
+public extension ConnectMethods {
+    struct GetConnectorTokenOptions: Codable {
         public var connector: String
         public var subject: GetConnectorTokenRequestSubject?
         public var installationId: String?
@@ -22,16 +22,30 @@ extension ConnectMethods {
         }
     }
 
-    /// Retrieves an access token for a connector, scoped to the authenticated user or another subject specified in the request body. Supply the connector identifier in the path and optionally provide token settings such as `scopes`, `resources`, or `audience`. Use the returned token and expiration details to access the connector.
+    /// Retrieves an access token for a connector, scoped to the authenticated user or another subject specified in the
+    /// request body. Supply the connector identifier in the path and optionally provide token settings such as
+    /// `scopes`, `resources`, or `audience`. Use the returned token and expiration details to access the connector.
     ///
     /// Get an access token for a connector identified by the path parameter and scoped to the requester.
     ///
     /// - Parameters:
     /// - subject: Typed representation of the `GetConnectorTokenRequestSubject` API
     ///   schema.
-    public static func getConnectorToken(config: ClientConfig, options: GetConnectorTokenOptions, requestOptions: RequestOptions? = nil) async throws -> GetConnectorTokenResponse {
+    static func getConnectorToken(
+        config: ClientConfig,
+        options: GetConnectorTokenOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetConnectorTokenResponse {
         let requestBody = GetConnectorTokenRequestBody(options: options)
 
-        return try (await sdkRequest("POST", ["/v1/connect/token/", sdkEncodePathSegment(sdkWireString(options.connector))].joined(), config: config, body: requestBody, decoder: .json, operationId: "getConnectorToken", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/connect/token/", sdkEncodePathSegment(sdkWireString(options.connector))].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "getConnectorToken",
+            options: requestOptions
+        )).data
     }
 }

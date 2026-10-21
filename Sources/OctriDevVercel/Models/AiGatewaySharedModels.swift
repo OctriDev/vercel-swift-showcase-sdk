@@ -3,7 +3,7 @@
 
 import Foundation
 
-// AiGateway domain models
+/// AiGateway domain models
 public indirect enum AiGatewayEvaluationFallbackCondition {
     case aiGatewayEvaluationFallbackConditionVariant0(AiGatewayEvaluationFallbackConditionVariant0)
     case aiGatewayEvaluationFallbackConditionVariant1(AiGatewayEvaluationFallbackConditionVariant1)
@@ -13,36 +13,59 @@ public indirect enum AiGatewayEvaluationFallbackCondition {
 }
 
 extension AiGatewayEvaluationFallbackCondition: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AiGatewayEvaluationFallbackCondition")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AiGatewayEvaluationFallbackCondition"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension AiGatewayEvaluationFallbackCondition {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .aiGatewayEvaluationFallbackConditionVariant0(value)
         }
-        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .aiGatewayEvaluationFallbackConditionVariant1(value)
         }
-        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .aiGatewayEvaluationFallbackConditionVariant2(value)
         }
-        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .aiGatewayEvaluationFallbackConditionVariant3(value)
         }
-        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant4.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(AiGatewayEvaluationFallbackConditionVariant4.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .aiGatewayEvaluationFallbackConditionVariant4(value)
         }
         return nil
@@ -54,27 +77,27 @@ extension AiGatewayEvaluationFallbackCondition {
         if let value = try? container.decode(
             AiGatewayEvaluationFallbackConditionVariant0.self
         ) {
-            return             .aiGatewayEvaluationFallbackConditionVariant0(value)
+            return .aiGatewayEvaluationFallbackConditionVariant0(value)
         }
         if let value = try? container.decode(
             AiGatewayEvaluationFallbackConditionVariant1.self
         ) {
-            return             .aiGatewayEvaluationFallbackConditionVariant1(value)
+            return .aiGatewayEvaluationFallbackConditionVariant1(value)
         }
         if let value = try? container.decode(
             AiGatewayEvaluationFallbackConditionVariant2.self
         ) {
-            return             .aiGatewayEvaluationFallbackConditionVariant2(value)
+            return .aiGatewayEvaluationFallbackConditionVariant2(value)
         }
         if let value = try? container.decode(
             AiGatewayEvaluationFallbackConditionVariant3.self
         ) {
-            return             .aiGatewayEvaluationFallbackConditionVariant3(value)
+            return .aiGatewayEvaluationFallbackConditionVariant3(value)
         }
         if let value = try? container.decode(
             AiGatewayEvaluationFallbackConditionVariant4.self
         ) {
-            return             .aiGatewayEvaluationFallbackConditionVariant4(value)
+            return .aiGatewayEvaluationFallbackConditionVariant4(value)
         }
         return nil
     }
@@ -104,27 +127,41 @@ public indirect enum AiGatewayVirtualModelConfigModelsItem {
 }
 
 extension AiGatewayVirtualModelConfigModelsItem: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AiGatewayVirtualModelConfigModelsItem")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AiGatewayVirtualModelConfigModelsItem"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension AiGatewayVirtualModelConfigModelsItem {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(AiGatewayVirtualModelConfigModelsItemVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(AiGatewayVirtualModelConfigModelsItemVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .aiGatewayVirtualModelConfigModelsItemVariant1(value)
         }
-        if let value = try? container.decode(AiGatewayVirtualModelConfigModelsItemVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(AiGatewayVirtualModelConfigModelsItemVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .aiGatewayVirtualModelConfigModelsItemVariant2(value)
         }
         return nil
@@ -133,16 +170,18 @@ extension AiGatewayVirtualModelConfigModelsItem {
 
 extension AiGatewayVirtualModelConfigModelsItem {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         if let value = try? container.decode(
             AiGatewayVirtualModelConfigModelsItemVariant1.self
         ) {
-            return             .aiGatewayVirtualModelConfigModelsItemVariant1(value)
+            return .aiGatewayVirtualModelConfigModelsItemVariant1(value)
         }
         if let value = try? container.decode(
             AiGatewayVirtualModelConfigModelsItemVariant2.self
         ) {
-            return             .aiGatewayVirtualModelConfigModelsItemVariant2(value)
+            return .aiGatewayVirtualModelConfigModelsItemVariant2(value)
         }
         return nil
     }
@@ -171,22 +210,28 @@ public struct AiGatewayEvaluationFallbackConditionVariant0: Codable {
         case question
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayEvaluationFallbackConditionVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.confidenceBelow) else {
-            throw SdkValidationError(field: "confidenceBelow", code: "required", message: "Validation failed for 'confidenceBelow': value is required")
-        }
-        self.confidenceBelow = try container.sdkDecodeRequired(.confidenceBelow)
-        self.question = try container.sdkDecodeIfPresent(.question)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayEvaluationFallbackConditionVariant0 {
-    public init(confidenceBelow: Double, question: String? = nil) {
+public extension AiGatewayEvaluationFallbackConditionVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.confidenceBelow) else {
+            throw SdkValidationError(
+                field: "confidenceBelow",
+                code: "required",
+                message: "Validation failed for 'confidenceBelow': value is required"
+            )
+        }
+        confidenceBelow = try container.sdkDecodeRequired(.confidenceBelow)
+        question = try container.sdkDecodeIfPresent(.question)
+    }
+}
+
+public extension AiGatewayEvaluationFallbackConditionVariant0 {
+    init(confidenceBelow: Double, question: String? = nil) {
         (self.confidenceBelow, self.question) = (confidenceBelow, question)
     }
 }
@@ -203,25 +248,35 @@ public struct AiGatewayEvaluationFallbackConditionVariant4AtLeast: Codable {
         case count
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayEvaluationFallbackConditionVariant4AtLeast {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.conditions) else {
-            throw SdkValidationError(field: "conditions", code: "required", message: "Validation failed for 'conditions': value is required")
-        }
-        guard container.contains(.count) else {
-            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
-        }
-        self.conditions = try container.sdkDecodeRequired(.conditions)
-        self.count = try container.sdkDecodeRequired(.count)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayEvaluationFallbackConditionVariant4AtLeast {
-    public init(conditions: [AiGatewayEvaluationFallbackCondition], count: Double) {
+public extension AiGatewayEvaluationFallbackConditionVariant4AtLeast {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.conditions) else {
+            throw SdkValidationError(
+                field: "conditions",
+                code: "required",
+                message: "Validation failed for 'conditions': value is required"
+            )
+        }
+        guard container.contains(.count) else {
+            throw SdkValidationError(
+                field: "count",
+                code: "required",
+                message: "Validation failed for 'count': value is required"
+            )
+        }
+        conditions = try container.sdkDecodeRequired(.conditions)
+        count = try container.sdkDecodeRequired(.count)
+    }
+}
+
+public extension AiGatewayEvaluationFallbackConditionVariant4AtLeast {
+    init(conditions: [AiGatewayEvaluationFallbackCondition], count: Double) {
         (self.conditions, self.count) = (conditions, count)
     }
 }
@@ -236,19 +291,19 @@ public struct AiGatewayVirtualModelConfigProviderTimeouts: Codable {
     }
 
     init() {
-        self.byok = nil
+        byok = nil
     }
 }
 
-extension AiGatewayVirtualModelConfigProviderTimeouts {
-    public init(from decoder: Decoder) throws {
+public extension AiGatewayVirtualModelConfigProviderTimeouts {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.byok = try container.sdkDecodeIfPresent(.byok)
+        byok = try container.sdkDecodeIfPresent(.byok)
     }
 }
 
-extension AiGatewayVirtualModelConfigProviderTimeouts {
-    public init(byok: [String: Double]? = nil) {
+public extension AiGatewayVirtualModelConfigProviderTimeouts {
+    init(byok: [String: Double]? = nil) {
         self.init()
         self.byok = byok
     }
@@ -268,25 +323,35 @@ public struct AiGatewayVirtualModelConfigModelsItemVariant2: Codable {
         case when
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayVirtualModelConfigModelsItemVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.model) else {
-            throw SdkValidationError(field: "model", code: "required", message: "Validation failed for 'model': value is required")
-        }
-        guard container.contains(.when) else {
-            throw SdkValidationError(field: "when", code: "required", message: "Validation failed for 'when': value is required")
-        }
-        self.model = try container.sdkDecodeRequired(.model)
-        self.when = try container.sdkDecodeRequired(.when)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayVirtualModelConfigModelsItemVariant2 {
-    public init(model: String, when: AiGatewayEvaluationFallbackCondition) {
+public extension AiGatewayVirtualModelConfigModelsItemVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.model) else {
+            throw SdkValidationError(
+                field: "model",
+                code: "required",
+                message: "Validation failed for 'model': value is required"
+            )
+        }
+        guard container.contains(.when) else {
+            throw SdkValidationError(
+                field: "when",
+                code: "required",
+                message: "Validation failed for 'when': value is required"
+            )
+        }
+        model = try container.sdkDecodeRequired(.model)
+        when = try container.sdkDecodeRequired(.when)
+    }
+}
+
+public extension AiGatewayVirtualModelConfigModelsItemVariant2 {
+    init(model: String, when: AiGatewayEvaluationFallbackCondition) {
         (self.model, self.when) = (model, when)
     }
 }
@@ -303,25 +368,35 @@ public struct AiGatewayVirtualModelConfigList: Codable {
         case virtualModelConfigs
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayVirtualModelConfigList {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.cursor) else {
-            throw SdkValidationError(field: "cursor", code: "required", message: "Validation failed for 'cursor': value is required")
-        }
-        guard container.contains(.virtualModelConfigs) else {
-            throw SdkValidationError(field: "virtualModelConfigs", code: "required", message: "Validation failed for 'virtualModelConfigs': value is required")
-        }
-        self.cursor = try container.sdkDecodeNullable(.cursor)
-        self.virtualModelConfigs = try container.sdkDecodeRequired(.virtualModelConfigs)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayVirtualModelConfigList {
-    public init(cursor: String?, virtualModelConfigs: [AiGatewayVirtualModelConfig]) {
+public extension AiGatewayVirtualModelConfigList {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.cursor) else {
+            throw SdkValidationError(
+                field: "cursor",
+                code: "required",
+                message: "Validation failed for 'cursor': value is required"
+            )
+        }
+        guard container.contains(.virtualModelConfigs) else {
+            throw SdkValidationError(
+                field: "virtualModelConfigs",
+                code: "required",
+                message: "Validation failed for 'virtualModelConfigs': value is required"
+            )
+        }
+        cursor = try container.sdkDecodeNullable(.cursor)
+        virtualModelConfigs = try container.sdkDecodeRequired(.virtualModelConfigs)
+    }
+}
+
+public extension AiGatewayVirtualModelConfigList {
+    init(cursor: String?, virtualModelConfigs: [AiGatewayVirtualModelConfig]) {
         (self.cursor, self.virtualModelConfigs) = (cursor, virtualModelConfigs)
     }
 }
@@ -345,22 +420,27 @@ public struct AiGatewayVirtualModelConfigInferenceRegion: Codable {
     }
 
     init() {
-        (self.geoRegion, self.providerRegion, self.providers, self.scope) = (nil, nil, nil, nil)
+        (geoRegion, providerRegion, providers, scope) = (nil, nil, nil, nil)
     }
 }
 
-extension AiGatewayVirtualModelConfigInferenceRegion {
-    public init(from decoder: Decoder) throws {
+public extension AiGatewayVirtualModelConfigInferenceRegion {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.geoRegion = try container.sdkDecodeIfPresent(.geoRegion)
-        self.providerRegion = try container.sdkDecodeIfPresent(.providerRegion)
-        self.providers = try container.sdkDecodeIfPresent(.providers)
-        self.scope = try container.sdkDecodeIfPresent(.scope)
+        geoRegion = try container.sdkDecodeIfPresent(.geoRegion)
+        providerRegion = try container.sdkDecodeIfPresent(.providerRegion)
+        providers = try container.sdkDecodeIfPresent(.providers)
+        scope = try container.sdkDecodeIfPresent(.scope)
     }
 }
 
-extension AiGatewayVirtualModelConfigInferenceRegion {
-    public init(geoRegion: String? = nil, providerRegion: String? = nil, providers: [String: AiGatewayVirtualModelConfigInferenceRegionProvidersValue?]? = nil, scope: AiGatewayVirtualModelConfigInferenceRegionScope? = nil) {
+public extension AiGatewayVirtualModelConfigInferenceRegion {
+    init(
+        geoRegion: String? = nil,
+        providerRegion: String? = nil,
+        providers: [String: AiGatewayVirtualModelConfigInferenceRegionProvidersValue?]? = nil,
+        scope: AiGatewayVirtualModelConfigInferenceRegionScope? = nil
+    ) {
         self.init()
         (self.geoRegion, self.providerRegion) = (geoRegion, providerRegion)
         (self.providers, self.scope) = (providers, scope)
@@ -376,21 +456,27 @@ public struct AiGatewayEvaluationFallbackConditionVariant2: Codable {
         case any
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayEvaluationFallbackConditionVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.any) else {
-            throw SdkValidationError(field: "any", code: "required", message: "Validation failed for 'any': value is required")
-        }
-        self.any = try container.sdkDecodeRequired(.any)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayEvaluationFallbackConditionVariant2 {
-    public init(any: [AiGatewayEvaluationFallbackCondition]) {
+public extension AiGatewayEvaluationFallbackConditionVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.any) else {
+            throw SdkValidationError(
+                field: "any",
+                code: "required",
+                message: "Validation failed for 'any': value is required"
+            )
+        }
+        any = try container.sdkDecodeRequired(.any)
+    }
+}
+
+public extension AiGatewayEvaluationFallbackConditionVariant2 {
+    init(any: [AiGatewayEvaluationFallbackCondition]) {
         self.any = any
     }
 }
@@ -404,21 +490,27 @@ public struct AiGatewayEvaluationFallbackConditionVariant3: Codable {
         case all
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AiGatewayEvaluationFallbackConditionVariant3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.all) else {
-            throw SdkValidationError(field: "all", code: "required", message: "Validation failed for 'all': value is required")
-        }
-        self.all = try container.sdkDecodeRequired(.all)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AiGatewayEvaluationFallbackConditionVariant3 {
-    public init(all: [AiGatewayEvaluationFallbackCondition]) {
+public extension AiGatewayEvaluationFallbackConditionVariant3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.all) else {
+            throw SdkValidationError(
+                field: "all",
+                code: "required",
+                message: "Validation failed for 'all': value is required"
+            )
+        }
+        all = try container.sdkDecodeRequired(.all)
+    }
+}
+
+public extension AiGatewayEvaluationFallbackConditionVariant3 {
+    init(all: [AiGatewayEvaluationFallbackCondition]) {
         self.all = all
     }
 }
@@ -439,21 +531,25 @@ public struct AiGatewayVirtualModelConfigSelectorOptions: Codable {
     }
 
     init() {
-        (self.cost, self.tps, self.ttft) = (nil, nil, nil)
+        (cost, tps, ttft) = (nil, nil, nil)
     }
 }
 
-extension AiGatewayVirtualModelConfigSelectorOptions {
-    public init(from decoder: Decoder) throws {
+public extension AiGatewayVirtualModelConfigSelectorOptions {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.cost = try container.sdkDecodeIfPresent(.cost)
-        self.tps = try container.sdkDecodeIfPresent(.tps)
-        self.ttft = try container.sdkDecodeIfPresent(.ttft)
+        cost = try container.sdkDecodeIfPresent(.cost)
+        tps = try container.sdkDecodeIfPresent(.tps)
+        ttft = try container.sdkDecodeIfPresent(.ttft)
     }
 }
 
-extension AiGatewayVirtualModelConfigSelectorOptions {
-    public init(cost: AiGatewayRouterSelectorOptionBag? = nil, tps: AiGatewayRouterSelectorOptionBag? = nil, ttft: AiGatewayRouterSelectorOptionBag? = nil) {
+public extension AiGatewayVirtualModelConfigSelectorOptions {
+    init(
+        cost: AiGatewayRouterSelectorOptionBag? = nil,
+        tps: AiGatewayRouterSelectorOptionBag? = nil,
+        ttft: AiGatewayRouterSelectorOptionBag? = nil
+    ) {
         self.init()
         (self.cost, self.tps) = (cost, tps)
         self.ttft = ttft
@@ -487,5 +583,7 @@ public struct AiGatewayBudgetDefault: Codable {
         case alertThresholds
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

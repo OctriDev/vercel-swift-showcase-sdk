@@ -26,7 +26,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuX689c408957ReachesMockAndDecodesResponse() async throws {
+    func testDeleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuX689c408957ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -40,7 +41,8 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testDeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReferX589b2723bcReachesMockAndDecodesResponse() async throws {
+    func testDeleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReferX589b2723bcReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -132,10 +134,10 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.deleteConnector(
-            connector: decoded("\"connector\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-            slug: decoded("\"my-team-url-slug\"")
-        )
+                connector: decoded("\"connector\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+                slug: decoded("\"my-team-url-slug\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -151,7 +153,8 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testDeleteConnectorProjectConnectionDeleteConnectorProjectConnectionReachesMockAndDecodesResponse() async throws {
+    func testDeleteConnectorProjectConnectionDeleteConnectorProjectConnectionReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -165,7 +168,8 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testDeleteConnectorProjectConnectionDeleteConnectorProjectConnection400ReachesMockAndDecodesResponse() async throws {
+    func testDeleteConnectorProjectConnectionDeleteConnectorProjectConnection400ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient(statusPrefix: "/__mockStatus/400") else {
             return
         }
@@ -176,11 +180,11 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.deleteConnectorProjectConnection(
-            connector: decoded("\"connector\""),
-            projectId: decoded("\"project-1\""),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-            slug: decoded("\"my-team-url-slug\"")
-        )
+                connector: decoded("\"connector\""),
+                projectId: decoded("\"project-1\""),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+                slug: decoded("\"my-team-url-slug\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -343,7 +347,8 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testDeleteInstallationsByIntegrationConfigurationIdResourcesByResX9e8f430012ReachesMockAndDecodesResponse() async throws {
+    func testDeleteInstallationsByIntegrationConfigurationIdResourcesByResX9e8f430012ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }

@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension NetworkingMethods {
-    /// Updates a PrivateLink endpoint's name or private DNS setting. Supply `name`, `enablePrivateDns`, or both; omitted values keep their current settings. When `enablePrivateDns` is true, the response includes the endpoint service's private DNS names.
+public extension NetworkingMethods {
+    /// Updates a PrivateLink endpoint's name or private DNS setting. Supply `name`, `enablePrivateDns`, or both;
+    /// omitted values keep their current settings. When `enablePrivateDns` is true, the response includes the endpoint
+    /// service's private DNS names.
     ///
     /// Updates a PrivateLink endpoint (name, privateDns).
     ///
@@ -22,17 +24,35 @@ extension NetworkingMethods {
     ///   private DNS names, which are then returned in `privateDnsNames`. When
     ///   `false`, clears them. When omitted, the current setting is kept. At least
     ///   one of `name` or `enablePrivateDns` must be provided.
-    public static func updatePrivateLinkEndpoint(config: ClientConfig, endpointId: String, projectId: String, teamId: String? = nil, slug: String? = nil, name: String? = nil, enablePrivateDns: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> PrivateLinkEndpoint {
-        if let name = name {
+    static func updatePrivateLinkEndpoint(
+        config: ClientConfig,
+        endpointId: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        name: String? = nil,
+        enablePrivateDns: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> PrivateLinkEndpoint {
+        if let name {
             try validateLength("name", name, max: 255)
         }
 
         let requestBody = UpdatePrivateLinkEndpointRequestBody(name: name, enablePrivateDns: enablePrivateDns)
 
-        return try (await sdkRequest("PATCH", ["/v1/networking/privatelink/endpoints/", sdkEncodePathSegment(sdkWireString(endpointId))].joined(), config: config, query: [
-            SdkQueryParameter("projectId", value: projectId),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "updatePrivateLinkEndpoint", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            ["/v1/networking/privatelink/endpoints/", sdkEncodePathSegment(sdkWireString(endpointId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: projectId),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "updatePrivateLinkEndpoint",
+            options: requestOptions
+        )).data
     }
 }

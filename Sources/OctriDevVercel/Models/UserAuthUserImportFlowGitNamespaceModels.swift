@@ -3,11 +3,15 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 extension AuthUserImportFlowGitNamespace {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         return nil
     }
 }
@@ -51,27 +55,42 @@ public struct AuthUserSoftBlock: Codable {
         case unpauseAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AuthUserSoftBlock {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.blockedAt) else {
-            throw SdkValidationError(field: "blockedAt", code: "required", message: "Validation failed for 'blockedAt': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        self.blockedAt = try container.sdkDecodeRequired(.blockedAt)
-        self.reason = try container.sdkDecodeRequired(.reason)
-        self.blockedDueToOverageType = try container.sdkDecodeIfPresent(.blockedDueToOverageType)
-        self.unpauseAt = try container.sdkDecodeIfPresent(.unpauseAt)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AuthUserSoftBlock {
-    public init(blockedAt: Double, reason: AuthUserSoftBlockReason, blockedDueToOverageType: AuthUserSoftBlockBlockedDueToOverageType? = nil, unpauseAt: Double? = nil) {
+public extension AuthUserSoftBlock {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.blockedAt) else {
+            throw SdkValidationError(
+                field: "blockedAt",
+                code: "required",
+                message: "Validation failed for 'blockedAt': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        blockedAt = try container.sdkDecodeRequired(.blockedAt)
+        reason = try container.sdkDecodeRequired(.reason)
+        blockedDueToOverageType = try container.sdkDecodeIfPresent(.blockedDueToOverageType)
+        unpauseAt = try container.sdkDecodeIfPresent(.unpauseAt)
+    }
+}
+
+public extension AuthUserSoftBlock {
+    init(
+        blockedAt: Double,
+        reason: AuthUserSoftBlockReason,
+        blockedDueToOverageType: AuthUserSoftBlockBlockedDueToOverageType? = nil,
+        unpauseAt: Double? = nil
+    ) {
         (self.blockedAt, self.reason) = (blockedAt, reason)
         (self.blockedDueToOverageType, self.unpauseAt) = (blockedDueToOverageType, unpauseAt)
     }
@@ -89,19 +108,19 @@ public struct AuthUserResourceConfigBuildEntitlements: Codable {
     }
 
     init() {
-        self.enhancedBuilds = nil
+        enhancedBuilds = nil
     }
 }
 
-extension AuthUserResourceConfigBuildEntitlements {
-    public init(from decoder: Decoder) throws {
+public extension AuthUserResourceConfigBuildEntitlements {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.enhancedBuilds = try container.sdkDecodeIfPresent(.enhancedBuilds)
+        enhancedBuilds = try container.sdkDecodeIfPresent(.enhancedBuilds)
     }
 }
 
-extension AuthUserResourceConfigBuildEntitlements {
-    public init(enhancedBuilds: Bool? = nil) {
+public extension AuthUserResourceConfigBuildEntitlements {
+    init(enhancedBuilds: Bool? = nil) {
         self.init()
         self.enhancedBuilds = enhancedBuilds
     }
@@ -150,47 +169,87 @@ public struct AuthUserLimited: Codable {
         case shouldShowEnterpriseManagedWelcome
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AuthUserLimited {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.avatar) else {
-            throw SdkValidationError(field: "avatar", code: "required", message: "Validation failed for 'avatar': value is required")
-        }
-        guard container.contains(.defaultTeamId) else {
-            throw SdkValidationError(field: "defaultTeamId", code: "required", message: "Validation failed for 'defaultTeamId': value is required")
-        }
-        guard container.contains(.email) else {
-            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.limited) else {
-            throw SdkValidationError(field: "limited", code: "required", message: "Validation failed for 'limited': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.username) else {
-            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
-        }
-        self.avatar = try container.sdkDecodeNullable(.avatar)
-        self.defaultTeamId = try container.sdkDecodeNullable(.defaultTeamId)
-        self.email = try container.sdkDecodeRequired(.email)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.limited = try container.sdkDecodeRequired(.limited)
-        self.name = try container.sdkDecodeNullable(.name)
-        self.username = try container.sdkDecodeRequired(.username)
-        self.isEnterpriseManaged = try container.sdkDecodeIfPresent(.isEnterpriseManaged)
-        self.shouldShowEnterpriseManagedWelcome = try container.sdkDecodeIfPresent(.shouldShowEnterpriseManagedWelcome)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AuthUserLimited {
-    public init(avatar: String?, defaultTeamId: String?, email: String, id: String, limited: Bool, name: String?, username: String, isEnterpriseManaged: Bool? = nil, shouldShowEnterpriseManagedWelcome: Bool? = nil) {
+public extension AuthUserLimited {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.avatar) else {
+            throw SdkValidationError(
+                field: "avatar",
+                code: "required",
+                message: "Validation failed for 'avatar': value is required"
+            )
+        }
+        guard container.contains(.defaultTeamId) else {
+            throw SdkValidationError(
+                field: "defaultTeamId",
+                code: "required",
+                message: "Validation failed for 'defaultTeamId': value is required"
+            )
+        }
+        guard container.contains(.email) else {
+            throw SdkValidationError(
+                field: "email",
+                code: "required",
+                message: "Validation failed for 'email': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.limited) else {
+            throw SdkValidationError(
+                field: "limited",
+                code: "required",
+                message: "Validation failed for 'limited': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.username) else {
+            throw SdkValidationError(
+                field: "username",
+                code: "required",
+                message: "Validation failed for 'username': value is required"
+            )
+        }
+        avatar = try container.sdkDecodeNullable(.avatar)
+        defaultTeamId = try container.sdkDecodeNullable(.defaultTeamId)
+        email = try container.sdkDecodeRequired(.email)
+        id = try container.sdkDecodeRequired(.id)
+        limited = try container.sdkDecodeRequired(.limited)
+        name = try container.sdkDecodeNullable(.name)
+        username = try container.sdkDecodeRequired(.username)
+        isEnterpriseManaged = try container.sdkDecodeIfPresent(.isEnterpriseManaged)
+        shouldShowEnterpriseManagedWelcome = try container.sdkDecodeIfPresent(.shouldShowEnterpriseManagedWelcome)
+    }
+}
+
+public extension AuthUserLimited {
+    init(
+        avatar: String?,
+        defaultTeamId: String?,
+        email: String,
+        id: String,
+        limited: Bool,
+        name: String?,
+        username: String,
+        isEnterpriseManaged: Bool? = nil,
+        shouldShowEnterpriseManagedWelcome: Bool? = nil
+    ) {
         (self.avatar, self.defaultTeamId) = (avatar, defaultTeamId)
         (self.email, self.id) = (email, id)
         (self.limited, self.name) = (limited, name)
@@ -218,27 +277,42 @@ public struct AuthUserFeatureBlocksSpeedInsightsFree: Codable {
         case blockedUntil
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AuthUserFeatureBlocksSpeedInsightsFree {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.blockReason) else {
-            throw SdkValidationError(field: "blockReason", code: "required", message: "Validation failed for 'blockReason': value is required")
-        }
-        guard container.contains(.isCurrentlyBlocked) else {
-            throw SdkValidationError(field: "isCurrentlyBlocked", code: "required", message: "Validation failed for 'isCurrentlyBlocked': value is required")
-        }
-        self.blockReason = try container.sdkDecodeRequired(.blockReason)
-        self.isCurrentlyBlocked = try container.sdkDecodeRequired(.isCurrentlyBlocked)
-        self.blockedFrom = try container.sdkDecodeIfPresent(.blockedFrom)
-        self.blockedUntil = try container.sdkDecodeIfPresent(.blockedUntil)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AuthUserFeatureBlocksSpeedInsightsFree {
-    public init(blockReason: AuthUserFeatureBlocksSpeedInsightsFreeBlockReason, isCurrentlyBlocked: Bool, blockedFrom: Double? = nil, blockedUntil: Double? = nil) {
+public extension AuthUserFeatureBlocksSpeedInsightsFree {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.blockReason) else {
+            throw SdkValidationError(
+                field: "blockReason",
+                code: "required",
+                message: "Validation failed for 'blockReason': value is required"
+            )
+        }
+        guard container.contains(.isCurrentlyBlocked) else {
+            throw SdkValidationError(
+                field: "isCurrentlyBlocked",
+                code: "required",
+                message: "Validation failed for 'isCurrentlyBlocked': value is required"
+            )
+        }
+        blockReason = try container.sdkDecodeRequired(.blockReason)
+        isCurrentlyBlocked = try container.sdkDecodeRequired(.isCurrentlyBlocked)
+        blockedFrom = try container.sdkDecodeIfPresent(.blockedFrom)
+        blockedUntil = try container.sdkDecodeIfPresent(.blockedUntil)
+    }
+}
+
+public extension AuthUserFeatureBlocksSpeedInsightsFree {
+    init(
+        blockReason: AuthUserFeatureBlocksSpeedInsightsFreeBlockReason,
+        isCurrentlyBlocked: Bool,
+        blockedFrom: Double? = nil,
+        blockedUntil: Double? = nil
+    ) {
         (self.blockReason, self.isCurrentlyBlocked) = (blockReason, isCurrentlyBlocked)
         (self.blockedFrom, self.blockedUntil) = (blockedFrom, blockedUntil)
     }
@@ -250,22 +324,32 @@ public indirect enum AuthUserImportFlowGitNamespaceId {
 }
 
 extension AuthUserImportFlowGitNamespaceId: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for AuthUserImportFlowGitNamespaceId")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for AuthUserImportFlowGitNamespaceId"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension AuthUserImportFlowGitNamespaceId {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         return nil
     }
 }
@@ -301,40 +385,54 @@ public struct AuthUserDismissedToastsItemDismissalsItem: Codable {
         case scopeId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AuthUserDismissedToastsItemDismissalsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.scopeId) else {
-            throw SdkValidationError(field: "scopeId", code: "required", message: "Validation failed for 'scopeId': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.scopeId = try container.sdkDecodeRequired(.scopeId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AuthUserDismissedToastsItemDismissalsItem {
-    public init(createdAt: Double, scopeId: String) {
+public extension AuthUserDismissedToastsItemDismissalsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.scopeId) else {
+            throw SdkValidationError(
+                field: "scopeId",
+                code: "required",
+                message: "Validation failed for 'scopeId': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        scopeId = try container.sdkDecodeRequired(.scopeId)
+    }
+}
+
+public extension AuthUserDismissedToastsItemDismissalsItem {
+    init(createdAt: Double, scopeId: String) {
         (self.createdAt, self.scopeId) = (createdAt, scopeId)
     }
 }
 
 /// Optional enumerated value serialized in the `favoritesViewPreference` wire field.
-public struct AuthUserActiveDashboardViewsItemFavoritesViewPreference: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AuthUserActiveDashboardViewsItemFavoritesViewPreference: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let closed = AuthUserActiveDashboardViewsItemFavoritesViewPreference(rawValue: "closed")
     public static let open = AuthUserActiveDashboardViewsItemFavoritesViewPreference(rawValue: "open")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -344,44 +442,61 @@ public struct AuthUserActiveDashboardViewsItemFavoritesViewPreference: RawRepres
 }
 
 /// Optional enumerated value serialized in the `blockedDueToOverageType` wire field.
-public struct AuthUserSoftBlockBlockedDueToOverageType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AuthUserSoftBlockBlockedDueToOverageType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let analyticsUsage = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "analyticsUsage")
     public static let artifacts = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "artifacts")
     public static let bandwidth = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "bandwidth")
     public static let blobDataTransfer = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "blobDataTransfer")
-    public static let blobTotalAdvancedRequests = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "blobTotalAdvancedRequests")
-    public static let blobTotalAvgSizeInBytes = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "blobTotalAvgSizeInBytes")
-    public static let blobTotalGetResponseObjectSizeInBytes = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "blobTotalGetResponseObjectSizeInBytes")
-    public static let blobTotalSimpleRequests = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "blobTotalSimpleRequests")
+    public static let blobTotalAdvancedRequests =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "blobTotalAdvancedRequests")
+    public static let blobTotalAvgSizeInBytes =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "blobTotalAvgSizeInBytes")
+    public static let blobTotalGetResponseObjectSizeInBytes =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "blobTotalGetResponseObjectSizeInBytes")
+    public static let blobTotalSimpleRequests =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "blobTotalSimpleRequests")
     public static let connectDataTransfer = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "connectDataTransfer")
     public static let dataCacheRead = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "dataCacheRead")
     public static let dataCacheWrite = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "dataCacheWrite")
     public static let edgeConfigRead = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "edgeConfigRead")
     public static let edgeConfigWrite = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "edgeConfigWrite")
-    public static let edgeFunctionExecutionUnits = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "edgeFunctionExecutionUnits")
-    public static let edgeMiddlewareInvocations = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "edgeMiddlewareInvocations")
+    public static let edgeFunctionExecutionUnits =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "edgeFunctionExecutionUnits")
+    public static let edgeMiddlewareInvocations =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "edgeMiddlewareInvocations")
     public static let edgeRequest = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "edgeRequest")
-    public static let edgeRequestAdditionalCpuDuration = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "edgeRequestAdditionalCpuDuration")
-    public static let elasticConcurrencyBuildSlots = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "elasticConcurrencyBuildSlots")
+    public static let edgeRequestAdditionalCpuDuration =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "edgeRequestAdditionalCpuDuration")
+    public static let elasticConcurrencyBuildSlots =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "elasticConcurrencyBuildSlots")
     public static let fastDataTransfer = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "fastDataTransfer")
     public static let fastOriginTransfer = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "fastOriginTransfer")
     public static let fluidCpuDuration = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "fluidCpuDuration")
     public static let fluidDuration = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "fluidDuration")
     public static let functionDuration = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "functionDuration")
     public static let functionInvocation = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "functionInvocation")
-    public static let imageOptimizationCacheRead = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "imageOptimizationCacheRead")
-    public static let imageOptimizationCacheWrite = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "imageOptimizationCacheWrite")
-    public static let imageOptimizationTransformation = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "imageOptimizationTransformation")
+    public static let imageOptimizationCacheRead =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "imageOptimizationCacheRead")
+    public static let imageOptimizationCacheWrite =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "imageOptimizationCacheWrite")
+    public static let imageOptimizationTransformation =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "imageOptimizationTransformation")
     public static let logDrainsVolume = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "logDrainsVolume")
     public static let monitoringMetric = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "monitoringMetric")
     public static let observabilityEvent = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "observabilityEvent")
-    public static let onDemandConcurrencyMinutes = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "onDemandConcurrencyMinutes")
+    public static let onDemandConcurrencyMinutes =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "onDemandConcurrencyMinutes")
     public static let runtimeCacheRead = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "runtimeCacheRead")
     public static let runtimeCacheWrite = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "runtimeCacheWrite")
-    public static let serverlessFunctionExecution = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "serverlessFunctionExecution")
+    public static let serverlessFunctionExecution =
+        AuthUserSoftBlockBlockedDueToOverageType(rawValue: "serverlessFunctionExecution")
     public static let sourceImages = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "sourceImages")
     public static let wafOwaspExcessBytes = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "wafOwaspExcessBytes")
     public static let wafOwaspRequests = AuthUserSoftBlockBlockedDueToOverageType(rawValue: "wafOwaspRequests")
@@ -390,7 +505,7 @@ public struct AuthUserSoftBlockBlockedDueToOverageType: RawRepresentable, Hashab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -403,7 +518,10 @@ public struct AuthUserSoftBlockBlockedDueToOverageType: RawRepresentable, Hashab
 public struct AuthUserSoftBlockReason: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let blockedForPlatformAbuse = AuthUserSoftBlockReason(rawValue: "BLOCKED_FOR_PLATFORM_ABUSE")
     public static let domainOwnerDeletionRequest = AuthUserSoftBlockReason(rawValue: "DOMAIN_OWNER_DELETION_REQUEST")
     public static let enterpriseTrialEnded = AuthUserSoftBlockReason(rawValue: "ENTERPRISE_TRIAL_ENDED")
@@ -416,7 +534,7 @@ public struct AuthUserSoftBlockReason: RawRepresentable, Hashable, Codable, Send
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -427,16 +545,22 @@ public struct AuthUserSoftBlockReason: RawRepresentable, Hashable, Codable, Send
 
 /// An object containing infomation related to the amount of platform resources may be allocated to the User
 /// account.
-public struct AuthUserResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AuthUserResourceConfigBuildQueueConfiguration: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let skipNamespaceQueue = AuthUserResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
-    public static let waitForNamespaceQueue = AuthUserResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let skipNamespaceQueue =
+        AuthUserResourceConfigBuildQueueConfiguration(rawValue: "SKIP_NAMESPACE_QUEUE")
+    public static let waitForNamespaceQueue =
+        AuthUserResourceConfigBuildQueueConfiguration(rawValue: "WAIT_FOR_NAMESPACE_QUEUE")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -446,16 +570,20 @@ public struct AuthUserResourceConfigBuildQueueConfiguration: RawRepresentable, H
 }
 
 /// Optional enumerated value serialized in the `recentsViewPreference` wire field.
-public struct AuthUserActiveDashboardViewsItemRecentsViewPreference: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct AuthUserActiveDashboardViewsItemRecentsViewPreference: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let closed = AuthUserActiveDashboardViewsItemRecentsViewPreference(rawValue: "closed")
     public static let open = AuthUserActiveDashboardViewsItemRecentsViewPreference(rawValue: "open")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

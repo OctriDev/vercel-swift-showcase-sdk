@@ -6,7 +6,7 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ConnectMethods {
+public extension ConnectMethods {
     /// List the connectors connected to a project and the environments where each connection is available.
     ///
     /// - Parameters:
@@ -21,16 +21,39 @@ extension ConnectMethods {
     ///   If both are omitted, Vercel uses the team associated with the token or the
     ///   authenticated user's default team. The request returns 401 if no team can be
     ///   selected.
-    public static func listProjectConnectorConnections(config: ClientConfig, projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectProjectConnectorConnectionList {
-        if let limit = limit {
+    static func listProjectConnectorConnections(
+        config: ClientConfig,
+        projectId: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectProjectConnectorConnectionList {
+        if let limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        return try (await sdkRequest("GET", ["/v2/connect/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/connectors"].joined(), config: config, query: [
-            SdkQueryParameter("limit", value: limit),
-            SdkQueryParameter("cursor", value: cursor),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listProjectConnectorConnections", options: requestOptions, errors: ["400": ConnectError.self, "401": ConnectError.self, "403": ConnectError.self, "404": ConnectError.self, "410": ConnectError.self])).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v2/connect/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/connectors"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("limit", value: limit),
+                SdkQueryParameter("cursor", value: cursor),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listProjectConnectorConnections",
+            options: requestOptions,
+            errors: [
+                "400": ConnectError.self,
+                "401": ConnectError.self,
+                "403": ConnectError.self,
+                "404": ConnectError.self,
+                "410": ConnectError.self,
+            ]
+        )).data
     }
 }
