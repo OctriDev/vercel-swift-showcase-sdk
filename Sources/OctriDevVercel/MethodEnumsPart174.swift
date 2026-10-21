@@ -62,13 +62,13 @@ public enum GetVercelCiInvocationResponseInvocationStatusVariant11: String, Case
 }
 
 /// Controls who can request access to protected deployments.
-public struct UpdateTeamsRequestBodyDpAccessRequestsMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamRequestBodyDpAccessRequestsMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
     public init(rawValue: String) { self.rawValue = rawValue }
-    public static let all = UpdateTeamsRequestBodyDpAccessRequestsMode(rawValue: "all")
-    public static let none = UpdateTeamsRequestBodyDpAccessRequestsMode(rawValue: "none")
-    public static let emailDomain = UpdateTeamsRequestBodyDpAccessRequestsMode(rawValue: "email-domain")
+    public static let all = UpdateTeamRequestBodyDpAccessRequestsMode(rawValue: "all")
+    public static let none = UpdateTeamRequestBodyDpAccessRequestsMode(rawValue: "none")
+    public static let emailDomain = UpdateTeamRequestBodyDpAccessRequestsMode(rawValue: "email-domain")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

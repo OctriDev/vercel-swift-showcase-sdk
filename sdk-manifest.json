@@ -128490,399 +128490,8 @@
       ]
     },
     {
-      "id": "updateTeamMember",
-      "wireOperationId": "updateTeamMember",
-      "method": "patch",
-      "path": "/v1/teams/{teamId}/members/{uid}",
-      "namespace": [
-        "teams"
-      ],
-      "streams": false,
-      "mode": "normal",
-      "streamSelector": null,
-      "requestMediaType": "application/json",
-      "contentTypes": null,
-      "publicMethods": [
-        {
-          "mode": "normal",
-          "name": "updateTeamMember"
-        }
-      ],
-      "requestModes": [
-        {
-          "mediaType": "application/json",
-          "encoderKind": "json",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "object",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          "bodyShape": "fields",
-          "fields": [
-            {
-              "name": "confirmed",
-              "required": false,
-              "repeated": false,
-              "partKind": "scalar",
-              "contentType": null
-            },
-            {
-              "name": "role",
-              "required": false,
-              "repeated": false,
-              "partKind": "scalar",
-              "contentType": null
-            },
-            {
-              "name": "teamPermissions",
-              "required": false,
-              "repeated": true,
-              "partKind": "scalar",
-              "contentType": null
-            },
-            {
-              "name": "projects",
-              "required": false,
-              "repeated": true,
-              "partKind": "json",
-              "contentType": null
-            },
-            {
-              "name": "joinedFrom",
-              "required": false,
-              "repeated": false,
-              "partKind": "json",
-              "contentType": null
-            }
-          ]
-        }
-      ],
-      "responseModes": [
-        {
-          "statusCode": "200",
-          "mediaType": "application/json",
-          "decoderKind": "json",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "object",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          "hasAuthoredExample": false,
-          "authoredExampleSource": "none"
-        }
-      ],
-      "errorResponseModes": [
-        {
-          "statusCode": "400",
-          "mediaType": null,
-          "decoderKind": "empty",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null
-          },
-          "hasAuthoredExample": false,
-          "authoredExampleSource": "none"
-        },
-        {
-          "statusCode": "401",
-          "mediaType": null,
-          "decoderKind": "empty",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null
-          },
-          "hasAuthoredExample": false,
-          "authoredExampleSource": "none"
-        },
-        {
-          "statusCode": "402",
-          "mediaType": null,
-          "decoderKind": "empty",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null
-          },
-          "hasAuthoredExample": false,
-          "authoredExampleSource": "none"
-        },
-        {
-          "statusCode": "403",
-          "mediaType": null,
-          "decoderKind": "empty",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null
-          },
-          "hasAuthoredExample": false,
-          "authoredExampleSource": "none"
-        },
-        {
-          "statusCode": "404",
-          "mediaType": null,
-          "decoderKind": "empty",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null
-          },
-          "hasAuthoredExample": false,
-          "authoredExampleSource": "none"
-        },
-        {
-          "statusCode": "409",
-          "mediaType": null,
-          "decoderKind": "empty",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null
-          },
-          "hasAuthoredExample": false,
-          "authoredExampleSource": "none"
-        },
-        {
-          "statusCode": "410",
-          "mediaType": null,
-          "decoderKind": "empty",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null
-          },
-          "hasAuthoredExample": false,
-          "authoredExampleSource": "none"
-        },
-        {
-          "statusCode": "500",
-          "mediaType": null,
-          "decoderKind": "empty",
-          "schemaRef": null,
-          "schemaType": {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null
-          },
-          "hasAuthoredExample": false,
-          "authoredExampleSource": "none"
-        }
-      ],
-      "params": [
-        {
-          "name": "confirmed",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "boolean",
-          "wireType": "boolean",
-          "declaredValue": true,
-          "mediaTypes": [
-            "application/json"
-          ]
-        },
-        {
-          "name": "joinedFrom",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "object",
-          "wireType": "object",
-          "declaredValue": null,
-          "mediaTypes": [
-            "application/json"
-          ]
-        },
-        {
-          "name": "projects",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "array",
-          "wireType": "array",
-          "declaredValue": null,
-          "mediaTypes": [
-            "application/json"
-          ]
-        },
-        {
-          "name": "role",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "string",
-          "wireType": "string",
-          "declaredValue": null,
-          "mediaTypes": [
-            "application/json"
-          ]
-        },
-        {
-          "name": "teamId",
-          "in": "path",
-          "required": true,
-          "nullable": false,
-          "type": "string",
-          "wireType": "string",
-          "declaredValue": null,
-          "style": "simple",
-          "explode": false
-        },
-        {
-          "name": "teamPermissions",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "array",
-          "wireType": "array",
-          "declaredValue": null,
-          "mediaTypes": [
-            "application/json"
-          ]
-        },
-        {
-          "name": "uid",
-          "in": "path",
-          "required": true,
-          "nullable": false,
-          "type": "string",
-          "wireType": "string",
-          "declaredValue": null,
-          "style": "simple",
-          "explode": false
-        }
-      ],
-      "bindings": [
-        {
-          "name": "uid",
-          "in": "path",
-          "required": true,
-          "nullable": false,
-          "type": "string",
-          "wireType": "string",
-          "declaredValue": null,
-          "style": "simple",
-          "explode": false
-        },
-        {
-          "name": "teamId",
-          "in": "path",
-          "required": true,
-          "nullable": false,
-          "type": "string",
-          "wireType": "string",
-          "declaredValue": null,
-          "style": "simple",
-          "explode": false
-        },
-        {
-          "name": "confirmed",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "boolean",
-          "wireType": "boolean",
-          "declaredValue": true,
-          "mediaTypes": [
-            "application/json"
-          ]
-        },
-        {
-          "name": "role",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "string",
-          "wireType": "string",
-          "declaredValue": null,
-          "mediaTypes": [
-            "application/json"
-          ]
-        },
-        {
-          "name": "teamPermissions",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "array",
-          "wireType": "array",
-          "declaredValue": null,
-          "mediaTypes": [
-            "application/json"
-          ]
-        },
-        {
-          "name": "projects",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "array",
-          "wireType": "array",
-          "declaredValue": null,
-          "mediaTypes": [
-            "application/json"
-          ]
-        },
-        {
-          "name": "joinedFrom",
-          "in": "body",
-          "required": false,
-          "nullable": false,
-          "type": "object",
-          "wireType": "object",
-          "declaredValue": null,
-          "mediaTypes": [
-            "application/json"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "updateTeams",
-      "wireOperationId": "updateTeams",
+      "id": "updateTeam",
+      "wireOperationId": "updateTeam",
       "method": "patch",
       "path": "/v2/teams/{teamId}",
       "namespace": [
@@ -128896,7 +128505,7 @@
       "publicMethods": [
         {
           "mode": "normal",
-          "name": "updateTeams"
+          "name": "updateTeam"
         }
       ],
       "requestModes": [
@@ -129324,7 +128933,7 @@
           "in": "body",
           "required": false,
           "nullable": false,
-          "type": "UpdateTeamsRequestDefaultProjectJobs",
+          "type": "UpdateTeamRequestDefaultProjectJobs",
           "wireType": null,
           "declaredValue": null,
           "mediaTypes": [
@@ -129336,7 +128945,7 @@
           "in": "body",
           "required": false,
           "nullable": false,
-          "type": "UpdateTeamsRequestDeploymentPolicy",
+          "type": "UpdateTeamRequestDeploymentPolicy",
           "wireType": null,
           "declaredValue": null,
           "mediaTypes": [
@@ -129468,7 +129077,7 @@
           "in": "body",
           "required": false,
           "nullable": false,
-          "type": "UpdateTeamsRequestNsnbConfig",
+          "type": "UpdateTeamRequestNsnbConfig",
           "wireType": null,
           "declaredValue": null,
           "mediaTypes": [
@@ -129922,7 +129531,7 @@
           "in": "body",
           "required": false,
           "nullable": false,
-          "type": "UpdateTeamsRequestDeploymentPolicy",
+          "type": "UpdateTeamRequestDeploymentPolicy",
           "wireType": null,
           "declaredValue": null,
           "mediaTypes": [
@@ -129982,7 +129591,7 @@
           "in": "body",
           "required": false,
           "nullable": false,
-          "type": "UpdateTeamsRequestNsnbConfig",
+          "type": "UpdateTeamRequestNsnbConfig",
           "wireType": null,
           "declaredValue": null,
           "mediaTypes": [
@@ -129994,7 +129603,7 @@
           "in": "body",
           "required": false,
           "nullable": false,
-          "type": "UpdateTeamsRequestDefaultProjectJobs",
+          "type": "UpdateTeamRequestDefaultProjectJobs",
           "wireType": null,
           "declaredValue": null,
           "mediaTypes": [
@@ -130003,6 +129612,397 @@
         },
         {
           "name": "resourceConfig",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "object",
+          "wireType": "object",
+          "declaredValue": null,
+          "mediaTypes": [
+            "application/json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "updateTeamMember",
+      "wireOperationId": "updateTeamMember",
+      "method": "patch",
+      "path": "/v1/teams/{teamId}/members/{uid}",
+      "namespace": [
+        "teams"
+      ],
+      "streams": false,
+      "mode": "normal",
+      "streamSelector": null,
+      "requestMediaType": "application/json",
+      "contentTypes": null,
+      "publicMethods": [
+        {
+          "mode": "normal",
+          "name": "updateTeamMember"
+        }
+      ],
+      "requestModes": [
+        {
+          "mediaType": "application/json",
+          "encoderKind": "json",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "object",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null,
+            "variants": null
+          },
+          "bodyShape": "fields",
+          "fields": [
+            {
+              "name": "confirmed",
+              "required": false,
+              "repeated": false,
+              "partKind": "scalar",
+              "contentType": null
+            },
+            {
+              "name": "role",
+              "required": false,
+              "repeated": false,
+              "partKind": "scalar",
+              "contentType": null
+            },
+            {
+              "name": "teamPermissions",
+              "required": false,
+              "repeated": true,
+              "partKind": "scalar",
+              "contentType": null
+            },
+            {
+              "name": "projects",
+              "required": false,
+              "repeated": true,
+              "partKind": "json",
+              "contentType": null
+            },
+            {
+              "name": "joinedFrom",
+              "required": false,
+              "repeated": false,
+              "partKind": "json",
+              "contentType": null
+            }
+          ]
+        }
+      ],
+      "responseModes": [
+        {
+          "statusCode": "200",
+          "mediaType": "application/json",
+          "decoderKind": "json",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "object",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null,
+            "variants": null
+          },
+          "hasAuthoredExample": false,
+          "authoredExampleSource": "none"
+        }
+      ],
+      "errorResponseModes": [
+        {
+          "statusCode": "400",
+          "mediaType": null,
+          "decoderKind": "empty",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "any",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null
+          },
+          "hasAuthoredExample": false,
+          "authoredExampleSource": "none"
+        },
+        {
+          "statusCode": "401",
+          "mediaType": null,
+          "decoderKind": "empty",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "any",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null
+          },
+          "hasAuthoredExample": false,
+          "authoredExampleSource": "none"
+        },
+        {
+          "statusCode": "402",
+          "mediaType": null,
+          "decoderKind": "empty",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "any",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null
+          },
+          "hasAuthoredExample": false,
+          "authoredExampleSource": "none"
+        },
+        {
+          "statusCode": "403",
+          "mediaType": null,
+          "decoderKind": "empty",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "any",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null
+          },
+          "hasAuthoredExample": false,
+          "authoredExampleSource": "none"
+        },
+        {
+          "statusCode": "404",
+          "mediaType": null,
+          "decoderKind": "empty",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "any",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null
+          },
+          "hasAuthoredExample": false,
+          "authoredExampleSource": "none"
+        },
+        {
+          "statusCode": "409",
+          "mediaType": null,
+          "decoderKind": "empty",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "any",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null
+          },
+          "hasAuthoredExample": false,
+          "authoredExampleSource": "none"
+        },
+        {
+          "statusCode": "410",
+          "mediaType": null,
+          "decoderKind": "empty",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "any",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null
+          },
+          "hasAuthoredExample": false,
+          "authoredExampleSource": "none"
+        },
+        {
+          "statusCode": "500",
+          "mediaType": null,
+          "decoderKind": "empty",
+          "schemaRef": null,
+          "schemaType": {
+            "type": "any",
+            "format": null,
+            "ref": null,
+            "nullable": false,
+            "items": null,
+            "mapValue": null
+          },
+          "hasAuthoredExample": false,
+          "authoredExampleSource": "none"
+        }
+      ],
+      "params": [
+        {
+          "name": "confirmed",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "boolean",
+          "wireType": "boolean",
+          "declaredValue": true,
+          "mediaTypes": [
+            "application/json"
+          ]
+        },
+        {
+          "name": "joinedFrom",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "object",
+          "wireType": "object",
+          "declaredValue": null,
+          "mediaTypes": [
+            "application/json"
+          ]
+        },
+        {
+          "name": "projects",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "array",
+          "wireType": "array",
+          "declaredValue": null,
+          "mediaTypes": [
+            "application/json"
+          ]
+        },
+        {
+          "name": "role",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "string",
+          "wireType": "string",
+          "declaredValue": null,
+          "mediaTypes": [
+            "application/json"
+          ]
+        },
+        {
+          "name": "teamId",
+          "in": "path",
+          "required": true,
+          "nullable": false,
+          "type": "string",
+          "wireType": "string",
+          "declaredValue": null,
+          "style": "simple",
+          "explode": false
+        },
+        {
+          "name": "teamPermissions",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "array",
+          "wireType": "array",
+          "declaredValue": null,
+          "mediaTypes": [
+            "application/json"
+          ]
+        },
+        {
+          "name": "uid",
+          "in": "path",
+          "required": true,
+          "nullable": false,
+          "type": "string",
+          "wireType": "string",
+          "declaredValue": null,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "bindings": [
+        {
+          "name": "uid",
+          "in": "path",
+          "required": true,
+          "nullable": false,
+          "type": "string",
+          "wireType": "string",
+          "declaredValue": null,
+          "style": "simple",
+          "explode": false
+        },
+        {
+          "name": "teamId",
+          "in": "path",
+          "required": true,
+          "nullable": false,
+          "type": "string",
+          "wireType": "string",
+          "declaredValue": null,
+          "style": "simple",
+          "explode": false
+        },
+        {
+          "name": "confirmed",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "boolean",
+          "wireType": "boolean",
+          "declaredValue": true,
+          "mediaTypes": [
+            "application/json"
+          ]
+        },
+        {
+          "name": "role",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "string",
+          "wireType": "string",
+          "declaredValue": null,
+          "mediaTypes": [
+            "application/json"
+          ]
+        },
+        {
+          "name": "teamPermissions",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "array",
+          "wireType": "array",
+          "declaredValue": null,
+          "mediaTypes": [
+            "application/json"
+          ]
+        },
+        {
+          "name": "projects",
+          "in": "body",
+          "required": false,
+          "nullable": false,
+          "type": "array",
+          "wireType": "array",
+          "declaredValue": null,
+          "mediaTypes": [
+            "application/json"
+          ]
+        },
+        {
+          "name": "joinedFrom",
           "in": "body",
           "required": false,
           "nullable": false,
@@ -157109,7 +157109,7 @@
       "values": []
     },
     {
-      "name": "UpdateTeamsRequestDefaultProjectJobs",
+      "name": "UpdateTeamRequestDefaultProjectJobs",
       "kind": "union",
       "type": {
         "type": "oneOf",
@@ -157143,7 +157143,7 @@
       "values": []
     },
     {
-      "name": "UpdateTeamsRequestDeploymentPolicy",
+      "name": "UpdateTeamRequestDeploymentPolicy",
       "kind": "union",
       "type": {
         "type": "anyOf",
@@ -157177,7 +157177,7 @@
       "values": []
     },
     {
-      "name": "UpdateTeamsRequestNsnbConfig",
+      "name": "UpdateTeamRequestNsnbConfig",
       "kind": "union",
       "type": {
         "type": "anyOf",
@@ -173593,33 +173593,33 @@
       "UpdateTeamMemberRequestBodyJoinedFrom",
       "UpdateTeamMemberRequestBodyProjectsItem",
       "UpdateTeamMemberResponse",
-      "UpdateTeamsRequestBodyDefaultDeploymentProtection",
-      "UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtection",
-      "UpdateTeamsRequestBodyDefaultDeploymentProtectionSsoProtection",
-      "UpdateTeamsRequestBodyDefaultExpirationSettings",
-      "UpdateTeamsRequestBodyDefaultPassport",
-      "UpdateTeamsRequestBodyRemoteCaching",
-      "UpdateTeamsRequestBodyResourceConfig",
-      "UpdateTeamsRequestBodyResourceConfigBuildMachine",
-      "UpdateTeamsRequestBodySaml",
-      "UpdateTeamsRequestBodySamlRolesValueVariant1",
-      "UpdateTeamsRequestBodyStrictConnectors",
-      "UpdateTeamsRequestBodyStrictDeploymentProtectionSettings",
-      "UpdateTeamsRequestBodyStrictPasswordProtectionSettings",
-      "UpdateTeamsRequestBodyStrictShareableLinks",
-      "UpdateTeamsRequestDefaultProjectJobsVariant0",
-      "UpdateTeamsRequestDefaultProjectJobsVariant0Lint",
-      "UpdateTeamsRequestDefaultProjectJobsVariant0Typecheck",
-      "UpdateTeamsRequestDeploymentPolicyVariant0",
-      "UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX66d432dfdd",
-      "UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVaX87eed2ea9f",
-      "UpdateTeamsRequestDeploymentPolicyVariant0DeploymentSourcesVariant0Item",
-      "UpdateTeamsRequestDeploymentPolicyVariant0GitSourcesVariant0IX4b71787633",
-      "UpdateTeamsRequestDeploymentPolicyVariant0GitSourcesVariant0IX5625b022ac",
-      "UpdateTeamsRequestDeploymentPolicyVariant0GitSourcesVariant0IXf127b3dd99",
-      "UpdateTeamsRequestDeploymentPolicyVariant0GitSourcesVariant0IXfd56bb010f",
-      "UpdateTeamsRequestDeploymentPolicyVariant0GitSourcesVariant0Item",
-      "UpdateTeamsRequestNsnbConfigVariant0",
+      "UpdateTeamRequestBodyDefaultDeploymentProtection",
+      "UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProtection",
+      "UpdateTeamRequestBodyDefaultDeploymentProtectionSsoProtection",
+      "UpdateTeamRequestBodyDefaultExpirationSettings",
+      "UpdateTeamRequestBodyDefaultPassport",
+      "UpdateTeamRequestBodyRemoteCaching",
+      "UpdateTeamRequestBodyResourceConfig",
+      "UpdateTeamRequestBodyResourceConfigBuildMachine",
+      "UpdateTeamRequestBodySaml",
+      "UpdateTeamRequestBodySamlRolesValueVariant1",
+      "UpdateTeamRequestBodyStrictConnectors",
+      "UpdateTeamRequestBodyStrictDeploymentProtectionSettings",
+      "UpdateTeamRequestBodyStrictPasswordProtectionSettings",
+      "UpdateTeamRequestBodyStrictShareableLinks",
+      "UpdateTeamRequestDefaultProjectJobsVariant0",
+      "UpdateTeamRequestDefaultProjectJobsVariant0Lint",
+      "UpdateTeamRequestDefaultProjectJobsVariant0Typecheck",
+      "UpdateTeamRequestDeploymentPolicyVariant0",
+      "UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX1c34075c8b",
+      "UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVarX5b071ed950",
+      "UpdateTeamRequestDeploymentPolicyVariant0DeploymentSourcesVariant0Item",
+      "UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX01d5dd705b",
+      "UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX46a4a480fb",
+      "UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItX48e2d04b8e",
+      "UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0ItXd6ad927605",
+      "UpdateTeamRequestDeploymentPolicyVariant0GitSourcesVariant0Item",
+      "UpdateTeamRequestNsnbConfigVariant0",
       "UpdateVercelCiRepositorySettingsResponse",
       "UpdateVercelCiRepositorySettingsResponseError",
       "UpdateVercelCiRepositorySettingsResponseErrorX52252768",
@@ -189459,6 +189459,29 @@
         ]
       },
       {
+        "id": "updateTeam",
+        "method": "patch",
+        "path": "/v2/teams/{teamId}",
+        "summary": "Updates the specified team's information using the fields supplied in the request body. Include only the team properties you want to change, such as its name, slug, avatar, or feedback settings. The authenticated user must be a team owner to update the team.",
+        "description": "Update the information of a Team specified by the `teamId` parameter. The request body should contain the information that will be updated on the Team.",
+        "deprecated": false,
+        "deprecationMessage": null,
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "description": "The Team identifier to perform the request on behalf of."
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "required": false,
+            "description": "The Team slug to perform the request on behalf of."
+          }
+        ]
+      },
+      {
         "id": "updateTeamMember",
         "method": "patch",
         "path": "/v1/teams/{teamId}/members/{uid}",
@@ -189478,29 +189501,6 @@
             "in": "path",
             "required": true,
             "description": null
-          }
-        ]
-      },
-      {
-        "id": "updateTeams",
-        "method": "patch",
-        "path": "/v2/teams/{teamId}",
-        "summary": "Updates the specified team's information using the fields supplied in the request body. Include only the team properties you want to change, such as its name, slug, avatar, or feedback settings. The authenticated user must be a team owner to update the team.",
-        "description": "Update the information of a Team specified by the `teamId` parameter. The request body should contain the information that will be updated on the Team.",
-        "deprecated": false,
-        "deprecationMessage": null,
-        "parameters": [
-          {
-            "name": "teamId",
-            "in": "path",
-            "required": true,
-            "description": "The Team identifier to perform the request on behalf of."
-          },
-          {
-            "name": "slug",
-            "in": "query",
-            "required": false,
-            "description": "The Team slug to perform the request on behalf of."
           }
         ]
       },
@@ -195245,23 +195245,23 @@
         "properties": []
       },
       {
-        "name": "UpdateTeamsRequestDefaultProjectJobs",
+        "name": "UpdateTeamRequestDefaultProjectJobs",
         "kind": "model",
-        "description": "Typed representation of the `UpdateTeamsRequestDefaultProjectJobs` API schema.",
+        "description": "Typed representation of the `UpdateTeamRequestDefaultProjectJobs` API schema.",
         "values": [],
         "properties": []
       },
       {
-        "name": "UpdateTeamsRequestDeploymentPolicy",
+        "name": "UpdateTeamRequestDeploymentPolicy",
         "kind": "model",
-        "description": "Typed representation of the `UpdateTeamsRequestDeploymentPolicy` API schema.",
+        "description": "Typed representation of the `UpdateTeamRequestDeploymentPolicy` API schema.",
         "values": [],
         "properties": []
       },
       {
-        "name": "UpdateTeamsRequestNsnbConfig",
+        "name": "UpdateTeamRequestNsnbConfig",
         "kind": "model",
-        "description": "Typed representation of the `UpdateTeamsRequestNsnbConfig` API schema.",
+        "description": "Typed representation of the `UpdateTeamRequestNsnbConfig` API schema.",
         "values": [],
         "properties": []
       },

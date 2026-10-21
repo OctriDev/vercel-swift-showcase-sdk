@@ -7,3 +7,25 @@ import Foundation
     import FoundationNetworking
 #endif
 public enum UserMethods {}
+
+extension UserMethods {
+    /// Retrieves information about the authenticated user. Use this endpoint to obtain the user information associated with the request's authentication context.
+    ///
+    /// Retrieves information related to the currently authenticated User.
+    public static func getAuthUser(config: ClientConfig, requestOptions: RequestOptions? = nil) async throws -> GetAuthUserResponse {
+        return try (await sdkRequest("GET", "/v2/user", config: config, decoder: .json, operationId: "getAuthUser", options: requestOptions)).data
+    }
+
+    /// Starts the authenticated user's account deletion process by sending a confirmation email. You must follow the link in that email to proceed with deletion; you can optionally include `reasons` to describe why the account is being deleted.
+    ///
+    /// Initiates the deletion process for the currently authenticated User, by sending a deletion confirmation email. The email contains a link that the user needs to visit in order to proceed with the deletion process.
+    ///
+    /// - Parameters:
+    /// - reasons: Optional array of objects that describe the reason why the User
+    ///   account is being deleted.
+    public static func requestDelete(config: ClientConfig, reasons: [RequestDeleteRequestBodyReasonsItem]? = nil, requestOptions: RequestOptions? = nil) async throws -> RequestDeleteResponse {
+        let requestBody = RequestDeleteRequestBody(reasons: reasons)
+
+        return try (await sdkRequest("DELETE", "/v1/user", config: config, body: requestBody, decoder: .json, operationId: "requestDelete", options: requestOptions)).data
+    }
+}

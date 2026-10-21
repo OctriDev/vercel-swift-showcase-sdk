@@ -170,10 +170,6 @@ extension CreateLogDrainResponseSourceVariant1 {
     }
 }
 
-
-
-
-
 public struct CreateLogDrainResponseSourceVariant0: Codable {
     public var kind: CreateLogDrainResponseSourceVariant0Kind
     /// Informational marker for a system-owned default drain.
@@ -205,10 +201,6 @@ extension CreateLogDrainResponseSourceVariant0 {
             try sdkValidateRawEnum("kind", self.kind, CreateLogDrainResponseSourceVariant0Kind.allCases.map(\.rawValue))
     }
 }
-
-
-
-
 
 public struct GetIntegrationLogDrainsResponseItemSourceVariant0: Codable {
     public var kind: GetIntegrationLogDrainsResponseItemSourceVariant0Kind

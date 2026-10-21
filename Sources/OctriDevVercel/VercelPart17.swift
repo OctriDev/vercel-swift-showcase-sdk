@@ -92,8 +92,8 @@ extension TeamsNamespace {
 /// Updates the specified team's information using the fields supplied in the request body. Include only the team properties you want to change, such as its name, slug, avatar, or feedback settings. The authenticated user must be a team owner to update the team.
     ///
     /// Update the information of a Team specified by the `teamId` parameter. The request body should contain the information that will be updated on the Team.
-    public func update(options: TeamsMethods.UpdateTeamsOptions, requestOptions: RequestOptions? = nil) async throws -> Team {
-        return try await TeamsMethods.updateTeams(config: config, options: options, requestOptions: requestOptions)
+    public func update(options: TeamsMethods.UpdateTeamOptions, requestOptions: RequestOptions? = nil) async throws -> Team {
+        return try await TeamsMethods.updateTeam(config: config, options: options, requestOptions: requestOptions)
     }
 
 /// Lists teams that the authenticated user belongs to, with pagination metadata. Use `limit` to cap the number of teams and `since` or `until` to filter by creation time in milliseconds.

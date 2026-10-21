@@ -23,36 +23,36 @@ struct UpdateTeamMemberRequestBody: Encodable {
     }
 }
 
-struct UpdateTeamsRequestBody: Encodable {
+struct UpdateTeamRequestBody: Encodable {
     var avatar: SdkOptional<String>?
     var description: String?
     var emailDomain: SdkOptional<String>?
     var name: String?
     var previewDeploymentSuffix: SdkOptional<String>?
     var regenerateInviteCode: Bool?
-    var saml: UpdateTeamsRequestBodySaml?
+    var saml: UpdateTeamRequestBodySaml?
     var slug2: String?
     var enablePreviewFeedback: String?
     var enableProductionFeedback: String?
     var sensitiveEnvironmentVariablePolicy: String?
     var disjunctiveProductionSecretPolicy: String?
-    var remoteCaching: UpdateTeamsRequestBodyRemoteCaching?
+    var remoteCaching: UpdateTeamRequestBodyRemoteCaching?
     var hideIpAddresses: Bool?
     var hideIpAddressesInLogDrains: Bool?
-    var dpAccessRequestsMode: UpdateTeamsRequestBodyDpAccessRequestsMode?
+    var dpAccessRequestsMode: UpdateTeamRequestBodyDpAccessRequestsMode?
     var requireVerifiedCommits: Bool?
     var disableRepositoryDispatchEvents: Bool?
-    var defaultDeploymentProtection: UpdateTeamsRequestBodyDefaultDeploymentProtection?
-    var defaultPassport: SdkOptional<UpdateTeamsRequestBodyDefaultPassport>?
-    var defaultExpirationSettings: UpdateTeamsRequestBodyDefaultExpirationSettings?
-    var deploymentPolicy: UpdateTeamsRequestDeploymentPolicy?
-    var strictDeploymentProtectionSettings: UpdateTeamsRequestBodyStrictDeploymentProtectionSettings?
-    var strictShareableLinks: UpdateTeamsRequestBodyStrictShareableLinks?
-    var strictPasswordProtectionSettings: UpdateTeamsRequestBodyStrictPasswordProtectionSettings?
-    var strictConnectors: UpdateTeamsRequestBodyStrictConnectors?
-    var nsnbConfig: UpdateTeamsRequestNsnbConfig?
-    var defaultProjectJobs: UpdateTeamsRequestDefaultProjectJobs?
-    var resourceConfig: UpdateTeamsRequestBodyResourceConfig?
+    var defaultDeploymentProtection: UpdateTeamRequestBodyDefaultDeploymentProtection?
+    var defaultPassport: SdkOptional<UpdateTeamRequestBodyDefaultPassport>?
+    var defaultExpirationSettings: UpdateTeamRequestBodyDefaultExpirationSettings?
+    var deploymentPolicy: UpdateTeamRequestDeploymentPolicy?
+    var strictDeploymentProtectionSettings: UpdateTeamRequestBodyStrictDeploymentProtectionSettings?
+    var strictShareableLinks: UpdateTeamRequestBodyStrictShareableLinks?
+    var strictPasswordProtectionSettings: UpdateTeamRequestBodyStrictPasswordProtectionSettings?
+    var strictConnectors: UpdateTeamRequestBodyStrictConnectors?
+    var nsnbConfig: UpdateTeamRequestNsnbConfig?
+    var defaultProjectJobs: UpdateTeamRequestDefaultProjectJobs?
+    var resourceConfig: UpdateTeamRequestBodyResourceConfig?
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
@@ -87,7 +87,7 @@ struct UpdateTeamsRequestBody: Encodable {
         try keyedContainer.encodeIfPresent(self.resourceConfig, forKey: SdkCodingKey("resourceConfig"))
     }
 
-    init(options: TeamsMethods.UpdateTeamsOptions) {
+    init(options: TeamsMethods.UpdateTeamOptions) {
         self.avatar = options.avatar
         self.description = options.description
         self.emailDomain = options.emailDomain

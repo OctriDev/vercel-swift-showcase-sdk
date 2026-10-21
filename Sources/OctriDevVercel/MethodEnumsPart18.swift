@@ -45,14 +45,14 @@ public struct CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItX9320
 }
 
 /// Specify if the password will apply to every Deployment Target or just Preview
-public struct UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtX2423a4fceb: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProteXc514d44a1c: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
     public init(rawValue: String) { self.rawValue = rawValue }
-    public static let all = UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtX2423a4fceb(rawValue: "all")
-    public static let preview = UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtX2423a4fceb(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews = UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtX2423a4fceb(rawValue: "prod_deployment_urls_and_all_previews")
-    public static let allExceptCustomDomains = UpdateTeamsRequestBodyDefaultDeploymentProtectionPasswordProtX2423a4fceb(rawValue: "all_except_custom_domains")
+    public static let all = UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProteXc514d44a1c(rawValue: "all")
+    public static let preview = UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProteXc514d44a1c(rawValue: "preview")
+    public static let prodDeploymentUrlsAndAllPreviews = UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProteXc514d44a1c(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let allExceptCustomDomains = UpdateTeamRequestBodyDefaultDeploymentProtectionPasswordProteXc514d44a1c(rawValue: "all_except_custom_domains")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

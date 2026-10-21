@@ -27,21 +27,21 @@ public struct ListProjectChecksResponseChecksItemSourceKind: RawRepresentable, H
 }
 
 /// The time period to keep production deployments for
-public struct UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
     public init(rawValue: String) { self.rawValue = rawValue }
-    public static let value3y = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "3y")
-    public static let value2y = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "2y")
-    public static let value1y = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "1y")
-    public static let value6m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "6m")
-    public static let value3m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "3m")
-    public static let value2m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "2m")
-    public static let value1m = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "1m")
-    public static let value2w = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "2w")
-    public static let value1w = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "1w")
-    public static let value1d = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "1d")
-    public static let unlimited = UpdateTeamsRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "unlimited")
+    public static let value3y = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "3y")
+    public static let value2y = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "2y")
+    public static let value1y = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "1y")
+    public static let value6m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "6m")
+    public static let value3m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "3m")
+    public static let value2m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "2m")
+    public static let value1m = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "1m")
+    public static let value2w = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "2w")
+    public static let value1w = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "1w")
+    public static let value1d = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "1d")
+    public static let unlimited = UpdateTeamRequestBodyDefaultExpirationSettingsExpirationProduction(rawValue: "unlimited")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

@@ -7,3 +7,24 @@ import Foundation
     import FoundationNetworking
 #endif
 public enum DeploymentsMethods {}
+
+extension DeploymentsMethods {
+    /// Retrieves a deployment by its unique identifier or hostname. Use `withGitRepoInfo` to include the `gitSource` object with commit, branch, and repository metadata. The response includes additional private deployment details when the authenticated user or team owns the deployment.
+    ///
+    /// Retrieves information for a deployment either by supplying its ID (`id` property) or Hostname (`url` property). Additional details will be included when the authenticated user or team is an owner of the deployment.
+    ///
+    /// - Parameters:
+    /// - idOrUrl: The unique identifier or hostname of the deployment.
+    /// - withGitRepoInfo: When `true`, the response includes the `gitSource` object
+    ///   with the commit SHA, branch name, and connected repository metadata.
+    ///   Defaults to `false`.
+    /// - teamId: The Team identifier to perform the request on behalf of.
+    /// - slug: The Team slug to perform the request on behalf of.
+    public static func getDeployment(config: ClientConfig, idOrUrl: String, withGitRepoInfo: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDeploymentResponse {
+        return try (await sdkRequest("GET", ["/v13/deployments/", sdkEncodePathSegment(sdkWireString(idOrUrl))].joined(), config: config, query: [
+            SdkQueryParameter("withGitRepoInfo", value: withGitRepoInfo),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getDeployment", options: requestOptions)).data
+    }
+}

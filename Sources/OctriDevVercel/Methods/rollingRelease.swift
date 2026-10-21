@@ -7,3 +7,22 @@ import Foundation
     import FoundationNetworking
 #endif
 public enum RollingReleaseMethods {}
+
+extension RollingReleaseMethods {
+    /// Retrieves rolling release information for a project, whether its rollout is active, aborted, or complete. Use `state` to filter the result to ACTIVE, COMPLETE, or ABORTED. If rolling releases are enabled but no deployment has occurred, the response contains a null rolling release value.
+    ///
+    /// Return the Rolling Release for a project, regardless of whether the rollout is active, aborted, or completed. If the feature is enabled but no deployment has occurred yet, null will be returned.
+    ///
+    /// - Parameters:
+    /// - idOrName: Project ID or project name (URL-encoded)
+    /// - state: Filter by rolling release state
+    /// - teamId: The Team identifier to perform the request on behalf of.
+    /// - slug: The Team slug to perform the request on behalf of.
+    public static func getRollingRelease(config: ClientConfig, idOrName: String, state: GetRollingReleaseParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRollingReleaseResponse {
+        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/rolling-release"].joined(), config: config, query: [
+            SdkQueryParameter("state", value: state),
+            SdkQueryParameter("teamId", value: teamId),
+            SdkQueryParameter("slug", value: slug),
+        ], decoder: .json, operationId: "getRollingRelease", options: requestOptions)).data
+    }
+}

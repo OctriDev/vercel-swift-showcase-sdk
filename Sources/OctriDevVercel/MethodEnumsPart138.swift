@@ -24,18 +24,18 @@ public struct InvalidateByTagsRequestBodyTarget: RawRepresentable, Hashable, Cod
     }
 }
 
-public struct UpdateTeamsRequestBodySamlRolesValueVariant0: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateTeamRequestBodySamlRolesValueVariant0: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
     public init(rawValue: String) { self.rawValue = rawValue }
-    public static let owner = UpdateTeamsRequestBodySamlRolesValueVariant0(rawValue: "OWNER")
-    public static let member = UpdateTeamsRequestBodySamlRolesValueVariant0(rawValue: "MEMBER")
-    public static let developer = UpdateTeamsRequestBodySamlRolesValueVariant0(rawValue: "DEVELOPER")
-    public static let security = UpdateTeamsRequestBodySamlRolesValueVariant0(rawValue: "SECURITY")
-    public static let billing = UpdateTeamsRequestBodySamlRolesValueVariant0(rawValue: "BILLING")
-    public static let viewer = UpdateTeamsRequestBodySamlRolesValueVariant0(rawValue: "VIEWER")
-    public static let viewerForPlus = UpdateTeamsRequestBodySamlRolesValueVariant0(rawValue: "VIEWER_FOR_PLUS")
-    public static let contributor = UpdateTeamsRequestBodySamlRolesValueVariant0(rawValue: "CONTRIBUTOR")
+    public static let owner = UpdateTeamRequestBodySamlRolesValueVariant0(rawValue: "OWNER")
+    public static let member = UpdateTeamRequestBodySamlRolesValueVariant0(rawValue: "MEMBER")
+    public static let developer = UpdateTeamRequestBodySamlRolesValueVariant0(rawValue: "DEVELOPER")
+    public static let security = UpdateTeamRequestBodySamlRolesValueVariant0(rawValue: "SECURITY")
+    public static let billing = UpdateTeamRequestBodySamlRolesValueVariant0(rawValue: "BILLING")
+    public static let viewer = UpdateTeamRequestBodySamlRolesValueVariant0(rawValue: "VIEWER")
+    public static let viewerForPlus = UpdateTeamRequestBodySamlRolesValueVariant0(rawValue: "VIEWER_FOR_PLUS")
+    public static let contributor = UpdateTeamRequestBodySamlRolesValueVariant0(rawValue: "CONTRIBUTOR")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
