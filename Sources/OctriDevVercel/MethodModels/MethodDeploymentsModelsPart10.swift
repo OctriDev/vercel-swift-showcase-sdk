@@ -7,19 +7,23 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical deployments operation model declarations
-extension CancelDeploymentResponseFunctionsValueAffinity {
-    public init(from decoder: Decoder) throws {
+/// Canonical deployments operation model declarations
+public extension CancelDeploymentResponseFunctionsValueAffinity {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.mode) else {
-            throw SdkValidationError(field: "mode", code: "required", message: "Validation failed for 'mode': value is required")
+            throw SdkValidationError(
+                field: "mode",
+                code: "required",
+                message: "Validation failed for 'mode': value is required"
+            )
         }
-        self.mode = try container.sdkDecodeRequired(.mode)
+        mode = try container.sdkDecodeRequired(.mode)
     }
 }
 
-extension CancelDeploymentResponseFunctionsValueAffinity {
-    public init(mode: CancelDeploymentResponseFunctionsValueAffinityMode) {
+public extension CancelDeploymentResponseFunctionsValueAffinity {
+    init(mode: CancelDeploymentResponseFunctionsValueAffinityMode) {
         self.mode = mode
     }
 }
@@ -35,23 +39,29 @@ public struct CancelDeploymentResponseBuildsItem: Codable {
         case src
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CancelDeploymentResponseBuildsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.use) else {
-            throw SdkValidationError(field: "use", code: "required", message: "Validation failed for 'use': value is required")
-        }
-        self.use = try container.sdkDecodeRequired(.use)
-        self.config = try container.sdkDecodeIfPresent(.config)
-        self.src = try container.sdkDecodeIfPresent(.src)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CancelDeploymentResponseBuildsItem {
-    public init(use: String, config: [String: JSONValue]? = nil, src: String? = nil) {
+public extension CancelDeploymentResponseBuildsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.use) else {
+            throw SdkValidationError(
+                field: "use",
+                code: "required",
+                message: "Validation failed for 'use': value is required"
+            )
+        }
+        use = try container.sdkDecodeRequired(.use)
+        config = try container.sdkDecodeIfPresent(.config)
+        src = try container.sdkDecodeIfPresent(.src)
+    }
+}
+
+public extension CancelDeploymentResponseBuildsItem {
+    init(use: String, config: [String: JSONValue]? = nil, src: String? = nil) {
         (self.use, self.config) = (use, config)
         self.src = src
     }
@@ -66,22 +76,28 @@ public struct CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsItem: 
         case label
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.value = try container.sdkDecodeNullable(.value)
-        self.label = try container.sdkDecodeIfPresent(.label)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsItem {
-    public init(value: FlagJSONValue?, label: String? = nil) {
+public extension CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        value = try container.sdkDecodeNullable(.value)
+        label = try container.sdkDecodeIfPresent(.label)
+    }
+}
+
+public extension CancelDeploymentResponseFlagsVariant0DefinitionsValueOptionsItem {
+    init(value: FlagJSONValue?, label: String? = nil) {
         (self.value, self.label) = (value, label)
     }
 }
@@ -188,7 +204,18 @@ public struct GetDeploymentsResponseDeploymentsItem: Codable {
     /// - Example: 1609492210000
     public var undeleted: Double? = .none
 
-    init(sdkRequiredFields created: Double, createdAt: Double, creator: GetDeploymentsResponseDeploymentsItemCreator, inspectorUrl: String?, name: String, projectId: String, readyState: GetDeploymentsResponseDeploymentsItemReadyState, type: GetDeploymentsResponseDeploymentsItemType, uid: String, url: String) {
+    init(
+        sdkRequiredFields created: Double,
+        createdAt: Double,
+        creator: GetDeploymentsResponseDeploymentsItemCreator,
+        inspectorUrl: String?,
+        name: String,
+        projectId: String,
+        readyState: GetDeploymentsResponseDeploymentsItemReadyState,
+        type: GetDeploymentsResponseDeploymentsItemType,
+        uid: String,
+        url: String
+    ) {
         (self.created, self.createdAt) = (created, createdAt)
         (self.creator, self.inspectorUrl) = (creator, inspectorUrl)
         (self.name, self.projectId) = (name, projectId)
@@ -244,19 +271,84 @@ extension GetDeploymentsResponseDeploymentsItem {
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItem {
-    public init(from decoder: Decoder) throws {
+public extension GetDeploymentsResponseDeploymentsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.init(sdkRequiredFields: try container.sdkDecodeRequired(.created), createdAt: try container.sdkDecodeRequired(.createdAt), creator: try container.sdkDecodeRequired(.creator), inspectorUrl: try container.sdkDecodeNullable(.inspectorUrl), name: try container.sdkDecodeRequired(.name), projectId: try container.sdkDecodeRequired(.projectId), readyState: try container.sdkDecodeRequired(.readyState), type: try container.sdkDecodeRequired(.type), uid: try container.sdkDecodeRequired(.uid), url: try container.sdkDecodeRequired(.url))
+        try self.init(
+            sdkRequiredFields: container.sdkDecodeRequired(.created),
+            createdAt: container.sdkDecodeRequired(.createdAt),
+            creator: container.sdkDecodeRequired(.creator),
+            inspectorUrl: container.sdkDecodeNullable(.inspectorUrl),
+            name: container.sdkDecodeRequired(.name),
+            projectId: container.sdkDecodeRequired(.projectId),
+            readyState: container.sdkDecodeRequired(.readyState),
+            type: container.sdkDecodeRequired(.type),
+            uid: container.sdkDecodeRequired(.uid),
+            url: container.sdkDecodeRequired(.url)
+        )
         try sdkDecodeFieldsPart1(container)
         try sdkDecodeFieldsPart2(container)
         try sdkDecodeFieldsPart3(container)
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItem {
-    public init(created: Double, createdAt: Double, creator: GetDeploymentsResponseDeploymentsItemCreator, inspectorUrl: String?, name: String, projectId: String, readyState: GetDeploymentsResponseDeploymentsItemReadyState, type: GetDeploymentsResponseDeploymentsItemType, uid: String, url: String, aliasAssigned: GetDeploymentsResponseDeploymentsItemAliasAssigned? = nil, aliasError: GetDeploymentsResponseDeploymentsItemAliasError? = nil, attribution: GetDeploymentsResponseDeploymentsItemAttribution? = nil, buildingAt: Double? = nil, checks: GetDeploymentsResponseDeploymentsItemChecks? = nil, checksConclusion: GetDeploymentsResponseDeploymentsItemChecksConclusion? = nil, checksState: GetDeploymentsResponseDeploymentsItemChecksState? = nil, connectBuildsEnabled: Bool? = nil, connectConfigurationId: String? = nil, customEnvironment: GetDeploymentsResponseDeploymentsItemCustomEnvironment? = nil, defaultRoute: String? = nil, deleted: Double? = nil, errorCode: String? = nil, errorMessage: String? = nil, expiration: Double? = nil, isRollbackCandidate: Bool? = nil, manualProvisioning: GetDeploymentsResponseDeploymentsItemManualProvisioning? = nil, meta: [String: String]? = nil, oomReport: GetDeploymentsResponseDeploymentsItemOomReport? = nil, passiveConnectConfigurationId: String? = nil, platform: GetDeploymentsResponseDeploymentsItemPlatform? = nil, prebuilt: Bool? = nil, projectSettings: GetDeploymentsResponseDeploymentsItemProjectSettings? = nil, proposedExpiration: Double? = nil, ready: Double? = nil, readySubstate: GetDeploymentsResponseDeploymentsItemReadySubstate? = nil, seatBlock: GetDeploymentsResponseDeploymentsItemSeatBlock? = nil, softDeletedByRetention: Bool? = nil, source: GetDeploymentsResponseDeploymentsItemSource? = nil, state: GetDeploymentsResponseDeploymentsItemState? = nil, target: GetDeploymentsResponseDeploymentsItemTarget? = nil, undeleted: Double? = nil) {
-        self.init(sdkRequiredFields: created, createdAt: createdAt, creator: creator, inspectorUrl: inspectorUrl, name: name, projectId: projectId, readyState: readyState, type: type, uid: uid, url: url)
+public extension GetDeploymentsResponseDeploymentsItem {
+    init(
+        created: Double,
+        createdAt: Double,
+        creator: GetDeploymentsResponseDeploymentsItemCreator,
+        inspectorUrl: String?,
+        name: String,
+        projectId: String,
+        readyState: GetDeploymentsResponseDeploymentsItemReadyState,
+        type: GetDeploymentsResponseDeploymentsItemType,
+        uid: String,
+        url: String,
+        aliasAssigned: GetDeploymentsResponseDeploymentsItemAliasAssigned? = nil,
+        aliasError: GetDeploymentsResponseDeploymentsItemAliasError? = nil,
+        attribution: GetDeploymentsResponseDeploymentsItemAttribution? = nil,
+        buildingAt: Double? = nil,
+        checks: GetDeploymentsResponseDeploymentsItemChecks? = nil,
+        checksConclusion: GetDeploymentsResponseDeploymentsItemChecksConclusion? = nil,
+        checksState: GetDeploymentsResponseDeploymentsItemChecksState? = nil,
+        connectBuildsEnabled: Bool? = nil,
+        connectConfigurationId: String? = nil,
+        customEnvironment: GetDeploymentsResponseDeploymentsItemCustomEnvironment? = nil,
+        defaultRoute: String? = nil,
+        deleted: Double? = nil,
+        errorCode: String? = nil,
+        errorMessage: String? = nil,
+        expiration: Double? = nil,
+        isRollbackCandidate: Bool? = nil,
+        manualProvisioning: GetDeploymentsResponseDeploymentsItemManualProvisioning? = nil,
+        meta: [String: String]? = nil,
+        oomReport: GetDeploymentsResponseDeploymentsItemOomReport? = nil,
+        passiveConnectConfigurationId: String? = nil,
+        platform: GetDeploymentsResponseDeploymentsItemPlatform? = nil,
+        prebuilt: Bool? = nil,
+        projectSettings: GetDeploymentsResponseDeploymentsItemProjectSettings? = nil,
+        proposedExpiration: Double? = nil,
+        ready: Double? = nil,
+        readySubstate: GetDeploymentsResponseDeploymentsItemReadySubstate? = nil,
+        seatBlock: GetDeploymentsResponseDeploymentsItemSeatBlock? = nil,
+        softDeletedByRetention: Bool? = nil,
+        source: GetDeploymentsResponseDeploymentsItemSource? = nil,
+        state: GetDeploymentsResponseDeploymentsItemState? = nil,
+        target: GetDeploymentsResponseDeploymentsItemTarget? = nil,
+        undeleted: Double? = nil
+    ) {
+        self.init(
+            sdkRequiredFields: created,
+            createdAt: createdAt,
+            creator: creator,
+            inspectorUrl: inspectorUrl,
+            name: name,
+            projectId: projectId,
+            readyState: readyState,
+            type: type,
+            uid: uid,
+            url: url
+        )
         sdkSet1(aliasAssigned, aliasError, attribution, buildingAt, checks)
         sdkSet2(checksConclusion, checksState, connectBuildsEnabled, connectConfigurationId, customEnvironment)
         sdkSet3(defaultRoute, deleted, errorCode, errorMessage, expiration)
@@ -268,7 +360,13 @@ extension GetDeploymentsResponseDeploymentsItem {
 }
 
 extension GetDeploymentsResponseDeploymentsItem {
-    mutating func sdkSet1(_ aliasAssigned: GetDeploymentsResponseDeploymentsItemAliasAssigned?, _ aliasError: GetDeploymentsResponseDeploymentsItemAliasError?, _ attribution: GetDeploymentsResponseDeploymentsItemAttribution?, _ buildingAt: Double?, _ checks: GetDeploymentsResponseDeploymentsItemChecks?) {
+    mutating func sdkSet1(
+        _ aliasAssigned: GetDeploymentsResponseDeploymentsItemAliasAssigned?,
+        _ aliasError: GetDeploymentsResponseDeploymentsItemAliasError?,
+        _ attribution: GetDeploymentsResponseDeploymentsItemAttribution?,
+        _ buildingAt: Double?,
+        _ checks: GetDeploymentsResponseDeploymentsItemChecks?
+    ) {
         self.aliasAssigned = aliasAssigned
         self.aliasError = aliasError
         self.attribution = attribution
@@ -278,7 +376,13 @@ extension GetDeploymentsResponseDeploymentsItem {
 }
 
 extension GetDeploymentsResponseDeploymentsItem {
-    mutating func sdkSet2(_ checksConclusion: GetDeploymentsResponseDeploymentsItemChecksConclusion?, _ checksState: GetDeploymentsResponseDeploymentsItemChecksState?, _ connectBuildsEnabled: Bool?, _ connectConfigurationId: String?, _ customEnvironment: GetDeploymentsResponseDeploymentsItemCustomEnvironment?) {
+    mutating func sdkSet2(
+        _ checksConclusion: GetDeploymentsResponseDeploymentsItemChecksConclusion?,
+        _ checksState: GetDeploymentsResponseDeploymentsItemChecksState?,
+        _ connectBuildsEnabled: Bool?,
+        _ connectConfigurationId: String?,
+        _ customEnvironment: GetDeploymentsResponseDeploymentsItemCustomEnvironment?
+    ) {
         self.checksConclusion = checksConclusion
         self.checksState = checksState
         self.connectBuildsEnabled = connectBuildsEnabled
@@ -288,7 +392,13 @@ extension GetDeploymentsResponseDeploymentsItem {
 }
 
 extension GetDeploymentsResponseDeploymentsItem {
-    mutating func sdkSet3(_ defaultRoute: String?, _ deleted: Double?, _ errorCode: String?, _ errorMessage: String?, _ expiration: Double?) {
+    mutating func sdkSet3(
+        _ defaultRoute: String?,
+        _ deleted: Double?,
+        _ errorCode: String?,
+        _ errorMessage: String?,
+        _ expiration: Double?
+    ) {
         self.defaultRoute = defaultRoute
         self.deleted = deleted
         self.errorCode = errorCode
@@ -298,7 +408,13 @@ extension GetDeploymentsResponseDeploymentsItem {
 }
 
 extension GetDeploymentsResponseDeploymentsItem {
-    mutating func sdkSet4(_ isRollbackCandidate: Bool?, _ manualProvisioning: GetDeploymentsResponseDeploymentsItemManualProvisioning?, _ meta: [String: String]?, _ oomReport: GetDeploymentsResponseDeploymentsItemOomReport?, _ passiveConnectConfigurationId: String?) {
+    mutating func sdkSet4(
+        _ isRollbackCandidate: Bool?,
+        _ manualProvisioning: GetDeploymentsResponseDeploymentsItemManualProvisioning?,
+        _ meta: [String: String]?,
+        _ oomReport: GetDeploymentsResponseDeploymentsItemOomReport?,
+        _ passiveConnectConfigurationId: String?
+    ) {
         self.isRollbackCandidate = isRollbackCandidate
         self.manualProvisioning = manualProvisioning
         self.meta = meta
@@ -308,7 +424,13 @@ extension GetDeploymentsResponseDeploymentsItem {
 }
 
 extension GetDeploymentsResponseDeploymentsItem {
-    mutating func sdkSet5(_ platform: GetDeploymentsResponseDeploymentsItemPlatform?, _ prebuilt: Bool?, _ projectSettings: GetDeploymentsResponseDeploymentsItemProjectSettings?, _ proposedExpiration: Double?, _ ready: Double?) {
+    mutating func sdkSet5(
+        _ platform: GetDeploymentsResponseDeploymentsItemPlatform?,
+        _ prebuilt: Bool?,
+        _ projectSettings: GetDeploymentsResponseDeploymentsItemProjectSettings?,
+        _ proposedExpiration: Double?,
+        _ ready: Double?
+    ) {
         self.platform = platform
         self.prebuilt = prebuilt
         self.projectSettings = projectSettings
@@ -318,7 +440,13 @@ extension GetDeploymentsResponseDeploymentsItem {
 }
 
 extension GetDeploymentsResponseDeploymentsItem {
-    mutating func sdkSet6(_ readySubstate: GetDeploymentsResponseDeploymentsItemReadySubstate?, _ seatBlock: GetDeploymentsResponseDeploymentsItemSeatBlock?, _ softDeletedByRetention: Bool?, _ source: GetDeploymentsResponseDeploymentsItemSource?, _ state: GetDeploymentsResponseDeploymentsItemState?) {
+    mutating func sdkSet6(
+        _ readySubstate: GetDeploymentsResponseDeploymentsItemReadySubstate?,
+        _ seatBlock: GetDeploymentsResponseDeploymentsItemSeatBlock?,
+        _ softDeletedByRetention: Bool?,
+        _ source: GetDeploymentsResponseDeploymentsItemSource?,
+        _ state: GetDeploymentsResponseDeploymentsItemState?
+    ) {
         self.readySubstate = readySubstate
         self.seatBlock = seatBlock
         self.softDeletedByRetention = softDeletedByRetention
@@ -336,48 +464,48 @@ extension GetDeploymentsResponseDeploymentsItem {
 
 extension GetDeploymentsResponseDeploymentsItem {
     mutating func sdkDecodeFieldsPart1(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.aliasAssigned = try container.sdkDecodeIfPresent(.aliasAssigned)
-        self.aliasError = try container.sdkDecodeIfPresent(.aliasError)
-        self.attribution = try container.sdkDecodeIfPresent(.attribution)
-        self.buildingAt = try container.sdkDecodeIfPresent(.buildingAt)
-        self.checks = try container.sdkDecodeIfPresent(.checks)
-        self.checksConclusion = try container.sdkDecodeIfPresent(.checksConclusion)
-        self.checksState = try container.sdkDecodeIfPresent(.checksState)
-        self.connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
-        self.connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
-        self.customEnvironment = try container.sdkDecodeIfPresent(.customEnvironment)
-        self.defaultRoute = try container.sdkDecodeIfPresent(.defaultRoute)
-        self.deleted = try container.sdkDecodeIfPresent(.deleted)
+        aliasAssigned = try container.sdkDecodeIfPresent(.aliasAssigned)
+        aliasError = try container.sdkDecodeIfPresent(.aliasError)
+        attribution = try container.sdkDecodeIfPresent(.attribution)
+        buildingAt = try container.sdkDecodeIfPresent(.buildingAt)
+        checks = try container.sdkDecodeIfPresent(.checks)
+        checksConclusion = try container.sdkDecodeIfPresent(.checksConclusion)
+        checksState = try container.sdkDecodeIfPresent(.checksState)
+        connectBuildsEnabled = try container.sdkDecodeIfPresent(.connectBuildsEnabled)
+        connectConfigurationId = try container.sdkDecodeIfPresent(.connectConfigurationId)
+        customEnvironment = try container.sdkDecodeIfPresent(.customEnvironment)
+        defaultRoute = try container.sdkDecodeIfPresent(.defaultRoute)
+        deleted = try container.sdkDecodeIfPresent(.deleted)
     }
 }
 
 extension GetDeploymentsResponseDeploymentsItem {
     mutating func sdkDecodeFieldsPart2(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.errorCode = try container.sdkDecodeIfPresent(.errorCode)
-        self.errorMessage = try container.sdkDecodeIfPresent(.errorMessage)
-        self.expiration = try container.sdkDecodeIfPresent(.expiration)
-        self.isRollbackCandidate = try container.sdkDecodeIfPresent(.isRollbackCandidate)
-        self.manualProvisioning = try container.sdkDecodeIfPresent(.manualProvisioning)
-        self.meta = try container.sdkDecodeIfPresent(.meta)
-        self.oomReport = try container.sdkDecodeIfPresent(.oomReport)
-        self.passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
-        self.platform = try container.sdkDecodeIfPresent(.platform)
-        self.prebuilt = try container.sdkDecodeIfPresent(.prebuilt)
-        self.projectSettings = try container.sdkDecodeIfPresent(.projectSettings)
-        self.proposedExpiration = try container.sdkDecodeIfPresent(.proposedExpiration)
+        errorCode = try container.sdkDecodeIfPresent(.errorCode)
+        errorMessage = try container.sdkDecodeIfPresent(.errorMessage)
+        expiration = try container.sdkDecodeIfPresent(.expiration)
+        isRollbackCandidate = try container.sdkDecodeIfPresent(.isRollbackCandidate)
+        manualProvisioning = try container.sdkDecodeIfPresent(.manualProvisioning)
+        meta = try container.sdkDecodeIfPresent(.meta)
+        oomReport = try container.sdkDecodeIfPresent(.oomReport)
+        passiveConnectConfigurationId = try container.sdkDecodeIfPresent(.passiveConnectConfigurationId)
+        platform = try container.sdkDecodeIfPresent(.platform)
+        prebuilt = try container.sdkDecodeIfPresent(.prebuilt)
+        projectSettings = try container.sdkDecodeIfPresent(.projectSettings)
+        proposedExpiration = try container.sdkDecodeIfPresent(.proposedExpiration)
     }
 }
 
 extension GetDeploymentsResponseDeploymentsItem {
     mutating func sdkDecodeFieldsPart3(_ container: KeyedDecodingContainer<CodingKeys>) throws {
-        self.ready = try container.sdkDecodeIfPresent(.ready)
-        self.readySubstate = try container.sdkDecodeIfPresent(.readySubstate)
-        self.seatBlock = try container.sdkDecodeIfPresent(.seatBlock)
-        self.softDeletedByRetention = try container.sdkDecodeIfPresent(.softDeletedByRetention)
-        self.source = try container.sdkDecodeIfPresent(.source)
-        self.state = try container.sdkDecodeIfPresent(.state)
-        self.target = try container.sdkDecodeIfPresent(.target)
-        self.undeleted = try container.sdkDecodeIfPresent(.undeleted)
+        ready = try container.sdkDecodeIfPresent(.ready)
+        readySubstate = try container.sdkDecodeIfPresent(.readySubstate)
+        seatBlock = try container.sdkDecodeIfPresent(.seatBlock)
+        softDeletedByRetention = try container.sdkDecodeIfPresent(.softDeletedByRetention)
+        source = try container.sdkDecodeIfPresent(.source)
+        state = try container.sdkDecodeIfPresent(.state)
+        target = try container.sdkDecodeIfPresent(.target)
+        undeleted = try container.sdkDecodeIfPresent(.undeleted)
     }
 }
 
@@ -394,20 +522,20 @@ public struct CancelDeploymentResponseImagesLocalPatternsItem: Codable {
     }
 
     init() {
-        (self.pathname, self.search) = (nil, nil)
+        (pathname, search) = (nil, nil)
     }
 }
 
-extension CancelDeploymentResponseImagesLocalPatternsItem {
-    public init(from decoder: Decoder) throws {
+public extension CancelDeploymentResponseImagesLocalPatternsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.pathname = try container.sdkDecodeIfPresent(.pathname)
-        self.search = try container.sdkDecodeIfPresent(.search)
+        pathname = try container.sdkDecodeIfPresent(.pathname)
+        search = try container.sdkDecodeIfPresent(.search)
     }
 }
 
-extension CancelDeploymentResponseImagesLocalPatternsItem {
-    public init(pathname: String? = nil, search: String? = nil) {
+public extension CancelDeploymentResponseImagesLocalPatternsItem {
+    init(pathname: String? = nil, search: String? = nil) {
         self.init()
         (self.pathname, self.search) = (pathname, search)
     }
@@ -428,26 +556,36 @@ public struct GetDeploymentsResponseDeploymentsItemAttributionVercelUser: Codabl
         case teamRoles
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetDeploymentsResponseDeploymentsItemAttributionVercelUser {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.username) else {
-            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.username = try container.sdkDecodeRequired(.username)
-        self.teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItemAttributionVercelUser {
-    public init(id: String, username: String, teamRoles: [String]? = nil) {
+public extension GetDeploymentsResponseDeploymentsItemAttributionVercelUser {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.username) else {
+            throw SdkValidationError(
+                field: "username",
+                code: "required",
+                message: "Validation failed for 'username': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        username = try container.sdkDecodeRequired(.username)
+        teamRoles = try container.sdkDecodeIfPresent(.teamRoles)
+    }
+}
+
+public extension GetDeploymentsResponseDeploymentsItemAttributionVercelUser {
+    init(id: String, username: String, teamRoles: [String]? = nil) {
         (self.id, self.username) = (id, username)
         self.teamRoles = teamRoles
     }
@@ -465,25 +603,35 @@ public struct GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments: C
         case onPullRequest
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.onCommit) else {
-            throw SdkValidationError(field: "onCommit", code: "required", message: "Validation failed for 'onCommit': value is required")
-        }
-        guard container.contains(.onPullRequest) else {
-            throw SdkValidationError(field: "onPullRequest", code: "required", message: "Validation failed for 'onPullRequest': value is required")
-        }
-        self.onCommit = try container.sdkDecodeRequired(.onCommit)
-        self.onPullRequest = try container.sdkDecodeRequired(.onPullRequest)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments {
-    public init(onCommit: Bool, onPullRequest: Bool) {
+public extension GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.onCommit) else {
+            throw SdkValidationError(
+                field: "onCommit",
+                code: "required",
+                message: "Validation failed for 'onCommit': value is required"
+            )
+        }
+        guard container.contains(.onPullRequest) else {
+            throw SdkValidationError(
+                field: "onPullRequest",
+                code: "required",
+                message: "Validation failed for 'onPullRequest': value is required"
+            )
+        }
+        onCommit = try container.sdkDecodeRequired(.onCommit)
+        onPullRequest = try container.sdkDecodeRequired(.onPullRequest)
+    }
+}
+
+public extension GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments {
+    init(onCommit: Bool, onPullRequest: Bool) {
         (self.onCommit, self.onPullRequest) = (onCommit, onPullRequest)
     }
 }

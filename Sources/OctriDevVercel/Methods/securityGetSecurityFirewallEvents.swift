@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SecurityMethods {
-    public struct GetSecurityFirewallEventsOptions: Codable {
+public extension SecurityMethods {
+    struct GetSecurityFirewallEventsOptions: Codable {
         public var projectId: String
         public var sort: GetSecurityFirewallEventsParameter?
         public var limit: Double?
@@ -29,14 +29,28 @@ extension SecurityMethods {
         }
     }
 
-    /// Lists firewall actions for a project, with optional filters for time, host, IP address, activity, action, and rule. Filters are combined across parameters and matched as alternatives within repeated parameters; use the returned pagination cursor to fetch subsequent results. Rule names reflect the project's current active firewall configuration and active team rulesets.
+    /// Lists firewall actions for a project, with optional filters for time, host, IP address, activity, action, and
+    /// rule. Filters are combined across parameters and matched as alternatives within repeated parameters; use the
+    /// returned pagination cursor to fetch subsequent results. Rule names reflect the project's current active firewall
+    /// configuration and active team rulesets.
     ///
-    /// Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`. Filters (`ip`, `isActive`, `action`, `actionType`, `ruleKind`, `ruleId`, `hosts`) are ANDed across params and ORed within a repeated param. They are applied to the policies before `limit`/`cursor`, so pages only count matching policies. A policy with no matching requests yields no action row, so a page can hold fewer than `limit` actions; only `pagination.next` signals the end. A `cursor` is only valid with the filters it was issued for.
+    /// Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall
+    /// configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one
+    /// that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no
+    /// configured name and always report `null`. Filters (`ip`, `isActive`, `action`, `actionType`, `ruleKind`,
+    /// `ruleId`, `hosts`) are ANDed across params and ORed within a repeated param. They are applied to the policies
+    /// before `limit`/`cursor`, so pages only count matching policies. A policy with no matching requests yields no
+    /// action row, so a page can hold fewer than `limit` actions; only `pagination.next` signals the end. A `cursor` is
+    /// only valid with the filters it was issued for.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getSecurityFirewallEvents(config: ClientConfig, options: GetSecurityFirewallEventsOptions, requestOptions: RequestOptions? = nil) async throws -> GetSecurityFirewallEventsResponse {
+    static func getSecurityFirewallEvents(
+        config: ClientConfig,
+        options: GetSecurityFirewallEventsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetSecurityFirewallEventsResponse {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 5000)
         }
@@ -61,7 +75,7 @@ extension SecurityMethods {
             try validateItems("ruleId", ruleId, max: 100)
         }
 
-        return try (await sdkRequest("GET", "/v1/security/firewall/events", config: config, query: [
+        return try await (sdkRequest("GET", "/v1/security/firewall/events", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("sort", value: options.sort),
             SdkQueryParameter("limit", value: options.limit),

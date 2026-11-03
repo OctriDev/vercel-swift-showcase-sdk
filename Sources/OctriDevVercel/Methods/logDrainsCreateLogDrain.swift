@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension LogDrainsMethods {
-    public struct CreateLogDrainOptions: Codable {
+public extension LogDrainsMethods {
+    struct CreateLogDrainOptions: Codable {
         public var name: String
         public var url: String
         public var teamId: String?
@@ -25,9 +25,12 @@ extension LogDrainsMethods {
         }
     }
 
-    /// Creates an integration log drain for delivering logs to a destination URL. Use an OAuth2 client token because log drains created through this operation are tied to integrations. Provide `name` and `url`; you can also configure projects, sources, environments, headers, and delivery format.
+    /// Creates an integration log drain for delivering logs to a destination URL. Use an OAuth2 client token because
+    /// log drains created through this operation are tied to integrations. Provide `name` and `url`; you can also
+    /// configure projects, sources, environments, headers, and delivery format.
     ///
-    /// Creates an Integration log drain. This endpoint must be called with an OAuth2 client (integration), since log drains are tied to integrations. If it is called with a different token type it will produce a 400 error.
+    /// Creates an Integration log drain. This endpoint must be called with an OAuth2 client (integration), since log
+    /// drains are tied to integrations. If it is called with a different token type it will produce a 400 error.
     ///
     /// - Parameters:
     /// - name: The name of the log drain
@@ -39,7 +42,11 @@ extension LogDrainsMethods {
     ///   verify their authenticity
     /// - deliveryFormat: The delivery log format
     /// - headers: Headers to be sent together with the request
-    public static func createLogDrain(config: ClientConfig, options: CreateLogDrainOptions, requestOptions: RequestOptions? = nil) async throws -> CreateLogDrainResponse {
+    static func createLogDrain(
+        config: ClientConfig,
+        options: CreateLogDrainOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateLogDrainResponse {
         try validateLength("name", options.name, max: 100)
         try sdkValidatePattern("name", options.name, sdkPattern3195b0c37ff2)
 
@@ -65,7 +72,7 @@ extension LogDrainsMethods {
 
         let requestBody = CreateLogDrainRequestBody(options: options)
 
-        return try (await sdkRequest("POST", "/v2/integrations/log-drains", config: config, query: [
+        return try await (sdkRequest("POST", "/v2/integrations/log-drains", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "createLogDrain", options: requestOptions)).data

@@ -6,15 +6,20 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc041546f80: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc041546f80: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let gitNamespace = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc041546f80(rawValue: "git-namespace")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let gitNamespace =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXc041546f80(rawValue: "git-namespace")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -40,37 +45,56 @@ public enum CreateVercelCiTaskAnalysisResponseStatusVariant2: String, CaseIterab
     }
 }
 
-public struct ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let contains = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!contains")
-    public static let endsWith = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!endsWith")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let contains =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!contains")
+    public static let endsWith =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!endsWith")
     public static let eq = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!eq")
     public static let ex = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!ex")
-    public static let oneOf = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!oneOf")
-    public static let regex = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!regex")
-    public static let startsWith = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!startsWith")
-    public static let after = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "after")
-    public static let before = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "before")
-    public static let contains2 = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "contains")
-    public static let containsAllOf = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "containsAllOf")
-    public static let containsAnyOf = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "containsAnyOf")
-    public static let containsNoneOf = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "containsNoneOf")
-    public static let endsWith2 = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "endsWith")
+    public static let oneOf =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!oneOf")
+    public static let regex =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!regex")
+    public static let startsWith =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "!startsWith")
+    public static let after =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "after")
+    public static let before =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "before")
+    public static let contains2 =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "contains")
+    public static let containsAllOf =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "containsAllOf")
+    public static let containsAnyOf =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "containsAnyOf")
+    public static let containsNoneOf =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "containsNoneOf")
+    public static let endsWith2 =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "endsWith")
     public static let eq2 = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "eq")
     public static let ex2 = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "ex")
     public static let gt = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "gt")
     public static let gte = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "gte")
     public static let lt = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "lt")
     public static let lte = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "lte")
-    public static let oneOf2 = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "oneOf")
-    public static let regex2 = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "regex")
-    public static let startsWith2 = ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "startsWith")
+    public static let oneOf2 =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "oneOf")
+    public static let regex2 =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "regex")
+    public static let startsWith2 =
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39a34d8b(rawValue: "startsWith")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -79,15 +103,19 @@ public struct ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRuleX1a39
     }
 }
 
-public struct GetConfigurationProductsResponseProductsItemMetadataSchemaType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemMetadataSchemaType: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let object = GetConfigurationProductsResponseProductsItemMetadataSchemaType(rawValue: "object")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -96,16 +124,20 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaType: Ra
     }
 }
 
-public struct GetSecurityFirewallConfigResponseVersionsItemCrsSdAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseVersionsItemCrsSdAction: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let deny = GetSecurityFirewallConfigResponseVersionsItemCrsSdAction(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseVersionsItemCrsSdAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -114,10 +146,14 @@ public struct GetSecurityFirewallConfigResponseVersionsItemCrsSdAction: RawRepre
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemNodeVersion: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemNodeVersion: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let value10X = ListProjectsResponseVariant2ProjectsItemNodeVersion(rawValue: "10.x")
     public static let value12X = ListProjectsResponseVariant2ProjectsItemNodeVersion(rawValue: "12.x")
     public static let value14X = ListProjectsResponseVariant2ProjectsItemNodeVersion(rawValue: "14.x")
@@ -131,7 +167,7 @@ public struct ListProjectsResponseVariant2ProjectsItemNodeVersion: RawRepresenta
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -161,13 +197,16 @@ public enum ListVercelCiInvocationAttemptsResponseAttemptsItemStatusVariant9: St
 public struct ListFlagsParameter: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let active = ListFlagsParameter(rawValue: "active")
     public static let archived = ListFlagsParameter(rawValue: "archived")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -176,16 +215,20 @@ public struct ListFlagsParameter: RawRepresentable, Hashable, Codable, Sendable,
     }
 }
 
-public struct CancelDeploymentResponseImagesFormatsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CancelDeploymentResponseImagesFormatsItem: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let imageAvif = CancelDeploymentResponseImagesFormatsItem(rawValue: "image/avif")
     public static let imageWebp = CancelDeploymentResponseImagesFormatsItem(rawValue: "image/webp")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -194,16 +237,20 @@ public struct CancelDeploymentResponseImagesFormatsItem: RawRepresentable, Hasha
     }
 }
 
-public struct PutFirewallConfigResponseActiveCrsRfiAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct PutFirewallConfigResponseActiveCrsRfiAction: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let deny = PutFirewallConfigResponseActiveCrsRfiAction(rawValue: "deny")
     public static let log = PutFirewallConfigResponseActiveCrsRfiAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -36,9 +36,9 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.searchDomains(
-            domains: decoded("[\"domains\"]"),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domains: decoded("[\"domains\"]"),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -267,7 +267,12 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try MarketplaceMethods.SubmitInvoiceOptions(integrationConfigurationId: decoded("\"integrationConfiguration-1\""), invoiceDate: decoded("\"2024-01-01T00:00:00Z\""), period: decoded("{\"start\":\"2024-01-01T00:00:00Z\",\"end\":\"2024-01-01T00:00:00Z\"}"), items: decoded(sdkMethodFixture415Value1))
+        var options = try MarketplaceMethods.SubmitInvoiceOptions(
+            integrationConfigurationId: decoded("\"integrationConfiguration-1\""),
+            invoiceDate: decoded("\"2024-01-01T00:00:00Z\""),
+            period: decoded("{\"start\":\"2024-01-01T00:00:00Z\",\"end\":\"2024-01-01T00:00:00Z\"}"),
+            items: decoded(sdkMethodFixture415Value1)
+        )
         options.externalId = try decoded("\"external-1\"")
         options.memo = try decoded("\"memo\"")
         options.discounts = try decoded(sdkMethodFixture415Value2)
@@ -355,14 +360,14 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.transferInDomain(
-            domain: decoded("\"domain\""),
-            authCode: decoded("\"authCode\""),
-            autoRenew: decoded("false"),
-            years: decoded("1"),
-            expectedPrice: decoded("0.01"),
-            contactInformation: decoded(sdkMethodFixture419Value1),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
-        )
+                domain: decoded("\"domain\""),
+                authCode: decoded("\"authCode\""),
+                autoRenew: decoded("false"),
+                years: decoded("1"),
+                expectedPrice: decoded("0.01"),
+                contactInformation: decoded(sdkMethodFixture419Value1),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -477,7 +482,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testUpdateAiGatewayVirtualModelConfigUpdateAiGatewayVirtualModelConfigReachesMockAndDecodesResponse() async throws {
+    func testUpdateAiGatewayVirtualModelConfigUpdateAiGatewayVirtualModelConfigReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -496,7 +502,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testUpdateAiGatewayVirtualModelConfigBySlugUpdateAiGatewayVirtualX67e85a629fReachesMockAndDecodesResponse() async throws {
+    func testUpdateAiGatewayVirtualModelConfigBySlugUpdateAiGatewayVirtualX67e85a629fReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -536,7 +543,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testUpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuX993ea6b43bReachesMockAndDecodesResponse() async throws {
+    func testUpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuX993ea6b43bReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }

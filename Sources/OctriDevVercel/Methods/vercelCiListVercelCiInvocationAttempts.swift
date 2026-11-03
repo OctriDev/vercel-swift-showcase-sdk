@@ -6,24 +6,47 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VercelCiMethods {
-    /// Lists all attempts for a Vercel CI invocation. Use `invocationId` to identify the invocation and optionally pass `teamId` or `slug` to make the request on behalf of a team. The response includes attempt records and repository details.
+public extension VercelCiMethods {
+    /// Lists all attempts for a Vercel CI invocation. Use `invocationId` to identify the invocation and optionally pass
+    /// `teamId` or `slug` to make the request on behalf of a team. The response includes attempt records and repository
+    /// details.
     ///
     /// List Invocation Attempts
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listVercelCiInvocationAttempts(config: ClientConfig, invocationId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiInvocationAttemptsResponse {
-        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listVercelCiInvocationAttempts", options: requestOptions)).data
+    static func listVercelCiInvocationAttempts(
+        config: ClientConfig,
+        invocationId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiInvocationAttemptsResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listVercelCiInvocationAttempts",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves an invocation attempt with its job definitions, latest job runs, and task definitions and active task runs. Use `attempt` to select an attempt, or omit it to use the latest; set `follow` to `1` to receive newline-delimited JSON updates until the attempt finishes or the stream times out.
+    /// Retrieves an invocation attempt with its job definitions, latest job runs, and task definitions and active task
+    /// runs. Use `attempt` to select an attempt, or omit it to use the latest; set `follow` to `1` to receive
+    /// newline-delimited JSON updates until the attempt finishes or the stream times out.
     ///
-    /// Returns an invocation attempt together with every job definition, its latest job run, and the task definitions and active task runs of that job run. Defaults to the latest attempt when `attempt` is omitted. With `follow=1` the response is a newline-delimited JSON stream: a `{"type":"tree", ...}` event with the full tree is sent immediately and again whenever it changes, and a final `{"type":"end","reason":...}` event is sent when the attempt finishes (`completed`) or the stream reaches its maximum duration (`timeout`), after which clients should reconnect.
+    /// Returns an invocation attempt together with every job definition, its latest job run, and the task definitions
+    /// and active task runs of that job run. Defaults to the latest attempt when `attempt` is omitted. With `follow=1`
+    /// the response is a newline-delimited JSON stream: a `{"type":"tree", ...}` event with the full tree is sent
+    /// immediately and again whenever it changes, and a final `{"type":"end","reason":...}` event is sent when the
+    /// attempt finishes (`completed`) or the stream reaches its maximum duration (`timeout`), after which clients
+    /// should reconnect.
     ///
     /// - Parameters:
     /// - attempt: Invocation attempt to return. Defaults to the latest attempt.
@@ -31,16 +54,32 @@ extension VercelCiMethods {
     ///   attempt finishes.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getVercelCiInvocationTree(config: ClientConfig, invocationId: String, attempt: String? = nil, follow: Int? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiInvocationTreeResponse {
-        if let attempt = attempt {
+    static func getVercelCiInvocationTree(
+        config: ClientConfig,
+        invocationId: String,
+        attempt: String? = nil,
+        follow: Int? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiInvocationTreeResponse {
+        if let attempt {
             try sdkValidatePattern("attempt", attempt, sdkPattern5d864dda20f3)
         }
 
-        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/tree"].joined(), config: config, query: [
-            SdkQueryParameter("attempt", value: attempt),
-            SdkQueryParameter("follow", value: follow),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getVercelCiInvocationTree", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/tree"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("attempt", value: attempt),
+                SdkQueryParameter("follow", value: follow),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getVercelCiInvocationTree",
+            options: requestOptions
+        )).data
     }
 }

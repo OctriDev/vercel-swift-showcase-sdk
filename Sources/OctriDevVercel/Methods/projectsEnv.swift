@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    public struct FilterProjectEnvsOptions: Codable {
+public extension ProjectsMethods {
+    struct FilterProjectEnvsOptions: Codable {
         public var idOrName: String
         public var gitBranch: String?
         public var decrypt: FilterProjectEnvsParameter?
@@ -22,7 +22,9 @@ extension ProjectsMethods {
         }
     }
 
-    /// Lists environment variables for a project, identified by its project ID or name. Use `gitBranch` to filter preview-target variables by branch, or select a custom environment with `customEnvironmentId` or `customEnvironmentSlug`.
+    /// Lists environment variables for a project, identified by its project ID or name. Use `gitBranch` to filter
+    /// preview-target variables by branch, or select a custom environment with `customEnvironmentId` or
+    /// `customEnvironmentSlug`.
     ///
     /// Retrieve the environment variables for a given project by passing either the project `id` or `name` in the URL.
     ///
@@ -38,19 +40,31 @@ extension ProjectsMethods {
     ///   project
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func filterProjectEnvs(config: ClientConfig, options: FilterProjectEnvsOptions, requestOptions: RequestOptions? = nil) async throws -> FilterProjectEnvsResponse {
+    static func filterProjectEnvs(
+        config: ClientConfig,
+        options: FilterProjectEnvsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> FilterProjectEnvsResponse {
         if let gitBranch = options.gitBranch {
             try validateLength("gitBranch", gitBranch, max: 250)
         }
 
-        return try (await sdkRequest("GET", ["/v10/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/env"].joined(), config: config, query: [
-            SdkQueryParameter("gitBranch", value: options.gitBranch),
-            SdkQueryParameter("decrypt", value: options.decrypt),
-            SdkQueryParameter("source", value: options.source),
-            SdkQueryParameter("customEnvironmentId", value: options.customEnvironmentId),
-            SdkQueryParameter("customEnvironmentSlug", value: options.customEnvironmentSlug),
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], decoder: .json, operationId: "filterProjectEnvs", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v10/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/env"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("gitBranch", value: options.gitBranch),
+                SdkQueryParameter("decrypt", value: options.decrypt),
+                SdkQueryParameter("source", value: options.source),
+                SdkQueryParameter("customEnvironmentId", value: options.customEnvironmentId),
+                SdkQueryParameter("customEnvironmentSlug", value: options.customEnvironmentSlug),
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            decoder: .json,
+            operationId: "filterProjectEnvs",
+            options: requestOptions
+        )).data
     }
 }

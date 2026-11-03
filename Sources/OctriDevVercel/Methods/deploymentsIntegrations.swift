@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DeploymentsMethods {
-    public struct UpdateIntegrationDeploymentActionOptions: Codable {
+public extension DeploymentsMethods {
+    struct UpdateIntegrationDeploymentActionOptions: Codable {
         public var deploymentId: String
         public var integrationConfigurationId: String
         public var resourceId: String
@@ -25,10 +25,16 @@ extension DeploymentsMethods {
         }
     }
 
-    /// Updates an integration action associated with a deployment resource. Use the path parameters to identify the deployment, integration installation, resource, and action, then provide any action status or outcome details in the body. The update is accepted asynchronously with a 202 response.
+    /// Updates an integration action associated with a deployment resource. Use the path parameters to identify the
+    /// deployment, integration installation, resource, and action, then provide any action status or outcome details in
+    /// the body. The update is accepted asynchronously with a 202 response.
     ///
     /// Updates the deployment integration action for the specified integration installation
-    public static func updateIntegrationDeploymentAction(config: ClientConfig, options: UpdateIntegrationDeploymentActionOptions, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func updateIntegrationDeploymentAction(
+        config: ClientConfig,
+        options: UpdateIntegrationDeploymentActionOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         if let statusUrl = options.statusUrl {
             try sdkValidatePattern("statusUrl", statusUrl, sdkPattern72c75bbf2232)
             try sdkValidateUri("statusUrl", statusUrl)
@@ -36,6 +42,23 @@ extension DeploymentsMethods {
 
         let requestBody = UpdateIntegrationDeploymentActionRequestBody(options: options)
 
-        return try (await sdkRequest("PATCH", ["/v1/deployments/", sdkEncodePathSegment(sdkWireString(options.deploymentId)), "/integrations/", sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)), "/resources/", sdkEncodePathSegment(sdkWireString(options.resourceId)), "/actions/", sdkEncodePathSegment(sdkWireString(options.action))].joined(), config: config, body: requestBody, decoder: .empty, operationId: "updateIntegrationDeploymentAction", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            [
+                "/v1/deployments/",
+                sdkEncodePathSegment(sdkWireString(options.deploymentId)),
+                "/integrations/",
+                sdkEncodePathSegment(sdkWireString(options.integrationConfigurationId)),
+                "/resources/",
+                sdkEncodePathSegment(sdkWireString(options.resourceId)),
+                "/actions/",
+                sdkEncodePathSegment(sdkWireString(options.action)),
+            ].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .empty,
+            operationId: "updateIntegrationDeploymentAction",
+            options: requestOptions
+        )).data
     }
 }

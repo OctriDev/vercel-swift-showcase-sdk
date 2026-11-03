@@ -8,8 +8,8 @@ import Foundation
 #endif
 public enum SandboxesMethods {}
 
-extension SandboxesMethods {
-    public struct ListNamedSandboxesOptions: Codable {
+public extension SandboxesMethods {
+    struct ListNamedSandboxesOptions: Codable {
         public var project: String?
         public var limit: Double?
         public var sortBy: ListNamedSandboxesParameter?
@@ -24,9 +24,12 @@ extension SandboxesMethods {
         public init() {}
     }
 
-    /// Lists named sandboxes for a project in a paginated response. Filter by name prefix, status, or tag, and choose a sort field and direction; `namePrefix` is only valid with `sortBy=name`, while `status` is only valid with `sortBy=createdAt`. Continue through results using the pagination cursor returned in the response.
+    /// Lists named sandboxes for a project in a paginated response. Filter by name prefix, status, or tag, and choose a
+    /// sort field and direction; `namePrefix` is only valid with `sortBy=name`, while `status` is only valid with
+    /// `sortBy=createdAt`. Continue through results using the pagination cursor returned in the response.
     ///
-    /// Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix or status.
+    /// Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation
+    /// time or name, and optionally filtered by name prefix or status.
     ///
     /// - Parameters:
     /// - project: The unique identifier or name of the project to list named
@@ -44,12 +47,16 @@ extension SandboxesMethods {
     ///   is supported at a time.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listNamedSandboxes(config: ClientConfig, options: ListNamedSandboxesOptions, requestOptions: RequestOptions? = nil) async throws -> ListNamedSandboxesResponse {
+    static func listNamedSandboxes(
+        config: ClientConfig,
+        options: ListNamedSandboxesOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListNamedSandboxesResponse {
         if let limit = options.limit {
             try validateRange("limit", Double(limit), min: 1, max: 50)
         }
 
-        return try (await sdkRequest("GET", "/v2/sandboxes", config: config, query: [
+        return try await (sdkRequest("GET", "/v2/sandboxes", config: config, query: [
             SdkQueryParameter("project", value: options.project),
             SdkQueryParameter("limit", value: options.limit),
             SdkQueryParameter("sortBy", value: options.sortBy),

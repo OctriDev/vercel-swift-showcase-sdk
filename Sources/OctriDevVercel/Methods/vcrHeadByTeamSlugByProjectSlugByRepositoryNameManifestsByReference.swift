@@ -6,17 +6,27 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VcrMethods {
-    /// Checks whether a manifest exists in a Docker repository by its tag or digest reference. Docker clients use this check during a push to determine whether the manifest or a referenced config blob is already present. Supply the repository components and a valid `reference`.
+public extension VcrMethods {
+    /// Checks whether a manifest exists in a Docker repository by its tag or digest reference. Docker clients use this
+    /// check during a push to determine whether the manifest or a referenced config blob is already present. Supply the
+    /// repository components and a valid `reference`.
     ///
-    /// HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
+    /// HEAD /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Check whether a manifest exists. Used by
+    /// Docker client during push to determine if a manifest (or config blob referenced by digest) is already present.
     ///
     /// - Parameters:
     /// - teamSlug: Single Docker repository team slug component.
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - reference: Manifest reference: a tag or digest.
-    public static func headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, reference: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+        config: ClientConfig,
+        teamSlug: String,
+        projectSlug: String,
+        repositoryName: String,
+        reference: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -29,6 +39,22 @@ extension VcrMethods {
         try validateLength("reference", reference, max: 255)
         try sdkValidatePattern("reference", reference, sdkPatternb704b0d56f71)
 
-        return try (await sdkRequest("HEAD", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/manifests/", sdkEncodePathSegment(sdkWireString(reference))].joined(), config: config, decoder: .empty, operationId: "headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference", options: requestOptions)).data
+        return try await (sdkRequest(
+            "HEAD",
+            [
+                "/v2/",
+                sdkEncodePathSegment(sdkWireString(teamSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(projectSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(repositoryName)),
+                "/manifests/",
+                sdkEncodePathSegment(sdkWireString(reference)),
+            ].joined(),
+            config: config,
+            decoder: .empty,
+            operationId: "headByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
+            options: requestOptions
+        )).data
     }
 }

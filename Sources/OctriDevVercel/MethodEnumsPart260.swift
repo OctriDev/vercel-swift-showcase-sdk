@@ -17,23 +17,23 @@ struct EditProjectEnvRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.key, forKey: SdkCodingKey("key"))
-        try keyedContainer.encodeIfPresent(self.target, forKey: SdkCodingKey("target"))
-        try keyedContainer.encodeIfPresent(self.gitBranch, forKey: SdkCodingKey("gitBranch"))
-        try keyedContainer.encodeIfPresent(self.type, forKey: SdkCodingKey("type"))
-        try keyedContainer.encodeIfPresent(self.value, forKey: SdkCodingKey("value"))
-        try keyedContainer.encodeIfPresent(self.customEnvironmentIds, forKey: SdkCodingKey("customEnvironmentIds"))
-        try keyedContainer.encodeIfPresent(self.comment, forKey: SdkCodingKey("comment"))
+        try keyedContainer.encodeIfPresent(key, forKey: SdkCodingKey("key"))
+        try keyedContainer.encodeIfPresent(target, forKey: SdkCodingKey("target"))
+        try keyedContainer.encodeIfPresent(gitBranch, forKey: SdkCodingKey("gitBranch"))
+        try keyedContainer.encodeIfPresent(type, forKey: SdkCodingKey("type"))
+        try keyedContainer.encodeIfPresent(value, forKey: SdkCodingKey("value"))
+        try keyedContainer.encodeIfPresent(customEnvironmentIds, forKey: SdkCodingKey("customEnvironmentIds"))
+        try keyedContainer.encodeIfPresent(comment, forKey: SdkCodingKey("comment"))
     }
 
     init(options: ProjectsMethods.EditProjectEnvOptions) {
-        self.key = options.key
-        self.target = options.target
-        self.gitBranch = options.gitBranch
-        self.type = options.type
-        self.value = options.value
-        self.customEnvironmentIds = options.customEnvironmentIds
-        self.comment = options.comment
+        key = options.key
+        target = options.target
+        gitBranch = options.gitBranch
+        type = options.type
+        value = options.value
+        customEnvironmentIds = options.customEnvironmentIds
+        comment = options.comment
     }
 }
 
@@ -42,7 +42,7 @@ struct BatchRemoveProjectEnvRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.ids, forKey: SdkCodingKey("ids"))
+        try keyedContainer.encode(ids, forKey: SdkCodingKey("ids"))
     }
 }
 
@@ -52,8 +52,8 @@ struct CreateProjectTransferRequestRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.callbackUrl, forKey: SdkCodingKey("callbackUrl"))
-        try keyedContainer.encodeIfPresent(self.callbackSecret, forKey: SdkCodingKey("callbackSecret"))
+        try keyedContainer.encodeIfPresent(callbackUrl, forKey: SdkCodingKey("callbackUrl"))
+        try keyedContainer.encodeIfPresent(callbackSecret, forKey: SdkCodingKey("callbackSecret"))
     }
 }
 
@@ -64,9 +64,9 @@ struct AcceptProjectTransferRequestRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.newProjectName, forKey: SdkCodingKey("newProjectName"))
-        try keyedContainer.encodeIfPresent(self.paidFeatures, forKey: SdkCodingKey("paidFeatures"))
-        try keyedContainer.encodeIfPresent(self.acceptedPolicies, forKey: SdkCodingKey("acceptedPolicies"))
+        try keyedContainer.encodeIfPresent(newProjectName, forKey: SdkCodingKey("newProjectName"))
+        try keyedContainer.encodeIfPresent(paidFeatures, forKey: SdkCodingKey("paidFeatures"))
+        try keyedContainer.encodeIfPresent(acceptedPolicies, forKey: SdkCodingKey("acceptedPolicies"))
     }
 }
 
@@ -77,9 +77,9 @@ struct UpdateProjectProtectionBypassRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.revoke, forKey: SdkCodingKey("revoke"))
-        try keyedContainer.encodeIfPresent(self.generate, forKey: SdkCodingKey("generate"))
-        try keyedContainer.encodeIfPresent(self.update, forKey: SdkCodingKey("update"))
+        try keyedContainer.encodeIfPresent(revoke, forKey: SdkCodingKey("revoke"))
+        try keyedContainer.encodeIfPresent(generate, forKey: SdkCodingKey("generate"))
+        try keyedContainer.encodeIfPresent(update, forKey: SdkCodingKey("update"))
     }
 }
 
@@ -88,7 +88,7 @@ struct UpdateProjectsRollbackDescriptionRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.description, forKey: SdkCodingKey("description"))
+        try keyedContainer.encodeIfPresent(description, forKey: SdkCodingKey("description"))
     }
 }
 
@@ -102,21 +102,27 @@ struct UpdateMicrofrontendsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.microfrontendsGroupId, forKey: SdkCodingKey("microfrontendsGroupId"))
-        try keyedContainer.encodeIfPresent(self.enabled, forKey: SdkCodingKey("enabled"))
-        try keyedContainer.encodeIfPresent(self.isDefaultApp, forKey: SdkCodingKey("isDefaultApp"))
-        try keyedContainer.encodeIfPresent(self.defaultRoute, forKey: SdkCodingKey("defaultRoute"))
-        try keyedContainer.encodeIfPresent(self.routeObservabilityToThisProject, forKey: SdkCodingKey("routeObservabilityToThisProject"))
-        try keyedContainer.encodeIfPresent(self.doNotRouteWithMicrofrontendsRouting, forKey: SdkCodingKey("doNotRouteWithMicrofrontendsRouting"))
+        try keyedContainer.encodeIfPresent(microfrontendsGroupId, forKey: SdkCodingKey("microfrontendsGroupId"))
+        try keyedContainer.encodeIfPresent(enabled, forKey: SdkCodingKey("enabled"))
+        try keyedContainer.encodeIfPresent(isDefaultApp, forKey: SdkCodingKey("isDefaultApp"))
+        try keyedContainer.encodeIfPresent(defaultRoute, forKey: SdkCodingKey("defaultRoute"))
+        try keyedContainer.encodeIfPresent(
+            routeObservabilityToThisProject,
+            forKey: SdkCodingKey("routeObservabilityToThisProject")
+        )
+        try keyedContainer.encodeIfPresent(
+            doNotRouteWithMicrofrontendsRouting,
+            forKey: SdkCodingKey("doNotRouteWithMicrofrontendsRouting")
+        )
     }
 
     init(options: ProjectsMethods.UpdateMicrofrontendsOptions) {
-        self.microfrontendsGroupId = options.microfrontendsGroupId
-        self.enabled = options.enabled
-        self.isDefaultApp = options.isDefaultApp
-        self.defaultRoute = options.defaultRoute
-        self.routeObservabilityToThisProject = options.routeObservabilityToThisProject
-        self.doNotRouteWithMicrofrontendsRouting = options.doNotRouteWithMicrofrontendsRouting
+        microfrontendsGroupId = options.microfrontendsGroupId
+        enabled = options.enabled
+        isDefaultApp = options.isDefaultApp
+        defaultRoute = options.defaultRoute
+        routeObservabilityToThisProject = options.routeObservabilityToThisProject
+        doNotRouteWithMicrofrontendsRouting = options.doNotRouteWithMicrofrontendsRouting
     }
 }
 
@@ -126,8 +132,8 @@ struct ApproveRollingReleaseStageRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.nextStageIndex, forKey: SdkCodingKey("nextStageIndex"))
-        try keyedContainer.encode(self.canaryDeploymentId, forKey: SdkCodingKey("canaryDeploymentId"))
+        try keyedContainer.encode(nextStageIndex, forKey: SdkCodingKey("nextStageIndex"))
+        try keyedContainer.encode(canaryDeploymentId, forKey: SdkCodingKey("canaryDeploymentId"))
     }
 }
 
@@ -136,7 +142,7 @@ struct StartRollingReleaseRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.canaryDeploymentId, forKey: SdkCodingKey("canaryDeploymentId"))
+        try keyedContainer.encode(canaryDeploymentId, forKey: SdkCodingKey("canaryDeploymentId"))
     }
 }
 
@@ -145,7 +151,7 @@ struct CompleteRollingReleaseRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.canaryDeploymentId, forKey: SdkCodingKey("canaryDeploymentId"))
+        try keyedContainer.encode(canaryDeploymentId, forKey: SdkCodingKey("canaryDeploymentId"))
     }
 }
 
@@ -172,46 +178,46 @@ struct CreateSandboxesV2RequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.networkPolicy, forKey: SdkCodingKey("networkPolicy"))
-        try keyedContainer.encodeIfPresent(self.runtime, forKey: SdkCodingKey("runtime"))
-        try keyedContainer.encodeIfPresent(self.architecture, forKey: SdkCodingKey("architecture"))
-        try keyedContainer.encodeIfPresent(self.resources, forKey: SdkCodingKey("resources"))
-        try keyedContainer.encodeIfPresent(self.source, forKey: SdkCodingKey("source"))
-        try keyedContainer.encodeIfPresent(self.projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encodeIfPresent(self.ports, forKey: SdkCodingKey("ports"))
-        try keyedContainer.encodeIfPresent(self.image, forKey: SdkCodingKey("image"))
-        try keyedContainer.encodeIfPresent(self.timeout, forKey: SdkCodingKey("timeout"))
-        try keyedContainer.encodeIfPresent(self.env, forKey: SdkCodingKey("env"))
-        try keyedContainer.encodeIfPresent(self.mounts, forKey: SdkCodingKey("mounts"))
-        try keyedContainer.encodeIfPresent(self.region, forKey: SdkCodingKey("region"))
-        try keyedContainer.encodeIfPresent(self.failoverRegions, forKey: SdkCodingKey("failoverRegions"))
-        try keyedContainer.encodeIfPresent(self.networkId, forKey: SdkCodingKey("networkId"))
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.persistent, forKey: SdkCodingKey("persistent"))
-        try keyedContainer.encodeIfPresent(self.snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
-        try keyedContainer.encodeIfPresent(self.keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
-        try keyedContainer.encodeIfPresent(self.tags, forKey: SdkCodingKey("tags"))
+        try keyedContainer.encodeIfPresent(networkPolicy, forKey: SdkCodingKey("networkPolicy"))
+        try keyedContainer.encodeIfPresent(runtime, forKey: SdkCodingKey("runtime"))
+        try keyedContainer.encodeIfPresent(architecture, forKey: SdkCodingKey("architecture"))
+        try keyedContainer.encodeIfPresent(resources, forKey: SdkCodingKey("resources"))
+        try keyedContainer.encodeIfPresent(source, forKey: SdkCodingKey("source"))
+        try keyedContainer.encodeIfPresent(projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encodeIfPresent(ports, forKey: SdkCodingKey("ports"))
+        try keyedContainer.encodeIfPresent(image, forKey: SdkCodingKey("image"))
+        try keyedContainer.encodeIfPresent(timeout, forKey: SdkCodingKey("timeout"))
+        try keyedContainer.encodeIfPresent(env, forKey: SdkCodingKey("env"))
+        try keyedContainer.encodeIfPresent(mounts, forKey: SdkCodingKey("mounts"))
+        try keyedContainer.encodeIfPresent(region, forKey: SdkCodingKey("region"))
+        try keyedContainer.encodeIfPresent(failoverRegions, forKey: SdkCodingKey("failoverRegions"))
+        try keyedContainer.encodeIfPresent(networkId, forKey: SdkCodingKey("networkId"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(persistent, forKey: SdkCodingKey("persistent"))
+        try keyedContainer.encodeIfPresent(snapshotExpiration, forKey: SdkCodingKey("snapshotExpiration"))
+        try keyedContainer.encodeIfPresent(keepLastSnapshots, forKey: SdkCodingKey("keepLastSnapshots"))
+        try keyedContainer.encodeIfPresent(tags, forKey: SdkCodingKey("tags"))
     }
 
     init(options: SandboxesMethods.CreateSandboxesV2Options) {
-        self.networkPolicy = options.networkPolicy
-        self.runtime = options.runtime
-        self.architecture = options.architecture
-        self.resources = options.resources
-        self.source = options.source
-        self.projectId = options.projectId
-        self.ports = options.ports
-        self.image = options.image
-        self.timeout = options.timeout
-        self.env = options.env
-        self.mounts = options.mounts
-        self.region = options.region
-        self.failoverRegions = options.failoverRegions
-        self.networkId = options.networkId
-        self.name = options.name
-        self.persistent = options.persistent
-        self.snapshotExpiration = options.snapshotExpiration
-        self.keepLastSnapshots = options.keepLastSnapshots
-        self.tags = options.tags
+        networkPolicy = options.networkPolicy
+        runtime = options.runtime
+        architecture = options.architecture
+        resources = options.resources
+        source = options.source
+        projectId = options.projectId
+        ports = options.ports
+        image = options.image
+        timeout = options.timeout
+        env = options.env
+        mounts = options.mounts
+        region = options.region
+        failoverRegions = options.failoverRegions
+        networkId = options.networkId
+        name = options.name
+        persistent = options.persistent
+        snapshotExpiration = options.snapshotExpiration
+        keepLastSnapshots = options.keepLastSnapshots
+        tags = options.tags
     }
 }

@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    public struct CreateFlagOptions: Codable {
+public extension FeatureFlagsMethods {
+    struct CreateFlagOptions: Codable {
         public var projectIdOrName: String
         public var slug: String
         public var kind: CreateFlagRequestBodyKind
@@ -22,7 +22,12 @@ extension FeatureFlagsMethods {
         public var permanent: Bool?
         public var tags: [String]?
 
-        public init(projectIdOrName: String, slug: String, kind: CreateFlagRequestBodyKind, environments: [String: CreateFlagRequestBodyEnvironmentsValue]) {
+        public init(
+            projectIdOrName: String,
+            slug: String,
+            kind: CreateFlagRequestBodyKind,
+            environments: [String: CreateFlagRequestBodyEnvironmentsValue]
+        ) {
             self.projectIdOrName = projectIdOrName
             self.slug = slug
             self.kind = kind
@@ -30,9 +35,12 @@ extension FeatureFlagsMethods {
         }
     }
 
-    /// Creates a feature flag for a project with a unique project-level slug, a flag kind, and environment configuration. Supply `slug`, `kind`, and `environments`; the flag kind must be boolean, string, number, or JSON. Configure optional variants, state, maintainers, and tags as needed.
+    /// Creates a feature flag for a project with a unique project-level slug, a flag kind, and environment
+    /// configuration. Supply `slug`, `kind`, and `environments`; the flag kind must be boolean, string, number, or
+    /// JSON. Configure optional variants, state, maintainers, and tags as needed.
     ///
-    /// Create a new feature flag for a project. The flag must have a unique slug within the project and specify its kind (boolean, string, number, or json).
+    /// Create a new feature flag for a project. The flag must have a unique slug within the project and specify its
+    /// kind (boolean, string, number, or json).
     ///
     /// - Parameters:
     /// - projectIdOrName: The project id or name
@@ -50,11 +58,15 @@ extension FeatureFlagsMethods {
     /// - permanent: Whether this flag is marked as permanent, indicating it should
     ///   not be removed
     /// - tags: Tags for categorizing the flag
-    public static func createFlag(config: ClientConfig, options: CreateFlagOptions, requestOptions: RequestOptions? = nil) async throws -> CreateFlagResponse {
+    static func createFlag(
+        config: ClientConfig,
+        options: CreateFlagOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateFlagResponse {
         try sdkValidatePattern("slug", options.slug, sdkPatterndd8a45574888)
 
         if let seed = options.seed {
-            try validateRange("seed", Double(seed), min: 0, max: 100000)
+            try validateRange("seed", Double(seed), min: 0, max: 100_000)
         }
 
         if let maintainerIds = options.maintainerIds {
@@ -67,9 +79,19 @@ extension FeatureFlagsMethods {
 
         let requestBody = CreateFlagRequestBody(options: options)
 
-        return try (await sdkRequest("PUT", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/flags"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug2),
-        ], body: requestBody, decoder: .json, operationId: "createFlag", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PUT",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(options.projectIdOrName)), "/feature-flags/flags"]
+                .joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug2),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "createFlag",
+            options: requestOptions
+        )).data
     }
 }

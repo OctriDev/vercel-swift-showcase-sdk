@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension NetworkingMethods {
-    /// Deletes a PrivateLink endpoint, including its project connections and installation records. Use this operation when you no longer need the endpoint or its associated records.
+public extension NetworkingMethods {
+    /// Deletes a PrivateLink endpoint, including its project connections and installation records. Use this operation
+    /// when you no longer need the endpoint or its associated records.
     ///
     /// Deletes a PrivateLink endpoint.
     ///
@@ -16,11 +17,26 @@ extension NetworkingMethods {
     /// - projectId: The project ID the PrivateLink endpoint belongs to.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deletePrivateLinkEndpoint(config: ClientConfig, endpointId: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/v1/networking/privatelink/endpoints/", sdkEncodePathSegment(sdkWireString(endpointId))].joined(), config: config, query: [
-            SdkQueryParameter("projectId", value: projectId),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "deletePrivateLinkEndpoint", options: requestOptions)).data
+    static func deletePrivateLinkEndpoint(
+        config: ClientConfig,
+        endpointId: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            ["/v1/networking/privatelink/endpoints/", sdkEncodePathSegment(sdkWireString(endpointId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: projectId),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "deletePrivateLinkEndpoint",
+            options: requestOptions
+        )).data
     }
 }

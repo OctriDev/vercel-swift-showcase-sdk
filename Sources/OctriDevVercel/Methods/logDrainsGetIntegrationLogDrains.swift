@@ -6,16 +6,24 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension LogDrainsMethods {
-    /// Lists integration log drains defined for the authenticated user or team. When you use an OAuth2 token, the results are limited to log drains created by the authenticated integration. Use `teamId` or `slug` to scope the request to a team.
+public extension LogDrainsMethods {
+    /// Lists integration log drains defined for the authenticated user or team. When you use an OAuth2 token, the
+    /// results are limited to log drains created by the authenticated integration. Use `teamId` or `slug` to scope the
+    /// request to a team.
     ///
-    /// Retrieves a list of all Integration log drains that are defined for the authenticated user or team. When using an OAuth2 token, the list is limited to log drains created by the authenticated integration.
+    /// Retrieves a list of all Integration log drains that are defined for the authenticated user or team. When using
+    /// an OAuth2 token, the list is limited to log drains created by the authenticated integration.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getIntegrationLogDrains(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [GetIntegrationLogDrainsResponseItem] {
-        return try (await sdkRequest("GET", "/v2/integrations/log-drains", config: config, query: [
+    static func getIntegrationLogDrains(
+        config: ClientConfig,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [GetIntegrationLogDrainsResponseItem] {
+        try await (sdkRequest("GET", "/v2/integrations/log-drains", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "getIntegrationLogDrains", options: requestOptions)).data

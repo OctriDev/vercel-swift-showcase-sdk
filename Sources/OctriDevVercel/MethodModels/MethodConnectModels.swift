@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical connect operation model declarations
+/// Canonical connect operation model declarations
 public struct CreateConnectorAuthorizationRequestResponseConnector: Codable {
     /// Provider-facing display name when the connector type exposes one, falling back to the stored connector name.
     public var displayName: String
@@ -37,39 +37,69 @@ public struct CreateConnectorAuthorizationRequestResponseConnector: Codable {
         case serviceName
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateConnectorAuthorizationRequestResponseConnector {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.displayName) else {
-            throw SdkValidationError(field: "displayName", code: "required", message: "Validation failed for 'displayName': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.uid) else {
-            throw SdkValidationError(field: "uid", code: "required", message: "Validation failed for 'uid': value is required")
-        }
-        self.displayName = try container.sdkDecodeRequired(.displayName)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.uid = try container.sdkDecodeRequired(.uid)
-        self.service = try container.sdkDecodeIfPresent(.service)
-        self.serviceName = try container.sdkDecodeIfPresent(.serviceName)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateConnectorAuthorizationRequestResponseConnector {
-    public init(displayName: String, id: String, name: String, type: String, uid: String, service: String? = nil, serviceName: String? = nil) {
+public extension CreateConnectorAuthorizationRequestResponseConnector {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.displayName) else {
+            throw SdkValidationError(
+                field: "displayName",
+                code: "required",
+                message: "Validation failed for 'displayName': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.uid) else {
+            throw SdkValidationError(
+                field: "uid",
+                code: "required",
+                message: "Validation failed for 'uid': value is required"
+            )
+        }
+        displayName = try container.sdkDecodeRequired(.displayName)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        type = try container.sdkDecodeRequired(.type)
+        uid = try container.sdkDecodeRequired(.uid)
+        service = try container.sdkDecodeIfPresent(.service)
+        serviceName = try container.sdkDecodeIfPresent(.serviceName)
+    }
+}
+
+public extension CreateConnectorAuthorizationRequestResponseConnector {
+    init(
+        displayName: String,
+        id: String,
+        name: String,
+        type: String,
+        uid: String,
+        service: String? = nil,
+        serviceName: String? = nil
+    ) {
         (self.displayName, self.id) = (displayName, id)
         (self.name, self.type) = (name, type)
         (self.uid, self.service) = (uid, service)
@@ -111,41 +141,72 @@ public struct GetConnectorTokenResponse: Codable {
         case tokenGroupId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConnectorTokenResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.connector) else {
-            throw SdkValidationError(field: "connector", code: "required", message: "Validation failed for 'connector': value is required")
-        }
-        guard container.contains(.expiresAt) else {
-            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
-        }
-        guard container.contains(.token) else {
-            throw SdkValidationError(field: "token", code: "required", message: "Validation failed for 'token': value is required")
-        }
-        guard container.contains(.tokenId) else {
-            throw SdkValidationError(field: "tokenId", code: "required", message: "Validation failed for 'tokenId': value is required")
-        }
-        self.connector = try container.sdkDecodeRequired(.connector)
-        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        self.token = try container.sdkDecodeRequired(.token)
-        self.tokenId = try container.sdkDecodeRequired(.tokenId)
-        self.authorizationId = try container.sdkDecodeIfPresent(.authorizationId)
-        self.claims = try container.sdkDecodeIfPresent(.claims)
-        self.externalSubject = try container.sdkDecodeIfPresent(.externalSubject)
-        self.installationId = try container.sdkDecodeIfPresent(.installationId)
-        self.metadata = try container.sdkDecodeIfPresent(.metadata)
-        self.name = try container.sdkDecodeIfPresent(.name)
-        self.tenantId = try container.sdkDecodeIfPresent(.tenantId)
-        self.tokenGroupId = try container.sdkDecodeIfPresent(.tokenGroupId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConnectorTokenResponse {
-    public init(connector: GetConnectorTokenResponseConnector, expiresAt: Double, token: String, tokenId: String, authorizationId: String? = nil, claims: [String: JSONValue]? = nil, externalSubject: String? = nil, installationId: String? = nil, metadata: [String: JSONValue]? = nil, name: String? = nil, tenantId: String? = nil, tokenGroupId: String? = nil) {
+public extension GetConnectorTokenResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.connector) else {
+            throw SdkValidationError(
+                field: "connector",
+                code: "required",
+                message: "Validation failed for 'connector': value is required"
+            )
+        }
+        guard container.contains(.expiresAt) else {
+            throw SdkValidationError(
+                field: "expiresAt",
+                code: "required",
+                message: "Validation failed for 'expiresAt': value is required"
+            )
+        }
+        guard container.contains(.token) else {
+            throw SdkValidationError(
+                field: "token",
+                code: "required",
+                message: "Validation failed for 'token': value is required"
+            )
+        }
+        guard container.contains(.tokenId) else {
+            throw SdkValidationError(
+                field: "tokenId",
+                code: "required",
+                message: "Validation failed for 'tokenId': value is required"
+            )
+        }
+        connector = try container.sdkDecodeRequired(.connector)
+        expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        token = try container.sdkDecodeRequired(.token)
+        tokenId = try container.sdkDecodeRequired(.tokenId)
+        authorizationId = try container.sdkDecodeIfPresent(.authorizationId)
+        claims = try container.sdkDecodeIfPresent(.claims)
+        externalSubject = try container.sdkDecodeIfPresent(.externalSubject)
+        installationId = try container.sdkDecodeIfPresent(.installationId)
+        metadata = try container.sdkDecodeIfPresent(.metadata)
+        name = try container.sdkDecodeIfPresent(.name)
+        tenantId = try container.sdkDecodeIfPresent(.tenantId)
+        tokenGroupId = try container.sdkDecodeIfPresent(.tokenGroupId)
+    }
+}
+
+public extension GetConnectorTokenResponse {
+    init(
+        connector: GetConnectorTokenResponseConnector,
+        expiresAt: Double,
+        token: String,
+        tokenId: String,
+        authorizationId: String? = nil,
+        claims: [String: JSONValue]? = nil,
+        externalSubject: String? = nil,
+        installationId: String? = nil,
+        metadata: [String: JSONValue]? = nil,
+        name: String? = nil,
+        tenantId: String? = nil,
+        tokenGroupId: String? = nil
+    ) {
         (self.connector, self.expiresAt) = (connector, expiresAt)
         (self.token, self.tokenId) = (token, tokenId)
         (self.authorizationId, self.claims) = (authorizationId, claims)
@@ -166,29 +227,43 @@ public struct GetConnectorTokenResponseConnector: Codable {
         case uid
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetConnectorTokenResponseConnector {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.uid) else {
-            throw SdkValidationError(field: "uid", code: "required", message: "Validation failed for 'uid': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.uid = try container.sdkDecodeRequired(.uid)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetConnectorTokenResponseConnector {
-    public init(id: String, type: String, uid: String) {
+public extension GetConnectorTokenResponseConnector {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.uid) else {
+            throw SdkValidationError(
+                field: "uid",
+                code: "required",
+                message: "Validation failed for 'uid': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        type = try container.sdkDecodeRequired(.type)
+        uid = try container.sdkDecodeRequired(.uid)
+    }
+}
+
+public extension GetConnectorTokenResponseConnector {
+    init(id: String, type: String, uid: String) {
         (self.id, self.type) = (id, type)
         self.uid = uid
     }
@@ -211,38 +286,67 @@ public struct CreateConnectorAuthorizationRequestResponse: Codable {
         case deviceCode
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateConnectorAuthorizationRequestResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.connector) else {
-            throw SdkValidationError(field: "connector", code: "required", message: "Validation failed for 'connector': value is required")
-        }
-        guard container.contains(.expiresAt) else {
-            throw SdkValidationError(field: "expiresAt", code: "required", message: "Validation failed for 'expiresAt': value is required")
-        }
-        guard container.contains(.request) else {
-            throw SdkValidationError(field: "request", code: "required", message: "Validation failed for 'request': value is required")
-        }
-        guard container.contains(.url) else {
-            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
-        }
-        guard container.contains(.verifier) else {
-            throw SdkValidationError(field: "verifier", code: "required", message: "Validation failed for 'verifier': value is required")
-        }
-        self.connector = try container.sdkDecodeRequired(.connector)
-        self.expiresAt = try container.sdkDecodeRequired(.expiresAt)
-        self.request = try container.sdkDecodeRequired(.request)
-        self.url = try container.sdkDecodeRequired(.url)
-        self.verifier = try container.sdkDecodeRequired(.verifier)
-        self.deviceCode = try container.sdkDecodeIfPresent(.deviceCode)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateConnectorAuthorizationRequestResponse {
-    public init(connector: CreateConnectorAuthorizationRequestResponseConnector, expiresAt: Double, request: String, url: String, verifier: String, deviceCode: String? = nil) {
+public extension CreateConnectorAuthorizationRequestResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.connector) else {
+            throw SdkValidationError(
+                field: "connector",
+                code: "required",
+                message: "Validation failed for 'connector': value is required"
+            )
+        }
+        guard container.contains(.expiresAt) else {
+            throw SdkValidationError(
+                field: "expiresAt",
+                code: "required",
+                message: "Validation failed for 'expiresAt': value is required"
+            )
+        }
+        guard container.contains(.request) else {
+            throw SdkValidationError(
+                field: "request",
+                code: "required",
+                message: "Validation failed for 'request': value is required"
+            )
+        }
+        guard container.contains(.url) else {
+            throw SdkValidationError(
+                field: "url",
+                code: "required",
+                message: "Validation failed for 'url': value is required"
+            )
+        }
+        guard container.contains(.verifier) else {
+            throw SdkValidationError(
+                field: "verifier",
+                code: "required",
+                message: "Validation failed for 'verifier': value is required"
+            )
+        }
+        connector = try container.sdkDecodeRequired(.connector)
+        expiresAt = try container.sdkDecodeRequired(.expiresAt)
+        request = try container.sdkDecodeRequired(.request)
+        url = try container.sdkDecodeRequired(.url)
+        verifier = try container.sdkDecodeRequired(.verifier)
+        deviceCode = try container.sdkDecodeIfPresent(.deviceCode)
+    }
+}
+
+public extension CreateConnectorAuthorizationRequestResponse {
+    init(
+        connector: CreateConnectorAuthorizationRequestResponseConnector,
+        expiresAt: Double,
+        request: String,
+        url: String,
+        verifier: String,
+        deviceCode: String? = nil
+    ) {
         (self.connector, self.expiresAt) = (connector, expiresAt)
         (self.request, self.url) = (request, url)
         (self.verifier, self.deviceCode) = (verifier, deviceCode)
@@ -259,27 +363,27 @@ public struct CreateConnectorAuthorizationRequestRequestBodyAuthorizationDetails
     }
 
     init() {
-        self.type = nil
+        type = nil
     }
 }
 
-extension CreateConnectorAuthorizationRequestRequestBodyAuthorizationDetailsItem {
-    public init(from decoder: Decoder) throws {
+public extension CreateConnectorAuthorizationRequestRequestBodyAuthorizationDetailsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.type = try container.sdkDecodeIfPresent(.type)
+        type = try container.sdkDecodeIfPresent(.type)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-extension CreateConnectorAuthorizationRequestRequestBodyAuthorizationDetailsItem {
-    public init(type: String? = nil) {
+public extension CreateConnectorAuthorizationRequestRequestBodyAuthorizationDetailsItem {
+    init(type: String? = nil) {
         self.init()
         self.type = type
     }
 }
 
-extension CreateConnectorAuthorizationRequestRequestBodyAuthorizationDetailsItem {
-    public func encode(to encoder: Encoder) throws {
+public extension CreateConnectorAuthorizationRequestRequestBodyAuthorizationDetailsItem {
+    func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(type, forKey: .type)
@@ -296,27 +400,27 @@ public struct GetConnectorTokenRequestBodyAuthorizationDetailsItem: Codable {
     }
 
     init() {
-        self.type = nil
+        type = nil
     }
 }
 
-extension GetConnectorTokenRequestBodyAuthorizationDetailsItem {
-    public init(from decoder: Decoder) throws {
+public extension GetConnectorTokenRequestBodyAuthorizationDetailsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.type = try container.sdkDecodeIfPresent(.type)
+        type = try container.sdkDecodeIfPresent(.type)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-extension GetConnectorTokenRequestBodyAuthorizationDetailsItem {
-    public init(type: String? = nil) {
+public extension GetConnectorTokenRequestBodyAuthorizationDetailsItem {
+    init(type: String? = nil) {
         self.init()
         self.type = type
     }
 }
 
-extension GetConnectorTokenRequestBodyAuthorizationDetailsItem {
-    public func encode(to encoder: Encoder) throws {
+public extension GetConnectorTokenRequestBodyAuthorizationDetailsItem {
+    func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(type, forKey: .type)

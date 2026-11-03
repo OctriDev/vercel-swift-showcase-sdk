@@ -7,9 +7,13 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
+/// Canonical projects operation model declarations
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet15(_ deploymentCheckPreview: [ACLAction]?, _ deploymentCheckReRunFromProductionBranch: [ACLAction]?, _ deploymentPolicy: [ACLAction]?) {
+    mutating func sdkSet15(
+        _ deploymentCheckPreview: [ACLAction]?,
+        _ deploymentCheckReRunFromProductionBranch: [ACLAction]?,
+        _ deploymentPolicy: [ACLAction]?
+    ) {
         self.deploymentCheckPreview = deploymentCheckPreview
         self.deploymentCheckReRunFromProductionBranch = deploymentCheckReRunFromProductionBranch
         self.deploymentPolicy = deploymentPolicy
@@ -17,7 +21,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet16(_ deploymentPreview: [ACLAction]?, _ deploymentPrivate: [ACLAction]?, _ deploymentProductionGit: [ACLAction]?, _ deploymentPromote: [ACLAction]?) {
+    mutating func sdkSet16(
+        _ deploymentPreview: [ACLAction]?,
+        _ deploymentPrivate: [ACLAction]?,
+        _ deploymentProductionGit: [ACLAction]?,
+        _ deploymentPromote: [ACLAction]?
+    ) {
         self.deploymentPreview = deploymentPreview
         self.deploymentPrivate = deploymentPrivate
         self.deploymentProductionGit = deploymentProductionGit
@@ -26,7 +35,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet17(_ deploymentProtectionException: [ACLAction]?, _ deploymentRollback: [ACLAction]?, _ deploymentV0: [ACLAction]?, _ domain: [ACLAction]?, _ domainAcceptDelegation: [ACLAction]?) {
+    mutating func sdkSet17(
+        _ deploymentProtectionException: [ACLAction]?,
+        _ deploymentRollback: [ACLAction]?,
+        _ deploymentV0: [ACLAction]?,
+        _ domain: [ACLAction]?,
+        _ domainAcceptDelegation: [ACLAction]?
+    ) {
         self.deploymentProtectionException = deploymentProtectionException
         self.deploymentRollback = deploymentRollback
         self.deploymentV0 = deploymentV0
@@ -36,7 +51,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet18(_ domainAuthCodes: [ACLAction]?, _ domainCertificate: [ACLAction]?, _ domainCheckConfig: [ACLAction]?, _ domainMove: [ACLAction]?, _ domainPurchase: [ACLAction]?) {
+    mutating func sdkSet18(
+        _ domainAuthCodes: [ACLAction]?,
+        _ domainCertificate: [ACLAction]?,
+        _ domainCheckConfig: [ACLAction]?,
+        _ domainMove: [ACLAction]?,
+        _ domainPurchase: [ACLAction]?
+    ) {
         self.domainAuthCodes = domainAuthCodes
         self.domainCertificate = domainCertificate
         self.domainCheckConfig = domainCheckConfig
@@ -46,7 +67,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet19(_ domainRecord: [ACLAction]?, _ domainTransferIn: [ACLAction]?, _ drain: [ACLAction]?, _ edgeCacheNamespace: [ACLAction]?, _ edgeConfig: [ACLAction]?) {
+    mutating func sdkSet19(
+        _ domainRecord: [ACLAction]?,
+        _ domainTransferIn: [ACLAction]?,
+        _ drain: [ACLAction]?,
+        _ edgeCacheNamespace: [ACLAction]?,
+        _ edgeConfig: [ACLAction]?
+    ) {
         self.domainRecord = domainRecord
         self.domainTransferIn = domainTransferIn
         self.drain = drain
@@ -56,7 +83,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet20(_ edgeConfigItem: [ACLAction]?, _ edgeConfigSchema: [ACLAction]?, _ edgeConfigToken: [ACLAction]?, _ endpointVerification: [ACLAction]?, _ environments: [ACLAction]?) {
+    mutating func sdkSet20(
+        _ edgeConfigItem: [ACLAction]?,
+        _ edgeConfigSchema: [ACLAction]?,
+        _ edgeConfigToken: [ACLAction]?,
+        _ endpointVerification: [ACLAction]?,
+        _ environments: [ACLAction]?
+    ) {
         self.edgeConfigItem = edgeConfigItem
         self.edgeConfigSchema = edgeConfigSchema
         self.edgeConfigToken = edgeConfigToken
@@ -66,7 +99,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet21(_ event: [ACLAction]?, _ fileUpload: [ACLAction]?, _ flagsExplorerSubscription: [ACLAction]?, _ gitCredentialGrant: [ACLAction]?, _ gitRepository: [ACLAction]?) {
+    mutating func sdkSet21(
+        _ event: [ACLAction]?,
+        _ fileUpload: [ACLAction]?,
+        _ flagsExplorerSubscription: [ACLAction]?,
+        _ gitCredentialGrant: [ACLAction]?,
+        _ gitRepository: [ACLAction]?
+    ) {
         self.event = event
         self.fileUpload = fileUpload
         self.flagsExplorerSubscription = flagsExplorerSubscription
@@ -76,7 +115,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet22(_ imageOptimizationNewPrice: [ACLAction]?, _ integration: [ACLAction]?, _ integrationAccount: [ACLAction]?, _ integrationConfiguration: [ACLAction]?) {
+    mutating func sdkSet22(
+        _ imageOptimizationNewPrice: [ACLAction]?,
+        _ integration: [ACLAction]?,
+        _ integrationAccount: [ACLAction]?,
+        _ integrationConfiguration: [ACLAction]?
+    ) {
         self.imageOptimizationNewPrice = imageOptimizationNewPrice
         self.integration = integration
         self.integrationAccount = integrationAccount
@@ -85,7 +129,11 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet23(_ integrationConfigurationProjects: [ACLAction]?, _ integrationConfigurationRole: [ACLAction]?, _ integrationConfigurationTransfer: [ACLAction]?) {
+    mutating func sdkSet23(
+        _ integrationConfigurationProjects: [ACLAction]?,
+        _ integrationConfigurationRole: [ACLAction]?,
+        _ integrationConfigurationTransfer: [ACLAction]?
+    ) {
         self.integrationConfigurationProjects = integrationConfigurationProjects
         self.integrationConfigurationRole = integrationConfigurationRole
         self.integrationConfigurationTransfer = integrationConfigurationTransfer
@@ -93,7 +141,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet24(_ integrationDeploymentAction: [ACLAction]?, _ integrationEvent: [ACLAction]?, _ integrationLog: [ACLAction]?, _ integrationPullRequest: [ACLAction]?) {
+    mutating func sdkSet24(
+        _ integrationDeploymentAction: [ACLAction]?,
+        _ integrationEvent: [ACLAction]?,
+        _ integrationLog: [ACLAction]?,
+        _ integrationPullRequest: [ACLAction]?
+    ) {
         self.integrationDeploymentAction = integrationDeploymentAction
         self.integrationEvent = integrationEvent
         self.integrationLog = integrationLog
@@ -102,7 +155,11 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet25(_ integrationResource: [ACLAction]?, _ integrationResourceData: [ACLAction]?, _ integrationResourceReplCommand: [ACLAction]?) {
+    mutating func sdkSet25(
+        _ integrationResource: [ACLAction]?,
+        _ integrationResourceData: [ACLAction]?,
+        _ integrationResourceReplCommand: [ACLAction]?
+    ) {
         self.integrationResource = integrationResource
         self.integrationResourceData = integrationResourceData
         self.integrationResourceReplCommand = integrationResourceReplCommand
@@ -110,7 +167,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet26(_ integrationResourceSecrets: [ACLAction]?, _ integrationSsoSession: [ACLAction]?, _ integrationStoreTokenSet: [ACLAction]?, _ integrationStrict: [ACLAction]?) {
+    mutating func sdkSet26(
+        _ integrationResourceSecrets: [ACLAction]?,
+        _ integrationSsoSession: [ACLAction]?,
+        _ integrationStoreTokenSet: [ACLAction]?,
+        _ integrationStrict: [ACLAction]?
+    ) {
         self.integrationResourceSecrets = integrationResourceSecrets
         self.integrationSsoSession = integrationSsoSession
         self.integrationStoreTokenSet = integrationStoreTokenSet
@@ -119,7 +181,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet27(_ integrationVercelConfigurationOverride: [ACLAction]?, _ ipBlocking: [ACLAction]?, _ job: [ACLAction]?, _ jobGlobal: [ACLAction]?, _ kmsIssuer: [ACLAction]?) {
+    mutating func sdkSet27(
+        _ integrationVercelConfigurationOverride: [ACLAction]?,
+        _ ipBlocking: [ACLAction]?,
+        _ job: [ACLAction]?,
+        _ jobGlobal: [ACLAction]?,
+        _ kmsIssuer: [ACLAction]?
+    ) {
         self.integrationVercelConfigurationOverride = integrationVercelConfigurationOverride
         self.ipBlocking = ipBlocking
         self.job = job
@@ -129,7 +197,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet28(_ kmsProjectGrant: [ACLAction]?, _ logDrain: [ACLAction]?, _ logs: [ACLAction]?, _ logsPreset: [ACLAction]?, _ marketplaceBillingData: [ACLAction]?) {
+    mutating func sdkSet28(
+        _ kmsProjectGrant: [ACLAction]?,
+        _ logDrain: [ACLAction]?,
+        _ logs: [ACLAction]?,
+        _ logsPreset: [ACLAction]?,
+        _ marketplaceBillingData: [ACLAction]?
+    ) {
         self.kmsProjectGrant = kmsProjectGrant
         self.logDrain = logDrain
         self.logs = logs
@@ -139,7 +213,11 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet29(_ marketplaceExperimentationEdgeConfigData: [ACLAction]?, _ marketplaceExperimentationItem: [ACLAction]?, _ marketplaceFlexCommit: [ACLAction]?) {
+    mutating func sdkSet29(
+        _ marketplaceExperimentationEdgeConfigData: [ACLAction]?,
+        _ marketplaceExperimentationItem: [ACLAction]?,
+        _ marketplaceFlexCommit: [ACLAction]?
+    ) {
         self.marketplaceExperimentationEdgeConfigData = marketplaceExperimentationEdgeConfigData
         self.marketplaceExperimentationItem = marketplaceExperimentationItem
         self.marketplaceFlexCommit = marketplaceFlexCommit
@@ -147,7 +225,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet30(_ marketplaceInstallationMember: [ACLAction]?, _ marketplaceInvoice: [ACLAction]?, _ marketplaceSettings: [ACLAction]?, _ messageboard: [ACLAction]?) {
+    mutating func sdkSet30(
+        _ marketplaceInstallationMember: [ACLAction]?,
+        _ marketplaceInvoice: [ACLAction]?,
+        _ marketplaceSettings: [ACLAction]?,
+        _ messageboard: [ACLAction]?
+    ) {
         self.marketplaceInstallationMember = marketplaceInstallationMember
         self.marketplaceInvoice = marketplaceInvoice
         self.marketplaceSettings = marketplaceSettings
@@ -156,7 +239,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet31(_ messageboardSpace: [ACLAction]?, _ messageboardTask: [ACLAction]?, _ monitoring: [ACLAction]?, _ monitoringAlert: [ACLAction]?, _ monitoringChart: [ACLAction]?) {
+    mutating func sdkSet31(
+        _ messageboardSpace: [ACLAction]?,
+        _ messageboardTask: [ACLAction]?,
+        _ monitoring: [ACLAction]?,
+        _ monitoringAlert: [ACLAction]?,
+        _ monitoringChart: [ACLAction]?
+    ) {
         self.messageboardSpace = messageboardSpace
         self.messageboardTask = messageboardTask
         self.monitoring = monitoring
@@ -166,7 +255,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet32(_ monitoringQuery: [ACLAction]?, _ monitoringSettings: [ACLAction]?, _ notificationCustomerBudget: [ACLAction]?, _ notificationDeploymentFailed: [ACLAction]?) {
+    mutating func sdkSet32(
+        _ monitoringQuery: [ACLAction]?,
+        _ monitoringSettings: [ACLAction]?,
+        _ notificationCustomerBudget: [ACLAction]?,
+        _ notificationDeploymentFailed: [ACLAction]?
+    ) {
         self.monitoringQuery = monitoringQuery
         self.monitoringSettings = monitoringSettings
         self.notificationCustomerBudget = notificationCustomerBudget
@@ -175,7 +269,11 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet33(_ notificationDomainConfiguration: [ACLAction]?, _ notificationDomainExpire: [ACLAction]?, _ notificationDomainMoved: [ACLAction]?) {
+    mutating func sdkSet33(
+        _ notificationDomainConfiguration: [ACLAction]?,
+        _ notificationDomainExpire: [ACLAction]?,
+        _ notificationDomainMoved: [ACLAction]?
+    ) {
         self.notificationDomainConfiguration = notificationDomainConfiguration
         self.notificationDomainExpire = notificationDomainExpire
         self.notificationDomainMoved = notificationDomainMoved
@@ -183,7 +281,11 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet34(_ notificationDomainPurchase: [ACLAction]?, _ notificationDomainRenewal: [ACLAction]?, _ notificationDomainTransfer: [ACLAction]?) {
+    mutating func sdkSet34(
+        _ notificationDomainPurchase: [ACLAction]?,
+        _ notificationDomainRenewal: [ACLAction]?,
+        _ notificationDomainTransfer: [ACLAction]?
+    ) {
         self.notificationDomainPurchase = notificationDomainPurchase
         self.notificationDomainRenewal = notificationDomainRenewal
         self.notificationDomainTransfer = notificationDomainTransfer
@@ -191,7 +293,11 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet35(_ notificationDomainUnverified: [ACLAction]?, _ notificationMonitoringAlert: [ACLAction]?, _ notificationPaymentFailed: [ACLAction]?) {
+    mutating func sdkSet35(
+        _ notificationDomainUnverified: [ACLAction]?,
+        _ notificationMonitoringAlert: [ACLAction]?,
+        _ notificationPaymentFailed: [ACLAction]?
+    ) {
         self.notificationDomainUnverified = notificationDomainUnverified
         self.notificationMonitoringAlert = notificationMonitoringAlert
         self.notificationPaymentFailed = notificationPaymentFailed
@@ -199,7 +305,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet36(_ notificationPreferences: [ACLAction]?, _ notificationStatementOfReasons: [ACLAction]?, _ notificationUsageAlert: [ACLAction]?, _ oauth2Application: [ACLAction]?) {
+    mutating func sdkSet36(
+        _ notificationPreferences: [ACLAction]?,
+        _ notificationStatementOfReasons: [ACLAction]?,
+        _ notificationUsageAlert: [ACLAction]?,
+        _ oauth2Application: [ACLAction]?
+    ) {
         self.notificationPreferences = notificationPreferences
         self.notificationStatementOfReasons = notificationStatementOfReasons
         self.notificationUsageAlert = notificationUsageAlert
@@ -208,7 +319,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet37(_ oauth2Connection: [ACLAction]?, _ observabilityConfiguration: [ACLAction]?, _ observabilityData: [ACLAction]?, _ observabilityFunnel: [ACLAction]?) {
+    mutating func sdkSet37(
+        _ oauth2Connection: [ACLAction]?,
+        _ observabilityConfiguration: [ACLAction]?,
+        _ observabilityData: [ACLAction]?,
+        _ observabilityFunnel: [ACLAction]?
+    ) {
         self.oauth2Connection = oauth2Connection
         self.observabilityConfiguration = observabilityConfiguration
         self.observabilityData = observabilityData
@@ -217,7 +333,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet38(_ observabilityNotebook: [ACLAction]?, _ oidcFederationPolicy: [ACLAction]?, _ onDemandBuild: [ACLAction]?, _ onDemandConcurrency: [ACLAction]?) {
+    mutating func sdkSet38(
+        _ observabilityNotebook: [ACLAction]?,
+        _ oidcFederationPolicy: [ACLAction]?,
+        _ onDemandBuild: [ACLAction]?,
+        _ onDemandConcurrency: [ACLAction]?
+    ) {
         self.observabilityNotebook = observabilityNotebook
         self.oidcFederationPolicy = oidcFederationPolicy
         self.onDemandBuild = onDemandBuild
@@ -226,7 +347,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet39(_ openTelemetryEndpoint: [ACLAction]?, _ optionsAllowlist: [ACLAction]?, _ organization: [ACLAction]?, _ organizationDomain: [ACLAction]?, _ organizationTeam: [ACLAction]?) {
+    mutating func sdkSet39(
+        _ openTelemetryEndpoint: [ACLAction]?,
+        _ optionsAllowlist: [ACLAction]?,
+        _ organization: [ACLAction]?,
+        _ organizationDomain: [ACLAction]?,
+        _ organizationTeam: [ACLAction]?
+    ) {
         self.openTelemetryEndpoint = openTelemetryEndpoint
         self.optionsAllowlist = optionsAllowlist
         self.organization = organization
@@ -236,7 +363,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet40(_ ownEvent: [ACLAction]?, _ pageIntegrity: [ACLAction]?, _ passwordProtection: [ACLAction]?, _ passwordProtectionInvoiceItem: [ACLAction]?, _ paymentMethod: [ACLAction]?) {
+    mutating func sdkSet40(
+        _ ownEvent: [ACLAction]?,
+        _ pageIntegrity: [ACLAction]?,
+        _ passwordProtection: [ACLAction]?,
+        _ passwordProtectionInvoiceItem: [ACLAction]?,
+        _ paymentMethod: [ACLAction]?
+    ) {
         self.ownEvent = ownEvent
         self.pageIntegrity = pageIntegrity
         self.passwordProtection = passwordProtection
@@ -246,7 +379,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet41(_ permissions: [ACLAction]?, _ postgres: [ACLAction]?, _ postgresStoreTokenSet: [ACLAction]?, _ previewDeploymentSuffix: [ACLAction]?, _ privateCloudAccount: [ACLAction]?) {
+    mutating func sdkSet41(
+        _ permissions: [ACLAction]?,
+        _ postgres: [ACLAction]?,
+        _ postgresStoreTokenSet: [ACLAction]?,
+        _ previewDeploymentSuffix: [ACLAction]?,
+        _ privateCloudAccount: [ACLAction]?
+    ) {
         self.permissions = permissions
         self.postgres = postgres
         self.postgresStoreTokenSet = postgresStoreTokenSet
@@ -256,7 +395,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet42(_ privateLinkEndpoint: [ACLAction]?, _ productionAliasProtectionBypass: [ACLAction]?, _ productionShareableLink: [ACLAction]?, _ project: [ACLAction]?) {
+    mutating func sdkSet42(
+        _ privateLinkEndpoint: [ACLAction]?,
+        _ productionAliasProtectionBypass: [ACLAction]?,
+        _ productionShareableLink: [ACLAction]?,
+        _ project: [ACLAction]?
+    ) {
         self.privateLinkEndpoint = privateLinkEndpoint
         self.productionAliasProtectionBypass = productionAliasProtectionBypass
         self.productionShareableLink = productionShareableLink
@@ -265,7 +409,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet43(_ projectAccessGroup: [ACLAction]?, _ projectAnalyticsSampling: [ACLAction]?, _ projectAnalyticsUsage: [ACLAction]?, _ projectCheck: [ACLAction]?, _ projectCheckRun: [ACLAction]?) {
+    mutating func sdkSet43(
+        _ projectAccessGroup: [ACLAction]?,
+        _ projectAnalyticsSampling: [ACLAction]?,
+        _ projectAnalyticsUsage: [ACLAction]?,
+        _ projectCheck: [ACLAction]?,
+        _ projectCheckRun: [ACLAction]?
+    ) {
         self.projectAccessGroup = projectAccessGroup
         self.projectAnalyticsSampling = projectAnalyticsSampling
         self.projectAnalyticsUsage = projectAnalyticsUsage
@@ -275,7 +425,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet44(_ projectDeploymentExpiration: [ACLAction]?, _ projectDeploymentHook: [ACLAction]?, _ projectDeploymentProtectionStrict: [ACLAction]?, _ projectDomain: [ACLAction]?) {
+    mutating func sdkSet44(
+        _ projectDeploymentExpiration: [ACLAction]?,
+        _ projectDeploymentHook: [ACLAction]?,
+        _ projectDeploymentProtectionStrict: [ACLAction]?,
+        _ projectDomain: [ACLAction]?
+    ) {
         self.projectDeploymentExpiration = projectDeploymentExpiration
         self.projectDeploymentHook = projectDeploymentHook
         self.projectDeploymentProtectionStrict = projectDeploymentProtectionStrict
@@ -284,7 +439,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet45(_ projectDomainCheckConfig: [ACLAction]?, _ projectDomainMove: [ACLAction]?, _ projectDomainVerify: [ACLAction]?, _ projectEnvVars: [ACLAction]?) {
+    mutating func sdkSet45(
+        _ projectDomainCheckConfig: [ACLAction]?,
+        _ projectDomainMove: [ACLAction]?,
+        _ projectDomainVerify: [ACLAction]?,
+        _ projectEnvVars: [ACLAction]?
+    ) {
         self.projectDomainCheckConfig = projectDomainCheckConfig
         self.projectDomainMove = projectDomainMove
         self.projectDomainVerify = projectDomainVerify
@@ -293,7 +453,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet46(_ projectEnvVarsProduction: [ACLAction]?, _ projectEnvVarsUnownedByIntegration: [ACLAction]?, _ projectEvent: [ACLAction]?, _ projectFlags: [ACLAction]?) {
+    mutating func sdkSet46(
+        _ projectEnvVarsProduction: [ACLAction]?,
+        _ projectEnvVarsUnownedByIntegration: [ACLAction]?,
+        _ projectEvent: [ACLAction]?,
+        _ projectFlags: [ACLAction]?
+    ) {
         self.projectEnvVarsProduction = projectEnvVarsProduction
         self.projectEnvVarsUnownedByIntegration = projectEnvVarsUnownedByIntegration
         self.projectEvent = projectEvent
@@ -302,7 +467,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet47(_ projectFlagsProduction: [ACLAction]?, _ projectFlagsSdkKey: [ACLAction]?, _ projectFromV0: [ACLAction]?, _ projectId: [ACLAction]?) {
+    mutating func sdkSet47(
+        _ projectFlagsProduction: [ACLAction]?,
+        _ projectFlagsSdkKey: [ACLAction]?,
+        _ projectFromV0: [ACLAction]?,
+        _ projectId: [ACLAction]?
+    ) {
         self.projectFlagsProduction = projectFlagsProduction
         self.projectFlagsSdkKey = projectFlagsSdkKey
         self.projectFromV0 = projectFromV0
@@ -311,7 +481,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet48(_ projectIntegrationConfiguration: [ACLAction]?, _ projectLink: [ACLAction]?, _ projectMember: [ACLAction]?, _ projectMonitoring: [ACLAction]?, _ projectOidcToken: [ACLAction]?) {
+    mutating func sdkSet48(
+        _ projectIntegrationConfiguration: [ACLAction]?,
+        _ projectLink: [ACLAction]?,
+        _ projectMember: [ACLAction]?,
+        _ projectMonitoring: [ACLAction]?,
+        _ projectOidcToken: [ACLAction]?
+    ) {
         self.projectIntegrationConfiguration = projectIntegrationConfiguration
         self.projectLink = projectLink
         self.projectMember = projectMember
@@ -321,7 +497,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet49(_ projectPermissions: [ACLAction]?, _ projectProductionBranch: [ACLAction]?, _ projectProtectionBypass: [ACLAction]?, _ projectRollingRelease: [ACLAction]?) {
+    mutating func sdkSet49(
+        _ projectPermissions: [ACLAction]?,
+        _ projectProductionBranch: [ACLAction]?,
+        _ projectProtectionBypass: [ACLAction]?,
+        _ projectRollingRelease: [ACLAction]?
+    ) {
         self.projectPermissions = projectPermissions
         self.projectProductionBranch = projectProductionBranch
         self.projectProtectionBypass = projectProtectionBypass
@@ -330,7 +511,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet50(_ projectRoutes: [ACLAction]?, _ projectSetting: [ACLAction]?, _ projectSupportCase: [ACLAction]?, _ projectSupportCaseComment: [ACLAction]?, _ projectTier: [ACLAction]?) {
+    mutating func sdkSet50(
+        _ projectRoutes: [ACLAction]?,
+        _ projectSetting: [ACLAction]?,
+        _ projectSupportCase: [ACLAction]?,
+        _ projectSupportCaseComment: [ACLAction]?,
+        _ projectTier: [ACLAction]?
+    ) {
         self.projectRoutes = projectRoutes
         self.projectSetting = projectSetting
         self.projectSupportCase = projectSupportCase
@@ -340,7 +527,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet51(_ projectTransfer: [ACLAction]?, _ projectTransferIn: [ACLAction]?, _ projectTransferOut: [ACLAction]?, _ projectTransferRequest: [ACLAction]?, _ projectUsage: [ACLAction]?) {
+    mutating func sdkSet51(
+        _ projectTransfer: [ACLAction]?,
+        _ projectTransferIn: [ACLAction]?,
+        _ projectTransferOut: [ACLAction]?,
+        _ projectTransferRequest: [ACLAction]?,
+        _ projectUsage: [ACLAction]?
+    ) {
         self.projectTransfer = projectTransfer
         self.projectTransferIn = projectTransferIn
         self.projectTransferOut = projectTransferOut
@@ -350,7 +543,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet52(_ proTrialOnboarding: [ACLAction]?, _ rateLimit: [ACLAction]?, _ redis: [ACLAction]?, _ redisStoreTokenSet: [ACLAction]?, _ remoteCaching: [ACLAction]?) {
+    mutating func sdkSet52(
+        _ proTrialOnboarding: [ACLAction]?,
+        _ rateLimit: [ACLAction]?,
+        _ redis: [ACLAction]?,
+        _ redisStoreTokenSet: [ACLAction]?,
+        _ remoteCaching: [ACLAction]?
+    ) {
         self.proTrialOnboarding = proTrialOnboarding
         self.rateLimit = rateLimit
         self.redis = redis
@@ -360,7 +559,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet53(_ repository: [ACLAction]?, _ samlConfig: [ACLAction]?, _ schedule: [ACLAction]?, _ seawallConfig: [ACLAction]?, _ secret: [ACLAction]?) {
+    mutating func sdkSet53(
+        _ repository: [ACLAction]?,
+        _ samlConfig: [ACLAction]?,
+        _ schedule: [ACLAction]?,
+        _ seawallConfig: [ACLAction]?,
+        _ secret: [ACLAction]?
+    ) {
         self.repository = repository
         self.samlConfig = samlConfig
         self.schedule = schedule
@@ -370,7 +575,12 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet54(_ securityConfig: [ACLAction]?, _ securityPlusConfiguration: [ACLAction]?, _ sensitiveEnvironmentVariablePolicy: [ACLAction]?, _ setting: [ACLAction]?) {
+    mutating func sdkSet54(
+        _ securityConfig: [ACLAction]?,
+        _ securityPlusConfiguration: [ACLAction]?,
+        _ sensitiveEnvironmentVariablePolicy: [ACLAction]?,
+        _ setting: [ACLAction]?
+    ) {
         self.securityConfig = securityConfig
         self.securityPlusConfiguration = securityPlusConfiguration
         self.sensitiveEnvironmentVariablePolicy = sensitiveEnvironmentVariablePolicy
@@ -379,7 +589,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet55(_ shareableLink: [ACLAction]?, _ shareableLinkStrict: [ACLAction]?, _ sharedEnvVarConnection: [ACLAction]?, _ sharedEnvVars: [ACLAction]?, _ sharedEnvVarsProduction: [ACLAction]?) {
+    mutating func sdkSet55(
+        _ shareableLink: [ACLAction]?,
+        _ shareableLinkStrict: [ACLAction]?,
+        _ sharedEnvVarConnection: [ACLAction]?,
+        _ sharedEnvVars: [ACLAction]?,
+        _ sharedEnvVarsProduction: [ACLAction]?
+    ) {
         self.shareableLink = shareableLink
         self.shareableLinkStrict = shareableLinkStrict
         self.sharedEnvVarConnection = sharedEnvVarConnection
@@ -389,7 +605,13 @@ extension CreateProjectResponsePermissions {
 }
 
 extension CreateProjectResponsePermissions {
-    mutating func sdkSet56(_ skewProtection: [ACLAction]?, _ space: [ACLAction]?, _ spaceRun: [ACLAction]?, _ storeIsLocked: [ACLAction]?, _ storeTokenSetSensitive: [ACLAction]?) {
+    mutating func sdkSet56(
+        _ skewProtection: [ACLAction]?,
+        _ space: [ACLAction]?,
+        _ spaceRun: [ACLAction]?,
+        _ storeIsLocked: [ACLAction]?,
+        _ storeTokenSetSensitive: [ACLAction]?
+    ) {
         self.skewProtection = skewProtection
         self.space = space
         self.spaceRun = spaceRun

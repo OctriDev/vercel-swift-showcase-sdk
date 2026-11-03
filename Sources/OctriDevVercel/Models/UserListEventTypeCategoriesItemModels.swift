@@ -3,12 +3,15 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 /// Categories that group this event type with related event types.
 public struct ListEventTypeCategoriesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let account = ListEventTypeCategoriesItem(rawValue: "account")
     public static let ai = ListEventTypeCategoriesItem(rawValue: "ai")
     public static let aiGateway = ListEventTypeCategoriesItem(rawValue: "ai-gateway")
@@ -35,7 +38,7 @@ public struct ListEventTypeCategoriesItem: RawRepresentable, Hashable, Codable, 
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -48,11 +51,13 @@ public struct ListEventTypeCategoriesItem: RawRepresentable, Hashable, Codable, 
 public struct ListEventTypeName: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -68,7 +73,8 @@ public extension ListEventTypeName {
     static let accessGroupUpdated = ListEventTypeName(rawValue: "access-group-updated")
     static let accessGroupUserAdded = ListEventTypeName(rawValue: "access-group-user-added")
     static let accessGroupUserRemoved = ListEventTypeName(rawValue: "access-group-user-removed")
-    static let adminAgenticProvisioningAccountUnlinked = ListEventTypeName(rawValue: "admin-agentic-provisioning-account-unlinked")
+    static let adminAgenticProvisioningAccountUnlinked =
+        ListEventTypeName(rawValue: "admin-agentic-provisioning-account-unlinked")
     static let adminPlanUpdated = ListEventTypeName(rawValue: "admin-plan-updated")
     static let adminPreviewDeploymentSuffixClear = ListEventTypeName(rawValue: "admin-preview-deployment-suffix-clear")
     static let adminSamlIdpMaterialDeleted = ListEventTypeName(rawValue: "admin-saml-idp-material-deleted")
@@ -86,7 +92,8 @@ public extension ListEventTypeName {
     static let agenticProvisioningAccountLinked = ListEventTypeName(rawValue: "agentic-provisioning-account-linked")
     static let agenticProvisioningAccountRelinked = ListEventTypeName(rawValue: "agentic-provisioning-account-relinked")
     static let agenticProvisioningAccountUnlinked = ListEventTypeName(rawValue: "agentic-provisioning-account-unlinked")
-    static let agenticProvisioningCredentialsRotated = ListEventTypeName(rawValue: "agentic-provisioning-credentials-rotated")
+    static let agenticProvisioningCredentialsRotated =
+        ListEventTypeName(rawValue: "agentic-provisioning-credentials-rotated")
     static let agenticProvisioningPlanChanged = ListEventTypeName(rawValue: "agentic-provisioning-plan-changed")
     static let agenticProvisioningTeamCreated = ListEventTypeName(rawValue: "agentic-provisioning-team-created")
     static let aiAlertInvestigation = ListEventTypeName(rawValue: "ai-alert-investigation")
@@ -94,7 +101,8 @@ public extension ListEventTypeName {
     static let aiGatewayAccessPolicyCreated = ListEventTypeName(rawValue: "ai-gateway-access-policy-created")
     static let aiGatewayAccessPolicyDeleted = ListEventTypeName(rawValue: "ai-gateway-access-policy-deleted")
     static let aiGatewayAccessPolicyMemberAdded = ListEventTypeName(rawValue: "ai-gateway-access-policy-member-added")
-    static let aiGatewayAccessPolicyMemberRemoved = ListEventTypeName(rawValue: "ai-gateway-access-policy-member-removed")
+    static let aiGatewayAccessPolicyMemberRemoved =
+        ListEventTypeName(rawValue: "ai-gateway-access-policy-member-removed")
     static let aiGatewayAccessPolicyUpdated = ListEventTypeName(rawValue: "ai-gateway-access-policy-updated")
     static let aiGatewayApiKeyCreated = ListEventTypeName(rawValue: "ai-gateway-api-key-created")
     static let aiGatewayApiKeyDeleted = ListEventTypeName(rawValue: "ai-gateway-api-key-deleted")
@@ -109,35 +117,48 @@ public extension ListEventTypeName {
     static let aiGatewayGuardrailsUpdated = ListEventTypeName(rawValue: "ai-gateway-guardrails-updated")
     static let aiGatewayHipaaComplianceToggled = ListEventTypeName(rawValue: "ai-gateway-hipaa-compliance-toggled")
     static let aiGatewayInferenceRegionsUpdated = ListEventTypeName(rawValue: "ai-gateway-inference-regions-updated")
-    static let aiGatewayModelAllowlistModelsUpdated = ListEventTypeName(rawValue: "ai-gateway-model-allowlist-models-updated")
+    static let aiGatewayModelAllowlistModelsUpdated =
+        ListEventTypeName(rawValue: "ai-gateway-model-allowlist-models-updated")
     static let aiGatewayModelAllowlistToggled = ListEventTypeName(rawValue: "ai-gateway-model-allowlist-toggled")
-    static let aiGatewayModelCatalogAlertSettingsUpdated = ListEventTypeName(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
+    static let aiGatewayModelCatalogAlertSettingsUpdated =
+        ListEventTypeName(rawValue: "ai-gateway-model-catalog-alert-settings-updated")
     static let aiGatewayPrivateModelCreated = ListEventTypeName(rawValue: "ai-gateway-private-model-created")
     static let aiGatewayPrivateModelDeleted = ListEventTypeName(rawValue: "ai-gateway-private-model-deleted")
     static let aiGatewayPrivateModelUpdated = ListEventTypeName(rawValue: "ai-gateway-private-model-updated")
     static let aiGatewayPrivateProviderCreated = ListEventTypeName(rawValue: "ai-gateway-private-provider-created")
     static let aiGatewayPrivateProviderDeleted = ListEventTypeName(rawValue: "ai-gateway-private-provider-deleted")
     static let aiGatewayPrivateProviderUpdated = ListEventTypeName(rawValue: "ai-gateway-private-provider-updated")
-    static let aiGatewayPromptTrainingOptOutToggled = ListEventTypeName(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
-    static let aiGatewayProviderAllowlistProvidersUpdated = ListEventTypeName(rawValue: "ai-gateway-provider-allowlist-providers-updated")
+    static let aiGatewayPromptTrainingOptOutToggled =
+        ListEventTypeName(rawValue: "ai-gateway-prompt-training-opt-out-toggled")
+    static let aiGatewayProviderAllowlistProvidersUpdated =
+        ListEventTypeName(rawValue: "ai-gateway-provider-allowlist-providers-updated")
     static let aiGatewayProviderAllowlistToggled = ListEventTypeName(rawValue: "ai-gateway-provider-allowlist-toggled")
     static let aiGatewayRuleCreated = ListEventTypeName(rawValue: "ai-gateway-rule-created")
     static let aiGatewayRuleDeleted = ListEventTypeName(rawValue: "ai-gateway-rule-deleted")
     static let aiGatewayRuleUpdated = ListEventTypeName(rawValue: "ai-gateway-rule-updated")
     static let aiGatewayScopeBudgetUpdated = ListEventTypeName(rawValue: "ai-gateway-scope-budget-updated")
-    static let aiGatewayTranscriptsDefaultDisabled = ListEventTypeName(rawValue: "ai-gateway-transcripts-default-disabled")
-    static let aiGatewayTranscriptsDefaultEnabled = ListEventTypeName(rawValue: "ai-gateway-transcripts-default-enabled")
+    static let aiGatewayTranscriptsDefaultDisabled =
+        ListEventTypeName(rawValue: "ai-gateway-transcripts-default-disabled")
+    static let aiGatewayTranscriptsDefaultEnabled =
+        ListEventTypeName(rawValue: "ai-gateway-transcripts-default-enabled")
     static let aiGatewayTranscriptsDisabled = ListEventTypeName(rawValue: "ai-gateway-transcripts-disabled")
     static let aiGatewayTranscriptsEnabled = ListEventTypeName(rawValue: "ai-gateway-transcripts-enabled")
-    static let aiGatewayTranscriptsRetentionUpdated = ListEventTypeName(rawValue: "ai-gateway-transcripts-retention-updated")
-    static let aiGatewayVirtualModelConfigArchived = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-archived")
-    static let aiGatewayVirtualModelConfigCreated = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-created")
-    static let aiGatewayVirtualModelConfigDeleted = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-deleted")
-    static let aiGatewayVirtualModelConfigRestored = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-restored")
-    static let aiGatewayVirtualModelConfigUpdated = ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-updated")
+    static let aiGatewayTranscriptsRetentionUpdated =
+        ListEventTypeName(rawValue: "ai-gateway-transcripts-retention-updated")
+    static let aiGatewayVirtualModelConfigArchived =
+        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-archived")
+    static let aiGatewayVirtualModelConfigCreated =
+        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-created")
+    static let aiGatewayVirtualModelConfigDeleted =
+        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-deleted")
+    static let aiGatewayVirtualModelConfigRestored =
+        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-restored")
+    static let aiGatewayVirtualModelConfigUpdated =
+        ListEventTypeName(rawValue: "ai-gateway-virtual-model-config-updated")
     static let aiGatewayZeroDataRetentionToggled = ListEventTypeName(rawValue: "ai-gateway-zero-data-retention-toggled")
     static let aiOmniagent = ListEventTypeName(rawValue: "ai-omniagent")
-    static let alertInvestigationProjectAllowlistUpdated = ListEventTypeName(rawValue: "alert-investigation-project-allowlist-updated")
+    static let alertInvestigationProjectAllowlistUpdated =
+        ListEventTypeName(rawValue: "alert-investigation-project-allowlist-updated")
     static let alertRuleCreated = ListEventTypeName(rawValue: "alert-rule-created")
     static let alertRuleDeleted = ListEventTypeName(rawValue: "alert-rule-deleted")
     static let alertRuleUpdated = ListEventTypeName(rawValue: "alert-rule-updated")
@@ -237,7 +258,8 @@ public extension ListEventTypeName {
     static let deploymentPolicyBlocked = ListEventTypeName(rawValue: "deployment-policy-blocked")
     static let deploymentProtectionAccessRequests = ListEventTypeName(rawValue: "deployment-protection-access-requests")
     static let deploymentUndeleted = ListEventTypeName(rawValue: "deployment-undeleted")
-    static let disabledIntegrationInstallationRemoved = ListEventTypeName(rawValue: "disabled-integration-installation-removed")
+    static let disabledIntegrationInstallationRemoved =
+        ListEventTypeName(rawValue: "disabled-integration-installation-removed")
     static let disconnectBitbucketApp = ListEventTypeName(rawValue: "disconnect-bitbucket-app")
     static let disconnectGithub = ListEventTypeName(rawValue: "disconnect-github")
     static let disconnectGithubCustomHost = ListEventTypeName(rawValue: "disconnect-github-custom-host")
@@ -271,9 +293,11 @@ public extension ListEventTypeName {
     static let drainDisabled = ListEventTypeName(rawValue: "drain-disabled")
     static let drainEnabled = ListEventTypeName(rawValue: "drain-enabled")
     static let drainUpdated = ListEventTypeName(rawValue: "drain-updated")
-    static let edgeCacheDangerouslyDeleteBySrcImages = ListEventTypeName(rawValue: "edge-cache-dangerously-delete-by-src-images")
+    static let edgeCacheDangerouslyDeleteBySrcImages =
+        ListEventTypeName(rawValue: "edge-cache-dangerously-delete-by-src-images")
     static let edgeCacheDangerouslyDeleteByTags = ListEventTypeName(rawValue: "edge-cache-dangerously-delete-by-tags")
-    static let edgeCacheDangerouslyDeleteImmutableStatic = ListEventTypeName(rawValue: "edge-cache-dangerously-delete-immutable-static")
+    static let edgeCacheDangerouslyDeleteImmutableStatic =
+        ListEventTypeName(rawValue: "edge-cache-dangerously-delete-immutable-static")
     static let edgeCacheInvalidateBySrcImages = ListEventTypeName(rawValue: "edge-cache-invalidate-by-src-images")
     static let edgeCacheInvalidateByTags = ListEventTypeName(rawValue: "edge-cache-invalidate-by-tags")
     static let edgeCachePurgeAll = ListEventTypeName(rawValue: "edge-cache-purge-all")
@@ -293,8 +317,10 @@ public extension ListEventTypeName {
     static let emailNotificationRuleRemoved = ListEventTypeName(rawValue: "email-notification-rule-removed")
     static let emailNotificationRuleUpdated = ListEventTypeName(rawValue: "email-notification-rule-updated")
     static let emuMemberRemovedUnverifiedDomain = ListEventTypeName(rawValue: "emu-member-removed-unverified-domain")
-    static let enforceDisjunctiveProductionSecrets = ListEventTypeName(rawValue: "enforce-disjunctive-production-secrets")
-    static let enforceSensitiveEnvironmentVariables = ListEventTypeName(rawValue: "enforce-sensitive-environment-variables")
+    static let enforceDisjunctiveProductionSecrets =
+        ListEventTypeName(rawValue: "enforce-disjunctive-production-secrets")
+    static let enforceSensitiveEnvironmentVariables =
+        ListEventTypeName(rawValue: "enforce-sensitive-environment-variables")
     static let envVariableAdd = ListEventTypeName(rawValue: "env-variable-add")
     static let envVariableDelete = ListEventTypeName(rawValue: "env-variable-delete")
     static let envVariableEdit = ListEventTypeName(rawValue: "env-variable-edit")
@@ -356,19 +382,29 @@ public extension ListEventTypeName {
     static let globalConfigTransferOut = ListEventTypeName(rawValue: "global-config-transfer-out")
     static let globalConfigUpdated = ListEventTypeName(rawValue: "global-config-updated")
     static let instantRollbackCreated = ListEventTypeName(rawValue: "instant-rollback-created")
-    static let integrationConfigurationCredentialRevoked = ListEventTypeName(rawValue: "integration-configuration-credential-revoked")
-    static let integrationConfigurationCredentialRotated = ListEventTypeName(rawValue: "integration-configuration-credential-rotated")
-    static let integrationConfigurationOwnerChanged = ListEventTypeName(rawValue: "integration-configuration-owner-changed")
-    static let integrationConfigurationScopeChangeConfirmed = ListEventTypeName(rawValue: "integration-configuration-scope-change-confirmed")
-    static let integrationConfigurationTransferInSuccess = ListEventTypeName(rawValue: "integration-configuration-transfer-in-success")
-    static let integrationConfigurationTransferOutSuccess = ListEventTypeName(rawValue: "integration-configuration-transfer-out-success")
+    static let integrationConfigurationCredentialRevoked =
+        ListEventTypeName(rawValue: "integration-configuration-credential-revoked")
+    static let integrationConfigurationCredentialRotated =
+        ListEventTypeName(rawValue: "integration-configuration-credential-rotated")
+    static let integrationConfigurationOwnerChanged =
+        ListEventTypeName(rawValue: "integration-configuration-owner-changed")
+    static let integrationConfigurationScopeChangeConfirmed =
+        ListEventTypeName(rawValue: "integration-configuration-scope-change-confirmed")
+    static let integrationConfigurationTransferInSuccess =
+        ListEventTypeName(rawValue: "integration-configuration-transfer-in-success")
+    static let integrationConfigurationTransferOutSuccess =
+        ListEventTypeName(rawValue: "integration-configuration-transfer-out-success")
     static let integrationConfigurationsDisabled = ListEventTypeName(rawValue: "integration-configurations-disabled")
-    static let integrationInstallationBillingPlanUpdated = ListEventTypeName(rawValue: "integration-installation-billing-plan-updated")
+    static let integrationInstallationBillingPlanUpdated =
+        ListEventTypeName(rawValue: "integration-installation-billing-plan-updated")
     static let integrationInstallationCompleted = ListEventTypeName(rawValue: "integration-installation-completed")
-    static let integrationInstallationPermissionUpdated = ListEventTypeName(rawValue: "integration-installation-permission-updated")
+    static let integrationInstallationPermissionUpdated =
+        ListEventTypeName(rawValue: "integration-installation-permission-updated")
     static let integrationInstallationRemoved = ListEventTypeName(rawValue: "integration-installation-removed")
-    static let integrationResourceRedisCommandExecuted = ListEventTypeName(rawValue: "integration-resource-redis-command-executed")
-    static let integrationResourceSqlQueryExecuted = ListEventTypeName(rawValue: "integration-resource-sql-query-executed")
+    static let integrationResourceRedisCommandExecuted =
+        ListEventTypeName(rawValue: "integration-resource-redis-command-executed")
+    static let integrationResourceSqlQueryExecuted =
+        ListEventTypeName(rawValue: "integration-resource-sql-query-executed")
     static let integrationScopeChanged = ListEventTypeName(rawValue: "integration-scope-changed")
     static let invoiceModified = ListEventTypeName(rawValue: "invoice-modified")
     static let invoiceRefunded = ListEventTypeName(rawValue: "invoice-refunded")
@@ -390,13 +426,16 @@ public extension ListEventTypeName {
     static let loginConnectionLinked = ListEventTypeName(rawValue: "login-connection-linked")
     static let loginConnectionUnlinked = ListEventTypeName(rawValue: "login-connection-unlinked")
     static let manualDeploymentPromotionCreated = ListEventTypeName(rawValue: "manual-deployment-promotion-created")
-    static let marketplaceAutoCardCollectionUpdated = ListEventTypeName(rawValue: "marketplace-auto-card-collection-updated")
+    static let marketplaceAutoCardCollectionUpdated =
+        ListEventTypeName(rawValue: "marketplace-auto-card-collection-updated")
 }
 
 public extension ListEventTypeName {
-    static let marketplaceBillingCollectionUpdated = ListEventTypeName(rawValue: "marketplace-billing-collection-updated")
+    static let marketplaceBillingCollectionUpdated =
+        ListEventTypeName(rawValue: "marketplace-billing-collection-updated")
     static let marketplaceFlexCommitOptIn = ListEventTypeName(rawValue: "marketplace-flex-commit-opt-in")
-    static let marketplaceIntegrationAllowlistUpdated = ListEventTypeName(rawValue: "marketplace-integration-allowlist-updated")
+    static let marketplaceIntegrationAllowlistUpdated =
+        ListEventTypeName(rawValue: "marketplace-integration-allowlist-updated")
     static let messageboardCreated = ListEventTypeName(rawValue: "messageboard-created")
     static let messageboardPrivateCreated = ListEventTypeName(rawValue: "messageboard-private-created")
     static let messageboardPrivateSpaceCreated = ListEventTypeName(rawValue: "messageboard-private-space-created")
@@ -409,7 +448,8 @@ public extension ListEventTypeName {
     static let microfrontendGroupDeleted = ListEventTypeName(rawValue: "microfrontend-group-deleted")
     static let microfrontendGroupUpdated = ListEventTypeName(rawValue: "microfrontend-group-updated")
     static let microfrontendProjectAddedToGroup = ListEventTypeName(rawValue: "microfrontend-project-added-to-group")
-    static let microfrontendProjectRemovedFromGroup = ListEventTypeName(rawValue: "microfrontend-project-removed-from-group")
+    static let microfrontendProjectRemovedFromGroup =
+        ListEventTypeName(rawValue: "microfrontend-project-removed-from-group")
     static let microfrontendProjectUpdated = ListEventTypeName(rawValue: "microfrontend-project-updated")
     static let monitoringAlertUpdated = ListEventTypeName(rawValue: "monitoring-alert-updated")
     static let monitoringDisabled = ListEventTypeName(rawValue: "monitoring-disabled")
@@ -447,8 +487,10 @@ public extension ListEventTypeName {
     static let organizationTeamCreate = ListEventTypeName(rawValue: "organization-team-create")
     static let organizationTeamDelete = ListEventTypeName(rawValue: "organization-team-delete")
     static let organizationTeamSsoUpdate = ListEventTypeName(rawValue: "organization-team-sso-update")
-    static let organizationUpdateAccountFlowDismissed = ListEventTypeName(rawValue: "organization-update-account-flow-dismissed")
-    static let organizationUpdateAccountFlowTriggered = ListEventTypeName(rawValue: "organization-update-account-flow-triggered")
+    static let organizationUpdateAccountFlowDismissed =
+        ListEventTypeName(rawValue: "organization-update-account-flow-dismissed")
+    static let organizationUpdateAccountFlowTriggered =
+        ListEventTypeName(rawValue: "organization-update-account-flow-triggered")
     static let ownerBlocked = ListEventTypeName(rawValue: "owner-blocked")
     static let ownerSoftBlocked = ListEventTypeName(rawValue: "owner-soft-blocked")
     static let ownerSoftUnblocked = ListEventTypeName(rawValue: "owner-soft-unblocked")
@@ -460,8 +502,10 @@ public extension ListEventTypeName {
     static let pageIntegrityResourceApproved = ListEventTypeName(rawValue: "page-integrity-resource-approved")
     static let pageIntegrityResourceDeleted = ListEventTypeName(rawValue: "page-integrity-resource-deleted")
     static let pageIntegrityResourceRejected = ListEventTypeName(rawValue: "page-integrity-resource-rejected")
-    static let pageIntegrityScriptApprovalRuleCreated = ListEventTypeName(rawValue: "page-integrity-script-approval-rule-created")
-    static let pageIntegrityScriptApprovalRuleDeleted = ListEventTypeName(rawValue: "page-integrity-script-approval-rule-deleted")
+    static let pageIntegrityScriptApprovalRuleCreated =
+        ListEventTypeName(rawValue: "page-integrity-script-approval-rule-created")
+    static let pageIntegrityScriptApprovalRuleDeleted =
+        ListEventTypeName(rawValue: "page-integrity-script-approval-rule-deleted")
     static let passkeyCreated = ListEventTypeName(rawValue: "passkey-created")
     static let passkeyDeleted = ListEventTypeName(rawValue: "passkey-deleted")
     static let passkeyUpdated = ListEventTypeName(rawValue: "passkey-updated")

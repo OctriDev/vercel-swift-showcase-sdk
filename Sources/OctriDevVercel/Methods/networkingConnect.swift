@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension NetworkingMethods {
-    /// Lists Secure Compute networks. Use the inclusion parameters to control whether hosted zones, peering connections, and associated projects appear in the results, and use `search` to filter networks. The inclusion parameters default to `true` when omitted.
+public extension NetworkingMethods {
+    /// Lists Secure Compute networks. Use the inclusion parameters to control whether hosted zones, peering
+    /// connections, and associated projects appear in the results, and use `search` to filter networks. The inclusion
+    /// parameters default to `true` when omitted.
     ///
     /// Allows to list Secure Compute networks.
     ///
@@ -19,12 +21,21 @@ extension NetworkingMethods {
     /// - search: The query to use as a filter for returned networks
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listNetworks(config: ClientConfig, includeHostedZones: Bool? = nil, includePeeringConnections: Bool? = nil, includeProjects: Bool? = nil, search: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [Network] {
-        if let search = search {
+    static func listNetworks(
+        config: ClientConfig,
+        includeHostedZones: Bool? = nil,
+        includePeeringConnections: Bool? = nil,
+        includeProjects: Bool? = nil,
+        search: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [Network] {
+        if let search {
             try validateLength("search", search, max: 255)
         }
 
-        return try (await sdkRequest("GET", "/v1/connect/networks", config: config, query: [
+        return try await (sdkRequest("GET", "/v1/connect/networks", config: config, query: [
             SdkQueryParameter("includeHostedZones", value: includeHostedZones),
             SdkQueryParameter("includePeeringConnections", value: includePeeringConnections),
             SdkQueryParameter("includeProjects", value: includeProjects),

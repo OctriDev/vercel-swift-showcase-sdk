@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    public struct EditProjectEnvOptions: Codable {
+public extension ProjectsMethods {
+    struct EditProjectEnvOptions: Codable {
         public var idOrName: String
         public var id: String
         public var teamId: String?
@@ -26,9 +26,11 @@ extension ProjectsMethods {
         }
     }
 
-    /// Updates an environment variable belonging to a project. Send only the properties you want to change, such as `value`, `target`, or `comment`; the schema does not require any particular body property.
+    /// Updates an environment variable belonging to a project. Send only the properties you want to change, such as
+    /// `value`, `target`, or `comment`; the schema does not require any particular body property.
     ///
-    /// Edit a specific environment variable for a given project by passing the environment variable identifier and either passing the project `id` or `name` in the URL.
+    /// Edit a specific environment variable for a given project by passing the environment variable identifier and
+    /// either passing the project `id` or `name` in the URL.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name
@@ -44,7 +46,11 @@ extension ProjectsMethods {
     /// - customEnvironmentIds: The custom environments that the environment
     ///   variable should be synced to
     /// - comment: A comment to add context on what this env var is for
-    public static func editProjectEnv(config: ClientConfig, options: EditProjectEnvOptions, requestOptions: RequestOptions? = nil) async throws -> EditProjectEnvResponse {
+    static func editProjectEnv(
+        config: ClientConfig,
+        options: EditProjectEnvOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> EditProjectEnvResponse {
         if let gitBranch = options.gitBranch?.valueOrNil {
             try validateLength("gitBranch", gitBranch, max: 250)
         }
@@ -55,9 +61,23 @@ extension ProjectsMethods {
 
         let requestBody = EditProjectEnvRequestBody(options: options)
 
-        return try (await sdkRequest("PATCH", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/env/", sdkEncodePathSegment(sdkWireString(options.id))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], body: requestBody, decoder: .json, operationId: "editProjectEnv", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            [
+                "/v9/projects/",
+                sdkEncodePathSegment(sdkWireString(options.idOrName)),
+                "/env/",
+                sdkEncodePathSegment(sdkWireString(options.id)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "editProjectEnv",
+            options: requestOptions
+        )).data
     }
 }

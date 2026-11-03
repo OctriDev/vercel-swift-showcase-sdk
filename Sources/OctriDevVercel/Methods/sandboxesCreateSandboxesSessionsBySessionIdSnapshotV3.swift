@@ -6,10 +6,17 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    /// Creates a point-in-time snapshot of a running session's filesystem. Use a snapshot to restore the filesystem later or initialize another session with the same environment; the session must be running and able to accept commands. The source session is terminated after the snapshot is created, and snapshots default to a seven-day expiration when neither the request nor sandbox configuration sets one.
+public extension SandboxesMethods {
+    /// Creates a point-in-time snapshot of a running session's filesystem. Use a snapshot to restore the filesystem
+    /// later or initialize another session with the same environment; the session must be running and able to accept
+    /// commands. The source session is terminated after the snapshot is created, and snapshots default to a seven-day
+    /// expiration when neither the request nor sandbox configuration sets one.
     ///
-    /// Creates a point-in-time snapshot of a running session's filesystem. Snapshots can be used to quickly restore a session to a previous state or to create new sessions with pre-configured environments. The session must be running and able to accept commands for a snapshot to be created. The session will be terminated after the snapshot is created. Unlike v2, snapshots expire after 7 days when neither the request nor the sandbox configuration specifies an expiration.
+    /// Creates a point-in-time snapshot of a running session's filesystem. Snapshots can be used to quickly restore a
+    /// session to a previous state or to create new sessions with pre-configured environments. The session must be
+    /// running and able to accept commands for a snapshot to be created. The session will be terminated after the
+    /// snapshot is created. Unlike v2, snapshots expire after 7 days when neither the request nor the sandbox
+    /// configuration specifies an expiration.
     ///
     /// - Parameters:
     /// - sessionId: The unique identifier of the session to snapshot.
@@ -18,12 +25,28 @@ extension SandboxesMethods {
     /// - expiration: The number of milliseconds after which the snapshot will
     ///   expire and be deleted. Defaults to 7 days when neither this field nor the
     ///   sandbox configuration specifies an expiration. Use 0 for no expiration.
-    public static func createSandboxesSessionsBySessionIdSnapshotV3(config: ClientConfig, sessionId: String, teamId: String? = nil, slug: String? = nil, expiration: SdkOptional<CreateSandboxesSessionsBySessionIdSnapshotV3RequestBodyExpiration>? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesSessionsBySessionIdSnapshotV3Response {
+    static func createSandboxesSessionsBySessionIdSnapshotV3(
+        config: ClientConfig,
+        sessionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        expiration: SdkOptional<CreateSandboxesSessionsBySessionIdSnapshotV3RequestBodyExpiration>? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSandboxesSessionsBySessionIdSnapshotV3Response {
         let requestBody = CreateSandboxesSessionsBySessionIdSnapshotV3RequestBody(expiration: expiration)
 
-        return try (await sdkRequest("POST", ["/v3/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/snapshot"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "createSandboxesSessionsBySessionIdSnapshotV3", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v3/sandboxes/sessions/", sdkEncodePathSegment(sdkWireString(sessionId)), "/snapshot"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "createSandboxesSessionsBySessionIdSnapshotV3",
+            options: requestOptions
+        )).data
     }
 }

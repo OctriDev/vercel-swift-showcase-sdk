@@ -9,96 +9,250 @@ public class ConnectNamespace {
         self.config = config
     }
 
-/// Lists connectors that belong to a team and returns them in cursor-paginated pages. Use filters such as `projectId`, `type`, and `service` to narrow the results, and pass the returned `pagination.next` cursor to retrieve another page.
+    /// Lists connectors that belong to a team and returns them in cursor-paginated pages. Use filters such as
+    /// `projectId`, `type`, and `service` to narrow the results, and pass the returned `pagination.next` cursor to
+    /// retrieve another page.
     ///
     /// List connectors that belong to a team.
-    public func listConnectors(options: ConnectMethods.ListConnectorsOptions, requestOptions: RequestOptions? = nil) async throws -> ConnectConnectorList {
-        return try await ConnectMethods.listConnectors(config: config, options: options, requestOptions: requestOptions)
+    public func listConnectors(
+        options: ConnectMethods.ListConnectorsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectConnectorList {
+        try await ConnectMethods.listConnectors(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Retrieves a connector by its stable ID or team-scoped UID. Use a dashboard or team requester, or a deployment's project OIDC token; project requesters can read only connectors linked to their project and environment.
+    /// Retrieves a connector by its stable ID or team-scoped UID. Use a dashboard or team requester, or a deployment's
+    /// project OIDC token; project requesters can read only connectors linked to their project and environment.
     ///
-    /// Get the connector by ID. Accepts a dashboard/team requester or a deployment's project OIDC token; project requesters may only read connectors linked to their project and environment.
-    public func getConnector(connector: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectConnector {
-        return try await ConnectMethods.getConnector(config: config, connector: connector, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Get the connector by ID. Accepts a dashboard/team requester or a deployment's project OIDC token; project
+    /// requesters may only read connectors linked to their project and environment.
+    public func getConnector(
+        connector: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectConnector {
+        try await ConnectMethods.getConnector(
+            config: config,
+            connector: connector,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a connector and its project connections and installation records. Use this operation when you want to remove the connector and its associated connections and installations from the team.
+    /// Deletes a connector and its project connections and installation records. Use this operation when you want to
+    /// remove the connector and its associated connections and installations from the team.
     ///
     /// Delete a connector, its project connections, and its installation records.
-    public func deleteConnector(connector: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await ConnectMethods.deleteConnector(config: config, connector: connector, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func deleteConnector(
+        connector: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await ConnectMethods.deleteConnector(
+            config: config,
+            connector: connector,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a connector with provider configuration or a service connection method, and can optionally link it to a project. Choose either full configuration with `type` or preset configuration with `service` and `connectionMethod`; supply `data` for the provider configuration.
+    /// Creates a connector with provider configuration or a service connection method, and can optionally link it to a
+    /// project. Choose either full configuration with `type` or preset configuration with `service` and
+    /// `connectionMethod`; supply `data` for the provider configuration.
     ///
-    /// Create a connector and optionally link it to a project. Use `type` with complete provider data, or use `service` with `connectionMethod` so Connect can supply the type, endpoints, templates, and defaults.
-    public func createConnector(options: ConnectMethods.CreateConnectorOptions, requestOptions: RequestOptions? = nil) async throws -> ConnectConnectorCreateResult {
-        return try await ConnectMethods.createConnector(config: config, options: options, requestOptions: requestOptions)
+    /// Create a connector and optionally link it to a project. Use `type` with complete provider data, or use `service`
+    /// with `connectionMethod` so Connect can supply the type, endpoints, templates, and defaults.
+    public func createConnector(
+        options: ConnectMethods.CreateConnectorOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectConnectorCreateResult {
+        try await ConnectMethods.createConnector(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Updates connector configuration, trigger settings, or display details and returns any provider-side follow-up signals. Supply only the fields you want to change, and handle any reconsent, reinstall, or service synchronization information in the response.
+    /// Updates connector configuration, trigger settings, or display details and returns any provider-side follow-up
+    /// signals. Supply only the fields you want to change, and handle any reconsent, reinstall, or service
+    /// synchronization information in the response.
     ///
     /// Update a connector and return the connector with any service-side update signals that the caller must handle.
-    public func updateConnector(options: ConnectMethods.UpdateConnectorOptions, requestOptions: RequestOptions? = nil) async throws -> ConnectConnectorUpdateResult {
-        return try await ConnectMethods.updateConnector(config: config, options: options, requestOptions: requestOptions)
+    public func updateConnector(
+        options: ConnectMethods.UpdateConnectorOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectConnectorUpdateResult {
+        try await ConnectMethods.updateConnector(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Replaces the complete set of trigger destinations for a connector. Submit all destinations you want to retain in `destinations`; an empty array removes every destination, and the replacement can contain at most three entries.
+    /// Replaces the complete set of trigger destinations for a connector. Submit all destinations you want to retain in
+    /// `destinations`; an empty array removes every destination, and the replacement can contain at most three entries.
     ///
     /// Replace the full set of destinations that receive trigger requests for a connector.
-    public func replaceConnectorTriggerDestinations(connector: String, destinations: [ConnectTriggerDestinationInput], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectConnector {
-        return try await ConnectMethods.replaceConnectorTriggerDestinations(config: config, connector: connector, destinations: destinations, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func replaceConnectorTriggerDestinations(
+        connector: String,
+        destinations: [ConnectTriggerDestinationInput],
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectConnector {
+        try await ConnectMethods.replaceConnectorTriggerDestinations(
+            config: config,
+            connector: connector,
+            destinations: destinations,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Disconnects a managed connector from its provider-side manager. Use this operation when you want the connector to stop being managed by that provider.
+    /// Disconnects a managed connector from its provider-side manager. Use this operation when you want the connector
+    /// to stop being managed by that provider.
     ///
     /// Disconnect a managed connector from its provider-side manager.
-    public func ejectManagedConnector(connector: String, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectConnector {
-        return try await ConnectMethods.ejectManagedConnector(config: config, connector: connector, slug: slug, requestOptions: requestOptions)
+    public func ejectManagedConnector(
+        connector: String,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectConnector {
+        try await ConnectMethods.ejectManagedConnector(
+            config: config,
+            connector: connector,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// List the projects connected to a connector and the environments where each connection is available.
-    public func listConnectorProjectConnections(connector: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectConnectorProjectConnectionList {
-        return try await ConnectMethods.listConnectorProjectConnections(config: config, connector: connector, limit: limit, cursor: cursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// List the projects connected to a connector and the environments where each connection is available.
+    public func listConnectorProjectConnections(
+        connector: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectConnectorProjectConnectionList {
+        try await ConnectMethods.listConnectorProjectConnections(
+            config: config,
+            connector: connector,
+            limit: limit,
+            cursor: cursor,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
-extension ConnectNamespace {
-/// Get the configuration that connects a connector to a project.
-    public func getConnectorProjectConnection(connector: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectProjectConnection {
-        return try await ConnectMethods.getConnectorProjectConnection(config: config, connector: connector, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+public extension ConnectNamespace {
+    /// Get the configuration that connects a connector to a project.
+    func getConnectorProjectConnection(
+        connector: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectProjectConnection {
+        try await ConnectMethods.getConnectorProjectConnection(
+            config: config,
+            connector: connector,
+            projectId: projectId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Connect a connector to a project, or replace the environments on an existing project connection.
-    public func upsertConnectorProjectConnection(connector: String, projectId: String, environments: [String], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectProjectConnection {
-        return try await ConnectMethods.upsertConnectorProjectConnection(config: config, connector: connector, projectId: projectId, environments: environments, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Connect a connector to a project, or replace the environments on an existing project connection.
+    func upsertConnectorProjectConnection(
+        connector: String,
+        projectId: String,
+        environments: [String],
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectProjectConnection {
+        try await ConnectMethods.upsertConnectorProjectConnection(
+            config: config,
+            connector: connector,
+            projectId: projectId,
+            environments: environments,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes the connection between a connector and a project. Supply the connector identifier or URL-encoded team-scoped UID in `connector` and the Vercel project ID in `projectId`. Use `teamId` or `slug` to select a team when the token or authenticated user's default team should not be used.
+    /// Deletes the connection between a connector and a project. Supply the connector identifier or URL-encoded
+    /// team-scoped UID in `connector` and the Vercel project ID in `projectId`. Use `teamId` or `slug` to select a team
+    /// when the token or authenticated user's default team should not be used.
     ///
     /// Disconnect a connector from a project.
-    public func deleteConnectorProjectConnection(connector: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await ConnectMethods.deleteConnectorProjectConnection(config: config, connector: connector, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func deleteConnectorProjectConnection(
+        connector: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await ConnectMethods.deleteConnectorProjectConnection(
+            config: config,
+            connector: connector,
+            projectId: projectId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// List the connectors connected to a project and the environments where each connection is available.
-    public func listProjectConnectorConnections(projectId: String, limit: Int? = nil, cursor: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ConnectProjectConnectorConnectionList {
-        return try await ConnectMethods.listProjectConnectorConnections(config: config, projectId: projectId, limit: limit, cursor: cursor, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// List the connectors connected to a project and the environments where each connection is available.
+    func listProjectConnectorConnections(
+        projectId: String,
+        limit: Int? = nil,
+        cursor: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ConnectProjectConnectorConnectionList {
+        try await ConnectMethods.listProjectConnectorConnections(
+            config: config,
+            projectId: projectId,
+            limit: limit,
+            cursor: cursor,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves an access token for a connector, scoped to the authenticated user or another subject specified in the request body. Supply the connector identifier in the path and optionally provide token settings such as `scopes`, `resources`, or `audience`. Use the returned token and expiration details to access the connector.
+    /// Retrieves an access token for a connector, scoped to the authenticated user or another subject specified in the
+    /// request body. Supply the connector identifier in the path and optionally provide token settings such as
+    /// `scopes`, `resources`, or `audience`. Use the returned token and expiration details to access the connector.
     ///
     /// Get an access token for a connector identified by the path parameter and scoped to the requester.
-    public func getConnectorToken(options: ConnectMethods.GetConnectorTokenOptions, requestOptions: RequestOptions? = nil) async throws -> GetConnectorTokenResponse {
-        return try await ConnectMethods.getConnectorToken(config: config, options: options, requestOptions: requestOptions)
+    func getConnectorToken(
+        options: ConnectMethods.GetConnectorTokenOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetConnectorTokenResponse {
+        try await ConnectMethods.getConnectorToken(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Creates an authorization request for a connector and returns the URL and verifier details needed to complete the authorization flow. Supply the connector identifier and, if needed, settings such as `subject`, `scopes`, `returnUrl`, or `deviceCode`. Use the returned `url` and `verifier` to continue the connector authorization flow.
+    /// Creates an authorization request for a connector and returns the URL and verifier details needed to complete the
+    /// authorization flow. Supply the connector identifier and, if needed, settings such as `subject`, `scopes`,
+    /// `returnUrl`, or `deviceCode`. Use the returned `url` and `verifier` to continue the connector authorization
+    /// flow.
     ///
-    /// Create an authorization request for a connector and return the URL and verifier details needed to complete the flow.
-    public func createConnectorAuthorizationRequest(options: ConnectMethods.CreateConnectorAuthorizationRequestOptions, requestOptions: RequestOptions? = nil) async throws -> CreateConnectorAuthorizationRequestResponse {
-        return try await ConnectMethods.createConnectorAuthorizationRequest(config: config, options: options, requestOptions: requestOptions)
+    /// Create an authorization request for a connector and return the URL and verifier details needed to complete the
+    /// flow.
+    func createConnectorAuthorizationRequest(
+        options: ConnectMethods.CreateConnectorAuthorizationRequestOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateConnectorAuthorizationRequestResponse {
+        try await ConnectMethods.createConnectorAuthorizationRequest(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 }
 
@@ -108,74 +262,207 @@ public class DeploymentsNamespace {
         self.config = config
     }
 
-/// Retrieves build logs and events for a deployment, either as JSON or as a live stream. Use `idOrUrl` to identify the deployment and `name` to select a build; use `since`, `until`, and `statusCode` to filter events. Set `follow` to `1` to receive live events as they happen.
+    /// Retrieves build logs and events for a deployment, either as JSON or as a live stream. Use `idOrUrl` to identify
+    /// the deployment and `name` to select a build; use `since`, `until`, and `statusCode` to filter events. Set
+    /// `follow` to `1` to receive live events as they happen.
     ///
-    /// Get the build logs of a deployment by deployment ID and build ID. It can work as an infinite stream of logs or as a JSON endpoint depending on the input parameters.
-    public func getEvents(options: DeploymentsMethods.GetDeploymentEventsOptions, requestOptions: RequestOptions? = nil) async throws -> [GetDeploymentEventsResponseItem?] {
-        return try await DeploymentsMethods.getDeploymentEvents(config: config, options: options, requestOptions: requestOptions)
+    /// Get the build logs of a deployment by deployment ID and build ID. It can work as an infinite stream of logs or
+    /// as a JSON endpoint depending on the input parameters.
+    public func getEvents(
+        options: DeploymentsMethods.GetDeploymentEventsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [GetDeploymentEventsResponseItem?] {
+        try await DeploymentsMethods.getDeploymentEvents(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates an integration action associated with a deployment resource. Use the path parameters to identify the deployment, integration installation, resource, and action, then provide any action status or outcome details in the body. The update is accepted asynchronously with a 202 response.
+    /// Updates an integration action associated with a deployment resource. Use the path parameters to identify the
+    /// deployment, integration installation, resource, and action, then provide any action status or outcome details in
+    /// the body. The update is accepted asynchronously with a 202 response.
     ///
     /// Updates the deployment integration action for the specified integration installation
-    public func updateAction(options: DeploymentsMethods.UpdateIntegrationDeploymentActionOptions, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await DeploymentsMethods.updateIntegrationDeploymentAction(config: config, options: options, requestOptions: requestOptions)
+    public func updateAction(
+        options: DeploymentsMethods.UpdateIntegrationDeploymentActionOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await DeploymentsMethods.updateIntegrationDeploymentAction(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves a deployment by its unique identifier or hostname. Use `withGitRepoInfo` to include the `gitSource` object with commit, branch, and repository metadata. The response includes additional private deployment details when the authenticated user or team owns the deployment.
+    /// Retrieves a deployment by its unique identifier or hostname. Use `withGitRepoInfo` to include the `gitSource`
+    /// object with commit, branch, and repository metadata. The response includes additional private deployment details
+    /// when the authenticated user or team owns the deployment.
     ///
-    /// Retrieves information for a deployment either by supplying its ID (`id` property) or Hostname (`url` property). Additional details will be included when the authenticated user or team is an owner of the deployment.
-    public func get(idOrUrl: String, withGitRepoInfo: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDeploymentResponse {
-        return try await DeploymentsMethods.getDeployment(config: config, idOrUrl: idOrUrl, withGitRepoInfo: withGitRepoInfo, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Retrieves information for a deployment either by supplying its ID (`id` property) or Hostname (`url` property).
+    /// Additional details will be included when the authenticated user or team is an owner of the deployment.
+    public func get(
+        idOrUrl: String,
+        withGitRepoInfo: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDeploymentResponse {
+        try await DeploymentsMethods.getDeployment(
+            config: config,
+            idOrUrl: idOrUrl,
+            withGitRepoInfo: withGitRepoInfo,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a deployment for the authenticated team or user and starts its build. Supply `name` and either a Git source or deployment files for a non-Git deployment; you can also provide a `deploymentId` to redeploy an existing deployment. Poll the returned `readyState` to track progress through the build states.
+    /// Creates a deployment for the authenticated team or user and starts its build. Supply `name` and either a Git
+    /// source or deployment files for a non-Git deployment; you can also provide a `deploymentId` to redeploy an
+    /// existing deployment. Poll the returned `readyState` to track progress through the build states.
     ///
-    /// Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the file upload API, then reference them here by SHA — or inline small files directly in the request body. To redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly overridden. The deployment begins building immediately and transitions through `QUEUED` → `INITIALIZING` → `BUILDING` before reaching `READY` or `ERROR`.
-    public func create(options: DeploymentsMethods.CreateDeploymentOptions, requestOptions: RequestOptions? = nil) async throws -> CreateDeploymentResponse {
-        return try await DeploymentsMethods.createDeployment(config: config, options: options, requestOptions: requestOptions)
+    /// Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the
+    /// file upload API, then reference them here by SHA — or inline small files directly in the request body. To
+    /// redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly
+    /// overridden. The deployment begins building immediately and transitions through `QUEUED` → `INITIALIZING` →
+    /// `BUILDING` before reaching `READY` or `ERROR`.
+    public func create(
+        options: DeploymentsMethods.CreateDeploymentOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateDeploymentResponse {
+        try await DeploymentsMethods.createDeployment(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Cancels a deployment that is currently in progress and stops its build before completion. Use this operation to stop an accidental deployment or a build with known errors; deployments in `READY`, `ERROR`, or `CANCELED` states are not cancelable. The 200 response returns the updated deployment with `readyState` set to `CANCELED`, and cancellation is irreversible.
+    /// Cancels a deployment that is currently in progress and stops its build before completion. Use this operation to
+    /// stop an accidental deployment or a build with known errors; deployments in `READY`, `ERROR`, or `CANCELED`
+    /// states are not cancelable. The 200 response returns the updated deployment with `readyState` set to `CANCELED`,
+    /// and cancellation is irreversible.
     ///
-    /// Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover quickly from accidental deploys, wrong-branch pushes, or builds with known errors — without waiting for them to finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns the updated deployment object with `readyState: 'CANCELED'` on success.
-    public func cancel(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CancelDeploymentResponse {
-        return try await DeploymentsMethods.cancelDeployment(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover
+    /// quickly from accidental deploys, wrong-branch pushes, or builds with known errors — without waiting for them to
+    /// finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns
+    /// the updated deployment object with `readyState: 'CANCELED'` on success.
+    public func cancel(
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CancelDeploymentResponse {
+        try await DeploymentsMethods.cancelDeployment(
+            config: config,
+            id: id,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Uploads a file for use in a deployment. Send the file content as the request body before creating the deployment that uses it. A successful response confirms the file is already uploaded or has been uploaded.
+    /// Uploads a file for use in a deployment. Send the file content as the request body before creating the deployment
+    /// that uses it. A successful response confirms the file is already uploaded or has been uploaded.
     ///
-    /// Before you create a deployment you need to upload the required files for that deployment. To do it, you need to first upload each file to this endpoint. Once that's completed, you can create a new deployment with the uploaded files. The file content must be placed inside the body of the request. In the case of a successful response you'll receive a status code 200 with an empty body.
-    public func uploadFile(teamId: String? = nil, slug: String? = nil, xVercelDigest: String? = nil, xNowDigest: String? = nil, xNowSize: Double? = nil, body: Data? = nil, requestOptions: RequestOptions? = nil) async throws -> UploadFileResponse {
-        return try await DeploymentsMethods.uploadFile(config: config, teamId: teamId, slug: slug, xVercelDigest: xVercelDigest, xNowDigest: xNowDigest, xNowSize: xNowSize, body: body, requestOptions: requestOptions)
+    /// Before you create a deployment you need to upload the required files for that deployment. To do it, you need to
+    /// first upload each file to this endpoint. Once that's completed, you can create a new deployment with the
+    /// uploaded files. The file content must be placed inside the body of the request. In the case of a successful
+    /// response you'll receive a status code 200 with an empty body.
+    public func uploadFile(
+        teamId: String? = nil,
+        slug: String? = nil,
+        xVercelDigest: String? = nil,
+        xNowDigest: String? = nil,
+        xNowSize: Double? = nil,
+        body: Data? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UploadFileResponse {
+        try await DeploymentsMethods.uploadFile(
+            config: config,
+            teamId: teamId,
+            slug: slug,
+            xVercelDigest: xVercelDigest,
+            xNowDigest: xNowDigest,
+            xNowSize: xNowSize,
+            body: body,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves the source file tree for a deployment. Use `id` to identify the deployment; a retrievable file tree is available when the deployment was created with the Vercel CLI or through the API using the `files` key.
+    /// Retrieves the source file tree for a deployment. Use `id` to identify the deployment; a retrievable file tree is
+    /// available when the deployment was created with the Vercel CLI or through the API using the `files` key.
     ///
-    /// Allows to retrieve the file structure of the source code of a deployment by supplying the deployment unique identifier. If the deployment was created with the Vercel CLI or the API directly with the `files` key, it will have a file tree that can be retrievable.
-    public func listFiles(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [FileTree] {
-        return try await DeploymentsMethods.listDeploymentFiles(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Allows to retrieve the file structure of the source code of a deployment by supplying the deployment unique
+    /// identifier. If the deployment was created with the Vercel CLI or the API directly with the `files` key, it will
+    /// have a file tree that can be retrievable.
+    public func listFiles(
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [FileTree] {
+        try await DeploymentsMethods.listDeploymentFiles(
+            config: config,
+            id: id,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Allows to retrieve the content of a file by supplying the file identifier and the deployment unique identifier. The response body will contain a JSON response containing the contents of the file encoded as base64.
-    public func getFileContents(id: String, fileId: String, path: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await DeploymentsMethods.getDeploymentFileContents(config: config, id: id, fileId: fileId, path: path, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Allows to retrieve the content of a file by supplying the file identifier and the deployment unique identifier.
+    /// The response body will contain a JSON response containing the contents of the file encoded as base64.
+    public func getFileContents(
+        id: String,
+        fileId: String,
+        path: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await DeploymentsMethods.getDeploymentFileContents(
+            config: config,
+            id: id,
+            fileId: fileId,
+            path: path,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
-extension DeploymentsNamespace {
-/// Lists deployments for the authenticated user or team. Use filters such as `projectId`, `state`, `branch`, or `target` to narrow the results, and use `limit` to set the maximum number returned. Incomplete deployments have a `url` value of `null`.
+public extension DeploymentsNamespace {
+    /// Lists deployments for the authenticated user or team. Use filters such as `projectId`, `state`, `branch`, or
+    /// `target` to narrow the results, and use `limit` to set the maximum number returned. Incomplete deployments have
+    /// a `url` value of `null`.
     ///
-    /// List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is incomplete), the `url` property will have a value of `null`.
-    public func getDeployments(options: DeploymentsMethods.GetDeploymentsOptions, requestOptions: RequestOptions? = nil) async throws -> GetDeploymentsResponse {
-        return try await DeploymentsMethods.getDeployments(config: config, options: options, requestOptions: requestOptions)
+    /// List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is
+    /// incomplete), the `url` property will have a value of `null`.
+    func getDeployments(
+        options: DeploymentsMethods.GetDeploymentsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDeploymentsResponse {
+        try await DeploymentsMethods.getDeployments(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Deletes a deployment identified by its ID or URL. Pass `url` to identify a deployment or alias URL; when provided, `url` takes precedence over `id`. You can obtain a deployment ID by listing deployments.
+    /// Deletes a deployment identified by its ID or URL. Pass `url` to identify a deployment or alias URL; when
+    /// provided, `url` takes precedence over `id`. You can obtain a deployment ID by listing deployments.
     ///
-    /// This API allows you to delete a deployment, either by supplying its `id` in the URL or the `url` of the deployment as a query parameter. You can obtain the ID, for example, by listing all deployments.
-    public func delete(id: String, url: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteDeploymentResponse {
-        return try await DeploymentsMethods.deleteDeployment(config: config, id: id, url: url, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// This API allows you to delete a deployment, either by supplying its `id` in the URL or the `url` of the
+    /// deployment as a query parameter. You can obtain the ID, for example, by listing all deployments.
+    func delete(
+        id: String,
+        url: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteDeploymentResponse {
+        try await DeploymentsMethods.deleteDeployment(
+            config: config,
+            id: id,
+            url: url,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
@@ -185,31 +472,83 @@ public class DnsNamespace {
         self.config = config
     }
 
-/// Lists DNS records created for a domain. Use `limit` to control the number of records returned and `since` or `until` to filter by JavaScript timestamps. The default limit is 20 records.
+    /// Lists DNS records created for a domain. Use `limit` to control the number of records returned and `since` or
+    /// `until` to filter by JavaScript timestamps. The default limit is 20 records.
     ///
-    /// Retrieves a list of DNS records created for a domain name. By default it returns 20 records if no limit is provided. The rest can be retrieved using the pagination options.
-    public func getRecords(domain: String, limit: String? = nil, since: String? = nil, until: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRecordsResponse {
-        return try await DnsMethods.getRecords(config: config, domain: domain, limit: limit, since: since, until: until, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Retrieves a list of DNS records created for a domain name. By default it returns 20 records if no limit is
+    /// provided. The rest can be retrieved using the pagination options.
+    public func getRecords(
+        domain: String,
+        limit: String? = nil,
+        since: String? = nil,
+        until: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetRecordsResponse {
+        try await DnsMethods.getRecords(
+            config: config,
+            domain: domain,
+            limit: limit,
+            since: since,
+            until: until,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a DNS record for a domain. Provide the record `type`, `name`, and `value`; the accepted fields and value format depend on the record type. The response includes the identifier of the newly created record.
+    /// Creates a DNS record for a domain. Provide the record `type`, `name`, and `value`; the accepted fields and value
+    /// format depend on the record type. The response includes the identifier of the newly created record.
     ///
     /// Creates a DNS record for a domain.
-    public func createRecord(domain: String, type: CreateRecordRequestBodyType, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateRecordResponse {
-        return try await DnsMethods.createRecord(config: config, domain: domain, type: type, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func createRecord(
+        domain: String,
+        type: CreateRecordRequestBodyType,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateRecordResponse {
+        try await DnsMethods.createRecord(
+            config: config,
+            domain: domain,
+            type: type,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates an existing DNS record for a domain. Supply only the record properties you want to change, such as its `name`, `value`, or `ttl`; record-specific data can be provided through `srv` or `https`. The response contains the updated DNS record.
+    /// Updates an existing DNS record for a domain. Supply only the record properties you want to change, such as its
+    /// `name`, `value`, or `ttl`; record-specific data can be provided through `srv` or `https`. The response contains
+    /// the updated DNS record.
     ///
     /// Updates an existing DNS record for a domain name.
-    public func updateRecord(options: DnsMethods.UpdateRecordOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateRecordResponse {
-        return try await DnsMethods.updateRecord(config: config, options: options, requestOptions: requestOptions)
+    public func updateRecord(
+        options: DnsMethods.UpdateRecordOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateRecordResponse {
+        try await DnsMethods.updateRecord(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Deletes an existing DNS record from a domain. Supply the domain and record identifiers to select the record to remove. The response confirms removal of the specified record.
+    /// Deletes an existing DNS record from a domain. Supply the domain and record identifiers to select the record to
+    /// remove. The response confirms removal of the specified record.
     ///
     /// Removes an existing DNS record from a domain name.
-    public func removeRecord(domain: String, recordId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try await DnsMethods.removeRecord(config: config, domain: domain, recordId: recordId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func removeRecord(
+        domain: String,
+        recordId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await DnsMethods.removeRecord(
+            config: config,
+            domain: domain,
+            recordId: recordId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }

@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    /// Deletes a feature flag segment from a project. Use `projectIdOrName` and `segmentIdOrSlug` to identify the project and segment to remove. Set `withMetadata` to include metadata in the response when the operation returns a representation.
+public extension FeatureFlagsMethods {
+    /// Deletes a feature flag segment from a project. Use `projectIdOrName` and `segmentIdOrSlug` to identify the
+    /// project and segment to remove. Set `withMetadata` to include metadata in the response when the operation returns
+    /// a representation.
     ///
     /// Delete a feature flag segment.
     ///
@@ -17,11 +19,32 @@ extension FeatureFlagsMethods {
     /// - withMetadata: Whether to include metadata
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteFlagSegment(config: ClientConfig, projectIdOrName: String, segmentIdOrSlug: String, withMetadata: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/segments/", sdkEncodePathSegment(sdkWireString(segmentIdOrSlug))].joined(), config: config, query: [
-            SdkQueryParameter("withMetadata", value: withMetadata),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "deleteFlagSegment", options: requestOptions)).data
+    static func deleteFlagSegment(
+        config: ClientConfig,
+        projectIdOrName: String,
+        segmentIdOrSlug: String,
+        withMetadata: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(projectIdOrName)),
+                "/feature-flags/segments/",
+                sdkEncodePathSegment(sdkWireString(segmentIdOrSlug)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("withMetadata", value: withMetadata),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "deleteFlagSegment",
+            options: requestOptions
+        )).data
     }
 }

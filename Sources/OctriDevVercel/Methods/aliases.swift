@@ -8,25 +8,45 @@ import Foundation
 #endif
 public enum AliasesMethods {}
 
-extension AliasesMethods {
-    /// Lists aliases assigned to a deployment. Use `teamId` or `slug` to specify the team context, and provide the deployment ID in `id`. The authenticated user or team must own the deployment.
+public extension AliasesMethods {
+    /// Lists aliases assigned to a deployment. Use `teamId` or `slug` to specify the team context, and provide the
+    /// deployment ID in `id`. The authenticated user or team must own the deployment.
     ///
-    /// Retrieves all Aliases for the Deployment with the given ID. The authenticated user or team must own the deployment.
+    /// Retrieves all Aliases for the Deployment with the given ID. The authenticated user or team must own the
+    /// deployment.
     ///
     /// - Parameters:
     /// - id: The ID of the deployment the aliases should be listed for
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listAliasesForDeployment(config: ClientConfig, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListAliasesForDeploymentResponse {
-        return try (await sdkRequest("GET", ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(id)), "/aliases"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listAliasesForDeployment", options: requestOptions)).data
+    static func listAliasesForDeployment(
+        config: ClientConfig,
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListAliasesForDeploymentResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(id)), "/aliases"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listAliasesForDeployment",
+            options: requestOptions
+        )).data
     }
 
-    /// Creates an alias for the deployment identified by a deployment or alias ID or URL. Provide the alias name in `alias`, and optionally set `redirect` to route the alias to another hostname with a 307 status code. If the alias is already assigned to another deployment, it is removed from that deployment and assigned to this one.
+    /// Creates an alias for the deployment identified by a deployment or alias ID or URL. Provide the alias name in
+    /// `alias`, and optionally set `redirect` to route the alias to another hostname with a 307 status code. If the
+    /// alias is already assigned to another deployment, it is removed from that deployment and assigned to this one.
     ///
-    /// Creates a new alias for the deployment resolved from the given deployment or alias ID or URL. The authenticated user or team must own this deployment. If the desired alias is already assigned to another deployment, then it will be removed from the old deployment and assigned to the new one.
+    /// Creates a new alias for the deployment resolved from the given deployment or alias ID or URL. The authenticated
+    /// user or team must own this deployment. If the desired alias is already assigned to another deployment, then it
+    /// will be removed from the old deployment and assigned to the new one.
     ///
     /// - Parameters:
     /// - id: The deployment or alias ID or URL to assign from
@@ -36,12 +56,29 @@ extension AliasesMethods {
     /// - redirect: The redirect property will take precedence over the deployment
     ///   id from the URL and consists of a hostname (like test.com) to which the
     ///   alias should redirect using status code 307
-    public static func assignAlias(config: ClientConfig, id: AssignAliasParameter, teamId: String? = nil, slug: String? = nil, alias: String? = nil, redirect: SdkOptional<String>? = nil, requestOptions: RequestOptions? = nil) async throws -> AssignAliasResponse {
+    static func assignAlias(
+        config: ClientConfig,
+        id: AssignAliasParameter,
+        teamId: String? = nil,
+        slug: String? = nil,
+        alias: String? = nil,
+        redirect: SdkOptional<String>? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AssignAliasResponse {
         let requestBody = AssignAliasRequestBody(alias: alias, redirect: redirect)
 
-        return try (await sdkRequest("POST", ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(id)), "/aliases"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "assignAlias", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(id)), "/aliases"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "assignAlias",
+            options: requestOptions
+        )).data
     }
 }

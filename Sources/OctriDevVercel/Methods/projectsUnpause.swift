@@ -6,19 +6,37 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    /// Unpauses a project identified by its project ID. Use `teamId` or `slug` to select the team context when needed. When the project enables automatic assignment of custom production domains, unpausing also unblocks its active production deployment.
+public extension ProjectsMethods {
+    /// Unpauses a project identified by its project ID. Use `teamId` or `slug` to select the team context when needed.
+    /// When the project enables automatic assignment of custom production domains, unpausing also unblocks its active
+    /// production deployment.
     ///
-    /// Unpause a project by passing its project `id` in the URL. If the project does not exist given the id then the request will fail with 400 status code. If the project enables auto assigning custom production domains and unblocks the active Production Deployment then the request will return with 200 status code.
+    /// Unpause a project by passing its project `id` in the URL. If the project does not exist given the id then the
+    /// request will fail with 400 status code. If the project enables auto assigning custom production domains and
+    /// unblocks the active Production Deployment then the request will return with 200 status code.
     ///
     /// - Parameters:
     /// - projectId: The unique project identifier
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func unpauseProject(config: ClientConfig, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/unpause"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "unpauseProject", options: requestOptions)).data
+    static func unpauseProject(
+        config: ClientConfig,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "POST",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/unpause"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "unpauseProject",
+            options: requestOptions
+        )).data
     }
 }

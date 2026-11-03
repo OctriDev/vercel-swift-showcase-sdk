@@ -3,5 +3,5 @@
 
 import Foundation
 
-// DomainsRegistrar domain models
+/// DomainsRegistrar domain models
 public typealias Nameserver = String

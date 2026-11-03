@@ -6,19 +6,37 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsMethods {
-    /// Retrieves the TXT record needed to verify ownership of a domain for the authenticated user's team. Add the returned record to `_vercel.{domain}` in your DNS configuration before completing the ownership claim. Then call POST /domains/:domain/claim to transfer ownership.
+public extension DomainsMethods {
+    /// Retrieves the TXT record needed to verify ownership of a domain for the authenticated user's team. Add the
+    /// returned record to `_vercel.{domain}` in your DNS configuration before completing the ownership claim. Then call
+    /// POST /domains/:domain/claim to transfer ownership.
     ///
-    /// Get the TXT verification record needed to claim ownership of a domain for the authenticated team. The caller must add this TXT record to `_vercel.{domain}` in their DNS configuration, then call POST /domains/:domain/claim to complete the ownership transfer.
+    /// Get the TXT verification record needed to claim ownership of a domain for the authenticated team. The caller
+    /// must add this TXT record to `_vercel.{domain}` in their DNS configuration, then call POST /domains/:domain/claim
+    /// to complete the ownership transfer.
     ///
     /// - Parameters:
     /// - domain: The domain name to get the verification record for
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getDomainVerificationRecord(config: ClientConfig, domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainVerificationRecordResponse {
-        return try (await sdkRequest("GET", ["/v9/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/verification"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getDomainVerificationRecord", options: requestOptions)).data
+    static func getDomainVerificationRecord(
+        config: ClientConfig,
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainVerificationRecordResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v9/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/verification"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getDomainVerificationRecord",
+            options: requestOptions
+        )).data
     }
 }

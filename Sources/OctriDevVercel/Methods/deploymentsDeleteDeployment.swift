@@ -6,10 +6,12 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DeploymentsMethods {
-    /// Deletes a deployment identified by its ID or URL. Pass `url` to identify a deployment or alias URL; when provided, `url` takes precedence over `id`. You can obtain a deployment ID by listing deployments.
+public extension DeploymentsMethods {
+    /// Deletes a deployment identified by its ID or URL. Pass `url` to identify a deployment or alias URL; when
+    /// provided, `url` takes precedence over `id`. You can obtain a deployment ID by listing deployments.
     ///
-    /// This API allows you to delete a deployment, either by supplying its `id` in the URL or the `url` of the deployment as a query parameter. You can obtain the ID, for example, by listing all deployments.
+    /// This API allows you to delete a deployment, either by supplying its `id` in the URL or the `url` of the
+    /// deployment as a query parameter. You can obtain the ID, for example, by listing all deployments.
     ///
     /// - Parameters:
     /// - id: The ID of the deployment to be deleted
@@ -17,11 +19,26 @@ extension DeploymentsMethods {
     ///   ignored
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteDeployment(config: ClientConfig, id: String, url: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteDeploymentResponse {
-        return try (await sdkRequest("DELETE", ["/v13/deployments/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
-            SdkQueryParameter("url", value: url),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "deleteDeployment", options: requestOptions)).data
+    static func deleteDeployment(
+        config: ClientConfig,
+        id: String,
+        url: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteDeploymentResponse {
+        try await (sdkRequest(
+            "DELETE",
+            ["/v13/deployments/", sdkEncodePathSegment(sdkWireString(id))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("url", value: url),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "deleteDeployment",
+            options: requestOptions
+        )).data
     }
 }

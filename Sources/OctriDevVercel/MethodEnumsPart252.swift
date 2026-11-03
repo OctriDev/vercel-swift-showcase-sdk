@@ -11,7 +11,7 @@ struct SearchDomainsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.domains, forKey: SdkCodingKey("domains"))
+        try keyedContainer.encode(domains, forKey: SdkCodingKey("domains"))
     }
 }
 
@@ -21,8 +21,8 @@ struct GetBulkPriceRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.domains, forKey: SdkCodingKey("domains"))
-        try keyedContainer.encodeIfPresent(self.years, forKey: SdkCodingKey("years"))
+        try keyedContainer.encode(domains, forKey: SdkCodingKey("domains"))
+        try keyedContainer.encodeIfPresent(years, forKey: SdkCodingKey("years"))
     }
 }
 
@@ -31,7 +31,7 @@ struct GetBulkAvailabilityRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.domains, forKey: SdkCodingKey("domains"))
+        try keyedContainer.encode(domains, forKey: SdkCodingKey("domains"))
     }
 }
 
@@ -44,11 +44,11 @@ struct BuySingleDomainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.autoRenew, forKey: SdkCodingKey("autoRenew"))
-        try keyedContainer.encode(self.years, forKey: SdkCodingKey("years"))
-        try keyedContainer.encode(self.expectedPrice, forKey: SdkCodingKey("expectedPrice"))
-        try keyedContainer.encode(self.contactInformation, forKey: SdkCodingKey("contactInformation"))
-        try keyedContainer.encodeIfPresent(self.languageCode, forKey: SdkCodingKey("languageCode"))
+        try keyedContainer.encode(autoRenew, forKey: SdkCodingKey("autoRenew"))
+        try keyedContainer.encode(years, forKey: SdkCodingKey("years"))
+        try keyedContainer.encode(expectedPrice, forKey: SdkCodingKey("expectedPrice"))
+        try keyedContainer.encode(contactInformation, forKey: SdkCodingKey("contactInformation"))
+        try keyedContainer.encodeIfPresent(languageCode, forKey: SdkCodingKey("languageCode"))
     }
 }
 
@@ -58,8 +58,8 @@ struct BuyDomainsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.domains, forKey: SdkCodingKey("domains"))
-        try keyedContainer.encode(self.contactInformation, forKey: SdkCodingKey("contactInformation"))
+        try keyedContainer.encode(domains, forKey: SdkCodingKey("domains"))
+        try keyedContainer.encode(contactInformation, forKey: SdkCodingKey("contactInformation"))
     }
 }
 
@@ -72,11 +72,11 @@ struct TransferInDomainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.authCode, forKey: SdkCodingKey("authCode"))
-        try keyedContainer.encode(self.autoRenew, forKey: SdkCodingKey("autoRenew"))
-        try keyedContainer.encode(self.years, forKey: SdkCodingKey("years"))
-        try keyedContainer.encode(self.expectedPrice, forKey: SdkCodingKey("expectedPrice"))
-        try keyedContainer.encode(self.contactInformation, forKey: SdkCodingKey("contactInformation"))
+        try keyedContainer.encode(authCode, forKey: SdkCodingKey("authCode"))
+        try keyedContainer.encode(autoRenew, forKey: SdkCodingKey("autoRenew"))
+        try keyedContainer.encode(years, forKey: SdkCodingKey("years"))
+        try keyedContainer.encode(expectedPrice, forKey: SdkCodingKey("expectedPrice"))
+        try keyedContainer.encode(contactInformation, forKey: SdkCodingKey("contactInformation"))
     }
 }
 
@@ -87,9 +87,9 @@ struct RenewDomainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.years, forKey: SdkCodingKey("years"))
-        try keyedContainer.encode(self.expectedPrice, forKey: SdkCodingKey("expectedPrice"))
-        try keyedContainer.encodeIfPresent(self.contactInformation, forKey: SdkCodingKey("contactInformation"))
+        try keyedContainer.encode(years, forKey: SdkCodingKey("years"))
+        try keyedContainer.encode(expectedPrice, forKey: SdkCodingKey("expectedPrice"))
+        try keyedContainer.encodeIfPresent(contactInformation, forKey: SdkCodingKey("contactInformation"))
     }
 }
 
@@ -98,7 +98,7 @@ struct UpdateDomainAutoRenewRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.autoRenew, forKey: SdkCodingKey("autoRenew"))
+        try keyedContainer.encode(autoRenew, forKey: SdkCodingKey("autoRenew"))
     }
 }
 
@@ -107,7 +107,7 @@ struct UpdateDomainNameserversRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.nameservers, forKey: SdkCodingKey("nameservers"))
+        try keyedContainer.encode(nameservers, forKey: SdkCodingKey("nameservers"))
     }
 }
 
@@ -124,27 +124,27 @@ struct CreateConfigurableLogDrainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.deliveryFormat, forKey: SdkCodingKey("deliveryFormat"))
-        try keyedContainer.encode(self.url, forKey: SdkCodingKey("url"))
-        try keyedContainer.encode(self.sources, forKey: SdkCodingKey("sources"))
-        try keyedContainer.encodeIfPresent(self.headers, forKey: SdkCodingKey("headers"))
-        try keyedContainer.encodeIfPresent(self.projectIds, forKey: SdkCodingKey("projectIds"))
-        try keyedContainer.encodeIfPresent(self.environments, forKey: SdkCodingKey("environments"))
-        try keyedContainer.encodeIfPresent(self.secret, forKey: SdkCodingKey("secret"))
-        try keyedContainer.encodeIfPresent(self.samplingRate, forKey: SdkCodingKey("samplingRate"))
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(deliveryFormat, forKey: SdkCodingKey("deliveryFormat"))
+        try keyedContainer.encode(url, forKey: SdkCodingKey("url"))
+        try keyedContainer.encode(sources, forKey: SdkCodingKey("sources"))
+        try keyedContainer.encodeIfPresent(headers, forKey: SdkCodingKey("headers"))
+        try keyedContainer.encodeIfPresent(projectIds, forKey: SdkCodingKey("projectIds"))
+        try keyedContainer.encodeIfPresent(environments, forKey: SdkCodingKey("environments"))
+        try keyedContainer.encodeIfPresent(secret, forKey: SdkCodingKey("secret"))
+        try keyedContainer.encodeIfPresent(samplingRate, forKey: SdkCodingKey("samplingRate"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
     }
 
     init(options: LogDrainsMethods.CreateConfigurableLogDrainOptions) {
-        self.deliveryFormat = options.deliveryFormat
-        self.url = options.url
-        self.sources = options.sources
-        self.headers = options.headers
-        self.projectIds = options.projectIds
-        self.environments = options.environments
-        self.secret = options.secret
-        self.samplingRate = options.samplingRate
-        self.name = options.name
+        deliveryFormat = options.deliveryFormat
+        url = options.url
+        sources = options.sources
+        headers = options.headers
+        projectIds = options.projectIds
+        environments = options.environments
+        secret = options.secret
+        samplingRate = options.samplingRate
+        name = options.name
     }
 }
 
@@ -160,24 +160,24 @@ struct CreateLogDrainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encode(self.url, forKey: SdkCodingKey("url"))
-        try keyedContainer.encodeIfPresent(self.projectIds, forKey: SdkCodingKey("projectIds"))
-        try keyedContainer.encodeIfPresent(self.secret, forKey: SdkCodingKey("secret"))
-        try keyedContainer.encodeIfPresent(self.deliveryFormat, forKey: SdkCodingKey("deliveryFormat"))
-        try keyedContainer.encodeIfPresent(self.sources, forKey: SdkCodingKey("sources"))
-        try keyedContainer.encodeIfPresent(self.headers, forKey: SdkCodingKey("headers"))
-        try keyedContainer.encodeIfPresent(self.environments, forKey: SdkCodingKey("environments"))
+        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(url, forKey: SdkCodingKey("url"))
+        try keyedContainer.encodeIfPresent(projectIds, forKey: SdkCodingKey("projectIds"))
+        try keyedContainer.encodeIfPresent(secret, forKey: SdkCodingKey("secret"))
+        try keyedContainer.encodeIfPresent(deliveryFormat, forKey: SdkCodingKey("deliveryFormat"))
+        try keyedContainer.encodeIfPresent(sources, forKey: SdkCodingKey("sources"))
+        try keyedContainer.encodeIfPresent(headers, forKey: SdkCodingKey("headers"))
+        try keyedContainer.encodeIfPresent(environments, forKey: SdkCodingKey("environments"))
     }
 
     init(options: LogDrainsMethods.CreateLogDrainOptions) {
-        self.name = options.name
-        self.url = options.url
-        self.projectIds = options.projectIds
-        self.secret = options.secret
-        self.deliveryFormat = options.deliveryFormat
-        self.sources = options.sources
-        self.headers = options.headers
-        self.environments = options.environments
+        name = options.name
+        url = options.url
+        projectIds = options.projectIds
+        secret = options.secret
+        deliveryFormat = options.deliveryFormat
+        sources = options.sources
+        headers = options.headers
+        environments = options.environments
     }
 }

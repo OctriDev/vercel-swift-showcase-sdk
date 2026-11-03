@@ -126,7 +126,8 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testDeleteSecurityFirewallConfigByConfigVersionDeleteSecurityFireX1cd0d3c25cReachesMockAndDecodesResponse() async throws {
+    func testDeleteSecurityFirewallConfigByConfigVersionDeleteSecurityFireX1cd0d3c25cReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -268,7 +269,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ProjectsMethods.EditProjectEnvOptions(idOrName: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\""), id: decoded("\"XMbOEya1gUUO1ir4\""))
+        var options = try ProjectsMethods.EditProjectEnvOptions(
+            idOrName: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\""),
+            id: decoded("\"XMbOEya1gUUO1ir4\"")
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.key = try decoded("\"GITHUB_APP_ID\"")
@@ -400,7 +404,8 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ProjectsMethods.FilterProjectEnvsOptions(idOrName: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\""))
+        var options = try ProjectsMethods
+            .FilterProjectEnvsOptions(idOrName: decoded("\"prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA\""))
         options.gitBranch = try decoded("\"feature-1\"")
         options.decrypt = try decoded("\"true\"")
         options.source = try decoded("\"vercel-cli:pull\"")

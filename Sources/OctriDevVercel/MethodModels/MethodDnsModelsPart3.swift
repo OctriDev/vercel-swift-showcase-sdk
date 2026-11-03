@@ -7,39 +7,69 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical dns operation model declarations
-extension CreateRecordRequestBodyVariant8 {
-    public init(from decoder: Decoder) throws {
+/// Canonical dns operation model declarations
+public extension CreateRecordRequestBodyVariant8 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
-        self.name = try container.sdkDecodeRequired(.name)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.ttl = try container.sdkDecodeIfPresent(.ttl)
-        self.value = try container.sdkDecodeIfPresent(.value)
-        self.comment = try container.sdkDecodeIfPresent(.comment)
-            try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant8Type.allCases.map(\.rawValue))
-        if let value = self.ttl {
-            try validateRange("ttl", Double(value), min: 60, max: 2147483647, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        name = try container.sdkDecodeRequired(.name)
+        type = try container.sdkDecodeRequired(.type)
+        ttl = try container.sdkDecodeIfPresent(.ttl)
+        value = try container.sdkDecodeIfPresent(.value)
+        comment = try container.sdkDecodeIfPresent(.comment)
+        try sdkValidateRawEnum("type", type, CreateRecordRequestBodyVariant8Type.allCases.map(\.rawValue))
+        if let value = ttl {
+            try validateRange(
+                "ttl",
+                Double(value),
+                min: 60,
+                max: 2_147_483_647,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
-        if let value = self.comment {
+        if let value = comment {
             try validateLength("comment", value, min: nil, max: 500)
         }
     }
 }
 
-extension CreateRecordRequestBodyVariant8 {
-    public init(name: String, type: CreateRecordRequestBodyVariant8Type, ttl: Double? = nil, value: String? = nil, comment: String? = nil) throws {
+public extension CreateRecordRequestBodyVariant8 {
+    init(
+        name: String,
+        type: CreateRecordRequestBodyVariant8Type,
+        ttl: Double? = nil,
+        value: String? = nil,
+        comment: String? = nil
+    ) throws {
         (self.name, self.type) = (name, type)
         (self.ttl, self.value) = (ttl, value)
         self.comment = comment
-            try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant8Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant8Type.allCases.map(\.rawValue))
         if let value = self.ttl {
-            try validateRange("ttl", Double(value), min: 60, max: 2147483647, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+            try validateRange(
+                "ttl",
+                Double(value),
+                min: 60,
+                max: 2_147_483_647,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
         if let value = self.comment {
             try validateLength("comment", value, min: nil, max: 500)
@@ -59,25 +89,35 @@ public struct GetRecordsResponseVariant2: Codable {
         case records
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetRecordsResponseVariant2 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        guard container.contains(.records) else {
-            throw SdkValidationError(field: "records", code: "required", message: "Validation failed for 'records': value is required")
-        }
-        self.pagination = try container.sdkDecodeRequired(.pagination)
-        self.records = try container.sdkDecodeRequired(.records)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetRecordsResponseVariant2 {
-    public init(pagination: Pagination, records: [GetRecordsResponseVariant2RecordsItem]) {
+public extension GetRecordsResponseVariant2 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        guard container.contains(.records) else {
+            throw SdkValidationError(
+                field: "records",
+                code: "required",
+                message: "Validation failed for 'records': value is required"
+            )
+        }
+        pagination = try container.sdkDecodeRequired(.pagination)
+        records = try container.sdkDecodeRequired(.records)
+    }
+}
+
+public extension GetRecordsResponseVariant2 {
+    init(pagination: Pagination, records: [GetRecordsResponseVariant2RecordsItem]) {
         (self.pagination, self.records) = (pagination, records)
     }
 }
@@ -106,44 +146,80 @@ public struct CreateRecordRequestBodyVariant1: Codable {
         case comment
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension CreateRecordRequestBodyVariant1 {
-    public init(from decoder: Decoder) throws {
+public extension CreateRecordRequestBodyVariant1 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
         }
-        self.name = try container.sdkDecodeRequired(.name)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.value = try container.sdkDecodeRequired(.value)
-        self.ttl = try container.sdkDecodeIfPresent(.ttl)
-        self.comment = try container.sdkDecodeIfPresent(.comment)
-            try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant1Type.allCases.map(\.rawValue))
-        if let value = self.ttl {
-            try validateRange("ttl", Double(value), min: 60, max: 2147483647, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        name = try container.sdkDecodeRequired(.name)
+        type = try container.sdkDecodeRequired(.type)
+        value = try container.sdkDecodeRequired(.value)
+        ttl = try container.sdkDecodeIfPresent(.ttl)
+        comment = try container.sdkDecodeIfPresent(.comment)
+        try sdkValidateRawEnum("type", type, CreateRecordRequestBodyVariant1Type.allCases.map(\.rawValue))
+        if let value = ttl {
+            try validateRange(
+                "ttl",
+                Double(value),
+                min: 60,
+                max: 2_147_483_647,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
-        if let value = self.comment {
+        if let value = comment {
             try validateLength("comment", value, min: nil, max: 500)
         }
     }
 }
 
-extension CreateRecordRequestBodyVariant1 {
-    public init(name: String, type: CreateRecordRequestBodyVariant1Type, value: String, ttl: Double? = nil, comment: String? = nil) throws {
+public extension CreateRecordRequestBodyVariant1 {
+    init(
+        name: String,
+        type: CreateRecordRequestBodyVariant1Type,
+        value: String,
+        ttl: Double? = nil,
+        comment: String? = nil
+    ) throws {
         (self.name, self.type) = (name, type)
         (self.value, self.ttl) = (value, ttl)
         self.comment = comment
-            try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant1Type.allCases.map(\.rawValue))
         if let value = self.ttl {
-            try validateRange("ttl", Double(value), min: 60, max: 2147483647, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+            try validateRange(
+                "ttl",
+                Double(value),
+                min: 60,
+                max: 2_147_483_647,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
         if let value = self.comment {
             try validateLength("comment", value, min: nil, max: 500)
@@ -175,44 +251,80 @@ public struct CreateRecordRequestBodyVariant0: Codable {
         case comment
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension CreateRecordRequestBodyVariant0 {
-    public init(from decoder: Decoder) throws {
+public extension CreateRecordRequestBodyVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
         guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
         }
-        self.name = try container.sdkDecodeRequired(.name)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.value = try container.sdkDecodeRequired(.value)
-        self.ttl = try container.sdkDecodeIfPresent(.ttl)
-        self.comment = try container.sdkDecodeIfPresent(.comment)
-            try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant0Type.allCases.map(\.rawValue))
-        if let value = self.ttl {
-            try validateRange("ttl", Double(value), min: 60, max: 2147483647, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        name = try container.sdkDecodeRequired(.name)
+        type = try container.sdkDecodeRequired(.type)
+        value = try container.sdkDecodeRequired(.value)
+        ttl = try container.sdkDecodeIfPresent(.ttl)
+        comment = try container.sdkDecodeIfPresent(.comment)
+        try sdkValidateRawEnum("type", type, CreateRecordRequestBodyVariant0Type.allCases.map(\.rawValue))
+        if let value = ttl {
+            try validateRange(
+                "ttl",
+                Double(value),
+                min: 60,
+                max: 2_147_483_647,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
-        if let value = self.comment {
+        if let value = comment {
             try validateLength("comment", value, min: nil, max: 500)
         }
     }
 }
 
-extension CreateRecordRequestBodyVariant0 {
-    public init(name: String, type: CreateRecordRequestBodyVariant0Type, value: String, ttl: Double? = nil, comment: String? = nil) throws {
+public extension CreateRecordRequestBodyVariant0 {
+    init(
+        name: String,
+        type: CreateRecordRequestBodyVariant0Type,
+        value: String,
+        ttl: Double? = nil,
+        comment: String? = nil
+    ) throws {
         (self.name, self.type) = (name, type)
         (self.value, self.ttl) = (value, ttl)
         self.comment = comment
-            try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant0Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, CreateRecordRequestBodyVariant0Type.allCases.map(\.rawValue))
         if let value = self.ttl {
-            try validateRange("ttl", Double(value), min: 60, max: 2147483647, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+            try validateRange(
+                "ttl",
+                Double(value),
+                min: 60,
+                max: 2_147_483_647,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
         if let value = self.comment {
             try validateLength("comment", value, min: nil, max: 500)
@@ -233,26 +345,36 @@ public struct CreateRecordRequestBodyVariant9Https: Codable {
         case params
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateRecordRequestBodyVariant9Https {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.priority) else {
-            throw SdkValidationError(field: "priority", code: "required", message: "Validation failed for 'priority': value is required")
-        }
-        guard container.contains(.target) else {
-            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
-        }
-        self.priority = try container.sdkDecodeNullable(.priority)
-        self.target = try container.sdkDecodeRequired(.target)
-        self.params = try container.sdkDecodeIfPresent(.params)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateRecordRequestBodyVariant9Https {
-    public init(priority: CreateRecordRequestBodyVariant9HttpsPriority?, target: String, params: String? = nil) {
+public extension CreateRecordRequestBodyVariant9Https {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.priority) else {
+            throw SdkValidationError(
+                field: "priority",
+                code: "required",
+                message: "Validation failed for 'priority': value is required"
+            )
+        }
+        guard container.contains(.target) else {
+            throw SdkValidationError(
+                field: "target",
+                code: "required",
+                message: "Validation failed for 'target': value is required"
+            )
+        }
+        priority = try container.sdkDecodeNullable(.priority)
+        target = try container.sdkDecodeRequired(.target)
+        params = try container.sdkDecodeIfPresent(.params)
+    }
+}
+
+public extension CreateRecordRequestBodyVariant9Https {
+    init(priority: CreateRecordRequestBodyVariant9HttpsPriority?, target: String, params: String? = nil) {
         (self.priority, self.target) = (priority, target)
         self.params = params
     }
@@ -272,33 +394,56 @@ public struct CreateRecordRequestBodyVariant6Srv: Codable {
         case target
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateRecordRequestBodyVariant6Srv {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.priority) else {
-            throw SdkValidationError(field: "priority", code: "required", message: "Validation failed for 'priority': value is required")
-        }
-        guard container.contains(.weight) else {
-            throw SdkValidationError(field: "weight", code: "required", message: "Validation failed for 'weight': value is required")
-        }
-        guard container.contains(.port) else {
-            throw SdkValidationError(field: "port", code: "required", message: "Validation failed for 'port': value is required")
-        }
-        guard container.contains(.target) else {
-            throw SdkValidationError(field: "target", code: "required", message: "Validation failed for 'target': value is required")
-        }
-        self.priority = try container.sdkDecodeNullable(.priority)
-        self.weight = try container.sdkDecodeNullable(.weight)
-        self.port = try container.sdkDecodeNullable(.port)
-        self.target = try container.sdkDecodeRequired(.target)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateRecordRequestBodyVariant6Srv {
-    public init(priority: CreateRecordRequestBodyVariant6SrvPriority?, weight: CreateRecordRequestBodyVariant6SrvWeight?, port: CreateRecordRequestBodyVariant6SrvPort?, target: String) {
+public extension CreateRecordRequestBodyVariant6Srv {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.priority) else {
+            throw SdkValidationError(
+                field: "priority",
+                code: "required",
+                message: "Validation failed for 'priority': value is required"
+            )
+        }
+        guard container.contains(.weight) else {
+            throw SdkValidationError(
+                field: "weight",
+                code: "required",
+                message: "Validation failed for 'weight': value is required"
+            )
+        }
+        guard container.contains(.port) else {
+            throw SdkValidationError(
+                field: "port",
+                code: "required",
+                message: "Validation failed for 'port': value is required"
+            )
+        }
+        guard container.contains(.target) else {
+            throw SdkValidationError(
+                field: "target",
+                code: "required",
+                message: "Validation failed for 'target': value is required"
+            )
+        }
+        priority = try container.sdkDecodeNullable(.priority)
+        weight = try container.sdkDecodeNullable(.weight)
+        port = try container.sdkDecodeNullable(.port)
+        target = try container.sdkDecodeRequired(.target)
+    }
+}
+
+public extension CreateRecordRequestBodyVariant6Srv {
+    init(
+        priority: CreateRecordRequestBodyVariant6SrvPriority?,
+        weight: CreateRecordRequestBodyVariant6SrvWeight?,
+        port: CreateRecordRequestBodyVariant6SrvPort?,
+        target: String
+    ) {
         (self.priority, self.weight) = (priority, weight)
         (self.port, self.target) = (port, target)
     }
@@ -309,21 +454,29 @@ public indirect enum CreateRecordRequestBodyVariant6SrvWeight {
 }
 
 extension CreateRecordRequestBodyVariant6SrvWeight: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateRecordRequestBodyVariant6SrvWeight")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateRecordRequestBodyVariant6SrvWeight"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateRecordRequestBodyVariant6SrvWeight {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         return nil
     }
 }
@@ -350,21 +503,29 @@ public indirect enum CreateRecordRequestBodyVariant9HttpsPriority {
 }
 
 extension CreateRecordRequestBodyVariant9HttpsPriority: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateRecordRequestBodyVariant9HttpsPriority")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateRecordRequestBodyVariant9HttpsPriority"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateRecordRequestBodyVariant9HttpsPriority {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Double.self) { return .doubleValue(value) }
+        if let value = try? container.decode(Double.self) {
+            return .doubleValue(value)
+        }
         return nil
     }
 }
@@ -413,5 +574,7 @@ public struct CreateRecordRequestBodyVariant5: Codable {
         case comment
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

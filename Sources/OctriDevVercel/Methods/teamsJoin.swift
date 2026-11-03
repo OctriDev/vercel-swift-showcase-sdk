@@ -6,16 +6,31 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension TeamsMethods {
-    /// Joins the authenticated user to a team using the team identifier and, when applicable, an invite code. Include `inviteCode` in the request body when joining with a code. The response identifies the team the user joined and the source of the join.
+public extension TeamsMethods {
+    /// Joins the authenticated user to a team using the team identifier and, when applicable, an invite code. Include
+    /// `inviteCode` in the request body when joining with a code. The response identifies the team the user joined and
+    /// the source of the join.
     ///
     /// Join a team with a provided invite code or team ID.
     ///
     /// - Parameters:
     /// - inviteCode: The invite code to join the team.
-    public static func joinTeam(config: ClientConfig, teamId: String, inviteCode: String? = nil, requestOptions: RequestOptions? = nil) async throws -> JoinTeamResponse {
+    static func joinTeam(
+        config: ClientConfig,
+        teamId: String,
+        inviteCode: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> JoinTeamResponse {
         let requestBody = JoinTeamRequestBody(inviteCode: inviteCode)
 
-        return try (await sdkRequest("POST", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/members/teams/join"].joined(), config: config, body: requestBody, decoder: .json, operationId: "joinTeam", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/members/teams/join"].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "joinTeam",
+            options: requestOptions
+        )).data
     }
 }

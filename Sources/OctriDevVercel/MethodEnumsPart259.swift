@@ -55,99 +55,126 @@ struct UpdateProjectRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.autoExposeSystemEnvs, forKey: SdkCodingKey("autoExposeSystemEnvs"))
-        try keyedContainer.encodeIfPresent(self.autoAssignCustomDomains, forKey: SdkCodingKey("autoAssignCustomDomains"))
-        try keyedContainer.encodeIfPresent(self.autoAssignCustomDomainsUpdatedBy, forKey: SdkCodingKey("autoAssignCustomDomainsUpdatedBy"))
-        try keyedContainer.encodeIfPresent(self.buildCommand, forKey: SdkCodingKey("buildCommand"))
-        try keyedContainer.encodeIfPresent(self.commandForIgnoringBuildStep, forKey: SdkCodingKey("commandForIgnoringBuildStep"))
-        try keyedContainer.encodeIfPresent(self.customerSupportCodeVisibility, forKey: SdkCodingKey("customerSupportCodeVisibility"))
-        try keyedContainer.encodeIfPresent(self.devCommand, forKey: SdkCodingKey("devCommand"))
-        try keyedContainer.encodeIfPresent(self.directoryListing, forKey: SdkCodingKey("directoryListing"))
-        try keyedContainer.encodeIfPresent(self.framework, forKey: SdkCodingKey("framework"))
-        try keyedContainer.encodeIfPresent(self.gitForkProtection, forKey: SdkCodingKey("gitForkProtection"))
-        try keyedContainer.encodeIfPresent(self.gitLfs, forKey: SdkCodingKey("gitLFS"))
-        try keyedContainer.encodeIfPresent(self.protectedSourcemaps, forKey: SdkCodingKey("protectedSourcemaps"))
-        try keyedContainer.encodeIfPresent(self.installCommand, forKey: SdkCodingKey("installCommand"))
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.nodeVersion, forKey: SdkCodingKey("nodeVersion"))
-        try keyedContainer.encodeIfPresent(self.outputDirectory, forKey: SdkCodingKey("outputDirectory"))
-        try keyedContainer.encodeIfPresent(self.previewDeploymentsDisabled, forKey: SdkCodingKey("previewDeploymentsDisabled"))
-        try keyedContainer.encodeIfPresent(self.previewDeploymentSuffix, forKey: SdkCodingKey("previewDeploymentSuffix"))
-        try keyedContainer.encodeIfPresent(self.resourceConfig, forKey: SdkCodingKey("resourceConfig"))
-        try keyedContainer.encodeIfPresent(self.publicSource, forKey: SdkCodingKey("publicSource"))
-        try keyedContainer.encodeIfPresent(self.rootDirectory, forKey: SdkCodingKey("rootDirectory"))
-        try keyedContainer.encodeIfPresent(self.serverlessFunctionRegion, forKey: SdkCodingKey("serverlessFunctionRegion"))
-        try keyedContainer.encodeIfPresent(self.serverlessFunctionZeroConfigFailover, forKey: SdkCodingKey("serverlessFunctionZeroConfigFailover"))
-        try keyedContainer.encodeIfPresent(self.skewProtectionBoundaryAt, forKey: SdkCodingKey("skewProtectionBoundaryAt"))
-        try keyedContainer.encodeIfPresent(self.skewProtectionMaxAge, forKey: SdkCodingKey("skewProtectionMaxAge"))
-        try keyedContainer.encodeIfPresent(self.skewProtectionAllowedDomains, forKey: SdkCodingKey("skewProtectionAllowedDomains"))
-        try keyedContainer.encodeIfPresent(self.skipGitConnectDuringLink, forKey: SdkCodingKey("skipGitConnectDuringLink"))
-        try keyedContainer.encodeIfPresent(self.sourceFilesOutsideRootDirectory, forKey: SdkCodingKey("sourceFilesOutsideRootDirectory"))
-        try keyedContainer.encodeIfPresent(self.enablePreviewFeedback, forKey: SdkCodingKey("enablePreviewFeedback"))
-        try keyedContainer.encodeIfPresent(self.enableProductionFeedback, forKey: SdkCodingKey("enableProductionFeedback"))
-        try keyedContainer.encodeIfPresent(self.enableAffectedProjectsDeployments, forKey: SdkCodingKey("enableAffectedProjectsDeployments"))
-        try keyedContainer.encodeIfPresent(self.enableExternalRewriteCaching, forKey: SdkCodingKey("enableExternalRewriteCaching"))
-        try keyedContainer.encodeIfPresent(self.staticIps, forKey: SdkCodingKey("staticIps"))
-        try keyedContainer.encodeIfPresent(self.tracing, forKey: SdkCodingKey("tracing"))
-        try keyedContainer.encodeIfPresent(self.oidcTokenConfig, forKey: SdkCodingKey("oidcTokenConfig"))
-        try keyedContainer.encodeIfPresent(self.passwordProtection, forKey: SdkCodingKey("passwordProtection"))
-        try keyedContainer.encodeIfPresent(self.passport, forKey: SdkCodingKey("passport"))
-        try keyedContainer.encodeIfPresent(self.sandbox, forKey: SdkCodingKey("sandbox"))
-        try keyedContainer.encodeIfPresent(self.ssoProtection, forKey: SdkCodingKey("ssoProtection"))
-        try keyedContainer.encodeIfPresent(self.trustedIps, forKey: SdkCodingKey("trustedIps"))
-        try keyedContainer.encodeIfPresent(self.trustedSources, forKey: SdkCodingKey("trustedSources"))
-        try keyedContainer.encodeIfPresent(self.deploymentPolicy, forKey: SdkCodingKey("deploymentPolicy"))
-        try keyedContainer.encodeIfPresent(self.optionsAllowlist, forKey: SdkCodingKey("optionsAllowlist"))
-        try keyedContainer.encodeIfPresent(self.connectConfigurations, forKey: SdkCodingKey("connectConfigurations"))
-        try keyedContainer.encodeIfPresent(self.dismissedToasts, forKey: SdkCodingKey("dismissedToasts"))
+        try keyedContainer.encodeIfPresent(autoExposeSystemEnvs, forKey: SdkCodingKey("autoExposeSystemEnvs"))
+        try keyedContainer.encodeIfPresent(autoAssignCustomDomains, forKey: SdkCodingKey("autoAssignCustomDomains"))
+        try keyedContainer.encodeIfPresent(
+            autoAssignCustomDomainsUpdatedBy,
+            forKey: SdkCodingKey("autoAssignCustomDomainsUpdatedBy")
+        )
+        try keyedContainer.encodeIfPresent(buildCommand, forKey: SdkCodingKey("buildCommand"))
+        try keyedContainer.encodeIfPresent(
+            commandForIgnoringBuildStep,
+            forKey: SdkCodingKey("commandForIgnoringBuildStep")
+        )
+        try keyedContainer.encodeIfPresent(
+            customerSupportCodeVisibility,
+            forKey: SdkCodingKey("customerSupportCodeVisibility")
+        )
+        try keyedContainer.encodeIfPresent(devCommand, forKey: SdkCodingKey("devCommand"))
+        try keyedContainer.encodeIfPresent(directoryListing, forKey: SdkCodingKey("directoryListing"))
+        try keyedContainer.encodeIfPresent(framework, forKey: SdkCodingKey("framework"))
+        try keyedContainer.encodeIfPresent(gitForkProtection, forKey: SdkCodingKey("gitForkProtection"))
+        try keyedContainer.encodeIfPresent(gitLfs, forKey: SdkCodingKey("gitLFS"))
+        try keyedContainer.encodeIfPresent(protectedSourcemaps, forKey: SdkCodingKey("protectedSourcemaps"))
+        try keyedContainer.encodeIfPresent(installCommand, forKey: SdkCodingKey("installCommand"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(nodeVersion, forKey: SdkCodingKey("nodeVersion"))
+        try keyedContainer.encodeIfPresent(outputDirectory, forKey: SdkCodingKey("outputDirectory"))
+        try keyedContainer.encodeIfPresent(
+            previewDeploymentsDisabled,
+            forKey: SdkCodingKey("previewDeploymentsDisabled")
+        )
+        try keyedContainer.encodeIfPresent(previewDeploymentSuffix, forKey: SdkCodingKey("previewDeploymentSuffix"))
+        try keyedContainer.encodeIfPresent(resourceConfig, forKey: SdkCodingKey("resourceConfig"))
+        try keyedContainer.encodeIfPresent(publicSource, forKey: SdkCodingKey("publicSource"))
+        try keyedContainer.encodeIfPresent(rootDirectory, forKey: SdkCodingKey("rootDirectory"))
+        try keyedContainer.encodeIfPresent(serverlessFunctionRegion, forKey: SdkCodingKey("serverlessFunctionRegion"))
+        try keyedContainer.encodeIfPresent(
+            serverlessFunctionZeroConfigFailover,
+            forKey: SdkCodingKey("serverlessFunctionZeroConfigFailover")
+        )
+        try keyedContainer.encodeIfPresent(skewProtectionBoundaryAt, forKey: SdkCodingKey("skewProtectionBoundaryAt"))
+        try keyedContainer.encodeIfPresent(skewProtectionMaxAge, forKey: SdkCodingKey("skewProtectionMaxAge"))
+        try keyedContainer.encodeIfPresent(
+            skewProtectionAllowedDomains,
+            forKey: SdkCodingKey("skewProtectionAllowedDomains")
+        )
+        try keyedContainer.encodeIfPresent(skipGitConnectDuringLink, forKey: SdkCodingKey("skipGitConnectDuringLink"))
+        try keyedContainer.encodeIfPresent(
+            sourceFilesOutsideRootDirectory,
+            forKey: SdkCodingKey("sourceFilesOutsideRootDirectory")
+        )
+        try keyedContainer.encodeIfPresent(enablePreviewFeedback, forKey: SdkCodingKey("enablePreviewFeedback"))
+        try keyedContainer.encodeIfPresent(enableProductionFeedback, forKey: SdkCodingKey("enableProductionFeedback"))
+        try keyedContainer.encodeIfPresent(
+            enableAffectedProjectsDeployments,
+            forKey: SdkCodingKey("enableAffectedProjectsDeployments")
+        )
+        try keyedContainer.encodeIfPresent(
+            enableExternalRewriteCaching,
+            forKey: SdkCodingKey("enableExternalRewriteCaching")
+        )
+        try keyedContainer.encodeIfPresent(staticIps, forKey: SdkCodingKey("staticIps"))
+        try keyedContainer.encodeIfPresent(tracing, forKey: SdkCodingKey("tracing"))
+        try keyedContainer.encodeIfPresent(oidcTokenConfig, forKey: SdkCodingKey("oidcTokenConfig"))
+        try keyedContainer.encodeIfPresent(passwordProtection, forKey: SdkCodingKey("passwordProtection"))
+        try keyedContainer.encodeIfPresent(passport, forKey: SdkCodingKey("passport"))
+        try keyedContainer.encodeIfPresent(sandbox, forKey: SdkCodingKey("sandbox"))
+        try keyedContainer.encodeIfPresent(ssoProtection, forKey: SdkCodingKey("ssoProtection"))
+        try keyedContainer.encodeIfPresent(trustedIps, forKey: SdkCodingKey("trustedIps"))
+        try keyedContainer.encodeIfPresent(trustedSources, forKey: SdkCodingKey("trustedSources"))
+        try keyedContainer.encodeIfPresent(deploymentPolicy, forKey: SdkCodingKey("deploymentPolicy"))
+        try keyedContainer.encodeIfPresent(optionsAllowlist, forKey: SdkCodingKey("optionsAllowlist"))
+        try keyedContainer.encodeIfPresent(connectConfigurations, forKey: SdkCodingKey("connectConfigurations"))
+        try keyedContainer.encodeIfPresent(dismissedToasts, forKey: SdkCodingKey("dismissedToasts"))
     }
 
     init(options: ProjectsMethods.UpdateProjectOptions) {
-        self.autoExposeSystemEnvs = options.autoExposeSystemEnvs
-        self.autoAssignCustomDomains = options.autoAssignCustomDomains
-        self.autoAssignCustomDomainsUpdatedBy = options.autoAssignCustomDomainsUpdatedBy
-        self.buildCommand = options.buildCommand
-        self.commandForIgnoringBuildStep = options.commandForIgnoringBuildStep
-        self.customerSupportCodeVisibility = options.customerSupportCodeVisibility
-        self.devCommand = options.devCommand
-        self.directoryListing = options.directoryListing
-        self.framework = options.framework
-        self.gitForkProtection = options.gitForkProtection
-        self.gitLfs = options.gitLfs
-        self.protectedSourcemaps = options.protectedSourcemaps
-        self.installCommand = options.installCommand
-        self.name = options.name
-        self.nodeVersion = options.nodeVersion
-        self.outputDirectory = options.outputDirectory
-        self.previewDeploymentsDisabled = options.previewDeploymentsDisabled
-        self.previewDeploymentSuffix = options.previewDeploymentSuffix
-        self.resourceConfig = options.resourceConfig
-        self.publicSource = options.publicSource
-        self.rootDirectory = options.rootDirectory
-        self.serverlessFunctionRegion = options.serverlessFunctionRegion
-        self.serverlessFunctionZeroConfigFailover = options.serverlessFunctionZeroConfigFailover
-        self.skewProtectionBoundaryAt = options.skewProtectionBoundaryAt
-        self.skewProtectionMaxAge = options.skewProtectionMaxAge
-        self.skewProtectionAllowedDomains = options.skewProtectionAllowedDomains
-        self.skipGitConnectDuringLink = options.skipGitConnectDuringLink
-        self.sourceFilesOutsideRootDirectory = options.sourceFilesOutsideRootDirectory
-        self.enablePreviewFeedback = options.enablePreviewFeedback
-        self.enableProductionFeedback = options.enableProductionFeedback
-        self.enableAffectedProjectsDeployments = options.enableAffectedProjectsDeployments
-        self.enableExternalRewriteCaching = options.enableExternalRewriteCaching
-        self.staticIps = options.staticIps
-        self.tracing = options.tracing
-        self.oidcTokenConfig = options.oidcTokenConfig
-        self.passwordProtection = options.passwordProtection
-        self.passport = options.passport
-        self.sandbox = options.sandbox
-        self.ssoProtection = options.ssoProtection
-        self.trustedIps = options.trustedIps
-        self.trustedSources = options.trustedSources
-        self.deploymentPolicy = options.deploymentPolicy
-        self.optionsAllowlist = options.optionsAllowlist
-        self.connectConfigurations = options.connectConfigurations
-        self.dismissedToasts = options.dismissedToasts
+        autoExposeSystemEnvs = options.autoExposeSystemEnvs
+        autoAssignCustomDomains = options.autoAssignCustomDomains
+        autoAssignCustomDomainsUpdatedBy = options.autoAssignCustomDomainsUpdatedBy
+        buildCommand = options.buildCommand
+        commandForIgnoringBuildStep = options.commandForIgnoringBuildStep
+        customerSupportCodeVisibility = options.customerSupportCodeVisibility
+        devCommand = options.devCommand
+        directoryListing = options.directoryListing
+        framework = options.framework
+        gitForkProtection = options.gitForkProtection
+        gitLfs = options.gitLfs
+        protectedSourcemaps = options.protectedSourcemaps
+        installCommand = options.installCommand
+        name = options.name
+        nodeVersion = options.nodeVersion
+        outputDirectory = options.outputDirectory
+        previewDeploymentsDisabled = options.previewDeploymentsDisabled
+        previewDeploymentSuffix = options.previewDeploymentSuffix
+        resourceConfig = options.resourceConfig
+        publicSource = options.publicSource
+        rootDirectory = options.rootDirectory
+        serverlessFunctionRegion = options.serverlessFunctionRegion
+        serverlessFunctionZeroConfigFailover = options.serverlessFunctionZeroConfigFailover
+        skewProtectionBoundaryAt = options.skewProtectionBoundaryAt
+        skewProtectionMaxAge = options.skewProtectionMaxAge
+        skewProtectionAllowedDomains = options.skewProtectionAllowedDomains
+        skipGitConnectDuringLink = options.skipGitConnectDuringLink
+        sourceFilesOutsideRootDirectory = options.sourceFilesOutsideRootDirectory
+        enablePreviewFeedback = options.enablePreviewFeedback
+        enableProductionFeedback = options.enableProductionFeedback
+        enableAffectedProjectsDeployments = options.enableAffectedProjectsDeployments
+        enableExternalRewriteCaching = options.enableExternalRewriteCaching
+        staticIps = options.staticIps
+        tracing = options.tracing
+        oidcTokenConfig = options.oidcTokenConfig
+        passwordProtection = options.passwordProtection
+        passport = options.passport
+        sandbox = options.sandbox
+        ssoProtection = options.ssoProtection
+        trustedIps = options.trustedIps
+        trustedSources = options.trustedSources
+        deploymentPolicy = options.deploymentPolicy
+        optionsAllowlist = options.optionsAllowlist
+        connectConfigurations = options.connectConfigurations
+        dismissedToasts = options.dismissedToasts
     }
 }
 
@@ -158,9 +185,9 @@ struct UpdateProjectDomainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.gitBranch, forKey: SdkCodingKey("gitBranch"))
-        try keyedContainer.encodeIfPresent(self.redirect, forKey: SdkCodingKey("redirect"))
-        try keyedContainer.encodeIfPresent(self.redirectStatusCode, forKey: SdkCodingKey("redirectStatusCode"))
+        try keyedContainer.encodeIfPresent(gitBranch, forKey: SdkCodingKey("gitBranch"))
+        try keyedContainer.encodeIfPresent(redirect, forKey: SdkCodingKey("redirect"))
+        try keyedContainer.encodeIfPresent(redirectStatusCode, forKey: SdkCodingKey("redirectStatusCode"))
     }
 }
 
@@ -169,7 +196,7 @@ struct RemoveProjectDomainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.removeRedirects, forKey: SdkCodingKey("removeRedirects"))
+        try keyedContainer.encodeIfPresent(removeRedirects, forKey: SdkCodingKey("removeRedirects"))
     }
 }
 
@@ -182,19 +209,19 @@ struct AddProjectDomainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.gitBranch, forKey: SdkCodingKey("gitBranch"))
-        try keyedContainer.encodeIfPresent(self.customEnvironmentId, forKey: SdkCodingKey("customEnvironmentId"))
-        try keyedContainer.encodeIfPresent(self.redirect, forKey: SdkCodingKey("redirect"))
-        try keyedContainer.encodeIfPresent(self.redirectStatusCode, forKey: SdkCodingKey("redirectStatusCode"))
+        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(gitBranch, forKey: SdkCodingKey("gitBranch"))
+        try keyedContainer.encodeIfPresent(customEnvironmentId, forKey: SdkCodingKey("customEnvironmentId"))
+        try keyedContainer.encodeIfPresent(redirect, forKey: SdkCodingKey("redirect"))
+        try keyedContainer.encodeIfPresent(redirectStatusCode, forKey: SdkCodingKey("redirectStatusCode"))
     }
 
     init(options: ProjectsMethods.AddProjectDomainOptions) {
-        self.name = options.name
-        self.gitBranch = options.gitBranch
-        self.customEnvironmentId = options.customEnvironmentId
-        self.redirect = options.redirect
-        self.redirectStatusCode = options.redirectStatusCode
+        name = options.name
+        gitBranch = options.gitBranch
+        customEnvironmentId = options.customEnvironmentId
+        redirect = options.redirect
+        redirectStatusCode = options.redirectStatusCode
     }
 }
 
@@ -206,16 +233,16 @@ struct MoveProjectDomainRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.projectId, forKey: SdkCodingKey("projectId"))
-        try keyedContainer.encodeIfPresent(self.gitBranch, forKey: SdkCodingKey("gitBranch"))
-        try keyedContainer.encodeIfPresent(self.redirect, forKey: SdkCodingKey("redirect"))
-        try keyedContainer.encodeIfPresent(self.redirectStatusCode, forKey: SdkCodingKey("redirectStatusCode"))
+        try keyedContainer.encode(projectId, forKey: SdkCodingKey("projectId"))
+        try keyedContainer.encodeIfPresent(gitBranch, forKey: SdkCodingKey("gitBranch"))
+        try keyedContainer.encodeIfPresent(redirect, forKey: SdkCodingKey("redirect"))
+        try keyedContainer.encodeIfPresent(redirectStatusCode, forKey: SdkCodingKey("redirectStatusCode"))
     }
 
     init(options: ProjectsMethods.MoveProjectDomainOptions) {
-        self.projectId = options.projectId
-        self.gitBranch = options.gitBranch
-        self.redirect = options.redirect
-        self.redirectStatusCode = options.redirectStatusCode
+        projectId = options.projectId
+        gitBranch = options.gitBranch
+        redirect = options.redirect
+        redirectStatusCode = options.redirectStatusCode
     }
 }

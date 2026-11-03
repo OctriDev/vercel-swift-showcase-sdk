@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    /// Deletes an SDK key from a project. Use `projectIdOrName` and `hashKey` to identify the project and key to remove. The operation removes the key rather than merely hiding it from the project’s key list.
+public extension FeatureFlagsMethods {
+    /// Deletes an SDK key from a project. Use `projectIdOrName` and `hashKey` to identify the project and key to
+    /// remove. The operation removes the key rather than merely hiding it from the project’s key list.
     ///
     /// Deletes an SDK key.
     ///
@@ -16,10 +17,30 @@ extension FeatureFlagsMethods {
     /// - hashKey: The SDK key hash key to delete
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteSdkKey(config: ClientConfig, projectIdOrName: String, hashKey: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("DELETE", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/sdk-keys/", sdkEncodePathSegment(sdkWireString(hashKey))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "deleteSdkKey", options: requestOptions)).data
+    static func deleteSdkKey(
+        config: ClientConfig,
+        projectIdOrName: String,
+        hashKey: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(projectIdOrName)),
+                "/feature-flags/sdk-keys/",
+                sdkEncodePathSegment(sdkWireString(hashKey)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "deleteSdkKey",
+            options: requestOptions
+        )).data
     }
 }

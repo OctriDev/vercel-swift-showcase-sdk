@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical vercelCi operation model declarations
+/// Canonical vercelCi operation model declarations
 public struct ListVercelCiTaskAnalysisTasksResponseErrorX7911f94c: Codable {
     public var code: String
     public var name: String
@@ -21,33 +21,51 @@ public struct ListVercelCiTaskAnalysisTasksResponseErrorX7911f94c: Codable {
         case limit
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListVercelCiTaskAnalysisTasksResponseErrorX7911f94c {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        guard container.contains(.limit) else {
-            throw SdkValidationError(field: "limit", code: "required", message: "Validation failed for 'limit': value is required")
-        }
-        self.code = try container.sdkDecodeRequired(.code)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.message = try container.sdkDecodeRequired(.message)
-        self.limit = try container.sdkDecodeRequired(.limit)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListVercelCiTaskAnalysisTasksResponseErrorX7911f94c {
-    public init(code: String, name: String, message: String, limit: Double) {
+public extension ListVercelCiTaskAnalysisTasksResponseErrorX7911f94c {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.code) else {
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        guard container.contains(.limit) else {
+            throw SdkValidationError(
+                field: "limit",
+                code: "required",
+                message: "Validation failed for 'limit': value is required"
+            )
+        }
+        code = try container.sdkDecodeRequired(.code)
+        name = try container.sdkDecodeRequired(.name)
+        message = try container.sdkDecodeRequired(.message)
+        limit = try container.sdkDecodeRequired(.limit)
+    }
+}
+
+public extension ListVercelCiTaskAnalysisTasksResponseErrorX7911f94c {
+    init(code: String, name: String, message: String, limit: Double) {
         (self.code, self.name) = (code, name)
         (self.message, self.limit) = (message, limit)
     }
@@ -62,25 +80,35 @@ public struct GetVercelCiInvocationLogsResponseError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiInvocationLogsResponseError {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        self.code = try container.sdkDecodeRequired(.code)
-        self.message = try container.sdkDecodeRequired(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiInvocationLogsResponseError {
-    public init(code: String, message: String) {
+public extension GetVercelCiInvocationLogsResponseError {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.code) else {
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        code = try container.sdkDecodeRequired(.code)
+        message = try container.sdkDecodeRequired(.message)
+    }
+}
+
+public extension GetVercelCiInvocationLogsResponseError {
+    init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -92,21 +120,27 @@ public struct GetVercelCiJobRunResponseXa0d7c49d: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiJobRunResponseXa0d7c49d {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.error) else {
-            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
-        }
-        self.error = try container.sdkDecodeRequired(.error)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiJobRunResponseXa0d7c49d {
-    public init(error: GetVercelCiJobRunResponseError) {
+public extension GetVercelCiJobRunResponseXa0d7c49d {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.error) else {
+            throw SdkValidationError(
+                field: "error",
+                code: "required",
+                message: "Validation failed for 'error': value is required"
+            )
+        }
+        error = try container.sdkDecodeRequired(.error)
+    }
+}
+
+public extension GetVercelCiJobRunResponseXa0d7c49d {
+    init(error: GetVercelCiJobRunResponseError) {
         self.error = error
     }
 }
@@ -157,35 +191,56 @@ public struct ListVercelCiInvocationAttemptsResponseAttemptsItem: Codable {
         case runConclusion
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListVercelCiInvocationAttemptsResponseAttemptsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.invocationId = try container.sdkDecodeRequired(.invocationId)
-        self.attempt = try container.sdkDecodeRequired(.attempt)
-        self.teamId = try container.sdkDecodeRequired(.teamId)
-        self.source = try container.sdkDecodeRequired(.source)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.repositoryKey = try container.sdkDecodeRequired(.repositoryKey)
-        self.ref = try container.sdkDecodeRequired(.ref)
-        self.commitSha = try container.sdkDecodeRequired(.commitSha)
-        self.status = try container.sdkDecodeRequired(.status)
-        self.skipped = try container.sdkDecodeIfPresent(.skipped)
-        self.bootstrappingStarted = try container.sdkDecodeIfPresent(.bootstrappingStarted)
-        self.bootstrappingFailed = try container.sdkDecodeIfPresent(.bootstrappingFailed)
-        self.sandboxSnapshotted = try container.sdkDecodeIfPresent(.sandboxSnapshotted)
-        self.sandboxNamed = try container.sdkDecodeIfPresent(.sandboxNamed)
-        self.jobDefinitionsCreated = try container.sdkDecodeIfPresent(.jobDefinitionsCreated)
-        self.completed = try container.sdkDecodeIfPresent(.completed)
-        self.setupConclusion = try container.sdkDecodeIfPresent(.setupConclusion)
-        self.runConclusion = try container.sdkDecodeIfPresent(.runConclusion)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListVercelCiInvocationAttemptsResponseAttemptsItem {
-    public init(invocationId: String, attempt: Double, teamId: String, source: ListVercelCiInvocationAttemptsResponseAttemptsItemSource, createdAt: Double, repositoryKey: String, ref: String, commitSha: String, status: ListVercelCiInvocationAttemptsResponseAttemptsItemStatus, skipped: ListVercelCiInvocationAttemptsResponseAttemptsItemSkipped? = nil, bootstrappingStarted: ListVercelCiInvocationAttemptsResponseAttemptsItemBootstrappingStarted? = nil, bootstrappingFailed: ListVercelCiInvocationAttemptsResponseAttemptsItemBootstrappingFailed? = nil, sandboxSnapshotted: ListVercelCiInvocationAttemptsResponseAttemptsItemSandboxSnapshotted? = nil, sandboxNamed: ListVercelCiInvocationAttemptsResponseAttemptsItemSandboxNamed? = nil, jobDefinitionsCreated: ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreated? = nil, completed: ListVercelCiInvocationAttemptsResponseAttemptsItemCompleted? = nil, setupConclusion: ListVercelCiInvocationAttemptsResponseAttemptsItemSetupConclusion? = nil, runConclusion: ListVercelCiInvocationAttemptsResponseAttemptsItemRunConclusion? = nil) {
+public extension ListVercelCiInvocationAttemptsResponseAttemptsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        invocationId = try container.sdkDecodeRequired(.invocationId)
+        attempt = try container.sdkDecodeRequired(.attempt)
+        teamId = try container.sdkDecodeRequired(.teamId)
+        source = try container.sdkDecodeRequired(.source)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        repositoryKey = try container.sdkDecodeRequired(.repositoryKey)
+        ref = try container.sdkDecodeRequired(.ref)
+        commitSha = try container.sdkDecodeRequired(.commitSha)
+        status = try container.sdkDecodeRequired(.status)
+        skipped = try container.sdkDecodeIfPresent(.skipped)
+        bootstrappingStarted = try container.sdkDecodeIfPresent(.bootstrappingStarted)
+        bootstrappingFailed = try container.sdkDecodeIfPresent(.bootstrappingFailed)
+        sandboxSnapshotted = try container.sdkDecodeIfPresent(.sandboxSnapshotted)
+        sandboxNamed = try container.sdkDecodeIfPresent(.sandboxNamed)
+        jobDefinitionsCreated = try container.sdkDecodeIfPresent(.jobDefinitionsCreated)
+        completed = try container.sdkDecodeIfPresent(.completed)
+        setupConclusion = try container.sdkDecodeIfPresent(.setupConclusion)
+        runConclusion = try container.sdkDecodeIfPresent(.runConclusion)
+    }
+}
+
+public extension ListVercelCiInvocationAttemptsResponseAttemptsItem {
+    init(
+        invocationId: String,
+        attempt: Double,
+        teamId: String,
+        source: ListVercelCiInvocationAttemptsResponseAttemptsItemSource,
+        createdAt: Double,
+        repositoryKey: String,
+        ref: String,
+        commitSha: String,
+        status: ListVercelCiInvocationAttemptsResponseAttemptsItemStatus,
+        skipped: ListVercelCiInvocationAttemptsResponseAttemptsItemSkipped? = nil,
+        bootstrappingStarted: ListVercelCiInvocationAttemptsResponseAttemptsItemBootstrappingStarted? = nil,
+        bootstrappingFailed: ListVercelCiInvocationAttemptsResponseAttemptsItemBootstrappingFailed? = nil,
+        sandboxSnapshotted: ListVercelCiInvocationAttemptsResponseAttemptsItemSandboxSnapshotted? = nil,
+        sandboxNamed: ListVercelCiInvocationAttemptsResponseAttemptsItemSandboxNamed? = nil,
+        jobDefinitionsCreated: ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreated? = nil,
+        completed: ListVercelCiInvocationAttemptsResponseAttemptsItemCompleted? = nil,
+        setupConclusion: ListVercelCiInvocationAttemptsResponseAttemptsItemSetupConclusion? = nil,
+        runConclusion: ListVercelCiInvocationAttemptsResponseAttemptsItemRunConclusion? = nil
+    ) {
         (self.invocationId, self.attempt) = (invocationId, attempt)
         (self.teamId, self.source) = (teamId, source)
         (self.createdAt, self.repositoryKey) = (createdAt, repositoryKey)
@@ -205,23 +260,35 @@ public indirect enum ListVercelCiInvocationsResponseInvocationsItemRunConclusion
 }
 
 extension ListVercelCiInvocationsResponseInvocationsItemRunConclusionResult: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ListVercelCiInvocationsResponseInvocationsItemRunConclusionResult")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ListVercelCiInvocationsResponseInvocationsItemRunConclusionResult"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ListVercelCiInvocationsResponseInvocationsItemRunConclusionResult {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue1(value) }
-        if let value = try? container.decode(String.self) { return .stringValue2(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue1(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue2(value)
+        }
         return nil
     }
 }
@@ -246,25 +313,35 @@ public struct GetVercelCiRepositorySettingsResponseError: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiRepositorySettingsResponseError {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        self.code = try container.sdkDecodeRequired(.code)
-        self.message = try container.sdkDecodeRequired(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiRepositorySettingsResponseError {
-    public init(code: String, message: String) {
+public extension GetVercelCiRepositorySettingsResponseError {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.code) else {
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        code = try container.sdkDecodeRequired(.code)
+        message = try container.sdkDecodeRequired(.message)
+    }
+}
+
+public extension GetVercelCiRepositorySettingsResponseError {
+    init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -278,25 +355,35 @@ public struct GetVercelCiJobRunLogsResponseErrorX8d9c51d3: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiJobRunLogsResponseErrorX8d9c51d3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        self.code = try container.sdkDecodeRequired(.code)
-        self.message = try container.sdkDecodeRequired(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiJobRunLogsResponseErrorX8d9c51d3 {
-    public init(code: String, message: String) {
+public extension GetVercelCiJobRunLogsResponseErrorX8d9c51d3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.code) else {
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        code = try container.sdkDecodeRequired(.code)
+        message = try container.sdkDecodeRequired(.message)
+    }
+}
+
+public extension GetVercelCiJobRunLogsResponseErrorX8d9c51d3 {
+    init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -310,25 +397,35 @@ public struct ListVercelCiBranchesResponseErrorX74e50bc3: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListVercelCiBranchesResponseErrorX74e50bc3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        self.code = try container.sdkDecodeRequired(.code)
-        self.message = try container.sdkDecodeRequired(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListVercelCiBranchesResponseErrorX74e50bc3 {
-    public init(code: String, message: String) {
+public extension ListVercelCiBranchesResponseErrorX74e50bc3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.code) else {
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        code = try container.sdkDecodeRequired(.code)
+        message = try container.sdkDecodeRequired(.message)
+    }
+}
+
+public extension ListVercelCiBranchesResponseErrorX74e50bc3 {
+    init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -379,35 +476,56 @@ public struct ListVercelCiInvocationsResponseInvocationsItem: Codable {
         case runConclusion
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListVercelCiInvocationsResponseInvocationsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.invocationId = try container.sdkDecodeRequired(.invocationId)
-        self.attempt = try container.sdkDecodeRequired(.attempt)
-        self.teamId = try container.sdkDecodeRequired(.teamId)
-        self.source = try container.sdkDecodeRequired(.source)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.repositoryKey = try container.sdkDecodeRequired(.repositoryKey)
-        self.ref = try container.sdkDecodeRequired(.ref)
-        self.commitSha = try container.sdkDecodeRequired(.commitSha)
-        self.status = try container.sdkDecodeRequired(.status)
-        self.skipped = try container.sdkDecodeIfPresent(.skipped)
-        self.bootstrappingStarted = try container.sdkDecodeIfPresent(.bootstrappingStarted)
-        self.bootstrappingFailed = try container.sdkDecodeIfPresent(.bootstrappingFailed)
-        self.sandboxSnapshotted = try container.sdkDecodeIfPresent(.sandboxSnapshotted)
-        self.sandboxNamed = try container.sdkDecodeIfPresent(.sandboxNamed)
-        self.jobDefinitionsCreated = try container.sdkDecodeIfPresent(.jobDefinitionsCreated)
-        self.completed = try container.sdkDecodeIfPresent(.completed)
-        self.setupConclusion = try container.sdkDecodeIfPresent(.setupConclusion)
-        self.runConclusion = try container.sdkDecodeIfPresent(.runConclusion)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListVercelCiInvocationsResponseInvocationsItem {
-    public init(invocationId: String, attempt: Double, teamId: String, source: ListVercelCiInvocationsResponseInvocationsItemSource, createdAt: Double, repositoryKey: String, ref: String, commitSha: String, status: ListVercelCiInvocationsResponseInvocationsItemStatus, skipped: ListVercelCiInvocationsResponseInvocationsItemSkipped? = nil, bootstrappingStarted: ListVercelCiInvocationsResponseInvocationsItemBootstrappingStarted? = nil, bootstrappingFailed: ListVercelCiInvocationsResponseInvocationsItemBootstrappingFailed? = nil, sandboxSnapshotted: ListVercelCiInvocationsResponseInvocationsItemSandboxSnapshotted? = nil, sandboxNamed: ListVercelCiInvocationsResponseInvocationsItemSandboxNamed? = nil, jobDefinitionsCreated: ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreated? = nil, completed: ListVercelCiInvocationsResponseInvocationsItemCompleted? = nil, setupConclusion: ListVercelCiInvocationsResponseInvocationsItemSetupConclusion? = nil, runConclusion: ListVercelCiInvocationsResponseInvocationsItemRunConclusion? = nil) {
+public extension ListVercelCiInvocationsResponseInvocationsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        invocationId = try container.sdkDecodeRequired(.invocationId)
+        attempt = try container.sdkDecodeRequired(.attempt)
+        teamId = try container.sdkDecodeRequired(.teamId)
+        source = try container.sdkDecodeRequired(.source)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        repositoryKey = try container.sdkDecodeRequired(.repositoryKey)
+        ref = try container.sdkDecodeRequired(.ref)
+        commitSha = try container.sdkDecodeRequired(.commitSha)
+        status = try container.sdkDecodeRequired(.status)
+        skipped = try container.sdkDecodeIfPresent(.skipped)
+        bootstrappingStarted = try container.sdkDecodeIfPresent(.bootstrappingStarted)
+        bootstrappingFailed = try container.sdkDecodeIfPresent(.bootstrappingFailed)
+        sandboxSnapshotted = try container.sdkDecodeIfPresent(.sandboxSnapshotted)
+        sandboxNamed = try container.sdkDecodeIfPresent(.sandboxNamed)
+        jobDefinitionsCreated = try container.sdkDecodeIfPresent(.jobDefinitionsCreated)
+        completed = try container.sdkDecodeIfPresent(.completed)
+        setupConclusion = try container.sdkDecodeIfPresent(.setupConclusion)
+        runConclusion = try container.sdkDecodeIfPresent(.runConclusion)
+    }
+}
+
+public extension ListVercelCiInvocationsResponseInvocationsItem {
+    init(
+        invocationId: String,
+        attempt: Double,
+        teamId: String,
+        source: ListVercelCiInvocationsResponseInvocationsItemSource,
+        createdAt: Double,
+        repositoryKey: String,
+        ref: String,
+        commitSha: String,
+        status: ListVercelCiInvocationsResponseInvocationsItemStatus,
+        skipped: ListVercelCiInvocationsResponseInvocationsItemSkipped? = nil,
+        bootstrappingStarted: ListVercelCiInvocationsResponseInvocationsItemBootstrappingStarted? = nil,
+        bootstrappingFailed: ListVercelCiInvocationsResponseInvocationsItemBootstrappingFailed? = nil,
+        sandboxSnapshotted: ListVercelCiInvocationsResponseInvocationsItemSandboxSnapshotted? = nil,
+        sandboxNamed: ListVercelCiInvocationsResponseInvocationsItemSandboxNamed? = nil,
+        jobDefinitionsCreated: ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreated? = nil,
+        completed: ListVercelCiInvocationsResponseInvocationsItemCompleted? = nil,
+        setupConclusion: ListVercelCiInvocationsResponseInvocationsItemSetupConclusion? = nil,
+        runConclusion: ListVercelCiInvocationsResponseInvocationsItemRunConclusion? = nil
+    ) {
         (self.invocationId, self.attempt) = (invocationId, attempt)
         (self.teamId, self.source) = (teamId, source)
         (self.createdAt, self.repositoryKey) = (createdAt, repositoryKey)
@@ -446,27 +564,40 @@ public struct ListVercelCiTaskDefinitionsResponseTaskDefinitionsItem: Codable {
         case packageDirectory
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.invocationId = try container.sdkDecodeRequired(.invocationId)
-        self.invocationAttempt = try container.sdkDecodeRequired(.invocationAttempt)
-        self.jobDefinitionId = try container.sdkDecodeRequired(.jobDefinitionId)
-        self.jobRunAttempt = try container.sdkDecodeRequired(.jobRunAttempt)
-        self.taskDefinitionId = try container.sdkDecodeRequired(.taskDefinitionId)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.operation = try container.sdkDecodeRequired(.operation)
-        self.dependencyTaskDefinitionIds = try container.sdkDecodeRequired(.dependencyTaskDefinitionIds)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.packageDirectory = try container.sdkDecodeIfPresent(.packageDirectory)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItem {
-    public init(invocationId: String, invocationAttempt: Double, jobDefinitionId: String, jobRunAttempt: Double, taskDefinitionId: String, name: String, operation: ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation, dependencyTaskDefinitionIds: [String], createdAt: Double, packageDirectory: String? = nil) {
+public extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        invocationId = try container.sdkDecodeRequired(.invocationId)
+        invocationAttempt = try container.sdkDecodeRequired(.invocationAttempt)
+        jobDefinitionId = try container.sdkDecodeRequired(.jobDefinitionId)
+        jobRunAttempt = try container.sdkDecodeRequired(.jobRunAttempt)
+        taskDefinitionId = try container.sdkDecodeRequired(.taskDefinitionId)
+        name = try container.sdkDecodeRequired(.name)
+        operation = try container.sdkDecodeRequired(.operation)
+        dependencyTaskDefinitionIds = try container.sdkDecodeRequired(.dependencyTaskDefinitionIds)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        packageDirectory = try container.sdkDecodeIfPresent(.packageDirectory)
+    }
+}
+
+public extension ListVercelCiTaskDefinitionsResponseTaskDefinitionsItem {
+    init(
+        invocationId: String,
+        invocationAttempt: Double,
+        jobDefinitionId: String,
+        jobRunAttempt: Double,
+        taskDefinitionId: String,
+        name: String,
+        operation: ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation,
+        dependencyTaskDefinitionIds: [String],
+        createdAt: Double,
+        packageDirectory: String? = nil
+    ) {
         (self.invocationId, self.invocationAttempt) = (invocationId, invocationAttempt)
         (self.jobDefinitionId, self.jobRunAttempt) = (jobDefinitionId, jobRunAttempt)
         (self.taskDefinitionId, self.name) = (taskDefinitionId, name)
@@ -482,21 +613,27 @@ public struct GetVercelCiTaskAnalysisResponseX39e418a0: Codable {
         case error
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetVercelCiTaskAnalysisResponseX39e418a0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.error) else {
-            throw SdkValidationError(field: "error", code: "required", message: "Validation failed for 'error': value is required")
-        }
-        self.error = try container.sdkDecodeRequired(.error)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetVercelCiTaskAnalysisResponseX39e418a0 {
-    public init(error: GetVercelCiTaskAnalysisResponseErrorXa284b21d) {
+public extension GetVercelCiTaskAnalysisResponseX39e418a0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.error) else {
+            throw SdkValidationError(
+                field: "error",
+                code: "required",
+                message: "Validation failed for 'error': value is required"
+            )
+        }
+        error = try container.sdkDecodeRequired(.error)
+    }
+}
+
+public extension GetVercelCiTaskAnalysisResponseX39e418a0 {
+    init(error: GetVercelCiTaskAnalysisResponseErrorXa284b21d) {
         self.error = error
     }
 }
@@ -508,5 +645,7 @@ public struct ListVercelCiBranchesResponse: Codable {
         case branches
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

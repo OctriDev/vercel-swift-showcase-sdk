@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DnsMethods {
-    public struct UpdateRecordOptions: Codable {
+public extension DnsMethods {
+    struct UpdateRecordOptions: Codable {
         public var recordId: String
         public var teamId: String?
         public var slug: String?
@@ -25,7 +25,9 @@ extension DnsMethods {
         }
     }
 
-    /// Updates an existing DNS record for a domain. Supply only the record properties you want to change, such as its `name`, `value`, or `ttl`; record-specific data can be provided through `srv` or `https`. The response contains the updated DNS record.
+    /// Updates an existing DNS record for a domain. Supply only the record properties you want to change, such as its
+    /// `name`, `value`, or `ttl`; record-specific data can be provided through `srv` or `https`. The response contains
+    /// the updated DNS record.
     ///
     /// Updates an existing DNS record for a domain name.
     ///
@@ -39,13 +41,17 @@ extension DnsMethods {
     /// - ttl: The Time to live (TTL) value of the DNS record
     /// - mxPriority: The MX priority value of the DNS record
     /// - comment: A comment to add context on what this DNS record is for
-    public static func updateRecord(config: ClientConfig, options: UpdateRecordOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateRecordResponse {
+    static func updateRecord(
+        config: ClientConfig,
+        options: UpdateRecordOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateRecordResponse {
         if let type = options.type?.valueOrNil {
             try validateLength("type", type.rawValue, max: 255)
         }
 
         if let ttl = options.ttl?.valueOrNil {
-            try validateRange("ttl", Double(ttl), min: 60, max: 2147483647)
+            try validateRange("ttl", Double(ttl), min: 60, max: 2_147_483_647)
         }
 
         if let comment = options.comment {
@@ -54,9 +60,18 @@ extension DnsMethods {
 
         let requestBody = UpdateRecordRequestBody(options: options)
 
-        return try (await sdkRequest("PATCH", ["/v1/domains/records/", sdkEncodePathSegment(sdkWireString(options.recordId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], body: requestBody, decoder: .json, operationId: "updateRecord", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            ["/v1/domains/records/", sdkEncodePathSegment(sdkWireString(options.recordId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "updateRecord",
+            options: requestOptions
+        )).data
     }
 }

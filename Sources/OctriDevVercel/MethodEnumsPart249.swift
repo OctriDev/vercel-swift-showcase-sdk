@@ -12,8 +12,8 @@ struct DeleteRedirectsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.redirects, forKey: SdkCodingKey("redirects"))
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(redirects, forKey: SdkCodingKey("redirects"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
     }
 }
 
@@ -24,9 +24,9 @@ struct EditRedirectRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.redirect, forKey: SdkCodingKey("redirect"))
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.restore, forKey: SdkCodingKey("restore"))
+        try keyedContainer.encode(redirect, forKey: SdkCodingKey("redirect"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(restore, forKey: SdkCodingKey("restore"))
     }
 }
 
@@ -36,8 +36,8 @@ struct RestoreRedirectsRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.redirects, forKey: SdkCodingKey("redirects"))
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(redirects, forKey: SdkCodingKey("redirects"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
     }
 }
 
@@ -48,9 +48,9 @@ struct UpdateVersionRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.id, forKey: SdkCodingKey("id"))
-        try keyedContainer.encode(self.action, forKey: SdkCodingKey("action"))
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(id, forKey: SdkCodingKey("id"))
+        try keyedContainer.encode(action, forKey: SdkCodingKey("action"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
     }
 }
 
@@ -65,23 +65,23 @@ struct CreateProjectCheckRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encode(self.requires, forKey: SdkCodingKey("requires"))
-        try keyedContainer.encodeIfPresent(self.isRerequestable, forKey: SdkCodingKey("isRerequestable"))
-        try keyedContainer.encodeIfPresent(self.targets, forKey: SdkCodingKey("targets"))
-        try keyedContainer.encodeIfPresent(self.blocks, forKey: SdkCodingKey("blocks"))
-        try keyedContainer.encodeIfPresent(self.source, forKey: SdkCodingKey("source"))
-        try keyedContainer.encodeIfPresent(self.timeout, forKey: SdkCodingKey("timeout"))
+        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(requires, forKey: SdkCodingKey("requires"))
+        try keyedContainer.encodeIfPresent(isRerequestable, forKey: SdkCodingKey("isRerequestable"))
+        try keyedContainer.encodeIfPresent(targets, forKey: SdkCodingKey("targets"))
+        try keyedContainer.encodeIfPresent(blocks, forKey: SdkCodingKey("blocks"))
+        try keyedContainer.encodeIfPresent(source, forKey: SdkCodingKey("source"))
+        try keyedContainer.encodeIfPresent(timeout, forKey: SdkCodingKey("timeout"))
     }
 
     init(options: ChecksV2Methods.CreateProjectCheckOptions) {
-        self.name = options.name
-        self.requires = options.requires
-        self.isRerequestable = options.isRerequestable
-        self.targets = options.targets
-        self.blocks = options.blocks
-        self.source = options.source
-        self.timeout = options.timeout
+        name = options.name
+        requires = options.requires
+        isRerequestable = options.isRerequestable
+        targets = options.targets
+        blocks = options.blocks
+        source = options.source
+        timeout = options.timeout
     }
 }
 
@@ -95,21 +95,21 @@ struct UpdateProjectCheckRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.isRerequestable, forKey: SdkCodingKey("isRerequestable"))
-        try keyedContainer.encodeIfPresent(self.requires, forKey: SdkCodingKey("requires"))
-        try keyedContainer.encodeIfPresent(self.targets, forKey: SdkCodingKey("targets"))
-        try keyedContainer.encodeIfPresent(self.blocks, forKey: SdkCodingKey("blocks"))
-        try keyedContainer.encodeIfPresent(self.timeout, forKey: SdkCodingKey("timeout"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(isRerequestable, forKey: SdkCodingKey("isRerequestable"))
+        try keyedContainer.encodeIfPresent(requires, forKey: SdkCodingKey("requires"))
+        try keyedContainer.encodeIfPresent(targets, forKey: SdkCodingKey("targets"))
+        try keyedContainer.encodeIfPresent(blocks, forKey: SdkCodingKey("blocks"))
+        try keyedContainer.encodeIfPresent(timeout, forKey: SdkCodingKey("timeout"))
     }
 
     init(options: ChecksV2Methods.UpdateProjectCheckOptions) {
-        self.name = options.name
-        self.isRerequestable = options.isRerequestable
-        self.requires = options.requires
-        self.targets = options.targets
-        self.blocks = options.blocks
-        self.timeout = options.timeout
+        name = options.name
+        isRerequestable = options.isRerequestable
+        requires = options.requires
+        targets = options.targets
+        blocks = options.blocks
+        timeout = options.timeout
     }
 }
 
@@ -118,7 +118,7 @@ struct CreateDeploymentCheckRunRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.checkId, forKey: SdkCodingKey("checkId"))
+        try keyedContainer.encode(checkId, forKey: SdkCodingKey("checkId"))
     }
 }
 
@@ -133,23 +133,23 @@ struct UpdateDeploymentCheckRunRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.externalId, forKey: SdkCodingKey("externalId"))
-        try keyedContainer.encodeIfPresent(self.externalUrl, forKey: SdkCodingKey("externalUrl"))
-        try keyedContainer.encodeIfPresent(self.status, forKey: SdkCodingKey("status"))
-        try keyedContainer.encodeIfPresent(self.output, forKey: SdkCodingKey("output"))
-        try keyedContainer.encodeIfPresent(self.completedAt, forKey: SdkCodingKey("completedAt"))
-        try keyedContainer.encodeIfPresent(self.conclusion, forKey: SdkCodingKey("conclusion"))
-        try keyedContainer.encodeIfPresent(self.conclusionText, forKey: SdkCodingKey("conclusionText"))
+        try keyedContainer.encodeIfPresent(externalId, forKey: SdkCodingKey("externalId"))
+        try keyedContainer.encodeIfPresent(externalUrl, forKey: SdkCodingKey("externalUrl"))
+        try keyedContainer.encodeIfPresent(status, forKey: SdkCodingKey("status"))
+        try keyedContainer.encodeIfPresent(output, forKey: SdkCodingKey("output"))
+        try keyedContainer.encodeIfPresent(completedAt, forKey: SdkCodingKey("completedAt"))
+        try keyedContainer.encodeIfPresent(conclusion, forKey: SdkCodingKey("conclusion"))
+        try keyedContainer.encodeIfPresent(conclusionText, forKey: SdkCodingKey("conclusionText"))
     }
 
     init(options: ChecksV2Methods.UpdateDeploymentCheckRunOptions) {
-        self.externalId = options.externalId
-        self.externalUrl = options.externalUrl
-        self.status = options.status
-        self.output = options.output
-        self.completedAt = options.completedAt
-        self.conclusion = options.conclusion
-        self.conclusionText = options.conclusionText
+        externalId = options.externalId
+        externalUrl = options.externalUrl
+        status = options.status
+        output = options.output
+        completedAt = options.completedAt
+        conclusion = options.conclusion
+        conclusionText = options.conclusionText
     }
 }
 
@@ -163,21 +163,21 @@ struct CreateCheckRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encode(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encode(self.blocking, forKey: SdkCodingKey("blocking"))
-        try keyedContainer.encodeIfPresent(self.path, forKey: SdkCodingKey("path"))
-        try keyedContainer.encodeIfPresent(self.detailsUrl, forKey: SdkCodingKey("detailsUrl"))
-        try keyedContainer.encodeIfPresent(self.externalId, forKey: SdkCodingKey("externalId"))
-        try keyedContainer.encodeIfPresent(self.rerequestable, forKey: SdkCodingKey("rerequestable"))
+        try keyedContainer.encode(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encode(blocking, forKey: SdkCodingKey("blocking"))
+        try keyedContainer.encodeIfPresent(path, forKey: SdkCodingKey("path"))
+        try keyedContainer.encodeIfPresent(detailsUrl, forKey: SdkCodingKey("detailsUrl"))
+        try keyedContainer.encodeIfPresent(externalId, forKey: SdkCodingKey("externalId"))
+        try keyedContainer.encodeIfPresent(rerequestable, forKey: SdkCodingKey("rerequestable"))
     }
 
     init(options: ChecksMethods.CreateCheckOptions) {
-        self.name = options.name
-        self.blocking = options.blocking
-        self.path = options.path
-        self.detailsUrl = options.detailsUrl
-        self.externalId = options.externalId
-        self.rerequestable = options.rerequestable
+        name = options.name
+        blocking = options.blocking
+        path = options.path
+        detailsUrl = options.detailsUrl
+        externalId = options.externalId
+        rerequestable = options.rerequestable
     }
 }
 
@@ -192,22 +192,22 @@ struct UpdateCheckRequestBody: Encodable {
 
     func encode(to encoder: Encoder) throws {
         var keyedContainer = encoder.container(keyedBy: SdkCodingKey.self)
-        try keyedContainer.encodeIfPresent(self.name, forKey: SdkCodingKey("name"))
-        try keyedContainer.encodeIfPresent(self.path, forKey: SdkCodingKey("path"))
-        try keyedContainer.encodeIfPresent(self.status, forKey: SdkCodingKey("status"))
-        try keyedContainer.encodeIfPresent(self.conclusion, forKey: SdkCodingKey("conclusion"))
-        try keyedContainer.encodeIfPresent(self.detailsUrl, forKey: SdkCodingKey("detailsUrl"))
-        try keyedContainer.encodeIfPresent(self.output, forKey: SdkCodingKey("output"))
-        try keyedContainer.encodeIfPresent(self.externalId, forKey: SdkCodingKey("externalId"))
+        try keyedContainer.encodeIfPresent(name, forKey: SdkCodingKey("name"))
+        try keyedContainer.encodeIfPresent(path, forKey: SdkCodingKey("path"))
+        try keyedContainer.encodeIfPresent(status, forKey: SdkCodingKey("status"))
+        try keyedContainer.encodeIfPresent(conclusion, forKey: SdkCodingKey("conclusion"))
+        try keyedContainer.encodeIfPresent(detailsUrl, forKey: SdkCodingKey("detailsUrl"))
+        try keyedContainer.encodeIfPresent(output, forKey: SdkCodingKey("output"))
+        try keyedContainer.encodeIfPresent(externalId, forKey: SdkCodingKey("externalId"))
     }
 
     init(options: ChecksMethods.UpdateCheckOptions) {
-        self.name = options.name
-        self.path = options.path
-        self.status = options.status
-        self.conclusion = options.conclusion
-        self.detailsUrl = options.detailsUrl
-        self.output = options.output
-        self.externalId = options.externalId
+        name = options.name
+        path = options.path
+        status = options.status
+        conclusion = options.conclusion
+        detailsUrl = options.detailsUrl
+        output = options.output
+        externalId = options.externalId
     }
 }

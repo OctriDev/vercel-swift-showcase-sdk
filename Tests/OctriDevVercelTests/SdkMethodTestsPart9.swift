@@ -319,15 +319,17 @@ extension SdkMethodTests {
         )
     }
 
-    func testGetInstallationsByIntegrationConfigurationIdResourcesByResourXd951b0e376ReachesMockAndDecodesResponse() async throws {
+    func testGetInstallationsByIntegrationConfigurationIdResourcesByResourXd951b0e376ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
         _ = client
-        let actual = try await client.marketplace.getInstallationsByIntegrationConfigurationIdResourcesByResourX11b8aa4065(
-            integrationConfigurationId: decoded("\"integrationConfiguration-1\""),
-            resourceId: decoded("\"resource-1\"")
-        )
+        let actual = try await client.marketplace
+            .getInstallationsByIntegrationConfigurationIdResourcesByResourX11b8aa4065(
+                integrationConfigurationId: decoded("\"integrationConfiguration-1\""),
+                resourceId: decoded("\"resource-1\"")
+            )
         let expected = try JSONSerialization.jsonObject(
             with: Data(sdkMethodFixture219Expected.utf8),
             options: [.fragmentsAllowed]
@@ -472,7 +474,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testGetMicrofrontendsConfigForProjectGetMicrofrontendsConfigForProjectReachesMockAndDecodesResponse() async throws {
+    func testGetMicrofrontendsConfigForProjectGetMicrofrontendsConfigForProjectReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }

@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Projects domain models
+/// Projects domain models
 public enum EditProjectEnvResponseContentHintVariant4Type: String, CaseIterable, Codable {
     case blobReadWriteToken = "blob-read-write-token"
     public init(from decoder: Decoder) throws {

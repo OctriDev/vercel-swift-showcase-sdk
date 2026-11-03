@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    public struct CreateProjectOptions: Codable {
+public extension ProjectsMethods {
+    struct CreateProjectOptions: Codable {
         public var name: String
         public var teamId: String?
         public var slug: String?
@@ -39,9 +39,13 @@ extension ProjectsMethods {
         }
     }
 
-    /// Creates a project with a required `name` and optional settings for its framework, build commands, environment variables, Git connection, and sandbox regions. Supply only the settings you want to configure; supported build and install commands can be detected automatically when set to `null`. A 200 response returns the created project object.
+    /// Creates a project with a required `name` and optional settings for its framework, build commands, environment
+    /// variables, Git connection, and sandbox regions. Supply only the settings you want to configure; supported build
+    /// and install commands can be detected automatically when set to `null`. A 200 response returns the created
+    /// project object.
     ///
-    /// Allows to create a new project with the provided configuration. It only requires the project `name` but more configuration can be provided to override the defaults.
+    /// Allows to create a new project with the provided configuration. It only requires the project `name` but more
+    /// configuration can be provided to override the defaults.
     ///
     /// - Parameters:
     /// - name: The desired name for the project
@@ -86,7 +90,11 @@ extension ProjectsMethods {
     /// - enableAffectedProjectsDeployments: Opt-in to skip deployments when there
     ///   are no changes to the root directory and its dependencies
     /// - resourceConfig: Specifies resource override configuration for the project
-    public static func createProject(config: ClientConfig, options: CreateProjectOptions, requestOptions: RequestOptions? = nil) async throws -> CreateProjectResponse {
+    static func createProject(
+        config: ClientConfig,
+        options: CreateProjectOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateProjectResponse {
         try validateLength("name", options.name, max: 100)
 
         if let previewDeploymentSuffix = options.previewDeploymentSuffix?.valueOrNil {
@@ -123,7 +131,7 @@ extension ProjectsMethods {
 
         let requestBody = CreateProjectRequestBody(options: options)
 
-        return try (await sdkRequest("POST", "/v11/projects", config: config, query: [
+        return try await (sdkRequest("POST", "/v11/projects", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
         ], body: requestBody, decoder: .json, operationId: "createProject", options: requestOptions)).data

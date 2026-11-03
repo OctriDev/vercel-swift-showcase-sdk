@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SandboxesMethods {
-    /// Retrieves a drive by its name or ID within a project. Supply `projectId` unless the request uses a Vercel OIDC token scoped to a project. The drive name or ID must use only letters, digits, hyphens, or underscores and be no longer than 64 characters.
+public extension SandboxesMethods {
+    /// Retrieves a drive by its name or ID within a project. Supply `projectId` unless the request uses a Vercel OIDC
+    /// token scoped to a project. The drive name or ID must use only letters, digits, hyphens, or underscores and be no
+    /// longer than 64 characters.
     ///
     /// Gets an existing drive by project and name or drive ID. Returns 404 if doesn't exist.
     ///
@@ -17,14 +19,29 @@ extension SandboxesMethods {
     ///   unless using a Vercel OIDC token scoped to a project.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getDrive(config: ClientConfig, nameOrId: String, projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDriveResponse {
+    static func getDrive(
+        config: ClientConfig,
+        nameOrId: String,
+        projectId: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDriveResponse {
         try validateLength("nameOrId", nameOrId, max: 64)
         try sdkValidatePattern("nameOrId", nameOrId, sdkPatterna828669d9fe5)
 
-        return try (await sdkRequest("GET", ["/v2/sandboxes/drives/", sdkEncodePathSegment(sdkWireString(nameOrId))].joined(), config: config, query: [
-            SdkQueryParameter("projectId", value: projectId),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getDrive", options: requestOptions)).data
+        return try await (sdkRequest(
+            "GET",
+            ["/v2/sandboxes/drives/", sdkEncodePathSegment(sdkWireString(nameOrId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: projectId),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getDrive",
+            options: requestOptions
+        )).data
     }
 }

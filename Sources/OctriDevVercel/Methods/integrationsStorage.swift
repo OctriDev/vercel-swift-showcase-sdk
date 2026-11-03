@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension IntegrationsMethods {
-    public struct CreateIntegrationStoreDirectOptions: Codable {
+public extension IntegrationsMethods {
+    struct CreateIntegrationStoreDirectOptions: Codable {
         public var name: String
         public var integrationConfigurationId: String
         public var integrationProductIdOrSlug: CreateIntegrationStoreDirectRequestBodyIntegrationProductIdOrSlug
@@ -21,16 +21,24 @@ extension IntegrationsMethods {
         public var paymentMethodId: String?
         public var prepaymentAmountCents: Double?
 
-        public init(name: String, integrationConfigurationId: String, integrationProductIdOrSlug: CreateIntegrationStoreDirectRequestBodyIntegrationProductIdOrSlug) {
+        public init(
+            name: String,
+            integrationConfigurationId: String,
+            integrationProductIdOrSlug: CreateIntegrationStoreDirectRequestBodyIntegrationProductIdOrSlug
+        ) {
             self.name = name
             self.integrationConfigurationId = integrationConfigurationId
             self.integrationProductIdOrSlug = integrationProductIdOrSlug
         }
     }
 
-    /// Creates an integration store and handles free or paid billing plans. Supply `name`, `integrationConfigurationId`, and `integrationProductIdOrSlug`; omit `billingPlanId` to discover a free plan or provide one for a paid resource. Use `paymentMethodId` when you need to select a payment method other than the default.
+    /// Creates an integration store and handles free or paid billing plans. Supply `name`,
+    /// `integrationConfigurationId`, and `integrationProductIdOrSlug`; omit `billingPlanId` to discover a free plan or
+    /// provide one for a paid resource. Use `paymentMethodId` when you need to select a payment method other than the
+    /// default.
     ///
-    /// Creates an integration store with automatic billing plan handling. For free resources, omit `billingPlanId` to auto-discover free plans. For paid resources, provide a `billingPlanId` from the billing plans endpoint.
+    /// Creates an integration store with automatic billing plan handling. For free resources, omit `billingPlanId` to
+    /// auto-discover free plans. For paid resources, provide a `billingPlanId` from the billing plans endpoint.
     ///
     /// - Parameters:
     /// - name: Human-readable name for the storage resource
@@ -51,7 +59,11 @@ extension IntegrationsMethods {
     ///   default payment method if not provided.
     /// - prepaymentAmountCents: Amount in cents for prepayment billing plans.
     ///   Required only for prepayment plans with variable amounts.
-    public static func createIntegrationStoreDirect(config: ClientConfig, options: CreateIntegrationStoreDirectOptions, requestOptions: RequestOptions? = nil) async throws -> CreateIntegrationStoreDirectResponse {
+    static func createIntegrationStoreDirect(
+        config: ClientConfig,
+        options: CreateIntegrationStoreDirectOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateIntegrationStoreDirectResponse {
         try validateLength("name", options.name, max: 128)
 
         try sdkValidatePattern("integrationConfigurationId", options.integrationConfigurationId, sdkPattern977cec7e6342)
@@ -62,9 +74,10 @@ extension IntegrationsMethods {
 
         let requestBody = CreateIntegrationStoreDirectRequestBody(options: options)
 
-        return try (await sdkRequest("POST", "/v1/storage/stores/integration/direct", config: config, query: [
+        return try await (sdkRequest("POST", "/v1/storage/stores/integration/direct", config: config, query: [
             SdkQueryParameter("teamId", value: options.teamId),
             SdkQueryParameter("slug", value: options.slug),
-        ], body: requestBody, decoder: .json, operationId: "createIntegrationStoreDirect", options: requestOptions)).data
+        ], body: requestBody, decoder: .json, operationId: "createIntegrationStoreDirect", options: requestOptions))
+            .data
     }
 }

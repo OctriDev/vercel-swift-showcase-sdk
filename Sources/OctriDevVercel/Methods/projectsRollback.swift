@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    /// Requests a rollback that points production traffic to a previous production deployment. Use `projectId` to identify the project and `deploymentId` to select the deployment to roll back to; optionally provide `description` to record the reason. A successful response confirms that the rollback request was created.
+public extension ProjectsMethods {
+    /// Requests a rollback that points production traffic to a previous production deployment. Use `projectId` to
+    /// identify the project and `deploymentId` to select the deployment to roll back to; optionally provide
+    /// `description` to record the reason. A successful response confirms that the rollback request was created.
     ///
     /// Allows users to rollback to a deployment.
     ///
@@ -16,23 +18,65 @@ extension ProjectsMethods {
     /// - description: The reason for the rollback
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func requestRollback(config: ClientConfig, projectId: String, deploymentId: String, description: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("POST", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/rollback/", sdkEncodePathSegment(sdkWireString(deploymentId))].joined(), config: config, query: [
-            SdkQueryParameter("description", value: description),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "requestRollback", options: requestOptions)).data
+    static func requestRollback(
+        config: ClientConfig,
+        projectId: String,
+        deploymentId: String,
+        description: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "POST",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(projectId)),
+                "/rollback/",
+                sdkEncodePathSegment(sdkWireString(deploymentId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("description", value: description),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "requestRollback",
+            options: requestOptions
+        )).data
     }
 
-    /// Updates the reason recorded for a project rollback without changing its status. Supply the `description` field in the request body and identify the project and deployment in the path. The request body is optional.
+    /// Updates the reason recorded for a project rollback without changing its status. Supply the `description` field
+    /// in the request body and identify the project and deployment in the path. The request body is optional.
     ///
     /// Updates the reason for a rollback, without changing the rollback status itself.
     ///
     /// - Parameters:
     /// - description: The reason for the rollback
-    public static func updateProjectsRollbackDescription(config: ClientConfig, projectId: String, deploymentId: String, description: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func updateProjectsRollbackDescription(
+        config: ClientConfig,
+        projectId: String,
+        deploymentId: String,
+        description: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         let requestBody = UpdateProjectsRollbackDescriptionRequestBody(description: description)
 
-        return try (await sdkRequest("PATCH", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/rollback/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/update-description"].joined(), config: config, body: requestBody, decoder: .empty, operationId: "updateProjectsRollbackDescription", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(projectId)),
+                "/rollback/",
+                sdkEncodePathSegment(sdkWireString(deploymentId)),
+                "/update-description",
+            ].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .empty,
+            operationId: "updateProjectsRollbackDescription",
+            options: requestOptions
+        )).data
     }
 }

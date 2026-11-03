@@ -7,38 +7,59 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical environment operation model declarations
-extension UpdateSharedEnvVariableResponseUpdatedItem {
-    public init(from decoder: Decoder) throws {
+/// Canonical environment operation model declarations
+public extension UpdateSharedEnvVariableResponseUpdatedItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.applyToAllCustomEnvironments = try container.sdkDecodeIfPresent(.applyToAllCustomEnvironments)
-        self.comment = try container.sdkDecodeIfPresent(.comment)
-        self.created = try container.sdkDecodeIfPresent(.created)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.createdBy = try container.sdkDecodeIfPresent(.createdBy)
-        self.customEnvironmentIds = try container.sdkDecodeIfPresent(.customEnvironmentIds)
-        self.decrypted = try container.sdkDecodeIfPresent(.decrypted)
-        self.deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
-        self.deletedBy = try container.sdkDecodeIfPresent(.deletedBy)
-        self.id = try container.sdkDecodeIfPresent(.id)
-        self.key = try container.sdkDecodeIfPresent(.key)
-        self.lastEditedByDisplayName = try container.sdkDecodeIfPresent(.lastEditedByDisplayName)
-        self.lastEditedByPrincipal = try container.sdkDecodeIfPresent(.lastEditedByPrincipal)
-        self.ownerId = try container.sdkDecodeIfPresent(.ownerId)
-        self.projectId = try container.sdkDecodeIfPresent(.projectId)
-        self.target = try container.sdkDecodeIfPresent(.target)
-        self.type = try container.sdkDecodeIfPresent(.type)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        self.updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
-        self.value = try container.sdkDecodeIfPresent(.value)
-        if let value = self.created {
+        applyToAllCustomEnvironments = try container.sdkDecodeIfPresent(.applyToAllCustomEnvironments)
+        comment = try container.sdkDecodeIfPresent(.comment)
+        created = try container.sdkDecodeIfPresent(.created)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        createdBy = try container.sdkDecodeIfPresent(.createdBy)
+        customEnvironmentIds = try container.sdkDecodeIfPresent(.customEnvironmentIds)
+        decrypted = try container.sdkDecodeIfPresent(.decrypted)
+        deletedAt = try container.sdkDecodeIfPresent(.deletedAt)
+        deletedBy = try container.sdkDecodeIfPresent(.deletedBy)
+        id = try container.sdkDecodeIfPresent(.id)
+        key = try container.sdkDecodeIfPresent(.key)
+        lastEditedByDisplayName = try container.sdkDecodeIfPresent(.lastEditedByDisplayName)
+        lastEditedByPrincipal = try container.sdkDecodeIfPresent(.lastEditedByPrincipal)
+        ownerId = try container.sdkDecodeIfPresent(.ownerId)
+        projectId = try container.sdkDecodeIfPresent(.projectId)
+        target = try container.sdkDecodeIfPresent(.target)
+        type = try container.sdkDecodeIfPresent(.type)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        updatedBy = try container.sdkDecodeIfPresent(.updatedBy)
+        value = try container.sdkDecodeIfPresent(.value)
+        if let value = created {
             try sdkValidateDateTime("created", sdkWireString(value))
         }
     }
 }
 
-extension UpdateSharedEnvVariableResponseUpdatedItem {
-    public init(applyToAllCustomEnvironments: Bool? = nil, comment: String? = nil, created: Date? = nil, createdAt: Double? = nil, createdBy: String? = nil, customEnvironmentIds: [String]? = nil, decrypted: Bool? = nil, deletedAt: Double? = nil, deletedBy: String? = nil, id: String? = nil, key: String? = nil, lastEditedByDisplayName: String? = nil, lastEditedByPrincipal: UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipal? = nil, ownerId: String? = nil, projectId: [String]? = nil, target: [UpdateSharedEnvVariableResponseUpdatedItemTargetItem]? = nil, type: UpdateSharedEnvVariableResponseUpdatedItemType? = nil, updatedAt: Double? = nil, updatedBy: String? = nil, value: String? = nil) throws {
+public extension UpdateSharedEnvVariableResponseUpdatedItem {
+    init(
+        applyToAllCustomEnvironments: Bool? = nil,
+        comment: String? = nil,
+        created: Date? = nil,
+        createdAt: Double? = nil,
+        createdBy: String? = nil,
+        customEnvironmentIds: [String]? = nil,
+        decrypted: Bool? = nil,
+        deletedAt: Double? = nil,
+        deletedBy: String? = nil,
+        id: String? = nil,
+        key: String? = nil,
+        lastEditedByDisplayName: String? = nil,
+        lastEditedByPrincipal: UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipal? = nil,
+        ownerId: String? = nil,
+        projectId: [String]? = nil,
+        target: [UpdateSharedEnvVariableResponseUpdatedItemTargetItem]? = nil,
+        type: UpdateSharedEnvVariableResponseUpdatedItemType? = nil,
+        updatedAt: Double? = nil,
+        updatedBy: String? = nil,
+        value: String? = nil
+    ) throws {
         self.init()
         (self.applyToAllCustomEnvironments, self.comment) = (applyToAllCustomEnvironments, comment)
         (self.created, self.createdAt) = (created, createdAt)
@@ -62,22 +83,32 @@ public indirect enum UpdateSharedEnvVariableResponseFailedItemErrorTarget {
 }
 
 extension UpdateSharedEnvVariableResponseFailedItemErrorTarget: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateSharedEnvVariableResponseFailedItemErrorTarget")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateSharedEnvVariableResponseFailedItemErrorTarget"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateSharedEnvVariableResponseFailedItemErrorTarget {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String].self) { return .stringList(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode([String].self) {
+            return .stringList(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -107,20 +138,20 @@ public struct UpdateSharedEnvVariableRequestBodyUpdatesValueProjectIdUpdates: Co
     }
 
     init() {
-        (self.link, self.unlink) = (nil, nil)
+        (link, unlink) = (nil, nil)
     }
 }
 
-extension UpdateSharedEnvVariableRequestBodyUpdatesValueProjectIdUpdates {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSharedEnvVariableRequestBodyUpdatesValueProjectIdUpdates {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.link = try container.sdkDecodeIfPresent(.link)
-        self.unlink = try container.sdkDecodeIfPresent(.unlink)
+        link = try container.sdkDecodeIfPresent(.link)
+        unlink = try container.sdkDecodeIfPresent(.unlink)
     }
 }
 
-extension UpdateSharedEnvVariableRequestBodyUpdatesValueProjectIdUpdates {
-    public init(link: [String]? = nil, unlink: [String]? = nil) {
+public extension UpdateSharedEnvVariableRequestBodyUpdatesValueProjectIdUpdates {
+    init(link: [String]? = nil, unlink: [String]? = nil) {
         self.init()
         (self.link, self.unlink) = (link, unlink)
     }
@@ -143,33 +174,51 @@ public struct CreateCustomEnvironmentResponseDomainsItemVerificationItem: Codabl
         case value
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateCustomEnvironmentResponseDomainsItemVerificationItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.domain) else {
-            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.domain = try container.sdkDecodeRequired(.domain)
-        self.reason = try container.sdkDecodeRequired(.reason)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.value = try container.sdkDecodeRequired(.value)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateCustomEnvironmentResponseDomainsItemVerificationItem {
-    public init(domain: String, reason: String, type: String, value: String) {
+public extension CreateCustomEnvironmentResponseDomainsItemVerificationItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.domain) else {
+            throw SdkValidationError(
+                field: "domain",
+                code: "required",
+                message: "Validation failed for 'domain': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        domain = try container.sdkDecodeRequired(.domain)
+        reason = try container.sdkDecodeRequired(.reason)
+        type = try container.sdkDecodeRequired(.type)
+        value = try container.sdkDecodeRequired(.value)
+    }
+}
+
+public extension CreateCustomEnvironmentResponseDomainsItemVerificationItem {
+    init(domain: String, reason: String, type: String, value: String) {
         (self.domain, self.reason) = (domain, reason)
         (self.type, self.value) = (type, value)
     }
@@ -187,25 +236,35 @@ public struct CreateCustomEnvironmentResponseBranchMatcher: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateCustomEnvironmentResponseBranchMatcher {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pattern) else {
-            throw SdkValidationError(field: "pattern", code: "required", message: "Validation failed for 'pattern': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.pattern = try container.sdkDecodeRequired(.pattern)
-        self.type = try container.sdkDecodeRequired(.type)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateCustomEnvironmentResponseBranchMatcher {
-    public init(pattern: String, type: CreateCustomEnvironmentResponseBranchMatcherType) {
+public extension CreateCustomEnvironmentResponseBranchMatcher {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pattern) else {
+            throw SdkValidationError(
+                field: "pattern",
+                code: "required",
+                message: "Validation failed for 'pattern': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        pattern = try container.sdkDecodeRequired(.pattern)
+        type = try container.sdkDecodeRequired(.type)
+    }
+}
+
+public extension CreateCustomEnvironmentResponseBranchMatcher {
+    init(pattern: String, type: CreateCustomEnvironmentResponseBranchMatcherType) {
         (self.pattern, self.type) = (pattern, type)
     }
 }
@@ -243,41 +302,73 @@ public struct GetCustomEnvironmentResponse: Codable {
         case domains
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetCustomEnvironmentResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.slug) else {
-            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.slug = try container.sdkDecodeRequired(.slug)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.branchMatcher = try container.sdkDecodeIfPresent(.branchMatcher)
-        self.currentDeploymentAliases = try container.sdkDecodeIfPresent(.currentDeploymentAliases)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.domains = try container.sdkDecodeIfPresent(.domains)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetCustomEnvironmentResponse {
-    public init(createdAt: Double, id: String, slug: String, type: GetCustomEnvironmentResponseType, updatedAt: Double, branchMatcher: GetCustomEnvironmentResponseBranchMatcher? = nil, currentDeploymentAliases: [String]? = nil, description: String? = nil, domains: [GetCustomEnvironmentResponseDomainsItem]? = nil) {
+public extension GetCustomEnvironmentResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.slug) else {
+            throw SdkValidationError(
+                field: "slug",
+                code: "required",
+                message: "Validation failed for 'slug': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        id = try container.sdkDecodeRequired(.id)
+        slug = try container.sdkDecodeRequired(.slug)
+        type = try container.sdkDecodeRequired(.type)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        branchMatcher = try container.sdkDecodeIfPresent(.branchMatcher)
+        currentDeploymentAliases = try container.sdkDecodeIfPresent(.currentDeploymentAliases)
+        description = try container.sdkDecodeIfPresent(.description)
+        domains = try container.sdkDecodeIfPresent(.domains)
+    }
+}
+
+public extension GetCustomEnvironmentResponse {
+    init(
+        createdAt: Double,
+        id: String,
+        slug: String,
+        type: GetCustomEnvironmentResponseType,
+        updatedAt: Double,
+        branchMatcher: GetCustomEnvironmentResponseBranchMatcher? = nil,
+        currentDeploymentAliases: [String]? = nil,
+        description: String? = nil,
+        domains: [GetCustomEnvironmentResponseDomainsItem]? = nil
+    ) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.slug, self.type) = (slug, type)
         (self.updatedAt, self.branchMatcher) = (updatedAt, branchMatcher)
@@ -298,25 +389,35 @@ public struct ListEnvironmentCustomResponseEnvironmentsItemBranchMatcher: Codabl
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListEnvironmentCustomResponseEnvironmentsItemBranchMatcher {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pattern) else {
-            throw SdkValidationError(field: "pattern", code: "required", message: "Validation failed for 'pattern': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.pattern = try container.sdkDecodeRequired(.pattern)
-        self.type = try container.sdkDecodeRequired(.type)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListEnvironmentCustomResponseEnvironmentsItemBranchMatcher {
-    public init(pattern: String, type: ListEnvironmentCustomResponseEnvironmentsItemBranchMatcherType) {
+public extension ListEnvironmentCustomResponseEnvironmentsItemBranchMatcher {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pattern) else {
+            throw SdkValidationError(
+                field: "pattern",
+                code: "required",
+                message: "Validation failed for 'pattern': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        pattern = try container.sdkDecodeRequired(.pattern)
+        type = try container.sdkDecodeRequired(.type)
+    }
+}
+
+public extension ListEnvironmentCustomResponseEnvironmentsItemBranchMatcher {
+    init(pattern: String, type: ListEnvironmentCustomResponseEnvironmentsItemBranchMatcherType) {
         (self.pattern, self.type) = (pattern, type)
     }
 }
@@ -338,33 +439,51 @@ public struct UpdateCustomEnvironmentResponseDomainsItemVerificationItem: Codabl
         case value
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateCustomEnvironmentResponseDomainsItemVerificationItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.domain) else {
-            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
-        }
-        guard container.contains(.reason) else {
-            throw SdkValidationError(field: "reason", code: "required", message: "Validation failed for 'reason': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        guard container.contains(.value) else {
-            throw SdkValidationError(field: "value", code: "required", message: "Validation failed for 'value': value is required")
-        }
-        self.domain = try container.sdkDecodeRequired(.domain)
-        self.reason = try container.sdkDecodeRequired(.reason)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.value = try container.sdkDecodeRequired(.value)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateCustomEnvironmentResponseDomainsItemVerificationItem {
-    public init(domain: String, reason: String, type: String, value: String) {
+public extension UpdateCustomEnvironmentResponseDomainsItemVerificationItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.domain) else {
+            throw SdkValidationError(
+                field: "domain",
+                code: "required",
+                message: "Validation failed for 'domain': value is required"
+            )
+        }
+        guard container.contains(.reason) else {
+            throw SdkValidationError(
+                field: "reason",
+                code: "required",
+                message: "Validation failed for 'reason': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        guard container.contains(.value) else {
+            throw SdkValidationError(
+                field: "value",
+                code: "required",
+                message: "Validation failed for 'value': value is required"
+            )
+        }
+        domain = try container.sdkDecodeRequired(.domain)
+        reason = try container.sdkDecodeRequired(.reason)
+        type = try container.sdkDecodeRequired(.type)
+        value = try container.sdkDecodeRequired(.value)
+    }
+}
+
+public extension UpdateCustomEnvironmentResponseDomainsItemVerificationItem {
+    init(domain: String, reason: String, type: String, value: String) {
         (self.domain, self.reason) = (domain, reason)
         (self.type, self.value) = (type, value)
     }
@@ -376,22 +495,32 @@ public indirect enum DeleteSharedEnvVariableResponseFailedItemErrorValue {
 }
 
 extension DeleteSharedEnvVariableResponseFailedItemErrorValue: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for DeleteSharedEnvVariableResponseFailedItemErrorValue")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for DeleteSharedEnvVariableResponseFailedItemErrorValue"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension DeleteSharedEnvVariableResponseFailedItemErrorValue {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
-        if let value = try? container.decode([String].self) { return .stringList(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
+        if let value = try? container.decode([String].self) {
+            return .stringList(value)
+        }
         return nil
     }
 }
@@ -440,34 +569,52 @@ public struct RemoveCustomEnvironmentResponseDomainsItem: Codable {
         case verification
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension RemoveCustomEnvironmentResponseDomainsItem {
-    public init(from decoder: Decoder) throws {
+public extension RemoveCustomEnvironmentResponseDomainsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.apexName) else {
-            throw SdkValidationError(field: "apexName", code: "required", message: "Validation failed for 'apexName': value is required")
+            throw SdkValidationError(
+                field: "apexName",
+                code: "required",
+                message: "Validation failed for 'apexName': value is required"
+            )
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
         }
         guard container.contains(.verified) else {
-            throw SdkValidationError(field: "verified", code: "required", message: "Validation failed for 'verified': value is required")
+            throw SdkValidationError(
+                field: "verified",
+                code: "required",
+                message: "Validation failed for 'verified': value is required"
+            )
         }
-        self.apexName = try container.sdkDecodeRequired(.apexName)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.verified = try container.sdkDecodeRequired(.verified)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
-        self.gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
-        self.redirect = try container.sdkDecodeIfPresent(.redirect)
-        self.redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        self.verification = try container.sdkDecodeIfPresent(.verification)
+        apexName = try container.sdkDecodeRequired(.apexName)
+        name = try container.sdkDecodeRequired(.name)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        verified = try container.sdkDecodeRequired(.verified)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        customEnvironmentId = try container.sdkDecodeIfPresent(.customEnvironmentId)
+        gitBranch = try container.sdkDecodeIfPresent(.gitBranch)
+        redirect = try container.sdkDecodeIfPresent(.redirect)
+        redirectStatusCode = try container.sdkDecodeIfPresent(.redirectStatusCode)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        verification = try container.sdkDecodeIfPresent(.verification)
     }
 }

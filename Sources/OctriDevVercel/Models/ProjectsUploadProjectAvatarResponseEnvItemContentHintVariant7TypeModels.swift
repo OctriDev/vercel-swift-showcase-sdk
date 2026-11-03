@@ -3,7 +3,7 @@
 
 import Foundation
 
-// ProjectsUpload domain models
+/// ProjectsUpload domain models
 public enum UploadProjectAvatarResponseEnvItemContentHintVariant7Type: String, CaseIterable, Codable {
     case postgresUrl = "postgres-url"
     public init(from decoder: Decoder) throws {
@@ -21,15 +21,20 @@ public enum UploadProjectAvatarResponseEnvItemContentHintVariant7Type: String, C
     }
 }
 
-public struct UploadProjectAvatarResponseInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseInternalRoutesItemVariant1MitigateAction: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let blockLegalCwc = UploadProjectAvatarResponseInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let blockLegalCwc =
+        UploadProjectAvatarResponseInternalRoutesItemVariant1MitigateAction(rawValue: "block_legal_cwc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -38,19 +43,26 @@ public struct UploadProjectAvatarResponseInternalRoutesItemVariant1MitigateActio
     }
 }
 
-public struct UploadProjectAvatarResponseTrustedIpsVariant0DeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseTrustedIpsVariant0DeploymentType: RawRepresentable, Hashable, Codable,
+    Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let all = UploadProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "all")
-    public static let allExceptCustomDomains = UploadProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "all_except_custom_domains")
+    public static let allExceptCustomDomains =
+        UploadProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "all_except_custom_domains")
     public static let preview = UploadProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews = UploadProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let prodDeploymentUrlsAndAllPreviews =
+        UploadProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
     public static let production = UploadProjectAvatarResponseTrustedIpsVariant0DeploymentType(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -93,19 +105,26 @@ public enum UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX229c7f
     }
 }
 
-public struct UploadProjectAvatarResponseTrustedIpsVariant1DeploymentType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseTrustedIpsVariant1DeploymentType: RawRepresentable, Hashable, Codable,
+    Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let all = UploadProjectAvatarResponseTrustedIpsVariant1DeploymentType(rawValue: "all")
-    public static let allExceptCustomDomains = UploadProjectAvatarResponseTrustedIpsVariant1DeploymentType(rawValue: "all_except_custom_domains")
+    public static let allExceptCustomDomains =
+        UploadProjectAvatarResponseTrustedIpsVariant1DeploymentType(rawValue: "all_except_custom_domains")
     public static let preview = UploadProjectAvatarResponseTrustedIpsVariant1DeploymentType(rawValue: "preview")
-    public static let prodDeploymentUrlsAndAllPreviews = UploadProjectAvatarResponseTrustedIpsVariant1DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
+    public static let prodDeploymentUrlsAndAllPreviews =
+        UploadProjectAvatarResponseTrustedIpsVariant1DeploymentType(rawValue: "prod_deployment_urls_and_all_previews")
     public static let production = UploadProjectAvatarResponseTrustedIpsVariant1DeploymentType(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -182,16 +201,22 @@ public enum UploadProjectAvatarResponseCreatorVariant0Type: String, CaseIterable
     }
 }
 
-public struct UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX7012ed9a31: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX7012ed9a31: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let bitbucket = UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX7012ed9a31(rawValue: "bitbucket")
-    public static let github = UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX7012ed9a31(rawValue: "github")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let bitbucket =
+        UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX7012ed9a31(rawValue: "bitbucket")
+    public static let github =
+        UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourX7012ed9a31(rawValue: "github")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -370,16 +395,21 @@ public enum UploadProjectAvatarResponseCreatorVariant3Type: String, CaseIterable
     }
 }
 
-public struct UploadProjectAvatarResponseTrustedIpsVariant0ProtectionMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseTrustedIpsVariant0ProtectionMode: RawRepresentable, Hashable, Codable,
+    Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let additional = UploadProjectAvatarResponseTrustedIpsVariant0ProtectionMode(rawValue: "additional")
     public static let exclusive = UploadProjectAvatarResponseTrustedIpsVariant0ProtectionMode(rawValue: "exclusive")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -439,16 +469,22 @@ public enum UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIXb14ac7
     }
 }
 
-public struct UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX9c77ce1874: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX9c77ce1874: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let preview = UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX9c77ce1874(rawValue: "preview")
-    public static let production = UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX9c77ce1874(rawValue: "production")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let preview =
+        UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX9c77ce1874(rawValue: "preview")
+    public static let production =
+        UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX9c77ce1874(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -457,15 +493,20 @@ public struct UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIX9c77
     }
 }
 
-public struct UploadProjectAvatarResponseInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UploadProjectAvatarResponseInternalRoutesItemVariant1HasItemVariant0Key: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let xVercelIpCountry = UploadProjectAvatarResponseInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let xVercelIpCountry =
+        UploadProjectAvatarResponseInternalRoutesItemVariant1HasItemVariant0Key(rawValue: "x-vercel-ip-country")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

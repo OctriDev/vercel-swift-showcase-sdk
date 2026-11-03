@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DeploymentsMethods {
-    public struct GetDeploymentEventsOptions: Codable {
+public extension DeploymentsMethods {
+    struct GetDeploymentEventsOptions: Codable {
         public var idOrUrl: String
         public var direction: GetDeploymentEventsParameter?
         public var follow: Int?
@@ -26,9 +26,12 @@ extension DeploymentsMethods {
         }
     }
 
-    /// Retrieves build logs and events for a deployment, either as JSON or as a live stream. Use `idOrUrl` to identify the deployment and `name` to select a build; use `since`, `until`, and `statusCode` to filter events. Set `follow` to `1` to receive live events as they happen.
+    /// Retrieves build logs and events for a deployment, either as JSON or as a live stream. Use `idOrUrl` to identify
+    /// the deployment and `name` to select a build; use `since`, `until`, and `statusCode` to filter events. Set
+    /// `follow` to `1` to receive live events as they happen.
     ///
-    /// Get the build logs of a deployment by deployment ID and build ID. It can work as an infinite stream of logs or as a JSON endpoint depending on the input parameters.
+    /// Get the build logs of a deployment by deployment ID and build ID. It can work as an infinite stream of logs or
+    /// as a JSON endpoint depending on the input parameters.
     ///
     /// - Parameters:
     /// - idOrUrl: The unique identifier or hostname of the deployment.
@@ -43,19 +46,31 @@ extension DeploymentsMethods {
     /// - statusCode: HTTP status code range to filter events by.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getDeploymentEvents(config: ClientConfig, options: GetDeploymentEventsOptions, requestOptions: RequestOptions? = nil) async throws -> [GetDeploymentEventsResponseItem?] {
-        return try (await sdkRequest("GET", ["/v3/deployments/", sdkEncodePathSegment(sdkWireString(options.idOrUrl)), "/events"].joined(), config: config, query: [
-            SdkQueryParameter("direction", value: options.direction),
-            SdkQueryParameter("follow", value: options.follow),
-            SdkQueryParameter("limit", value: options.limit),
-            SdkQueryParameter("name", value: options.name),
-            SdkQueryParameter("since", value: options.since),
-            SdkQueryParameter("until", value: options.until),
-            SdkQueryParameter("statusCode", value: options.statusCode),
-            SdkQueryParameter("delimiter", value: options.delimiter),
-            SdkQueryParameter("builds", value: options.builds),
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], decoder: .json, operationId: "getDeploymentEvents", options: requestOptions)).data
+    static func getDeploymentEvents(
+        config: ClientConfig,
+        options: GetDeploymentEventsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [GetDeploymentEventsResponseItem?] {
+        try await (sdkRequest(
+            "GET",
+            ["/v3/deployments/", sdkEncodePathSegment(sdkWireString(options.idOrUrl)), "/events"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("direction", value: options.direction),
+                SdkQueryParameter("follow", value: options.follow),
+                SdkQueryParameter("limit", value: options.limit),
+                SdkQueryParameter("name", value: options.name),
+                SdkQueryParameter("since", value: options.since),
+                SdkQueryParameter("until", value: options.until),
+                SdkQueryParameter("statusCode", value: options.statusCode),
+                SdkQueryParameter("delimiter", value: options.delimiter),
+                SdkQueryParameter("builds", value: options.builds),
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            decoder: .json,
+            operationId: "getDeploymentEvents",
+            options: requestOptions
+        )).data
     }
 }

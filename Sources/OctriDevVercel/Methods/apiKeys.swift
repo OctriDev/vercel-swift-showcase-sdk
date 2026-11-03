@@ -7,7 +7,9 @@ import Foundation
     import FoundationNetworking
 #endif
 public enum ApiKeysMethods {
-    /// Creates an API key with a purpose that restricts how the key can be used. Set `purpose` and optionally scope the key to a project, assign a name or expiration, or configure AI Gateway quota settings. Save the returned `apiKeyString` securely because it is provided only in this response and cannot be retrieved again.
+    /// Creates an API key with a purpose that restricts how the key can be used. Set `purpose` and optionally scope the
+    /// key to a project, assign a name or expiration, or configure AI Gateway quota settings. Save the returned
+    /// `apiKeyString` securely because it is provided only in this response and cannot be retrieved again.
     ///
     /// - Parameters:
     /// - purpose: The API key's purpose, which restricts how it can be used.
@@ -19,9 +21,33 @@ public enum ApiKeysMethods {
     /// - metadata: Optional generic metadata for the API key. The accepted shape
     ///   depends on the key's `purpose` and is validated on creation; for
     ///   `ai-gateway` keys this accepts `environment`.
-    public static func createApiKeys(config: ClientConfig, purpose: String, projectId: String? = nil, name: String? = nil, expiresAt: Double? = nil, aiGatewayQuota: CreateApiKeysRequestBodyAiGatewayQuota? = nil, metadata: [String: JSONValue]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateApiKeysResponse {
-        let requestBody = CreateApiKeysRequestBody(purpose: purpose, projectId: projectId, name: name, expiresAt: expiresAt, aiGatewayQuota: aiGatewayQuota, metadata: metadata)
+    public static func createApiKeys(
+        config: ClientConfig,
+        purpose: String,
+        projectId: String? = nil,
+        name: String? = nil,
+        expiresAt: Double? = nil,
+        aiGatewayQuota: CreateApiKeysRequestBodyAiGatewayQuota? = nil,
+        metadata: [String: JSONValue]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateApiKeysResponse {
+        let requestBody = CreateApiKeysRequestBody(
+            purpose: purpose,
+            projectId: projectId,
+            name: name,
+            expiresAt: expiresAt,
+            aiGatewayQuota: aiGatewayQuota,
+            metadata: metadata
+        )
 
-        return try (await sdkRequest("POST", "/api-keys", config: config, body: requestBody, decoder: .json, operationId: "createApiKeys", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            "/api-keys",
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "createApiKeys",
+            options: requestOptions
+        )).data
     }
 }

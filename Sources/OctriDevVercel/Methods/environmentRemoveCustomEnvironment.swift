@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension EnvironmentMethods {
-    /// Deletes a custom environment from a project. You can set `deleteUnassignedEnvironmentVariables` in the request body to also delete environment variables that are not assigned to any environments.
+public extension EnvironmentMethods {
+    /// Deletes a custom environment from a project. You can set `deleteUnassignedEnvironmentVariables` in the request
+    /// body to also delete environment variables that are not assigned to any environments.
     ///
     /// Remove a custom environment for the project. Must not be named 'Production' or 'Preview'.
     ///
@@ -19,12 +20,37 @@ extension EnvironmentMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     /// - deleteUnassignedEnvironmentVariables: Delete Environment Variables that
     ///   are not assigned to any environments.
-    public static func removeCustomEnvironment(config: ClientConfig, idOrName: String, environmentSlugOrId: String, teamId: String? = nil, slug: String? = nil, deleteUnassignedEnvironmentVariables: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> RemoveCustomEnvironmentResponse {
-        let requestBody = RemoveCustomEnvironmentRequestBody(deleteUnassignedEnvironmentVariables: deleteUnassignedEnvironmentVariables)
+    static func removeCustomEnvironment(
+        config: ClientConfig,
+        idOrName: String,
+        environmentSlugOrId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        deleteUnassignedEnvironmentVariables: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RemoveCustomEnvironmentResponse {
+        let requestBody =
+            RemoveCustomEnvironmentRequestBody(
+                deleteUnassignedEnvironmentVariables: deleteUnassignedEnvironmentVariables
+            )
 
-        return try (await sdkRequest("DELETE", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/custom-environments/", sdkEncodePathSegment(sdkWireString(environmentSlugOrId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "removeCustomEnvironment", options: requestOptions)).data
+        return try await (sdkRequest(
+            "DELETE",
+            [
+                "/v9/projects/",
+                sdkEncodePathSegment(sdkWireString(idOrName)),
+                "/custom-environments/",
+                sdkEncodePathSegment(sdkWireString(environmentSlugOrId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "removeCustomEnvironment",
+            options: requestOptions
+        )).data
     }
 }

@@ -6,19 +6,38 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsMethods {
-    /// Claims ownership of a domain for the authenticated user's team by verifying a TXT record. First add the record returned by GET /domains/:domain/verification to `_vercel.{domain}` in your DNS configuration. Once verified, ownership transfers to your team even if another user or team currently owns the domain.
+public extension DomainsMethods {
+    /// Claims ownership of a domain for the authenticated user's team by verifying a TXT record. First add the record
+    /// returned by GET /domains/:domain/verification to `_vercel.{domain}` in your DNS configuration. Once verified,
+    /// ownership transfers to your team even if another user or team currently owns the domain.
     ///
-    /// Claim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to complete the ownership transfer. If the TXT record is verified, the domain ownership will be transferred to the caller's team, even if the domain is currently owned by another user or team.
+    /// Claim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a
+    /// TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to
+    /// complete the ownership transfer. If the TXT record is verified, the domain ownership will be transferred to the
+    /// caller's team, even if the domain is currently owned by another user or team.
     ///
     /// - Parameters:
     /// - domain: The domain name to claim ownership of
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func claimDomainOwnership(config: ClientConfig, domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ClaimDomainOwnershipResponse {
-        return try (await sdkRequest("POST", ["/v9/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/claim"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "claimDomainOwnership", options: requestOptions)).data
+    static func claimDomainOwnership(
+        config: ClientConfig,
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ClaimDomainOwnershipResponse {
+        try await (sdkRequest(
+            "POST",
+            ["/v9/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/claim"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "claimDomainOwnership",
+            options: requestOptions
+        )).data
     }
 }

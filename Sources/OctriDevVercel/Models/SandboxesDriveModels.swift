@@ -3,48 +3,89 @@
 
 import Foundation
 
-// Sandboxes domain models
-extension Drive {
-    public init(from decoder: Decoder) throws {
+/// Sandboxes domain models
+public extension Drive {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
         }
         guard container.contains(.maxSizeBytes) else {
-            throw SdkValidationError(field: "maxSizeBytes", code: "required", message: "Validation failed for 'maxSizeBytes': value is required")
+            throw SdkValidationError(
+                field: "maxSizeBytes",
+                code: "required",
+                message: "Validation failed for 'maxSizeBytes': value is required"
+            )
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
         }
         guard container.contains(.region) else {
-            throw SdkValidationError(field: "region", code: "required", message: "Validation failed for 'region': value is required")
+            throw SdkValidationError(
+                field: "region",
+                code: "required",
+                message: "Validation failed for 'region': value is required"
+            )
         }
         guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
         }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.maxSizeBytes = try container.sdkDecodeRequired(.maxSizeBytes)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.region = try container.sdkDecodeRequired(.region)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.currentSandboxName = try container.sdkDecodeIfPresent(.currentSandboxName)
-        self.currentSessionId = try container.sdkDecodeIfPresent(.currentSessionId)
-        self.parentDriveId = try container.sdkDecodeIfPresent(.parentDriveId)
-        self.rootDriveId = try container.sdkDecodeIfPresent(.rootDriveId)
-        self.v0 = try container.sdkDecodeIfPresent(.v0)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        id = try container.sdkDecodeRequired(.id)
+        maxSizeBytes = try container.sdkDecodeRequired(.maxSizeBytes)
+        name = try container.sdkDecodeRequired(.name)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        region = try container.sdkDecodeRequired(.region)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        currentSandboxName = try container.sdkDecodeIfPresent(.currentSandboxName)
+        currentSessionId = try container.sdkDecodeIfPresent(.currentSessionId)
+        parentDriveId = try container.sdkDecodeIfPresent(.parentDriveId)
+        rootDriveId = try container.sdkDecodeIfPresent(.rootDriveId)
+        v0 = try container.sdkDecodeIfPresent(.v0)
     }
 }
 
-extension Drive {
-    public init(createdAt: Double, id: String, maxSizeBytes: Double, name: String, projectId: String, region: String, updatedAt: Double, currentSandboxName: String? = nil, currentSessionId: String? = nil, parentDriveId: String? = nil, rootDriveId: String? = nil, v0: Bool? = nil) {
+public extension Drive {
+    init(
+        createdAt: Double,
+        id: String,
+        maxSizeBytes: Double,
+        name: String,
+        projectId: String,
+        region: String,
+        updatedAt: Double,
+        currentSandboxName: String? = nil,
+        currentSessionId: String? = nil,
+        parentDriveId: String? = nil,
+        rootDriveId: String? = nil,
+        v0: Bool? = nil
+    ) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.maxSizeBytes, self.name) = (maxSizeBytes, name)
         (self.projectId, self.region) = (projectId, region)
@@ -67,25 +108,35 @@ public struct SessionNetworkTransfer: Codable {
         case ingress
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SessionNetworkTransfer {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.egress) else {
-            throw SdkValidationError(field: "egress", code: "required", message: "Validation failed for 'egress': value is required")
-        }
-        guard container.contains(.ingress) else {
-            throw SdkValidationError(field: "ingress", code: "required", message: "Validation failed for 'ingress': value is required")
-        }
-        self.egress = try container.sdkDecodeRequired(.egress)
-        self.ingress = try container.sdkDecodeRequired(.ingress)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SessionNetworkTransfer {
-    public init(egress: Double, ingress: Double) {
+public extension SessionNetworkTransfer {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.egress) else {
+            throw SdkValidationError(
+                field: "egress",
+                code: "required",
+                message: "Validation failed for 'egress': value is required"
+            )
+        }
+        guard container.contains(.ingress) else {
+            throw SdkValidationError(
+                field: "ingress",
+                code: "required",
+                message: "Validation failed for 'ingress': value is required"
+            )
+        }
+        egress = try container.sdkDecodeRequired(.egress)
+        ingress = try container.sdkDecodeRequired(.ingress)
+    }
+}
+
+public extension SessionNetworkTransfer {
+    init(egress: Double, ingress: Double) {
         (self.egress, self.ingress) = (egress, ingress)
     }
 }
@@ -108,26 +159,36 @@ public struct NamedSandboxKeepLastSnapshots: Codable {
         case expiration
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension NamedSandboxKeepLastSnapshots {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.count) else {
-            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
-        }
-        guard container.contains(.deleteEvicted) else {
-            throw SdkValidationError(field: "deleteEvicted", code: "required", message: "Validation failed for 'deleteEvicted': value is required")
-        }
-        self.count = try container.sdkDecodeRequired(.count)
-        self.deleteEvicted = try container.sdkDecodeRequired(.deleteEvicted)
-        self.expiration = try container.sdkDecodeIfPresent(.expiration)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension NamedSandboxKeepLastSnapshots {
-    public init(count: Double, deleteEvicted: Bool, expiration: Double? = nil) {
+public extension NamedSandboxKeepLastSnapshots {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.count) else {
+            throw SdkValidationError(
+                field: "count",
+                code: "required",
+                message: "Validation failed for 'count': value is required"
+            )
+        }
+        guard container.contains(.deleteEvicted) else {
+            throw SdkValidationError(
+                field: "deleteEvicted",
+                code: "required",
+                message: "Validation failed for 'deleteEvicted': value is required"
+            )
+        }
+        count = try container.sdkDecodeRequired(.count)
+        deleteEvicted = try container.sdkDecodeRequired(.deleteEvicted)
+        expiration = try container.sdkDecodeIfPresent(.expiration)
+    }
+}
+
+public extension NamedSandboxKeepLastSnapshots {
+    init(count: Double, deleteEvicted: Bool, expiration: Double? = nil) {
         (self.count, self.deleteEvicted) = (count, deleteEvicted)
         self.expiration = expiration
     }
@@ -154,25 +215,37 @@ public struct NamedSandboxNetworkPolicy: Codable {
         case s3Key
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension NamedSandboxNetworkPolicy {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.mode) else {
-            throw SdkValidationError(field: "mode", code: "required", message: "Validation failed for 'mode': value is required")
-        }
-        self.mode = try container.sdkDecodeRequired(.mode)
-        self.allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
-        self.allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
-        self.deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
-        self.s3Key = try container.sdkDecodeIfPresent(.s3Key)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension NamedSandboxNetworkPolicy {
-    public init(mode: NamedSandboxNetworkPolicyMode, allowedCidrs: [String]? = nil, allowedDomains: [String]? = nil, deniedCidrs: [String]? = nil, s3Key: String? = nil) {
+public extension NamedSandboxNetworkPolicy {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.mode) else {
+            throw SdkValidationError(
+                field: "mode",
+                code: "required",
+                message: "Validation failed for 'mode': value is required"
+            )
+        }
+        mode = try container.sdkDecodeRequired(.mode)
+        allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
+        allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
+        deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
+        s3Key = try container.sdkDecodeIfPresent(.s3Key)
+    }
+}
+
+public extension NamedSandboxNetworkPolicy {
+    init(
+        mode: NamedSandboxNetworkPolicyMode,
+        allowedCidrs: [String]? = nil,
+        allowedDomains: [String]? = nil,
+        deniedCidrs: [String]? = nil,
+        s3Key: String? = nil
+    ) {
         (self.mode, self.allowedCidrs) = (mode, allowedCidrs)
         (self.allowedDomains, self.deniedCidrs) = (allowedDomains, deniedCidrs)
         self.s3Key = s3Key
@@ -216,46 +289,85 @@ public struct SessionCommand: Codable {
         case durationMs
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SessionCommand {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.args) else {
-            throw SdkValidationError(field: "args", code: "required", message: "Validation failed for 'args': value is required")
-        }
-        guard container.contains(.cwd) else {
-            throw SdkValidationError(field: "cwd", code: "required", message: "Validation failed for 'cwd': value is required")
-        }
-        guard container.contains(.exitCode) else {
-            throw SdkValidationError(field: "exitCode", code: "required", message: "Validation failed for 'exitCode': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.sessionId) else {
-            throw SdkValidationError(field: "sessionId", code: "required", message: "Validation failed for 'sessionId': value is required")
-        }
-        guard container.contains(.startedAt) else {
-            throw SdkValidationError(field: "startedAt", code: "required", message: "Validation failed for 'startedAt': value is required")
-        }
-        self.args = try container.sdkDecodeRequired(.args)
-        self.cwd = try container.sdkDecodeRequired(.cwd)
-        self.exitCode = try container.sdkDecodeNullable(.exitCode)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.sessionId = try container.sdkDecodeRequired(.sessionId)
-        self.startedAt = try container.sdkDecodeRequired(.startedAt)
-        self.durationMs = try container.sdkDecodeIfPresent(.durationMs)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SessionCommand {
-    public init(args: [String], cwd: String, exitCode: Double?, id: String, name: String, sessionId: String, startedAt: Double, durationMs: Double? = nil) {
+public extension SessionCommand {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.args) else {
+            throw SdkValidationError(
+                field: "args",
+                code: "required",
+                message: "Validation failed for 'args': value is required"
+            )
+        }
+        guard container.contains(.cwd) else {
+            throw SdkValidationError(
+                field: "cwd",
+                code: "required",
+                message: "Validation failed for 'cwd': value is required"
+            )
+        }
+        guard container.contains(.exitCode) else {
+            throw SdkValidationError(
+                field: "exitCode",
+                code: "required",
+                message: "Validation failed for 'exitCode': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.sessionId) else {
+            throw SdkValidationError(
+                field: "sessionId",
+                code: "required",
+                message: "Validation failed for 'sessionId': value is required"
+            )
+        }
+        guard container.contains(.startedAt) else {
+            throw SdkValidationError(
+                field: "startedAt",
+                code: "required",
+                message: "Validation failed for 'startedAt': value is required"
+            )
+        }
+        args = try container.sdkDecodeRequired(.args)
+        cwd = try container.sdkDecodeRequired(.cwd)
+        exitCode = try container.sdkDecodeNullable(.exitCode)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        sessionId = try container.sdkDecodeRequired(.sessionId)
+        startedAt = try container.sdkDecodeRequired(.startedAt)
+        durationMs = try container.sdkDecodeIfPresent(.durationMs)
+    }
+}
+
+public extension SessionCommand {
+    init(
+        args: [String],
+        cwd: String,
+        exitCode: Double?,
+        id: String,
+        name: String,
+        sessionId: String,
+        startedAt: Double,
+        durationMs: Double? = nil
+    ) {
         (self.args, self.cwd) = (args, cwd)
         (self.exitCode, self.id) = (exitCode, id)
         (self.name, self.sessionId) = (name, sessionId)
@@ -369,42 +481,70 @@ public struct Session: Codable {
         case v0
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension Session {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.cwd = try container.sdkDecodeRequired(.cwd)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.memory = try container.sdkDecodeRequired(.memory)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.region = try container.sdkDecodeRequired(.region)
-        self.requestedAt = try container.sdkDecodeRequired(.requestedAt)
-        self.runtime = try container.sdkDecodeRequired(.runtime)
-        self.sourceSandboxName = try container.sdkDecodeRequired(.sourceSandboxName)
-        self.status = try container.sdkDecodeRequired(.status)
-        self.timeout = try container.sdkDecodeRequired(.timeout)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.vcpus = try container.sdkDecodeRequired(.vcpus)
-        self.abortedAt = try container.sdkDecodeIfPresent(.abortedAt)
-        self.activeCpuDurationMs = try container.sdkDecodeIfPresent(.activeCpuDurationMs)
-        self.architecture = try container.sdkDecodeIfPresent(.architecture)
-        self.duration = try container.sdkDecodeIfPresent(.duration)
-        self.networkPolicy = try container.sdkDecodeIfPresent(.networkPolicy)
-        self.networkTransfer = try container.sdkDecodeIfPresent(.networkTransfer)
-        self.requestedStopAt = try container.sdkDecodeIfPresent(.requestedStopAt)
-        self.snapshottedAt = try container.sdkDecodeIfPresent(.snapshottedAt)
-        self.sourceSnapshotId = try container.sdkDecodeIfPresent(.sourceSnapshotId)
-        self.startedAt = try container.sdkDecodeIfPresent(.startedAt)
-        self.stoppedAt = try container.sdkDecodeIfPresent(.stoppedAt)
-        self.v0 = try container.sdkDecodeIfPresent(.v0)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension Session {
-    public init(createdAt: Double, cwd: String, id: String, memory: Double, projectId: String, region: String, requestedAt: Double, runtime: String, sourceSandboxName: String, status: SessionStatus, timeout: Double, updatedAt: Double, vcpus: Double, abortedAt: Double? = nil, activeCpuDurationMs: Double? = nil, architecture: SessionArchitecture? = nil, duration: Double? = nil, networkPolicy: SandboxNetworkPolicy? = nil, networkTransfer: SessionNetworkTransfer? = nil, requestedStopAt: Double? = nil, snapshottedAt: Double? = nil, sourceSnapshotId: String? = nil, startedAt: Double? = nil, stoppedAt: Double? = nil, v0: Bool? = nil) {
+public extension Session {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        cwd = try container.sdkDecodeRequired(.cwd)
+        id = try container.sdkDecodeRequired(.id)
+        memory = try container.sdkDecodeRequired(.memory)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        region = try container.sdkDecodeRequired(.region)
+        requestedAt = try container.sdkDecodeRequired(.requestedAt)
+        runtime = try container.sdkDecodeRequired(.runtime)
+        sourceSandboxName = try container.sdkDecodeRequired(.sourceSandboxName)
+        status = try container.sdkDecodeRequired(.status)
+        timeout = try container.sdkDecodeRequired(.timeout)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        vcpus = try container.sdkDecodeRequired(.vcpus)
+        abortedAt = try container.sdkDecodeIfPresent(.abortedAt)
+        activeCpuDurationMs = try container.sdkDecodeIfPresent(.activeCpuDurationMs)
+        architecture = try container.sdkDecodeIfPresent(.architecture)
+        duration = try container.sdkDecodeIfPresent(.duration)
+        networkPolicy = try container.sdkDecodeIfPresent(.networkPolicy)
+        networkTransfer = try container.sdkDecodeIfPresent(.networkTransfer)
+        requestedStopAt = try container.sdkDecodeIfPresent(.requestedStopAt)
+        snapshottedAt = try container.sdkDecodeIfPresent(.snapshottedAt)
+        sourceSnapshotId = try container.sdkDecodeIfPresent(.sourceSnapshotId)
+        startedAt = try container.sdkDecodeIfPresent(.startedAt)
+        stoppedAt = try container.sdkDecodeIfPresent(.stoppedAt)
+        v0 = try container.sdkDecodeIfPresent(.v0)
+    }
+}
+
+public extension Session {
+    init(
+        createdAt: Double,
+        cwd: String,
+        id: String,
+        memory: Double,
+        projectId: String,
+        region: String,
+        requestedAt: Double,
+        runtime: String,
+        sourceSandboxName: String,
+        status: SessionStatus,
+        timeout: Double,
+        updatedAt: Double,
+        vcpus: Double,
+        abortedAt: Double? = nil,
+        activeCpuDurationMs: Double? = nil,
+        architecture: SessionArchitecture? = nil,
+        duration: Double? = nil,
+        networkPolicy: SandboxNetworkPolicy? = nil,
+        networkTransfer: SessionNetworkTransfer? = nil,
+        requestedStopAt: Double? = nil,
+        snapshottedAt: Double? = nil,
+        sourceSnapshotId: String? = nil,
+        startedAt: Double? = nil,
+        stoppedAt: Double? = nil,
+        v0: Bool? = nil
+    ) {
         (self.createdAt, self.cwd) = (createdAt, cwd)
         (self.id, self.memory) = (id, memory)
         (self.projectId, self.region) = (projectId, region)
@@ -439,30 +579,44 @@ public struct SandboxPublicRoute: Codable {
         case system
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SandboxPublicRoute {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.port) else {
-            throw SdkValidationError(field: "port", code: "required", message: "Validation failed for 'port': value is required")
-        }
-        guard container.contains(.subdomain) else {
-            throw SdkValidationError(field: "subdomain", code: "required", message: "Validation failed for 'subdomain': value is required")
-        }
-        guard container.contains(.url) else {
-            throw SdkValidationError(field: "url", code: "required", message: "Validation failed for 'url': value is required")
-        }
-        self.port = try container.sdkDecodeRequired(.port)
-        self.subdomain = try container.sdkDecodeRequired(.subdomain)
-        self.url = try container.sdkDecodeRequired(.url)
-        self.system = try container.sdkDecodeIfPresent(.system)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SandboxPublicRoute {
-    public init(port: Double, subdomain: String, url: String, system: Bool? = nil) {
+public extension SandboxPublicRoute {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.port) else {
+            throw SdkValidationError(
+                field: "port",
+                code: "required",
+                message: "Validation failed for 'port': value is required"
+            )
+        }
+        guard container.contains(.subdomain) else {
+            throw SdkValidationError(
+                field: "subdomain",
+                code: "required",
+                message: "Validation failed for 'subdomain': value is required"
+            )
+        }
+        guard container.contains(.url) else {
+            throw SdkValidationError(
+                field: "url",
+                code: "required",
+                message: "Validation failed for 'url': value is required"
+            )
+        }
+        port = try container.sdkDecodeRequired(.port)
+        subdomain = try container.sdkDecodeRequired(.subdomain)
+        url = try container.sdkDecodeRequired(.url)
+        system = try container.sdkDecodeIfPresent(.system)
+    }
+}
+
+public extension SandboxPublicRoute {
+    init(port: Double, subdomain: String, url: String, system: Bool? = nil) {
         (self.port, self.subdomain) = (port, subdomain)
         (self.url, self.system) = (url, system)
     }

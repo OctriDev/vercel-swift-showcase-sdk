@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Connect domain models
+/// Connect domain models
 extension ConnectProjectConnectionEnabledEnvironmentsItem {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
@@ -24,19 +24,19 @@ public struct ConnectConnectorUpdateDataVariant8: Codable {
     }
 
     init() {
-        self.phoneNumbers = nil
+        phoneNumbers = nil
     }
 }
 
-extension ConnectConnectorUpdateDataVariant8 {
-    public init(from decoder: Decoder) throws {
+public extension ConnectConnectorUpdateDataVariant8 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.phoneNumbers = try container.sdkDecodeIfPresent(.phoneNumbers)
+        phoneNumbers = try container.sdkDecodeIfPresent(.phoneNumbers)
     }
 }
 
-extension ConnectConnectorUpdateDataVariant8 {
-    public init(phoneNumbers: [String]? = nil) {
+public extension ConnectConnectorUpdateDataVariant8 {
+    init(phoneNumbers: [String]? = nil) {
         self.init()
         self.phoneNumbers = phoneNumbers
     }
@@ -48,22 +48,32 @@ public indirect enum ConnectConnectorUpdateDataVariant1ToUpdateItemExpiresAt {
 }
 
 extension ConnectConnectorUpdateDataVariant1ToUpdateItemExpiresAt: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for ConnectConnectorUpdateDataVariant1ToUpdateItemExpiresAt")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for ConnectConnectorUpdateDataVariant1ToUpdateItemExpiresAt"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension ConnectConnectorUpdateDataVariant1ToUpdateItemExpiresAt {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(Int.self) { return .intValue(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(Int.self) {
+            return .intValue(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -135,40 +145,69 @@ public struct ConnectConnectorUpdateDataVariant3Application: Codable {
         case updatedAt
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectConnectorUpdateDataVariant3Application {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.clientId) else {
-            throw SdkValidationError(field: "clientId", code: "required", message: "Validation failed for 'clientId': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.clientId = try container.sdkDecodeRequired(.clientId)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.developer = try container.sdkDecodeIfPresent(.developer)
-        self.developerUrl = try container.sdkDecodeIfPresent(.developerUrl)
-        self.imageUrl = try container.sdkDecodeIfPresent(.imageUrl)
-        self.redirectUris = try container.sdkDecodeIfPresent(.redirectUris)
-        self.distribution = try container.sdkDecodeIfPresent(.distribution)
-        self.webhookResourceTypes = try container.sdkDecodeIfPresent(.webhookResourceTypes)
-        self.webhookUrl = try container.sdkDecodeIfPresent(.webhookUrl)
-        self.webhookEnabled = try container.sdkDecodeIfPresent(.webhookEnabled)
-        self.createdAt = try container.sdkDecodeIfPresent(.createdAt)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectConnectorUpdateDataVariant3Application {
-    public init(id: String, clientId: String, name: String, description: String? = nil, developer: String? = nil, developerUrl: String? = nil, imageUrl: String? = nil, redirectUris: [String]? = nil, distribution: String? = nil, webhookResourceTypes: [String]? = nil, webhookUrl: String? = nil, webhookEnabled: Bool? = nil, createdAt: String? = nil, updatedAt: String? = nil) {
+public extension ConnectConnectorUpdateDataVariant3Application {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.clientId) else {
+            throw SdkValidationError(
+                field: "clientId",
+                code: "required",
+                message: "Validation failed for 'clientId': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+        clientId = try container.sdkDecodeRequired(.clientId)
+        name = try container.sdkDecodeRequired(.name)
+        description = try container.sdkDecodeIfPresent(.description)
+        developer = try container.sdkDecodeIfPresent(.developer)
+        developerUrl = try container.sdkDecodeIfPresent(.developerUrl)
+        imageUrl = try container.sdkDecodeIfPresent(.imageUrl)
+        redirectUris = try container.sdkDecodeIfPresent(.redirectUris)
+        distribution = try container.sdkDecodeIfPresent(.distribution)
+        webhookResourceTypes = try container.sdkDecodeIfPresent(.webhookResourceTypes)
+        webhookUrl = try container.sdkDecodeIfPresent(.webhookUrl)
+        webhookEnabled = try container.sdkDecodeIfPresent(.webhookEnabled)
+        createdAt = try container.sdkDecodeIfPresent(.createdAt)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+    }
+}
+
+public extension ConnectConnectorUpdateDataVariant3Application {
+    init(
+        id: String,
+        clientId: String,
+        name: String,
+        description: String? = nil,
+        developer: String? = nil,
+        developerUrl: String? = nil,
+        imageUrl: String? = nil,
+        redirectUris: [String]? = nil,
+        distribution: String? = nil,
+        webhookResourceTypes: [String]? = nil,
+        webhookUrl: String? = nil,
+        webhookEnabled: Bool? = nil,
+        createdAt: String? = nil,
+        updatedAt: String? = nil
+    ) {
         (self.id, self.clientId) = (id, clientId)
         (self.name, self.description) = (name, description)
         (self.developer, self.developerUrl) = (developer, developerUrl)
@@ -196,33 +235,51 @@ public struct ConnectConnectorCreatedByVariant1: Codable {
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ConnectConnectorCreatedByVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.environment) else {
-            throw SdkValidationError(field: "environment", code: "required", message: "Validation failed for 'environment': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.environment = try container.sdkDecodeRequired(.environment)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, ConnectConnectorCreatedByVariant1Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ConnectConnectorCreatedByVariant1 {
-    public init(environment: ConnectConnectorCreatedByVariant1Environment, id: String, type: ConnectConnectorCreatedByVariant1Type) throws {
+public extension ConnectConnectorCreatedByVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.environment) else {
+            throw SdkValidationError(
+                field: "environment",
+                code: "required",
+                message: "Validation failed for 'environment': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        environment = try container.sdkDecodeRequired(.environment)
+        id = try container.sdkDecodeRequired(.id)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum("type", type, ConnectConnectorCreatedByVariant1Type.allCases.map(\.rawValue))
+    }
+}
+
+public extension ConnectConnectorCreatedByVariant1 {
+    init(
+        environment: ConnectConnectorCreatedByVariant1Environment,
+        id: String,
+        type: ConnectConnectorCreatedByVariant1Type
+    ) throws {
         (self.environment, self.id) = (environment, id)
         self.type = type
-            try sdkValidateRawEnum("type", self.type, ConnectConnectorCreatedByVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum("type", self.type, ConnectConnectorCreatedByVariant1Type.allCases.map(\.rawValue))
     }
 }
 
@@ -231,13 +288,16 @@ extension ConnectConnectorCreatedByVariant1 {
 public struct ConnectConnectorCreationMode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let managed = ConnectConnectorCreationMode(rawValue: "managed")
     public static let manual = ConnectConnectorCreationMode(rawValue: "manual")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -250,12 +310,15 @@ public struct ConnectConnectorCreationMode: RawRepresentable, Hashable, Codable,
 public struct ConnectConnectorSupportsIconVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let maybe = ConnectConnectorSupportsIconVariant1(rawValue: "maybe")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -265,16 +328,20 @@ public struct ConnectConnectorSupportsIconVariant1: RawRepresentable, Hashable, 
 }
 
 /// Intended key use: signing or encryption.
-public struct ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItemUse: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let sig = ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItemUse(rawValue: "sig")
     public static let enc = ConnectConnectorCreateDataVariant0ServerConfigJwksKeysItemUse(rawValue: "enc")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -302,10 +369,14 @@ public enum ConnectConnectorUpdatedByVariant0Type: String, CaseIterable, Codable
 }
 
 /// GitHub App owner type.
-public struct ConnectConnectorUpdateDataVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdateDataVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let user = ConnectConnectorUpdateDataVariant2OwnerType(rawValue: "user")
     public static let organization = ConnectConnectorUpdateDataVariant2OwnerType(rawValue: "organization")
     public static let user2 = ConnectConnectorUpdateDataVariant2OwnerType(rawValue: "User")
@@ -313,7 +384,7 @@ public struct ConnectConnectorUpdateDataVariant2OwnerType: RawRepresentable, Has
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -325,14 +396,17 @@ public struct ConnectConnectorUpdateDataVariant2OwnerType: RawRepresentable, Has
 public struct ConnectEnvironmentVariant0: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = ConnectEnvironmentVariant0(rawValue: "development")
     public static let preview = ConnectEnvironmentVariant0(rawValue: "preview")
     public static let production = ConnectEnvironmentVariant0(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -342,16 +416,20 @@ public struct ConnectEnvironmentVariant0: RawRepresentable, Hashable, Codable, S
 }
 
 /// Where Slack exposes the shortcut.
-public struct ConnectConnectorUpdateDataVariant5ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdateDataVariant5ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let global = ConnectConnectorUpdateDataVariant5ShortcutsItemType(rawValue: "global")
     public static let message = ConnectConnectorUpdateDataVariant5ShortcutsItemType(rawValue: "message")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -361,10 +439,14 @@ public struct ConnectConnectorUpdateDataVariant5ShortcutsItemType: RawRepresenta
 }
 
 /// GitHub App owner type.
-public struct ConnectConnectorCreateDataVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreateDataVariant2OwnerType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let user = ConnectConnectorCreateDataVariant2OwnerType(rawValue: "user")
     public static let organization = ConnectConnectorCreateDataVariant2OwnerType(rawValue: "organization")
     public static let user2 = ConnectConnectorCreateDataVariant2OwnerType(rawValue: "User")
@@ -372,7 +454,7 @@ public struct ConnectConnectorCreateDataVariant2OwnerType: RawRepresentable, Has
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -383,16 +465,20 @@ public struct ConnectConnectorCreateDataVariant2OwnerType: RawRepresentable, Has
 
 /// Which subject the connector issues tokens for. Defaults to \"app\" (connector-level keys). \"user\"
 /// connectors store no connector-level values; each user supplies their own key during authorization.
-public struct ConnectConnectorCreateDataVariant1SubjectType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreateDataVariant1SubjectType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let app = ConnectConnectorCreateDataVariant1SubjectType(rawValue: "app")
     public static let user = ConnectConnectorCreateDataVariant1SubjectType(rawValue: "user")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -402,17 +488,21 @@ public struct ConnectConnectorCreateDataVariant1SubjectType: RawRepresentable, H
 }
 
 /// Required enumerated value serialized in the `enabledEnvironments[]` wire field.
-public struct ConnectProjectConnectionEnabledEnvironmentsItemVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectProjectConnectionEnabledEnvironmentsItemVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = ConnectProjectConnectionEnabledEnvironmentsItemVariant1(rawValue: "development")
     public static let preview = ConnectProjectConnectionEnabledEnvironmentsItemVariant1(rawValue: "preview")
     public static let production = ConnectProjectConnectionEnabledEnvironmentsItemVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -440,16 +530,20 @@ public enum ConnectConnectorCreatedByVariant1Type: String, CaseIterable, Codable
 }
 
 /// Where Slack exposes the shortcut.
-public struct ConnectConnectorCreateDataVariant7ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreateDataVariant7ShortcutsItemType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let global = ConnectConnectorCreateDataVariant7ShortcutsItemType(rawValue: "global")
     public static let message = ConnectConnectorCreateDataVariant7ShortcutsItemType(rawValue: "message")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -477,17 +571,21 @@ public enum ConnectConnectorUpdatedByVariant1Type: String, CaseIterable, Codable
 }
 
 /// Required enumerated value serialized in the `environment` wire field.
-public struct ConnectConnectorUpdatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorUpdatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = ConnectConnectorUpdatedByVariant1EnvironmentVariant1(rawValue: "development")
     public static let preview = ConnectConnectorUpdatedByVariant1EnvironmentVariant1(rawValue: "preview")
     public static let production = ConnectConnectorUpdatedByVariant1EnvironmentVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -497,17 +595,21 @@ public struct ConnectConnectorUpdatedByVariant1EnvironmentVariant1: RawRepresent
 }
 
 /// Required enumerated value serialized in the `environment` wire field.
-public struct ConnectConnectorCreatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ConnectConnectorCreatedByVariant1EnvironmentVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = ConnectConnectorCreatedByVariant1EnvironmentVariant1(rawValue: "development")
     public static let preview = ConnectConnectorCreatedByVariant1EnvironmentVariant1(rawValue: "preview")
     public static let production = ConnectConnectorCreatedByVariant1EnvironmentVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

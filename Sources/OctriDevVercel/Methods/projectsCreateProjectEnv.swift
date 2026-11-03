@@ -6,25 +6,47 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    /// Creates one or more environment variables for a project. Provide `key`, `value`, and `type`, and specify either `target` or `customEnvironmentIds`; use `upsert` to update an existing variable instead of creating a duplicate.
+public extension ProjectsMethods {
+    /// Creates one or more environment variables for a project. Provide `key`, `value`, and `type`, and specify either
+    /// `target` or `customEnvironmentIds`; use `upsert` to update an existing variable instead of creating a duplicate.
     ///
-    /// Create one or more environment variables for a project by passing its `key`, `value`, `type` and `target` and by specifying the project by either passing the project `id` or `name` in the URL. If you include `upsert=true` as a query parameter, a new environment variable will not be created if it already exists but, the existing variable's value will be updated.
+    /// Create one or more environment variables for a project by passing its `key`, `value`, `type` and `target` and by
+    /// specifying the project by either passing the project `id` or `name` in the URL. If you include `upsert=true` as
+    /// a query parameter, a new environment variable will not be created if it already exists but, the existing
+    /// variable's value will be updated.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name
     /// - upsert: Allow override of environment variable if it already exists
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func createProjectEnv(config: ClientConfig, idOrName: String, body: CreateProjectEnvRequestBody, upsert: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateProjectEnvResponse {
-        return try (await sdkRequest("POST", ["/v10/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/env"].joined(), config: config, query: [
-            SdkQueryParameter("upsert", value: upsert),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], rawBody: (try sdkEncodeBody(body, contentType: "application/json")), decoder: .json, operationId: "createProjectEnv", options: requestOptions)).data
+    static func createProjectEnv(
+        config: ClientConfig,
+        idOrName: String,
+        body: CreateProjectEnvRequestBody,
+        upsert: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateProjectEnvResponse {
+        try await (sdkRequest(
+            "POST",
+            ["/v10/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/env"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("upsert", value: upsert),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            rawBody: sdkEncodeBody(body, contentType: "application/json"),
+            decoder: .json,
+            operationId: "createProjectEnv",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves an environment variable for a project, including its decrypted value when available. Use the project identifier or name together with the environment variable's unique ID to select the variable.
+    /// Retrieves an environment variable for a project, including its decrypted value when available. Use the project
+    /// identifier or name together with the environment variable's unique ID to select the variable.
     ///
     /// Retrieve the environment variable for a given project.
     ///
@@ -33,10 +55,30 @@ extension ProjectsMethods {
     /// - id: The unique ID for the environment variable to get the decrypted value.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getProjectEnv(config: ClientConfig, idOrName: String, id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetProjectEnvResponse {
-        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/env/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getProjectEnv", options: requestOptions)).data
+    static func getProjectEnv(
+        config: ClientConfig,
+        idOrName: String,
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetProjectEnvResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(idOrName)),
+                "/env/",
+                sdkEncodePathSegment(sdkWireString(id)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getProjectEnv",
+            options: requestOptions
+        )).data
     }
 }

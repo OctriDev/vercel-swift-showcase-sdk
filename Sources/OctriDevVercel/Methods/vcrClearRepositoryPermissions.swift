@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VcrMethods {
-    /// Revokes every team's access to a VCR repository. Use this operation to clear all repository permissions at once; clearing a repository with no shared access has no effect. The operation requires the repository and project identifiers.
+public extension VcrMethods {
+    /// Revokes every team's access to a VCR repository. Use this operation to clear all repository permissions at once;
+    /// clearing a repository with no shared access has no effect. The operation requires the repository and project
+    /// identifiers.
     ///
     /// Revoke every team's access to a VCR repository. Clearing an unshared repository is a no-op.
     ///
@@ -16,13 +18,28 @@ extension VcrMethods {
     ///   take precedence over names. Missing or empty values return HTTP 400.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func clearRepositoryPermissions(config: ClientConfig, idOrName: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
+    static func clearRepositoryPermissions(
+        config: ClientConfig,
+        idOrName: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
         try validateLength("idOrName", idOrName, max: 255)
 
-        return try (await sdkRequest("DELETE", ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/permissions/all"].joined(), config: config, query: [
-            SdkQueryParameter("projectId", value: projectId),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "clearRepositoryPermissions", options: requestOptions)).data
+        return try await (sdkRequest(
+            "DELETE",
+            ["/v1/vcr/repository/", sdkEncodePathSegment(sdkWireString(idOrName)), "/permissions/all"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: projectId),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "clearRepositoryPermissions",
+            options: requestOptions
+        )).data
     }
 }

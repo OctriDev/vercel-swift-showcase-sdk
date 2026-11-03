@@ -6,13 +6,34 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsRegistrarMethods {
-    /// Retrieves the contact information schema for a domain's TLD. Use the schema to identify any TLD-specific contact fields you need to supply when registering a domain. The required fields can differ between TLDs.
+public extension DomainsRegistrarMethods {
+    /// Retrieves the contact information schema for a domain's TLD. Use the schema to identify any TLD-specific contact
+    /// fields you need to supply when registering a domain. The required fields can differ between TLDs.
     ///
-    /// Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
-    public static func getContactInfoSchema(config: ClientConfig, domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try (await sdkRequest("GET", ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/contact-info/schema"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-        ], decoder: .json, operationId: "getContactInfoSchema", options: requestOptions, errors: ["401": Unauthorized.self, "403": NotAuthorizedForScope.self, "429": TooManyRequests.self, "500": InternalServerError.self])).data
+    /// Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific
+    /// contact information for a domain.
+    static func getContactInfoSchema(
+        config: ClientConfig,
+        domain: DomainName,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/registrar/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/contact-info/schema"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+            ],
+            decoder: .json,
+            operationId: "getContactInfoSchema",
+            options: requestOptions,
+            errors: [
+                "401": Unauthorized.self,
+                "403": NotAuthorizedForScope.self,
+                "429": TooManyRequests.self,
+                "500": InternalServerError.self,
+            ]
+        )).data
     }
 }

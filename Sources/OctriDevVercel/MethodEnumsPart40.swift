@@ -6,16 +6,22 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProXa32af4024b: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProXa32af4024b: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let create = GetConfigurationProductsResponseProductsItemMetadataSchemaProXa32af4024b(rawValue: "create")
-    public static let update = GetConfigurationProductsResponseProductsItemMetadataSchemaProXa32af4024b(rawValue: "update")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let create =
+        GetConfigurationProductsResponseProductsItemMetadataSchemaProXa32af4024b(rawValue: "create")
+    public static let update =
+        GetConfigurationProductsResponseProductsItemMetadataSchemaProXa32af4024b(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -26,24 +32,31 @@ public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProXa32a
 
 /// Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate
 /// behavior on it.
-public struct GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let apiTriggerGitDeploy = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "api-trigger-git-deploy")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let apiTriggerGitDeploy =
+        GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "api-trigger-git-deploy")
     public static let cli = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "cli")
     public static let cloneRepo = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "clone/repo")
     public static let drop = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "drop")
     public static let git = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "git")
-    public static let gitDeployHook = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "git-deploy-hook")
+    public static let gitDeployHook =
+        GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "git-deploy-hook")
     public static let `import` = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "import")
-    public static let importRepo = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "import/repo")
+    public static let importRepo =
+        GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "import/repo")
     public static let redeploy = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "redeploy")
     public static let v0Web = GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource(rawValue: "v0-web")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -69,16 +82,21 @@ public enum RemoveProjectEnvResponseVariant2ContentHintVariant11Type: String, Ca
     }
 }
 
-public struct GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat: RawRepresentable, Hashable,
+    Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let json = GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat(rawValue: "json")
     public static let proto = GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat(rawValue: "proto")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -90,14 +108,17 @@ public struct GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFor
 public struct UpdateVersionRequestBodyAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let promote = UpdateVersionRequestBodyAction(rawValue: "promote")
     public static let restore = UpdateVersionRequestBodyAction(rawValue: "restore")
     public static let discard = UpdateVersionRequestBodyAction(rawValue: "discard")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -106,15 +127,20 @@ public struct UpdateVersionRequestBodyAction: RawRepresentable, Hashable, Codabl
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2dfad5531e: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2dfad5531e: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let multiVercelRegion = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2dfad5531e(rawValue: "multi-vercel-region")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let multiVercelRegion =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2dfad5531e(rawValue: "multi-vercel-region")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -124,16 +150,20 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX2dfa
 }
 
 /// Invitation status for the user scoped bypass.
-public struct PatchUrlProtectionBypassRequestBodyVariant1ScopeAccess: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct PatchUrlProtectionBypassRequestBodyVariant1ScopeAccess: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let denied = PatchUrlProtectionBypassRequestBodyVariant1ScopeAccess(rawValue: "denied")
     public static let granted = PatchUrlProtectionBypassRequestBodyVariant1ScopeAccess(rawValue: "granted")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

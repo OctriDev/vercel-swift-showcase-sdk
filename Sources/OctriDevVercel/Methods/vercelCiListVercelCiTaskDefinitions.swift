@@ -6,33 +6,92 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VercelCiMethods {
-    /// Lists the task definitions associated with a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to select the run. Each result includes its task definition identifier, name, operation, dependencies, and creation time.
+public extension VercelCiMethods {
+    /// Lists the task definitions associated with a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and
+    /// `runAttempt` to select the run. Each result includes its task definition identifier, name, operation,
+    /// dependencies, and creation time.
     ///
     /// List Task Definitions
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listVercelCiTaskDefinitions(config: ClientConfig, invocationId: String, attempt: String, jobDefinitionId: String, runAttempt: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiTaskDefinitionsResponse {
-        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(attempt)), "/job-definitions/", sdkEncodePathSegment(sdkWireString(jobDefinitionId)), "/runs/", sdkEncodePathSegment(sdkWireString(runAttempt)), "/task-definitions"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listVercelCiTaskDefinitions", options: requestOptions)).data
+    static func listVercelCiTaskDefinitions(
+        config: ClientConfig,
+        invocationId: String,
+        attempt: String,
+        jobDefinitionId: String,
+        runAttempt: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiTaskDefinitionsResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/vercel-ci/invocations/",
+                sdkEncodePathSegment(sdkWireString(invocationId)),
+                "/attempts/",
+                sdkEncodePathSegment(sdkWireString(attempt)),
+                "/job-definitions/",
+                sdkEncodePathSegment(sdkWireString(jobDefinitionId)),
+                "/runs/",
+                sdkEncodePathSegment(sdkWireString(runAttempt)),
+                "/task-definitions",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listVercelCiTaskDefinitions",
+            options: requestOptions
+        )).data
     }
 
-    /// Lists the task runs for a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to select the job run, and use `taskRunAttempt` to filter the results by task run attempt. Each result includes task identifiers, the attempt number, creation time, and available start, completion, and deployment binding details.
+    /// Lists the task runs for a job run. Use `invocationId`, `attempt`, `jobDefinitionId`, and `runAttempt` to select
+    /// the job run, and use `taskRunAttempt` to filter the results by task run attempt. Each result includes task
+    /// identifiers, the attempt number, creation time, and available start, completion, and deployment binding details.
     ///
     /// List Task Runs
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listVercelCiTaskRuns(config: ClientConfig, invocationId: String, attempt: String, jobDefinitionId: String, runAttempt: String, taskRunAttempt: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListVercelCiTaskRunsResponse {
-        return try (await sdkRequest("GET", ["/v1/vercel-ci/invocations/", sdkEncodePathSegment(sdkWireString(invocationId)), "/attempts/", sdkEncodePathSegment(sdkWireString(attempt)), "/job-definitions/", sdkEncodePathSegment(sdkWireString(jobDefinitionId)), "/runs/", sdkEncodePathSegment(sdkWireString(runAttempt)), "/task-runs"].joined(), config: config, query: [
-            SdkQueryParameter("taskRunAttempt", value: taskRunAttempt),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listVercelCiTaskRuns", options: requestOptions)).data
+    static func listVercelCiTaskRuns(
+        config: ClientConfig,
+        invocationId: String,
+        attempt: String,
+        jobDefinitionId: String,
+        runAttempt: String,
+        taskRunAttempt: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListVercelCiTaskRunsResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/vercel-ci/invocations/",
+                sdkEncodePathSegment(sdkWireString(invocationId)),
+                "/attempts/",
+                sdkEncodePathSegment(sdkWireString(attempt)),
+                "/job-definitions/",
+                sdkEncodePathSegment(sdkWireString(jobDefinitionId)),
+                "/runs/",
+                sdkEncodePathSegment(sdkWireString(runAttempt)),
+                "/task-runs",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("taskRunAttempt", value: taskRunAttempt),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listVercelCiTaskRuns",
+            options: requestOptions
+        )).data
     }
 }

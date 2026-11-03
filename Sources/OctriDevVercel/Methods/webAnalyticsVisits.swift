@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension WebAnalyticsMethods {
-    public struct AggregatePageviewsOptions: Codable {
+public extension WebAnalyticsMethods {
+    struct AggregatePageviewsOptions: Codable {
         public var projectId: String
         public var by: [AggregatePageviewsParameterItem]
         public var since: AggregatePageviewsParameter
@@ -17,7 +17,12 @@ extension WebAnalyticsMethods {
         public var teamId: String?
         public var slug: String?
 
-        public init(projectId: String, by: [AggregatePageviewsParameterItem], since: AggregatePageviewsParameter, until: AggregatePageviewsParameterX4a2b85be) {
+        public init(
+            projectId: String,
+            by: [AggregatePageviewsParameterItem],
+            since: AggregatePageviewsParameter,
+            until: AggregatePageviewsParameterX4a2b85be
+        ) {
             self.projectId = projectId
             self.by = by
             self.since = since
@@ -25,9 +30,12 @@ extension WebAnalyticsMethods {
         }
     }
 
-    /// Aggregates page views for a project within a requested date range. Use `by` to group results by up to two dimensions and `filter` to restrict the data; `since` and `until` define the inclusive range. The optional `limit` controls the number of distinct results, with remaining results grouped as “Others.”
+    /// Aggregates page views for a project within a requested date range. Use `by` to group results by up to two
+    /// dimensions and `filter` to restrict the data; `since` and `until` define the inclusive range. The optional
+    /// `limit` controls the number of distinct results, with remaining results grouped as “Others.”
     ///
-    /// Counts pageviews on a project, within the requested date range. Results are either aggregated or broken down over time. Results can additionally be broken down by one dimension, and filtered by multiple dimensions.
+    /// Counts pageviews on a project, within the requested date range. Results are either aggregated or broken down
+    /// over time. Results can additionally be broken down by one dimension, and filtered by multiple dimensions.
     ///
     /// - Parameters:
     /// - projectId: The project identifier or the project name
@@ -60,7 +68,11 @@ extension WebAnalyticsMethods {
     ///   Functions such as startswith are supported by the OData parser.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func aggregatePageviews(config: ClientConfig, options: AggregatePageviewsOptions, requestOptions: RequestOptions? = nil) async throws -> AggregatePageviewsResponse {
+    static func aggregatePageviews(
+        config: ClientConfig,
+        options: AggregatePageviewsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AggregatePageviewsResponse {
         try validateItems("by", options.by, min: 1, max: 2)
 
         if let limit = options.limit {
@@ -71,7 +83,7 @@ extension WebAnalyticsMethods {
             try validateLength("filter", filter, max: 2048)
         }
 
-        return try (await sdkRequest("GET", "/v1/query/web-analytics/visits/aggregate", config: config, query: [
+        return try await (sdkRequest("GET", "/v1/query/web-analytics/visits/aggregate", config: config, query: [
             SdkQueryParameter("projectId", value: options.projectId),
             SdkQueryParameter("by", values: options.by, style: "form", explode: true),
             SdkQueryParameter("since", value: options.since),

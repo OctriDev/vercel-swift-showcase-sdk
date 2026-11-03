@@ -6,16 +6,23 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ArtifactsMethods {
-    /// Deletes all cache artifacts stored for the authenticated team or user, clearing the Remote Cache. Use `teamId` or `slug` to select a team; subsequent builds repopulate the cache.
+public extension ArtifactsMethods {
+    /// Deletes all cache artifacts stored for the authenticated team or user, clearing the Remote Cache. Use `teamId`
+    /// or `slug` to select a team; subsequent builds repopulate the cache.
     ///
-    /// Deletes all cache artifacts stored for the authenticated team or user, clearing the Remote Cache. Subsequent builds will re-populate the cache.
+    /// Deletes all cache artifacts stored for the authenticated team or user, clearing the Remote Cache. Subsequent
+    /// builds will re-populate the cache.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteAllArtifacts(config: ClientConfig, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteAllArtifactsResponse {
-        return try (await sdkRequest("DELETE", "/v8/artifacts", config: config, query: [
+    static func deleteAllArtifacts(
+        config: ClientConfig,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteAllArtifactsResponse {
+        try await (sdkRequest("DELETE", "/v8/artifacts", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], decoder: .json, operationId: "deleteAllArtifacts", options: requestOptions)).data

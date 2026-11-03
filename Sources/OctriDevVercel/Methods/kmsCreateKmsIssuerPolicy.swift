@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension KmsMethods {
-    /// Creates a policy on a KMS issuer that grants a project's deployments permission to sign with the issuer. Supply `kind`, `projectId`, and at least one `environments` entry; optionally include `tokenClaims` for claims to add to signed tokens. The response returns the created policy.
+public extension KmsMethods {
+    /// Creates a policy on a KMS issuer that grants a project's deployments permission to sign with the issuer. Supply
+    /// `kind`, `projectId`, and at least one `environments` entry; optionally include `tokenClaims` for claims to add
+    /// to signed tokens. The response returns the created policy.
     ///
     /// Attach a policy to a KMS issuer that grants a project's deployments permission to sign with it.
     ///
@@ -21,14 +23,38 @@ extension KmsMethods {
     /// - slug: The Team slug to perform the request on behalf of.
     /// - tokenClaims: The claims that KMS should include in signed JWTs for this
     ///   policy.
-    public static func createKmsIssuerPolicy(config: ClientConfig, issuerId: String, kind: CreateKmsIssuerPolicyRequestBodyKind, projectId: String, environments: [String], teamId: String? = nil, slug: String? = nil, tokenClaims: [String: JSONValue]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateKmsIssuerPolicyResponse {
+    static func createKmsIssuerPolicy(
+        config: ClientConfig,
+        issuerId: String,
+        kind: CreateKmsIssuerPolicyRequestBodyKind,
+        projectId: String,
+        environments: [String],
+        teamId: String? = nil,
+        slug: String? = nil,
+        tokenClaims: [String: JSONValue]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateKmsIssuerPolicyResponse {
         try validateItems("environments", environments, min: 1)
 
-        let requestBody = CreateKmsIssuerPolicyRequestBody(kind: kind, projectId: projectId, environments: environments, tokenClaims: tokenClaims)
+        let requestBody = CreateKmsIssuerPolicyRequestBody(
+            kind: kind,
+            projectId: projectId,
+            environments: environments,
+            tokenClaims: tokenClaims
+        )
 
-        return try (await sdkRequest("POST", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/policies"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "createKmsIssuerPolicy", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/policies"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "createKmsIssuerPolicy",
+            options: requestOptions
+        )).data
     }
 }

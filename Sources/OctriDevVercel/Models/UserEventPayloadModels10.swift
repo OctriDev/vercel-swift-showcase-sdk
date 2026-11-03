@@ -3,7 +3,7 @@
 
 import Foundation
 
-// User domain models
+/// User domain models
 extension UserEventPayload {
     func encodeGroup11(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()

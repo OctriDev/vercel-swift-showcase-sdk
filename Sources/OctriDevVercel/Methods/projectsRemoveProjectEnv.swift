@@ -6,10 +6,12 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    /// Deletes a specific environment variable from a project. Identify the project and variable in the path, and use `customEnvironmentId` when the removal applies to a particular custom environment.
+public extension ProjectsMethods {
+    /// Deletes a specific environment variable from a project. Identify the project and variable in the path, and use
+    /// `customEnvironmentId` when the removal applies to a particular custom environment.
     ///
-    /// Delete a specific environment variable for a given project by passing the environment variable identifier and either passing the project `id` or `name` in the URL.
+    /// Delete a specific environment variable for a given project by passing the environment variable identifier and
+    /// either passing the project `id` or `name` in the URL.
     ///
     /// - Parameters:
     /// - idOrName: The unique project identifier or the project name
@@ -18,11 +20,32 @@ extension ProjectsMethods {
     ///   project
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func removeProjectEnv(config: ClientConfig, idOrName: String, id: String, customEnvironmentId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> RemoveProjectEnvResponse {
-        return try (await sdkRequest("DELETE", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(idOrName)), "/env/", sdkEncodePathSegment(sdkWireString(id))].joined(), config: config, query: [
-            SdkQueryParameter("customEnvironmentId", value: customEnvironmentId),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "removeProjectEnv", options: requestOptions)).data
+    static func removeProjectEnv(
+        config: ClientConfig,
+        idOrName: String,
+        id: String,
+        customEnvironmentId: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RemoveProjectEnvResponse {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v9/projects/",
+                sdkEncodePathSegment(sdkWireString(idOrName)),
+                "/env/",
+                sdkEncodePathSegment(sdkWireString(id)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("customEnvironmentId", value: customEnvironmentId),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "removeProjectEnv",
+            options: requestOptions
+        )).data
     }
 }

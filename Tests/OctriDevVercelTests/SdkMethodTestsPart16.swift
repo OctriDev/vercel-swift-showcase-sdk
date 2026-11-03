@@ -117,12 +117,12 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.domainsRegistrar.renewDomain(
-            domain: decoded("\"domain\""),
-            years: decoded("1"),
-            expectedPrice: decoded("0.01"),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-            contactInformation: decoded(sdkMethodFixture383Value1)
-        )
+                domain: decoded("\"domain\""),
+                years: decoded("1"),
+                expectedPrice: decoded("0.01"),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+                contactInformation: decoded(sdkMethodFixture383Value1)
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 401)
@@ -138,7 +138,8 @@ extension SdkMethodTests {
         XCTAssertTrue(true)
     }
 
-    func testReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUX9dc66e0b28ReachesMockAndDecodesResponse() async throws {
+    func testReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUX9dc66e0b28ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -160,7 +161,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByRefeXc2fa0f45faReachesMockAndDecodesResponse() async throws {
+    func testReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByRefeXc2fa0f45faReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -181,7 +183,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testReplaceConnectorTriggerDestinationsReplaceConnectorTriggerDestinationsReachesMockAndDecodesResponse() async throws {
+    func testReplaceConnectorTriggerDestinationsReplaceConnectorTriggerDestinationsReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -202,7 +205,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testReplaceConnectorTriggerDestinationsReplaceConnectorTriggerDesX97b0ce2c2eReachesMockAndDecodesResponse() async throws {
+    func testReplaceConnectorTriggerDestinationsReplaceConnectorTriggerDesX97b0ce2c2eReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient(statusPrefix: "/__mockStatus/400") else {
             return
         }
@@ -213,11 +217,11 @@ extension SdkMethodTests {
         )
         do {
             _ = try await client.connect.replaceConnectorTriggerDestinations(
-            connector: decoded("\"connector\""),
-            destinations: decoded("[{\"projectId\":\"project-1\",\"path\":\"x\"}]"),
-            teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
-            slug: decoded("\"my-team-url-slug\"")
-        )
+                connector: decoded("\"connector\""),
+                destinations: decoded("[{\"projectId\":\"project-1\",\"path\":\"x\"}]"),
+                teamId: decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\""),
+                slug: decoded("\"my-team-url-slug\"")
+            )
             XCTFail("did not raise its declared error")
         } catch let error as SdkHttpError {
             XCTAssertEqual(error.statusCode, 400)
@@ -251,16 +255,18 @@ extension SdkMethodTests {
         )
     }
 
-    func testReplaceInstallationsByIntegrationConfigurationIdResourcesByReX5f9f709ac5ReachesMockAndDecodesResponse() async throws {
+    func testReplaceInstallationsByIntegrationConfigurationIdResourcesByReX5f9f709ac5ReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
         _ = client
-        let actual = try await client.marketplace.replaceInstallationsByIntegrationConfigurationIdResourcesByReX909b2f5573(
-            integrationConfigurationId: decoded("\"integrationConfiguration-1\""),
-            resourceId: decoded("\"resource-1\""),
-            data: decoded("{\"key\":null}")
-        )
+        let actual = try await client.marketplace
+            .replaceInstallationsByIntegrationConfigurationIdResourcesByReX909b2f5573(
+                integrationConfigurationId: decoded("\"integrationConfiguration-1\""),
+                resourceId: decoded("\"resource-1\""),
+                data: decoded("{\"key\":null}")
+            )
         let expected = try JSONSerialization.jsonObject(
             with: Data(sdkMethodFixture389Expected.utf8),
             options: [.fragmentsAllowed]
@@ -490,7 +496,11 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try SandboxesMethods.RunSessionCommandOptions(sessionId: decoded("\"sbx_abc123\""), cmdId: decoded("\"cmd_abc123\""), command: decoded("\"npm\""))
+        var options = try SandboxesMethods.RunSessionCommandOptions(
+            sessionId: decoded("\"sbx_abc123\""),
+            cmdId: decoded("\"cmd_abc123\""),
+            command: decoded("\"npm\"")
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.args = try decoded("[\"install\",\"--save\",\"lodash\"]")
@@ -520,7 +530,11 @@ extension SdkMethodTests {
         }
         _ = client
         let stream = try await client.sandboxes.runSessionCommandStream(
-            options: SandboxesMethods.RunSessionCommandStreamOptions(sessionId: decoded("\"sbx_abc123\""), cmdId: decoded("\"cmd_abc123\""), command: decoded("\"npm\""))
+            options: SandboxesMethods.RunSessionCommandStreamOptions(
+                sessionId: decoded("\"sbx_abc123\""),
+                cmdId: decoded("\"cmd_abc123\""),
+                command: decoded("\"npm\"")
+            )
         )
         var events = stream.makeAsyncIterator()
         guard let actual = try await events.next() else {

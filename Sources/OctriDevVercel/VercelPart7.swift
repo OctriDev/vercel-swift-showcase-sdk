@@ -3,26 +3,62 @@
 
 import Foundation
 
-extension DomainsRegistrarNamespace {
-/// Updates the nameservers assigned to a domain. Provide `nameservers` as an array of valid nameserver values, or pass an empty array to use Vercel's default nameservers. A 204 response confirms the change and contains no response body.
+public extension DomainsRegistrarNamespace {
+    /// Updates the nameservers assigned to a domain. Provide `nameservers` as an array of valid nameserver values, or
+    /// pass an empty array to use Vercel's default nameservers. A 204 response confirms the change and contains no
+    /// response body.
     ///
     /// Update the nameservers for a domain. Pass an empty array to use Vercel's default nameservers.
-    public func updateDomainNameservers(domain: DomainName, nameservers: [Nameserver], teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await DomainsRegistrarMethods.updateDomainNameservers(config: config, domain: domain, nameservers: nameservers, teamId: teamId, requestOptions: requestOptions)
+    func updateDomainNameservers(
+        domain: DomainName,
+        nameservers: [Nameserver],
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await DomainsRegistrarMethods.updateDomainNameservers(
+            config: config,
+            domain: domain,
+            nameservers: nameservers,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves the registrant contact verification status for a domain. Use this after purchasing a domain to check whether its registrant contact has been verified. A 400 is returned if the domain was bought less than 30 minutes before the request.
+    /// Retrieves the registrant contact verification status for a domain. Use this after purchasing a domain to check
+    /// whether its registrant contact has been verified. A 400 is returned if the domain was bought less than 30
+    /// minutes before the request.
     ///
-    /// Get the registrant contact verification status for a domain. Use this after purchasing a domain to determine whether the contact has been verified. Note that a bought_too_recently error will be returned if the domain was bought less than 30 minutes before the request.
-    public func getDomainContactVerification(domain: DomainName, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainContactVerificationResponse {
-        return try await DomainsRegistrarMethods.getDomainContactVerification(config: config, domain: domain, teamId: teamId, requestOptions: requestOptions)
+    /// Get the registrant contact verification status for a domain. Use this after purchasing a domain to determine
+    /// whether the contact has been verified. Note that a bought_too_recently error will be returned if the domain was
+    /// bought less than 30 minutes before the request.
+    func getDomainContactVerification(
+        domain: DomainName,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainContactVerificationResponse {
+        try await DomainsRegistrarMethods.getDomainContactVerification(
+            config: config,
+            domain: domain,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves information about a domain order using its order ID. Use the response to inspect the domains included in the order and its current status. The status is one of `draft`, `purchasing`, `completed`, or `failed`.
+    /// Retrieves information about a domain order using its order ID. Use the response to inspect the domains included
+    /// in the order and its current status. The status is one of `draft`, `purchasing`, `completed`, or `failed`.
     ///
     /// Get information about a domain order by its ID
-    public func getOrder(orderId: OrderId, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetOrderResponse {
-        return try await DomainsRegistrarMethods.getOrder(config: config, orderId: orderId, teamId: teamId, requestOptions: requestOptions)
+    func getOrder(
+        orderId: OrderId,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetOrderResponse {
+        try await DomainsRegistrarMethods.getOrder(
+            config: config,
+            orderId: orderId,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 }
 
@@ -32,53 +68,139 @@ public class LogDrainsNamespace {
         self.config = config
     }
 
-/// Retrieves a configurable log drain owned by the authenticated team. Call this deprecated operation with a team AccessToken; integration OAuth2 clients are not allowed.
+    /// Retrieves a configurable log drain owned by the authenticated team. Call this deprecated operation with a team
+    /// AccessToken; integration OAuth2 clients are not allowed.
     ///
-    /// Retrieves a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be accessed.
-    public func getConfigurable(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetConfigurableLogDrainResponse {
-        return try await LogDrainsMethods.getConfigurableLogDrain(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Retrieves a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2
+    /// clients are not allowed). Only log drains owned by the authenticated team can be accessed.
+    public func getConfigurable(
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetConfigurableLogDrainResponse {
+        try await LogDrainsMethods.getConfigurableLogDrain(
+            config: config,
+            id: id,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a configurable log drain owned by the authenticated team. Call this deprecated operation with a team AccessToken; integration OAuth2 clients are not allowed.
+    /// Deletes a configurable log drain owned by the authenticated team. Call this deprecated operation with a team
+    /// AccessToken; integration OAuth2 clients are not allowed.
     ///
-    /// Deletes a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be deleted.
-    public func deleteConfigurable(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await LogDrainsMethods.deleteConfigurableLogDrain(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Deletes a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2
+    /// clients are not allowed). Only log drains owned by the authenticated team can be deleted.
+    public func deleteConfigurable(
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await LogDrainsMethods.deleteConfigurableLogDrain(
+            config: config,
+            id: id,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists log drains owned by the authenticated account. Use `projectId` or `projectIdOrName` to scope the list to a project, and `includeMetadata` to control whether project metadata is included; this deprecated operation requires an account AccessToken.
+    /// Lists log drains owned by the authenticated account. Use `projectId` or `projectIdOrName` to scope the list to a
+    /// project, and `includeMetadata` to control whether project metadata is included; this deprecated operation
+    /// requires an account AccessToken.
     ///
-    /// Retrieves a list of all the Log Drains owned by the account. This endpoint must be called with an account AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated account can be accessed.
-    public func list(projectId: String? = nil, projectIdOrName: String? = nil, includeMetadata: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListLogDrainsResponse {
-        return try await LogDrainsMethods.listLogDrains(config: config, projectId: projectId, projectIdOrName: projectIdOrName, includeMetadata: includeMetadata, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Retrieves a list of all the Log Drains owned by the account. This endpoint must be called with an account
+    /// AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated account can
+    /// be accessed.
+    public func list(
+        projectId: String? = nil,
+        projectIdOrName: String? = nil,
+        includeMetadata: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListLogDrainsResponse {
+        try await LogDrainsMethods.listLogDrains(
+            config: config,
+            projectId: projectId,
+            projectIdOrName: projectIdOrName,
+            includeMetadata: includeMetadata,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a configurable log drain for the authenticated team. Supply `deliveryFormat`, `url`, and `sources`; use the remaining fields to select projects, environments, headers, and sampling behavior. Call this deprecated operation with a team AccessToken, not an integration OAuth2 client.
+    /// Creates a configurable log drain for the authenticated team. Supply `deliveryFormat`, `url`, and `sources`; use
+    /// the remaining fields to select projects, environments, headers, and sampling behavior. Call this deprecated
+    /// operation with a team AccessToken, not an integration OAuth2 client.
     ///
-    /// Creates a configurable log drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed)
-    public func createConfigurable(options: LogDrainsMethods.CreateConfigurableLogDrainOptions, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try await LogDrainsMethods.createConfigurableLogDrain(config: config, options: options, requestOptions: requestOptions)
+    /// Creates a configurable log drain. This endpoint must be called with a team AccessToken (integration OAuth2
+    /// clients are not allowed)
+    public func createConfigurable(
+        options: LogDrainsMethods.CreateConfigurableLogDrainOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await LogDrainsMethods.createConfigurableLogDrain(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists integration log drains defined for the authenticated user or team. When you use an OAuth2 token, the results are limited to log drains created by the authenticated integration. Use `teamId` or `slug` to scope the request to a team.
+    /// Lists integration log drains defined for the authenticated user or team. When you use an OAuth2 token, the
+    /// results are limited to log drains created by the authenticated integration. Use `teamId` or `slug` to scope the
+    /// request to a team.
     ///
-    /// Retrieves a list of all Integration log drains that are defined for the authenticated user or team. When using an OAuth2 token, the list is limited to log drains created by the authenticated integration.
-    public func getIntegration(teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [GetIntegrationLogDrainsResponseItem] {
-        return try await LogDrainsMethods.getIntegrationLogDrains(config: config, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Retrieves a list of all Integration log drains that are defined for the authenticated user or team. When using
+    /// an OAuth2 token, the list is limited to log drains created by the authenticated integration.
+    public func getIntegration(
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [GetIntegrationLogDrainsResponseItem] {
+        try await LogDrainsMethods.getIntegrationLogDrains(
+            config: config,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates an integration log drain for delivering logs to a destination URL. Use an OAuth2 client token because log drains created through this operation are tied to integrations. Provide `name` and `url`; you can also configure projects, sources, environments, headers, and delivery format.
+    /// Creates an integration log drain for delivering logs to a destination URL. Use an OAuth2 client token because
+    /// log drains created through this operation are tied to integrations. Provide `name` and `url`; you can also
+    /// configure projects, sources, environments, headers, and delivery format.
     ///
-    /// Creates an Integration log drain. This endpoint must be called with an OAuth2 client (integration), since log drains are tied to integrations. If it is called with a different token type it will produce a 400 error.
-    public func create(options: LogDrainsMethods.CreateLogDrainOptions, requestOptions: RequestOptions? = nil) async throws -> CreateLogDrainResponse {
-        return try await LogDrainsMethods.createLogDrain(config: config, options: options, requestOptions: requestOptions)
+    /// Creates an Integration log drain. This endpoint must be called with an OAuth2 client (integration), since log
+    /// drains are tied to integrations. If it is called with a different token type it will produce a 400 error.
+    public func create(
+        options: LogDrainsMethods.CreateLogDrainOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateLogDrainResponse {
+        try await LogDrainsMethods.createLogDrain(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Deletes an integration log drain by its identifier. When using an OAuth2 token, you can delete only a log drain owned by the authenticated integration. Use `teamId` or `slug` to make the request on behalf of a team.
+    /// Deletes an integration log drain by its identifier. When using an OAuth2 token, you can delete only a log drain
+    /// owned by the authenticated integration. Use `teamId` or `slug` to make the request on behalf of a team.
     ///
-    /// Deletes the Integration log drain with the provided `id`. When using an OAuth2 Token, the log drain can be deleted only if the integration owns it.
-    public func deleteIntegration(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await LogDrainsMethods.deleteIntegrationLogDrain(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Deletes the Integration log drain with the provided `id`. When using an OAuth2 Token, the log drain can be
+    /// deleted only if the integration owns it.
+    public func deleteIntegration(
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await LogDrainsMethods.deleteIntegrationLogDrain(
+            config: config,
+            id: id,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
@@ -88,46 +210,108 @@ public class DrainsNamespace {
         self.config = config
     }
 
-/// Creates a new Drain with the supplied configuration. Provide `name`, `projects`, and `schemas`; configure `delivery` and optionally scope the Drain to project IDs with `projectIds`. You can also set filters, sampling rules, transforms, and a source.
+    /// Creates a new Drain with the supplied configuration. Provide `name`, `projects`, and `schemas`; configure
+    /// `delivery` and optionally scope the Drain to project IDs with `projectIds`. You can also set filters, sampling
+    /// rules, transforms, and a source.
     ///
     /// Create a new Drain with the provided configuration.
-    public func create(options: DrainsMethods.CreateDrainOptions, requestOptions: RequestOptions? = nil) async throws -> CreateDrainResponse {
-        return try await DrainsMethods.createDrain(config: config, options: options, requestOptions: requestOptions)
+    public func create(
+        options: DrainsMethods.CreateDrainOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateDrainResponse {
+        try await DrainsMethods.createDrain(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Lists drains owned by the authenticated team. Use `projectId` to filter the results and `includeMetadata` to control whether metadata is included; metadata is excluded by default.
+    /// Lists drains owned by the authenticated team. Use `projectId` to filter the results and `includeMetadata` to
+    /// control whether metadata is included; metadata is excluded by default.
     ///
     /// Allows to retrieve the list of Drains of the authenticated team.
-    public func get(projectId: String? = nil, includeMetadata: Bool? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDrainsResponse {
-        return try await DrainsMethods.getDrains(config: config, projectId: projectId, includeMetadata: includeMetadata, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func get(
+        projectId: String? = nil,
+        includeMetadata: Bool? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDrainsResponse {
+        try await DrainsMethods.getDrains(
+            config: config,
+            projectId: projectId,
+            includeMetadata: includeMetadata,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a specific Drain identified by its path parameter. Use `teamId` or `slug` to perform the request on behalf of a team. The successful response has no content.
+    /// Deletes a specific Drain identified by its path parameter. Use `teamId` or `slug` to perform the request on
+    /// behalf of a team. The successful response has no content.
     ///
     /// Delete a specific Drain by passing the drain id in the URL.
-    public func delete(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await DrainsMethods.deleteDrain(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func delete(
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await DrainsMethods.deleteDrain(
+            config: config,
+            id: id,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves a Drain by its identifier. Use `id` in the path to select the Drain, and use `teamId` or `slug` to make the request on behalf of a team.
+    /// Retrieves a Drain by its identifier. Use `id` in the path to select the Drain, and use `teamId` or `slug` to
+    /// make the request on behalf of a team.
     ///
     /// Get the information for a specific Drain by passing the drain id in the URL.
-    public func getDrain(id: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDrainResponse {
-        return try await DrainsMethods.getDrain(config: config, id: id, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func getDrain(
+        id: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDrainResponse {
+        try await DrainsMethods.getDrain(
+            config: config,
+            id: id,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Updates the configuration of an existing Drain. Send only the fields you want to change, such as `name`, `delivery`, or `status`; `status` can be `enabled` or `disabled`. You can also update its project scope, schemas, sampling rules, transforms, filter, or source.
+    /// Updates the configuration of an existing Drain. Send only the fields you want to change, such as `name`,
+    /// `delivery`, or `status`; `status` can be `enabled` or `disabled`. You can also update its project scope,
+    /// schemas, sampling rules, transforms, filter, or source.
     ///
     /// Update the configuration of an existing drain.
-    public func update(options: DrainsMethods.UpdateDrainOptions, requestOptions: RequestOptions? = nil) async throws -> UpdateDrainResponse {
-        return try await DrainsMethods.updateDrain(config: config, options: options, requestOptions: requestOptions)
+    public func update(
+        options: DrainsMethods.UpdateDrainOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateDrainResponse {
+        try await DrainsMethods.updateDrain(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Validates a Drain delivery configuration by sending sample events. Provide `schemas` and `delivery` to check the configuration without creating or updating a Drain. The response reports the validation result.
+    /// Validates a Drain delivery configuration by sending sample events. Provide `schemas` and `delivery` to check the
+    /// configuration without creating or updating a Drain. The response reports the validation result.
     ///
     /// Validate the delivery configuration of a Drain using sample events.
-    public func test(schemas: [String: TestDrainRequestBodySchemasValue], delivery: TestDrainRequestDelivery, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> TestDrainResponse {
-        return try await DrainsMethods.testDrain(config: config, schemas: schemas, delivery: delivery, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func test(
+        schemas: [String: TestDrainRequestBodySchemasValue],
+        delivery: TestDrainRequestDelivery,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> TestDrainResponse {
+        try await DrainsMethods.testDrain(
+            config: config,
+            schemas: schemas,
+            delivery: delivery,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
@@ -137,31 +321,110 @@ public class EdgeCacheNamespace {
         self.config = config
     }
 
-/// Invalidates cache entries associated with the specified tags, marking them stale for background revalidation on the next request. Supply `projectIdOrName` to scope the operation and `tags` in the body. You can target `production` or `preview` with the optional `target` field.
+    /// Invalidates cache entries associated with the specified tags, marking them stale for background revalidation on
+    /// the next request. Supply `projectIdOrName` to scope the operation and `tags` in the body. You can target
+    /// `production` or `preview` with the optional `target` field.
     ///
-    /// Marks a cache tag as stale, causing cache entries associated with that tag to be revalidated in the background on the next request.
-    public func invalidateByTags(projectIdOrName: String, tags: InvalidateByTagsRequestBodyTags, teamId: String? = nil, slug: String? = nil, target: InvalidateByTagsRequestBodyTarget? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await EdgeCacheMethods.invalidateByTags(config: config, projectIdOrName: projectIdOrName, tags: tags, teamId: teamId, slug: slug, target: target, requestOptions: requestOptions)
+    /// Marks a cache tag as stale, causing cache entries associated with that tag to be revalidated in the background
+    /// on the next request.
+    public func invalidateByTags(
+        projectIdOrName: String,
+        tags: InvalidateByTagsRequestBodyTags,
+        teamId: String? = nil,
+        slug: String? = nil,
+        target: InvalidateByTagsRequestBodyTarget? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await EdgeCacheMethods.invalidateByTags(
+            config: config,
+            projectIdOrName: projectIdOrName,
+            tags: tags,
+            teamId: teamId,
+            slug: slug,
+            target: target,
+            requestOptions: requestOptions
+        )
     }
 
-/// Marks cache entries associated with the specified tags as deleted so they are revalidated in the foreground on the next request. Supply `projectIdOrName` and `tags`, and optionally set `revalidationDeadlineSeconds` or `target`. Use this operation cautiously: deleting cached entries can send many concurrent requests to the origin; prefer tag invalidation for routine use.
+    /// Marks cache entries associated with the specified tags as deleted so they are revalidated in the foreground on
+    /// the next request. Supply `projectIdOrName` and `tags`, and optionally set `revalidationDeadlineSeconds` or
+    /// `target`. Use this operation cautiously: deleting cached entries can send many concurrent requests to the
+    /// origin; prefer tag invalidation for routine use.
     ///
-    /// Marks a cache tag as deleted, causing cache entries associated with that tag to be revalidated in the foreground on the next request. Use this method with caution because one tag can be associated with many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede problem. This method is for advanced use cases and is not recommended; prefer using `invalidateByTag` instead.
-    public func dangerouslyDeleteByTags(projectIdOrName: String, tags: DangerouslyDeleteByTagsRequestBodyTags, teamId: String? = nil, slug: String? = nil, revalidationDeadlineSeconds: Int? = nil, target: DangerouslyDeleteByTagsRequestBodyTarget? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await EdgeCacheMethods.dangerouslyDeleteByTags(config: config, projectIdOrName: projectIdOrName, tags: tags, teamId: teamId, slug: slug, revalidationDeadlineSeconds: revalidationDeadlineSeconds, target: target, requestOptions: requestOptions)
+    /// Marks a cache tag as deleted, causing cache entries associated with that tag to be revalidated in the foreground
+    /// on the next request. Use this method with caution because one tag can be associated with many paths and deleting
+    /// the cache can cause many concurrent requests to the origin leading to cache stampede problem. This method is for
+    /// advanced use cases and is not recommended; prefer using `invalidateByTag` instead.
+    public func dangerouslyDeleteByTags(
+        projectIdOrName: String,
+        tags: DangerouslyDeleteByTagsRequestBodyTags,
+        teamId: String? = nil,
+        slug: String? = nil,
+        revalidationDeadlineSeconds: Int? = nil,
+        target: DangerouslyDeleteByTagsRequestBodyTarget? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await EdgeCacheMethods.dangerouslyDeleteByTags(
+            config: config,
+            projectIdOrName: projectIdOrName,
+            tags: tags,
+            teamId: teamId,
+            slug: slug,
+            revalidationDeadlineSeconds: revalidationDeadlineSeconds,
+            target: target,
+            requestOptions: requestOptions
+        )
     }
 
-/// Invalidates source images, marking them stale so their transformed images are revalidated in the background on the next request. Use `projectIdOrName` to scope the operation and supply the image sources in `srcImages`. The request can include between 1 and 8 source images.
+    /// Invalidates source images, marking them stale so their transformed images are revalidated in the background on
+    /// the next request. Use `projectIdOrName` to scope the operation and supply the image sources in `srcImages`. The
+    /// request can include between 1 and 8 source images.
     ///
-    /// Marks a source image as stale, causing its corresponding transformed images to be revalidated in the background on the next request.
-    public func invalidateBySrcImages(projectIdOrName: String, srcImages: [String], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await EdgeCacheMethods.invalidateBySrcImages(config: config, projectIdOrName: projectIdOrName, srcImages: srcImages, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    /// Marks a source image as stale, causing its corresponding transformed images to be revalidated in the background
+    /// on the next request.
+    public func invalidateBySrcImages(
+        projectIdOrName: String,
+        srcImages: [String],
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await EdgeCacheMethods.invalidateBySrcImages(
+            config: config,
+            projectIdOrName: projectIdOrName,
+            srcImages: srcImages,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Marks cache entries associated with source images as deleted so they are revalidated in the foreground on the next request. Provide `projectIdOrName` and between 1 and 8 entries in `srcImages`; you can optionally set `revalidationDeadlineSeconds`. Use this operation cautiously because foreground revalidation can send many concurrent requests to the origin; prefer source image invalidation for routine use.
+    /// Marks cache entries associated with source images as deleted so they are revalidated in the foreground on the
+    /// next request. Provide `projectIdOrName` and between 1 and 8 entries in `srcImages`; you can optionally set
+    /// `revalidationDeadlineSeconds`. Use this operation cautiously because foreground revalidation can send many
+    /// concurrent requests to the origin; prefer source image invalidation for routine use.
     ///
-    /// Marks a source image as deleted, causing cache entries associated with that source image to be revalidated in the foreground on the next request. Use this method with caution because one source image can be associated with many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede problem. This method is for advanced use cases and is not recommended; prefer using `invalidateBySrcImage` instead.
-    public func dangerouslyDeleteBySrcImages(projectIdOrName: String, srcImages: [String], teamId: String? = nil, slug: String? = nil, revalidationDeadlineSeconds: Int? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await EdgeCacheMethods.dangerouslyDeleteBySrcImages(config: config, projectIdOrName: projectIdOrName, srcImages: srcImages, teamId: teamId, slug: slug, revalidationDeadlineSeconds: revalidationDeadlineSeconds, requestOptions: requestOptions)
+    /// Marks a source image as deleted, causing cache entries associated with that source image to be revalidated in
+    /// the foreground on the next request. Use this method with caution because one source image can be associated with
+    /// many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede
+    /// problem. This method is for advanced use cases and is not recommended; prefer using `invalidateBySrcImage`
+    /// instead.
+    public func dangerouslyDeleteBySrcImages(
+        projectIdOrName: String,
+        srcImages: [String],
+        teamId: String? = nil,
+        slug: String? = nil,
+        revalidationDeadlineSeconds: Int? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await EdgeCacheMethods.dangerouslyDeleteBySrcImages(
+            config: config,
+            projectIdOrName: projectIdOrName,
+            srcImages: srcImages,
+            teamId: teamId,
+            slug: slug,
+            revalidationDeadlineSeconds: revalidationDeadlineSeconds,
+            requestOptions: requestOptions
+        )
     }
 }

@@ -7,9 +7,25 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projects operation model declarations
-extension GetProjectsResponseDefaultResourceConfig {
-    public init(functionDefaultRegions: [String], buildMachineElasticLastUpdated: Double? = nil, buildMachineElasticReason: GetProjectsResponseDefaultResourceConfigBuildMachineElasticReason? = nil, buildMachineElasticTransition: GetProjectsResponseDefaultResourceConfigBuildMachineElasticTransition? = nil, buildMachineSelection: GetProjectsResponseDefaultResourceConfigBuildMachineSelection? = nil, buildMachineType: GetProjectsResponseDefaultResourceConfigBuildMachineType? = nil, buildQueue: GetProjectsResponseDefaultResourceConfigBuildQueue? = nil, elasticConcurrencyEnabled: Bool? = nil, enableFunctionsBeta: Bool? = nil, fluid: Bool? = nil, functionDefaultMemoryType: GetProjectsResponseDefaultResourceConfigFunctionDefaultMemoryType? = nil, functionDefaultTimeout: Double? = nil, functionZeroConfigFailover: Bool? = nil, isNsnbDisabled: Bool? = nil, elasticBuildMachine: GetProjectsResponseDefaultResourceConfigElasticBuildMachine? = nil) {
+/// Canonical projects operation model declarations
+public extension GetProjectsResponseDefaultResourceConfig {
+    init(
+        functionDefaultRegions: [String],
+        buildMachineElasticLastUpdated: Double? = nil,
+        buildMachineElasticReason: GetProjectsResponseDefaultResourceConfigBuildMachineElasticReason? = nil,
+        buildMachineElasticTransition: GetProjectsResponseDefaultResourceConfigBuildMachineElasticTransition? = nil,
+        buildMachineSelection: GetProjectsResponseDefaultResourceConfigBuildMachineSelection? = nil,
+        buildMachineType: GetProjectsResponseDefaultResourceConfigBuildMachineType? = nil,
+        buildQueue: GetProjectsResponseDefaultResourceConfigBuildQueue? = nil,
+        elasticConcurrencyEnabled: Bool? = nil,
+        enableFunctionsBeta: Bool? = nil,
+        fluid: Bool? = nil,
+        functionDefaultMemoryType: GetProjectsResponseDefaultResourceConfigFunctionDefaultMemoryType? = nil,
+        functionDefaultTimeout: Double? = nil,
+        functionZeroConfigFailover: Bool? = nil,
+        isNsnbDisabled: Bool? = nil,
+        elasticBuildMachine: GetProjectsResponseDefaultResourceConfigElasticBuildMachine? = nil
+    ) {
         self.functionDefaultRegions = functionDefaultRegions
         self.buildMachineElasticLastUpdated = buildMachineElasticLastUpdated
         self.buildMachineElasticReason = buildMachineElasticReason
@@ -45,43 +61,78 @@ public struct ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItem:
         case dc
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.buildsEnabled) else {
-            throw SdkValidationError(field: "buildsEnabled", code: "required", message: "Validation failed for 'buildsEnabled': value is required")
-        }
-        guard container.contains(.connectConfigurationId) else {
-            throw SdkValidationError(field: "connectConfigurationId", code: "required", message: "Validation failed for 'connectConfigurationId': value is required")
-        }
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.envId) else {
-            throw SdkValidationError(field: "envId", code: "required", message: "Validation failed for 'envId': value is required")
-        }
-        guard container.contains(.passive) else {
-            throw SdkValidationError(field: "passive", code: "required", message: "Validation failed for 'passive': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.buildsEnabled = try container.sdkDecodeRequired(.buildsEnabled)
-        self.connectConfigurationId = try container.sdkDecodeRequired(.connectConfigurationId)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.envId = try container.sdkDecodeRequired(.envId)
-        self.passive = try container.sdkDecodeRequired(.passive)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.aws = try container.sdkDecodeIfPresent(.aws)
-        self.dc = try container.sdkDecodeIfPresent(.dc)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItem {
-    public init(buildsEnabled: Bool, connectConfigurationId: String, createdAt: Double, envId: ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItemEnvId, passive: Bool, updatedAt: Double, aws: ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItemAws? = nil, dc: String? = nil) {
+public extension ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.buildsEnabled) else {
+            throw SdkValidationError(
+                field: "buildsEnabled",
+                code: "required",
+                message: "Validation failed for 'buildsEnabled': value is required"
+            )
+        }
+        guard container.contains(.connectConfigurationId) else {
+            throw SdkValidationError(
+                field: "connectConfigurationId",
+                code: "required",
+                message: "Validation failed for 'connectConfigurationId': value is required"
+            )
+        }
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.envId) else {
+            throw SdkValidationError(
+                field: "envId",
+                code: "required",
+                message: "Validation failed for 'envId': value is required"
+            )
+        }
+        guard container.contains(.passive) else {
+            throw SdkValidationError(
+                field: "passive",
+                code: "required",
+                message: "Validation failed for 'passive': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        buildsEnabled = try container.sdkDecodeRequired(.buildsEnabled)
+        connectConfigurationId = try container.sdkDecodeRequired(.connectConfigurationId)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        envId = try container.sdkDecodeRequired(.envId)
+        passive = try container.sdkDecodeRequired(.passive)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        aws = try container.sdkDecodeIfPresent(.aws)
+        dc = try container.sdkDecodeIfPresent(.dc)
+    }
+}
+
+public extension ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItem {
+    init(
+        buildsEnabled: Bool,
+        connectConfigurationId: String,
+        createdAt: Double,
+        envId: ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItemEnvId,
+        passive: Bool,
+        updatedAt: Double,
+        aws: ListProjectsResponseVariant2ProjectsItemConnectConfigurationsItemAws? = nil,
+        dc: String? = nil
+    ) {
         (self.buildsEnabled, self.connectConfigurationId) = (buildsEnabled, connectConfigurationId)
         (self.createdAt, self.envId) = (createdAt, envId)
         (self.passive, self.updatedAt) = (passive, updatedAt)

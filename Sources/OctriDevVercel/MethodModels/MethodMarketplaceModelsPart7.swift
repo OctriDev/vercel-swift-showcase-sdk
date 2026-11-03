@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical marketplace operation model declarations
+/// Canonical marketplace operation model declarations
 extension UpdateResourceRequestBodyCustomClaimsClaimRulesItemClaimsValue {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
@@ -47,21 +47,21 @@ public struct UpdateResourceRequestBodySecretsVariant0ItemEnvironmentOverrides: 
     }
 
     init() {
-        (self.development, self.preview, self.production) = (nil, nil, nil)
+        (development, preview, production) = (nil, nil, nil)
     }
 }
 
-extension UpdateResourceRequestBodySecretsVariant0ItemEnvironmentOverrides {
-    public init(from decoder: Decoder) throws {
+public extension UpdateResourceRequestBodySecretsVariant0ItemEnvironmentOverrides {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.development = try container.sdkDecodeIfPresent(.development)
-        self.preview = try container.sdkDecodeIfPresent(.preview)
-        self.production = try container.sdkDecodeIfPresent(.production)
+        development = try container.sdkDecodeIfPresent(.development)
+        preview = try container.sdkDecodeIfPresent(.preview)
+        production = try container.sdkDecodeIfPresent(.production)
     }
 }
 
-extension UpdateResourceRequestBodySecretsVariant0ItemEnvironmentOverrides {
-    public init(development: String? = nil, preview: String? = nil, production: String? = nil) {
+public extension UpdateResourceRequestBodySecretsVariant0ItemEnvironmentOverrides {
+    init(development: String? = nil, preview: String? = nil, production: String? = nil) {
         self.init()
         (self.development, self.preview) = (development, preview)
         self.production = production
@@ -75,21 +75,27 @@ public struct UpdateResourceResponse: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateResourceResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        self.name = try container.sdkDecodeRequired(.name)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateResourceResponse {
-    public init(name: String) {
+public extension UpdateResourceResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        name = try container.sdkDecodeRequired(.name)
+    }
+}
+
+public extension UpdateResourceResponse {
+    init(name: String) {
         self.name = name
     }
 }
@@ -103,22 +109,28 @@ public struct UpdateResourceRequestBodyBillingPlanHighlightedDetailsItem: Codabl
         case value
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateResourceRequestBodyBillingPlanHighlightedDetailsItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.label) else {
-            throw SdkValidationError(field: "label", code: "required", message: "Validation failed for 'label': value is required")
-        }
-        self.label = try container.sdkDecodeRequired(.label)
-        self.value = try container.sdkDecodeIfPresent(.value)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateResourceRequestBodyBillingPlanHighlightedDetailsItem {
-    public init(label: String, value: String? = nil) {
+public extension UpdateResourceRequestBodyBillingPlanHighlightedDetailsItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.label) else {
+            throw SdkValidationError(
+                field: "label",
+                code: "required",
+                message: "Validation failed for 'label': value is required"
+            )
+        }
+        label = try container.sdkDecodeRequired(.label)
+        value = try container.sdkDecodeIfPresent(.value)
+    }
+}
+
+public extension UpdateResourceRequestBodyBillingPlanHighlightedDetailsItem {
+    init(label: String, value: String? = nil) {
         (self.label, self.value) = (label, value)
     }
 }
@@ -158,60 +170,97 @@ public struct SubmitBillingDataRequestBodyBillingVariant1ItemsItem: Codable {
         case details
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension SubmitBillingDataRequestBodyBillingVariant1ItemsItem {
-    public init(from decoder: Decoder) throws {
+public extension SubmitBillingDataRequestBodyBillingVariant1ItemsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.billingPlanId) else {
-            throw SdkValidationError(field: "billingPlanId", code: "required", message: "Validation failed for 'billingPlanId': value is required")
+            throw SdkValidationError(
+                field: "billingPlanId",
+                code: "required",
+                message: "Validation failed for 'billingPlanId': value is required"
+            )
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.price) else {
-            throw SdkValidationError(field: "price", code: "required", message: "Validation failed for 'price': value is required")
+            throw SdkValidationError(
+                field: "price",
+                code: "required",
+                message: "Validation failed for 'price': value is required"
+            )
         }
         guard container.contains(.quantity) else {
-            throw SdkValidationError(field: "quantity", code: "required", message: "Validation failed for 'quantity': value is required")
+            throw SdkValidationError(
+                field: "quantity",
+                code: "required",
+                message: "Validation failed for 'quantity': value is required"
+            )
         }
         guard container.contains(.units) else {
-            throw SdkValidationError(field: "units", code: "required", message: "Validation failed for 'units': value is required")
+            throw SdkValidationError(
+                field: "units",
+                code: "required",
+                message: "Validation failed for 'units': value is required"
+            )
         }
         guard container.contains(.total) else {
-            throw SdkValidationError(field: "total", code: "required", message: "Validation failed for 'total': value is required")
+            throw SdkValidationError(
+                field: "total",
+                code: "required",
+                message: "Validation failed for 'total': value is required"
+            )
         }
-        self.billingPlanId = try container.sdkDecodeRequired(.billingPlanId)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.price = try container.sdkDecodeRequired(.price)
-        self.quantity = try container.sdkDecodeRequired(.quantity)
-        self.units = try container.sdkDecodeRequired(.units)
-        self.total = try container.sdkDecodeRequired(.total)
-        self.resourceId = try container.sdkDecodeIfPresent(.resourceId)
-        self.start = try container.sdkDecodeIfPresent(.start)
-        self.end = try container.sdkDecodeIfPresent(.end)
-        self.details = try container.sdkDecodeIfPresent(.details)
-            try sdkValidatePattern("price", self.price, sdkPatternc108d58e346a)
-            try sdkValidatePattern("total", self.total, sdkPatternc108d58e346a)
-        if let value = self.start {
+        billingPlanId = try container.sdkDecodeRequired(.billingPlanId)
+        name = try container.sdkDecodeRequired(.name)
+        price = try container.sdkDecodeRequired(.price)
+        quantity = try container.sdkDecodeRequired(.quantity)
+        units = try container.sdkDecodeRequired(.units)
+        total = try container.sdkDecodeRequired(.total)
+        resourceId = try container.sdkDecodeIfPresent(.resourceId)
+        start = try container.sdkDecodeIfPresent(.start)
+        end = try container.sdkDecodeIfPresent(.end)
+        details = try container.sdkDecodeIfPresent(.details)
+        try sdkValidatePattern("price", price, sdkPatternc108d58e346a)
+        try sdkValidatePattern("total", total, sdkPatternc108d58e346a)
+        if let value = start {
             try sdkValidateDateTime("start", sdkWireString(value))
         }
-        if let value = self.end {
+        if let value = end {
             try sdkValidateDateTime("end", sdkWireString(value))
         }
     }
 }
 
-extension SubmitBillingDataRequestBodyBillingVariant1ItemsItem {
-    public init(billingPlanId: String, name: String, price: String, quantity: Double, units: String, total: String, resourceId: String? = nil, start: Date? = nil, end: Date? = nil, details: String? = nil) throws {
+public extension SubmitBillingDataRequestBodyBillingVariant1ItemsItem {
+    init(
+        billingPlanId: String,
+        name: String,
+        price: String,
+        quantity: Double,
+        units: String,
+        total: String,
+        resourceId: String? = nil,
+        start: Date? = nil,
+        end: Date? = nil,
+        details: String? = nil
+    ) throws {
         (self.billingPlanId, self.name) = (billingPlanId, name)
         (self.price, self.quantity) = (price, quantity)
         (self.units, self.total) = (units, total)
         (self.resourceId, self.start) = (resourceId, start)
         (self.end, self.details) = (end, details)
-            try sdkValidatePattern("price", self.price, sdkPatternc108d58e346a)
-            try sdkValidatePattern("total", self.total, sdkPatternc108d58e346a)
+        try sdkValidatePattern("price", self.price, sdkPatternc108d58e346a)
+        try sdkValidatePattern("total", self.total, sdkPatternc108d58e346a)
         if let value = self.start {
             try sdkValidateDateTime("start", sdkWireString(value))
         }
@@ -245,45 +294,67 @@ public struct SubmitInvoiceRequestBodyDiscountsItem: Codable {
         case details
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension SubmitInvoiceRequestBodyDiscountsItem {
-    public init(from decoder: Decoder) throws {
+public extension SubmitInvoiceRequestBodyDiscountsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.billingPlanId) else {
-            throw SdkValidationError(field: "billingPlanId", code: "required", message: "Validation failed for 'billingPlanId': value is required")
+            throw SdkValidationError(
+                field: "billingPlanId",
+                code: "required",
+                message: "Validation failed for 'billingPlanId': value is required"
+            )
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.amount) else {
-            throw SdkValidationError(field: "amount", code: "required", message: "Validation failed for 'amount': value is required")
+            throw SdkValidationError(
+                field: "amount",
+                code: "required",
+                message: "Validation failed for 'amount': value is required"
+            )
         }
-        self.billingPlanId = try container.sdkDecodeRequired(.billingPlanId)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.amount = try container.sdkDecodeRequired(.amount)
-        self.resourceId = try container.sdkDecodeIfPresent(.resourceId)
-        self.start = try container.sdkDecodeIfPresent(.start)
-        self.end = try container.sdkDecodeIfPresent(.end)
-        self.details = try container.sdkDecodeIfPresent(.details)
-            try sdkValidatePattern("amount", self.amount, sdkPatternc108d58e346a)
-        if let value = self.start {
+        billingPlanId = try container.sdkDecodeRequired(.billingPlanId)
+        name = try container.sdkDecodeRequired(.name)
+        amount = try container.sdkDecodeRequired(.amount)
+        resourceId = try container.sdkDecodeIfPresent(.resourceId)
+        start = try container.sdkDecodeIfPresent(.start)
+        end = try container.sdkDecodeIfPresent(.end)
+        details = try container.sdkDecodeIfPresent(.details)
+        try sdkValidatePattern("amount", amount, sdkPatternc108d58e346a)
+        if let value = start {
             try sdkValidateDateTime("start", sdkWireString(value))
         }
-        if let value = self.end {
+        if let value = end {
             try sdkValidateDateTime("end", sdkWireString(value))
         }
     }
 }
 
-extension SubmitInvoiceRequestBodyDiscountsItem {
-    public init(billingPlanId: String, name: String, amount: String, resourceId: String? = nil, start: Date? = nil, end: Date? = nil, details: String? = nil) throws {
+public extension SubmitInvoiceRequestBodyDiscountsItem {
+    init(
+        billingPlanId: String,
+        name: String,
+        amount: String,
+        resourceId: String? = nil,
+        start: Date? = nil,
+        end: Date? = nil,
+        details: String? = nil
+    ) throws {
         (self.billingPlanId, self.name) = (billingPlanId, name)
         (self.amount, self.resourceId) = (amount, resourceId)
         (self.start, self.end) = (start, end)
         self.details = details
-            try sdkValidatePattern("amount", self.amount, sdkPatternc108d58e346a)
+        try sdkValidatePattern("amount", self.amount, sdkPatternc108d58e346a)
         if let value = self.start {
             try sdkValidateDateTime("start", sdkWireString(value))
         }
@@ -293,7 +364,8 @@ extension SubmitInvoiceRequestBodyDiscountsItem {
     }
 }
 
-public typealias UpdateInstallationRequestBodyBillingPlanHighlightedDetailsList = [UpdateInstallationRequestBodyBillingPlanHighlightedDetailsItem]
+public typealias UpdateInstallationRequestBodyBillingPlanHighlightedDetailsList =
+    [UpdateInstallationRequestBodyBillingPlanHighlightedDetailsItem]
 
 public struct UpdateInstallationRequestBodyBillingPlan: Codable {
     public var id: String
@@ -320,36 +392,60 @@ public struct UpdateInstallationRequestBodyBillingPlan: Codable {
         case effectiveDate
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension UpdateInstallationRequestBodyBillingPlan {
-    public init(from decoder: Decoder) throws {
+public extension UpdateInstallationRequestBodyBillingPlan {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
         }
         guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
-        self.id = try container.sdkDecodeRequired(.id)
-        self.type = try container.sdkDecodeRequired(.type)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.description = try container.sdkDecodeIfPresent(.description)
-        self.paymentMethodRequired = try container.sdkDecodeIfPresent(.paymentMethodRequired)
-        self.cost = try container.sdkDecodeIfPresent(.cost)
-        self.details = try container.sdkDecodeIfPresent(.details)
-        self.highlightedDetails = try container.sdkDecodeIfPresent(.highlightedDetails)
-        self.effectiveDate = try container.sdkDecodeIfPresent(.effectiveDate)
+        id = try container.sdkDecodeRequired(.id)
+        type = try container.sdkDecodeRequired(.type)
+        name = try container.sdkDecodeRequired(.name)
+        description = try container.sdkDecodeIfPresent(.description)
+        paymentMethodRequired = try container.sdkDecodeIfPresent(.paymentMethodRequired)
+        cost = try container.sdkDecodeIfPresent(.cost)
+        details = try container.sdkDecodeIfPresent(.details)
+        highlightedDetails = try container.sdkDecodeIfPresent(.highlightedDetails)
+        effectiveDate = try container.sdkDecodeIfPresent(.effectiveDate)
         additionalProperties = try decoder.sdkAdditionalProperties(besides: CodingKeys.self)
     }
 }
 
-extension UpdateInstallationRequestBodyBillingPlan {
-    public init(id: String, type: UpdateInstallationRequestBodyBillingPlanType, name: String, description: String? = nil, paymentMethodRequired: Bool? = nil, cost: String? = nil, details: [UpdateInstallationRequestBodyBillingPlanDetailsItem]? = nil, highlightedDetails: UpdateInstallationRequestBodyBillingPlanHighlightedDetailsList? = nil, effectiveDate: String? = nil) {
+public extension UpdateInstallationRequestBodyBillingPlan {
+    init(
+        id: String,
+        type: UpdateInstallationRequestBodyBillingPlanType,
+        name: String,
+        description: String? = nil,
+        paymentMethodRequired: Bool? = nil,
+        cost: String? = nil,
+        details: [UpdateInstallationRequestBodyBillingPlanDetailsItem]? = nil,
+        highlightedDetails: UpdateInstallationRequestBodyBillingPlanHighlightedDetailsList? = nil,
+        effectiveDate: String? = nil
+    ) {
         (self.id, self.type) = (id, type)
         (self.name, self.description) = (name, description)
         (self.paymentMethodRequired, self.cost) = (paymentMethodRequired, cost)
@@ -358,8 +454,8 @@ extension UpdateInstallationRequestBodyBillingPlan {
     }
 }
 
-extension UpdateInstallationRequestBodyBillingPlan {
-    public func encode(to encoder: Encoder) throws {
+public extension UpdateInstallationRequestBodyBillingPlan {
+    func encode(to encoder: Encoder) throws {
         try encoder.sdkEncodeAdditionalProperties(additionalProperties)
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
@@ -387,30 +483,49 @@ public struct ReplaceInstallationsByIntegrationConfigurationIdResourcesByReXe5b6
         case purpose
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ReplaceInstallationsByIntegrationConfigurationIdResourcesByReXe5b63c03db {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.digest) else {
-            throw SdkValidationError(field: "digest", code: "required", message: "Validation failed for 'digest': value is required")
-        }
-        guard container.contains(.items) else {
-            throw SdkValidationError(field: "items", code: "required", message: "Validation failed for 'items': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.digest = try container.sdkDecodeRequired(.digest)
-        self.items = try container.sdkDecodeRequired(.items)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.purpose = try container.sdkDecodeIfPresent(.purpose)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ReplaceInstallationsByIntegrationConfigurationIdResourcesByReXe5b63c03db {
-    public init(digest: String, items: [String: GlobalConfigItemValue?], updatedAt: Double, purpose: ReplaceInstallationsByIntegrationConfigurationIdResourcesByReX65a54077be? = nil) {
+public extension ReplaceInstallationsByIntegrationConfigurationIdResourcesByReXe5b63c03db {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.digest) else {
+            throw SdkValidationError(
+                field: "digest",
+                code: "required",
+                message: "Validation failed for 'digest': value is required"
+            )
+        }
+        guard container.contains(.items) else {
+            throw SdkValidationError(
+                field: "items",
+                code: "required",
+                message: "Validation failed for 'items': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        digest = try container.sdkDecodeRequired(.digest)
+        items = try container.sdkDecodeRequired(.items)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        purpose = try container.sdkDecodeIfPresent(.purpose)
+    }
+}
+
+public extension ReplaceInstallationsByIntegrationConfigurationIdResourcesByReXe5b63c03db {
+    init(
+        digest: String,
+        items: [String: GlobalConfigItemValue?],
+        updatedAt: Double,
+        purpose: ReplaceInstallationsByIntegrationConfigurationIdResourcesByReX65a54077be? = nil
+    ) {
         (self.digest, self.items) = (digest, items)
         (self.updatedAt, self.purpose) = (updatedAt, purpose)
     }
@@ -472,28 +587,30 @@ public struct GetInvoiceResponse: Codable {
         case test
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension GetInvoiceResponse {
-    public init(from decoder: Decoder) throws {
+public extension GetInvoiceResponse {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.created = try container.sdkDecodeRequired(.created)
-        self.invoiceDate = try container.sdkDecodeRequired(.invoiceDate)
-        self.invoiceId = try container.sdkDecodeRequired(.invoiceId)
-        self.items = try container.sdkDecodeRequired(.items)
-        self.period = try container.sdkDecodeRequired(.period)
-        self.state = try container.sdkDecodeRequired(.state)
-        self.total = try container.sdkDecodeRequired(.total)
-        self.updated = try container.sdkDecodeRequired(.updated)
-        self.discounts = try container.sdkDecodeIfPresent(.discounts)
-        self.externalId = try container.sdkDecodeIfPresent(.externalId)
-        self.invoiceNumber = try container.sdkDecodeIfPresent(.invoiceNumber)
-        self.memo = try container.sdkDecodeIfPresent(.memo)
-        self.paidAt = try container.sdkDecodeIfPresent(.paidAt)
-        self.refundedAt = try container.sdkDecodeIfPresent(.refundedAt)
-        self.refundReason = try container.sdkDecodeIfPresent(.refundReason)
-        self.refundTotal = try container.sdkDecodeIfPresent(.refundTotal)
-        self.test = try container.sdkDecodeIfPresent(.test)
+        created = try container.sdkDecodeRequired(.created)
+        invoiceDate = try container.sdkDecodeRequired(.invoiceDate)
+        invoiceId = try container.sdkDecodeRequired(.invoiceId)
+        items = try container.sdkDecodeRequired(.items)
+        period = try container.sdkDecodeRequired(.period)
+        state = try container.sdkDecodeRequired(.state)
+        total = try container.sdkDecodeRequired(.total)
+        updated = try container.sdkDecodeRequired(.updated)
+        discounts = try container.sdkDecodeIfPresent(.discounts)
+        externalId = try container.sdkDecodeIfPresent(.externalId)
+        invoiceNumber = try container.sdkDecodeIfPresent(.invoiceNumber)
+        memo = try container.sdkDecodeIfPresent(.memo)
+        paidAt = try container.sdkDecodeIfPresent(.paidAt)
+        refundedAt = try container.sdkDecodeIfPresent(.refundedAt)
+        refundReason = try container.sdkDecodeIfPresent(.refundReason)
+        refundTotal = try container.sdkDecodeIfPresent(.refundTotal)
+        test = try container.sdkDecodeIfPresent(.test)
     }
 }

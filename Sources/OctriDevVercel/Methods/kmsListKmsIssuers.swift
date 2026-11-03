@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension KmsMethods {
-    /// Lists KMS issuers belonging to the authenticated user's team. Use `limit` to control the page size and `next` to continue from a previous page; `teamId` or `slug` can scope the request to a team.
+public extension KmsMethods {
+    /// Lists KMS issuers belonging to the authenticated user's team. Use `limit` to control the page size and `next` to
+    /// continue from a previous page; `teamId` or `slug` can scope the request to a team.
     ///
     /// Retrieve the list of KMS issuers that belong to the authenticated team. The results are paginated.
     ///
@@ -16,17 +17,24 @@ extension KmsMethods {
     /// - next: Continuation cursor to retrieve the next page of results.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listKmsIssuers(config: ClientConfig, limit: Int? = nil, next: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListKmsIssuersResponse {
-        if let limit = limit {
+    static func listKmsIssuers(
+        config: ClientConfig,
+        limit: Int? = nil,
+        next: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListKmsIssuersResponse {
+        if let limit {
             try validateRange("limit", Double(limit), min: 1, max: 100)
         }
 
-        if let next = next {
+        if let next {
             try validateLength("next", next, max: 1024)
             try sdkValidatePattern("next", next, sdkPattern2f959eb57901)
         }
 
-        return try (await sdkRequest("GET", "/v1/kms/issuers", config: config, query: [
+        return try await (sdkRequest("GET", "/v1/kms/issuers", config: config, query: [
             SdkQueryParameter("limit", value: limit),
             SdkQueryParameter("next", value: next),
             SdkQueryParameter("teamId", value: teamId),

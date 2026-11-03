@@ -6,17 +6,27 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VcrMethods {
-    /// Uploads an image manifest to a Docker repository and associates it with the specified tag or digest reference. Use this operation to push a manifest after uploading its referenced blobs. The server computes the manifest digest and returns it in the `Docker-Content-Digest` header.
+public extension VcrMethods {
+    /// Uploads an image manifest to a Docker repository and associates it with the specified tag or digest reference.
+    /// Use this operation to push a manifest after uploading its referenced blobs. The server computes the manifest
+    /// digest and returns it in the `Docker-Content-Digest` header.
     ///
-    /// PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is computed from the body and returned in the Docker-Content-Digest header.
+    /// PUT /v2/:teamSlug/:projectSlug/:repositoryName/manifests/:reference Upload an image manifest. The digest is
+    /// computed from the body and returned in the Docker-Content-Digest header.
     ///
     /// - Parameters:
     /// - teamSlug: Single Docker repository team slug component.
     /// - projectSlug: Single Docker repository project slug component.
     /// - repositoryName: Single Docker repository name component.
     /// - reference: Manifest reference: a tag or digest.
-    public static func replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(config: ClientConfig, teamSlug: String, projectSlug: String, repositoryName: String, reference: String, requestOptions: RequestOptions? = nil) async throws -> JSONValue {
+    static func replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference(
+        config: ClientConfig,
+        teamSlug: String,
+        projectSlug: String,
+        repositoryName: String,
+        reference: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> JSONValue {
         try validateLength("teamSlug", teamSlug, max: 255)
         try sdkValidatePattern("teamSlug", teamSlug, sdkPattern91423c544958)
 
@@ -29,6 +39,22 @@ extension VcrMethods {
         try validateLength("reference", reference, max: 255)
         try sdkValidatePattern("reference", reference, sdkPatternb704b0d56f71)
 
-        return try (await sdkRequest("PUT", ["/v2/", sdkEncodePathSegment(sdkWireString(teamSlug)), "/", sdkEncodePathSegment(sdkWireString(projectSlug)), "/", sdkEncodePathSegment(sdkWireString(repositoryName)), "/manifests/", sdkEncodePathSegment(sdkWireString(reference))].joined(), config: config, decoder: .json, operationId: "replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PUT",
+            [
+                "/v2/",
+                sdkEncodePathSegment(sdkWireString(teamSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(projectSlug)),
+                "/",
+                sdkEncodePathSegment(sdkWireString(repositoryName)),
+                "/manifests/",
+                sdkEncodePathSegment(sdkWireString(reference)),
+            ].joined(),
+            config: config,
+            decoder: .json,
+            operationId: "replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference",
+            options: requestOptions
+        )).data
     }
 }

@@ -8,8 +8,8 @@ import Foundation
 #endif
 public enum ProjectsMethods {}
 
-extension ProjectsMethods {
-    public struct ListProjectsOptions: Codable {
+public extension ProjectsMethods {
+    struct ListProjectsOptions: Codable {
         public var from: String?
         public var since: Double?
         public var until: Double?
@@ -33,9 +33,12 @@ extension ProjectsMethods {
         public init() {}
     }
 
-    /// Lists projects belonging to the authenticated user or a team, with pagination and filters for project updates, repositories, configuration, and build settings. Use `from`, `since`, and `until` to filter by update time, or `search` to match project names. The `teamId` or `slug` query parameter scopes the request to a team.
+    /// Lists projects belonging to the authenticated user or a team, with pagination and filters for project updates,
+    /// repositories, configuration, and build settings. Use `from`, `since`, and `until` to filter by update time, or
+    /// `search` to match project names. The `teamId` or `slug` query parameter scopes the request to a team.
     ///
-    /// Allows to retrieve the list of projects of the authenticated user or team. The list will be paginated and the provided query parameters allow filtering the returned projects.
+    /// Allows to retrieve the list of projects of the authenticated user or team. The list will be paginated and the
+    /// provided query parameters allow filtering the returned projects.
     ///
     /// - Parameters:
     /// - from: Query only projects updated after the given timestamp or
@@ -63,12 +66,16 @@ extension ProjectsMethods {
     ///   SKIP_NAMESPACE_QUEUE includes projects without a configuration set.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listProjects(config: ClientConfig, options: ListProjectsOptions, requestOptions: RequestOptions? = nil) async throws -> ListProjectsResponse {
+    static func listProjects(
+        config: ClientConfig,
+        options: ListProjectsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListProjectsResponse {
         if let search = options.search {
             try validateLength("search", search, max: 100)
         }
 
-        return try (await sdkRequest("GET", "/v10/projects", config: config, query: [
+        return try await (sdkRequest("GET", "/v10/projects", config: config, query: [
             SdkQueryParameter("from", value: options.from),
             SdkQueryParameter("since", value: options.since),
             SdkQueryParameter("until", value: options.until),

@@ -8,8 +8,9 @@ import Foundation
 #endif
 public enum DomainsMethods {}
 
-extension DomainsMethods {
-    /// Retrieves information about a domain registered to an account or team. Use `teamId` or `slug` to make the request on behalf of a team.
+public extension DomainsMethods {
+    /// Retrieves information about a domain registered to an account or team. Use `teamId` or `slug` to make the
+    /// request on behalf of a team.
     ///
     /// Get information for a single domain in an account or team.
     ///
@@ -17,16 +18,32 @@ extension DomainsMethods {
     /// - domain: The name of the domain.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getDomains(config: ClientConfig, domain: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainsResponse {
-        return try (await sdkRequest("GET", ["/v5/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getDomains", options: requestOptions)).data
+    static func getDomains(
+        config: ClientConfig,
+        domain: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainsResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v5/domains/", sdkEncodePathSegment(sdkWireString(domain))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getDomains",
+            options: requestOptions
+        )).data
     }
 
-    /// Lists domains registered to the authenticated user or team. Use `since` and `until` to filter by creation time, and `limit` to control the number of domains returned; the response includes pagination metadata.
+    /// Lists domains registered to the authenticated user or team. Use `since` and `until` to filter by creation time,
+    /// and `limit` to control the number of domains returned; the response includes pagination metadata.
     ///
-    /// Retrieves a list of domains registered for the authenticated user or team. By default it returns the last 20 domains if no limit is provided.
+    /// Retrieves a list of domains registered for the authenticated user or team. By default it returns the last 20
+    /// domains if no limit is provided.
     ///
     /// - Parameters:
     /// - limit: Maximum number of domains to list from a request.
@@ -34,8 +51,16 @@ extension DomainsMethods {
     /// - until: Get domains created before this JavaScript timestamp.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listDomains(config: ClientConfig, limit: Double? = nil, since: Double? = nil, until: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListDomainsResponse {
-        return try (await sdkRequest("GET", "/v5/domains", config: config, query: [
+    static func listDomains(
+        config: ClientConfig,
+        limit: Double? = nil,
+        since: Double? = nil,
+        until: Double? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListDomainsResponse {
+        try await (sdkRequest("GET", "/v5/domains", config: config, query: [
             SdkQueryParameter("limit", value: limit),
             SdkQueryParameter("since", value: since),
             SdkQueryParameter("until", value: until),

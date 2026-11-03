@@ -6,16 +6,22 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfdcfb8590e: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfdcfb8590e: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfdcfb8590e(rawValue: "create")
-    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfdcfb8590e(rawValue: "update")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let create =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfdcfb8590e(rawValue: "create")
+    public static let update =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfdcfb8590e(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -24,21 +30,30 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemXfdcf
     }
 }
 
-public struct GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let allow = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "allow")
-    public static let bypass = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "bypass")
-    public static let challenge = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "challenge")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let allow =
+        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "allow")
+    public static let bypass =
+        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "bypass")
+    public static let challenge =
+        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "challenge")
     public static let deny = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "log")
-    public static let rateLimit = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "rate_limit")
-    public static let redirect = GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "redirect")
+    public static let rateLimit =
+        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "rate_limit")
+    public static let redirect =
+        GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X806223bcfe(rawValue: "redirect")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -47,16 +62,20 @@ public struct GetSecurityFirewallConfigResponseVersionsItemRulesetsVariant0X8062
     }
 }
 
-public struct GetSecurityFirewallConfigResponseDraftCrsPhpAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseDraftCrsPhpAction: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let deny = GetSecurityFirewallConfigResponseDraftCrsPhpAction(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseDraftCrsPhpAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -65,10 +84,14 @@ public struct GetSecurityFirewallConfigResponseDraftCrsPhpAction: RawRepresentab
     }
 }
 
-public struct CreateProjectRequestBodySandboxFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectRequestBodySandboxFailoverRegionsItem: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let iad1 = CreateProjectRequestBodySandboxFailoverRegionsItem(rawValue: "iad1")
     public static let sfo1 = CreateProjectRequestBodySandboxFailoverRegionsItem(rawValue: "sfo1")
     public static let cle1 = CreateProjectRequestBodySandboxFailoverRegionsItem(rawValue: "cle1")
@@ -91,7 +114,7 @@ public struct CreateProjectRequestBodySandboxFailoverRegionsItem: RawRepresentab
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

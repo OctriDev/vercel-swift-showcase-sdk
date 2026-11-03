@@ -3,44 +3,81 @@
 
 import Foundation
 
-// Security domain models
-extension GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant1 {
-    public init(from decoder: Decoder) throws {
+/// Security domain models
+public extension GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant1 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.action) else {
-            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
+            throw SdkValidationError(
+                field: "action",
+                code: "required",
+                message: "Validation failed for 'action': value is required"
+            )
         }
         guard container.contains(.active) else {
-            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
+            throw SdkValidationError(
+                field: "active",
+                code: "required",
+                message: "Validation failed for 'active': value is required"
+            )
         }
         guard container.contains(.conditionGroup) else {
-            throw SdkValidationError(field: "conditionGroup", code: "required", message: "Validation failed for 'conditionGroup': value is required")
+            throw SdkValidationError(
+                field: "conditionGroup",
+                code: "required",
+                message: "Validation failed for 'conditionGroup': value is required"
+            )
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.valid) else {
-            throw SdkValidationError(field: "valid", code: "required", message: "Validation failed for 'valid': value is required")
+            throw SdkValidationError(
+                field: "valid",
+                code: "required",
+                message: "Validation failed for 'valid': value is required"
+            )
         }
         guard container.contains(.validationErrors) else {
-            throw SdkValidationError(field: "validationErrors", code: "required", message: "Validation failed for 'validationErrors': value is required")
+            throw SdkValidationError(
+                field: "validationErrors",
+                code: "required",
+                message: "Validation failed for 'validationErrors': value is required"
+            )
         }
-        self.action = try container.sdkDecodeRequired(.action)
-        self.active = try container.sdkDecodeRequired(.active)
-        self.conditionGroup = try container.sdkDecodeRequired(.conditionGroup)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.valid = try container.sdkDecodeRequired(.valid)
-        self.validationErrors = try container.sdkDecodeRequired(.validationErrors)
-        self.description = try container.sdkDecodeIfPresent(.description)
+        action = try container.sdkDecodeRequired(.action)
+        active = try container.sdkDecodeRequired(.active)
+        conditionGroup = try container.sdkDecodeRequired(.conditionGroup)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        valid = try container.sdkDecodeRequired(.valid)
+        validationErrors = try container.sdkDecodeRequired(.validationErrors)
+        description = try container.sdkDecodeIfPresent(.description)
     }
 }
 
-extension GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant1 {
-    public init(action: GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant1Action, active: Bool, conditionGroup: GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX47364e2258, id: String, name: String, valid: Bool, validationErrors: [String], description: String? = nil) {
+public extension GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant1 {
+    init(
+        action: GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant1Action,
+        active: Bool,
+        conditionGroup: GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX47364e2258,
+        id: String,
+        name: String,
+        valid: Bool,
+        validationErrors: [String],
+        description: String? = nil
+    ) {
         (self.action, self.active) = (action, active)
         (self.conditionGroup, self.id) = (conditionGroup, id)
         (self.name, self.valid) = (name, valid)
@@ -48,7 +85,8 @@ extension GetSecurityFirewallConfigResponseVersionsItemRulesItemVariant1 {
     }
 }
 
-public typealias GetSecurityFirewallConfigResponseActiveRulesItemVariant1CondiX0a48e09523 = [GetSecurityFirewallConfigResponseActiveRulesItemVariant1CondiX12af5c90c1]
+public typealias GetSecurityFirewallConfigResponseActiveRulesItemVariant1CondiX0a48e09523 =
+    [GetSecurityFirewallConfigResponseActiveRulesItemVariant1CondiX12af5c90c1]
 
 public struct GetSecurityFirewallConfigResponseActiveRulesItemVariant1: Codable {
     public var action: GetSecurityFirewallConfigResponseActiveRulesItemVariant1Action
@@ -71,46 +109,85 @@ public struct GetSecurityFirewallConfigResponseActiveRulesItemVariant1: Codable 
         case description
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetSecurityFirewallConfigResponseActiveRulesItemVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.action) else {
-            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
-        }
-        guard container.contains(.active) else {
-            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
-        }
-        guard container.contains(.conditionGroup) else {
-            throw SdkValidationError(field: "conditionGroup", code: "required", message: "Validation failed for 'conditionGroup': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.valid) else {
-            throw SdkValidationError(field: "valid", code: "required", message: "Validation failed for 'valid': value is required")
-        }
-        guard container.contains(.validationErrors) else {
-            throw SdkValidationError(field: "validationErrors", code: "required", message: "Validation failed for 'validationErrors': value is required")
-        }
-        self.action = try container.sdkDecodeRequired(.action)
-        self.active = try container.sdkDecodeRequired(.active)
-        self.conditionGroup = try container.sdkDecodeRequired(.conditionGroup)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.valid = try container.sdkDecodeRequired(.valid)
-        self.validationErrors = try container.sdkDecodeRequired(.validationErrors)
-        self.description = try container.sdkDecodeIfPresent(.description)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetSecurityFirewallConfigResponseActiveRulesItemVariant1 {
-    public init(action: GetSecurityFirewallConfigResponseActiveRulesItemVariant1Action, active: Bool, conditionGroup: GetSecurityFirewallConfigResponseActiveRulesItemVariant1CondiX0a48e09523, id: String, name: String, valid: Bool, validationErrors: [String], description: String? = nil) {
+public extension GetSecurityFirewallConfigResponseActiveRulesItemVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.action) else {
+            throw SdkValidationError(
+                field: "action",
+                code: "required",
+                message: "Validation failed for 'action': value is required"
+            )
+        }
+        guard container.contains(.active) else {
+            throw SdkValidationError(
+                field: "active",
+                code: "required",
+                message: "Validation failed for 'active': value is required"
+            )
+        }
+        guard container.contains(.conditionGroup) else {
+            throw SdkValidationError(
+                field: "conditionGroup",
+                code: "required",
+                message: "Validation failed for 'conditionGroup': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.valid) else {
+            throw SdkValidationError(
+                field: "valid",
+                code: "required",
+                message: "Validation failed for 'valid': value is required"
+            )
+        }
+        guard container.contains(.validationErrors) else {
+            throw SdkValidationError(
+                field: "validationErrors",
+                code: "required",
+                message: "Validation failed for 'validationErrors': value is required"
+            )
+        }
+        action = try container.sdkDecodeRequired(.action)
+        active = try container.sdkDecodeRequired(.active)
+        conditionGroup = try container.sdkDecodeRequired(.conditionGroup)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        valid = try container.sdkDecodeRequired(.valid)
+        validationErrors = try container.sdkDecodeRequired(.validationErrors)
+        description = try container.sdkDecodeIfPresent(.description)
+    }
+}
+
+public extension GetSecurityFirewallConfigResponseActiveRulesItemVariant1 {
+    init(
+        action: GetSecurityFirewallConfigResponseActiveRulesItemVariant1Action,
+        active: Bool,
+        conditionGroup: GetSecurityFirewallConfigResponseActiveRulesItemVariant1CondiX0a48e09523,
+        id: String,
+        name: String,
+        valid: Bool,
+        validationErrors: [String],
+        description: String? = nil
+    ) {
         (self.action, self.active) = (action, active)
         (self.conditionGroup, self.id) = (conditionGroup, id)
         (self.name, self.valid) = (name, valid)
@@ -118,48 +195,84 @@ extension GetSecurityFirewallConfigResponseActiveRulesItemVariant1 {
     }
 }
 
-public struct GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let botCategory = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "bot_category")
-    public static let botName = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "bot_name")
-    public static let botProtection = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "bot_protection")
-    public static let botStatus = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "bot_status")
-    public static let cookie = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "cookie")
-    public static let domainEnvironment = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "domain_environment")
-    public static let environment = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "environment")
-    public static let geoAsNumber = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_as_number")
-    public static let geoCity = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_city")
-    public static let geoContinent = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_continent")
-    public static let geoCountry = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_country")
-    public static let geoCountryRegion = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_country_region")
-    public static let header = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "header")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let botCategory =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "bot_category")
+    public static let botName =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "bot_name")
+    public static let botProtection =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "bot_protection")
+    public static let botStatus =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "bot_status")
+    public static let cookie =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "cookie")
+    public static let domainEnvironment =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "domain_environment")
+    public static let environment =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "environment")
+    public static let geoAsNumber =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_as_number")
+    public static let geoCity =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_city")
+    public static let geoContinent =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_continent")
+    public static let geoCountry =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_country")
+    public static let geoCountryRegion =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "geo_country_region")
+    public static let header =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "header")
     public static let host = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "host")
-    public static let ipAddress = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "ip_address")
-    public static let ja3Digest = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "ja3_digest")
-    public static let ja4Digest = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "ja4_digest")
-    public static let method = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "method")
+    public static let ipAddress =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "ip_address")
+    public static let ja3Digest =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "ja3_digest")
+    public static let ja4Digest =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "ja4_digest")
+    public static let method =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "method")
     public static let path = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "path")
-    public static let `protocol` = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "protocol")
-    public static let query = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "query")
-    public static let rateLimitApiId = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "rate_limit_api_id")
-    public static let rawPath = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "raw_path")
-    public static let region = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "region")
-    public static let responseCode = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "response_code")
-    public static let route = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "route")
-    public static let ruleset = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "ruleset")
-    public static let scheme = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "scheme")
-    public static let serverAction = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "server_action")
-    public static let sharedCondition = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "shared_condition")
-    public static let targetPath = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "target_path")
-    public static let trafficSource = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "traffic_source")
-    public static let trustedSource = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "trusted_source")
-    public static let userAgent = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "user_agent")
+    public static let `protocol` =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "protocol")
+    public static let query =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "query")
+    public static let rateLimitApiId =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "rate_limit_api_id")
+    public static let rawPath =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "raw_path")
+    public static let region =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "region")
+    public static let responseCode =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "response_code")
+    public static let route =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "route")
+    public static let ruleset =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "ruleset")
+    public static let scheme =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "scheme")
+    public static let serverAction =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "server_action")
+    public static let sharedCondition =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "shared_condition")
+    public static let targetPath =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "target_path")
+    public static let trafficSource =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "traffic_source")
+    public static let trustedSource =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "trusted_source")
+    public static let userAgent =
+        GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c32e8ef(rawValue: "user_agent")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -168,21 +281,30 @@ public struct GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX924c
     }
 }
 
-public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let allow = GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "allow")
-    public static let bypass = GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "bypass")
-    public static let challenge = GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "challenge")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let allow =
+        GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "allow")
+    public static let bypass =
+        GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "bypass")
+    public static let challenge =
+        GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "challenge")
     public static let deny = GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "log")
-    public static let rateLimit = GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "rate_limit")
-    public static let redirect = GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "redirect")
+    public static let rateLimit =
+        GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "rate_limit")
+    public static let redirect =
+        GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fac4fed5(rawValue: "redirect")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -191,10 +313,14 @@ public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant1ActionXa2fa
     }
 }
 
-public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant0ConditXdbfa119394: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant0ConditXdbfa119394: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let eq = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ConditXdbfa119394(rawValue: "eq")
     public static let ex = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ConditXdbfa119394(rawValue: "ex")
     public static let gt = GetSecurityFirewallConfigResponseDraftRulesItemVariant0ConditXdbfa119394(rawValue: "gt")
@@ -213,7 +339,7 @@ public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant0ConditXdbfa
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -222,10 +348,14 @@ public struct GetSecurityFirewallConfigResponseDraftRulesItemVariant0ConditXdbfa
     }
 }
 
-public struct GetSecurityFirewallConfigResponseActiveRulesItemVariant0CondiXf8f3b2223a: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseActiveRulesItemVariant0CondiXf8f3b2223a: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let eq = GetSecurityFirewallConfigResponseActiveRulesItemVariant0CondiXf8f3b2223a(rawValue: "eq")
     public static let ex = GetSecurityFirewallConfigResponseActiveRulesItemVariant0CondiXf8f3b2223a(rawValue: "ex")
     public static let gt = GetSecurityFirewallConfigResponseActiveRulesItemVariant0CondiXf8f3b2223a(rawValue: "gt")
@@ -244,7 +374,7 @@ public struct GetSecurityFirewallConfigResponseActiveRulesItemVariant0CondiXf8f3
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -253,10 +383,14 @@ public struct GetSecurityFirewallConfigResponseActiveRulesItemVariant0CondiXf8f3
     }
 }
 
-public struct GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX3e343802fb: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX3e343802fb: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let eq = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX3e343802fb(rawValue: "eq")
     public static let ex = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX3e343802fb(rawValue: "ex")
     public static let gt = GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX3e343802fb(rawValue: "gt")
@@ -275,7 +409,7 @@ public struct GetSecurityFirewallConfigResponseVersionsItemRulesItemVariantX3e34
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

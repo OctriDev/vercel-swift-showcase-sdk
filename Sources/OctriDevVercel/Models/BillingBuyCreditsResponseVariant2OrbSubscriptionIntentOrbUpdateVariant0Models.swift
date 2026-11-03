@@ -3,19 +3,23 @@
 
 import Foundation
 
-// Billing domain models
-extension BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant0 {
-    public init(from decoder: Decoder) throws {
+/// Billing domain models
+public extension BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant0 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.mode) else {
-            throw SdkValidationError(field: "mode", code: "required", message: "Validation failed for 'mode': value is required")
+            throw SdkValidationError(
+                field: "mode",
+                code: "required",
+                message: "Validation failed for 'mode': value is required"
+            )
         }
-        self.mode = try container.sdkDecodeRequired(.mode)
+        mode = try container.sdkDecodeRequired(.mode)
     }
 }
 
-extension BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant0 {
-    public init(mode: BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant0Mode) {
+public extension BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant0 {
+    init(mode: BuyCreditsResponseVariant2OrbSubscriptionIntentOrbUpdateVariant0Mode) {
         self.mode = mode
     }
 }
@@ -34,33 +38,59 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVarian
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.options) else {
-            throw SdkValidationError(field: "options", code: "required", message: "Validation failed for 'options': value is required")
-        }
-        guard container.contains(.output) else {
-            throw SdkValidationError(field: "output", code: "required", message: "Validation failed for 'output': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.options = try container.sdkDecodeRequired(.options)
-        self.output = try container.sdkDecodeRequired(.output)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1 {
-    public init(options: BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXca3bf8cc7c, output: BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXeeefdd1a24, type: BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1Type) throws {
+public extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.options) else {
+            throw SdkValidationError(
+                field: "options",
+                code: "required",
+                message: "Validation failed for 'options': value is required"
+            )
+        }
+        guard container.contains(.output) else {
+            throw SdkValidationError(
+                field: "output",
+                code: "required",
+                message: "Validation failed for 'output': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        options = try container.sdkDecodeRequired(.options)
+        output = try container.sdkDecodeRequired(.output)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1Type.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1 {
+    init(
+        options: BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXca3bf8cc7c,
+        output: BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVXeeefdd1a24,
+        type: BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1Type
+    ) throws {
         (self.options, self.output) = (options, output)
         self.type = type
-            try sdkValidateRawEnum("type", self.type, BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVariant1Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -76,30 +106,41 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX0534
         case startDate
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX053466cdc9 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.endDate) else {
-            throw SdkValidationError(field: "endDate", code: "required", message: "Validation failed for 'endDate': value is required")
-        }
-        guard container.contains(.startDate) else {
-            throw SdkValidationError(field: "startDate", code: "required", message: "Validation failed for 'startDate': value is required")
-        }
-        self.endDate = try container.sdkDecodeRequired(.endDate)
-        self.startDate = try container.sdkDecodeRequired(.startDate)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX053466cdc9 {
-    public init(endDate: String, startDate: String) {
+public extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX053466cdc9 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.endDate) else {
+            throw SdkValidationError(
+                field: "endDate",
+                code: "required",
+                message: "Validation failed for 'endDate': value is required"
+            )
+        }
+        guard container.contains(.startDate) else {
+            throw SdkValidationError(
+                field: "startDate",
+                code: "required",
+                message: "Validation failed for 'startDate': value is required"
+            )
+        }
+        endDate = try container.sdkDecodeRequired(.endDate)
+        startDate = try container.sdkDecodeRequired(.startDate)
+    }
+}
+
+public extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX053466cdc9 {
+    init(endDate: String, startDate: String) {
         (self.endDate, self.startDate) = (endDate, startDate)
     }
 }
 
-public typealias BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6Xd8e5361f9d = [BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6X0d8e50818c]
+public typealias BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6Xd8e5361f9d =
+    [BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6X0d8e50818c]
 
 /// The current plan being replaced by this purchase
 public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6X9022aa6e83: Codable {
@@ -122,31 +163,51 @@ public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6X9022
         case rateVariantKey
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6X9022aa6e83 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.currentCycleEndDate) else {
-            throw SdkValidationError(field: "currentCycleEndDate", code: "required", message: "Validation failed for 'currentCycleEndDate': value is required")
-        }
-        guard container.contains(.orbSubscriptionId) else {
-            throw SdkValidationError(field: "orbSubscriptionId", code: "required", message: "Validation failed for 'orbSubscriptionId': value is required")
-        }
-        guard container.contains(.planId) else {
-            throw SdkValidationError(field: "planId", code: "required", message: "Validation failed for 'planId': value is required")
-        }
-        self.currentCycleEndDate = try container.sdkDecodeRequired(.currentCycleEndDate)
-        self.orbSubscriptionId = try container.sdkDecodeRequired(.orbSubscriptionId)
-        self.planId = try container.sdkDecodeRequired(.planId)
-        self.planItemQuantities = try container.sdkDecodeIfPresent(.planItemQuantities)
-        self.rateVariantKey = try container.sdkDecodeIfPresent(.rateVariantKey)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6X9022aa6e83 {
-    public init(currentCycleEndDate: String, orbSubscriptionId: String, planId: String, planItemQuantities: BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6Xd8e5361f9d? = nil, rateVariantKey: String? = nil) {
+public extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6X9022aa6e83 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.currentCycleEndDate) else {
+            throw SdkValidationError(
+                field: "currentCycleEndDate",
+                code: "required",
+                message: "Validation failed for 'currentCycleEndDate': value is required"
+            )
+        }
+        guard container.contains(.orbSubscriptionId) else {
+            throw SdkValidationError(
+                field: "orbSubscriptionId",
+                code: "required",
+                message: "Validation failed for 'orbSubscriptionId': value is required"
+            )
+        }
+        guard container.contains(.planId) else {
+            throw SdkValidationError(
+                field: "planId",
+                code: "required",
+                message: "Validation failed for 'planId': value is required"
+            )
+        }
+        currentCycleEndDate = try container.sdkDecodeRequired(.currentCycleEndDate)
+        orbSubscriptionId = try container.sdkDecodeRequired(.orbSubscriptionId)
+        planId = try container.sdkDecodeRequired(.planId)
+        planItemQuantities = try container.sdkDecodeIfPresent(.planItemQuantities)
+        rateVariantKey = try container.sdkDecodeIfPresent(.rateVariantKey)
+    }
+}
+
+public extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6X9022aa6e83 {
+    init(
+        currentCycleEndDate: String,
+        orbSubscriptionId: String,
+        planId: String,
+        planItemQuantities: BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant6Xd8e5361f9d? = nil,
+        rateVariantKey: String? = nil
+    ) {
         (self.currentCycleEndDate, self.orbSubscriptionId) = (currentCycleEndDate, orbSubscriptionId)
         (self.planId, self.planItemQuantities) = (planId, planItemQuantities)
         self.rateVariantKey = rateVariantKey
@@ -161,21 +222,27 @@ public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Outpu
         case pendingSubscriptionChangeId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Output {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.pendingSubscriptionChangeId) else {
-            throw SdkValidationError(field: "pendingSubscriptionChangeId", code: "required", message: "Validation failed for 'pendingSubscriptionChangeId': value is required")
-        }
-        self.pendingSubscriptionChangeId = try container.sdkDecodeRequired(.pendingSubscriptionChangeId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Output {
-    public init(pendingSubscriptionChangeId: String) {
+public extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Output {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.pendingSubscriptionChangeId) else {
+            throw SdkValidationError(
+                field: "pendingSubscriptionChangeId",
+                code: "required",
+                message: "Validation failed for 'pendingSubscriptionChangeId': value is required"
+            )
+        }
+        pendingSubscriptionChangeId = try container.sdkDecodeRequired(.pendingSubscriptionChangeId)
+    }
+}
+
+public extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant2Output {
+    init(pendingSubscriptionChangeId: String) {
         self.pendingSubscriptionChangeId = pendingSubscriptionChangeId
     }
 }
@@ -189,21 +256,27 @@ public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant4X07b5
         case priceId
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant4X07b50cd03b {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.priceId) else {
-            throw SdkValidationError(field: "priceId", code: "required", message: "Validation failed for 'priceId': value is required")
-        }
-        self.priceId = try container.sdkDecodeRequired(.priceId)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant4X07b50cd03b {
-    public init(priceId: String) {
+public extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant4X07b50cd03b {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.priceId) else {
+            throw SdkValidationError(
+                field: "priceId",
+                code: "required",
+                message: "Validation failed for 'priceId': value is required"
+            )
+        }
+        priceId = try container.sdkDecodeRequired(.priceId)
+    }
+}
+
+public extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant4X07b50cd03b {
+    init(priceId: String) {
         self.priceId = priceId
     }
 }
@@ -260,33 +333,52 @@ public struct BuyCreditsResponseVariant1PurchaseIntent: Codable {
         case returnUrl
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension BuyCreditsResponseVariant1PurchaseIntent {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.configuration = try container.sdkDecodeRequired(.configuration)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.currency = try container.sdkDecodeRequired(.currency)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.ownerId = try container.sdkDecodeRequired(.ownerId)
-        self.provider = try container.sdkDecodeRequired(.provider)
-        self.status = try container.sdkDecodeRequired(.status)
-        self.subtotal = try container.sdkDecodeRequired(.subtotal)
-        self.tax = try container.sdkDecodeRequired(.tax)
-        self.total = try container.sdkDecodeRequired(.total)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.dispute = try container.sdkDecodeIfPresent(.dispute)
-        self.lineItems = try container.sdkDecodeIfPresent(.lineItems)
-        self.metadata = try container.sdkDecodeIfPresent(.metadata)
-        self.refund = try container.sdkDecodeIfPresent(.refund)
-        self.returnUrl = try container.sdkDecodeIfPresent(.returnUrl)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension BuyCreditsResponseVariant1PurchaseIntent {
-    public init(configuration: BuyCreditsResponseVariant1PurchaseIntentConfiguration, createdAt: String, currency: BuyCreditsResponseVariant1PurchaseIntentCurrency, id: String, ownerId: String, provider: BuyCreditsResponseVariant1PurchaseIntentProvider, status: BuyCreditsResponseVariant1PurchaseIntentStatus, subtotal: String, tax: String, total: String, updatedAt: String, dispute: BuyCreditsResponseVariant1PurchaseIntentDispute? = nil, lineItems: [BuyCreditsResponseVariant1PurchaseIntentLineItemsItem]? = nil, metadata: [String: String]? = nil, refund: String? = nil, returnUrl: String? = nil) {
+public extension BuyCreditsResponseVariant1PurchaseIntent {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        configuration = try container.sdkDecodeRequired(.configuration)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        currency = try container.sdkDecodeRequired(.currency)
+        id = try container.sdkDecodeRequired(.id)
+        ownerId = try container.sdkDecodeRequired(.ownerId)
+        provider = try container.sdkDecodeRequired(.provider)
+        status = try container.sdkDecodeRequired(.status)
+        subtotal = try container.sdkDecodeRequired(.subtotal)
+        tax = try container.sdkDecodeRequired(.tax)
+        total = try container.sdkDecodeRequired(.total)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        dispute = try container.sdkDecodeIfPresent(.dispute)
+        lineItems = try container.sdkDecodeIfPresent(.lineItems)
+        metadata = try container.sdkDecodeIfPresent(.metadata)
+        refund = try container.sdkDecodeIfPresent(.refund)
+        returnUrl = try container.sdkDecodeIfPresent(.returnUrl)
+    }
+}
+
+public extension BuyCreditsResponseVariant1PurchaseIntent {
+    init(
+        configuration: BuyCreditsResponseVariant1PurchaseIntentConfiguration,
+        createdAt: String,
+        currency: BuyCreditsResponseVariant1PurchaseIntentCurrency,
+        id: String,
+        ownerId: String,
+        provider: BuyCreditsResponseVariant1PurchaseIntentProvider,
+        status: BuyCreditsResponseVariant1PurchaseIntentStatus,
+        subtotal: String,
+        tax: String,
+        total: String,
+        updatedAt: String,
+        dispute: BuyCreditsResponseVariant1PurchaseIntentDispute? = nil,
+        lineItems: [BuyCreditsResponseVariant1PurchaseIntentLineItemsItem]? = nil,
+        metadata: [String: String]? = nil,
+        refund: String? = nil,
+        returnUrl: String? = nil
+    ) {
         (self.configuration, self.createdAt) = (configuration, createdAt)
         (self.currency, self.id) = (currency, id)
         (self.ownerId, self.provider) = (ownerId, provider)
@@ -326,33 +418,55 @@ public struct BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX45a3
         case resourceIds
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX45a37b25c4 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.productAlias) else {
-            throw SdkValidationError(field: "productAlias", code: "required", message: "Validation failed for 'productAlias': value is required")
-        }
-        guard container.contains(.productId) else {
-            throw SdkValidationError(field: "productId", code: "required", message: "Validation failed for 'productId': value is required")
-        }
-        guard container.contains(.quantity) else {
-            throw SdkValidationError(field: "quantity", code: "required", message: "Validation failed for 'quantity': value is required")
-        }
-        self.productAlias = try container.sdkDecodeRequired(.productAlias)
-        self.productId = try container.sdkDecodeRequired(.productId)
-        self.quantity = try container.sdkDecodeRequired(.quantity)
-        self.addedResourceIds = try container.sdkDecodeIfPresent(.addedResourceIds)
-        self.effectiveAt = try container.sdkDecodeIfPresent(.effectiveAt)
-        self.removedResourceIds = try container.sdkDecodeIfPresent(.removedResourceIds)
-        self.resourceIds = try container.sdkDecodeIfPresent(.resourceIds)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX45a37b25c4 {
-    public init(productAlias: String, productId: String, quantity: Double, addedResourceIds: [String]? = nil, effectiveAt: String? = nil, removedResourceIds: [String]? = nil, resourceIds: [String]? = nil) {
+public extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX45a37b25c4 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.productAlias) else {
+            throw SdkValidationError(
+                field: "productAlias",
+                code: "required",
+                message: "Validation failed for 'productAlias': value is required"
+            )
+        }
+        guard container.contains(.productId) else {
+            throw SdkValidationError(
+                field: "productId",
+                code: "required",
+                message: "Validation failed for 'productId': value is required"
+            )
+        }
+        guard container.contains(.quantity) else {
+            throw SdkValidationError(
+                field: "quantity",
+                code: "required",
+                message: "Validation failed for 'quantity': value is required"
+            )
+        }
+        productAlias = try container.sdkDecodeRequired(.productAlias)
+        productId = try container.sdkDecodeRequired(.productId)
+        quantity = try container.sdkDecodeRequired(.quantity)
+        addedResourceIds = try container.sdkDecodeIfPresent(.addedResourceIds)
+        effectiveAt = try container.sdkDecodeIfPresent(.effectiveAt)
+        removedResourceIds = try container.sdkDecodeIfPresent(.removedResourceIds)
+        resourceIds = try container.sdkDecodeIfPresent(.resourceIds)
+    }
+}
+
+public extension BuyCreditsResponseVariant2OrbSubscriptionIntentConfigurationVX45a37b25c4 {
+    init(
+        productAlias: String,
+        productId: String,
+        quantity: Double,
+        addedResourceIds: [String]? = nil,
+        effectiveAt: String? = nil,
+        removedResourceIds: [String]? = nil,
+        resourceIds: [String]? = nil
+    ) {
         (self.productAlias, self.productId) = (productAlias, productId)
         (self.quantity, self.addedResourceIds) = (quantity, addedResourceIds)
         (self.effectiveAt, self.removedResourceIds) = (effectiveAt, removedResourceIds)
@@ -372,33 +486,59 @@ public struct BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3: Cod
         case type
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.options) else {
-            throw SdkValidationError(field: "options", code: "required", message: "Validation failed for 'options': value is required")
-        }
-        guard container.contains(.output) else {
-            throw SdkValidationError(field: "output", code: "required", message: "Validation failed for 'output': value is required")
-        }
-        guard container.contains(.type) else {
-            throw SdkValidationError(field: "type", code: "required", message: "Validation failed for 'type': value is required")
-        }
-        self.options = try container.sdkDecodeRequired(.options)
-        self.output = try container.sdkDecodeRequired(.output)
-        self.type = try container.sdkDecodeRequired(.type)
-            try sdkValidateRawEnum("type", self.type, BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Type.allCases.map(\.rawValue))
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3 {
-    public init(options: BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Options, output: BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Output, type: BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Type) throws {
+public extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.options) else {
+            throw SdkValidationError(
+                field: "options",
+                code: "required",
+                message: "Validation failed for 'options': value is required"
+            )
+        }
+        guard container.contains(.output) else {
+            throw SdkValidationError(
+                field: "output",
+                code: "required",
+                message: "Validation failed for 'output': value is required"
+            )
+        }
+        guard container.contains(.type) else {
+            throw SdkValidationError(
+                field: "type",
+                code: "required",
+                message: "Validation failed for 'type': value is required"
+            )
+        }
+        options = try container.sdkDecodeRequired(.options)
+        output = try container.sdkDecodeRequired(.output)
+        type = try container.sdkDecodeRequired(.type)
+        try sdkValidateRawEnum(
+            "type",
+            type,
+            BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Type.allCases.map(\.rawValue)
+        )
+    }
+}
+
+public extension BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3 {
+    init(
+        options: BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Options,
+        output: BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Output,
+        type: BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Type
+    ) throws {
         (self.options, self.output) = (options, output)
         self.type = type
-            try sdkValidateRawEnum("type", self.type, BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Type.allCases.map(\.rawValue))
+        try sdkValidateRawEnum(
+            "type",
+            self.type,
+            BuyCreditsResponseVariant1PurchaseIntentConfigurationVariant3Type.allCases.map(\.rawValue)
+        )
     }
 }
 
@@ -435,38 +575,64 @@ public struct BuyCreditsResponseVariant1PurchaseIntentLineItemsItem: Codable {
         case refund
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }
 
-extension BuyCreditsResponseVariant1PurchaseIntentLineItemsItem {
-    public init(from decoder: Decoder) throws {
+public extension BuyCreditsResponseVariant1PurchaseIntentLineItemsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.description) else {
-            throw SdkValidationError(field: "description", code: "required", message: "Validation failed for 'description': value is required")
+            throw SdkValidationError(
+                field: "description",
+                code: "required",
+                message: "Validation failed for 'description': value is required"
+            )
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.productId) else {
-            throw SdkValidationError(field: "productId", code: "required", message: "Validation failed for 'productId': value is required")
+            throw SdkValidationError(
+                field: "productId",
+                code: "required",
+                message: "Validation failed for 'productId': value is required"
+            )
         }
         guard container.contains(.quantity) else {
-            throw SdkValidationError(field: "quantity", code: "required", message: "Validation failed for 'quantity': value is required")
+            throw SdkValidationError(
+                field: "quantity",
+                code: "required",
+                message: "Validation failed for 'quantity': value is required"
+            )
         }
         guard container.contains(.unitAmount) else {
-            throw SdkValidationError(field: "unitAmount", code: "required", message: "Validation failed for 'unitAmount': value is required")
+            throw SdkValidationError(
+                field: "unitAmount",
+                code: "required",
+                message: "Validation failed for 'unitAmount': value is required"
+            )
         }
-        self.description = try container.sdkDecodeRequired(.description)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.productId = try container.sdkDecodeRequired(.productId)
-        self.quantity = try container.sdkDecodeRequired(.quantity)
-        self.unitAmount = try container.sdkDecodeRequired(.unitAmount)
-        self.metadata = try container.sdkDecodeIfPresent(.metadata)
-        self.productAlias = try container.sdkDecodeIfPresent(.productAlias)
-        self.refund = try container.sdkDecodeIfPresent(.refund)
+        description = try container.sdkDecodeRequired(.description)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        productId = try container.sdkDecodeRequired(.productId)
+        quantity = try container.sdkDecodeRequired(.quantity)
+        unitAmount = try container.sdkDecodeRequired(.unitAmount)
+        metadata = try container.sdkDecodeIfPresent(.metadata)
+        productAlias = try container.sdkDecodeIfPresent(.productAlias)
+        refund = try container.sdkDecodeIfPresent(.refund)
     }
 }

@@ -3,23 +3,27 @@
 
 import Foundation
 
-// Sandboxes domain models
-extension CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItXe729aac8d1 {
-    public init(from decoder: Decoder) throws {
+/// Sandboxes domain models
+public extension CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItXe729aac8d1 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.key = try container.sdkDecodeIfPresent(.key)
-        self.value = try container.sdkDecodeIfPresent(.value)
+        key = try container.sdkDecodeIfPresent(.key)
+        value = try container.sdkDecodeIfPresent(.value)
     }
 }
 
-extension CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItXe729aac8d1 {
-    public init(key: CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItXd7c62adec1? = nil, value: CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItX08fe182cd9? = nil) {
+public extension CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItXe729aac8d1 {
+    init(
+        key: CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItXd7c62adec1? = nil,
+        value: CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItX08fe182cd9? = nil
+    ) {
         self.init()
         (self.key, self.value) = (key, value)
     }
 }
 
-public typealias CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesList = [CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItem]
+public typealias CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesList =
+    [CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesItem]
 
 /// Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use
 /// \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific
@@ -53,25 +57,37 @@ public struct CreateSandboxesV2RequestNetworkPolicyVariant0: Codable {
         case injectionRules
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateSandboxesV2RequestNetworkPolicyVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.mode) else {
-            throw SdkValidationError(field: "mode", code: "required", message: "Validation failed for 'mode': value is required")
-        }
-        self.mode = try container.sdkDecodeRequired(.mode)
-        self.allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
-        self.allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
-        self.deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
-        self.injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateSandboxesV2RequestNetworkPolicyVariant0 {
-    public init(mode: CreateSandboxesV2RequestNetworkPolicyVariant0Mode, allowedDomains: [String]? = nil, allowedCidrs: [String]? = nil, deniedCidrs: [String]? = nil, injectionRules: CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesList? = nil) {
+public extension CreateSandboxesV2RequestNetworkPolicyVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.mode) else {
+            throw SdkValidationError(
+                field: "mode",
+                code: "required",
+                message: "Validation failed for 'mode': value is required"
+            )
+        }
+        mode = try container.sdkDecodeRequired(.mode)
+        allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
+        allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
+        deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
+        injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
+    }
+}
+
+public extension CreateSandboxesV2RequestNetworkPolicyVariant0 {
+    init(
+        mode: CreateSandboxesV2RequestNetworkPolicyVariant0Mode,
+        allowedDomains: [String]? = nil,
+        allowedCidrs: [String]? = nil,
+        deniedCidrs: [String]? = nil,
+        injectionRules: CreateSandboxesV2RequestNetworkPolicyVariant0InjectionRulesList? = nil
+    ) {
         (self.mode, self.allowedDomains) = (mode, allowedDomains)
         (self.allowedCidrs, self.deniedCidrs) = (allowedCidrs, deniedCidrs)
         self.injectionRules = injectionRules
@@ -80,10 +96,14 @@ extension CreateSandboxesV2RequestNetworkPolicyVariant0 {
 
 /// The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block
 /// all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
-public struct CreateSandboxesV2RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateSandboxesV2RequestNetworkPolicyVariant0Mode: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let allowAll = CreateSandboxesV2RequestNetworkPolicyVariant0Mode(rawValue: "allow-all")
     public static let denyAll = CreateSandboxesV2RequestNetworkPolicyVariant0Mode(rawValue: "deny-all")
     public static let custom = CreateSandboxesV2RequestNetworkPolicyVariant0Mode(rawValue: "custom")
@@ -92,7 +112,7 @@ public struct CreateSandboxesV2RequestNetworkPolicyVariant0Mode: RawRepresentabl
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

@@ -4,13 +4,11 @@
 import Foundation
 
 let sdkPattern87c88ec08859 = [
-
     "([a-z]+[a-z.]+)$",
 
 ].joined()
 
 let sdkPatternb704b0d56f71 = [
-
     "^(?:[a-zA-Z0-9_][a-zA-Z0-9._-]{0,127}|[A-Za-z0-9_+.-]+:[A-Fa-f0-",
 
     "9]+)$",
@@ -18,97 +16,81 @@ let sdkPatternb704b0d56f71 = [
 ].joined()
 
 let sdkPatternfd6f461ad19c = [
-
     "^(?:production|preview|development|env_.+)$",
 
 ].joined()
 
 let sdkPattern6d0098da5bca = [
-
     "^(?:snap_[A-Za-z0-9]{28}|vhs_[a-z0-9]{28})$",
 
 ].joined()
 
 let sdkPatternb0127dc2a0a3 = [
-
     "^(?=(?:\\D*\\d){8,15}$)\\+[1-9]\\d{0,2}\\.?\\d+$",
 
 ].joined()
 
 let sdkPattern6081f279f455 = [
-
     "^(flags)(/([0-9A-Za-z_]+|'([^']|'')*'))+$",
 
 ].joined()
 
 let sdkPattern5dd38977b789 = [
-
     "^(flags|eventData)(/([0-9A-Za-z_]+|'([^']|'')*'))+$",
 
 ].joined()
 
 let sdkPatternba8b63d162a8 = [
-
     "^(http|https)?://",
 
 ].joined()
 
 let sdkPattern95a85591ddd9 = [
-
     "^[!#$%&'*+.^_`|~0-9A-Za-z-]+$",
 
 ].joined()
 
 let sdkPattern8b2444202961 = [
-
     "^[\\w-]+$",
 
 ].joined()
 
 let sdkPatternc108d58e346a = [
-
     "^[0-9]+(\\.[0-9]+)?$",
 
 ].joined()
 
 let sdkPattern1627919cf6d9 = [
-
     "^[0-9a-f]+$",
 
 ].joined()
 
 let sdkPatternd52cc03c09dc = [
-
     "^[0-9a-fA-F]{40}$",
 
 ].joined()
 
 let sdkPattern5d864dda20f3 = [
-
     "^[1-9][0-9]*$",
 
 ].joined()
 
 let sdkPatternbc5c1977eda6 = [
-
     "^[a-f0-9]{40}$",
 
 ].joined()
 
 let sdkPattern3195b0c37ff2 = [
-
     "^[A-z0-9_ -]+$",
 
 ].joined()
 
 let sdkPattern2aa131208190 = [
-
     "^[a-z0-9-]+$",
 
 ].joined()
 
 let sdkPattern138762441972 = [
-
     "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?\\\\/[a-z0-9](?:[a-z0-9-]{0,4",
 
     "6}[a-z0-9])?\\\\/[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
@@ -116,145 +98,121 @@ let sdkPattern138762441972 = [
 ].joined()
 
 let sdkPattern91423c544958 = [
-
     "^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
 
 ].joined()
 
 let sdkPatternccfeb2ca8f11 = [
-
     "^[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
 
 ].joined()
 
 let sdkPatterndd8a45574888 = [
-
     "^[a-zA-Z0-9_-]{1,512}$",
 
 ].joined()
 
 let sdkPatterna828669d9fe5 = [
-
     "^[a-zA-Z0-9_-]+$",
 
 ].joined()
 
 let sdkPattern2f959eb57901 = [
-
     "^[A-Za-z0-9_-]+$",
 
 ].joined()
 
 let sdkPatternc4ba70074ba8 = [
-
     "^[a-zA-z0-9_]+$",
 
 ].joined()
 
 let sdkPatternf55d8ca4ed38 = [
-
     "^[A-Za-z0-9_+.-]+:[A-Fa-f0-9]+$",
 
 ].joined()
 
 let sdkPattern4f591544cbe4 = [
-
     "^[A-Za-z0-9._-]+$",
 
 ].joined()
 
 let sdkPattern0799e1fd96ab = [
-
     "^[a-zA-Z0-9]{32}$",
 
 ].joined()
 
 let sdkPattern7cda0ad6ec9f = [
-
     "^[A-Za-z0-9+/]*={0,2}$",
 
 ].joined()
 
 let sdkPatterne9fff8773273 = [
-
     "^/.*",
 
 ].joined()
 
 let sdkPatternb8e174432b45 = [
-
     "^\\\\/",
 
 ].joined()
 
 let sdkPattern0e45cda37c59 = [
-
     "^\\\\+[1-9]\\\\d{1,14}$",
 
 ].joined()
 
 let sdkPattern57e24ace5e05 = [
-
     "^\\S[\\s\\S]*\\S$|^\\S$|^$",
 
 ].joined()
 
 let sdkPattern6eb47baae89f = [
-
     "^#[0-9a-fA-F]{6}$",
 
 ].joined()
 
 let sdkPatterna8176f509876 = [
-
     "^ag_[A-z0-9_ -]+$",
 
 ].joined()
 
 let sdkPatterncb86996207cb = [
-
     "^ecfg_",
 
 ].joined()
 
 let sdkPattern3041da8d5a8c = [
-
     "^env_",
 
 ].joined()
 
 let sdkPattern5baa1dcf5fbb = [
-
     "^https?://",
 
 ].joined()
 
 let sdkPattern72c75bbf2232 = [
-
     "^https?://|^sso:",
 
 ].joined()
 
 let sdkPatterna9b98ba873bb = [
-
     "^iap_[a-zA-Z0-9_]+$",
 
 ].joined()
 
 let sdkPattern977cec7e6342 = [
-
     "^icfg_[a-zA-Z0-9]+$",
 
 ].joined()
 
 let sdkPattern3f56a184446d = [
-
     "^invo1_[A-Za-z0-9_-]+:[1-9][0-9]*$",
 
 ].joined()
 
 let sdkPattern2c1ef711bfd1 = [
-
     "^team_[a-zA-Z0-9]+$",
 
 ].joined()
@@ -272,24 +230,52 @@ private func sdkCompileRegex(_ field: String, _ pattern: String) throws -> NSReg
 }
 
 /// Validates numeric bounds.
-public func validateRange(_ field: String, _ value: Double, min: Double? = nil, max: Double? = nil, exclusiveMin: Double? = nil, exclusiveMax: Double? = nil, multipleOf: Double? = nil) throws {
+public func validateRange(
+    _ field: String,
+    _ value: Double,
+    min: Double? = nil,
+    max: Double? = nil,
+    exclusiveMin: Double? = nil,
+    exclusiveMax: Double? = nil,
+    multipleOf: Double? = nil
+) throws {
     if let min, value < min {
-        throw SdkValidationError(field: field, code: "range", message: "Validation failed for '\(field)': must be >= \(min)")
+        throw SdkValidationError(
+            field: field,
+            code: "range",
+            message: "Validation failed for '\(field)': must be >= \(min)"
+        )
     }
     if let max, value > max {
-        throw SdkValidationError(field: field, code: "range", message: "Validation failed for '\(field)': must be <= \(max)")
+        throw SdkValidationError(
+            field: field,
+            code: "range",
+            message: "Validation failed for '\(field)': must be <= \(max)"
+        )
     }
     if let exclusiveMin, value <= exclusiveMin {
-        throw SdkValidationError(field: field, code: "range", message: "Validation failed for '\(field)': must be > \(exclusiveMin)")
+        throw SdkValidationError(
+            field: field,
+            code: "range",
+            message: "Validation failed for '\(field)': must be > \(exclusiveMin)"
+        )
     }
     if let exclusiveMax, value >= exclusiveMax {
-        throw SdkValidationError(field: field, code: "range", message: "Validation failed for '\(field)': must be < \(exclusiveMax)")
+        throw SdkValidationError(
+            field: field,
+            code: "range",
+            message: "Validation failed for '\(field)': must be < \(exclusiveMax)"
+        )
     }
     if let multipleOf, multipleOf != 0 {
         // A decimal step has no exact binary form: 19.99 / 0.01 is 1998.9999999999998.
         let quotient = value / multipleOf
         if abs(quotient - quotient.rounded()) > 1e-9 {
-            throw SdkValidationError(field: field, code: "range", message: "Validation failed for '\(field)': must be a multiple of \(multipleOf)")
+            throw SdkValidationError(
+                field: field,
+                code: "range",
+                message: "Validation failed for '\(field)': must be a multiple of \(multipleOf)"
+            )
         }
     }
 }
@@ -314,25 +300,41 @@ public func sdkNumericValue(_ value: Any) -> Double? {
 /// Validates string length bounds.
 public func validateLength(_ field: String, _ value: String, min: Int? = nil, max: Int? = nil) throws {
     if let min, value.count < min {
-        throw SdkValidationError(field: field, code: "length", message: "Validation failed for '\(field)': length must be >= \(min)")
+        throw SdkValidationError(
+            field: field,
+            code: "length",
+            message: "Validation failed for '\(field)': length must be >= \(min)"
+        )
     }
     if let max, value.count > max {
-        throw SdkValidationError(field: field, code: "length", message: "Validation failed for '\(field)': length must be <= \(max)")
+        throw SdkValidationError(
+            field: field,
+            code: "length",
+            message: "Validation failed for '\(field)': length must be <= \(max)"
+        )
     }
 }
 
 /// Validates array length bounds.
-public func validateItems<T>(_ field: String, _ value: [T], min: Int? = nil, max: Int? = nil) throws {
+public func validateItems(_ field: String, _ value: [some Any], min: Int? = nil, max: Int? = nil) throws {
     if let min, value.count < min {
-        throw SdkValidationError(field: field, code: "items", message: "Validation failed for '\(field)': must have at least \(min) items")
+        throw SdkValidationError(
+            field: field,
+            code: "items",
+            message: "Validation failed for '\(field)': must have at least \(min) items"
+        )
     }
     if let max, value.count > max {
-        throw SdkValidationError(field: field, code: "items", message: "Validation failed for '\(field)': must have at most \(max) items")
+        throw SdkValidationError(
+            field: field,
+            code: "items",
+            message: "Validation failed for '\(field)': must have at most \(max) items"
+        )
     }
 }
 
 /// Validates that a value is one of the allowed values.
-public func sdkValidateEnum<V>(_ field: String, _ value: V, _ allowed: [String]) throws {
+public func sdkValidateEnum(_ field: String, _ value: some Any, _ allowed: [String]) throws {
     let s = "\(value)"
     if !allowed.contains(s) {
         throw SdkValidationError(
@@ -344,7 +346,8 @@ public func sdkValidateEnum<V>(_ field: String, _ value: V, _ allowed: [String])
 }
 
 /// Validates the wire value of a string-backed model enum.
-public func sdkValidateRawEnum<V: RawRepresentable>(_ field: String, _ value: V, _ allowed: [String]) throws where V.RawValue == String {
+public func sdkValidateRawEnum<V: RawRepresentable>(_ field: String, _ value: V, _ allowed: [String]) throws
+    where V.RawValue == String {
     try sdkValidateEnum(field, value.rawValue, allowed)
 }
 
@@ -352,7 +355,11 @@ public func sdkValidateRawEnum<V: RawRepresentable>(_ field: String, _ value: V,
 public func sdkValidatePattern(_ field: String, _ value: String, _ pattern: String) throws {
     let re = try sdkCompileRegex(field, pattern)
     if re.firstMatch(in: value, range: NSRange(value.startIndex..., in: value)) == nil {
-        throw SdkValidationError(field: field, code: "pattern", message: "Validation failed for '\(field)': pattern must match \(pattern)")
+        throw SdkValidationError(
+            field: field,
+            code: "pattern",
+            message: "Validation failed for '\(field)': pattern must match \(pattern)"
+        )
     }
 }
 
@@ -360,14 +367,22 @@ public func sdkValidatePattern(_ field: String, _ value: String, _ pattern: Stri
 public func sdkValidateEmail(_ field: String, _ value: String) throws {
     let re = try sdkCompileRegex(field, #"^[^\s@]+@[^\s@]+\.[^\s@]+$"#)
     if re.firstMatch(in: value, range: NSRange(value.startIndex..., in: value)) == nil {
-        throw SdkValidationError(field: field, code: "format:email", message: "Validation failed for '\(field)': must be a valid email address")
+        throw SdkValidationError(
+            field: field,
+            code: "format:email",
+            message: "Validation failed for '\(field)': must be a valid email address"
+        )
     }
 }
 
 /// Validates URI format.
 public func sdkValidateUri(_ field: String, _ value: String) throws {
     guard URL(string: value) != nil else {
-        throw SdkValidationError(field: field, code: "format:uri", message: "Validation failed for '\(field)': must be a valid URI")
+        throw SdkValidationError(
+            field: field,
+            code: "format:uri",
+            message: "Validation failed for '\(field)': must be a valid URI"
+        )
     }
 }
 
@@ -375,9 +390,13 @@ public func sdkValidateUri(_ field: String, _ value: String) throws {
 public func sdkValidateDateTime(_ field: String, _ value: String) throws {
     let formatters = sdkTimestampFormatters()
     guard (formatters.precise.date(from: value) ?? formatters.plain.date(from: value)) != nil else {
-        throw SdkValidationError(field: field, code: "format:date-time", message: "Validation failed for '\(field)': must be a valid ISO 8601 date-time")
+        throw SdkValidationError(
+            field: field,
+            code: "format:date-time",
+            message: "Validation failed for '\(field)': must be a valid ISO 8601 date-time"
+        )
     }
 }
 
 /// Date-typed SDK values have already been parsed successfully.
-public func sdkValidateDateTime(_ field: String, _ value: Date) throws {}
+public func sdkValidateDateTime(_: String, _: Date) throws {}

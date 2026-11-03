@@ -6,16 +6,20 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemHandle: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemHandle: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let finalize = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemHandle(rawValue: "finalize")
     public static let `init` = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemHandle(rawValue: "init")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -24,15 +28,20 @@ public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemHandle: 
     }
 }
 
-public struct GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1Preset: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1Preset: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let allCustom = GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1Preset(rawValue: "all-custom")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let allCustom =
+        GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1Preset(rawValue: "all-custom")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -44,7 +53,10 @@ public struct GetProjectsResponseTrustedSourcesOidcProvidersValueItemToVariant1P
 public struct GetBillingPlansParameter: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let marketplace = GetBillingPlansParameter(rawValue: "marketplace")
     public static let deployButton = GetBillingPlansParameter(rawValue: "deploy-button")
     public static let external = GetBillingPlansParameter(rawValue: "external")
@@ -53,12 +65,13 @@ public struct GetBillingPlansParameter: RawRepresentable, Hashable, Codable, Sen
     public static let cli = GetBillingPlansParameter(rawValue: "cli")
     public static let oauth = GetBillingPlansParameter(rawValue: "oauth")
     public static let backoffice = GetBillingPlansParameter(rawValue: "backoffice")
-    public static let importRecommendedIntegrations = GetBillingPlansParameter(rawValue: "import-recommended-integrations")
+    public static let importRecommendedIntegrations =
+        GetBillingPlansParameter(rawValue: "import-recommended-integrations")
     public static let organization = GetBillingPlansParameter(rawValue: "organization")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -67,10 +80,14 @@ public struct GetBillingPlansParameter: RawRepresentable, Hashable, Codable, Sen
     }
 }
 
-public struct ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let actixWeb = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "actix-web")
     public static let angular = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "angular")
     public static let ash = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ash")
@@ -80,17 +97,21 @@ public struct ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework: Ra
     public static let brunch = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "brunch")
     public static let bun = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "bun")
     public static let container = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "container")
-    public static let createReactApp = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "create-react-app")
+    public static let createReactApp =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "create-react-app")
     public static let django = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "django")
-    public static let docusaurus = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "docusaurus")
-    public static let docusaurus2 = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "docusaurus-2")
+    public static let docusaurus =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "docusaurus")
+    public static let docusaurus2 =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "docusaurus-2")
     public static let dojo = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "dojo")
     public static let eleventy = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "eleventy")
     public static let elysia = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "elysia")
     public static let ember = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ember")
     public static let eve = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "eve")
     public static let express = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "express")
-    public static let factoryEve = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "factory-eve")
+    public static let factoryEve =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "factory-eve")
     public static let fastapi = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "fastapi")
     public static let fasthtml = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "fasthtml")
     public static let fastify = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "fastify")
@@ -103,8 +124,10 @@ public struct ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework: Ra
     public static let hono = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "hono")
     public static let hugo = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "hugo")
     public static let hydrogen = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "hydrogen")
-    public static let ionicAngular = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ionic-angular")
-    public static let ionicReact = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ionic-react")
+    public static let ionicAngular =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ionic-angular")
+    public static let ionicReact =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ionic-react")
     public static let jekyll = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "jekyll")
     public static let koa = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "koa")
     public static let mastra = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "mastra")
@@ -118,7 +141,8 @@ public struct ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework: Ra
     public static let polymer = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "polymer")
     public static let preact = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "preact")
     public static let python = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "python")
-    public static let reactRouter = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "react-router")
+    public static let reactRouter =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "react-router")
     public static let redwoodjs = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "redwoodjs")
     public static let remix = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "remix")
     public static let ruby = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "ruby")
@@ -129,15 +153,20 @@ public struct ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework: Ra
     public static let sapper = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "sapper")
     public static let scully = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "scully")
     public static let services = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "services")
-    public static let solidstart = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "solidstart")
-    public static let solidstart1 = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "solidstart-1")
+    public static let solidstart =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "solidstart")
+    public static let solidstart1 =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "solidstart-1")
     public static let stencil = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "stencil")
     public static let storybook = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "storybook")
     public static let svelte = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "svelte")
     public static let sveltekit = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "sveltekit")
-    public static let sveltekit1 = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "sveltekit-1")
-    public static let tanstackStart = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "tanstack-start-lovable")
+    public static let sveltekit1 =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "sveltekit-1")
+    public static let tanstackStart =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "tanstack-start")
+    public static let tanstackStartLovable =
+        ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "umijs")
     public static let vite = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "vite")
     public static let vitepress = ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework(rawValue: "vitepress")
@@ -148,7 +177,7 @@ public struct ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework: Ra
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -157,16 +186,22 @@ public struct ListLogDrainsResponseVariant0ItemProjectsMetadataItemFramework: Ra
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX4d2608c19c: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX4d2608c19c: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX4d2608c19c(rawValue: "create")
-    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX4d2608c19c(rawValue: "update")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let create =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX4d2608c19c(rawValue: "create")
+    public static let update =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX4d2608c19c(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -178,13 +213,16 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX4d26
 public struct UpdateRecordResponseType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let record = UpdateRecordResponseType(rawValue: "record")
     public static let recordSys = UpdateRecordResponseType(rawValue: "record-sys")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -196,7 +234,10 @@ public struct UpdateRecordResponseType: RawRepresentable, Hashable, Codable, Sen
 public struct CreateLogDrainRequestBodySourcesItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let `static` = CreateLogDrainRequestBodySourcesItem(rawValue: "static")
     public static let lambda = CreateLogDrainRequestBodySourcesItem(rawValue: "lambda")
     public static let build = CreateLogDrainRequestBodySourcesItem(rawValue: "build")
@@ -206,7 +247,7 @@ public struct CreateLogDrainRequestBodySourcesItem: RawRepresentable, Hashable, 
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

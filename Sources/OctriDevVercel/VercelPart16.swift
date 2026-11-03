@@ -3,77 +3,233 @@
 
 import Foundation
 
-extension SandboxesNamespace {
-/// Replaces the network access policy for a running session, controlling which external hosts it can reach. This is a full replacement, so any previously configured network rules are overwritten; choose the policy mode and rules for the complete configuration you want applied.
+public extension SandboxesNamespace {
+    /// Replaces the network access policy for a running session, controlling which external hosts it can reach. This is
+    /// a full replacement, so any previously configured network rules are overwritten; choose the policy mode and rules
+    /// for the complete configuration you want applied.
     ///
-    /// Replaces the network access policy of a running session. Use this to control which external hosts the session can communicate with. This is a full replacement. Any previously configured network rules will be overwritten.
-    public func updateSessionNetworkPolicy(sessionId: String, teamId: String? = nil, slug: String? = nil, body: UpdateSessionNetworkPolicyRequestBody? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateSessionNetworkPolicyResponse {
-        return try await SandboxesMethods.updateSessionNetworkPolicy(config: config, sessionId: sessionId, teamId: teamId, slug: slug, body: body, requestOptions: requestOptions)
+    /// Replaces the network access policy of a running session. Use this to control which external hosts the session
+    /// can communicate with. This is a full replacement. Any previously configured network rules will be overwritten.
+    func updateSessionNetworkPolicy(
+        sessionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        body: UpdateSessionNetworkPolicyRequestBody? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateSessionNetworkPolicyResponse {
+        try await SandboxesMethods.updateSessionNetworkPolicy(
+            config: config,
+            sessionId: sessionId,
+            teamId: teamId,
+            slug: slug,
+            body: body,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves a file from a session's filesystem. Supply `path` to identify the file and optionally use `cwd` to resolve a relative path from a different base directory. The file is returned as a binary stream for download.
+    /// Retrieves a file from a session's filesystem. Supply `path` to identify the file and optionally use `cwd` to
+    /// resolve a relative path from a different base directory. The file is returned as a binary stream for download.
     ///
-    /// Downloads the contents of a file from a session's filesystem. The file content is returned as a binary stream with appropriate Content-Disposition headers for file download.
-    public func readSessionFile(sessionId: String, path: String, teamId: String? = nil, slug: String? = nil, cwd: String? = nil, requestOptions: RequestOptions? = nil) async throws -> Data {
-        return try await SandboxesMethods.readSessionFile(config: config, sessionId: sessionId, path: path, teamId: teamId, slug: slug, cwd: cwd, requestOptions: requestOptions)
+    /// Downloads the contents of a file from a session's filesystem. The file content is returned as a binary stream
+    /// with appropriate Content-Disposition headers for file download.
+    func readSessionFile(
+        sessionId: String,
+        path: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        cwd: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> Data {
+        try await SandboxesMethods.readSessionFile(
+            config: config,
+            sessionId: sessionId,
+            path: path,
+            teamId: teamId,
+            slug: slug,
+            cwd: cwd,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a directory in a session's filesystem. Supply `path` for the directory location and use `cwd` to resolve a relative path from a different base directory. Parent directories are created recursively by default; set `recursive` to false to require them to exist.
+    /// Creates a directory in a session's filesystem. Supply `path` for the directory location and use `cwd` to resolve
+    /// a relative path from a different base directory. Parent directories are created recursively by default; set
+    /// `recursive` to false to require them to exist.
     ///
-    /// Creates a new directory in a session's filesystem. By default, parent directories are created recursively if they don't exist (similar to `mkdir -p`).
-    public func createSessionDirectory(sessionId: String, path: String, teamId: String? = nil, slug: String? = nil, cwd: String? = nil, recursive: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try await SandboxesMethods.createSessionDirectory(config: config, sessionId: sessionId, path: path, teamId: teamId, slug: slug, cwd: cwd, recursive: recursive, requestOptions: requestOptions)
+    /// Creates a new directory in a session's filesystem. By default, parent directories are created recursively if
+    /// they don't exist (similar to `mkdir -p`).
+    func createSessionDirectory(
+        sessionId: String,
+        path: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        cwd: String? = nil,
+        recursive: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await SandboxesMethods.createSessionDirectory(
+            config: config,
+            sessionId: sessionId,
+            path: path,
+            teamId: teamId,
+            slug: slug,
+            cwd: cwd,
+            recursive: recursive,
+            requestOptions: requestOptions
+        )
     }
 
-/// Writes files to a session's filesystem by uploading and extracting a gzipped tarball. Send the archive with `Content-Type: application/gzip`; use `x-cwd` to choose an extraction directory. When `x-cwd` is omitted, files are extracted to the sandbox home directory.
+    /// Writes files to a session's filesystem by uploading and extracting a gzipped tarball. Send the archive with
+    /// `Content-Type: application/gzip`; use `x-cwd` to choose an extraction directory. When `x-cwd` is omitted, files
+    /// are extracted to the sandbox home directory.
     ///
-    /// Uploads and extracts files to a session's filesystem. Files must be uploaded as a gzipped tarball (`.tar.gz`) with the `Content-Type` header set to `application/gzip`. The tarball contents are extracted to the session's working directory, or to a custom directory specified via the `x-cwd` header.
-    public func writeSessionFiles(sessionId: String, teamId: String? = nil, slug: String? = nil, xCwd: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try await SandboxesMethods.writeSessionFiles(config: config, sessionId: sessionId, teamId: teamId, slug: slug, xCwd: xCwd, requestOptions: requestOptions)
+    /// Uploads and extracts files to a session's filesystem. Files must be uploaded as a gzipped tarball (`.tar.gz`)
+    /// with the `Content-Type` header set to `application/gzip`. The tarball contents are extracted to the session's
+    /// working directory, or to a custom directory specified via the `x-cwd` header.
+    func writeSessionFiles(
+        sessionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        xCwd: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await SandboxesMethods.writeSessionFiles(
+            config: config,
+            sessionId: sessionId,
+            teamId: teamId,
+            slug: slug,
+            xCwd: xCwd,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a point-in-time snapshot of a running session's filesystem. Use a snapshot to restore the filesystem later or initialize another session with the same environment; the session must be running and able to accept commands. The source session is terminated after the snapshot is created.
+    /// Creates a point-in-time snapshot of a running session's filesystem. Use a snapshot to restore the filesystem
+    /// later or initialize another session with the same environment; the session must be running and able to accept
+    /// commands. The source session is terminated after the snapshot is created.
     ///
-    /// Creates a point-in-time snapshot of a running session's filesystem. Snapshots can be used to quickly restore a session to a previous state or to create new sessions with pre-configured environments. The session must be running and able to accept commands for a snapshot to be created. The session will be terminated after the snapshot is created.
-    public func createSessionsBySessionIdSnapshotV2(sessionId: String, teamId: String? = nil, slug: String? = nil, expiration: SdkOptional<CreateSandboxesSessionsBySessionIdSnapshotV2RequestBodyExpiration>? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesSessionsBySessionIdSnapshotV2Response {
-        return try await SandboxesMethods.createSandboxesSessionsBySessionIdSnapshotV2(config: config, sessionId: sessionId, teamId: teamId, slug: slug, expiration: expiration, requestOptions: requestOptions)
+    /// Creates a point-in-time snapshot of a running session's filesystem. Snapshots can be used to quickly restore a
+    /// session to a previous state or to create new sessions with pre-configured environments. The session must be
+    /// running and able to accept commands for a snapshot to be created. The session will be terminated after the
+    /// snapshot is created.
+    func createSessionsBySessionIdSnapshotV2(
+        sessionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        expiration: SdkOptional<CreateSandboxesSessionsBySessionIdSnapshotV2RequestBodyExpiration>? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSandboxesSessionsBySessionIdSnapshotV2Response {
+        try await SandboxesMethods.createSandboxesSessionsBySessionIdSnapshotV2(
+            config: config,
+            sessionId: sessionId,
+            teamId: teamId,
+            slug: slug,
+            expiration: expiration,
+            requestOptions: requestOptions
+        )
     }
 
-/// Forks a named sandbox into a new named sandbox, copying its configuration and environment variables. Supply `name` to identify the source and `projectId` unless you authenticate with an OIDC token; request fields override values copied from the source. If the source has a snapshot, the fork starts from it; otherwise, it starts from the source runtime or image.
+    /// Forks a named sandbox into a new named sandbox, copying its configuration and environment variables. Supply
+    /// `name` to identify the source and `projectId` unless you authenticate with an OIDC token; request fields
+    /// override values copied from the source. If the source has a snapshot, the fork starts from it; otherwise, it
+    /// starts from the source runtime or image.
     ///
-    /// Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports, tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side fork — environment variables are copied from the source automatically (`interactive` is not). When the source has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided in the request body overrides the value copied from the source.
-    public func createByNameForkV2(options: SandboxesMethods.CreateSandboxesByNameForkV2Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesByNameForkV2Response {
-        return try await SandboxesMethods.createSandboxesByNameForkV2(config: config, options: options, requestOptions: requestOptions)
+    /// Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports,
+    /// tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side
+    /// fork — environment variables are copied from the source automatically (`interactive` is not). When the source
+    /// has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided
+    /// in the request body overrides the value copied from the source.
+    func createByNameForkV2(
+        options: SandboxesMethods.CreateSandboxesByNameForkV2Options,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSandboxesByNameForkV2Response {
+        try await SandboxesMethods.createSandboxesByNameForkV2(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a named sandbox environment with automatic snapshotting on shutdown. Configure its resources, source, networking, and other settings in the request body; when `image` and a snapshot source are both absent, the sandbox uses the default universal image. This API version does not accept a `runtime` parameter.
+    /// Creates a named sandbox environment with automatic snapshotting on shutdown. Configure its resources, source,
+    /// networking, and other settings in the request body; when `image` and a snapshot source are both absent, the
+    /// sandbox uses the default universal image. This API version does not accept a `runtime` parameter.
     ///
-    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic snapshotting on shutdown. Unlike v2, this version has no `runtime` parameter: when no `image` is provided (and the sandbox is not restored from a snapshot), the sandbox is created from the default universal image.
-    public func createV3(options: SandboxesMethods.CreateSandboxesV3Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesV3Response {
-        return try await SandboxesMethods.createSandboxesV3(config: config, options: options, requestOptions: requestOptions)
+    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic
+    /// snapshotting on shutdown. Unlike v2, this version has no `runtime` parameter: when no `image` is provided (and
+    /// the sandbox is not restored from a snapshot), the sandbox is created from the default universal image.
+    func createV3(
+        options: SandboxesMethods.CreateSandboxesV3Options,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSandboxesV3Response {
+        try await SandboxesMethods.createSandboxesV3(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Creates a point-in-time snapshot of a running session's filesystem. Use a snapshot to restore the filesystem later or initialize another session with the same environment; the session must be running and able to accept commands. The source session is terminated after the snapshot is created, and snapshots default to a seven-day expiration when neither the request nor sandbox configuration sets one.
+    /// Creates a point-in-time snapshot of a running session's filesystem. Use a snapshot to restore the filesystem
+    /// later or initialize another session with the same environment; the session must be running and able to accept
+    /// commands. The source session is terminated after the snapshot is created, and snapshots default to a seven-day
+    /// expiration when neither the request nor sandbox configuration sets one.
     ///
-    /// Creates a point-in-time snapshot of a running session's filesystem. Snapshots can be used to quickly restore a session to a previous state or to create new sessions with pre-configured environments. The session must be running and able to accept commands for a snapshot to be created. The session will be terminated after the snapshot is created. Unlike v2, snapshots expire after 7 days when neither the request nor the sandbox configuration specifies an expiration.
-    public func createSessionsBySessionIdSnapshotV3(sessionId: String, teamId: String? = nil, slug: String? = nil, expiration: SdkOptional<CreateSandboxesSessionsBySessionIdSnapshotV3RequestBodyExpiration>? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesSessionsBySessionIdSnapshotV3Response {
-        return try await SandboxesMethods.createSandboxesSessionsBySessionIdSnapshotV3(config: config, sessionId: sessionId, teamId: teamId, slug: slug, expiration: expiration, requestOptions: requestOptions)
+    /// Creates a point-in-time snapshot of a running session's filesystem. Snapshots can be used to quickly restore a
+    /// session to a previous state or to create new sessions with pre-configured environments. The session must be
+    /// running and able to accept commands for a snapshot to be created. The session will be terminated after the
+    /// snapshot is created. Unlike v2, snapshots expire after 7 days when neither the request nor the sandbox
+    /// configuration specifies an expiration.
+    func createSessionsBySessionIdSnapshotV3(
+        sessionId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        expiration: SdkOptional<CreateSandboxesSessionsBySessionIdSnapshotV3RequestBodyExpiration>? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSandboxesSessionsBySessionIdSnapshotV3Response {
+        try await SandboxesMethods.createSandboxesSessionsBySessionIdSnapshotV3(
+            config: config,
+            sessionId: sessionId,
+            teamId: teamId,
+            slug: slug,
+            expiration: expiration,
+            requestOptions: requestOptions
+        )
     }
 }
 
-extension SandboxesNamespace {
-/// Forks a named sandbox into a new named sandbox, copying its configuration and environment variables. Supply `name` to identify the source and `projectId` unless you authenticate with an OIDC token; request fields override values copied from the source. If the source has a snapshot, the fork starts from it; otherwise, it starts from the source runtime or image, with seven-day snapshot expiration and a one-snapshot retention limit by default.
+public extension SandboxesNamespace {
+    /// Forks a named sandbox into a new named sandbox, copying its configuration and environment variables. Supply
+    /// `name` to identify the source and `projectId` unless you authenticate with an OIDC token; request fields
+    /// override values copied from the source. If the source has a snapshot, the fork starts from it; otherwise, it
+    /// starts from the source runtime or image, with seven-day snapshot expiration and a one-snapshot retention limit
+    /// by default.
     ///
-    /// Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports, tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side fork — environment variables are copied from the source automatically (`interactive` is not). When the source has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided in the request body overrides the value copied from the source. Unlike v2, when neither the body nor the source provides a value, snapshots expire after 7 days by default and persistent sandboxes keep only their most recent snapshot (`keepLastSnapshots: null` disables the limit).
-    public func createByNameForkV3(options: SandboxesMethods.CreateSandboxesByNameForkV3Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesByNameForkV3Response {
-        return try await SandboxesMethods.createSandboxesByNameForkV3(config: config, options: options, requestOptions: requestOptions)
+    /// Forks a named sandbox, creating a new named sandbox from the source's configuration. Resources, timeout, ports,
+    /// tags, network policy, mounts, Connect network, image, persistence, snapshot settings and — unlike the SDK-side
+    /// fork — environment variables are copied from the source automatically (`interactive` is not). When the source
+    /// has a snapshot the fork starts from it; otherwise it starts from the source's runtime/image. Any field provided
+    /// in the request body overrides the value copied from the source. Unlike v2, when neither the body nor the source
+    /// provides a value, snapshots expire after 7 days by default and persistent sandboxes keep only their most recent
+    /// snapshot (`keepLastSnapshots: null` disables the limit).
+    func createByNameForkV3(
+        options: SandboxesMethods.CreateSandboxesByNameForkV3Options,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSandboxesByNameForkV3Response {
+        try await SandboxesMethods.createSandboxesByNameForkV3(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a named sandbox environment with automatic snapshotting on shutdown. Configure its resources, source, networking, and other settings in the request body; when `image` and a snapshot source are both absent, the sandbox uses the default universal image. Persistent sandboxes keep only their most recent snapshot by default, and snapshots expire after seven days unless configured otherwise.
+    /// Creates a named sandbox environment with automatic snapshotting on shutdown. Configure its resources, source,
+    /// networking, and other settings in the request body; when `image` and a snapshot source are both absent, the
+    /// sandbox uses the default universal image. Persistent sandboxes keep only their most recent snapshot by default,
+    /// and snapshots expire after seven days unless configured otherwise.
     ///
-    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic snapshotting on shutdown. When no `image` is provided (and the sandbox is not restored from a snapshot), the sandbox is created from the default universal image. Unlike v3, snapshots expire after 7 days by default and persistent sandboxes keep only their most recent snapshot unless `keepLastSnapshots` is configured otherwise (or set to `null` to disable the limit).
-    public func createV4(options: SandboxesMethods.CreateSandboxesV4Options, requestOptions: RequestOptions? = nil) async throws -> CreateSandboxesV4Response {
-        return try await SandboxesMethods.createSandboxesV4(config: config, options: options, requestOptions: requestOptions)
+    /// Creates a named sandbox environment. Named sandboxes have a unique name within a project and support automatic
+    /// snapshotting on shutdown. When no `image` is provided (and the sandbox is not restored from a snapshot), the
+    /// sandbox is created from the default universal image. Unlike v3, snapshots expire after 7 days by default and
+    /// persistent sandboxes keep only their most recent snapshot unless `keepLastSnapshots` is configured otherwise (or
+    /// set to `null` to disable the limit).
+    func createV4(
+        options: SandboxesMethods.CreateSandboxesV4Options,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSandboxesV4Response {
+        try await SandboxesMethods.createSandboxesV4(config: config, options: options, requestOptions: requestOptions)
     }
 }
 
@@ -83,127 +239,310 @@ public class SecurityNamespace {
         self.config = config
     }
 
-/// Updates whether Attack Challenge mode is enabled for a project. Supply `projectId` and `attackModeEnabled`; include `attackModeActiveUntil` when using the request variant that sets an active-until time. The response includes the updated setting and its update timestamp.
+    /// Updates whether Attack Challenge mode is enabled for a project. Supply `projectId` and `attackModeEnabled`;
+    /// include `attackModeActiveUntil` when using the request variant that sets an active-until time. The response
+    /// includes the updated setting and its update timestamp.
     ///
     /// Update the setting for determining if the project has Attack Challenge mode enabled.
-    public func updateAttackChallengeMode(body: [String: JSONValue], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateAttackChallengeModeResponse {
-        return try await SecurityMethods.updateAttackChallengeMode(config: config, body: body, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func updateAttackChallengeMode(
+        body: [String: JSONValue],
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateAttackChallengeModeResponse {
+        try await SecurityMethods.updateAttackChallengeMode(
+            config: config,
+            body: body,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves the active and draft firewall configurations for a project, along with its configuration versions. Use this operation to inspect the current WAF settings and review available versions before changing or activating a configuration.
+    /// Retrieves the active and draft firewall configurations for a project, along with its configuration versions. Use
+    /// this operation to inspect the current WAF settings and review available versions before changing or activating a
+    /// configuration.
     ///
     /// Lists WAF configs for a project
-    public func getFirewallConfig(requestOptions: RequestOptions? = nil) async throws -> GetSecurityFirewallConfigResponse {
-        return try await SecurityMethods.getSecurityFirewallConfig(config: config, requestOptions: requestOptions)
+    public func getFirewallConfig(requestOptions: RequestOptions? = nil) async throws
+        -> GetSecurityFirewallConfigResponse {
+        try await SecurityMethods.getSecurityFirewallConfig(config: config, requestOptions: requestOptions)
     }
 
-/// Replaces the firewall configuration for a project, creating a configuration if one does not already exist. Supply `firewallEnabled` and any firewall settings you want applied, including rules, rulesets, IP rules, or managed rules.
+    /// Replaces the firewall configuration for a project, creating a configuration if one does not already exist.
+    /// Supply `firewallEnabled` and any firewall settings you want applied, including rules, rulesets, IP rules, or
+    /// managed rules.
     ///
-    /// Set the firewall configuration to provided rules and settings. Creates or overwrite the existing firewall configuration.
-    public func putFirewallConfig(options: SecurityMethods.PutFirewallConfigOptions, requestOptions: RequestOptions? = nil) async throws -> PutFirewallConfigResponse {
-        return try await SecurityMethods.putFirewallConfig(config: config, options: options, requestOptions: requestOptions)
+    /// Set the firewall configuration to provided rules and settings. Creates or overwrite the existing firewall
+    /// configuration.
+    public func putFirewallConfig(
+        options: SecurityMethods.PutFirewallConfigOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> PutFirewallConfigResponse {
+        try await SecurityMethods.putFirewallConfig(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Updates an existing firewall configuration by applying configuration changes. Supply the appropriate action and values for each change; the accepted body uses action-specific shapes for firewall settings and rulesets.
+    /// Updates an existing firewall configuration by applying configuration changes. Supply the appropriate action and
+    /// values for each change; the accepted body uses action-specific shapes for firewall settings and rulesets.
     ///
     /// Process updates to modify the existing firewall config for a project
-    public func updateFirewallConfig(projectId: String, body: UpdateFirewallConfigRequestBody, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try await SecurityMethods.updateFirewallConfig(config: config, projectId: projectId, body: body, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func updateFirewallConfig(
+        projectId: String,
+        body: UpdateFirewallConfigRequestBody,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await SecurityMethods.updateFirewallConfig(
+            config: config,
+            projectId: projectId,
+            body: body,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves a specific firewall configuration version for a project. Use `configVersion` to select the version to inspect; the deployed version is identified as `active`.
+    /// Retrieves a specific firewall configuration version for a project. Use `configVersion` to select the version to
+    /// inspect; the deployed version is identified as `active`.
     ///
     /// Retrieve the specified firewall configuration for a project. The deployed configVersion will be `active`
-    public func getFirewallConfig2(configVersion: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetFirewallConfigResponse {
-        return try await SecurityMethods.getFirewallConfig(config: config, configVersion: configVersion, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func getFirewallConfig2(
+        configVersion: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetFirewallConfigResponse {
+        try await SecurityMethods.getFirewallConfig(
+            config: config,
+            configVersion: configVersion,
+            projectId: projectId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a firewall configuration version. Supply `configVersion` to identify the version to remove; use this operation when that version should no longer be available.
+    /// Deletes a firewall configuration version. Supply `configVersion` to identify the version to remove; use this
+    /// operation when that version should no longer be available.
     ///
     /// Promotes a draft WAF config to an active config
-    public func deleteFirewallConfigByConfigVersion(configVersion: String, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try await SecurityMethods.deleteSecurityFirewallConfigByConfigVersion(config: config, configVersion: configVersion, requestOptions: requestOptions)
+    public func deleteFirewallConfigByConfigVersion(
+        configVersion: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await SecurityMethods.deleteSecurityFirewallConfigByConfigVersion(
+            config: config,
+            configVersion: configVersion,
+            requestOptions: requestOptions
+        )
     }
 
-/// Triggers activation of a draft firewall configuration version. Supply `configVersion` to select the draft to promote; the response contains the activated configuration.
+    /// Triggers activation of a draft firewall configuration version. Supply `configVersion` to select the draft to
+    /// promote; the response contains the activated configuration.
     ///
     /// Promotes a draft WAF config to an active config
-    public func createFirewallConfigByConfigVersionActivate(configVersion: String, requestOptions: RequestOptions? = nil) async throws -> CreateSecurityFirewallConfigByConfigVersionActivateResponse {
-        return try await SecurityMethods.createSecurityFirewallConfigByConfigVersionActivate(config: config, configVersion: configVersion, requestOptions: requestOptions)
+    public func createFirewallConfigByConfigVersionActivate(
+        configVersion: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSecurityFirewallConfigByConfigVersionActivateResponse {
+        try await SecurityMethods.createSecurityFirewallConfigByConfigVersionActivate(
+            config: config,
+            configVersion: configVersion,
+            requestOptions: requestOptions
+        )
     }
 
-/// Retrieves recent active attack data for a project. Use `since` to set the lookback period in days; it defaults to one day when omitted.
+    /// Retrieves recent active attack data for a project. Use `since` to set the lookback period in days; it defaults
+    /// to one day when omitted.
     ///
     /// Retrieve active attack data within the last N days (default: 1 day)
-    public func getActiveAttackStatus(projectId: String, since: Double? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetActiveAttackStatusResponse {
-        return try await SecurityMethods.getActiveAttackStatus(config: config, projectId: projectId, since: since, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    public func getActiveAttackStatus(
+        projectId: String,
+        since: Double? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetActiveAttackStatusResponse {
+        try await SecurityMethods.getActiveAttackStatus(
+            config: config,
+            projectId: projectId,
+            since: since,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
-extension SecurityNamespace {
-/// Lists system bypass rules configured for a project. Filter the results with `sourceIp`, `domain`, or `projectScope`, and use `offset` and `limit` to page through matching rules.
+public extension SecurityNamespace {
+    /// Lists system bypass rules configured for a project. Filter the results with `sourceIp`, `domain`, or
+    /// `projectScope`, and use `offset` and `limit` to page through matching rules.
     ///
     /// Retrieve the system bypass rules configured for the specified project
-    public func getBypassIp(options: SecurityMethods.GetBypassIpOptions, requestOptions: RequestOptions? = nil) async throws -> GetBypassIpResponse {
-        return try await SecurityMethods.getBypassIp(config: config, options: options, requestOptions: requestOptions)
+    func getBypassIp(
+        options: SecurityMethods.GetBypassIpOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetBypassIpResponse {
+        try await SecurityMethods.getBypassIp(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Creates a system bypass rule for a project. Supply either `domain` to scope the rule to a domain or `projectScope` to apply it across project domains; you can also set a source IP, expiry, and note.
+    /// Creates a system bypass rule for a project. Supply either `domain` to scope the rule to a domain or
+    /// `projectScope` to apply it across project domains; you can also set a source IP, expiry, and note.
     ///
     /// Create new system bypass rules
-    public func addBypassIp(options: SecurityMethods.AddBypassIpOptions, requestOptions: RequestOptions? = nil) async throws -> AddBypassIpResponse {
-        return try await SecurityMethods.addBypassIp(config: config, options: options, requestOptions: requestOptions)
+    func addBypassIp(
+        options: SecurityMethods.AddBypassIpOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> AddBypassIpResponse {
+        try await SecurityMethods.addBypassIp(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Deletes system bypass rules for a project. Specify either `domain` or `projectScope` to identify the scope of the rules to remove, and optionally narrow the selection with source details.
+    /// Deletes system bypass rules for a project. Specify either `domain` or `projectScope` to identify the scope of
+    /// the rules to remove, and optionally narrow the selection with source details.
     ///
     /// Remove system bypass rules
-    public func removeBypassIp(options: SecurityMethods.RemoveBypassIpOptions, requestOptions: RequestOptions? = nil) async throws -> RemoveBypassIpResponse {
-        return try await SecurityMethods.removeBypassIp(config: config, options: options, requestOptions: requestOptions)
+    func removeBypassIp(
+        options: SecurityMethods.RemoveBypassIpOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> RemoveBypassIpResponse {
+        try await SecurityMethods.removeBypassIp(config: config, options: options, requestOptions: requestOptions)
     }
 
-/// Lists conditional firewall bypass rules for a project. Use `projectId` to select the project and optionally filter by `slug` or `domain`; `limit` and `offset` control the returned results. The response includes the rules and may include pagination metadata.
+    /// Lists conditional firewall bypass rules for a project. Use `projectId` to select the project and optionally
+    /// filter by `slug` or `domain`; `limit` and `offset` control the returned results. The response includes the rules
+    /// and may include pagination metadata.
     ///
     /// Retrieve conditional firewall bypass rules for a project.
-    public func getConditionalBypass(projectId: String, slug: String? = nil, domain: String? = nil, limit: Double? = nil, offset: String? = nil, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetConditionalBypassResponse {
-        return try await SecurityMethods.getConditionalBypass(config: config, projectId: projectId, slug: slug, domain: domain, limit: limit, offset: offset, teamId: teamId, requestOptions: requestOptions)
+    func getConditionalBypass(
+        projectId: String,
+        slug: String? = nil,
+        domain: String? = nil,
+        limit: Double? = nil,
+        offset: String? = nil,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetConditionalBypassResponse {
+        try await SecurityMethods.getConditionalBypass(
+            config: config,
+            projectId: projectId,
+            slug: slug,
+            domain: domain,
+            limit: limit,
+            offset: offset,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Creates a conditional firewall bypass rule for a project domain. Provide the domain and a `conditionGroup` containing the conditions that determine when the bypass applies. You can add an optional note to describe the rule.
+    /// Creates a conditional firewall bypass rule for a project domain. Provide the domain and a `conditionGroup`
+    /// containing the conditions that determine when the bypass applies. You can add an optional note to describe the
+    /// rule.
     ///
     /// Create a conditional firewall bypass rule for a project domain.
-    public func createConditionalBypass(projectId: String, domain: String, conditionGroup: [CreateConditionalBypassRequestBodyConditionGroupItem], slug: String? = nil, teamId: String? = nil, note: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateConditionalBypassResponse {
-        return try await SecurityMethods.createConditionalBypass(config: config, projectId: projectId, domain: domain, conditionGroup: conditionGroup, slug: slug, teamId: teamId, note: note, requestOptions: requestOptions)
+    func createConditionalBypass(
+        projectId: String,
+        domain: String,
+        conditionGroup: [CreateConditionalBypassRequestBodyConditionGroupItem],
+        slug: String? = nil,
+        teamId: String? = nil,
+        note: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateConditionalBypassResponse {
+        try await SecurityMethods.createConditionalBypass(
+            config: config,
+            projectId: projectId,
+            domain: domain,
+            conditionGroup: conditionGroup,
+            slug: slug,
+            teamId: teamId,
+            note: note,
+            requestOptions: requestOptions
+        )
     }
 
-/// Deletes a conditional firewall bypass rule for a project domain. Specify the project with `projectId` and the rule's domain with `domain`. You can use `slug` or `teamId` to perform the request in a team context.
+    /// Deletes a conditional firewall bypass rule for a project domain. Specify the project with `projectId` and the
+    /// rule's domain with `domain`. You can use `slug` or `teamId` to perform the request in a team context.
     ///
     /// Delete a conditional firewall bypass rule from a project domain.
-    public func deleteConditionalBypass(projectId: String, domain: String, slug: String? = nil, teamId: String? = nil, requestOptions: RequestOptions? = nil) async throws -> DeleteConditionalBypassResponse {
-        return try await SecurityMethods.deleteConditionalBypass(config: config, projectId: projectId, domain: domain, slug: slug, teamId: teamId, requestOptions: requestOptions)
+    func deleteConditionalBypass(
+        projectId: String,
+        domain: String,
+        slug: String? = nil,
+        teamId: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> DeleteConditionalBypassResponse {
+        try await SecurityMethods.deleteConditionalBypass(
+            config: config,
+            projectId: projectId,
+            domain: domain,
+            slug: slug,
+            teamId: teamId,
+            requestOptions: requestOptions
+        )
     }
 
-/// Lists firewall actions for a project, with optional filters for time, host, IP address, activity, action, and rule. Filters are combined across parameters and matched as alternatives within repeated parameters; use the returned pagination cursor to fetch subsequent results. Rule names reflect the project's current active firewall configuration and active team rulesets.
+    /// Lists firewall actions for a project, with optional filters for time, host, IP address, activity, action, and
+    /// rule. Filters are combined across parameters and matched as alternatives within repeated parameters; use the
+    /// returned pagination cursor to fetch subsequent results. Rule names reflect the project's current active firewall
+    /// configuration and active team rulesets.
     ///
-    /// Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no configured name and always report `null`. Filters (`ip`, `isActive`, `action`, `actionType`, `ruleKind`, `ruleId`, `hosts`) are ANDed across params and ORed within a repeated param. They are applied to the policies before `limit`/`cursor`, so pages only count matching policies. A policy with no matching requests yields no action row, so a page can hold fewer than `limit` actions; only `pagination.next` signals the end. A `cursor` is only valid with the filters it was issued for.
-    public func getFirewallEvents(options: SecurityMethods.GetSecurityFirewallEventsOptions, requestOptions: RequestOptions? = nil) async throws -> GetSecurityFirewallEventsResponse {
-        return try await SecurityMethods.getSecurityFirewallEvents(config: config, options: options, requestOptions: requestOptions)
+    /// Retrieve firewall actions for a project Rule names are resolved against the project's *current* active firewall
+    /// configuration and the team's active rulesets, so a rule that has since been renamed reports its new name and one
+    /// that has been deleted reports `null`. System rules such as `sys_dos_mitigation` and `ip_blocking` have no
+    /// configured name and always report `null`. Filters (`ip`, `isActive`, `action`, `actionType`, `ruleKind`,
+    /// `ruleId`, `hosts`) are ANDed across params and ORed within a repeated param. They are applied to the policies
+    /// before `limit`/`cursor`, so pages only count matching policies. A policy with no matching requests yields no
+    /// action row, so a page can hold fewer than `limit` actions; only `pagination.next` signals the end. A `cursor` is
+    /// only valid with the filters it was issued for.
+    func getFirewallEvents(
+        options: SecurityMethods.GetSecurityFirewallEventsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetSecurityFirewallEventsResponse {
+        try await SecurityMethods.getSecurityFirewallEvents(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 
-/// Returns aggregate counts for firewall actions matching the specified project and filters, without returning individual action rows. The counts represent policies, including policies that matched no requests. Use the same filter parameters as the firewall actions listing to scope the summary.
+    /// Returns aggregate counts for firewall actions matching the specified project and filters, without returning
+    /// individual action rows. The counts represent policies, including policies that matched no requests. Use the same
+    /// filter parameters as the firewall actions listing to scope the summary.
     ///
-    /// Aggregate counts over the firewall actions matched by the same filters as `GET /v1/security/firewall/events`, without fetching any rows. Counts are of policies (mitigations), including ones that matched no requests.
-    public func getFirewallEventsSummary(options: SecurityMethods.GetSecurityFirewallEventsSummaryOptions, requestOptions: RequestOptions? = nil) async throws -> GetSecurityFirewallEventsSummaryResponse {
-        return try await SecurityMethods.getSecurityFirewallEventsSummary(config: config, options: options, requestOptions: requestOptions)
+    /// Aggregate counts over the firewall actions matched by the same filters as `GET /v1/security/firewall/events`,
+    /// without fetching any rows. Counts are of policies (mitigations), including ones that matched no requests.
+    func getFirewallEventsSummary(
+        options: SecurityMethods.GetSecurityFirewallEventsSummaryOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetSecurityFirewallEventsSummaryResponse {
+        try await SecurityMethods.getSecurityFirewallEventsSummary(
+            config: config,
+            options: options,
+            requestOptions: requestOptions
+        )
     }
 }
 
-extension SecurityNamespace {
-/// Generates a firewall rule from a natural-language description for the selected project or team context. Use `projectId`, `teamId`, or `slug` to scope the request, then inspect the returned `rule` or `error`.
+public extension SecurityNamespace {
+    /// Generates a firewall rule from a natural-language description for the selected project or team context. Use
+    /// `projectId`, `teamId`, or `slug` to scope the request, then inspect the returned `rule` or `error`.
     ///
     /// Generate a firewall rule from a natural language description.
-    public func generateFirewallRule(projectId: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GenerateFirewallRuleResponse {
-        return try await SecurityMethods.generateFirewallRule(config: config, projectId: projectId, teamId: teamId, slug: slug, requestOptions: requestOptions)
+    func generateFirewallRule(
+        projectId: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GenerateFirewallRuleResponse {
+        try await SecurityMethods.generateFirewallRule(
+            config: config,
+            projectId: projectId,
+            teamId: teamId,
+            slug: slug,
+            requestOptions: requestOptions
+        )
     }
 }
 
@@ -213,8 +552,18 @@ public class SpeedInsightsNamespace {
         self.config = config
     }
 
-/// Updates the Speed Insights toggle for a project. Provide the `value` field to set the toggle state, and use `projectId` to select the project. The response confirms the resulting toggle value.
-    public func createToggle(projectId: String, value: Bool, requestOptions: RequestOptions? = nil) async throws -> CreateSpeedInsightsToggleResponse {
-        return try await SpeedInsightsMethods.createSpeedInsightsToggle(config: config, projectId: projectId, value: value, requestOptions: requestOptions)
+    /// Updates the Speed Insights toggle for a project. Provide the `value` field to set the toggle state, and use
+    /// `projectId` to select the project. The response confirms the resulting toggle value.
+    public func createToggle(
+        projectId: String,
+        value: Bool,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateSpeedInsightsToggleResponse {
+        try await SpeedInsightsMethods.createSpeedInsightsToggle(
+            config: config,
+            projectId: projectId,
+            value: value,
+            requestOptions: requestOptions
+        )
     }
 }

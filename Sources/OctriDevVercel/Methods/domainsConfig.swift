@@ -6,8 +6,11 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension DomainsMethods {
-    /// Retrieves configuration information for a domain, including its detected configuration and recommended DNS values. Use `projectIdOrName` to associate a domain that is not yet linked to a project, and `strict` to control whether the response includes only nameservers assigned directly to the domain. The response also indicates supported certificate challenges and whether the domain is misconfigured.
+public extension DomainsMethods {
+    /// Retrieves configuration information for a domain, including its detected configuration and recommended DNS
+    /// values. Use `projectIdOrName` to associate a domain that is not yet linked to a project, and `strict` to control
+    /// whether the response includes only nameservers assigned directly to the domain. The response also indicates
+    /// supported certificate challenges and whether the domain is misconfigured.
     ///
     /// Get a Domain's configuration.
     ///
@@ -21,12 +24,28 @@ extension DomainsMethods {
     ///   nameservers of the domain's parent zone.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getDomainConfig(config: ClientConfig, domain: String, projectIdOrName: String? = nil, strict: GetDomainConfigParameter? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetDomainConfigResponse {
-        return try (await sdkRequest("GET", ["/v6/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/config"].joined(), config: config, query: [
-            SdkQueryParameter("projectIdOrName", value: projectIdOrName),
-            SdkQueryParameter("strict", value: strict),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getDomainConfig", options: requestOptions)).data
+    static func getDomainConfig(
+        config: ClientConfig,
+        domain: String,
+        projectIdOrName: String? = nil,
+        strict: GetDomainConfigParameter? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetDomainConfigResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v6/domains/", sdkEncodePathSegment(sdkWireString(domain)), "/config"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectIdOrName", value: projectIdOrName),
+                SdkQueryParameter("strict", value: strict),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getDomainConfig",
+            options: requestOptions
+        )).data
     }
 }

@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension FeatureFlagsMethods {
-    /// Retrieves feature flag settings for a project. Use these settings to inspect whether flags are enabled, which environments are configured, and the project's flag-related metadata.
+public extension FeatureFlagsMethods {
+    /// Retrieves feature flag settings for a project. Use these settings to inspect whether flags are enabled, which
+    /// environments are configured, and the project's flag-related metadata.
     ///
     /// Retrieve feature flag settings for a project.
     ///
@@ -15,14 +16,30 @@ extension FeatureFlagsMethods {
     /// - projectIdOrName: The project id or name
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getFlagSettings(config: ClientConfig, projectIdOrName: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetFlagSettingsResponse {
-        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/settings"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getFlagSettings", options: requestOptions)).data
+    static func getFlagSettings(
+        config: ClientConfig,
+        projectIdOrName: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetFlagSettingsResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/settings"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getFlagSettings",
+            options: requestOptions
+        )).data
     }
 
-    /// Updates feature flag settings for a project, including whether flags are enabled and which environments are synchronized. Send only the settings fields you want to change; entity and attribute entries have required fields and size limits. The response contains the resulting settings.
+    /// Updates feature flag settings for a project, including whether flags are enabled and which environments are
+    /// synchronized. Send only the settings fields you want to change; entity and attribute entries have required
+    /// fields and size limits. The response contains the resulting settings.
     ///
     /// Update feature flag settings for a project.
     ///
@@ -31,16 +48,38 @@ extension FeatureFlagsMethods {
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - environments: The environments to sync
-    public static func updateFlagSettings(config: ClientConfig, projectIdOrName: String, teamId: String? = nil, slug: String? = nil, enabled: Bool? = nil, entities: [UpdateFlagSettingsRequestBodyEntitiesItem]? = nil, environments: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> UpdateFlagSettingsResponse {
-        if let entities = entities {
+    static func updateFlagSettings(
+        config: ClientConfig,
+        projectIdOrName: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        enabled: Bool? = nil,
+        entities: [UpdateFlagSettingsRequestBodyEntitiesItem]? = nil,
+        environments: [String]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> UpdateFlagSettingsResponse {
+        if let entities {
             try validateItems("entities", entities, max: 32)
         }
 
-        let requestBody = UpdateFlagSettingsRequestBody(enabled: enabled, entities: entities, environments: environments)
+        let requestBody = UpdateFlagSettingsRequestBody(
+            enabled: enabled,
+            entities: entities,
+            environments: environments
+        )
 
-        return try (await sdkRequest("PATCH", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/settings"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "updateFlagSettings", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectIdOrName)), "/feature-flags/settings"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "updateFlagSettings",
+            options: requestOptions
+        )).data
     }
 }

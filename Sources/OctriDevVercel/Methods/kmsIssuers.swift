@@ -6,35 +6,72 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension KmsMethods {
-    /// Signs a base64-encoded message with an issuer's active KMS signing key. Authenticate with a Vercel OIDC token in the `Authorization` header, and ensure the issuer's policies allow the workload to sign. The response identifies the signing key and provides the standard-base64 signature over the decoded message bytes.
+public extension KmsMethods {
+    /// Signs a base64-encoded message with an issuer's active KMS signing key. Authenticate with a Vercel OIDC token in
+    /// the `Authorization` header, and ensure the issuer's policies allow the workload to sign. The response identifies
+    /// the signing key and provides the standard-base64 signature over the decoded message bytes.
     ///
-    /// Sign a raw message with a KMS issuer's active signing key. Authenticate the request with a Vercel OIDC token in the `Authorization: Bearer` header; the issuer's policies decide which workloads are allowed to sign. The response `signature` is standard-base64 of the raw signature over the decoded message bytes. `keyId`, `algorithm`, and `fingerprint` identify the signing key in the issuer's JWKS.
+    /// Sign a raw message with a KMS issuer's active signing key. Authenticate the request with a Vercel OIDC token in
+    /// the `Authorization: Bearer` header; the issuer's policies decide which workloads are allowed to sign. The
+    /// response `signature` is standard-base64 of the raw signature over the decoded message bytes. `keyId`,
+    /// `algorithm`, and `fingerprint` identify the signing key in the issuer's JWKS.
     ///
     /// - Parameters:
     /// - issuerId: The ID of the issuer.
     /// - message: Base64-encoded message to be signed.
-    public static func signKmsMessage(config: ClientConfig, issuerId: String, message: String, requestOptions: RequestOptions? = nil) async throws -> SignKmsMessageResponse {
+    static func signKmsMessage(
+        config: ClientConfig,
+        issuerId: String,
+        message: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SignKmsMessageResponse {
         try validateLength("message", message, max: 44000)
         try sdkValidatePattern("message", message, sdkPattern7cda0ad6ec9f)
 
         let requestBody = SignKmsMessageRequestBody(message: message)
 
-        return try (await sdkRequest("POST", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/sign/message"].joined(), config: config, body: requestBody, decoder: .json, operationId: "signKmsMessage", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/sign/message"].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "signKmsMessage",
+            options: requestOptions
+        )).data
     }
 
-    /// Signs a JWT with an issuer's active KMS signing key. Authenticate with a Vercel OIDC token in the `Authorization` header, and ensure the issuer's policies allow the workload to sign. You can provide claims and additional token headers, or omit them to sign a token with default settings.
+    /// Signs a JWT with an issuer's active KMS signing key. Authenticate with a Vercel OIDC token in the
+    /// `Authorization` header, and ensure the issuer's policies allow the workload to sign. You can provide claims and
+    /// additional token headers, or omit them to sign a token with default settings.
     ///
-    /// Sign a JWT with a KMS issuer's active signing key. Authenticate the request with a Vercel OIDC token in the `Authorization: Bearer` header; the issuer's policies decide which workloads are allowed to sign. `keyId`, `algorithm`, and `fingerprint` identify the signing key in the issuer's JWKS.
+    /// Sign a JWT with a KMS issuer's active signing key. Authenticate the request with a Vercel OIDC token in the
+    /// `Authorization: Bearer` header; the issuer's policies decide which workloads are allowed to sign. `keyId`,
+    /// `algorithm`, and `fingerprint` identify the signing key in the issuer's JWKS.
     ///
     /// - Parameters:
     /// - issuerId: The ID of the issuer.
     /// - claims: The claims to include in the token.
     /// - headers: Additional headers to include in the token.
     /// - ttl: The time-to-live for the token, in seconds.
-    public static func signKmsToken(config: ClientConfig, issuerId: String, claims: [String: JSONValue]? = nil, headers: [String: JSONValue]? = nil, ttl: SdkOptional<Double>? = nil, requestOptions: RequestOptions? = nil) async throws -> SignKmsTokenResponse {
+    static func signKmsToken(
+        config: ClientConfig,
+        issuerId: String,
+        claims: [String: JSONValue]? = nil,
+        headers: [String: JSONValue]? = nil,
+        ttl: SdkOptional<Double>? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SignKmsTokenResponse {
         let requestBody = SignKmsTokenRequestBody(claims: claims, headers: headers, ttl: ttl)
 
-        return try (await sdkRequest("POST", ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/sign/token"].joined(), config: config, body: requestBody, decoder: .json, operationId: "signKmsToken", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v1/kms/issuers/", sdkEncodePathSegment(sdkWireString(issuerId)), "/sign/token"].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .json,
+            operationId: "signKmsToken",
+            options: requestOptions
+        )).data
     }
 }

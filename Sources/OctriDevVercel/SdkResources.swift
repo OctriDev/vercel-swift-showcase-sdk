@@ -10,7 +10,9 @@ import Foundation
 public struct SdkUsageError: SdkError, LocalizedError {
     public let message: String
 
-    public var errorDescription: String? { message }
+    public var errorDescription: String? {
+        message
+    }
 }
 
 /// Collects the response the requests inside one `withRawResponse` call read.
@@ -83,7 +85,9 @@ public extension SdkResource {
         }
         guard let data = try? sdkJsonEncoder().encode(self),
               case let .object(fields)? = try? sdkJsonDecoder().decode(JSONValue.self, from: data)
-        else { return [:] }
+        else {
+            return [:]
+        }
         return fields
     }
 
@@ -93,7 +97,9 @@ public extension SdkResource {
         encoder.outputFormatting = .sortedKeys
         guard let data = try? encoder.encode(JSONValue.object(toObject())),
               let text = String(bytes: data, encoding: .utf8)
-        else { return "{}" }
+        else {
+            return "{}"
+        }
         return text
     }
 }
@@ -125,8 +131,7 @@ extension SdkResponse {
 
     /// Each decoded resource of a list, carrying its element of the body.
     func sdkResources<Element: SdkResource>(_ bind: (inout Element) -> Void = { _ in }) -> [Element]
-        where T == [Element]
-    {
+        where T == [Element] {
         // The body decodes once; each resource keeps its own element.
         var items: [JSONValue] = []
         if case let .array(elements)? = sdkJsonBody {

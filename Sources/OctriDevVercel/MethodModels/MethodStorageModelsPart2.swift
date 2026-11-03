@@ -7,43 +7,78 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical storage operation model declarations
-extension CreateStorageStoresBlobResponseStoreProjectsMetadataItem {
-    public init(from decoder: Decoder) throws {
+/// Canonical storage operation model declarations
+public extension CreateStorageStoresBlobResponseStoreProjectsMetadataItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.environments) else {
-            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
+            throw SdkValidationError(
+                field: "environments",
+                code: "required",
+                message: "Validation failed for 'environments': value is required"
+            )
         }
         guard container.contains(.environmentVariables) else {
-            throw SdkValidationError(field: "environmentVariables", code: "required", message: "Validation failed for 'environmentVariables': value is required")
+            throw SdkValidationError(
+                field: "environmentVariables",
+                code: "required",
+                message: "Validation failed for 'environmentVariables': value is required"
+            )
         }
         guard container.contains(.envVarPrefix) else {
-            throw SdkValidationError(field: "envVarPrefix", code: "required", message: "Validation failed for 'envVarPrefix': value is required")
+            throw SdkValidationError(
+                field: "envVarPrefix",
+                code: "required",
+                message: "Validation failed for 'envVarPrefix': value is required"
+            )
         }
         guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
         }
         guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
         }
         guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
         }
-        self.environments = try container.sdkDecodeRequired(.environments)
-        self.environmentVariables = try container.sdkDecodeRequired(.environmentVariables)
-        self.envVarPrefix = try container.sdkDecodeNullable(.envVarPrefix)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.deployments = try container.sdkDecodeIfPresent(.deployments)
-        self.framework = try container.sdkDecodeIfPresent(.framework)
-        self.latestDeployment = try container.sdkDecodeIfPresent(.latestDeployment)
-        self.makeEnvVarsSensitive = try container.sdkDecodeIfPresent(.makeEnvVarsSensitive)
+        environments = try container.sdkDecodeRequired(.environments)
+        environmentVariables = try container.sdkDecodeRequired(.environmentVariables)
+        envVarPrefix = try container.sdkDecodeNullable(.envVarPrefix)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        deployments = try container.sdkDecodeIfPresent(.deployments)
+        framework = try container.sdkDecodeIfPresent(.framework)
+        latestDeployment = try container.sdkDecodeIfPresent(.latestDeployment)
+        makeEnvVarsSensitive = try container.sdkDecodeIfPresent(.makeEnvVarsSensitive)
     }
 }
 
-extension CreateStorageStoresBlobResponseStoreProjectsMetadataItem {
-    public init(environments: [String], environmentVariables: [String], envVarPrefix: String?, id: String, name: String, projectId: String, deployments: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments? = nil, framework: CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework? = nil, latestDeployment: String? = nil, makeEnvVarsSensitive: Bool? = nil) {
+public extension CreateStorageStoresBlobResponseStoreProjectsMetadataItem {
+    init(
+        environments: [String],
+        environmentVariables: [String],
+        envVarPrefix: String?,
+        id: String,
+        name: String,
+        projectId: String,
+        deployments: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments? = nil,
+        framework: CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework? = nil,
+        latestDeployment: String? = nil,
+        makeEnvVarsSensitive: Bool? = nil
+    ) {
         (self.environments, self.environmentVariables) = (environments, environmentVariables)
         (self.envVarPrefix, self.id) = (envVarPrefix, id)
         (self.name, self.projectId) = (name, projectId)
@@ -77,45 +112,82 @@ public struct GetStorageStoresByIdResponseStoreProjectsMetadataItem: Codable {
         case makeEnvVarsSensitive
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetStorageStoresByIdResponseStoreProjectsMetadataItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.environments) else {
-            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
-        }
-        guard container.contains(.environmentVariables) else {
-            throw SdkValidationError(field: "environmentVariables", code: "required", message: "Validation failed for 'environmentVariables': value is required")
-        }
-        guard container.contains(.envVarPrefix) else {
-            throw SdkValidationError(field: "envVarPrefix", code: "required", message: "Validation failed for 'envVarPrefix': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.projectId) else {
-            throw SdkValidationError(field: "projectId", code: "required", message: "Validation failed for 'projectId': value is required")
-        }
-        self.environments = try container.sdkDecodeRequired(.environments)
-        self.environmentVariables = try container.sdkDecodeRequired(.environmentVariables)
-        self.envVarPrefix = try container.sdkDecodeNullable(.envVarPrefix)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.projectId = try container.sdkDecodeRequired(.projectId)
-        self.deployments = try container.sdkDecodeIfPresent(.deployments)
-        self.framework = try container.sdkDecodeIfPresent(.framework)
-        self.latestDeployment = try container.sdkDecodeIfPresent(.latestDeployment)
-        self.makeEnvVarsSensitive = try container.sdkDecodeIfPresent(.makeEnvVarsSensitive)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetStorageStoresByIdResponseStoreProjectsMetadataItem {
-    public init(environments: [String], environmentVariables: [String], envVarPrefix: String?, id: String, name: String, projectId: String, deployments: GetStorageStoresByIdResponseStoreProjectsMetadataItemDeployments? = nil, framework: GetStorageStoresByIdResponseStoreProjectsMetadataItemFramework? = nil, latestDeployment: String? = nil, makeEnvVarsSensitive: Bool? = nil) {
+public extension GetStorageStoresByIdResponseStoreProjectsMetadataItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.environments) else {
+            throw SdkValidationError(
+                field: "environments",
+                code: "required",
+                message: "Validation failed for 'environments': value is required"
+            )
+        }
+        guard container.contains(.environmentVariables) else {
+            throw SdkValidationError(
+                field: "environmentVariables",
+                code: "required",
+                message: "Validation failed for 'environmentVariables': value is required"
+            )
+        }
+        guard container.contains(.envVarPrefix) else {
+            throw SdkValidationError(
+                field: "envVarPrefix",
+                code: "required",
+                message: "Validation failed for 'envVarPrefix': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.projectId) else {
+            throw SdkValidationError(
+                field: "projectId",
+                code: "required",
+                message: "Validation failed for 'projectId': value is required"
+            )
+        }
+        environments = try container.sdkDecodeRequired(.environments)
+        environmentVariables = try container.sdkDecodeRequired(.environmentVariables)
+        envVarPrefix = try container.sdkDecodeNullable(.envVarPrefix)
+        id = try container.sdkDecodeRequired(.id)
+        name = try container.sdkDecodeRequired(.name)
+        projectId = try container.sdkDecodeRequired(.projectId)
+        deployments = try container.sdkDecodeIfPresent(.deployments)
+        framework = try container.sdkDecodeIfPresent(.framework)
+        latestDeployment = try container.sdkDecodeIfPresent(.latestDeployment)
+        makeEnvVarsSensitive = try container.sdkDecodeIfPresent(.makeEnvVarsSensitive)
+    }
+}
+
+public extension GetStorageStoresByIdResponseStoreProjectsMetadataItem {
+    init(
+        environments: [String],
+        environmentVariables: [String],
+        envVarPrefix: String?,
+        id: String,
+        name: String,
+        projectId: String,
+        deployments: GetStorageStoresByIdResponseStoreProjectsMetadataItemDeployments? = nil,
+        framework: GetStorageStoresByIdResponseStoreProjectsMetadataItemFramework? = nil,
+        latestDeployment: String? = nil,
+        makeEnvVarsSensitive: Bool? = nil
+    ) {
         (self.environments, self.environmentVariables) = (environments, environmentVariables)
         (self.envVarPrefix, self.id) = (envVarPrefix, id)
         (self.name, self.projectId) = (name, projectId)
@@ -131,21 +203,27 @@ public struct DeleteStorageStoresBlobByIdResponse: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteStorageStoresBlobByIdResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension DeleteStorageStoresBlobByIdResponse {
-    public init(id: String) {
+public extension DeleteStorageStoresBlobByIdResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+    }
+}
+
+public extension DeleteStorageStoresBlobByIdResponse {
+    init(id: String) {
         self.id = id
     }
 }
@@ -161,23 +239,33 @@ public struct CreateStorageStoresBlobResponseStoreProjectFilterGit: Codable {
         case repos
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateStorageStoresBlobResponseStoreProjectFilterGit {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.providers) else {
-            throw SdkValidationError(field: "providers", code: "required", message: "Validation failed for 'providers': value is required")
-        }
-        self.providers = try container.sdkDecodeRequired(.providers)
-        self.owners = try container.sdkDecodeIfPresent(.owners)
-        self.repos = try container.sdkDecodeIfPresent(.repos)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateStorageStoresBlobResponseStoreProjectFilterGit {
-    public init(providers: CreateStorageStoresBlobResponseStoreProjectFilterGitProviders, owners: [String]? = nil, repos: [String]? = nil) {
+public extension CreateStorageStoresBlobResponseStoreProjectFilterGit {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.providers) else {
+            throw SdkValidationError(
+                field: "providers",
+                code: "required",
+                message: "Validation failed for 'providers': value is required"
+            )
+        }
+        providers = try container.sdkDecodeRequired(.providers)
+        owners = try container.sdkDecodeIfPresent(.owners)
+        repos = try container.sdkDecodeIfPresent(.repos)
+    }
+}
+
+public extension CreateStorageStoresBlobResponseStoreProjectFilterGit {
+    init(
+        providers: CreateStorageStoresBlobResponseStoreProjectFilterGitProviders,
+        owners: [String]? = nil,
+        repos: [String]? = nil
+    ) {
         (self.providers, self.owners) = (providers, owners)
         self.repos = repos
     }
@@ -192,25 +280,35 @@ public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploXdbb4
         case slug
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploXdbb4725d02 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.environments) else {
-            throw SdkValidationError(field: "environments", code: "required", message: "Validation failed for 'environments': value is required")
-        }
-        guard container.contains(.slug) else {
-            throw SdkValidationError(field: "slug", code: "required", message: "Validation failed for 'slug': value is required")
-        }
-        self.environments = try container.sdkDecodeRequired(.environments)
-        self.slug = try container.sdkDecodeRequired(.slug)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploXdbb4725d02 {
-    public init(environments: [String], slug: String) {
+public extension CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploXdbb4725d02 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.environments) else {
+            throw SdkValidationError(
+                field: "environments",
+                code: "required",
+                message: "Validation failed for 'environments': value is required"
+            )
+        }
+        guard container.contains(.slug) else {
+            throw SdkValidationError(
+                field: "slug",
+                code: "required",
+                message: "Validation failed for 'slug': value is required"
+            )
+        }
+        environments = try container.sdkDecodeRequired(.environments)
+        slug = try container.sdkDecodeRequired(.slug)
+    }
+}
+
+public extension CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploXdbb4725d02 {
+    init(environments: [String], slug: String) {
         (self.environments, self.slug) = (environments, slug)
     }
 }
@@ -222,21 +320,27 @@ public struct GetStorageStoresByIdResponse: Codable {
         case store
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetStorageStoresByIdResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.store) else {
-            throw SdkValidationError(field: "store", code: "required", message: "Validation failed for 'store': value is required")
-        }
-        self.store = try container.sdkDecodeRequired(.store)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetStorageStoresByIdResponse {
-    public init(store: GetStorageStoresByIdResponseStore) {
+public extension GetStorageStoresByIdResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.store) else {
+            throw SdkValidationError(
+                field: "store",
+                code: "required",
+                message: "Validation failed for 'store': value is required"
+            )
+        }
+        store = try container.sdkDecodeRequired(.store)
+    }
+}
+
+public extension GetStorageStoresByIdResponse {
+    init(store: GetStorageStoresByIdResponseStore) {
         self.store = store
     }
 }

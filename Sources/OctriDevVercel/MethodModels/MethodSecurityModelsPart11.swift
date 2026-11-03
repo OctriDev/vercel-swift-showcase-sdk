@@ -7,15 +7,17 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical security operation model declarations
+/// Canonical security operation model declarations
 extension UpdateFirewallConfigRequestBodyVariant11ValueActionMitigateRedirect {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant11ValueActionMitigateReXa01b617b17.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant11ValueActionMitigateReXa01b617b17(value)
+            return .updateFirewallConfigRequestBodyVariant11ValueActionMitigateReXa01b617b17(value)
         }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -24,7 +26,8 @@ extension UpdateFirewallConfigRequestBodyVariant11ValueActionMitigateRedirect {
     func encodeGroup1(to encoder: Encoder) throws -> Bool {
         var container = encoder.singleValueContainer()
         switch self {
-        case let .updateFirewallConfigRequestBodyVariant11ValueActionMitigateReXa01b617b17(value): try container.encode(value); return true
+        case let .updateFirewallConfigRequestBodyVariant11ValueActionMitigateReXa01b617b17(value): try container
+            .encode(value); return true
         case let .stringValue(value): try container.encode(value); return true
         }
     }
@@ -36,22 +39,32 @@ public indirect enum GetFirewallConfigResponseRulesetsVariant1ValueLogHeaders {
 }
 
 extension GetFirewallConfigResponseRulesetsVariant1ValueLogHeaders: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetFirewallConfigResponseRulesetsVariant1ValueLogHeaders")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetFirewallConfigResponseRulesetsVariant1ValueLogHeaders"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetFirewallConfigResponseRulesetsVariant1ValueLogHeaders {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String].self) { return .stringList(value) }
-        if let value = try? container.decode(String.self) { return .stringValue(value) }
+        if let value = try? container.decode([String].self) {
+            return .stringList(value)
+        }
+        if let value = try? container.decode(String.self) {
+            return .stringValue(value)
+        }
         return nil
     }
 }
@@ -81,25 +94,37 @@ public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseMaX0867
         case username
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateSecurityFirewallConfigByConfigVersionActivateResponseMaX0867625da1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.active) else {
-            throw SdkValidationError(field: "active", code: "required", message: "Validation failed for 'active': value is required")
-        }
-        self.active = try container.sdkDecodeRequired(.active)
-        self.action = try container.sdkDecodeIfPresent(.action)
-        self.updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
-        self.userId = try container.sdkDecodeIfPresent(.userId)
-        self.username = try container.sdkDecodeIfPresent(.username)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateSecurityFirewallConfigByConfigVersionActivateResponseMaX0867625da1 {
-    public init(active: Bool, action: CreateSecurityFirewallConfigByConfigVersionActivateResponseMaXfeb23e2892? = nil, updatedAt: String? = nil, userId: String? = nil, username: String? = nil) {
+public extension CreateSecurityFirewallConfigByConfigVersionActivateResponseMaX0867625da1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.active) else {
+            throw SdkValidationError(
+                field: "active",
+                code: "required",
+                message: "Validation failed for 'active': value is required"
+            )
+        }
+        active = try container.sdkDecodeRequired(.active)
+        action = try container.sdkDecodeIfPresent(.action)
+        updatedAt = try container.sdkDecodeIfPresent(.updatedAt)
+        userId = try container.sdkDecodeIfPresent(.userId)
+        username = try container.sdkDecodeIfPresent(.username)
+    }
+}
+
+public extension CreateSecurityFirewallConfigByConfigVersionActivateResponseMaX0867625da1 {
+    init(
+        active: Bool,
+        action: CreateSecurityFirewallConfigByConfigVersionActivateResponseMaXfeb23e2892? = nil,
+        updatedAt: String? = nil,
+        userId: String? = nil,
+        username: String? = nil
+    ) {
         (self.active, self.action) = (active, action)
         (self.updatedAt, self.userId) = (updatedAt, userId)
         self.username = username
@@ -123,26 +148,39 @@ public struct UpdateFirewallConfigRequestBodyVariant10ValueActionMitigate: Codab
         case logHeaders
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension UpdateFirewallConfigRequestBodyVariant10ValueActionMitigate {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.action) else {
-            throw SdkValidationError(field: "action", code: "required", message: "Validation failed for 'action': value is required")
-        }
-        self.action = try container.sdkDecodeRequired(.action)
-        self.rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
-        self.redirect = try container.sdkDecodeIfPresent(.redirect)
-        self.actionDuration = try container.sdkDecodeIfPresent(.actionDuration)
-        self.bypassSystem = try container.sdkDecodeIfPresent(.bypassSystem)
-        self.logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension UpdateFirewallConfigRequestBodyVariant10ValueActionMitigate {
-    public init(action: UpdateFirewallConfigRequestBodyVariant10ValueActionMitigateAction, rateLimit: UpdateFirewallConfigRequestBodyVariant10ValueActionMitigateRateLimit? = nil, redirect: UpdateFirewallConfigRequestBodyVariant10ValueActionMitigateRedirect? = nil, actionDuration: String? = nil, bypassSystem: Bool? = nil, logHeaders: UpdateFirewallConfigRequestBodyVariant10ValueActionMitigateLogHeaders? = nil) {
+public extension UpdateFirewallConfigRequestBodyVariant10ValueActionMitigate {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.action) else {
+            throw SdkValidationError(
+                field: "action",
+                code: "required",
+                message: "Validation failed for 'action': value is required"
+            )
+        }
+        action = try container.sdkDecodeRequired(.action)
+        rateLimit = try container.sdkDecodeIfPresent(.rateLimit)
+        redirect = try container.sdkDecodeIfPresent(.redirect)
+        actionDuration = try container.sdkDecodeIfPresent(.actionDuration)
+        bypassSystem = try container.sdkDecodeIfPresent(.bypassSystem)
+        logHeaders = try container.sdkDecodeIfPresent(.logHeaders)
+    }
+}
+
+public extension UpdateFirewallConfigRequestBodyVariant10ValueActionMitigate {
+    init(
+        action: UpdateFirewallConfigRequestBodyVariant10ValueActionMitigateAction,
+        rateLimit: UpdateFirewallConfigRequestBodyVariant10ValueActionMitigateRateLimit? = nil,
+        redirect: UpdateFirewallConfigRequestBodyVariant10ValueActionMitigateRedirect? = nil,
+        actionDuration: String? = nil,
+        bypassSystem: Bool? = nil,
+        logHeaders: UpdateFirewallConfigRequestBodyVariant10ValueActionMitigateLogHeaders? = nil
+    ) {
         (self.action, self.rateLimit) = (action, rateLimit)
         (self.redirect, self.actionDuration) = (redirect, actionDuration)
         (self.bypassSystem, self.logHeaders) = (bypassSystem, logHeaders)
@@ -176,28 +214,42 @@ public struct CreateSecurityFirewallConfigByConfigVersionActivateResponseCrs: Co
         case xss
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateSecurityFirewallConfigByConfigVersionActivateResponseCrs {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.gen = try container.sdkDecodeRequired(.gen)
-        self.java = try container.sdkDecodeRequired(.java)
-        self.lfi = try container.sdkDecodeRequired(.lfi)
-        self.ma = try container.sdkDecodeRequired(.ma)
-        self.php = try container.sdkDecodeRequired(.php)
-        self.rce = try container.sdkDecodeRequired(.rce)
-        self.rfi = try container.sdkDecodeRequired(.rfi)
-        self.sd = try container.sdkDecodeRequired(.sd)
-        self.sf = try container.sdkDecodeRequired(.sf)
-        self.sqli = try container.sdkDecodeRequired(.sqli)
-        self.xss = try container.sdkDecodeRequired(.xss)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateSecurityFirewallConfigByConfigVersionActivateResponseCrs {
-    public init(gen: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsGen, java: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsJava, lfi: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsLfi, ma: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsMa, php: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsPhp, rce: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsRce, rfi: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsRfi, sd: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsSd, sf: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsSf, sqli: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsSqli, xss: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsXss) {
+public extension CreateSecurityFirewallConfigByConfigVersionActivateResponseCrs {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        gen = try container.sdkDecodeRequired(.gen)
+        java = try container.sdkDecodeRequired(.java)
+        lfi = try container.sdkDecodeRequired(.lfi)
+        ma = try container.sdkDecodeRequired(.ma)
+        php = try container.sdkDecodeRequired(.php)
+        rce = try container.sdkDecodeRequired(.rce)
+        rfi = try container.sdkDecodeRequired(.rfi)
+        sd = try container.sdkDecodeRequired(.sd)
+        sf = try container.sdkDecodeRequired(.sf)
+        sqli = try container.sdkDecodeRequired(.sqli)
+        xss = try container.sdkDecodeRequired(.xss)
+    }
+}
+
+public extension CreateSecurityFirewallConfigByConfigVersionActivateResponseCrs {
+    init(
+        gen: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsGen,
+        java: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsJava,
+        lfi: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsLfi,
+        ma: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsMa,
+        php: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsPhp,
+        rce: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsRce,
+        rfi: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsRfi,
+        sd: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsSd,
+        sf: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsSf,
+        sqli: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsSqli,
+        xss: CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsXss
+    ) {
         (self.gen, self.java) = (gen, java)
         (self.lfi, self.ma) = (lfi, ma)
         (self.php, self.rce) = (php, rce)
@@ -234,49 +286,89 @@ public indirect enum UpdateFirewallConfigRequestBody {
 }
 
 extension UpdateFirewallConfigRequestBody: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let raw = try? container.decode(JSONValue.self) {
-            if let value = Self.decodeLossless1(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless2(from: container, raw) { self = value; return }
-            if let value = Self.decodeLossless3(from: container, raw) { self = value; return }
+            if let value = Self.decodeLossless1(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless2(from: container, raw) {
+                self = value; return
+            }
+            if let value = Self.decodeLossless3(from: container, raw) {
+                self = value; return
+            }
         }
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        if let value = Self.decodeGroup2(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for UpdateFirewallConfigRequestBody")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        if let value = Self.decodeGroup2(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for UpdateFirewallConfigRequestBody"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
-        if try encodeGroup2(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
+        if try encodeGroup2(to: encoder) {
+            return
+        }
     }
 }
 
 extension UpdateFirewallConfigRequestBody {
     static func decodeLossless1(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant0.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant0.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant0(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant1.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant1.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant1(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant2.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant2.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant2(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant3.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant3.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant3(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant4.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant4.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant4(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant5.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant5.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant5(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant6.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant6.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant6(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant7.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant7.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant7(value)
         }
         return nil
@@ -285,28 +377,52 @@ extension UpdateFirewallConfigRequestBody {
 
 extension UpdateFirewallConfigRequestBody {
     static func decodeLossless2(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant8.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant8.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant8(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant9.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant9.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant9(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant10.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant10.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant10(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant11.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant11.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant11(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant12.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant12.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant12(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant13.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant13.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant13(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant14.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant14.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant14(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant15.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant15.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant15(value)
         }
         return nil
@@ -315,25 +431,46 @@ extension UpdateFirewallConfigRequestBody {
 
 extension UpdateFirewallConfigRequestBody {
     static func decodeLossless3(from container: SingleValueDecodingContainer, _ raw: JSONValue) -> Self? {
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant16.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant16.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant16(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant17.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant17.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant17(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant18.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant18.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant18(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant19.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant19.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant19(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant20.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant20.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant20(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant21.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant21.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant21(value)
         }
-        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant22.self), sdkKeepsEveryKey(value, of: raw) {
+        if let value = try? container.decode(UpdateFirewallConfigRequestBodyVariant22.self), sdkKeepsEveryKey(
+            value,
+            of: raw
+        ) {
             return .updateFirewallConfigRequestBodyVariant22(value)
         }
         return nil
@@ -345,62 +482,62 @@ extension UpdateFirewallConfigRequestBody {
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant0.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant0(value)
+            return .updateFirewallConfigRequestBodyVariant0(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant1.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant1(value)
+            return .updateFirewallConfigRequestBodyVariant1(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant2.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant2(value)
+            return .updateFirewallConfigRequestBodyVariant2(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant3.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant3(value)
+            return .updateFirewallConfigRequestBodyVariant3(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant4.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant4(value)
+            return .updateFirewallConfigRequestBodyVariant4(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant5.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant5(value)
+            return .updateFirewallConfigRequestBodyVariant5(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant6.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant6(value)
+            return .updateFirewallConfigRequestBodyVariant6(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant7.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant7(value)
+            return .updateFirewallConfigRequestBodyVariant7(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant8.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant8(value)
+            return .updateFirewallConfigRequestBodyVariant8(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant9.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant9(value)
+            return .updateFirewallConfigRequestBodyVariant9(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant10.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant10(value)
+            return .updateFirewallConfigRequestBodyVariant10(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant11.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant11(value)
+            return .updateFirewallConfigRequestBodyVariant11(value)
         }
         return nil
     }
@@ -411,57 +548,57 @@ extension UpdateFirewallConfigRequestBody {
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant12.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant12(value)
+            return .updateFirewallConfigRequestBodyVariant12(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant13.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant13(value)
+            return .updateFirewallConfigRequestBodyVariant13(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant14.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant14(value)
+            return .updateFirewallConfigRequestBodyVariant14(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant15.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant15(value)
+            return .updateFirewallConfigRequestBodyVariant15(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant16.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant16(value)
+            return .updateFirewallConfigRequestBodyVariant16(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant17.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant17(value)
+            return .updateFirewallConfigRequestBodyVariant17(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant18.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant18(value)
+            return .updateFirewallConfigRequestBodyVariant18(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant19.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant19(value)
+            return .updateFirewallConfigRequestBodyVariant19(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant20.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant20(value)
+            return .updateFirewallConfigRequestBodyVariant20(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant21.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant21(value)
+            return .updateFirewallConfigRequestBodyVariant21(value)
         }
         if let value = try? container.decode(
             UpdateFirewallConfigRequestBodyVariant22.self
         ) {
-            return             .updateFirewallConfigRequestBodyVariant22(value)
+            return .updateFirewallConfigRequestBodyVariant22(value)
         }
         return nil
     }

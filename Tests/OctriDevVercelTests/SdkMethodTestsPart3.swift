@@ -23,7 +23,12 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try FeatureFlagsMethods.CreateFlagOptions(projectIdOrName: decoded("\"Example Name\""), slug: decoded("\"a\""), kind: decoded("\"boolean\""), environments: decoded(sdkMethodFixture49Value1))
+        var options = try FeatureFlagsMethods.CreateFlagOptions(
+            projectIdOrName: decoded("\"Example Name\""),
+            slug: decoded("\"a\""),
+            kind: decoded("\"boolean\""),
+            environments: decoded(sdkMethodFixture49Value1)
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug2 = try decoded("\"my-team-url-slug\"")
         options.variants = try decoded(sdkMethodFixture49Value2)
@@ -51,7 +56,13 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try FeatureFlagsMethods.CreateFlagSegmentOptions(projectIdOrName: decoded("\"Example Name\""), slug: decoded("\"slug\""), label: decoded("\"label\""), data: decoded(sdkMethodFixture50Value1), hint: decoded("\"hint\""))
+        var options = try FeatureFlagsMethods.CreateFlagSegmentOptions(
+            projectIdOrName: decoded("\"Example Name\""),
+            slug: decoded("\"slug\""),
+            label: decoded("\"label\""),
+            data: decoded(sdkMethodFixture50Value1),
+            hint: decoded("\"hint\"")
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug2 = try decoded("\"my-team-url-slug\"")
         options.createdBy = try decoded("\"createdBy\"")
@@ -69,7 +80,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testCreateInstallationsByIntegrationConfigurationIdResourcesByResX33e31165aaReachesMockAndDecodesResponse() async throws {
+    func testCreateInstallationsByIntegrationConfigurationIdResourcesByResX33e31165aaReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -87,7 +99,11 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try IntegrationsMethods.CreateIntegrationStoreDirectOptions(name: decoded("\"my-dev-database\""), integrationConfigurationId: decoded("\"icfg_cuwj0AdCdH3BwWT4LPijCC7t\""), integrationProductIdOrSlug: decoded("\"iap_postgres_db\""))
+        var options = try IntegrationsMethods.CreateIntegrationStoreDirectOptions(
+            name: decoded("\"my-dev-database\""),
+            integrationConfigurationId: decoded("\"icfg_cuwj0AdCdH3BwWT4LPijCC7t\""),
+            integrationProductIdOrSlug: decoded("\"iap_postgres_db\"")
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.metadata = try decoded(sdkMethodFixture52Value1)
@@ -191,7 +207,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try LogDrainsMethods.CreateLogDrainOptions(name: decoded("\"My first log drain\""), url: decoded("\"https://example.com/log-drain\""))
+        var options = try LogDrainsMethods.CreateLogDrainOptions(
+            name: decoded("\"My first log drain\""),
+            url: decoded("\"https://example.com/log-drain\"")
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.projectIds = try decoded("[\"a\"]")
@@ -213,7 +232,8 @@ extension SdkMethodTests {
         )
     }
 
-    func testCreateMicrofrontendsGroupWithApplicationsCreateMicrofrontendsX9dcf4e0c5eReachesMockAndDecodesResponse() async throws {
+    func testCreateMicrofrontendsGroupWithApplicationsCreateMicrofrontendsX9dcf4e0c5eReachesMockAndDecodesResponse(
+    ) async throws {
         guard let client = configuredClient() else {
             return
         }
@@ -263,7 +283,10 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ObservabilityMethods.CreateObservabilityQueryOptions(metric: decoded("\"metric\""), scope: decoded("{}"))
+        var options = try ObservabilityMethods.CreateObservabilityQueryOptions(
+            metric: decoded("\"metric\""),
+            scope: decoded("{}")
+        )
         options.aggregation = try decoded("\"aggregation\"")
         options.groupBy = try decoded("[\"groupBy\"]")
         options.filter = try decoded("\"filter\"")
@@ -379,7 +402,11 @@ extension SdkMethodTests {
             return
         }
         _ = client
-        var options = try ChecksV2Methods.CreateProjectCheckOptions(projectIdOrName: decoded("\"Example Name\""), name: decoded("\"Example Name\""), requires: decoded("\"deployment-url\""))
+        var options = try ChecksV2Methods.CreateProjectCheckOptions(
+            projectIdOrName: decoded("\"Example Name\""),
+            name: decoded("\"Example Name\""),
+            requires: decoded("\"deployment-url\"")
+        )
         options.teamId = try decoded("\"team_1a2b3c4d5e6f7g8h9i0j1k2l\"")
         options.slug = try decoded("\"my-team-url-slug\"")
         options.isRerequestable = try decoded("false")

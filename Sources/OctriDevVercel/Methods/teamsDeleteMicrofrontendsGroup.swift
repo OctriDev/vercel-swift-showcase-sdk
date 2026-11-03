@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension TeamsMethods {
-    /// Deletes a microfrontends group from the team associated with its group identifier. Use `groupId` and `teamId` to identify the group and team.
+public extension TeamsMethods {
+    /// Deletes a microfrontends group from the team associated with its group identifier. Use `groupId` and `teamId` to
+    /// identify the group and team.
     ///
     /// Deletes a microfrontends group from the team associated with the group ID.
     ///
@@ -15,9 +16,28 @@ extension TeamsMethods {
     /// - groupId: The microfrontend group ID to delete.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func deleteMicrofrontendsGroup(config: ClientConfig, groupId: String, teamId: String, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try (await sdkRequest("DELETE", ["/v1/teams/", sdkEncodePathSegment(sdkWireString(teamId)), "/microfrontends/", sdkEncodePathSegment(sdkWireString(groupId))].joined(), config: config, query: [
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "deleteMicrofrontendsGroup", options: requestOptions)).data
+    static func deleteMicrofrontendsGroup(
+        config: ClientConfig,
+        groupId: String,
+        teamId: String,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await (sdkRequest(
+            "DELETE",
+            [
+                "/v1/teams/",
+                sdkEncodePathSegment(sdkWireString(teamId)),
+                "/microfrontends/",
+                sdkEncodePathSegment(sdkWireString(groupId)),
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "deleteMicrofrontendsGroup",
+            options: requestOptions
+        )).data
     }
 }

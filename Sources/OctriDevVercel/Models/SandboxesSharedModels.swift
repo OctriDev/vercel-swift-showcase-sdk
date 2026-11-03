@@ -3,7 +3,7 @@
 
 import Foundation
 
-// Sandboxes domain models
+/// Sandboxes domain models
 /// Key-value pairs of mount path and drive.
 public struct NamedSandboxMountsValue: Codable {
     public var drive: String
@@ -16,23 +16,29 @@ public struct NamedSandboxMountsValue: Codable {
         case snapshot
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension NamedSandboxMountsValue {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.drive) else {
-            throw SdkValidationError(field: "drive", code: "required", message: "Validation failed for 'drive': value is required")
-        }
-        self.drive = try container.sdkDecodeRequired(.drive)
-        self.mode = try container.sdkDecodeIfPresent(.mode)
-        self.snapshot = try container.sdkDecodeIfPresent(.snapshot)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension NamedSandboxMountsValue {
-    public init(drive: String, mode: NamedSandboxMountsValueMode? = nil, snapshot: String? = nil) {
+public extension NamedSandboxMountsValue {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.drive) else {
+            throw SdkValidationError(
+                field: "drive",
+                code: "required",
+                message: "Validation failed for 'drive': value is required"
+            )
+        }
+        drive = try container.sdkDecodeRequired(.drive)
+        mode = try container.sdkDecodeIfPresent(.mode)
+        snapshot = try container.sdkDecodeIfPresent(.snapshot)
+    }
+}
+
+public extension NamedSandboxMountsValue {
+    init(drive: String, mode: NamedSandboxMountsValueMode? = nil, snapshot: String? = nil) {
         (self.drive, self.mode) = (drive, mode)
         self.snapshot = snapshot
     }
@@ -66,25 +72,37 @@ public struct SandboxNetworkPolicy: Codable {
         case injectionRules
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SandboxNetworkPolicy {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.mode) else {
-            throw SdkValidationError(field: "mode", code: "required", message: "Validation failed for 'mode': value is required")
-        }
-        self.mode = try container.sdkDecodeRequired(.mode)
-        self.allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
-        self.allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
-        self.deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
-        self.injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SandboxNetworkPolicy {
-    public init(mode: SandboxNetworkPolicyMode, allowedCidrs: [String]? = nil, allowedDomains: [String]? = nil, deniedCidrs: [String]? = nil, injectionRules: [SandboxInjectionRule]? = nil) {
+public extension SandboxNetworkPolicy {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.mode) else {
+            throw SdkValidationError(
+                field: "mode",
+                code: "required",
+                message: "Validation failed for 'mode': value is required"
+            )
+        }
+        mode = try container.sdkDecodeRequired(.mode)
+        allowedCidrs = try container.sdkDecodeIfPresent(.allowedCidrs)
+        allowedDomains = try container.sdkDecodeIfPresent(.allowedDomains)
+        deniedCidrs = try container.sdkDecodeIfPresent(.deniedCidrs)
+        injectionRules = try container.sdkDecodeIfPresent(.injectionRules)
+    }
+}
+
+public extension SandboxNetworkPolicy {
+    init(
+        mode: SandboxNetworkPolicyMode,
+        allowedCidrs: [String]? = nil,
+        allowedDomains: [String]? = nil,
+        deniedCidrs: [String]? = nil,
+        injectionRules: [SandboxInjectionRule]? = nil
+    ) {
         (self.mode, self.allowedCidrs) = (mode, allowedCidrs)
         (self.allowedDomains, self.deniedCidrs) = (allowedDomains, deniedCidrs)
         self.injectionRules = injectionRules
@@ -209,67 +227,127 @@ public struct NamedSandbox: Codable {
         case vcpus
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension NamedSandbox {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.currentSessionId) else {
-            throw SdkValidationError(field: "currentSessionId", code: "required", message: "Validation failed for 'currentSessionId': value is required")
-        }
-        guard container.contains(.name) else {
-            throw SdkValidationError(field: "name", code: "required", message: "Validation failed for 'name': value is required")
-        }
-        guard container.contains(.persistent) else {
-            throw SdkValidationError(field: "persistent", code: "required", message: "Validation failed for 'persistent': value is required")
-        }
-        guard container.contains(.status) else {
-            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
-        }
-        guard container.contains(.statusUpdatedAt) else {
-            throw SdkValidationError(field: "statusUpdatedAt", code: "required", message: "Validation failed for 'statusUpdatedAt': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.currentSessionId = try container.sdkDecodeRequired(.currentSessionId)
-        self.name = try container.sdkDecodeRequired(.name)
-        self.persistent = try container.sdkDecodeRequired(.persistent)
-        self.status = try container.sdkDecodeRequired(.status)
-        self.statusUpdatedAt = try container.sdkDecodeRequired(.statusUpdatedAt)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.architecture = try container.sdkDecodeIfPresent(.architecture)
-        self.currentSnapshotId = try container.sdkDecodeIfPresent(.currentSnapshotId)
-        self.cwd = try container.sdkDecodeIfPresent(.cwd)
-        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
-        self.failoverRegions = try container.sdkDecodeIfPresent(.failoverRegions)
-        self.image = try container.sdkDecodeIfPresent(.image)
-        self.keepLastSnapshots = try container.sdkDecodeIfPresent(.keepLastSnapshots)
-        self.memory = try container.sdkDecodeIfPresent(.memory)
-        self.mounts = try container.sdkDecodeIfPresent(.mounts)
-        self.networkId = try container.sdkDecodeIfPresent(.networkId)
-        self.networkPolicy = try container.sdkDecodeIfPresent(.networkPolicy)
-        self.region = try container.sdkDecodeIfPresent(.region)
-        self.runtime = try container.sdkDecodeIfPresent(.runtime)
-        self.snapshotExpiration = try container.sdkDecodeIfPresent(.snapshotExpiration)
-        self.tags = try container.sdkDecodeIfPresent(.tags)
-        self.timeout = try container.sdkDecodeIfPresent(.timeout)
-        self.totalActiveCpuDurationMs = try container.sdkDecodeIfPresent(.totalActiveCpuDurationMs)
-        self.totalDurationMs = try container.sdkDecodeIfPresent(.totalDurationMs)
-        self.totalEgressBytes = try container.sdkDecodeIfPresent(.totalEgressBytes)
-        self.totalIngressBytes = try container.sdkDecodeIfPresent(.totalIngressBytes)
-        self.v0 = try container.sdkDecodeIfPresent(.v0)
-        self.vcpus = try container.sdkDecodeIfPresent(.vcpus)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension NamedSandbox {
-    public init(createdAt: Double, currentSessionId: String, name: String, persistent: Bool, status: NamedSandboxStatus, statusUpdatedAt: Double, updatedAt: Double, architecture: NamedSandboxArchitecture? = nil, currentSnapshotId: String? = nil, cwd: String? = nil, expiresAt: Double? = nil, failoverRegions: [NamedSandboxFailoverRegionsItem]? = nil, image: String? = nil, keepLastSnapshots: NamedSandboxKeepLastSnapshots? = nil, memory: Double? = nil, mounts: [String: NamedSandboxMountsValue]? = nil, networkId: String? = nil, networkPolicy: NamedSandboxNetworkPolicy? = nil, region: String? = nil, runtime: String? = nil, snapshotExpiration: Double? = nil, tags: [String: String]? = nil, timeout: Double? = nil, totalActiveCpuDurationMs: Double? = nil, totalDurationMs: Double? = nil, totalEgressBytes: Double? = nil, totalIngressBytes: Double? = nil, v0: Bool? = nil, vcpus: Double? = nil) {
+public extension NamedSandbox {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.currentSessionId) else {
+            throw SdkValidationError(
+                field: "currentSessionId",
+                code: "required",
+                message: "Validation failed for 'currentSessionId': value is required"
+            )
+        }
+        guard container.contains(.name) else {
+            throw SdkValidationError(
+                field: "name",
+                code: "required",
+                message: "Validation failed for 'name': value is required"
+            )
+        }
+        guard container.contains(.persistent) else {
+            throw SdkValidationError(
+                field: "persistent",
+                code: "required",
+                message: "Validation failed for 'persistent': value is required"
+            )
+        }
+        guard container.contains(.status) else {
+            throw SdkValidationError(
+                field: "status",
+                code: "required",
+                message: "Validation failed for 'status': value is required"
+            )
+        }
+        guard container.contains(.statusUpdatedAt) else {
+            throw SdkValidationError(
+                field: "statusUpdatedAt",
+                code: "required",
+                message: "Validation failed for 'statusUpdatedAt': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        currentSessionId = try container.sdkDecodeRequired(.currentSessionId)
+        name = try container.sdkDecodeRequired(.name)
+        persistent = try container.sdkDecodeRequired(.persistent)
+        status = try container.sdkDecodeRequired(.status)
+        statusUpdatedAt = try container.sdkDecodeRequired(.statusUpdatedAt)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        architecture = try container.sdkDecodeIfPresent(.architecture)
+        currentSnapshotId = try container.sdkDecodeIfPresent(.currentSnapshotId)
+        cwd = try container.sdkDecodeIfPresent(.cwd)
+        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        failoverRegions = try container.sdkDecodeIfPresent(.failoverRegions)
+        image = try container.sdkDecodeIfPresent(.image)
+        keepLastSnapshots = try container.sdkDecodeIfPresent(.keepLastSnapshots)
+        memory = try container.sdkDecodeIfPresent(.memory)
+        mounts = try container.sdkDecodeIfPresent(.mounts)
+        networkId = try container.sdkDecodeIfPresent(.networkId)
+        networkPolicy = try container.sdkDecodeIfPresent(.networkPolicy)
+        region = try container.sdkDecodeIfPresent(.region)
+        runtime = try container.sdkDecodeIfPresent(.runtime)
+        snapshotExpiration = try container.sdkDecodeIfPresent(.snapshotExpiration)
+        tags = try container.sdkDecodeIfPresent(.tags)
+        timeout = try container.sdkDecodeIfPresent(.timeout)
+        totalActiveCpuDurationMs = try container.sdkDecodeIfPresent(.totalActiveCpuDurationMs)
+        totalDurationMs = try container.sdkDecodeIfPresent(.totalDurationMs)
+        totalEgressBytes = try container.sdkDecodeIfPresent(.totalEgressBytes)
+        totalIngressBytes = try container.sdkDecodeIfPresent(.totalIngressBytes)
+        v0 = try container.sdkDecodeIfPresent(.v0)
+        vcpus = try container.sdkDecodeIfPresent(.vcpus)
+    }
+}
+
+public extension NamedSandbox {
+    init(
+        createdAt: Double,
+        currentSessionId: String,
+        name: String,
+        persistent: Bool,
+        status: NamedSandboxStatus,
+        statusUpdatedAt: Double,
+        updatedAt: Double,
+        architecture: NamedSandboxArchitecture? = nil,
+        currentSnapshotId: String? = nil,
+        cwd: String? = nil,
+        expiresAt: Double? = nil,
+        failoverRegions: [NamedSandboxFailoverRegionsItem]? = nil,
+        image: String? = nil,
+        keepLastSnapshots: NamedSandboxKeepLastSnapshots? = nil,
+        memory: Double? = nil,
+        mounts: [String: NamedSandboxMountsValue]? = nil,
+        networkId: String? = nil,
+        networkPolicy: NamedSandboxNetworkPolicy? = nil,
+        region: String? = nil,
+        runtime: String? = nil,
+        snapshotExpiration: Double? = nil,
+        tags: [String: String]? = nil,
+        timeout: Double? = nil,
+        totalActiveCpuDurationMs: Double? = nil,
+        totalDurationMs: Double? = nil,
+        totalEgressBytes: Double? = nil,
+        totalIngressBytes: Double? = nil,
+        v0: Bool? = nil,
+        vcpus: Double? = nil
+    ) {
         (self.createdAt, self.currentSessionId) = (createdAt, currentSessionId)
         (self.name, self.persistent) = (name, persistent)
         (self.status, self.statusUpdatedAt) = (status, statusUpdatedAt)
@@ -302,22 +380,28 @@ public struct SandboxInjectionRule: Codable {
         case headerNames
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension SandboxInjectionRule {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.domain) else {
-            throw SdkValidationError(field: "domain", code: "required", message: "Validation failed for 'domain': value is required")
-        }
-        self.domain = try container.sdkDecodeRequired(.domain)
-        self.headerNames = try container.sdkDecodeIfPresent(.headerNames)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension SandboxInjectionRule {
-    public init(domain: String, headerNames: [String]? = nil) {
+public extension SandboxInjectionRule {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.domain) else {
+            throw SdkValidationError(
+                field: "domain",
+                code: "required",
+                message: "Validation failed for 'domain': value is required"
+            )
+        }
+        domain = try container.sdkDecodeRequired(.domain)
+        headerNames = try container.sdkDecodeIfPresent(.headerNames)
+    }
+}
+
+public extension SandboxInjectionRule {
+    init(domain: String, headerNames: [String]? = nil) {
         (self.domain, self.headerNames) = (domain, headerNames)
     }
 }
@@ -384,52 +468,97 @@ public struct Snapshot: Codable {
         case v0
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension Snapshot {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        guard container.contains(.lastUsedAt) else {
-            throw SdkValidationError(field: "lastUsedAt", code: "required", message: "Validation failed for 'lastUsedAt': value is required")
-        }
-        guard container.contains(.sizeBytes) else {
-            throw SdkValidationError(field: "sizeBytes", code: "required", message: "Validation failed for 'sizeBytes': value is required")
-        }
-        guard container.contains(.sourceSessionId) else {
-            throw SdkValidationError(field: "sourceSessionId", code: "required", message: "Validation failed for 'sourceSessionId': value is required")
-        }
-        guard container.contains(.status) else {
-            throw SdkValidationError(field: "status", code: "required", message: "Validation failed for 'status': value is required")
-        }
-        guard container.contains(.updatedAt) else {
-            throw SdkValidationError(field: "updatedAt", code: "required", message: "Validation failed for 'updatedAt': value is required")
-        }
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.id = try container.sdkDecodeRequired(.id)
-        self.lastUsedAt = try container.sdkDecodeRequired(.lastUsedAt)
-        self.sizeBytes = try container.sdkDecodeRequired(.sizeBytes)
-        self.sourceSessionId = try container.sdkDecodeRequired(.sourceSessionId)
-        self.status = try container.sdkDecodeRequired(.status)
-        self.updatedAt = try container.sdkDecodeRequired(.updatedAt)
-        self.architecture = try container.sdkDecodeIfPresent(.architecture)
-        self.creationMethod = try container.sdkDecodeIfPresent(.creationMethod)
-        self.expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
-        self.parentId = try container.sdkDecodeIfPresent(.parentId)
-        self.region = try container.sdkDecodeIfPresent(.region)
-        self.regions = try container.sdkDecodeIfPresent(.regions)
-        self.v0 = try container.sdkDecodeIfPresent(.v0)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension Snapshot {
-    public init(createdAt: Double, id: String, lastUsedAt: Double, sizeBytes: Double, sourceSessionId: String, status: SnapshotStatus, updatedAt: Double, architecture: SnapshotArchitecture? = nil, creationMethod: SnapshotCreationMethod? = nil, expiresAt: Double? = nil, parentId: String? = nil, region: String? = nil, regions: [String]? = nil, v0: Bool? = nil) {
+public extension Snapshot {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        guard container.contains(.lastUsedAt) else {
+            throw SdkValidationError(
+                field: "lastUsedAt",
+                code: "required",
+                message: "Validation failed for 'lastUsedAt': value is required"
+            )
+        }
+        guard container.contains(.sizeBytes) else {
+            throw SdkValidationError(
+                field: "sizeBytes",
+                code: "required",
+                message: "Validation failed for 'sizeBytes': value is required"
+            )
+        }
+        guard container.contains(.sourceSessionId) else {
+            throw SdkValidationError(
+                field: "sourceSessionId",
+                code: "required",
+                message: "Validation failed for 'sourceSessionId': value is required"
+            )
+        }
+        guard container.contains(.status) else {
+            throw SdkValidationError(
+                field: "status",
+                code: "required",
+                message: "Validation failed for 'status': value is required"
+            )
+        }
+        guard container.contains(.updatedAt) else {
+            throw SdkValidationError(
+                field: "updatedAt",
+                code: "required",
+                message: "Validation failed for 'updatedAt': value is required"
+            )
+        }
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        id = try container.sdkDecodeRequired(.id)
+        lastUsedAt = try container.sdkDecodeRequired(.lastUsedAt)
+        sizeBytes = try container.sdkDecodeRequired(.sizeBytes)
+        sourceSessionId = try container.sdkDecodeRequired(.sourceSessionId)
+        status = try container.sdkDecodeRequired(.status)
+        updatedAt = try container.sdkDecodeRequired(.updatedAt)
+        architecture = try container.sdkDecodeIfPresent(.architecture)
+        creationMethod = try container.sdkDecodeIfPresent(.creationMethod)
+        expiresAt = try container.sdkDecodeIfPresent(.expiresAt)
+        parentId = try container.sdkDecodeIfPresent(.parentId)
+        region = try container.sdkDecodeIfPresent(.region)
+        regions = try container.sdkDecodeIfPresent(.regions)
+        v0 = try container.sdkDecodeIfPresent(.v0)
+    }
+}
+
+public extension Snapshot {
+    init(
+        createdAt: Double,
+        id: String,
+        lastUsedAt: Double,
+        sizeBytes: Double,
+        sourceSessionId: String,
+        status: SnapshotStatus,
+        updatedAt: Double,
+        architecture: SnapshotArchitecture? = nil,
+        creationMethod: SnapshotCreationMethod? = nil,
+        expiresAt: Double? = nil,
+        parentId: String? = nil,
+        region: String? = nil,
+        regions: [String]? = nil,
+        v0: Bool? = nil
+    ) {
         (self.createdAt, self.id) = (createdAt, id)
         (self.lastUsedAt, self.sizeBytes) = (lastUsedAt, sizeBytes)
         (self.sourceSessionId, self.status) = (sourceSessionId, status)
@@ -491,5 +620,7 @@ public struct Drive: Codable {
         case v0
     }
 
-    private init(sdkCopy value: Self) { self = value }
+    private init(sdkCopy value: Self) {
+        self = value
+    }
 }

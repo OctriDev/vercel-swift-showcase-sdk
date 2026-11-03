@@ -6,8 +6,8 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ProjectsMethods {
-    public struct ListProjectsDomainsOptions: Codable {
+public extension ProjectsMethods {
+    struct ListProjectsDomainsOptions: Codable {
         public var idOrName: ListProjectsDomainsParameter
         public var production: ListProjectsDomainsParameterX1a4ce23a?
         public var target: ListProjectsDomainsParameterXb689097b?
@@ -28,7 +28,8 @@ extension ProjectsMethods {
         }
     }
 
-    /// Lists domains associated with a project. Use the query parameters to filter by environment, branch, redirect, or verification status, and to control the result limit and sort order.
+    /// Lists domains associated with a project. Use the query parameters to filter by environment, branch, redirect, or
+    /// verification status, and to control the result limit and sort order.
     ///
     /// Retrieve the domains associated with a given project by passing either the project `id` or `name` in the URL.
     ///
@@ -50,21 +51,33 @@ extension ProjectsMethods {
     /// - order: Domains sort order by createdAt
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listProjectsDomains(config: ClientConfig, options: ListProjectsDomainsOptions, requestOptions: RequestOptions? = nil) async throws -> ListProjectsDomainsResponse {
-        return try (await sdkRequest("GET", ["/v9/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/domains"].joined(), config: config, query: [
-            SdkQueryParameter("production", value: options.production),
-            SdkQueryParameter("target", value: options.target),
-            SdkQueryParameter("customEnvironmentId", value: options.customEnvironmentId),
-            SdkQueryParameter("gitBranch", value: options.gitBranch),
-            SdkQueryParameter("redirects", value: options.redirects),
-            SdkQueryParameter("redirect", value: options.redirect),
-            SdkQueryParameter("verified", value: options.verified),
-            SdkQueryParameter("limit", value: options.limit),
-            SdkQueryParameter("since", value: options.since),
-            SdkQueryParameter("until", value: options.until),
-            SdkQueryParameter("order", value: options.order),
-            SdkQueryParameter("teamId", value: options.teamId),
-            SdkQueryParameter("slug", value: options.slug),
-        ], decoder: .json, operationId: "listProjectsDomains", options: requestOptions)).data
+    static func listProjectsDomains(
+        config: ClientConfig,
+        options: ListProjectsDomainsOptions,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListProjectsDomainsResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v9/projects/", sdkEncodePathSegment(sdkWireString(options.idOrName)), "/domains"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("production", value: options.production),
+                SdkQueryParameter("target", value: options.target),
+                SdkQueryParameter("customEnvironmentId", value: options.customEnvironmentId),
+                SdkQueryParameter("gitBranch", value: options.gitBranch),
+                SdkQueryParameter("redirects", value: options.redirects),
+                SdkQueryParameter("redirect", value: options.redirect),
+                SdkQueryParameter("verified", value: options.verified),
+                SdkQueryParameter("limit", value: options.limit),
+                SdkQueryParameter("since", value: options.since),
+                SdkQueryParameter("until", value: options.until),
+                SdkQueryParameter("order", value: options.order),
+                SdkQueryParameter("teamId", value: options.teamId),
+                SdkQueryParameter("slug", value: options.slug),
+            ],
+            decoder: .json,
+            operationId: "listProjectsDomains",
+            options: requestOptions
+        )).data
     }
 }

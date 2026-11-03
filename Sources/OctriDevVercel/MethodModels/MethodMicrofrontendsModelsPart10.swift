@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical microfrontends operation model declarations
+/// Canonical microfrontends operation model declarations
 public struct GetMicrofrontendsInGroupResponseProjectsItem: Codable {
     public var accountId: String
     public var alias: [GetMicrofrontendsInGroupResponseProjectsItemAliasItem]
@@ -124,7 +124,17 @@ public struct GetMicrofrontendsInGroupResponseProjectsItem: Codable {
     public var v0Created: Bool? = .none
     public var webAnalytics: GetMicrofrontendsInGroupResponseProjectsItemWebAnalytics? = .none
 
-    init(sdkRequiredFields accountId: String, alias: [GetMicrofrontendsInGroupResponseProjectsItemAliasItem], defaultResourceConfig: GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfig, deploymentExpiration: GetMicrofrontendsInGroupResponseProjectsItemDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: GetMicrofrontendsInGroupResponseProjectsItemNodeVersion, resourceConfig: GetMicrofrontendsInGroupResponseProjectsItemResourceConfig) {
+    init(
+        sdkRequiredFields accountId: String,
+        alias: [GetMicrofrontendsInGroupResponseProjectsItemAliasItem],
+        defaultResourceConfig: GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfig,
+        deploymentExpiration: GetMicrofrontendsInGroupResponseProjectsItemDeploymentExpiration,
+        directoryListing: Bool,
+        id: String,
+        name: String,
+        nodeVersion: GetMicrofrontendsInGroupResponseProjectsItemNodeVersion,
+        resourceConfig: GetMicrofrontendsInGroupResponseProjectsItemResourceConfig
+    ) {
         (self.accountId, self.alias) = (accountId, alias)
         self.defaultResourceConfig = defaultResourceConfig
         (self.deploymentExpiration, self.directoryListing) = (deploymentExpiration, directoryListing)
@@ -235,10 +245,20 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItem {
-    public init(from decoder: Decoder) throws {
+public extension GetMicrofrontendsInGroupResponseProjectsItem {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.init(sdkRequiredFields: try container.sdkDecodeRequired(.accountId), alias: try container.sdkDecodeRequired(.alias), defaultResourceConfig: try container.sdkDecodeRequired(.defaultResourceConfig), deploymentExpiration: try container.sdkDecodeRequired(.deploymentExpiration), directoryListing: try container.sdkDecodeRequired(.directoryListing), id: try container.sdkDecodeRequired(.id), name: try container.sdkDecodeRequired(.name), nodeVersion: try container.sdkDecodeRequired(.nodeVersion), resourceConfig: try container.sdkDecodeRequired(.resourceConfig))
+        try self.init(
+            sdkRequiredFields: container.sdkDecodeRequired(.accountId),
+            alias: container.sdkDecodeRequired(.alias),
+            defaultResourceConfig: container.sdkDecodeRequired(.defaultResourceConfig),
+            deploymentExpiration: container.sdkDecodeRequired(.deploymentExpiration),
+            directoryListing: container.sdkDecodeRequired(.directoryListing),
+            id: container.sdkDecodeRequired(.id),
+            name: container.sdkDecodeRequired(.name),
+            nodeVersion: container.sdkDecodeRequired(.nodeVersion),
+            resourceConfig: container.sdkDecodeRequired(.resourceConfig)
+        )
         try sdkDecodeFieldsPart1(container)
         try sdkDecodeFieldsPart2(container)
         try sdkDecodeFieldsPart3(container)
@@ -250,9 +270,117 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
     }
 }
 
-extension GetMicrofrontendsInGroupResponseProjectsItem {
-    public init(accountId: String, alias: [GetMicrofrontendsInGroupResponseProjectsItemAliasItem], defaultResourceConfig: GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfig, deploymentExpiration: GetMicrofrontendsInGroupResponseProjectsItemDeploymentExpiration, directoryListing: Bool, id: String, name: String, nodeVersion: GetMicrofrontendsInGroupResponseProjectsItemNodeVersion, resourceConfig: GetMicrofrontendsInGroupResponseProjectsItemResourceConfig, analytics: GetMicrofrontendsInGroupResponseProjectsItemAnalytics? = nil, appliedCve55182Migration: Bool? = nil, autoAssignCustomDomains: Bool? = nil, autoAssignCustomDomainsUpdatedBy: String? = nil, autoExposeSystemEnvs: Bool? = nil, avatar: String? = nil, avatarDarkMode: String? = nil, blobs: GetMicrofrontendsInGroupResponseProjectsItemBlobs? = nil, buildCommand: String? = nil, commandForIgnoringBuildStep: String? = nil, concurrencyBucketName: String? = nil, connectBuildsEnabled: Bool? = nil, connectConfigurationId: String? = nil, connectConfigurations: GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsList? = nil, createdAt: Double? = nil, creator: GetMicrofrontendsInGroupResponseProjectsItemCreator? = nil, crons: GetMicrofrontendsInGroupResponseProjectsItemCrons? = nil, customEnvironments: GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsList? = nil, customerSupportCodeVisibility: Bool? = nil, dataCache: GetMicrofrontendsInGroupResponseProjectsItemDataCache? = nil, deploymentPolicy: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicy? = nil, devCommand: String? = nil, dismissedToasts: GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsList? = nil, enableAffectedProjectsDeployments: Bool? = nil, enableExternalRewriteCaching: Bool? = nil, enablePreviewFeedback: Bool? = nil, enableProductionFeedback: Bool? = nil, env: [GetMicrofrontendsInGroupResponseProjectsItemEnvItem]? = nil, expiration: GetMicrofrontendsInGroupResponseProjectsItemExpiration? = nil, features: GetMicrofrontendsInGroupResponseProjectsItemFeatures? = nil, framework: GetMicrofrontendsInGroupResponseProjectsItemFramework? = nil, gitComments: GetMicrofrontendsInGroupResponseProjectsItemGitComments? = nil, gitForkProtection: Bool? = nil, gitLfs: Bool? = nil, gitProviderOptions: GetMicrofrontendsInGroupResponseProjectsItemGitProviderOptions? = nil, hasActiveBranches: Bool? = nil, hasDeployments: Bool? = nil, installCommand: String? = nil, internalRoutes: GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesList? = nil, ipBuckets: [GetMicrofrontendsInGroupResponseProjectsItemIpBucketsItem]? = nil, jobs: GetMicrofrontendsInGroupResponseProjectsItemJobs? = nil, lastAliasRequest: GetMicrofrontendsInGroupResponseProjectsItemLastAliasRequest? = nil, lastRollbackTarget: [String: JSONValue]? = nil, latestDeployments: GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsList? = nil, link: GetMicrofrontendsInGroupResponseProjectsItemLink? = nil, live: Bool? = nil, microfrontends: GetMicrofrontendsInGroupResponseProjectsItemMicrofrontends? = nil, oidcTokenConfig: GetMicrofrontendsInGroupResponseProjectsItemOidcTokenConfig? = nil, optionsAllowlist: GetMicrofrontendsInGroupResponseProjectsItemOptionsAllowlist? = nil, outputDirectory: String? = nil, passiveConnectConfigurationId: String? = nil, passport: GetMicrofrontendsInGroupResponseProjectsItemPassport? = nil, passwordProtection: GetMicrofrontendsInGroupResponseProjectsItemPasswordProtection? = nil, paused: Bool? = nil, permissions: GetMicrofrontendsInGroupResponseProjectsItemPermissions? = nil, productionDeploymentsFastLane: Bool? = nil, protectedSourcemaps: Bool? = nil, protectionBypass: [String: GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue]? = nil, protectionConfig: GetMicrofrontendsInGroupResponseProjectsItemProtectionConfig? = nil, rollbackDescription: GetMicrofrontendsInGroupResponseProjectsItemRollbackDescription? = nil, rollingRelease: GetMicrofrontendsInGroupResponseProjectsItemRollingRelease? = nil, rootDirectory: String? = nil, sandbox: GetMicrofrontendsInGroupResponseProjectsItemSandbox? = nil, security: GetMicrofrontendsInGroupResponseProjectsItemSecurity? = nil, serverlessFunctionZeroConfigFailover: Bool? = nil, services: [GetMicrofrontendsInGroupResponseProjectsItemServicesItem]? = nil, skewProtectionAllowedDomains: [String]? = nil, skewProtectionBoundaryAt: Double? = nil, skewProtectionMaxAge: Double? = nil, skipGitConnectDuringLink: Bool? = nil, sourceFilesOutsideRootDirectory: Bool? = nil, speedInsights: GetMicrofrontendsInGroupResponseProjectsItemSpeedInsights? = nil, ssoProtection: GetMicrofrontendsInGroupResponseProjectsItemSsoProtection? = nil, staticIps: GetMicrofrontendsInGroupResponseProjectsItemStaticIps? = nil, targets: [String: GetMicrofrontendsInGroupResponseProjectsItemTargetsValue?]? = nil, tier: GetMicrofrontendsInGroupResponseProjectsItemTier? = nil, tracing: GetMicrofrontendsInGroupResponseProjectsItemTracing? = nil, transferCompletedAt: Double? = nil, transferredFromAccountId: String? = nil, transferStartedAt: Double? = nil, transferToAccountId: String? = nil, trustedIps: GetMicrofrontendsInGroupResponseProjectsItemTrustedIps? = nil, trustedSources: GetMicrofrontendsInGroupResponseProjectsItemTrustedSources? = nil, updatedAt: Double? = nil, usageStatus: GetMicrofrontendsInGroupResponseProjectsItemUsageStatus? = nil, v0: Bool? = nil, v0Created: Bool? = nil, webAnalytics: GetMicrofrontendsInGroupResponseProjectsItemWebAnalytics? = nil) {
-        self.init(sdkRequiredFields: accountId, alias: alias, defaultResourceConfig: defaultResourceConfig, deploymentExpiration: deploymentExpiration, directoryListing: directoryListing, id: id, name: name, nodeVersion: nodeVersion, resourceConfig: resourceConfig)
+public extension GetMicrofrontendsInGroupResponseProjectsItem {
+    init(
+        accountId: String,
+        alias: [GetMicrofrontendsInGroupResponseProjectsItemAliasItem],
+        defaultResourceConfig: GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfig,
+        deploymentExpiration: GetMicrofrontendsInGroupResponseProjectsItemDeploymentExpiration,
+        directoryListing: Bool,
+        id: String,
+        name: String,
+        nodeVersion: GetMicrofrontendsInGroupResponseProjectsItemNodeVersion,
+        resourceConfig: GetMicrofrontendsInGroupResponseProjectsItemResourceConfig,
+        analytics: GetMicrofrontendsInGroupResponseProjectsItemAnalytics? = nil,
+        appliedCve55182Migration: Bool? = nil,
+        autoAssignCustomDomains: Bool? = nil,
+        autoAssignCustomDomainsUpdatedBy: String? = nil,
+        autoExposeSystemEnvs: Bool? = nil,
+        avatar: String? = nil,
+        avatarDarkMode: String? = nil,
+        blobs: GetMicrofrontendsInGroupResponseProjectsItemBlobs? = nil,
+        buildCommand: String? = nil,
+        commandForIgnoringBuildStep: String? = nil,
+        concurrencyBucketName: String? = nil,
+        connectBuildsEnabled: Bool? = nil,
+        connectConfigurationId: String? = nil,
+        connectConfigurations: GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsList? = nil,
+        createdAt: Double? = nil,
+        creator: GetMicrofrontendsInGroupResponseProjectsItemCreator? = nil,
+        crons: GetMicrofrontendsInGroupResponseProjectsItemCrons? = nil,
+        customEnvironments: GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsList? = nil,
+        customerSupportCodeVisibility: Bool? = nil,
+        dataCache: GetMicrofrontendsInGroupResponseProjectsItemDataCache? = nil,
+        deploymentPolicy: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicy? = nil,
+        devCommand: String? = nil,
+        dismissedToasts: GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsList? = nil,
+        enableAffectedProjectsDeployments: Bool? = nil,
+        enableExternalRewriteCaching: Bool? = nil,
+        enablePreviewFeedback: Bool? = nil,
+        enableProductionFeedback: Bool? = nil,
+        env: [GetMicrofrontendsInGroupResponseProjectsItemEnvItem]? = nil,
+        expiration: GetMicrofrontendsInGroupResponseProjectsItemExpiration? = nil,
+        features: GetMicrofrontendsInGroupResponseProjectsItemFeatures? = nil,
+        framework: GetMicrofrontendsInGroupResponseProjectsItemFramework? = nil,
+        gitComments: GetMicrofrontendsInGroupResponseProjectsItemGitComments? = nil,
+        gitForkProtection: Bool? = nil,
+        gitLfs: Bool? = nil,
+        gitProviderOptions: GetMicrofrontendsInGroupResponseProjectsItemGitProviderOptions? = nil,
+        hasActiveBranches: Bool? = nil,
+        hasDeployments: Bool? = nil,
+        installCommand: String? = nil,
+        internalRoutes: GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesList? = nil,
+        ipBuckets: [GetMicrofrontendsInGroupResponseProjectsItemIpBucketsItem]? = nil,
+        jobs: GetMicrofrontendsInGroupResponseProjectsItemJobs? = nil,
+        lastAliasRequest: GetMicrofrontendsInGroupResponseProjectsItemLastAliasRequest? = nil,
+        lastRollbackTarget: [String: JSONValue]? = nil,
+        latestDeployments: GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsList? = nil,
+        link: GetMicrofrontendsInGroupResponseProjectsItemLink? = nil,
+        live: Bool? = nil,
+        microfrontends: GetMicrofrontendsInGroupResponseProjectsItemMicrofrontends? = nil,
+        oidcTokenConfig: GetMicrofrontendsInGroupResponseProjectsItemOidcTokenConfig? = nil,
+        optionsAllowlist: GetMicrofrontendsInGroupResponseProjectsItemOptionsAllowlist? = nil,
+        outputDirectory: String? = nil,
+        passiveConnectConfigurationId: String? = nil,
+        passport: GetMicrofrontendsInGroupResponseProjectsItemPassport? = nil,
+        passwordProtection: GetMicrofrontendsInGroupResponseProjectsItemPasswordProtection? = nil,
+        paused: Bool? = nil,
+        permissions: GetMicrofrontendsInGroupResponseProjectsItemPermissions? = nil,
+        productionDeploymentsFastLane: Bool? = nil,
+        protectedSourcemaps: Bool? = nil,
+        protectionBypass: [String: GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue]? = nil,
+        protectionConfig: GetMicrofrontendsInGroupResponseProjectsItemProtectionConfig? = nil,
+        rollbackDescription: GetMicrofrontendsInGroupResponseProjectsItemRollbackDescription? = nil,
+        rollingRelease: GetMicrofrontendsInGroupResponseProjectsItemRollingRelease? = nil,
+        rootDirectory: String? = nil,
+        sandbox: GetMicrofrontendsInGroupResponseProjectsItemSandbox? = nil,
+        security: GetMicrofrontendsInGroupResponseProjectsItemSecurity? = nil,
+        serverlessFunctionZeroConfigFailover: Bool? = nil,
+        services: [GetMicrofrontendsInGroupResponseProjectsItemServicesItem]? = nil,
+        skewProtectionAllowedDomains: [String]? = nil,
+        skewProtectionBoundaryAt: Double? = nil,
+        skewProtectionMaxAge: Double? = nil,
+        skipGitConnectDuringLink: Bool? = nil,
+        sourceFilesOutsideRootDirectory: Bool? = nil,
+        speedInsights: GetMicrofrontendsInGroupResponseProjectsItemSpeedInsights? = nil,
+        ssoProtection: GetMicrofrontendsInGroupResponseProjectsItemSsoProtection? = nil,
+        staticIps: GetMicrofrontendsInGroupResponseProjectsItemStaticIps? = nil,
+        targets: [String: GetMicrofrontendsInGroupResponseProjectsItemTargetsValue?]? = nil,
+        tier: GetMicrofrontendsInGroupResponseProjectsItemTier? = nil,
+        tracing: GetMicrofrontendsInGroupResponseProjectsItemTracing? = nil,
+        transferCompletedAt: Double? = nil,
+        transferredFromAccountId: String? = nil,
+        transferStartedAt: Double? = nil,
+        transferToAccountId: String? = nil,
+        trustedIps: GetMicrofrontendsInGroupResponseProjectsItemTrustedIps? = nil,
+        trustedSources: GetMicrofrontendsInGroupResponseProjectsItemTrustedSources? = nil,
+        updatedAt: Double? = nil,
+        usageStatus: GetMicrofrontendsInGroupResponseProjectsItemUsageStatus? = nil,
+        v0: Bool? = nil,
+        v0Created: Bool? = nil,
+        webAnalytics: GetMicrofrontendsInGroupResponseProjectsItemWebAnalytics? = nil
+    ) {
+        self.init(
+            sdkRequiredFields: accountId,
+            alias: alias,
+            defaultResourceConfig: defaultResourceConfig,
+            deploymentExpiration: deploymentExpiration,
+            directoryListing: directoryListing,
+            id: id,
+            name: name,
+            nodeVersion: nodeVersion,
+            resourceConfig: resourceConfig
+        )
         sdkSet1(analytics, appliedCve55182Migration, autoAssignCustomDomains, autoAssignCustomDomainsUpdatedBy)
         sdkSet2(autoExposeSystemEnvs, avatar, avatarDarkMode, blobs, buildCommand)
         sdkSet3(commandForIgnoringBuildStep, concurrencyBucketName, connectBuildsEnabled, connectConfigurationId)
@@ -276,7 +404,12 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet1(_ analytics: GetMicrofrontendsInGroupResponseProjectsItemAnalytics?, _ appliedCve55182Migration: Bool?, _ autoAssignCustomDomains: Bool?, _ autoAssignCustomDomainsUpdatedBy: String?) {
+    mutating func sdkSet1(
+        _ analytics: GetMicrofrontendsInGroupResponseProjectsItemAnalytics?,
+        _ appliedCve55182Migration: Bool?,
+        _ autoAssignCustomDomains: Bool?,
+        _ autoAssignCustomDomainsUpdatedBy: String?
+    ) {
         self.analytics = analytics
         self.appliedCve55182Migration = appliedCve55182Migration
         self.autoAssignCustomDomains = autoAssignCustomDomains
@@ -285,7 +418,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet2(_ autoExposeSystemEnvs: Bool?, _ avatar: String?, _ avatarDarkMode: String?, _ blobs: GetMicrofrontendsInGroupResponseProjectsItemBlobs?, _ buildCommand: String?) {
+    mutating func sdkSet2(
+        _ autoExposeSystemEnvs: Bool?,
+        _ avatar: String?,
+        _ avatarDarkMode: String?,
+        _ blobs: GetMicrofrontendsInGroupResponseProjectsItemBlobs?,
+        _ buildCommand: String?
+    ) {
         self.autoExposeSystemEnvs = autoExposeSystemEnvs
         self.avatar = avatar
         self.avatarDarkMode = avatarDarkMode
@@ -295,7 +434,12 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet3(_ commandForIgnoringBuildStep: String?, _ concurrencyBucketName: String?, _ connectBuildsEnabled: Bool?, _ connectConfigurationId: String?) {
+    mutating func sdkSet3(
+        _ commandForIgnoringBuildStep: String?,
+        _ concurrencyBucketName: String?,
+        _ connectBuildsEnabled: Bool?,
+        _ connectConfigurationId: String?
+    ) {
         self.commandForIgnoringBuildStep = commandForIgnoringBuildStep
         self.concurrencyBucketName = concurrencyBucketName
         self.connectBuildsEnabled = connectBuildsEnabled
@@ -304,7 +448,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet4(_ connectConfigurations: GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsList?, _ createdAt: Double?, _ creator: GetMicrofrontendsInGroupResponseProjectsItemCreator?, _ crons: GetMicrofrontendsInGroupResponseProjectsItemCrons?, _ customEnvironments: GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsList?) {
+    mutating func sdkSet4(
+        _ connectConfigurations: GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsList?,
+        _ createdAt: Double?,
+        _ creator: GetMicrofrontendsInGroupResponseProjectsItemCreator?,
+        _ crons: GetMicrofrontendsInGroupResponseProjectsItemCrons?,
+        _ customEnvironments: GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsList?
+    ) {
         self.connectConfigurations = connectConfigurations
         self.createdAt = createdAt
         self.creator = creator
@@ -314,7 +464,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet5(_ customerSupportCodeVisibility: Bool?, _ dataCache: GetMicrofrontendsInGroupResponseProjectsItemDataCache?, _ deploymentPolicy: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicy?, _ devCommand: String?, _ dismissedToasts: GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsList?) {
+    mutating func sdkSet5(
+        _ customerSupportCodeVisibility: Bool?,
+        _ dataCache: GetMicrofrontendsInGroupResponseProjectsItemDataCache?,
+        _ deploymentPolicy: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicy?,
+        _ devCommand: String?,
+        _ dismissedToasts: GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsList?
+    ) {
         self.customerSupportCodeVisibility = customerSupportCodeVisibility
         self.dataCache = dataCache
         self.deploymentPolicy = deploymentPolicy
@@ -324,7 +480,11 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet6(_ enableAffectedProjectsDeployments: Bool?, _ enableExternalRewriteCaching: Bool?, _ enablePreviewFeedback: Bool?) {
+    mutating func sdkSet6(
+        _ enableAffectedProjectsDeployments: Bool?,
+        _ enableExternalRewriteCaching: Bool?,
+        _ enablePreviewFeedback: Bool?
+    ) {
         self.enableAffectedProjectsDeployments = enableAffectedProjectsDeployments
         self.enableExternalRewriteCaching = enableExternalRewriteCaching
         self.enablePreviewFeedback = enablePreviewFeedback
@@ -332,7 +492,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet7(_ enableProductionFeedback: Bool?, _ env: [GetMicrofrontendsInGroupResponseProjectsItemEnvItem]?, _ expiration: GetMicrofrontendsInGroupResponseProjectsItemExpiration?, _ features: GetMicrofrontendsInGroupResponseProjectsItemFeatures?, _ framework: GetMicrofrontendsInGroupResponseProjectsItemFramework?) {
+    mutating func sdkSet7(
+        _ enableProductionFeedback: Bool?,
+        _ env: [GetMicrofrontendsInGroupResponseProjectsItemEnvItem]?,
+        _ expiration: GetMicrofrontendsInGroupResponseProjectsItemExpiration?,
+        _ features: GetMicrofrontendsInGroupResponseProjectsItemFeatures?,
+        _ framework: GetMicrofrontendsInGroupResponseProjectsItemFramework?
+    ) {
         self.enableProductionFeedback = enableProductionFeedback
         self.env = env
         self.expiration = expiration
@@ -342,7 +508,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet8(_ gitComments: GetMicrofrontendsInGroupResponseProjectsItemGitComments?, _ gitForkProtection: Bool?, _ gitLfs: Bool?, _ gitProviderOptions: GetMicrofrontendsInGroupResponseProjectsItemGitProviderOptions?, _ hasActiveBranches: Bool?) {
+    mutating func sdkSet8(
+        _ gitComments: GetMicrofrontendsInGroupResponseProjectsItemGitComments?,
+        _ gitForkProtection: Bool?,
+        _ gitLfs: Bool?,
+        _ gitProviderOptions: GetMicrofrontendsInGroupResponseProjectsItemGitProviderOptions?,
+        _ hasActiveBranches: Bool?
+    ) {
         self.gitComments = gitComments
         self.gitForkProtection = gitForkProtection
         self.gitLfs = gitLfs
@@ -352,7 +524,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet9(_ hasDeployments: Bool?, _ installCommand: String?, _ internalRoutes: GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesList?, _ ipBuckets: [GetMicrofrontendsInGroupResponseProjectsItemIpBucketsItem]?, _ jobs: GetMicrofrontendsInGroupResponseProjectsItemJobs?) {
+    mutating func sdkSet9(
+        _ hasDeployments: Bool?,
+        _ installCommand: String?,
+        _ internalRoutes: GetMicrofrontendsInGroupResponseProjectsItemInternalRoutesList?,
+        _ ipBuckets: [GetMicrofrontendsInGroupResponseProjectsItemIpBucketsItem]?,
+        _ jobs: GetMicrofrontendsInGroupResponseProjectsItemJobs?
+    ) {
         self.hasDeployments = hasDeployments
         self.installCommand = installCommand
         self.internalRoutes = internalRoutes
@@ -362,7 +540,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet10(_ lastAliasRequest: GetMicrofrontendsInGroupResponseProjectsItemLastAliasRequest?, _ lastRollbackTarget: [String: JSONValue]?, _ latestDeployments: GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsList?, _ link: GetMicrofrontendsInGroupResponseProjectsItemLink?, _ live: Bool?) {
+    mutating func sdkSet10(
+        _ lastAliasRequest: GetMicrofrontendsInGroupResponseProjectsItemLastAliasRequest?,
+        _ lastRollbackTarget: [String: JSONValue]?,
+        _ latestDeployments: GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsList?,
+        _ link: GetMicrofrontendsInGroupResponseProjectsItemLink?,
+        _ live: Bool?
+    ) {
         self.lastAliasRequest = lastAliasRequest
         self.lastRollbackTarget = lastRollbackTarget
         self.latestDeployments = latestDeployments
@@ -372,7 +556,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet11(_ microfrontends: GetMicrofrontendsInGroupResponseProjectsItemMicrofrontends?, _ oidcTokenConfig: GetMicrofrontendsInGroupResponseProjectsItemOidcTokenConfig?, _ optionsAllowlist: GetMicrofrontendsInGroupResponseProjectsItemOptionsAllowlist?, _ outputDirectory: String?, _ passiveConnectConfigurationId: String?) {
+    mutating func sdkSet11(
+        _ microfrontends: GetMicrofrontendsInGroupResponseProjectsItemMicrofrontends?,
+        _ oidcTokenConfig: GetMicrofrontendsInGroupResponseProjectsItemOidcTokenConfig?,
+        _ optionsAllowlist: GetMicrofrontendsInGroupResponseProjectsItemOptionsAllowlist?,
+        _ outputDirectory: String?,
+        _ passiveConnectConfigurationId: String?
+    ) {
         self.microfrontends = microfrontends
         self.oidcTokenConfig = oidcTokenConfig
         self.optionsAllowlist = optionsAllowlist
@@ -382,7 +572,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet12(_ passport: GetMicrofrontendsInGroupResponseProjectsItemPassport?, _ passwordProtection: GetMicrofrontendsInGroupResponseProjectsItemPasswordProtection?, _ paused: Bool?, _ permissions: GetMicrofrontendsInGroupResponseProjectsItemPermissions?, _ productionDeploymentsFastLane: Bool?) {
+    mutating func sdkSet12(
+        _ passport: GetMicrofrontendsInGroupResponseProjectsItemPassport?,
+        _ passwordProtection: GetMicrofrontendsInGroupResponseProjectsItemPasswordProtection?,
+        _ paused: Bool?,
+        _ permissions: GetMicrofrontendsInGroupResponseProjectsItemPermissions?,
+        _ productionDeploymentsFastLane: Bool?
+    ) {
         self.passport = passport
         self.passwordProtection = passwordProtection
         self.paused = paused
@@ -392,7 +588,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet13(_ protectedSourcemaps: Bool?, _ protectionBypass: [String: GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue]?, _ protectionConfig: GetMicrofrontendsInGroupResponseProjectsItemProtectionConfig?, _ rollbackDescription: GetMicrofrontendsInGroupResponseProjectsItemRollbackDescription?, _ rollingRelease: GetMicrofrontendsInGroupResponseProjectsItemRollingRelease?) {
+    mutating func sdkSet13(
+        _ protectedSourcemaps: Bool?,
+        _ protectionBypass: [String: GetMicrofrontendsInGroupResponseProjectsItemProtectionBypassValue]?,
+        _ protectionConfig: GetMicrofrontendsInGroupResponseProjectsItemProtectionConfig?,
+        _ rollbackDescription: GetMicrofrontendsInGroupResponseProjectsItemRollbackDescription?,
+        _ rollingRelease: GetMicrofrontendsInGroupResponseProjectsItemRollingRelease?
+    ) {
         self.protectedSourcemaps = protectedSourcemaps
         self.protectionBypass = protectionBypass
         self.protectionConfig = protectionConfig
@@ -402,7 +604,13 @@ extension GetMicrofrontendsInGroupResponseProjectsItem {
 }
 
 extension GetMicrofrontendsInGroupResponseProjectsItem {
-    mutating func sdkSet14(_ rootDirectory: String?, _ sandbox: GetMicrofrontendsInGroupResponseProjectsItemSandbox?, _ security: GetMicrofrontendsInGroupResponseProjectsItemSecurity?, _ serverlessFunctionZeroConfigFailover: Bool?, _ services: [GetMicrofrontendsInGroupResponseProjectsItemServicesItem]?) {
+    mutating func sdkSet14(
+        _ rootDirectory: String?,
+        _ sandbox: GetMicrofrontendsInGroupResponseProjectsItemSandbox?,
+        _ security: GetMicrofrontendsInGroupResponseProjectsItemSecurity?,
+        _ serverlessFunctionZeroConfigFailover: Bool?,
+        _ services: [GetMicrofrontendsInGroupResponseProjectsItemServicesItem]?
+    ) {
         self.rootDirectory = rootDirectory
         self.sandbox = sandbox
         self.security = security

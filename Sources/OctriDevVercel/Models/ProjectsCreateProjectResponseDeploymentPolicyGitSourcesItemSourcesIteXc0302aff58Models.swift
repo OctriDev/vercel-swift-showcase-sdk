@@ -3,17 +3,23 @@
 
 import Foundation
 
-// ProjectsCreate domain models
-public struct CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXc0302aff58: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+/// ProjectsCreate domain models
+public struct CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXc0302aff58: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let bitbucket = CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXc0302aff58(rawValue: "bitbucket")
-    public static let github = CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXc0302aff58(rawValue: "github")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let bitbucket =
+        CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXc0302aff58(rawValue: "bitbucket")
+    public static let github =
+        CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesIteXc0302aff58(rawValue: "github")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

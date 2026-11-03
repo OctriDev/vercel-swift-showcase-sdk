@@ -3,7 +3,7 @@
 
 import Foundation
 
-// VercelCi domain models
+/// VercelCi domain models
 public enum GetVercelCiInvocationTreeResponseInvocationSourceVariant0Type: String, CaseIterable, Codable {
     case vercelCi = "vercel-ci"
     public init(from decoder: Decoder) throws {

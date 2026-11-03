@@ -6,8 +6,10 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VcrMethods {
-    /// Creates a container registry repository for a project. Supply `projectId` and `name` in the request body; the name must follow the allowed lowercase repository-name format. The `teamId` or `slug` query parameter selects the team to act on behalf of.
+public extension VcrMethods {
+    /// Creates a container registry repository for a project. Supply `projectId` and `name` in the request body; the
+    /// name must follow the allowed lowercase repository-name format. The `teamId` or `slug` query parameter selects
+    /// the team to act on behalf of.
     ///
     /// Create a container registry repository for a project.
     ///
@@ -17,13 +19,20 @@ extension VcrMethods {
     /// - name: Single Docker repository name component.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func createRepository(config: ClientConfig, projectId: String, name: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateRepositoryResponse {
+    static func createRepository(
+        config: ClientConfig,
+        projectId: String,
+        name: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateRepositoryResponse {
         try validateLength("name", name, max: 255)
         try sdkValidatePattern("name", name, sdkPatternccfeb2ca8f11)
 
         let requestBody = CreateRepositoryRequestBody(projectId: projectId, name: name)
 
-        return try (await sdkRequest("POST", "/v1/vcr/repository", config: config, query: [
+        return try await (sdkRequest("POST", "/v1/vcr/repository", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createRepository", options: requestOptions)).data

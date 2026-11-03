@@ -7,23 +7,31 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical vercelCi operation model declarations
-extension ListVercelCiTaskAnalysisTasksResponseErrorX1e080365 {
-    public init(from decoder: Decoder) throws {
+/// Canonical vercelCi operation model declarations
+public extension ListVercelCiTaskAnalysisTasksResponseErrorX1e080365 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
         }
         guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
         }
-        self.code = try container.sdkDecodeRequired(.code)
-        self.message = try container.sdkDecodeRequired(.message)
+        code = try container.sdkDecodeRequired(.code)
+        message = try container.sdkDecodeRequired(.message)
     }
 }
 
-extension ListVercelCiTaskAnalysisTasksResponseErrorX1e080365 {
-    public init(code: String, message: String) {
+public extension ListVercelCiTaskAnalysisTasksResponseErrorX1e080365 {
+    init(code: String, message: String) {
         (self.code, self.message) = (code, message)
     }
 }

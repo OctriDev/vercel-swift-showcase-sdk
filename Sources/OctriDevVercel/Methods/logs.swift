@@ -7,17 +7,39 @@ import Foundation
     import FoundationNetworking
 #endif
 public enum LogsMethods {
-    /// Retrieves a stream of runtime logs for a deployment in a project. Use `projectId` and `deploymentId` to identify the deployment, and optionally set `teamId` or `slug` to specify the team context.
+    /// Retrieves a stream of runtime logs for a deployment in a project. Use `projectId` and `deploymentId` to identify
+    /// the deployment, and optionally set `teamId` or `slug` to specify the team context.
     ///
     /// Returns a stream of logs for a given deployment.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getRuntimeLogs(config: ClientConfig, projectId: String, deploymentId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetRuntimeLogsResponse {
-        return try (await sdkRequest("GET", ["/v1/projects/", sdkEncodePathSegment(sdkWireString(projectId)), "/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/runtime-logs"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getRuntimeLogs", options: requestOptions)).data
+    public static func getRuntimeLogs(
+        config: ClientConfig,
+        projectId: String,
+        deploymentId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetRuntimeLogsResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/projects/",
+                sdkEncodePathSegment(sdkWireString(projectId)),
+                "/deployments/",
+                sdkEncodePathSegment(sdkWireString(deploymentId)),
+                "/runtime-logs",
+            ].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getRuntimeLogs",
+            options: requestOptions
+        )).data
     }
 }

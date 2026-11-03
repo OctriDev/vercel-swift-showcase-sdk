@@ -6,38 +6,63 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension VercelCiMethods {
-    /// Starts an asynchronous Vercel CI task analysis for a repository. Supply the repository `owner` and `repo` in the request body, and use `teamId` or `slug` to perform the request on behalf of a team. A 202 response confirms acceptance and provides an `analysisId` to check the analysis status.
+public extension VercelCiMethods {
+    /// Starts an asynchronous Vercel CI task analysis for a repository. Supply the repository `owner` and `repo` in the
+    /// request body, and use `teamId` or `slug` to perform the request on behalf of a team. A 202 response confirms
+    /// acceptance and provides an `analysisId` to check the analysis status.
     ///
     /// Create task analysis
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func createVercelCiTaskAnalysis(config: ClientConfig, owner: String, repo: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateVercelCiTaskAnalysisResponse {
+    static func createVercelCiTaskAnalysis(
+        config: ClientConfig,
+        owner: String,
+        repo: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateVercelCiTaskAnalysisResponse {
         try validateLength("owner", owner, max: 100)
 
         try validateLength("repo", repo, max: 100)
 
         let requestBody = CreateVercelCiTaskAnalysisRequestBody(owner: owner, repo: repo)
 
-        return try (await sdkRequest("POST", "/v1/vercel-ci/task-analyses", config: config, query: [
+        return try await (sdkRequest("POST", "/v1/vercel-ci/task-analyses", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createVercelCiTaskAnalysis", options: requestOptions)).data
     }
 
-    /// Retrieves the current status of a Vercel CI task analysis. Use `analysisId` to identify the analysis and optionally pass `teamId` or `slug` to make the request on behalf of a team. The response includes a failure reason when one is available.
+    /// Retrieves the current status of a Vercel CI task analysis. Use `analysisId` to identify the analysis and
+    /// optionally pass `teamId` or `slug` to make the request on behalf of a team. The response includes a failure
+    /// reason when one is available.
     ///
     /// Get task analysis
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getVercelCiTaskAnalysis(config: ClientConfig, analysisId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetVercelCiTaskAnalysisResponse {
-        return try (await sdkRequest("GET", ["/v1/vercel-ci/task-analyses/", sdkEncodePathSegment(sdkWireString(analysisId))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getVercelCiTaskAnalysis", options: requestOptions)).data
+    static func getVercelCiTaskAnalysis(
+        config: ClientConfig,
+        analysisId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetVercelCiTaskAnalysisResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/vercel-ci/task-analyses/", sdkEncodePathSegment(sdkWireString(analysisId))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getVercelCiTaskAnalysis",
+            options: requestOptions
+        )).data
     }
 }

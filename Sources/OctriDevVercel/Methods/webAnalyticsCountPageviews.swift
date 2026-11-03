@@ -6,10 +6,13 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension WebAnalyticsMethods {
-    /// Counts page views for a project since Web Analytics was enabled; the count covers production data only. Use `since` and `until` to select a date range, and `filter` to restrict results by supported dimensions. The date bounds accept timestamps in milliseconds or valid date strings.
+public extension WebAnalyticsMethods {
+    /// Counts page views for a project since Web Analytics was enabled; the count covers production data only. Use
+    /// `since` and `until` to select a date range, and `filter` to restrict results by supported dimensions. The date
+    /// bounds accept timestamps in milliseconds or valid date strings.
     ///
-    /// Counts the number of page views on a project (production only), since Web Analytics was enabled. Results can be filtered on supported dimensions.
+    /// Counts the number of page views on a project (production only), since Web Analytics was enabled. Results can be
+    /// filtered on supported dimensions.
     ///
     /// - Parameters:
     /// - projectId: The project identifier or the project name
@@ -31,12 +34,21 @@ extension WebAnalyticsMethods {
     ///   parser.
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func countPageviews(config: ClientConfig, projectId: String, since: CountPageviewsParameter? = nil, until: CountPageviewsParameterX9935b237? = nil, filter: String? = nil, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CountPageviewsResponse {
-        if let filter = filter {
+    static func countPageviews(
+        config: ClientConfig,
+        projectId: String,
+        since: CountPageviewsParameter? = nil,
+        until: CountPageviewsParameterX9935b237? = nil,
+        filter: String? = nil,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CountPageviewsResponse {
+        if let filter {
             try validateLength("filter", filter, max: 2048)
         }
 
-        return try (await sdkRequest("GET", "/v1/query/web-analytics/visits/count", config: config, query: [
+        return try await (sdkRequest("GET", "/v1/query/web-analytics/visits/count", config: config, query: [
             SdkQueryParameter("projectId", value: projectId),
             SdkQueryParameter("since", value: since),
             SdkQueryParameter("until", value: until),

@@ -7,17 +7,17 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical sandboxes operation model declarations
-extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX8360ed82e4 {
-    public init(from decoder: Decoder) throws {
+/// Canonical sandboxes operation model declarations
+public extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX8360ed82e4 {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.exact = try container.sdkDecodeIfPresent(.exact)
-        self.startsWith = try container.sdkDecodeIfPresent(.startsWith)
+        exact = try container.sdkDecodeIfPresent(.exact)
+        startsWith = try container.sdkDecodeIfPresent(.startsWith)
     }
 }
 
-extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX8360ed82e4 {
-    public init(exact: String? = nil, startsWith: String? = nil) {
+public extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX8360ed82e4 {
+    init(exact: String? = nil, startsWith: String? = nil) {
         self.init()
         (self.exact, self.startsWith) = (exact, startsWith)
     }
@@ -32,25 +32,35 @@ public struct ListDrivesResponsePagination: Codable {
         case next
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension ListDrivesResponsePagination {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.count) else {
-            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
-        }
-        guard container.contains(.next) else {
-            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
-        }
-        self.count = try container.sdkDecodeRequired(.count)
-        self.next = try container.sdkDecodeNullable(.next)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension ListDrivesResponsePagination {
-    public init(count: Double, next: String?) {
+public extension ListDrivesResponsePagination {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.count) else {
+            throw SdkValidationError(
+                field: "count",
+                code: "required",
+                message: "Validation failed for 'count': value is required"
+            )
+        }
+        guard container.contains(.next) else {
+            throw SdkValidationError(
+                field: "next",
+                code: "required",
+                message: "Validation failed for 'next': value is required"
+            )
+        }
+        count = try container.sdkDecodeRequired(.count)
+        next = try container.sdkDecodeNullable(.next)
+    }
+}
+
+public extension ListDrivesResponsePagination {
+    init(count: Double, next: String?) {
         (self.count, self.next) = (count, next)
     }
 }
@@ -63,21 +73,27 @@ public struct DeleteDriveResponse: Codable {
         case drive
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteDriveResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.drive) else {
-            throw SdkValidationError(field: "drive", code: "required", message: "Validation failed for 'drive': value is required")
-        }
-        self.drive = try container.sdkDecodeRequired(.drive)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension DeleteDriveResponse {
-    public init(drive: Drive) {
+public extension DeleteDriveResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.drive) else {
+            throw SdkValidationError(
+                field: "drive",
+                code: "required",
+                message: "Validation failed for 'drive': value is required"
+            )
+        }
+        drive = try container.sdkDecodeRequired(.drive)
+    }
+}
+
+public extension DeleteDriveResponse {
+    init(drive: Drive) {
         self.drive = drive
     }
 }
@@ -97,33 +113,65 @@ public struct CreateSandboxesV4RequestBodyResources: Codable {
     }
 
     init() {
-        (self.vcpus, self.memory) = (nil, nil)
+        (vcpus, memory) = (nil, nil)
     }
 }
 
-extension CreateSandboxesV4RequestBodyResources {
-    public init(from decoder: Decoder) throws {
+public extension CreateSandboxesV4RequestBodyResources {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.vcpus = try container.sdkDecodeIfPresent(.vcpus)
-        self.memory = try container.sdkDecodeIfPresent(.memory)
-        if let value = self.vcpus {
-            try validateRange("vcpus", Double(value), min: 1, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        vcpus = try container.sdkDecodeIfPresent(.vcpus)
+        memory = try container.sdkDecodeIfPresent(.memory)
+        if let value = vcpus {
+            try validateRange(
+                "vcpus",
+                Double(value),
+                min: 1,
+                max: nil,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
-        if let value = self.memory {
-            try validateRange("memory", Double(value), min: 2048, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+        if let value = memory {
+            try validateRange(
+                "memory",
+                Double(value),
+                min: 2048,
+                max: nil,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
     }
 }
 
-extension CreateSandboxesV4RequestBodyResources {
-    public init(vcpus: Int? = nil, memory: Int? = nil) throws {
+public extension CreateSandboxesV4RequestBodyResources {
+    init(vcpus: Int? = nil, memory: Int? = nil) throws {
         self.init()
         (self.vcpus, self.memory) = (vcpus, memory)
         if let value = self.vcpus {
-            try validateRange("vcpus", Double(value), min: 1, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+            try validateRange(
+                "vcpus",
+                Double(value),
+                min: 1,
+                max: nil,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
         if let value = self.memory {
-            try validateRange("memory", Double(value), min: 2048, max: nil, exclusiveMin: nil, exclusiveMax: nil, multipleOf: nil)
+            try validateRange(
+                "memory",
+                Double(value),
+                min: 2048,
+                max: nil,
+                exclusiveMin: nil,
+                exclusiveMax: nil,
+                multipleOf: nil
+            )
         }
     }
 }
@@ -142,29 +190,43 @@ public struct CreateSandboxesByNameForkV3Response: Codable {
         case session
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateSandboxesByNameForkV3Response {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.routes) else {
-            throw SdkValidationError(field: "routes", code: "required", message: "Validation failed for 'routes': value is required")
-        }
-        guard container.contains(.sandbox) else {
-            throw SdkValidationError(field: "sandbox", code: "required", message: "Validation failed for 'sandbox': value is required")
-        }
-        guard container.contains(.session) else {
-            throw SdkValidationError(field: "session", code: "required", message: "Validation failed for 'session': value is required")
-        }
-        self.routes = try container.sdkDecodeRequired(.routes)
-        self.sandbox = try container.sdkDecodeRequired(.sandbox)
-        self.session = try container.sdkDecodeRequired(.session)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateSandboxesByNameForkV3Response {
-    public init(routes: [SandboxPublicRoute], sandbox: NamedSandbox, session: Session) {
+public extension CreateSandboxesByNameForkV3Response {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.routes) else {
+            throw SdkValidationError(
+                field: "routes",
+                code: "required",
+                message: "Validation failed for 'routes': value is required"
+            )
+        }
+        guard container.contains(.sandbox) else {
+            throw SdkValidationError(
+                field: "sandbox",
+                code: "required",
+                message: "Validation failed for 'sandbox': value is required"
+            )
+        }
+        guard container.contains(.session) else {
+            throw SdkValidationError(
+                field: "session",
+                code: "required",
+                message: "Validation failed for 'session': value is required"
+            )
+        }
+        routes = try container.sdkDecodeRequired(.routes)
+        sandbox = try container.sdkDecodeRequired(.sandbox)
+        session = try container.sdkDecodeRequired(.session)
+    }
+}
+
+public extension CreateSandboxesByNameForkV3Response {
+    init(routes: [SandboxPublicRoute], sandbox: NamedSandbox, session: Session) {
         (self.routes, self.sandbox) = (routes, sandbox)
         self.session = session
     }
@@ -176,22 +238,32 @@ public indirect enum CreateSandboxesV2RequestBodySnapshotExpiration {
 }
 
 extension CreateSandboxesV2RequestBodySnapshotExpiration: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesV2RequestBodySnapshotExpiration")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateSandboxesV2RequestBodySnapshotExpiration"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateSandboxesV2RequestBodySnapshotExpiration {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(JSONValue.self) { return .jsonValue(value) }
-        if let value = try? container.decode(Int.self) { return .intValue(value) }
+        if let value = try? container.decode(JSONValue.self) {
+            return .jsonValue(value)
+        }
+        if let value = try? container.decode(Int.self) {
+            return .intValue(value)
+        }
         return nil
     }
 }
@@ -224,25 +296,35 @@ public struct RunSessionCommandResponseVariant0Data: Codable {
         case message
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RunSessionCommandResponseVariant0Data {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.code) else {
-            throw SdkValidationError(field: "code", code: "required", message: "Validation failed for 'code': value is required")
-        }
-        guard container.contains(.message) else {
-            throw SdkValidationError(field: "message", code: "required", message: "Validation failed for 'message': value is required")
-        }
-        self.code = try container.sdkDecodeRequired(.code)
-        self.message = try container.sdkDecodeRequired(.message)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RunSessionCommandResponseVariant0Data {
-    public init(code: RunSessionCommandResponseVariant0DataCode, message: RunSessionCommandResponseVariant0DataMessage) {
+public extension RunSessionCommandResponseVariant0Data {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.code) else {
+            throw SdkValidationError(
+                field: "code",
+                code: "required",
+                message: "Validation failed for 'code': value is required"
+            )
+        }
+        guard container.contains(.message) else {
+            throw SdkValidationError(
+                field: "message",
+                code: "required",
+                message: "Validation failed for 'message': value is required"
+            )
+        }
+        code = try container.sdkDecodeRequired(.code)
+        message = try container.sdkDecodeRequired(.message)
+    }
+}
+
+public extension RunSessionCommandResponseVariant0Data {
+    init(code: RunSessionCommandResponseVariant0DataCode, message: RunSessionCommandResponseVariant0DataMessage) {
         (self.code, self.message) = (code, message)
     }
 }
@@ -261,29 +343,43 @@ public struct CreateSandboxesByNameForkV2Response: Codable {
         case session
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension CreateSandboxesByNameForkV2Response {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.routes) else {
-            throw SdkValidationError(field: "routes", code: "required", message: "Validation failed for 'routes': value is required")
-        }
-        guard container.contains(.sandbox) else {
-            throw SdkValidationError(field: "sandbox", code: "required", message: "Validation failed for 'sandbox': value is required")
-        }
-        guard container.contains(.session) else {
-            throw SdkValidationError(field: "session", code: "required", message: "Validation failed for 'session': value is required")
-        }
-        self.routes = try container.sdkDecodeRequired(.routes)
-        self.sandbox = try container.sdkDecodeRequired(.sandbox)
-        self.session = try container.sdkDecodeRequired(.session)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension CreateSandboxesByNameForkV2Response {
-    public init(routes: [SandboxPublicRoute], sandbox: NamedSandbox, session: Session) {
+public extension CreateSandboxesByNameForkV2Response {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.routes) else {
+            throw SdkValidationError(
+                field: "routes",
+                code: "required",
+                message: "Validation failed for 'routes': value is required"
+            )
+        }
+        guard container.contains(.sandbox) else {
+            throw SdkValidationError(
+                field: "sandbox",
+                code: "required",
+                message: "Validation failed for 'sandbox': value is required"
+            )
+        }
+        guard container.contains(.session) else {
+            throw SdkValidationError(
+                field: "session",
+                code: "required",
+                message: "Validation failed for 'session': value is required"
+            )
+        }
+        routes = try container.sdkDecodeRequired(.routes)
+        sandbox = try container.sdkDecodeRequired(.sandbox)
+        session = try container.sdkDecodeRequired(.session)
+    }
+}
+
+public extension CreateSandboxesByNameForkV2Response {
+    init(routes: [SandboxPublicRoute], sandbox: NamedSandbox, session: Session) {
         (self.routes, self.sandbox) = (routes, sandbox)
         self.session = session
     }
@@ -297,28 +393,36 @@ public struct GetSessionCommandResponse: Codable {
         case command
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetSessionCommandResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.command) else {
-            throw SdkValidationError(field: "command", code: "required", message: "Validation failed for 'command': value is required")
-        }
-        self.command = try container.sdkDecodeRequired(.command)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetSessionCommandResponse {
-    public init(command: SessionCommand) {
+public extension GetSessionCommandResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.command) else {
+            throw SdkValidationError(
+                field: "command",
+                code: "required",
+                message: "Validation failed for 'command': value is required"
+            )
+        }
+        command = try container.sdkDecodeRequired(.command)
+    }
+}
+
+public extension GetSessionCommandResponse {
+    init(command: SessionCommand) {
         self.command = command
     }
 }
 
-public typealias UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValXc120c8b6d2 = [UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX4cee6ae3f2]
+public typealias UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValXc120c8b6d2 =
+    [UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX4cee6ae3f2]
 
-public typealias UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX676b0f6da5 = [UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX5737bba7ee]
+public typealias UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX676b0f6da5 =
+    [UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX5737bba7ee]
 
 /// Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified
 /// dimension. When multiple injection rules target the same domain they are evaluated in order and the first match
@@ -345,22 +449,27 @@ public struct UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueIte
     }
 
     init() {
-        (self.path, self.method, self.queryString, self.headers) = (nil, nil, nil, nil)
+        (path, method, queryString, headers) = (nil, nil, nil, nil)
     }
 }
 
-extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItemMatch {
-    public init(from decoder: Decoder) throws {
+public extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItemMatch {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.path = try container.sdkDecodeIfPresent(.path)
-        self.method = try container.sdkDecodeIfPresent(.method)
-        self.queryString = try container.sdkDecodeIfPresent(.queryString)
-        self.headers = try container.sdkDecodeIfPresent(.headers)
+        path = try container.sdkDecodeIfPresent(.path)
+        method = try container.sdkDecodeIfPresent(.method)
+        queryString = try container.sdkDecodeIfPresent(.queryString)
+        headers = try container.sdkDecodeIfPresent(.headers)
     }
 }
 
-extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItemMatch {
-    public init(path: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX8360ed82e4? = nil, method: [String]? = nil, queryString: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValXc120c8b6d2? = nil, headers: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX676b0f6da5? = nil) {
+public extension UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValueItemMatch {
+    init(
+        path: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX8360ed82e4? = nil,
+        method: [String]? = nil,
+        queryString: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValXc120c8b6d2? = nil,
+        headers: UpdateSessionNetworkPolicyRequestBodyVariant1AllowVariant1ValX676b0f6da5? = nil
+    ) {
         self.init()
         (self.path, self.method) = (path, method)
         (self.queryString, self.headers) = (queryString, headers)
@@ -373,22 +482,32 @@ public indirect enum CreateSandboxesByNameForkV3RequestBodySnapshotExpiration {
 }
 
 extension CreateSandboxesByNameForkV3RequestBodySnapshotExpiration: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesByNameForkV3RequestBodySnapshotExpiration")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateSandboxesByNameForkV3RequestBodySnapshotExpiration"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension CreateSandboxesByNameForkV3RequestBodySnapshotExpiration {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode(JSONValue.self) { return .jsonValue(value) }
-        if let value = try? container.decode(Int.self) { return .intValue(value) }
+        if let value = try? container.decode(JSONValue.self) {
+            return .jsonValue(value)
+        }
+        if let value = try? container.decode(Int.self) {
+            return .intValue(value)
+        }
         return nil
     }
 }
@@ -421,25 +540,35 @@ public struct RunSessionCommandResponseVariant0: Codable {
         case stream
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RunSessionCommandResponseVariant0 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.data) else {
-            throw SdkValidationError(field: "data", code: "required", message: "Validation failed for 'data': value is required")
-        }
-        guard container.contains(.stream) else {
-            throw SdkValidationError(field: "stream", code: "required", message: "Validation failed for 'stream': value is required")
-        }
-        self.data = try container.sdkDecodeRequired(.data)
-        self.stream = try container.sdkDecodeRequired(.stream)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RunSessionCommandResponseVariant0 {
-    public init(data: RunSessionCommandResponseVariant0Data, stream: String) {
+public extension RunSessionCommandResponseVariant0 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.data) else {
+            throw SdkValidationError(
+                field: "data",
+                code: "required",
+                message: "Validation failed for 'data': value is required"
+            )
+        }
+        guard container.contains(.stream) else {
+            throw SdkValidationError(
+                field: "stream",
+                code: "required",
+                message: "Validation failed for 'stream': value is required"
+            )
+        }
+        data = try container.sdkDecodeRequired(.data)
+        stream = try container.sdkDecodeRequired(.stream)
+    }
+}
+
+public extension RunSessionCommandResponseVariant0 {
+    init(data: RunSessionCommandResponseVariant0Data, stream: String) {
         (self.data, self.stream) = (data, stream)
     }
 }
@@ -452,21 +581,27 @@ public struct DeleteSandboxResponse: Codable {
         case sandbox
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension DeleteSandboxResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.sandbox) else {
-            throw SdkValidationError(field: "sandbox", code: "required", message: "Validation failed for 'sandbox': value is required")
-        }
-        self.sandbox = try container.sdkDecodeRequired(.sandbox)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension DeleteSandboxResponse {
-    public init(sandbox: NamedSandbox) {
+public extension DeleteSandboxResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.sandbox) else {
+            throw SdkValidationError(
+                field: "sandbox",
+                code: "required",
+                message: "Validation failed for 'sandbox': value is required"
+            )
+        }
+        sandbox = try container.sdkDecodeRequired(.sandbox)
+    }
+}
+
+public extension DeleteSandboxResponse {
+    init(sandbox: NamedSandbox) {
         self.sandbox = sandbox
     }
 }
@@ -477,14 +612,20 @@ public indirect enum CreateSandboxesByNameForkV2RequestBodySnapshotExpiration {
 }
 
 extension CreateSandboxesByNameForkV2RequestBodySnapshotExpiration: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for CreateSandboxesByNameForkV2RequestBodySnapshotExpiration")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for CreateSandboxesByNameForkV2RequestBodySnapshotExpiration"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }

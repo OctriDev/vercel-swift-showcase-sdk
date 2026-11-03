@@ -7,7 +7,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-// Canonical projectMembers operation model declarations
+/// Canonical projectMembers operation model declarations
 public struct GetProjectMembersResponseVariant1Pagination: Codable {
     /// Amount of items in the current page.
     /// - Example: 20
@@ -27,33 +27,51 @@ public struct GetProjectMembersResponseVariant1Pagination: Codable {
         case prev
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetProjectMembersResponseVariant1Pagination {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.count) else {
-            throw SdkValidationError(field: "count", code: "required", message: "Validation failed for 'count': value is required")
-        }
-        guard container.contains(.hasNext) else {
-            throw SdkValidationError(field: "hasNext", code: "required", message: "Validation failed for 'hasNext': value is required")
-        }
-        guard container.contains(.next) else {
-            throw SdkValidationError(field: "next", code: "required", message: "Validation failed for 'next': value is required")
-        }
-        guard container.contains(.prev) else {
-            throw SdkValidationError(field: "prev", code: "required", message: "Validation failed for 'prev': value is required")
-        }
-        self.count = try container.sdkDecodeRequired(.count)
-        self.hasNext = try container.sdkDecodeRequired(.hasNext)
-        self.next = try container.sdkDecodeNullable(.next)
-        self.prev = try container.sdkDecodeNullable(.prev)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetProjectMembersResponseVariant1Pagination {
-    public init(count: Double, hasNext: Bool, next: Double?, prev: Double?) {
+public extension GetProjectMembersResponseVariant1Pagination {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.count) else {
+            throw SdkValidationError(
+                field: "count",
+                code: "required",
+                message: "Validation failed for 'count': value is required"
+            )
+        }
+        guard container.contains(.hasNext) else {
+            throw SdkValidationError(
+                field: "hasNext",
+                code: "required",
+                message: "Validation failed for 'hasNext': value is required"
+            )
+        }
+        guard container.contains(.next) else {
+            throw SdkValidationError(
+                field: "next",
+                code: "required",
+                message: "Validation failed for 'next': value is required"
+            )
+        }
+        guard container.contains(.prev) else {
+            throw SdkValidationError(
+                field: "prev",
+                code: "required",
+                message: "Validation failed for 'prev': value is required"
+            )
+        }
+        count = try container.sdkDecodeRequired(.count)
+        hasNext = try container.sdkDecodeRequired(.hasNext)
+        next = try container.sdkDecodeNullable(.next)
+        prev = try container.sdkDecodeNullable(.prev)
+    }
+}
+
+public extension GetProjectMembersResponseVariant1Pagination {
+    init(count: Double, hasNext: Bool, next: Double?, prev: Double?) {
         (self.count, self.hasNext) = (count, hasNext)
         (self.next, self.prev) = (next, prev)
     }
@@ -65,22 +83,33 @@ public indirect enum GetProjectMembersResponse {
 }
 
 extension GetProjectMembersResponse: Codable {
-
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = Self.decodeGroup1(from: container) { self = value; return }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "No variant matched for GetProjectMembersResponse")
+        if let value = Self.decodeGroup1(from: container) {
+            self = value; return
+        }
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "No variant matched for GetProjectMembersResponse"
+        )
     }
 
     public func encode(to encoder: Encoder) throws {
-        if try encodeGroup1(to: encoder) { return }
+        if try encodeGroup1(to: encoder) {
+            return
+        }
     }
 }
 
 extension GetProjectMembersResponse {
     static func decodeGroup1(from container: SingleValueDecodingContainer) -> Self? {
-        if let value = try? container.decode([String: JSONValue].self) { return .jsonValue(value) }
-        if let value = try? container.decode(GetProjectMembersResponseVariant1.self) { return .getProjectMembersResponseVariant1(value) }
+        if let value = try? container.decode([String: JSONValue].self) {
+            return .jsonValue(value)
+        }
+        if let value = try? container
+            .decode(GetProjectMembersResponseVariant1.self) {
+            return .getProjectMembersResponseVariant1(value)
+        }
         return nil
     }
 }
@@ -94,12 +123,6 @@ extension GetProjectMembersResponse {
         }
     }
 }
-
-
-
-
-
-
 
 public struct GetProjectMembersResponseVariant1MembersItem: Codable {
     /// Role of this user in the project.
@@ -142,47 +165,87 @@ public struct GetProjectMembersResponseVariant1MembersItem: Codable {
         case name
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetProjectMembersResponseVariant1MembersItem {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.computedProjectRole) else {
-            throw SdkValidationError(field: "computedProjectRole", code: "required", message: "Validation failed for 'computedProjectRole': value is required")
-        }
-        guard container.contains(.createdAt) else {
-            throw SdkValidationError(field: "createdAt", code: "required", message: "Validation failed for 'createdAt': value is required")
-        }
-        guard container.contains(.email) else {
-            throw SdkValidationError(field: "email", code: "required", message: "Validation failed for 'email': value is required")
-        }
-        guard container.contains(.role) else {
-            throw SdkValidationError(field: "role", code: "required", message: "Validation failed for 'role': value is required")
-        }
-        guard container.contains(.teamRole) else {
-            throw SdkValidationError(field: "teamRole", code: "required", message: "Validation failed for 'teamRole': value is required")
-        }
-        guard container.contains(.uid) else {
-            throw SdkValidationError(field: "uid", code: "required", message: "Validation failed for 'uid': value is required")
-        }
-        guard container.contains(.username) else {
-            throw SdkValidationError(field: "username", code: "required", message: "Validation failed for 'username': value is required")
-        }
-        self.computedProjectRole = try container.sdkDecodeRequired(.computedProjectRole)
-        self.createdAt = try container.sdkDecodeRequired(.createdAt)
-        self.email = try container.sdkDecodeRequired(.email)
-        self.role = try container.sdkDecodeRequired(.role)
-        self.teamRole = try container.sdkDecodeRequired(.teamRole)
-        self.uid = try container.sdkDecodeRequired(.uid)
-        self.username = try container.sdkDecodeRequired(.username)
-        self.avatar = try container.sdkDecodeIfPresent(.avatar)
-        self.name = try container.sdkDecodeIfPresent(.name)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetProjectMembersResponseVariant1MembersItem {
-    public init(computedProjectRole: GetProjectMembersResponseVariant1MembersItemComputedProjectRole, createdAt: Double, email: String, role: GetProjectMembersResponseVariant1MembersItemRole, teamRole: GetProjectMembersResponseVariant1MembersItemTeamRole, uid: String, username: String, avatar: String? = nil, name: String? = nil) {
+public extension GetProjectMembersResponseVariant1MembersItem {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.computedProjectRole) else {
+            throw SdkValidationError(
+                field: "computedProjectRole",
+                code: "required",
+                message: "Validation failed for 'computedProjectRole': value is required"
+            )
+        }
+        guard container.contains(.createdAt) else {
+            throw SdkValidationError(
+                field: "createdAt",
+                code: "required",
+                message: "Validation failed for 'createdAt': value is required"
+            )
+        }
+        guard container.contains(.email) else {
+            throw SdkValidationError(
+                field: "email",
+                code: "required",
+                message: "Validation failed for 'email': value is required"
+            )
+        }
+        guard container.contains(.role) else {
+            throw SdkValidationError(
+                field: "role",
+                code: "required",
+                message: "Validation failed for 'role': value is required"
+            )
+        }
+        guard container.contains(.teamRole) else {
+            throw SdkValidationError(
+                field: "teamRole",
+                code: "required",
+                message: "Validation failed for 'teamRole': value is required"
+            )
+        }
+        guard container.contains(.uid) else {
+            throw SdkValidationError(
+                field: "uid",
+                code: "required",
+                message: "Validation failed for 'uid': value is required"
+            )
+        }
+        guard container.contains(.username) else {
+            throw SdkValidationError(
+                field: "username",
+                code: "required",
+                message: "Validation failed for 'username': value is required"
+            )
+        }
+        computedProjectRole = try container.sdkDecodeRequired(.computedProjectRole)
+        createdAt = try container.sdkDecodeRequired(.createdAt)
+        email = try container.sdkDecodeRequired(.email)
+        role = try container.sdkDecodeRequired(.role)
+        teamRole = try container.sdkDecodeRequired(.teamRole)
+        uid = try container.sdkDecodeRequired(.uid)
+        username = try container.sdkDecodeRequired(.username)
+        avatar = try container.sdkDecodeIfPresent(.avatar)
+        name = try container.sdkDecodeIfPresent(.name)
+    }
+}
+
+public extension GetProjectMembersResponseVariant1MembersItem {
+    init(
+        computedProjectRole: GetProjectMembersResponseVariant1MembersItemComputedProjectRole,
+        createdAt: Double,
+        email: String,
+        role: GetProjectMembersResponseVariant1MembersItemRole,
+        teamRole: GetProjectMembersResponseVariant1MembersItemTeamRole,
+        uid: String,
+        username: String,
+        avatar: String? = nil,
+        name: String? = nil
+    ) {
         (self.computedProjectRole, self.createdAt) = (computedProjectRole, createdAt)
         (self.email, self.role) = (email, role)
         (self.teamRole, self.uid) = (teamRole, uid)
@@ -201,25 +264,38 @@ public struct GetProjectMembersResponseVariant1: Codable {
         case pagination
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension GetProjectMembersResponseVariant1 {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.members) else {
-            throw SdkValidationError(field: "members", code: "required", message: "Validation failed for 'members': value is required")
-        }
-        guard container.contains(.pagination) else {
-            throw SdkValidationError(field: "pagination", code: "required", message: "Validation failed for 'pagination': value is required")
-        }
-        self.members = try container.sdkDecodeRequired(.members)
-        self.pagination = try container.sdkDecodeRequired(.pagination)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension GetProjectMembersResponseVariant1 {
-    public init(members: [GetProjectMembersResponseVariant1MembersItem], pagination: GetProjectMembersResponseVariant1Pagination) {
+public extension GetProjectMembersResponseVariant1 {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.members) else {
+            throw SdkValidationError(
+                field: "members",
+                code: "required",
+                message: "Validation failed for 'members': value is required"
+            )
+        }
+        guard container.contains(.pagination) else {
+            throw SdkValidationError(
+                field: "pagination",
+                code: "required",
+                message: "Validation failed for 'pagination': value is required"
+            )
+        }
+        members = try container.sdkDecodeRequired(.members)
+        pagination = try container.sdkDecodeRequired(.pagination)
+    }
+}
+
+public extension GetProjectMembersResponseVariant1 {
+    init(
+        members: [GetProjectMembersResponseVariant1MembersItem],
+        pagination: GetProjectMembersResponseVariant1Pagination
+    ) {
         (self.members, self.pagination) = (members, pagination)
     }
 }
@@ -232,21 +308,27 @@ public struct AddProjectMemberResponse: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension AddProjectMemberResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension AddProjectMemberResponse {
-    public init(id: String) {
+public extension AddProjectMemberResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+    }
+}
+
+public extension AddProjectMemberResponse {
+    init(id: String) {
         self.id = id
     }
 }
@@ -258,21 +340,27 @@ public struct RemoveProjectMemberResponse: Codable {
         case id
     }
 
-    private init(sdkCopy value: Self) { self = value }
-}
-
-extension RemoveProjectMemberResponse {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        guard container.contains(.id) else {
-            throw SdkValidationError(field: "id", code: "required", message: "Validation failed for 'id': value is required")
-        }
-        self.id = try container.sdkDecodeRequired(.id)
+    private init(sdkCopy value: Self) {
+        self = value
     }
 }
 
-extension RemoveProjectMemberResponse {
-    public init(id: String) {
+public extension RemoveProjectMemberResponse {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard container.contains(.id) else {
+            throw SdkValidationError(
+                field: "id",
+                code: "required",
+                message: "Validation failed for 'id': value is required"
+            )
+        }
+        id = try container.sdkDecodeRequired(.id)
+    }
+}
+
+public extension RemoveProjectMemberResponse {
+    init(id: String) {
         self.id = id
     }
 }

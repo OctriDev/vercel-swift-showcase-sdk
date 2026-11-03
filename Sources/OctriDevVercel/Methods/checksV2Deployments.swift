@@ -6,34 +6,67 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ChecksV2Methods {
-    /// Lists all check runs associated with a deployment. Use `deploymentId` to select the deployment whose check runs you want to inspect. The response groups the results in a `runs` array.
+public extension ChecksV2Methods {
+    /// Lists all check runs associated with a deployment. Use `deploymentId` to select the deployment whose check runs
+    /// you want to inspect. The response groups the results in a `runs` array.
     ///
     /// List all check runs for a deployment.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func listDeploymentCheckRuns(config: ClientConfig, deploymentId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> ListDeploymentCheckRunsResponse {
-        return try (await sdkRequest("GET", ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/check-runs"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "listDeploymentCheckRuns", options: requestOptions)).data
+    static func listDeploymentCheckRuns(
+        config: ClientConfig,
+        deploymentId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> ListDeploymentCheckRunsResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/check-runs"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "listDeploymentCheckRuns",
+            options: requestOptions
+        )).data
     }
 
-    /// Creates a check run for a deployment. Supply `checkId` to associate the run with a project-level check; the request body is optional in the operation definition, but `checkId` is required when you provide a body. Use the deployment identifier to select the deployment for the new run.
+    /// Creates a check run for a deployment. Supply `checkId` to associate the run with a project-level check; the
+    /// request body is optional in the operation definition, but `checkId` is required when you provide a body. Use the
+    /// deployment identifier to select the deployment for the new run.
     ///
     /// Creates a new check run for a deployment.
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func createDeploymentCheckRun(config: ClientConfig, deploymentId: String, checkId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateDeploymentCheckRunResponse {
+    static func createDeploymentCheckRun(
+        config: ClientConfig,
+        deploymentId: String,
+        checkId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateDeploymentCheckRunResponse {
         let requestBody = CreateDeploymentCheckRunRequestBody(checkId: checkId)
 
-        return try (await sdkRequest("POST", ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/check-runs"].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], body: requestBody, decoder: .json, operationId: "createDeploymentCheckRun", options: requestOptions)).data
+        return try await (sdkRequest(
+            "POST",
+            ["/v2/deployments/", sdkEncodePathSegment(sdkWireString(deploymentId)), "/check-runs"].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            body: requestBody,
+            decoder: .json,
+            operationId: "createDeploymentCheckRun",
+            options: requestOptions
+        )).data
     }
 }

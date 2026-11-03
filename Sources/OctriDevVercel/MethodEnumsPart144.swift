@@ -74,16 +74,22 @@ public enum RemoveProjectEnvResponseVariant1ContentHintVariant8Type: String, Cas
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX9c7a2d61c9: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX9c7a2d61c9: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let create = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX9c7a2d61c9(rawValue: "create")
-    public static let update = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX9c7a2d61c9(rawValue: "update")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let create =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX9c7a2d61c9(rawValue: "create")
+    public static let update =
+        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX9c7a2d61c9(rawValue: "update")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -93,16 +99,21 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemX9c7a
 }
 
 /// What to do when the gate trips: pause the rollout, or roll it back.
-public struct GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateAction: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let pause = GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateAction(rawValue: "pause")
-    public static let rollback = GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateAction(rawValue: "rollback")
+    public static let rollback =
+        GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateAction(rawValue: "rollback")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -111,15 +122,19 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateActi
     }
 }
 
-public struct GetCheckResponseOutputMetricsFCPSource: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetCheckResponseOutputMetricsFCPSource: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let webVitals = GetCheckResponseOutputMetricsFCPSource(rawValue: "web-vitals")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -128,10 +143,14 @@ public struct GetCheckResponseOutputMetricsFCPSource: RawRepresentable, Hashable
     }
 }
 
-public struct ListProjectsResponseVariant2ProjectsItemEnvItemType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant2ProjectsItemEnvItemType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let encrypted = ListProjectsResponseVariant2ProjectsItemEnvItemType(rawValue: "encrypted")
     public static let plain = ListProjectsResponseVariant2ProjectsItemEnvItemType(rawValue: "plain")
     public static let secret = ListProjectsResponseVariant2ProjectsItemEnvItemType(rawValue: "secret")
@@ -140,7 +159,7 @@ public struct ListProjectsResponseVariant2ProjectsItemEnvItemType: RawRepresenta
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -149,20 +168,28 @@ public struct ListProjectsResponseVariant2ProjectsItemEnvItemType: RawRepresenta
     }
 }
 
-public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let bypass = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "bypass")
-    public static let challenge = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "challenge")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let bypass =
+        ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "bypass")
+    public static let challenge =
+        ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "challenge")
     public static let deny = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "deny")
     public static let log = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "log")
-    public static let rateLimit = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "rate_limit")
-    public static let redirect = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "redirect")
+    public static let rateLimit =
+        ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "rate_limit")
+    public static let redirect =
+        ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigateAction(rawValue: "redirect")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -172,7 +199,7 @@ public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemMitigate
 }
 
 public enum ListLogDrainsResponseVariant1DrainsVariant1ItemDeliveryVariant4Type: String, CaseIterable, Codable {
-    case `internal` = "internal"
+    case `internal`
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawValue = try container.decode(String.self)
@@ -188,17 +215,22 @@ public enum ListLogDrainsResponseVariant1DrainsVariant1ItemDeliveryVariant4Type:
     }
 }
 
-public struct GetRoutesResponseVariant3RoutesItemRouteHasItemVariant1Type: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetRoutesResponseVariant3RoutesItemRouteHasItemVariant1Type: RawRepresentable, Hashable, Codable,
+    Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let cookie = GetRoutesResponseVariant3RoutesItemRouteHasItemVariant1Type(rawValue: "cookie")
     public static let header = GetRoutesResponseVariant3RoutesItemRouteHasItemVariant1Type(rawValue: "header")
     public static let query = GetRoutesResponseVariant3RoutesItemRouteHasItemVariant1Type(rawValue: "query")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

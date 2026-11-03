@@ -19,13 +19,13 @@ import Foundation
 /// name, so a data-less `event: ping` never renames the next event. The id and
 /// retry persist across events.
 struct SseParser {
-    internal var line: [UInt8] = []
-    internal var started = false
-    internal var skipLf = false
-    internal var eventName: String?
-    internal var eventId: String?
-    internal var eventRetry: Int?
-    internal var dataLines: [String] = []
+    var line: [UInt8] = []
+    var started = false
+    var skipLf = false
+    var eventName: String?
+    var eventId: String?
+    var eventRetry: Int?
+    var dataLines: [String] = []
 
     /// Consumes one chunk and returns the events it completes.
     mutating func push(_ chunk: Data) throws -> [SdkStreamEvent] {
@@ -33,9 +33,13 @@ struct SseParser {
         for byte in chunk {
             let followsCarriageReturn = skipLf
             skipLf = byte == 0x0D
-            if followsCarriageReturn, byte == 0x0A { continue }
+            if followsCarriageReturn, byte == 0x0A {
+                continue
+            }
             if byte == 0x0D || byte == 0x0A {
-                if let event = try takeLine() { events.append(event) }
+                if let event = try takeLine() {
+                    events.append(event)
+                }
             } else {
                 line.append(byte)
             }
@@ -47,39 +51,51 @@ struct SseParser {
     /// it leaves pending is dispatched.
     mutating func finish() throws -> [SdkStreamEvent] {
         var events: [SdkStreamEvent] = []
-        if !line.isEmpty, let event = try takeLine() { events.append(event) }
-        if let event = dispatch() { events.append(event) }
+        if !line.isEmpty, let event = try takeLine() {
+            events.append(event)
+        }
+        if let event = dispatch() {
+            events.append(event)
+        }
         return events
     }
 
-    internal mutating func takeLine() throws -> SdkStreamEvent? {
+    mutating func takeLine() throws -> SdkStreamEvent? {
         var bytes = line
         line.removeAll(keepingCapacity: true)
         if !started {
             started = true
-            if bytes.starts(with: [0xEF, 0xBB, 0xBF]) { bytes.removeFirst(3) }
+            if bytes.starts(with: [0xEF, 0xBB, 0xBF]) {
+                bytes.removeFirst(3)
+            }
         }
         let text = try decodeStreamLine(bytes)
-        if text.isEmpty { return dispatch() }
-        if text.hasPrefix(":") { return nil }
+        if text.isEmpty {
+            return dispatch()
+        }
+        if text.hasPrefix(":") {
+            return nil
+        }
         let (field, value) = splitSseLine(text)
         switch field {
         case "event": eventName = value
         case "data": dataLines.append(value)
         case "id" where !value.contains("\0"): eventId = value
-        case "retry" where !value.isEmpty && value.utf8.allSatisfy({ (0x30 ... 0x39).contains($0) }):
+        case "retry" where !value.isEmpty && value.utf8.allSatisfy { (0x30 ... 0x39).contains($0) }:
             eventRetry = Int(value) ?? eventRetry
         default: break
         }
         return nil
     }
 
-    internal mutating func dispatch() -> SdkStreamEvent? {
+    mutating func dispatch() -> SdkStreamEvent? {
         defer {
             eventName = nil
             dataLines = []
         }
-        guard !dataLines.isEmpty else { return nil }
+        guard !dataLines.isEmpty else {
+            return nil
+        }
         return SdkStreamEvent(
             event: eventName ?? "message",
             data: dataLines.joined(separator: "\n"),
@@ -89,17 +105,19 @@ struct SseParser {
     }
 }
 
-internal func splitSseLine(_ line: String) -> (String, String) {
+func splitSseLine(_ line: String) -> (String, String) {
     if let colon = line.firstIndex(of: ":") {
         let field = String(line[line.startIndex ..< colon])
         var value = String(line[line.index(after: colon)...])
-        if value.hasPrefix(" ") { value.removeFirst() }
+        if value.hasPrefix(" ") {
+            value.removeFirst()
+        }
         return (field, value)
     }
     return (line, "")
 }
 
-internal func decodeStreamLine(_ bytes: [UInt8]) throws -> String {
+func decodeStreamLine(_ bytes: [UInt8]) throws -> String {
     guard let line = String(bytes: bytes, encoding: .utf8) else {
         throw SdkNetworkError(cause: NSError(
             domain: "SdkStream",

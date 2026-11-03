@@ -6,23 +6,41 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension ArtifactsMethods {
-    /// Checks whether an artifact with the specified hash exists in the cache. Use `hash` to identify the artifact; the response contains headers only and no body. The request otherwise has the same behavior as a `GET` request to the artifact path.
+public extension ArtifactsMethods {
+    /// Checks whether an artifact with the specified hash exists in the cache. Use `hash` to identify the artifact; the
+    /// response contains headers only and no body. The request otherwise has the same behavior as a `GET` request to
+    /// the artifact path.
     ///
-    /// Check that a cache artifact with the given `hash` exists. This request returns response headers only and is equivalent to a `GET` request to this endpoint where the response contains no body.
+    /// Check that a cache artifact with the given `hash` exists. This request returns response headers only and is
+    /// equivalent to a `GET` request to this endpoint where the response contains no body.
     ///
     /// - Parameters:
     /// - hash: The artifact hash
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func artifactExists(config: ClientConfig, hash: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        return try (await sdkRequest("HEAD", ["/v8/artifacts/", sdkEncodePathSegment(sdkWireString(hash))].joined(), config: config, query: [
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .empty, operationId: "artifactExists", options: requestOptions)).data
+    static func artifactExists(
+        config: ClientConfig,
+        hash: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        try await (sdkRequest(
+            "HEAD",
+            ["/v8/artifacts/", sdkEncodePathSegment(sdkWireString(hash))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .empty,
+            operationId: "artifactExists",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves cache information for multiple artifacts. Supply the artifact hashes in the `hashes` array to query information about each one. Use `teamId` or `slug` to make the request on behalf of a team.
+    /// Retrieves cache information for multiple artifacts. Supply the artifact hashes in the `hashes` array to query
+    /// information about each one. Use `teamId` or `slug` to make the request on behalf of a team.
     ///
     /// Query information about an array of artifacts.
     ///
@@ -30,10 +48,16 @@ extension ArtifactsMethods {
     /// - hashes: artifact hashes
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func artifactQuery(config: ClientConfig, hashes: [String], teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: ArtifactQueryResponseValue?] {
+    static func artifactQuery(
+        config: ClientConfig,
+        hashes: [String],
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: ArtifactQueryResponseValue?] {
         let requestBody = ArtifactQueryRequestBody(hashes: hashes)
 
-        return try (await sdkRequest("POST", "/v8/artifacts", config: config, query: [
+        return try await (sdkRequest("POST", "/v8/artifacts", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "artifactQuery", options: requestOptions)).data

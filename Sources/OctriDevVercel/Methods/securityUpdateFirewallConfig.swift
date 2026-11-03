@@ -6,23 +6,41 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension SecurityMethods {
-    /// Updates an existing firewall configuration by applying configuration changes. Supply the appropriate action and values for each change; the accepted body uses action-specific shapes for firewall settings and rulesets.
+public extension SecurityMethods {
+    /// Updates an existing firewall configuration by applying configuration changes. Supply the appropriate action and
+    /// values for each change; the accepted body uses action-specific shapes for firewall settings and rulesets.
     ///
     /// Process updates to modify the existing firewall config for a project
     ///
     /// - Parameters:
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func updateFirewallConfig(config: ClientConfig, projectId: String, body: UpdateFirewallConfigRequestBody, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> [String: JSONValue] {
-        return try (await sdkRequest("PATCH", "/v1/security/firewall/config", config: config, query: [
-            SdkQueryParameter("projectId", value: projectId),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], rawBody: (try sdkEncodeBody(body, contentType: "application/json")), decoder: .json, operationId: "updateFirewallConfig", options: requestOptions)).data
+    static func updateFirewallConfig(
+        config: ClientConfig,
+        projectId: String,
+        body: UpdateFirewallConfigRequestBody,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [String: JSONValue] {
+        try await (sdkRequest(
+            "PATCH",
+            "/v1/security/firewall/config",
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: projectId),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            rawBody: sdkEncodeBody(body, contentType: "application/json"),
+            decoder: .json,
+            operationId: "updateFirewallConfig",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves a specific firewall configuration version for a project. Use `configVersion` to select the version to inspect; the deployed version is identified as `active`.
+    /// Retrieves a specific firewall configuration version for a project. Use `configVersion` to select the version to
+    /// inspect; the deployed version is identified as `active`.
     ///
     /// Retrieve the specified firewall configuration for a project. The deployed configVersion will be `active`
     ///
@@ -30,11 +48,26 @@ extension SecurityMethods {
     /// - configVersion: The deployed configVersion for the firewall configuration
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
-    public static func getFirewallConfig(config: ClientConfig, configVersion: String, projectId: String, teamId: String? = nil, slug: String? = nil, requestOptions: RequestOptions? = nil) async throws -> GetFirewallConfigResponse {
-        return try (await sdkRequest("GET", ["/v1/security/firewall/config/", sdkEncodePathSegment(sdkWireString(configVersion))].joined(), config: config, query: [
-            SdkQueryParameter("projectId", value: projectId),
-            SdkQueryParameter("teamId", value: teamId),
-            SdkQueryParameter("slug", value: slug),
-        ], decoder: .json, operationId: "getFirewallConfig", options: requestOptions)).data
+    static func getFirewallConfig(
+        config: ClientConfig,
+        configVersion: String,
+        projectId: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetFirewallConfigResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/security/firewall/config/", sdkEncodePathSegment(sdkWireString(configVersion))].joined(),
+            config: config,
+            query: [
+                SdkQueryParameter("projectId", value: projectId),
+                SdkQueryParameter("teamId", value: teamId),
+                SdkQueryParameter("slug", value: slug),
+            ],
+            decoder: .json,
+            operationId: "getFirewallConfig",
+            options: requestOptions
+        )).data
     }
 }

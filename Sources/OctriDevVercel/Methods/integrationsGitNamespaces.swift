@@ -6,17 +6,26 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension IntegrationsMethods {
-    /// Lists Git namespaces for a supported provider. Use `provider` to select a provider, or omit it to let the API infer the provider from the authenticated user; provide `host` when using a custom Git host. Set `viewerMetadata` to include viewer information for each namespace.
+public extension IntegrationsMethods {
+    /// Lists Git namespaces for a supported provider. Use `provider` to select a provider, or omit it to let the API
+    /// infer the provider from the authenticated user; provide `host` when using a custom Git host. Set
+    /// `viewerMetadata` to include viewer information for each namespace.
     ///
-    /// Lists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider is not provided, it will try to obtain it from the user that authenticated the request.
+    /// Lists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If
+    /// the provider is not provided, it will try to obtain it from the user that authenticated the request.
     ///
     /// - Parameters:
     /// - host: The custom Git host if using a custom Git provider, like GitHub
     ///   Enterprise Server
     /// - viewerMetadata: When true, includes the viewer object for each namespace.
-    public static func gitNamespaces(config: ClientConfig, host: String? = nil, provider: GitNamespacesParameter? = nil, viewerMetadata: Bool? = nil, requestOptions: RequestOptions? = nil) async throws -> [GitNamespacesResponseItem] {
-        return try (await sdkRequest("GET", "/v1/integrations/git-namespaces", config: config, query: [
+    static func gitNamespaces(
+        config: ClientConfig,
+        host: String? = nil,
+        provider: GitNamespacesParameter? = nil,
+        viewerMetadata: Bool? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> [GitNamespacesResponseItem] {
+        try await (sdkRequest("GET", "/v1/integrations/git-namespaces", config: config, query: [
             SdkQueryParameter("host", value: host),
             SdkQueryParameter("provider", value: provider),
             SdkQueryParameter("viewerMetadata", value: viewerMetadata),

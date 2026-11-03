@@ -6,31 +6,86 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension MarketplaceMethods {
-    /// Updates an integration installation's status, external identifier, billing plan, or notification. Supply only the fields you want to change; `status` must use one of the listed installation states, and sending `null` for `notification` clears it.
+public extension MarketplaceMethods {
+    /// Updates an integration installation's status, external identifier, billing plan, or notification. Supply only
+    /// the fields you want to change; `status` must use one of the listed installation states, and sending `null` for
+    /// `notification` clears it.
     ///
     /// This endpoint updates an integration installation.
     ///
     /// - Parameters:
     /// - notification: A notification to display to your customer. Send `null` to
     ///   clear the current notification.
-    public static func updateInstallation(config: ClientConfig, integrationConfigurationId: String, status: UpdateInstallationRequestBodyStatus? = nil, externalId: String? = nil, billingPlan: UpdateInstallationRequestBodyBillingPlan? = nil, notification: UpdateInstallationRequestNotification? = nil, requestOptions: RequestOptions? = nil) async throws -> SdkEmptyResponse {
-        let requestBody = UpdateInstallationRequestBody(status: status, externalId: externalId, billingPlan: billingPlan, notification: notification)
+    static func updateInstallation(
+        config: ClientConfig,
+        integrationConfigurationId: String,
+        status: UpdateInstallationRequestBodyStatus? = nil,
+        externalId: String? = nil,
+        billingPlan: UpdateInstallationRequestBodyBillingPlan? = nil,
+        notification: UpdateInstallationRequestNotification? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> SdkEmptyResponse {
+        let requestBody = UpdateInstallationRequestBody(
+            status: status,
+            externalId: externalId,
+            billingPlan: billingPlan,
+            notification: notification
+        )
 
-        return try (await sdkRequest("PATCH", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId))].joined(), config: config, body: requestBody, decoder: .empty, operationId: "updateInstallation", options: requestOptions)).data
+        return try await (sdkRequest(
+            "PATCH",
+            ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId))].joined(),
+            config: config,
+            body: requestBody,
+            decoder: .empty,
+            operationId: "updateInstallation",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves account contact information and the team name associated with an integration installation. Use the installation identifier to look up the best available contact, which can change as team members and their roles change.
+    /// Retrieves account contact information and the team name associated with an integration installation. Use the
+    /// installation identifier to look up the best available contact, which can change as team members and their roles
+    /// change.
     ///
     /// Fetches the best account or user’s contact info
-    public static func getAccountInfo(config: ClientConfig, integrationConfigurationId: String, requestOptions: RequestOptions? = nil) async throws -> GetAccountInfoResponse {
-        return try (await sdkRequest("GET", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/account"].joined(), config: config, decoder: .json, operationId: "getAccountInfo", options: requestOptions)).data
+    static func getAccountInfo(
+        config: ClientConfig,
+        integrationConfigurationId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetAccountInfoResponse {
+        try await (sdkRequest(
+            "GET",
+            ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/account"]
+                .joined(),
+            config: config,
+            decoder: .json,
+            operationId: "getAccountInfo",
+            options: requestOptions
+        )).data
     }
 
-    /// Retrieves the role and other available information for a member of an integration installation. Use the member's user ID from the SSO OIDC token's `user_id` claim to identify the member.
+    /// Retrieves the role and other available information for a member of an integration installation. Use the member's
+    /// user ID from the SSO OIDC token's `user_id` claim to identify the member.
     ///
     /// Returns the member role and other information for a given member ID ("user_id" claim in the SSO OIDC token).
-    public static func getMember(config: ClientConfig, integrationConfigurationId: String, memberId: String, requestOptions: RequestOptions? = nil) async throws -> GetMemberResponse {
-        return try (await sdkRequest("GET", ["/v1/installations/", sdkEncodePathSegment(sdkWireString(integrationConfigurationId)), "/member/", sdkEncodePathSegment(sdkWireString(memberId))].joined(), config: config, decoder: .json, operationId: "getMember", options: requestOptions)).data
+    static func getMember(
+        config: ClientConfig,
+        integrationConfigurationId: String,
+        memberId: String,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> GetMemberResponse {
+        try await (sdkRequest(
+            "GET",
+            [
+                "/v1/installations/",
+                sdkEncodePathSegment(sdkWireString(integrationConfigurationId)),
+                "/member/",
+                sdkEncodePathSegment(sdkWireString(memberId)),
+            ].joined(),
+            config: config,
+            decoder: .json,
+            operationId: "getMember",
+            options: requestOptions
+        )).data
     }
 }

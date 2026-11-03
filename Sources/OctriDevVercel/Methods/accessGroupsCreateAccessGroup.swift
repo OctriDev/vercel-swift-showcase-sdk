@@ -6,8 +6,9 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-extension AccessGroupsMethods {
-    /// Creates an access group for a team, optionally assigning projects and adding members. Provide a `name` that matches the allowed character pattern and is no longer than 50 characters.
+public extension AccessGroupsMethods {
+    /// Creates an access group for a team, optionally assigning projects and adding members. Provide a `name` that
+    /// matches the allowed character pattern and is no longer than 50 characters.
     ///
     /// Allows to create an access group
     ///
@@ -16,13 +17,21 @@ extension AccessGroupsMethods {
     /// - teamId: The Team identifier to perform the request on behalf of.
     /// - slug: The Team slug to perform the request on behalf of.
     /// - membersToAdd: List of members to add to the access group.
-    public static func createAccessGroup(config: ClientConfig, name: String, teamId: String? = nil, slug: String? = nil, projects: [CreateAccessGroupRequestBodyProjectsItem]? = nil, membersToAdd: [String]? = nil, requestOptions: RequestOptions? = nil) async throws -> CreateAccessGroupResponse {
+    static func createAccessGroup(
+        config: ClientConfig,
+        name: String,
+        teamId: String? = nil,
+        slug: String? = nil,
+        projects: [CreateAccessGroupRequestBodyProjectsItem]? = nil,
+        membersToAdd: [String]? = nil,
+        requestOptions: RequestOptions? = nil
+    ) async throws -> CreateAccessGroupResponse {
         try validateLength("name", name, max: 50)
         try sdkValidatePattern("name", name, sdkPattern3195b0c37ff2)
 
         let requestBody = CreateAccessGroupRequestBody(name: name, projects: projects, membersToAdd: membersToAdd)
 
-        return try (await sdkRequest("POST", "/v1/access-groups", config: config, query: [
+        return try await (sdkRequest("POST", "/v1/access-groups", config: config, query: [
             SdkQueryParameter("teamId", value: teamId),
             SdkQueryParameter("slug", value: slug),
         ], body: requestBody, decoder: .json, operationId: "createAccessGroup", options: requestOptions)).data

@@ -6,15 +6,19 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct SearchRepoResponseVariant2ReposItemProvider: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct SearchRepoResponseVariant2ReposItemProvider: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let cursorOrigin = SearchRepoResponseVariant2ReposItemProvider(rawValue: "cursor-origin")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -23,17 +27,24 @@ public struct SearchRepoResponseVariant2ReposItemProvider: RawRepresentable, Has
     }
 }
 
-public struct GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX4533f751c8: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX4533f751c8: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let completed = GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX4533f751c8(rawValue: "completed")
-    public static let registered = GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX4533f751c8(rawValue: "registered")
-    public static let running = GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX4533f751c8(rawValue: "running")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let completed =
+        GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX4533f751c8(rawValue: "completed")
+    public static let registered =
+        GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX4533f751c8(rawValue: "registered")
+    public static let running =
+        GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX4533f751c8(rawValue: "running")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -44,10 +55,14 @@ public struct GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymeX4533
 
 /// Principal type of the deployment creator. Defaults to `"user"` if absent (legacy deployments created before
 /// principal attribution was recorded).
-public struct GetDeploymentsResponseDeploymentsItemCreatorType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetDeploymentsResponseDeploymentsItemCreatorType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let app = GetDeploymentsResponseDeploymentsItemCreatorType(rawValue: "app")
     public static let integration = GetDeploymentsResponseDeploymentsItemCreatorType(rawValue: "integration")
     public static let system = GetDeploymentsResponseDeploymentsItemCreatorType(rawValue: "system")
@@ -55,7 +70,7 @@ public struct GetDeploymentsResponseDeploymentsItemCreatorType: RawRepresentable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -81,17 +96,21 @@ public enum CreateProjectResponseProtectionBypassValueVariant0Scope: String, Cas
     }
 }
 
-public struct CreateProjectResponseEnvItemTargetVariant1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectResponseEnvItemTargetVariant1: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let development = CreateProjectResponseEnvItemTargetVariant1(rawValue: "development")
     public static let preview = CreateProjectResponseEnvItemTargetVariant1(rawValue: "preview")
     public static let production = CreateProjectResponseEnvItemTargetVariant1(rawValue: "production")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -100,11 +119,16 @@ public struct CreateProjectResponseEnvItemTargetVariant1: RawRepresentable, Hash
     }
 }
 
-public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let actixWeb = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "actix-web")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let actixWeb =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "actix-web")
     public static let angular = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "angular")
     public static let ash = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "ash")
     public static let astro = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "astro")
@@ -112,18 +136,23 @@ public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework:
     public static let blitzjs = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "blitzjs")
     public static let brunch = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "brunch")
     public static let bun = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "bun")
-    public static let container = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "container")
-    public static let createReactApp = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "create-react-app")
+    public static let container =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "container")
+    public static let createReactApp =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "create-react-app")
     public static let django = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "django")
-    public static let docusaurus = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "docusaurus")
-    public static let docusaurus2 = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "docusaurus-2")
+    public static let docusaurus =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "docusaurus")
+    public static let docusaurus2 =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "docusaurus-2")
     public static let dojo = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "dojo")
     public static let eleventy = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "eleventy")
     public static let elysia = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "elysia")
     public static let ember = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "ember")
     public static let eve = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "eve")
     public static let express = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "express")
-    public static let factoryEve = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "factory-eve")
+    public static let factoryEve =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "factory-eve")
     public static let fastapi = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "fastapi")
     public static let fasthtml = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "fasthtml")
     public static let fastify = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "fastify")
@@ -136,12 +165,15 @@ public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework:
     public static let hono = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "hono")
     public static let hugo = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "hugo")
     public static let hydrogen = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "hydrogen")
-    public static let ionicAngular = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "ionic-angular")
-    public static let ionicReact = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "ionic-react")
+    public static let ionicAngular =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "ionic-angular")
+    public static let ionicReact =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "ionic-react")
     public static let jekyll = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "jekyll")
     public static let koa = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "koa")
     public static let mastra = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "mastra")
-    public static let middleman = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "middleman")
+    public static let middleman =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "middleman")
     public static let nestjs = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "nestjs")
     public static let nextjs = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "nextjs")
     public static let nitro = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "nitro")
@@ -151,29 +183,40 @@ public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework:
     public static let polymer = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "polymer")
     public static let preact = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "preact")
     public static let python = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "python")
-    public static let reactRouter = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "react-router")
-    public static let redwoodjs = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "redwoodjs")
+    public static let reactRouter =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "react-router")
+    public static let redwoodjs =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "redwoodjs")
     public static let remix = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "remix")
     public static let ruby = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "ruby")
     public static let rust = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "rust")
     public static let saber = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "saber")
     public static let sanity = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "sanity")
-    public static let sanityV2 = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "sanity-v2")
+    public static let sanityV2 =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "sanity-v2")
     public static let sapper = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "sapper")
     public static let scully = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "scully")
     public static let services = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "services")
-    public static let solidstart = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "solidstart")
-    public static let solidstart1 = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "solidstart-1")
+    public static let solidstart =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "solidstart")
+    public static let solidstart1 =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "solidstart-1")
     public static let stencil = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "stencil")
-    public static let storybook = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "storybook")
+    public static let storybook =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "storybook")
     public static let svelte = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "svelte")
-    public static let sveltekit = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "sveltekit")
-    public static let sveltekit1 = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "sveltekit-1")
-    public static let tanstackStart = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "tanstack-start")
-    public static let tanstackStartLovable = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "tanstack-start-lovable")
+    public static let sveltekit =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "sveltekit")
+    public static let sveltekit1 =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "sveltekit-1")
+    public static let tanstackStart =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "tanstack-start")
+    public static let tanstackStartLovable =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "tanstack-start-lovable")
     public static let umijs = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "umijs")
     public static let vite = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "vite")
-    public static let vitepress = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "vitepress")
+    public static let vitepress =
+        CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "vitepress")
     public static let vue = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "vue")
     public static let vuepress = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "vuepress")
     public static let xmcp = CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework(rawValue: "xmcp")
@@ -181,7 +224,7 @@ public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework:
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -191,10 +234,14 @@ public struct CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework:
 }
 
 /// The Git Provider of the repository
-public struct CreateProjectRequestBodyGitRepositoryType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateProjectRequestBodyGitRepositoryType: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let github = CreateProjectRequestBodyGitRepositoryType(rawValue: "github")
     public static let githubLimited = CreateProjectRequestBodyGitRepositoryType(rawValue: "github-limited")
     public static let gitlab = CreateProjectRequestBodyGitRepositoryType(rawValue: "gitlab")
@@ -204,7 +251,7 @@ public struct CreateProjectRequestBodyGitRepositoryType: RawRepresentable, Hasha
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {

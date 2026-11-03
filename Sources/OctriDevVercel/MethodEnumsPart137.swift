@@ -6,33 +6,51 @@ import Foundation
 #if canImport(FoundationNetworking)
     import FoundationNetworking
 #endif
-public struct GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let aiGatewayBudgetManager = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
-    public static let aiGatewayCredits = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayCredits")
-    public static let aiGatewaySettings = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewaySettings")
-    public static let aiGatewayTranscriptsManager = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
-    public static let aiGatewayTranscriptsViewer = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
-    public static let aiGatewayUser = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayUser")
-    public static let connectorManager = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "ConnectorManager")
-    public static let createProject = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "CreateProject")
-    public static let envVariableManager = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "EnvVariableManager")
-    public static let environmentManager = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "EnvironmentManager")
-    public static let fullProductionDeployment = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "FullProductionDeployment")
-    public static let integrationManager = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "IntegrationManager")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let aiGatewayBudgetManager =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayBudgetManager")
+    public static let aiGatewayCredits =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayCredits")
+    public static let aiGatewaySettings =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewaySettings")
+    public static let aiGatewayTranscriptsManager =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayTranscriptsManager")
+    public static let aiGatewayTranscriptsViewer =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayTranscriptsViewer")
+    public static let aiGatewayUser =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "AiGatewayUser")
+    public static let connectorManager =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "ConnectorManager")
+    public static let createProject =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "CreateProject")
+    public static let envVariableManager =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "EnvVariableManager")
+    public static let environmentManager =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "EnvironmentManager")
+    public static let fullProductionDeployment =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "FullProductionDeployment")
+    public static let integrationManager =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "IntegrationManager")
     public static let orgAdmin = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "OrgAdmin")
     public static let orgViewer = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "OrgViewer")
-    public static let usageViewer = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "UsageViewer")
+    public static let usageViewer =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "UsageViewer")
     public static let v0Builder = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "V0Builder")
     public static let v0Chatter = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "V0Chatter")
     public static let v0Viewer = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "V0Viewer")
-    public static let workflowDecryptor = GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "WorkflowDecryptor")
+    public static let workflowDecryptor =
+        GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem(rawValue: "WorkflowDecryptor")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -41,21 +59,32 @@ public struct GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem: Raw
     }
 }
 
-public struct ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let authenticatedRead = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "authenticated-read")
-    public static let awsExecRead = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "aws-exec-read")
-    public static let bucketOwnerFullControl = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "bucket-owner-full-control")
-    public static let bucketOwnerRead = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "bucket-owner-read")
-    public static let `private` = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "private")
-    public static let publicRead = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "public-read")
-    public static let publicReadWrite = ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "public-read-write")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let authenticatedRead =
+        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "authenticated-read")
+    public static let awsExecRead =
+        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "aws-exec-read")
+    public static let bucketOwnerFullControl =
+        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "bucket-owner-full-control")
+    public static let bucketOwnerRead =
+        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "bucket-owner-read")
+    public static let `private` =
+        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "private")
+    public static let publicRead =
+        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "public-read")
+    public static let publicReadWrite =
+        ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3ObjectAcl(rawValue: "public-read-write")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -64,15 +93,20 @@ public struct ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant3Obj
     }
 }
 
-public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemTraX4f1f5c5a46: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemTraX4f1f5c5a46: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let append = ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemTraX4f1f5c5a46(rawValue: "append")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let append =
+        ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemTraX4f1f5c5a46(rawValue: "append")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -81,16 +115,20 @@ public struct ListProjectsResponseVariant0ItemSecurityFirewallRoutesItemTraX4f1f
     }
 }
 
-public struct GetSecurityFirewallConfigResponseActiveCrsMaAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetSecurityFirewallConfigResponseActiveCrsMaAction: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let deny = GetSecurityFirewallConfigResponseActiveCrsMaAction(rawValue: "deny")
     public static let log = GetSecurityFirewallConfigResponseActiveCrsMaAction(rawValue: "log")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -99,10 +137,14 @@ public struct GetSecurityFirewallConfigResponseActiveCrsMaAction: RawRepresentab
     }
 }
 
-public struct UpdateFirewallConfigRequestBodyVariant16ValueAction: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct UpdateFirewallConfigRequestBodyVariant16ValueAction: RawRepresentable, Hashable, Codable, Sendable,
+    SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let deny = UpdateFirewallConfigRequestBodyVariant16ValueAction(rawValue: "deny")
     public static let challenge = UpdateFirewallConfigRequestBodyVariant16ValueAction(rawValue: "challenge")
     public static let log = UpdateFirewallConfigRequestBodyVariant16ValueAction(rawValue: "log")
@@ -110,7 +152,7 @@ public struct UpdateFirewallConfigRequestBodyVariant16ValueAction: RawRepresenta
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -119,15 +161,19 @@ public struct UpdateFirewallConfigRequestBodyVariant16ValueAction: RawRepresenta
     }
 }
 
-public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
     public static let object = CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType(rawValue: "object")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -136,15 +182,20 @@ public struct CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType
     }
 }
 
-public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX992ce85ff1: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct GetConfigurationProductsResponseProductsItemMetadataSchemaProX992ce85ff1: RawRepresentable, Hashable,
+    Codable, Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let vercelRegion = GetConfigurationProductsResponseProductsItemMetadataSchemaProX992ce85ff1(rawValue: "vercel-region")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let vercelRegion =
+        GetConfigurationProductsResponseProductsItemMetadataSchemaProX992ce85ff1(rawValue: "vercel-region")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -173,16 +224,21 @@ public enum RemoveProjectEnvResponseVariant1ContentHintVariant12Type: String, Ca
 /// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon
 /// creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview"
 /// deployment.
-public struct CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget: RawRepresentable, Hashable, Codable, Sendable, SdkWireConvertible {
+public struct CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget: RawRepresentable, Hashable, Codable,
+    Sendable, SdkWireConvertible {
     public let rawValue: String
 
-    public init(rawValue: String) { self.rawValue = rawValue }
-    public static let production = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget(rawValue: "production")
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let production =
+        CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget(rawValue: "production")
     public static let staging = CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget(rawValue: "staging")
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.init(rawValue: try container.decode(String.self))
+        try self.init(rawValue: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -192,7 +248,7 @@ public struct CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget
 }
 
 public enum ListLogDrainsResponseVariant1DrainsVariant0ItemDeliveryVariant4Type: String, CaseIterable, Codable {
-    case `internal` = "internal"
+    case `internal`
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawValue = try container.decode(String.self)
